@@ -67,8 +67,10 @@ def bootstrap():
     source_url=upload(rel,'renderer-'+spec['sha256'][:20]+'.tar.gz',archive,known)
     static=release('legacy-site');known=entries(static)
     expected=json.loads((ROOT/'legacy-files.json').read_text());manifest={}
+    html_seed=json.loads((ROOT/'legacy-html.json').read_text())
     def download(pair):
-        path,m=pair;b=get(ORIGIN+path);assert len(b)==m['bytes'] and sha(b)==m['sha256'],path+' baseline changed'
+        path,m=pair;b=html_seed[path].encode() if path in html_seed else get(ORIGIN+path)
+        assert len(b)==m['bytes'] and sha(b)==m['sha256'],path+' baseline changed'
         p=WORK/'legacy'/path.lstrip('/');p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b)
         return path,m,p
     with ThreadPoolExecutor(max_workers=4) as pool:
