@@ -1,40 +1,40 @@
 {
-  "version": 1,
-  "checkedAt": "2026-10-29T12:37:43.367630+00:00",
-  "selection": "newest confirmed release date not after today among approved catalog pages; upcoming and undated entries excluded",
+  "version": 2,
+  "checkedAt": "2026-10-29T15:29:33.511309+00:00",
+  "selection": "first valid movie in the matching IndianRegional catalog order; no external release-date filtering",
   "languages": {
     "hindi": {
-      "id": "tt33354945",
-      "name": "Gandhari",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33354945.jpg",
+      "id": "tt39631280",
+      "name": "Gajab Raat",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39631280.jpg",
       "catalog": "hi",
       "type": "movie",
-      "released": "2026-09-03",
-      "releaseDateSource": "https://v3-cinemeta.strem.io/meta/movie/tt33354945.json",
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/hi.json",
-      "verifiedAt": "2026-10-29T12:37:43.367630+00:00"
+      "selection": "catalog-order",
+      "catalogRank": 0,
+      "verifiedAt": "2026-10-29T15:29:33.511309+00:00"
     },
     "tamil": {
-      "id": "tt38915678",
-      "name": "Dorothy",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt38915678.jpg",
+      "id": "tmdb:1802710",
+      "name": "Obstacle",
+      "poster": "https://image.tmdb.org/t/p/original/6ZBKPRACiT1SfvNfmca87A91HSO.jpg",
       "catalog": "ta",
       "type": "movie",
-      "released": "2026-09-25",
-      "releaseDateSource": "https://v3-cinemeta.strem.io/meta/movie/tt38915678.json",
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/ta.json",
-      "verifiedAt": "2026-10-29T12:37:43.367630+00:00"
+      "selection": "catalog-order",
+      "catalogRank": 0,
+      "verifiedAt": "2026-10-29T15:29:33.511309+00:00"
     },
     "malayalam": {
-      "id": "tt37894980",
-      "name": "Aasha",
-      "poster": "https://images.metahub.space/poster/small/tt37894980/img",
+      "id": "tt34792531",
+      "name": "Avaraachan & Sons",
+      "poster": "https://live.metahub.space/poster/small/tt34792531/img",
       "catalog": "ml",
       "type": "movie",
-      "released": "2026-09-11",
-      "releaseDateSource": "https://v3-cinemeta.strem.io/meta/movie/tt37894980.json",
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/ml.json",
-      "verifiedAt": "2026-10-29T12:37:43.367630+00:00"
+      "selection": "catalog-order",
+      "catalogRank": 0,
+      "verifiedAt": "2026-10-29T15:29:33.511309+00:00"
     },
     "telugu": {
       "id": "tt31969655",
@@ -42,10 +42,10 @@
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31969655.jpg",
       "catalog": "te",
       "type": "movie",
-      "released": "2026-09-24",
-      "releaseDateSource": "https://v3-cinemeta.strem.io/meta/movie/tt31969655.json",
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/te.json",
-      "verifiedAt": "2026-10-29T12:37:43.367630+00:00"
+      "selection": "catalog-order",
+      "catalogRank": 0,
+      "verifiedAt": "2026-10-29T15:29:33.511309+00:00"
     }
   },
   "warnings": []
