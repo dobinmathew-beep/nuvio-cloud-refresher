@@ -26,7 +26,7 @@ def prepare(lang):
     raw=get(m['poster']);img=Image.open(io.BytesIO(raw)).convert('RGB');assert img.width>=100 and img.height>=140
     img=ImageOps.contain(img,(600,900),Image.Resampling.LANCZOS);tmp=poster.with_suffix('.'+lang+'.tmp');img.save(tmp,format='JPEG',quality=93,optimize=True);tmp.replace(poster)
   except Exception as e:
-   if not poster.exists():print(lang,'poster skipped',name,str(e),flush=True);continue
+   if not poster.exists():raise RuntimeError(lang+': required top catalog poster unavailable for '+name+'; retaining last-good reel') from e
   year=re.search(r'\d{4}',str(m.get('releaseInfo','')))
   recent.append({'language':lang,'id':mid,'name':name,'year':int(year.group()) if year else None,'poster_source':m['poster'],'catalog_source':url,'pinned':False})
   if len(recent)==12:break

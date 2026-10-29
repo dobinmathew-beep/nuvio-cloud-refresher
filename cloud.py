@@ -111,10 +111,10 @@ def featured_movies():
             d=json.loads(get('https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site/status/'+lang+'/movies/gallery.json?check=1'))
             return d.get('centerMovie',{}).get('id')==result['languages'][lang]['id'] and d.get('renderVersion')=='catalog-head-v2'
         except Exception:return False
-    for attempt in range(9):
+    for attempt in range(30):
         with ThreadPoolExecutor(max_workers=4) as pool:ready=all(pool.map(probe,LANGS))
         if ready:break
-        if attempt==8:raise RuntimeError('New confirmed centre selections are not yet visible; retained last-good images')
+        if attempt==29:raise RuntimeError('New confirmed centre selections are not yet visible; retained last-good images')
         time.sleep(10)
     return result
 

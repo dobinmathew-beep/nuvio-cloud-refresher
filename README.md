@@ -17,9 +17,9 @@ Base URL stays https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site . T
 
 ## Centre movie in backdrops
 
-Movie and combined backdrops feature the newest confirmed release date not after today from the matching IndianRegional catalog's first three recent pages. Upcoming and undated entries are excluded. Cinemeta is queried only for release-date metadata of those catalog IDs; it supplies no additional movie catalog. The existing central panel, nearest central panel or lead panel is used according to each layout; no extra panel or style change is introduced. Series-only collections stay series-only.
+Movie and combined backdrops feature the first valid movie in the matching IndianRegional primary movie catalog's own order. No external release-date lookup or date filtering is used. The existing central panel, nearest central panel or lead panel is used according to each layout; no extra panel or style change is introduced. Series-only collections stay series-only.
 
-The cloud job publishes `state/featured-movies.json` before warming images. Status JSON must report the expected `centerMovie`, `centerSlot` and `renderVersion`, and the selected ID must still belong to its approved catalog. Missing posters or source outages preserve last-good images and leave unfinished work eligible for a retry. Centre choices and metadata are checked as part of the daily 06:00 cycle.
+The cloud job records the catalog-head choices in `state/featured-movies.json` before warming images. The backdrop service reads the matching IndianRegional catalog directly, avoiding a stale GitHub selection-file cache. Status JSON must report the expected `centerMovie`, `centerSlot` and `renderVersion`, and the selected ID must still belong to its approved catalog. Missing posters or source outages preserve last-good images and leave unfinished work eligible for a retry. Centre choices and metadata are checked as part of the daily 06:00 cycle.
 
 ## Hero reels
 
