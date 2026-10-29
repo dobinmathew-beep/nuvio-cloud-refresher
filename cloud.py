@@ -94,7 +94,7 @@ def heroes():
     with tarfile.open(archive) as tf:tf.extractall(render,filter='data')
     manifest=json.loads((STATE/'media.json').read_text());dist=render/'dist';(dist/'hero').mkdir(parents=True,exist_ok=True)
     # Restore the last published validated media so unchanged renders and source outages retain it.
-    needed=['/_headers','/hero/index.html','/hero/daily-manifest.json','/hero/music-credits.json']
+    needed=['/hero/index.html','/hero/daily-manifest.json','/hero/music-credits.json']
     for lang in LANGS:needed += ['/hero/'+lang+x for x in ('.mp4','-daily.jpg','-daily.json')]
     def restore(path):
         m=manifest[path];b=get(m['url']);assert sha(b)==m['sha256'];p=dist/path.lstrip('/');p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b)
