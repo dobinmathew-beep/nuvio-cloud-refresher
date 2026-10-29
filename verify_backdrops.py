@@ -43,8 +43,8 @@ def status(k):
   assert d.get('hash') and d.get('bytes',0)>0,'missing artwork metadata'
   if t in ('movies','combined'):
    lead=FEATURED[l];center=d.get('centerMovie',{})
-   assert d.get('renderVersion')=='released-centre-v1','old centre selection version'
-   assert center.get('id')==lead['id'] and center.get('released')==lead['released'] and center['released']<=D,'incorrect or upcoming centre movie'
+   assert d.get('renderVersion')=='catalog-head-v2','old centre selection version'
+   assert center.get('id')==lead['id'] and center.get('selection')=='catalog-order' and center.get('catalogRank')==0,'incorrect catalog-head centre movie'
    assert isinstance(d.get('centerSlot'),int),'missing centre panel metadata'
   ms=d.get('movies',[]);assert ms,'empty titles';types=[]
   for m in ms:
@@ -72,3 +72,4 @@ with cf.ThreadPoolExecutor(max_workers=4) as ex:list(ex.map(status,keys))
 imgs=[(l,t,'polaroid') for l in C for t in ('movies','series','combined')]+[(l,'combined','orbit') for l in C]
 with cf.ThreadPoolExecutor(max_workers=4) as ex:list(ex.map(jpg,imgs))
 print('SUMMARY',json.dumps({'day':D,'statuses':len(rows),'images':len(imgs),'states':{s:sum(1 for r in rows if r and r['state']==s) for s in ('live','cached')},'errors':errors}),flush=True)
+
