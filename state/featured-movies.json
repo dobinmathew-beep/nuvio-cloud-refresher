@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-29T12:30:13.003385+00:00",
+  "selection": "newest confirmed release date not after today among approved catalog pages; upcoming and undated entries excluded",
+  "languages": {
+    "hindi": {
+      "id": "tt33354945",
+      "name": "Gandhari",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33354945.jpg",
+      "catalog": "hi",
+      "type": "movie",
+      "released": "2026-09-03",
+      "releaseDateSource": "https://v3-cinemeta.strem.io/meta/movie/tt33354945.json",
+      "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/hi.json",
+      "verifiedAt": "2026-10-29T12:30:13.003385+00:00"
+    },
+    "tamil": {
+      "id": "tt38915678",
+      "name": "Dorothy",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt38915678.jpg",
+      "catalog": "ta",
+      "type": "movie",
+      "released": "2026-09-25",
+      "releaseDateSource": "https://v3-cinemeta.strem.io/meta/movie/tt38915678.json",
+      "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/ta.json",
+      "verifiedAt": "2026-10-29T12:30:13.003385+00:00"
+    },
+    "malayalam": {
+      "id": "tt37535100",
+      "name": "Bethlehem Kudumba Unit",
+      "poster": "https://images.metahub.space/poster/small/tt37535100/img",
+      "catalog": "ml",
+      "type": "movie",
+      "released": "2026-08-21",
+      "releaseDateSource": "https://v3-cinemeta.strem.io/meta/movie/tt37535100.json",
+      "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/ml.json",
+      "verifiedAt": "2026-10-29T12:30:13.003385+00:00"
+    },
+    "telugu": {
+      "id": "tt31969655",
+      "name": "The Paradise",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31969655.jpg",
+      "catalog": "te",
+      "type": "movie",
+      "released": "2026-09-24",
+      "releaseDateSource": "https://v3-cinemeta.strem.io/meta/movie/tt31969655.json",
+      "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/te.json",
+      "verifiedAt": "2026-10-29T12:30:13.003385+00:00"
+    }
+  },
+  "warnings": []
+}
