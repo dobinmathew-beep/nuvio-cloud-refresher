@@ -56,7 +56,7 @@ def select_featured(state):
     by_id={m['id']:m for values in candidates.values() for m in values}
     def metadata(pair):
         mid,m=pair;existing=cache.get(mid);age=(now-datetime.fromisoformat(existing['checked_at'])).total_seconds() if existing else 1e20
-        if existing and (existing.get('released') or existing.get('lookupSucceeded')) and age<(604800 if existing.get('released') else 21600):return mid,existing
+        if existing and (existing.get('released') or existing.get('lookupSucceeded')) and age<(3600 if existing.get('released') else 21600):return mid,existing
         direct=release_day(m.get('released') or m.get('releaseDate') or m.get('release_date'))
         result={'released':direct,'source':m['catalog_source'] if direct else None,'checked_at':now.isoformat()}
         if not direct and mid.startswith('tt') and not os.environ.get('FEATURED_OFFLINE_METADATA'):
@@ -84,7 +84,7 @@ def select_featured(state):
             problems.append(lang+': no verifiable released movie; retained last confirmed selection if available')
             continue
         chosen=max(eligible,key=lambda m:cache[m['id']]['released']);meta=cache[chosen['id']]
-        featured[lang]={'id':chosen['id'],'name':chosen['name'],'poster':chosen['poster'],'catalog':chosen['catalog'],'type':'movie','released':meta['released'],'releaseDateSource':meta['source'],'catalog_source':chosen['catalog_source'],'verifiedAt':now.isoformat()}
+        featured[lang]={'id':chosen['id'],'name':chosen['name'],'poster':chosen['poster'],'catalog':chosen['catalog'],'type':'movie','released':meta['released'],'releaseDateSource':meta['source'],'catalog_source':chosen['catalog_source'],'verifiedAt':meta['checked_at']}
         print('FEATURED',lang,chosen['name'],meta['released'],flush=True)
     if len(featured)!=4 or problems:raise RuntimeError('; '.join(problems))
     result={'version':1,'checkedAt':now.isoformat(),'selection':'newest confirmed release date not after today among approved catalog pages; upcoming and undated entries excluded','languages':featured,'warnings':problems}
