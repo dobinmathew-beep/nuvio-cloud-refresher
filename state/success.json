@@ -1,16 +1,6 @@
 {
   "cycle": "2026-10-29",
-  "heroes": {
-    "languages": [
-      "hindi",
-      "tamil",
-      "malayalam",
-      "telugu"
-    ],
-    "checked_at": "2026-10-29T15:59:38.206861+04:00",
-    "films_per_language": 20
-  },
-  "featuredVersion": 1,
+  "featuredVersion": 2,
   "backdrops": {
     "day": "2026-10-29",
     "statuses": 160,
@@ -20,5 +10,15 @@
       "cached": 0
     },
     "errors": []
+  },
+  "heroes": {
+    "languages": [
+      "hindi",
+      "tamil",
+      "malayalam",
+      "telugu"
+    ],
+    "checked_at": "2026-10-29T19:49:14.758652+04:00",
+    "films_per_language": 20
   }
 }
