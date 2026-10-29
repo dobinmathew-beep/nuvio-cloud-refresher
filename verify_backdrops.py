@@ -1,9 +1,11 @@
 import concurrent.futures as cf,datetime,json,re,subprocess,threading
+from pathlib import Path
 from zoneinfo import ZoneInfo
 B='https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site';S='https://83e20802dcf1-indian-streams.baby-beamup.club'
 C={'hindi':'hi','tamil':'ta','malayalam':'ml','telugu':'te'}
 A='wall cascade spotlight filmstrip gallery ribbon duo polaroid neon towers'.split();X=A+'mosaic fan orbit triptych cinema steps cross shelf widescreen diamond'.split()
 D=datetime.datetime.now(ZoneInfo('Asia/Muscat')).date().isoformat();feeds={};errors=[];rows=[];lock=threading.Lock()
+FEATURED=json.loads((Path(__file__).resolve().parent/'state/featured-movies.json').read_text())['languages']
 def get(u):
  p=subprocess.run(['curl','-fsSL','--connect-timeout','15','--max-time','100','-w','\n%{http_code} %{content_type}',u],capture_output=True)
  assert p.returncode==0,p.stderr.decode()[-200:]
@@ -17,7 +19,15 @@ def retry(f):
 def src(k):
  l,t=k;cat=C[l]+('_series' if t=='series' else '')
  def run():
-  b,_=get(f'{S}/catalog/{t}/{cat}.json');ms=json.loads(b)['metas'];ids={m.get('id','').split('||')[0] for m in ms if m.get('type',t)==t and re.fullmatch(r'tt\d+|tmdb:\d+',m.get('id','').split('||')[0])};assert ids,'empty source';return ids
+  ids=set()
+  for skip in ((0,20,40) if t=='movie' else (0,)):
+   try:
+    b,_=get(f'{S}/catalog/{t}/{cat}'+(f'/skip={skip}' if skip else '')+'.json');data=json.loads(b);ms=data.get('metas',[]) if isinstance(data,dict) else []
+   except Exception:
+    if skip:break
+    raise
+   ids.update(m.get('id','').split('||')[0] for m in ms if m.get('type',t)==t and re.fullmatch(r'tt\d+|tmdb:\d+',m.get('id','').split('||')[0]))
+  assert ids,'empty source';return ids
  v,e=retry(run)
  if e:errors.append({'source':cat,'error':e})
  else:feeds[k]=v
@@ -31,6 +41,11 @@ def status(k):
   cat=C[l];exp=[cat,cat+'_series'] if t=='combined' else cat+('_series' if t=='series' else '')
   assert d.get('catalog')==exp,f'wrong catalog {d.get("catalog")}'
   assert d.get('hash') and d.get('bytes',0)>0,'missing artwork metadata'
+  if t in ('movies','combined'):
+   lead=FEATURED[l];center=d.get('centerMovie',{})
+   assert d.get('renderVersion')=='released-centre-v1','old centre selection version'
+   assert center.get('id')==lead['id'] and center.get('released')==lead['released'] and center['released']<=D,'incorrect or upcoming centre movie'
+   assert isinstance(d.get('centerSlot'),int),'missing centre panel metadata'
   ms=d.get('movies',[]);assert ms,'empty titles';types=[]
   for m in ms:
    mid=m.get('id','').split('||')[0];assert re.fullmatch(r'tt\d+|tmdb:\d+',mid),'invalid/promotional ID '+mid
