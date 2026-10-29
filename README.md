@@ -15,6 +15,12 @@ All 160 existing regional backdrop status URLs are warmed with concurrency no gr
 
 Base URL stays https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site . That Site remains the existing generator and cache; the GitHub job only sends ordinary HTTP requests.
 
+## Centre movie in backdrops
+
+Movie and combined backdrops feature the newest confirmed release date not after today from the matching IndianRegional catalog's first three recent pages. Upcoming and undated entries are excluded. Cinemeta is queried only for release-date metadata of those catalog IDs; it supplies no additional movie catalog. The existing central panel, nearest central panel or lead panel is used according to each layout; no extra panel or style change is introduced. Series-only collections stay series-only.
+
+The cloud job publishes `state/featured-movies.json` before warming images. Status JSON must report the expected `centerMovie`, `centerSlot` and `renderVersion`, and the selected ID must still belong to its approved catalog. Missing posters or source outages preserve last-good images and leave unfinished work eligible for a retry. Centre choices and metadata are checked as part of the daily 06:00 cycle.
+
 ## Hero reels
 
 The renderer uses the latest twelve valid IndianRegional movie entries per language plus all eight original films. Only hi, ta, ml and te catalogs are selected. The supplied continuous 50-second audio, matching fades, projector design and compact H264/AAC settings are preserved. Tamil's primary reel uses Thuli Thuli. Old Hosanna comparison files remain unchanged legacy assets.
