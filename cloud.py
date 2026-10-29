@@ -103,13 +103,13 @@ def featured_movies():
     subprocess.run(['git','config','user.email','nuvio-refresh@users.noreply.github.com'],cwd=ROOT,check=True)
     subprocess.run(['git','add','state/featured-movies.json','state/release-dates.json','state/catalog-pages.json'],cwd=ROOT,check=True)
     if subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT).returncode:
-        subprocess.run(['git','commit','-m','Update confirmed released centre movies'],cwd=ROOT,check=True)
+        subprocess.run(['git','commit','-m','Update IndianRegional catalog-head centre movies'],cwd=ROOT,check=True)
         subprocess.run(['git','push'],cwd=ROOT,check=True)
     # Allow the HTTP service to observe the new pointer before full verification.
     def probe(lang):
         try:
             d=json.loads(get('https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site/status/'+lang+'/movies/gallery.json?check=1'))
-            return d.get('centerMovie',{}).get('id')==result['languages'][lang]['id'] and d.get('renderVersion')=='released-centre-v1'
+            return d.get('centerMovie',{}).get('id')==result['languages'][lang]['id'] and d.get('renderVersion')=='catalog-head-v2'
         except Exception:return False
     for attempt in range(9):
         with ThreadPoolExecutor(max_workers=4) as pool:ready=all(pool.map(probe,LANGS))
@@ -129,7 +129,8 @@ def heroes():
     def restore(path):
         m=manifest[path];b=get(m['url']);assert sha(b)==m['sha256'];p=dist/path.lstrip('/');p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b)
     with ThreadPoolExecutor(max_workers=4) as pool:list(pool.map(restore,needed))
-    # Use the saved selection, renderer, audio envelopes and finalizer unchanged.
+    # Use the versioned catalog-order selector; preserve renderer and audio envelopes.
+    shutil.copy2(ROOT/'hero_prepare.py',render/'source/hero/daily/prepare.py')
     # Historical Hosanna comparison URLs remain fixed legacy artifacts.
     for command in [['source/hero/daily/prepare.py'],*[['source/hero/daily/render.py',lang] for lang in LANGS],['source/hero/daily/finalize.py']]:
         p=subprocess.run([sys.executable,*command],cwd=render,env={**os.environ,'OPENBLAS_NUM_THREADS':'1'})
@@ -160,12 +161,12 @@ def main():
     now=datetime.now(ZoneInfo('Asia/Muscat'));cycle=(now-timedelta(hours=6)).date().isoformat()
     progress_path=STATE/'success.json';progress=json.loads(progress_path.read_text()) if progress_path.exists() else {}
     if progress.get('cycle')!=cycle:progress={'cycle':cycle}
-    if progress.get('backdrops') and progress.get('heroes') and progress.get('featuredVersion')==1:
+    if progress.get('backdrops') and progress.get('heroes') and progress.get('featuredVersion')==2:
         print('Current 06:00 Muscat cycle already verified; nothing to refresh.');return 0
     bootstrap();failed=[]
-    if progress.get('featuredVersion')!=1:
+    if progress.get('featuredVersion')!=2:
         try:
-            featured_movies();progress['featuredVersion']=1;progress.pop('backdrops',None)
+            featured_movies();progress['featuredVersion']=2;progress.pop('backdrops',None);progress.pop('heroes',None)
         except Exception as e:
             atomic(STATE/'last-run.json',{'attempted_at':now.isoformat(),'cycle':cycle,'errors':['Centre release-date selection: '+str(e)]})
             print('FAILED centre release-date verification; retained last-good backdrops:',str(e),flush=True)
@@ -181,3 +182,4 @@ def main():
 if __name__=='__main__':
     try:sys.exit(main())
     except Exception as e:print('Refresh incomplete; last-good media retained:',str(e),flush=True);sys.exit(1)
+
