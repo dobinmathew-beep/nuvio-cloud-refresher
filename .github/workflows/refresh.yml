@@ -1,0 +1,10 @@
+name: Nuvio cloud refresh
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  setup-check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Cloud runner entrypoint ready; refresh installation is in progress.'
