@@ -23,7 +23,7 @@ The cloud job records the catalog-head choices in `state/featured-movies.json` b
 
 ## Hero reels
 
-The renderer uses the latest twelve valid IndianRegional movie entries per language plus all eight original films. Only hi, ta, ml and te catalogs are selected. The supplied continuous 50-second audio, matching fades, projector design and compact H264/AAC settings are preserved. Tamil's primary reel uses Thuli Thuli. Old Hosanna comparison files remain unchanged legacy assets.
+The renderer uses the latest twelve valid IndianRegional movie entries per language plus all eight original films. Only hi, ta, ml and te catalogs are selected. The top catalog movie opens on the large foreground section of the filmstrip, with subsequent catalog entries appearing next. The saved renderer is `hero_render.py`; verified hero state requires `opening_version: 1`. Unchanged poster artwork is reused when its approved source URL matches. The supplied continuous 50-second audio, matching fades, projector design and compact H264/AAC settings are preserved. Tamil's primary reel uses Thuli Thuli. Old Hosanna comparison files remain unchanged legacy assets.
 
 Validated generated files are uploaded to GitHub release assets before media pointers move. The existing Site reads `state/media.json` through an HTTP proxy, retaining these permanent URLs:
 
@@ -41,3 +41,4 @@ Open the repository's **Actions** tab for run status. `state/success.json` recor
 Do not delete the `renderer-source` or `legacy-site` releases or the `state` directory. Keep this repository public for the standard public Actions runner's free usage. No long-lived account credential is stored here; the workflow uses its automatically generated GitHub token.
 
 The previous ChatGPT backdrop and hero automations remain paused. GitHub now owns the recurring work.
+

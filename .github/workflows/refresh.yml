@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: [.github/workflows/refresh.yml, cloud.py, featured.py, hero_prepare.py, verify_backdrops.py, source-archive.json, legacy-files.json, legacy-html.json]
+    paths: [.github/workflows/refresh.yml, cloud.py, featured.py, hero_prepare.py, hero_render.py, verify_backdrops.py, source-archive.json, legacy-files.json, legacy-html.json]
   schedule:
     - cron: '0,30 * * * *'
 
@@ -33,7 +33,7 @@ jobs:
           p=Path('state/success.json')
           state=json.loads(p.read_text()) if p.exists() else {}
           cycle=(datetime.datetime.now(ZoneInfo('Asia/Muscat'))-datetime.timedelta(hours=6)).date().isoformat()
-          done=state.get('cycle')==cycle and state.get('backdrops') and state.get('heroes') and state.get('featuredVersion')==2
+          done=state.get('cycle')==cycle and state.get('backdrops') and state.get('heroes') and state.get('featuredVersion')==2 and state.get('heroes',{}).get('opening_version')==1
           with open(os.environ['GITHUB_OUTPUT'],'a') as f:
               f.write('pending='+('false' if done else 'true')+'\n')
           print('Daily cycle already complete.' if done else 'Refresh work is pending.')
@@ -71,3 +71,4 @@ jobs:
         run: |
           echo 'Refresh incomplete. Last-good media retained. The next scheduled check retries pending work.'
           exit 1
+

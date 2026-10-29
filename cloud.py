@@ -131,6 +131,7 @@ def heroes():
     with ThreadPoolExecutor(max_workers=4) as pool:list(pool.map(restore,needed))
     # Use the versioned catalog-order selector; preserve renderer and audio envelopes.
     shutil.copy2(ROOT/'hero_prepare.py',render/'source/hero/daily/prepare.py')
+    shutil.copy2(ROOT/'hero_render.py',render/'source/hero/daily/render.py')
     # Historical Hosanna comparison URLs remain fixed legacy artifacts.
     for command in [['source/hero/daily/prepare.py'],*[['source/hero/daily/render.py',lang] for lang in LANGS],['source/hero/daily/finalize.py']]:
         p=subprocess.run([sys.executable,*command],cwd=render,env={**os.environ,'OPENBLAS_NUM_THREADS':'1'})
@@ -139,6 +140,7 @@ def heroes():
     day=datetime.now(ZoneInfo('Asia/Muscat')).date().isoformat()
     for lang,cat in LANGS.items():
         m=json.loads((dist/'hero'/(lang+'-daily.json')).read_text());b=(dist/'hero'/(lang+'.mp4')).read_bytes()
+        assert m.get('opening_version')==1 and m.get('opening_movie_id')==m['movies'][0]['id'] and m.get('opening_selection')=='catalog-order'
         assert m['catalog']==cat and m['pinned_count']==8 and m['recent_count']==12 and len(m['movies'])==20
         assert {x['id'] for x in pinned if x['language']==lang}<={x['id'] for x in m['movies']}
         assert m['audio']==music[lang] and m['duration_seconds']==50 and m['checked_at'].startswith(day)
@@ -155,12 +157,13 @@ def heroes():
     keep={x['url'].rsplit('/',1)[-1] for x in [*manifest.values(),*updated.values()]}
     for name,a in known.items():
         if name not in keep:api('/releases/assets/'+str(a['id']),'DELETE')
-    return {'languages':list(LANGS),'checked_at':datetime.now(ZoneInfo('Asia/Muscat')).isoformat(),'films_per_language':20}
+    return {'languages':list(LANGS),'checked_at':datetime.now(ZoneInfo('Asia/Muscat')).isoformat(),'films_per_language':20,'opening_version':1}
 
 def main():
     now=datetime.now(ZoneInfo('Asia/Muscat'));cycle=(now-timedelta(hours=6)).date().isoformat()
     progress_path=STATE/'success.json';progress=json.loads(progress_path.read_text()) if progress_path.exists() else {}
     if progress.get('cycle')!=cycle:progress={'cycle':cycle}
+    if progress.get('heroes',{}).get('opening_version')!=1:progress.pop('heroes',None)
     if progress.get('backdrops') and progress.get('heroes') and progress.get('featuredVersion')==2:
         print('Current 06:00 Muscat cycle already verified; nothing to refresh.');return 0
     bootstrap();failed=[]
@@ -182,4 +185,5 @@ def main():
 if __name__=='__main__':
     try:sys.exit(main())
     except Exception as e:print('Refresh incomplete; last-good media retained:',str(e),flush=True);sys.exit(1)
+
 
