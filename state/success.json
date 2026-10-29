@@ -1,15 +1,5 @@
 {
   "cycle": "2026-10-29",
-  "backdrops": {
-    "day": "2026-10-29",
-    "statuses": 160,
-    "images": 16,
-    "states": {
-      "live": 160,
-      "cached": 0
-    },
-    "errors": []
-  },
   "heroes": {
     "languages": [
       "hindi",
@@ -19,5 +9,16 @@
     ],
     "checked_at": "2026-10-29T15:59:38.206861+04:00",
     "films_per_language": 20
+  },
+  "featuredVersion": 1,
+  "backdrops": {
+    "day": "2026-10-29",
+    "statuses": 160,
+    "images": 16,
+    "states": {
+      "live": 160,
+      "cached": 0
+    },
+    "errors": []
   }
 }
