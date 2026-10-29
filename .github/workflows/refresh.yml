@@ -1,10 +1,73 @@
 name: Nuvio cloud refresh
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/refresh.yml]
+  schedule:
+    - cron: '0,30 * * * *'
+
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: nuvio-refresh
+  cancel-in-progress: false
+
 jobs:
-  setup-check:
+  refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      GH_TOKEN: ${{ github.token }}
     steps:
-      - run: echo 'Cloud runner entrypoint ready; refresh installation is in progress.'
+      - uses: actions/checkout@v4
+      - name: Skip work after both daily refreshes have passed
+        id: plan
+        run: |
+          python3 - <<'PY'
+          import datetime, json, os
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+          p=Path('state/success.json')
+          state=json.loads(p.read_text()) if p.exists() else {}
+          cycle=(datetime.datetime.now(ZoneInfo('Asia/Muscat'))-datetime.timedelta(hours=6)).date().isoformat()
+          done=state.get('cycle')==cycle and state.get('backdrops') and state.get('heroes')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('pending='+('false' if done else 'true')+'\n')
+          print('Daily cycle already complete.' if done else 'Refresh work is pending.')
+          PY
+      - uses: actions/setup-python@v5
+        if: steps.plan.outputs.pending == 'true'
+        with:
+          python-version: '3.12'
+      - name: Install rendering dependencies
+        if: steps.plan.outputs.pending == 'true'
+        run: |
+          python -m pip install --disable-pip-version-check 'Pillow>=10,<12' 'numpy>=1.26,<3'
+          if ! command -v ffmpeg >/dev/null || [ ! -f /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf ]; then
+            sudo apt-get update -qq
+            sudo apt-get install -y ffmpeg fonts-dejavu-core
+          fi
+      - name: Refresh pending outputs for the daily 06:00 Muscat cycle
+        if: steps.plan.outputs.pending == 'true'
+        id: refresh
+        continue-on-error: true
+        run: python -u cloud.py
+      - name: Persist verified media pointers and partial progress
+        if: always()
+        run: |
+          mkdir -p state
+          git config user.name 'Nuvio refresh'
+          git config user.email 'nuvio-refresh@users.noreply.github.com'
+          git add state
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record verified Nuvio refresh state'
+            git push
+          fi
+      - name: Mark incomplete refresh for a retry at the next 30-minute tick
+        if: steps.refresh.outcome == 'failure'
+        run: |
+          echo 'Refresh incomplete. Last-good media retained. The next scheduled check retries pending work.'
+          exit 1
