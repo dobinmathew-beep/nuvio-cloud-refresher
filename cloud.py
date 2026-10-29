@@ -60,11 +60,16 @@ def bootstrap():
     marker=STATE/'bootstrap.json'
     if marker.exists():return
     spec=json.loads((ROOT/'source-archive.json').read_text());archive=WORK/'renderer-source.tar.gz'
-    chunks=[get(ORIGIN+p['path']) for p in spec['parts']]
-    for b,p in zip(chunks,spec['parts']):assert len(b)==p['bytes'] and sha(b)==p['sha256'],'Setup part mismatch'
-    data=b''.join(chunks);assert sha(data)==spec['sha256'];archive.write_bytes(data)
     rel=release('renderer-source');known=entries(rel)
-    source_url=upload(rel,'renderer-'+spec['sha256'][:20]+'.tar.gz',archive,known)
+    source_name='renderer-'+spec['sha256'][:20]+'.tar.gz'
+    if source_name in known:
+        data=get(known[source_name]['browser_download_url'])
+    else:
+        chunks=[get(ORIGIN+p['path']) for p in spec['parts']]
+        for b,p in zip(chunks,spec['parts']):assert len(b)==p['bytes'] and sha(b)==p['sha256'],'Setup part mismatch'
+        data=b''.join(chunks)
+    assert sha(data)==spec['sha256'];archive.write_bytes(data)
+    source_url=upload(rel,source_name,archive,known)
     static=release('legacy-site');known=entries(static)
     expected=json.loads((ROOT/'legacy-files.json').read_text());manifest={}
     html_seed=json.loads((ROOT/'legacy-html.json').read_text())
