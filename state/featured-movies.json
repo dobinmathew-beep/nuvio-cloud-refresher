@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "checkedAt": "2026-10-29T15:29:33.511309+00:00",
+  "checkedAt": "2026-10-29T15:35:54.667798+00:00",
   "selection": "first valid movie in the matching IndianRegional catalog order; no external release-date filtering",
   "languages": {
     "hindi": {
@@ -12,7 +12,7 @@
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/hi.json",
       "selection": "catalog-order",
       "catalogRank": 0,
-      "verifiedAt": "2026-10-29T15:29:33.511309+00:00"
+      "verifiedAt": "2026-10-29T15:35:54.667798+00:00"
     },
     "tamil": {
       "id": "tmdb:1802710",
@@ -23,7 +23,7 @@
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/ta.json",
       "selection": "catalog-order",
       "catalogRank": 0,
-      "verifiedAt": "2026-10-29T15:29:33.511309+00:00"
+      "verifiedAt": "2026-10-29T15:35:54.667798+00:00"
     },
     "malayalam": {
       "id": "tt34792531",
@@ -34,7 +34,7 @@
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/ml.json",
       "selection": "catalog-order",
       "catalogRank": 0,
-      "verifiedAt": "2026-10-29T15:29:33.511309+00:00"
+      "verifiedAt": "2026-10-29T15:35:54.667798+00:00"
     },
     "telugu": {
       "id": "tt31969655",
@@ -45,7 +45,7 @@
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/te.json",
       "selection": "catalog-order",
       "catalogRank": 0,
-      "verifiedAt": "2026-10-29T15:29:33.511309+00:00"
+      "verifiedAt": "2026-10-29T15:35:54.667798+00:00"
     }
   },
   "warnings": []
