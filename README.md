@@ -1,7 +1,37 @@
 # Nuvio cloud refresher
 
-Independent, deterministic scripts for Nuvio regional artwork. No AI APIs are used. Public GitHub-hosted runners are used; no paid runners or external subscriptions are configured.
+This personal website updater runs ordinary Python and FFmpeg on standard public GitHub-hosted runners. It makes no AI API calls, uses no personal-computer runner and configures no paid services.
 
-Target: 06:00 Asia/Muscat daily, with a 30-minute retry check until all required outputs pass. Scheduled jobs can be delayed by GitHub; an exact start time or uninterrupted availability is not guaranteed.
+## Daily operation
 
-Setup is in progress. Backdrops use the existing public endpoints. Hero rendering and publishing must both be verified before the migration is considered complete.
+- Target daily start: **06:00 Asia/Muscat** (02:00 UTC).
+- A workflow checks on the hour and half hour. After both outputs pass for the current daily cycle, later checks skip downloading and rendering until the next cycle.
+- If either output fails, completed work is retained and only unfinished work is attempted at later 30-minute checks. GitHub can delay scheduled jobs; uninterrupted or exact-time execution is not guaranteed.
+- GitHub emails workflow failures according to your account notification settings. The first setup test failed safely during an HTML transfer; the corrected test passed.
+
+## Backdrops
+
+All 160 existing regional backdrop status URLs are warmed with concurrency no greater than four. The script validates language, kind, style, day, live/cached state, IndianRegional catalog IDs, selected title membership and combined movie/series interleaving. Sixteen representative JPEG URLs must return HTTP 200 image/jpeg. Requests/checks are retried once per attempt. Promotional IDs and unrelated feeds are excluded.
+
+Base URL stays https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site . That Site remains the existing generator and cache; the GitHub job only sends ordinary HTTP requests.
+
+## Hero reels
+
+The renderer uses the latest twelve valid IndianRegional movie entries per language plus all eight original films. Only hi, ta, ml and te catalogs are selected. The supplied continuous 50-second audio, matching fades, projector design and compact H264/AAC settings are preserved. Tamil's primary reel uses Thuli Thuli. Old Hosanna comparison files remain unchanged legacy assets.
+
+Validated generated files are uploaded to GitHub release assets before media pointers move. The existing Site reads `state/media.json` through an HTTP proxy, retaining these permanent URLs:
+
+- https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/hindi.mp4
+- https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/tamil.mp4
+- https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/malayalam.mp4
+- https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/telugu.mp4
+
+All 82 pre-existing media/gallery paths were preserved on GitHub releases. Source failures leave last-good files intact. The media proxy includes a verified legacy-manifest fallback. Network or hosting outages may still affect availability.
+
+## Check results
+
+Open the repository's **Actions** tab for run status. `state/success.json` records the last completed daily cycle; `state/last-run.json` records incomplete work; `state/media.json` records public asset hashes, sizes and download URLs. A successful no-op run after completion confirms the daily gate works.
+
+Do not delete the `renderer-source` or `legacy-site` releases or the `state` directory. Keep this repository public for the standard public Actions runner's free usage. No long-lived account credential is stored here; the workflow uses its automatically generated GitHub token.
+
+The previous ChatGPT backdrop and hero automations remain paused. GitHub now owns the recurring work.
