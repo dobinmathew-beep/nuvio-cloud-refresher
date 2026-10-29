@@ -3,7 +3,7 @@ from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
-import hashlib, json, mimetypes, os, shutil, subprocess, sys, tarfile, urllib.request, urllib.error, urllib.parse
+import hashlib, json, mimetypes, os, shutil, subprocess, sys, tarfile, time, urllib.request, urllib.error, urllib.parse
 
 ROOT=Path(__file__).resolve().parent
 ORIGIN='https://dobin-nuvio-star-cards.quickfield138.chatgpt.site'
@@ -95,6 +95,29 @@ def backdrop():
     result=json.loads(lines[-1]);assert result['statuses']==160 and result['images']==16 and not result['errors'],str(result.get('errors'))
     return result
 
+def featured_movies():
+    from featured import select_featured
+    result=select_featured(STATE)
+    # Publish the verified centre choices before asking the backdrop service to render.
+    subprocess.run(['git','config','user.name','Nuvio refresh'],cwd=ROOT,check=True)
+    subprocess.run(['git','config','user.email','nuvio-refresh@users.noreply.github.com'],cwd=ROOT,check=True)
+    subprocess.run(['git','add','state/featured-movies.json','state/release-dates.json','state/catalog-pages.json'],cwd=ROOT,check=True)
+    if subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT).returncode:
+        subprocess.run(['git','commit','-m','Update confirmed released centre movies'],cwd=ROOT,check=True)
+        subprocess.run(['git','push'],cwd=ROOT,check=True)
+    # Allow the HTTP service to observe the new pointer before full verification.
+    def probe(lang):
+        try:
+            d=json.loads(get('https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site/status/'+lang+'/movies/gallery.json?check=1'))
+            return d.get('centerMovie',{}).get('id')==result['languages'][lang]['id'] and d.get('renderVersion')=='released-centre-v1'
+        except Exception:return False
+    for attempt in range(9):
+        with ThreadPoolExecutor(max_workers=4) as pool:ready=all(pool.map(probe,LANGS))
+        if ready:break
+        if attempt==8:raise RuntimeError('New confirmed centre selections are not yet visible; retained last-good images')
+        time.sleep(10)
+    return result
+
 def heroes():
     boot=json.loads((STATE/'bootstrap.json').read_text());data=get(boot['source_url']);assert sha(data)==boot['source_sha256']
     archive=WORK/'source.tar.gz';archive.write_bytes(data);render=WORK/'render';render.mkdir(exist_ok=True)
@@ -137,9 +160,16 @@ def main():
     now=datetime.now(ZoneInfo('Asia/Muscat'));cycle=(now-timedelta(hours=6)).date().isoformat()
     progress_path=STATE/'success.json';progress=json.loads(progress_path.read_text()) if progress_path.exists() else {}
     if progress.get('cycle')!=cycle:progress={'cycle':cycle}
-    if progress.get('backdrops') and progress.get('heroes'):
+    if progress.get('backdrops') and progress.get('heroes') and progress.get('featuredVersion')==1:
         print('Current 06:00 Muscat cycle already verified; nothing to refresh.');return 0
     bootstrap();failed=[]
+    if progress.get('featuredVersion')!=1:
+        try:
+            featured_movies();progress['featuredVersion']=1;progress.pop('backdrops',None)
+        except Exception as e:
+            atomic(STATE/'last-run.json',{'attempted_at':now.isoformat(),'cycle':cycle,'errors':['Centre release-date selection: '+str(e)]})
+            print('FAILED centre release-date verification; retained last-good backdrops:',str(e),flush=True)
+            return 1
     for key,fn in [('backdrops',backdrop),('heroes',heroes)]:
         if progress.get(key):continue
         try:progress[key]=fn();print(key,'verified',flush=True)
