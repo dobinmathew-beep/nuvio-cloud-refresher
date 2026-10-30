@@ -10,12 +10,13 @@ if not base:
 u=urlparse(base)
 if u.scheme!='https' or not u.netloc or u.username or u.password:raise SystemExit('GRETA_PUBLIC_URL must be a public HTTPS origin')
 checks=[]
-for route in ['/manifest.json','/support','/health.json']:
+for route in ['/manifest.json','/install/ff/catalog/movie/dobins_ml_movie.json','/support','/health.json']:
  try:
   b=subprocess.check_output(['curl','-fsSL','--retry','1','--connect-timeout','10','--max-time','35',base+route])
   if route.endswith('.json'):
    obj=json.loads(b)
    if route=='/manifest.json':assert obj.get('name')=='The Great Indian Addon' and len(obj.get('catalogs',[]))==8
+   if '/catalog/' in route:assert isinstance(obj.get('metas'),list) and len(obj['metas'])>0
    if route=='/health.json':
     assert isinstance(obj.get('checkout',{}).get('ready'),bool)
     if obj.get('checkout',{}).get('configured'):assert obj['checkout']['ready']
