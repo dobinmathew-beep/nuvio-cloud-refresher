@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 from rapidfuzz.fuzz import ratio
 import ast,json,re,subprocess,os,unicodedata,threading,base64,io,textwrap
 from PIL import Image,ImageDraw,ImageFont
-import alternate
+import alternate,physical
 ROOT=Path(__file__).resolve().parent;DATA=ROOT/'data';DATA.mkdir(exist_ok=True)
 LANGS={'malayalam':'ml','tamil':'ta','telugu':'te','hindi':'hi'};ZONE=ZoneInfo('Asia/Muscat');NOW=datetime.now(ZONE);TODAY=NOW.date().isoformat()
 BASE=os.environ.get('ADDON_ORIGIN','https://dobins-indian-catalog.quickfield138.chatgpt.site');POLICY='confirmed-digital-imdb-v1'
@@ -153,7 +153,7 @@ def title_logo(name):
  b=io.BytesIO();im.save(b,format='PNG',optimize=True);return base64.b64encode(b.getvalue()).decode()
 
 def build():
- events,health=collect();pool=candidate_index();matches=load('matches.json',{});metas=load('metadata.json',{});old_catalogs=load('catalogs.json',{});unmatched=[]
+ events,health=collect();disc_events,disc_health=physical.collect(get,load,save,LANGS,TODAY,NOW,norm);events=physical.merge_events(events+disc_events,norm);health.extend(disc_health);pool=candidate_index();matches=load('matches.json',{});metas=load('metadata.json',{});old_catalogs=load('catalogs.json',{});unmatched=[]
  for m in metas.values():
   for field,kind in [('poster','posters'),('background','backgrounds')]:
    if str(m.get(field,'')).startswith(BASE):m[field]=next((x for x in m.get('artwork',{}).get(kind,[]) if not x.startswith(BASE)),None)
@@ -169,16 +169,16 @@ def build():
   if cached and alternate.key(e['type'],cached.get('id','')) in metas:
    checked=metas[alternate.key(e['type'],cached['id'])].get('_metadataCheckedAt')
    if checked and (NOW-datetime.fromisoformat(checked)).total_seconds()<10800:continue
-  if cached and cached.get('alternatePolicy')==alternate.POLICY and not cached.get('id') and (NOW-datetime.fromisoformat(cached['checkedAt'])).total_seconds()<21600:continue
+  if cached and cached.get('alternatePolicy')==alternate.POLICY and not cached.get('id') and not e.get('_verifiedMetadata') and (NOW-datetime.fromisoformat(cached['checkedAt'])).total_seconds()<21600:continue
   if attempts>=budget:continue
   work.append((key,e));attempts+=1
  def resolve(pair):
-  key,e=pair;existing=matches.get(key,{}).get('id');mk=alternate.key(e['type'],existing or '');c=metas.get(mk) or select_candidate(e,pool) or suggestion(e)
-  m=None
+  key,e=pair;existing=matches.get(key,{}).get('id');mk=alternate.key(e['type'],existing or '');c=metas.get(mk) or select_candidate(e,pool) or e.get('_verifiedMetadata') or suggestion(e)
+  m=e.get('_verifiedMetadata') if c and e.get('_verifiedMetadata',{}).get('id')==c['id'] else None
   if c:
    mid=c['id'];previous=metas.get(alternate.key(e['type'],mid));checked=previous.get('_metadataCheckedAt') if previous else None
    if previous and checked and (NOW-datetime.fromisoformat(checked)).total_seconds()<10800:m=previous
-   elif mid.startswith('tt'):m=metadata(mid,e['type'],c)
+   elif not m and mid.startswith('tt'):m=metadata(mid,e['type'],c)
    if m and m.get('_partial') and previous and not previous.get('_partial'):m=previous
    if m and (m.get('type')!=e['type'] or ratio(norm(alternate.plain(e['name'])),norm(m.get('name','')))<85):m=None
   if not m or m.get('_partial'):m=alternate.resolve(e,get,norm) or m
@@ -202,15 +202,15 @@ def build():
   previous=m.get('artwork',{});m['artwork']={'posters':list(dict.fromkeys(x for x in ([f'https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/{mid}.jpg'] if mid.startswith('tt') else [])+[poster,m.get('poster')]+([f'https://images.metahub.space/poster/medium/{mid}/img'] if mid.startswith('tt') else []) if x)),'backgrounds':list(dict.fromkeys(x for x in [m.get('background')]+([f'https://images.metahub.space/background/medium/{mid}/img'] if mid.startswith('tt') else []) if x))}
   m['artwork']['logos']=list(dict.fromkeys(x for x in [m.get('logo')]+([f'https://images.metahub.space/logo/medium/{mid}/img'] if mid.startswith('tt') else []) if x and not x.startswith(BASE)))
   if not m.get('_logoFallback'):m['_logoFallback']=title_logo(m['name'])
-  m['ott']={'date':e['ottDate'],'platforms':e['platforms'],'sources':e['sources']}
-  catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':BASE+'/art/poster/'+aid,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"Digital release: {e['ottDate']} · {', '.join(e['platforms'])}\n\n"+m.get('description',e.get('description','')),'ottDate':e['ottDate'],'platforms':e['platforms'],'sources':e['sources'],'language':e['language']})
+  m['ott']={'date':e['ottDate'],'kind':e.get('releaseKind','digital'),'platforms':e['platforms'],'sources':e['sources']};m['availability']=e.get('availability',[])
+  catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':BASE+'/art/poster/'+aid,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"Home release ({e.get('releaseKind','digital')}): {e['ottDate']} · {', '.join(e['platforms'])}\n\n"+m.get('description',e.get('description','')),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'ottDate':next((a['date'] for a in e.get('availability',[]) if a['kind']=='digital'),None),'platforms':e['platforms'],'sources':e['sources'],'language':e['language']})
  for cid,ms in catalogs.items():
-  ms.sort(key=lambda m:(m['ottDate'],m['name']),reverse=True)
+  ms.sort(key=lambda m:(m.get('releaseDate') or m.get('ottDate') or '',m['name']),reverse=True)
   if not ms and old_catalogs.get(cid):catalogs[cid]=old_catalogs[cid]
  if any(not catalogs[c] for c in catalogs):
   save('metadata.json',metas);save('unmatched.json',unmatched);raise RuntimeError('An empty catalog would be published; retaining last-good catalogs while metadata backfills')
  save('metadata.json',metas);save('catalogs.json',catalogs);save('unmatched.json',unmatched)
- status={'name':'Dobins Indian Catalog','policy':POLICY,'metadataPolicy':alternate.POLICY,'updatedAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'06:00 and 18:00 daily; also 01:00 Thursday, Friday, Saturday','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'errors':[]}
+ status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'updatedAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'06:00 and 18:00 daily; also 01:00 Thursday, Friday, Saturday','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'errors':[]}
  save('status.json',status);print('SUCCESS',json.dumps(status),flush=True)
 if __name__=='__main__':
  try:build()

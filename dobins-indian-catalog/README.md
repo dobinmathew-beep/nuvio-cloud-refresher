@@ -79,3 +79,11 @@ Do not delete the separate branch or generated data. No ChatGPT automation is re
 The default manifest advertises **catalogs only**, so this add-on does not override AIOMetadata’s metadata resource. Its standard IMDb, TMDB and TVmaze IDs match prefixes supported by AIOMetadata. Keep AIOMetadata installed with movie/series metadata enabled. Nuvio can then request trailers, recommendations, artwork, cast, ratings and episode lists from that existing provider. Missing upstream information cannot be invented or guaranteed.
 
 The optional `/standalone/manifest.json` advertises this add-on’s own fallback metadata for people who do not use AIOMetadata. Install one variant, not both. `meta` endpoints remain available for verification, but the default companion manifest does not claim those requests. Your configured AIOMetadata instance and device settings are not changed by this project.
+
+## DVD and Blu-ray movie eligibility
+
+Confirmed, already-released physical movie editions now qualify independently of OTT availability. The updater discovers original-language movies through TMDB’s public Physical release filter (type 5), then verifies the dated Physical rows on each title’s release table and cross-checks title metadata. It records the disc date, country, format note and exact source URL. Upcoming dates and theatrical/digital/TV rows never count as disc evidence. A physical row must explicitly name DVD, Blu-ray, UHD or 4K; unspecified physical formats and VHS do not qualify. The most recent first-page discovery candidates per language are checked with at most four simultaneous requests, cached for three hours and retained on source outages. This indexed coverage is not an exhaustive record of every commercial disc.
+
+Movies available both digitally and physically appear once, sorted by their earliest verified home-release date. Public entries contain `releaseDate`, `releaseKind`, `availability`, and `physicalReleases`; `ottDate` is null for physical-only entries. A disc date is never presented as proof of an OTT release. AIOMetadata companion mode and permanent manifest URL are unchanged.
+
+TMDB does not provide equivalent physical-edition dates for TV series in this source. Series retain their verified OTT rules until a dated, title-specific box-set record is available; theatrical dates and streaming episode dates are not substitutes.
