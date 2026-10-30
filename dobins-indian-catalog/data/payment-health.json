@@ -1,10 +1,14 @@
 {
-  "checkedAt": "2026-10-30T16:59:05.681652+00:00",
+  "checkedAt": "2026-10-30T17:10:47.042989+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
     {
       "path": "/manifest.json",
+      "state": "ok"
+    },
+    {
+      "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
       "state": "ok"
     },
     {

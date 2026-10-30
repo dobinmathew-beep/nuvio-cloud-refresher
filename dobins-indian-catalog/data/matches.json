@@ -2495,38 +2495,45 @@
   },
   "hindi|movie|subedaar": {
     "id": "tt31852278",
-    "checkedAt": "2026-10-30T17:38:35.445823+04:00",
-    "method": "matching-language IMDb index or exact IMDb suggestion"
+    "checkedAt": "2026-10-30T21:10:22.253152+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "IMDb-matched metadata"
   },
   "hindi|series|psychosaiyaan": {
     "id": "tt39971916",
-    "checkedAt": "2026-10-30T17:38:35.445823+04:00",
-    "method": "matching-language IMDb index or exact IMDb suggestion"
+    "checkedAt": "2026-10-30T21:10:22.253152+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "IMDb-matched metadata"
   },
   "telugu|movie|vishnuvinyasam": {
     "id": "tt39195804",
-    "checkedAt": "2026-10-30T17:38:35.445823+04:00",
-    "method": "matching-language IMDb index or exact IMDb suggestion"
+    "checkedAt": "2026-10-30T21:10:22.253152+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "IMDb-matched metadata"
   },
   "hindi|movie|tanvithegreat": {
     "id": "tt31598703",
-    "checkedAt": "2026-10-30T17:38:35.445823+04:00",
-    "method": "matching-language IMDb index or exact IMDb suggestion"
+    "checkedAt": "2026-10-30T21:10:22.253152+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "IMDb-matched metadata"
   },
   "telugu|movie|sumathisathakam": {
     "id": "tt39330422",
-    "checkedAt": "2026-10-30T17:38:35.445823+04:00",
-    "method": "matching-language IMDb index or exact IMDb suggestion"
+    "checkedAt": "2026-10-30T21:10:22.253152+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "IMDb-matched metadata"
   },
   "hindi|movie|accused": {
     "id": "tt39631179",
-    "checkedAt": "2026-10-30T17:38:35.445823+04:00",
-    "method": "matching-language IMDb index or exact IMDb suggestion"
+    "checkedAt": "2026-10-30T21:10:22.253152+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "IMDb-matched metadata"
   },
   "telugu|movie|couplefriendly": {
     "id": "tt33143854",
-    "checkedAt": "2026-10-30T17:38:35.445823+04:00",
-    "method": "matching-language IMDb index or exact IMDb suggestion"
+    "checkedAt": "2026-10-30T21:10:22.253152+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "IMDb-matched metadata"
   },
   "hindi|movie|bakidoutheinvinciblesamurai": {
     "checkedAt": "2026-10-30T17:49:50.858758+04:00",
@@ -2535,18 +2542,21 @@
   },
   "telugu|movie|bharthamahasayulakuwignyapthi": {
     "id": "tt36017918",
-    "checkedAt": "2026-10-30T17:38:35.445823+04:00",
-    "method": "matching-language IMDb index or exact IMDb suggestion"
+    "checkedAt": "2026-10-30T21:10:22.253152+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "IMDb-matched metadata"
   },
   "hindi|movie|ikkis": {
     "id": "tt15464188",
-    "checkedAt": "2026-10-30T17:38:35.445823+04:00",
-    "method": "matching-language IMDb index or exact IMDb suggestion"
+    "checkedAt": "2026-10-30T21:10:22.253152+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "IMDb-matched metadata"
   },
   "telugu|movie|funky": {
     "id": "tt33083471",
-    "checkedAt": "2026-10-30T17:38:35.445823+04:00",
-    "method": "matching-language IMDb index or exact IMDb suggestion"
+    "checkedAt": "2026-10-30T21:10:22.253152+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "IMDb-matched metadata"
   },
   "hindi|movie|bluff": {
     "id": "tt14181714",
@@ -2555,13 +2565,15 @@
   },
   "telugu|movie|lockdown": {
     "id": "tt32278140",
-    "checkedAt": "2026-10-30T17:38:35.445823+04:00",
-    "method": "matching-language IMDb index or exact IMDb suggestion"
+    "checkedAt": "2026-10-30T21:10:22.253152+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "IMDb-matched metadata"
   },
   "telugu|movie|omshantishantishantihi": {
     "id": "tt34446638",
-    "checkedAt": "2026-10-30T17:38:35.445823+04:00",
-    "method": "matching-language IMDb index or exact IMDb suggestion"
+    "checkedAt": "2026-10-30T21:10:22.253152+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "IMDb-matched metadata"
   },
   "telugu|movie|bluff": {
     "id": "tt14181714",
