@@ -1,0 +1,39 @@
+{
+  "name": "Dobins Indian Catalog",
+  "policy": "confirmed-digital-imdb-v1",
+  "updatedAt": "2026-10-30T17:23:48.730987+04:00",
+  "lastSuccessCycle": "2026-10-30T06:00:00+04:00",
+  "timezone": "Asia/Muscat",
+  "schedule": "06:00 and 18:00 daily; also 01:00 Thursday, Friday, Saturday",
+  "sources": [
+    {
+      "source": "DailyOTT",
+      "url": "https://www.dailyott.in/",
+      "state": "live",
+      "records": 913
+    },
+    {
+      "source": "Cinebuds",
+      "url": "https://cinebuds.com/ott-release-dates/",
+      "state": "live",
+      "records": 31
+    }
+  ],
+  "counts": {
+    "dobins_ml_movie": 15,
+    "dobins_ml_series": 8,
+    "dobins_ta_movie": 17,
+    "dobins_ta_series": 7,
+    "dobins_te_movie": 16,
+    "dobins_te_series": 9,
+    "dobins_hi_movie": 12,
+    "dobins_hi_series": 11
+  },
+  "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
+  "pendingMatches": 352,
+  "checkedCandidates": 450,
+  "errors": [
+    "'background'"
+  ],
+  "lastAttemptAt": "2026-10-30T17:36:33.411261+04:00"
+}
