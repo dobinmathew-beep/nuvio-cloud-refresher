@@ -4,7 +4,7 @@ Public installer: https://dobins-indian-catalog.quickfield138.chatgpt.site/
 
 **Install in Nuvio:** add `https://dobins-indian-catalog.quickfield138.chatgpt.site/manifest.json` in the add-on settings.
 
-Eight separate catalogs provide Malayalam, Tamil, Telugu and Hindi movies and series. All published IDs are IMDb `tt` IDs. Titles are sorted by digital premiere dates, not cinema-release dates or IMDb release years. Playback uses your existing stream add-ons; this add-on supplies catalogs and metadata.
+Eight separate catalogs provide Malayalam, Tamil, Telugu and Hindi movies and series. IMDb `tt` IDs are preferred. Verified TMDB (`tmdb:`) and TVmaze (`tvmaze:`) IDs are retained when no dependable IMDb match exists. Streaming add-ons must support the relevant ID to return playback sources. Titles are sorted by digital premiere dates, not cinema-release dates or IMDb release years. Playback uses your existing stream add-ons; this add-on supplies catalogs and metadata.
 
 ## Automatic cloud updates
 
@@ -26,13 +26,13 @@ We compared these with OTTClock and NET27 Watch. DailyOTT exposes dated movie/se
 
 Every entry retains its release-reporting source and platform. Movie duplicate reports retain the earliest digital date; series track the latest reported season premiere. Similar titles, incorrect types, mismatched years and ambiguous IMDb matches are held back instead of receiving guessed IDs.
 
-IndianRegional's language catalogs are used only as an IMDb identity lookup aid, never as evidence that a movie has reached OTT. Exact IMDb suggestion matches are the fallback. Cinemeta supplies full metadata; series episodes can also fall back to an IMDb-verified TVMaze lookup. Some newly released shows may not yet have indexed episode data.
+IndianRegional's language catalogs are used only as an IMDb identity lookup aid, never as evidence that a movie has reached OTT. Exact IMDb suggestion matches are followed by TVmaze title/language verification and source-linked TMDB title pages. TMDB type, canonical ID, title and release dates are checked before publication. TVmaze can also recover IMDb IDs, including for older shows with a new OTT premiere. Cinemeta, TMDB public title metadata and TVmaze supply full metadata; series episodes can also fall back to an IMDb-verified TVMaze lookup. Some newly released shows may not yet have indexed episode data. TMDB fallback reads public title pages and DailyOTT’s public TMDB-derived details, without storing or requiring a TMDB API key.
 
 `data/unmatched.json` records pending/uncertain matches. New matching work is fairly distributed across all eight catalogs and bounded to 160 titles per update. This allows gradual history backfill without monopolising a runner. Metadata is refreshed after three hours, so normal scheduled slots recheck series metadata.
 
 ## Posters, fanart and logos
 
-- RPDB's public free IMDb posters are tried first for every movie and series.
+- RPDB's public free IMDb posters are tried first for IMDb-linked movies and series. Alternate-ID titles retain source posters until an IMDb/RPDB match is available.
 - High-resolution title-specific source posters and Cinemeta/Metahub are fallbacks.
 - Background fanart and title logos use Cinemeta's artwork sources, including Fanart.tv where available.
 - If an original title logo is unavailable, a transparent PNG spelling the correct title is generated without AI. The add-on's own logo is also a PNG.
@@ -73,3 +73,9 @@ Useful public routes:
 - `/status.json`
 
 Do not delete the separate branch or generated data. No ChatGPT automation is required for any routine update.
+
+## AIOMetadata companion mode
+
+The default manifest advertises **catalogs only**, so this add-on does not override AIOMetadata’s metadata resource. Its standard IMDb, TMDB and TVmaze IDs match prefixes supported by AIOMetadata. Keep AIOMetadata installed with movie/series metadata enabled. Nuvio can then request trailers, recommendations, artwork, cast, ratings and episode lists from that existing provider. Missing upstream information cannot be invented or guaranteed.
+
+The optional `/standalone/manifest.json` advertises this add-on’s own fallback metadata for people who do not use AIOMetadata. Install one variant, not both. `meta` endpoints remain available for verification, but the default companion manifest does not claim those requests. Your configured AIOMetadata instance and device settings are not changed by this project.

@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 from rapidfuzz.fuzz import ratio
 import ast,json,re,subprocess,os,unicodedata,threading,base64,io,textwrap
 from PIL import Image,ImageDraw,ImageFont
+import alternate
 ROOT=Path(__file__).resolve().parent;DATA=ROOT/'data';DATA.mkdir(exist_ok=True)
 LANGS={'malayalam':'ml','tamil':'ta','telugu':'te','hindi':'hi'};ZONE=ZoneInfo('Asia/Muscat');NOW=datetime.now(ZONE);TODAY=NOW.date().isoformat()
 BASE=os.environ.get('ADDON_ORIGIN','https://dobins-indian-catalog.quickfield138.chatgpt.site');POLICY='confirmed-digital-imdb-v1'
@@ -63,7 +64,7 @@ def collect():
   if original in LANGS:langs=[original]
   elif original in LANGS.values():langs=[next(k for k,v in LANGS.items() if v==original)]
   for lang in langs:
-   out.append({'name':m['title'],'language':lang,'type':typ,'ottDate':day,'platforms':[m.get('platform','')],'poster':m.get('posterUrl'),'description':m.get('tmdbDetails',{}).get('overview',''),'year':str(m.get('tmdbDetails',{}).get('releaseDate',''))[:4] or None,'source':'https://www.dailyott.in/','sourceId':m.get('_id'),'confirmed':True})
+   out.append({'name':m['title'],'language':lang,'type':typ,'ottDate':day,'platforms':[m.get('platform','')],'poster':m.get('posterUrl'),'description':m.get('tmdbDetails',{}).get('overview',''),'year':str(m.get('tmdbDetails',{}).get('releaseDate',''))[:4] or None,'source':'https://www.dailyott.in/','sourceId':m.get('_id'),'confirmed':True,'sourceRecord':m})
    kinds.setdefault(norm(m['title']),set()).add(typ)
  try:
   html=get('https://cinebuds.com/ott-release-dates/',False);s=BeautifulSoup(html,'html.parser');rows=s.select('table.ott-table--recent tr.ott-row');assert len(rows)>5
@@ -165,46 +166,51 @@ def build():
  budget=int(os.environ.get('MAX_NEW_MATCHES','160'));attempts=0;work=[]
  for e in ordered:
   key=e['language']+'|'+e['type']+'|'+norm(e['name']);cached=matches.get(key)
-  if cached and cached.get('id') in metas:
-   checked=metas[cached['id']].get('_metadataCheckedAt')
+  if cached and alternate.key(e['type'],cached.get('id','')) in metas:
+   checked=metas[alternate.key(e['type'],cached['id'])].get('_metadataCheckedAt')
    if checked and (NOW-datetime.fromisoformat(checked)).total_seconds()<10800:continue
-  if cached and not cached.get('id') and (NOW-datetime.fromisoformat(cached['checkedAt'])).total_seconds()<21600:continue
+  if cached and cached.get('alternatePolicy')==alternate.POLICY and not cached.get('id') and (NOW-datetime.fromisoformat(cached['checkedAt'])).total_seconds()<21600:continue
   if attempts>=budget:continue
   work.append((key,e));attempts+=1
  def resolve(pair):
-  key,e=pair;existing=matches.get(key,{}).get('id');c=metas.get(existing) if existing in metas else select_candidate(e,pool) or suggestion(e)
-  if not c:return key,{'checkedAt':NOW.isoformat(),'reason':'No unambiguous IMDb match'},None
-  mid=c['id'];previous=metas.get(mid);checked=previous.get('_metadataCheckedAt') if previous else None;m=previous if checked and (NOW-datetime.fromisoformat(checked)).total_seconds()<10800 else metadata(mid,e['type'],c)
-  if m.get('_partial') and previous and not previous.get('_partial'):m=previous
-  # Reject a wrong-kind match even if its title is similar.
-  if m.get('type')!=e['type'] or ratio(norm(e['name']),norm(m.get('name','')))<85:return key,{'checkedAt':NOW.isoformat(),'reason':'IMDb metadata mismatch'},None
-  return key,{'id':mid,'checkedAt':NOW.isoformat(),'method':'matching-language IMDb index or exact IMDb suggestion'},m
+  key,e=pair;existing=matches.get(key,{}).get('id');mk=alternate.key(e['type'],existing or '');c=metas.get(mk) or select_candidate(e,pool) or suggestion(e)
+  m=None
+  if c:
+   mid=c['id'];previous=metas.get(alternate.key(e['type'],mid));checked=previous.get('_metadataCheckedAt') if previous else None
+   if previous and checked and (NOW-datetime.fromisoformat(checked)).total_seconds()<10800:m=previous
+   elif mid.startswith('tt'):m=metadata(mid,e['type'],c)
+   if m and m.get('_partial') and previous and not previous.get('_partial'):m=previous
+   if m and (m.get('type')!=e['type'] or ratio(norm(alternate.plain(e['name'])),norm(m.get('name','')))<85):m=None
+  if not m or m.get('_partial'):m=alternate.resolve(e,get,norm) or m
+  if not m:return key,{'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'reason':'No unambiguous IMDb, TMDB or TVmaze match'},None
+  m['_metadataCheckedAt']=NOW.isoformat();m['_alternatePolicy']=alternate.POLICY
+  return key,{'id':m['id'],'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'method':m.get('metadataSource','IMDb-matched metadata')},m
  with ThreadPoolExecutor(max_workers=4) as ex:
   for n,(key,match,m) in enumerate(ex.map(resolve,work),1):
    matches[key]=match
-   if m:metas[m['id']]=m
+   if m:metas[alternate.key(m['type'],m['id'])]=m
    if n%10==0:save('matches.json',matches);save('metadata.json',metas);print('MATCHED',n,'/',len(work),flush=True)
  save('matches.json',matches)
  catalogs={f'dobins_{LANGS[l]}_{t}':[] for l in LANGS for t in ('movie','series')};seen={k:set() for k in catalogs}
  for e in ordered:
   key=e['language']+'|'+e['type']+'|'+norm(e['name']);match=matches.get(key,{});mid=match.get('id');cid=f'dobins_{LANGS[e["language"]]}_{e["type"]}'
-  if not mid or mid not in metas:
+  if not mid or alternate.key(e['type'],mid) not in metas:
    unmatched.append({'name':e['name'],'language':e['language'],'type':e['type'],'ottDate':e['ottDate'],'reason':match.get('reason','Awaiting metadata backfill')});continue
   if mid in seen[cid]:continue
-  seen[cid].add(mid);m=metas[mid];poster=e.get('poster') or m.get('poster');poster=re.sub(r'/w\d+/','/w780/',poster) if poster and 'image.tmdb.org' in poster else poster
+  seen[cid].add(mid);m=metas[alternate.key(e['type'],mid)];aid=alternate.artid(e['type'],mid);poster=e.get('poster') or m.get('poster');poster=re.sub(r'/w\d+/','/w780/',poster) if poster and 'image.tmdb.org' in poster else poster
   if not poster:continue
-  previous=m.get('artwork',{});m['artwork']={'posters':list(dict.fromkeys(x for x in [f'https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/{mid}.jpg',poster,m.get('poster'),f'https://images.metahub.space/poster/medium/{mid}/img'] if x)),'backgrounds':list(dict.fromkeys(x for x in [m.get('background'),f'https://images.metahub.space/background/medium/{mid}/img'] if x))}
-  m['artwork']['logos']=list(dict.fromkeys(x for x in [m.get('logo'),f'https://images.metahub.space/logo/medium/{mid}/img'] if x and not x.startswith(BASE)))
+  previous=m.get('artwork',{});m['artwork']={'posters':list(dict.fromkeys(x for x in ([f'https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/{mid}.jpg'] if mid.startswith('tt') else [])+[poster,m.get('poster')]+([f'https://images.metahub.space/poster/medium/{mid}/img'] if mid.startswith('tt') else []) if x)),'backgrounds':list(dict.fromkeys(x for x in [m.get('background')]+([f'https://images.metahub.space/background/medium/{mid}/img'] if mid.startswith('tt') else []) if x))}
+  m['artwork']['logos']=list(dict.fromkeys(x for x in [m.get('logo')]+([f'https://images.metahub.space/logo/medium/{mid}/img'] if mid.startswith('tt') else []) if x and not x.startswith(BASE)))
   if not m.get('_logoFallback'):m['_logoFallback']=title_logo(m['name'])
   m['ott']={'date':e['ottDate'],'platforms':e['platforms'],'sources':e['sources']}
-  catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':BASE+'/art/poster/'+mid,'posterShape':'poster','background':BASE+'/art/background/'+mid,'logo':BASE+'/art/logo/'+mid,'releaseInfo':str(m.get('releaseInfo','')),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"Digital release: {e['ottDate']} · {', '.join(e['platforms'])}\n\n"+m.get('description',e.get('description','')),'ottDate':e['ottDate'],'platforms':e['platforms'],'sources':e['sources'],'language':e['language']})
+  catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':BASE+'/art/poster/'+aid,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"Digital release: {e['ottDate']} · {', '.join(e['platforms'])}\n\n"+m.get('description',e.get('description','')),'ottDate':e['ottDate'],'platforms':e['platforms'],'sources':e['sources'],'language':e['language']})
  for cid,ms in catalogs.items():
   ms.sort(key=lambda m:(m['ottDate'],m['name']),reverse=True)
   if not ms and old_catalogs.get(cid):catalogs[cid]=old_catalogs[cid]
  if any(not catalogs[c] for c in catalogs):
   save('metadata.json',metas);save('unmatched.json',unmatched);raise RuntimeError('An empty catalog would be published; retaining last-good catalogs while metadata backfills')
  save('metadata.json',metas);save('catalogs.json',catalogs);save('unmatched.json',unmatched)
- status={'name':'Dobins Indian Catalog','policy':POLICY,'updatedAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'06:00 and 18:00 daily; also 01:00 Thursday, Friday, Saturday','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'errors':[]}
+ status={'name':'Dobins Indian Catalog','policy':POLICY,'metadataPolicy':alternate.POLICY,'updatedAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'06:00 and 18:00 daily; also 01:00 Thursday, Friday, Saturday','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'errors':[]}
  save('status.json',status);print('SUCCESS',json.dumps(status),flush=True)
 if __name__=='__main__':
  try:build()
