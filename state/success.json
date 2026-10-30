@@ -18,8 +18,9 @@
       "malayalam",
       "telugu"
     ],
-    "checked_at": "2026-10-30T06:32:12.603996+04:00",
+    "checked_at": "2026-10-30T16:12:15.886625+04:00",
     "films_per_language": 20,
-    "opening_version": 1
+    "opening_version": 1,
+    "selection_policy": "imdb-catalog-order-v1"
   }
 }
