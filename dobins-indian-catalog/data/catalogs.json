@@ -95,7 +95,7 @@
         "Crime",
         "Thriller"
       ],
-      "description": "Home release (digital): 2026-10-16 · Sun NXT, SunNXT\n\nIn Kerala, an investigating journalist disappears without notice. Media and public stunned. Investigation uncovers shocking, unexpected mysteries. Suspenseful plot follows the case's twists and revelations.",
+      "description": "Home release (digital): 2026-10-16 · SunNXT, Sun NXT\n\nIn Kerala, an investigating journalist disappears without notice. Media and public stunned. Investigation uncovers shocking, unexpected mysteries. Suspenseful plot follows the case's twists and revelations.",
       "releaseDate": "2026-10-16",
       "releaseKind": "digital",
       "availability": [
@@ -103,8 +103,8 @@
           "kind": "digital",
           "date": "2026-10-16",
           "platforms": [
-            "Sun NXT",
-            "SunNXT"
+            "SunNXT",
+            "Sun NXT"
           ],
           "sources": [
             "https://www.dailyott.in/",
@@ -115,8 +115,8 @@
       "physicalReleases": [],
       "ottDate": "2026-10-16",
       "platforms": [
-        "Sun NXT",
-        "SunNXT"
+        "SunNXT",
+        "Sun NXT"
       ],
       "sources": [
         "https://www.dailyott.in/",
@@ -217,7 +217,7 @@
         "Fantasy",
         "Thriller"
       ],
-      "description": "Home release (digital): 2026-10-15 · Manorama Max, ManoramaMAX\n\nA young man declared brain-dead suddenly awakens with the ability to hear everything. Seeking the nurse whose voice saved him, he's drawn into a dark game of masks, memories, and revenge where every sound may be a clue or a trap.",
+      "description": "Home release (digital): 2026-10-15 · ManoramaMAX, Manorama Max\n\nA young man declared brain-dead suddenly awakens with the ability to hear everything. Seeking the nurse whose voice saved him, he's drawn into a dark game of masks, memories, and revenge where every sound may be a clue or a trap.",
       "releaseDate": "2026-10-15",
       "releaseKind": "digital",
       "availability": [
@@ -225,8 +225,8 @@
           "kind": "digital",
           "date": "2026-10-15",
           "platforms": [
-            "Manorama Max",
-            "ManoramaMAX"
+            "ManoramaMAX",
+            "Manorama Max"
           ],
           "sources": [
             "https://www.dailyott.in/",
@@ -237,8 +237,8 @@
       "physicalReleases": [],
       "ottDate": "2026-10-15",
       "platforms": [
-        "Manorama Max",
-        "ManoramaMAX"
+        "ManoramaMAX",
+        "Manorama Max"
       ],
       "sources": [
         "https://www.dailyott.in/",
@@ -2066,7 +2066,7 @@
         "Mystery",
         "Thriller"
       ],
-      "description": "Home release (digital): 2026-03-14 · ManoramaMAX, Prime Video\n\nA police officer investigates pattern killings in Calicut, discovering a vengeful killer's scheme. As he unravels the truth, he faces a moral dilemma between law and justice for a bereaved parent.",
+      "description": "Home release (digital): 2026-03-14 · Prime Video, ManoramaMAX\n\nA police officer investigates pattern killings in Calicut, discovering a vengeful killer's scheme. As he unravels the truth, he faces a moral dilemma between law and justice for a bereaved parent.",
       "releaseDate": "2026-03-14",
       "releaseKind": "digital",
       "availability": [
@@ -2074,8 +2074,8 @@
           "kind": "digital",
           "date": "2026-03-14",
           "platforms": [
-            "ManoramaMAX",
-            "Prime Video"
+            "Prime Video",
+            "ManoramaMAX"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -2085,8 +2085,8 @@
       "physicalReleases": [],
       "ottDate": "2026-03-14",
       "platforms": [
-        "ManoramaMAX",
-        "Prime Video"
+        "Prime Video",
+        "ManoramaMAX"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -3967,47 +3967,6 @@
       ],
       "physicalReleases": [],
       "ottDate": "2026-05-27",
-      "platforms": [
-        "SonyLIV"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "language": "tamil"
-    },
-    {
-      "id": "tmdb:954445",
-      "type": "movie",
-      "name": "Yezhu Kadal Yezhu Malai",
-      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/movie~tmdb:954445",
-      "posterShape": "poster",
-      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:954445",
-      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:954445",
-      "releaseInfo": "2026",
-      "metadataSource": "https://www.themoviedb.org/movie/954445",
-      "imdbRating": null,
-      "genres": [
-        "Drama",
-        "Romance",
-        "Fantasy"
-      ],
-      "description": "Home release (digital): 2026-05-25 · SonyLIV\n\nCaught between family duty and romantic love, a young man faces an impossible choice.",
-      "releaseDate": "2026-05-25",
-      "releaseKind": "digital",
-      "availability": [
-        {
-          "kind": "digital",
-          "date": "2026-05-25",
-          "platforms": [
-            "SonyLIV"
-          ],
-          "sources": [
-            "https://www.dailyott.in/"
-          ]
-        }
-      ],
-      "physicalReleases": [],
-      "ottDate": "2026-05-25",
       "platforms": [
         "SonyLIV"
       ],
@@ -6692,7 +6651,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt38907386",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.5",
+      "imdbRating": "5.4",
       "genres": [
         "Action",
         "Comedy",
@@ -12960,16 +12919,18 @@
     {
       "id": "tt0250875",
       "type": "series",
-      "name": "Kaun Banega Crorepati",
+      "name": "Kaun Banega Crorepati?",
       "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt0250875",
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt0250875",
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt0250875",
-      "releaseInfo": "2000",
-      "metadataSource": "https://www.tvmaze.com/shows/56320/kaun-banega-crorepati",
-      "imdbRating": null,
-      "genres": [],
-      "description": "Home release (digital): 2026-08-10 · SonyLIV\n\nKaun Banega Crorepati is a television game show in India. It is based on the UK game show Who Wants to Be a Millionaire?",
+      "releaseInfo": "2000–",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "8.1",
+      "genres": [
+        "Game-Show"
+      ],
+      "description": "Home release (digital): 2026-08-10 · SonyLIV\n\nAn Indian version of the popular quiz show, \"Who Wants to be a Millionaire?\" Contestants start off with easy questions, but as they move forward the questions get more and more challenging. To help them out, they are given \"lifeli...",
       "releaseDate": "2026-08-10",
       "releaseKind": "digital",
       "availability": [
@@ -13441,15 +13402,15 @@
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt10530900",
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt10530900",
-      "releaseInfo": "2019",
-      "metadataSource": "https://www.tvmaze.com/shows/53238/gullak",
-      "imdbRating": null,
+      "releaseInfo": "2019–",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "9.1",
       "genres": [
-        "Drama",
         "Comedy",
+        "Drama",
         "Family"
       ],
-      "description": "Home release (digital): 2026-06-05 · SonyLIV\n\nSantosh Mishra, an employee at the electricity division, leads a content life with his wife and sons. However, their everyday banter strengthens their relationship.",
+      "description": "Home release (digital): 2026-06-05 · SonyLIV\n\nSet in quaint by-lanes in the heart of India, Gullak is a collection of disarming and relatable tales of the Mishra family.",
       "releaseDate": "2026-06-05",
       "releaseKind": "digital",
       "availability": [
@@ -13482,11 +13443,15 @@
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt26766517",
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt26766517",
-      "releaseInfo": "",
-      "metadataSource": "https://www.tvmaze.com/shows/94242/brown",
-      "imdbRating": null,
-      "genres": [],
-      "description": "Home release (digital): 2026-06-05 · ZEE5\n\nRita Brown, A disgraced alcoholic ex police officer and her mourning junior partner must confront their own personal struggles as they join forces to hunt down a serial killer targeting women from diverse backgrounds in Kolkata.",
+      "releaseInfo": "2026–2026",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "6.5",
+      "genres": [
+        "Crime",
+        "Drama",
+        "Mystery"
+      ],
+      "description": "Home release (digital): 2026-06-05 · ZEE5\n\nBrown is a recovering alcoholic, who works for Kolkata Police and has to investigate the murder of a young woman from a well-known family.",
       "releaseDate": "2026-06-05",
       "releaseKind": "digital",
       "availability": [
@@ -14195,13 +14160,13 @@
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt14392248",
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt14392248",
-      "releaseInfo": "2021",
-      "metadataSource": "https://www.tvmaze.com/shows/55489/aspirants",
-      "imdbRating": null,
+      "releaseInfo": "2021–",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "9.2",
       "genres": [
         "Drama"
       ],
-      "description": "Home release (digital): 2026-03-13 · Prime Video\n\nAspirants is a story of 3 friends - Abhilash, SK, and Guri. The story takes place in the past and the present where the past captures the struggle and the drama behind the making of UPSC CSE aspirants in Old Rajinder Nagar of Delhi, while the present talks about the aftermath. It is the story of perseverance, passion, struggle encircling friendship, love, and life.",
+      "description": "Home release (digital): 2026-03-13 · Prime Video\n\nIt is the story of the journey of three UPSC (public service competitive exams in India) aspirants and their friendship against all odds.",
       "releaseDate": "2026-03-13",
       "releaseKind": "digital",
       "availability": [
