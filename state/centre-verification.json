@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-30T12:03:43.285264+00:00",
+  "policy": "first IMDb-linked movie in each language catalog order",
+  "statuses": 120,
+  "images": 9,
+  "centres": {
+    "hindi": {
+      "id": "tt39631280",
+      "name": "Gajab Raat"
+    },
+    "tamil": {
+      "id": "tt44090278",
+      "name": "Baththa"
+    },
+    "malayalam": {
+      "id": "tt34792531",
+      "name": "Avaraachan & Sons"
+    },
+    "telugu": {
+      "id": "tt31841170",
+      "name": "Don't Trouble the Trouble"
+    }
+  },
+  "errors": []
+}
