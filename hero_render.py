@@ -31,7 +31,7 @@ def render(lang,preview=False,force=False):
  if oldmeta.exists() and not force and not preview:
   meta=json.loads(oldmeta.read_text())
   if meta.get('render_signature')==signature and (OUT/(lang+'.mp4')).exists():
-   meta['checked_at']=cfg['checked_at'];oldmeta.write_text(json.dumps(meta,indent=2));print(lang,'catalog unchanged; valid video retained',flush=True);return
+   meta['checked_at']=cfg['checked_at'];meta['selection_policy']=cfg.get('selection_policy');oldmeta.write_text(json.dumps(meta,indent=2));print(lang,'catalog unchanged; valid video retained',flush=True);return
  texture=Image.new('RGBA',(228*count*3,344))
  cards=[old.card(m,accent) for m in movies]
  for i in range(count*3):texture.paste(cards[i%count],(i*228,0))

@@ -17,7 +17,7 @@ def prepare(lang):
  url=f'{SOURCE}/catalog/movie/{CATS[lang]}.json';feed=json.loads(get(url));original=[dict(m,pinned=True) for m in json.loads((HERO/'credits.json').read_text()) if m['language']==lang];pinned={m['id'] for m in original};cache_path=HERE/(lang+'.json');cached_sources={m['id']:m.get('poster_source') for m in json.loads(cache_path.read_text()).get('movies',[])} if cache_path.exists() else {};all_pinned={m['id'] for m in json.loads((HERO/'credits.json').read_text())};recent=[]
  for m in feed.get('metas',[]):
   mid=m.get('id','').split('||',1)[0];name=m.get('name','').strip()
-  if not re.fullmatch(r'tt\d+|tmdb:\d+',mid) or mid in pinned or m.get('type')!='movie' or not m.get('poster'):continue
+  if not re.fullmatch(r'tt\d+',mid) or mid in pinned or m.get('type')!='movie' or not m.get('poster'):continue
   if re.search(r'OTT\s*Releases|Hindi\s*Dubbed|promo|unlock',name,re.I):continue
   if any(x['id']==mid for x in recent):continue
   poster=HERO/'posters'/(mid+'.jpg')
@@ -34,7 +34,7 @@ def prepare(lang):
  # Recent entries come first, then all eight original films in their existing order.
  movies=recent+original;signature=hashlib.sha256(('catalog-head-v2'+json.dumps(movies,sort_keys=True)).encode())
  for m in movies:signature.update((HERO/'posters'/(m['id']+'.jpg')).read_bytes())
- config={'language':lang,'catalog':CATS[lang],'source_url':url,'checked_at':datetime.now(ZoneInfo('Asia/Muscat')).isoformat(),'signature':signature.hexdigest(),'pinned_count':len(original),'recent_count':len(recent),'movies':movies}
+ config={'language':lang,'catalog':CATS[lang],'source_url':url,'checked_at':datetime.now(ZoneInfo('Asia/Muscat')).isoformat(),'signature':signature.hexdigest(),'pinned_count':len(original),'recent_count':len(recent),'selection_policy':'imdb-catalog-order-v1','movies':movies}
  path=HERE/(lang+'.json');tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(config,indent=2));tmp.replace(path)
  print(lang,':',len(recent),'catalog movies +',len(original),'originals',flush=True)
  return config

@@ -3,7 +3,7 @@ from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
-import hashlib, json, mimetypes, os, shutil, subprocess, sys, tarfile, time, urllib.request, urllib.error, urllib.parse
+import re, hashlib, json, mimetypes, os, shutil, subprocess, sys, tarfile, time, urllib.request, urllib.error, urllib.parse
 
 ROOT=Path(__file__).resolve().parent
 ORIGIN='https://dobin-nuvio-star-cards.quickfield138.chatgpt.site'
@@ -141,6 +141,7 @@ def heroes():
     for lang,cat in LANGS.items():
         m=json.loads((dist/'hero'/(lang+'-daily.json')).read_text());b=(dist/'hero'/(lang+'.mp4')).read_bytes()
         assert m.get('opening_version')==1 and m.get('opening_movie_id')==m['movies'][0]['id'] and m.get('opening_selection')=='catalog-order'
+        assert m.get('selection_policy')=='imdb-catalog-order-v1' and all(re.fullmatch(r'tt\d+',x['id']) for x in m['movies'] if not x.get('pinned'))
         assert m['catalog']==cat and m['pinned_count']==8 and m['recent_count']==12 and len(m['movies'])==20
         assert {x['id'] for x in pinned if x['language']==lang}<={x['id'] for x in m['movies']}
         assert m['audio']==music[lang] and m['duration_seconds']==50 and m['checked_at'].startswith(day)
@@ -157,13 +158,13 @@ def heroes():
     keep={x['url'].rsplit('/',1)[-1] for x in [*manifest.values(),*updated.values()]}
     for name,a in known.items():
         if name not in keep:api('/releases/assets/'+str(a['id']),'DELETE')
-    return {'languages':list(LANGS),'checked_at':datetime.now(ZoneInfo('Asia/Muscat')).isoformat(),'films_per_language':20,'opening_version':1}
+    return {'languages':list(LANGS),'checked_at':datetime.now(ZoneInfo('Asia/Muscat')).isoformat(),'films_per_language':20,'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}
 
 def main():
     now=datetime.now(ZoneInfo('Asia/Muscat'));cycle=(now-timedelta(hours=6)).date().isoformat()
     progress_path=STATE/'success.json';progress=json.loads(progress_path.read_text()) if progress_path.exists() else {}
     if progress.get('cycle')!=cycle:progress={'cycle':cycle}
-    if progress.get('heroes',{}).get('opening_version')!=1:progress.pop('heroes',None)
+    if progress.get('heroes',{}).get('opening_version')!=1 or progress.get('heroes',{}).get('selection_policy')!='imdb-catalog-order-v1':progress.pop('heroes',None)
     if progress.get('backdrops') and progress.get('heroes') and progress.get('featuredVersion')==2:
         print('Current 06:00 Muscat cycle already verified; nothing to refresh.');return 0
     bootstrap();failed=[]
