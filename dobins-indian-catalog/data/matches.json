@@ -2269,5 +2269,71 @@
     "id": "tt14181714",
     "checkedAt": "2026-10-30T17:38:35.445823+04:00",
     "method": "matching-language IMDb index or exact IMDb suggestion"
+  },
+  "tamil|movie|sivajitheboss": {
+    "id": "tmdb:24049",
+    "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://www.themoviedb.org/movie/24049"
+  },
+  "malayalam|movie|allweimagineaslight": {
+    "id": "tmdb:927547",
+    "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://www.themoviedb.org/movie/927547"
+  },
+  "hindi|movie|likestarsonearth": {
+    "id": "tmdb:7508",
+    "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://www.themoviedb.org/movie/7508"
+  },
+  "hindi|movie|khakee": {
+    "id": "tmdb:21665",
+    "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://www.themoviedb.org/movie/21665"
+  },
+  "hindi|movie|pyaarkiyatodarnakya": {
+    "id": "tmdb:45533",
+    "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://www.themoviedb.org/movie/45533"
+  },
+  "hindi|movie|mrindia": {
+    "id": "tmdb:41903",
+    "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://www.themoviedb.org/movie/41903"
+  },
+  "hindi|movie|legendofbhagatsingh": {
+    "id": "tmdb:31525",
+    "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://www.themoviedb.org/movie/31525"
+  },
+  "hindi|movie|kyaadilnekahaa": {
+    "id": "tmdb:499110",
+    "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://www.themoviedb.org/movie/499110"
+  },
+  "hindi|movie|aapmujheachchelagnelage": {
+    "id": "tmdb:49518",
+    "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://www.themoviedb.org/movie/49518"
+  },
+  "hindi|movie|tumkonabhoolpaayenge": {
+    "id": "tmdb:55212",
+    "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://www.themoviedb.org/movie/55212"
+  },
+  "hindi|movie|ekthatiger": {
+    "id": "tmdb:85985",
+    "checkedAt": "2026-10-30T18:24:17.566483+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://www.themoviedb.org/movie/85985"
   }
 }

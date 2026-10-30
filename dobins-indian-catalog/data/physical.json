@@ -1,0 +1,2899 @@
+{
+  "titles": {
+    "malayalam|927547": {
+      "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+      "editions": [
+        {
+          "date": "2025-02-26",
+          "format": "DVD / Blu-ray",
+          "country": "France",
+          "region": "FR",
+          "note": "DVD & Blu-Ray"
+        },
+        {
+          "date": "2025-03-03",
+          "format": "Blu-ray",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": "Blu-ray"
+        }
+      ],
+      "event": {
+        "name": "All We Imagine as Light",
+        "type": "movie",
+        "language": "malayalam",
+        "ottDate": "2025-02-26",
+        "sourceRecord": {
+          "tmdbId": 927547
+        },
+        "poster": "https://image.tmdb.org/t/p/w780/ruImrzB4POsrgwCMozmOBV67zs5.jpg",
+        "year": "2024",
+        "platforms": [
+          "DVD / Blu-ray · France"
+        ],
+        "source": "https://www.themoviedb.org/movie/927547/releases",
+        "sources": [
+          "https://www.themoviedb.org/movie/927547/releases"
+        ],
+        "confirmed": true,
+        "releaseKind": "physical",
+        "physicalReleases": [
+          {
+            "date": "2025-02-26",
+            "format": "DVD / Blu-ray",
+            "country": "France",
+            "region": "FR",
+            "note": "DVD & Blu-Ray"
+          },
+          {
+            "date": "2025-03-03",
+            "format": "Blu-ray",
+            "country": "United Kingdom",
+            "region": "GB",
+            "note": "Blu-ray"
+          }
+        ],
+        "_verifiedMetadata": {
+          "id": "tmdb:927547",
+          "type": "movie",
+          "name": "All We Imagine as Light",
+          "poster": "https://image.tmdb.org/t/p/w780/ruImrzB4POsrgwCMozmOBV67zs5.jpg",
+          "background": "https://image.tmdb.org/t/p/w780/xrIicBg0Ac4oQ6cwUPKJxwtqhOQ.jpg",
+          "description": "In Mumbai, Nurse Prabha's routine is troubled when she receives an unexpected gift from her estranged husband. Her younger roommate, Anu, tries in vain to find a spot in the city to be intimate with her boyfriend. A trip to a beach town allows them to find a space for their desires to manifest.",
+          "genres": [
+            "Drama",
+            "Romance"
+          ],
+          "releaseInfo": "2024",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 927547,
+          "imdb_id": null,
+          "metadataSource": "https://www.themoviedb.org/movie/927547"
+        }
+      }
+    },
+    "tamil|24049": {
+      "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+      "editions": [
+        {
+          "date": "2008-03-07",
+          "format": "DVD / Blu-ray",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": "uncut"
+        }
+      ],
+      "event": {
+        "name": "Sivaji: The Boss",
+        "type": "movie",
+        "language": "tamil",
+        "ottDate": "2008-03-07",
+        "sourceRecord": {
+          "tmdbId": 24049
+        },
+        "poster": "https://image.tmdb.org/t/p/w780/t5oPb8q91gdClkyJG2hxyebEglv.jpg",
+        "year": "2007",
+        "platforms": [
+          "DVD / Blu-ray · United Kingdom"
+        ],
+        "source": "https://www.themoviedb.org/movie/24049/releases",
+        "sources": [
+          "https://www.themoviedb.org/movie/24049/releases"
+        ],
+        "confirmed": true,
+        "releaseKind": "physical",
+        "physicalReleases": [
+          {
+            "date": "2008-03-07",
+            "format": "DVD / Blu-ray",
+            "country": "United Kingdom",
+            "region": "GB",
+            "note": "uncut"
+          }
+        ],
+        "_verifiedMetadata": {
+          "id": "tmdb:24049",
+          "type": "movie",
+          "name": "Sivaji: The Boss",
+          "poster": "https://image.tmdb.org/t/p/w780/t5oPb8q91gdClkyJG2hxyebEglv.jpg",
+          "background": "https://image.tmdb.org/t/p/w780/vpVF5tPI5v7h9knuwnwpPSaRToW.jpg",
+          "description": "A wealthy engineer arrives in India with the mission of serving the nation and investing in the country's welfare but is met with strong opposition from corrupt officials and politicians. After being faced with insurmountable hardships, he decides to take drastic measures.",
+          "genres": [
+            "Action",
+            "Drama"
+          ],
+          "releaseInfo": "2007",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 24049,
+          "imdb_id": null,
+          "metadataSource": "https://www.themoviedb.org/movie/24049"
+        }
+      }
+    },
+    "hindi|431582": {
+      "lastError": "Physical title identity could not be verified",
+      "lastAttemptAt": "2026-10-30T14:17:14.440383+00:00"
+    },
+    "hindi|56969": {
+      "lastError": "Physical title identity could not be verified",
+      "lastAttemptAt": "2026-10-30T14:17:14.440406+00:00"
+    },
+    "hindi|7508": {
+      "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+      "editions": [
+        {
+          "date": "2008-07-25",
+          "format": "DVD",
+          "country": "India",
+          "region": "IN",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-08-29",
+          "format": "DVD",
+          "country": "Australia",
+          "region": "AU",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Albania",
+          "region": "AL",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Andorra",
+          "region": "AD",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Anguilla",
+          "region": "AI",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Armenia",
+          "region": "AM",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Austria",
+          "region": "AT",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Azerbaijan",
+          "region": "AZ",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Bahrain",
+          "region": "BH",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Belgium",
+          "region": "BE",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Bermuda",
+          "region": "BM",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Bosnia & Herzegovina",
+          "region": "BA",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "British Indian Ocean Territory",
+          "region": "IO",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "British Virgin Islands",
+          "region": "VG",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Bulgaria",
+          "region": "BG",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Cayman Islands",
+          "region": "KY",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Croatia",
+          "region": "HR",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Cyprus",
+          "region": "CY",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Czech Republic",
+          "region": "CZ",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Denmark",
+          "region": "DK",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Egypt",
+          "region": "EG",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Estonia",
+          "region": "EE",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Eswatini (Swaziland)",
+          "region": "SZ",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Falkland Islands",
+          "region": "FK",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Faroe Islands",
+          "region": "FO",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Finland",
+          "region": "FI",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "France",
+          "region": "FR",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "French Guiana",
+          "region": "GF",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "French Polynesia",
+          "region": "PF",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Georgia",
+          "region": "GE",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Germany",
+          "region": "DE",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Gibraltar",
+          "region": "GI",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Greece",
+          "region": "GR",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Greenland",
+          "region": "GL",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Guadeloupe",
+          "region": "GP",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Hungary",
+          "region": "HU",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Iceland",
+          "region": "IS",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Iran",
+          "region": "IR",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Iraq",
+          "region": "IQ",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Ireland",
+          "region": "IE",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Israel",
+          "region": "IL",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Italy",
+          "region": "IT",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Japan",
+          "region": "JP",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Jordan",
+          "region": "JO",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Kazakhstan",
+          "region": "KZ",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Kosovo",
+          "region": "XK",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Kuwait",
+          "region": "KW",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Latvia",
+          "region": "LV",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Lebanon",
+          "region": "LB",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Lesotho",
+          "region": "LS",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Liechtenstein",
+          "region": "LI",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Lithuania",
+          "region": "LT",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Luxembourg",
+          "region": "LU",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Macedonia",
+          "region": "MK",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Malta",
+          "region": "MT",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Martinique",
+          "region": "MQ",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Mayotte",
+          "region": "YT",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Moldova",
+          "region": "MD",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Monaco",
+          "region": "MC",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Montenegro",
+          "region": "ME",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Montserrat",
+          "region": "MS",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Netherlands",
+          "region": "NL",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "New Caledonia",
+          "region": "NC",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Norway",
+          "region": "NO",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Oman",
+          "region": "OM",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Palestinian Territories",
+          "region": "PS",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Pitcairn Islands",
+          "region": "PN",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Poland",
+          "region": "PL",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Portugal",
+          "region": "PT",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Qatar",
+          "region": "QA",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Romania",
+          "region": "RO",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Réunion",
+          "region": "RE",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "San Marino",
+          "region": "SM",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Saudi Arabia",
+          "region": "SA",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Serbia",
+          "region": "RS",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Slovakia",
+          "region": "SK",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Slovenia",
+          "region": "SI",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "South Africa",
+          "region": "ZA",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "South Georgia & South Sandwich Islands",
+          "region": "GS",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Spain",
+          "region": "ES",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "St. Helena",
+          "region": "SH",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "St. Pierre & Miquelon",
+          "region": "PM",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Sweden",
+          "region": "SE",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Switzerland",
+          "region": "CH",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Syria",
+          "region": "SY",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Turkey",
+          "region": "TR",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Turks & Caicos Islands",
+          "region": "TC",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "United Arab Emirates",
+          "region": "AE",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Vatican City",
+          "region": "VA",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Wallis & Futuna",
+          "region": "WF",
+          "note": "DVD"
+        },
+        {
+          "date": "2009-10-09",
+          "format": "DVD",
+          "country": "Yemen",
+          "region": "YE",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-01-12",
+          "format": "DVD",
+          "country": "Canada",
+          "region": "CA",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-01-12",
+          "format": "DVD",
+          "country": "Puerto Rico",
+          "region": "PR",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-01-12",
+          "format": "DVD",
+          "country": "United States",
+          "region": "US",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "American Samoa",
+          "region": "AS",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Antigua & Barbuda",
+          "region": "AG",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Argentina",
+          "region": "AR",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Aruba",
+          "region": "AW",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Bahamas",
+          "region": "BS",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Barbados",
+          "region": "BB",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Belize",
+          "region": "BZ",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Bolivia",
+          "region": "BO",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Brazil",
+          "region": "BR",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Chile",
+          "region": "CL",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Christmas Island",
+          "region": "CX",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Cocos (Keeling) Islands",
+          "region": "CC",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Colombia",
+          "region": "CO",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Cook Islands",
+          "region": "CK",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Costa Rica",
+          "region": "CR",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Cuba",
+          "region": "CU",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Dominica",
+          "region": "DM",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Dominican Republic",
+          "region": "DO",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Ecuador",
+          "region": "EC",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "El Salvador",
+          "region": "SV",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Fiji",
+          "region": "FJ",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Grenada",
+          "region": "GD",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Guam",
+          "region": "GU",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Guatemala",
+          "region": "GT",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Haiti",
+          "region": "HT",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Honduras",
+          "region": "HN",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Jamaica",
+          "region": "JM",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Kiribati",
+          "region": "KI",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Marshall Islands",
+          "region": "MH",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Mexico",
+          "region": "MX",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Nauru",
+          "region": "NR",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "New Zealand",
+          "region": "NZ",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Nicaragua",
+          "region": "NI",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Niue",
+          "region": "NU",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Norfolk Island",
+          "region": "NF",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Northern Mariana Islands",
+          "region": "MP",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Palau",
+          "region": "PW",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Panama",
+          "region": "PA",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Papua New Guinea",
+          "region": "PG",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Paraguay",
+          "region": "PY",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Peru",
+          "region": "PE",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Samoa",
+          "region": "WS",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Solomon Islands",
+          "region": "SB",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "St. Kitts & Nevis",
+          "region": "KN",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "St. Lucia",
+          "region": "LC",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "St. Vincent & Grenadines",
+          "region": "VC",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Suriname",
+          "region": "SR",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Tokelau",
+          "region": "TK",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Tonga",
+          "region": "TO",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Trinidad & Tobago",
+          "region": "TT",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Tuvalu",
+          "region": "TV",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "U.S. Virgin Islands",
+          "region": "VI",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Uruguay",
+          "region": "UY",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Vanuatu",
+          "region": "VU",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-03-29",
+          "format": "DVD",
+          "country": "Venezuela",
+          "region": "VE",
+          "note": "DVD"
+        }
+      ],
+      "event": {
+        "name": "Like Stars on Earth",
+        "type": "movie",
+        "language": "hindi",
+        "ottDate": "2008-07-25",
+        "sourceRecord": {
+          "tmdbId": 7508
+        },
+        "poster": "https://image.tmdb.org/t/p/w780/puHRt6Raovm5ujGCdwLWvRv4NHU.jpg",
+        "year": "2007",
+        "platforms": [
+          "DVD · India"
+        ],
+        "source": "https://www.themoviedb.org/movie/7508/releases",
+        "sources": [
+          "https://www.themoviedb.org/movie/7508/releases"
+        ],
+        "confirmed": true,
+        "releaseKind": "physical",
+        "physicalReleases": [
+          {
+            "date": "2008-07-25",
+            "format": "DVD",
+            "country": "India",
+            "region": "IN",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-08-29",
+            "format": "DVD",
+            "country": "Australia",
+            "region": "AU",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "United Kingdom",
+            "region": "GB",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Albania",
+            "region": "AL",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Andorra",
+            "region": "AD",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Anguilla",
+            "region": "AI",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Armenia",
+            "region": "AM",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Austria",
+            "region": "AT",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Azerbaijan",
+            "region": "AZ",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Bahrain",
+            "region": "BH",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Belgium",
+            "region": "BE",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Bermuda",
+            "region": "BM",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Bosnia & Herzegovina",
+            "region": "BA",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "British Indian Ocean Territory",
+            "region": "IO",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "British Virgin Islands",
+            "region": "VG",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Bulgaria",
+            "region": "BG",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Cayman Islands",
+            "region": "KY",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Croatia",
+            "region": "HR",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Cyprus",
+            "region": "CY",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Czech Republic",
+            "region": "CZ",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Denmark",
+            "region": "DK",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Egypt",
+            "region": "EG",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Estonia",
+            "region": "EE",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Eswatini (Swaziland)",
+            "region": "SZ",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Falkland Islands",
+            "region": "FK",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Faroe Islands",
+            "region": "FO",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Finland",
+            "region": "FI",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "France",
+            "region": "FR",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "French Guiana",
+            "region": "GF",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "French Polynesia",
+            "region": "PF",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Georgia",
+            "region": "GE",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Germany",
+            "region": "DE",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Gibraltar",
+            "region": "GI",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Greece",
+            "region": "GR",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Greenland",
+            "region": "GL",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Guadeloupe",
+            "region": "GP",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Hungary",
+            "region": "HU",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Iceland",
+            "region": "IS",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Iran",
+            "region": "IR",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Iraq",
+            "region": "IQ",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Ireland",
+            "region": "IE",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Israel",
+            "region": "IL",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Italy",
+            "region": "IT",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Japan",
+            "region": "JP",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Jordan",
+            "region": "JO",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Kazakhstan",
+            "region": "KZ",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Kosovo",
+            "region": "XK",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Kuwait",
+            "region": "KW",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Latvia",
+            "region": "LV",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Lebanon",
+            "region": "LB",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Lesotho",
+            "region": "LS",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Liechtenstein",
+            "region": "LI",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Lithuania",
+            "region": "LT",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Luxembourg",
+            "region": "LU",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Macedonia",
+            "region": "MK",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Malta",
+            "region": "MT",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Martinique",
+            "region": "MQ",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Mayotte",
+            "region": "YT",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Moldova",
+            "region": "MD",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Monaco",
+            "region": "MC",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Montenegro",
+            "region": "ME",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Montserrat",
+            "region": "MS",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Netherlands",
+            "region": "NL",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "New Caledonia",
+            "region": "NC",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Norway",
+            "region": "NO",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Oman",
+            "region": "OM",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Palestinian Territories",
+            "region": "PS",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Pitcairn Islands",
+            "region": "PN",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Poland",
+            "region": "PL",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Portugal",
+            "region": "PT",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Qatar",
+            "region": "QA",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Romania",
+            "region": "RO",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Réunion",
+            "region": "RE",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "San Marino",
+            "region": "SM",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Saudi Arabia",
+            "region": "SA",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Serbia",
+            "region": "RS",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Slovakia",
+            "region": "SK",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Slovenia",
+            "region": "SI",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "South Africa",
+            "region": "ZA",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "South Georgia & South Sandwich Islands",
+            "region": "GS",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Spain",
+            "region": "ES",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "St. Helena",
+            "region": "SH",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "St. Pierre & Miquelon",
+            "region": "PM",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Sweden",
+            "region": "SE",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Switzerland",
+            "region": "CH",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Syria",
+            "region": "SY",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Turkey",
+            "region": "TR",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Turks & Caicos Islands",
+            "region": "TC",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "United Arab Emirates",
+            "region": "AE",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Vatican City",
+            "region": "VA",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Wallis & Futuna",
+            "region": "WF",
+            "note": "DVD"
+          },
+          {
+            "date": "2009-10-09",
+            "format": "DVD",
+            "country": "Yemen",
+            "region": "YE",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-01-12",
+            "format": "DVD",
+            "country": "Canada",
+            "region": "CA",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-01-12",
+            "format": "DVD",
+            "country": "Puerto Rico",
+            "region": "PR",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-01-12",
+            "format": "DVD",
+            "country": "United States",
+            "region": "US",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "American Samoa",
+            "region": "AS",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Antigua & Barbuda",
+            "region": "AG",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Argentina",
+            "region": "AR",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Aruba",
+            "region": "AW",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Bahamas",
+            "region": "BS",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Barbados",
+            "region": "BB",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Belize",
+            "region": "BZ",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Bolivia",
+            "region": "BO",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Brazil",
+            "region": "BR",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Chile",
+            "region": "CL",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Christmas Island",
+            "region": "CX",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Cocos (Keeling) Islands",
+            "region": "CC",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Colombia",
+            "region": "CO",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Cook Islands",
+            "region": "CK",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Costa Rica",
+            "region": "CR",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Cuba",
+            "region": "CU",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Dominica",
+            "region": "DM",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Dominican Republic",
+            "region": "DO",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Ecuador",
+            "region": "EC",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "El Salvador",
+            "region": "SV",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Fiji",
+            "region": "FJ",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Grenada",
+            "region": "GD",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Guam",
+            "region": "GU",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Guatemala",
+            "region": "GT",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Haiti",
+            "region": "HT",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Honduras",
+            "region": "HN",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Jamaica",
+            "region": "JM",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Kiribati",
+            "region": "KI",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Marshall Islands",
+            "region": "MH",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Mexico",
+            "region": "MX",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Nauru",
+            "region": "NR",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "New Zealand",
+            "region": "NZ",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Nicaragua",
+            "region": "NI",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Niue",
+            "region": "NU",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Norfolk Island",
+            "region": "NF",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Northern Mariana Islands",
+            "region": "MP",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Palau",
+            "region": "PW",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Panama",
+            "region": "PA",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Papua New Guinea",
+            "region": "PG",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Paraguay",
+            "region": "PY",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Peru",
+            "region": "PE",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Samoa",
+            "region": "WS",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Solomon Islands",
+            "region": "SB",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "St. Kitts & Nevis",
+            "region": "KN",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "St. Lucia",
+            "region": "LC",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "St. Vincent & Grenadines",
+            "region": "VC",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Suriname",
+            "region": "SR",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Tokelau",
+            "region": "TK",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Tonga",
+            "region": "TO",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Trinidad & Tobago",
+            "region": "TT",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Tuvalu",
+            "region": "TV",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "U.S. Virgin Islands",
+            "region": "VI",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Uruguay",
+            "region": "UY",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Vanuatu",
+            "region": "VU",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-03-29",
+            "format": "DVD",
+            "country": "Venezuela",
+            "region": "VE",
+            "note": "DVD"
+          }
+        ],
+        "_verifiedMetadata": {
+          "id": "tmdb:7508",
+          "type": "movie",
+          "name": "Like Stars on Earth",
+          "poster": "https://image.tmdb.org/t/p/w780/puHRt6Raovm5ujGCdwLWvRv4NHU.jpg",
+          "background": "https://image.tmdb.org/t/p/w780/bPwdy3zaNnMdZ22u0WCcYu0xxgt.jpg",
+          "description": "Ishaan Awasthi is an eight-year-old whose world is filled with wonders that no one else seems to appreciate. Colours, fish, dogs, and kites don't seem important to the adults, who are much more interested in things like homework, marks, and neatness. Ishaan cannot seem to get anything right in class; he is then sent to boarding school, where his life changes forever.",
+          "genres": [
+            "Drama"
+          ],
+          "releaseInfo": "2007",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 7508,
+          "imdb_id": null,
+          "metadataSource": "https://www.themoviedb.org/movie/7508"
+        }
+      }
+    },
+    "hindi|272243": {
+      "lastError": "Physical title identity could not be verified",
+      "lastAttemptAt": "2026-10-30T14:17:14.440409+00:00"
+    },
+    "hindi|41188": {
+      "lastError": "Physical title identity could not be verified",
+      "lastAttemptAt": "2026-10-30T14:17:14.440413+00:00"
+    },
+    "hindi|276501": {
+      "lastError": "Physical title identity could not be verified",
+      "lastAttemptAt": "2026-10-30T14:17:14.440415+00:00"
+    },
+    "hindi|155973": {
+      "lastError": "Physical title identity could not be verified",
+      "lastAttemptAt": "2026-10-30T14:17:14.440418+00:00"
+    },
+    "hindi|72051": {
+      "lastError": "Physical title identity could not be verified",
+      "lastAttemptAt": "2026-10-30T14:17:14.440420+00:00"
+    },
+    "hindi|21665": {
+      "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+      "editions": [
+        {
+          "date": "2004-03-05",
+          "format": "DVD / Blu-ray",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": ""
+        }
+      ],
+      "event": {
+        "name": "Khakee",
+        "type": "movie",
+        "language": "hindi",
+        "ottDate": "2004-03-05",
+        "sourceRecord": {
+          "tmdbId": 21665
+        },
+        "poster": "https://image.tmdb.org/t/p/w780/dMsqwWFl51t8jXR0tWzjEuO8H4l.jpg",
+        "year": "2004",
+        "platforms": [
+          "DVD / Blu-ray · United Kingdom"
+        ],
+        "source": "https://www.themoviedb.org/movie/21665/releases",
+        "sources": [
+          "https://www.themoviedb.org/movie/21665/releases"
+        ],
+        "confirmed": true,
+        "releaseKind": "physical",
+        "physicalReleases": [
+          {
+            "date": "2004-03-05",
+            "format": "DVD / Blu-ray",
+            "country": "United Kingdom",
+            "region": "GB",
+            "note": ""
+          }
+        ],
+        "_verifiedMetadata": {
+          "id": "tmdb:21665",
+          "type": "movie",
+          "name": "Khakee",
+          "poster": "https://image.tmdb.org/t/p/w780/dMsqwWFl51t8jXR0tWzjEuO8H4l.jpg",
+          "background": "https://image.tmdb.org/t/p/w780/lbqlG7AmXjBW10f0ESj1oUrz1s7.jpg",
+          "description": "DCP Anant and his team get tasked with escorting an alleged terrorist to Mumbai. However, a rogue ex-police officer makes their task difficult as he tries to stop them from reaching their destination.",
+          "genres": [
+            "Action"
+          ],
+          "releaseInfo": "2004",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 21665,
+          "imdb_id": null,
+          "metadataSource": "https://www.themoviedb.org/movie/21665"
+        }
+      }
+    },
+    "hindi|115153": {
+      "lastError": "Physical title identity could not be verified",
+      "lastAttemptAt": "2026-10-30T14:17:14.440422+00:00"
+    },
+    "hindi|276056": {
+      "lastError": "Physical title identity could not be verified",
+      "lastAttemptAt": "2026-10-30T14:17:14.440425+00:00"
+    },
+    "hindi|45533": {
+      "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+      "editions": [
+        {
+          "date": "2002-11-04",
+          "format": "DVD / Blu-ray",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": ""
+        }
+      ],
+      "event": {
+        "name": "Pyaar Kiya To Darna Kya",
+        "type": "movie",
+        "language": "hindi",
+        "ottDate": "2002-11-04",
+        "sourceRecord": {
+          "tmdbId": 45533
+        },
+        "poster": "https://image.tmdb.org/t/p/w780/wWJPE15xbl1RkM9y4EgnwbtEiBC.jpg",
+        "year": "1998",
+        "platforms": [
+          "DVD / Blu-ray · United Kingdom"
+        ],
+        "source": "https://www.themoviedb.org/movie/45533/releases",
+        "sources": [
+          "https://www.themoviedb.org/movie/45533/releases"
+        ],
+        "confirmed": true,
+        "releaseKind": "physical",
+        "physicalReleases": [
+          {
+            "date": "2002-11-04",
+            "format": "DVD / Blu-ray",
+            "country": "United Kingdom",
+            "region": "GB",
+            "note": ""
+          }
+        ],
+        "_verifiedMetadata": {
+          "id": "tmdb:45533",
+          "type": "movie",
+          "name": "Pyaar Kiya To Darna Kya",
+          "poster": "https://image.tmdb.org/t/p/w780/wWJPE15xbl1RkM9y4EgnwbtEiBC.jpg",
+          "background": "https://image.tmdb.org/t/p/w780/tUGgVcWvSJOG9xXnUkijhbpSNwS.jpg",
+          "description": "A wealthy collegian falls in love with an heir apparent, but her domineering cousin orders her to end the affair.",
+          "genres": [
+            "Comedy",
+            "Drama",
+            "Romance"
+          ],
+          "releaseInfo": "1998",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 45533,
+          "imdb_id": null,
+          "metadataSource": "https://www.themoviedb.org/movie/45533"
+        }
+      }
+    },
+    "hindi|41903": {
+      "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+      "editions": [
+        {
+          "date": "2002-10-07",
+          "format": "DVD / Blu-ray",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": "BBFC"
+        }
+      ],
+      "event": {
+        "name": "Mr. India",
+        "type": "movie",
+        "language": "hindi",
+        "ottDate": "2002-10-07",
+        "sourceRecord": {
+          "tmdbId": 41903
+        },
+        "poster": "https://image.tmdb.org/t/p/w780/nqDJ8vuVFYymUhOUKcGCZoHy4tu.jpg",
+        "year": "1987",
+        "platforms": [
+          "DVD / Blu-ray · United Kingdom"
+        ],
+        "source": "https://www.themoviedb.org/movie/41903/releases",
+        "sources": [
+          "https://www.themoviedb.org/movie/41903/releases"
+        ],
+        "confirmed": true,
+        "releaseKind": "physical",
+        "physicalReleases": [
+          {
+            "date": "2002-10-07",
+            "format": "DVD / Blu-ray",
+            "country": "United Kingdom",
+            "region": "GB",
+            "note": "BBFC"
+          }
+        ],
+        "_verifiedMetadata": {
+          "id": "tmdb:41903",
+          "type": "movie",
+          "name": "Mr. India",
+          "poster": "https://image.tmdb.org/t/p/w780/nqDJ8vuVFYymUhOUKcGCZoHy4tu.jpg",
+          "background": "https://image.tmdb.org/t/p/w780/uM0yXriGYhPGiqLQF13PFKnlUjX.jpg",
+          "description": "A poor but big-hearted man takes orphans into his home. After discovering his scientist father's invisibility device, he rises to the occasion and fights to save his children and all of India from the clutches of a megalomaniac.",
+          "genres": [
+            "Action",
+            "Science Fiction",
+            "Drama"
+          ],
+          "releaseInfo": "1987",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 41903,
+          "imdb_id": null,
+          "metadataSource": "https://www.themoviedb.org/movie/41903"
+        }
+      }
+    },
+    "hindi|498713": {
+      "lastError": "Physical title identity could not be verified",
+      "lastAttemptAt": "2026-10-30T14:17:14.440427+00:00"
+    },
+    "hindi|31525": {
+      "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+      "editions": [
+        {
+          "date": "2002-08-06",
+          "format": "DVD / Blu-ray",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": ""
+        }
+      ],
+      "event": {
+        "name": "The Legend of Bhagat Singh",
+        "type": "movie",
+        "language": "hindi",
+        "ottDate": "2002-08-06",
+        "sourceRecord": {
+          "tmdbId": 31525
+        },
+        "poster": "https://image.tmdb.org/t/p/w780/pOd8woHbZUDn9HheKTkSQHFNTZ2.jpg",
+        "year": "2002",
+        "platforms": [
+          "DVD / Blu-ray · United Kingdom"
+        ],
+        "source": "https://www.themoviedb.org/movie/31525/releases",
+        "sources": [
+          "https://www.themoviedb.org/movie/31525/releases"
+        ],
+        "confirmed": true,
+        "releaseKind": "physical",
+        "physicalReleases": [
+          {
+            "date": "2002-08-06",
+            "format": "DVD / Blu-ray",
+            "country": "United Kingdom",
+            "region": "GB",
+            "note": ""
+          }
+        ],
+        "_verifiedMetadata": {
+          "id": "tmdb:31525",
+          "type": "movie",
+          "name": "The Legend of Bhagat Singh",
+          "poster": "https://image.tmdb.org/t/p/w780/pOd8woHbZUDn9HheKTkSQHFNTZ2.jpg",
+          "background": "https://image.tmdb.org/t/p/w780/pJ3m234HaUOCRlcOSM9BhfNKrEd.jpg",
+          "description": "Born in British India, Bhagat Singh witnesses numerous atrocities during his childhood and grows up to become one of the most fearless freedom fighters in the country.",
+          "genres": [
+            "Crime",
+            "Drama",
+            "History"
+          ],
+          "releaseInfo": "2002",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 31525,
+          "imdb_id": null,
+          "metadataSource": "https://www.themoviedb.org/movie/31525"
+        }
+      }
+    },
+    "hindi|499110": {
+      "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+      "editions": [
+        {
+          "date": "2002-06-28",
+          "format": "DVD / Blu-ray",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": "Received a PG certificate in the UK after the distributor chose to remove a headbutt in a fight scene"
+        }
+      ],
+      "event": {
+        "name": "Kyaa Dil Ne Kahaa",
+        "type": "movie",
+        "language": "hindi",
+        "ottDate": "2002-06-28",
+        "sourceRecord": {
+          "tmdbId": 499110
+        },
+        "poster": "https://image.tmdb.org/t/p/w780/kjucWOw72QNG66iEWE4ycflSYty.jpg",
+        "year": "2002",
+        "platforms": [
+          "DVD / Blu-ray · United Kingdom"
+        ],
+        "source": "https://www.themoviedb.org/movie/499110/releases",
+        "sources": [
+          "https://www.themoviedb.org/movie/499110/releases"
+        ],
+        "confirmed": true,
+        "releaseKind": "physical",
+        "physicalReleases": [
+          {
+            "date": "2002-06-28",
+            "format": "DVD / Blu-ray",
+            "country": "United Kingdom",
+            "region": "GB",
+            "note": "Received a PG certificate in the UK after the distributor chose to remove a headbutt in a fight scene"
+          }
+        ],
+        "_verifiedMetadata": {
+          "id": "tmdb:499110",
+          "type": "movie",
+          "name": "Kyaa Dil Ne Kahaa",
+          "poster": "https://image.tmdb.org/t/p/w780/kjucWOw72QNG66iEWE4ycflSYty.jpg",
+          "background": null,
+          "description": "U.S. settled Esha (Esha Deol) is attracted to fellow-student Rahul (Tushar Kapoor). Rahul too is attracted to Esha. Esha returns home to India and tells her parents (Raj Babbar, Nina Kulkarni) about her love for Rahul. The family is pleased, and proceeds to finalize the marriage. They accompany Esha to Rahul's house. Rahul's parents (Rajesh Khanna, Smita Jaykar) approve of Esha. But when they ask Rahul, to everyone's shock, he refuses to marry Esha under any circumstances.",
+          "genres": [
+            "Romance",
+            "Comedy",
+            "Drama"
+          ],
+          "releaseInfo": "2002",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 499110,
+          "imdb_id": null,
+          "metadataSource": "https://www.themoviedb.org/movie/499110"
+        }
+      }
+    },
+    "hindi|49518": {
+      "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+      "editions": [
+        {
+          "date": "2002-05-21",
+          "format": "DVD / Blu-ray",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": ""
+        }
+      ],
+      "event": {
+        "name": "Aap Mujhe Achche Lagne Lage",
+        "type": "movie",
+        "language": "hindi",
+        "ottDate": "2002-05-21",
+        "sourceRecord": {
+          "tmdbId": 49518
+        },
+        "poster": "https://image.tmdb.org/t/p/w780/hPGUJfuCHn02U8fepE9lrcfUfTO.jpg",
+        "year": "2002",
+        "platforms": [
+          "DVD / Blu-ray · United Kingdom"
+        ],
+        "source": "https://www.themoviedb.org/movie/49518/releases",
+        "sources": [
+          "https://www.themoviedb.org/movie/49518/releases"
+        ],
+        "confirmed": true,
+        "releaseKind": "physical",
+        "physicalReleases": [
+          {
+            "date": "2002-05-21",
+            "format": "DVD / Blu-ray",
+            "country": "United Kingdom",
+            "region": "GB",
+            "note": ""
+          }
+        ],
+        "_verifiedMetadata": {
+          "id": "tmdb:49518",
+          "type": "movie",
+          "name": "Aap Mujhe Achche Lagne Lage",
+          "poster": "https://image.tmdb.org/t/p/w780/hPGUJfuCHn02U8fepE9lrcfUfTO.jpg",
+          "background": "https://image.tmdb.org/t/p/w780/y5mSwh49BbbqIfAWuVbG0lYdUYq.jpg",
+          "description": "Sapna Dholakia desires nothing more than to be married to her love Rohit, but her conservative family and stubborn father will stop at nothing to make sure she marries the son of a friend of the family.",
+          "genres": [
+            "Action",
+            "Romance",
+            "Drama"
+          ],
+          "releaseInfo": "2002",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 49518,
+          "imdb_id": null,
+          "metadataSource": "https://www.themoviedb.org/movie/49518"
+        }
+      }
+    },
+    "hindi|55212": {
+      "checkedAt": "2026-10-30T18:14:16.696724+04:00",
+      "editions": [
+        {
+          "date": "2002-03-28",
+          "format": "DVD / Blu-ray",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": "BBFC"
+        }
+      ],
+      "event": {
+        "name": "Tumko Na Bhool Paayenge",
+        "type": "movie",
+        "language": "hindi",
+        "ottDate": "2002-03-28",
+        "sourceRecord": {
+          "tmdbId": 55212
+        },
+        "poster": "https://image.tmdb.org/t/p/w780/mI4cFL7bEQcTgI6vtoPSkAWU1tJ.jpg",
+        "year": "2002",
+        "platforms": [
+          "DVD / Blu-ray · United Kingdom"
+        ],
+        "source": "https://www.themoviedb.org/movie/55212/releases",
+        "sources": [
+          "https://www.themoviedb.org/movie/55212/releases"
+        ],
+        "confirmed": true,
+        "releaseKind": "physical",
+        "physicalReleases": [
+          {
+            "date": "2002-03-28",
+            "format": "DVD / Blu-ray",
+            "country": "United Kingdom",
+            "region": "GB",
+            "note": "BBFC"
+          }
+        ],
+        "_verifiedMetadata": {
+          "id": "tmdb:55212",
+          "type": "movie",
+          "name": "Tumko Na Bhool Paayenge",
+          "poster": "https://image.tmdb.org/t/p/w780/mI4cFL7bEQcTgI6vtoPSkAWU1tJ.jpg",
+          "background": "https://image.tmdb.org/t/p/w780/jMMmk2ffrjLot1v7EXCpfbQd8XW.jpg",
+          "description": "Veer, a villager, becomes restless after he is haunted by the visions of his past. When he is attacked on the day of his wedding, he forces his parents to reveal the truth about his identity.",
+          "genres": [
+            "Action",
+            "Drama",
+            "Mystery"
+          ],
+          "releaseInfo": "2002",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 55212,
+          "imdb_id": null,
+          "metadataSource": "https://www.themoviedb.org/movie/55212"
+        }
+      }
+    },
+    "hindi|82575": {
+      "lastError": "Physical title identity could not be verified",
+      "lastAttemptAt": "2026-10-30T14:17:14.440429+00:00"
+    },
+    "hindi|491916": {
+      "lastError": "Physical title identity could not be verified",
+      "lastAttemptAt": "2026-10-30T14:17:14.440432+00:00"
+    },
+    "hindi|1160018": {
+      "lastAttemptAt": "2026-10-30T18:24:17.566483+04:00",
+      "lastError": "Physical title identity could not be verified"
+    },
+    "hindi|1279012": {
+      "checkedAt": "2026-10-30T18:24:17.566483+04:00",
+      "editions": []
+    },
+    "hindi|1137712": {
+      "checkedAt": "2026-10-30T18:24:17.566483+04:00",
+      "editions": []
+    },
+    "hindi|285803": {
+      "checkedAt": "2026-10-30T18:24:17.566483+04:00",
+      "editions": []
+    },
+    "hindi|20453": {
+      "lastAttemptAt": "2026-10-30T18:24:17.566483+04:00",
+      "lastError": "Physical title identity could not be verified"
+    },
+    "hindi|85985": {
+      "checkedAt": "2026-10-30T18:24:17.566483+04:00",
+      "editions": [
+        {
+          "date": "2012-09-10",
+          "format": "4K Blu-ray",
+          "country": "United States",
+          "region": "US",
+          "note": "Blu-ray / Blu-ray 3D / 4K Ultra HD"
+        }
+      ],
+      "event": {
+        "name": "Ek Tha Tiger",
+        "type": "movie",
+        "language": "hindi",
+        "ottDate": "2012-09-10",
+        "sourceRecord": {
+          "tmdbId": 85985
+        },
+        "poster": "https://image.tmdb.org/t/p/w780/jGTyeAH5KZuCX6Qat1VcTBXnqth.jpg",
+        "year": "2012",
+        "platforms": [
+          "4K Blu-ray · United States"
+        ],
+        "source": "https://www.themoviedb.org/movie/85985/releases",
+        "sources": [
+          "https://www.themoviedb.org/movie/85985/releases"
+        ],
+        "confirmed": true,
+        "releaseKind": "physical",
+        "physicalReleases": [
+          {
+            "date": "2012-09-10",
+            "format": "4K Blu-ray",
+            "country": "United States",
+            "region": "US",
+            "note": "Blu-ray / Blu-ray 3D / 4K Ultra HD"
+          }
+        ],
+        "_verifiedMetadata": {
+          "id": "tmdb:85985",
+          "type": "movie",
+          "name": "Ek Tha Tiger",
+          "poster": "https://image.tmdb.org/t/p/w780/jGTyeAH5KZuCX6Qat1VcTBXnqth.jpg",
+          "background": "https://image.tmdb.org/t/p/w780/jM8C4mURyEkQorqyGF5wPFp4M5J.jpg",
+          "description": "A top Indian agent is sent to observe the actions of a scientist but the mission complicates when he falls in love with the scientist's Pakistani caretaker.",
+          "genres": [
+            "Action",
+            "Thriller",
+            "Romance"
+          ],
+          "releaseInfo": "2012",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 85985,
+          "imdb_id": null,
+          "metadataSource": "https://www.themoviedb.org/movie/85985"
+        }
+      }
+    },
+    "hindi|26022": {
+      "lastAttemptAt": "2026-10-30T18:24:17.566483+04:00",
+      "lastError": "Physical title identity could not be verified"
+    },
+    "hindi|404401": {
+      "checkedAt": "2026-10-30T18:24:17.566483+04:00",
+      "editions": []
+    },
+    "hindi|19404": {
+      "checkedAt": "2026-10-30T18:24:17.566483+04:00",
+      "editions": []
+    },
+    "hindi|917": {
+      "checkedAt": "2026-10-30T18:24:17.566483+04:00",
+      "editions": []
+    },
+    "hindi|32740": {
+      "checkedAt": "2026-10-30T18:24:17.566483+04:00",
+      "editions": []
+    },
+    "hindi|15978": {
+      "checkedAt": "2026-10-30T18:24:17.566483+04:00",
+      "editions": []
+    },
+    "hindi|12259": {
+      "checkedAt": "2026-10-30T18:24:17.566483+04:00",
+      "editions": []
+    }
+  },
+  "discovery": {
+    "malayalam": {
+      "checkedAt": "2026-10-30T18:24:17.566483+04:00",
+      "titles": {}
+    },
+    "tamil": {
+      "checkedAt": "2026-10-30T18:24:17.566483+04:00",
+      "titles": {}
+    },
+    "telugu": {
+      "checkedAt": "2026-10-30T18:24:17.566483+04:00",
+      "titles": {}
+    },
+    "hindi": {
+      "checkedAt": "2026-10-30T18:24:17.566483+04:00",
+      "titles": {
+        "1160018": "KILL",
+        "1279012": "Kuch Sapney Apne",
+        "1137712": "Taps",
+        "431582": "Line of Descent",
+        "285803": "Singham Returns",
+        "20453": "3 Idiots",
+        "85985": "Ek Tha Tiger",
+        "26022": "My Name Is Khan",
+        "7508": "Like Stars on Earth",
+        "404401": "The Game of Love",
+        "19404": "Dilwale Dulhania Le Jayenge",
+        "917": "Mother India",
+        "32740": "Krrish",
+        "15978": "Naina",
+        "12259": "Sholay"
+      }
+    }
+  }
+}

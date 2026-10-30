@@ -1,8 +1,9 @@
 {
   "name": "Dobins Indian Catalog",
   "policy": "confirmed-digital-imdb-v1",
+  "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
-  "updatedAt": "2026-10-30T18:00:30.405753+04:00",
+  "updatedAt": "2026-10-30T18:24:17.566483+04:00",
   "lastSuccessCycle": "2026-10-30T18:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "06:00 and 18:00 daily; also 01:00 Thursday, Friday, Saturday",
@@ -18,20 +19,44 @@
       "url": "https://cinebuds.com/ott-release-dates/",
       "state": "live",
       "records": 31
+    },
+    {
+      "source": "TMDB physical releases",
+      "language": "malayalam",
+      "state": "live",
+      "records": 0
+    },
+    {
+      "source": "TMDB physical releases",
+      "language": "tamil",
+      "state": "live",
+      "records": 0
+    },
+    {
+      "source": "TMDB physical releases",
+      "language": "telugu",
+      "state": "live",
+      "records": 0
+    },
+    {
+      "source": "TMDB physical releases",
+      "language": "hindi",
+      "state": "live",
+      "records": 15
     }
   ],
   "counts": {
-    "dobins_ml_movie": 59,
+    "dobins_ml_movie": 60,
     "dobins_ml_series": 11,
     "dobins_ta_movie": 51,
     "dobins_ta_series": 13,
     "dobins_te_movie": 61,
     "dobins_te_series": 15,
-    "dobins_hi_movie": 59,
+    "dobins_hi_movie": 61,
     "dobins_hi_series": 59
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
   "pendingMatches": 114,
-  "checkedCandidates": 450,
+  "checkedCandidates": 453,
   "errors": []
 }
