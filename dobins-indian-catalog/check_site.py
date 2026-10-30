@@ -4,7 +4,7 @@ from datetime import datetime,timezone
 from urllib.parse import urlparse
 import os,json,subprocess
 D=Path(__file__).resolve().parent/'data';D.mkdir(exist_ok=True)
-base=os.environ.get('GRETA_PUBLIC_URL','https://the-great-indian-addon-dobinmathew-3454.vercel.app').rstrip('/')
+base=os.environ.get('GRETA_PUBLIC_URL','https://the-great-indian-addon.vercel.app').rstrip('/')
 if not base:
  print('Site health pending: GRETA_PUBLIC_URL has not been configured.');raise SystemExit(0)
 u=urlparse(base)
