@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-30T16:51:57.293635+00:00",
+  "url": "https://the-great-indian-addon-dobinmathew-3454.vercel.app",
+  "state": "ok",
+  "checks": [
+    {
+      "path": "/manifest.json",
+      "state": "ok"
+    },
+    {
+      "path": "/support",
+      "state": "ok"
+    },
+    {
+      "path": "/health.json",
+      "state": "ok"
+    }
+  ],
+  "method": "read-only; no payment orders or charges"
+}
