@@ -1,4 +1,4 @@
-import {normalizePosterTemplate,encodePosterConfig,decodePosterConfig} from '/poster-config.js';
+import {normalizePosterTemplate,encodePosterConfig,decodePosterConfig} from '/poster-config.js?v=2.1.1';
 let posterToken='',posterError=false;
 const langs=[{code:'ml',name:'Malayalam',native:'മലയാളം'},{code:'ta',name:'Tamil',native:'தமிழ்'},{code:'te',name:'Telugu',native:'తెలుగు'},{code:'hi',name:'Hindi',native:'हिन्दी'}];const $=id=>document.getElementById(id);let mask=255,language='ml',kind='movie',skip=0,busy=false,epoch=0,pendingCards=[],lastBatchFull=false;let toastTimer;try{const n=Number(localStorage.getItem('greta-catalog-selection'));if(Number.isInteger(n)&&n>=0&&n<=255&&localStorage.getItem('greta-catalog-selection')!==null)mask=n}catch{}
 const get=async path=>{const r=await fetch(path);if(!r.ok)throw Error('Request failed');return r.json()};function toast(text){$('toast').textContent=text;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,3200)}
