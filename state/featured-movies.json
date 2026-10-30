@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "checkedAt": "2026-10-30T02:26:35.599154+00:00",
-  "selection": "first valid movie in the matching IndianRegional catalog order; no external release-date filtering",
+  "checkedAt": "2026-10-30T11:56:19.730525+00:00",
+  "selection": "first IMDb-linked movie in the matching IndianRegional catalog order; no external release-date filtering",
   "languages": {
     "hindi": {
       "id": "tt39631280",
@@ -12,18 +12,20 @@
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/hi.json",
       "selection": "catalog-order",
       "catalogRank": 0,
-      "verifiedAt": "2026-10-30T02:26:35.599154+00:00"
+      "eligibility": "IMDb-linked movie",
+      "verifiedAt": "2026-10-30T11:56:19.730525+00:00"
     },
     "tamil": {
-      "id": "tmdb:1802710",
-      "name": "Obstacle",
-      "poster": "https://image.tmdb.org/t/p/original/6ZBKPRACiT1SfvNfmca87A91HSO.jpg",
+      "id": "tt44090278",
+      "name": "Baththa",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt44090278.jpg",
       "catalog": "ta",
       "type": "movie",
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/ta.json",
       "selection": "catalog-order",
       "catalogRank": 0,
-      "verifiedAt": "2026-10-30T02:26:35.599154+00:00"
+      "eligibility": "IMDb-linked movie",
+      "verifiedAt": "2026-10-30T11:56:19.730525+00:00"
     },
     "malayalam": {
       "id": "tt34792531",
@@ -34,7 +36,8 @@
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/ml.json",
       "selection": "catalog-order",
       "catalogRank": 0,
-      "verifiedAt": "2026-10-30T02:26:35.599154+00:00"
+      "eligibility": "IMDb-linked movie",
+      "verifiedAt": "2026-10-30T11:56:19.730525+00:00"
     },
     "telugu": {
       "id": "tt31841170",
@@ -45,7 +48,8 @@
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/te.json",
       "selection": "catalog-order",
       "catalogRank": 0,
-      "verifiedAt": "2026-10-30T02:26:35.599154+00:00"
+      "eligibility": "IMDb-linked movie",
+      "verifiedAt": "2026-10-30T11:56:19.730525+00:00"
     }
   },
   "warnings": []

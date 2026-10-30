@@ -17,7 +17,10 @@ Base URL stays https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site . T
 
 ## Centre movie in backdrops
 
-Movie and combined backdrops feature the first valid movie in the matching IndianRegional primary movie catalog's own order. No external release-date lookup or date filtering is used. The existing central panel, nearest central panel or lead panel is used according to each layout; no extra panel or style change is introduced. Series-only collections stay series-only.
+For all four languages, the centre follows IMDb-linked entries in the matching catalog's order. TMDB-only composite entries remain eligible for surrounding artwork, but cannot displace the centre movie. This selects Baththa for Tamil instead of Obstacle and automatically follows future IMDb-linked catalog updates.
+
+
+Movie and combined backdrops feature the first IMDb-linked movie in the matching IndianRegional primary movie catalog's own order. No external release-date lookup or date filtering is used. The existing central panel, nearest central panel or lead panel is used according to each layout; no extra panel or style change is introduced. Series-only collections stay series-only.
 
 The cloud job records the catalog-head choices in `state/featured-movies.json` before warming images. The backdrop service reads the matching IndianRegional catalog directly, avoiding a stale GitHub selection-file cache. Status JSON must report the expected `centerMovie`, `centerSlot` and `renderVersion`, and the selected ID must still belong to its approved catalog. Missing posters or source outages preserve last-good images and leave unfinished work eligible for a retry. Centre choices and metadata are checked as part of the daily 06:00 cycle.
 
