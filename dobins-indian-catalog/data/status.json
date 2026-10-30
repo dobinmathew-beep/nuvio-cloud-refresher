@@ -1,7 +1,7 @@
 {
   "name": "Dobins Indian Catalog",
   "policy": "confirmed-digital-imdb-v1",
-  "updatedAt": "2026-10-30T17:23:48.730987+04:00",
+  "updatedAt": "2026-10-30T17:38:35.445823+04:00",
   "lastSuccessCycle": "2026-10-30T06:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "06:00 and 18:00 daily; also 01:00 Thursday, Friday, Saturday",
@@ -20,20 +20,17 @@
     }
   ],
   "counts": {
-    "dobins_ml_movie": 15,
-    "dobins_ml_series": 8,
-    "dobins_ta_movie": 17,
-    "dobins_ta_series": 7,
-    "dobins_te_movie": 16,
-    "dobins_te_series": 9,
-    "dobins_hi_movie": 12,
-    "dobins_hi_series": 11
+    "dobins_ml_movie": 59,
+    "dobins_ml_series": 10,
+    "dobins_ta_movie": 48,
+    "dobins_ta_series": 13,
+    "dobins_te_movie": 60,
+    "dobins_te_series": 14,
+    "dobins_hi_movie": 56,
+    "dobins_hi_series": 49
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
-  "pendingMatches": 352,
+  "pendingMatches": 135,
   "checkedCandidates": 450,
-  "errors": [
-    "'background'"
-  ],
-  "lastAttemptAt": "2026-10-30T17:36:33.411261+04:00"
+  "errors": []
 }
