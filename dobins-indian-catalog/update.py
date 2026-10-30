@@ -197,7 +197,7 @@ def build():
   m['artwork']['logos']=list(dict.fromkeys(x for x in [m.get('logo'),f'https://images.metahub.space/logo/medium/{mid}/img'] if x and not x.startswith(BASE)))
   if not m.get('_logoFallback'):m['_logoFallback']=title_logo(m['name'])
   m['ott']={'date':e['ottDate'],'platforms':e['platforms'],'sources':e['sources']}
-  catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':m['poster'],'posterShape':'poster','background':m['background'],'releaseInfo':str(m.get('releaseInfo','')),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"Digital release: {e['ottDate']} · {', '.join(e['platforms'])}\n\n"+m.get('description',e.get('description','')),'ottDate':e['ottDate'],'platforms':e['platforms'],'sources':e['sources'],'language':e['language']})
+  catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':BASE+'/art/poster/'+mid,'posterShape':'poster','background':BASE+'/art/background/'+mid,'logo':BASE+'/art/logo/'+mid,'releaseInfo':str(m.get('releaseInfo','')),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"Digital release: {e['ottDate']} · {', '.join(e['platforms'])}\n\n"+m.get('description',e.get('description','')),'ottDate':e['ottDate'],'platforms':e['platforms'],'sources':e['sources'],'language':e['language']})
  for cid,ms in catalogs.items():
   ms.sort(key=lambda m:(m['ottDate'],m['name']),reverse=True)
   if not ms and old_catalogs.get(cid):catalogs[cid]=old_catalogs[cid]
