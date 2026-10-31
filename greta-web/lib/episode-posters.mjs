@@ -11,17 +11,19 @@ export async function fetchPoster(url){
   if(Number(r.headers.get('content-length'))>12000000)throw Error('Poster too large');const bytes=Buffer.from(await r.arrayBuffer());if(bytes.length>12000000)throw Error('Poster too large');return bytes;
  }throw Error('Too many poster redirects');
 }
-export async function renderBadge(bytes,badges=[{kind:'new',label:'NEW EPISODES'}]){
+export async function renderBadge(bytes,badges=[{kind:'new',label:'New Episodes'}]){
  const {default:sharp}=await import('sharp');
  const resized=await sharp(bytes,{limitInputPixels:30000000}).rotate().resize({width:600,withoutEnlargement:true}).toBuffer({resolveWithObject:true});
- const width=resized.info.width,height=resized.info.height,banner=Math.max(25,Math.round(width*.085));
+ const width=resized.info.width,height=resized.info.height,margin=width*.056,pillHeight=width*.116,gap=width*.024,padding=width*.052;
  const rows=badges.map((badge,index)=>{
-  let x=0;const paths=[];for(const ch of badge.label){const g=badgeText.glyphs[ch];if(!g)throw Error('Invalid badge lettering');if(g.path)paths.push(`<path d="${g.path}" transform="translate(${x},0)"/>`);x+=g.width+110}
-  const textWidth=width*(badge.kind==='upcoming'?.67:.56),scale=textWidth/(x-110),baseline=(banner+badgeText.capHeight*scale)/2;
-  const bg=badge.kind==='upcoming'?'#ffcb69':'#143e38',fg=badge.kind==='upcoming'?'#143e38':'#fff9e9';
-  return `<g transform="translate(0,${index*banner})"><rect width="${width}" height="${banner}" fill="${bg}"/><rect width="${Math.round(width*.016)}" height="${banner}" fill="${badge.kind==='upcoming'?'#a94529':'#ffcb69'}"/><g fill="${fg}" transform="translate(${(width-textWidth)/2},${baseline}) scale(${scale},${-scale})">${paths.join('')}</g></g>`;
+  let advance=0,minY=0,maxY=0;const paths=[];
+  for(const ch of badge.label){const glyph=badgeText.glyphs[ch];if(!glyph)throw Error('Invalid badge lettering');if(glyph.path)paths.push(`<path d="${glyph.path}" transform="translate(${advance},0)"/>`);advance+=glyph.width;minY=Math.min(minY,glyph.minY);maxY=Math.max(maxY,glyph.maxY)}
+  let scale=width*.068/badgeText.unitsPerEm;let pillWidth=Math.max(width*.47,advance*scale+padding*2);if(pillWidth>width*.63){pillWidth=width*.63;scale=(pillWidth-padding*2)/advance}
+  const textWidth=advance*scale,textHeight=(maxY-minY)*scale,baseline=(pillHeight-textHeight)/2+maxY*scale;
+  return `<g transform="translate(${margin},${margin+index*(pillHeight+gap)})"><rect width="${pillWidth}" height="${pillHeight}" rx="${width*.02}" fill="#eeeeee"/><g fill="#111111" transform="translate(${(pillWidth-textWidth)/2},${baseline}) scale(${scale},${-scale})">${paths.join('')}</g></g>`;
  }).join('');
- const svg=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${banner*badges.length}">${rows}</svg>`);
+ const overlayHeight=Math.ceil(margin+badges.length*pillHeight+Math.max(0,badges.length-1)*gap);
+ const svg=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${overlayHeight}">${rows}</svg>`);
  return sharp(resized.data).composite([{input:svg,top:0,left:0}]).jpeg({quality:90,mozjpeg:true}).toBuffer();
 }
 export async function episodePoster(id,day,origin,template=''){
