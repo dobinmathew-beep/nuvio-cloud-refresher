@@ -103,7 +103,7 @@
         "Crime",
         "Thriller"
       ],
-      "description": "Home release (digital): 2026-10-16 · SunNXT, Sun NXT\n\nIn Kerala, an investigating journalist disappears without notice. Media and public stunned. Investigation uncovers shocking, unexpected mysteries. Suspenseful plot follows the case's twists and revelations.",
+      "description": "Home release (digital): 2026-10-16 · Sun NXT, SunNXT\n\nIn Kerala, an investigating journalist disappears without notice. Media and public stunned. Investigation uncovers shocking, unexpected mysteries. Suspenseful plot follows the case's twists and revelations.",
       "releaseDate": "2026-10-16",
       "releaseKind": "digital",
       "availability": [
@@ -111,8 +111,8 @@
           "kind": "digital",
           "date": "2026-10-16",
           "platforms": [
-            "SunNXT",
-            "Sun NXT"
+            "Sun NXT",
+            "SunNXT"
           ],
           "sources": [
             "https://cinebuds.com/ott-release-dates/",
@@ -123,8 +123,8 @@
       "physicalReleases": [],
       "ottDate": "2026-10-16",
       "platforms": [
-        "SunNXT",
-        "Sun NXT"
+        "Sun NXT",
+        "SunNXT"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
@@ -318,6 +318,57 @@
       "nextEpisodeReleaseAt": null
     },
     {
+      "id": "tmdb:1036081",
+      "type": "movie",
+      "name": "Khalifa: The Ruler",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/movie~tmdb:1036081",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:1036081",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:1036081",
+      "releaseInfo": "2026",
+      "metadataSource": "https://www.themoviedb.org/movie/1036081",
+      "imdbRating": null,
+      "genres": [
+        "Action",
+        "Thriller",
+        "Crime"
+      ],
+      "description": "Home release (digital): 2026-10-09 · Simply South, Aha, Prime Video, ManoramaMAX\n\nAamir Ali, a notorious gold smuggling kingpin who inherited his multi-million dollar criminal enterprise from a lineage of gangsters, is drawn into a web of vengeance, legacy and power.",
+      "releaseDate": "2026-10-09",
+      "releaseKind": "digital",
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-10-09",
+          "platforms": [
+            "Simply South",
+            "Aha",
+            "Prime Video",
+            "ManoramaMAX"
+          ],
+          "sources": [
+            "https://www.dailyott.in/"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "ottDate": "2026-10-09",
+      "platforms": [
+        "Simply South",
+        "Aha",
+        "Prime Video",
+        "ManoramaMAX"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "source release",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null
+    },
+    {
       "id": "tt22797990",
       "type": "movie",
       "name": "Khalifa",
@@ -442,6 +493,47 @@
       "ottDate": "2026-09-18",
       "platforms": [
         "JioHotStar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "source release",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null
+    },
+    {
+      "id": "tmdb:1503567",
+      "type": "movie",
+      "name": "Idi Mazha Kaattu",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/movie~tmdb:1503567",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:1503567",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:1503567",
+      "releaseInfo": "",
+      "metadataSource": "https://www.themoviedb.org/movie/1503567",
+      "imdbRating": null,
+      "genres": [],
+      "description": "Home release (digital): 2026-09-18 · Saina Play\n\nChemban Vinod Jose, Priyamvada Krishnan, Sreenath Bhasi, Senthil Krishna",
+      "releaseDate": "2026-09-18",
+      "releaseKind": "digital",
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-09-18",
+          "platforms": [
+            "Saina Play"
+          ],
+          "sources": [
+            "https://www.dailyott.in/"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "ottDate": "2026-09-18",
+      "platforms": [
+        "Saina Play"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -662,6 +754,49 @@
       "ottDate": "2026-08-24",
       "platforms": [
         "Saina Play"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "source release",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null
+    },
+    {
+      "id": "tmdb:1166688",
+      "type": "movie",
+      "name": "Amoeba",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/movie~tmdb:1166688",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:1166688",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:1166688",
+      "releaseInfo": "2026",
+      "metadataSource": "https://www.themoviedb.org/movie/1166688",
+      "imdbRating": null,
+      "genres": [
+        "Drama"
+      ],
+      "description": "Home release (digital): 2026-08-22 · ManoramaMAX\n\nIn a repressive city-state, a tomboy schoolgirl persuades three classmates at an all-girls school to rebel by forming a triad gang.",
+      "releaseDate": "2026-08-22",
+      "releaseKind": "digital",
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-08-22",
+          "platforms": [
+            "ManoramaMAX"
+          ],
+          "sources": [
+            "https://www.dailyott.in/"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "ottDate": "2026-08-22",
+      "platforms": [
+        "ManoramaMAX"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -1524,7 +1659,7 @@
         "Comedy",
         "Thriller"
       ],
-      "description": "Home release (digital): 2026-05-22 · SunNXT, Prime Video\n\nTwo men meet by chance, setting off a night of chaos with romance and action, as their paths cross and intertwine through various unexpected events.",
+      "description": "Home release (digital): 2026-05-22 · Prime Video, SunNXT\n\nTwo men meet by chance, setting off a night of chaos with romance and action, as their paths cross and intertwine through various unexpected events.",
       "releaseDate": "2026-05-22",
       "releaseKind": "digital",
       "availability": [
@@ -1532,8 +1667,8 @@
           "kind": "digital",
           "date": "2026-05-22",
           "platforms": [
-            "SunNXT",
-            "Prime Video"
+            "Prime Video",
+            "SunNXT"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -1543,8 +1678,8 @@
       "physicalReleases": [],
       "ottDate": "2026-05-22",
       "platforms": [
-        "SunNXT",
-        "Prime Video"
+        "Prime Video",
+        "SunNXT"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -2134,7 +2269,7 @@
         "Romance",
         "Drama"
       ],
-      "description": "Home release (digital): 2026-04-09 · SunNXT, ManoramaMAX\n\nTwo young lovers from opposing social classes navigate prejudice and family expectations in modern-day society, as their forbidden romance challenges deep-rooted traditions.",
+      "description": "Home release (digital): 2026-04-09 · ManoramaMAX, SunNXT\n\nTwo young lovers from opposing social classes navigate prejudice and family expectations in modern-day society, as their forbidden romance challenges deep-rooted traditions.",
       "releaseDate": "2026-04-09",
       "releaseKind": "digital",
       "availability": [
@@ -2142,8 +2277,8 @@
           "kind": "digital",
           "date": "2026-04-09",
           "platforms": [
-            "SunNXT",
-            "ManoramaMAX"
+            "ManoramaMAX",
+            "SunNXT"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -2153,8 +2288,8 @@
       "physicalReleases": [],
       "ottDate": "2026-04-09",
       "platforms": [
-        "SunNXT",
-        "ManoramaMAX"
+        "ManoramaMAX",
+        "SunNXT"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -2774,30 +2909,32 @@
         "Comedy",
         "Drama"
       ],
-      "description": "Home release (digital): 2026-10-23 · \n\nFiroz has one dream: become a Pan-Indian superstar. But everyone around him has other plans. His friends are experts at ruining things. Vappa Mammali turns producer hoping one flop will send him straight back to the family business. Umma is busy finding him a bride on matrimony sites. And then there's his girlfriend.",
-      "releaseDate": "2026-10-23",
+      "description": "Home release (digital): 2026-10-16 · \n\nFiroz has one dream: become a Pan-Indian superstar. But everyone around him has other plans. His friends are experts at ruining things. Vappa Mammali turns producer hoping one flop will send him straight back to the family business. Umma is busy finding him a bride on matrimony sites. And then there's his girlfriend.",
+      "releaseDate": "2026-10-16",
       "releaseKind": "digital",
       "availability": [
         {
           "kind": "digital",
-          "date": "2026-10-23",
+          "date": "2026-10-16",
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/332061"
           ]
         }
       ],
       "physicalReleases": [],
-      "ottDate": "2026-10-23",
+      "ottDate": "2026-10-16",
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/332061"
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
-      "latestEpisodeReleasedAt": "2026-10-23T00:00:03+00:00",
+      "latestEpisodeReleasedAt": "2026-10-16T00:00:03+00:00",
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null
     },
@@ -3012,7 +3149,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/331722"
           ]
         }
       ],
@@ -3021,7 +3159,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/331722"
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
@@ -3064,7 +3203,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/320685"
           ]
         }
       ],
@@ -3076,7 +3216,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/320685"
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
@@ -3323,7 +3464,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39992549",
       "releaseInfo": "2026–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.9",
+      "imdbRating": "7.0",
       "genres": [
         "Drama",
         "Family"
@@ -3480,7 +3621,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/307900"
           ]
         }
       ],
@@ -3492,7 +3634,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/307900"
       ],
       "language": "malayalam",
       "releaseDateBasis": "source release",
@@ -3563,7 +3706,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/243826"
           ]
         }
       ],
@@ -3574,7 +3718,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/243826"
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
@@ -3608,7 +3753,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/305472"
           ]
         }
       ],
@@ -3619,7 +3765,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/305472"
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
@@ -3699,7 +3846,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/271041"
           ]
         }
       ],
@@ -3710,7 +3858,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/271041"
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
@@ -3788,7 +3937,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/228658"
           ]
         }
       ],
@@ -3799,7 +3949,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/228658"
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
@@ -3918,7 +4069,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/283760"
           ]
         }
       ],
@@ -3927,7 +4079,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/283760"
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
@@ -3963,7 +4116,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/261576"
           ]
         }
       ],
@@ -3974,7 +4128,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/261576"
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
@@ -4045,7 +4200,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/238015"
           ]
         }
       ],
@@ -4054,7 +4210,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/238015"
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
@@ -4129,7 +4286,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/243935"
           ]
         }
       ],
@@ -4138,7 +4296,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/243935"
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
@@ -4212,7 +4371,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/216636"
           ]
         }
       ],
@@ -4223,7 +4383,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/216636"
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
@@ -4258,7 +4419,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/241088"
           ]
         }
       ],
@@ -4269,7 +4431,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/241088"
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
@@ -4383,7 +4546,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/236058"
           ]
         }
       ],
@@ -4392,7 +4556,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/236058"
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
@@ -5217,7 +5382,7 @@
         "Crime",
         "Thriller"
       ],
-      "description": "Home release (digital): 2026-10-30 · Aha, Prime Video\n\nIn the Hill Village of Mekkarai, Where It is Customary for Men to Die Every Seven Years During the Month of June, a Newly Appointed Police Inspector Arrives to Investigate a Series of Mysterious Murders. As He Digs Deeper Into the Village's Dark Secrets and Long-standing Beliefs, He Finds Himself Trapped in a Web of Crime, Fear, and Hidden Truths.",
+      "description": "Home release (digital): 2026-10-30 · Prime Video, Aha\n\nIn the Hill Village of Mekkarai, Where It is Customary for Men to Die Every Seven Years During the Month of June, a Newly Appointed Police Inspector Arrives to Investigate a Series of Mysterious Murders. As He Digs Deeper Into the Village's Dark Secrets and Long-standing Beliefs, He Finds Himself Trapped in a Web of Crime, Fear, and Hidden Truths.",
       "releaseDate": "2026-10-30",
       "releaseKind": "digital",
       "availability": [
@@ -5225,8 +5390,8 @@
           "kind": "digital",
           "date": "2026-10-30",
           "platforms": [
-            "Aha",
-            "Prime Video"
+            "Prime Video",
+            "Aha"
           ],
           "sources": [
             "https://cinebuds.com/ott-release-dates/",
@@ -5237,8 +5402,8 @@
       "physicalReleases": [],
       "ottDate": "2026-10-30",
       "platforms": [
-        "Aha",
-        "Prime Video"
+        "Prime Video",
+        "Aha"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
@@ -7182,7 +7347,7 @@
         "Thriller",
         "Action"
       ],
-      "description": "Home release (digital): 2026-03-13 · Aha, Prime Video\n\nIt is story about a Honest and straightforward lady police Inspector Yogi works in Coimbatore, where she proves a textile mill owner’s “suicide” is actually a murder by his own son, leading to her transfer to the punishment area Vyasarpadi in North Chennai. There she confronts ruthless don Shekar Babu, who controls the area and its police through fear, power, and political influence, but Yogi refuses to bow down and begins taking action against his network.",
+      "description": "Home release (digital): 2026-03-13 · Prime Video, Aha\n\nIt is story about a Honest and straightforward lady police Inspector Yogi works in Coimbatore, where she proves a textile mill owner’s “suicide” is actually a murder by his own son, leading to her transfer to the punishment area Vyasarpadi in North Chennai. There she confronts ruthless don Shekar Babu, who controls the area and its police through fear, power, and political influence, but Yogi refuses to bow down and begins taking action against his network.",
       "releaseDate": "2026-03-13",
       "releaseKind": "digital",
       "availability": [
@@ -7190,8 +7355,8 @@
           "kind": "digital",
           "date": "2026-03-13",
           "platforms": [
-            "Aha",
-            "Prime Video"
+            "Prime Video",
+            "Aha"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -7201,8 +7366,8 @@
       "physicalReleases": [],
       "ottDate": "2026-03-13",
       "platforms": [
-        "Aha",
-        "Prime Video"
+        "Prime Video",
+        "Aha"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -7517,7 +7682,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/331750"
           ]
         }
       ],
@@ -7529,7 +7695,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/331750"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -7619,6 +7786,7 @@
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
             "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/248064",
             "https://www.tvmaze.com/shows/81804/heart-beat"
           ]
         }
@@ -7633,6 +7801,7 @@
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
         "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/248064",
         "https://www.tvmaze.com/shows/81804/heart-beat"
       ],
       "language": "tamil",
@@ -7651,7 +7820,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt41962673",
       "releaseInfo": "2026–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.2",
+      "imdbRating": "7.1",
       "genres": [
         "Family",
         "Drama",
@@ -7677,7 +7846,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/323375"
           ]
         }
       ],
@@ -7689,13 +7859,67 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/323375"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
       "latestEpisodeReleasedAt": "2026-10-28T00:00:03+00:00",
       "hasNewEpisodes": true,
       "nextEpisodeReleaseAt": "2026-11-04T00:00:00+00:00"
+    },
+    {
+      "id": "tmdb:243555",
+      "type": "series",
+      "name": "Akka",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/series~tmdb:243555",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/series~tmdb:243555",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/series~tmdb:243555",
+      "releaseInfo": "2026",
+      "metadataSource": "https://www.themoviedb.org/tv/243555",
+      "imdbRating": null,
+      "genres": [
+        "Drama",
+        "Crime"
+      ],
+      "description": "Home release (digital): 2026-10-30 · Netflix\n\nIn a kingdom ruled by women, matriarch Bhavani faces her biggest threat in Rudra, a ruthless rebel eyeing her land and legacy.",
+      "releaseDate": "2026-10-30",
+      "releaseKind": "digital",
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-10-30",
+          "platforms": [
+            "Netflix"
+          ],
+          "sources": [
+            "https://www.dailyott.in/"
+          ]
+        },
+        {
+          "kind": "digital",
+          "date": "2026-10-30",
+          "platforms": [],
+          "sources": [
+            "https://www.themoviedb.org/tv/243555"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "ottDate": "2026-10-30",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://www.themoviedb.org/tv/243555"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "source release",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null
     },
     {
       "id": "tmdb:338687",
@@ -7774,7 +7998,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/302882"
           ]
         }
       ],
@@ -7787,7 +8012,8 @@
         "https://cinebuds.com/ott-release-dates/",
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/302882"
       ],
       "language": "tamil",
       "releaseDateBasis": "source release",
@@ -7873,7 +8099,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/315038"
           ]
         }
       ],
@@ -7885,7 +8112,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/315038"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -8004,7 +8232,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/307959"
           ]
         }
       ],
@@ -8013,7 +8242,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/307959"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -8155,7 +8385,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/316965"
           ]
         }
       ],
@@ -8167,7 +8398,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/316965"
       ],
       "language": "tamil",
       "releaseDateBasis": "source release",
@@ -8185,7 +8417,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39992549",
       "releaseInfo": "2026–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.9",
+      "imdbRating": "7.0",
       "genres": [
         "Drama",
         "Family"
@@ -8245,7 +8477,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/301734"
           ]
         }
       ],
@@ -8254,7 +8487,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/301734"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -8594,7 +8828,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/305702"
           ]
         }
       ],
@@ -8603,7 +8838,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/305702"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -8636,7 +8872,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/308399"
           ]
         }
       ],
@@ -8645,7 +8882,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/308399"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -8675,7 +8913,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/254837"
           ]
         }
       ],
@@ -8684,7 +8923,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/254837"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -8761,7 +9001,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/300741"
           ]
         }
       ],
@@ -8772,7 +9013,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/300741"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -8806,7 +9048,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/54179"
           ]
         }
       ],
@@ -8815,7 +9058,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/54179"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -8889,7 +9133,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/287606"
           ]
         }
       ],
@@ -8898,7 +9143,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/287606"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -9104,7 +9350,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/277367"
           ]
         }
       ],
@@ -9113,7 +9360,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/277367"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -9147,7 +9395,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/274276"
           ]
         }
       ],
@@ -9158,7 +9407,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/274276"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -9235,7 +9485,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/271589"
           ]
         }
       ],
@@ -9246,7 +9497,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/271589"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -9321,7 +9573,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/261374"
           ]
         }
       ],
@@ -9332,7 +9585,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/261374"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -9406,7 +9660,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/259242"
           ]
         }
       ],
@@ -9417,7 +9672,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/259242"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -9565,7 +9821,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/253500"
           ]
         }
       ],
@@ -9574,7 +9831,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/253500"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -9608,7 +9866,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/249543"
           ]
         }
       ],
@@ -9617,7 +9876,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/249543"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -9772,7 +10032,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/223244"
           ]
         }
       ],
@@ -9783,7 +10044,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/223244"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -9817,7 +10079,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/240221"
           ]
         }
       ],
@@ -9828,7 +10091,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/240221"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -9864,7 +10128,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/200879"
           ]
         }
       ],
@@ -9875,7 +10140,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/200879"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -9988,7 +10254,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/235372"
           ]
         }
       ],
@@ -9997,7 +10264,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/235372"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -10032,7 +10300,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/197495"
           ]
         }
       ],
@@ -10043,7 +10312,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/197495"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -10123,7 +10393,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/201088"
           ]
         }
       ],
@@ -10134,7 +10405,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/201088"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -10206,7 +10478,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/200874"
           ]
         }
       ],
@@ -10217,7 +10490,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/200874"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -10290,7 +10564,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/224816"
           ]
         }
       ],
@@ -10299,7 +10574,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/224816"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -10333,7 +10609,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/222914"
           ]
         }
       ],
@@ -10342,7 +10619,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/222914"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -10416,7 +10694,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/221730"
           ]
         }
       ],
@@ -10427,7 +10706,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/221730"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -10462,7 +10742,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/219147"
           ]
         }
       ],
@@ -10473,7 +10754,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/219147"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -10507,7 +10789,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/218640"
           ]
         }
       ],
@@ -10518,7 +10801,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/218640"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -10550,7 +10834,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/217736"
           ]
         }
       ],
@@ -10559,7 +10844,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/217736"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -10635,7 +10921,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/215330"
           ]
         }
       ],
@@ -10644,7 +10931,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/215330"
       ],
       "language": "tamil",
       "releaseDateBasis": "episode",
@@ -11921,6 +12209,50 @@
       "nextEpisodeReleaseAt": null
     },
     {
+      "id": "tmdb:1799441",
+      "type": "movie",
+      "name": "Kagitham Padavalu",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/movie~tmdb:1799441",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:1799441",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:1799441",
+      "releaseInfo": "2026",
+      "metadataSource": "https://www.themoviedb.org/movie/1799441",
+      "imdbRating": null,
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "description": "Home release (digital): 2026-10-16 · SunNXT\n\nRam and Godavari's childhood bond grows into love despite their villages' rivalry. After their friends face tragic consequences from family opposition, the couple must confront pressure and social divisions.",
+      "releaseDate": "2026-10-16",
+      "releaseKind": "digital",
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-10-16",
+          "platforms": [
+            "SunNXT"
+          ],
+          "sources": [
+            "https://www.dailyott.in/"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "ottDate": "2026-10-16",
+      "platforms": [
+        "SunNXT"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "source release",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null
+    },
+    {
       "id": "tt6900448",
       "type": "movie",
       "name": "Mirai",
@@ -11955,6 +12287,47 @@
       "ottDate": "2026-10-10",
       "platforms": [
         "JioHotStar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "source release",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null
+    },
+    {
+      "id": "tmdb:1799143",
+      "type": "movie",
+      "name": "Least Eligible Bachelor",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/movie~tmdb:1799143",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:1799143",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:1799143",
+      "releaseInfo": "",
+      "metadataSource": "https://www.themoviedb.org/movie/1799143",
+      "imdbRating": null,
+      "genres": [],
+      "description": "Home release (digital): 2026-10-09 · ETV Win\n\nLeast Eligible Bachelor is a series 2026\r Starring viva harsha and hyper aadi",
+      "releaseDate": "2026-10-09",
+      "releaseKind": "digital",
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-10-09",
+          "platforms": [
+            "ETV Win"
+          ],
+          "sources": [
+            "https://www.dailyott.in/"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "ottDate": "2026-10-09",
+      "platforms": [
+        "ETV Win"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -12691,7 +13064,7 @@
         "Music",
         "Drama"
       ],
-      "description": "Home release (digital): 2026-06-11 · ETV Win, Netflix\n\nIn an isolated village, young Prathap seeks opportunity but enters a world of deception. Drawn into uncontrollable forces, he's caught between progress and preservation, testing his beliefs and purpose.",
+      "description": "Home release (digital): 2026-06-11 · Netflix, ETV Win\n\nIn an isolated village, young Prathap seeks opportunity but enters a world of deception. Drawn into uncontrollable forces, he's caught between progress and preservation, testing his beliefs and purpose.",
       "releaseDate": "2026-06-11",
       "releaseKind": "digital",
       "availability": [
@@ -12699,8 +13072,8 @@
           "kind": "digital",
           "date": "2026-06-11",
           "platforms": [
-            "ETV Win",
-            "Netflix"
+            "Netflix",
+            "ETV Win"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -12710,8 +13083,8 @@
       "physicalReleases": [],
       "ottDate": "2026-06-11",
       "platforms": [
-        "ETV Win",
-        "Netflix"
+        "Netflix",
+        "ETV Win"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -13878,7 +14251,7 @@
         "Comedy",
         "Drama"
       ],
-      "description": "Home release (digital): 2026-03-26 · SunNXT, Aha\n\nCenters women's voices in a narrative of empowerment and resistance. The Telugu film weaves together diverse female experiences, examining how women balance societal expectations, personal goals, and systemic obstacles.",
+      "description": "Home release (digital): 2026-03-26 · Aha, SunNXT\n\nCenters women's voices in a narrative of empowerment and resistance. The Telugu film weaves together diverse female experiences, examining how women balance societal expectations, personal goals, and systemic obstacles.",
       "releaseDate": "2026-03-26",
       "releaseKind": "digital",
       "availability": [
@@ -13886,8 +14259,8 @@
           "kind": "digital",
           "date": "2026-03-26",
           "platforms": [
-            "SunNXT",
-            "Aha"
+            "Aha",
+            "SunNXT"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -13897,8 +14270,8 @@
       "physicalReleases": [],
       "ottDate": "2026-03-26",
       "platforms": [
-        "SunNXT",
-        "Aha"
+        "Aha",
+        "SunNXT"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -14397,6 +14770,49 @@
   ],
   "dobins_te_series": [
     {
+      "id": "tt44841089",
+      "type": "series",
+      "name": "Part-Timers",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt44841089",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt44841089",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt44841089",
+      "releaseInfo": "2026–",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "5.7",
+      "genres": [
+        "Drama"
+      ],
+      "description": "Home release (digital): 2026-10-30 · \n\nTwo roommates, worlds apart, barely stay together. But these two women share one grand dream: a start-up.",
+      "releaseDate": "2026-10-30",
+      "releaseKind": "digital",
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-10-30",
+          "platforms": [],
+          "sources": [
+            "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/332943"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "ottDate": "2026-10-30",
+      "platforms": [],
+      "sources": [
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/332943"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "episode",
+      "latestEpisodeReleasedAt": "2026-10-30T00:00:03+00:00",
+      "hasNewEpisodes": true,
+      "nextEpisodeReleaseAt": null
+    },
+    {
       "id": "tt40856774",
       "type": "series",
       "name": "The Traitors Telugu",
@@ -14447,47 +14863,6 @@
       "latestEpisodeReleasedAt": "2026-10-29T00:00:00+00:00",
       "hasNewEpisodes": true,
       "nextEpisodeReleaseAt": "2026-11-05T00:00:00+00:00"
-    },
-    {
-      "id": "tt44841089",
-      "type": "series",
-      "name": "Part-Timers",
-      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt44841089",
-      "posterShape": "poster",
-      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt44841089",
-      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt44841089",
-      "releaseInfo": "2026–",
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.7",
-      "genres": [
-        "Drama"
-      ],
-      "description": "Home release (digital): 2026-10-23 · \n\nTwo roommates, worlds apart, barely stay together. But these two women share one grand dream: a start-up.",
-      "releaseDate": "2026-10-23",
-      "releaseKind": "digital",
-      "availability": [
-        {
-          "kind": "digital",
-          "date": "2026-10-23",
-          "platforms": [],
-          "sources": [
-            "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
-          ]
-        }
-      ],
-      "physicalReleases": [],
-      "ottDate": "2026-10-23",
-      "platforms": [],
-      "sources": [
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
-      ],
-      "language": "telugu",
-      "releaseDateBasis": "episode",
-      "latestEpisodeReleasedAt": "2026-10-23T00:00:03+00:00",
-      "hasNewEpisodes": false,
-      "nextEpisodeReleaseAt": null
     },
     {
       "id": "tmdb:337474",
@@ -14598,7 +14973,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/337806"
           ]
         }
       ],
@@ -14607,7 +14983,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/337806"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -14970,7 +15347,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/283609"
           ]
         }
       ],
@@ -14982,7 +15360,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/283609"
       ],
       "language": "telugu",
       "releaseDateBasis": "source release",
@@ -15066,7 +15445,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/326122"
           ]
         }
       ],
@@ -15075,7 +15455,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/326122"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -15118,7 +15499,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/224744"
           ]
         }
       ],
@@ -15130,7 +15512,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/224744"
       ],
       "language": "telugu",
       "releaseDateBasis": "source release",
@@ -15287,7 +15670,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39992549",
       "releaseInfo": "2026–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.9",
+      "imdbRating": "7.0",
       "genres": [
         "Drama",
         "Family"
@@ -15673,7 +16056,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/249768"
           ]
         }
       ],
@@ -15682,7 +16066,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/249768"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -15755,7 +16140,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/297310"
           ]
         }
       ],
@@ -15764,7 +16150,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/297310"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -15878,7 +16265,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/293160"
           ]
         }
       ],
@@ -15887,7 +16275,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/293160"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -15921,7 +16310,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/283622"
           ]
         }
       ],
@@ -15930,7 +16320,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/283622"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -16001,7 +16392,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/249762"
           ]
         }
       ],
@@ -16010,7 +16402,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/249762"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -16124,7 +16517,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/277489"
           ]
         }
       ],
@@ -16135,7 +16529,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/277489"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -16169,7 +16564,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/270823"
           ]
         }
       ],
@@ -16180,7 +16576,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/270823"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -16212,7 +16609,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/262927"
           ]
         }
       ],
@@ -16221,7 +16619,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/262927"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -16254,7 +16653,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/259546"
           ]
         }
       ],
@@ -16263,7 +16663,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/259546"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -16298,7 +16699,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/258481"
           ]
         }
       ],
@@ -16309,7 +16711,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/258481"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -16342,7 +16745,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/256056"
           ]
         }
       ],
@@ -16351,7 +16755,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/256056"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -16513,7 +16918,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/243416"
           ]
         }
       ],
@@ -16524,7 +16930,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/243416"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -16643,7 +17050,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/241347"
           ]
         }
       ],
@@ -16654,7 +17062,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/241347"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -16687,7 +17096,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/240575"
           ]
         }
       ],
@@ -16696,7 +17106,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/240575"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -16771,7 +17182,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/200946"
           ]
         }
       ],
@@ -16782,7 +17194,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/200946"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -16815,7 +17228,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/236438"
           ]
         }
       ],
@@ -16824,7 +17238,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/236438"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -16937,7 +17352,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/235819"
           ]
         }
       ],
@@ -16948,7 +17364,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/235819"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -17111,7 +17528,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/230930"
           ]
         }
       ],
@@ -17122,7 +17540,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/230930"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -17196,7 +17615,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/230505"
           ]
         }
       ],
@@ -17207,7 +17627,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/230505"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -17279,7 +17700,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/226542"
           ]
         }
       ],
@@ -17288,7 +17710,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/226542"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -17521,7 +17944,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/218025"
           ]
         }
       ],
@@ -17530,7 +17954,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/218025"
       ],
       "language": "telugu",
       "releaseDateBasis": "episode",
@@ -19862,7 +20287,7 @@
         "Drama",
         "Romance"
       ],
-      "description": "Home release (digital): 2026-07-10 · JioHotStar, Netflix\n\nA seemingly perfect marriage in Prayagraj takes an unexpected turn when one decision leads to a chain of misunderstandings, suspicion, and comedic chaos.",
+      "description": "Home release (digital): 2026-07-10 · Netflix, JioHotStar\n\nA seemingly perfect marriage in Prayagraj takes an unexpected turn when one decision leads to a chain of misunderstandings, suspicion, and comedic chaos.",
       "releaseDate": "2026-07-10",
       "releaseKind": "digital",
       "availability": [
@@ -19870,8 +20295,8 @@
           "kind": "digital",
           "date": "2026-07-10",
           "platforms": [
-            "JioHotStar",
-            "Netflix"
+            "Netflix",
+            "JioHotStar"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -19881,8 +20306,8 @@
       "physicalReleases": [],
       "ottDate": "2026-07-10",
       "platforms": [
-        "JioHotStar",
-        "Netflix"
+        "Netflix",
+        "JioHotStar"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -22225,14 +22650,15 @@
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt29625288",
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt29625288",
-      "releaseInfo": "2026–",
-      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "releaseInfo": "2026",
+      "metadataSource": "https://www.tvmaze.com/shows/95295/akka",
       "imdbRating": null,
       "genres": [
         "Drama",
-        "Crime"
+        "Crime",
+        "Thriller"
       ],
-      "description": "Home release (digital): 2026-10-30 · Netflix\n\nIn a kingdom ruled by women, matriarch Bhavani faces her biggest threat in Rudra, a ruthless rebel eyeing her land and legacy.",
+      "description": "Home release (digital): 2026-10-30 · Netflix\n\nPower, revenge and legacy collide when rebel Rudra targets Bhavani's matriarchal rule over Pernuru in this gripping drama from YRF.",
       "releaseDate": "2026-10-30",
       "releaseKind": "digital",
       "availability": [
@@ -22245,6 +22671,16 @@
           "sources": [
             "https://cinebuds.com/ott-release-dates/"
           ]
+        },
+        {
+          "kind": "digital",
+          "date": "2026-10-30",
+          "platforms": [
+            "Netflix"
+          ],
+          "sources": [
+            "https://www.tvmaze.com/shows/95295/akka"
+          ]
         }
       ],
       "physicalReleases": [],
@@ -22253,7 +22689,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.tvmaze.com/shows/95295/akka"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -22472,60 +22909,6 @@
         "YouTube"
       ],
       "sources": [
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
-      ],
-      "language": "hindi",
-      "releaseDateBasis": "episode",
-      "latestEpisodeReleasedAt": "2026-10-25T00:00:00+00:00",
-      "hasNewEpisodes": true,
-      "nextEpisodeReleaseAt": null
-    },
-    {
-      "id": "tt46182660",
-      "type": "series",
-      "name": "Family Full House with Rohit Sharma",
-      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt46182660",
-      "posterShape": "poster",
-      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt46182660",
-      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt46182660",
-      "releaseInfo": "2026–",
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.7",
-      "genres": [
-        "Comedy"
-      ],
-      "description": "Home release (digital): 2026-10-25 · SonyLIV\n\nFamily Full House with Rohit Sharma features Indian cricketer Rohit Sharma making his television hosting debut on Sony TV. The family-focused game show brings competing families together for fun, survey-based trivia infused with Rohit's signature laid-back wit and humor.",
-      "releaseDate": "2026-10-25",
-      "releaseKind": "digital",
-      "availability": [
-        {
-          "kind": "digital",
-          "date": "2026-09-19",
-          "platforms": [
-            "SonyLIV"
-          ],
-          "sources": [
-            "https://www.dailyott.in/"
-          ]
-        },
-        {
-          "kind": "digital",
-          "date": "2026-10-25",
-          "platforms": [],
-          "sources": [
-            "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
-          ]
-        }
-      ],
-      "physicalReleases": [],
-      "ottDate": "2026-09-19",
-      "platforms": [
-        "SonyLIV"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -22787,6 +23170,62 @@
       "nextEpisodeReleaseAt": null
     },
     {
+      "id": "tt46182660",
+      "type": "series",
+      "name": "Family Full House with Rohit Sharma",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt46182660",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt46182660",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt46182660",
+      "releaseInfo": "2026–",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "7.7",
+      "genres": [
+        "Comedy"
+      ],
+      "description": "Home release (digital): 2026-10-18 · SonyLIV\n\nFamily Full House with Rohit Sharma features Indian cricketer Rohit Sharma making his television hosting debut on Sony TV. The family-focused game show brings competing families together for fun, survey-based trivia infused with Rohit's signature laid-back wit and humor.",
+      "releaseDate": "2026-10-18",
+      "releaseKind": "digital",
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-09-19",
+          "platforms": [
+            "SonyLIV"
+          ],
+          "sources": [
+            "https://www.dailyott.in/"
+          ]
+        },
+        {
+          "kind": "digital",
+          "date": "2026-10-18",
+          "platforms": [],
+          "sources": [
+            "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/335787"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "ottDate": "2026-09-19",
+      "platforms": [
+        "SonyLIV"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/335787"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "episode",
+      "latestEpisodeReleasedAt": "2026-10-18T00:00:00+00:00",
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null
+    },
+    {
       "id": "tmdb:339010",
       "type": "series",
       "name": "Madam Inspector",
@@ -23002,7 +23441,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/313172"
           ]
         }
       ],
@@ -23014,7 +23454,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/313172"
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
@@ -23088,7 +23529,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt44934375",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.6",
+      "imdbRating": "7.2",
       "genres": [
         "Crime",
         "Drama"
@@ -23113,7 +23554,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/333483"
           ]
         }
       ],
@@ -23125,7 +23567,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/333483"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -23199,7 +23642,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt35929525",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.1",
+      "imdbRating": "5.2",
       "genres": [
         "Crime",
         "Mystery",
@@ -23227,7 +23670,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/285147"
           ]
         }
       ],
@@ -23239,7 +23683,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/285147"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -23496,7 +23941,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/249863"
           ]
         }
       ],
@@ -23505,7 +23951,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/249863"
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
@@ -23738,7 +24185,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt33347879",
       "releaseInfo": "2025–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.4",
+      "imdbRating": "6.5",
       "genres": [
         "Reality"
       ],
@@ -24107,7 +24554,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt36643714",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.6",
+      "imdbRating": "8.5",
       "genres": [
         "Drama"
       ],
@@ -24123,7 +24570,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/284753"
           ]
         }
       ],
@@ -24134,7 +24582,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/284753"
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
@@ -24211,7 +24660,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/326367"
           ]
         }
       ],
@@ -24222,7 +24672,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/326367"
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
@@ -24426,7 +24877,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/313101"
           ]
         }
       ],
@@ -24437,7 +24889,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/313101"
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
@@ -24482,7 +24935,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/328402"
           ]
         }
       ],
@@ -24494,7 +24948,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/328402"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -24781,7 +25236,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/284631"
           ]
         }
       ],
@@ -24793,7 +25249,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/284631"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -24878,7 +25335,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/317142"
           ]
         }
       ],
@@ -24890,7 +25348,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/317142"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -25021,11 +25480,12 @@
         },
         {
           "kind": "digital",
-          "date": "2026-06-02",
+          "date": "2026-06-03",
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/297171"
           ]
         }
       ],
@@ -25037,7 +25497,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/297171"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -25257,7 +25718,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/319919"
           ]
         }
       ],
@@ -25269,7 +25731,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/319919"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -25312,7 +25775,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/322558"
           ]
         }
       ],
@@ -25324,7 +25788,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/322558"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -25498,7 +25963,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39992549",
       "releaseInfo": "2026–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.9",
+      "imdbRating": "7.0",
       "genres": [
         "Drama",
         "Family"
@@ -25523,7 +25988,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/315036"
           ]
         }
       ],
@@ -25535,7 +26001,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/315036"
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
@@ -25677,7 +26144,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/283657"
           ]
         }
       ],
@@ -25689,7 +26157,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/283657"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -25732,7 +26201,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/249765"
           ]
         }
       ],
@@ -25744,7 +26214,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/249765"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -26373,7 +26844,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/316879"
           ]
         }
       ],
@@ -26385,7 +26857,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/316879"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -26594,7 +27067,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/316272"
           ]
         }
       ],
@@ -26606,7 +27080,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/316272"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -26650,7 +27125,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/313100"
           ]
         }
       ],
@@ -26662,7 +27138,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/313100"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -26747,7 +27224,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/315008"
           ]
         }
       ],
@@ -26759,7 +27237,8 @@
       "sources": [
         "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/315008"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -26792,7 +27271,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/249760"
           ]
         }
       ],
@@ -26801,7 +27281,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/249760"
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
@@ -26923,7 +27404,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/313716"
           ]
         }
       ],
@@ -26934,7 +27416,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/313716"
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
@@ -26969,7 +27452,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/249766"
           ]
         }
       ],
@@ -26980,7 +27464,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/249766"
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
@@ -27052,7 +27537,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/311632"
           ]
         }
       ],
@@ -27061,7 +27547,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/311632"
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
@@ -27136,7 +27623,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/308482"
           ]
         }
       ],
@@ -27147,7 +27635,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/308482"
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
@@ -27223,7 +27712,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/310392"
           ]
         }
       ],
@@ -27232,7 +27722,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/310392"
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
@@ -27428,7 +27919,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/260846"
           ]
         }
       ],
@@ -27439,7 +27931,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/260846"
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
@@ -27474,7 +27967,8 @@
           ],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/292625"
           ]
         }
       ],
@@ -27485,7 +27979,8 @@
       ],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/292625"
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
@@ -27503,7 +27998,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39014717",
       "releaseInfo": "2025–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.5",
+      "imdbRating": "7.4",
       "genres": [
         "Drama"
       ],
@@ -27645,7 +28140,8 @@
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/"
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/307004"
           ]
         }
       ],
@@ -27654,7 +28150,8 @@
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/307004"
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
@@ -27838,7 +28335,7 @@
     {
       "id": "tt38235589",
       "type": "series",
-      "name": "Kurukshetra: The Great War of Mahabharata",
+      "name": "Telugu",
       "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt38235589",
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt38235589",

@@ -56,24 +56,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Khalifa: The Ruler",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-10-09",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "The Last Show",
     "language": "tamil",
     "type": "movie",
     "ottDate": "2026-10-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Kagitham Padavalu",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-10-16",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -102,20 +88,6 @@
     "language": "tamil",
     "type": "series",
     "ottDate": "2026-08-07",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Idi Mazha Kaattu",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-09-18",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Least Eligible Bachelor",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-10-09",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -235,13 +207,6 @@
     "language": "tamil",
     "type": "series",
     "ottDate": "2026-05-22",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Amoeba",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-08-22",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -726,6 +691,34 @@
     "type": "series",
     "ottDate": "2026-05-17",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "KILL",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2025-10-01",
+    "reason": "Awaiting metadata backfill"
+  },
+  {
+    "name": "Line of Descent",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2020-11-02",
+    "reason": "Awaiting metadata backfill"
+  },
+  {
+    "name": "My Name Is Khan",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2010-07-07",
+    "reason": "Awaiting metadata backfill"
+  },
+  {
+    "name": "3 Idiots",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2010-01-10",
+    "reason": "Awaiting metadata backfill"
   },
   {
     "name": "Undekhi Season 4: The Final Battle",

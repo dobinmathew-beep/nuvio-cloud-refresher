@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-10-31T12:28:06.668722+04:00",
+    "checkedAt": "2026-10-31T22:05:18.961997+04:00",
     "records": [
       {
         "_id": "6ae5500b899e46892055aebe",
@@ -432,6 +432,60 @@
         "trendingRank": 6,
         "trendingRankedAt": "2026-10-31T02:19:17.784Z",
         "trendingRankedDateIST": "2026-10-31",
+        "tmdbDetails": {
+          "tmdbId": 1811964,
+          "director": "Raghavendra Katari",
+          "cast": [
+            {
+              "name": "Aadi Saikumar",
+              "character": "Yugandhar"
+            },
+            {
+              "name": "Megha Lekha",
+              "character": ""
+            },
+            {
+              "name": "Rakendu Mouli",
+              "character": ""
+            },
+            {
+              "name": "Lavannya Sahukara",
+              "character": ""
+            },
+            {
+              "name": "Pavan Tej Konidela",
+              "character": ""
+            },
+            {
+              "name": "Siva Krishna",
+              "character": ""
+            },
+            {
+              "name": "Kadambari Kiran",
+              "character": ""
+            },
+            {
+              "name": "Gayatri Bhargavi",
+              "character": ""
+            }
+          ],
+          "overview": "An honest cop's discovery of a mysterious body launches a high-stakes investigation, forcing him to uncover a dark web of secrets hidden beneath the city's surface.",
+          "runtime": 151,
+          "genres": [
+            "Action",
+            "Crime",
+            "Thriller"
+          ],
+          "originalLanguage": "te",
+          "spokenLanguages": [
+            "Telugu"
+          ],
+          "releaseDate": "2026-10-02",
+          "voteAverage": null,
+          "trailerKey": "7exx6Nv-L0o",
+          "fetchedAt": "2026-10-31T14:13:43.252Z"
+        },
+        "tmdbId": 1811964,
         "verified": true
       },
       {
@@ -28168,7 +28222,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-10-31T12:28:06.668722+04:00",
+    "checkedAt": "2026-10-31T22:05:18.961997+04:00",
     "records": [
       {
         "name": "Akka",

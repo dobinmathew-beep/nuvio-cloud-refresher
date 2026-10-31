@@ -135,15 +135,71 @@
       }
     },
     "hindi|431582": {
-      "lastError": "Physical title identity could not be verified",
-      "lastAttemptAt": "2026-10-31T11:37:29.909786+04:00"
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
+      "editions": [
+        {
+          "date": "2020-11-02",
+          "format": "Blu-ray",
+          "country": "United States",
+          "region": "US",
+          "note": "Blu-ray"
+        }
+      ],
+      "event": {
+        "name": "Line of Descent",
+        "type": "movie",
+        "language": "hindi",
+        "ottDate": "2020-11-02",
+        "sourceRecord": {
+          "tmdbId": 431582
+        },
+        "poster": "https://image.tmdb.org/t/p/w780/zLmTVXptNrCevJhM1lrsMdAl0f1.jpg",
+        "year": "2019",
+        "platforms": [
+          "Blu-ray · United States"
+        ],
+        "source": "https://www.themoviedb.org/movie/431582/releases",
+        "sources": [
+          "https://www.themoviedb.org/movie/431582/releases"
+        ],
+        "confirmed": true,
+        "releaseKind": "physical",
+        "physicalReleases": [
+          {
+            "date": "2020-11-02",
+            "format": "Blu-ray",
+            "country": "United States",
+            "region": "US",
+            "note": "Blu-ray"
+          }
+        ],
+        "_verifiedMetadata": {
+          "id": "tmdb:431582",
+          "type": "movie",
+          "name": "Line of Descent",
+          "poster": "https://image.tmdb.org/t/p/w780/zLmTVXptNrCevJhM1lrsMdAl0f1.jpg",
+          "background": "https://image.tmdb.org/t/p/w780/xoUciFLRXkoiEA8ben5BFEA2JMS.jpg",
+          "description": "A classic crime narrative in the backdrop of Delhi merges a dysfunctional, mafia family at war with each other as an undercover officer fights his demons by assisting in their downfall.",
+          "genres": [
+            "Crime",
+            "Drama"
+          ],
+          "releaseInfo": "2019",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 431582,
+          "imdb_id": null,
+          "metadataSource": "https://www.themoviedb.org/movie/431582"
+        }
+      }
     },
     "hindi|56969": {
       "lastError": "Physical title identity could not be verified",
       "lastAttemptAt": "2026-10-30T14:17:14.440406+00:00"
     },
     "hindi|7508": {
-      "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
       "editions": [
         {
           "date": "2009-09-10",
@@ -1955,27 +2011,168 @@
       "lastAttemptAt": "2026-10-30T14:17:14.440432+00:00"
     },
     "hindi|1160018": {
-      "lastAttemptAt": "2026-10-31T11:37:29.909786+04:00",
-      "lastError": "Physical title identity could not be verified"
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
+      "editions": [
+        {
+          "date": "2025-10-01",
+          "format": "DVD / Blu-ray",
+          "country": "France",
+          "region": "FR",
+          "note": "DVD & Blu-Ray"
+        }
+      ],
+      "event": {
+        "name": "KILL",
+        "type": "movie",
+        "language": "hindi",
+        "ottDate": "2025-10-01",
+        "sourceRecord": {
+          "tmdbId": 1160018
+        },
+        "poster": "https://image.tmdb.org/t/p/w780/m2zXTuNPkywdYLyWlVyJZW2QOJH.jpg",
+        "year": "2024",
+        "platforms": [
+          "DVD / Blu-ray · France"
+        ],
+        "source": "https://www.themoviedb.org/movie/1160018/releases",
+        "sources": [
+          "https://www.themoviedb.org/movie/1160018/releases"
+        ],
+        "confirmed": true,
+        "releaseKind": "physical",
+        "physicalReleases": [
+          {
+            "date": "2025-10-01",
+            "format": "DVD / Blu-ray",
+            "country": "France",
+            "region": "FR",
+            "note": "DVD & Blu-Ray"
+          }
+        ],
+        "_verifiedMetadata": {
+          "id": "tmdb:1160018",
+          "type": "movie",
+          "name": "KILL",
+          "poster": "https://image.tmdb.org/t/p/w780/m2zXTuNPkywdYLyWlVyJZW2QOJH.jpg",
+          "background": "https://image.tmdb.org/t/p/w780/u060S4drIWntmLeMDGe7mD0V6Jh.jpg",
+          "description": "When an army commando finds out his true love is engaged against her will, he boards a New Dehli-bound train in a daring quest to derail the arranged marriage. But when a gang of knife-wielding thieves begin to terrorize innocent passengers on his train, the commando takes them on, one by one.",
+          "genres": [
+            "Action",
+            "Crime",
+            "Thriller"
+          ],
+          "releaseInfo": "2024",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 1160018,
+          "imdb_id": null,
+          "metadataSource": "https://www.themoviedb.org/movie/1160018"
+        }
+      }
     },
     "hindi|1279012": {
-      "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
       "editions": []
     },
     "hindi|1137712": {
-      "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
       "editions": []
     },
     "hindi|285803": {
-      "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
       "editions": []
     },
     "hindi|20453": {
-      "lastAttemptAt": "2026-10-31T11:37:29.909786+04:00",
-      "lastError": "Physical title identity could not be verified"
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
+      "editions": [
+        {
+          "date": "2010-01-10",
+          "format": "DVD",
+          "country": "India",
+          "region": "IN",
+          "note": "DVD / VCD (Premium edition)"
+        },
+        {
+          "date": "2010-05-11",
+          "format": "Blu-ray",
+          "country": "India",
+          "region": "IN",
+          "note": "Special Edition Blu-ray"
+        },
+        {
+          "date": "2011-02-12",
+          "format": "DVD",
+          "country": "Germany",
+          "region": "DE",
+          "note": "DVD"
+        }
+      ],
+      "event": {
+        "name": "3 Idiots",
+        "type": "movie",
+        "language": "hindi",
+        "ottDate": "2010-01-10",
+        "sourceRecord": {
+          "tmdbId": 20453
+        },
+        "poster": "https://image.tmdb.org/t/p/w780/66A9MqXOyVFCssoloscw79z8Tew.jpg",
+        "year": "2009",
+        "platforms": [
+          "DVD · India"
+        ],
+        "source": "https://www.themoviedb.org/movie/20453/releases",
+        "sources": [
+          "https://www.themoviedb.org/movie/20453/releases"
+        ],
+        "confirmed": true,
+        "releaseKind": "physical",
+        "physicalReleases": [
+          {
+            "date": "2010-01-10",
+            "format": "DVD",
+            "country": "India",
+            "region": "IN",
+            "note": "DVD / VCD (Premium edition)"
+          },
+          {
+            "date": "2010-05-11",
+            "format": "Blu-ray",
+            "country": "India",
+            "region": "IN",
+            "note": "Special Edition Blu-ray"
+          },
+          {
+            "date": "2011-02-12",
+            "format": "DVD",
+            "country": "Germany",
+            "region": "DE",
+            "note": "DVD"
+          }
+        ],
+        "_verifiedMetadata": {
+          "id": "tmdb:20453",
+          "type": "movie",
+          "name": "3 Idiots",
+          "poster": "https://image.tmdb.org/t/p/w780/66A9MqXOyVFCssoloscw79z8Tew.jpg",
+          "background": "https://image.tmdb.org/t/p/w780/u7kuUaySqXBVAtqEl9vkTkAzHV9.jpg",
+          "description": "Rascal. Joker. Dreamer. Genius... You've never met a college student quite like \"Rancho.\" From the moment he arrives at India's most prestigious university, Rancho's outlandish schemes turn the campus upside down—along with the lives of his two newfound best friends. Together, they make life miserable for \"Virus,\" the school’s uptight and heartless dean. But when Rancho catches the eye of the dean's daughter, Virus sets his sights on flunking out the \"3 idiots\" once and for all.",
+          "genres": [
+            "Drama",
+            "Comedy"
+          ],
+          "releaseInfo": "2009",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 20453,
+          "imdb_id": null,
+          "metadataSource": "https://www.themoviedb.org/movie/20453"
+        }
+      }
     },
     "hindi|85985": {
-      "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
       "editions": [
         {
           "date": "2012-09-10",
@@ -2036,49 +2233,133 @@
       }
     },
     "hindi|26022": {
-      "lastAttemptAt": "2026-10-31T11:37:29.909786+04:00",
-      "lastError": "Physical title identity could not be verified"
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
+      "editions": [
+        {
+          "date": "2010-07-07",
+          "format": "DVD",
+          "country": "Netherlands",
+          "region": "NL",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-10-08",
+          "format": "DVD",
+          "country": "Mexico",
+          "region": "MX",
+          "note": "DVD"
+        },
+        {
+          "date": "2011-09-09",
+          "format": "DVD",
+          "country": "Philippines",
+          "region": "PH",
+          "note": "DVD"
+        }
+      ],
+      "event": {
+        "name": "My Name Is Khan",
+        "type": "movie",
+        "language": "hindi",
+        "ottDate": "2010-07-07",
+        "sourceRecord": {
+          "tmdbId": 26022
+        },
+        "poster": "https://image.tmdb.org/t/p/w780/5Y36lCiNyyV71mjq6LavgiggbhT.jpg",
+        "year": "2010",
+        "platforms": [
+          "DVD · Netherlands"
+        ],
+        "source": "https://www.themoviedb.org/movie/26022/releases",
+        "sources": [
+          "https://www.themoviedb.org/movie/26022/releases"
+        ],
+        "confirmed": true,
+        "releaseKind": "physical",
+        "physicalReleases": [
+          {
+            "date": "2010-07-07",
+            "format": "DVD",
+            "country": "Netherlands",
+            "region": "NL",
+            "note": "DVD"
+          },
+          {
+            "date": "2010-10-08",
+            "format": "DVD",
+            "country": "Mexico",
+            "region": "MX",
+            "note": "DVD"
+          },
+          {
+            "date": "2011-09-09",
+            "format": "DVD",
+            "country": "Philippines",
+            "region": "PH",
+            "note": "DVD"
+          }
+        ],
+        "_verifiedMetadata": {
+          "id": "tmdb:26022",
+          "type": "movie",
+          "name": "My Name Is Khan",
+          "poster": "https://image.tmdb.org/t/p/w780/5Y36lCiNyyV71mjq6LavgiggbhT.jpg",
+          "background": "https://image.tmdb.org/t/p/w780/zGCnIADWwpjGllYv8DgT8HIuIQl.jpg",
+          "description": "Rizwan Khan, a Muslim from the Borivali section of Mumbai, has Asperger's syndrome. He marries a Hindu single mother, Mandira, in San Francisco. After 9/11, Rizwan is detained by authorities at LAX who treat him as a terrorist because of his condition and his race.",
+          "genres": [
+            "Drama",
+            "Romance"
+          ],
+          "releaseInfo": "2010",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 26022,
+          "imdb_id": null,
+          "metadataSource": "https://www.themoviedb.org/movie/26022"
+        }
+      }
     },
     "hindi|404401": {
-      "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
       "editions": []
     },
     "hindi|19404": {
-      "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
       "editions": []
     },
     "hindi|917": {
-      "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
       "editions": []
     },
     "hindi|32740": {
-      "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
       "editions": []
     },
     "hindi|15978": {
-      "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
       "editions": []
     },
     "hindi|12259": {
-      "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
       "editions": []
     }
   },
   "discovery": {
     "malayalam": {
-      "checkedAt": "2026-10-31T12:28:06.668722+04:00",
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
       "titles": {}
     },
     "tamil": {
-      "checkedAt": "2026-10-31T12:28:06.668722+04:00",
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
       "titles": {}
     },
     "telugu": {
-      "checkedAt": "2026-10-31T12:28:06.668722+04:00",
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
       "titles": {}
     },
     "hindi": {
-      "checkedAt": "2026-10-31T12:28:06.668722+04:00",
+      "checkedAt": "2026-10-31T22:05:18.961997+04:00",
       "titles": {
         "1160018": "KILL",
         "1279012": "Kuch Sapney Apne",
