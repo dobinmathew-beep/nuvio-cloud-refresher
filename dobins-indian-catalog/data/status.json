@@ -4,7 +4,7 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-10-31T12:04:00.382885+04:00",
+  "updatedAt": "2026-10-31T12:11:15.019089+04:00",
   "lastSuccessCycle": "2026-10-31T06:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "06:00 and 18:00 daily; also 01:00 Thursday, Friday, Saturday",
@@ -33,7 +33,7 @@
       "language": "malayalam",
       "url": "https://www.themoviedb.org/discover/tv",
       "state": "live",
-      "records": 0
+      "records": 59
     },
     {
       "source": "IndianRegional series discovery",
@@ -47,7 +47,7 @@
       "language": "tamil",
       "url": "https://www.themoviedb.org/discover/tv",
       "state": "live",
-      "records": 0
+      "records": 59
     },
     {
       "source": "IndianRegional series discovery",
@@ -61,21 +61,21 @@
       "language": "telugu",
       "url": "https://www.themoviedb.org/discover/tv",
       "state": "live",
-      "records": 0
+      "records": 60
     },
     {
       "source": "IndianRegional series discovery",
       "language": "hindi",
       "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
       "state": "live",
-      "records": 100
+      "records": 300
     },
     {
       "source": "TMDB streaming-series discovery",
       "language": "hindi",
       "url": "https://www.themoviedb.org/discover/tv",
       "state": "live",
-      "records": 0
+      "records": 60
     },
     {
       "source": "TVmaze streaming episode schedule",
@@ -86,12 +86,12 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 236,
+      "records": 524,
       "counts": {
-        "malayalam": 34,
-        "tamil": 68,
-        "telugu": 64,
-        "hindi": 70
+        "malayalam": 50,
+        "tamil": 89,
+        "telugu": 92,
+        "hindi": 293
       },
       "state": "live"
     },
@@ -122,16 +122,16 @@
   ],
   "counts": {
     "dobins_ml_movie": 62,
-    "dobins_ml_series": 41,
+    "dobins_ml_series": 57,
     "dobins_ta_movie": 51,
-    "dobins_ta_series": 75,
+    "dobins_ta_series": 95,
     "dobins_te_movie": 62,
-    "dobins_te_series": 76,
+    "dobins_te_series": 100,
     "dobins_hi_movie": 62,
-    "dobins_hi_series": 107
+    "dobins_hi_series": 319
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
   "pendingMatches": 109,
-  "checkedCandidates": 655,
+  "checkedCandidates": 921,
   "errors": []
 }
