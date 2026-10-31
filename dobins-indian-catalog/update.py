@@ -221,7 +221,7 @@ def build():
    for item in ms:
     item['latestEpisodeReleasedAt'],item['hasNewEpisodes']=episode_badges.latest(metas.get(alternate.key('series',item['id']),{}).get('videos',[]),NOW)
     if item['latestEpisodeReleasedAt'] and item['latestEpisodeReleasedAt'][:10]>(item.get('releaseDate') or ''):item['releaseDate']=item['latestEpisodeReleasedAt'][:10]
-  ms.sort(key=lambda m:(bool(m.get('hasNewEpisodes')),m.get('latestEpisodeReleasedAt') or m.get('releaseDate') or m.get('ottDate') or '',m['name']),reverse=True)
+  ms.sort(key=lambda m:(bool(m.get('hasNewEpisodes')),max(m.get('latestEpisodeReleasedAt') or '',m.get('releaseDate') or m.get('ottDate') or ''),m['name']),reverse=True)
   if not ms and old_catalogs.get(cid):catalogs[cid]=old_catalogs[cid]
  if any(not catalogs[c] for c in catalogs):
   save('metadata.json',metas);save('unmatched.json',unmatched);raise RuntimeError('An empty catalog would be published; retaining last-good catalogs while metadata backfills')
