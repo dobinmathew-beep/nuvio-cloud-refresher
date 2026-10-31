@@ -82,3 +82,11 @@
 @media(max-width:800px){.cinema.star-procession{height:480px!important;max-width:520px;margin:8px auto 0}.cinema.star-procession .star-card{inset:25px auto auto 50%!important;width:65%!important;height:410px!important;border-radius:22px}}
 @media(max-width:420px){.cinema.star-procession{height:405px!important}.cinema.star-procession .star-card{height:350px!important}}
 @media(prefers-reduced-motion:reduce){.cinema.star-procession .star-card{transition:none!important}.cinema.star-procession .star-card[data-position=current]{transform:translateX(-50%)!important}.cinema.star-procession .star-card[data-position=next]{transform:translateX(8%) scale(.86)!important}.cinema.star-procession .star-card[data-position=waiting]{transform:translateX(39%) scale(.76)!important}}
+
+/* Brisk, clean playback: no page or card playback controls. */
+#motion-toggle,.tile-play-control,#cinema-play{display:none!important}
+.cinema.star-procession .star-card{transition:transform .85s cubic-bezier(.2,.72,.18,1),opacity .65s ease,filter .85s ease,visibility .85s}
+.cinema.star-procession .star-card>img,.cinema.star-procession .star-card .tile-video{transition:opacity .32s ease}
+.cinema.star-procession .star-card.tile-playing[data-position=current] .tile-video{animation:quick-cinema-push 3s cubic-bezier(.2,.7,.25,1) infinite alternate;transform-origin:50% 42%}
+@keyframes quick-cinema-push{from{transform:scale(1)}to{transform:scale(1.065)}}
+@media(prefers-reduced-motion:reduce){.cinema.star-procession .star-card .tile-video{animation:none!important}}

@@ -26,4 +26,4 @@ play?.addEventListener('click',()=>enabled?stop():start());
 document.getElementById('motion-toggle')?.addEventListener('click',()=>{if(document.body.classList.contains('motion-paused'))stop()});
 document.addEventListener('visibilitychange',()=>{if(!ready)return;if(document.hidden){player.pauseVideo();clearTimeout(advanceTimer)}else if(enabled){player.playVideo()}});
 reducedVideo.addEventListener('change',e=>{if(e.matches)stop()});
-mark();let paused=false;try{paused=localStorage.getItem('great-motion-paused')==='true'}catch{}if(!reducedVideo.matches&&!paused&&!navigator.connection?.saveData)start();
+mark();let paused=false;try{paused=!!document.getElementById('motion-toggle')&&localStorage.getItem('great-motion-paused')==='true'}catch{}if(!reducedVideo.matches&&!paused&&!navigator.connection?.saveData)start();

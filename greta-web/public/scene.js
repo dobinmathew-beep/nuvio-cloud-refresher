@@ -2,7 +2,7 @@
 const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
 const motionButton=document.getElementById('motion-toggle');
 let manuallyPaused=false;
-try{manuallyPaused=localStorage.getItem('great-motion-paused')==='true'}catch{}
+try{if(motionButton)manuallyPaused=localStorage.getItem('great-motion-paused')==='true';else localStorage.removeItem('great-motion-paused')}catch{}
 function syncMotion(){const paused=manuallyPaused||reduced.matches;document.body.classList.toggle('motion-paused',paused);if(motionButton){motionButton.setAttribute('aria-pressed',String(paused));motionButton.setAttribute('aria-label',paused?'Resume background animation':'Pause background animation');motionButton.innerHTML=paused?'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>':'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>';motionButton.disabled=reduced.matches}}
 syncMotion();reduced.addEventListener('change',syncMotion);motionButton?.addEventListener('click',()=>{manuallyPaused=!manuallyPaused;try{localStorage.setItem('great-motion-paused',String(manuallyPaused))}catch{}syncMotion()});
 if('IntersectionObserver' in window&&!reduced.matches){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}),{threshold:.06});document.querySelectorAll('.section-head,.builder,.feature-layout,.status-strip,.support-callout,.feedback-layout').forEach(el=>{el.classList.add('reveal-ready');observer.observe(el)})}
