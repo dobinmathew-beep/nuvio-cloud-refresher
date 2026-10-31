@@ -48,3 +48,5 @@
 .cinema .star-card:before,.cinema .star-card:after{z-index:2}
 /* Keep the full embedded viewport visible; avoid cropping most of the player away. */
 .cinema .tile-video iframe{position:absolute;left:0;top:0;width:200px!important;height:300px!important;min-width:200px;min-height:300px;max-width:none;transform:scale(var(--player-scale,1));transform-origin:top left;border:0}.cinema .tile-playing>img{visibility:hidden}.cinema .tile-crossfade>img{visibility:visible}
+/* Automatic cinema: no manual playback overlay or queue status in the composition. */
+.tile-play-control,.tile-source-link,.tile-playback-status,#tile-clips-toggle,#cinema-play{display:none!important}.background-control{min-height:20px}.background-control #cinema-caption{font-size:8px}.cinema .tile-playing>img{opacity:0;visibility:hidden}.cinema .tile-playing .tile-video{opacity:1}

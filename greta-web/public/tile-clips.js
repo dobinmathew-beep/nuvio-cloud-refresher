@@ -1,26 +1,31 @@
-/* Actual player events drive the UI; a loaded iframe is never counted as playback. */
+/* Every tile starts independently, using the exact same player factory as the backdrop. */
 (()=>{
  const slots=[['.star-mohanlal','Mohanlal'],['.star-mammootty','Mammootty'],['.support-srk','Shah Rukh Khan'],['.support-vijay','Vijay'],['.support-allu','Allu Arjun'],['.actress-one','Deepika'],['.actress-two','Samantha'],['.cast-parvathy','Parvathy'],['.cast-nayanthara','Nayanthara'],['.cast-rajinikanth','Rajinikanth']];
- const stage=document.querySelector('.cinema'),button=document.getElementById('tile-clips-toggle'),reduce=matchMedia('(prefers-reduced-motion: reduce)');if(!stage||!button)return;
- const status=document.createElement('span');status.className='tile-playback-status';status.setAttribute('role','status');status.setAttribute('aria-live','polite');button.after(status);
- let enabled=false,visible=false,api=null,loadingApi=false,queue=[],inFlight=0,failures=0;const items=[];
- const active=()=>enabled&&visible&&!document.hidden&&!document.body.classList.contains('motion-paused');
- function update(){const playing=items.filter(x=>x.state==='playing').length,loading=items.some(x=>x.state==='loading');button.textContent=!enabled?'▷ Play tile videos':playing?'Ⅱ Pause tile videos':loading?'Ⅱ Loading tile videos…':'↻ Retry tile videos';button.setAttribute('aria-pressed',String(playing>0));button.dataset.state=playing?'playing':loading?'loading':enabled?'unavailable':'paused';status.textContent=playing?'Muted film previews':loading?'Starting film previews…':enabled?'Video source did not start · tap a tile to retry':'';for(const x of items){x.control.textContent=x.state==='playing'?'Ⅱ':'▷';x.control.setAttribute('aria-label',(x.state==='playing'?'Pause ':'Play ')+x.film.name+' preview');x.control.setAttribute('aria-pressed',String(x.state==='playing'));x.card.dataset.previewStatus=x.state}}
- function release(x){if(x.slot){x.slot=false;inFlight=Math.max(0,inFlight-1);pump()}}
- function clear(x){clearTimeout(x.watch);clearTimeout(x.loop);clearTimeout(x.fade)}
- function fail(x,state='unavailable'){clear(x);x.state=state;x.card.classList.remove('tile-playing','tile-crossfade');x.link.hidden=false;if(x.ready)x.player.pauseVideo();failures++;release(x);update()}
- function schedule(x){clearTimeout(x.loop);if(!active())return;const current=x.player.getCurrentTime()||x.film.start;const ms=Math.max(300,(x.film.end-current)*1000-300);x.loop=setTimeout(()=>{if(!active())return;x.card.classList.add('tile-crossfade');x.fade=setTimeout(()=>{if(!active())return;x.player.seekTo(x.film.start,true);x.player.playVideo();x.card.classList.remove('tile-crossfade')},250)},ms)}
- function play(x){if(!x.ready||!active())return;clear(x);const retry=['unavailable','stalled','tap-to-play'].includes(x.state);x.state='loading';x.link.hidden=true;x.player.mute();if(retry)x.player.loadVideoById({videoId:x.film.id,startSeconds:x.film.start,endSeconds:x.film.end});x.player.playVideo();x.watch=setTimeout(()=>{if(x.state!=='playing')fail(x,'stalled')},15000);update()}
- function pause(x){clear(x);x.state='paused';if(x.ready)x.player.pauseVideo();release(x);update()}
- function make(x){if(x.player&&x.ready){play(x);return}if(x.player){x.player.destroy();x.resize?.disconnect();x.card.querySelector('.tile-video')?.remove();x.player=null}const surface=document.createElement('div');surface.className='tile-video';surface.setAttribute('aria-hidden','true');const mount=document.createElement('div');mount.id='actor-preview-'+x.id;surface.append(mount);x.card.append(surface);const resize=new ResizeObserver(entries=>{const w=entries[0].contentRect.width;surface.style.setProperty('--player-scale',String(w/200))});x.resize=resize;resize.observe(x.card);surface.style.setProperty('--player-scale',String(x.card.clientWidth/200));x.state='loading';x.watch=setTimeout(()=>fail(x,'stalled'),18000);x.player=new api.Player(mount.id,{host:'https://www.youtube-nocookie.com',width:200,height:300,videoId:x.film.id,playerVars:{autoplay:1,mute:1,controls:0,playsinline:1,rel:0,disablekb:1,fs:0,start:x.film.start,end:x.film.end,origin:location.origin},events:{onReady:e=>{x.ready=true;const frame=e.target.getIframe();frame.setAttribute('allow','autoplay; encrypted-media; picture-in-picture');frame.setAttribute('referrerpolicy','strict-origin-when-cross-origin');e.target.mute();if(active())play(x);else pause(x)},onStateChange:e=>{if(e.data===1){if(!active()){pause(x);return}clearTimeout(x.watch);x.state='playing';x.card.classList.add('tile-playing');x.card.classList.remove('tile-crossfade');x.link.hidden=true;failures=0;release(x);schedule(x);update()}else if(e.data===0&&active()){x.player.seekTo(x.film.start,true);play(x)}else if(e.data===2&&x.state==='playing'){x.state='paused';clear(x);update()}},onError:()=>fail(x),onAutoplayBlocked:()=>fail(x,'tap-to-play')}});update()}
- function pump(){if(!api||!active())return;const playing=items.some(x=>x.state==='playing');if(failures>=2&&!playing){queue=[];update();return}while(inFlight<2&&queue.length){const x=queue.shift();if(x.state==='playing'||x.slot)continue;x.slot=true;inFlight++;make(x)}}
- async function ensure(){if(api)return true;if(loadingApi)return false;loadingApi=true;try{api=await window.greatYouTubeReady();return true}catch{enabled=false;status.textContent='Film previews could not load. Please retry.';return false}finally{loadingApi=false}}
- async function start(one){enabled=true;failures=0;if(!await ensure()){update();return}queue=one?[one]:items.filter(x=>x.state!=='playing');pump();update()}
- function stop(){enabled=false;queue=[];items.forEach(pause);update()}
- slots.forEach(([selector,name],id)=>{const card=stage.querySelector(selector),film=films.find(x=>x.name===name);if(!card||!film)return;const control=document.createElement('button');control.type='button';control.className='tile-play-control';control.textContent='▷';control.setAttribute('aria-label','Play '+film.name+' preview');control.setAttribute('aria-pressed','false');const link=document.createElement('a');link.className='tile-source-link';link.href='https://www.youtube.com/watch?v='+film.id;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Open preview ↗';link.hidden=true;card.append(control,link);const x={id,card,film,control,link,ready:false,player:null,state:'idle',slot:false};items.push(x);card.dataset.film=film.film;control.addEventListener('click',()=>x.state==='playing'?pause(x):start(x))});
- button.addEventListener('click',()=>items.some(x=>x.state==='playing'||x.state==='loading')?stop():start());
- new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible&&enabled){queue=items.filter(x=>!['unavailable','stalled','tap-to-play','playing'].includes(x.state));pump()}else if(!visible){queue=[];items.forEach(x=>{if(x.state==='playing'||x.state==='loading')pause(x)})}},{threshold:.08}).observe(stage);
- document.addEventListener('visibilitychange',()=>{if(document.hidden)items.forEach(x=>{if(x.state==='playing'||x.state==='loading')pause(x)});else if(active()){queue=items.filter(x=>x.state==='paused');pump()}});
- document.getElementById('motion-toggle')?.addEventListener('click',()=>{if(document.body.classList.contains('motion-paused'))stop()});reduce.addEventListener('change',e=>{if(e.matches)stop()});
- update();if(!reduce.matches&&!document.body.classList.contains('motion-paused')&&!navigator.connection?.saveData)start();
+ const stage=document.querySelector('.cinema'),reduce=matchMedia('(prefers-reduced-motion: reduce)');if(!stage)return;
+ const items=[];let initialized=false,visible=true;
+ const allowed=()=>!reduce.matches&&!navigator.connection?.saveData;
+ const active=()=>allowed()&&visible&&!document.hidden&&!document.body.classList.contains('motion-paused');
+ function cancel(item){clearTimeout(item.loop);item.loop=null}
+ function restart(item){if(!active()||!item.ready)return;cancel(item);item.player.seekTo(item.film.start,true);item.player.playVideo()}
+ function schedule(item){cancel(item);if(!active())return;const time=Math.max(item.film.start,item.player.getCurrentTime()||item.film.start);item.loop=setTimeout(()=>restart(item),Math.max(250,(item.film.end-time)*1000))}
+ function sync(){items.forEach(item=>{cancel(item);if(!item.ready||item.failed)return;item.player.mute();if(active())item.player.playVideo();else item.player.pauseVideo()})}
+ async function initialize(){if(initialized||!allowed())return;initialized=true;try{await window.greatYouTubeReady()}catch{initialized=false;return}
+  // No queue or playback-dependent gate: a delayed source never blocks another tile.
+  slots.forEach(([selector,name],id)=>{const card=stage.querySelector(selector),film=films.find(f=>f.name===name);if(!card||!film)return;
+   const surface=document.createElement('div');surface.className='tile-video';surface.setAttribute('aria-hidden','true');const mount=document.createElement('div');mount.id='actor-preview-'+id;surface.append(mount);card.append(surface);
+   const resize=new ResizeObserver(entries=>surface.style.setProperty('--player-scale',String(entries[0].contentRect.width/200)));resize.observe(card);surface.style.setProperty('--player-scale',String(card.clientWidth/200));
+   const item={card,film,player:null,ready:false,failed:false,loop:null};items.push(item);card.dataset.film=film.film;card.dataset.previewStatus='loading';
+   item.player=window.greatFilmPlayer(mount.id,film,{width:200,height:300,events:{
+    onReady:e=>{item.ready=true;e.target.mute();if(active())e.target.playVideo();else e.target.pauseVideo()},
+    onStateChange:e=>{if(e.data===1){if(!active()){item.player.pauseVideo();return}item.failed=false;card.dataset.previewStatus='playing';card.classList.add('tile-playing');schedule(item)}else if(e.data===0){restart(item)}else if(e.data===2||e.data===3){cancel(item);card.dataset.previewStatus=e.data===3?'buffering':'paused'}},
+    onError:e=>{item.failed=true;cancel(item);card.dataset.previewStatus='unavailable';card.dataset.previewError=String(e.data);card.classList.remove('tile-playing')},
+    onAutoplayBlocked:()=>{card.dataset.previewStatus='autoplay-blocked';card.classList.remove('tile-playing')}
+   }});
+  });
+ }
+ new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync()},{threshold:.04}).observe(stage);
+ document.addEventListener('visibilitychange',sync);
+ document.getElementById('motion-toggle')?.addEventListener('click',()=>{if(!initialized&&!document.body.classList.contains('motion-paused'))initialize();else sync()});
+ reduce.addEventListener('change',()=>{if(allowed()&&!initialized)initialize();else sync()});
+ if(!document.body.classList.contains('motion-paused'))initialize();
 })();
