@@ -42,3 +42,18 @@ Additional official previews:
 - Samantha / Rangasthalam: Mythri Movie Makers, https://www.youtube.com/watch?v=cMXgI2fwFe8
 - Parvathy / Thangalaan: Junglee Music Tamil, https://www.youtube.com/watch?v=9KUOQvF25NI
 - Rajinikanth / Petta: Sun TV, https://www.youtube.com/watch?v=FCB0ZfQ9Rzs
+
+## Card-deck opening portraits (31 October 2026)
+
+The updated colour opening portraits use real editorial, fashion and film photography, optimised as local WebP assets. They replace the opening/fallback images only; the existing film rotations are preserved. No endorsement is implied. Original photographers, publications and film owners retain their rights.
+
+- Mohanlal: “Shoot with Mohanlal for Lakshya”, https://www.behance.net/gallery/180829239/Shoot-with-Mohanlal-for-Lakshya
+- Mammootty: Bazooka publicity still, https://timelinedaily.com/entertainment/bazooka-review-mammootty-s-experiment-with-gaming-and-deeno-dennis-is-fresh-and-promising
+- Shah Rukh Khan: https://m.economictimes.com/magazines/panache/shah-rukh-khan-was-once-told-he-is-not-handsome-not-fair-had-bad-nose-cant-act-but-one-reason-made-him-stay-and-he-became-the-king-of-bollywood/articleshow/123780641.cms
+- Vijay: https://www.abplive.com/photo-gallery/entertainment/bollywood-south-indian-stars-actors-outshine-only-one-name-shah-rukh-khan-from-bollywood-in-ormax-most-popular-actors-list-3015394
+- Allu Arjun: https://www.indiatoday.in/movies/regional-cinema/story/is-allu-arjun-planning-to-shift-base-to-mumbai-his-father-breaks-silence-2899876-2026-04-22
+- Rajinikanth: Kabali publicity still, https://www.zoomtventertainment.com/tamil-cinema/article/did-u-know-kabali-had-an-alternate-climax-7-lesser-known-facts-about-rajinikanth-starrer/757899
+- Deepika Padukone: https://www.vogue.in/beauty/content/deepika-padukones-makeup-artist-swears-by-these-lipsticks
+- Samantha Ruth Prabhu: https://www.gqindia.com/content/meet-one-of-the-richest-south-indian-actresses-who-charged-rs-1-crore-per-minute-for-this-national-film-award-winning-movie
+- Parvathy Thiruvothu: https://www.tupaki.com/photogallery/parvathy-fashion-moments-1382173/gallery-page-26
+- Nayanthara: Tanishq campaign photograph, https://www.behance.net/gallery/212863459/TANISHQ-Nayanthara
