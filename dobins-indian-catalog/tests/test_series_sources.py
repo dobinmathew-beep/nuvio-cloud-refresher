@@ -12,6 +12,8 @@ class SeriesTests(unittest.TestCase):
   def card(tid,name,date):return f'<div data-object-id="{tid}"><a href="/tv/{tid}"><h2>{name}</h2></a><span class="release_date">{date}</span></div>'
   html=card(1,'Pharma','19 December 2025')+card(2,'Patriot Legends Hangout','23 April 2026')+card(3,'Unreleased','1 January 2027')
   self.assertEqual(set(s.tmdb_rows(html,'2026-10-31')),{'1'})
+  legacy='<div class="card style_1"><div class="content"><h2><a href="/tv/243826-pharma">Pharma</a></h2><p>Dec 19, 2025</p></div></div>'
+  self.assertEqual(s.tmdb_rows(legacy,'2026-10-31')['243826']['date'],'2025-12-19')
  def test_tvmaze_uses_published_imdb_id_and_episode_identifiers(self):
   m=s.tvmaze_meta({'id':89299,'name':'Pharma','externals':{'imdb':'tt29540636'},'url':'https://tvmaze.com/shows/89299','premiered':'2025-12-19','image':{'original':'poster'}},[{'season':1,'number':1,'name':'Start','airdate':'2025-12-19'}])
   self.assertEqual(m['id'],'tt29540636');self.assertEqual(m['videos'][0]['id'],'tt29540636:1:1')

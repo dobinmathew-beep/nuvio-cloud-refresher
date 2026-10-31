@@ -22,12 +22,15 @@ def latest_release(m,today,fallback=None):
  return day(fallback,today),'premiere'
 def tmdb_rows(html,today):
  soup=BeautifulSoup(html,'html.parser');out={}
- for card in soup.select('[data-object-id]'):
-  a=card.select_one('a[href^="/tv/"] h2');date_node=card.select_one('.release_date');img=card.select_one('img.poster')
+ for card in soup.select('[data-object-id], div.card, div.item.poster, .media-card'):
+  a=card.select_one('a[href^="/tv/"] h2, h2 a[href^="/tv/"]');date_node=card.select_one('.release_date, .content p, time');img=card.select_one('img.poster, img')
   if not a or not date_node:continue
-  name=a.get_text(' ',strip=True);link=a.find_parent('a')['href'];mid=re.match(r'/tv/(\d+)',link)
-  try:d=datetime.strptime(date_node.get_text(' ',strip=True),'%d %B %Y').date().isoformat()
-  except ValueError:continue
+  name=a.get_text(' ',strip=True);link=(a if a.name=='a' else a.find_parent('a'))['href'];mid=re.match(r'/tv/(\d+)',link)
+  text=date_node.get('datetime') or date_node.get_text(' ',strip=True);d=None
+  for fmt in ['%d %B %Y','%b %d, %Y','%B %d, %Y','%Y-%m-%d']:
+   try:d=datetime.strptime(text,fmt).date().isoformat();break
+   except ValueError:continue
+  if not d:continue
   if not mid or d>today or PROMO.search(name):continue
   out[mid[1]]={'name':name,'date':d,'poster':img.get('src','').replace('media.themoviedb.org','image.tmdb.org') if img else None}
  return out
@@ -43,7 +46,7 @@ def collect(get,load,save,langs,today,now,norm):
   code=langs[lang];items={};states=[]
   # Read multiple pages; a short first page must not silently cap the catalog.
   seen=set();regional=[];regional_error=None
-  for page in range(int(os.environ.get('SERIES_REGIONAL_PAGES','5'))):
+  for page in range(int(os.environ.get('SERIES_REGIONAL_PAGES','15'))):
    url=f'{REGIONAL}/catalog/series/{code}_series'+(f'/skip={page*20}' if page else '')+'.json'
    try:rows=get(url).get('metas',[])
    except Exception as e:regional_error=str(e);break
@@ -61,7 +64,9 @@ def collect(get,load,save,langs,today,now,norm):
   for page in range(1,int(os.environ.get('SERIES_TMDB_PAGES','3'))+1):
    form=urlencode({'with_original_language':code,'sort_by':'first_air_date.desc','first_air_date.lte':today,'with_watch_monetization_types':'flatrate|free|ads','watch_region':'IN','page':page,'include_adult':'false','language':'en-US'})
    try:
-    html=subprocess.check_output(['curl','-fsSL','--retry','1','--connect-timeout','10','--max-time','40','--data',form,'https://www.themoviedb.org/discover/tv/items']).decode('utf-8','replace');rows=tmdb_rows(html,today);tmdb.update(rows)
+    html=subprocess.check_output(['curl','-fsSL','--retry','1','--connect-timeout','10','--max-time','40','--data',form,'https://www.themoviedb.org/discover/tv/items']).decode('utf-8','replace');rows=tmdb_rows(html,today)
+    if page==1 and not rows and not re.search(r'no (?:results|tv shows|items).*found|there are no',BeautifulSoup(html,'html.parser').get_text(' ',strip=True),re.I):raise ValueError('TMDB discovery markup was not recognised')
+    tmdb.update(rows)
     if not rows:break
    except Exception as e:error=str(e);break
   key='tmdb-'+lang
@@ -104,7 +109,7 @@ def collect(get,load,save,langs,today,now,norm):
  work=[]
  for key,item in candidates.items():
   old=titles.get(key,{});checked=old.get('checkedAt')
-  if checked and old.get('policy')==POLICY and (now-datetime.fromisoformat(checked)).total_seconds()<21600 and old.get('event'):continue
+  if checked and old.get('policy')==POLICY and (now-datetime.fromisoformat(checked)).total_seconds()<10800 and old.get('event'):continue
   work.append((key,item))
  # Guarantee a turn for every language, with newest discovery entries first.
  buckets={l:sorted([x for x in work if x[1]['language']==l],key=lambda x:x[1].get('releaseDate') or '',reverse=True) for l in langs}
@@ -151,7 +156,7 @@ def collect(get,load,save,langs,today,now,norm):
    e.update(name=m['name'],ottDate=released,year=None,poster=m['poster'],platforms=platforms,source=item['source'],sources=list(dict.fromkeys([item['source'],m['metadataSource']]+item.get('additionalSources',[]))),confirmed=True,releaseKind='digital',releaseDateBasis=basis,_verifiedMetadata=m)
    return key,{'checkedAt':now.isoformat(),'policy':POLICY,'event':e}
   except Exception as error:return key,{**titles.get(key,{}),'lastAttemptAt':now.isoformat(),'lastError':str(error)}
- max_checks=int(os.environ.get('MAX_SERIES_CHECKS','260'))
+ max_checks=int(os.environ.get('MAX_SERIES_CHECKS','400'))
  with ThreadPoolExecutor(max_workers=4) as pool:
   for i,(key,value) in enumerate(pool.map(inspect,work[:max_checks]),1):
    titles[key]=value

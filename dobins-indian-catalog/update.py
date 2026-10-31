@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 from rapidfuzz.fuzz import ratio
 import ast,json,re,subprocess,os,unicodedata,threading,base64,io,textwrap
 from PIL import Image,ImageDraw,ImageFont
-import alternate,physical,series_sources
+import alternate,physical,series_sources,episode_badges
 ROOT=Path(__file__).resolve().parent;DATA=ROOT/'data';DATA.mkdir(exist_ok=True)
 LANGS={'malayalam':'ml','tamil':'ta','telugu':'te','hindi':'hi'};ZONE=ZoneInfo('Asia/Muscat');NOW=datetime.now(ZONE);TODAY=NOW.date().isoformat()
 BASE=os.environ.get('ADDON_ORIGIN','https://dobins-indian-catalog.quickfield138.chatgpt.site');POLICY='confirmed-digital-imdb-v1'
@@ -210,12 +210,18 @@ def build():
   previous=m.get('artwork',{});m['artwork']={'posters':list(dict.fromkeys(x for x in ([f'https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/{mid}.jpg'] if mid.startswith('tt') else [])+[poster,m.get('poster')]+([f'https://images.metahub.space/poster/medium/{mid}/img'] if mid.startswith('tt') else []) if x)),'backgrounds':list(dict.fromkeys(x for x in [m.get('background')]+([f'https://images.metahub.space/background/medium/{mid}/img'] if mid.startswith('tt') else []) if x))}
   m['artwork']['logos']=list(dict.fromkeys(x for x in [m.get('logo')]+([f'https://images.metahub.space/logo/medium/{mid}/img'] if mid.startswith('tt') else []) if x and not x.startswith(BASE)))
   if not m.get('_logoFallback'):m['_logoFallback']=title_logo(m['name'])
+  episode_at,new_episodes=episode_badges.latest(m.get('videos',[]),NOW) if e['type']=='series' else (None,False)
+  if episode_at and episode_at[:10]>e['ottDate']:e['ottDate']=episode_at[:10]
   m['ott']={'date':e['ottDate'],'kind':e.get('releaseKind','digital'),'platforms':e['platforms'],'sources':e['sources']};m['availability']=e.get('availability',[])
-  catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':BASE+'/art/poster/'+aid,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"Home release ({e.get('releaseKind','digital')}): {e['ottDate']} · {', '.join(e['platforms'])}\n\n"+m.get('description',e.get('description','')),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'ottDate':next((a['date'] for a in e.get('availability',[]) if a['kind']=='digital'),None),'platforms':e['platforms'],'sources':e['sources'],'language':e['language'],'releaseDateBasis':e.get('releaseDateBasis','source release')})
+  catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':BASE+'/art/poster/'+aid,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"Home release ({e.get('releaseKind','digital')}): {e['ottDate']} · {', '.join(e['platforms'])}\n\n"+m.get('description',e.get('description','')),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'ottDate':next((a['date'] for a in e.get('availability',[]) if a['kind']=='digital'),None),'platforms':e['platforms'],'sources':e['sources'],'language':e['language'],'releaseDateBasis':e.get('releaseDateBasis','source release'),'latestEpisodeReleasedAt':episode_at,'hasNewEpisodes':new_episodes})
  for cid,ms in catalogs.items():
   if cid.endswith('_series'):
    known={m['id'] for m in ms};ms.extend(m for m in old_catalogs.get(cid,[]) if m['id'] not in known and (m.get('releaseDate') or m.get('ottDate') or '')<=TODAY)
-  ms.sort(key=lambda m:(m.get('releaseDate') or m.get('ottDate') or '',m['name']),reverse=True)
+  if cid.endswith('_series'):
+   for item in ms:
+    item['latestEpisodeReleasedAt'],item['hasNewEpisodes']=episode_badges.latest(metas.get(alternate.key('series',item['id']),{}).get('videos',[]),NOW)
+    if item['latestEpisodeReleasedAt'] and item['latestEpisodeReleasedAt'][:10]>(item.get('releaseDate') or ''):item['releaseDate']=item['latestEpisodeReleasedAt'][:10]
+  ms.sort(key=lambda m:(bool(m.get('hasNewEpisodes')),m.get('latestEpisodeReleasedAt') or m.get('releaseDate') or m.get('ottDate') or '',m['name']),reverse=True)
   if not ms and old_catalogs.get(cid):catalogs[cid]=old_catalogs[cid]
  if any(not catalogs[c] for c in catalogs):
   save('metadata.json',metas);save('unmatched.json',unmatched);raise RuntimeError('An empty catalog would be published; retaining last-good catalogs while metadata backfills')
