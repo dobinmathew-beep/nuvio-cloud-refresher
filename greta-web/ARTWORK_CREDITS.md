@@ -27,3 +27,18 @@ Background playback uses the original official YouTube embeds, muted. It does no
 - Shah Rukh Khan / Jawan: Red Chillies Entertainment, https://www.youtube.com/watch?v=COv52Qyctws
 - Deepika / Piku: Sony Pictures Films India, https://www.youtube.com/watch?v=oprUxgiaNjw
 - Rajinikanth / Jailer: Sun TV, https://www.youtube.com/watch?v=Y5BeWdODPqo
+
+## Clean collage and multi-film rotations
+
+All ten portrait tiles remain unobstructed. Mohanlal and Mammootty are the larger central pair. Visible actor/film captions and video controls are removed from the collage; accessible image labels remain. Video surfaces use centre-cropped overscan to fill the portrait shape. This is fixed framing, not face tracking. The source windows are official trailer excerpts, not independently verified actor-only edits; other cast, title cards or source text can still occur within the footage.
+
+Additional official previews:
+
+- Mohanlal / Drishyam 2: Prime Video India, https://www.youtube.com/watch?v=0f-nd1uGsjQ
+- Mammootty / Kannur Squad: Mammootty Kampany, https://www.youtube.com/watch?v=j7uWUMd_ItE
+- Shah Rukh Khan and Deepika / Pathaan: YRF, https://www.youtube.com/watch?v=vqu4z34wENw
+- Vijay / Leo: Sun TV, https://www.youtube.com/watch?v=Po3jStA673E
+- Allu Arjun / Pushpa 2: Mythri Movie Makers, https://www.youtube.com/watch?v=g3JUbgOHgdw
+- Samantha / Rangasthalam: Mythri Movie Makers, https://www.youtube.com/watch?v=cMXgI2fwFe8
+- Parvathy / Thangalaan: Junglee Music Tamil, https://www.youtube.com/watch?v=9KUOQvF25NI
+- Rajinikanth / Petta: Sun TV, https://www.youtube.com/watch?v=FCB0ZfQ9Rzs
