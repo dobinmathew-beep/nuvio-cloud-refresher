@@ -7,9 +7,9 @@
   },
   "malayalam|series|eyes": {
     "id": "tt48461761",
-    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "tamil|movie|immortal": {
     "id": "tt36931126",
@@ -112,9 +112,9 @@
   },
   "tamil|series|love": {
     "id": "tt38674953",
-    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "telugu|movie|donttroublethetrouble": {
     "id": "tt31841170",
@@ -204,9 +204,9 @@
   },
   "tamil|series|court": {
     "id": "tt44914967",
-    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "telugu|movie|thellakaagitham": {
     "id": "tt43407940",
@@ -262,9 +262,9 @@
   },
   "telugu|series|supersubbu": {
     "id": "tt31989291",
-    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "hindi|movie|awarapan2": {
     "id": "tt36300841",
@@ -286,9 +286,9 @@
   },
   "malayalam|series|cousinsandkalyanams": {
     "id": "tt42071698",
-    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "tamil|movie|ennavilai": {
     "id": "tt33095205",
@@ -350,9 +350,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "telugu|series|savethetigers": {
-    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+    "id": "tt27412343",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "hindi|movie|drishyamtheconclusion": {
     "id": "tt27050858",
@@ -428,9 +429,9 @@
   },
   "tamil|series|brothersandsisters": {
     "id": "tt41962673",
-    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "telugu|movie|mirai": {
     "id": "tt6900448",
@@ -607,9 +608,9 @@
   },
   "tamil|series|exam": {
     "id": "tt38856253",
-    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "telugu|movie|rambaoorvasimenaka": {
     "id": "tt43134711",
@@ -676,9 +677,9 @@
   },
   "hindi|series|bakaiti": {
     "id": "tt37594662",
-    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|unmadham": {
     "id": "tt38286171",
@@ -720,9 +721,9 @@
   },
   "hindi|series|hunkkaartheroar": {
     "id": "tt44934375",
-    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|ananthankaadu": {
     "id": "tt33083436",
@@ -732,9 +733,9 @@
   },
   "malayalam|series|comedycooks": {
     "id": "tt41757212",
-    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "tamil|movie|vishwanathandsons": {
     "id": "tt35836025",
@@ -765,9 +766,9 @@
   },
   "hindi|series|shaquetrustnoone": {
     "id": "tt35929525",
-    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|inobody": {
     "id": "tt26445387",
@@ -855,9 +856,9 @@
   },
   "hindi|series|familyfullhousewithrohitsharma": {
     "id": "tt46182660",
-    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|amoeba": {
     "checkedAt": "2026-10-31T11:37:29.909786+04:00",
@@ -876,7 +877,7 @@
     "method": "IMDb-matched metadata"
   },
   "tamil|series|wwetamildub": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
@@ -888,9 +889,9 @@
   },
   "telugu|series|pochamma": {
     "id": "tt40600219",
-    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "hindi|movie|michael": {
     "id": "tt11378946",
@@ -900,7 +901,7 @@
   },
   "hindi|series|neagley": {
     "id": "tt33539520",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
@@ -917,42 +918,42 @@
   },
   "malayalam|movie|kattalan": {
     "id": "tt35668756",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|series|secretstoriesroslin": {
     "id": "tt32105473",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "tamil|movie|idhayammurali": {
     "id": "tt35723557",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|nijamerujuvainadhi": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "telugu|series|maaintikatha": {
     "id": "tt41829681",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|babitasinghreporting": {
     "id": "tt40915016",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|uyir": {
     "id": "tt37079110",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
@@ -964,108 +965,108 @@
   },
   "tamil|movie|noorusaami": {
     "id": "tt38267486",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|series|kaakkeecircus": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "telugu|movie|lenin": {
     "id": "tt5256640",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|series|aagangrepu3": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|movie|bandar": {
     "id": "tmdb:1293550",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "https://www.themoviedb.org/movie/1293550"
   },
   "hindi|series|waitinghai": {
     "id": "tt40617568",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|balantheboy": {
     "id": "tt35254624",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|concity": {
     "id": "tt39182439",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|series|lovebeyondwicket": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "telugu|movie|objectionmylord": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "telugu|series|kathasudha": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|movie|lastsalutealovelettertomig21": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|series|chumbak": {
     "id": "tt39640519",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|chinnachinnaaasai": {
     "id": "tt35076988",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|egoraman": {
     "id": "tt43202886",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|series|heartbeat": {
     "id": "tt31862809",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "telugu|movie|anaganagaosukravaram": {
     "id": "tmdb:1734432",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "https://www.themoviedb.org/movie/1734432"
   },
   "telugu|series|madforeachother": {
     "id": "tt39221022",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|welcometothejungle": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
@@ -1077,63 +1078,64 @@
   },
   "malayalam|movie|pallichattambi": {
     "id": "tt10515398",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|parimalaandco": {
     "id": "tt39385419",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|series|malli": {
     "id": "tt33525859",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|maaintibangaaram": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "telugu|series|vikramonduty": {
     "id": "tt39216418",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|cleanupcompany": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|series|murshid": {
     "id": "tt33144230",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|chithini": {
     "id": "tt30835984",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|blast": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "id": "tmdb:1515729",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+    "method": "https://www.themoviedb.org/movie/1515729"
   },
   "tamil|series|kaattaan": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "telugu|movie|transfertrimurthulu": {
     "id": "tt42932774",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
@@ -1145,35 +1147,35 @@
   },
   "hindi|movie|greatgrandsuperheroalienskaaagman": {
     "id": "tt40769151",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|cadets": {
     "id": "tt33254124",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|balti": {
     "id": "tt34942608",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|breakfast": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "tamil|series|vanakkamthamizha": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "telugu|movie|peddi": {
     "id": "tt23865918",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
@@ -1184,166 +1186,166 @@
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|108basehospitaluri": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|series|familykiranastore": {
     "id": "tt39632118",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|mollywoodtimes": {
     "id": "tt29959401",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|kenathakanom": {
     "id": "tt31455863",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|series|dhoolpetpolicestation": {
     "id": "tt39028469",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|hangman": {
     "id": "tt3011960",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|cocktail2": {
     "id": "tt35064672",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|jungletaleswithmowgli": {
     "id": "tt49236601",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|karakkam": {
     "id": "tt37561290",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|karuppu": {
     "id": "tt33988385",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|series|localtimes": {
     "id": "tt40494646",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|ramanikalyanam": {
     "id": "tt42316559",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|bharatbhhagyaviddhaata": {
     "id": "tt33334267",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|tummsetummtak": {
     "id": "tt38195069",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|athiradi": {
     "id": "tt38721131",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|29": {
     "id": "tt37737315",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|series|resort": {
     "id": "tt40184918",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "telugu|movie|dangerdevil": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|movie|aakhrisawal": {
     "id": "tt41110859",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|traitors": {
     "id": "tt33347879",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|aashaan": {
     "id": "tt38772234",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|leader": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "tamil|series|thadayam": {
     "id": "tt39989131",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|vikalpa": {
     "id": "tt39371572",
-    "checkedAt": "2026-10-30T20:51:17.822649+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|sarvgunnsampann": {
     "id": "tt28091134",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|kaunbanegacrorepati": {
     "id": "tt0250875",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|gu": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "tamil|movie|kara": {
     "id": "tmdb:1433117",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "https://www.themoviedb.org/movie/1433117"
   },
@@ -1354,188 +1356,189 @@
   },
   "telugu|movie|singgeetham": {
     "id": "tt34547719",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|mainvaapasaaunga": {
     "id": "tmdb:1431068",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "https://www.themoviedb.org/movie/1431068"
   },
   "hindi|series|operationsafedsagar": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "malayalam|movie|drishyam3": {
     "id": "tt14113634",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|arthanari": {
     "id": "tt16359400",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|dhurandhartherevenge": {
     "id": "tt39139925",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|haijawanitohishqhonahai": {
     "id": "tt30447822",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|kamenridergavv": {
     "id": "tt32333001",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|dridam": {
     "id": "tt35518410",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|yezhukadalyezhumalai": {
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "telugu|movie|uglystory": {
     "id": "tt35992024",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|legendofkarna": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|series|specialopslioness": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "malayalam|movie|patriot": {
     "id": "tt33412884",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|kolaiseval": {
     "id": "tt29377719",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|moolyam": {
     "id": "tt43349994",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|deewana": {
     "id": "tt0126871",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|bhojpuribawaal": {
     "id": "tt42890305",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|spa": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "tamil|movie|mrx": {
     "id": "tt26258714",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|mechanicrocky": {
     "id": "tt27191250",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|musafircafe": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|series|playground": {
     "id": "tt21186282",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|aaahladaam": {
     "id": "tt37368207",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|kaalidas2": {
     "id": "tt32873023",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|carmeniselvam": {
     "id": "tt38111710",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|chandmeradil": {
     "id": "tt34498111",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|adarshbaalvidyalaya": {
     "id": "tt40856520",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|sukhamanosukhamann": {
     "id": "tt34210614",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|ohbutterfly": {
     "id": "tt39762179",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|nawabcafe": {
     "id": "tt37996604",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|teesribegum": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "id": "tmdb:1703919",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+    "method": "https://www.themoviedb.org/movie/1703919"
   },
   "hindi|series|pritamandpedro": {
     "id": "tt28077038",
@@ -1545,284 +1548,286 @@
   },
   "malayalam|movie|faces": {
     "id": "tt34172063",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|satanthedark": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "telugu|movie|alcohol": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "id": "tmdb:514862",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+    "method": "https://www.themoviedb.org/movie/514862"
   },
   "hindi|movie|testsubjectv": {
     "id": "tt38555431",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|lockupp": {
     "id": "tt17736900",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|kakkippada2": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "tamil|movie|loveinsurancekompany": {
     "id": "tmdb:1209511",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "https://www.themoviedb.org/movie/1209511"
   },
   "telugu|movie|jetlee": {
     "id": "tt38907386",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|simulacra": {
     "id": "tt18342860",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|perfectfamily": {
     "id": "tt31702041",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|madhuvidhu": {
     "id": "tt38781091",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|varumaiyilthaal": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "telugu|movie|uthuthaherolu": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|movie|manipurfiles": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|series|gramchikitsalay": {
     "id": "tt34773311",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|shesha2016": {
     "id": "tt30521753",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|manithandeivamagalam": {
     "id": "tt37511189",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|uttuttaherolu": {
     "id": "tt40108671",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|patipatniaurwohdo": {
     "id": "tt33054858",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|thukrakemerapyaar": {
     "id": "tt34498121",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|bhishmar": {
     "id": "tt37970069",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|tn2026": {
     "id": "tt38489752",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|sathileelavathi": {
     "id": "tt35027300",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|ikka": {
     "id": "tt39632269",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|raakh": {
     "id": "tt35870921",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|derby": {
     "id": "tt40430802",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|mustafamustafa": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "telugu|movie|yellamma": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|movie|daadikishaadi": {
     "id": "tt37161355",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|gullak": {
     "id": "tt10530900",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|oruduroohasaahacharyathil": {
     "id": "tt34442799",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|neeforever": {
     "id": "tt40720168",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|vaninarani": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|movie|tavvai": {
     "id": "tt27880465",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|brown": {
     "id": "tt26766517",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|bharathanatyam2mohiniyattam": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "id": "tmdb:1576369",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+    "method": "https://www.themoviedb.org/movie/1576369"
   },
   "tamil|movie|happyraj": {
     "id": "tt39122419",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|therachaapa": {
     "id": "tt36822352",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|rajashivaji": {
     "id": "tt31390893",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|pyramidscheme": {
     "id": "tt38589437",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|vaazhaiibiopicofabillionbros": {
     "id": "tt33245761",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|kaatheforest": {
     "id": "tt8665778",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|thimmarajupallitv": {
     "id": "tt38162660",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|aliyabasugayabhai": {
     "id": "tt10545214",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|madeinindiaatitanstory": {
     "id": "tt35674465",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|laika": {
     "id": "tt26757150",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|youth": {
     "id": "tt38693888",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|superhit": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|movie|bhoothbangla": {
     "id": "tt29540862",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
@@ -1833,52 +1838,53 @@
     "method": "IMDb-matched metadata"
   },
   "malayalam|movie|femaledog": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "id": "tmdb:702104",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+    "method": "https://www.themoviedb.org/movie/702104"
   },
   "tamil|movie|thaaikizhavi": {
     "id": "tt39255646",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|dacoitalovestory": {
     "id": "tt30413898",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|maabehen": {
     "id": "tt33538438",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|desibling": {
     "id": "tt39643967",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|aadu3onelastridepart1": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "tamil|movie|phoenix": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "telugu|movie|papamprathap": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|movie|lordcurzonkihaveli": {
     "id": "tt19223248",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
@@ -1889,25 +1895,25 @@
   },
   "malayalam|movie|ambalamukkilevisheshangal": {
     "id": "tt14289230",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|naangal": {
     "id": "tt0318476",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|aaradhana": {
     "id": "tt37763027",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|jollyllb3": {
     "id": "tt27996020",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
@@ -1919,36 +1925,36 @@
   },
   "malayalam|movie|kidilamparu": {
     "id": "tt44631165",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|vadam": {
     "id": "tt39299630",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "telugu|movie|raakaasa": {
     "id": "tt36451817",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|movie|system": {
     "id": "tt36201830",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "IMDb-matched metadata"
   },
   "hindi|series|vimalkhanna": {
     "id": "tt40617563",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|iruniram": {
-    "checkedAt": "2026-10-30T17:49:50.858758+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
@@ -1998,9 +2004,9 @@
   },
   "hindi|series|matkaking": {
     "id": "tt16997004",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|ashakalaayiram": {
     "id": "tt37537155",
@@ -2028,9 +2034,9 @@
   },
   "hindi|series|glory": {
     "id": "tt35668375",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|sambhavamadhyayamonnu": {
     "id": "tt36628923",
@@ -2310,9 +2316,9 @@
   },
   "hindi|series|chiraiya": {
     "id": "tt40828245",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|prakambanam": {
     "id": "tt36457300",
@@ -2380,9 +2386,9 @@
   },
   "hindi|series|sankalp": {
     "id": "tt28091048",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|khajurahodreams": {
     "id": "tt11322908",
@@ -2427,9 +2433,9 @@
   },
   "hindi|series|hellobachhon": {
     "id": "tt39657434",
-    "checkedAt": "2026-10-30T20:58:10.764178+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "malayalam|movie|babygirl": {
     "id": "tt35288598",
@@ -2484,8 +2490,9 @@
   },
   "hindi|series|sangamarmar": {
     "id": "tt39992549",
-    "checkedAt": "2026-10-30T17:38:35.445823+04:00",
-    "method": "matching-language IMDb index or exact IMDb suggestion"
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "telugu|movie|amaravathikiaahvanam": {
     "id": "tt39954649",
@@ -2501,9 +2508,9 @@
   },
   "hindi|series|psychosaiyaan": {
     "id": "tt39971916",
-    "checkedAt": "2026-10-30T21:10:22.253152+04:00",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "https://v3-cinemeta.strem.io/"
   },
   "telugu|movie|vishnuvinyasam": {
     "id": "tt39195804",
@@ -2645,5 +2652,1217 @@
     "checkedAt": "2026-10-30T18:24:17.566483+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "https://www.themoviedb.org/movie/85985"
+  },
+  "malayalam|series|princeofmollywood": {
+    "id": "tt44686897",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|parttimers": {
+    "id": "tt44841089",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|leasteligiblebachelor": {
+    "id": "tt48242205",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|pearlemaaneyshow": {
+    "id": "tt8286730",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|biggbossmalayalamagnipareeksha": {
+    "id": "tt44568661",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|aakalirajyam": {
+    "id": "tt44145365",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|objectionmylord": {
+    "id": "tt43715856",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|vadhandhi": {
+    "id": "tt21908550",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|lbwlovebeyondwicket": {
+    "id": "tt39182415",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|brothersinlaw": {
+    "id": "tt14635500",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|bahubalithetorchbearer": {
+    "id": "tt43620256",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|shekhartonite": {
+    "id": "tt42733581",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|warrant": {
+    "id": "tt42446103",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|kasargodembassy": {
+    "id": "tt40431801",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|revolutionaries": {
+    "id": "tt31924802",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|pharma": {
+    "id": "tt29540636",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|inspectionbungalow": {
+    "id": "tt38792244",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|kammattam": {
+    "id": "tt37534689",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|chroniclesofthe45gang": {
+    "id": "tt30218223",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|muthualiaskaattaan": {
+    "id": "tt39151086",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|mazhathorummunpe": {
+    "id": "tt38534276",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|doprasadraokanabadutaledu": {
+    "id": "tt38628863",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|keralacrimefiles": {
+    "id": "tt27128638",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|seherhonekohai": {
+    "id": "tt39090300",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://www.tvmaze.com/shows/90385/seher-hone-ko-hai"
+  },
+  "malayalam|series|somethingfishy": {
+    "id": "tt36724616",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|constablekanakam": {
+    "id": "tt37443874",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|confessionofpauljobson": {
+    "id": "tt37844587",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|policepolice": {
+    "id": "tt37803840",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|arabiakadali": {
+    "id": "tt31925699",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|loveunderconstruction": {
+    "id": "tt28755900",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|mayasabha": {
+    "id": "tt36600023",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|operationsafedsagartheuntoldstoryofthekargilwar": {
+    "id": "tt36643714",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|1000babies": {
+    "id": "tt33131120",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|air": {
+    "id": "tt37356230",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|jaimahendran": {
+    "id": "tt27540960",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|naducenter": {
+    "id": "tt27494250",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|devikaanddanny": {
+    "id": "tt36912840",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|alliance": {
+    "id": "tt40914930",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|manorathangal": {
+    "id": "tt15478036",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|heartileybattery": {
+    "id": "tt39100726",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|kobali": {
+    "id": "tt35465105",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|nagendranshoneymoons": {
+    "id": "tt27950365",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|topcookudupecooku": {
+    "id": "tt32241474",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|ranadaggubatishow": {
+    "id": "tt31924772",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|poacher": {
+    "id": "tt24364990",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|kuttrampurindhavan": {
+    "id": "tt38568136",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|vikkatakavi": {
+    "id": "tt32047599",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|perilloorpremierleague": {
+    "id": "tt27349179",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|gameyouneverplayalone": {
+    "id": "tt38126232",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|mysteryofmokshaisland": {
+    "id": "tt33091601",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|naagini": {
+    "id": "tt14140444",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|office": {
+    "id": "tt35657767",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|benchlife": {
+    "id": "tt30821976",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|musafircafe": {
+    "id": "tt39665097",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|masterpeace": {
+    "id": "tt28675376",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|seruppugaljaakirathai": {
+    "id": "tt36167761",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|brinda": {
+    "id": "tt15722548",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|thenks": {
+    "id": "tt27843612",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|omkalijaikali": {
+    "id": "tt35952274",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|bahishkarana": {
+    "id": "tt28756614",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|pritampedro": {
+    "id": "tt28077038",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|patharamattu": {
+    "id": "tt27736464",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|suzhalthevortex": {
+    "id": "tt20873118",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|paruvu": {
+    "id": "tt32539169",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|samarthyashastram": {
+    "id": "tt23727900",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|company": {
+    "id": "tt33509351",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|bujjiandbhairava": {
+    "id": "tt32501022",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|bharatiapartments": {
+    "id": "tt26997633",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|veramaarioffice": {
+    "id": "tt27908713",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|missperfect": {
+    "id": "tt30852844",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|kalakkachi": {
+    "id": "tt16763980",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|parachute": {
+    "id": "tt34265516",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|90samiddleclassbiopic": {
+    "id": "tt29764006",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|scoot": {
+    "id": "tt11822206",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|aindhamvedham": {
+    "id": "tt33983792",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|karimnagarsmostwanted": {
+    "id": "tt30490534",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|dj": {
+    "id": "tt13599710",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|thalaivettiyaanpaalayam": {
+    "id": "tt31914166",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|vyooham": {
+    "id": "tt30401803",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|doosra": {
+    "id": "tt28356171",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|myperfectthusband": {
+    "id": "tt13331708",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|vadhuvu": {
+    "id": "tt29961423",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|chutneysambar": {
+    "id": "tt28434030",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|dhootha": {
+    "id": "tt19868374",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|thalaimaiseyalagam": {
+    "id": "tt32270661",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|mansion24": {
+    "id": "tt27577967",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|inspectorrishi": {
+    "id": "tt31701070",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|kumarisrimathi": {
+    "id": "tt29225030",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|amudhavumannalakshmiyum": {
+    "id": "tt21231814",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|athidhi": {
+    "id": "tt28802669",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|label": {
+    "id": "tt25965602",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|dayaa": {
+    "id": "tt28314319",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|koosemunisamyveerappan": {
+    "id": "tt30150229",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|hosteldays": {
+    "id": "tt28306899",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|village": {
+    "id": "tt21882650",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|deadpixelsin": {
+    "id": "tt26915205",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|siragadikkaaasai": {
+    "id": "tt29548810",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|newsense": {
+    "id": "tt26494170",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|my3": {
+    "id": "tt28744259",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|badtrip": {
+    "id": "tt14783936",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|mathagam": {
+    "id": "tt27671508",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|angertales": {
+    "id": "tt25836892",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|sweetkaaramcoffee": {
+    "id": "tt21908802",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|pulimeka": {
+    "id": "tt26699205",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|modernlovechennai": {
+    "id": "tt21883062",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|nuvvuevaru": {
+    "id": "tt26337419",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|orukodaimurdermystery": {
+    "id": "tt27510191",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|jhansi": {
+    "id": "tt21935310",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|sengalam": {
+    "id": "tt27139477",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|meetcute": {
+    "id": "tt15211130",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|wheeloffortuneindia": {
+    "id": "tt39393261",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|accidentalfarmerandco": {
+    "id": "tt26923717",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|ahanaapellanta": {
+    "id": "tt23321516",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|enggahostel": {
+    "id": "tt26351394",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|agentanandsantosh": {
+    "id": "tt21265148",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|ayali": {
+    "id": "tt25966494",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|helloworld": {
+    "id": "tt21617580",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|storyofthings": {
+    "id": "tt25151592",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|maaneellatank": {
+    "id": "tt21267508",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|naam": {
+    "id": "tt14075320",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|parampara": {
+    "id": "tt15128106",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|fall": {
+    "id": "tt23642102",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|modernlovehyderabad": {
+    "id": "tt18341722",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|pettaikaali": {
+    "id": "tt22771498",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|anyastutorial": {
+    "id": "tt21048590",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|tamilrockerz": {
+    "id": "tt21211254",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|recce": {
+    "id": "tt20784064",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|emoji": {
+    "id": "tt21340072",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|9hours": {
+    "id": "tt20836266",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|victim": {
+    "id": "tt21320334",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|dhahanam": {
+    "id": "tt19336492",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|memeboys": {
+    "id": "tt21223050",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|gaalivaana": {
+    "id": "tt19372336",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|dildhokhaaurdesire": {
+    "id": "tt39779938",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|kuthukkupathu": {
+    "id": "tt15561184",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|okachinnafamilystory": {
+    "id": "tt15819134",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|anantham": {
+    "id": "tt19733404",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|kudiyedamaithe": {
+    "id": "tt14932842",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|irai": {
+    "id": "tt16227378",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|inthenameofgod": {
+    "id": "tt14690100",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|vilangu": {
+    "id": "tt15716624",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|11thhour": {
+    "id": "tt13429172",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|akashvaani": {
+    "id": "tt15163764",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|amruthamdhvitheeyam": {
+    "id": "tt12351276",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|puthampudhukaalaividiyaadhaa": {
+    "id": "tt15509558",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|pittakathalu": {
+    "id": "tt13878800",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|survivor": {
+    "id": "tt15195094",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|samjam": {
+    "id": "tt13411726",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|ekaki": {
+    "id": "tt36812904",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|lolengasiripaappom": {
+    "id": "tt15198122",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|shootoutatalair": {
+    "id": "tt12929228",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|bandwaale": {
+    "id": "tt28106758",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|thendralvanthuennaithodum": {
+    "id": "tt17493716",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|softwaredevloveper": {
+    "id": "tt13249204",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|amarvishwas": {
+    "id": "tt39601175",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|navarasa": {
+    "id": "tt13357946",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|addham": {
+    "id": "tt13241324",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|roommatecontract": {
+    "id": "tt39282141",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|novemberstory": {
+    "id": "tt12299774",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "telugu|series|locked": {
+    "id": "tt12127974",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|daldal": {
+    "id": "tt31844233",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|kallurisaalai": {
+    "id": "tt13387706",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|spacegenchandrayaan": {
+    "id": "tt39313294",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|livetelecast": {
+    "id": "tt12299732",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|taskareethesmugglersweb": {
+    "id": "tt35335046",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|paavakadhaigal": {
+    "id": "tt13206988",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|honeymoonsehatya": {
+    "id": "tt39227709",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|triples": {
+    "id": "tt12299956",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|ceo": {
+    "id": "tt39333253",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|mugilan": {
+    "id": "tt13300674",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|mrsdeshpande": {
+    "id": "tt38990492",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "tamil|series|timeennaboss": {
+    "id": "tt13090856",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|bhaythegauravtiwaristory": {
+    "id": "tt35674970",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|singlepapa": {
+    "id": "tt37062070",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|naatumjaanonaahum": {
+    "id": "tt39014717",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|vinnykikitaab": {
+    "id": "tt39161477",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|realkashmirfootballclub": {
+    "id": "tt38236377",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|aukaatkebahar": {
+    "id": "tt39028852",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|twomuchwithkajolandtwinkle": {
+    "id": "tt37660537",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|coed": {
+    "id": "tt38947670",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|firstcopy": {
+    "id": "tt32104971",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|kurukshetrathegreatwarofmahabharata": {
+    "id": "tt38235589",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|searchthenainamurdercase": {
+    "id": "tt38509140",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|13thsomelessonsarenttaughtinclassrooms": {
+    "id": "tt33028833",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|janaawarthebeastwithin": {
+    "id": "tt38390994",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|badsofbollywood": {
+    "id": "tt34683290",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|doyouwannapartner": {
+    "id": "tt31925787",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|andhera": {
+    "id": "tt31918578",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|senaguardiansofthenation": {
+    "id": "tt37813837",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|saarejahanseacchathesilentguardians": {
+    "id": "tt35665851",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|salakaar": {
+    "id": "tt35077054",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|rangeen": {
+    "id": "tt31898339",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|mandalamurders": {
+    "id": "tt26626214",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|mittieknayipehchaan": {
+    "id": "tt35671329",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|rbiunlockedbeyondtherupee": {
+    "id": "tt37195865",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|hunttherajivgandhiassassinationcase": {
+    "id": "tt37365626",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|mistry": {
+    "id": "tt37048622",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|judwaajaal": {
+    "id": "tt37283288",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|gamerlog": {
+    "id": "tt37184276",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|lafangeysapnedostiduniya": {
+    "id": "tt32614074",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|chhalkapatthedeception": {
+    "id": "tt37048418",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
+  },
+  "hindi|series|kankhajura": {
+    "id": "tt30820007",
+    "checkedAt": "2026-10-31T12:04:00.382885+04:00",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "https://v3-cinemeta.strem.io/"
   }
 }

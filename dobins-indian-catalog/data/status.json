@@ -3,7 +3,8 @@
   "policy": "confirmed-digital-imdb-v1",
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
-  "updatedAt": "2026-10-31T11:37:29.909786+04:00",
+  "seriesPolicy": "multi-source-series-v1",
+  "updatedAt": "2026-10-31T12:04:00.382885+04:00",
   "lastSuccessCycle": "2026-10-31T06:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "06:00 and 18:00 daily; also 01:00 Thursday, Friday, Saturday",
@@ -19,6 +20,80 @@
       "url": "https://cinebuds.com/ott-release-dates/",
       "state": "live",
       "records": 31
+    },
+    {
+      "source": "IndianRegional series discovery",
+      "language": "malayalam",
+      "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
+      "state": "live",
+      "records": 41
+    },
+    {
+      "source": "TMDB streaming-series discovery",
+      "language": "malayalam",
+      "url": "https://www.themoviedb.org/discover/tv",
+      "state": "live",
+      "records": 0
+    },
+    {
+      "source": "IndianRegional series discovery",
+      "language": "tamil",
+      "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
+      "state": "live",
+      "records": 73
+    },
+    {
+      "source": "TMDB streaming-series discovery",
+      "language": "tamil",
+      "url": "https://www.themoviedb.org/discover/tv",
+      "state": "live",
+      "records": 0
+    },
+    {
+      "source": "IndianRegional series discovery",
+      "language": "telugu",
+      "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
+      "state": "live",
+      "records": 71
+    },
+    {
+      "source": "TMDB streaming-series discovery",
+      "language": "telugu",
+      "url": "https://www.themoviedb.org/discover/tv",
+      "state": "live",
+      "records": 0
+    },
+    {
+      "source": "IndianRegional series discovery",
+      "language": "hindi",
+      "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
+      "state": "live",
+      "records": 100
+    },
+    {
+      "source": "TMDB streaming-series discovery",
+      "language": "hindi",
+      "url": "https://www.themoviedb.org/discover/tv",
+      "state": "live",
+      "records": 0
+    },
+    {
+      "source": "TVmaze streaming episode schedule",
+      "url": "https://api.tvmaze.com/schedule/web",
+      "state": "live",
+      "records": 3
+    },
+    {
+      "source": "Verified multi-source series backfill",
+      "policy": "multi-source-series-v1",
+      "records": 236,
+      "counts": {
+        "malayalam": 34,
+        "tamil": 68,
+        "telugu": 64,
+        "hindi": 70
+      },
+      "state": "live"
     },
     {
       "source": "TMDB physical releases",
@@ -46,17 +121,17 @@
     }
   ],
   "counts": {
-    "dobins_ml_movie": 60,
-    "dobins_ml_series": 11,
-    "dobins_ta_movie": 50,
-    "dobins_ta_series": 13,
-    "dobins_te_movie": 61,
-    "dobins_te_series": 15,
-    "dobins_hi_movie": 61,
-    "dobins_hi_series": 59
+    "dobins_ml_movie": 62,
+    "dobins_ml_series": 41,
+    "dobins_ta_movie": 51,
+    "dobins_ta_series": 75,
+    "dobins_te_movie": 62,
+    "dobins_te_series": 76,
+    "dobins_hi_movie": 62,
+    "dobins_hi_series": 107
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
-  "pendingMatches": 115,
-  "checkedCandidates": 453,
+  "pendingMatches": 109,
+  "checkedCandidates": 655,
   "errors": []
 }
