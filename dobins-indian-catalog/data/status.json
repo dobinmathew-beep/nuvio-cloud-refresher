@@ -3,8 +3,8 @@
   "policy": "confirmed-digital-imdb-v1",
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
-  "updatedAt": "2026-10-31T02:42:12.816281+04:00",
-  "lastSuccessCycle": "2026-10-31T01:00:00+04:00",
+  "updatedAt": "2026-10-31T11:37:29.909786+04:00",
+  "lastSuccessCycle": "2026-10-31T06:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "06:00 and 18:00 daily; also 01:00 Thursday, Friday, Saturday",
   "sources": [
@@ -12,7 +12,7 @@
       "source": "DailyOTT",
       "url": "https://www.dailyott.in/",
       "state": "live",
-      "records": 913
+      "records": 914
     },
     {
       "source": "Cinebuds",

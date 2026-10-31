@@ -285,6 +285,13 @@
   ],
   "tamil-movie": [
     {
+      "id": "tmdb:1806311||THEDAL||2026||movie||https://image.tmdb.org/t/p/original/A6mNRWxyZLnvXJcntLn0aDRZmvb.jpg||Battle%20of%20doubts%20and%20journey%20towards%20to%20the%20answer%20of%20a%20failed%20young%20filmmaker..",
+      "name": "THEDAL",
+      "poster": "https://image.tmdb.org/t/p/original/A6mNRWxyZLnvXJcntLn0aDRZmvb.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tmdb:1802710||Obstacle||2026||movie||https://image.tmdb.org/t/p/original/6ZBKPRACiT1SfvNfmca87A91HSO.jpg||A%20young%20miserable%20man%20trapped%20in%20an%20unsettling%20life.",
       "name": "Obstacle",
       "poster": "https://image.tmdb.org/t/p/original/6ZBKPRACiT1SfvNfmca87A91HSO.jpg",
@@ -330,6 +337,13 @@
       "id": "tt28541577",
       "name": "Sardar 2",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28541577.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
+      "id": "tt36931126",
+      "name": "Immortal",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36931126.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     },
@@ -407,20 +421,6 @@
       "id": "tt39300072",
       "name": "Anbe Diana",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39300072.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt42203456",
-      "name": "Love Oh Love",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt42203456.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt35723557",
-      "name": "Idhayam Murali",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35723557.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     }
@@ -504,13 +504,6 @@
       "type": "movie"
     },
     {
-      "id": "tt19363246",
-      "name": "Abhirami",
-      "poster": "https://live.metahub.space/poster/small/tt19363246/img",
-      "releaseInfo": 2026,
-      "type": "movie"
-    },
-    {
       "id": "tt39667834",
       "name": "Lust Stories 3",
       "poster": "https://images.metahub.space/poster/small/tt39667834/img",
@@ -546,17 +539,24 @@
       "type": "movie"
     },
     {
-      "id": "tt36670542",
-      "name": "LURK",
-      "poster": "https://live.metahub.space/poster/small/tt36670542/img",
-      "releaseInfo": 2026,
-      "type": "movie"
-    },
-    {
       "id": "tt26445387",
       "name": "i, Nobody",
       "poster": "https://images.metahub.space/poster/small/tt26445387/img",
       "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
+      "id": "tt44125424",
+      "name": "Eerie (Short)",
+      "poster": "https://live.metahub.space/poster/small/tt44125424/img",
+      "releaseInfo": 2026,
+      "type": "movie"
+    },
+    {
+      "id": "tt35668756",
+      "name": "Kattalan",
+      "poster": "https://live.metahub.space/poster/small/tt35668756/img",
+      "releaseInfo": 2026,
       "type": "movie"
     }
   ],
@@ -688,16 +688,16 @@
       "type": "movie"
     },
     {
-      "id": "tt33538438",
-      "name": "Maa Behen",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33538438.jpg",
+      "id": "tt36201830",
+      "name": "System",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36201830.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     },
     {
-      "id": "tt36201830",
-      "name": "System",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36201830.jpg",
+      "id": "tt34498111",
+      "name": "Chand Mera Dil",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt34498111.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     }
@@ -855,6 +855,13 @@
       "description": "🇮🇳 Get Updates on New Movies, Series & Features in the Addon! Supported Languages: Telugu • Hindi • Tamil • Bengali • Malayalam • Kannada • Marathi • Gujarati • Punjabi. Your small tip will help for server maintenance. Whats New : OTT Releases - This Week Catalog & Latest Hindi Dubbed Movies Catalog Available Now!"
     },
     {
+      "id": "tt32089596",
+      "name": "Comrade Kalyan",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32089596.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tt31841170",
       "name": "Don't Trouble the Trouble",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31841170.jpg",
@@ -984,13 +991,6 @@
       "id": "tt32065777",
       "name": "Nagabandham: The Secret Treasure",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32065777.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt40572470",
-      "name": "Deewana",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt40572470.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     }

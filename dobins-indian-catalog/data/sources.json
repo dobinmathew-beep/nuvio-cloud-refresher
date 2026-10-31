@@ -1,7 +1,26 @@
 {
   "dailyott": {
-    "checkedAt": "2026-10-31T02:42:12.816281+04:00",
+    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
     "records": [
+      {
+        "_id": "6ae5500b899e46892055aebe",
+        "platform": "Prime Video",
+        "title": "Sarala Subbarao",
+        "createdAt": "2026-10-31T02:18:51.032Z",
+        "genre": "Romantic Drama",
+        "imdbRating": null,
+        "languages": [
+          "Kannada"
+        ],
+        "original_language": "Kannada",
+        "releaseDate": "2026-10-31",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-10-31T02:19:41.747Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/qeJydXBGQa9lPRnQ0TGR7y4qXIP.jpg",
+        "instagramPostedAt": "2026-10-31T02:20:12Z",
+        "verified": true
+      },
       {
         "_id": "6ae3fe8e5fb4ef1f6fe01e76",
         "platform": "Netflix",
@@ -95,6 +114,9 @@
         },
         "tmdbId": 1339713,
         "votes": 1,
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-10-31T02:19:17.784Z",
+        "trendingRankedDateIST": "2026-10-31",
         "verified": true
       },
       {
@@ -129,8 +151,10 @@
         "releaseDate": "2026-10-30",
         "source_verified": true,
         "type": "Series",
-        "updatedAt": "2026-10-30T02:19:42.192Z",
+        "updatedAt": "2026-10-31T02:19:38.782Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/nyvXVcPnHEwVmqCdzjjCsu1jqhm.jpg",
+        "tmdbRating": 62,
+        "tmdbVotes": 13,
         "verified": true
       },
       {
@@ -220,6 +244,9 @@
           "fetchedAt": "2026-10-30T07:39:14.867Z"
         },
         "tmdbId": 1290035,
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-10-31T02:19:17.784Z",
+        "trendingRankedDateIST": "2026-10-31",
         "verified": true
       },
       {
@@ -241,6 +268,9 @@
         "tmdbRating": 83,
         "tmdbVotes": 45,
         "instagramPostedAt": "2026-10-30T02:20:28Z",
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-10-31T02:19:17.784Z",
+        "trendingRankedDateIST": "2026-10-31",
         "verified": true
       },
       {
@@ -314,6 +344,9 @@
           "fetchedAt": "2026-10-30T03:37:14.797Z"
         },
         "tmdbId": 1395215,
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-10-31T02:19:17.784Z",
+        "trendingRankedDateIST": "2026-10-31",
         "verified": true
       },
       {
@@ -374,6 +407,9 @@
           "fetchedAt": "2026-10-30T03:19:34.729Z"
         },
         "tmdbId": 1618200,
+        "trendingRank": 8,
+        "trendingRankedAt": "2026-10-31T02:19:17.784Z",
+        "trendingRankedDateIST": "2026-10-31",
         "verified": true
       },
       {
@@ -393,6 +429,9 @@
         "updatedAt": "2026-10-30T02:19:46.114Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/mIK5YnqQWKZxyQgaeDDVywUxNWo.jpg",
         "instagramPostedAt": "2026-10-30T02:20:52Z",
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-10-31T02:19:17.784Z",
+        "trendingRankedDateIST": "2026-10-31",
         "verified": true
       },
       {
@@ -466,9 +505,9 @@
           "fetchedAt": "2026-10-29T06:19:56.388Z"
         },
         "tmdbId": 1515692,
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-10-30T02:19:25.001Z",
-        "trendingRankedDateIST": "2026-10-30",
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-10-31T02:19:17.784Z",
+        "trendingRankedDateIST": "2026-10-31",
         "verified": true
       },
       {
@@ -528,9 +567,9 @@
           "fetchedAt": "2026-10-29T16:04:29.072Z"
         },
         "tmdbId": 1456196,
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-10-30T02:19:25.001Z",
-        "trendingRankedDateIST": "2026-10-30",
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-10-31T02:19:17.784Z",
+        "trendingRankedDateIST": "2026-10-31",
         "verified": true
       },
       {
@@ -704,9 +743,9 @@
         "tmdbId": 1628116,
         "type": "Movie",
         "updatedAt": "2026-10-25T02:18:58.392Z",
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-10-30T02:19:25.001Z",
-        "trendingRankedDateIST": "2026-10-30",
+        "trendingRank": 9,
+        "trendingRankedAt": "2026-10-31T02:19:17.784Z",
+        "trendingRankedDateIST": "2026-10-31",
         "verified": true
       },
       {
@@ -28129,7 +28168,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-10-31T02:42:12.816281+04:00",
+    "checkedAt": "2026-10-31T11:37:29.909786+04:00",
     "records": [
       {
         "name": "Akka",
