@@ -29,3 +29,4 @@
 @view-transition{navigation:auto}::view-transition-old(root){animation:page-out 180ms ease both}::view-transition-new(root){animation:page-in 330ms var(--liquid-ease) both}@keyframes page-out{to{opacity:0;transform:translateY(-3px)}}@keyframes page-in{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.liquid-lens{transition:none;will-change:auto}.catalog-pending{opacity:1}::view-transition-old(root),::view-transition-new(root){animation:none!important}}
 .movie{min-width:0}.movie img{max-width:100%}.liquid-menu>button,.liquid-menu>a{-webkit-backdrop-filter:none;backdrop-filter:none}.liquid-menu>.liquid-target{background:transparent!important}
+.movie img{height:auto;aspect-ratio:2/3}
