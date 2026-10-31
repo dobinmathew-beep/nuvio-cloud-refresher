@@ -1,3 +1,4 @@
+import badgeText from './badge-text.mjs';
 import {data} from './core.mjs';import worker from './core.mjs';import {hasNewEpisodes,episodeTime} from './episodes.mjs';import {ratedPoster} from '../public/poster-config.js';
 const cache=new Map(),jobs=new Map();
 const imageHosts=new Set(['btttr.cc','image.tmdb.org','images.metahub.space','live.metahub.space','api.ratingposterdb.com','static.tvmaze.com','m.media-amazon.com']);
@@ -14,7 +15,8 @@ export async function renderBadge(bytes){
  const {default:sharp}=await import('sharp');
  const resized=await sharp(bytes,{limitInputPixels:30000000}).rotate().resize({width:600,withoutEnlargement:true}).toBuffer({resolveWithObject:true});
  const width=resized.info.width,height=resized.info.height,banner=Math.max(25,Math.round(width*.085));
- const svg=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${banner}"><rect width="100%" height="100%" fill="#143e38"/><rect x="0" y="0" width="${Math.round(width*.016)}" height="100%" fill="#ffcb69"/><text x="50%" y="53%" dominant-baseline="middle" text-anchor="middle" fill="#fff9e9" font-family="DejaVu Sans,Arial,sans-serif" font-size="${Math.round(banner*.48)}" font-weight="700" letter-spacing="1.2">NEW EPISODES</text></svg>`);
+ const textWidth=width*.56,textScale=textWidth/badgeText.width,baseline=(banner+badgeText.capHeight*textScale)/2;
+ const svg=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${banner}"><rect width="100%" height="100%" fill="#143e38"/><rect x="0" y="0" width="${Math.round(width*.016)}" height="100%" fill="#ffcb69"/><g fill="#fff9e9" transform="translate(${(width-textWidth)/2},${baseline}) scale(${textScale},${-textScale})">${badgeText.paths}</g></svg>`);
  return sharp(resized.data).composite([{input:svg,top:0,left:0}]).jpeg({quality:90,mozjpeg:true}).toBuffer();
 }
 export async function episodePoster(id,day,origin,template=''){

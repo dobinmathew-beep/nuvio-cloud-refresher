@@ -8,7 +8,7 @@ export function hasNewEpisodes(meta,now=Date.now()){const t=episodeTime(meta,now
 export function withEpisodePoster(meta,origin,base='',now=Date.now()){
  if(!hasNewEpisodes(meta,now))return {...meta,hasNewEpisodes:false};
  const day=new Date(episodeTime(meta,now)).toISOString().slice(0,10);
- return {...meta,hasNewEpisodes:true,poster:origin+base+'/episode-posters/'+encodeURIComponent(meta.id)+'/'+day+'.jpg'};
+ return {...meta,hasNewEpisodes:true,poster:origin+base+'/episode-posters/'+encodeURIComponent(meta.id)+'/'+day+'.jpg?v=2'};
 }
 
 export function releaseSortTime(meta,now=Date.now()){return Math.max(episodeTime(meta,now)||0,Date.parse(meta.releaseDate||meta.ottDate||'')||0)}
