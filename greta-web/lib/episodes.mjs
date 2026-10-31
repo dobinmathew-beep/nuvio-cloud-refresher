@@ -10,3 +10,5 @@ export function withEpisodePoster(meta,origin,base='',now=Date.now()){
  const day=new Date(episodeTime(meta,now)).toISOString().slice(0,10);
  return {...meta,hasNewEpisodes:true,poster:origin+base+'/episode-posters/'+encodeURIComponent(meta.id)+'/'+day+'.jpg'};
 }
+
+export function releaseSortTime(meta,now=Date.now()){return Math.max(episodeTime(meta,now)||0,Date.parse(meta.releaseDate||meta.ottDate||'')||0)}
