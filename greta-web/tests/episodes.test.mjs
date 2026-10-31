@@ -11,3 +11,16 @@ test('new and upcoming badges can coexist without claiming a future episode is r
 test('dated upcoming banner remains a valid JPEG without server fonts',async()=>{const input=await sharp({create:{width:300,height:450,channels:3,background:'#ff0000'}}).png().toBuffer();const result=await renderBadge(input,[{kind:'upcoming',label:'Upcoming 18 Dec'}]);const m=await sharp(result).metadata();assert.equal(m.format,'jpeg');assert.equal(m.width,300);});
 
 test('month labels always use exactly three letters including September',()=>{for(let month=1;month<=12;month++){const value='2027-'+String(month).padStart(2,'0')+'-18';const label=episodeBadges({type:'series',nextEpisodeReleaseAt:value},now)[0].label;assert.match(label,/^Upcoming 18 [A-Z][a-z]{2}$/);if(month===9)assert.equal(label,'Upcoming 18 Sep');}assert(hasNewEpisodes({type:'series',nextEpisodeReleaseAt:'2026-10-30'},now));});
+
+import {providerHasStatus,statusControlUrl} from '../lib/episode-posters.mjs';
+test('provider comparison distinguishes status labels from quality-only badges',async()=>{
+ const plain=await sharp({create:{width:500,height:750,channels:3,background:'#553322'}}).png().toBuffer();
+ const status=Buffer.from('<svg width="500" height="750"><rect x="28" y="28" width="235" height="58" rx="10" fill="white"/></svg>');
+ const quality=Buffer.from('<svg width="500" height="750"><rect x="365" y="37" width="107" height="40" rx="8" fill="white"/></svg>');
+ const qualityOnly=await sharp(plain).composite([{input:quality}]).png().toBuffer();
+ const both=await sharp(qualityOnly).composite([{input:status}]).png().toBuffer();
+ assert.equal(await providerHasStatus(both,qualityOnly),true);
+ assert.equal(await providerHasStatus(qualityOnly,qualityOnly),false);
+ assert.equal(await providerHasStatus(qualityOnly,plain),false);
+ const url=statusControlUrl('https://btttr.cc/poster-q/imdb/poster-default/tt1234567.jpg?rs=IM&lang=en');const u=new URL(url);assert.equal(u.searchParams.get('tag'),'none');assert.equal(u.searchParams.get('rs'),'IM');assert(u.pathname.startsWith('/poster-q/'));
+});

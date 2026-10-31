@@ -33,11 +33,32 @@ export async function episodePoster(id,day,origin,template=''){
  if(!active)return defaultPoster();
  const key=template+'|'+id+'|'+badges.map(b=>b.label+':'+b.day).join('|'),old=cache.get(key);if(old&&Date.now()-old.at<600000)return new Response(old.bytes,{headers:old.headers});
  if(jobs.has(key))return (await jobs.get(key)).clone();
- const job=(async()=>{let bytes;const rated=template?ratedPoster(template,id,''):'';
-  if(rated&&new URL(rated).hostname==='btttr.cc')try{bytes=await fetchPoster(rated)}catch{}
+ const job=(async()=>{let bytes,skipOverlay=false,overlayMode='addon';const rated=template?ratedPoster(template,id,''):'';
+  if(rated&&new URL(rated).hostname==='btttr.cc')try{
+   bytes=await fetchPoster(rated);
+   if(new URL(rated).searchParams.get('tag')!=='none'){
+    try{const control=await fetchPoster(statusControlUrl(rated));skipOverlay=await providerHasStatus(bytes,control);if(skipOverlay)overlayMode='provider-status'}
+    catch{skipOverlay=true;overlayMode='provider-unverified'}
+   }
+  }catch{}
   if(!bytes){const r=await defaultPoster();if(!r.ok)return r;bytes=Buffer.from(await r.arrayBuffer())}
-  let output;try{output=await renderBadge(bytes,badges)}catch{return defaultPoster()}
-  const headers={'Content-Type':'image/jpeg','Cache-Control':template?'private,max-age=600':'public,max-age=3600','Access-Control-Allow-Origin':'*','X-Content-Type-Options':'nosniff'};
+  let output,mime='image/jpeg';if(skipOverlay){output=bytes;try{const {default:sharp}=await import('sharp');const m=await sharp(bytes).metadata();mime={jpeg:'image/jpeg',png:'image/png',webp:'image/webp',avif:'image/avif'}[m.format]||mime}catch{}}
+  else try{output=await renderBadge(bytes,badges)}catch{return defaultPoster()}
+  const headers={'Content-Type':mime,'Cache-Control':template?'private,max-age=600':'public,max-age=3600','Access-Control-Allow-Origin':'*','X-Content-Type-Options':'nosniff','X-Addon-Status-Overlay':overlayMode};
   while(cache.size>=24)cache.delete(cache.keys().next().value);cache.set(key,{bytes:output,headers,at:Date.now()});return new Response(output,{headers});})();jobs.set(key,job);
  try{return (await job).clone()}finally{jobs.delete(key)}
+}
+
+// Compare the provider's original with its documented status-tags-off version.
+// The comparison excludes the top-right quality-badge area. Unknown results
+// preserve the provider image rather than risk drawing over an existing label.
+export function statusControlUrl(url){const u=new URL(url);if(u.hostname!=='btttr.cc')throw Error('Not a BetterPosters URL');u.searchParams.set('tag','none');return u.href}
+export async function providerHasStatus(original,control){
+ const {default:sharp}=await import('sharp');const width=240,height=360;
+ const decode=bytes=>sharp(bytes,{limitInputPixels:30000000}).resize(width,height,{fit:'fill'}).toColourspace('srgb').removeAlpha().raw().toBuffer();
+ const [a,b]=await Promise.all([decode(original),decode(control)]);let sum=0,changed=0,pixels=0;
+ for(let y=0;y<Math.floor(height*.24);y++)for(let x=0;x<Math.floor(width*.70);x++){
+  const p=(y*width+x)*3,d=(Math.abs(a[p]-b[p])+Math.abs(a[p+1]-b[p+1])+Math.abs(a[p+2]-b[p+2]))/3;sum+=d;if(d>22)changed++;pixels++;
+ }
+ return sum/pixels>2&&changed/pixels>.008;
 }

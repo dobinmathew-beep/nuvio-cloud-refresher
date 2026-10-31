@@ -18,7 +18,7 @@ export function episodeBadges(meta,now=Date.now()){
 export function withEpisodePoster(meta,origin,base='',now=Date.now()){
  const badges=episodeBadges(meta,now),upcoming=upcomingTime(meta,now);if(!badges.length)return {...meta,hasNewEpisodes:false,nextEpisodeReleaseAt:null};
  const day=badges[0].day,next=badges.find(b=>b.kind==='upcoming');
- return {...meta,hasNewEpisodes:hasNewEpisodes(meta,now),nextEpisodeReleaseAt:upcoming===null?null:new Date(upcoming).toISOString(),poster:origin+base+'/episode-posters/'+encodeURIComponent(meta.id)+'/'+day+'.jpg?v=4'+(next?'&next='+next.day:'')};
+ return {...meta,hasNewEpisodes:hasNewEpisodes(meta,now),nextEpisodeReleaseAt:upcoming===null?null:new Date(upcoming).toISOString(),poster:origin+base+'/episode-posters/'+encodeURIComponent(meta.id)+'/'+day+'.jpg?v=5'+(next?'&next='+next.day:'')};
 }
 
 export function releaseSortTime(meta,now=Date.now()){return Math.max(episodeTime(meta,now)||0,Date.parse(meta.releaseDate||meta.ottDate||'')||0)}
