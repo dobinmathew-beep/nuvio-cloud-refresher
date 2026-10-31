@@ -10,3 +10,8 @@ class EpisodeBadges(unittest.TestCase):
   self.assertTrue(fresh);self.assertTrue(date.startswith('2026-10-30'))
   self.assertEqual(episode_badges.latest([{'released':'2027-01-01'}],now),(None,False))
   self.assertFalse(episode_badges.latest([{'released':'2026-10-20'}],now)[1])
+ def test_nearest_confirmed_future_episode_or_season(self):
+  now=datetime(2026,10,31,12,tzinfo=timezone.utc)
+  self.assertTrue(episode_badges.upcoming([{'released':'2026-12-18'},{'released':'2027-01-01'},{'released':'TBA'}],now).startswith('2026-12-18'))
+  self.assertTrue(episode_badges.upcoming([],now,[{'premiereDate':'2026-11-10'}]).startswith('2026-11-10'))
+  self.assertIsNone(episode_badges.upcoming([{'released':'2026-01-01'},{'released':'2027'}],now))
