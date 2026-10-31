@@ -17,6 +17,9 @@ class AlternateTests(unittest.TestCase):
   obj={'@type':'Movie','name':'Example','url':'https://www.themoviedb.org/movie/12','image':'https://image.tmdb.org/t/p/w500/a.jpg','releasedEvent':[{'startDate':'2026-10-01'}]}
   def get(*a):return '<script type="application/ld+json">'+json.dumps(obj)+'</script>'
   self.assertEqual(alternate.tmdb(e,get,update.norm)['id'],'tmdb:12')
+  obj['url']='https://www.themoviedb.org/movie/12-example';self.assertEqual(alternate.tmdb(e,get,update.norm)['id'],'tmdb:12')
+  obj['url']='https://www.themoviedb.org/movie/123-example';self.assertIsNone(alternate.tmdb(e,get,update.norm))
+  obj['url']='https://www.themoviedb.org/movie/12-example'
   obj['name']='Other Movie';self.assertIsNone(alternate.tmdb(e,get,update.norm))
   obj['name']='Example';obj['releasedEvent'][0]['startDate']='2027-01-01';self.assertIsNone(alternate.tmdb(e,get,update.norm))
 if __name__=='__main__':unittest.main()

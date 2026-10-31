@@ -1,6 +1,6 @@
 """Verified public TMDB/TVmaze fallback; no API keys or guessed IMDb IDs."""
 import json,re
-from urllib.parse import quote
+from urllib.parse import quote,urlparse
 from bs4 import BeautifulSoup
 from rapidfuzz.fuzz import ratio
 
@@ -36,8 +36,9 @@ def tmdb(e,get,norm):
   for x in value if isinstance(value,list) else [value]:
    if isinstance(x,dict) and x.get('@type')==expected:obj=x;break
  if not obj or ratio(norm(plain(e['name'])),norm(obj.get('name','')))<97:return None
- if obj.get('url','').split('?')[0].rstrip('/')!=url:return None
- date=next((x.get('startDate','') for x in obj.get('releasedEvent',[]) if isinstance(x,dict)),obj.get('datePublished',''))
+ canonical=urlparse(obj.get('url',''));category='movie' if typ=='movie' else 'tv'
+ if canonical.hostname not in ('www.themoviedb.org','themoviedb.org') or not re.fullmatch('/'+category+'/'+str(tid)+r'(?:-[^/]*)?/?',canonical.path):return None
+ date=next((x.get('startDate','') for x in obj.get('releasedEvent',[]) if isinstance(x,dict)),obj.get('startDate') or obj.get('datePublished',''))
  if date and date[:10]>e['ottDate']:return None
  if e.get('year') and date and date[:4]!=str(e['year']):return None
  imdb=next((re.search(r'tt\d+',a['href']).group() for a in soup.select('a[href]') if re.search(r'imdb\.com/title/tt\d+',a['href'])),None)
