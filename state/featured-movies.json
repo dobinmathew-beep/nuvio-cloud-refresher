@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "checkedAt": "2026-10-31T05:22:53.026742+00:00",
+  "checkedAt": "2026-11-01T04:46:31.808811+00:00",
   "selection": "first IMDb-linked movie in the matching IndianRegional catalog order; no external release-date filtering",
   "languages": {
     "hindi": {
@@ -13,19 +13,19 @@
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-10-31T05:22:53.026742+00:00"
+      "verifiedAt": "2026-11-01T04:46:31.808811+00:00"
     },
     "tamil": {
-      "id": "tt44090278",
-      "name": "Baththa",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt44090278.jpg",
+      "id": "tt39239754",
+      "name": "Sigma",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39239754.jpg",
       "catalog": "ta",
       "type": "movie",
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/ta.json",
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-10-31T05:22:53.026742+00:00"
+      "verifiedAt": "2026-11-01T04:46:31.808811+00:00"
     },
     "malayalam": {
       "id": "tt34792531",
@@ -37,19 +37,19 @@
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-10-31T05:22:53.026742+00:00"
+      "verifiedAt": "2026-11-01T04:46:31.808811+00:00"
     },
     "telugu": {
-      "id": "tt31841170",
-      "name": "Don't Trouble the Trouble",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31841170.jpg",
+      "id": "tt32089596",
+      "name": "Comrade Kalyan",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32089596.jpg",
       "catalog": "te",
       "type": "movie",
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/te.json",
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-10-31T05:22:53.026742+00:00"
+      "verifiedAt": "2026-11-01T04:46:31.808811+00:00"
     }
   },
   "warnings": []
