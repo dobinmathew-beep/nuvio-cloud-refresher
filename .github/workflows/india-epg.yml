@@ -1,0 +1,48 @@
+name: India EPG daily refresh
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['epg/**', '.github/workflows/india-epg.yml']
+  schedule:
+    - cron: '0 4 * * *'
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: india-epg-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.repository == 'dobinmathew-beep/nuvio-cloud-refresher' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch, validate, publish and verify (up to three attempts)
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3; do
+            echo "EPG refresh attempt $attempt"
+            if python -u epg/refresh.py && python epg/validate.py && python -u epg/github_upload.py; then
+              exit 0
+            fi
+            if [ "$attempt" -lt 3 ]; then sleep 30; fi
+          done
+          echo 'Refresh failed. The previous valid published guide remains available.'
+          exit 1
+      - name: Save guide and audit reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: india-epg-${{ github.run_id }}
+          path: epg/output/
+          if-no-files-found: ignore
+          retention-days: 14
