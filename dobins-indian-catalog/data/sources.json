@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-01T10:56:48.738725+04:00",
+    "checkedAt": "2026-11-01T22:41:16.806006+04:00",
     "records": [
       {
         "_id": "6ae5500b899e46892055aebe",
@@ -3855,6 +3855,10 @@
               "character": "Vijay Salgaonkar"
             },
             {
+              "name": "Jaideep Ahlawat",
+              "character": "SP Rajveer Singh Tomar"
+            },
+            {
               "name": "Tabu",
               "character": "Meera Deshmukh"
             },
@@ -3865,10 +3869,6 @@
             {
               "name": "Rajat Kapoor",
               "character": "Mahesh Deshmukh"
-            },
-            {
-              "name": "Jaideep Ahlawat",
-              "character": "SP Rajiv Singh Tomar"
             },
             {
               "name": "Prakash Raj",
@@ -3884,7 +3884,7 @@
             }
           ],
           "overview": "Years after outsmarting the police, Vijay Salgaonkar's past resurfaces when a new evidence threatens to expose his secret. As the investigation reopens, he must outwit the system once again to save his family.",
-          "runtime": 150,
+          "runtime": 148,
           "genres": [
             "Thriller",
             "Drama",
@@ -3896,8 +3896,9 @@
             "Hindi"
           ],
           "releaseDate": "2026-10-02",
-          "voteAverage": 0,
-          "fetchedAt": "2026-10-02T02:18:34.038368+00:00"
+          "voteAverage": 7.6,
+          "trailerKey": "MFQFxsDWbA8",
+          "fetchedAt": "2026-11-01T14:17:36.457Z"
         },
         "tmdbId": 1269325,
         "type": "Movie",
@@ -4278,9 +4279,9 @@
             "Hindi"
           ],
           "releaseDate": "2026-08-07",
-          "voteAverage": 9,
+          "voteAverage": 7.875,
           "trailerKey": "Hkv1-F5-EaI",
-          "fetchedAt": "2026-10-02T07:07:54.519Z"
+          "fetchedAt": "2026-11-01T14:17:51.838Z"
         },
         "tmdbId": 1727563,
         "votes": 1,
@@ -16903,6 +16904,52 @@
         "type": "Movie",
         "updatedAt": "2026-05-30T03:47:59.558Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/3Hvhy3cVYCTWXvHDSX4XlCFfrec.jpg",
+        "tmdbDetails": {
+          "tmdbId": 1179317,
+          "director": "Anshuman Jha",
+          "cast": [
+            {
+              "name": "Arjun Mathur",
+              "character": "Rohit"
+            },
+            {
+              "name": "Paresh Pahuja",
+              "character": "Dr. Basuki Nath"
+            },
+            {
+              "name": "Zoha Rahman",
+              "character": "Sanya"
+            },
+            {
+              "name": "Rasika Dugal",
+              "character": "Ira"
+            },
+            {
+              "name": "Tanmay Dhanania",
+              "character": "Pizza Delivery Guy"
+            },
+            {
+              "name": "Garrick Hagon",
+              "character": "Harry Curzon"
+            }
+          ],
+          "overview": "Follows four Desis as they meet in an unplanned dinner. Rohit tells his guests upon arriving that there is a corpse in the trunk. The not-so-innocent joke will change their lives that very night.",
+          "runtime": 108,
+          "genres": [
+            "Comedy",
+            "Thriller"
+          ],
+          "originalLanguage": "hi",
+          "spokenLanguages": [
+            "English",
+            "Hindi"
+          ],
+          "releaseDate": "2025-10-10",
+          "voteAverage": null,
+          "trailerKey": "QsiVBi0seyk",
+          "fetchedAt": "2026-11-01T14:25:11.271Z"
+        },
+        "tmdbId": 1179317,
         "verified": true
       },
       {
@@ -28278,7 +28325,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-01T10:56:48.738725+04:00",
+    "checkedAt": "2026-11-01T22:41:16.806006+04:00",
     "records": [
       {
         "name": "Akka",
