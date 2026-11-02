@@ -4,10 +4,10 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-02T11:38:11.586667+04:00",
+  "updatedAt": "2026-11-02T12:19:53.048474+04:00",
   "lastSuccessCycle": "2026-11-02T06:00:00+04:00",
   "timezone": "Asia/Muscat",
-  "schedule": "06:00 and 18:00 daily; also 01:00 Thursday, Friday, Saturday",
+  "schedule": "06:00, 14:00 and 18:00 daily; also 01:00 Thursday, Friday, Saturday",
   "sources": [
     {
       "source": "DailyOTT",
@@ -86,12 +86,12 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 526,
+      "records": 527,
       "counts": {
         "malayalam": 50,
         "tamil": 90,
         "telugu": 92,
-        "hindi": 294
+        "hindi": 295
       },
       "state": "live"
     },
@@ -128,10 +128,10 @@
     "dobins_te_movie": 64,
     "dobins_te_series": 100,
     "dobins_hi_movie": 62,
-    "dobins_hi_series": 319
+    "dobins_hi_series": 320
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
   "pendingMatches": 108,
-  "checkedCandidates": 925,
+  "checkedCandidates": 926,
   "errors": []
 }

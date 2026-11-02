@@ -333,7 +333,7 @@
         "Thriller",
         "Crime"
       ],
-      "description": "Home release (digital): 2026-10-09 · ManoramaMAX, Simply South, Prime Video, Aha\n\nAamir Ali, a notorious gold smuggling kingpin who inherited his multi-million dollar criminal enterprise from a lineage of gangsters, is drawn into a web of vengeance, legacy and power.",
+      "description": "Home release (digital): 2026-10-09 · ManoramaMAX, Prime Video, Aha, Simply South\n\nAamir Ali, a notorious gold smuggling kingpin who inherited his multi-million dollar criminal enterprise from a lineage of gangsters, is drawn into a web of vengeance, legacy and power.",
       "releaseDate": "2026-10-09",
       "releaseKind": "digital",
       "availability": [
@@ -342,9 +342,9 @@
           "date": "2026-10-09",
           "platforms": [
             "ManoramaMAX",
-            "Simply South",
             "Prime Video",
-            "Aha"
+            "Aha",
+            "Simply South"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -355,9 +355,9 @@
       "ottDate": "2026-10-09",
       "platforms": [
         "ManoramaMAX",
-        "Simply South",
         "Prime Video",
-        "Aha"
+        "Aha",
+        "Simply South"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -6490,7 +6490,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt37737315",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.7",
+      "imdbRating": "7.6",
       "genres": [
         "Romance",
         "Comedy",
@@ -6674,7 +6674,7 @@
         "Action",
         "Thriller"
       ],
-      "description": "Home release (digital): 2026-05-14 · Simply South, JioHotStar\n\nCenters on secret intelligence agency cases involving five major national threats that were thwarted through covert operations.",
+      "description": "Home release (digital): 2026-05-14 · JioHotStar, Simply South\n\nCenters on secret intelligence agency cases involving five major national threats that were thwarted through covert operations.",
       "releaseDate": "2026-05-14",
       "releaseKind": "digital",
       "availability": [
@@ -6682,8 +6682,8 @@
           "kind": "digital",
           "date": "2026-05-14",
           "platforms": [
-            "Simply South",
-            "JioHotStar"
+            "JioHotStar",
+            "Simply South"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -6693,8 +6693,8 @@
       "physicalReleases": [],
       "ottDate": "2026-05-14",
       "platforms": [
-        "Simply South",
-        "JioHotStar"
+        "JioHotStar",
+        "Simply South"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -7334,7 +7334,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt37028716",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "4.6",
+      "imdbRating": "4.5",
       "genres": [
         "Thriller",
         "Action"
@@ -20404,7 +20404,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt27880465",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.5",
+      "imdbRating": "7.6",
       "genres": [
         "Mystery",
         "Horror",
@@ -22673,6 +22673,49 @@
       "nextEpisodeReleaseAt": "2026-11-07T00:00:00+00:00"
     },
     {
+      "id": "tt0250875",
+      "type": "series",
+      "name": "Kaun Banega Crorepati?",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt0250875",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt0250875",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt0250875",
+      "releaseInfo": "2000–",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "8.1",
+      "genres": [
+        "Game-Show"
+      ],
+      "description": "Home release (digital): 2026-10-30 · SonyLIV\n\nAn Indian version of the popular quiz show, \"Who Wants to be a Millionaire?\" Contestants start off with easy questions, but as they move forward the questions get more and more challenging. To help them out, they are given \"lifeli...",
+      "releaseDate": "2026-10-30",
+      "releaseKind": "digital",
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-08-10",
+          "platforms": [
+            "SonyLIV"
+          ],
+          "sources": [
+            "https://www.dailyott.in/"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "ottDate": "2026-08-10",
+      "platforms": [
+        "SonyLIV"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "source release",
+      "latestEpisodeReleasedAt": "2026-10-30T21:00:00+00:00",
+      "hasNewEpisodes": true,
+      "nextEpisodeReleaseAt": null
+    },
+    {
       "id": "tt29625288",
       "type": "series",
       "name": "Akka",
@@ -22811,49 +22854,6 @@
       "language": "hindi",
       "releaseDateBasis": "episode",
       "latestEpisodeReleasedAt": "2026-10-27T00:00:00+00:00",
-      "hasNewEpisodes": true,
-      "nextEpisodeReleaseAt": null
-    },
-    {
-      "id": "tt0250875",
-      "type": "series",
-      "name": "Kaun Banega Crorepati?",
-      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt0250875",
-      "posterShape": "poster",
-      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt0250875",
-      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt0250875",
-      "releaseInfo": "2000–",
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.1",
-      "genres": [
-        "Game-Show"
-      ],
-      "description": "Home release (digital): 2026-10-26 · SonyLIV\n\nAn Indian version of the popular quiz show, \"Who Wants to be a Millionaire?\" Contestants start off with easy questions, but as they move forward the questions get more and more challenging. To help them out, they are given \"lifeli...",
-      "releaseDate": "2026-10-26",
-      "releaseKind": "digital",
-      "availability": [
-        {
-          "kind": "digital",
-          "date": "2026-08-10",
-          "platforms": [
-            "SonyLIV"
-          ],
-          "sources": [
-            "https://www.dailyott.in/"
-          ]
-        }
-      ],
-      "physicalReleases": [],
-      "ottDate": "2026-08-10",
-      "platforms": [
-        "SonyLIV"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "language": "hindi",
-      "releaseDateBasis": "source release",
-      "latestEpisodeReleasedAt": "2026-10-26T21:00:00+00:00",
       "hasNewEpisodes": true,
       "nextEpisodeReleaseAt": null
     },
@@ -24117,7 +24117,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt34498121",
       "releaseInfo": "2024–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.5",
+      "imdbRating": "6.9",
       "genres": [
         "Romance"
       ],
@@ -24227,7 +24227,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt33144230",
       "releaseInfo": "2024–2024",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.3",
+      "imdbRating": "7.2",
       "genres": [
         "Crime"
       ],
@@ -25528,6 +25528,47 @@
       "language": "hindi",
       "releaseDateBasis": "premiere",
       "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null
+    },
+    {
+      "id": "tt30705321",
+      "type": "series",
+      "name": "Jhanak",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt30705321",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt30705321",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt30705321",
+      "releaseInfo": "2023–",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "4.5",
+      "genres": [
+        "Drama"
+      ],
+      "description": "Home release (digital): 2026-05-31 · \n\nA driven young woman embarks on a journey to fulfill a mother's promise for a better life as she overcomes challenges and loss while crossing paths with a man who further complicates her life.",
+      "releaseDate": "2026-05-31",
+      "releaseKind": "digital",
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-05-31",
+          "platforms": [],
+          "sources": [
+            "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+            "https://v3-cinemeta.strem.io/"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "ottDate": "2026-05-31",
+      "platforms": [],
+      "sources": [
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "episode",
+      "latestEpisodeReleasedAt": "2026-05-31T00:00:01+00:00",
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null
     },
@@ -30244,7 +30285,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt30145246",
       "releaseInfo": "2024–2025",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.8",
+      "imdbRating": "8.9",
       "genres": [
         "Drama",
         "Family"
@@ -30814,7 +30855,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt35310553",
       "releaseInfo": "2025–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.2",
+      "imdbRating": "7.3",
       "genres": [
         "Drama"
       ],
@@ -31690,7 +31731,7 @@
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
-      "latestEpisodeReleasedAt": "2024-09-08T00:00:02+00:00",
+      "latestEpisodeReleasedAt": "2024-09-08T00:00:00+00:00",
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null
     },
@@ -32327,7 +32368,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt27618627",
       "releaseInfo": "2024–2024",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.6",
+      "imdbRating": "5.5",
       "genres": [
         "Drama",
         "Mystery",
@@ -32969,7 +33010,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt29041498",
       "releaseInfo": "2023–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.8",
+      "imdbRating": "7.9",
       "genres": [],
       "description": "Home release (digital): 2024-03-31 · \n\nPashminna – Dhaage Mohabbat Ke is an Indian Hindi-language romantic drama television series that aired from 25 October 2023 on Sony SAB. Produced by Siddharth P. Malhotra and Sapna Malhotra under Alchemy Films Private Limited, it stars Nishant Singh Malkani, Isha Sharma, Hiten Tejwani and Gauri Pradhan Tejwani.",
       "releaseDate": "2024-03-31",
@@ -33142,7 +33183,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt29053466",
       "releaseInfo": "2023–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.0",
+      "imdbRating": "7.1",
       "genres": [
         "Drama"
       ],
