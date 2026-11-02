@@ -24,6 +24,8 @@ jobs:
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Skip work after both daily refreshes have passed
         id: plan
         run: |
