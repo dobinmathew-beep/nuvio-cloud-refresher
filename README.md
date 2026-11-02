@@ -1,5 +1,9 @@
 # Nuvio cloud refresher
 
+## [📊 Daily updates — open your status page](DAILY_UPDATES.md)
+
+See all four outputs, verified refresh cycles in Oman time, current errors, EPG coverage, full run links and [daily history](logs/README.md). The page updates automatically with each completed watchdog check (normally every ten minutes and after refresh attempts). History starts when this dashboard was installed; earlier runs remain in Actions.
+
 This personal website updater runs ordinary Python and FFmpeg on standard public GitHub-hosted runners. It makes no AI API calls, uses no personal-computer runner and configures no paid services.
 
 ## Scheduled operation
