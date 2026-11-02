@@ -95,6 +95,15 @@ def backdrop():
     result=json.loads(lines[-1]);assert result['statuses']==160 and result['images']==16 and not result['errors'],str(result.get('errors'))
     return result
 
+def push_state():
+    # A watchdog or another workflow can advance main between checkout and push.
+    # Rebase disjoint changes; never force-push or overwrite a conflict.
+    for attempt in range(3):
+        subprocess.run(['git','pull','--rebase','origin','main'],cwd=ROOT,check=True)
+        if subprocess.run(['git','push','origin','HEAD:main'],cwd=ROOT).returncode==0:return
+        time.sleep(5)
+    raise RuntimeError('State push failed after three attempts; no force-push used')
+
 def featured_movies():
     from featured import select_featured
     result=select_featured(STATE)
@@ -104,7 +113,7 @@ def featured_movies():
     subprocess.run(['git','add','state/featured-movies.json','state/release-dates.json','state/catalog-pages.json'],cwd=ROOT,check=True)
     if subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT).returncode:
         subprocess.run(['git','commit','-m','Update IndianRegional catalog-head centre movies'],cwd=ROOT,check=True)
-        subprocess.run(['git','push'],cwd=ROOT,check=True)
+        push_state()
     # Allow the HTTP service to observe the new pointer before full verification.
     def probe(lang):
         try:
