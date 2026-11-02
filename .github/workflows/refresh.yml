@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths: [.github/workflows/refresh.yml, cloud.py, featured.py, hero_prepare.py, hero_render.py, verify_backdrops.py, source-archive.json, legacy-files.json, legacy-html.json]
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 2,10 * * *'
     - cron: '7,37 * * * *'
 
 permissions:
@@ -26,20 +26,21 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-      - name: Skip work after both daily refreshes have passed
+      - name: Skip completed morning or afternoon refresh cycles
         id: plan
         run: |
           python3 - <<'PY'
           import datetime, json, os
           from pathlib import Path
           from zoneinfo import ZoneInfo
+          from refresh_watchdog import due, fresh
           p=Path('state/success.json')
           state=json.loads(p.read_text()) if p.exists() else {}
-          cycle=(datetime.datetime.now(ZoneInfo('Asia/Muscat'))-datetime.timedelta(hours=6)).date().isoformat()
-          done=state.get('cycle')==cycle and state.get('backdrops') and state.get('heroes') and state.get('featuredVersion')==2 and state.get('heroes',{}).get('opening_version')==1 and state.get('heroes',{}).get('selection_policy')=='imdb-catalog-order-v1'
+          target=due(datetime.datetime.now(ZoneInfo('Asia/Muscat')),'media')
+          done=fresh(state,'media',target)
           with open(os.environ['GITHUB_OUTPUT'],'a') as f:
               f.write('pending='+('false' if done else 'true')+'\n')
-          print('Daily cycle already complete.' if done else 'Refresh work is pending.')
+          print('Current cycle already complete.' if done else 'Refresh work is pending.')
           PY
       - uses: actions/setup-python@v5
         if: steps.plan.outputs.pending == 'true'
@@ -53,7 +54,7 @@ jobs:
             sudo apt-get update -qq
             sudo apt-get install -y ffmpeg fonts-dejavu-core
           fi
-      - name: Refresh pending outputs for the daily 06:00 Muscat cycle
+      - name: Refresh pending outputs for the current Muscat cycle
         if: steps.plan.outputs.pending == 'true'
         id: refresh
         continue-on-error: true
