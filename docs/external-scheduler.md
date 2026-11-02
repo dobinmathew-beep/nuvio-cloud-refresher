@@ -1,5 +1,5 @@
 # External scheduler activation
-Status: prepared; not activated by committing these files.
+Status: cron-job.org job **8777026** created on 2026-11-02. Schedule and HTTP request are configured. It is deliberately **disabled pending the owner's GitHub authorization credential**. No live dispatch test has been performed; external scheduling is not yet active.
 
 All four outputs are due every two hours in Asia/Muscat. One external job dispatches the existing watchdog every ten minutes, including each two-hour boundary. The watchdog checks published success state and starts only overdue work. GitHub's own ten-minute schedule and workflow-completion checks remain as backups.
 
