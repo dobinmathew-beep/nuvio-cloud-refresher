@@ -8,7 +8,7 @@ This personal website updater runs ordinary Python and FFmpeg on standard public
 - A ten-minute watchdog checks actual successful cycles and dispatches overdue components. It also runs after component workflows finish. Backdrops and reels share one workflow but both must pass verification.
 - Active or queued refreshes are not duplicated. Incomplete work and last-good public outputs are retained; subsequent checks retry unfinished work with a ten-minute dispatch cooldown.
 - GitHub's native schedule and the existing staggered fallback checks remain enabled. GitHub can delay jobs; completion at an exact minute is not guaranteed.
-- External cron-job.org activation requires the owner's signed-in account and a narrowly scoped GitHub dispatch credential. See [external scheduler configuration](docs/external-scheduler.md); a configuration file alone does not activate that service.
+- External cron-job.org job 8777026 is enabled every ten minutes. Its saved credential passed a live dispatch test on 2026-11-02, and the watchdog successfully started overdue media, addon and EPG refreshes. See [external scheduler configuration and verification](docs/external-scheduler.md). The owner's token must remain valid.
 
 ## Backdrops
 
