@@ -12,7 +12,7 @@ def due(now, kind):
     dates=[]
     for delta in range(3):
         day=now.date()-timedelta(days=delta)
-        hours=([1,6,18] if day.weekday() in (3,4,5) else [6,18]) if kind=='addon' else [8 if kind=='epg' else 6]
+        hours=([1,6,14,18] if day.weekday() in (3,4,5) else [6,14,18]) if kind=='addon' else ([8,14] if kind=='epg' else [6,14])
         for hour in hours:
             dt=datetime.combine(day,datetime.min.time(),ZONE)+timedelta(hours=hour)
             if dt<=now: dates.append(dt)
@@ -20,7 +20,7 @@ def due(now, kind):
 
 def fresh(state, kind, target):
     if kind=='media':
-        return (state.get('cycle')==target.date().isoformat() and bool(state.get('backdrops'))
+        return (state.get('refresh_cycle',state.get('cycle','')+'T06:00:00+04:00')==target.isoformat() and bool(state.get('backdrops'))
             and bool(state.get('heroes')) and state.get('featuredVersion')==2
             and state.get('heroes',{}).get('opening_version')==1
             and state.get('heroes',{}).get('selection_policy')=='imdb-catalog-order-v1')
