@@ -5,13 +5,9 @@ from pathlib import Path
 import json,os
 ZONE=ZoneInfo('Asia/Muscat')
 def due(now):
- dates=[]
- for delta in range(3):
-  d=now.date()-timedelta(days=delta)
-  for h in ([1,6,14,18] if d.weekday() in (3,4,5) else [6,14,18]):
-   t=datetime.combine(d,datetime.min.time(),ZONE)+timedelta(hours=h)
-   if t<=now:dates.append(t)
- return max(dates).isoformat()
+ local=now.astimezone(ZONE)
+ return local.replace(hour=(local.hour//2)*2,minute=0,second=0,microsecond=0).isoformat()
+
 if __name__=='__main__':
  p=Path(__file__).resolve().parent/'data/status.json'
  try:s=json.loads(p.read_text())
