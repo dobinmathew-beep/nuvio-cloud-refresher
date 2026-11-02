@@ -31,7 +31,7 @@ def fresh(state, kind, target):
 
 def may_dispatch(runs, now):
     if any(r['status'] in ('queued','in_progress','waiting','pending','requested') for r in runs): return False
-    return not runs or now-datetime.fromisoformat(runs[0]['created_at'].replace('Z','+00:00'))>=timedelta(minutes=45)
+    return not runs or now-datetime.fromisoformat(runs[0]['created_at'].replace('Z','+00:00'))>=timedelta(minutes=10)
 
 def request(url, method='GET', body=None):
     headers={'User-Agent':'NuvioRefreshWatchdog/1.0','Accept':'application/vnd.github+json','Cache-Control':'no-cache'}
