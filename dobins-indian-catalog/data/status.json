@@ -4,10 +4,10 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-02T17:07:14.822257+04:00",
-  "lastSuccessCycle": "2026-11-02T14:00:00+04:00",
+  "updatedAt": "2026-11-02T17:10:21.132354+04:00",
+  "lastSuccessCycle": "2026-11-02T16:00:00+04:00",
   "timezone": "Asia/Muscat",
-  "schedule": "06:00, 14:00 and 18:00 daily; also 01:00 Thursday, Friday, Saturday",
+  "schedule": "Every two hours daily, 00:00 through 22:00 (Asia/Muscat)",
   "sources": [
     {
       "source": "DailyOTT",
@@ -127,11 +127,11 @@
     "dobins_ta_series": 96,
     "dobins_te_movie": 64,
     "dobins_te_series": 100,
-    "dobins_hi_movie": 62,
+    "dobins_hi_movie": 66,
     "dobins_hi_series": 320
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
-  "pendingMatches": 108,
+  "pendingMatches": 104,
   "checkedCandidates": 926,
   "errors": []
 }
