@@ -1,4 +1,4 @@
-"""Check actual refresh cycles and restart overdue GitHub workflows. No external scheduler."""
+"""Check two-hour refresh cycles and retry overdue workflows; callable by any scheduler."""
 import base64, json, os, sys, urllib.request
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -9,14 +9,9 @@ REPO = 'dobinmathew-beep/nuvio-cloud-refresher'
 API = 'https://api.github.com/repos/'+REPO
 
 def due(now, kind):
-    dates=[]
-    for delta in range(3):
-        day=now.date()-timedelta(days=delta)
-        hours=([1,6,14,18] if day.weekday() in (3,4,5) else [6,14,18]) if kind=='addon' else ([8,14] if kind=='epg' else [6,14])
-        for hour in hours:
-            dt=datetime.combine(day,datetime.min.time(),ZONE)+timedelta(hours=hour)
-            if dt<=now: dates.append(dt)
-    return max(dates)
+    # Muscat is UTC+04:00: even local hours also align with even UTC hours.
+    local=now.astimezone(ZONE)
+    return local.replace(hour=(local.hour//2)*2,minute=0,second=0,microsecond=0)
 
 def fresh(state, kind, target):
     if kind=='media':
