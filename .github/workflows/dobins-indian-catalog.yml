@@ -5,8 +5,7 @@ on:
     branches: [main, dobins-catalog]
     paths: [dobins-indian-catalog/**, .github/workflows/dobins-indian-catalog.yml]
   schedule:
-    - cron: '0 2,10,14 * * *'
-    - cron: '0 21 * * 3,4,5'
+    - cron: '0 */2 * * *'
     - cron: '13,43 * * * *'
 permissions:
   contents: write
@@ -61,6 +60,6 @@ jobs:
             done
             exit 1
           fi
-      - name: Keep failed work pending for the next 30-minute check
+      - name: Keep failed work pending for the ten-minute watchdog
         if: steps.update.outcome == 'failure' || steps.site_health.outcome == 'failure'
         run: exit 1
