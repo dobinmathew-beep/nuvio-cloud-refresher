@@ -1,5 +1,5 @@
 # External scheduler activation
-Status: cron-job.org job **8777026** created on 2026-11-02. Schedule and HTTP request are configured. It is deliberately **disabled pending the owner's GitHub authorization credential**. No live dispatch test has been performed; external scheduling is not yet active.
+Status: cron-job.org job **8777026** is **enabled** as of 2026-11-02 (Asia/Muscat), every ten minutes with no schedule expiry. Saved credential tested successfully: GitHub returned HTTP 200 and created [watchdog run 41464248660](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41464248660). The watchdog passed all seven tests and successfully dispatched media (backdrops plus reels), addon and EPG for the overdue 18:00 Muscat cycle. Component refreshes were in progress at activation. The scheduler listed its next automatic execution at 18:50 Muscat. Token value is not stored in this repository; its expiry remains controlled by the owner.
 
 All four outputs are due every two hours in Asia/Muscat. One external job dispatches the existing watchdog every ten minutes, including each two-hour boundary. The watchdog checks published success state and starts only overdue work. GitHub's own ten-minute schedule and workflow-completion checks remain as backups.
 
