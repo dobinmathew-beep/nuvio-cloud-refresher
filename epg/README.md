@@ -1,6 +1,6 @@
 # India EPG
 
-Daily GitHub Actions refresh at 04:00 UTC (08:00 Muscat). GitHub may queue scheduled runs.
+Daily GitHub Actions refreshes at 04:00 and 10:00 UTC (08:00 and 14:00 Muscat). GitHub may queue scheduled runs.
 Use **Actions → India EPG daily refresh → Run workflow** for an extra refresh.
 
 Permanent player URL: https://da.gd/mr8mVT
@@ -14,7 +14,7 @@ The six published guide/report files are stored atomically on the existing publi
 EPG host. `/status.json` identifies the verified GitHub workflow run. Each Actions
 run also retains its downloadable guide and audit reports for 14 days. Failed input
 downloads, invalid guides and coverage drops over 20% preserve the last valid feed.
-The workflow retries up to three times and fails visibly if it cannot complete.
+The workflow retries up to three times and fails visibly if it cannot complete. Off-peak checks and the watchdog catch up an overdue morning or afternoon cycle.
 
 Authentication uses a short-lived GitHub-signed OIDC identity restricted by the
 host to this repository ID, owner ID, main branch and exact workflow path. No
