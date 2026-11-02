@@ -42,17 +42,17 @@ def repository_json(path, ref='main'):
     return json.loads(base64.b64decode(d['content']))
 
 def main():
-    now=datetime.now(ZONE);results=[];errors=[]
+    now=datetime.now(ZONE);results=[];errors=[];states={};run_cache={};log_errors=[]
     sources=[('media','refresh.yml',lambda:repository_json('state/success.json')),
         ('addon','dobins-indian-catalog.yml',lambda:repository_json('dobins-indian-catalog/data/status.json','dobins-catalog')),
         ('epg','india-epg.yml',lambda:request('https://dobin-india-epg-feed.quickfield138.chatgpt.site/status.json'))]
     for kind,workflow,read in sources:
         target=due(now,kind);row={'component':kind,'due':target.isoformat()}
         try:
-            state=read()
+            state=read();states[kind]=state
             if fresh(state,kind,target): row['state']='fresh'
             else:
-                runs=request(API+'/actions/workflows/'+workflow+'/runs?per_page=10')['workflow_runs']
+                runs=request(API+'/actions/workflows/'+workflow+'/runs?per_page=10')['workflow_runs'];run_cache[kind]=runs
                 if may_dispatch(runs,now):
                     request(API+'/actions/workflows/'+workflow+'/dispatches','POST',{'ref':'main'})
                     row['state']='catch-up-dispatched'
@@ -63,17 +63,26 @@ def main():
         except Exception as e:
             row['state']='check-failed';row['error']=type(e).__name__+': '+str(e);errors.append(kind+': '+row['error'])
         results.append(row)
+    # Audit lookups must never prevent the refresh/retry decisions above.
+    for kind,workflow,_ in sources:
+        if kind not in run_cache:
+            try:run_cache[kind]=request(API+'/actions/workflows/'+workflow+'/runs?per_page=5')['workflow_runs']
+            except Exception as e:log_errors.append(kind+': latest run lookup failed: '+type(e).__name__)
     report={'checked_at':now.isoformat(),'results':results,'errors':errors}
+    try:
+        from update_dashboard import write_report
+        write_report(report,states,run_cache,log_errors)
+    except Exception as e:
+        errors.append('Dashboard update failed: '+type(e).__name__+': '+str(e))
+
     print(json.dumps(report,indent=2),flush=True)
     if os.environ.get('GITHUB_STEP_SUMMARY'):
         with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
             f.write('Refresh watchdog\n\n| Component | Due (Muscat) | State |\n|---|---|---|\n')
             for r in results:f.write(f"| {r['component']} | {r['due']} | {r['state']} |\n")
-    # A daily health checkpoint is useful history and ordinary repository activity.
+    # Persist the exact check timestamp alongside the dashboard and daily history.
     p=Path('state/watchdog.json')
-    previous=json.loads(p.read_text()) if p.exists() else {}
-    if previous.get('checked_at','')[:10]!=now.date().isoformat() or previous.get('results')!=results or previous.get('errors')!=errors:
-        p.parent.mkdir(exist_ok=True);p.write_text(json.dumps(report,indent=2))
+    p.parent.mkdir(exist_ok=True);p.write_text(json.dumps(report,indent=2))
     return bool(errors)
 
 if __name__=='__main__':sys.exit(main())
