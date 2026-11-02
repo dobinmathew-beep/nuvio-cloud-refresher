@@ -2,12 +2,13 @@
 
 This personal website updater runs ordinary Python and FFmpeg on standard public GitHub-hosted runners. It makes no AI API calls, uses no personal-computer runner and configures no paid services.
 
-## Daily operation
+## Scheduled operation
 
-- Target daily start: **06:00 Asia/Muscat** (02:00 UTC).
-- A workflow checks on the hour and half hour. After both outputs pass for the current daily cycle, later checks skip downloading and rendering until the next cycle.
-- If either output fails, completed work is retained and only unfinished work is attempted at later 30-minute checks. GitHub can delay scheduled jobs; uninterrupted or exact-time execution is not guaranteed.
-- GitHub emails workflow failures according to your account notification settings. The first setup test failed safely during an HTML transfer; the corrected test passed.
+- All four outputs (backdrops, hero reels, addon catalogs and India EPG) are due **every two hours**, at 00:00, 02:00, 04:00, 06:00, 08:00, 10:00, 12:00, 14:00, 16:00, 18:00, 20:00 and 22:00 Asia/Muscat. The main workflow cron is `0 */2 * * *` UTC; the four-hour offset keeps these aligned.
+- A ten-minute watchdog checks actual successful cycles and dispatches overdue components. It also runs after component workflows finish. Backdrops and reels share one workflow but both must pass verification.
+- Active or queued refreshes are not duplicated. Incomplete work and last-good public outputs are retained; subsequent checks retry unfinished work with a ten-minute dispatch cooldown.
+- GitHub's native schedule and the existing staggered fallback checks remain enabled. GitHub can delay jobs; completion at an exact minute is not guaranteed.
+- External cron-job.org activation requires the owner's signed-in account and a narrowly scoped GitHub dispatch credential. See [external scheduler configuration](docs/external-scheduler.md); a configuration file alone does not activate that service.
 
 ## Backdrops
 
@@ -22,7 +23,7 @@ For all four languages, the centre follows IMDb-linked entries in the matching c
 
 Movie and combined backdrops feature the first IMDb-linked movie in the matching IndianRegional primary movie catalog's own order. No external release-date lookup or date filtering is used. The existing central panel, nearest central panel or lead panel is used according to each layout; no extra panel or style change is introduced. Series-only collections stay series-only.
 
-The cloud job records the catalog-head choices in `state/featured-movies.json` before warming images. The backdrop service reads the matching IndianRegional catalog directly, avoiding a stale GitHub selection-file cache. Status JSON must report the expected `centerMovie`, `centerSlot` and `renderVersion`, and the selected ID must still belong to its approved catalog. Missing posters or source outages preserve last-good images and leave unfinished work eligible for a retry. Centre choices and metadata are checked as part of the daily 06:00 cycle.
+The cloud job records the catalog-head choices in `state/featured-movies.json` before warming images. The backdrop service reads the matching IndianRegional catalog directly, avoiding a stale GitHub selection-file cache. Status JSON must report the expected `centerMovie`, `centerSlot` and `renderVersion`, and the selected ID must still belong to its approved catalog. Missing posters or source outages preserve last-good images and leave unfinished work eligible for a retry. Centre choices and metadata are checked in every two-hour refresh cycle.
 
 ## Hero reels
 
@@ -39,7 +40,7 @@ All 82 pre-existing media/gallery paths were preserved on GitHub releases. Sourc
 
 ## Check results
 
-Open the repository's **Actions** tab for run status. `state/success.json` records the last completed daily cycle; `state/last-run.json` records incomplete work; `state/media.json` records public asset hashes, sizes and download URLs. A successful no-op run after completion confirms the daily gate works.
+Open the repository's **Actions** tab for run status. `state/success.json` records the last completed two-hour cycle; `state/last-run.json` records incomplete work; `state/media.json` records public asset hashes, sizes and download URLs. A successful no-op run after completion confirms the current cycle gate works.
 
 Do not delete the `renderer-source` or `legacy-site` releases or the `state` directory. Keep this repository public for the standard public Actions runner's free usage. No long-lived account credential is stored here; the workflow uses its automatically generated GitHub token.
 
