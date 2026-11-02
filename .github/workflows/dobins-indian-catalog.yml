@@ -2,10 +2,12 @@ name: Dobins Indian Catalog
 on:
   workflow_dispatch:
   push:
-    branches: [dobins-catalog]
+    branches: [main, dobins-catalog]
     paths: [dobins-indian-catalog/**, .github/workflows/dobins-indian-catalog.yml]
   schedule:
-    - cron: '0,30 * * * *'
+    - cron: '0 2,14 * * *'
+    - cron: '0 21 * * 3,4,5'
+    - cron: '13,43 * * * *'
 permissions:
   contents: write
 concurrency:
@@ -52,7 +54,12 @@ jobs:
           git add dobins-indian-catalog/data
           if ! git diff --cached --quiet; then
             git commit -m 'Refresh Dobins Indian Catalog digital releases'
-            git push origin HEAD:dobins-catalog
+            for attempt in 1 2 3; do
+              git pull --rebase origin dobins-catalog
+              if git push origin HEAD:dobins-catalog; then exit 0; fi
+              sleep 5
+            done
+            exit 1
           fi
       - name: Keep failed work pending for the next 30-minute check
         if: steps.update.outcome == 'failure' || steps.site_health.outcome == 'failure'
