@@ -7,8 +7,11 @@ import update,schedule
 class CatalogTests(unittest.TestCase):
  def test_muscat_boundaries(self):
   zone=ZoneInfo('Asia/Muscat')
-  cases=[('2026-10-29T00:59:00','2026-10-28T18:00:00+04:00'),('2026-10-29T01:00:00','2026-10-29T01:00:00+04:00'),('2026-10-30T06:00:00','2026-10-30T06:00:00+04:00'),('2026-10-31T01:00:00','2026-10-31T01:00:00+04:00'),('2026-11-01T01:00:00','2026-10-31T18:00:00+04:00'),('2026-11-01T18:00:00','2026-11-01T18:00:00+04:00')]
-  for now,expected in cases:self.assertEqual(schedule.due(datetime.fromisoformat(now).replace(tzinfo=zone)),expected)
+  cases=[('2026-10-29T00:59:00','2026-10-29T00:00:00+04:00'),('2026-10-29T01:00:00','2026-10-29T00:00:00+04:00'),('2026-10-30T06:00:00','2026-10-30T06:00:00+04:00'),('2026-10-31T02:00:00','2026-10-31T02:00:00+04:00'),('2026-11-01T23:59:00','2026-11-01T22:00:00+04:00'),('2026-11-02T00:00:00','2026-11-02T00:00:00+04:00')]
+  for now,expected in cases:
+   instant=datetime.fromisoformat(now).replace(tzinfo=zone)
+   self.assertEqual(schedule.due(instant),expected)
+   self.assertEqual(update.cycle(instant),expected)
  def test_match_rejects_wrong_kind_language_and_future_year(self):
   event={'name':'Example','language':'tamil','type':'movie','ottDate':'2026-10-30','year':'2026'}
   base={'name':'Example','language':'tamil','type':'movie','id':'tt1234567','releaseInfo':'2026'}
