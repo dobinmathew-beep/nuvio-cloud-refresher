@@ -99,7 +99,11 @@ def push_state():
     # A watchdog or another workflow can advance main between checkout and push.
     # Rebase disjoint changes; never force-push or overwrite a conflict.
     for attempt in range(3):
-        subprocess.run(['git','pull','--rebase','origin','main'],cwd=ROOT,check=True)
+        try:
+            subprocess.run(['git','pull','--rebase','origin','main'],cwd=ROOT,check=True)
+        except subprocess.CalledProcessError:
+            subprocess.run(['git','rebase','--abort'],cwd=ROOT)
+            raise RuntimeError('State conflict; rebase aborted and last-good remote files retained')
         if subprocess.run(['git','push','origin','HEAD:main'],cwd=ROOT).returncode==0:return
         time.sleep(5)
     raise RuntimeError('State push failed after three attempts; no force-push used')
