@@ -1,0 +1,52 @@
+name: Refresh watchdog
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [refresh_watchdog.py, tests/test_refresh_watchdog.py, .github/workflows/refresh-watchdog.yml]
+  schedule:
+    - cron: '17,47 * * * *'
+  workflow_run:
+    workflows: [Nuvio cloud refresh, Dobins Indian Catalog, India EPG daily refresh]
+    types: [completed]
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: refresh-watchdog
+  cancel-in-progress: false
+jobs:
+  check:
+    if: github.repository == 'dobinmathew-beep/nuvio-cloud-refresher'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Test due-cycle and retry rules
+        run: python3 -m unittest discover -s tests -v
+      - name: Check published cycles and dispatch overdue refreshes
+        id: check
+        continue-on-error: true
+        run: python3 refresh_watchdog.py
+      - name: Save daily health checkpoint
+        if: always()
+        run: |
+          git config user.name 'Refresh watchdog'
+          git config user.email 'refresh-watchdog@users.noreply.github.com'
+          git add state/watchdog.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record daily refresh watchdog health'
+            for attempt in 1 2 3; do
+              git pull --rebase origin main
+              if git push origin HEAD:main; then exit 0; fi
+              sleep 5
+            done
+            exit 1
+          fi
+      - name: Report stale or failed checks visibly
+        if: steps.check.outcome == 'failure'
+        run: exit 1
