@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-02T12:19:53.048474+04:00",
+    "checkedAt": "2026-11-02T17:07:14.822257+04:00",
     "records": [
       {
         "_id": "6ae5500b899e46892055aebe",
@@ -4994,35 +4994,35 @@
           "cast": [
             {
               "name": "Kasthoori Raja",
-              "character": "Yusuf"
+              "character": "Mohamed Yousuf"
             },
             {
               "name": "Esha M",
-              "character": ""
+              "character": "Syed Abu Thahir"
             },
             {
               "name": "Malavika Manoj",
-              "character": "'Nilavu Pulla' Nilofer Nisha"
+              "character": "Nilofar Nisha"
             },
             {
               "name": "Dhanasree Sudhakaran",
-              "character": ""
+              "character": "Kathija Parveen"
             },
             {
               "name": "Anusreya Rajan",
-              "character": ""
+              "character": "Saliha Beevi"
             },
             {
               "name": "Ismath Banu",
-              "character": ""
+              "character": "Byroja Banu"
             },
             {
               "name": "Rekha Kumanan",
-              "character": ""
+              "character": "Rabiya"
             },
             {
               "name": "Jayasree Binuraj",
-              "character": ""
+              "character": "Mammathu"
             }
           ],
           "overview": "Follows a boy and girl in a Muslim neighbourhood in southern Tamil Nadu whose romance divides their community.",
@@ -5035,9 +5035,9 @@
             "Tamil"
           ],
           "releaseDate": "2026-06-12",
-          "voteAverage": null,
+          "voteAverage": 6,
           "trailerKey": "iDjm3-V3RZE",
-          "fetchedAt": "2026-09-25T13:14:38.023Z"
+          "fetchedAt": "2026-11-02T08:38:00.183Z"
         },
         "tmdbId": 1655049,
         "verified": true
@@ -10010,7 +10010,7 @@
           "releaseDate": "2026-05-14",
           "voteAverage": 5.5,
           "trailerKey": "xlTJlHyhCWM",
-          "fetchedAt": "2026-09-12T18:41:15.385Z"
+          "fetchedAt": "2026-11-02T11:13:33.820Z"
         },
         "tmdbId": 1065834,
         "verified": true
@@ -22373,6 +22373,59 @@
         "type": "Movie",
         "updatedAt": "2026-04-24T03:45:20.754Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/4VD2H8ZwFDORWCaYS5TbhMVPdAv.jpg",
+        "tmdbDetails": {
+          "tmdbId": 1516501,
+          "director": "B. Unnikrishnan",
+          "cast": [
+            {
+              "name": "Nivin Pauly",
+              "character": "John Varghese"
+            },
+            {
+              "name": "Sharafudheen",
+              "character": "Ravi Madhavan"
+            },
+            {
+              "name": "Neethu Krishna",
+              "character": "Rosa Jayadevan"
+            },
+            {
+              "name": "Balachandra Menon",
+              "character": "K N Varghese"
+            },
+            {
+              "name": "Harisree Ashokan",
+              "character": "Purushothaman"
+            },
+            {
+              "name": "Maniyanpilla Raju",
+              "character": "Ramakrishnan"
+            },
+            {
+              "name": "Ann Augustine",
+              "character": "Nisha Chandrakumar"
+            },
+            {
+              "name": "Vishnu Agasthya",
+              "character": "Aravindhan"
+            }
+          ],
+          "overview": "After Kerala’s Chief Minister dies in a scandal engineered by a ruthless media tycoon, his son a brilliant tech entrepreneur enters the blood-soaked arena of politics to expose the conspiracy, vindicate his father, and turn technology against those who weaponized it",
+          "runtime": 157,
+          "genres": [
+            "Thriller",
+            "Drama"
+          ],
+          "originalLanguage": "ml",
+          "spokenLanguages": [
+            "Malayalam"
+          ],
+          "releaseDate": "2026-03-23",
+          "voteAverage": 4.4,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-02T11:12:27.460Z"
+        },
+        "tmdbId": 1516501,
         "verified": true
       },
       {
@@ -28363,7 +28416,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-02T12:19:53.048474+04:00",
+    "checkedAt": "2026-11-02T17:07:14.822257+04:00",
     "records": [
       {
         "name": "Akka",
