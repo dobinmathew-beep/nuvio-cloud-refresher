@@ -26,13 +26,9 @@ def norm(s):
  s=re.sub(r'\b(?:season|s)\s*\d+\b|\((?:series|web series)\)',' ',s,flags=re.I)
  return re.sub(r'[^a-z0-9]+','',s.removeprefix('the '))
 def cycle(now=NOW):
- ds=[]
- for delta in (0,1,2):
-  d=now.date()-timedelta(days=delta)
-  for h in ([1,6,14,18] if d.weekday() in (3,4,5) else [6,14,18]):
-   dt=datetime.combine(d,datetime.min.time(),ZONE)+timedelta(hours=h)
-   if dt<=now:ds.append(dt)
- return max(ds).isoformat()
+ # Use the same two-hour cycle as the lightweight schedule gate.
+ from schedule import due
+ return due(now)
 
 def dailyott():
  first=get('https://www.dailyott.in/api/movies?limit=200&page=1');assert first.get('status')=='success'
@@ -227,7 +223,7 @@ def build():
  if any(not catalogs[c] for c in catalogs):
   save('metadata.json',metas);save('unmatched.json',unmatched);raise RuntimeError('An empty catalog would be published; retaining last-good catalogs while metadata backfills')
  save('metadata.json',metas);save('catalogs.json',catalogs);save('unmatched.json',unmatched)
- status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'06:00, 14:00 and 18:00 daily; also 01:00 Thursday, Friday, Saturday','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'errors':[]}
+ status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, 00:00 through 22:00 (Asia/Muscat)','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'errors':[]}
  save('status.json',status);print('SUCCESS',json.dumps(status),flush=True)
 if __name__=='__main__':
  try:build()
