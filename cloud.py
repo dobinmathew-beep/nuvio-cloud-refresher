@@ -3,6 +3,7 @@ from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
+from refresh_watchdog import due
 import re, hashlib, json, mimetypes, os, shutil, subprocess, sys, tarfile, time, urllib.request, urllib.error, urllib.parse
 
 ROOT=Path(__file__).resolve().parent
@@ -174,12 +175,12 @@ def heroes():
     return {'languages':list(LANGS),'checked_at':datetime.now(ZoneInfo('Asia/Muscat')).isoformat(),'films_per_language':20,'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}
 
 def main():
-    now=datetime.now(ZoneInfo('Asia/Muscat'));cycle=(now-timedelta(hours=6)).date().isoformat()
+    now=datetime.now(ZoneInfo('Asia/Muscat'));target=due(now,'media');cycle=target.date().isoformat();refresh_cycle=target.isoformat()
     progress_path=STATE/'success.json';progress=json.loads(progress_path.read_text()) if progress_path.exists() else {}
-    if progress.get('cycle')!=cycle:progress={'cycle':cycle}
+    if progress.get('refresh_cycle',progress.get('cycle','')+'T06:00:00+04:00')!=refresh_cycle:progress={'cycle':cycle,'refresh_cycle':refresh_cycle}
     if progress.get('heroes',{}).get('opening_version')!=1 or progress.get('heroes',{}).get('selection_policy')!='imdb-catalog-order-v1':progress.pop('heroes',None)
     if progress.get('backdrops') and progress.get('heroes') and progress.get('featuredVersion')==2:
-        print('Current 06:00 Muscat cycle already verified; nothing to refresh.');return 0
+        print('Current Muscat refresh cycle already verified; nothing to refresh.');return 0
     bootstrap();failed=[]
     if progress.get('featuredVersion')!=2:
         try:
