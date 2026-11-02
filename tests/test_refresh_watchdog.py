@@ -38,6 +38,8 @@ class WatchdogTests(unittest.TestCase):
         now=datetime(2026,11,2,11,30,tzinfo=ZONE)
         self.assertFalse(may_dispatch([{'status':'in_progress','created_at':(now-timedelta(hours=2)).isoformat()}],now))
         self.assertFalse(may_dispatch([{'status':'completed','created_at':(now-timedelta(minutes=5)).isoformat()}],now))
+        self.assertFalse(may_dispatch([{'status':'completed','created_at':(now-timedelta(minutes=9)).isoformat()}],now))
+        self.assertTrue(may_dispatch([{'status':'completed','created_at':(now-timedelta(minutes=10)).isoformat()}],now))
         self.assertTrue(may_dispatch([{'status':'completed','created_at':(now-timedelta(minutes=50)).isoformat()}],now))
 
 if __name__=='__main__':unittest.main()
