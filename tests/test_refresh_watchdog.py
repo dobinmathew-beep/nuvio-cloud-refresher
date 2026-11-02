@@ -9,6 +9,24 @@ class WatchdogTests(unittest.TestCase):
         self.assertEqual(due(now,'epg').hour,8)
         self.assertFalse(fresh({'checked_utc':'2026-11-01T13:00:00+00:00','matched_ids':642},'epg',due(now,'epg')))
         self.assertTrue(fresh({'checked_utc':'2026-11-02T04:10:00+00:00','matched_ids':642},'epg',due(now,'epg')))
+    def test_2pm_is_a_new_cycle_for_every_component(self):
+        before=datetime(2026,11,2,13,59,tzinfo=ZONE)
+        at=datetime(2026,11,2,14,0,tzinfo=ZONE)
+        after=datetime(2026,11,2,14,30,tzinfo=ZONE)
+        for kind,morning in [('media',6),('addon',6),('epg',8)]:
+            self.assertEqual(due(before,kind).hour,morning)
+            self.assertEqual(due(at,kind).hour,14)
+            self.assertEqual(due(after,kind).hour,14)
+        state={'cycle':'2026-11-02','featuredVersion':2,'backdrops':{'ok':True},
+            'heroes':{'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}}
+        self.assertTrue(fresh(state,'media',due(before,'media')))
+        self.assertFalse(fresh(state,'media',due(at,'media')))
+        state['refresh_cycle']=due(at,'media').isoformat()
+        self.assertTrue(fresh(state,'media',due(at,'media')))
+        self.assertFalse(fresh({'checked_utc':'2026-11-02T04:10:00+00:00','matched_ids':642},'epg',due(at,'epg')))
+        self.assertTrue(fresh({'checked_utc':'2026-11-02T10:10:00+00:00','matched_ids':642},'epg',due(at,'epg')))
+        self.assertFalse(fresh({'lastSuccessCycle':'2026-11-02T06:00:00+04:00'},'addon',due(at,'addon')))
+        self.assertTrue(fresh({'lastSuccessCycle':'2026-11-02T14:00:00+04:00'},'addon',due(at,'addon')))
     def test_before_due_uses_previous_day(self):
         self.assertEqual(due(datetime(2026,11,2,7,tzinfo=ZONE),'epg').day,1)
     def test_addon_evening_and_extra_weekend_cycles(self):
