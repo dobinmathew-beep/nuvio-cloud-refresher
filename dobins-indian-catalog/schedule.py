@@ -8,7 +8,7 @@ def due(now):
  dates=[]
  for delta in range(3):
   d=now.date()-timedelta(days=delta)
-  for h in ([1,6,18] if d.weekday() in (3,4,5) else [6,18]):
+  for h in ([1,6,14,18] if d.weekday() in (3,4,5) else [6,14,18]):
    t=datetime.combine(d,datetime.min.time(),ZONE)+timedelta(hours=h)
    if t<=now:dates.append(t)
  return max(dates).isoformat()
