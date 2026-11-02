@@ -1,0 +1,51 @@
+{
+  "job": {
+    "title": "Nuvio four-output refresh watchdog (every 10 minutes)",
+    "url": "https://api.github.com/repos/dobinmathew-beep/nuvio-cloud-refresher/actions/workflows/refresh-watchdog.yml/dispatches",
+    "enabled": true,
+    "saveResponses": true,
+    "requestMethod": 1,
+    "requestTimeout": 30,
+    "redirectSuccess": false,
+    "schedule": {
+      "timezone": "Asia/Muscat",
+      "expiresAt": 0,
+      "hours": [
+        -1
+      ],
+      "minutes": [
+        0,
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "mdays": [
+        -1
+      ],
+      "months": [
+        -1
+      ],
+      "wdays": [
+        -1
+      ]
+    },
+    "notification": {
+      "onFailure": true,
+      "onFailureCount": 1,
+      "onSuccess": false,
+      "onDisable": true
+    },
+    "extendedData": {
+      "headers": {
+        "Authorization": "Bearer REPLACE_IN_CRON_JOB_ORG_ONLY",
+        "Accept": "application/vnd.github+json",
+        "Content-Type": "application/json",
+        "X-GitHub-Api-Version": "2026-03-10",
+        "User-Agent": "NuvioExternalWatchdog"
+      },
+      "body": "{\"ref\":\"main\"}"
+    }
+  }
+}
