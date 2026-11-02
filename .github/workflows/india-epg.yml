@@ -6,6 +6,7 @@ on:
     paths: ['epg/**', '.github/workflows/india-epg.yml']
   schedule:
     - cron: '0 4 * * *'
+    - cron: '11,41 * * * *'
 
 permissions:
   contents: read
@@ -22,10 +23,15 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+      - name: Check whether the current verified EPG is due
+        id: plan
+        run: python3 epg/plan.py >> "$GITHUB_OUTPUT"
       - uses: actions/setup-python@v5
+        if: steps.plan.outputs.pending == 'true'
         with:
           python-version: '3.12'
       - name: Fetch, validate, publish and verify (up to three attempts)
+        if: steps.plan.outputs.pending == 'true'
         shell: bash
         run: |
           set -euo pipefail
