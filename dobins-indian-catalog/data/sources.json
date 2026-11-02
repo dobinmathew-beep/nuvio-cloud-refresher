@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-01T22:41:16.806006+04:00",
+    "checkedAt": "2026-11-02T11:38:11.586667+04:00",
     "records": [
       {
         "_id": "6ae5500b899e46892055aebe",
@@ -19,9 +19,47 @@
         "updatedAt": "2026-10-31T02:19:41.747Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/qeJydXBGQa9lPRnQ0TGR7y4qXIP.jpg",
         "instagramPostedAt": "2026-10-31T02:20:12Z",
-        "trendingRank": 9,
-        "trendingRankedAt": "2026-11-01T02:19:12.571Z",
-        "trendingRankedDateIST": "2026-11-01",
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
+        "trendingRankedDateIST": "2026-11-02",
+        "tmdbDetails": {
+          "tmdbId": 1638744,
+          "director": "Manju Swaraj",
+          "cast": [
+            {
+              "name": "Ajai Rao",
+              "character": "Subba Rao"
+            },
+            {
+              "name": "Misha Narang",
+              "character": "Sarala"
+            },
+            {
+              "name": "Rangayana Raghu",
+              "character": "Narasimha Shastry"
+            },
+            {
+              "name": "Veena Sundar",
+              "character": "Lakshmi"
+            }
+          ],
+          "overview": "A romantic family drama set in 1970s Mysore that portrays the journey of Sarala and Subbarao as they balance love, tradition, and aspirations.",
+          "runtime": 130,
+          "genres": [
+            "Drama",
+            "Romance",
+            "Comedy"
+          ],
+          "originalLanguage": "kn",
+          "spokenLanguages": [
+            "Kannada"
+          ],
+          "releaseDate": "2026-02-20",
+          "voteAverage": null,
+          "trailerKey": "5Ivqf2fj-Qo",
+          "fetchedAt": "2026-11-02T05:02:17.708Z"
+        },
+        "tmdbId": 1638744,
         "verified": true
       },
       {
@@ -117,9 +155,9 @@
         },
         "tmdbId": 1339713,
         "votes": 1,
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-11-01T02:19:12.571Z",
-        "trendingRankedDateIST": "2026-11-01",
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
+        "trendingRankedDateIST": "2026-11-02",
         "verified": true
       },
       {
@@ -249,9 +287,9 @@
           "fetchedAt": "2026-10-30T07:39:14.867Z"
         },
         "tmdbId": 1290035,
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-01T02:19:12.571Z",
-        "trendingRankedDateIST": "2026-11-01",
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
+        "trendingRankedDateIST": "2026-11-02",
         "verified": true
       },
       {
@@ -273,9 +311,6 @@
         "tmdbRating": 83,
         "tmdbVotes": 45,
         "instagramPostedAt": "2026-10-30T02:20:28Z",
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-01T02:19:12.571Z",
-        "trendingRankedDateIST": "2026-11-01",
         "tmdbDetails": {
           "tmdbId": 1656061,
           "director": "Monroe Robertson",
@@ -330,6 +365,9 @@
           "fetchedAt": "2026-11-01T06:21:17.352Z"
         },
         "tmdbId": 1656061,
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
+        "trendingRankedDateIST": "2026-11-02",
         "verified": true
       },
       {
@@ -403,9 +441,9 @@
           "fetchedAt": "2026-10-30T03:37:14.797Z"
         },
         "tmdbId": 1395215,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-01T02:19:12.571Z",
-        "trendingRankedDateIST": "2026-11-01",
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
+        "trendingRankedDateIST": "2026-11-02",
         "verified": true
       },
       {
@@ -466,9 +504,9 @@
           "fetchedAt": "2026-10-30T03:19:34.729Z"
         },
         "tmdbId": 1618200,
-        "trendingRank": 6,
-        "trendingRankedAt": "2026-11-01T02:19:12.571Z",
-        "trendingRankedDateIST": "2026-11-01",
+        "trendingRank": 8,
+        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
+        "trendingRankedDateIST": "2026-11-02",
         "verified": true
       },
       {
@@ -543,8 +581,8 @@
         },
         "tmdbId": 1811964,
         "trendingRank": 7,
-        "trendingRankedAt": "2026-11-01T02:19:12.571Z",
-        "trendingRankedDateIST": "2026-11-01",
+        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
+        "trendingRankedDateIST": "2026-11-02",
         "verified": true
       },
       {
@@ -618,9 +656,9 @@
           "fetchedAt": "2026-10-29T06:19:56.388Z"
         },
         "tmdbId": 1515692,
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-01T02:19:12.571Z",
-        "trendingRankedDateIST": "2026-11-01",
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
+        "trendingRankedDateIST": "2026-11-02",
         "verified": true
       },
       {
@@ -680,9 +718,9 @@
           "fetchedAt": "2026-10-29T16:04:29.072Z"
         },
         "tmdbId": 1456196,
-        "trendingRank": 8,
-        "trendingRankedAt": "2026-11-01T02:19:12.571Z",
-        "trendingRankedDateIST": "2026-11-01",
+        "trendingRank": 9,
+        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
+        "trendingRankedDateIST": "2026-11-02",
         "verified": true
       },
       {
@@ -28325,7 +28363,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-01T22:41:16.806006+04:00",
+    "checkedAt": "2026-11-02T11:38:11.586667+04:00",
     "records": [
       {
         "name": "Akka",
@@ -28704,62 +28742,6 @@
         "year": null,
         "source": "https://cinebuds.com/ott-release-dates/",
         "detail": "https://cinebuds.com/mandaadi-ott-release-date/",
-        "confirmed": true
-      },
-      {
-        "name": "#LOVE (Series)",
-        "language": "tamil",
-        "type": "series",
-        "ottDate": "2026-10-02",
-        "platforms": [
-          "Netflix"
-        ],
-        "poster": null,
-        "year": null,
-        "source": "https://cinebuds.com/ott-release-dates/",
-        "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
-        "confirmed": true
-      },
-      {
-        "name": "Bethlehem Kudumba Unit",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-10-02",
-        "platforms": [
-          "JioHotstar"
-        ],
-        "poster": null,
-        "year": null,
-        "source": "https://cinebuds.com/ott-release-dates/",
-        "detail": "https://cinebuds.com/malayalam-movies-ott-release-dates/",
-        "confirmed": true
-      },
-      {
-        "name": "Panthadikkaam (Series)",
-        "language": "malayalam",
-        "type": "series",
-        "ottDate": "2026-10-01",
-        "platforms": [
-          "ZEE5"
-        ],
-        "poster": null,
-        "year": null,
-        "source": "https://cinebuds.com/ott-release-dates/",
-        "detail": "https://cinebuds.com/malayalam-movies-ott-release-dates/",
-        "confirmed": true
-      },
-      {
-        "name": "Sardar 2",
-        "language": "tamil",
-        "type": "movie",
-        "ottDate": "2026-10-01",
-        "platforms": [
-          "Prime Video"
-        ],
-        "poster": null,
-        "year": null,
-        "source": "https://cinebuds.com/ott-release-dates/",
-        "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
         "confirmed": true
       }
     ]
