@@ -76,7 +76,8 @@ def main():
             for r in results:f.write(f"| {r['component']} | {r['due']} | {r['state']} |\n")
     # A daily health checkpoint is useful history and ordinary repository activity.
     p=Path('state/watchdog.json')
-    if not p.exists() or json.loads(p.read_text()).get('checked_at','')[:10]!=now.date().isoformat():
+    previous=json.loads(p.read_text()) if p.exists() else {}
+    if previous.get('checked_at','')[:10]!=now.date().isoformat() or previous.get('results')!=results or previous.get('errors')!=errors:
         p.parent.mkdir(exist_ok=True);p.write_text(json.dumps(report,indent=2))
     return bool(errors)
 
