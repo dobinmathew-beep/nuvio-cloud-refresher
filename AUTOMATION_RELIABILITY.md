@@ -7,7 +7,8 @@ The 2 November investigation found active workflows but no scheduled runs after 
 - Media is due at 06:00 and 14:00 Muscat; checks at minutes 7 and 37 catch up an incomplete morning or afternoon cycle.
 - Catalog keeps its 06:00/18:00 Muscat release cycles and adds 14:00 daily and extra Thursday–Saturday 01:00 cycle; checks at minutes 13 and 43 catch up overdue cycles.
 - EPG is due at 08:00 and 14:00 Muscat; minutes 11 and 41 check the published generation date and refresh only when due. Explicit manual runs can refresh again.
-- The separate watchdog checks at minutes 17 and 47 and after completion of any refresh workflow. It reads real success cycles, not green run badges. Overdue workflows are dispatched automatically unless one is already active or a run started within the past 45 minutes.
+- The separate watchdog checks every ten minutes (minutes 3, 13, 23, 33, 43 and 53) and after completion of any refresh workflow. It reads real success cycles, not green run badges. Overdue workflows are dispatched automatically unless one is already active or a run started within the past ten minutes.
+- Checks continue every day. Only overdue components are restarted; completed components stay untouched until their next scheduled cycle. A long-running render is allowed to finish rather than being duplicated.
 - A daily health checkpoint and changes between fresh/in-progress/error states are recorded in `state/watchdog.json`. Watchdog job summaries report current checks, and stale checks fail visibly.
 - State pushes pull and rebase disjoint remote changes before retrying. Conflicting changes fail; no force-push is used.
 
