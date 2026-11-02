@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths: [.github/workflows/refresh.yml, cloud.py, featured.py, hero_prepare.py, hero_render.py, verify_backdrops.py, source-archive.json, legacy-files.json, legacy-html.json]
   schedule:
-    - cron: '0 2,10 * * *'
+    - cron: '0 */2 * * *'
     - cron: '7,37 * * * *'
 
 permissions:
@@ -26,7 +26,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-      - name: Skip completed morning or afternoon refresh cycles
+      - name: Skip completed two-hour refresh cycles
         id: plan
         run: |
           python3 - <<'PY'
@@ -75,7 +75,7 @@ jobs:
             done
             exit 1
           fi
-      - name: Mark incomplete refresh for a retry at the next 30-minute tick
+      - name: Mark incomplete refresh for the ten-minute watchdog
         if: steps.refresh.outcome == 'failure'
         run: |
           echo 'Refresh incomplete. Last-good media retained. The next scheduled check retries pending work.'
