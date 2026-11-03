@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-03T10:00:54.465505+04:00",
+    "checkedAt": "2026-11-03T12:00:48.685655+04:00",
     "records": [
       {
         "_id": "6ae9448e899e46892057663b",
@@ -19,6 +19,48 @@
         "updatedAt": "2026-11-03T02:19:47.054Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/ApPj1Gj7FhO10YUF3axKMhkjuTT.jpg",
         "instagramPostedAt": "2026-11-03T02:20:25Z",
+        "tmdbDetails": {
+          "tmdbId": 1690876,
+          "director": "Khagesh Tammineni",
+          "cast": [
+            {
+              "name": "Vikram Sahidev",
+              "character": "Surya"
+            },
+            {
+              "name": "Sandhya Vasishta",
+              "character": ""
+            },
+            {
+              "name": "Trinadha Rao Nakkina",
+              "character": ""
+            },
+            {
+              "name": "Tarak Ponnappa",
+              "character": ""
+            },
+            {
+              "name": "Nandini Rai",
+              "character": ""
+            }
+          ],
+          "overview": "In rural Anakapalli, a young man enters the criminal underworld under a feared gangster. When love arrives, he faces a choice between power, loyalty, and his former dreams in this tale of action and destiny.",
+          "runtime": 153,
+          "genres": [
+            "Action",
+            "Drama",
+            "Romance"
+          ],
+          "originalLanguage": "te",
+          "spokenLanguages": [
+            "Telugu"
+          ],
+          "releaseDate": "2026-10-02",
+          "voteAverage": null,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-03T06:13:16.350Z"
+        },
+        "tmdbId": 1690876,
         "verified": true
       },
       {
@@ -28436,7 +28478,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-03T10:00:54.465505+04:00",
+    "checkedAt": "2026-11-03T12:00:48.685655+04:00",
     "records": [
       {
         "name": "Akka",

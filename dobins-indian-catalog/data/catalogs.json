@@ -25,8 +25,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
@@ -36,8 +36,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "malayalam",
       "releaseDateBasis": "source release",
@@ -68,8 +68,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
@@ -79,8 +79,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "malayalam",
       "releaseDateBasis": "source release",
@@ -103,7 +103,7 @@
         "Crime",
         "Thriller"
       ],
-      "description": "Home release (digital): 2026-10-16 · SunNXT, Sun NXT\n\nIn Kerala, an investigating journalist disappears without notice. Media and public stunned. Investigation uncovers shocking, unexpected mysteries. Suspenseful plot follows the case's twists and revelations.",
+      "description": "Home release (digital): 2026-10-16 · Sun NXT, SunNXT\n\nIn Kerala, an investigating journalist disappears without notice. Media and public stunned. Investigation uncovers shocking, unexpected mysteries. Suspenseful plot follows the case's twists and revelations.",
       "releaseDate": "2026-10-16",
       "releaseKind": "digital",
       "availability": [
@@ -111,24 +111,24 @@
           "kind": "digital",
           "date": "2026-10-16",
           "platforms": [
-            "SunNXT",
-            "Sun NXT"
+            "Sun NXT",
+            "SunNXT"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
       "physicalReleases": [],
       "ottDate": "2026-10-16",
       "platforms": [
-        "SunNXT",
-        "Sun NXT"
+        "Sun NXT",
+        "SunNXT"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "malayalam",
       "releaseDateBasis": "source release",
@@ -202,8 +202,8 @@
             "ZEE5"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
@@ -213,8 +213,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "malayalam",
       "releaseDateBasis": "source release",
@@ -249,8 +249,8 @@
             "ManoramaMAX"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
@@ -261,8 +261,8 @@
         "ManoramaMAX"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "malayalam",
       "releaseDateBasis": "source release",
@@ -297,8 +297,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
@@ -308,8 +308,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "malayalam",
       "releaseDateBasis": "source release",
@@ -333,7 +333,7 @@
         "Thriller",
         "Crime"
       ],
-      "description": "Home release (digital): 2026-10-09 · Prime Video, Simply South, Aha, ManoramaMAX\n\nAamir Ali, a notorious gold smuggling kingpin who inherited his multi-million dollar criminal enterprise from a lineage of gangsters, is drawn into a web of vengeance, legacy and power.",
+      "description": "Home release (digital): 2026-10-09 · Simply South, ManoramaMAX, Prime Video, Aha\n\nAamir Ali, a notorious gold smuggling kingpin who inherited his multi-million dollar criminal enterprise from a lineage of gangsters, is drawn into a web of vengeance, legacy and power.",
       "releaseDate": "2026-10-09",
       "releaseKind": "digital",
       "availability": [
@@ -341,10 +341,10 @@
           "kind": "digital",
           "date": "2026-10-09",
           "platforms": [
-            "Prime Video",
             "Simply South",
-            "Aha",
-            "ManoramaMAX"
+            "ManoramaMAX",
+            "Prime Video",
+            "Aha"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -354,10 +354,10 @@
       "physicalReleases": [],
       "ottDate": "2026-10-09",
       "platforms": [
-        "Prime Video",
         "Simply South",
-        "Aha",
-        "ManoramaMAX"
+        "ManoramaMAX",
+        "Prime Video",
+        "Aha"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -1655,7 +1655,7 @@
         "Comedy",
         "Thriller"
       ],
-      "description": "Home release (digital): 2026-05-22 · Prime Video, SunNXT\n\nTwo men meet by chance, setting off a night of chaos with romance and action, as their paths cross and intertwine through various unexpected events.",
+      "description": "Home release (digital): 2026-05-22 · SunNXT, Prime Video\n\nTwo men meet by chance, setting off a night of chaos with romance and action, as their paths cross and intertwine through various unexpected events.",
       "releaseDate": "2026-05-22",
       "releaseKind": "digital",
       "availability": [
@@ -1663,8 +1663,8 @@
           "kind": "digital",
           "date": "2026-05-22",
           "platforms": [
-            "Prime Video",
-            "SunNXT"
+            "SunNXT",
+            "Prime Video"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -1674,8 +1674,8 @@
       "physicalReleases": [],
       "ottDate": "2026-05-22",
       "platforms": [
-        "Prime Video",
-        "SunNXT"
+        "SunNXT",
+        "Prime Video"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -2488,7 +2488,7 @@
         "Mystery",
         "Thriller"
       ],
-      "description": "Home release (digital): 2026-03-14 · Prime Video, ManoramaMAX\n\nA police officer investigates pattern killings in Calicut, discovering a vengeful killer's scheme. As he unravels the truth, he faces a moral dilemma between law and justice for a bereaved parent.",
+      "description": "Home release (digital): 2026-03-14 · ManoramaMAX, Prime Video\n\nA police officer investigates pattern killings in Calicut, discovering a vengeful killer's scheme. As he unravels the truth, he faces a moral dilemma between law and justice for a bereaved parent.",
       "releaseDate": "2026-03-14",
       "releaseKind": "digital",
       "availability": [
@@ -2496,8 +2496,8 @@
           "kind": "digital",
           "date": "2026-03-14",
           "platforms": [
-            "Prime Video",
-            "ManoramaMAX"
+            "ManoramaMAX",
+            "Prime Video"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -2507,8 +2507,8 @@
       "physicalReleases": [],
       "ottDate": "2026-03-14",
       "platforms": [
-        "Prime Video",
-        "ManoramaMAX"
+        "ManoramaMAX",
+        "Prime Video"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -5429,8 +5429,8 @@
             "Aha"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
@@ -5441,8 +5441,8 @@
         "Aha"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "tamil",
       "releaseDateBasis": "source release",
@@ -5477,8 +5477,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
@@ -5488,8 +5488,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "tamil",
       "releaseDateBasis": "source release",
@@ -5525,8 +5525,8 @@
             "SonyLIV"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
@@ -5536,8 +5536,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "tamil",
       "releaseDateBasis": "source release",
@@ -5572,8 +5572,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
@@ -5583,8 +5583,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "tamil",
       "releaseDateBasis": "source release",
@@ -5619,8 +5619,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
@@ -5630,8 +5630,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "tamil",
       "releaseDateBasis": "source release",
@@ -5710,8 +5710,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
@@ -5721,8 +5721,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "tamil",
       "releaseDateBasis": "source release",
@@ -5757,8 +5757,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
@@ -5768,8 +5768,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "tamil",
       "releaseDateBasis": "source release",
@@ -6710,12 +6710,12 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt26258714",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.0",
+      "imdbRating": "5.9",
       "genres": [
         "Action",
         "Thriller"
       ],
-      "description": "Home release (digital): 2026-05-14 · Simply South, JioHotStar\n\nCenters on secret intelligence agency cases involving five major national threats that were thwarted through covert operations.",
+      "description": "Home release (digital): 2026-05-14 · JioHotStar, Simply South\n\nCenters on secret intelligence agency cases involving five major national threats that were thwarted through covert operations.",
       "releaseDate": "2026-05-14",
       "releaseKind": "digital",
       "availability": [
@@ -6723,8 +6723,8 @@
           "kind": "digital",
           "date": "2026-05-14",
           "platforms": [
-            "Simply South",
-            "JioHotStar"
+            "JioHotStar",
+            "Simply South"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -6734,8 +6734,8 @@
       "physicalReleases": [],
       "ottDate": "2026-05-14",
       "platforms": [
-        "Simply South",
-        "JioHotStar"
+        "JioHotStar",
+        "Simply South"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -7375,7 +7375,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt37028716",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "4.6",
+      "imdbRating": "4.5",
       "genres": [
         "Thriller",
         "Action"
@@ -12213,8 +12213,8 @@
             "ETV Win"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
@@ -12224,8 +12224,8 @@
         "ETV Win"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "telugu",
       "releaseDateBasis": "source release",
@@ -12260,8 +12260,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
@@ -12271,8 +12271,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "telugu",
       "releaseDateBasis": "source release",
@@ -13920,7 +13920,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt35182033",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "4.5",
+      "imdbRating": "4.6",
       "genres": [
         "Action",
         "Crime",
@@ -23458,6 +23458,61 @@
       "nextEpisodeReleaseAt": null
     },
     {
+      "id": "tt44101690",
+      "type": "series",
+      "name": "Ali Baba Aur 40 Bhoot",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt44101690",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt44101690",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt44101690",
+      "releaseInfo": "2026–",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "5.8",
+      "genres": [
+        "Comedy"
+      ],
+      "description": "Home release (digital): 2026-10-23 · JioHotstar\n\nRooted in logic and science, Alisha is drawn into an experience that defies everything she believes. Will she find answers or uncover a terrifying truth?",
+      "releaseDate": "2026-10-23",
+      "releaseKind": "digital",
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-09-11",
+          "platforms": [],
+          "sources": [
+            "https://www.themoviedb.org/tv/331932"
+          ]
+        },
+        {
+          "kind": "digital",
+          "date": "2026-10-23",
+          "platforms": [
+            "JioHotstar"
+          ],
+          "sources": [
+            "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/331932"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "ottDate": "2026-09-11",
+      "platforms": [
+        "JioHotstar"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/tv/331932",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "episode",
+      "latestEpisodeReleasedAt": "2026-10-23T00:00:00+00:00",
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null
+    },
+    {
       "id": "tt40856820",
       "type": "series",
       "name": "Chaar Yaar",
@@ -24594,7 +24649,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt33144230",
       "releaseInfo": "2024–2024",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.3",
+      "imdbRating": "7.2",
       "genres": [
         "Crime"
       ],
@@ -25076,7 +25131,7 @@
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
-      "latestEpisodeReleasedAt": "2025-12-21T00:00:00+00:00",
+      "latestEpisodeReleasedAt": "2025-12-21T00:00:12+00:00",
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null
     },
@@ -26557,6 +26612,71 @@
       "language": "hindi",
       "releaseDateBasis": "source release",
       "latestEpisodeReleasedAt": "2026-05-01T00:00:00+00:00",
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null
+    },
+    {
+      "id": "tmdb:249765",
+      "type": "series",
+      "name": "Matka King",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/series~tmdb:249765",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/series~tmdb:249765",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/series~tmdb:249765",
+      "releaseInfo": "2026",
+      "metadataSource": "https://www.themoviedb.org/tv/249765",
+      "imdbRating": null,
+      "genres": [
+        "Drama",
+        "Crime"
+      ],
+      "description": "Home release (digital): 2026-05-01 · Prime Video\n\nIn this fictional tale set in 1960s Mumbai, an enterprising cotton trader who craves legitimacy and respect, starts a new gambling game dubbed ‘Matka’, that takes the city by storm and democratizes a terrain previously reserved for the rich and elite.",
+      "releaseDate": "2026-05-01",
+      "releaseKind": "digital",
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-05-01",
+          "platforms": [
+            "Prime Video"
+          ],
+          "sources": [
+            "https://www.dailyott.in/"
+          ]
+        },
+        {
+          "kind": "digital",
+          "date": "2026-04-17",
+          "platforms": [],
+          "sources": [
+            "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/249765"
+          ]
+        },
+        {
+          "kind": "digital",
+          "date": "2026-04-17",
+          "platforms": [],
+          "sources": [
+            "https://www.themoviedb.org/tv/249765"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "ottDate": "2026-05-01",
+      "platforms": [
+        "Prime Video"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/249765"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "source release",
+      "latestEpisodeReleasedAt": null,
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null
     },
@@ -30652,7 +30772,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt30145246",
       "releaseInfo": "2024–2025",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.8",
+      "imdbRating": "8.9",
       "genres": [
         "Drama",
         "Family"
@@ -31222,7 +31342,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt35310553",
       "releaseInfo": "2025–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.2",
+      "imdbRating": "7.3",
       "genres": [
         "Drama"
       ],
@@ -32098,7 +32218,7 @@
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
-      "latestEpisodeReleasedAt": "2024-09-08T00:00:02+00:00",
+      "latestEpisodeReleasedAt": "2024-09-08T00:00:00+00:00",
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null
     },
@@ -32735,7 +32855,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt27618627",
       "releaseInfo": "2024–2024",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.6",
+      "imdbRating": "5.5",
       "genres": [
         "Drama",
         "Mystery",
@@ -33377,7 +33497,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt29041498",
       "releaseInfo": "2023–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.8",
+      "imdbRating": "7.9",
       "genres": [],
       "description": "Home release (digital): 2024-03-31 · \n\nPashminna – Dhaage Mohabbat Ke is an Indian Hindi-language romantic drama television series that aired from 25 October 2023 on Sony SAB. Produced by Siddharth P. Malhotra and Sapna Malhotra under Alchemy Films Private Limited, it stars Nishant Singh Malkani, Isha Sharma, Hiten Tejwani and Gauri Pradhan Tejwani.",
       "releaseDate": "2024-03-31",
@@ -33550,7 +33670,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt29053466",
       "releaseInfo": "2023–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.0",
+      "imdbRating": "7.1",
       "genres": [
         "Drama"
       ],
