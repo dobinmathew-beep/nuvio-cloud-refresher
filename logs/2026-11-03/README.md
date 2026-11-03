@@ -6,6 +6,7 @@ All times are Asia/Muscat (Oman). Records begin when this dashboard was installe
 
 | Check time | Backdrops + reels | Addon | EPG | Check run |
 |---|---|---|---|---|
+| 03 Nov 2026, 17:18 | ✅ Updated | ❌ Could not verify | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41643070193) |
 | 03 Nov 2026, 17:17 | ✅ Updated | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41643066651) |
 | 03 Nov 2026, 17:10 | ✅ Updated | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41641932012) |
 | 03 Nov 2026, 17:04 | ✅ Updated | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41641149039) |
@@ -129,6 +130,24 @@ All times are Asia/Muscat (Oman). Records begin when this dashboard was installe
 
 ## Details for each check
 
+### 03 Nov 2026, 17:18
+
+Trigger: workflow_run. Due cycle: 03 Nov 2026, 16:00.
+
+| Output | Result | Last verified cycle / check | Details | Logs |
+|---|---|---|---|---|
+| Backdrops | ✅ Updated | 03 Nov 2026, 16:00 | 160 layouts; 16 image checks | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41643039885) |
+| Reels | ✅ Updated | 03 Nov 2026, 16:00 | 4 languages; 20 films per reel | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41643039885) |
+| Addon | ❌ Could not verify | Not recorded | 0 catalog entries; ? pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41643021163) |
+| EPG | ✅ Updated | 03 Nov 2026, 16:00 | 648 / 847 channel IDs with listings; 199 unresolved; 58436 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41641119687) |
+
+**Issue:** addon: HTTPError: HTTP Error 500: Internal Server Error
+
+Media attempt: **success**; started 03 Nov 2026, 17:17. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41643039885).
+
+Addon attempt: **success**; started 03 Nov 2026, 17:17. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41643021163).
+
+Epg attempt: **success**; started 03 Nov 2026, 17:04. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41641119687).
 ### 03 Nov 2026, 17:17
 
 Trigger: workflow_run. Due cycle: 03 Nov 2026, 16:00.
