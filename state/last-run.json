@@ -1,7 +1,5 @@
 {
-  "attempted_at": "2026-11-03T18:01:11.600899+04:00",
+  "attempted_at": "2026-11-03T18:21:06.840076+04:00",
   "cycle": "2026-11-03",
-  "errors": [
-    "backdrops: [{'status': 'hindi/combined/gallery', 'error': 'curl: (28) Operation timed out after 100001 milliseconds with 0 bytes received\\n'}]"
-  ]
+  "errors": []
 }
