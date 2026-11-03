@@ -2,7 +2,7 @@
 
 **Backdrops · Reels · Addon · India EPG**
 
-Last checked: **03 Nov 2026, 18:10 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41651026519)
+Last checked: **03 Nov 2026, 18:20 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41652664271)
 
 **Refresh:** every two hours, 00:00–22:00. **Backup check:** every ten minutes. Checks also run after refresh attempts finish.
 
@@ -10,8 +10,8 @@ Last checked: **03 Nov 2026, 18:10 Oman time**. [This check’s logs](https://gi
 
 | Output | Status at last check | Last verified cycle / check (Oman) | Details | Latest attempt |
 |---|---|---|---|---|
-| Backdrops | ⚠️ Waiting for retry | Not recorded | ? layouts; ? image checks | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41649505130) |
-| Reels | ⚠️ Waiting for retry | 03 Nov 2026, 18:00 | 4 languages; 20 films per reel; this part verified, combined media cycle still pending | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41649505130) |
+| Backdrops | 🔄 Retry requested | Not recorded | ? layouts; ? image checks | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41649505130) |
+| Reels | 🔄 Retry requested | 03 Nov 2026, 18:00 | 4 languages; 20 films per reel; this part verified, combined media cycle still pending | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41649505130) |
 | Addon | ✅ Updated | 03 Nov 2026, 18:00 | 824 catalog entries; 103 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41649511301) |
 | EPG | ✅ Updated | 03 Nov 2026, 18:01 | 648 / 847 channel IDs with listings; 199 unresolved; 56372 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/41649521054) |
 
@@ -28,7 +28,7 @@ A successful check can keep the same movies or listings when the source has not 
 
 ## Issues at this check
 
-- media: overdue; recent attempt has not produced a valid current cycle
+No watchdog errors reported. Source coverage and unresolved items are shown separately above.
 
 ## Useful links
 
