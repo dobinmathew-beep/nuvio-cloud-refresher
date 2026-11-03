@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-03T17:18:04.970383+04:00",
+  "checked_at": "2026-11-03T17:20:27.204518+04:00",
   "results": [
     {
       "component": "media",
@@ -9,8 +9,7 @@
     {
       "component": "addon",
       "due": "2026-11-03T16:00:00+04:00",
-      "state": "check-failed",
-      "error": "HTTPError: HTTP Error 500: Internal Server Error"
+      "state": "fresh"
     },
     {
       "component": "epg",
@@ -18,7 +17,5 @@
       "state": "fresh"
     }
   ],
-  "errors": [
-    "addon: HTTPError: HTTP Error 500: Internal Server Error"
-  ]
+  "errors": []
 }
