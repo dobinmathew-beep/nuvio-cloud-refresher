@@ -21,13 +21,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Sub-Inspector Yugandhar",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-10-30",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Chaar Yaar",
     "language": "hindi",
     "type": "movie",
@@ -39,6 +32,13 @@
     "language": "hindi",
     "type": "series",
     "ottDate": "2026-10-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Sub-Inspector Yugandhar",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-10-30",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -63,17 +63,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Marpu - Not For You, But For The Future",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-10-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Chef Mantra Project USA",
     "language": "telugu",
     "type": "series",
     "ottDate": "2026-08-13",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Marpu - Not For You, But For The Future",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-10-14",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -224,13 +224,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Nijame Rujuvainadhi",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-08-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Auto Vijayashanthi (Episode 221)",
     "language": "telugu",
     "type": "series",
@@ -259,6 +252,13 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Nijame Rujuvainadhi",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-08-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Soul Trip",
     "language": "telugu",
     "type": "series",
@@ -277,13 +277,6 @@
     "language": "tamil",
     "type": "series",
     "ottDate": "2026-05-10",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Objection My Lord",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-07-31",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -308,6 +301,13 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Objection My Lord",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-07-31",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Padamati Sandhyaragam",
     "language": "telugu",
     "type": "series",
@@ -329,13 +329,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Maa Inti Bangaaram",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-07-17",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Chamanthi",
     "language": "telugu",
     "type": "series",
@@ -354,6 +347,13 @@
     "language": "tamil",
     "type": "series",
     "ottDate": "2026-04-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Maa Inti Bangaaram",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-07-17",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -413,13 +413,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Danger Devil",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-06-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Aa Gang Repu 3",
     "language": "telugu",
     "type": "series",
@@ -431,6 +424,13 @@
     "language": "tamil",
     "type": "movie",
     "ottDate": "2026-05-29",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Danger Devil",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-06-12",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -511,17 +511,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Uthutha Herolu",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-21",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Manipur Files",
     "language": "hindi",
     "type": "movie",
     "ottDate": "2026-07-11",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Uthutha Herolu",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-05-21",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -609,13 +609,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Sodhara",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-01",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Special Ops: Lioness Season 3",
     "language": "hindi",
     "type": "series",
@@ -623,10 +616,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "The Eternal Love",
+    "name": "Sodhara",
     "language": "telugu",
     "type": "movie",
-    "ottDate": "2026-04-24",
+    "ottDate": "2026-05-01",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -634,6 +627,13 @@
     "language": "hindi",
     "type": "movie",
     "ottDate": "2026-05-03",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "The Eternal Love",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-04-24",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {

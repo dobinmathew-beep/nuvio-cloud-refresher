@@ -1,7 +1,26 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-03T06:00:47.235081+04:00",
+    "checkedAt": "2026-11-03T08:00:47.727603+04:00",
     "records": [
+      {
+        "_id": "6ae9448e899e46892057663b",
+        "title": "Anakapalli",
+        "platform": "SunNXT",
+        "createdAt": "2026-11-03T02:18:54.731Z",
+        "genre": "Crime, Drama, Action",
+        "imdbRating": null,
+        "languages": [
+          "Telugu"
+        ],
+        "original_language": "Telugu",
+        "releaseDate": "2026-11-03",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-03T02:19:47.054Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/ApPj1Gj7FhO10YUF3axKMhkjuTT.jpg",
+        "instagramPostedAt": "2026-11-03T02:20:25Z",
+        "verified": true
+      },
       {
         "_id": "6ae5500b899e46892055aebe",
         "platform": "Prime Video",
@@ -19,9 +38,6 @@
         "updatedAt": "2026-10-31T02:19:41.747Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/qeJydXBGQa9lPRnQ0TGR7y4qXIP.jpg",
         "instagramPostedAt": "2026-10-31T02:20:12Z",
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
-        "trendingRankedDateIST": "2026-11-02",
         "tmdbDetails": {
           "tmdbId": 1638744,
           "director": "Manju Swaraj",
@@ -60,6 +76,9 @@
           "fetchedAt": "2026-11-02T05:02:17.708Z"
         },
         "tmdbId": 1638744,
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-11-03T02:19:28.379Z",
+        "trendingRankedDateIST": "2026-11-03",
         "verified": true
       },
       {
@@ -156,8 +175,8 @@
         "tmdbId": 1339713,
         "votes": 1,
         "trendingRank": 1,
-        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
-        "trendingRankedDateIST": "2026-11-02",
+        "trendingRankedAt": "2026-11-03T02:19:28.379Z",
+        "trendingRankedDateIST": "2026-11-03",
         "verified": true
       },
       {
@@ -288,9 +307,9 @@
           "fetchedAt": "2026-10-30T07:39:14.867Z"
         },
         "tmdbId": 1290035,
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
-        "trendingRankedDateIST": "2026-11-02",
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-11-03T02:19:28.379Z",
+        "trendingRankedDateIST": "2026-11-03",
         "verified": true
       },
       {
@@ -366,9 +385,9 @@
           "fetchedAt": "2026-11-01T06:21:17.352Z"
         },
         "tmdbId": 1656061,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
-        "trendingRankedDateIST": "2026-11-02",
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-03T02:19:28.379Z",
+        "trendingRankedDateIST": "2026-11-03",
         "verified": true
       },
       {
@@ -442,9 +461,9 @@
           "fetchedAt": "2026-10-30T03:37:14.797Z"
         },
         "tmdbId": 1395215,
-        "trendingRank": 6,
-        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
-        "trendingRankedDateIST": "2026-11-02",
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-03T02:19:28.379Z",
+        "trendingRankedDateIST": "2026-11-03",
         "verified": true
       },
       {
@@ -506,8 +525,8 @@
         },
         "tmdbId": 1618200,
         "trendingRank": 8,
-        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
-        "trendingRankedDateIST": "2026-11-02",
+        "trendingRankedAt": "2026-11-03T02:19:28.379Z",
+        "trendingRankedDateIST": "2026-11-03",
         "verified": true
       },
       {
@@ -581,9 +600,9 @@
           "fetchedAt": "2026-10-31T14:13:43.252Z"
         },
         "tmdbId": 1811964,
-        "trendingRank": 7,
-        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
-        "trendingRankedDateIST": "2026-11-02",
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-03T02:19:28.379Z",
+        "trendingRankedDateIST": "2026-11-03",
         "verified": true
       },
       {
@@ -658,8 +677,8 @@
         },
         "tmdbId": 1515692,
         "trendingRank": 2,
-        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
-        "trendingRankedDateIST": "2026-11-02",
+        "trendingRankedAt": "2026-11-03T02:19:28.379Z",
+        "trendingRankedDateIST": "2026-11-03",
         "verified": true
       },
       {
@@ -720,8 +739,8 @@
         },
         "tmdbId": 1456196,
         "trendingRank": 9,
-        "trendingRankedAt": "2026-11-02T02:19:13.838Z",
-        "trendingRankedDateIST": "2026-11-02",
+        "trendingRankedAt": "2026-11-03T02:19:28.379Z",
+        "trendingRankedDateIST": "2026-11-03",
         "verified": true
       },
       {
@@ -28417,7 +28436,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-03T06:00:47.235081+04:00",
+    "checkedAt": "2026-11-03T08:00:47.727603+04:00",
     "records": [
       {
         "name": "Akka",

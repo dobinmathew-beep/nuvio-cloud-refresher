@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-03T06:00:47.235081+04:00",
-  "lastSuccessCycle": "2026-11-03T06:00:00+04:00",
+  "updatedAt": "2026-11-03T08:00:47.727603+04:00",
+  "lastSuccessCycle": "2026-11-03T08:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, 00:00 through 22:00 (Asia/Muscat)",
   "sources": [
@@ -13,7 +13,7 @@
       "source": "DailyOTT",
       "url": "https://www.dailyott.in/",
       "state": "live",
-      "records": 914
+      "records": 915
     },
     {
       "source": "Cinebuds",
@@ -68,7 +68,7 @@
       "language": "hindi",
       "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
       "state": "live",
-      "records": 300
+      "records": 298
     },
     {
       "source": "TMDB streaming-series discovery",
@@ -125,13 +125,13 @@
     "dobins_ml_series": 57,
     "dobins_ta_movie": 51,
     "dobins_ta_series": 97,
-    "dobins_te_movie": 64,
+    "dobins_te_movie": 65,
     "dobins_te_series": 100,
     "dobins_hi_movie": 66,
     "dobins_hi_series": 320
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
   "pendingMatches": 103,
-  "checkedCandidates": 926,
+  "checkedCandidates": 927,
   "errors": []
 }
