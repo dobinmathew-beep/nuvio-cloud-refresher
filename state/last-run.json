@@ -1,5 +1,7 @@
 {
-  "attempted_at": "2026-11-04T12:01:02.083883+04:00",
+  "attempted_at": "2026-11-04T14:02:03.164765+04:00",
   "cycle": "2026-11-04",
-  "errors": []
+  "errors": [
+    "heroes: HTTP Error 500: Internal Server Error"
+  ]
 }
