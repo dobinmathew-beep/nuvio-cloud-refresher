@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-11-04T14:10:18.355530+04:00",
+  "checked_at": "2026-11-04T14:20:18.977788+04:00",
   "results": [
     {
       "component": "media",
       "due": "2026-11-04T14:00:00+04:00",
-      "state": "refresh-in-progress"
+      "state": "catch-up-dispatched"
     },
     {
       "component": "addon",
