@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-04T22:00:59.669367+04:00",
-  "lastSuccessCycle": "2026-11-04T22:00:00+04:00",
+  "updatedAt": "2026-11-05T00:00:51.704178+04:00",
+  "lastSuccessCycle": "2026-11-05T00:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, 00:00 through 22:00 (Asia/Muscat)",
   "sources": [
@@ -68,7 +68,7 @@
       "language": "hindi",
       "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
       "state": "live",
-      "records": 299
+      "records": 297
     },
     {
       "source": "TMDB streaming-series discovery",
@@ -81,7 +81,7 @@
       "source": "TVmaze streaming episode schedule",
       "url": "https://api.tvmaze.com/schedule/web",
       "state": "live",
-      "records": 9
+      "records": 5
     },
     {
       "source": "Verified multi-source series backfill",
