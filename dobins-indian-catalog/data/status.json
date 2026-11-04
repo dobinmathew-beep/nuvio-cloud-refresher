@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-05T00:00:51.704178+04:00",
-  "lastSuccessCycle": "2026-11-05T00:00:00+04:00",
+  "updatedAt": "2026-11-05T02:00:49.548602+04:00",
+  "lastSuccessCycle": "2026-11-05T02:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, 00:00 through 22:00 (Asia/Muscat)",
   "sources": [
@@ -68,7 +68,7 @@
       "language": "hindi",
       "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
       "state": "live",
-      "records": 297
+      "records": 299
     },
     {
       "source": "TMDB streaming-series discovery",
@@ -131,7 +131,7 @@
     "dobins_hi_series": 322
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
-  "pendingMatches": 104,
+  "pendingMatches": 103,
   "checkedCandidates": 928,
   "errors": []
 }
