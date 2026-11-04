@@ -562,6 +562,13 @@
   ],
   "hindi-movie": [
     {
+      "id": "tt27988879",
+      "name": "Ramayana: Rise of a Legend",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27988879.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tt39631280",
       "name": "Gajab Raat",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39631280.jpg",
@@ -691,13 +698,6 @@
       "id": "tt36201830",
       "name": "System",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36201830.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt34498111",
-      "name": "Chand Mera Dil",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt34498111.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     }
