@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-05T12:00:47.926732+04:00",
+    "checkedAt": "2026-11-05T14:00:49.616686+04:00",
     "records": [
       {
         "_id": "6aebe78fa2c49d8813610c0e",
@@ -54,6 +54,59 @@
         "type": "Movie",
         "updatedAt": "2026-11-05T02:19:51.212Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/fez7kLyGzpowduJapTFZZ1feCS0.jpg",
+        "tmdbDetails": {
+          "tmdbId": 1654940,
+          "director": "Hiroki Kazama",
+          "cast": [
+            {
+              "name": "Ko Shibasaki",
+              "character": "Yui Katakura"
+            },
+            {
+              "name": "Eiji Akaso",
+              "character": "Sena"
+            },
+            {
+              "name": "Michitaka Tsutsui",
+              "character": "Masami Ikuyama"
+            },
+            {
+              "name": "Naomi Nishida",
+              "character": "Mizuho Maruyama"
+            },
+            {
+              "name": "Yui Narumi",
+              "character": "Nachi"
+            },
+            {
+              "name": "Ryubi Miyase",
+              "character": "Kiriya"
+            },
+            {
+              "name": "Koen Kondo",
+              "character": "Doctor"
+            },
+            {
+              "name": "Mari Hamada",
+              "character": "Sena's Mother"
+            }
+          ],
+          "overview": "Given a year to live, frugal 40-year-old Yui finally lets herself spend: \"buying\" nightclub host Sena. What begins as a contract takes an unexpected turn.",
+          "runtime": null,
+          "genres": [
+            "Drama",
+            "Romance"
+          ],
+          "originalLanguage": "ja",
+          "spokenLanguages": [
+            "Japanese"
+          ],
+          "releaseDate": "2026-11-05",
+          "voteAverage": null,
+          "trailerKey": "WH-RRKQGdJ8",
+          "fetchedAt": "2026-11-05T08:29:38.815Z"
+        },
+        "tmdbId": 1654940,
         "verified": true
       },
       {
@@ -72,6 +125,59 @@
         "type": "Movie",
         "updatedAt": "2026-11-05T02:19:50.569Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/rve2a7JXJbXivl0JakEWgc9Fhwh.jpg",
+        "tmdbDetails": {
+          "tmdbId": 1630420,
+          "director": "Prueksa Amaruji",
+          "cast": [
+            {
+              "name": "Pongsak Pongsuwan",
+              "character": "Winai"
+            },
+            {
+              "name": "Maylada Susri",
+              "character": "Woranuch"
+            },
+            {
+              "name": "Akkharadech Yodjampa",
+              "character": "Toy"
+            },
+            {
+              "name": "Gornpop Janjaroen",
+              "character": "Sua Hao"
+            },
+            {
+              "name": "Krist-kul Chumkaew",
+              "character": "Xing"
+            },
+            {
+              "name": "Theerawiwat Butrtaya",
+              "character": "Khe"
+            },
+            {
+              "name": "Lattapon Rujirojjindakul",
+              "character": "Bo"
+            },
+            {
+              "name": "Suppachai Hanumas",
+              "character": "Pao"
+            }
+          ],
+          "overview": "When her father's memories as a retired top cop resurface, a struggling actress stages wild missions to keep him from pursuing his elusive archnemesis.",
+          "runtime": 116,
+          "genres": [
+            "Action",
+            "Comedy"
+          ],
+          "originalLanguage": "th",
+          "spokenLanguages": [
+            "Thai"
+          ],
+          "releaseDate": "2026-11-04",
+          "voteAverage": null,
+          "trailerKey": "a28p9c4zTdI",
+          "fetchedAt": "2026-11-05T08:00:57.485Z"
+        },
+        "tmdbId": 1630420,
         "verified": true
       },
       {
@@ -28607,7 +28713,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-05T12:00:47.926732+04:00",
+    "checkedAt": "2026-11-05T14:00:49.616686+04:00",
     "records": [
       {
         "name": "Dilwali diwali",
