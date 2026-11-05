@@ -14,13 +14,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Koffee with Karan 9",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Sub-Inspector Yugandhar",
     "language": "telugu",
     "type": "movie",
@@ -32,6 +25,13 @@
     "language": "hindi",
     "type": "movie",
     "ottDate": "2026-10-23",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Koffee with Karan 9",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-28",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
