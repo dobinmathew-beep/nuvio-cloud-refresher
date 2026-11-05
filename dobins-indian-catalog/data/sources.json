@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-05T08:00:48.913106+04:00",
+    "checkedAt": "2026-11-05T10:00:48.896270+04:00",
     "records": [
       {
         "_id": "6aebe78fa2c49d8813610c0e",
@@ -10640,9 +10640,9 @@
             "Tamil"
           ],
           "releaseDate": "2026-07-10",
-          "voteAverage": 6.889,
+          "voteAverage": 5.969,
           "trailerKey": "7RCeBn0n9IA",
-          "fetchedAt": "2026-09-10T14:18:11.124Z"
+          "fetchedAt": "2026-11-05T05:08:24.976Z"
         },
         "tmdbId": 1432631,
         "verified": true
@@ -28607,8 +28607,22 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-05T08:00:48.913106+04:00",
+    "checkedAt": "2026-11-05T10:00:48.896270+04:00",
     "records": [
+      {
+        "name": "Dilwali diwali",
+        "language": "hindi",
+        "type": "movie",
+        "ottDate": "2026-11-05",
+        "platforms": [
+          "Netflix"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/10/dilwali-diwali-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/dilwali-diwali/",
+        "confirmed": true
+      },
       {
         "name": "Akka",
         "language": "hindi",

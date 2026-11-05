@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-05T08:00:48.913106+04:00",
-  "lastSuccessCycle": "2026-11-05T08:00:00+04:00",
+  "updatedAt": "2026-11-05T10:00:48.896270+04:00",
+  "lastSuccessCycle": "2026-11-05T10:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, 00:00 through 22:00 (Asia/Muscat)",
   "sources": [
@@ -19,7 +19,7 @@
       "source": "Cinebuds",
       "url": "https://cinebuds.com/ott-release-dates/",
       "state": "live",
-      "records": 27
+      "records": 28
     },
     {
       "source": "IndianRegional series discovery",
