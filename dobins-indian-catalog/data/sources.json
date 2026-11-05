@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-05T14:00:49.616686+04:00",
+    "checkedAt": "2026-11-05T16:00:52.816829+04:00",
     "records": [
       {
         "_id": "6aebe78fa2c49d8813610c0e",
@@ -238,6 +238,32 @@
         "trendingRank": 1,
         "trendingRankedAt": "2026-11-05T02:19:29.860Z",
         "trendingRankedDateIST": "2026-11-05",
+        "tmdbDetails": {
+          "tmdbId": 1755818,
+          "director": "Sangeeth Sivan",
+          "cast": [
+            {
+              "name": "Arjun Rampal",
+              "character": ""
+            },
+            {
+              "name": "Priyamani",
+              "character": ""
+            }
+          ],
+          "overview": "A Cop, under suspension, is on the trail of Missing Cash.",
+          "runtime": null,
+          "genres": [],
+          "originalLanguage": "hi",
+          "spokenLanguages": [
+            "Hindi"
+          ],
+          "releaseDate": "2026-11-04",
+          "voteAverage": null,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-05T11:13:10.822Z"
+        },
+        "tmdbId": 1755818,
         "verified": true
       },
       {
@@ -28713,7 +28739,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-05T14:00:49.616686+04:00",
+    "checkedAt": "2026-11-05T16:00:52.816829+04:00",
     "records": [
       {
         "name": "Dilwali diwali",
