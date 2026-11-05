@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-05T22:10:34.493804+04:00",
-  "lastSuccessCycle": "2026-11-05T22:00:00+04:00",
+  "updatedAt": "2026-11-06T00:00:54.310588+04:00",
+  "lastSuccessCycle": "2026-11-06T00:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, 00:00 through 22:00 (Asia/Muscat)",
   "sources": [
@@ -81,7 +81,7 @@
       "source": "TVmaze streaming episode schedule",
       "url": "https://api.tvmaze.com/schedule/web",
       "state": "live",
-      "records": 5
+      "records": 0
     },
     {
       "source": "Verified multi-source series backfill",
