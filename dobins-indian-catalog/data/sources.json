@@ -1,7 +1,79 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-05T06:00:47.959142+04:00",
+    "checkedAt": "2026-11-05T08:00:48.913106+04:00",
     "records": [
+      {
+        "_id": "6aebe78fa2c49d8813610c0e",
+        "platform": "Netflix",
+        "title": "Dilwali Diwali",
+        "createdAt": "2026-11-05T02:18:55.145Z",
+        "genre": "Family Drama",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-05",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-05T02:19:52.529Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/cV31QO65DA6mk4Hd6S7QncVq85T.jpg",
+        "instagramPostedAt": "2026-11-05T02:20:32Z",
+        "verified": true
+      },
+      {
+        "_id": "6aebe78fa2c49d8813610c0f",
+        "platform": "Netflix",
+        "title": "Black Doves (Season 2)",
+        "createdAt": "2026-11-05T02:18:55.355Z",
+        "genre": "Spy Thriller",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-05",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-05T02:18:55.355Z",
+        "verified": true
+      },
+      {
+        "_id": "6aebe78fa2c49d8813610c10",
+        "platform": "Netflix",
+        "title": "One Year To Live, Buy A Man",
+        "createdAt": "2026-11-05T02:18:55.562Z",
+        "genre": "Drama",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-05",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-05T02:19:51.212Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/fez7kLyGzpowduJapTFZZ1feCS0.jpg",
+        "verified": true
+      },
+      {
+        "_id": "6aebe78fa2c49d8813610c11",
+        "platform": "Netflix",
+        "title": "Overacting",
+        "createdAt": "2026-11-05T02:18:55.768Z",
+        "genre": "Comedy",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-05",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-05T02:19:50.569Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/rve2a7JXJbXivl0JakEWgc9Fhwh.jpg",
+        "verified": true
+      },
       {
         "_id": "6aea960da2c49d881360a922",
         "title": "The Greatest",
@@ -57,6 +129,9 @@
         "updatedAt": "2026-11-04T02:19:44.662Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/kO9q6StIAUBpfcKVtTSth7zOE2C.jpg",
         "instagramPostedAt": "2026-11-04T02:20:14Z",
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
+        "trendingRankedDateIST": "2026-11-05",
         "verified": true
       },
       {
@@ -118,9 +193,9 @@
           "fetchedAt": "2026-11-03T06:13:16.350Z"
         },
         "tmdbId": 1690876,
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-04T02:19:22.856Z",
-        "trendingRankedDateIST": "2026-11-04",
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
+        "trendingRankedDateIST": "2026-11-05",
         "verified": true
       },
       {
@@ -179,8 +254,8 @@
         },
         "tmdbId": 1638744,
         "trendingRank": 9,
-        "trendingRankedAt": "2026-11-04T02:19:22.856Z",
-        "trendingRankedDateIST": "2026-11-04",
+        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
+        "trendingRankedDateIST": "2026-11-05",
         "verified": true
       },
       {
@@ -276,9 +351,9 @@
         },
         "tmdbId": 1339713,
         "votes": 1,
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-04T02:19:22.856Z",
-        "trendingRankedDateIST": "2026-11-04",
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
+        "trendingRankedDateIST": "2026-11-05",
         "verified": true
       },
       {
@@ -409,9 +484,9 @@
           "fetchedAt": "2026-10-30T07:39:14.867Z"
         },
         "tmdbId": 1290035,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-04T02:19:22.856Z",
-        "trendingRankedDateIST": "2026-11-04",
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
+        "trendingRankedDateIST": "2026-11-05",
         "verified": true
       },
       {
@@ -487,9 +562,9 @@
           "fetchedAt": "2026-11-01T06:21:17.352Z"
         },
         "tmdbId": 1656061,
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-11-04T02:19:22.856Z",
-        "trendingRankedDateIST": "2026-11-04",
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
+        "trendingRankedDateIST": "2026-11-05",
         "verified": true
       },
       {
@@ -563,9 +638,9 @@
           "fetchedAt": "2026-10-30T03:37:14.797Z"
         },
         "tmdbId": 1395215,
-        "trendingRank": 6,
-        "trendingRankedAt": "2026-11-04T02:19:22.856Z",
-        "trendingRankedDateIST": "2026-11-04",
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
+        "trendingRankedDateIST": "2026-11-05",
         "verified": true
       },
       {
@@ -626,9 +701,9 @@
           "fetchedAt": "2026-10-30T03:19:34.729Z"
         },
         "tmdbId": 1618200,
-        "trendingRank": 7,
-        "trendingRankedAt": "2026-11-04T02:19:22.856Z",
-        "trendingRankedDateIST": "2026-11-04",
+        "trendingRank": 8,
+        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
+        "trendingRankedDateIST": "2026-11-05",
         "verified": true
       },
       {
@@ -702,9 +777,9 @@
           "fetchedAt": "2026-10-31T14:13:43.252Z"
         },
         "tmdbId": 1811964,
-        "trendingRank": 8,
-        "trendingRankedAt": "2026-11-04T02:19:22.856Z",
-        "trendingRankedDateIST": "2026-11-04",
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
+        "trendingRankedDateIST": "2026-11-05",
         "verified": true
       },
       {
@@ -778,9 +853,6 @@
           "fetchedAt": "2026-10-29T06:19:56.388Z"
         },
         "tmdbId": 1515692,
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-04T02:19:22.856Z",
-        "trendingRankedDateIST": "2026-11-04",
         "verified": true
       },
       {
@@ -840,9 +912,6 @@
           "fetchedAt": "2026-10-29T16:04:29.072Z"
         },
         "tmdbId": 1456196,
-        "trendingRank": 10,
-        "trendingRankedAt": "2026-11-04T02:19:22.856Z",
-        "trendingRankedDateIST": "2026-11-04",
         "verified": true
       },
       {
@@ -28538,7 +28607,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-05T06:00:47.959142+04:00",
+    "checkedAt": "2026-11-05T08:00:48.913106+04:00",
     "records": [
       {
         "name": "Akka",
