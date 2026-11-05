@@ -1,7 +1,7 @@
 {
-  "attempted_at": "2026-11-05T18:30:40.412337+04:00",
+  "attempted_at": "2026-11-05T18:40:51.474835+04:00",
   "cycle": "2026-11-05",
   "errors": [
-    "heroes: Download failed: https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/renderer-source/renderer-c28a3ceb25f574fdd06c.tar.gz curl: (22) The requested URL returned error: 504\ncurl: (22) The requested URL returned error: 504\n"
+    "heroes: Download failed: https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/6e6277a54e4a1ed84ed25e5e-tamil-daily.json curl: (22) The requested URL returned error: 504\ncurl: (22) The requested URL returned error: 504\n"
   ]
 }
