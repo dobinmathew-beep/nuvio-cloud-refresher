@@ -177,7 +177,7 @@ def build():
   if attempts>=budget:continue
   work.append((key,e));attempts+=1
  def resolve(pair):
-  key,e=pair;existing=matches.get(key,{}).get('id');mk=alternate.key(e['type'],existing or '');c=metas.get(mk) or select_candidate(e,pool) or e.get('_verifiedMetadata') or suggestion(e)
+  key,e=pair;existing=matches.get(key,{}).get('id');mk=alternate.key(e['type'],existing or '');c=metas.get(mk) or ({'id':existing,'name':e['name'],'type':e['type']} if re.fullmatch(r'tt\d+',str(existing or '')) else None) or select_candidate(e,pool) or e.get('_verifiedMetadata') or suggestion(e)
   m=e.get('_verifiedMetadata') if c and e.get('_verifiedMetadata',{}).get('id')==c['id'] else None
   if c:
    mid=c['id'];previous=metas.get(alternate.key(e['type'],mid));checked=previous.get('_metadataCheckedAt') if previous else None
