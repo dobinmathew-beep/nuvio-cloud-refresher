@@ -1,9 +1,9 @@
 {
-  "cycle": "2026-11-06",
-  "refresh_cycle": "2026-11-06T22:00:00+04:00",
+  "cycle": "2026-11-07",
+  "refresh_cycle": "2026-11-07T00:00:00+04:00",
   "featuredVersion": 2,
   "backdrops": {
-    "day": "2026-11-06",
+    "day": "2026-11-07",
     "statuses": 160,
     "images": 16,
     "states": {
@@ -19,7 +19,7 @@
       "malayalam",
       "telugu"
     ],
-    "checked_at": "2026-11-06T22:11:03.140017+04:00",
+    "checked_at": "2026-11-07T00:11:36.293550+04:00",
     "films_per_language": 20,
     "opening_version": 1,
     "selection_policy": "imdb-catalog-order-v1"
