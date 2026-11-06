@@ -286,7 +286,7 @@
         "Fantasy",
         "Thriller"
       ],
-      "description": "Home release (digital): 2026-10-15 · ManoramaMAX, Manorama Max\n\nA young man declared brain-dead suddenly awakens with the ability to hear everything. Seeking the nurse whose voice saved him, he's drawn into a dark game of masks, memories, and revenge where every sound may be a clue or a trap.",
+      "description": "Home release (digital): 2026-10-15 · Manorama Max, ManoramaMAX\n\nA young man declared brain-dead suddenly awakens with the ability to hear everything. Seeking the nurse whose voice saved him, he's drawn into a dark game of masks, memories, and revenge where every sound may be a clue or a trap.",
       "releaseDate": "2026-10-15",
       "releaseKind": "digital",
       "availability": [
@@ -294,8 +294,8 @@
           "kind": "digital",
           "date": "2026-10-15",
           "platforms": [
-            "ManoramaMAX",
-            "Manorama Max"
+            "Manorama Max",
+            "ManoramaMAX"
           ],
           "sources": [
             "https://cinebuds.com/ott-release-dates/",
@@ -306,8 +306,8 @@
       "physicalReleases": [],
       "ottDate": "2026-10-15",
       "platforms": [
-        "ManoramaMAX",
-        "Manorama Max"
+        "Manorama Max",
+        "ManoramaMAX"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
@@ -382,7 +382,7 @@
         "Thriller",
         "Crime"
       ],
-      "description": "Home release (digital): 2026-10-09 · Simply South, Aha, ManoramaMAX, Prime Video\n\nAamir Ali, a notorious gold smuggling kingpin who inherited his multi-million dollar criminal enterprise from a lineage of gangsters, is drawn into a web of vengeance, legacy and power.",
+      "description": "Home release (digital): 2026-10-09 · Simply South, ManoramaMAX, Aha, Prime Video\n\nAamir Ali, a notorious gold smuggling kingpin who inherited his multi-million dollar criminal enterprise from a lineage of gangsters, is drawn into a web of vengeance, legacy and power.",
       "releaseDate": "2026-10-09",
       "releaseKind": "digital",
       "availability": [
@@ -391,8 +391,8 @@
           "date": "2026-10-09",
           "platforms": [
             "Simply South",
-            "Aha",
             "ManoramaMAX",
+            "Aha",
             "Prime Video"
           ],
           "sources": [
@@ -404,8 +404,8 @@
       "ottDate": "2026-10-09",
       "platforms": [
         "Simply South",
-        "Aha",
         "ManoramaMAX",
+        "Aha",
         "Prime Video"
       ],
       "sources": [
@@ -5459,13 +5459,14 @@
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt18933846",
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt18933846",
-      "releaseInfo": "",
+      "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
       "imdbRating": null,
       "genres": [
-        "Romance"
+        "Romance",
+        "Drama"
       ],
-      "description": "Home release (digital): 2026-11-06 · ZEE5\n\n",
+      "description": "Home release (digital): 2026-11-06 · ZEE5\n\nVino and Fenny's lives intertwine in a poignant tale of love, hope, and heartbreak.",
       "releaseDate": "2026-11-06",
       "releaseKind": "digital",
       "availability": [
@@ -5551,7 +5552,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39089210",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "9.9",
+      "imdbRating": "9.4",
       "genres": [
         "Family",
         "Drama"
@@ -5575,6 +5576,47 @@
       "ottDate": "2026-11-06",
       "platforms": [
         "Prime Video"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-release-dates/"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "source release",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null
+    },
+    {
+      "id": "tt44917900",
+      "type": "movie",
+      "name": "7 Star Boys",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt44917900",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt44917900",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt44917900",
+      "releaseInfo": "",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "6.8",
+      "genres": [],
+      "description": "Home release (digital): 2026-11-06 · Aha\n\nA group of boys passionate about football cleans up an abandoned field with help from a local hero. When a tournament is announced, a professional player arrives to coach them toward their dreams of victory.",
+      "releaseDate": "2026-11-06",
+      "releaseKind": "digital",
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-11-06",
+          "platforms": [
+            "Aha"
+          ],
+          "sources": [
+            "https://cinebuds.com/ott-release-dates/"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "ottDate": "2026-11-06",
+      "platforms": [
+        "Aha"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/"
@@ -6898,7 +6940,7 @@
         "Action",
         "Thriller"
       ],
-      "description": "Home release (digital): 2026-05-14 · Simply South, JioHotStar\n\nCenters on secret intelligence agency cases involving five major national threats that were thwarted through covert operations.",
+      "description": "Home release (digital): 2026-05-14 · JioHotStar, Simply South\n\nCenters on secret intelligence agency cases involving five major national threats that were thwarted through covert operations.",
       "releaseDate": "2026-05-14",
       "releaseKind": "digital",
       "availability": [
@@ -6906,8 +6948,8 @@
           "kind": "digital",
           "date": "2026-05-14",
           "platforms": [
-            "Simply South",
-            "JioHotStar"
+            "JioHotStar",
+            "Simply South"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -6917,8 +6959,8 @@
       "physicalReleases": [],
       "ottDate": "2026-05-14",
       "platforms": [
-        "Simply South",
-        "JioHotStar"
+        "JioHotStar",
+        "Simply South"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -7563,7 +7605,7 @@
         "Thriller",
         "Action"
       ],
-      "description": "Home release (digital): 2026-03-13 · Aha, Prime Video\n\nIt is story about a Honest and straightforward lady police Inspector Yogi works in Coimbatore, where she proves a textile mill owner’s “suicide” is actually a murder by his own son, leading to her transfer to the punishment area Vyasarpadi in North Chennai. There she confronts ruthless don Shekar Babu, who controls the area and its police through fear, power, and political influence, but Yogi refuses to bow down and begins taking action against his network.",
+      "description": "Home release (digital): 2026-03-13 · Prime Video, Aha\n\nIt is story about a Honest and straightforward lady police Inspector Yogi works in Coimbatore, where she proves a textile mill owner’s “suicide” is actually a murder by his own son, leading to her transfer to the punishment area Vyasarpadi in North Chennai. There she confronts ruthless don Shekar Babu, who controls the area and its police through fear, power, and political influence, but Yogi refuses to bow down and begins taking action against his network.",
       "releaseDate": "2026-03-13",
       "releaseKind": "digital",
       "availability": [
@@ -7571,8 +7613,8 @@
           "kind": "digital",
           "date": "2026-03-13",
           "platforms": [
-            "Aha",
-            "Prime Video"
+            "Prime Video",
+            "Aha"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -7582,8 +7624,8 @@
       "physicalReleases": [],
       "ottDate": "2026-03-13",
       "platforms": [
-        "Aha",
-        "Prime Video"
+        "Prime Video",
+        "Aha"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -13837,7 +13879,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt40108671",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "9.3",
+      "imdbRating": "9.2",
       "genres": [],
       "description": "Home release (digital): 2026-05-21 · ETV Win\n\n4 friends of the Cult Gang are chosen as heroes in a film,but shooting stops due to financial issues.To save their dream,they do kidnapping for money and get trapped in risky trouble involving faction leader Rami Reddy.Will they survive?",
       "releaseDate": "2026-05-21",
@@ -13968,7 +14010,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt36822352",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.4",
+      "imdbRating": "7.3",
       "genres": [],
       "description": "Home release (digital): 2026-05-15 · SunNXT\n\nAfter a devastating cyclone displaces a fishing community, they seek refuge only to fall under the control of ruthless drug dealers. Amid the turmoil, a carefree young fisherman is forced to grow up after a personal tragedy, torn between love and his duty to protect his people, as he rises to stand against oppression.",
       "releaseDate": "2026-05-15",
@@ -14410,7 +14452,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39378361",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "10.0",
+      "imdbRating": "9.9",
       "genres": [
         "Thriller"
       ],
@@ -20799,7 +20841,7 @@
         "Drama",
         "Romance"
       ],
-      "description": "Home release (digital): 2026-07-10 · JioHotStar, Netflix\n\nA seemingly perfect marriage in Prayagraj takes an unexpected turn when one decision leads to a chain of misunderstandings, suspicion, and comedic chaos.",
+      "description": "Home release (digital): 2026-07-10 · Netflix, JioHotStar\n\nA seemingly perfect marriage in Prayagraj takes an unexpected turn when one decision leads to a chain of misunderstandings, suspicion, and comedic chaos.",
       "releaseDate": "2026-07-10",
       "releaseKind": "digital",
       "availability": [
@@ -20807,8 +20849,8 @@
           "kind": "digital",
           "date": "2026-07-10",
           "platforms": [
-            "JioHotStar",
-            "Netflix"
+            "Netflix",
+            "JioHotStar"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -20818,8 +20860,8 @@
       "physicalReleases": [],
       "ottDate": "2026-07-10",
       "platforms": [
-        "JioHotStar",
-        "Netflix"
+        "Netflix",
+        "JioHotStar"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -20930,7 +20972,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt27880465",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.5",
+      "imdbRating": "7.6",
       "genres": [
         "Mystery",
         "Horror",
@@ -22008,7 +22050,7 @@
         "Comedy",
         "Crime"
       ],
-      "description": "Home release (digital): 2026-03-14 · JioHotStar, SonyLIV\n\nA rogue cop takes on a dangerous crime syndicate, using his own over-the-top methods to deliver justice in a high-octane, stylized action world.",
+      "description": "Home release (digital): 2026-03-14 · SonyLIV, JioHotStar\n\nA rogue cop takes on a dangerous crime syndicate, using his own over-the-top methods to deliver justice in a high-octane, stylized action world.",
       "releaseDate": "2026-03-14",
       "releaseKind": "digital",
       "availability": [
@@ -22016,8 +22058,8 @@
           "kind": "digital",
           "date": "2026-03-14",
           "platforms": [
-            "JioHotStar",
-            "SonyLIV"
+            "SonyLIV",
+            "JioHotStar"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -22027,8 +22069,8 @@
       "physicalReleases": [],
       "ottDate": "2026-03-14",
       "platforms": [
-        "JioHotStar",
-        "SonyLIV"
+        "SonyLIV",
+        "JioHotStar"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -25045,7 +25087,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt33144230",
       "releaseInfo": "2024–2024",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.3",
+      "imdbRating": "7.2",
       "genres": [
         "Crime"
       ],
@@ -25527,7 +25569,7 @@
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
-      "latestEpisodeReleasedAt": "2025-12-21T00:00:00+00:00",
+      "latestEpisodeReleasedAt": "2025-12-21T00:00:12+00:00",
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null
     },
@@ -31168,7 +31210,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt30145246",
       "releaseInfo": "2024–2025",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.8",
+      "imdbRating": "8.9",
       "genres": [
         "Drama",
         "Family"
@@ -32614,7 +32656,7 @@
       ],
       "language": "hindi",
       "releaseDateBasis": "episode",
-      "latestEpisodeReleasedAt": "2024-09-08T00:00:02+00:00",
+      "latestEpisodeReleasedAt": "2024-09-08T00:00:00+00:00",
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null
     },
@@ -33893,7 +33935,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt29041498",
       "releaseInfo": "2023–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.8",
+      "imdbRating": "7.9",
       "genres": [],
       "description": "Home release (digital): 2024-03-31 · \n\nPashminna – Dhaage Mohabbat Ke is an Indian Hindi-language romantic drama television series that aired from 25 October 2023 on Sony SAB. Produced by Siddharth P. Malhotra and Sapna Malhotra under Alchemy Films Private Limited, it stars Nishant Singh Malkani, Isha Sharma, Hiten Tejwani and Gauri Pradhan Tejwani.",
       "releaseDate": "2024-03-31",
@@ -34066,7 +34108,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt29053466",
       "releaseInfo": "2023–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.0",
+      "imdbRating": "7.1",
       "genres": [
         "Drama"
       ],
