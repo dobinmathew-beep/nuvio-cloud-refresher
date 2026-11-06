@@ -87,3 +87,18 @@ Confirmed, already-released physical movie editions now qualify independently of
 Movies available both digitally and physically appear once, sorted by their earliest verified home-release date. Public entries contain `releaseDate`, `releaseKind`, `availability`, and `physicalReleases`; `ottDate` is null for physical-only entries. A disc date is never presented as proof of an OTT release. AIOMetadata companion mode and permanent manifest URL are unchanged.
 
 TMDB does not provide equivalent physical-edition dates for TV series in this source. Series retain their verified OTT rules until a dated, title-specific box-set record is available; theatrical dates and streaming episode dates are not substitutes.
+
+
+## Stream resource and debrid compatibility
+
+The manifest now advertises the Stremio-compatible `stream` resource for movies and series. The first implemented free-source adapter searches Internet Archive and returns only video files whose item metadata explicitly declares a recognised Creative Commons licence or public-domain rights. It does not scrape subscription services, defeat DRM, or search unlicensed mirrors. Rights metadata can be incomplete or inaccurate upstream, so each result should still be checked against the item page and its licence before use.
+
+The stream adapter currently supports movie title discovery only. It deliberately returns no result for series until episode-level title/season/episode matching can be verified; it never guesses an episode match. A stream response is available at `/stream/movie/tt1234567.json` (or a supported TMDB/TVmaze ID). No matching authorised free item means an empty stream list; catalogs and metadata remain unaffected.
+
+### Nuvio debrid services
+
+Nuvio's current native Connected Services documentation lists **TorBox and Premiumize** as native hash resolvers. For those, a compatible stream source must return raw P2P hashes/magnets; this addon does not generate or scrape torrent hashes. The current legal free-source adapter returns direct licensed Internet Archive URLs, which do not require debrid.
+
+**Real-Debrid and AllDebrid are not listed as native Nuvio Connected Services providers.** They require a separate compatible stream addon configured with the respective provider's own supported integration. This repository does not collect, store, or proxy debrid API keys. Do not add provider credentials to GitHub files, public URLs, or client-side source code.
+
+This is an initial, deliberately rights-checked stream implementation—not a claim that all four debrid providers or every language/series scraper is already integrated. Existing catalogs remain unchanged.
