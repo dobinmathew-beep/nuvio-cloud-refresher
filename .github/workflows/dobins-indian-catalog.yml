@@ -54,6 +54,6 @@ jobs:
             git commit -m 'Refresh Dobins Indian Catalog digital releases'
             git push origin HEAD:dobins-catalog
           fi
-      - name: Keep failed work pending for the next 30-minute check
+      - name: Keep failed work pending for the next 15-minute check
         if: steps.update.outcome == 'failure' || steps.site_health.outcome == 'failure'
         run: exit 1
