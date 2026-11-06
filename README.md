@@ -2,7 +2,17 @@
 
 ## [📊 Daily updates — open your status page](DAILY_UPDATES.md)
 
-See all four outputs, verified refresh cycles in Oman time, current errors, EPG coverage, full run links and [daily history](logs/README.md). The page updates automatically with each completed watchdog check (normally every ten minutes and after refresh attempts). History starts when this dashboard was installed; earlier runs remain in Actions.
+See all four outputs, verified refresh cycles in Oman time, current errors, EPG coverage, full run links and [daily history](logs/README.md). The page updates automatically with each completed watchdog check (normally every ten minutes and after refresh attempts).
+
+## Quick access — backdrops and hero reels
+
+**Backdrops:** [Open the Nuvio regional backdrop site](https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site)
+
+**Hero reels (direct MP4 links):**
+- [Hindi reel](https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/hindi.mp4)
+- [Tamil reel](https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/tamil.mp4)
+- [Malayalam reel](https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/malayalam.mp4)
+- [Telugu reel](https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/telugu.mp4)
 
 This personal website updater runs ordinary Python and FFmpeg on standard public GitHub-hosted runners. It makes no AI API calls, uses no personal-computer runner and configures no paid services.
 
@@ -23,7 +33,6 @@ Base URL stays https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site . T
 ## Centre movie in backdrops
 
 For all four languages, the centre follows IMDb-linked entries in the matching catalog's order. TMDB-only composite entries remain eligible for surrounding artwork, but cannot displace the centre movie. This selects Baththa for Tamil instead of Obstacle and automatically follows future IMDb-linked catalog updates.
-
 
 Movie and combined backdrops feature the first IMDb-linked movie in the matching IndianRegional primary movie catalog's own order. No external release-date lookup or date filtering is used. The existing central panel, nearest central panel or lead panel is used according to each layout; no extra panel or style change is introduced. Series-only collections stay series-only.
 
@@ -49,4 +58,3 @@ Open the repository's **Actions** tab for run status. `state/success.json` recor
 Do not delete the `renderer-source` or `legacy-site` releases or the `state` directory. Keep this repository public for the standard public Actions runner's free usage. No long-lived account credential is stored here; the workflow uses its automatically generated GitHub token.
 
 The previous ChatGPT backdrop and hero automations remain paused. GitHub now owns the recurring work.
-
