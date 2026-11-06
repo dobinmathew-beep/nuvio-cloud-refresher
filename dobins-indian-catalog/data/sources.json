@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-06T08:00:45.938328+04:00",
+    "checkedAt": "2026-11-06T08:46:04.141021+04:00",
     "records": [
       {
         "_id": "6ab337131ead141338255d7a",
@@ -217,6 +217,60 @@
         "updatedAt": "2026-11-06T02:19:39.623Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/h1ezPKcMYv5FHbHDuHcZfTbWTY5.jpg",
         "instagramPostedAt": "2026-11-06T02:20:55Z",
+        "tmdbDetails": {
+          "tmdbId": 1250502,
+          "director": "Nahas Hidayath",
+          "cast": [
+            {
+              "name": "Dulquer Salmaan",
+              "character": "Dan John"
+            },
+            {
+              "name": "Kayadu Lohar",
+              "character": "Isha"
+            },
+            {
+              "name": "Antony Varghese",
+              "character": "Vignesh 'Vicky' Das"
+            },
+            {
+              "name": "Mysskin",
+              "character": "David Abraham"
+            },
+            {
+              "name": "Kathir",
+              "character": "Jason Antony"
+            },
+            {
+              "name": "Samyuktha Viswanathan",
+              "character": "Tharini"
+            },
+            {
+              "name": "Vinay Forrt",
+              "character": "Freddy"
+            },
+            {
+              "name": "Parth Tiwari",
+              "character": "Shaurya"
+            }
+          ],
+          "overview": "A fearless gambler who trusts luck more than life gets caught in a series of crazy and unexpected events that turn his world upside down.",
+          "runtime": 173,
+          "genres": [
+            "Action",
+            "Thriller",
+            "Drama"
+          ],
+          "originalLanguage": "ml",
+          "spokenLanguages": [
+            "Malayalam"
+          ],
+          "releaseDate": "2026-09-03",
+          "voteAverage": 7.2,
+          "trailerKey": "Msmfyg7yQ60",
+          "fetchedAt": "2026-11-06T04:35:11.749Z"
+        },
+        "tmdbId": 1250502,
         "verified": true
       },
       {
@@ -28942,7 +28996,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-06T08:00:45.938328+04:00",
+    "checkedAt": "2026-11-06T08:46:04.141021+04:00",
     "records": [
       {
         "name": "7 Star Boys",
