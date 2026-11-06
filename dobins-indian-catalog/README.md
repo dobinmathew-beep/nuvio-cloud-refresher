@@ -13,7 +13,7 @@ Targets in **Asia/Muscat (UTC+4)**:
 - 06:00 and 18:00 every day.
 - An additional 01:00 on Thursday, Friday and Saturday.
 
-The default branch's `.github/workflows/dobins-indian-catalog.yml` checks every 30 minutes, then a lightweight schedule gate runs work only for a new due slot or unfinished work. GitHub may delay scheduled jobs, so exact-time execution is not guaranteed. Manual dispatch and code pushes on this branch force a check. There are no AI calls, paid API requirements, personal-computer runners or long-lived account tokens. Standard public GitHub-hosted runners are used.
+The default branch's `.github/workflows/dobins-indian-catalog.yml` polls every 15 minutes. Each new slot runs the full release-source check and catalog updater, so a newly reported OTT movie can be published at the next successful run rather than waiting for the former two-hour cycle. GitHub may delay scheduled jobs, so exact-time execution is not guaranteed. Manual dispatch and code pushes on this branch force a check. There are no AI calls, paid API requirements, personal-computer runners or long-lived account tokens. Standard public GitHub-hosted runners are used.
 
 The updater and its data live on the separate `dobins-catalog` branch, under `dobins-indian-catalog/`. The workflow checks out and commits only to that branch. This prevents simultaneous catalog and existing backdrop/reel refreshes from competing for the same branch state. The backdrop/reel workflow and URLs are unaffected.
 
@@ -50,7 +50,7 @@ Generated data:
 - `data/matches.json`, `data/candidates.json`, `data/sources.json`: reusable matching and source caches.
 - `data/unmatched.json`: titles awaiting a reliable match or backfill.
 
-A source outage preserves cached source records. If all release sources fail, or a catalog would become empty, the last-good catalogs remain and the next 30-minute check retries. The first checkout restores the public initial dataset using `bootstrap.py`; later checkouts use committed data.
+A source outage preserves cached source records. If all release sources fail, or a catalog would become empty, the last-good catalogs remain and the next 15-minute check retries. The first checkout restores the public initial dataset using `bootstrap.py`; later checkouts use committed data.
 
 ## Local maintenance
 
