@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-06T22:27:05.744773+04:00",
+    "checkedAt": "2026-11-07T00:00:47.906943+04:00",
     "records": [
       {
         "_id": "6ab337131ead141338255d7a",
@@ -6749,27 +6749,23 @@
           "cast": [
             {
               "name": "Rishikanth",
-              "character": "Maruthanayagam"
+              "character": "Maruthanayagam 'Maruthu'"
             },
             {
               "name": "Anishma Anilkumar",
-              "character": "Muthuselvi"
-            },
-            {
-              "name": "Bagavathi Perumal",
-              "character": "Saravanan"
+              "character": "Muthuselvi 'Muthu'"
             },
             {
               "name": "Chetan",
               "character": "Poosari"
             },
             {
-              "name": "Abdool Lee",
-              "character": "Kannan"
-            },
-            {
               "name": "A. Venkatesh",
               "character": "Velayudham"
+            },
+            {
+              "name": "Bagavathi Perumal",
+              "character": "Saravanan"
             },
             {
               "name": "Sangeetha Balan",
@@ -6778,22 +6774,27 @@
             {
               "name": "Shelly Kishore",
               "character": "Selvi"
+            },
+            {
+              "name": "Abdool Lee",
+              "character": "Kannan"
             }
           ],
           "overview": "Two strangers are brought together at an unusual wedding where, in one night, too many surprises unfold and several lies are told, spiraling into chaos that changes everything.",
-          "runtime": 155,
+          "runtime": 141,
           "genres": [
-            "Romance",
-            "Comedy"
+            "Comedy",
+            "Drama",
+            "Family"
           ],
           "originalLanguage": "ta",
           "spokenLanguages": [
             "Tamil"
           ],
           "releaseDate": "2026-08-21",
-          "voteAverage": 7,
+          "voteAverage": 7.9,
           "trailerKey": "UrWrvwIRnqk",
-          "fetchedAt": "2026-09-18T08:06:08.334Z"
+          "fetchedAt": "2026-11-06T18:40:05.164Z"
         },
         "tmdbId": 1685882,
         "verified": true
@@ -29157,7 +29158,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-06T22:27:05.744773+04:00",
+    "checkedAt": "2026-11-07T00:00:47.906943+04:00",
     "records": [
       {
         "name": "7 Star Boys",
