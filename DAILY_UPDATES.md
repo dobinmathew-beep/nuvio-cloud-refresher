@@ -2,7 +2,7 @@
 
 **Backdrops · Reels · Addon · India EPG**
 
-Last checked: **06 Nov 2026, 20:00 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42248298239)
+Last checked: **06 Nov 2026, 20:10 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42249817266)
 
 **Refresh:** every two hours, 00:00–22:00. **Backup check:** every ten minutes. Checks also run after refresh attempts finish.
 
@@ -10,10 +10,10 @@ Last checked: **06 Nov 2026, 20:00 Oman time**. [This check’s logs](https://gi
 
 | Output | Status at last check | Last verified cycle / check (Oman) | Details | Latest attempt |
 |---|---|---|---|---|
-| Backdrops | 🔄 Retry requested | 06 Nov 2026, 18:00 | 160 layouts; 16 image checks; this part verified, combined media cycle still pending | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42231333605) |
-| Reels | 🔄 Retry requested | 06 Nov 2026, 18:00 | 4 languages; 20 films per reel; this part verified, combined media cycle still pending | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42231333605) |
-| Addon | 🔄 Retry requested | 06 Nov 2026, 18:00 | 834 catalog entries; 104 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42230134968) |
-| EPG | 🔄 Retry requested | 06 Nov 2026, 18:01 | 647 / 845 channel IDs with listings; 198 unresolved; 72552 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42242629615) |
+| Backdrops | ✅ Updated | 06 Nov 2026, 20:00 | 160 layouts; 16 image checks | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42248321301) |
+| Reels | ✅ Updated | 06 Nov 2026, 20:00 | 4 languages; 20 films per reel | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42248321301) |
+| Addon | ✅ Updated | 06 Nov 2026, 20:00 | 834 catalog entries; 104 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42248327594) |
+| EPG | ✅ Updated | 06 Nov 2026, 20:00 | 647 / 845 channel IDs with listings; 198 unresolved; 70534 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42248339721) |
 
 ✅ Updated = verified for the current two-hour cycle. 🔄 Running / retry requested = work is pending. ⚠️ / ❌ = attention or retry needed. The two media outputs share one workflow and both must pass before the combined cycle is complete.
 
