@@ -1,7 +1,285 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-06T06:10:35.290945+04:00",
+    "checkedAt": "2026-11-06T08:00:45.938328+04:00",
     "records": [
+      {
+        "_id": "6ab337131ead141338255d7a",
+        "title": "Possible Love",
+        "platform": "Netflix",
+        "createdAt": "2026-09-23T02:18:59.553Z",
+        "genre": "Drama",
+        "imdbRating": null,
+        "languages": [
+          "Korean"
+        ],
+        "original_language": "Korean",
+        "releaseDate": "2026-11-06",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-06T02:18:48.220Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/kGZ6DDHe7XrZiys3dwEAwSmHU7f.jpg",
+        "tmdbDetails": {
+          "tmdbId": 1483525,
+          "director": "Lee Chang-dong",
+          "cast": [
+            {
+              "name": "Jeon Do-yeon",
+              "character": "Ahn Mi-ok"
+            },
+            {
+              "name": "Sul Kyung-gu",
+              "character": "Choi Ho-seok"
+            },
+            {
+              "name": "Zo In-sung",
+              "character": "Sang-woo"
+            },
+            {
+              "name": "Cho Yeo-jeong",
+              "character": "Lee Ye-ji"
+            },
+            {
+              "name": "Jeong Seop",
+              "character": "Choi Cheol"
+            },
+            {
+              "name": "Jo Yuri",
+              "character": "Young Mi-ok"
+            },
+            {
+              "name": "Choi Min",
+              "character": "Young Ho-seok"
+            },
+            {
+              "name": "Kang Gil-woo",
+              "character": "Funeral guest"
+            }
+          ],
+          "overview": "A laid-off worker and his wife cross paths with a documentary filmmaker and her spouse and confront their hidden desires.",
+          "runtime": 165,
+          "genres": [
+            "Drama"
+          ],
+          "originalLanguage": "ko",
+          "spokenLanguages": [
+            "Korean"
+          ],
+          "releaseDate": "2026-09-23",
+          "voteAverage": null,
+          "trailerKey": "zd3qXH9qN70",
+          "fetchedAt": "2026-09-23T18:45:37.587Z"
+        },
+        "tmdbId": 1483525,
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-06T02:19:17.395Z",
+        "trendingRankedDateIST": "2026-11-06",
+        "verified": true
+      },
+      {
+        "_id": "6aed3908a2c49d88136171da",
+        "platform": "SonyLIV",
+        "title": "Homecoming",
+        "createdAt": "2026-11-06T02:18:48.008Z",
+        "genre": "",
+        "imdbRating": null,
+        "languages": [
+          "Korean"
+        ],
+        "releaseDate": "2026-11-06",
+        "source_verified": true,
+        "tmdbDetails": {
+          "tmdbId": 1801799,
+          "director": "Lee Si-o",
+          "cast": [],
+          "overview": "",
+          "runtime": 0,
+          "genres": [],
+          "originalLanguage": "ko",
+          "spokenLanguages": [],
+          "releaseDate": "2026-11-06",
+          "voteAverage": 0,
+          "fetchedAt": "2026-11-06T02:18:34.592654+00:00"
+        },
+        "tmdbId": 1801799,
+        "type": "Movie",
+        "updatedAt": "2026-11-06T02:19:44.213Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/6GTzd7ZeivgBOrIn45720nsq0TU.jpg",
+        "tmdbRating": 70,
+        "tmdbVotes": 369,
+        "verified": true
+      },
+      {
+        "_id": "6aed3908a2c49d88136171db",
+        "title": "Campus Drivers",
+        "platform": "Prime Video",
+        "createdAt": "2026-11-06T02:18:48.429Z",
+        "genre": "Romance, Drama",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-06",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-06T02:19:37.878Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/yxlAJqniqx5Qn2CVCDB97FDhQx7.jpg",
+        "instagramPostedAt": "2026-11-06T02:21:04Z",
+        "verified": true
+      },
+      {
+        "_id": "6aed3908a2c49d88136171dc",
+        "platform": "Lionsgate Play",
+        "title": "Yaga",
+        "createdAt": "2026-11-06T02:18:48.641Z",
+        "genre": "Supernatural, Horror",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-06",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-06T02:19:37.231Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/kp8xgZ8SrikHQrPn2lC3hb50KD5.jpg",
+        "tmdbRating": 74,
+        "tmdbVotes": 18,
+        "verified": true
+      },
+      {
+        "_id": "6aed3908a2c49d88136171dd",
+        "platform": "Apple TV+",
+        "title": "Awkwafina: The Unlikely Cook",
+        "createdAt": "2026-11-06T02:18:48.850Z",
+        "genre": "Documentary, Culinary",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-06",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-06T02:19:36.599Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/32rE04LRLyAM62Xdkqw5EIi0FyB.jpg",
+        "verified": true
+      },
+      {
+        "_id": "6aed3909a2c49d88136171de",
+        "platform": "SonyLIV",
+        "title": "Haiwaan",
+        "createdAt": "2026-11-06T02:18:49.058Z",
+        "genre": "Crime Thriller",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-06",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-06T02:19:42.854Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/ykXYDPPvoPhTaBeQ90OibCaCOWX.jpg",
+        "verified": true
+      },
+      {
+        "_id": "6aed3909a2c49d88136171df",
+        "platform": "Prime Video",
+        "title": "The Vvaan - Force of the Forrest",
+        "createdAt": "2026-11-06T02:18:49.267Z",
+        "genre": "Thriller, Action, Adventure",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-06",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-06T02:18:49.267Z",
+        "verified": true
+      },
+      {
+        "_id": "6aed3909a2c49d88136171e0",
+        "platform": "JioHotStar",
+        "title": "I'm Game",
+        "createdAt": "2026-11-06T02:18:49.476Z",
+        "genre": "Fantasy, Action, Thriller",
+        "imdbRating": null,
+        "languages": [
+          "Malayalam"
+        ],
+        "original_language": "Malayalam",
+        "releaseDate": "2026-11-06",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-06T02:19:39.623Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/h1ezPKcMYv5FHbHDuHcZfTbWTY5.jpg",
+        "instagramPostedAt": "2026-11-06T02:20:55Z",
+        "verified": true
+      },
+      {
+        "_id": "6aed3909a2c49d88136171e1",
+        "platform": "SonyLIV",
+        "title": "Meesaya Murukku 2",
+        "createdAt": "2026-11-06T02:18:49.684Z",
+        "genre": "Musical, Comedy, Drama",
+        "imdbRating": null,
+        "languages": [
+          "Tamil"
+        ],
+        "original_language": "Tamil",
+        "releaseDate": "2026-11-06",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-06T02:19:40.266Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/r86ozGJdc85H0rWLnqhEBOqajsq.jpg",
+        "instagramPostedAt": "2026-11-06T02:20:29Z",
+        "verified": true
+      },
+      {
+        "_id": "6aed3909a2c49d88136171e2",
+        "title": "Baa Baa Black Sheep",
+        "platform": "SunNXT",
+        "createdAt": "2026-11-06T02:18:49.892Z",
+        "genre": "Crime Comedy",
+        "imdbRating": null,
+        "languages": [
+          "Telugu"
+        ],
+        "original_language": "Telugu",
+        "releaseDate": "2026-11-06",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-06T02:19:41.494Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/u4VN9UMiUfPVgIvtubGQyfrZ581.jpg",
+        "tmdbRating": 76,
+        "tmdbVotes": 49,
+        "instagramPostedAt": "2026-11-06T02:20:38Z",
+        "verified": true
+      },
+      {
+        "_id": "6aed390aa2c49d88136171e3",
+        "title": "Baa Baa Black Sheep",
+        "platform": "Prime Video",
+        "createdAt": "2026-11-06T02:18:50.101Z",
+        "genre": "Crime Comedy",
+        "imdbRating": null,
+        "languages": [
+          "Telugu"
+        ],
+        "original_language": "Telugu",
+        "releaseDate": "2026-11-06",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-06T02:19:40.917Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/u4VN9UMiUfPVgIvtubGQyfrZ581.jpg",
+        "tmdbRating": 76,
+        "tmdbVotes": 49,
+        "instagramPostedAt": "2026-11-06T02:20:38Z",
+        "verified": true
+      },
       {
         "_id": "6aebe78fa2c49d8813610c0e",
         "platform": "Netflix",
@@ -19,6 +297,9 @@
         "updatedAt": "2026-11-05T02:19:52.529Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/cV31QO65DA6mk4Hd6S7QncVq85T.jpg",
         "instagramPostedAt": "2026-11-05T02:20:32Z",
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-06T02:19:17.395Z",
+        "trendingRankedDateIST": "2026-11-06",
         "verified": true
       },
       {
@@ -107,6 +388,10 @@
           "fetchedAt": "2026-11-05T08:29:38.815Z"
         },
         "tmdbId": 1654940,
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-11-06T02:19:17.395Z",
+        "trendingRankedDateIST": "2026-11-06",
+        "instagramPostedAt": "2026-11-06T02:21:04Z",
         "verified": true
       },
       {
@@ -178,6 +463,10 @@
           "fetchedAt": "2026-11-05T08:00:57.485Z"
         },
         "tmdbId": 1630420,
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-06T02:19:17.395Z",
+        "trendingRankedDateIST": "2026-11-06",
+        "instagramPostedAt": "2026-11-06T02:21:04Z",
         "verified": true
       },
       {
@@ -214,8 +503,10 @@
         "releaseDate": "2026-11-04",
         "source_verified": true,
         "type": "Series",
-        "updatedAt": "2026-11-04T02:19:45.287Z",
+        "updatedAt": "2026-11-06T02:19:45.194Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/3x6c9ybt0762idyzIifUZeTD5MZ.jpg",
+        "tmdbRating": 83,
+        "tmdbVotes": 11,
         "verified": true
       },
       {
@@ -235,9 +526,6 @@
         "updatedAt": "2026-11-04T02:19:44.662Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/kO9q6StIAUBpfcKVtTSth7zOE2C.jpg",
         "instagramPostedAt": "2026-11-04T02:20:14Z",
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
-        "trendingRankedDateIST": "2026-11-05",
         "tmdbDetails": {
           "tmdbId": 1755818,
           "director": "Sangeeth Sivan",
@@ -264,6 +552,9 @@
           "fetchedAt": "2026-11-05T11:13:10.822Z"
         },
         "tmdbId": 1755818,
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-06T02:19:17.395Z",
+        "trendingRankedDateIST": "2026-11-06",
         "verified": true
       },
       {
@@ -325,9 +616,9 @@
           "fetchedAt": "2026-11-03T06:13:16.350Z"
         },
         "tmdbId": 1690876,
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
-        "trendingRankedDateIST": "2026-11-05",
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-11-06T02:19:17.395Z",
+        "trendingRankedDateIST": "2026-11-06",
         "verified": true
       },
       {
@@ -385,9 +676,9 @@
           "fetchedAt": "2026-11-02T05:02:17.708Z"
         },
         "tmdbId": 1638744,
-        "trendingRank": 9,
-        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
-        "trendingRankedDateIST": "2026-11-05",
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-11-06T02:19:17.395Z",
+        "trendingRankedDateIST": "2026-11-06",
         "verified": true
       },
       {
@@ -483,9 +774,6 @@
         },
         "tmdbId": 1339713,
         "votes": 1,
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
-        "trendingRankedDateIST": "2026-11-05",
         "verified": true
       },
       {
@@ -616,9 +904,6 @@
           "fetchedAt": "2026-10-30T07:39:14.867Z"
         },
         "tmdbId": 1290035,
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
-        "trendingRankedDateIST": "2026-11-05",
         "verified": true
       },
       {
@@ -694,9 +979,6 @@
           "fetchedAt": "2026-11-01T06:21:17.352Z"
         },
         "tmdbId": 1656061,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
-        "trendingRankedDateIST": "2026-11-05",
         "verified": true
       },
       {
@@ -770,9 +1052,6 @@
           "fetchedAt": "2026-10-30T03:37:14.797Z"
         },
         "tmdbId": 1395215,
-        "trendingRank": 7,
-        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
-        "trendingRankedDateIST": "2026-11-05",
         "verified": true
       },
       {
@@ -833,9 +1112,6 @@
           "fetchedAt": "2026-10-30T03:19:34.729Z"
         },
         "tmdbId": 1618200,
-        "trendingRank": 8,
-        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
-        "trendingRankedDateIST": "2026-11-05",
         "verified": true
       },
       {
@@ -909,9 +1185,6 @@
           "fetchedAt": "2026-10-31T14:13:43.252Z"
         },
         "tmdbId": 1811964,
-        "trendingRank": 6,
-        "trendingRankedAt": "2026-11-05T02:19:29.860Z",
-        "trendingRankedDateIST": "2026-11-05",
         "verified": true
       },
       {
@@ -5766,76 +6039,6 @@
           "fetchedAt": "2026-09-23T16:41:44.471Z"
         },
         "tmdbId": 1084244,
-        "verified": true
-      },
-      {
-        "_id": "6ab337131ead141338255d7a",
-        "title": "Possible Love",
-        "platform": "Netflix",
-        "createdAt": "2026-09-23T02:18:59.553Z",
-        "genre": "Drama",
-        "imdbRating": null,
-        "languages": [
-          "Korean"
-        ],
-        "original_language": "Korean",
-        "releaseDate": "2026-09-23",
-        "source_verified": true,
-        "type": "Movie",
-        "updatedAt": "2026-09-23T02:19:53.688Z",
-        "posterUrl": "https://image.tmdb.org/t/p/w300/kGZ6DDHe7XrZiys3dwEAwSmHU7f.jpg",
-        "tmdbDetails": {
-          "tmdbId": 1483525,
-          "director": "Lee Chang-dong",
-          "cast": [
-            {
-              "name": "Jeon Do-yeon",
-              "character": "Ahn Mi-ok"
-            },
-            {
-              "name": "Sul Kyung-gu",
-              "character": "Choi Ho-seok"
-            },
-            {
-              "name": "Zo In-sung",
-              "character": "Sang-woo"
-            },
-            {
-              "name": "Cho Yeo-jeong",
-              "character": "Lee Ye-ji"
-            },
-            {
-              "name": "Jeong Seop",
-              "character": "Choi Cheol"
-            },
-            {
-              "name": "Jo Yuri",
-              "character": "Young Mi-ok"
-            },
-            {
-              "name": "Choi Min",
-              "character": "Young Ho-seok"
-            },
-            {
-              "name": "Kang Gil-woo",
-              "character": "Funeral guest"
-            }
-          ],
-          "overview": "A laid-off worker and his wife cross paths with a documentary filmmaker and her spouse and confront their hidden desires.",
-          "runtime": 165,
-          "genres": [
-            "Drama"
-          ],
-          "originalLanguage": "ko",
-          "spokenLanguages": [
-            "Korean"
-          ],
-          "releaseDate": "2026-09-23",
-          "voteAverage": null,
-          "trailerKey": "zd3qXH9qN70",
-          "fetchedAt": "2026-09-23T18:45:37.587Z"
-        },
-        "tmdbId": 1483525,
         "verified": true
       },
       {
@@ -28739,8 +28942,106 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-06T06:10:35.290945+04:00",
+    "checkedAt": "2026-11-06T08:00:45.938328+04:00",
     "records": [
+      {
+        "name": "7 Star Boys",
+        "language": "tamil",
+        "type": "movie",
+        "ottDate": "2026-11-06",
+        "platforms": [
+          "Aha"
+        ],
+        "poster": null,
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+        "confirmed": true
+      },
+      {
+        "name": "All Pass",
+        "language": "tamil",
+        "type": "movie",
+        "ottDate": "2026-11-06",
+        "platforms": [
+          "Prime Video"
+        ],
+        "poster": null,
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+        "confirmed": true
+      },
+      {
+        "name": "I'm Game",
+        "language": "malayalam",
+        "type": "movie",
+        "ottDate": "2026-11-06",
+        "platforms": [
+          "JioHotstar"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/10/im-game-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/im-game/",
+        "confirmed": true
+      },
+      {
+        "name": "Meesaya Murukku 2",
+        "language": "tamil",
+        "type": "movie",
+        "ottDate": "2026-11-06",
+        "platforms": [
+          "SonyLIV"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/10/meesaya-murukku-2-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/meesaya-murukku-2/",
+        "confirmed": true
+      },
+      {
+        "name": "Nooru Kodi Vaanavil",
+        "language": "tamil",
+        "type": "movie",
+        "ottDate": "2026-11-06",
+        "platforms": [
+          "ZEE5"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/10/nooru-kodi-vaanavil-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/nooru-kodi-vaanavil/",
+        "confirmed": true
+      },
+      {
+        "name": "The Grand Master",
+        "language": "tamil",
+        "type": "movie",
+        "ottDate": "2026-11-06",
+        "platforms": [
+          "Sun NXT"
+        ],
+        "poster": null,
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+        "confirmed": true
+      },
+      {
+        "name": "The Vvaan",
+        "language": "hindi",
+        "type": "movie",
+        "ottDate": "2026-11-06",
+        "platforms": [
+          "Prime Video"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/11/the-vvaan-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/the-vvaan/",
+        "confirmed": true
+      },
       {
         "name": "Dilwali diwali",
         "language": "hindi",

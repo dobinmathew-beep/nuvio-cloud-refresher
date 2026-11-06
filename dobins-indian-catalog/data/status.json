@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-06T06:10:35.290945+04:00",
-  "lastSuccessCycle": "2026-11-06T06:00:00+04:00",
+  "updatedAt": "2026-11-06T08:00:45.938328+04:00",
+  "lastSuccessCycle": "2026-11-06T08:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, 00:00 through 22:00 (Asia/Muscat)",
   "sources": [
@@ -13,13 +13,13 @@
       "source": "DailyOTT",
       "url": "https://www.dailyott.in/",
       "state": "live",
-      "records": 922
+      "records": 932
     },
     {
       "source": "Cinebuds",
       "url": "https://cinebuds.com/ott-release-dates/",
       "state": "live",
-      "records": 28
+      "records": 35
     },
     {
       "source": "IndianRegional series discovery",
@@ -121,17 +121,17 @@
     }
   ],
   "counts": {
-    "dobins_ml_movie": 65,
+    "dobins_ml_movie": 66,
     "dobins_ml_series": 58,
-    "dobins_ta_movie": 51,
+    "dobins_ta_movie": 55,
     "dobins_ta_series": 98,
-    "dobins_te_movie": 65,
+    "dobins_te_movie": 66,
     "dobins_te_series": 100,
-    "dobins_hi_movie": 67,
+    "dobins_hi_movie": 68,
     "dobins_hi_series": 322
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
-  "pendingMatches": 103,
-  "checkedCandidates": 930,
+  "pendingMatches": 105,
+  "checkedCandidates": 940,
   "errors": []
 }
