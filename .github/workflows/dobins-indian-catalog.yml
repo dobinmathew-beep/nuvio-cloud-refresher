@@ -5,7 +5,7 @@ on:
     branches: [dobins-catalog]
     paths: [dobins-indian-catalog/**, .github/workflows/dobins-indian-catalog.yml]
   schedule:
-    - cron: '0,30 * * * *'
+    - cron: '*/15 * * * *'
 permissions:
   contents: write
 concurrency:
