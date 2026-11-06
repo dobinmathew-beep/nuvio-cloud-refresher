@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-06T09:17:36.243615+04:00",
+    "checkedAt": "2026-11-06T09:51:21.339057+04:00",
     "records": [
       {
         "_id": "6ab337131ead141338255d7a",
@@ -198,6 +198,60 @@
         "source_verified": true,
         "type": "Movie",
         "updatedAt": "2026-11-06T02:18:49.267Z",
+        "tmdbDetails": {
+          "tmdbId": 1384514,
+          "director": "Deepak Kumar Mishra",
+          "cast": [
+            {
+              "name": "Sidharth Malhotra",
+              "character": "Rishi"
+            },
+            {
+              "name": "Tamannaah Bhatia",
+              "character": "Mamta"
+            },
+            {
+              "name": "Maniesh Paul",
+              "character": "Ved Prakash (VP)"
+            },
+            {
+              "name": "Sunil Grover",
+              "character": "Deepak"
+            },
+            {
+              "name": "Shweta Tiwari",
+              "character": "Sushila"
+            },
+            {
+              "name": "Anup Soni",
+              "character": "Shashi Bhaiya"
+            },
+            {
+              "name": "Avtar Gill",
+              "character": "Sarpanch"
+            },
+            {
+              "name": "Milind Gunaji",
+              "character": "Priest"
+            }
+          ],
+          "overview": "A rational urban man defies his ancestral forbidden forest and awakens a divine goddess, only to realise that not only do some powers exist beyond logic but he must rise as the village’s only saviour to protect his people from annihilation.",
+          "runtime": 136,
+          "genres": [
+            "Action",
+            "Adventure",
+            "Thriller"
+          ],
+          "originalLanguage": "hi",
+          "spokenLanguages": [
+            "Hindi"
+          ],
+          "releaseDate": "2026-09-25",
+          "voteAverage": 8.1,
+          "trailerKey": "wlMykuSzzVM",
+          "fetchedAt": "2026-11-06T05:49:52.511Z"
+        },
+        "tmdbId": 1384514,
         "verified": true
       },
       {
@@ -28996,7 +29050,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-06T09:17:36.243615+04:00",
+    "checkedAt": "2026-11-06T09:51:21.339057+04:00",
     "records": [
       {
         "name": "7 Star Boys",
