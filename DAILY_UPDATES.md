@@ -2,7 +2,7 @@
 
 **Backdrops · Reels · Addon · India EPG**
 
-Last checked: **06 Nov 2026, 07:50 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42158900832)
+Last checked: **06 Nov 2026, 08:00 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42159878694)
 
 **Refresh:** every two hours, 00:00–22:00. **Backup check:** every ten minutes. Checks also run after refresh attempts finish.
 
@@ -10,10 +10,10 @@ Last checked: **06 Nov 2026, 07:50 Oman time**. [This check’s logs](https://gi
 
 | Output | Status at last check | Last verified cycle / check (Oman) | Details | Latest attempt |
 |---|---|---|---|---|
-| Backdrops | ✅ Updated | 06 Nov 2026, 06:00 | 160 layouts; 16 image checks | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42148588224) |
-| Reels | ✅ Updated | 06 Nov 2026, 06:00 | 4 languages; 20 films per reel | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42148588224) |
-| Addon | ✅ Updated | 06 Nov 2026, 06:00 | 826 catalog entries; 103 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42157815218) |
-| EPG | ✅ Updated | 06 Nov 2026, 06:00 | 647 / 845 channel IDs with listings; 198 unresolved; 68992 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42147528495) |
+| Backdrops | 🔄 Retry requested | 06 Nov 2026, 06:00 | 160 layouts; 16 image checks; this part verified, combined media cycle still pending | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42148588224) |
+| Reels | 🔄 Retry requested | 06 Nov 2026, 06:00 | 4 languages; 20 films per reel; this part verified, combined media cycle still pending | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42148588224) |
+| Addon | 🔄 Retry requested | 06 Nov 2026, 06:00 | 826 catalog entries; 103 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42157815218) |
+| EPG | 🔄 Retry requested | 06 Nov 2026, 06:00 | 647 / 845 channel IDs with listings; 198 unresolved; 68992 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42147528495) |
 
 ✅ Updated = verified for the current two-hour cycle. 🔄 Running / retry requested = work is pending. ⚠️ / ❌ = attention or retry needed. The two media outputs share one workflow and both must pass before the combined cycle is complete.
 
@@ -26,18 +26,14 @@ A successful check can keep the same movies or listings when the source has not 
 - [All GitHub runs and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions)
 - [External scheduler](https://console.cron-job.org/jobs/8777026)
 
-## Direct media links
+## Issues at this check
 
-**Regional backdrops:** [Open the backdrop site](https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site)
+No watchdog errors reported. Source coverage and unresolved items are shown separately above.
 
-**Hero reels — direct MP4:**
-- [Hindi](https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/hindi.mp4)
-- [Tamil](https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/tamil.mp4)
-- [Malayalam](https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/malayalam.mp4)
-- [Telugu](https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/telugu.mp4)
+## Useful links
 
-## Other useful links
-
+- [Backdrops](https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site)
+- [Reels](https://dobin-nuvio-star-cards.quickfield138.chatgpt.site)
 - [Addon](https://the-great-indian-addon.vercel.app)
 - [EPG download](https://da.gd/mr8mVT)
 
