@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-06T10:03:07.204876+04:00",
+    "checkedAt": "2026-11-06T12:00:51.230683+04:00",
     "records": [
       {
         "_id": "6ab337131ead141338255d7a",
@@ -181,6 +181,59 @@
         "type": "Movie",
         "updatedAt": "2026-11-06T02:19:42.854Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/ykXYDPPvoPhTaBeQ90OibCaCOWX.jpg",
+        "tmdbDetails": {
+          "tmdbId": 1475799,
+          "director": "Priyadarshan",
+          "cast": [
+            {
+              "name": "Saif Ali Khan",
+              "character": "Shyam"
+            },
+            {
+              "name": "Akshay Kumar",
+              "character": "Parshuram"
+            },
+            {
+              "name": "Boman Irani",
+              "character": "Judge Pradhan"
+            },
+            {
+              "name": "Shriya Pilgaonkar",
+              "character": "Naina"
+            },
+            {
+              "name": "Saiyami Kher",
+              "character": "Inspector Varsha Joshi"
+            },
+            {
+              "name": "Rajpal Yadav",
+              "character": "Chandu"
+            },
+            {
+              "name": "Sharib Hashmi",
+              "character": "Ashok Shinde"
+            },
+            {
+              "name": "Rajesh Sharma",
+              "character": "SP Rohit Vardhan"
+            }
+          ],
+          "overview": "A retired judge faces difficulty keeping his daughter safe from a convict he imprisoned. Later, when he gets murdered, a man with visual impairment who was loyal to him tries to defend his daughter.",
+          "runtime": 164,
+          "genres": [
+            "Crime",
+            "Thriller"
+          ],
+          "originalLanguage": "hi",
+          "spokenLanguages": [
+            "Hindi"
+          ],
+          "releaseDate": "2026-09-11",
+          "voteAverage": 4,
+          "trailerKey": "Bm5S7ZKk6K8",
+          "fetchedAt": "2026-11-06T08:00:32.163Z"
+        },
+        "tmdbId": 1475799,
         "verified": true
       },
       {
@@ -29050,7 +29103,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-06T10:03:07.204876+04:00",
+    "checkedAt": "2026-11-06T12:00:51.230683+04:00",
     "records": [
       {
         "name": "7 Star Boys",
