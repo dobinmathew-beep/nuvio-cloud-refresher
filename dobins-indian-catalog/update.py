@@ -223,7 +223,7 @@ def build():
  if any(not catalogs[c] for c in catalogs):
   save('metadata.json',metas);save('unmatched.json',unmatched);raise RuntimeError('An empty catalog would be published; retaining last-good catalogs while metadata backfills')
  save('metadata.json',metas);save('catalogs.json',catalogs);save('unmatched.json',unmatched)
- status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, 00:00 through 22:00 (Asia/Muscat)','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'errors':[]}
+ status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every 15 minutes daily, including 00:00 (Asia/Muscat)','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'errors':[]}
  save('status.json',status);print('SUCCESS',json.dumps(status),flush=True)
 if __name__=='__main__':
  try:build()
