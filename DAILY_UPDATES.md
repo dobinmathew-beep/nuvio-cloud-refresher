@@ -26,14 +26,18 @@ A successful check can keep the same movies or listings when the source has not 
 - [All GitHub runs and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions)
 - [External scheduler](https://console.cron-job.org/jobs/8777026)
 
-## Issues at this check
+## Direct media links
 
-No watchdog errors reported. Source coverage and unresolved items are shown separately above.
+**Regional backdrops:** [Open the backdrop site](https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site)
 
-## Useful links
+**Hero reels — direct MP4:**
+- [Hindi](https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/hindi.mp4)
+- [Tamil](https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/tamil.mp4)
+- [Malayalam](https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/malayalam.mp4)
+- [Telugu](https://dobin-nuvio-star-cards.quickfield138.chatgpt.site/hero/telugu.mp4)
 
-- [Backdrops](https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site)
-- [Reels](https://dobin-nuvio-star-cards.quickfield138.chatgpt.site)
+## Other useful links
+
 - [Addon](https://the-great-indian-addon.vercel.app)
 - [EPG download](https://da.gd/mr8mVT)
 
