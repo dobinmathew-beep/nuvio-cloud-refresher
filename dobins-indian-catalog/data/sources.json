@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-06T18:00:53.649603+04:00",
+    "checkedAt": "2026-11-06T20:00:52.002482+04:00",
     "records": [
       {
         "_id": "6ab337131ead141338255d7a",
@@ -24,11 +24,11 @@
           "cast": [
             {
               "name": "Jeon Do-yeon",
-              "character": "Ahn Mi-ok"
+              "character": "Mi-ok"
             },
             {
               "name": "Sul Kyung-gu",
-              "character": "Choi Ho-seok"
+              "character": "Ho-seok"
             },
             {
               "name": "Zo In-sung",
@@ -36,11 +36,7 @@
             },
             {
               "name": "Cho Yeo-jeong",
-              "character": "Lee Ye-ji"
-            },
-            {
-              "name": "Jeong Seop",
-              "character": "Choi Cheol"
+              "character": "Ye-ji"
             },
             {
               "name": "Jo Yuri",
@@ -51,8 +47,12 @@
               "character": "Young Ho-seok"
             },
             {
-              "name": "Kang Gil-woo",
-              "character": "Funeral guest"
+              "name": "Jeong Seop",
+              "character": "Cheol"
+            },
+            {
+              "name": "Kang Chang-gwon",
+              "character": "Min-sik"
             }
           ],
           "overview": "A laid-off worker and his wife cross paths with a documentary filmmaker and her spouse and confront their hidden desires.",
@@ -62,12 +62,13 @@
           ],
           "originalLanguage": "ko",
           "spokenLanguages": [
-            "Korean"
+            "Korean",
+            "English"
           ],
           "releaseDate": "2026-09-23",
-          "voteAverage": null,
+          "voteAverage": 7.8,
           "trailerKey": "zd3qXH9qN70",
-          "fetchedAt": "2026-09-23T18:45:37.587Z"
+          "fetchedAt": "2026-11-06T14:04:38.417Z"
         },
         "tmdbId": 1483525,
         "trendingRank": 1,
@@ -29103,7 +29104,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-06T18:00:53.649603+04:00",
+    "checkedAt": "2026-11-06T20:00:52.002482+04:00",
     "records": [
       {
         "name": "7 Star Boys",
