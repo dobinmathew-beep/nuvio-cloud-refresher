@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-07T16:00:47.410814+04:00",
+    "checkedAt": "2026-11-07T18:00:44.831118+04:00",
     "records": [
       {
         "_id": "6ab337131ead141338255d7a",
@@ -411,6 +411,60 @@
         "trendingRank": 3,
         "trendingRankedAt": "2026-11-07T02:19:23.131Z",
         "trendingRankedDateIST": "2026-11-07",
+        "tmdbDetails": {
+          "tmdbId": 1538457,
+          "director": "HipHop Tamizha Adhi",
+          "cast": [
+            {
+              "name": "HipHop Tamizha Adhi",
+              "character": "Jeeva/Tiger Shiva"
+            },
+            {
+              "name": "Ketika Sharma",
+              "character": "Laila Singh"
+            },
+            {
+              "name": "Chaithra J Achar",
+              "character": "Latchumi"
+            },
+            {
+              "name": "Ramya Ranganathan",
+              "character": "Vaani"
+            },
+            {
+              "name": "Harshath Khan",
+              "character": "Harshath"
+            },
+            {
+              "name": "Shah Ra",
+              "character": "M. Balaji M. Tech."
+            },
+            {
+              "name": "Karunas",
+              "character": "Older Gana Das"
+            },
+            {
+              "name": "Nassar",
+              "character": "Seshadri"
+            }
+          ],
+          "overview": "After facing rejection in love and getting into a fight, Jeeva learns about his father Siva's struggles and sacrifices. Inspired by his grandfather's legacy and father's dedication, Jeeva changes his outlook and works hard toward his musical dream. Through determination and perseverance, Jeeva earns recognition in the music industry and brings pride to his family.",
+          "runtime": 138,
+          "genres": [
+            "Comedy",
+            "Romance",
+            "Drama"
+          ],
+          "originalLanguage": "ta",
+          "spokenLanguages": [
+            "Tamil"
+          ],
+          "releaseDate": "2026-09-25",
+          "voteAverage": 7,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-07T13:28:25.859Z"
+        },
+        "tmdbId": 1538457,
         "verified": true
       },
       {
@@ -528,6 +582,46 @@
         "trendingRank": 4,
         "trendingRankedAt": "2026-11-07T02:19:23.131Z",
         "trendingRankedDateIST": "2026-11-07",
+        "tmdbDetails": {
+          "tmdbId": 1810711,
+          "director": "Ritesh Menon",
+          "cast": [
+            {
+              "name": "Mihir Ahuja",
+              "character": "Ansh Sikka"
+            },
+            {
+              "name": "Manoj Pahwa",
+              "character": "Sudhir Sikka"
+            },
+            {
+              "name": "Neelu Kohli",
+              "character": "Sukhmani Sikka"
+            },
+            {
+              "name": "Aura Bhatnagar Badoni",
+              "character": "Mahi Sikka"
+            },
+            {
+              "name": "Manmeet Singh Sawhney",
+              "character": ""
+            }
+          ],
+          "overview": "Ansh Sikkha returns to his Punjabi family home for Diwali after years working abroad. As the Sikkas gather for the festival, their clashing views on what constitutes a fulfilling life create friction and connection.",
+          "runtime": 61,
+          "genres": [
+            "Comedy"
+          ],
+          "originalLanguage": "hi",
+          "spokenLanguages": [
+            "Hindi"
+          ],
+          "releaseDate": "2026-11-05",
+          "voteAverage": 7,
+          "trailerKey": "m4aJdzwSOZg",
+          "fetchedAt": "2026-11-07T13:28:29.583Z"
+        },
+        "tmdbId": 1810711,
         "verified": true
       },
       {
@@ -622,6 +716,7 @@
         "trendingRankedDateIST": "2026-11-07",
         "tmdbRating": 80,
         "tmdbVotes": 15,
+        "votes": 1,
         "verified": true
       },
       {
@@ -29170,7 +29265,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-07T16:00:47.410814+04:00",
+    "checkedAt": "2026-11-07T18:00:44.831118+04:00",
     "records": [
       {
         "name": "7 Star Boys",

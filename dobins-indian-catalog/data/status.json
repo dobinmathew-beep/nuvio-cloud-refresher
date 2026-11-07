@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-07T16:00:47.410814+04:00",
-  "lastSuccessCycle": "2026-11-07T16:00:00+04:00",
+  "updatedAt": "2026-11-07T18:00:44.831118+04:00",
+  "lastSuccessCycle": "2026-11-07T18:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every 15 minutes daily, including 00:00 (Asia/Muscat)",
   "sources": [
@@ -86,12 +86,12 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 530,
+      "records": 538,
       "counts": {
-        "malayalam": 50,
-        "tamil": 91,
-        "telugu": 92,
-        "hindi": 297
+        "malayalam": 52,
+        "tamil": 92,
+        "telugu": 95,
+        "hindi": 299
       },
       "state": "live"
     },
@@ -122,16 +122,16 @@
   ],
   "counts": {
     "dobins_ml_movie": 66,
-    "dobins_ml_series": 58,
+    "dobins_ml_series": 60,
     "dobins_ta_movie": 55,
-    "dobins_ta_series": 98,
+    "dobins_ta_series": 99,
     "dobins_te_movie": 66,
-    "dobins_te_series": 100,
+    "dobins_te_series": 103,
     "dobins_hi_movie": 69,
-    "dobins_hi_series": 322
+    "dobins_hi_series": 324
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
   "pendingMatches": 104,
-  "checkedCandidates": 940,
+  "checkedCandidates": 946,
   "errors": []
 }
