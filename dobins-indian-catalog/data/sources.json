@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-07T06:00:43.534591+04:00",
+    "checkedAt": "2026-11-07T07:11:56.533339+04:00",
     "records": [
       {
         "_id": "6ab337131ead141338255d7a",
@@ -72,8 +72,8 @@
         },
         "tmdbId": 1483525,
         "trendingRank": 1,
-        "trendingRankedAt": "2026-11-06T02:19:17.395Z",
-        "trendingRankedDateIST": "2026-11-06",
+        "trendingRankedAt": "2026-11-07T02:19:23.131Z",
+        "trendingRankedDateIST": "2026-11-07",
         "verified": true
       },
       {
@@ -126,6 +126,9 @@
         "updatedAt": "2026-11-06T02:19:37.878Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/yxlAJqniqx5Qn2CVCDB97FDhQx7.jpg",
         "instagramPostedAt": "2026-11-06T02:21:04Z",
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-11-07T02:19:23.131Z",
+        "trendingRankedDateIST": "2026-11-07",
         "verified": true
       },
       {
@@ -235,6 +238,10 @@
           "fetchedAt": "2026-11-06T08:00:32.163Z"
         },
         "tmdbId": 1475799,
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-07T02:19:23.131Z",
+        "trendingRankedDateIST": "2026-11-07",
+        "instagramPostedAt": "2026-11-07T02:20:20Z",
         "verified": true
       },
       {
@@ -379,6 +386,9 @@
           "fetchedAt": "2026-11-06T04:35:11.749Z"
         },
         "tmdbId": 1250502,
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-11-07T02:19:23.131Z",
+        "trendingRankedDateIST": "2026-11-07",
         "verified": true
       },
       {
@@ -398,6 +408,9 @@
         "updatedAt": "2026-11-06T02:19:40.266Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/r86ozGJdc85H0rWLnqhEBOqajsq.jpg",
         "instagramPostedAt": "2026-11-06T02:20:29Z",
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-07T02:19:23.131Z",
+        "trendingRankedDateIST": "2026-11-07",
         "verified": true
       },
       {
@@ -513,8 +526,8 @@
         "posterUrl": "https://image.tmdb.org/t/p/w300/cV31QO65DA6mk4Hd6S7QncVq85T.jpg",
         "instagramPostedAt": "2026-11-05T02:20:32Z",
         "trendingRank": 4,
-        "trendingRankedAt": "2026-11-06T02:19:17.395Z",
-        "trendingRankedDateIST": "2026-11-06",
+        "trendingRankedAt": "2026-11-07T02:19:23.131Z",
+        "trendingRankedDateIST": "2026-11-07",
         "verified": true
       },
       {
@@ -548,7 +561,7 @@
         "releaseDate": "2026-11-05",
         "source_verified": true,
         "type": "Movie",
-        "updatedAt": "2026-11-05T02:19:51.212Z",
+        "updatedAt": "2026-11-07T02:19:41.804Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/fez7kLyGzpowduJapTFZZ1feCS0.jpg",
         "tmdbDetails": {
           "tmdbId": 1654940,
@@ -603,10 +616,12 @@
           "fetchedAt": "2026-11-05T08:29:38.815Z"
         },
         "tmdbId": 1654940,
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-11-06T02:19:17.395Z",
-        "trendingRankedDateIST": "2026-11-06",
         "instagramPostedAt": "2026-11-06T02:21:04Z",
+        "trendingRank": 8,
+        "trendingRankedAt": "2026-11-07T02:19:23.131Z",
+        "trendingRankedDateIST": "2026-11-07",
+        "tmdbRating": 80,
+        "tmdbVotes": 15,
         "verified": true
       },
       {
@@ -678,10 +693,10 @@
           "fetchedAt": "2026-11-05T08:00:57.485Z"
         },
         "tmdbId": 1630420,
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-06T02:19:17.395Z",
-        "trendingRankedDateIST": "2026-11-06",
         "instagramPostedAt": "2026-11-06T02:21:04Z",
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-11-07T02:19:23.131Z",
+        "trendingRankedDateIST": "2026-11-07",
         "verified": true
       },
       {
@@ -767,9 +782,9 @@
           "fetchedAt": "2026-11-05T11:13:10.822Z"
         },
         "tmdbId": 1755818,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-06T02:19:17.395Z",
-        "trendingRankedDateIST": "2026-11-06",
+        "trendingRank": 9,
+        "trendingRankedAt": "2026-11-07T02:19:23.131Z",
+        "trendingRankedDateIST": "2026-11-07",
         "verified": true
       },
       {
@@ -831,9 +846,9 @@
           "fetchedAt": "2026-11-03T06:13:16.350Z"
         },
         "tmdbId": 1690876,
-        "trendingRank": 6,
-        "trendingRankedAt": "2026-11-06T02:19:17.395Z",
-        "trendingRankedDateIST": "2026-11-06",
+        "trendingRank": 10,
+        "trendingRankedAt": "2026-11-07T02:19:23.131Z",
+        "trendingRankedDateIST": "2026-11-07",
         "verified": true
       },
       {
@@ -891,9 +906,6 @@
           "fetchedAt": "2026-11-02T05:02:17.708Z"
         },
         "tmdbId": 1638744,
-        "trendingRank": 7,
-        "trendingRankedAt": "2026-11-06T02:19:17.395Z",
-        "trendingRankedDateIST": "2026-11-06",
         "verified": true
       },
       {
@@ -29158,7 +29170,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-07T04:00:46.895618+04:00",
+    "checkedAt": "2026-11-07T07:11:56.533339+04:00",
     "records": [
       {
         "name": "7 Star Boys",
