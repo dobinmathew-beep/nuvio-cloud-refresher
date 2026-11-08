@@ -11,5 +11,17 @@
       "cached": 0
     },
     "errors": []
+  },
+  "heroes": {
+    "languages": [
+      "hindi",
+      "tamil",
+      "malayalam",
+      "telugu"
+    ],
+    "checked_at": "2026-11-08T14:54:44.304635+04:00",
+    "films_per_language": 20,
+    "opening_version": 1,
+    "selection_policy": "imdb-catalog-order-v1"
   }
 }
