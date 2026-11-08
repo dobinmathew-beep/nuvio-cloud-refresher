@@ -92,11 +92,23 @@ def reels():
   except Exception as e:out.append({"language":lang,"status":"fail","error":str(e)[:900]})
  return {"status":"pass" if all(x["status"]=="pass" for x in out) else "fail","checked_at":T,"public_url":H,"reels":out,"method":"public MP4 download, manifest hash/size, ffprobe and full ffmpeg decode"}
 def main():
- r={"schema_version":1,"checked_at":T,"timezone":"Asia/Muscat","verification_mode":"independent-public-output","outputs":{}}
- for n,f in (("addon",addon),("epg",epg),("backdrops",backdrops),("reels",reels)):
-  try:r["outputs"][n]=f()
-  except Exception as e:r["outputs"][n]={"status":"fail","error":str(e)[:1200]}
- passed=sum(x.get("status")=="pass" for x in r["outputs"].values());r["summary"]={"passed":passed,"total":4,"status":"pass" if passed==4 else "fail"}
+ prior={}
+ try:prior=json.loads((O/"latest.json").read_text())
+ except Exception:pass
+ outputs=prior.get("outputs",{})
+ for n in ("addon","epg","backdrops","reels"):
+  outputs.setdefault(n,{"status":"not_run","checked_at":None,"note":"Awaiting first independent check"})
+ selected=[x.strip() for x in os.getenv("VERIFY_ONLY","").split(",") if x.strip()]
+ if not selected:selected=["addon","epg","backdrops","reels"]
+ funcs={"addon":addon,"epg":epg,"backdrops":backdrops,"reels":reels}
+ for n in selected:
+  if n not in funcs:raise SystemExit("Unknown VERIFY_ONLY target: "+n)
+  try:outputs[n]=funcs[n]()
+  except Exception as e:outputs[n]={"status":"fail","checked_at":T,"error":str(e)[:1200]}
+ r={"schema_version":1,"checked_at":T,"timezone":"Asia/Muscat","verification_mode":"independent-public-output","outputs":outputs}
+ passed=sum(outputs[n].get("status")=="pass" for n in ("addon","epg","backdrops","reels"))
+ all_pass=all(outputs[n].get("status")=="pass" for n in ("addon","epg","backdrops","reels"))
+ r["summary"]={"passed":passed,"total":4,"status":"pass" if all_pass else "fail"}
  (O/"latest.json").write_text(json.dumps(r,indent=2)+"\n")
  lines=["# Independent Nuvio output verification","",f"**Checked:** {T} (Oman time)",f"**Overall:** {passed}/4 outputs passed","","| Output | Result |","|---|---|"]
  for n in ("addon","epg","backdrops","reels"):lines.append(f"| {n.title()} | {r['outputs'][n].get('status','fail').upper()} |")
