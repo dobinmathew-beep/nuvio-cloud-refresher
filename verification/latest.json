@@ -1,0 +1,250 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-11-08T20:21:35.849477+04:00",
+  "timezone": "Asia/Muscat",
+  "verification_mode": "independent-public-output",
+  "outputs": {
+    "addon": {
+      "status": "pass",
+      "checked_at": "2026-11-08T20:21:35.849477+04:00",
+      "public_url": "https://the-great-indian-addon.vercel.app",
+      "checks": [
+        {
+          "name": "public manifest",
+          "status": "pass",
+          "details": {
+            "name": "The Great Indian Addon",
+            "catalogs": 8
+          }
+        },
+        {
+          "name": "all eight public catalog endpoints",
+          "status": "pass",
+          "details": {
+            "catalogs": 8,
+            "entries": {
+              "dobins_ml_movie": 50,
+              "dobins_ml_series": 50,
+              "dobins_ta_movie": 50,
+              "dobins_ta_series": 50,
+              "dobins_te_movie": 50,
+              "dobins_te_series": 50,
+              "dobins_hi_movie": 50,
+              "dobins_hi_series": 50
+            }
+          }
+        },
+        {
+          "name": "public health endpoint",
+          "status": "pass",
+          "details": {
+            "checkout": {
+              "ready": false,
+              "configured": false,
+              "provider": "Bank Muscat",
+              "amountMode": "provider-entered"
+            }
+          }
+        }
+      ]
+    },
+    "epg": {
+      "status": "pass",
+      "checked_at": "2026-11-08T20:21:35.849477+04:00",
+      "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
+      "checks": [
+        {
+          "name": "public status and freshness",
+          "status": "pass",
+          "details": {
+            "revision": "a75541d6-dd84-4046-88eb-35a5184c6f54",
+            "checked_utc": "2026-11-08T16:00:51.654279+00:00",
+            "matched_ids": 645,
+            "playlist_channel_ids": 849,
+            "unresolved_ids": 204,
+            "programmes": 66385
+          }
+        },
+        {
+          "name": "published XMLTV",
+          "status": "pass",
+          "details": {
+            "bytes": 2102997,
+            "channels": 645,
+            "programmes": 66385
+          }
+        },
+        {
+          "name": "Channel_Matching_Report.csv",
+          "status": "pass",
+          "details": {
+            "rows": 849
+          }
+        },
+        {
+          "name": "Unresolved_Channels.csv",
+          "status": "pass",
+          "details": {
+            "rows": 204
+          }
+        },
+        {
+          "name": "Source_Crosscheck_Report.csv",
+          "status": "pass",
+          "details": {
+            "rows": 2930
+          }
+        },
+        {
+          "name": "Validation_Summary.json",
+          "status": "pass",
+          "details": {
+            "keys": [
+              "checked_utc",
+              "playlist_url",
+              "playlist_sha256",
+              "playlist_channel_ids",
+              "matched_ids",
+              "unresolved_ids",
+              "programmes",
+              "sources_with_parsed_guides",
+              "selected_source_counts",
+              "unresolved_reason_counts"
+            ]
+          }
+        },
+        {
+          "name": "Source_Health_Report.json",
+          "status": "pass",
+          "details": {
+            "keys": [
+              "airtel.xml",
+              "ca.xml",
+              "dishtv.xml",
+              "free-epg.xml",
+              "guide.xml",
+              "jiotv.xml",
+              "open-india.xml",
+              "pw.xml",
+              "samsung-in.xml",
+              "sundirectgo.xml"
+            ]
+          }
+        }
+      ]
+    },
+    "backdrops": {
+      "status": "pass",
+      "checked_at": "2026-11-08T20:21:35.849477+04:00",
+      "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
+      "details": {
+        "day": "2026-11-08",
+        "statuses": 160,
+        "images": 16,
+        "states": {
+          "live": 160,
+          "cached": 0
+        },
+        "errors": []
+      },
+      "method": "160 public layout/status checks and 16 JPEG checks"
+    },
+    "reels": {
+      "status": "pass",
+      "checked_at": "2026-11-08T20:21:35.849477+04:00",
+      "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
+      "reels": [
+        {
+          "language": "hindi",
+          "status": "pass",
+          "bytes": 6905250,
+          "sha256": "594ddf93f37622c298634c6865b00443b4ee9ebdb2c8421fea6464259325086a",
+          "duration_seconds": 50.0,
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1280,
+              "height": 720
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ]
+        },
+        {
+          "language": "tamil",
+          "status": "pass",
+          "bytes": 6904715,
+          "sha256": "f4c85df36be7d0c2b24177ae4907ca750f75da97523803842515eee8ea2fafee",
+          "duration_seconds": 50.0,
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1280,
+              "height": 720
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ]
+        },
+        {
+          "language": "malayalam",
+          "status": "pass",
+          "bytes": 6895799,
+          "sha256": "1849eb4d55b8569be4cdc7f07eb483173db62355959413c5bde10b88d53f5d79",
+          "duration_seconds": 50.0,
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1280,
+              "height": 720
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ]
+        },
+        {
+          "language": "telugu",
+          "status": "pass",
+          "bytes": 6897696,
+          "sha256": "f62780f3f0bdfbeac82d3d1a9dd2a648c373ad8e42e01d6e27ce9f549ec954fd",
+          "duration_seconds": 50.0,
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1280,
+              "height": 720
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ]
+        }
+      ],
+      "method": "public MP4 download, manifest hash/size, ffprobe and full ffmpeg decode"
+    }
+  },
+  "summary": {
+    "passed": 4,
+    "total": 4,
+    "status": "pass"
+  }
+}
