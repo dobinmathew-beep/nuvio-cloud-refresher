@@ -1,0 +1,69 @@
+name: Nuvio independent output verification
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_run:
+    workflows:
+      - Nuvio cloud refresh
+      - Dobins Indian Catalog
+      - India EPG daily refresh
+    types: [completed]
+    branches: [main, dobins-catalog]
+  push:
+    branches: [main]
+    paths: [verify_independent.py, .github/workflows/independent-verification.yml]
+permissions:
+  contents: write
+concurrency:
+  group: nuvio-independent-verification
+  cancel-in-progress: false
+jobs:
+  verify:
+    if: github.repository == 'dobinmathew-beep/nuvio-cloud-refresher'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Install media inspection tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+      - name: Independently verify all four public outputs
+        id: verify
+        continue-on-error: true
+        env:
+          ADDON_BASE_URL: https://the-great-indian-addon.vercel.app
+        run: python -u verify_independent.py
+      - name: Publish latest report
+        if: always()
+        run: |
+          git config user.name 'Nuvio independent verifier'
+          git config user.email 'nuvio-verifier@users.noreply.github.com'
+          git add verification/latest.json verification/latest.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'Publish independent Nuvio output verification'
+            for attempt in 1 2 3; do
+              git pull --rebase origin main
+              if git push origin HEAD:main; then exit 0; fi
+              sleep 5
+            done
+            exit 1
+          fi
+      - name: Upload verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuvio-independent-verification-\${{ github.run_id }}
+          path: |
+            verification/latest.json
+            verification/latest.md
+          if-no-files-found: error
+          retention-days: 30
+      - name: Mark incomplete verification as failed
+        if: steps.verify.outcome == 'failure'
+        run: |
+          echo 'One or more public outputs failed independent verification.'
+          exit 1
