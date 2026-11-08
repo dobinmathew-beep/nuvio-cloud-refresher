@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-08T09:54:45.111472+04:00",
+    "checkedAt": "2026-11-08T10:10:27.895947+04:00",
     "records": [
       {
         "_id": "6ab337131ead141338255d7a",
@@ -491,6 +491,59 @@
         "trendingRank": 9,
         "trendingRankedAt": "2026-11-08T02:19:22.182Z",
         "trendingRankedDateIST": "2026-11-08",
+        "tmdbDetails": {
+          "tmdbId": 1555215,
+          "director": "Guni Manchikanti",
+          "cast": [
+            {
+              "name": "Vishnu Oi",
+              "character": ""
+            },
+            {
+              "name": "Akshay Lagusani",
+              "character": ""
+            },
+            {
+              "name": "Samriddhi Aryal",
+              "character": ""
+            },
+            {
+              "name": "Malvi Malhotra",
+              "character": ""
+            },
+            {
+              "name": "Karthikeya Dev",
+              "character": ""
+            },
+            {
+              "name": "Vismaya Sri",
+              "character": ""
+            },
+            {
+              "name": "Tinnu Anand",
+              "character": ""
+            },
+            {
+              "name": "Upendra Limaye",
+              "character": ""
+            }
+          ],
+          "overview": "One misplaced object triggers a one-day chain reaction, pulling six strangers into a fun, chaotic journey. As it changes hands, small mistakes lead to comic misunderstandings, awkward encounters, and unexpected connections that change all their lives.",
+          "runtime": 135,
+          "genres": [
+            "Comedy",
+            "Crime"
+          ],
+          "originalLanguage": "te",
+          "spokenLanguages": [
+            "Telugu"
+          ],
+          "releaseDate": "2026-10-09",
+          "voteAverage": null,
+          "trailerKey": "QQQZDiV7L-k",
+          "fetchedAt": "2026-11-08T06:04:01.206Z"
+        },
+        "tmdbId": 1555215,
         "verified": true
       },
       {
@@ -29268,7 +29321,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-08T09:54:45.111472+04:00",
+    "checkedAt": "2026-11-08T10:10:27.895947+04:00",
     "records": [
       {
         "name": "7 Star Boys",
