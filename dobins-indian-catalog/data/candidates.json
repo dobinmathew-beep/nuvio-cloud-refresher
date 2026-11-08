@@ -334,6 +334,13 @@
       "type": "movie"
     },
     {
+      "id": "tt38097205",
+      "name": "Meesaya Murukku 2",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt38097205.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tt33095205",
       "name": "Enna Vilai",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33095205.jpg",
@@ -414,13 +421,6 @@
       "id": "tt43727339",
       "name": "Photographer",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt43727339.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt35712605",
-      "name": "G.D.N",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35712605.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     }
@@ -753,6 +753,13 @@
       "type": "series"
     },
     {
+      "id": "tt39216418",
+      "name": "Vikram On Duty",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39216418.jpg",
+      "releaseInfo": "2026",
+      "type": "series"
+    },
+    {
       "id": "tt38628863",
       "name": "D/O Prasad Rao: Kanabadutaledu",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt38628863.jpg",
@@ -835,13 +842,6 @@
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15722548.jpg",
       "releaseInfo": "2024",
       "type": "series"
-    },
-    {
-      "id": "tt28756614",
-      "name": "Bahishkarana",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28756614.jpg",
-      "releaseInfo": "2024",
-      "type": "series"
     }
   ],
   "telugu-movie": [
@@ -862,9 +862,30 @@
       "type": "movie"
     },
     {
+      "id": "tt47421307",
+      "name": "SI Yugandhar",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt47421307.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
+      "id": "tt41221277",
+      "name": "Anakapalli",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt41221277.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tt31841170",
       "name": "Don't Trouble the Trouble",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31841170.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
+      "id": "tt43407940",
+      "name": "Thella Kaagitham",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt43407940.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     },
@@ -886,6 +907,13 @@
       "id": "tt35448218",
       "name": "Epic - First Semester",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35448218.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
+      "id": "tt41971399",
+      "name": "Romanchakam",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt41971399.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     },
@@ -963,34 +991,6 @@
       "id": "tt43123022",
       "name": "Mister Middle Class",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt43123022.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt38907371",
-      "name": "Oh..! Sukumari",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt38907371.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt5256640",
-      "name": "Lenin",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5256640.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt37895011",
-      "name": "Rao Bahadur",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt37895011.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt32065777",
-      "name": "Nagabandham: The Secret Treasure",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32065777.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     }
