@@ -24,8 +24,18 @@ def api(path,method='GET',payload=None,raw=None,mime='application/json'):
         body=res.read();return json.loads(body) if body else None
 
 def get(url):
-    p=subprocess.run(['curl','-fsSL','--retry','1','--connect-timeout','15','--max-time','180',url],capture_output=True)
-    if p.returncode:raise RuntimeError('Download failed: '+url+' '+p.stderr.decode()[-150:])
+    # GitHub Releases occasionally returns transient 502/503/504 responses for
+    # large renderer archives and media assets. Retry those responses with
+    # curl's exponential backoff; keep each attempt bounded and never accept
+    # an HTTP error page as a successful asset download.
+    p=subprocess.run([
+        'curl','--fail','--silent','--show-error','--location',
+        '--retry','6','--retry-max-time','600','--retry-connrefused',
+        '--connect-timeout','30','--max-time','300',url
+    ],capture_output=True)
+    if p.returncode:
+        detail=p.stderr.decode(errors='replace')[-500:].strip()
+        raise RuntimeError('Download failed after retry policy: '+url+' '+detail)
     return p.stdout
 
 def release(tag):
