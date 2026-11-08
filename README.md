@@ -4,6 +4,10 @@
 
 See all four outputs, verified refresh cycles in Oman time, current errors, EPG coverage, full run links and [daily history](logs/README.md). The page updates automatically with each completed watchdog check (normally every ten minutes and after refresh attempts).
 
+## Independent verification
+
+[Open the latest independent verification report](verification/latest.md) — checks the four public outputs separately and records detailed evidence in [JSON format](verification/latest.json).
+
 ## Quick access — backdrops and hero reels
 
 **Backdrops:** [Open the Nuvio regional backdrop site](https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site)
