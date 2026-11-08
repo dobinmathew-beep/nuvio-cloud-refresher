@@ -36,6 +36,7 @@ jobs:
         continue-on-error: true
         env:
           ADDON_BASE_URL: https://the-great-indian-addon.vercel.app
+          VERIFY_ONLY: ${{ github.event.workflow_run.name == 'Dobins Indian Catalog' && 'addon' || github.event.workflow_run.name == 'India EPG daily refresh' && 'epg' || github.event.workflow_run.name == 'Nuvio cloud refresh' && 'backdrops,reels' || '' }}
         run: python -u verify_independent.py
       - name: Publish latest report
         if: always()
