@@ -427,6 +427,13 @@
   ],
   "malayalam-movie": [
     {
+      "id": "tt27512908",
+      "name": "The Third Murder",
+      "poster": "https://live.metahub.space/poster/small/tt27512908/img",
+      "releaseInfo": 2026,
+      "type": "movie"
+    },
+    {
       "id": "tt34284946",
       "name": "I'm Game",
       "poster": "https://images.metahub.space/poster/small/tt34284946/img",
@@ -550,13 +557,6 @@
       "name": "i, Nobody",
       "poster": "https://images.metahub.space/poster/small/tt26445387/img",
       "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt44125424",
-      "name": "Eerie (Short)",
-      "poster": "https://live.metahub.space/poster/small/tt44125424/img",
-      "releaseInfo": 2026,
       "type": "movie"
     }
   ],
