@@ -19,7 +19,7 @@ test('provider comparison distinguishes status labels from quality-only badges',
  const quality=Buffer.from('<svg width="500" height="750"><rect x="365" y="37" width="107" height="40" rx="8" fill="white"/></svg>');
  const qualityOnly=await sharp(plain).composite([{input:quality}]).png().toBuffer();
  const both=await sharp(qualityOnly).composite([{input:status}]).png().toBuffer();
- assert.equal(await providerHasStatus(both,qualityOnly),true);
+ assert.equal(await providerHasStatus(both,qualityOnly),true);const bounds=await providerStatusBounds(both,qualityOnly);assert(bounds&&bounds.bottom>0);
  assert.equal(await providerHasStatus(qualityOnly,qualityOnly),false);
  assert.equal(await providerHasStatus(qualityOnly,plain),false);
  const url=statusControlUrl('https://btttr.cc/poster-q/imdb/poster-default/tt1234567.jpg?rs=IM&lang=en');const u=new URL(url);assert.equal(u.searchParams.get('tag'),'none');assert.equal(u.searchParams.get('rs'),'IM');assert(u.pathname.startsWith('/poster-q/'));
