@@ -1,14 +1,14 @@
 # Independent Nuvio output verification
 
-**Checked:** 2026-11-10T16:15:18.257892+04:00 (Oman time)
-**Overall:** 3/4 outputs passed
+**Checked:** 2026-11-10T18:59:05.954939+04:00 (Oman time)
+**Overall:** 4/4 outputs passed
 
 | Output | Result |
 |---|---|
 | Addon | PASS |
 | Epg | PASS |
 | Backdrops | PASS |
-| Reels | FAIL |
+| Reels | PASS |
 
 ## Addon — PASS
 - **PASS** public manifest: {"name": "The Great Indian Addon", "catalogs": 8}
@@ -16,11 +16,11 @@
 - **PASS** public health endpoint: {"checkout": {"ready": false, "configured": false, "provider": "Bank Muscat", "amountMode": "provider-entered"}}
 
 ## Epg — PASS
-- **PASS** public status and freshness: {"revision": "3fd4cdd6-8675-44db-bbbc-666164cdb3bc", "checked_utc": "2026-11-10T10:00:59.230366+00:00", "matched_ids": 631, "playlist_channel_ids": 836, "unresolved_ids": 205, "programmes": 74430}
-- **PASS** published XMLTV: {"bytes": 2266161, "channels": 631, "programmes": 74430}
+- **PASS** public status and freshness: {"revision": "af5f8595-bb0e-4467-9f1b-85d66db71f2e", "checked_utc": "2026-11-10T14:00:59.315886+00:00", "matched_ids": 635, "playlist_channel_ids": 836, "unresolved_ids": 201, "programmes": 70822}
+- **PASS** published XMLTV: {"bytes": 2215367, "channels": 635, "programmes": 70822}
 - **PASS** Channel_Matching_Report.csv: {"rows": 836}
-- **PASS** Unresolved_Channels.csv: {"rows": 205}
-- **PASS** Source_Crosscheck_Report.csv: {"rows": 3159}
+- **PASS** Unresolved_Channels.csv: {"rows": 201}
+- **PASS** Source_Crosscheck_Report.csv: {"rows": 3396}
 - **PASS** Validation_Summary.json: {"keys": ["checked_utc", "playlist_url", "playlist_sha256", "playlist_channel_ids", "matched_ids", "unresolved_ids", "programmes", "sources_with_parsed_guides", "selected_source_counts", "unresolved_reason_counts"]}
 - **PASS** Source_Health_Report.json: {"keys": ["airtel.xml", "ca.xml", "dishtv.xml", "free-epg.xml", "guide.xml", "jiotv.xml", "open-india.xml", "pw.xml", "samsung-in.xml", "sundirectgo.xml"]}
 
@@ -33,11 +33,17 @@
     "live": 160,
     "cached": 0
   },
-  "errors": []
+  "errors": [],
+  "catalogHeads": {
+    "tamil": "tt39239754",
+    "malayalam": "tt27512908",
+    "hindi": "tt27988879",
+    "telugu": "tt32089596"
+  }
 }
 
-## Reels — FAIL
-- **FAIL** hindi: "HTTP Error 503: Service Unavailable"
-- **FAIL** tamil: "HTTP Error 503: Service Unavailable"
-- **FAIL** malayalam: "HTTP Error 503: Service Unavailable"
-- **FAIL** telugu: "HTTP Error 503: Service Unavailable"
+## Reels — PASS
+- **PASS** hindi: 50.0
+- **PASS** tamil: 50.0
+- **PASS** malayalam: 50.0
+- **PASS** telugu: 50.0
