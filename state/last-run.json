@@ -1,7 +1,5 @@
 {
-  "attempted_at": "2026-11-11T00:01:02.360420+04:00",
+  "attempted_at": "2026-11-11T00:20:42.566605+04:00",
   "cycle": "2026-11-11",
-  "errors": [
-    "heroes: Download failed after retry policy: https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/575e94a21dde4ef22c55dc4a-tamil-daily.json curl: (22) The requested URL returned error: 500\ncurl: (22) The requested URL returned error: 500\ncurl: (22) The requested URL returned error: 500\ncurl: (22) The requested URL returned error: 500\ncurl: (22) The requested URL returned error: 500\ncurl: (22) The requested URL returned error: 500\ncurl: (22) The requested URL returned error: 500"
-  ]
+  "errors": []
 }
