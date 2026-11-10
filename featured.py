@@ -11,6 +11,10 @@ def get(url):
 def valid(m,lang=None):
  mid=str(m.get('id','')).split('||',1)[0]
  return re.fullmatch(r'tt\d+',mid) and m.get('type')=='movie' and m.get('poster') and re.fullmatch(r'tt\d+|tmdb:\d+',mid) and not re.search(r'OTT\s*Releases|Hindi\s*Dubbed|promo|unlock',str(m.get('name','')),re.I)
+def first_valid(metas,lang=None):
+ """Return the first eligible IMDb-linked movie without reordering the source catalog."""
+ return next((m for m in metas if valid(m,lang)),None)
+
 def select_featured(state):
  state=Path(state);state.mkdir(parents=True,exist_ok=True)
  pages_file=state/'catalog-pages.json';pages=json.loads(pages_file.read_text()) if pages_file.exists() else {}
@@ -18,7 +22,7 @@ def select_featured(state):
  # Fail atomically on source errors. Never substitute an unrelated date service or feed.
  for lang,cat in LANGS.items():
   url=f'{SOURCE}/catalog/movie/{cat}.json';data=get(url);metas=data.get('metas',[])
-  chosen=next((m for m in metas if valid(m,lang)),None)
+  chosen=first_valid(metas,lang)
   if not chosen:raise RuntimeError(lang+': no valid catalog head; last-good selection retained')
   pages[url]={'checked_at':now,'metas':metas}
   languages[lang]={'id':str(chosen['id']).split('||',1)[0],'name':chosen['name'],'poster':chosen['poster'],'catalog':cat,'type':'movie','catalog_source':url,'selection':'catalog-order','catalogRank':0,'eligibility':'IMDb-linked movie','verifiedAt':now}

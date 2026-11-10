@@ -15,8 +15,12 @@ def due(now, kind):
 
 def fresh(state, kind, target):
     if kind=='media':
+        ids=state.get('featured_ids',{})
+        valid_ids=(isinstance(ids,dict) and set(ids)=={'hindi','tamil','malayalam','telugu'}
+            and all(str(v).startswith('tt') and str(v)[2:].isdigit() for v in ids.values()))
         return (state.get('refresh_cycle',state.get('cycle','')+'T06:00:00+04:00')==target.isoformat() and bool(state.get('backdrops'))
             and bool(state.get('heroes')) and state.get('featuredVersion')==2
+            and state.get('featured_cycle')==target.isoformat() and valid_ids
             and state.get('heroes',{}).get('opening_version')==1
             and state.get('heroes',{}).get('selection_policy')=='imdb-catalog-order-v1')
     field='lastSuccessCycle' if kind=='addon' else 'checked_utc'

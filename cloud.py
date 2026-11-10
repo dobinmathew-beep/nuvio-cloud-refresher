@@ -178,10 +178,10 @@ def heroes():
         assert sha(get(url))==digest,'Published asset hash mismatch '+path
         updated[path]={'url':url,'sha256':digest,'bytes':len(raw),'mime':mime(path)}
     atomic(STATE/'media.json',updated)
-    # Keep media bounded: current assets and the previous generation; never delete legacy URLs.
-    keep={x['url'].rsplit('/',1)[-1] for x in [*manifest.values(),*updated.values()]}
-    for name,a in known.items():
-        if name not in keep:api('/releases/assets/'+str(a['id']),'DELETE')
+    # Keep prior release assets until the workflow has committed state/media.json.
+    # Pruning here is unsafe: a later git rebase/push failure would leave the
+    # committed manifest pointing at assets that this run has already deleted.
+    # A separate post-commit cleanup can be added once it is transaction-safe.
     return {'languages':list(LANGS),'checked_at':datetime.now(ZoneInfo('Asia/Muscat')).isoformat(),'films_per_language':20,'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}
 
 def main():
@@ -189,15 +189,27 @@ def main():
     progress_path=STATE/'success.json';progress=json.loads(progress_path.read_text()) if progress_path.exists() else {}
     if progress.get('refresh_cycle',progress.get('cycle','')+'T06:00:00+04:00')!=refresh_cycle:progress={'cycle':cycle,'refresh_cycle':refresh_cycle}
     if progress.get('heroes',{}).get('opening_version')!=1 or progress.get('heroes',{}).get('selection_policy')!='imdb-catalog-order-v1':progress.pop('heroes',None)
-    if progress.get('backdrops') and progress.get('heroes') and progress.get('featuredVersion')==2:
+    if (progress.get('backdrops') and progress.get('heroes') and progress.get('featuredVersion')==2
+        and progress.get('featured_cycle')==refresh_cycle and set(progress.get('featured_ids',{}))==set(LANGS)):
         print('Current Muscat refresh cycle already verified; nothing to refresh.');return 0
     bootstrap();failed=[]
-    if progress.get('featuredVersion')!=2:
+    # Refresh the live IndianRegional catalog head once per two-hour cycle.
+    # Persist the IDs with the successful outputs so a retry does not repeatedly
+    # query the source, and invalidate both media outputs if the head changed.
+    if progress.get('featured_cycle')!=refresh_cycle or progress.get('featuredVersion')!=2:
         try:
-            featured_movies();progress['featuredVersion']=2;progress.pop('backdrops',None);progress.pop('heroes',None)
+            selected=featured_movies()
+            selected_ids={lang:str(item.get('id','')) for lang,item in selected.get('languages',{}).items()}
+            if set(selected_ids)!=set(LANGS) or not all(re.fullmatch(r'tt\d+',value) for value in selected_ids.values()):
+                raise RuntimeError('Current IndianRegional head selection did not verify all four IMDb movie IDs')
+            if selected_ids!=progress.get('featured_ids'):
+                progress.pop('backdrops',None);progress.pop('heroes',None)
+            progress['featuredVersion']=2
+            progress['featured_cycle']=refresh_cycle
+            progress['featured_ids']=selected_ids
         except Exception as e:
-            atomic(STATE/'last-run.json',{'attempted_at':now.isoformat(),'cycle':cycle,'errors':['Centre release-date selection: '+str(e)]})
-            print('FAILED centre release-date verification; retained last-good backdrops:',str(e),flush=True)
+            atomic(STATE/'last-run.json',{'attempted_at':now.isoformat(),'cycle':cycle,'errors':['Current IndianRegional catalog-head selection: '+str(e)]})
+            print('FAILED current catalog-head verification; retained last-good backdrops:',str(e),flush=True)
             return 1
     for key,fn in [('backdrops',backdrop),('heroes',heroes)]:
         if progress.get(key):continue

@@ -1,11 +1,12 @@
 import concurrent.futures as cf,datetime,json,re,subprocess,threading
 from pathlib import Path
+from featured import first_valid
 from zoneinfo import ZoneInfo
 B='https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site';S='https://83e20802dcf1-indian-streams.baby-beamup.club'
 C={'hindi':'hi','tamil':'ta','malayalam':'ml','telugu':'te'}
 A='wall cascade spotlight filmstrip gallery ribbon duo polaroid neon towers'.split();X=A+'mosaic fan orbit triptych cinema steps cross shelf widescreen diamond'.split()
 D=datetime.datetime.now(ZoneInfo('Asia/Muscat')).date().isoformat();feeds={};errors=[];rows=[];lock=threading.Lock()
-FEATURED=json.loads((Path(__file__).resolve().parent/'state/featured-movies.json').read_text())['languages']
+FEATURED=json.loads((Path(__file__).resolve().parent/'state/featured-movies.json').read_text())['languages'];HEADS={}
 def get(u):
  p=subprocess.run(['curl','-fsSL','--connect-timeout','15','--max-time','100','-w','\n%{http_code} %{content_type}',u],capture_output=True)
  assert p.returncode==0,p.stderr.decode()[-200:]
@@ -26,6 +27,10 @@ def src(k):
    except Exception:
     if skip:break
     raise
+   if t=='movie' and skip==0:
+    head=first_valid(ms,l)
+    assert head,f'{cat}: no valid first/current IndianRegional movie'
+    HEADS[l]=str(head.get('id','')).split('||',1)[0]
    ids.update(m.get('id','').split('||')[0] for m in ms if m.get('type',t)==t and re.fullmatch(r'tt\d+|tmdb:\d+',m.get('id','').split('||')[0]))
   assert ids,'empty source';return ids
  v,e=retry(run)
@@ -42,9 +47,11 @@ def status(k):
   assert d.get('catalog')==exp,f'wrong catalog {d.get("catalog")}'
   assert d.get('hash') and d.get('bytes',0)>0,'missing artwork metadata'
   if t in ('movies','combined'):
-   lead=FEATURED[l];center=d.get('centerMovie',{})
+   lead=FEATURED[l];center=d.get('centerMovie',{});head=HEADS.get(l)
+   assert head,'live IndianRegional catalog head was not independently checked'
+   assert lead.get('id')==head,f'saved featured selection is stale: {lead.get("id")} != current catalog head {head}'
    assert d.get('renderVersion')=='catalog-head-v2','old centre selection version'
-   assert center.get('id')==lead['id'] and center.get('selection')=='catalog-order' and center.get('catalogRank')==0,'incorrect catalog-head centre movie'
+   assert center.get('id')==head and center.get('selection')=='catalog-order' and center.get('catalogRank')==0,'incorrect current catalog-head centre movie'
    assert isinstance(d.get('centerSlot'),int),'missing centre panel metadata'
   ms=d.get('movies',[]);assert ms,'empty titles';types=[]
   for m in ms:
@@ -71,5 +78,5 @@ keys=[(l,t,s) for l in C for t in ('movies','series','combined') for s in (X if 
 with cf.ThreadPoolExecutor(max_workers=4) as ex:list(ex.map(status,keys))
 imgs=[(l,t,'polaroid') for l in C for t in ('movies','series','combined')]+[(l,'combined','orbit') for l in C]
 with cf.ThreadPoolExecutor(max_workers=4) as ex:list(ex.map(jpg,imgs))
-print('SUMMARY',json.dumps({'day':D,'statuses':len(rows),'images':len(imgs),'states':{s:sum(1 for r in rows if r and r['state']==s) for s in ('live','cached')},'errors':errors}),flush=True)
+print('SUMMARY',json.dumps({'day':D,'statuses':len(rows),'images':len(imgs),'states':{s:sum(1 for r in rows if r and r['state']==s) for s in ('live','cached')},'errors':errors,'catalogHeads':HEADS}),flush=True)
 

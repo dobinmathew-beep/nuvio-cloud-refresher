@@ -17,11 +17,14 @@ class WatchdogTests(unittest.TestCase):
             self.assertEqual(due(before,kind).hour,morning)
             self.assertEqual(due(at,kind).hour,14)
             self.assertEqual(due(after,kind).hour,14)
-        state={'cycle':'2026-11-02','refresh_cycle':'2026-11-02T12:00:00+04:00','featuredVersion':2,'backdrops':{'ok':True},
-            'heroes':{'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}}
+        state={'cycle':'2026-11-02','refresh_cycle':'2026-11-02T12:00:00+04:00','featuredVersion':2,
+            'featured_cycle':'2026-11-02T12:00:00+04:00',
+            'featured_ids':{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'},
+            'backdrops':{'ok':True},'heroes':{'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}}
         self.assertTrue(fresh(state,'media',due(before,'media')))
         self.assertFalse(fresh(state,'media',due(at,'media')))
         state['refresh_cycle']=due(at,'media').isoformat()
+        state['featured_cycle']=due(at,'media').isoformat()
         self.assertTrue(fresh(state,'media',due(at,'media')))
         self.assertFalse(fresh({'checked_utc':'2026-11-02T04:10:00+00:00','matched_ids':642},'epg',due(at,'epg')))
         self.assertTrue(fresh({'checked_utc':'2026-11-02T10:10:00+00:00','matched_ids':642},'epg',due(at,'epg')))
@@ -37,6 +40,19 @@ class WatchdogTests(unittest.TestCase):
     def test_utc_input_has_same_local_cycle(self):
         now=datetime.fromisoformat('2026-11-02T10:01:00+00:00')
         self.assertEqual(due(now,'media').isoformat(),'2026-11-02T14:00:00+04:00')
+    def test_media_requires_current_catalog_head_ids_for_cycle(self):
+        target=datetime(2026,11,2,14,tzinfo=ZONE)
+        state={'refresh_cycle':target.isoformat(),'featured_cycle':target.isoformat(),'featuredVersion':2,
+            'featured_ids':{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'},
+            'backdrops':{'ok':True},'heroes':{'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}}
+        self.assertTrue(fresh(state,'media',target))
+        stale=dict(state);stale.pop('featured_cycle')
+        self.assertFalse(fresh(stale,'media',target))
+        incomplete=dict(state,featured_ids={'hindi':'tt100'})
+        self.assertFalse(fresh(incomplete,'media',target))
+        invalid=dict(state,featured_ids={**state['featured_ids'],'telugu':'tmdb:123'})
+        self.assertFalse(fresh(invalid,'media',target))
+
     def test_media_partial_success_is_not_fresh(self):
         self.assertFalse(fresh({'cycle':'2026-11-02','backdrops':{'ok':True}},'media',datetime(2026,11,2,6,tzinfo=ZONE)))
     def test_no_duplicate_or_runaway_dispatch(self):
