@@ -1,14 +1,14 @@
 # Independent Nuvio output verification
 
-**Checked:** 2026-11-10T07:55:57.866972+04:00 (Oman time)
-**Overall:** 4/4 outputs passed
+**Checked:** 2026-11-10T08:05:23.382438+04:00 (Oman time)
+**Overall:** 3/4 outputs passed
 
 | Output | Result |
 |---|---|
 | Addon | PASS |
 | Epg | PASS |
 | Backdrops | PASS |
-| Reels | PASS |
+| Reels | FAIL |
 
 ## Addon — PASS
 - **PASS** public manifest: {"name": "The Great Indian Addon", "catalogs": 8}
@@ -26,7 +26,7 @@
 
 ## Backdrops — PASS
 {
-  "day": "2026-11-08",
+  "day": "2026-11-10",
   "statuses": 160,
   "images": 16,
   "states": {
@@ -36,8 +36,8 @@
   "errors": []
 }
 
-## Reels — PASS
-- **PASS** hindi: 50.0
-- **PASS** tamil: 50.0
-- **PASS** malayalam: 50.0
-- **PASS** telugu: 50.0
+## Reels — FAIL
+- **FAIL** hindi: "HTTP Error 503: Service Unavailable"
+- **FAIL** tamil: "HTTP Error 503: Service Unavailable"
+- **FAIL** malayalam: "HTTP Error 503: Service Unavailable"
+- **FAIL** telugu: "HTTP Error 503: Service Unavailable"

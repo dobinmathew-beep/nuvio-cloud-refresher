@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-10T07:55:57.866972+04:00",
+  "checked_at": "2026-11-10T08:05:23.382438+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -135,10 +135,10 @@
     },
     "backdrops": {
       "status": "pass",
-      "checked_at": "2026-11-08T20:27:58.789724+04:00",
+      "checked_at": "2026-11-10T08:05:23.382438+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
       "details": {
-        "day": "2026-11-08",
+        "day": "2026-11-10",
         "statuses": 160,
         "images": 16,
         "states": {
@@ -150,101 +150,37 @@
       "method": "160 public layout/status checks and 16 JPEG checks"
     },
     "reels": {
-      "status": "pass",
-      "checked_at": "2026-11-08T20:27:58.789724+04:00",
+      "status": "fail",
+      "checked_at": "2026-11-10T08:05:23.382438+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
           "language": "hindi",
-          "status": "pass",
-          "bytes": 6905250,
-          "sha256": "594ddf93f37622c298634c6865b00443b4ee9ebdb2c8421fea6464259325086a",
-          "duration_seconds": 50.0,
-          "streams": [
-            {
-              "codec_name": "h264",
-              "codec_type": "video",
-              "width": 1280,
-              "height": 720
-            },
-            {
-              "codec_name": "aac",
-              "codec_type": "audio",
-              "sample_rate": "44100",
-              "channels": 2
-            }
-          ]
+          "status": "fail",
+          "error": "HTTP Error 503: Service Unavailable"
         },
         {
           "language": "tamil",
-          "status": "pass",
-          "bytes": 6904715,
-          "sha256": "f4c85df36be7d0c2b24177ae4907ca750f75da97523803842515eee8ea2fafee",
-          "duration_seconds": 50.0,
-          "streams": [
-            {
-              "codec_name": "h264",
-              "codec_type": "video",
-              "width": 1280,
-              "height": 720
-            },
-            {
-              "codec_name": "aac",
-              "codec_type": "audio",
-              "sample_rate": "44100",
-              "channels": 2
-            }
-          ]
+          "status": "fail",
+          "error": "HTTP Error 503: Service Unavailable"
         },
         {
           "language": "malayalam",
-          "status": "pass",
-          "bytes": 6895799,
-          "sha256": "1849eb4d55b8569be4cdc7f07eb483173db62355959413c5bde10b88d53f5d79",
-          "duration_seconds": 50.0,
-          "streams": [
-            {
-              "codec_name": "h264",
-              "codec_type": "video",
-              "width": 1280,
-              "height": 720
-            },
-            {
-              "codec_name": "aac",
-              "codec_type": "audio",
-              "sample_rate": "44100",
-              "channels": 2
-            }
-          ]
+          "status": "fail",
+          "error": "HTTP Error 503: Service Unavailable"
         },
         {
           "language": "telugu",
-          "status": "pass",
-          "bytes": 6897696,
-          "sha256": "f62780f3f0bdfbeac82d3d1a9dd2a648c373ad8e42e01d6e27ce9f549ec954fd",
-          "duration_seconds": 50.0,
-          "streams": [
-            {
-              "codec_name": "h264",
-              "codec_type": "video",
-              "width": 1280,
-              "height": 720
-            },
-            {
-              "codec_name": "aac",
-              "codec_type": "audio",
-              "sample_rate": "44100",
-              "channels": 2
-            }
-          ]
+          "status": "fail",
+          "error": "HTTP Error 503: Service Unavailable"
         }
       ],
       "method": "public MP4 download, manifest hash/size, ffprobe and full ffmpeg decode"
     }
   },
   "summary": {
-    "passed": 4,
+    "passed": 3,
     "total": 4,
-    "status": "pass"
+    "status": "fail"
   }
 }
