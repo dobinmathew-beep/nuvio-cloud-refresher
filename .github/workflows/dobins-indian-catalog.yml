@@ -1,9 +1,6 @@
 name: Dobins Indian Catalog
 on:
   workflow_dispatch:
-  push:
-    branches: [dobins-catalog]
-    paths: [dobins-indian-catalog/**, .github/workflows/dobins-indian-catalog.yml]
   schedule:
     - cron: '*/15 * * * *'
 permissions:
@@ -13,6 +10,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   refresh:
+    if: github.event_name != 'push'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
