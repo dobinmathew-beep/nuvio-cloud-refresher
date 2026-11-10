@@ -130,7 +130,7 @@
     "dobins_hi_movie": 62,
     "dobins_hi_series": 328
   },
-  "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
+  "artworkPolicy": "BTTR IMDb poster template for verified IMDb IDs; source artwork fallback for alternate IDs; no upcoming-date poster badges",
   "pendingMatches": 117,
   "checkedCandidates": 945,
   "errors": []
