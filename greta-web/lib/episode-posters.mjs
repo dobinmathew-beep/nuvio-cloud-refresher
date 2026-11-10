@@ -1,7 +1,7 @@
 import badgeText from './badge-text.mjs';
 import {data} from './core.mjs';import worker from './core.mjs';import {episodeBadges} from './episodes.mjs';import {ratedPoster} from '../public/poster-config.js';
 const cache=new Map(),jobs=new Map();
-const imageHosts=new Set(['btttr.cc','image.tmdb.org','images.metahub.space','live.metahub.space','api.ratingposterdb.com','static.tvmaze.com','m.media-amazon.com']);
+const imageHosts=new Set(['bttr.cc','image.tmdb.org','images.metahub.space','live.metahub.space','api.ratingposterdb.com','static.tvmaze.com','m.media-amazon.com']);
 export async function fetchPoster(url){
  for(let i=0;i<4;i++){
   const u=new URL(url);if(u.protocol!=='https:'||!imageHosts.has(u.hostname)||u.username||u.password||u.port)throw Error('Unsupported poster host');
@@ -34,7 +34,7 @@ export async function episodePoster(id,day,origin,template=''){
  const key=template+'|'+id+'|'+badges.map(b=>b.label+':'+b.day).join('|'),old=cache.get(key);if(old&&Date.now()-old.at<600000)return new Response(old.bytes,{headers:old.headers});
  if(jobs.has(key))return (await jobs.get(key)).clone();
  const job=(async()=>{let bytes,skipOverlay=false,overlayMode='addon';const rated=template?ratedPoster(template,id,''):'';
-  if(rated&&new URL(rated).hostname==='btttr.cc')try{
+  if(rated&&new URL(rated).hostname==='bttr.cc')try{
    bytes=await fetchPoster(rated);
    if(new URL(rated).searchParams.get('tag')!=='none'){
     try{const control=await fetchPoster(statusControlUrl(rated));skipOverlay=await providerHasStatus(bytes,control);if(skipOverlay)overlayMode='provider-status'}
@@ -52,7 +52,7 @@ export async function episodePoster(id,day,origin,template=''){
 // Compare the provider's original with its documented status-tags-off version.
 // The comparison excludes the top-right quality-badge area. Unknown results
 // preserve the provider image rather than risk drawing over an existing label.
-export function statusControlUrl(url){const u=new URL(url);if(u.hostname!=='btttr.cc')throw Error('Not a BetterPosters URL');u.searchParams.set('tag','none');return u.href}
+export function statusControlUrl(url){const u=new URL(url);if(u.hostname!=='bttr.cc')throw Error('Not a BetterPosters URL');u.searchParams.set('tag','none');return u.href}
 export async function providerHasStatus(original,control){
  const {default:sharp}=await import('sharp');const width=240,height=360;
  const decode=bytes=>sharp(bytes,{limitInputPixels:30000000}).resize(width,height,{fit:'fill'}).toColourspace('srgb').removeAlpha().raw().toBuffer();
