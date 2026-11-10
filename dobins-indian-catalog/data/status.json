@@ -121,7 +121,7 @@
     }
   ],
   "counts": {
-    "dobins_ml_movie": 66,
+    "dobins_ml_movie": 65,
     "dobins_ml_series": 60,
     "dobins_ta_movie": 55,
     "dobins_ta_series": 99,
@@ -130,7 +130,7 @@
     "dobins_hi_movie": 69,
     "dobins_hi_series": 326
   },
-  "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
+  "artworkPolicy": "BTTR IMDb poster template for verified IMDb IDs; source artwork fallback for alternate IDs; no upcoming-date poster badges",
   "pendingMatches": 104,
   "checkedCandidates": 947,
   "errors": []

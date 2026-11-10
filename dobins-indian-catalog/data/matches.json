@@ -158,10 +158,10 @@
     "method": "IMDb-matched metadata"
   },
   "tamil|series|biggbosstamil": {
-    "id": "tvmaze:31247",
+    "id": "tt7084920",
     "checkedAt": "2026-11-08T20:00:45.579612+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.tvmaze.com/shows/31247/bigg-boss-tamil"
+    "method": "Verified IMDb title match"
   },
   "telugu|movie|subinspectoryugandhar": {
     "checkedAt": "2026-11-08T22:30:05.955397+04:00",
@@ -180,10 +180,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|series|hostelhaadsa": {
-    "id": "tmdb:340197",
+    "id": "tt50286925",
     "checkedAt": "2026-11-08T22:30:05.955397+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/tv/340197"
+    "method": "Verified IMDb title match"
   },
   "malayalam|movie|adinaasamvellapokkam": {
     "id": "tt39014003",
@@ -325,10 +325,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "malayalam|movie|khalifatheruler": {
-    "id": "tmdb:1036081",
+    "id": "tt22797990",
     "checkedAt": "2026-11-08T20:00:45.579612+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/movie/1036081"
+    "method": "Verified IMDb title match"
   },
   "malayalam|series|cyber": {
     "checkedAt": "2026-11-08T22:30:05.955397+04:00",
@@ -417,7 +417,7 @@
     "id": "tt22797990",
     "checkedAt": "2026-11-08T20:00:45.579612+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "IMDb-matched metadata"
+    "method": "Verified IMDb title match"
   },
   "malayalam|series|durga": {
     "checkedAt": "2026-11-08T22:30:05.955397+04:00",
@@ -1130,10 +1130,10 @@
     "method": "IMDb-matched metadata"
   },
   "tamil|movie|blast": {
-    "id": "tmdb:1515729",
+    "id": "tt37971394",
     "checkedAt": "2026-11-08T20:27:31.008024+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/movie/1515729"
+    "method": "Verified IMDb title match"
   },
   "tamil|series|kaattaan": {
     "checkedAt": "2026-11-08T17:16:42.341759+04:00",
@@ -1351,10 +1351,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "tamil|movie|kara": {
-    "id": "tmdb:1433117",
+    "id": "tt37458112",
     "checkedAt": "2026-11-08T20:27:31.008024+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/movie/1433117"
+    "method": "Verified IMDb title match"
   },
   "tamil|series|sangamarmar": {
     "id": "tt39992549",
@@ -1588,10 +1588,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "tamil|movie|loveinsurancekompany": {
-    "id": "tmdb:1209511",
+    "id": "tt30460421",
     "checkedAt": "2026-11-08T20:27:31.008024+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/movie/1209511"
+    "method": "Verified IMDb title match"
   },
   "telugu|movie|jetlee": {
     "id": "tt38907386",
@@ -1756,10 +1756,10 @@
     "method": "https://www.tvmaze.com/shows/94242/brown"
   },
   "malayalam|movie|bharathanatyam2mohiniyattam": {
-    "id": "tmdb:1576369",
+    "id": "tt37541677",
     "checkedAt": "2026-11-08T20:27:31.008024+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/movie/1576369"
+    "method": "Verified IMDb title match"
   },
   "tamil|movie|happyraj": {
     "id": "tt39122419",
@@ -2010,10 +2010,10 @@
     "method": "IMDb-matched metadata"
   },
   "hindi|series|matkaking": {
-    "id": "tmdb:249765",
+    "id": "tt16997004",
     "checkedAt": "2026-11-08T22:30:05.955397+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/tv/249765"
+    "method": "Verified IMDb title match"
   },
   "malayalam|movie|ashakalaayiram": {
     "id": "tt37537155",
@@ -2156,10 +2156,10 @@
     "method": "IMDb-matched metadata"
   },
   "hindi|series|maharani": {
-    "id": "tvmaze:55676",
+    "id": "tt14420552",
     "checkedAt": "2026-11-08T22:00:44.906896+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.tvmaze.com/shows/55676/maharani"
+    "method": "Verified IMDb title match"
   },
   "malayalam|movie|velleppam": {
     "id": "tt11296184",
@@ -2603,16 +2603,16 @@
     "method": "https://www.themoviedb.org/movie/24049"
   },
   "malayalam|movie|allweimagineaslight": {
-    "id": "tmdb:927547",
+    "id": "tt32086077",
     "checkedAt": "2026-11-08T22:00:44.906896+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/movie/927547"
+    "method": "Verified IMDb title match"
   },
   "hindi|movie|likestarsonearth": {
-    "id": "tmdb:7508",
+    "id": "tt0986264",
     "checkedAt": "2026-11-08T22:00:44.906896+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/movie/7508"
+    "method": "Verified IMDb title match"
   },
   "hindi|movie|khakee": {
     "id": "tmdb:21665",
@@ -2657,10 +2657,10 @@
     "method": "https://www.themoviedb.org/movie/55212"
   },
   "hindi|movie|ekthatiger": {
-    "id": "tmdb:85985",
+    "id": "tt2016894",
     "checkedAt": "2026-11-08T22:00:44.906896+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/movie/85985"
+    "method": "Verified IMDb title match"
   },
   "malayalam|series|princeofmollywood": {
     "id": "tt44686897",
@@ -3977,10 +3977,10 @@
     "method": "https://www.themoviedb.org/tv/322484"
   },
   "malayalam|series|soulstories": {
-    "id": "tmdb:273771",
+    "id": "tt34221824",
     "checkedAt": "2026-11-08T22:30:05.955397+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/tv/273771"
+    "method": "Verified IMDb title match"
   },
   "telugu|series|ramboinlove": {
     "id": "tmdb:300515",
@@ -5489,28 +5489,28 @@
     "method": "https://v3-cinemeta.strem.io/"
   },
   "hindi|movie|kill": {
-    "id": "tmdb:1160018",
+    "id": "tt28259207",
     "checkedAt": "2026-11-08T22:00:44.906896+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/movie/1160018"
+    "method": "Verified IMDb title match"
   },
   "hindi|movie|lineofdescent": {
-    "id": "tmdb:431582",
+    "id": "tt2257284",
     "checkedAt": "2026-11-08T22:00:44.906896+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/movie/431582"
+    "method": "Verified IMDb title match"
   },
   "hindi|movie|mynameiskhan": {
-    "id": "tmdb:26022",
+    "id": "tt1188996",
     "checkedAt": "2026-11-08T22:00:44.906896+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/movie/26022"
+    "method": "Verified IMDb title match"
   },
   "hindi|movie|3idiots": {
-    "id": "tmdb:20453",
+    "id": "tt1187043",
     "checkedAt": "2026-11-08T22:00:44.906896+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/movie/20453"
+    "method": "Verified IMDb title match"
   },
   "telugu|movie|anakapalli": {
     "id": "tt41221277",
@@ -5613,10 +5613,10 @@
     "method": "https://www.themoviedb.org/tv/334788"
   },
   "malayalam|series|keralaunderground": {
-    "id": "tmdb:332989",
+    "id": "tt43695670",
     "checkedAt": "2026-11-08T22:30:05.955397+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/tv/332989"
+    "method": "Verified IMDb title match"
   },
   "tamil|series|kaakeecircus": {
     "id": "tmdb:317896",
@@ -5635,5 +5635,15 @@
     "checkedAt": "2026-11-08T22:30:05.955397+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
     "method": "https://v3-cinemeta.strem.io/"
+  },
+  "malayalam|series|biggbossmalayalam": {
+    "id": "tt8537520",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "Verified IMDb title match"
+  },
+  "telugu|series|biggbosstelugu": {
+    "id": "tt7805494",
+    "alternatePolicy": "tmdb-tvmaze-v1",
+    "method": "Verified IMDb title match"
   }
 }
