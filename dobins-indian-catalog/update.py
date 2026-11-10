@@ -16,7 +16,7 @@ BASE=os.environ.get('ADDON_ORIGIN','https://dobins-indian-catalog.quickfield138.
 def load_verified_imdb_aliases():
  try:
   source=(ROOT.parent/'greta-web/lib/core.mjs').read_text()
-  match=re.search(r'const ID_ALIASES=(\\{.*?\\});',source,re.S)
+  match=re.search(r'const ID_ALIASES=([{].*?[}]);',source,re.S)
   return {value:key for key,value in json.loads(match.group(1)).items()} if match else {}
  except Exception:return {}
 IMDB_ALIAS_BY_METADATA=load_verified_imdb_aliases()
