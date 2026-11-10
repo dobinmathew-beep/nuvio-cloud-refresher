@@ -13,6 +13,13 @@ import alternate,physical,series_sources,episode_badges
 ROOT=Path(__file__).resolve().parent;DATA=ROOT/'data';DATA.mkdir(exist_ok=True)
 LANGS={'malayalam':'ml','tamil':'ta','telugu':'te','hindi':'hi'};ZONE=ZoneInfo('Asia/Muscat');NOW=datetime.now(ZONE);TODAY=NOW.date().isoformat()
 BASE=os.environ.get('ADDON_ORIGIN','https://dobins-indian-catalog.quickfield138.chatgpt.site');POLICY='confirmed-digital-imdb-v1'
+def load_verified_imdb_aliases():
+ try:
+  source=(ROOT.parent/'greta-web/lib/core.mjs').read_text()
+  match=re.search(r'const ID_ALIASES=(\\{.*?\\});',source,re.S)
+  return {value:key for key,value in json.loads(match.group(1)).items()} if match else {}
+ except Exception:return {}
+IMDB_ALIAS_BY_METADATA=load_verified_imdb_aliases()
 def load(n,default):
  try:return json.loads((DATA/n).read_text())
  except (FileNotFoundError,ValueError):return default
@@ -205,6 +212,14 @@ def build():
      fresh={**alt,**fresh,'id':alt['id'],'type':e['type'],'poster':fresh.get('poster') or alt.get('poster'),'metadataSource':alt.get('metadataSource','Verified IMDb match'),'_partial':False}
     m=fresh
    elif not m or m.get('_partial'):m=alt or m
+  if m and not str(m.get('id','')).startswith('tt'):
+   alias=IMDB_ALIAS_BY_METADATA.get(alternate.key(e['type'],str(m.get('id',''))))
+   if alias:
+    previous=m;fresh=metadata(alias,e['type'],previous)
+    if fresh.get('_partial'):
+     fresh={**previous,**fresh,'id':alias,'type':e['type'],'poster':fresh.get('poster') or previous.get('poster'),'metadataSource':'Verified IMDb title match','_partial':False}
+    else:fresh={**previous,**fresh,'id':alias,'type':e['type']}
+    m=fresh
   if not m:return key,{'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'reason':'No unambiguous IMDb, TMDB or TVmaze match'},None
   m['_metadataCheckedAt']=NOW.isoformat();m['_alternatePolicy']=alternate.POLICY
   return key,{'id':m['id'],'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'method':m.get('metadataSource','IMDb-matched metadata')},m
