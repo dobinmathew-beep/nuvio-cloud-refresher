@@ -133,5 +133,8 @@
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
   "pendingMatches": 104,
   "checkedCandidates": 945,
-  "errors": []
+  "errors": [
+    "'name'"
+  ],
+  "lastAttemptAt": "2026-11-10T06:01:34.837790+04:00"
 }
