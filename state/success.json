@@ -1,9 +1,9 @@
 {
-  "cycle": "2026-11-08",
-  "refresh_cycle": "2026-11-08T22:00:00+04:00",
+  "cycle": "2026-11-10",
+  "refresh_cycle": "2026-11-10T04:00:00+04:00",
   "featuredVersion": 2,
   "backdrops": {
-    "day": "2026-11-08",
+    "day": "2026-11-10",
     "statuses": 160,
     "images": 16,
     "states": {
@@ -11,17 +11,5 @@
       "cached": 0
     },
     "errors": []
-  },
-  "heroes": {
-    "languages": [
-      "hindi",
-      "tamil",
-      "malayalam",
-      "telugu"
-    ],
-    "checked_at": "2026-11-08T22:06:36.830171+04:00",
-    "films_per_language": 20,
-    "opening_version": 1,
-    "selection_policy": "imdb-catalog-order-v1"
   }
 }
