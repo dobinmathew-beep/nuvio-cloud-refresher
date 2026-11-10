@@ -32,12 +32,22 @@ def norm(s):
  s=unicodedata.normalize('NFKD',str(s)).lower().replace('&',' and ')
  s=re.sub(r'\b(?:season|s)\s*\d+\b|\((?:series|web series)\)',' ',s,flags=re.I)
  return re.sub(r'[^a-z0-9]+','',s.removeprefix('the '))
-def append_legacy_series(current,legacy,today):
+def append_legacy_series(current,legacy,today,metadata_cache=None):
+ metadata_cache=metadata_cache or {}
  known_ids={str(m.get('id','')) for m in current}
  known_names={norm(m.get('name','')) for m in current if m.get('name')}
  for old in legacy:
-  oid=str(old.get('id',''));name=norm(old.get('name',''))
+  old=dict(old);oid=str(old.get('id',''));name=norm(old.get('name',''))
   day=str(old.get('releaseDate') or old.get('ottDate') or '')
+  typ=str(old.get('type') or (current[0].get('type') if current else 'movie'))
+  alias=IMDB_ALIAS_BY_METADATA.get(alternate.key(typ,oid))
+  if alias:
+   old['id']=alias;oid=alias
+   old['poster']=BASE+'/art/poster/'+alias
+   old['background']=BASE+'/art/background/'+alias
+   old['logo']=BASE+'/art/logo/'+alias
+   matched=metadata_cache.get(alias,{})
+   if matched.get('imdbRating') not in (None,''):old['imdbRating']=matched['imdbRating']
   if oid in known_ids or (name and name in known_names):continue
   if not day or day>today:continue
   current.append(old);known_ids.add(oid)
@@ -244,7 +254,7 @@ def build():
   m['ott']={'date':e['ottDate'],'kind':e.get('releaseKind','digital'),'platforms':e['platforms'],'sources':e['sources']};m['availability']=e.get('availability',[])
   catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':BASE+'/art/poster/'+aid,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"Home release ({e.get('releaseKind','digital')}): {e['ottDate']} · {', '.join(e['platforms'])}\n\n"+(m.get('description') or e.get('description') or ''),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'ottDate':next((a['date'] for a in e.get('availability',[]) if a['kind']=='digital'),None),'platforms':e['platforms'],'sources':e['sources'],'language':e['language'],'releaseDateBasis':e.get('releaseDateBasis','source release'),'latestEpisodeReleasedAt':episode_at,'hasNewEpisodes':new_episodes,'nextEpisodeReleaseAt':episode_badges.upcoming(m.get('videos',[]),NOW,m.get('seasons',[])) if e['type']=='series' else None})
  for cid,ms in catalogs.items():
-  append_legacy_series(ms,old_catalogs.get(cid,[]),TODAY)
+  append_legacy_series(ms,old_catalogs.get(cid,[]),TODAY,metas)
   if cid.endswith('_series'):
    for item in ms:
     item['nextEpisodeReleaseAt']=episode_badges.upcoming(metas.get(alternate.key('series',item['id']),{}).get('videos',[]),NOW,metas.get(alternate.key('series',item['id']),{}).get('seasons',[]))
