@@ -4,7 +4,7 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-10T05:25:06.587637+04:00",
+  "updatedAt": "2026-11-10T05:29:02.619771+04:00",
   "lastSuccessCycle": "2026-11-10T05:15:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every 15 minutes daily, including 00:00 (Asia/Muscat)",
@@ -121,17 +121,17 @@
     }
   ],
   "counts": {
-    "dobins_ml_movie": 63,
-    "dobins_ml_series": 63,
-    "dobins_ta_movie": 52,
-    "dobins_ta_series": 99,
+    "dobins_ml_movie": 64,
+    "dobins_ml_series": 69,
+    "dobins_ta_movie": 56,
+    "dobins_ta_series": 114,
     "dobins_te_movie": 65,
-    "dobins_te_series": 104,
+    "dobins_te_series": 107,
     "dobins_hi_movie": 62,
-    "dobins_hi_series": 328
+    "dobins_hi_series": 332
   },
-  "artworkPolicy": "BTTR IMDb poster template for verified IMDb IDs; source artwork fallback for alternate IDs; no upcoming-date poster badges",
-  "pendingMatches": 117,
+  "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
+  "pendingMatches": 112,
   "checkedCandidates": 945,
   "errors": []
 }

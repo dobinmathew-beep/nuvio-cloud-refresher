@@ -399,13 +399,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Blast",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-06-25",
-    "reason": "Awaiting metadata backfill"
-  },
-  {
     "name": "Love Beyond Wicket",
     "language": "tamil",
     "type": "series",
@@ -476,25 +469,11 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Carmeni Selvam",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-06-03",
-    "reason": "Awaiting metadata backfill"
-  },
-  {
     "name": "Leader",
     "language": "tamil",
     "type": "movie",
     "ottDate": "2026-05-29",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Kara",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-05-28",
-    "reason": "Awaiting metadata backfill"
   },
   {
     "name": "The Legend of Karna",
@@ -551,20 +530,6 @@
     "type": "movie",
     "ottDate": "2026-07-11",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Bharathanatyam 2: Mohiniyattam",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-05-08",
-    "reason": "Awaiting metadata backfill"
-  },
-  {
-    "name": "Love Insurance Kompany",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-05-06",
-    "reason": "Awaiting metadata backfill"
   },
   {
     "name": "Vani Na Rani",
