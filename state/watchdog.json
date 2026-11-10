@@ -1,15 +1,15 @@
 {
-  "checked_at": "2026-11-10T06:02:34.451675+04:00",
+  "checked_at": "2026-11-10T06:04:21.860257+04:00",
   "results": [
     {
       "component": "media",
       "due": "2026-11-10T06:00:00+04:00",
-      "state": "refresh-in-progress"
+      "state": "stale-retry-cooldown"
     },
     {
       "component": "addon",
       "due": "2026-11-10T06:00:00+04:00",
-      "state": "stale-retry-cooldown"
+      "state": "fresh"
     },
     {
       "component": "epg",
@@ -18,6 +18,6 @@
     }
   ],
   "errors": [
-    "addon: overdue; recent attempt has not produced a valid current cycle"
+    "media: overdue; recent attempt has not produced a valid current cycle"
   ]
 }
