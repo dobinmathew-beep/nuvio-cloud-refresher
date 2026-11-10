@@ -2,7 +2,7 @@
 
 **Backdrops · Reels · Addon · India EPG**
 
-Last checked: **10 Nov 2026, 10:20 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42767809582)
+Last checked: **10 Nov 2026, 10:30 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42768942336)
 
 **Refresh:** every two hours, 00:00–22:00. **Backup check:** every ten minutes. Checks also run after refresh attempts finish.
 
@@ -10,8 +10,8 @@ Last checked: **10 Nov 2026, 10:20 Oman time**. [This check’s logs](https://gi
 
 | Output | Status at last check | Last verified cycle / check (Oman) | Details | Latest attempt |
 |---|---|---|---|---|
-| Backdrops | 🔄 Retry requested | 10 Nov 2026, 10:00 | 160 layouts; 16 image checks; this part verified, combined media cycle still pending | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42765640820) |
-| Reels | 🔄 Retry requested | Not recorded | 0 languages; ? films per reel | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42765640820) |
+| Backdrops | 🔄 Refresh running / queued | 10 Nov 2026, 10:00 | 160 layouts; 16 image checks; this part verified, combined media cycle still pending | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42767828791) |
+| Reels | 🔄 Refresh running / queued | Not recorded | 0 languages; ? films per reel | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42767828791) |
 | Addon | ✅ Updated | 10 Nov 2026, 10:00 | 836 catalog entries; 104 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42765646127) |
 | EPG | ✅ Updated | 10 Nov 2026, 10:00 | 631 / 836 channel IDs with listings; 205 unresolved; 70233 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42765655080) |
 
