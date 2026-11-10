@@ -50,7 +50,15 @@ def append_legacy_series(current,legacy,today,metadata_cache=None):
    old['logo']=BASE+'/art/logo/'+alias
    matched=metadata_cache.get(alias,{})
    if matched.get('imdbRating') not in (None,''):old['imdbRating']=matched['imdbRating']
-  if oid in known_ids or (name and name in known_names):continue
+  if oid in DISPLAY_NAME_OVERRIDES:old['name']=DISPLAY_NAME_OVERRIDES[oid]
+  if oid in IMDB_RATING_OVERRIDES:old['imdbRating']=IMDB_RATING_OVERRIDES[oid]
+  if oid in known_ids:
+   for existing in current:
+    if str(existing.get('id',''))==oid:
+     if oid in DISPLAY_NAME_OVERRIDES:existing['name']=DISPLAY_NAME_OVERRIDES[oid]
+     if oid in IMDB_RATING_OVERRIDES:existing['imdbRating']=IMDB_RATING_OVERRIDES[oid]
+   continue
+  if name and name in known_names:continue
   if not day or day>today:continue
   current.append(old);known_ids.add(oid)
   if name:known_names.add(name)
