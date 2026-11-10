@@ -180,10 +180,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "hindi|series|hostelhaadsa": {
-    "id": "tmdb:340197",
+    "id": "tt50286925",
     "checkedAt": "2026-11-10T05:29:02.619771+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/tv/340197"
+    "method": "Verified IMDb title match"
   },
   "malayalam|movie|adinaasamvellapokkam": {
     "id": "tt39014003",
@@ -325,10 +325,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "malayalam|movie|khalifatheruler": {
-    "id": "tmdb:1036081",
+    "id": "tt22797990",
     "checkedAt": "2026-11-10T05:25:06.587637+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/movie/1036081"
+    "method": "Verified IMDb title match"
   },
   "malayalam|series|cyber": {
     "checkedAt": "2026-11-10T05:25:06.587637+04:00",
@@ -1351,10 +1351,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   "tamil|movie|kara": {
-    "id": "tmdb:1433117",
+    "id": "tt37458112",
     "checkedAt": "2026-11-10T05:29:02.619771+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/movie/1433117"
+    "method": "Verified IMDb title match"
   },
   "tamil|series|sangamarmar": {
     "id": "tt39992549",
@@ -1756,10 +1756,10 @@
     "method": "https://www.tvmaze.com/shows/94242/brown"
   },
   "malayalam|movie|bharathanatyam2mohiniyattam": {
-    "id": "tmdb:1576369",
+    "id": "tt37541677",
     "checkedAt": "2026-11-10T05:29:02.619771+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/movie/1576369"
+    "method": "Verified IMDb title match"
   },
   "tamil|movie|happyraj": {
     "id": "tt39122419",
@@ -2010,10 +2010,10 @@
     "method": "IMDb-matched metadata"
   },
   "hindi|series|matkaking": {
-    "id": "tmdb:249765",
+    "id": "tt16997004",
     "checkedAt": "2026-11-10T05:29:02.619771+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/tv/249765"
+    "method": "Verified IMDb title match"
   },
   "malayalam|movie|ashakalaayiram": {
     "id": "tt37537155",
@@ -3977,10 +3977,10 @@
     "method": "https://www.themoviedb.org/tv/322484"
   },
   "malayalam|series|soulstories": {
-    "id": "tmdb:273771",
+    "id": "tt34221824",
     "checkedAt": "2026-11-10T05:29:02.619771+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/tv/273771"
+    "method": "Verified IMDb title match"
   },
   "telugu|series|ramboinlove": {
     "id": "tmdb:300515",
@@ -5613,10 +5613,10 @@
     "method": "https://www.themoviedb.org/tv/334788"
   },
   "malayalam|series|keralaunderground": {
-    "id": "tmdb:332989",
+    "id": "tt43695670",
     "checkedAt": "2026-11-10T05:29:02.619771+04:00",
     "alternatePolicy": "tmdb-tvmaze-v1",
-    "method": "https://www.themoviedb.org/tv/332989"
+    "method": "Verified IMDb title match"
   },
   "tamil|series|kaakeecircus": {
     "id": "tmdb:317896",
