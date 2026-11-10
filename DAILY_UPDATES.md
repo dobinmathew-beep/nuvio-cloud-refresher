@@ -2,7 +2,7 @@
 
 **Backdrops · Reels · Addon · India EPG**
 
-Last checked: **10 Nov 2026, 06:00 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42739706941)
+Last checked: **10 Nov 2026, 06:01 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42739834474)
 
 **Refresh:** every two hours, 00:00–22:00. **Backup check:** every ten minutes. Checks also run after refresh attempts finish.
 
@@ -12,8 +12,8 @@ Last checked: **10 Nov 2026, 06:00 Oman time**. [This check’s logs](https://gi
 |---|---|---|---|---|
 | Backdrops | 🔄 Refresh running / queued | 10 Nov 2026, 04:00 | 160 layouts; 16 image checks; this part verified, combined media cycle still pending | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42739612413) |
 | Reels | 🔄 Refresh running / queued | Not recorded | 0 languages; ? films per reel | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42739612413) |
-| Addon | 🔄 Refresh running / queued | 10 Nov 2026, 05:45 | 832 catalog entries; 104 pending matches | pending · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42739692026) |
-| EPG | 🔄 Retry requested | 10 Nov 2026, 04:01 | 640 / 845 channel IDs with listings; 205 unresolved; 70144 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42724967091) |
+| Addon | 🔄 Refresh running / queued | 10 Nov 2026, 05:45 | 832 catalog entries; 104 pending matches | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42739692026) |
+| EPG | ✅ Updated | 10 Nov 2026, 06:00 | 631 / 836 channel IDs with listings; 205 unresolved; 67709 programmes. | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/42739730853) |
 
 ✅ Updated = verified for the current two-hour cycle. 🔄 Running / retry requested = work is pending. ⚠️ / ❌ = attention or retry needed. The two media outputs share one workflow and both must pass before the combined cycle is complete.
 
