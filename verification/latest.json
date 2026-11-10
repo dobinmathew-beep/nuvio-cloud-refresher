@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-10T19:03:48.279946+04:00",
+  "checked_at": "2026-11-10T19:11:33.423876+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -135,7 +135,7 @@
     },
     "backdrops": {
       "status": "pass",
-      "checked_at": "2026-11-10T19:03:48.279946+04:00",
+      "checked_at": "2026-11-10T19:11:33.423876+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
       "details": {
         "day": "2026-11-10",
@@ -147,8 +147,8 @@
         },
         "errors": [],
         "catalogHeads": {
-          "hindi": "tt27988879",
           "tamil": "tt39239754",
+          "hindi": "tt27988879",
           "malayalam": "tt27512908",
           "telugu": "tt32089596"
         }
@@ -156,37 +156,101 @@
       "method": "160 public layout/status checks and 16 JPEG checks"
     },
     "reels": {
-      "status": "fail",
-      "checked_at": "2026-11-10T19:03:48.279946+04:00",
+      "status": "pass",
+      "checked_at": "2026-11-10T19:11:33.423876+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
           "language": "hindi",
-          "status": "fail",
-          "error": "public bytes/hash differ from media manifest"
+          "status": "pass",
+          "bytes": 6905577,
+          "sha256": "eb748763873312a765cc050beb8882c9b14f1d9bdbb6df71c781d2eed3710b95",
+          "duration_seconds": 50.0,
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1280,
+              "height": 720
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ]
         },
         {
           "language": "tamil",
-          "status": "fail",
-          "error": "public bytes/hash differ from media manifest"
+          "status": "pass",
+          "bytes": 6904558,
+          "sha256": "ba8ec7d48369bf19c3eb6b9bc16fc4e5ff3546b3eeed290ff401fbc7c80de255",
+          "duration_seconds": 50.0,
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1280,
+              "height": 720
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ]
         },
         {
           "language": "malayalam",
-          "status": "fail",
-          "error": "public bytes/hash differ from media manifest"
+          "status": "pass",
+          "bytes": 6893871,
+          "sha256": "2378ed6a79a242f16fd1aebcda3dde8877650fc32dfb722eb4e036092f787216",
+          "duration_seconds": 50.0,
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1280,
+              "height": 720
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ]
         },
         {
           "language": "telugu",
-          "status": "fail",
-          "error": "public bytes/hash differ from media manifest"
+          "status": "pass",
+          "bytes": 6897483,
+          "sha256": "88553834685095451863240dc15934a655b5ec8fd79567e9137478366aebd423",
+          "duration_seconds": 50.0,
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1280,
+              "height": 720
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ]
         }
       ],
       "method": "public MP4 download, manifest hash/size, ffprobe and full ffmpeg decode"
     }
   },
   "summary": {
-    "passed": 3,
+    "passed": 4,
     "total": 4,
-    "status": "fail"
+    "status": "pass"
   }
 }
