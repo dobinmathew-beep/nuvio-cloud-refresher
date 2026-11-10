@@ -222,7 +222,14 @@ def build():
     if fresh.get('_partial'):
      fresh={**alt,**fresh,'id':alt['id'],'type':e['type'],'poster':fresh.get('poster') or alt.get('poster'),'metadataSource':alt.get('metadataSource','Verified IMDb match'),'_partial':False}
     m=fresh
-   elif not m or m.get('_partial'):m=alt or m
+   else:
+    suggested=None if norm(e.get('name',''))=='femaledog' else suggestion(e)
+    if suggested:
+     fresh=metadata(suggested['id'],e['type'],suggested)
+     if fresh.get('_partial'):
+      fresh={**(alt or m or {}),**fresh,'id':suggested['id'],'type':e['type'],'poster':fresh.get('poster') or suggested.get('poster') or (alt or {}).get('poster'),'metadataSource':'Verified IMDb title/year match','_partial':False}
+     m=fresh
+    elif not m or m.get('_partial'):m=alt or m
   if m and not str(m.get('id','')).startswith('tt'):
    alias=IMDB_ALIAS_BY_METADATA.get(alternate.key(e['type'],str(m.get('id',''))))
    if alias:
