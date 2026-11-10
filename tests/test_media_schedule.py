@@ -12,12 +12,16 @@ class MediaScheduleTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             state=Path(folder)
             (state/'success.json').write_text(json.dumps({'cycle':'2026-11-02','featuredVersion':2,'backdrops':{'ok':True},'heroes':heroes}))
-            with patch.object(cloud,'STATE',state), patch.object(cloud,'datetime') as clock, patch.object(cloud,'bootstrap'), patch.object(cloud,'featured_movies') as featured, patch.object(cloud,'backdrop',return_value={'ok':True}) as backdrop, patch.object(cloud,'heroes',return_value=heroes) as hero:
+            with patch.object(cloud,'STATE',state), patch.object(cloud,'datetime') as clock, patch.object(cloud,'bootstrap'), patch.object(cloud,'featured_movies',return_value={'languages':{
+                    'hindi':{'id':'tt100'},'tamil':{'id':'tt101'},
+                    'malayalam':{'id':'tt102'},'telugu':{'id':'tt103'}}}) as featured, patch.object(cloud,'backdrop',return_value={'ok':True}) as backdrop, patch.object(cloud,'heroes',return_value=heroes) as hero:
                 clock.now.return_value=now
                 self.assertEqual(cloud.main(),0)
                 featured.assert_called_once();backdrop.assert_called_once();hero.assert_called_once()
                 saved=json.loads((state/'success.json').read_text())
                 self.assertEqual(saved['refresh_cycle'],'2026-11-02T14:00:00+04:00')
+                self.assertEqual(saved['featured_cycle'],'2026-11-02T14:00:00+04:00')
+                self.assertEqual(saved['featured_ids'],{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'})
                 self.assertEqual(cloud.main(),0)
                 featured.assert_called_once();backdrop.assert_called_once();hero.assert_called_once()
 
