@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-10T22:57:50.022054+04:00",
+  "checked_at": "2026-11-10T23:16:01.979827+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -135,7 +135,7 @@
     },
     "backdrops": {
       "status": "pass",
-      "checked_at": "2026-11-10T19:34:56.548846+04:00",
+      "checked_at": "2026-11-10T23:16:01.979827+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
       "details": {
         "day": "2026-11-10",
@@ -147,9 +147,9 @@
         },
         "errors": [],
         "catalogHeads": {
+          "tamil": "tt39239754",
           "hindi": "tt27988879",
           "malayalam": "tt27512908",
-          "tamil": "tt39239754",
           "telugu": "tt32089596"
         }
       },
@@ -157,14 +157,14 @@
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-10T19:34:56.548846+04:00",
+      "checked_at": "2026-11-10T23:16:01.979827+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
           "language": "hindi",
           "status": "pass",
-          "bytes": 6905577,
-          "sha256": "eb748763873312a765cc050beb8882c9b14f1d9bdbb6df71c781d2eed3710b95",
+          "bytes": 6904873,
+          "sha256": "717dd0709e387d87c0230944c3f161bb69b7bf927fc700c4aacf27b45cba4ff5",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -184,8 +184,8 @@
         {
           "language": "tamil",
           "status": "pass",
-          "bytes": 6904553,
-          "sha256": "6fdf876c33a4493e9e30ea885362890730b54c5143fbccdbb3b4f492f476f4f4",
+          "bytes": 6904370,
+          "sha256": "4d4313d9a9e0f527b35b3b95d8f912859a69f25085a9864ddd2a9eef88e085cf",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -226,8 +226,8 @@
         {
           "language": "telugu",
           "status": "pass",
-          "bytes": 6897736,
-          "sha256": "a705615762d691162738a270a3afa60aa17c71a25c1c63f2c754ebcf2e7cf172",
+          "bytes": 6897756,
+          "sha256": "13c73df5911061d3ff083074ddac5e08ac4c82e922656d306933e22cf6800edd",
           "duration_seconds": 50.0,
           "streams": [
             {
