@@ -19,6 +19,8 @@ def load_verified_imdb_aliases():
   return {value:key for key,value in aliases.items()}
  except Exception:return {}
 IMDB_ALIAS_BY_METADATA=load_verified_imdb_aliases()
+DISPLAY_NAME_OVERRIDES={'tt37541677':'Bharathanatyam 2 Mohiniyattam'}
+IMDB_RATING_OVERRIDES={'tt22797990':'6.0','tt37541677':'7.6'}
 def load(n,default):
  try:return json.loads((DATA/n).read_text())
  except (FileNotFoundError,ValueError):return default
@@ -229,6 +231,8 @@ def build():
      fresh={**previous,**fresh,'id':alias,'type':e['type'],'poster':fresh.get('poster') or previous.get('poster'),'metadataSource':'Verified IMDb title match','_partial':False}
     else:fresh={**previous,**fresh,'id':alias,'type':e['type']}
     m=fresh
+  if m and m.get('id') in DISPLAY_NAME_OVERRIDES:m['name']=DISPLAY_NAME_OVERRIDES[m['id']]
+  if m and m.get('id') in IMDB_RATING_OVERRIDES:m['imdbRating']=IMDB_RATING_OVERRIDES[m['id']]
   if not m:return key,{'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'reason':'No unambiguous IMDb, TMDB or TVmaze match'},None
   m['_metadataCheckedAt']=NOW.isoformat();m['_alternatePolicy']=alternate.POLICY
   return key,{'id':m['id'],'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'method':m.get('metadataSource','IMDb-matched metadata')},m
