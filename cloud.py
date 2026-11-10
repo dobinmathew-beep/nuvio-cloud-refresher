@@ -4,7 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from refresh_watchdog import due
-import re, hashlib, json, mimetypes, os, shutil, subprocess, sys, tarfile, time, urllib.request, urllib.error, urllib.parse
+import re, hashlib, json, html, mimetypes, os, shutil, subprocess, sys, tarfile, time, urllib.request, urllib.error, urllib.parse
 
 ROOT=Path(__file__).resolve().parent
 ORIGIN='https://dobin-nuvio-star-cards.quickfield138.chatgpt.site'
@@ -142,6 +142,27 @@ def featured_movies():
         time.sleep(10)
     return result
 
+def build_hero_index(dist):
+    """Regenerate the public gallery from the same verified daily metadata as the MP4s."""
+    cards=[]
+    for lang in LANGS:
+        meta=json.loads((dist/'hero'/(lang+'-daily.json')).read_text())
+        movies=meta.get('films',[])
+        recent=[m for m in movies if not m.get('pinned')]
+        originals=[m for m in movies if m.get('pinned')]
+        names=' · '.join(html.escape(str(m.get('name','Untitled'))) for m in movies)
+        checked=html.escape(str(meta.get('checked_at','Not recorded')))
+        audio=html.escape(str(meta.get('audio','User-supplied soundtrack')))
+        digest=str(meta.get('sha256') or sha((dist/'hero'/(lang+'.mp4')).read_bytes()))[:16]
+        video=f'/hero/{lang}.mp4?v={digest}'
+        poster=f'/hero/{lang}-daily.jpg?v={digest}'
+        title=lang.capitalize()
+        cards.append(f"""<article><video controls playsinline preload="metadata" poster="{poster}" src="{video}"></video><div><h2>{title}</h2><p>{len(recent)} current catalog films + {len(originals)} retained originals</p><p class="films">{names}</p><p class="song">♫ {audio}</p><a href="{video}" target="_blank">Open MP4 ↗</a><small>1280 × 720 · H.264/AAC · 30 fps · 50 seconds<br>Catalog checked: {checked}</small></div></article>""")
+    page='''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><title>Nuvio · Colour Celluloid</title><style>*{box-sizing:border-box}body{background:#0b0c10;color:#eee;font:15px system-ui;margin:0}main{max-width:1200px;padding:40px 24px;margin:auto}h1{font-size:42px;letter-spacing:-2px;margin:8px 0}.eyebrow{color:#e5bf89;letter-spacing:3px;font-size:11px}p{color:#a3adbc;line-height:1.7}.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}article{background:#131720;border:1px solid #2b3240;border-radius:14px;overflow:hidden}video{width:100%;aspect-ratio:16/9;display:block;background:#000}article>div{padding:22px}h2{margin:0}.films{font-size:12px}.song{font-size:13px}a{color:#b8c8dd;font-size:13px}small{display:block;margin-top:14px;color:#8b9bb0;line-height:1.6}@media(max-width:650px){.grid{grid-template-columns:1fr}h1{font-size:34px}}</style><main><div class="eyebrow">YOUR CINEMA, IN MOTION</div><h1>Cinema, refreshed.</h1><p>This gallery is rebuilt from the latest verified daily reel metadata whenever the refresher publishes. Each language card shows the current catalog selection and the matching MP4.</p><p>Four languages · 20 films per reel · 1280 × 720 · 16:9 · H.264 + AAC · 30 fps · 50 seconds.</p><section class="grid">''' + ''.join(cards) + '''</section><p>Film posters and music remain the work of their respective owners. <a href="music-credits.json">Music credits</a> · <a href="credits.json">Poster sources</a></p></main></html>'''
+    target=dist/'hero'/'index.html'
+    target.write_text(page)
+    print('Hero gallery regenerated from current daily metadata:',len(cards),'languages',flush=True)
+
 def heroes():
     boot=json.loads((STATE/'bootstrap.json').read_text());data=get(boot['source_url']);assert sha(data)==boot['source_sha256']
     archive=WORK/'source.tar.gz';archive.write_bytes(data);render=WORK/'render';render.mkdir(exist_ok=True)
@@ -160,6 +181,7 @@ def heroes():
     for command in [['source/hero/daily/prepare.py'],*[['source/hero/daily/render.py',lang] for lang in LANGS],['source/hero/daily/finalize.py']]:
         p=subprocess.run([sys.executable,*command],cwd=render,env={**os.environ,'OPENBLAS_NUM_THREADS':'1'})
         if p.returncode:raise RuntimeError('Hero updater failed; last-good public manifest retained')
+    build_hero_index(dist)
     pinned=json.loads((render/'source/hero/credits.json').read_text());music=json.loads((render/'source/hero/daily/music.json').read_text())
     day=datetime.now(ZoneInfo('Asia/Muscat')).date().isoformat()
     for lang,cat in LANGS.items():
