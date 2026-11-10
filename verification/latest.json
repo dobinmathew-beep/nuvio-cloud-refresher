@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-10T23:46:55.658939+04:00",
+  "checked_at": "2026-11-11T01:24:09.298226+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -135,10 +135,10 @@
     },
     "backdrops": {
       "status": "pass",
-      "checked_at": "2026-11-10T23:46:55.658939+04:00",
+      "checked_at": "2026-11-11T01:24:09.298226+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
       "details": {
-        "day": "2026-11-10",
+        "day": "2026-11-11",
         "statuses": 160,
         "images": 16,
         "states": {
@@ -147,24 +147,24 @@
         },
         "errors": [],
         "catalogHeads": {
-          "hindi": "tt27988879",
           "tamil": "tt39239754",
-          "malayalam": "tt27512908",
-          "telugu": "tt32089596"
+          "hindi": "tt27988879",
+          "telugu": "tt32089596",
+          "malayalam": "tt27512908"
         }
       },
       "method": "160 public layout/status checks and 16 JPEG checks"
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-10T23:46:55.658939+04:00",
+      "checked_at": "2026-11-11T01:24:09.298226+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
           "language": "hindi",
           "status": "pass",
-          "bytes": 6904873,
-          "sha256": "717dd0709e387d87c0230944c3f161bb69b7bf927fc700c4aacf27b45cba4ff5",
+          "bytes": 6905293,
+          "sha256": "59aae0fc520e7e0d9843e0f518753586dcd5afb32784db51b4fc758311d64ce4",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -226,8 +226,8 @@
         {
           "language": "telugu",
           "status": "pass",
-          "bytes": 6897756,
-          "sha256": "13c73df5911061d3ff083074ddac5e08ac4c82e922656d306933e22cf6800edd",
+          "bytes": 6897751,
+          "sha256": "85232821f361e86c352e830aa25886c91ac05b8e35b2dcd77532b1fec1611bed",
           "duration_seconds": 50.0,
           "streams": [
             {
