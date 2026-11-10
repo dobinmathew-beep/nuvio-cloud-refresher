@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-11-10T15:53:47.630914+04:00",
+  "checked_at": "2026-11-10T15:59:11.016651+04:00",
   "results": [
     {
       "component": "media",
       "due": "2026-11-10T14:00:00+04:00",
-      "state": "stale-retry-cooldown"
+      "state": "refresh-in-progress"
     },
     {
       "component": "addon",
@@ -17,7 +17,5 @@
       "state": "fresh"
     }
   ],
-  "errors": [
-    "media: overdue; recent attempt has not produced a valid current cycle"
-  ]
+  "errors": []
 }
