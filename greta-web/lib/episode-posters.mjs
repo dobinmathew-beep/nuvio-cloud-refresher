@@ -1,7 +1,7 @@
 import badgeText from './badge-text.mjs';
 import {data} from './core.mjs';import worker from './core.mjs';import {episodeBadges} from './episodes.mjs';import {ratedPoster} from '../public/poster-config.js';
 const cache=new Map(),jobs=new Map();
-const imageHosts=new Set(['bttr.cc','image.tmdb.org','images.metahub.space','live.metahub.space','api.ratingposterdb.com','static.tvmaze.com','m.media-amazon.com']);
+const imageHosts=new Set(['btttr.cc','bttr.cc','image.tmdb.org','images.metahub.space','live.metahub.space','api.ratingposterdb.com','static.tvmaze.com','m.media-amazon.com']);
 export async function fetchPoster(url){
  for(let i=0;i<4;i++){
   const u=new URL(url);if(u.protocol!=='https:'||!imageHosts.has(u.hostname)||u.username||u.password||u.port)throw Error('Unsupported poster host');
