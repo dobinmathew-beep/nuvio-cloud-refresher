@@ -15,9 +15,8 @@ LANGS={'malayalam':'ml','tamil':'ta','telugu':'te','hindi':'hi'};ZONE=ZoneInfo('
 BASE=os.environ.get('ADDON_ORIGIN','https://dobins-indian-catalog.quickfield138.chatgpt.site');POLICY='confirmed-digital-imdb-v1'
 def load_verified_imdb_aliases():
  try:
-  source=(ROOT.parent/'greta-web/lib/core.mjs').read_text()
-  match=re.search(r'const ID_ALIASES=([{].*?[}]);',source,re.S)
-  return {value:key for key,value in json.loads(match.group(1)).items()} if match else {}
+  aliases=json.loads((DATA/'imdb-aliases.json').read_text())
+  return {value:key for key,value in aliases.items()}
  except Exception:return {}
 IMDB_ALIAS_BY_METADATA=load_verified_imdb_aliases()
 def load(n,default):
