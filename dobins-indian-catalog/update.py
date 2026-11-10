@@ -267,6 +267,7 @@ def build():
   if not poster:continue
   previous=m.get('artwork',{});m['artwork']={'posters':list(dict.fromkeys(x for x in ([f'https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/{mid}.jpg'] if mid.startswith('tt') else [])+[poster,m.get('poster')]+([f'https://images.metahub.space/poster/medium/{mid}/img'] if mid.startswith('tt') else []) if x)),'backgrounds':list(dict.fromkeys(x for x in [m.get('background')]+([f'https://images.metahub.space/background/medium/{mid}/img'] if mid.startswith('tt') else []) if x))}
   m['artwork']['logos']=list(dict.fromkeys(x for x in [m.get('logo')]+([f'https://images.metahub.space/logo/medium/{mid}/img'] if mid.startswith('tt') else []) if x and not x.startswith(BASE)))
+  if not m.get('name'):m['name']=e.get('name') or str(mid)
   if not m.get('_logoFallback'):m['_logoFallback']=title_logo(m['name'])
   episode_at,new_episodes=episode_badges.latest(m.get('videos',[]),NOW) if e['type']=='series' else (None,False)
   if episode_at and episode_at[:10]>e['ottDate']:e['ottDate']=episode_at[:10]
