@@ -1,14 +1,14 @@
 # Independent Nuvio output verification
 
-**Checked:** 2026-11-10T18:59:05.954939+04:00 (Oman time)
-**Overall:** 4/4 outputs passed
+**Checked:** 2026-11-10T19:03:48.279946+04:00 (Oman time)
+**Overall:** 3/4 outputs passed
 
 | Output | Result |
 |---|---|
 | Addon | PASS |
 | Epg | PASS |
 | Backdrops | PASS |
-| Reels | PASS |
+| Reels | FAIL |
 
 ## Addon — PASS
 - **PASS** public manifest: {"name": "The Great Indian Addon", "catalogs": 8}
@@ -35,15 +35,15 @@
   },
   "errors": [],
   "catalogHeads": {
+    "hindi": "tt27988879",
     "tamil": "tt39239754",
     "malayalam": "tt27512908",
-    "hindi": "tt27988879",
     "telugu": "tt32089596"
   }
 }
 
-## Reels — PASS
-- **PASS** hindi: 50.0
-- **PASS** tamil: 50.0
-- **PASS** malayalam: 50.0
-- **PASS** telugu: 50.0
+## Reels — FAIL
+- **FAIL** hindi: "public bytes/hash differ from media manifest"
+- **FAIL** tamil: "public bytes/hash differ from media manifest"
+- **FAIL** malayalam: "public bytes/hash differ from media manifest"
+- **FAIL** telugu: "public bytes/hash differ from media manifest"
