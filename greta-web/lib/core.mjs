@@ -1,3 +1,4 @@
+// Preserve the verified BTTR poster host and IMDb alias resolver in production.
 import {hasNewEpisodes,releaseSortTime} from './episodes.mjs';
 import {readFileSync} from 'node:fs';
 const SEED=Object.fromEntries(['catalogs.json','metadata.json','status.json'].map(n=>{try{return [n,JSON.parse(readFileSync(new URL('../seed/'+n,import.meta.url),'utf8'))]}catch{return [n,{}]}}));
