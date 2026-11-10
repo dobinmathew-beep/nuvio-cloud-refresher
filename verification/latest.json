@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-10T08:05:23.382438+04:00",
+  "checked_at": "2026-11-10T11:09:57.515015+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -135,7 +135,7 @@
     },
     "backdrops": {
       "status": "pass",
-      "checked_at": "2026-11-10T08:05:23.382438+04:00",
+      "checked_at": "2026-11-10T11:09:57.515015+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
       "details": {
         "day": "2026-11-10",
@@ -151,7 +151,7 @@
     },
     "reels": {
       "status": "fail",
-      "checked_at": "2026-11-10T08:05:23.382438+04:00",
+      "checked_at": "2026-11-10T11:09:57.515015+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
