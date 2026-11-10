@@ -25,6 +25,17 @@ def norm(s):
  s=unicodedata.normalize('NFKD',str(s)).lower().replace('&',' and ')
  s=re.sub(r'\b(?:season|s)\s*\d+\b|\((?:series|web series)\)',' ',s,flags=re.I)
  return re.sub(r'[^a-z0-9]+','',s.removeprefix('the '))
+def append_legacy_series(current,legacy,today):
+ known_ids={str(m.get('id','')) for m in current}
+ known_names={norm(m.get('name','')) for m in current if m.get('name')}
+ for old in legacy:
+  oid=str(old.get('id',''));name=norm(old.get('name',''))
+  day=str(old.get('releaseDate') or old.get('ottDate') or '')
+  if oid in known_ids or (name and name in known_names):continue
+  if not day or day>today:continue
+  current.append(old);known_ids.add(oid)
+  if name:known_names.add(name)
+ return current
 def cycle(now=NOW):
  # Use the same two-hour cycle as the lightweight schedule gate.
  from schedule import due
@@ -212,7 +223,7 @@ def build():
   catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':BASE+'/art/poster/'+aid,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"Home release ({e.get('releaseKind','digital')}): {e['ottDate']} · {', '.join(e['platforms'])}\n\n"+m.get('description',e.get('description','')),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'ottDate':next((a['date'] for a in e.get('availability',[]) if a['kind']=='digital'),None),'platforms':e['platforms'],'sources':e['sources'],'language':e['language'],'releaseDateBasis':e.get('releaseDateBasis','source release'),'latestEpisodeReleasedAt':episode_at,'hasNewEpisodes':new_episodes,'nextEpisodeReleaseAt':episode_badges.upcoming(m.get('videos',[]),NOW,m.get('seasons',[])) if e['type']=='series' else None})
  for cid,ms in catalogs.items():
   if cid.endswith('_series'):
-   known={m['id'] for m in ms};ms.extend(m for m in old_catalogs.get(cid,[]) if m['id'] not in known and (m.get('releaseDate') or m.get('ottDate') or '')<=TODAY)
+   append_legacy_series(ms,old_catalogs.get(cid,[]),TODAY)
   if cid.endswith('_series'):
    for item in ms:
     item['nextEpisodeReleaseAt']=episode_badges.upcoming(metas.get(alternate.key('series',item['id']),{}).get('videos',[]),NOW,metas.get(alternate.key('series',item['id']),{}).get('seasons',[]))
