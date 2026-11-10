@@ -36,4 +36,14 @@ class CatalogTests(unittest.TestCase):
   finally:update.DATA,update.get,update.dailyott=original_data,original_get,original_source
  def test_seasons_share_a_series_identity(self):
   self.assertEqual(update.norm('Example (Season 2)'),update.norm('Example'))
+ def test_legacy_series_fallback_deduplicates_corrected_imdb_ids(self):
+  current=[{'id':'tt41100531','name':'Kaakee Circus','releaseDate':'2026-04-10'}]
+  old=[
+   {'id':'tmdb:317896','name':'Kaakee Circus','releaseDate':'2026-04-10'},
+   {'id':'tmdb:999999','name':'Older Series','releaseDate':'2020-01-01'},
+   {'id':'tmdb:888888','name':'Future Series','releaseDate':'2026-12-01'}
+  ]
+  result=update.append_legacy_series(current,old,'2026-11-10')
+  self.assertEqual([x['name'] for x in result],['Kaakee Circus','Older Series'])
+  self.assertEqual(result[0]['id'],'tt41100531')
 if __name__=='__main__':unittest.main()
