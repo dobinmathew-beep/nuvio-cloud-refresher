@@ -184,7 +184,7 @@ def build():
   key=e['language']+'|'+e['type']+'|'+norm(e['name']);cached=matches.get(key)
   if cached and alternate.key(e['type'],cached.get('id','')) in metas:
    checked=metas[alternate.key(e['type'],cached['id'])].get('_metadataCheckedAt')
-   if checked and (NOW-datetime.fromisoformat(checked)).total_seconds()<10800:continue
+   if checked and (NOW-datetime.fromisoformat(checked)).total_seconds()<10800 and str(cached.get('id','')).startswith('tt'):continue
   if cached and cached.get('alternatePolicy')==alternate.POLICY and not cached.get('id') and not e.get('_verifiedMetadata') and (NOW-datetime.fromisoformat(cached['checkedAt'])).total_seconds()<21600:continue
   if attempts>=budget:continue
   work.append((key,e));attempts+=1
@@ -197,7 +197,14 @@ def build():
    elif not m and mid.startswith('tt'):m=metadata(mid,e['type'],c)
    if m and m.get('_partial') and previous and not previous.get('_partial'):m=previous
    if m and (m.get('type')!=e['type'] or (not e.get('_verifiedMetadata') and ratio(norm(alternate.plain(e['name'])),norm(m.get('name','')))<85)):m=None
-  if not m or m.get('_partial'):m=alternate.resolve(e,get,norm) or m
+  if not m or m.get('_partial') or not str(m.get('id','')).startswith('tt'):
+   alt=alternate.resolve(e,get,norm)
+   if alt and str(alt.get('id','')).startswith('tt'):
+    fresh=metadata(alt['id'],e['type'],alt)
+    if fresh.get('_partial'):
+     fresh={**alt,**fresh,'id':alt['id'],'type':e['type'],'poster':fresh.get('poster') or alt.get('poster'),'metadataSource':alt.get('metadataSource','Verified IMDb match'),'_partial':False}
+    m=fresh
+   elif not m or m.get('_partial'):m=alt or m
   if not m:return key,{'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'reason':'No unambiguous IMDb, TMDB or TVmaze match'},None
   m['_metadataCheckedAt']=NOW.isoformat();m['_alternatePolicy']=alternate.POLICY
   return key,{'id':m['id'],'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'method':m.get('metadataSource','IMDb-matched metadata')},m
