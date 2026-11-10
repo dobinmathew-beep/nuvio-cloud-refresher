@@ -91,6 +91,13 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Prince of Mollywood",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-09-11",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Avalaga Irunthal",
     "language": "tamil",
     "type": "movie",
@@ -102,13 +109,6 @@
     "language": "tamil",
     "type": "series",
     "ottDate": "2026-07-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Prince of Mollywood",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-09-11",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -147,17 +147,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Roadies Rebirth",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Brothers",
     "language": "hindi",
     "type": "movie",
     "ottDate": "2026-09-22",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Roadies Rebirth",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-16",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -182,6 +182,13 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-09-13",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "TYSON",
     "language": "hindi",
     "type": "series",
@@ -196,10 +203,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
+    "name": "Jungle Tales With Mowgli",
     "language": "hindi",
     "type": "movie",
-    "ottDate": "2026-09-13",
+    "ottDate": "2026-09-12",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -221,13 +228,6 @@
     "language": "telugu",
     "type": "series",
     "ottDate": "2026-05-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Jungle Tales With Mowgli",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-09-12",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -350,6 +350,13 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "The Last Salute: A Love Letter To MiG-21",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-08-26",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "WWE (Tamil Dub)",
     "language": "tamil",
     "type": "series",
@@ -364,10 +371,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "The Last Salute: A Love Letter To MiG-21",
+    "name": "Welcome to the Jungle",
     "language": "hindi",
     "type": "movie",
-    "ottDate": "2026-08-26",
+    "ottDate": "2026-08-21",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -378,7 +385,7 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Welcome to the Jungle",
+    "name": "Clean Up Company",
     "language": "hindi",
     "type": "movie",
     "ottDate": "2026-08-21",
@@ -392,17 +399,31 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Clean Up Company",
-    "language": "hindi",
+    "name": "Blast",
+    "language": "tamil",
     "type": "movie",
-    "ottDate": "2026-08-21",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+    "ottDate": "2026-06-25",
+    "reason": "Awaiting metadata backfill"
   },
   {
     "name": "Love Beyond Wicket",
     "language": "tamil",
     "type": "series",
     "ottDate": "2026-04-09",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "108 Base Hospital Uri",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-08-15",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Gu",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-06-19",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -427,20 +448,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "108 Base Hospital Uri",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-08-15",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Gu",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-06-19",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Kaattaan",
     "language": "tamil",
     "type": "series",
@@ -462,13 +469,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Leader",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-05-29",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Spa",
     "language": "malayalam",
     "type": "movie",
@@ -476,11 +476,25 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Yezhu Kadal Yezhu Malai",
+    "name": "Carmeni Selvam",
     "language": "tamil",
     "type": "movie",
-    "ottDate": "2026-05-25",
+    "ottDate": "2026-06-03",
+    "reason": "Awaiting metadata backfill"
+  },
+  {
+    "name": "Leader",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-05-29",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Kara",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-05-28",
+    "reason": "Awaiting metadata backfill"
   },
   {
     "name": "The Legend of Karna",
@@ -494,6 +508,13 @@
     "language": "malayalam",
     "type": "movie",
     "ottDate": "2026-05-29",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Yezhu Kadal Yezhu Malai",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-05-25",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -518,13 +539,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Varumaiyil Thaal",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-05-03",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Yellamma",
     "language": "telugu",
     "type": "movie",
@@ -539,6 +553,20 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Bharathanatyam 2: Mohiniyattam",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-05-08",
+    "reason": "Awaiting metadata backfill"
+  },
+  {
+    "name": "Love Insurance Kompany",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-05-06",
+    "reason": "Awaiting metadata backfill"
+  },
+  {
     "name": "Vani Na Rani",
     "language": "telugu",
     "type": "movie",
@@ -546,10 +574,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Mustafa Mustafa",
+    "name": "Varumaiyil Thaal",
     "language": "tamil",
     "type": "movie",
-    "ottDate": "2026-04-30",
+    "ottDate": "2026-05-03",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -560,17 +588,24 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Operation Safed Sagar",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-08-07",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Aadu 3: One Last Ride – Part 1",
     "language": "malayalam",
     "type": "movie",
     "ottDate": "2026-05-01",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Mustafa Mustafa",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-04-30",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Operation Safed Sagar",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-08-07",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -588,10 +623,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Phoenix",
-    "language": "tamil",
+    "name": "Sodhara",
+    "language": "telugu",
     "type": "movie",
-    "ottDate": "2026-04-11",
+    "ottDate": "2026-05-01",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -602,17 +637,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Sodhara",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-01",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Maya Bimbum",
+    "name": "Phoenix",
     "language": "tamil",
     "type": "movie",
-    "ottDate": "2026-03-27",
+    "ottDate": "2026-04-11",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -623,17 +651,24 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Maayabimbum – A 2005 Love Story",
+    "name": "The Eternal Love",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-04-24",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Maya Bimbum",
     "language": "tamil",
     "type": "movie",
     "ottDate": "2026-03-27",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "The Eternal Love",
-    "language": "telugu",
+    "name": "Maayabimbum – A 2005 Love Story",
+    "language": "tamil",
     "type": "movie",
-    "ottDate": "2026-04-24",
+    "ottDate": "2026-03-27",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -672,6 +707,13 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "All We Imagine as Light",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2025-02-26",
+    "reason": "Awaiting metadata backfill"
+  },
+  {
     "name": "Ranga Ranga Panduranga",
     "language": "telugu",
     "type": "movie",
@@ -693,11 +735,60 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "KILL",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2025-10-01",
+    "reason": "Awaiting metadata backfill"
+  },
+  {
+    "name": "Line of Descent",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2020-11-02",
+    "reason": "Awaiting metadata backfill"
+  },
+  {
+    "name": "Ek Tha Tiger",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2012-09-10",
+    "reason": "Awaiting metadata backfill"
+  },
+  {
+    "name": "My Name Is Khan",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2010-07-07",
+    "reason": "Awaiting metadata backfill"
+  },
+  {
+    "name": "3 Idiots",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2010-01-10",
+    "reason": "Awaiting metadata backfill"
+  },
+  {
     "name": "Undekhi Season 4: The Final Battle",
     "language": "hindi",
     "type": "series",
     "ottDate": "2026-05-01",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Like Stars on Earth",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2009-09-10",
+    "reason": "Awaiting metadata backfill"
+  },
+  {
+    "name": "Maharani (Season 3)",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-04-19",
+    "reason": "Awaiting metadata backfill"
   },
   {
     "name": "World On My Plate With Shipra Khanna",
