@@ -133,5 +133,8 @@
   "artworkPolicy": "BTTR posters for verified IMDb IDs; source artwork fallback for titles without a verified IMDb ID; no upcoming-date poster badges",
   "pendingMatches": 112,
   "checkedCandidates": 945,
-  "errors": []
+  "errors": [
+    "can only concatenate str (not \"NoneType\") to str"
+  ],
+  "lastAttemptAt": "2026-11-10T05:33:43.971291+04:00"
 }
