@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Backdrop verification independently compares every centre panel with the live IndianRegional catalog head.
 import csv,datetime as dt,gzip,hashlib,io,json,os,subprocess,sys,tempfile,time,urllib.parse,urllib.request,xml.etree.ElementTree as ET
 from pathlib import Path
 from zoneinfo import ZoneInfo
