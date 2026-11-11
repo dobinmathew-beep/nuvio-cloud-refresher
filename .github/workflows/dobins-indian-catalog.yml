@@ -47,18 +47,36 @@ jobs:
       - name: Preserve metadata caches, catalogs and source health
         if: always()
         run: |
+          set -e
           git config user.name 'Dobins Indian Catalog'
           git config user.email 'dobins-catalog@users.noreply.github.com'
           git add dobins-indian-catalog/data
-          if ! git diff --cached --quiet; then
-            git commit -m 'Refresh Dobins Indian Catalog digital releases'
-            for attempt in 1 2 3; do
-              git pull --rebase origin dobins-catalog
-              if git push origin HEAD:dobins-catalog; then exit 0; fi
-              sleep 5
-            done
-            exit 1
+          if git diff --cached --quiet; then
+            echo 'No generated catalog data changes to persist.'
+            exit 0
           fi
-      - name: Keep failed work pending for the ten-minute watchdog
+
+          git commit -m 'Refresh Dobins Indian Catalog digital releases'
+
+          # Serialize refresh runs and rebase generated data onto any intervening
+          # maintenance commits. Retry if the remote branch advances during push.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin dobins-catalog
+            if ! git rebase origin/dobins-catalog; then
+              git rebase --abort || true
+              echo 'Cannot safely rebase generated catalog data; refusing to overwrite remote changes.'
+              exit 1
+            fi
+            if git push origin HEAD:dobins-catalog; then
+              echo "Catalog data persisted successfully (push attempt $attempt)."
+              exit 0
+            fi
+            echo "Branch advanced or push failed on attempt $attempt; retrying after fetch/rebase."
+            sleep 2
+          done
+
+          echo 'Catalog data could not be persisted after five safe push attempts.'
+          exit 1
+      - name: Keep failed work pending for the next 30-minute check
         if: steps.update.outcome == 'failure' || steps.site_health.outcome == 'failure'
         run: exit 1
