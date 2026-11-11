@@ -30,24 +30,26 @@ function chooseMovieDate(rows, today) {
     .sort((a, b) => a.date.localeCompare(b.date));
   return all[0] ? { ...all[0], source: 'tmdb-movie-release-dates' } : null;
 }
-async function tmdbJson(path, key) {
+async function tmdbJson(path, credential) {
   const url = new URL(TMDB + path);
-  url.searchParams.set('api_key', key);
-  const response = await fetch(url, { headers: { accept: 'application/json' }, signal: AbortSignal.timeout(9000) });
+  const headers = { accept: 'application/json' };
+  if (credential.readToken) headers.authorization = 'Bearer ' + credential.readToken;
+  else url.searchParams.set('api_key', credential.apiKey);
+  const response = await fetch(url, { headers, signal: AbortSignal.timeout(9000) });
   if (!response.ok) throw new Error('TMDB lookup failed: ' + response.status);
   return response.json();
 }
-async function resolveDate(imdbId, key, today) {
-  const found = await tmdbJson('/find/' + encodeURIComponent(imdbId), key);
+async function resolveDate(imdbId, credential, today) {
+  const found = await tmdbJson('/find/' + encodeURIComponent(imdbId), credential);
   const movie = found.movie_results?.[0];
   if (movie?.id) {
-    const releaseData = await tmdbJson('/movie/' + movie.id + '/release_dates', key);
+    const releaseData = await tmdbJson('/movie/' + movie.id + '/release_dates', credential);
     const selected = chooseMovieDate(releaseData.results || [], today);
     if (selected) return selected;
   }
   const show = found.tv_results?.[0];
   if (show?.id) {
-    const details = await tmdbJson('/tv/' + show.id, key);
+    const details = await tmdbJson('/tv/' + show.id, credential);
     const next = details.next_episode_to_air?.air_date;
     if (isFuture(next, today)) return { date: next, region: null, source: 'tmdb-next-episode' };
     const premiere = details.first_air_date;
@@ -57,8 +59,8 @@ async function resolveDate(imdbId, key, today) {
 }
 export async function upcomingRelease(imdbId, options = {}) {
   if (!validImdbId(imdbId)) return null;
-  const key = options.apiKey || process.env.TMDB_API_KEY || '';
-  if (!key) return null;
+  const credential = { apiKey: options.apiKey || process.env.TMDB_API_KEY || '', readToken: process.env.TMDB_API_READ_ACCESS_TOKEN || '' };
+  if (!credential.apiKey && !credential.readToken) return null;
   const today = options.today || new Date().toISOString().slice(0, 10);
   const cacheKey = imdbId + '|' + today;
   const cached = memory.get(cacheKey);
@@ -66,7 +68,7 @@ export async function upcomingRelease(imdbId, options = {}) {
   if (pending.has(cacheKey)) return pending.get(cacheKey);
   const job = (async () => {
     try {
-      const value = await resolveDate(imdbId, key, today);
+      const value = await resolveDate(imdbId, credential, today);
       memory.set(cacheKey, { value, at: Date.now() });
       while (memory.size > 1200) memory.delete(memory.keys().next().value);
       return value;
