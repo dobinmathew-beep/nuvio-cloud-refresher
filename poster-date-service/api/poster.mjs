@@ -1,7 +1,8 @@
 import { upcomingRelease, validImdbId } from '../lib/release-dates.mjs';
 import { renderUpcomingBadge } from '../lib/render-poster.mjs';
+import { hasExistingComingDateTag } from '../lib/coming-tag.mjs';
 
-// Use the user's new BetterPosters URL (without the quality-badge variant or rs parameter).
+// Use the user's BetterPosters URL (without the quality-badge variant or rs parameter).
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
 const MAX_BYTES = 15 * 1024 * 1024;
 
@@ -41,24 +42,43 @@ export default async function handler(req, res) {
   }
   try {
     const original = await getOriginal(id);
-    const release = await upcomingRelease(id);
     let output = original.bytes;
     let status = 'unchanged';
-    if (release?.date) {
-      try {
-        output = await renderUpcomingBadge(original.bytes, release.date);
-        status = 'upcoming-date-overlay';
-      } catch {
-        output = original.bytes;
+    let releaseDate = 'none';
+
+    // Never stack our badge on top of BetterPosters' own "Coming [date]" label.
+    // If OCR is unavailable or inconclusive due to an error, fail closed and preserve the source.
+    let hasComingTag;
+    try {
+      hasComingTag = await hasExistingComingDateTag(original.bytes);
+    } catch {
+      hasComingTag = null;
+    }
+
+    if (hasComingTag === null) {
+      status = 'coming-tag-check-unavailable';
+    } else if (hasComingTag) {
+      status = 'betterposters-coming-tag';
+    } else {
+      const release = await upcomingRelease(id);
+      releaseDate = release?.date || 'none';
+      if (release?.date) {
+        try {
+          output = await renderUpcomingBadge(original.bytes, release.date);
+          status = 'upcoming-date-overlay';
+        } catch {
+          output = original.bytes;
+        }
       }
     }
+
     res.statusCode = 200;
     res.setHeader('Content-Type', original.type);
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('X-Poster-Date-Status', status);
-    res.setHeader('X-Poster-Date', release?.date || 'none');
-    res.setHeader('Cache-Control', release ? 'public, max-age=900, stale-while-revalidate=1800' : 'public, max-age=300, stale-while-revalidate=600');
+    res.setHeader('X-Poster-Date', releaseDate);
+    res.setHeader('Cache-Control', 'public, max-age=900, stale-while-revalidate=1800');
     return res.end(req.method === 'HEAD' ? undefined : output);
   } catch {
     res.statusCode = 502;
