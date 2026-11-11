@@ -134,7 +134,8 @@ function setImageHeaders(res, type, status, releaseDate, releaseKind = 'none') {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Poster-Date-Status', status);
-  res.setHeader('X-Poster-Date', releaseDate);\n  res.setHeader('X-Poster-Date-Type', releaseKind);
+  res.setHeader('X-Poster-Date', releaseDate);
+  res.setHeader('X-Poster-Date-Type', releaseKind);
   // Let Xperience/CDNs reuse the processed result; the in-process cache
   // remains a secondary optimisation, not the only cache.
   res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
