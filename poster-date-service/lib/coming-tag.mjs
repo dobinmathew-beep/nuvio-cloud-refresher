@@ -9,7 +9,7 @@ function hasComingDateText(text) {
   const month = '(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)';
   const day = '\\d{1,2}(?:st|nd|rd|th)?';
   const date = '(?:' + day + '\\s*' + month + '|' + month + '\\s*' + day + ')';
-  return new RegExp('\\\\bcoming\\\\b.{0,32}\\\\b' + date + '\\\\b', 'i').test(normalized);
+  return new RegExp(' coming .{0,32} ' + date + ' ', 'i').test(' ' + normalized + ' ');
 }
 
 async function getWorker() {
