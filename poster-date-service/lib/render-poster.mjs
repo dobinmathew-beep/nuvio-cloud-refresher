@@ -31,6 +31,16 @@ export async function renderUpcomingBadge(input, isoDate) {
   // The bold, rounded geometric strokes are intentionally close to a compact sans badge face.
   const glyphs = {
     R: 'M1 13 V1 H7 Q10 1 10 4.5 Q10 8 7 8 H1 M6 8 L10 13',
+    A: 'M1 13 L5.5 1 L10 13 M2.5 9 H8.5',
+    P: 'M1 13 V1 H7 Q10 1 10 4.5 Q10 8 7 8 H1',
+    M: 'M1 13 V1 L5.5 7 L10 1 V13',
+    U: 'M1 1 V9 Q1 13 5.5 13 Q10 13 10 9 V1',
+    G: 'M10 3 Q8 1 5.5 1 Q1 1 1 7 Q1 13 5.5 13 H10 V8 H6',
+    S: 'M10 2 Q8 1 5 1 Q1 1 1 4 Q1 6 5.5 7 Q10 8 10 10 Q10 13 6 13 H1',
+    N: 'M1 13 V1 L10 13 V1',
+    O: 'M3.5 1 H7.5 Q10 1 10 4 V10 Q10 13 7.5 13 H3.5 Q1 13 1 10 V4 Q1 1 3.5 1 Z',
+    V: 'M1 1 L5.5 13 L10 1',
+    T: 'M1 1 H10 M5.5 1 V13',
     E: 'M10 1 H1 V13 H10 M1 7 H8',
     L: 'M1 1 V13 H10',
     D: 'M1 1 V13 H5.5 Q10 13 10 7 Q10 1 5.5 1 Z',
