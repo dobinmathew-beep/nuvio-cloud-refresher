@@ -2,12 +2,18 @@ import { upcomingRelease, validImdbId } from '../lib/release-dates.mjs';
 import { renderUpcomingBadge } from '../lib/render-poster.mjs';
 import { hasExistingComingDateTag } from '../lib/coming-tag.mjs';
 
-// Use the user's BetterPosters URL (without the quality-badge variant or rs parameter).
-const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
+// Preserve the exact BetterPosters quality-badge route used by the user's addon manifest.
+// This route carries BetterPosters' artwork, ratings and existing tags.
+const BETTERPOSTERS = 'https://btttr.cc/poster-q/imdb/poster-default/';
+const BETTERPOSTERS_RS = 'IM';
 const MAX_BYTES = 15 * 1024 * 1024;
+const RESULT_CACHE_MS = 6 * 60 * 60 * 1000;
+const resultCache = new Map();
+const pendingResults = new Map();
 
 async function getOriginal(imdbId) {
-  const response = await fetch(BETTERPOSTERS + encodeURIComponent(imdbId) + '.jpg', {
+  const url = BETTERPOSTERS + encodeURIComponent(imdbId) + '.jpg?rs=' + BETTERPOSTERS_RS;
+  const response = await fetch(url, {
     headers: { accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' },
     redirect: 'follow',
     signal: AbortSignal.timeout(14000)
@@ -20,6 +26,56 @@ async function getOriginal(imdbId) {
   const bytes = Buffer.from(await response.arrayBuffer());
   if (!bytes.length || bytes.length > MAX_BYTES) throw new Error('Poster exceeds size limit');
   return { bytes, type };
+}
+
+async function buildPoster(id) {
+  const original = await getOriginal(id);
+  let output = original.bytes;
+  let status = 'unchanged';
+  let releaseDate = 'none';
+
+  let hasComingTag;
+  try {
+    hasComingTag = await hasExistingComingDateTag(original.bytes);
+  } catch {
+    hasComingTag = null;
+  }
+
+  if (hasComingTag === null) {
+    status = 'coming-tag-check-unavailable';
+  } else if (hasComingTag) {
+    status = 'betterposters-coming-tag';
+  } else {
+    const release = await upcomingRelease(id);
+    releaseDate = release?.date || 'none';
+    if (release?.date) {
+      try {
+        output = await renderUpcomingBadge(original.bytes, release.date);
+        status = 'upcoming-date-overlay';
+      } catch {
+        output = original.bytes;
+      }
+    }
+  }
+  return { bytes: output, type: original.type, status, releaseDate };
+}
+
+async function getBuiltPoster(id) {
+  const cached = resultCache.get(id);
+  if (cached && cached.expiresAt > Date.now()) return cached.value;
+  if (pendingResults.has(id)) return pendingResults.get(id);
+
+  const pending = buildPoster(id).then(value => {
+    resultCache.set(id, { value, expiresAt: Date.now() + RESULT_CACHE_MS });
+    if (resultCache.size > 500) {
+      const oldest = resultCache.keys().next().value;
+      if (oldest) resultCache.delete(oldest);
+    }
+    return value;
+  }).finally(() => pendingResults.delete(id));
+
+  pendingResults.set(id, pending);
+  return pending;
 }
 
 export default async function handler(req, res) {
@@ -40,12 +96,12 @@ export default async function handler(req, res) {
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
     return res.end('A valid IMDb ID is required.');
   }
-  try {
-    const original = await getOriginal(id);
 
-    // Xperience's server-side validation must get a fast, successful image response.
-    // Do not run OCR or TMDB work for a HEAD request or the literal template probe.
-    if (req.method === 'HEAD' || req.probe) {
+  try {
+    // Xperience's template probe returns the exact BetterPosters source artwork quickly.
+    // HEAD requests also avoid OCR/TMDB work.
+    if (req.probe || req.method === 'HEAD') {
+      const original = await getOriginal(id);
       res.statusCode = 200;
       res.setHeader('Content-Type', original.type);
       res.setHeader('Access-Control-Allow-Origin', '*');
@@ -55,44 +111,15 @@ export default async function handler(req, res) {
       return res.end(req.method === 'HEAD' ? undefined : original.bytes);
     }
 
-    let output = original.bytes;
-    let status = 'unchanged';
-    let releaseDate = 'none';
-
-    // Never stack our badge on top of BetterPosters' own "Coming [date]" label.
-    // If OCR is unavailable or inconclusive due to an error, fail closed and preserve the source.
-    let hasComingTag;
-    try {
-      hasComingTag = await hasExistingComingDateTag(original.bytes);
-    } catch {
-      hasComingTag = null;
-    }
-
-    if (hasComingTag === null) {
-      status = 'coming-tag-check-unavailable';
-    } else if (hasComingTag) {
-      status = 'betterposters-coming-tag';
-    } else {
-      const release = await upcomingRelease(id);
-      releaseDate = release?.date || 'none';
-      if (release?.date) {
-        try {
-          output = await renderUpcomingBadge(original.bytes, release.date);
-          status = 'upcoming-date-overlay';
-        } catch {
-          output = original.bytes;
-        }
-      }
-    }
-
+    const poster = await getBuiltPoster(id);
     res.statusCode = 200;
-    res.setHeader('Content-Type', original.type);
+    res.setHeader('Content-Type', poster.type);
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('X-Content-Type-Options', 'nosniff');
-    res.setHeader('X-Poster-Date-Status', status);
-    res.setHeader('X-Poster-Date', releaseDate);
-    res.setHeader('Cache-Control', 'public, max-age=900, stale-while-revalidate=1800');
-    return res.end(req.method === 'HEAD' ? undefined : output);
+    res.setHeader('X-Poster-Date-Status', poster.status);
+    res.setHeader('X-Poster-Date', poster.releaseDate);
+    res.setHeader('Cache-Control', 'public, max-age=21600, stale-while-revalidate=86400');
+    return res.end(poster.bytes);
   } catch {
     res.statusCode = 502;
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
