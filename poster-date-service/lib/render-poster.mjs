@@ -18,6 +18,11 @@ export async function renderUpcomingBadge(input, isoDate) {
   const radius = Math.round(badgeHeight * 0.34);
   const blurRadius = Math.max(6, Math.round(width * 0.022));
 
+  // Sample the poster beneath the badge so the glass tint continues to blend with its artwork.
+  const crop = await sharp(input).extract({ left, top, width: badgeWidth, height: badgeHeight }).stats();
+  const rgb = crop.channels.slice(0, 3).map(c => Math.max(0, Math.min(255, Math.round(c.mean))));
+  const tint = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
+
   // Keep the release label consistently pure white for strong contrast on every poster.
   // Use a conventional bold sans-serif face instead of hand-drawn outline glyphs.
   const fontSize = Math.round(badgeHeight * 0.40);
