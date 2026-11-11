@@ -229,6 +229,7 @@ export async function runImageKitMaintenance({ force = false } = {}) {
       byId.get(id).push(file);
     }
 
+    const deletedFileIds = new Set();
     let duplicatesDeleted = 0;
     let expiredDeleted = 0;
     let unknownRetained = 0;
@@ -245,6 +246,7 @@ export async function runImageKitMaintenance({ force = false } = {}) {
         for (const file of copies) {
           if (!file.fileId) continue;
           await deleteImageKitFile(file.fileId);
+          deletedFileIds.add(file.fileId);
           accountBytes = Math.max(0, accountBytes - (Number(file.size) || 0));
           duplicatesDeleted++;
         }
@@ -255,6 +257,7 @@ export async function runImageKitMaintenance({ force = false } = {}) {
       for (const file of copies) {
         if (file.fileId === keep.fileId) continue;
         await deleteImageKitFile(file.fileId);
+        deletedFileIds.add(file.fileId);
         accountBytes = Math.max(0, accountBytes - (Number(file.size) || 0));
         duplicatesDeleted++;
       }
@@ -278,6 +281,7 @@ export async function runImageKitMaintenance({ force = false } = {}) {
         const status = await getReleaseStatus(id, today);
         if (status.status === 'expired') {
           await deleteImageKitFile(current.fileId);
+          deletedFileIds.add(current.fileId);
           accountBytes = Math.max(0, accountBytes - (Number(current.size) || 0));
           expiredDeleted++;
           console.log('ImageKit expired poster deleted:', id, status.date);
@@ -302,6 +306,7 @@ export async function runImageKitMaintenance({ force = false } = {}) {
       for (const item of farthestFirst) {
         if (accountBytes <= IMAGEKIT_STORAGE_LIMIT_BYTES) break;
         await deleteImageKitFile(item.file.fileId);
+        deletedFileIds.add(item.file.fileId);
         accountBytes = Math.max(0, accountBytes - (Number(item.file.size) || 0));
         removedForBudget.push({ id: item.id, date: item.date });
         console.warn('ImageKit poster removed to preserve storage reserve:', item.id, item.date);
@@ -310,7 +315,7 @@ export async function runImageKitMaintenance({ force = false } = {}) {
 
     const filesByPath = {};
     for (const file of files) {
-      if (file.filePath && file.fileId) filesByPath[file.filePath] = { fileId: file.fileId, size: Number(file.size) || 0 };
+      if (file.filePath && file.fileId && !deletedFileIds.has(file.fileId)) filesByPath[file.filePath] = { fileId: file.fileId, size: Number(file.size) || 0 };
     }
     storageSnapshot = { known: true, bytes: accountBytes, checkedAt: Date.now(), filesByPath };
     const report = {
