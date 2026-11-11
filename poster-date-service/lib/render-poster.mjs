@@ -43,6 +43,8 @@ export async function renderUpcomingBadge(input, isoDate) {
     O: 'M3.5 1 H7.5 Q10 1 10 4 V10 Q10 13 7.5 13 H3.5 Q1 13 1 10 V4 Q1 1 3.5 1 Z',
     V: 'M1 1 L5.5 13 L10 1',
     T: 'M1 1 H10 M5.5 1 V13',
+    J: 'M10 1 V9 Q10 13 5.5 13 H1',
+    Y: 'M1 1 L5.5 7 L10 1 M5.5 7 V13',
     E: 'M10 1 H1 V13 H10 M1 7 H8',
     L: 'M1 1 V13 H10',
     D: 'M1 1 V13 H5.5 Q10 13 10 7 Q10 1 5.5 1 Z',
