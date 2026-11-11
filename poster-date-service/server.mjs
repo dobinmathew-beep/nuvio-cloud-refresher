@@ -34,9 +34,13 @@ const server = createServer(async (req, res) => {
 
   if (url.pathname === '/health') return healthHandler(adaptedReq, adaptedRes);
 
-  const posterMatch = url.pathname.match(/^\/poster\/(tt\d{7,10})\.jpg$/);
-  if (posterMatch) {
-    adaptedReq.query.id = posterMatch[1];
+  // Xperience may probe the literal template before substituting an IMDb ID.
+  // Serve a real, stable BetterPosters sample image for that one validation request.
+  const templateProbe = /^\/poster\/(?:\{imdb_id\}|%7Bimdb_id%7D)\.jpg$/i.test(url.pathname);
+  const posterMatch = url.pathname.match(/^\/poster\/(tt\d{7,10})\.jpg$/i);
+  if (templateProbe || posterMatch) {
+    adaptedReq.query.id = templateProbe ? 'tt0111161' : posterMatch[1];
+    adaptedReq.probe = templateProbe;
     return posterHandler(adaptedReq, adaptedRes);
   }
 
