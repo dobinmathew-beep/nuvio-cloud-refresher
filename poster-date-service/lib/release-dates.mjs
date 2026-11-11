@@ -36,7 +36,7 @@ function chooseMovieDate(rows, today) {
   const future = candidates.find(item => isFuture(item.date, today));
   return future ? { ...future, source: 'tmdb-digital-release', kind: 'premiere' } : null;
 }
-async function tmdbJson(path, credential) {
+function chooseTvDate(details, today) {\n  const next = details.next_episode_to_air?.air_date;\n  if (isFuture(next, today)) {\n    return { date: next, region: details.origin_country?.[0] || null, source: 'tmdb-next-episode', kind: 'episode' };\n  }\n  const premiere = details.first_air_date;\n  if (isFuture(premiere, today)) {\n    return { date: premiere, region: details.origin_country?.[0] || null, source: 'tmdb-series-premiere', kind: 'premiere' };\n  }\n  return null;\n}\nasync function tmdbJson(path, credential) {
   const url = new URL(TMDB + path);
   if (path.startsWith('/find/')) url.searchParams.set('external_source', 'imdb_id');
   const headers = { accept: 'application/json' };
@@ -56,16 +56,7 @@ async function resolveDate(imdbId, credential, today) {
   const show = found.tv_results?.[0];
   if (show?.id) {
     const details = await tmdbJson('/tv/' + show.id, credential);
-    // A next episode is a separate event from the series premiere.
-    const next = details.next_episode_to_air?.air_date;
-    if (isFuture(next, today)) {
-      return { date: next, region: details.origin_country?.[0] || null, source: 'tmdb-next-episode', kind: 'episode' };
-    }
-    // Only an unreleased series can receive the premiere-style badge.
-    const premiere = details.first_air_date;
-    if (isFuture(premiere, today)) {
-      return { date: premiere, region: details.origin_country?.[0] || null, source: 'tmdb-series-premiere', kind: 'premiere' };
-    }
+    return chooseTvDate(details, today);
   }
   return null;
 }
