@@ -6,7 +6,7 @@ import json,os
 ZONE=ZoneInfo('Asia/Muscat')
 def due(now):
  local=now.astimezone(ZONE)
- return local.replace(minute=(local.minute//15)*15,second=0,microsecond=0).isoformat()
+ return local.replace(hour=(local.hour//2)*2,minute=0,second=0,microsecond=0).isoformat()
 
 if __name__=='__main__':
  p=Path(__file__).resolve().parent/'data/status.json'
