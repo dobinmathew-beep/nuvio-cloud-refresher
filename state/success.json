@@ -1,8 +1,8 @@
 {
   "cycle": "2026-11-11",
-  "refresh_cycle": "2026-11-11T08:00:00+04:00",
+  "refresh_cycle": "2026-11-11T10:00:00+04:00",
   "featuredVersion": 2,
-  "featured_cycle": "2026-11-11T08:00:00+04:00",
+  "featured_cycle": "2026-11-11T10:00:00+04:00",
   "featured_ids": {
     "hindi": "tt27988879",
     "tamil": "tt39239754",
@@ -32,7 +32,7 @@
       "malayalam",
       "telugu"
     ],
-    "checked_at": "2026-11-11T08:10:51.106955+04:00",
+    "checked_at": "2026-11-11T10:10:10.984557+04:00",
     "films_per_language": 20,
     "opening_version": 1,
     "selection_policy": "imdb-catalog-order-v1"
