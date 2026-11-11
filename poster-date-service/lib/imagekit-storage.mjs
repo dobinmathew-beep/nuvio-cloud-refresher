@@ -2,7 +2,7 @@ import { Buffer } from 'node:buffer';
 
 const API = 'https://api.imagekit.io/v1';
 const UPLOAD_API = 'https://upload.imagekit.io/api/v1/files/upload';
-export const IMAGEKIT_STORAGE_LIMIT_BYTES = Math.floor(2.4 * 1024 * 1024 * 1024);
+export const IMAGEKIT_STORAGE_LIMIT_BYTES = Math.floor(2.25 * 1000 * 1000 * 1000);
 const MAINTENANCE_COOLDOWN_MS = 6 * 60 * 60 * 1000;
 let storageSnapshot = { known: false, bytes: 0, checkedAt: 0, filesByPath: {} };
 const UPLOAD_HEADROOM_BYTES = 32 * 1024 * 1024;
@@ -297,7 +297,7 @@ export async function runImageKitMaintenance({ force = false } = {}) {
       }
     }
 
-    // Keep at least 20% of the 3 GB allowance free. If unrelated account
+    // Keep at least 25% of a 3 GB allowance free. If unrelated account
     // assets already consume the reserve, stop adding posters; never delete
     // anything outside our own /posters directory.
     const removedForBudget = [];
