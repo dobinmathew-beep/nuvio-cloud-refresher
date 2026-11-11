@@ -1,7 +1,75 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-11T06:00:46.953970+04:00",
+    "checkedAt": "2026-11-11T07:04:17.099848+04:00",
     "records": [
+      {
+        "_id": "6aea960da2c49d881360a924",
+        "platform": "ZEE5",
+        "title": "Blind Game",
+        "createdAt": "2026-11-04T02:18:53.637Z",
+        "genre": "Suspense Thriller",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-11",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-11T02:18:50.717Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/kO9q6StIAUBpfcKVtTSth7zOE2C.jpg",
+        "instagramPostedAt": "2026-11-04T02:20:14Z",
+        "tmdbDetails": {
+          "tmdbId": 1755818,
+          "director": "Sangeeth Sivan",
+          "cast": [
+            {
+              "name": "Arjun Rampal",
+              "character": ""
+            },
+            {
+              "name": "Priyamani",
+              "character": ""
+            }
+          ],
+          "overview": "A Cop, under suspension, is on the trail of Missing Cash.",
+          "runtime": null,
+          "genres": [],
+          "originalLanguage": "hi",
+          "spokenLanguages": [
+            "Hindi"
+          ],
+          "releaseDate": "2026-11-04",
+          "voteAverage": null,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-05T11:13:10.822Z"
+        },
+        "tmdbId": 1755818,
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
+        "trendingRankedDateIST": "2026-11-11",
+        "verified": true
+      },
+      {
+        "_id": "6af3d08adea24088f26105c5",
+        "platform": "Prime Video",
+        "title": "The Lord of the Rings: The Rings of Power",
+        "createdAt": "2026-11-11T02:18:50.504Z",
+        "genre": "Fantasy Drama",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-11",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-11T02:19:50.722Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/bMXWXKM9ydUmMTNvDnYo9QtCBRt.jpg",
+        "tmdbRating": 72,
+        "tmdbVotes": 4022,
+        "verified": true
+      },
       {
         "_id": "6ab337131ead141338255d7a",
         "title": "Possible Love",
@@ -73,9 +141,9 @@
         "tmdbId": 1483525,
         "tmdbRating": 75,
         "tmdbVotes": 26,
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-10T02:19:29.489Z",
-        "trendingRankedDateIST": "2026-11-10",
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
+        "trendingRankedDateIST": "2026-11-11",
         "verified": true
       },
       {
@@ -109,9 +177,6 @@
         "posterUrl": "https://image.tmdb.org/t/p/w300/6GTzd7ZeivgBOrIn45720nsq0TU.jpg",
         "tmdbRating": 70,
         "tmdbVotes": 369,
-        "trendingRank": 10,
-        "trendingRankedAt": "2026-11-10T02:19:29.489Z",
-        "trendingRankedDateIST": "2026-11-10",
         "verified": true
       },
       {
@@ -134,8 +199,8 @@
         "tmdbRating": 80,
         "tmdbVotes": 14,
         "trendingRank": 6,
-        "trendingRankedAt": "2026-11-10T02:19:29.489Z",
-        "trendingRankedDateIST": "2026-11-10",
+        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
+        "trendingRankedDateIST": "2026-11-11",
         "verified": true
       },
       {
@@ -247,8 +312,8 @@
         "tmdbId": 1475799,
         "instagramPostedAt": "2026-11-07T02:20:20Z",
         "trendingRank": 2,
-        "trendingRankedAt": "2026-11-10T02:19:29.489Z",
-        "trendingRankedDateIST": "2026-11-10",
+        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
+        "trendingRankedDateIST": "2026-11-11",
         "verified": true
       },
       {
@@ -394,8 +459,8 @@
         },
         "tmdbId": 1250502,
         "trendingRank": 4,
-        "trendingRankedAt": "2026-11-10T02:19:29.489Z",
-        "trendingRankedDateIST": "2026-11-10",
+        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
+        "trendingRankedDateIST": "2026-11-11",
         "verified": true
       },
       {
@@ -470,8 +535,8 @@
         },
         "tmdbId": 1538457,
         "trendingRank": 5,
-        "trendingRankedAt": "2026-11-10T02:19:29.489Z",
-        "trendingRankedDateIST": "2026-11-10",
+        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
+        "trendingRankedDateIST": "2026-11-11",
         "verified": true
       },
       {
@@ -546,6 +611,9 @@
           "fetchedAt": "2026-11-08T06:04:01.206Z"
         },
         "tmdbId": 1555215,
+        "trendingRank": 10,
+        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
+        "trendingRankedDateIST": "2026-11-11",
         "verified": true
       },
       {
@@ -679,9 +747,9 @@
           "fetchedAt": "2026-11-07T13:28:29.583Z"
         },
         "tmdbId": 1810711,
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-10T02:19:29.489Z",
-        "trendingRankedDateIST": "2026-11-10",
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
+        "trendingRankedDateIST": "2026-11-11",
         "verified": true
       },
       {
@@ -774,9 +842,9 @@
         "tmdbRating": 80,
         "tmdbVotes": 15,
         "votes": 1,
-        "trendingRank": 7,
-        "trendingRankedAt": "2026-11-10T02:19:29.489Z",
-        "trendingRankedDateIST": "2026-11-10",
+        "trendingRank": 8,
+        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
+        "trendingRankedDateIST": "2026-11-11",
         "verified": true
       },
       {
@@ -849,9 +917,9 @@
         },
         "tmdbId": 1630420,
         "instagramPostedAt": "2026-11-06T02:21:04Z",
-        "trendingRank": 8,
-        "trendingRankedAt": "2026-11-10T02:19:29.489Z",
-        "trendingRankedDateIST": "2026-11-10",
+        "trendingRank": 9,
+        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
+        "trendingRankedDateIST": "2026-11-11",
         "verified": true
       },
       {
@@ -892,54 +960,6 @@
         "posterUrl": "https://image.tmdb.org/t/p/w300/3x6c9ybt0762idyzIifUZeTD5MZ.jpg",
         "tmdbRating": 83,
         "tmdbVotes": 11,
-        "verified": true
-      },
-      {
-        "_id": "6aea960da2c49d881360a924",
-        "platform": "ZEE5",
-        "title": "Blind Game",
-        "createdAt": "2026-11-04T02:18:53.637Z",
-        "genre": "Thriller, Suspense",
-        "imdbRating": null,
-        "languages": [
-          "Hindi"
-        ],
-        "original_language": "Hindi",
-        "releaseDate": "2026-11-04",
-        "source_verified": true,
-        "type": "Movie",
-        "updatedAt": "2026-11-04T02:19:44.662Z",
-        "posterUrl": "https://image.tmdb.org/t/p/w300/kO9q6StIAUBpfcKVtTSth7zOE2C.jpg",
-        "instagramPostedAt": "2026-11-04T02:20:14Z",
-        "tmdbDetails": {
-          "tmdbId": 1755818,
-          "director": "Sangeeth Sivan",
-          "cast": [
-            {
-              "name": "Arjun Rampal",
-              "character": ""
-            },
-            {
-              "name": "Priyamani",
-              "character": ""
-            }
-          ],
-          "overview": "A Cop, under suspension, is on the trail of Missing Cash.",
-          "runtime": null,
-          "genres": [],
-          "originalLanguage": "hi",
-          "spokenLanguages": [
-            "Hindi"
-          ],
-          "releaseDate": "2026-11-04",
-          "voteAverage": null,
-          "trailerKey": null,
-          "fetchedAt": "2026-11-05T11:13:10.822Z"
-        },
-        "tmdbId": 1755818,
-        "trendingRank": 9,
-        "trendingRankedAt": "2026-11-10T02:19:29.489Z",
-        "trendingRankedDateIST": "2026-11-10",
         "verified": true
       },
       {
@@ -29388,7 +29408,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-11T06:00:46.953970+04:00",
+    "checkedAt": "2026-11-11T07:04:17.099848+04:00",
     "records": [
       {
         "name": "7 Star Boys",
