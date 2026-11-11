@@ -25,8 +25,7 @@ This personal website updater runs ordinary Python and FFmpeg on standard public
 - All four outputs (backdrops, hero reels, addon catalogs and India EPG) are due **every two hours**, at 00:00, 02:00, 04:00, 06:00, 08:00, 10:00, 12:00, 14:00, 16:00, 18:00, 20:00 and 22:00 Asia/Muscat. The main workflow cron is `0 */2 * * *` UTC; the four-hour offset keeps these aligned.
 - A 30-minute watchdog checks actual successful cycles and dispatches overdue components. It no longer runs after every component workflow finishes. Backdrops and reels share one workflow but both must pass verification.
 - Active or queued refreshes are not duplicated. Incomplete work and last-good public outputs are retained; subsequent checks retry unfinished work with a 30-minute dispatch cooldown.
-- GitHub's native 30-minute schedule is the only watchdog trigger; the external 10-minute dispatcher has been blocked. GitHub can delay jobs; completion at an exact minute is not guaranteed.
-- The former external cron-job.org 10-minute dispatcher is no longer permitted to start the watchdog; the native GitHub 30-minute schedule handles retries.
+- GitHub's native 30-minute schedule now handles watchdog checks and retries. The former cron-job.org job 8777026 is blocked at GitHub; disable it in cron-job.org to stop its rejected requests. GitHub can delay jobs; completion at an exact minute is not guaranteed.
 
 ## Backdrops
 
