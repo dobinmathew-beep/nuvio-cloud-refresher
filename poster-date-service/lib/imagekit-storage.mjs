@@ -97,6 +97,27 @@ export async function deleteImageKitFile(fileId) {
   await apiRequest(API + '/files/' + encodeURIComponent(fileId), { method: 'DELETE' });
 }
 
+async function pruneOldFileVersions(file) {
+  const currentVersionId = file.versionInfo?.id;
+  if (!currentVersionId || !file.fileId) return { deleted: 0, extraBytes: 0, checked: false };
+  const response = await apiRequest(API + '/files/' + encodeURIComponent(file.fileId) + '/versions');
+  const versions = await response.json();
+  if (!Array.isArray(versions)) throw new Error('Unexpected ImageKit version-list response');
+  let deleted = 0;
+  let extraBytes = 0;
+  for (const version of versions) {
+    const versionId = version.versionInfo?.id;
+    if (!versionId) continue;
+    if (versionId === currentVersionId) continue;
+    const size = Math.max(0, Number(version.size) || 0);
+    extraBytes += size;
+    await apiRequest(API + '/files/' + encodeURIComponent(file.fileId) + '/versions/' + encodeURIComponent(versionId), { method: 'DELETE' });
+    deleted++;
+    console.log('ImageKit old poster version deleted:', file.name, versionId);
+  }
+  return { deleted, extraBytes, checked: true };
+}
+
 export function getImageKitStorageSnapshot() {
   return { ...storageSnapshot };
 }
@@ -233,6 +254,8 @@ export async function runImageKitMaintenance({ force = false } = {}) {
     let duplicatesDeleted = 0;
     let expiredDeleted = 0;
     let unknownRetained = 0;
+    let versionsDeleted = 0;
+    let versionChecksFailed = 0;
     const active = [];
     const today = new Date().toISOString().slice(0, 10);
 
@@ -278,6 +301,14 @@ export async function runImageKitMaintenance({ force = false } = {}) {
       }
       if (!current || !current.fileId) continue;
       try {
+        try {
+          const versionResult = await pruneOldFileVersions(current);
+          versionsDeleted += versionResult.deleted;
+          accountBytes = Math.max(0, accountBytes + versionResult.extraBytes);
+        } catch (versionError) {
+          versionChecksFailed++;
+          console.warn('ImageKit old versions retained; version audit failed:', id, versionError.message);
+        }
         const status = await getReleaseStatus(id, today);
         if (status.status === 'expired') {
           await deleteImageKitFile(current.fileId);
@@ -328,6 +359,8 @@ export async function runImageKitMaintenance({ force = false } = {}) {
       duplicatesDeleted,
       expiredDeleted,
       unknownRetained,
+      versionsDeleted,
+      versionChecksFailed,
       removedForBudget,
       uploadsAllowed: accountBytes < IMAGEKIT_STORAGE_LIMIT_BYTES
     };
