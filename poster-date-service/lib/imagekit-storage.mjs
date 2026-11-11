@@ -4,7 +4,8 @@ const API = 'https://api.imagekit.io/v1';
 const UPLOAD_API = 'https://upload.imagekit.io/api/v1/files/upload';
 export const IMAGEKIT_STORAGE_LIMIT_BYTES = Math.floor(2.4 * 1024 * 1024 * 1024);
 const MAINTENANCE_COOLDOWN_MS = 6 * 60 * 60 * 1000;
-let storageSnapshot = { known: false, bytes: 0, checkedAt: 0 };
+let storageSnapshot = { known: false, bytes: 0, checkedAt: 0, filesByPath: {} };
+const UPLOAD_HEADROOM_BYTES = 32 * 1024 * 1024;
 let maintenancePromise;
 let lastMaintenanceAt = 0;
 let lastMaintenanceReport = null;
@@ -100,18 +101,25 @@ export function getImageKitStorageSnapshot() {
   return { ...storageSnapshot };
 }
 
-export function recordImageKitUpload(bytes) {
-  if (storageSnapshot.known && Number.isFinite(bytes) && bytes > 0) {
-    storageSnapshot.bytes += bytes;
-    storageSnapshot.checkedAt = Date.now();
-  }
+export function canStoreImageKitPoster(imdbId, newSize) {
+  if (!storageSnapshot.known || !Number.isFinite(newSize) || newSize <= 0) return false;
+  const path = '/posters/' + imdbId + '.jpg';
+  const existingSize = Number(storageSnapshot.filesByPath[path]?.size) || 0;
+  return storageSnapshot.bytes - existingSize + newSize + UPLOAD_HEADROOM_BYTES <= IMAGEKIT_STORAGE_LIMIT_BYTES;
+}
+
+export function recordImageKitUpload(path, fileId, bytes) {
+  if (!storageSnapshot.known || !path || !fileId || !Number.isFinite(bytes) || bytes <= 0) return;
+  const previous = storageSnapshot.filesByPath[path];
+  storageSnapshot.bytes = Math.max(0, storageSnapshot.bytes - (Number(previous?.size) || 0) + bytes);
+  storageSnapshot.filesByPath[path] = { fileId, size: bytes };
+  storageSnapshot.checkedAt = Date.now();
 }
 
 export async function uploadPosterToImageKit(imdbId, poster) {
   const config = imageKitConfig();
   if (!config) return { stored: false, reason: 'imagekit-not-configured' };
-  if (!storageSnapshot.known) return { stored: false, reason: 'storage-inventory-not-yet-verified' };
-  if (storageSnapshot.bytes + poster.bytes.length > IMAGEKIT_STORAGE_LIMIT_BYTES) {
+  if (!canStoreImageKitPoster(imdbId, poster.bytes.length)) {
     return { stored: false, reason: 'storage-safety-ceiling-reached' };
   }
 
@@ -135,7 +143,7 @@ export async function uploadPosterToImageKit(imdbId, poster) {
   }
   const result = await response.json();
   if (!result.url || !result.fileId) throw new Error('ImageKit upload response did not include file identity');
-  recordImageKitUpload(poster.bytes.length);
+  recordImageKitUpload('/posters/' + imdbId + '.jpg', result.fileId, poster.bytes.length);
   console.log('ImageKit upcoming poster stored:', imdbId, poster.bytes.length, 'bytes');
   return { stored: true, url: result.url, fileId: result.fileId };
 }
@@ -254,7 +262,17 @@ export async function runImageKitMaintenance({ force = false } = {}) {
     }
 
     for (const [id, copies] of byId) {
-      const current = copies.find(file => file.name.toLowerCase() === (id + '.jpg').toLowerCase()) || copies[0];
+      const current = copies.find(file => file.name.toLowerCase() === (id + '.jpg').toLowerCase());
+      if (!current && copies.length) {
+        for (const file of copies) {
+          if (!file.fileId) continue;
+          await deleteImageKitFile(file.fileId);
+          accountBytes = Math.max(0, accountBytes - (Number(file.size) || 0));
+          duplicatesDeleted++;
+        }
+        byId.set(id, []);
+        continue;
+      }
       if (!current || !current.fileId) continue;
       try {
         const status = await getReleaseStatus(id, today);
@@ -290,7 +308,11 @@ export async function runImageKitMaintenance({ force = false } = {}) {
       }
     }
 
-    storageSnapshot = { known: true, bytes: accountBytes, checkedAt: Date.now() };
+    const filesByPath = {};
+    for (const file of files) {
+      if (file.filePath && file.fileId) filesByPath[file.filePath] = { fileId: file.fileId, size: Number(file.size) || 0 };
+    }
+    storageSnapshot = { known: true, bytes: accountBytes, checkedAt: Date.now(), filesByPath };
     const report = {
       checkedAt: new Date().toISOString(),
       accountFiles: files.length,
