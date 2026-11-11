@@ -90,7 +90,7 @@ async function buildPoster(id, knownRelease = undefined) {
   let status = 'unchanged';
   let hasComingTag;
   try {
-    hasComingTag = await hasExistingComingDateTag(original.bytes);
+    hasComingTag = await hasExistingComingDateTag(original.bytes, release.kind);
   } catch {
     hasComingTag = null;
   }
