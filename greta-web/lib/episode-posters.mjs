@@ -7,8 +7,9 @@ export async function fetchPoster(url){
   const u=new URL(url);if(u.protocol!=='https:'||!imageHosts.has(u.hostname)||u.username||u.password||u.port)throw Error('Unsupported poster host');
   const r=await fetch(u.href,{redirect:'manual',signal:AbortSignal.timeout(12000)});
   if(r.status>=300&&r.status<400){url=new URL(r.headers.get('location'),u).href;continue}
-  if(!r.ok||!r.headers.get('content-type')?.startsWith('image/'))throw Error('Poster unavailable');
-  if(Number(r.headers.get('content-length'))>12000000)throw Error('Poster too large');const bytes=Buffer.from(await r.arrayBuffer());if(bytes.length>12000000)throw Error('Poster too large');return bytes;
+  const contentType=(r.headers.get('content-type')||'').split(';')[0].trim().toLowerCase();
+  if(!r.ok||!['image/jpeg','image/png','image/webp','image/avif','image/gif'].includes(contentType))throw Error('Poster unavailable or unsupported image type');
+  if(Number(r.headers.get('content-length'))>12000000)throw Error('Poster too large');const bytes=Buffer.from(await r.arrayBuffer());if(bytes.length>12000000)throw Error('Poster too large');bytes.contentType=contentType;return bytes;
  }throw Error('Too many poster redirects');
 }
 export async function renderBadge(bytes,badges=[{kind:'new',label:'New Episodes'}]){
