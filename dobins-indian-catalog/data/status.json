@@ -4,10 +4,10 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-11T18:04:10.614755+04:00",
+  "updatedAt": "2026-11-11T18:49:50.313835+04:00",
   "lastSuccessCycle": "2026-11-11T18:00:00+04:00",
   "timezone": "Asia/Muscat",
-  "schedule": "Every 15 minutes daily, including 00:00 (Asia/Muscat)",
+  "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
   "sources": [
     {
       "source": "DailyOTT",
