@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import posterHandler from './api/poster.mjs';
 import healthHandler from './api/health.mjs';
+import { runImageKitMaintenance } from './lib/imagekit-storage.mjs';
 
 const port = Number(process.env.PORT || 10000);
 const publicIndex = resolve(process.cwd(), 'public/index.html');
@@ -33,6 +34,24 @@ const server = createServer(async (req, res) => {
   }
 
   if (url.pathname === '/health') return healthHandler(adaptedReq, adaptedRes);
+
+  // Safe, fixed maintenance action: no user-supplied IDs or paths are accepted.
+  // A six-hour in-process cooldown prevents repeated public triggering.
+  if (url.pathname === '/maintenance') {
+    if (req.method !== 'POST') {
+      res.writeHead(405, { 'Allow': 'POST', 'Cache-Control': 'no-store' });
+      return res.end('Method not allowed');
+    }
+    try {
+      const report = await runImageKitMaintenance();
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+      return res.end(JSON.stringify(report));
+    } catch (error) {
+      console.error('ImageKit maintenance failed:', error.message);
+      res.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+      return res.end(JSON.stringify({ status: 'maintenance-failed', error: error.message }));
+    }
+  }
 
   // Xperience may probe the literal template before substituting an IMDb ID.
   // Serve a real, stable BetterPosters sample image for that one validation request.
