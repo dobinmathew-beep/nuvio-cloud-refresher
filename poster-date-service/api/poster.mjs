@@ -14,7 +14,7 @@ function sourceUrl(imdbId) {
   return BETTERPOSTERS + encodeURIComponent(imdbId) + '.jpg?rs=' + BETTERPOSTERS_RS;
 }
 
-const IMAGEKIT_REFRESH_MS = 6 * 60 * 60 * 1000;
+const IMAGEKIT_REFRESH_MS = 6 * 60 * 60 * 1000;\n// Do not serve pre-change ImageKit files: they may contain the old generic or theatrical-date badge.\nconst IMAGEKIT_COMPATIBLE_AFTER = Date.now();
 const pendingImageKitUploads = new Map();
 
 function imageKitAssetUrl(config, imdbId) {
