@@ -83,7 +83,7 @@ async function buildPoster(id, knownRelease = undefined) {
   const release = knownRelease === undefined ? await upcomingRelease(id) : knownRelease;
   const original = await getOriginal(id);
   if (!release?.date) {
-    return { bytes: original.bytes, type: original.type, status: 'no-upcoming-release', releaseDate: 'none' };
+    return { bytes: original.bytes, type: original.type, status: 'no-upcoming-release', releaseDate: 'none', releaseKind: 'none' };
   }
 
   let output = original.bytes;
@@ -101,14 +101,14 @@ async function buildPoster(id, knownRelease = undefined) {
     status = 'betterposters-coming-tag';
   } else {
     try {
-      output = await renderUpcomingBadge(original.bytes, release.date);
+      output = await renderUpcomingBadge(original.bytes, release.date, release.kind);
       status = 'upcoming-date-overlay';
     } catch {
       output = original.bytes;
       status = 'overlay-failed-original-preserved';
     }
   }
-  return { bytes: output, type: original.type, status, releaseDate: release.date };
+  return { bytes: output, type: original.type, status, releaseDate: release.date, releaseKind: release.kind || 'premiere' };
 }
 
 async function getBuiltPoster(id, knownRelease = undefined) {
@@ -128,13 +128,13 @@ async function getBuiltPoster(id, knownRelease = undefined) {
   return pending;
 }
 
-function setImageHeaders(res, type, status, releaseDate) {
+function setImageHeaders(res, type, status, releaseDate, releaseKind = 'none') {
   res.statusCode = 200;
   res.setHeader('Content-Type', type);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Poster-Date-Status', status);
-  res.setHeader('X-Poster-Date', releaseDate);
+  res.setHeader('X-Poster-Date', releaseDate);\n  res.setHeader('X-Poster-Date-Type', releaseKind);
   // Let Xperience/CDNs reuse the processed result; the in-process cache
   // remains a secondary optimisation, not the only cache.
   res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
@@ -179,7 +179,7 @@ export default async function handler(req, res) {
     const canStore = poster.status === 'upcoming-date-overlay' &&
       canStoreImageKitPoster(id, poster.bytes.length);
     if (canStore) scheduleImageKitUpload(id, poster);
-    setImageHeaders(res, poster.type, poster.status, poster.releaseDate);
+    setImageHeaders(res, poster.type, poster.status, poster.releaseDate, poster.releaseKind);
     res.setHeader('X-ImageKit-Storage', canStore ? 'pending' : 'not-stored');
     return res.end(poster.bytes);
   } catch {
