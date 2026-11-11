@@ -1,8 +1,8 @@
-export async function renderUpcomingBadge(input, isoDate) {
+export async function renderUpcomingBadge(input, isoDate, kind = 'premiere') {
   const date = new Date(isoDate + 'T00:00:00Z');
   const month = new Intl.DateTimeFormat('en', { month: 'short', timeZone: 'UTC' }).format(date);
   const day = String(date.getUTCDate());
-  const label = 'Coming ' + day + ' ' + month;
+  const label = (kind === 'episode' ? 'New Episode ' : 'Coming ') + day + ' ' + month;
   const { default: sharp } = await import('sharp');
   const metadata = await sharp(input, { limitInputPixels: 40000000 }).metadata();
   if (!metadata.width || !metadata.height || metadata.width < 160 || metadata.height < 240) {
