@@ -13,6 +13,7 @@ on:
 permissions:
   contents: read
 
+ # Refresh ImageKit inventory after each Render restart.
 concurrency:
   group: great-indian-poster-prewarm
   cancel-in-progress: true
