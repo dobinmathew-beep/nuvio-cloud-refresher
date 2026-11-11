@@ -5,6 +5,10 @@ on:
     # 06:00 and 18:00 Asia/Muscat (UTC+4).
     - cron: '0 2,14 * * *'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/poster-prewarm.yml'
 
 permissions:
   contents: read
