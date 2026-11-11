@@ -13,7 +13,7 @@ Targets in **Asia/Muscat (UTC+4)**:
 - 06:00 and 18:00 every day.
 - An additional 01:00 on Thursday, Friday and Saturday.
 
-The default branch's `.github/workflows/dobins-indian-catalog.yml` polls every 15 minutes. Each new slot runs the full release-source check and catalog updater, so a newly reported OTT movie can be published at the next successful run rather than waiting for the former two-hour cycle. GitHub may delay scheduled jobs, so exact-time execution is not guaranteed. Manual dispatch and code pushes on this branch force a check. There are no AI calls, paid API requirements, personal-computer runners or long-lived account tokens. Standard public GitHub-hosted runners are used.
+The default branch's `.github/workflows/dobins-indian-catalog.yml` checks every 30 minutes. The schedule gate groups checks into two-hour slots in Asia/Muscat, and the full release-source check and catalog updater run once per slot after the first eligible check. If an update fails, the error keeps the cycle pending and the next 30-minute check retries it. Newly reported releases may therefore wait until the next two-hour slot, plus any GitHub scheduling delay. GitHub may delay scheduled jobs, so exact-time execution is not guaranteed. Manual dispatch and code pushes on this branch force a check. There are no AI calls, paid API requirements, personal-computer runners or long-lived account tokens. Standard public GitHub-hosted runners are used.
 
 The updater and its data live on the separate `dobins-catalog` branch, under `dobins-indian-catalog/`. The workflow checks out and commits only to that branch. This prevents simultaneous catalog and existing backdrop/reel refreshes from competing for the same branch state. The backdrop/reel workflow and URLs are unaffected.
 
@@ -28,7 +28,7 @@ Every entry retains its release-reporting source and platform. Movie duplicate r
 
 IndianRegional's language catalogs are used only as an IMDb identity lookup aid, never as evidence that a movie has reached OTT. Exact IMDb suggestion matches are followed by TVmaze title/language verification and source-linked TMDB title pages. TMDB type, canonical ID, title and release dates are checked before publication. TVmaze can also recover IMDb IDs, including for older shows with a new OTT premiere. Cinemeta, TMDB public title metadata and TVmaze supply full metadata; series episodes can also fall back to an IMDb-verified TVMaze lookup. Some newly released shows may not yet have indexed episode data. TMDB fallback reads public title pages and DailyOTT’s public TMDB-derived details, without storing or requiring a TMDB API key.
 
-`data/unmatched.json` records pending/uncertain matches. New matching work is fairly distributed across all eight catalogs and bounded to 160 titles per update. This allows gradual history backfill without monopolising a runner. Metadata is refreshed after three hours, so normal scheduled slots recheck series metadata.
+`data/unmatched.json` records pending/uncertain matches. New matching work is fairly distributed across all eight catalogs and bounded to 160 titles per update. This allows gradual history backfill without monopolising a runner. Metadata is refreshed after three hours, so each two-hour output cycle rechecks series metadata.
 
 ## Posters, fanart and logos
 
@@ -50,7 +50,7 @@ Generated data:
 - `data/matches.json`, `data/candidates.json`, `data/sources.json`: reusable matching and source caches.
 - `data/unmatched.json`: titles awaiting a reliable match or backfill.
 
-A source outage preserves cached source records. If all release sources fail, or a catalog would become empty, the last-good catalogs remain and the next 15-minute check retries. The first checkout restores the public initial dataset using `bootstrap.py`; later checkouts use committed data.
+A source outage preserves cached source records. If all release sources fail, or a catalog would become empty, the last-good catalogs remain and the next 30-minute check retries. The first checkout restores the public initial dataset using `bootstrap.py`; later checkouts use committed data.
 
 ## Local maintenance
 
