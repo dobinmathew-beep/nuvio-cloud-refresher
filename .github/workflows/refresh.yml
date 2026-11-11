@@ -5,8 +5,7 @@ on:
     branches: [main]
     paths: [.github/workflows/refresh.yml, cloud.py, featured.py, hero_prepare.py, hero_render.py, verify_backdrops.py, source-archive.json, legacy-files.json, legacy-html.json]
   schedule:
-    - cron: '0 */2 * * *'
-    - cron: '7,37 * * * *'
+    - cron: '0,30 * * * *'
 
 permissions:
   contents: write
