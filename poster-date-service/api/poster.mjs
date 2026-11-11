@@ -42,6 +42,19 @@ export default async function handler(req, res) {
   }
   try {
     const original = await getOriginal(id);
+
+    // Xperience's server-side validation must get a fast, successful image response.
+    // Do not run OCR or TMDB work for a HEAD request or the literal template probe.
+    if (req.method === 'HEAD' || req.probe) {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', original.type);
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('X-Content-Type-Options', 'nosniff');
+      res.setHeader('X-Poster-Date-Status', req.probe ? 'template-probe' : 'head-check');
+      res.setHeader('Cache-Control', 'public, max-age=300');
+      return res.end(req.method === 'HEAD' ? undefined : original.bytes);
+    }
+
     let output = original.bytes;
     let status = 'unchanged';
     let releaseDate = 'none';
