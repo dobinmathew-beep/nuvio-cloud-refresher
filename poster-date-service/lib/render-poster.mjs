@@ -56,7 +56,9 @@ export async function renderUpcomingBadge(input, isoDate) {
     '4': 'M8 13 V1 L1 9 H10',
     '5': 'M10 1 H2 L1 7 H7 Q10 7 10 10 Q10 13 7 13 H1',
     '6': 'M9 1 H4 Q1 1 1 5 V10 Q1 13 4 13 H7 Q10 13 10 10 Q10 7 7 7 H1',
-    '7': 'M1 1 H10 L4 13'
+    '7': 'M1 1 H10 L4 13',
+    '8': 'M3.5 1 H7.5 Q10 1 10 4 Q10 7 5.5 7 Q1 7 1 4 Q1 1 3.5 1 Z M1 10 Q1 7 5.5 7 Q10 7 10 10 Q10 13 7.5 13 H3.5 Q1 13 1 10 Z',
+    '9': 'M10 13 V4 Q10 1 6 1 H4 Q1 1 1 4 Q1 7 4 7 H7 Q10 7 10 4'
   };
   const advance = 11.8;
   const totalUnits = label.length * advance - 1.5;
