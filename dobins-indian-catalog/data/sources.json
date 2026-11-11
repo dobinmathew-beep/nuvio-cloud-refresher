@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-11T18:49:50.313835+04:00",
+    "checkedAt": "2026-11-12T01:20:30.556290+04:00",
     "records": [
       {
         "_id": "6aea960da2c49d881360a924",
@@ -26144,6 +26144,60 @@
         "source_verified": true,
         "type": "Movie",
         "updatedAt": "2026-04-01T03:43:16.597Z",
+        "tmdbDetails": {
+          "tmdbId": 1561758,
+          "director": "Łukasz Kośmicki",
+          "cast": [
+            {
+              "name": "Anna Seniuk",
+              "character": "Halina Madej"
+            },
+            {
+              "name": "Artur Barciś",
+              "character": "Jan Perzyna"
+            },
+            {
+              "name": "Filip Gurłacz",
+              "character": "Wojtek Kurzak"
+            },
+            {
+              "name": "Joanna Trzepiecińska",
+              "character": ""
+            },
+            {
+              "name": "Anna Szymańczyk",
+              "character": "Oliwia Madej"
+            },
+            {
+              "name": "Cezary Żak",
+              "character": "Adam Wolak"
+            },
+            {
+              "name": "Mateusz Janicki",
+              "character": "Kuba Wolak"
+            },
+            {
+              "name": "Wiktor Zborowski",
+              "character": ""
+            }
+          ],
+          "overview": "When financial trouble forces Halina to call off her wedding, her friends and family decide to hatch a wild plan to bring in tourist money.",
+          "runtime": 94,
+          "genres": [
+            "Romance",
+            "Comedy"
+          ],
+          "originalLanguage": "pl",
+          "spokenLanguages": [
+            "English",
+            "Polish"
+          ],
+          "releaseDate": "2026-04-01",
+          "voteAverage": 5.2,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-11T17:38:06.538Z"
+        },
+        "tmdbId": 1561758,
         "verified": true
       },
       {
@@ -29408,7 +29462,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-11T18:49:50.313835+04:00",
+    "checkedAt": "2026-11-12T01:20:30.556290+04:00",
     "records": [
       {
         "name": "7 Star Boys",
