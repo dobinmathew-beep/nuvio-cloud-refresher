@@ -3,13 +3,6 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '17 */6 * * *'
-  workflow_run:
-    workflows:
-      - Nuvio cloud refresh
-      - Dobins Indian Catalog
-      - India EPG daily refresh
-    types: [completed]
-    branches: [main, dobins-catalog]
   push:
     branches: [main]
     paths: [verify_independent.py, .github/workflows/independent-verification.yml]
