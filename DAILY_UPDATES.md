@@ -4,9 +4,9 @@
 
 Last checked: **11 Nov 2026, 18:01 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43034438061)
 
-**Refresh:** every two hours, 00:00–22:00. **Backup check:** every ten minutes. Checks also run after refresh attempts finish.
+**Refresh checks:** every 30 minutes. Outputs refresh when their two-hour cycle is due. **Watchdog and retry checks:** every 30 minutes; no per-workflow or external 10-minute trigger.
 
-> This is the last saved check, not a live clock. If it is more than 20 minutes old, open Actions and cron-job.org to investigate. GitHub and network delays remain possible.
+> This is the last saved check, not a live clock. If it is more than 45 minutes old, open Actions to investigate. GitHub and network delays remain possible.
 
 | Output | Status at last check | Last verified cycle / check (Oman) | Details | Latest attempt |
 |---|---|---|---|---|
@@ -24,7 +24,6 @@ A successful check can keep the same movies or listings when the source has not 
 - [Today’s detailed timeline](logs/2026-11-11/README.md)
 - [Daily history — all saved dates](logs/README.md)
 - [All GitHub runs and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions)
-- [External scheduler](https://console.cron-job.org/jobs/8777026)
 
 ## Issues at this check
 
