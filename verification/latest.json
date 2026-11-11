@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-11T04:19:55.987056+04:00",
+  "checked_at": "2026-11-11T04:23:32.447098+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
     "addon": {
       "status": "pass",
-      "checked_at": "2026-11-11T03:46:10.259310+04:00",
+      "checked_at": "2026-11-11T04:23:32.447098+04:00",
       "public_url": "https://the-great-indian-addon.vercel.app",
       "checks": [
         {
