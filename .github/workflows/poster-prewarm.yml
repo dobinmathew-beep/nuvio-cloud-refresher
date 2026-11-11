@@ -5,10 +5,6 @@ on:
     # 06:00 and 18:00 Asia/Muscat (UTC+4).
     - cron: '0 2,14 * * *'
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/poster-prewarm.yml'
 
 permissions:
   contents: read
@@ -20,7 +16,7 @@ concurrency:
 jobs:
   pre-generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 360
     steps:
       - name: Check out the isolated poster service branch
         uses: actions/checkout@v4
