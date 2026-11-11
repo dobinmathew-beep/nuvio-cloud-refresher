@@ -10,7 +10,7 @@ permissions:
   contents: read
 concurrency:
   group: poster-date-service-checks
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   test:
     runs-on: ubuntu-latest
