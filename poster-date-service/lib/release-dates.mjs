@@ -32,6 +32,8 @@ function chooseMovieDate(rows, today) {
 }
 async function tmdbJson(path, credential) {
   const url = new URL(TMDB + path);
+  // TMDB's /find endpoint requires the external ID namespace explicitly.
+  if (path.startsWith('/find/')) url.searchParams.set('external_source', 'imdb_id');
   const headers = { accept: 'application/json' };
   if (credential.readToken) headers.authorization = 'Bearer ' + credential.readToken;
   else url.searchParams.set('api_key', credential.apiKey);
