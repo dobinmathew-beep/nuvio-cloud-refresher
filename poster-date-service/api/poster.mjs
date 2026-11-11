@@ -38,7 +38,8 @@ async function findFreshImageKitAsset(imdbId) {
     });
     if (!response.ok) return null;
     const lastModified = Date.parse(response.headers.get('last-modified') || '');
-    if (Number.isFinite(lastModified) && Date.now() - lastModified > IMAGEKIT_REFRESH_MS) return null;
+    if (!Number.isFinite(lastModified) || lastModified < IMAGEKIT_COMPATIBLE_AFTER) return null;
+    if (Date.now() - lastModified > IMAGEKIT_REFRESH_MS) return null;
     return assetUrl;
   } catch {
     return null;
