@@ -2,8 +2,6 @@ import { upcomingRelease, validImdbId } from '../lib/release-dates.mjs';
 import { renderUpcomingBadge } from '../lib/render-poster.mjs';
 import { hasExistingComingDateTag } from '../lib/coming-tag.mjs';
 
-// Preserve the exact BetterPosters quality-badge route used by the user's addon manifest.
-// This route carries BetterPosters' artwork, ratings and existing tags.
 const BETTERPOSTERS = 'https://btttr.cc/poster-q/imdb/poster-default/';
 const BETTERPOSTERS_RS = 'IM';
 const MAX_BYTES = 15 * 1024 * 1024;
@@ -11,12 +9,15 @@ const RESULT_CACHE_MS = 6 * 60 * 60 * 1000;
 const resultCache = new Map();
 const pendingResults = new Map();
 
+function sourceUrl(imdbId) {
+  return BETTERPOSTERS + encodeURIComponent(imdbId) + '.jpg?rs=' + BETTERPOSTERS_RS;
+}
+
 async function getOriginal(imdbId) {
-  const url = BETTERPOSTERS + encodeURIComponent(imdbId) + '.jpg?rs=' + BETTERPOSTERS_RS;
-  const response = await fetch(url, {
+  const response = await fetch(sourceUrl(imdbId), {
     headers: { accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' },
     redirect: 'follow',
-    signal: AbortSignal.timeout(14000)
+    signal: AbortSignal.timeout(10000)
   });
   const type = (response.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
   if (!response.ok || !['image/jpeg', 'image/png', 'image/webp', 'image/avif'].includes(type)) {
@@ -42,7 +43,7 @@ async function buildPoster(id) {
   }
 
   if (hasComingTag === null) {
-    status = 'coming-tag-check-unavailable';
+    status = 'coming-tag-check-unavailable-original-preserved';
   } else if (hasComingTag) {
     status = 'betterposters-coming-tag';
   } else {
@@ -54,6 +55,7 @@ async function buildPoster(id) {
         status = 'upcoming-date-overlay';
       } catch {
         output = original.bytes;
+        status = 'overlay-failed-original-preserved';
       }
     }
   }
@@ -67,15 +69,24 @@ async function getBuiltPoster(id) {
 
   const pending = buildPoster(id).then(value => {
     resultCache.set(id, { value, expiresAt: Date.now() + RESULT_CACHE_MS });
-    if (resultCache.size > 500) {
-      const oldest = resultCache.keys().next().value;
-      if (oldest) resultCache.delete(oldest);
-    }
+    while (resultCache.size > 500) resultCache.delete(resultCache.keys().next().value);
     return value;
   }).finally(() => pendingResults.delete(id));
 
   pendingResults.set(id, pending);
   return pending;
+}
+
+function setImageHeaders(res, type, status, releaseDate) {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', type);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Poster-Date-Status', status);
+  res.setHeader('X-Poster-Date', releaseDate);
+  // Let Xperience/CDNs reuse the processed result; the in-process cache
+  // remains a secondary optimisation, not the only cache.
+  res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
 }
 
 export default async function handler(req, res) {
@@ -98,32 +109,24 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Xperience's template probe returns the exact BetterPosters source artwork quickly.
-    // HEAD requests also avoid OCR/TMDB work.
     if (req.probe || req.method === 'HEAD') {
       const original = await getOriginal(id);
-      res.statusCode = 200;
-      res.setHeader('Content-Type', original.type);
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.setHeader('X-Content-Type-Options', 'nosniff');
-      res.setHeader('X-Poster-Date-Status', req.probe ? 'template-probe' : 'head-check');
-      res.setHeader('Cache-Control', 'public, max-age=300');
+      setImageHeaders(res, original.type, req.probe ? 'template-probe' : 'head-check', 'none');
+      res.setHeader('Cache-Control', 'public, max-age=3600');
       return res.end(req.method === 'HEAD' ? undefined : original.bytes);
     }
 
     const poster = await getBuiltPoster(id);
-    res.statusCode = 200;
-    res.setHeader('Content-Type', poster.type);
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('X-Content-Type-Options', 'nosniff');
-    res.setHeader('X-Poster-Date-Status', poster.status);
-    res.setHeader('X-Poster-Date', poster.releaseDate);
-    res.setHeader('Cache-Control', 'public, max-age=21600, stale-while-revalidate=86400');
+    setImageHeaders(res, poster.type, poster.status, poster.releaseDate);
     return res.end(poster.bytes);
   } catch {
-    res.statusCode = 502;
-    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    res.setHeader('Cache-Control', 'no-store');
-    return res.end('The original BetterPosters image could not be fetched. Please retry.');
+    // Never replace a working BetterPosters poster with a text/JSON error page.
+    // If our proxy cannot retrieve/process the image, let the client fetch the
+    // original provider URL directly. The date badge is skipped for this request.
+    res.statusCode = 302;
+    res.setHeader('Location', sourceUrl(id));
+    res.setHeader('Cache-Control', 'public, max-age=300');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    return res.end();
   }
 }
