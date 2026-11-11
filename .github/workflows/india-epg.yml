@@ -5,8 +5,7 @@ on:
     branches: [main]
     paths: ['epg/**', '.github/workflows/india-epg.yml']
   schedule:
-    - cron: '0 */2 * * *'
-    - cron: '11,41 * * * *'
+    - cron: '0,30 * * * *'
 
 permissions:
   contents: read
