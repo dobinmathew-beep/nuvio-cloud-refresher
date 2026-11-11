@@ -997,13 +997,6 @@
   ],
   "hindi-series": [
     {
-      "id": "tt49791829",
-      "name": "Kauriburi: The Cursed Temple",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt49791829.jpg",
-      "releaseInfo": "2026",
-      "type": "series"
-    },
-    {
       "id": "tt49702110",
       "name": "Matargashti",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt49702110.jpg",
@@ -1133,6 +1126,13 @@
       "id": "tt42733581",
       "name": "Shekhar Tonite",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt42733581.jpg",
+      "releaseInfo": "2026",
+      "type": "series"
+    },
+    {
+      "id": "tt40617563",
+      "name": "Vimal Khanna",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt40617563.jpg",
       "releaseInfo": "2026",
       "type": "series"
     }
