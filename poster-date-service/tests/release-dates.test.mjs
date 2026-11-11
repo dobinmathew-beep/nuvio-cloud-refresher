@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { validImdbId, formatBadgeDate, chooseMovieDateForTest, chooseTvDateForTest } from '../lib/release-dates.mjs';
+import { validImdbId, formatBadgeDate, chooseMovieDateForTest, chooseTvDateForTest } from '../lib/release-dates.mjs';\nimport { hasExpectedDateBadgeText } from '../lib/coming-tag.mjs';
 
 const today = '2026-11-12';
 
@@ -76,4 +76,11 @@ test('released series without an upcoming episode gets no badge', () => {
     next_episode_to_air: null,
     origin_country: ['IN']
   }, today), null);
+});
+
+test('premiere and episode badges are distinguished when preserving existing artwork', () => {
+  assert.equal(hasExpectedDateBadgeText('Coming 13 Nov', 'premiere'), true);
+  assert.equal(hasExpectedDateBadgeText('New Episode 13 Nov', 'episode'), true);
+  assert.equal(hasExpectedDateBadgeText('Coming 13 Nov', 'episode'), false);
+  assert.equal(hasExpectedDateBadgeText('New Episode 13 Nov', 'premiere'), false);
 });
