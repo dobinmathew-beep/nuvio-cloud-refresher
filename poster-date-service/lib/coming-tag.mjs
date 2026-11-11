@@ -43,10 +43,12 @@ export async function hasExistingComingDateTag(input) {
   const metadata = await sharp(input, { limitInputPixels: 40000000 }).metadata();
   if (!metadata.width || !metadata.height) throw new Error('Cannot inspect poster dimensions');
 
-  // BetterPosters tag chips can sit below the very top edge. Inspect a wider
-  // header and run OCR against both normalized grayscale and high-contrast
-  // variants so faint or compact chip lettering is less likely to be missed.
-  const cropHeight = Math.max(140, Math.min(metadata.height, Math.round(metadata.height * 0.32)));
+  // BetterPosters may place its compact Coming chip lower than the top row.
+  // Inspect the upper 65% of the poster rather than a narrow header: the
+  // previous 32% crop still missed the Dune chip in the real-world test.
+  // Suppression is intentionally conservative: missing an overlay is safer
+  // than covering an existing BetterPosters release label with a duplicate.
+  const cropHeight = Math.max(180, Math.min(metadata.height, Math.round(metadata.height * 0.65)));
   const base = sharp(input, { limitInputPixels: 40000000 })
     .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
     .resize({ width: Math.min(2400, metadata.width * 3) })
