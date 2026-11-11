@@ -32,6 +32,8 @@ export async function renderUpcomingBadge(input, isoDate) {
   const glyphs = {
     R: 'M1 13 V1 H7 Q10 1 10 4.5 Q10 8 7 8 H1 M6 8 L10 13',
     A: 'M1 13 L5.5 1 L10 13 M2.5 9 H8.5',
+    B: 'M1 1 V13 H6.5 Q10 13 10 10 Q10 7 6.5 7 H1 M6 7 Q10 7 10 4 Q10 1 6.5 1 H1',
+    F: 'M1 13 V1 H10 M1 7 H8',
     P: 'M1 13 V1 H7 Q10 1 10 4.5 Q10 8 7 8 H1',
     M: 'M1 13 V1 L5.5 7 L10 1 V13',
     U: 'M1 1 V9 Q1 13 5.5 13 Q10 13 10 9 V1',
