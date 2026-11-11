@@ -11,7 +11,7 @@ function normalizedText(text) {
   return String(text || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 }
 
-function hasComingDateText(text) {
+function hasExpectedDateBadgeText(text, kind = 'premiere') {
   const normalized = normalizedText(text);
   const month = '(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)';
   const day = '\\d{1,2}(?:st|nd|rd|th)?';
@@ -68,7 +68,7 @@ export async function hasExistingComingDateTag(input) {
   for (const mode of ['11', '6']) {
     await worker.setParameters({ tessedit_pageseg_mode: mode });
     const result = await worker.recognize(prepared);
-    if (hasComingDateText(result?.data?.text)) {
+    if (hasExpectedDateBadgeText(result?.data?.text, kind)) {
       cache.set(key, { value: true, at: Date.now() });
       return true;
     }
@@ -79,4 +79,4 @@ export async function hasExistingComingDateTag(input) {
   return false;
 }
 
-export { hasComingDateText };
+export { hasExpectedDateBadgeText };
