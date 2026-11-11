@@ -15,7 +15,7 @@ permissions:
 
 concurrency:
   group: great-indian-poster-prewarm
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   pre-generate:
@@ -45,7 +45,14 @@ jobs:
         env:
           POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
         run: |
-          curl --fail --silent --show-error --retry 3 --retry-delay 5 --retry-connrefused -X POST "$POSTER_SERVICE_URL/maintenance" -o maintenance.json
+          code=000
+          for attempt in $(seq 1 36); do
+            code=$(curl --silent --show-error -o maintenance.json -w '%{http_code}' -X POST "$POSTER_SERVICE_URL/maintenance" || true)
+            if [ "$code" = "200" ]; then break; fi
+            echo "Maintenance endpoint not ready yet (HTTP $code); waiting for the Render deployment."
+            sleep 10
+          done
+          if [ "$code" != "200" ]; then echo "ImageKit maintenance endpoint did not become ready."; cat maintenance.json || true; exit 1; fi
           node -e "const m=require('./maintenance.json'); if (m.status === 'maintenance-failed' || !Number.isFinite(m.accountBytes)) { console.error(m); process.exit(1); } console.log(JSON.stringify(m, null, 2));"
 
       - name: Scan all eight catalogues and pre-generate ImageKit posters
