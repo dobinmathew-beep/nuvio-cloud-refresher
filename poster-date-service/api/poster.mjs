@@ -78,11 +78,16 @@ async function getOriginal(imdbId) {
 }
 
 async function buildPoster(id, knownRelease = undefined) {
+  // Resolve TMDB first. Most catalogue titles have no future release date,
+  // so there is no reason to run OCR for them.
+  const release = knownRelease === undefined ? await upcomingRelease(id) : knownRelease;
   const original = await getOriginal(id);
+  if (!release?.date) {
+    return { bytes: original.bytes, type: original.type, status: 'no-upcoming-release', releaseDate: 'none' };
+  }
+
   let output = original.bytes;
   let status = 'unchanged';
-  let releaseDate = 'none';
-
   let hasComingTag;
   try {
     hasComingTag = await hasExistingComingDateTag(original.bytes);
@@ -95,19 +100,15 @@ async function buildPoster(id, knownRelease = undefined) {
   } else if (hasComingTag) {
     status = 'betterposters-coming-tag';
   } else {
-    const release = knownRelease === undefined ? await upcomingRelease(id) : knownRelease;
-    releaseDate = release?.date || 'none';
-    if (release?.date) {
-      try {
-        output = await renderUpcomingBadge(original.bytes, release.date);
-        status = 'upcoming-date-overlay';
-      } catch {
-        output = original.bytes;
-        status = 'overlay-failed-original-preserved';
-      }
+    try {
+      output = await renderUpcomingBadge(original.bytes, release.date);
+      status = 'upcoming-date-overlay';
+    } catch {
+      output = original.bytes;
+      status = 'overlay-failed-original-preserved';
     }
   }
-  return { bytes: output, type: original.type, status, releaseDate };
+  return { bytes: output, type: original.type, status, releaseDate: release.date };
 }
 
 async function getBuiltPoster(id, knownRelease = undefined) {
