@@ -1,7 +1,7 @@
 import { upcomingRelease, validImdbId } from '../lib/release-dates.mjs';
 import { renderUpcomingBadge } from '../lib/render-poster.mjs';
 import { hasExistingComingDateTag } from '../lib/coming-tag.mjs';
-import { imageKitConfig, uploadPosterToImageKit, getImageKitStorageSnapshot, IMAGEKIT_STORAGE_LIMIT_BYTES } from '../lib/imagekit-storage.mjs';
+import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster } from '../lib/imagekit-storage.mjs';
 
 const BETTERPOSTERS = 'https://btttr.cc/poster-q/imdb/poster-default/';
 const BETTERPOSTERS_RS = 'IM';
@@ -175,9 +175,8 @@ export default async function handler(req, res) {
     const poster = await getBuiltPoster(id, releaseInfo);
     // Only genuine upcoming-date overlays are stored. Ordinary, released,
     // unknown-date and BetterPosters-already-tagged posters stay out of DAM.
-    const storage = getImageKitStorageSnapshot();
     const canStore = poster.status === 'upcoming-date-overlay' &&
-      storage.known && storage.bytes + poster.bytes.length <= IMAGEKIT_STORAGE_LIMIT_BYTES;
+      canStoreImageKitPoster(id, poster.bytes.length);
     if (canStore) scheduleImageKitUpload(id, poster);
     setImageHeaders(res, poster.type, poster.status, poster.releaseDate);
     res.setHeader('X-ImageKit-Storage', canStore ? 'pending' : 'not-stored');
