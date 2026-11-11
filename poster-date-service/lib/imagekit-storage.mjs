@@ -203,7 +203,7 @@ async function getReleaseStatus(imdbId, today) {
 
 function isPosterFolderFile(file) {
   const path = String(file.filePath || '').replace(/\/$/, '');
-  return path === '/posters' && typeof file.name === 'string';
+  return path.startsWith('/posters/') && typeof file.name === 'string';
 }
 
 function imdbIdFromName(name) {
