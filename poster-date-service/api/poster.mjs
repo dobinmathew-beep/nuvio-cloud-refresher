@@ -1,6 +1,7 @@
 import { upcomingRelease, validImdbId } from '../lib/release-dates.mjs';
 import { renderUpcomingBadge } from '../lib/render-poster.mjs';
 import { hasExistingComingDateTag } from '../lib/coming-tag.mjs';
+import { imageKitConfig, uploadPosterToImageKit } from '../lib/imagekit-storage.mjs';
 
 const BETTERPOSTERS = 'https://btttr.cc/poster-q/imdb/poster-default/';
 const BETTERPOSTERS_RS = 'IM';
@@ -13,26 +14,8 @@ function sourceUrl(imdbId) {
   return BETTERPOSTERS + encodeURIComponent(imdbId) + '.jpg?rs=' + BETTERPOSTERS_RS;
 }
 
-const IMAGEKIT_UPLOAD_URL = 'https://upload.imagekit.io/api/v1/files/upload';
 const IMAGEKIT_REFRESH_MS = 6 * 60 * 60 * 1000;
 const pendingImageKitUploads = new Map();
-
-function imageKitConfig() {
-  let endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').trim();
-  const privateKey = process.env.IMAGEKIT_PRIVATE_KEY || '';
-  while (endpoint.endsWith('/')) endpoint = endpoint.slice(0, -1);
-  if (!endpoint || !privateKey) return null;
-  try {
-    const parsed = new URL(endpoint);
-    const accountId = parsed.pathname.split('/').filter(Boolean);
-    if (parsed.protocol !== 'https:' || parsed.hostname !== 'ik.imagekit.io' ||
-        accountId.length !== 1 || !/^[A-Za-z0-9_-]+$/.test(accountId[0]) ||
-        parsed.search || parsed.hash) return null;
-    return { endpoint: parsed.origin + '/' + accountId[0], privateKey };
-  } catch {
-    return null;
-  }
-}
 
 function imageKitAssetUrl(config, imdbId) {
   return config.endpoint + '/posters/' + encodeURIComponent(imdbId) + '.jpg';
@@ -60,38 +43,11 @@ async function findFreshImageKitAsset(imdbId) {
   }
 }
 
-async function uploadPosterToImageKit(imdbId, poster) {
-  const config = imageKitConfig();
-  if (!config) return;
-  const form = new FormData();
-  form.set('file', new Blob([poster.bytes], { type: poster.type }), imdbId + '.jpg');
-  form.set('fileName', imdbId + '.jpg');
-  form.set('folder', '/posters');
-  form.set('useUniqueFileName', 'false');
-  form.set('overwriteFile', 'true');
-  form.set('isPrivateFile', 'false');
-
-  const response = await fetch(IMAGEKIT_UPLOAD_URL, {
-    method: 'POST',
-    headers: {
-      Authorization: 'Basic ' + Buffer.from(config.privateKey + ':').toString('base64')
-    },
-    body: form,
-    signal: AbortSignal.timeout(15000)
-  });
-  if (!response.ok) {
-    const detail = (await response.text()).slice(0, 300);
-    throw new Error('ImageKit upload failed (' + response.status + '): ' + detail);
-  }
-  const result = await response.json();
-  if (!result.url) throw new Error('ImageKit upload response did not include a URL');
-  console.log('ImageKit poster cached:', imdbId);
-}
-
 function scheduleImageKitUpload(imdbId, poster) {
-  if (!imageKitConfig() || pendingImageKitUploads.has(imdbId)) return;
+  if (!imageKitConfig() || poster.status !== 'upcoming-date-overlay' || !poster.releaseDate) return;
+  if (pendingImageKitUploads.has(imdbId)) return;
   const job = uploadPosterToImageKit(imdbId, poster)
-    .catch(error => console.warn('ImageKit cache upload skipped for', imdbId, error.message))
+    .catch(error => console.warn('ImageKit upcoming poster upload skipped for', imdbId, error.message))
     .finally(() => pendingImageKitUploads.delete(imdbId));
   pendingImageKitUploads.set(imdbId, job);
 }
@@ -121,7 +77,7 @@ async function getOriginal(imdbId) {
   return { bytes, type };
 }
 
-async function buildPoster(id) {
+async function buildPoster(id, knownRelease = undefined) {
   const original = await getOriginal(id);
   let output = original.bytes;
   let status = 'unchanged';
@@ -139,7 +95,7 @@ async function buildPoster(id) {
   } else if (hasComingTag) {
     status = 'betterposters-coming-tag';
   } else {
-    const release = await upcomingRelease(id);
+    const release = knownRelease === undefined ? await upcomingRelease(id) : knownRelease;
     releaseDate = release?.date || 'none';
     if (release?.date) {
       try {
@@ -154,18 +110,20 @@ async function buildPoster(id) {
   return { bytes: output, type: original.type, status, releaseDate };
 }
 
-async function getBuiltPoster(id) {
-  const cached = resultCache.get(id);
+async function getBuiltPoster(id, knownRelease = undefined) {
+  const today = new Date().toISOString().slice(0, 10);
+  const cacheKey = id + '|' + today;
+  const cached = resultCache.get(cacheKey);
   if (cached && cached.expiresAt > Date.now()) return cached.value;
-  if (pendingResults.has(id)) return pendingResults.get(id);
+  if (pendingResults.has(cacheKey)) return pendingResults.get(cacheKey);
 
-  const pending = buildPoster(id).then(value => {
-    resultCache.set(id, { value, expiresAt: Date.now() + RESULT_CACHE_MS });
+  const pending = buildPoster(id, knownRelease).then(value => {
+    resultCache.set(cacheKey, { value, expiresAt: Date.now() + RESULT_CACHE_MS });
     while (resultCache.size > 500) resultCache.delete(resultCache.keys().next().value);
     return value;
-  }).finally(() => pendingResults.delete(id));
+  }).finally(() => pendingResults.delete(cacheKey));
 
-  pendingResults.set(id, pending);
+  pendingResults.set(cacheKey, pending);
   return pending;
 }
 
@@ -208,16 +166,15 @@ export default async function handler(req, res) {
       return res.end(req.method === 'HEAD' ? undefined : original.bytes);
     }
 
-    // Completed posters are served from ImageKit's CDN on later requests.
-    // The service refreshes the persistent copy after six hours when ImageKit
-    // exposes a Last-Modified timestamp; otherwise it safely trusts the asset.
+    // An ImageKit copy is valid only while TMDB still confirms a future release.
+    // This prevents a cached date badge from surviving its release day.
+    const releaseInfo = await upcomingRelease(id);
     const imageKitAsset = await findFreshImageKitAsset(id);
-    if (imageKitAsset) return redirectToImageKit(res, imageKitAsset);
+    if (imageKitAsset && releaseInfo?.date) return redirectToImageKit(res, imageKitAsset);
 
-    const poster = await getBuiltPoster(id);
-    // Upload in the background so the first poster response is not delayed by
-    // the storage API. If ImageKit is unavailable, the processed image still
-    // reaches Xperience directly and the BetterPosters fail-open path is intact.
+    const poster = await getBuiltPoster(id, releaseInfo);
+    // Only genuine upcoming-date overlays are stored. Ordinary, released,
+    // unknown-date and BetterPosters-already-tagged posters stay out of DAM.
     scheduleImageKitUpload(id, poster);
     setImageHeaders(res, poster.type, poster.status, poster.releaseDate);
     return res.end(poster.bytes);
