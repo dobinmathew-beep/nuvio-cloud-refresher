@@ -1,5 +1,5 @@
 export default function handler(_req, res) {
-  const configured = Boolean(process.env.TMDB_API_KEY);
+  const configured = Boolean(process.env.TMDB_API_KEY || process.env.TMDB_API_READ_ACCESS_TOKEN);
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
   res.setHeader('Cache-Control', 'no-store');
   res.statusCode = configured ? 200 : 503;
@@ -9,6 +9,7 @@ export default function handler(_req, res) {
     posterSource: 'BetterPosters',
     releaseDateSource: 'TMDB',
     tmdbConfigured: configured,
+    acceptedCredentials: ['TMDB_API_KEY', 'TMDB_API_READ_ACCESS_TOKEN'],
     badge: 'UPCOMING • MON DD',
     failSafe: 'If no confirmed future date is found, the original BetterPosters image is returned unchanged.'
   }));
