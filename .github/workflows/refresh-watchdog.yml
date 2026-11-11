@@ -1,6 +1,5 @@
 name: Refresh watchdog
 on:
-  workflow_dispatch:
   push:
     branches: [main]
     paths: [refresh_watchdog.py, update_dashboard.py, tests/test_refresh_watchdog.py, tests/test_update_dashboard.py, tests/test_media_schedule.py, tests/test_featured.py, .github/workflows/refresh-watchdog.yml]
