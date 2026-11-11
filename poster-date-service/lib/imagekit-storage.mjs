@@ -193,17 +193,17 @@ async function getReleaseStatus(imdbId, today) {
   const movie = found.movie_results?.[0];
   if (movie?.id) {
     const data = await tmdbJson('/movie/' + movie.id + '/release_dates');
-    const dates = (data.results || []).flatMap(region => (region.release_dates || [])
-      .map(item => (item.release_date || '').slice(0, 10)).filter(validDate));
-    const future = dates.filter(date => date > today).sort();
+    const allDates = (data.results || []).flatMap(region => (region.release_dates || [])
+      .map(item => ({ date: (item.release_date || '').slice(0, 10), type: item.type }))
+      .filter(item => validDate(item.date)));
+    const digitalDates = allDates.filter(item => item.type === 4).map(item => item.date);
+    const future = digitalDates.filter(date => date > today).sort();
     if (future.length) return { status: 'upcoming', date: future[0] };
-    if (dates.length) return { status: 'expired', date: dates.sort().at(-1) };
-    if (validDate(movie.release_date)) {
-      return movie.release_date > today
-        ? { status: 'upcoming', date: movie.release_date }
-        : { status: 'expired', date: movie.release_date };
+    if (digitalDates.length) return { status: 'expired', date: digitalDates.sort().at(-1) };
+    if (allDates.length || validDate(movie.release_date)) {
+      return { status: 'ineligible', reason: 'Movie has no upcoming digital release date' };
     }
-    return { status: 'unknown', reason: 'TMDB movie has no usable release date' };
+    return { status: 'unknown', reason: 'TMDB movie has no usable digital release date' };
   }
 
   const show = found.tv_results?.[0];
@@ -310,12 +310,12 @@ export async function runImageKitMaintenance({ force = false } = {}) {
           console.warn('ImageKit old versions retained; version audit failed:', id, versionError.message);
         }
         const status = await getReleaseStatus(id, today);
-        if (status.status === 'expired') {
+        if (status.status === 'expired' || status.status === 'ineligible') {
           await deleteImageKitFile(current.fileId);
           deletedFileIds.add(current.fileId);
           accountBytes = Math.max(0, accountBytes - (Number(current.size) || 0));
           expiredDeleted++;
-          console.log('ImageKit expired poster deleted:', id, status.date);
+          console.log('ImageKit ineligible or expired poster deleted:', id, status.date || status.reason);
         } else if (status.status === 'upcoming') {
           active.push({ id, date: status.date, file: current });
         } else {
