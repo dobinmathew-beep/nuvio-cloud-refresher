@@ -5,34 +5,39 @@ const CACHE_MS = 6 * 60 * 60 * 1000;
 const NEGATIVE_CACHE_MS = 30 * 60 * 1000;
 
 export function validImdbId(value) {
-  return typeof value === 'string' && /^tt\d{7,10}$/.test(value);
+  return typeof value === 'string' && /^tt\\d{7,10}$/.test(value);
 }
 export function formatBadgeDate(isoDate) {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(isoDate || '')) return null;
+  if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(isoDate || '')) return null;
   const date = new Date(isoDate + 'T00:00:00Z');
   if (!Number.isFinite(date.getTime()) || date.toISOString().slice(0, 10) !== isoDate) return null;
   return new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', timeZone: 'UTC' }).format(date).toUpperCase();
 }
 function isFuture(date, today) {
-  return /^\d{4}-\d{2}-\d{2}$/.test(date || '') && date > today;
+  return /^\\d{4}-\\d{2}-\\d{2}$/.test(date || '') && date > today;
+}
+
+// Only TMDB Digital (release_type 4) dates can trigger a movie badge.
+// Theatrical, premiere, physical and television broadcast dates are excluded.
+function digitalDates(rows) {
+  return rows.flatMap(row => (row.release_dates || [])
+    .filter(item => item.type === 4)
+    .map(item => ({ date: (item.release_date || '').slice(0, 10), region: row.iso_3166_1 })))
+    .filter(item => /^\\d{4}-\\d{2}-\\d{2}$/.test(item.date));
 }
 function chooseMovieDate(rows, today) {
-  for (const region of ['IN', 'US', 'GB']) {
-    const row = rows.find(item => item.iso_3166_1 === region);
-    const future = (row?.release_dates || [])
-      .filter(item => isFuture((item.release_date || '').slice(0, 10), today))
-      .sort((a, b) => (a.release_date || '').localeCompare(b.release_date || ''));
-    if (future.length) return { date: future[0].release_date.slice(0, 10), region, source: 'tmdb-movie-release-dates' };
-  }
-  const all = rows.flatMap(row => (row.release_dates || [])
-    .filter(item => isFuture((item.release_date || '').slice(0, 10), today))
-    .map(item => ({ date: item.release_date.slice(0, 10), region: row.iso_3166_1 })))
+  const all = digitalDates(rows);
+  // Prefer the Indian digital date. If TMDB has no Indian digital listing at
+  // all, allow another territory's confirmed digital date as a fallback.
+  const india = all.filter(item => item.region === 'IN').sort((a, b) => a.date.localeCompare(b.date));
+  const candidates = india.length ? india : all
+    .filter(item => ['US', 'GB'].includes(item.region))
     .sort((a, b) => a.date.localeCompare(b.date));
-  return all[0] ? { ...all[0], source: 'tmdb-movie-release-dates' } : null;
+  const future = candidates.find(item => isFuture(item.date, today));
+  return future ? { ...future, source: 'tmdb-digital-release', kind: 'premiere' } : null;
 }
 async function tmdbJson(path, credential) {
   const url = new URL(TMDB + path);
-  // TMDB's /find endpoint requires the external ID namespace explicitly.
   if (path.startsWith('/find/')) url.searchParams.set('external_source', 'imdb_id');
   const headers = { accept: 'application/json' };
   if (credential.readToken) headers.authorization = 'Bearer ' + credential.readToken;
@@ -46,16 +51,21 @@ async function resolveDate(imdbId, credential, today) {
   const movie = found.movie_results?.[0];
   if (movie?.id) {
     const releaseData = await tmdbJson('/movie/' + movie.id + '/release_dates', credential);
-    const selected = chooseMovieDate(releaseData.results || [], today);
-    if (selected) return selected;
+    return chooseMovieDate(releaseData.results || [], today);
   }
   const show = found.tv_results?.[0];
   if (show?.id) {
     const details = await tmdbJson('/tv/' + show.id, credential);
+    // A next episode is a separate event from the series premiere.
     const next = details.next_episode_to_air?.air_date;
-    if (isFuture(next, today)) return { date: next, region: null, source: 'tmdb-next-episode' };
+    if (isFuture(next, today)) {
+      return { date: next, region: details.origin_country?.[0] || null, source: 'tmdb-next-episode', kind: 'episode' };
+    }
+    // Only an unreleased series can receive the premiere-style badge.
     const premiere = details.first_air_date;
-    if (isFuture(premiere, today)) return { date: premiere, region: null, source: 'tmdb-series-premiere' };
+    if (isFuture(premiere, today)) {
+      return { date: premiere, region: details.origin_country?.[0] || null, source: 'tmdb-series-premiere', kind: 'premiere' };
+    }
   }
   return null;
 }
