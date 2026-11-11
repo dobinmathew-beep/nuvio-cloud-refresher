@@ -50,19 +50,43 @@ async function apiRequest(url, options = {}, timeoutMs = 15000) {
   return response;
 }
 
-export async function listImageKitFiles() {
-  const files = [];
+async function listFolderEntries(path, type) {
+  const entries = [];
   const limit = 1000;
   for (let skip = 0; skip < 100000; skip += limit) {
     const url = new URL(API + '/files');
-    url.searchParams.set('type', 'file');
+    url.searchParams.set('type', type);
+    url.searchParams.set('path', path);
     url.searchParams.set('limit', String(limit));
     url.searchParams.set('skip', String(skip));
     const response = await apiRequest(url);
     const page = await response.json();
-    if (!Array.isArray(page)) throw new Error('Unexpected ImageKit file-list response');
-    files.push(...page);
+    if (!Array.isArray(page)) throw new Error('Unexpected ImageKit ' + type + '-list response');
+    entries.push(...page);
     if (page.length < limit) break;
+  }
+  return entries;
+}
+
+export async function listImageKitFiles() {
+  const files = [];
+  const pendingFolders = ['/'];
+  const visited = new Set();
+  while (pendingFolders.length) {
+    const path = pendingFolders.pop();
+    if (visited.has(path) || visited.size > 5000) continue;
+    visited.add(path);
+    const [folderFiles, subfolders] = await Promise.all([
+      listFolderEntries(path, 'file'),
+      listFolderEntries(path, 'folder')
+    ]);
+    files.push(...folderFiles);
+    for (const folder of subfolders) {
+      const name = String(folder.name || '');
+      if (!name || name === '.' || name === '..') continue;
+      const childPath = (path === '/' ? '' : path) + '/' + name;
+      if (!visited.has(childPath)) pendingFolders.push(childPath);
+    }
   }
   return files;
 }
@@ -98,7 +122,6 @@ export async function uploadPosterToImageKit(imdbId, poster) {
   form.set('useUniqueFileName', 'false');
   form.set('overwriteFile', 'true');
   form.set('isPrivateFile', 'false');
-  form.set('tags', JSON.stringify(['great-indian-addon', 'upcoming-date-poster']));
 
   const response = await fetch(UPLOAD_API, {
     method: 'POST',
@@ -208,7 +231,18 @@ export async function runImageKitMaintenance({ force = false } = {}) {
     for (const [id, copies] of byId) {
       if (copies.length < 2) continue;
       const canonical = copies.filter(file => file.name.toLowerCase() === (id + '.jpg').toLowerCase());
-      if (!canonical.length) continue;
+      if (!canonical.length) {
+        // Non-canonical variants are not used by the public URL scheme.
+        // Remove them; an active title will be re-created at the stable ID path.
+        for (const file of copies) {
+          if (!file.fileId) continue;
+          await deleteImageKitFile(file.fileId);
+          accountBytes = Math.max(0, accountBytes - (Number(file.size) || 0));
+          duplicatesDeleted++;
+        }
+        byId.set(id, []);
+        continue;
+      }
       const keep = canonical.sort((a, b) => Date.parse(b.updatedAt || b.createdAt || 0) - Date.parse(a.updatedAt || a.createdAt || 0))[0];
       for (const file of copies) {
         if (file.fileId === keep.fileId) continue;
@@ -216,6 +250,7 @@ export async function runImageKitMaintenance({ force = false } = {}) {
         accountBytes = Math.max(0, accountBytes - (Number(file.size) || 0));
         duplicatesDeleted++;
       }
+      byId.set(id, [keep]);
     }
 
     for (const [id, copies] of byId) {
