@@ -18,64 +18,13 @@ export async function renderUpcomingBadge(input, isoDate) {
   const radius = Math.round(badgeHeight * 0.34);
   const blurRadius = Math.max(6, Math.round(width * 0.022));
 
-  const crop = await sharp(input).extract({ left, top, width: badgeWidth, height: badgeHeight }).stats();
-  const channels = crop.channels;
-  const rgb = channels.slice(0, 3).map(c => Math.max(0, Math.min(255, Math.round(c.mean))));
-  const luminance = 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
-  const textColor = luminance > 148 ? '#111820' : '#FFFFFF';
-  const textOutline = luminance > 148 ? '#FFFFFF' : '#101820';
-  const tint = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
+  // Keep the release label consistently pure white for strong contrast on every poster.
+  // Use a conventional bold sans-serif face instead of hand-drawn outline glyphs.
+  const fontSize = Math.round(badgeHeight * 0.40);
+  const letterSpacing = Math.max(0.5, width * 0.0018);
+  const textShadow = '#101820';
 
-  // Use vector-drawn glyphs rather than SVG text. This avoids server font discovery
-  // entirely, so letters and digits cannot turn into missing-font square glyphs.
-  // The bold, rounded geometric strokes are intentionally close to a compact sans badge face.
-  const glyphs = {
-    R: 'M1 13 V1 H7 Q10 1 10 4.5 Q10 8 7 8 H1 M6 8 L10 13',
-    A: 'M1 13 L5.5 1 L10 13 M2.5 9 H8.5',
-    B: 'M1 1 V13 H6.5 Q10 13 10 10 Q10 7 6.5 7 H1 M6 7 Q10 7 10 4 Q10 1 6.5 1 H1',
-    F: 'M1 13 V1 H10 M1 7 H8',
-    P: 'M1 13 V1 H7 Q10 1 10 4.5 Q10 8 7 8 H1',
-    M: 'M1 13 V1 L5.5 7 L10 1 V13',
-    U: 'M1 1 V9 Q1 13 5.5 13 Q10 13 10 9 V1',
-    G: 'M10 3 Q8 1 5.5 1 Q1 1 1 7 Q1 13 5.5 13 H10 V8 H6',
-    S: 'M10 2 Q8 1 5 1 Q1 1 1 4 Q1 6 5.5 7 Q10 8 10 10 Q10 13 6 13 H1',
-    N: 'M1 13 V1 L10 13 V1',
-    O: 'M3.5 1 H7.5 Q10 1 10 4 V10 Q10 13 7.5 13 H3.5 Q1 13 1 10 V4 Q1 1 3.5 1 Z',
-    V: 'M1 1 L5.5 13 L10 1',
-    T: 'M1 1 H10 M5.5 1 V13',
-    J: 'M10 1 V9 Q10 13 5.5 13 H1',
-    Y: 'M1 1 L5.5 7 L10 1 M5.5 7 V13',
-    E: 'M10 1 H1 V13 H10 M1 7 H8',
-    L: 'M1 1 V13 H10',
-    D: 'M1 1 V13 H5.5 Q10 13 10 7 Q10 1 5.5 1 Z',
-    C: 'M10 2 Q1 -1 1 7 Q1 15 10 12',
-    '2': 'M1 4 Q1 1 4 1 H7 Q10 1 10 4 V6 L1 13 H10',
-    '0': 'M3.5 1 H7.5 Q10 1 10 4 V10 Q10 13 7.5 13 H3.5 Q1 13 1 10 V4 Q1 1 3.5 1 Z',
-    '1': 'M3 4 L6 1 V13 M3 13 H9',
-    '3': 'M1 1 H7 Q10 1 10 4 V5 Q10 7 7 7 H4 M7 7 Q10 7 10 10 V10 Q10 13 7 13 H1',
-    '4': 'M8 13 V1 L1 9 H10',
-    '5': 'M10 1 H2 L1 7 H7 Q10 7 10 10 Q10 13 7 13 H1',
-    '6': 'M9 1 H4 Q1 1 1 5 V10 Q1 13 4 13 H7 Q10 13 10 10 Q10 7 7 7 H1',
-    '7': 'M1 1 H10 L4 13',
-    '8': 'M3.5 1 H7.5 Q10 1 10 4 Q10 7 5.5 7 Q1 7 1 4 Q1 1 3.5 1 Z M1 10 Q1 7 5.5 7 Q10 7 10 10 Q10 13 7.5 13 H3.5 Q1 13 1 10 Z',
-    '9': 'M10 13 V4 Q10 1 6 1 H4 Q1 1 1 4 Q1 7 4 7 H7 Q10 7 10 4'
-  };
-  const advance = 11.8;
-  const totalUnits = label.length * advance - 1.5;
-  const scale = Math.min((badgeHeight * 0.68) / 14, (badgeWidth * 0.90) / totalUnits);
-  const textWidth = totalUnits * scale;
-  const textHeight = 14 * scale;
-  const startX = (badgeWidth - textWidth) / 2;
-  const startY = (badgeHeight - textHeight) / 2;
-  const strokeWidth = 2.15 * scale;
-  let glyphPaths = '';
-  for (let i = 0; i < label.length; i++) {
-    const ch = label[i];
-    if (ch === ' ') continue;
-    const path = glyphs[ch];
-    if (!path) throw new Error('Unsupported release badge character: ' + ch);
-    glyphPaths += `<path d="${path}" transform="translate(${startX + i * advance * scale} ${startY}) scale(${scale})"/>`;
-  }
+
 
   const roundedMask = Buffer.from(
     `<svg xmlns="http://www.w3.org/2000/svg" width="${badgeWidth}" height="${badgeHeight}"><rect width="${badgeWidth}" height="${badgeHeight}" rx="${radius}" fill="white"/></svg>`
@@ -104,8 +53,11 @@ export async function renderUpcomingBadge(input, isoDate) {
     <rect x="2" y="2" width="${badgeWidth - 4}" height="${badgeHeight - 4}" rx="${radius - 1}" fill="url(#glass)"/>
     <rect x="3" y="3" width="${badgeWidth - 6}" height="${Math.round(badgeHeight * .54)}" rx="${Math.max(4, radius - 2)}" fill="url(#reflection)"/>
     <path d="M ${radius} 1 H ${badgeWidth - radius} Q ${badgeWidth - 1} 1 ${badgeWidth - 1} ${radius}" fill="none" stroke="#FFFFFF" stroke-opacity=".76" stroke-width="${Math.max(1.2, width * .0028)}"/>
-    <g fill="none" stroke="${textColor}" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round" opacity=".98">${glyphPaths}</g>
-    <g fill="none" stroke="${textOutline}" stroke-width="${Math.max(.65, strokeWidth * .18)}" stroke-linecap="round" stroke-linejoin="round" opacity=".20">${glyphPaths}</g>
+    <text x="${badgeWidth / 2}" y="${badgeHeight / 2}" text-anchor="middle" dominant-baseline="central"
+      font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif" font-size="${fontSize}"
+      font-weight="700" letter-spacing="${letterSpacing}" fill="#FFFFFF"
+      stroke="${textShadow}" stroke-opacity=".34" stroke-width="${Math.max(0.8, fontSize * 0.035)}"
+      stroke-linejoin="round" paint-order="stroke fill">${label}</text>
   </svg>`);
 
   let image = sharp(input).composite([
