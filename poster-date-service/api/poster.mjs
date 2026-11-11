@@ -3,7 +3,7 @@ import { renderUpcomingBadge } from '../lib/render-poster.mjs';
 import { hasExistingComingDateTag } from '../lib/coming-tag.mjs';
 import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster } from '../lib/imagekit-storage.mjs';
 
-const BETTERPOSTERS = 'https://btttr.cc/poster-q/imdb/poster-default/';
+const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
 const BETTERPOSTERS_RS = 'IM';
 const MAX_BYTES = 15 * 1024 * 1024;
 const RESULT_CACHE_MS = 6 * 60 * 60 * 1000;
