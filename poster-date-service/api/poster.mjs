@@ -1,11 +1,12 @@
 import { upcomingRelease, validImdbId } from '../lib/release-dates.mjs';
 import { renderUpcomingBadge } from '../lib/render-poster.mjs';
 
-const BETTERPOSTERS = 'https://btttr.cc/poster-q/imdb/poster-default/';
+// Use the user's new BetterPosters URL (without the quality-badge variant or rs parameter).
+const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
 const MAX_BYTES = 15 * 1024 * 1024;
 
 async function getOriginal(imdbId) {
-  const response = await fetch(BETTERPOSTERS + encodeURIComponent(imdbId) + '.jpg?rs=IM', {
+  const response = await fetch(BETTERPOSTERS + encodeURIComponent(imdbId) + '.jpg', {
     headers: { accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' },
     redirect: 'follow',
     signal: AbortSignal.timeout(14000)
