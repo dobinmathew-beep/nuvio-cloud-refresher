@@ -1,0 +1,30 @@
+name: Poster date service checks
+on:
+  workflow_dispatch:
+  push:
+    branches: [poster-date-service]
+    paths:
+      - 'poster-date-service/**'
+      - '.github/workflows/poster-date-service.yml'
+permissions:
+  contents: read
+concurrency:
+  group: poster-date-service-checks
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: poster-date-service
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --ignore-scripts=false
+      - name: Run isolated service tests
+        run: npm test
