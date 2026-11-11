@@ -5,30 +5,30 @@ const CACHE_MS = 6 * 60 * 60 * 1000;
 const NEGATIVE_CACHE_MS = 30 * 60 * 1000;
 
 export function validImdbId(value) {
-  return typeof value === 'string' && /^tt\\d{7,10}$/.test(value);
+  return typeof value === 'string' && /^tt\d{7,10}$/.test(value);
 }
 export function formatBadgeDate(isoDate) {
-  if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(isoDate || '')) return null;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(isoDate || '')) return null;
   const date = new Date(isoDate + 'T00:00:00Z');
   if (!Number.isFinite(date.getTime()) || date.toISOString().slice(0, 10) !== isoDate) return null;
   return new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', timeZone: 'UTC' }).format(date).toUpperCase();
 }
 function isFuture(date, today) {
-  return /^\\d{4}-\\d{2}-\\d{2}$/.test(date || '') && date > today;
+  return /^\d{4}-\d{2}-\d{2}$/.test(date || '') && date > today;
 }
 
-// Only TMDB Digital (release_type 4) dates can trigger a movie badge.
-// Theatrical, premiere, physical and television broadcast dates are excluded.
+// TMDB release_type 4 is Digital. Theatrical, premiere, physical and TV
+// broadcast dates must never be used as a movie's upcoming digital date.
 function digitalDates(rows) {
   return rows.flatMap(row => (row.release_dates || [])
     .filter(item => item.type === 4)
     .map(item => ({ date: (item.release_date || '').slice(0, 10), region: row.iso_3166_1 })))
-    .filter(item => /^\\d{4}-\\d{2}-\\d{2}$/.test(item.date));
+    .filter(item => /^\d{4}-\d{2}-\d{2}$/.test(item.date));
 }
 function chooseMovieDate(rows, today) {
   const all = digitalDates(rows);
-  // Prefer the Indian digital date. If TMDB has no Indian digital listing at
-  // all, allow another territory's confirmed digital date as a fallback.
+  // Prefer India's digital date. If TMDB has no Indian digital listing at
+  // all, a confirmed US/GB digital date may be used as a fallback.
   const india = all.filter(item => item.region === 'IN').sort((a, b) => a.date.localeCompare(b.date));
   const candidates = india.length ? india : all
     .filter(item => ['US', 'GB'].includes(item.region))
@@ -36,7 +36,20 @@ function chooseMovieDate(rows, today) {
   const future = candidates.find(item => isFuture(item.date, today));
   return future ? { ...future, source: 'tmdb-digital-release', kind: 'premiere' } : null;
 }
-function chooseTvDate(details, today) {\n  const next = details.next_episode_to_air?.air_date;\n  if (isFuture(next, today)) {\n    return { date: next, region: details.origin_country?.[0] || null, source: 'tmdb-next-episode', kind: 'episode' };\n  }\n  const premiere = details.first_air_date;\n  if (isFuture(premiere, today)) {\n    return { date: premiere, region: details.origin_country?.[0] || null, source: 'tmdb-series-premiere', kind: 'premiere' };\n  }\n  return null;\n}\nasync function tmdbJson(path, credential) {
+function chooseTvDate(details, today) {
+  // A next episode is a separate event from the series premiere.
+  const next = details.next_episode_to_air?.air_date;
+  if (isFuture(next, today)) {
+    return { date: next, region: details.origin_country?.[0] || null, source: 'tmdb-next-episode', kind: 'episode' };
+  }
+  // Only an unreleased series can receive the premiere-style badge.
+  const premiere = details.first_air_date;
+  if (isFuture(premiere, today)) {
+    return { date: premiere, region: details.origin_country?.[0] || null, source: 'tmdb-series-premiere', kind: 'premiere' };
+  }
+  return null;
+}
+async function tmdbJson(path, credential) {
   const url = new URL(TMDB + path);
   if (path.startsWith('/find/')) url.searchParams.set('external_source', 'imdb_id');
   const headers = { accept: 'application/json' };
@@ -86,4 +99,7 @@ export async function upcomingRelease(imdbId, options = {}) {
 }
 export function chooseMovieDateForTest(rows, today) {
   return chooseMovieDate(rows, today);
+}
+export function chooseTvDateForTest(details, today) {
+  return chooseTvDate(details, today);
 }
