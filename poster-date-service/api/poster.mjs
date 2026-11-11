@@ -13,6 +13,88 @@ function sourceUrl(imdbId) {
   return BETTERPOSTERS + encodeURIComponent(imdbId) + '.jpg?rs=' + BETTERPOSTERS_RS;
 }
 
+const IMAGEKIT_UPLOAD_URL = 'https://upload.imagekit.io/api/v1/files/upload';
+const IMAGEKIT_REFRESH_MS = 6 * 60 * 60 * 1000;
+const pendingImageKitUploads = new Map();
+
+function imageKitConfig() {
+  const endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\\/+$/, '');
+  const privateKey = process.env.IMAGEKIT_PRIVATE_KEY || '';
+  if (!endpoint || !privateKey || !/^https:\\/\\/ik\\.imagekit\\.io\\/[A-Za-z0-9_-]+$/.test(endpoint)) return null;
+  return { endpoint, privateKey };
+}
+
+function imageKitAssetUrl(config, imdbId) {
+  return config.endpoint + '/posters/' + encodeURIComponent(imdbId) + '.jpg';
+}
+
+async function findFreshImageKitAsset(imdbId) {
+  const config = imageKitConfig();
+  if (!config) return null;
+  const assetUrl = imageKitAssetUrl(config, imdbId);
+  const checkUrl = new URL(assetUrl);
+  // A changing check key avoids trusting a stale edge-cached HEAD response.
+  checkUrl.searchParams.set('poster-cache-check', String(Math.floor(Date.now() / IMAGEKIT_REFRESH_MS)));
+  try {
+    const response = await fetch(checkUrl, {
+      method: 'HEAD',
+      cache: 'no-store',
+      signal: AbortSignal.timeout(3000)
+    });
+    if (!response.ok) return null;
+    const lastModified = Date.parse(response.headers.get('last-modified') || '');
+    if (Number.isFinite(lastModified) && Date.now() - lastModified > IMAGEKIT_REFRESH_MS) return null;
+    return assetUrl;
+  } catch {
+    return null;
+  }
+}
+
+async function uploadPosterToImageKit(imdbId, poster) {
+  const config = imageKitConfig();
+  if (!config) return;
+  const form = new FormData();
+  form.set('file', new Blob([poster.bytes], { type: poster.type }), imdbId + '.jpg');
+  form.set('fileName', imdbId + '.jpg');
+  form.set('folder', '/posters');
+  form.set('useUniqueFileName', 'false');
+  form.set('overwriteFile', 'true');
+  form.set('isPrivateFile', 'false');
+
+  const response = await fetch(IMAGEKIT_UPLOAD_URL, {
+    method: 'POST',
+    headers: {
+      Authorization: 'Basic ' + Buffer.from(config.privateKey + ':').toString('base64')
+    },
+    body: form,
+    signal: AbortSignal.timeout(15000)
+  });
+  if (!response.ok) {
+    const detail = (await response.text()).slice(0, 300);
+    throw new Error('ImageKit upload failed (' + response.status + '): ' + detail);
+  }
+  const result = await response.json();
+  if (!result.url) throw new Error('ImageKit upload response did not include a URL');
+  console.log('ImageKit poster cached:', imdbId);
+}
+
+function scheduleImageKitUpload(imdbId, poster) {
+  if (!imageKitConfig() || pendingImageKitUploads.has(imdbId)) return;
+  const job = uploadPosterToImageKit(imdbId, poster)
+    .catch(error => console.warn('ImageKit cache upload skipped for', imdbId, error.message))
+    .finally(() => pendingImageKitUploads.delete(imdbId));
+  pendingImageKitUploads.set(imdbId, job);
+}
+
+function redirectToImageKit(res, assetUrl) {
+  res.statusCode = 302;
+  res.setHeader('Location', assetUrl);
+  res.setHeader('Cache-Control', 'public, max-age=21600, stale-while-revalidate=86400');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('X-Poster-Date-Status', 'imagekit-cache-hit');
+  return res.end();
+}
+
 async function getOriginal(imdbId) {
   const response = await fetch(sourceUrl(imdbId), {
     headers: { accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' },
@@ -116,7 +198,17 @@ export default async function handler(req, res) {
       return res.end(req.method === 'HEAD' ? undefined : original.bytes);
     }
 
+    // Completed posters are served from ImageKit's CDN on later requests.
+    // The service refreshes the persistent copy after six hours when ImageKit
+    // exposes a Last-Modified timestamp; otherwise it safely trusts the asset.
+    const imageKitAsset = await findFreshImageKitAsset(id);
+    if (imageKitAsset) return redirectToImageKit(res, imageKitAsset);
+
     const poster = await getBuiltPoster(id);
+    // Upload in the background so the first poster response is not delayed by
+    // the storage API. If ImageKit is unavailable, the processed image still
+    // reaches Xperience directly and the BetterPosters fail-open path is intact.
+    scheduleImageKitUpload(id, poster);
     setImageHeaders(res, poster.type, poster.status, poster.releaseDate);
     return res.end(poster.bytes);
   } catch {
