@@ -104,9 +104,17 @@ async function prewarm(imdbId) {
       if (!response.ok) throw new Error('Poster service HTTP ' + response.status);
       const type = (response.headers.get('content-type') || '').toLowerCase();
       if (!type.startsWith('image/')) throw new Error('Poster service returned a non-image response');
-      await response.arrayBuffer(); // Consume the first-render response before checking the asynchronous CDN upload.
+      const posterStatus = response.headers.get('x-poster-date-status') || 'unknown';
+      const storageStatus = response.headers.get('x-imagekit-storage') || 'not-stored';
+      await response.arrayBuffer();
+      if (posterStatus !== 'upcoming-date-overlay') {
+        return { id: imdbId, status: 'not-stored-no-active-overlay' };
+      }
+      if (storageStatus !== 'pending') {
+        return { id: imdbId, status: 'not-stored-storage-guard' };
+      }
       if (await waitForImageKit(imdbId)) return { id: imdbId, status: 'generated-and-cached' };
-      throw new Error('Processed poster returned, but ImageKit upload was not visible within ' + (UPLOAD_WAIT_MS / 1000) + ' seconds');
+      throw new Error('Upcoming poster was rendered, but ImageKit upload was not visible within ' + (UPLOAD_WAIT_MS / 1000) + ' seconds');
     } catch (error) {
       lastError = error;
       if (attempt < 2) await sleep(3000);
@@ -142,7 +150,9 @@ async function writeSummary(summary) {
     `- Finished: ${summary.finishedAt}`,
     `- Catalogues: ${summary.catalogues.length}`,
     `- Unique IMDb IDs: ${summary.totalIds}`,
-    `- ImageKit ready: ${summary.ready}`,
+    `- Processed successfully: ${summary.ready}`,
+    `- ImageKit assets verified: ${summary.stored}`,
+    `- Skipped to conserve storage: ${summary.skipped}`,
     `- Failed: ${summary.failed}`,
     '',
     '## Catalogue scan',
@@ -182,7 +192,9 @@ async function main() {
     finishedAt: new Date().toISOString(),
     catalogues,
     totalIds: allIds.length,
-    ready: results.length - failures.length,
+    ready: results.filter(x => x.status !== 'failed').length,
+    stored: results.filter(x => x.status === 'generated-and-cached' || x.status === 'cdn-hit').length,
+    skipped: results.filter(x => x.status.startsWith('not-stored')).length,
     failed: failures.length,
     failures
   };
