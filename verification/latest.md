@@ -1,6 +1,6 @@
 # Independent Nuvio output verification
 
-**Checked:** 2026-11-11T14:50:05.814183+04:00 (Oman time)
+**Checked:** 2026-11-11T14:54:26.537186+04:00 (Oman time)
 **Overall:** 4/4 outputs passed
 
 | Output | Result |
@@ -16,8 +16,8 @@
 - **PASS** public health endpoint: {"checkout": {"ready": false, "configured": false, "provider": "Bank Muscat", "amountMode": "provider-entered"}}
 
 ## Epg — PASS
-- **PASS** public status and freshness: {"revision": "e8aeb63f-b0fa-4731-b752-c524e3114edc", "checked_utc": "2026-11-11T08:00:58.050783+00:00", "matched_ids": 622, "playlist_channel_ids": 824, "unresolved_ids": 202, "programmes": 69540}
-- **PASS** published XMLTV: {"bytes": 2910147, "channels": 622, "programmes": 69540}
+- **PASS** public status and freshness: {"revision": "3c0047b4-6846-46d0-9116-b07281a11c5b", "checked_utc": "2026-11-11T10:00:55.937912+00:00", "matched_ids": 622, "playlist_channel_ids": 824, "unresolved_ids": 202, "programmes": 68212}
+- **PASS** published XMLTV: {"bytes": 2023809, "channels": 622, "programmes": 68212}
 - **PASS** Channel_Matching_Report.csv: {"rows": 824}
 - **PASS** Unresolved_Channels.csv: {"rows": 202}
 - **PASS** Source_Crosscheck_Report.csv: {"rows": 3150}
