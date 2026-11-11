@@ -26,5 +26,11 @@ jobs:
           node-version: '22'
       - name: Install dependencies
         run: npm install --ignore-scripts=false
+      - name: Check JavaScript syntax
+        run: |
+          node --check server.mjs
+          node --check api/poster.mjs
+          node --check lib/imagekit-storage.mjs
+          node --check scripts/prewarm.mjs
       - name: Run isolated service tests
         run: npm test
