@@ -16,8 +16,9 @@ function hasExpectedDateBadgeText(text, kind = 'premiere') {
   const month = '(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)';
   const day = '\\d{1,2}(?:st|nd|rd|th)?';
   const date = '(?:' + day + '\\s*' + month + '|' + month + '\\s*' + day + ')';
-  if (new RegExp('(?:^|\\s)' + date + '(?:$|\\s)', 'i').test(normalized)) return true;
-  return new RegExp('coming.{0,40}' + date, 'i').test(normalized);
+  const hasDate = new RegExp('(?:^|\\s)' + date + '(?:$|\\s)', 'i').test(normalized);
+  if (!hasDate) return false;
+  return kind === 'episode' ? /new episode/.test(normalized) : /coming/.test(normalized);
 }
 
 async function getWorker() {
@@ -42,8 +43,8 @@ async function getWorker() {
   return workerPromise;
 }
 
-export async function hasExistingComingDateTag(input) {
-  const key = createHash('sha256').update(input).digest('hex');
+export async function hasExistingComingDateTag(input, kind = 'premiere') {
+  const key = createHash('sha256').update(input).digest('hex') + ':' + kind;
   const cached = cache.get(key);
   if (cached && Date.now() - cached.at < CACHE_MS) return cached.value;
 
