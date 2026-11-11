@@ -18,10 +18,20 @@ const IMAGEKIT_REFRESH_MS = 6 * 60 * 60 * 1000;
 const pendingImageKitUploads = new Map();
 
 function imageKitConfig() {
-  const endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\\/+$/, '');
+  let endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').trim();
   const privateKey = process.env.IMAGEKIT_PRIVATE_KEY || '';
-  if (!endpoint || !privateKey || !/^https:\\/\\/ik\\.imagekit\\.io\\/[A-Za-z0-9_-]+$/.test(endpoint)) return null;
-  return { endpoint, privateKey };
+  while (endpoint.endsWith('/')) endpoint = endpoint.slice(0, -1);
+  if (!endpoint || !privateKey) return null;
+  try {
+    const parsed = new URL(endpoint);
+    const accountId = parsed.pathname.split('/').filter(Boolean);
+    if (parsed.protocol !== 'https:' || parsed.hostname !== 'ik.imagekit.io' ||
+        accountId.length !== 1 || !/^[A-Za-z0-9_-]+$/.test(accountId[0]) ||
+        parsed.search || parsed.hash) return null;
+    return { endpoint: parsed.origin + '/' + accountId[0], privateKey };
+  } catch {
+    return null;
+  }
 }
 
 function imageKitAssetUrl(config, imdbId) {
