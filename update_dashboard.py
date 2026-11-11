@@ -119,14 +119,14 @@ def write_report(report,states,runs,log_errors=None,root=Path('.')):
     (root/'logs'/'README.md').write_text('# Daily refresh history\n\n[← Current status](../DAILY_UPDATES.md)\n\n'+ '\n'.join(f'- [{p.parent.name}]({p.parent.name}/README.md) · [Machine-readable records]({p.parent.name}/checks.jsonl)' for p in days)+'\n')
     lines=['# Daily updates','', '**Backdrops · Reels · Addon · India EPG**', '',
       f"Last checked: **{when(stamp)} Oman time**. [This check’s logs]({REPO}/actions/runs/{entry['watchdog_run_id']})" if entry['watchdog_run_id'] else f'Last checked: **{when(stamp)} Oman time**.',
-      '', '**Refresh:** every two hours, 00:00–22:00. **Backup check:** every ten minutes. Checks also run after refresh attempts finish.',
-      '', '> This is the last saved check, not a live clock. If it is more than 20 minutes old, open Actions and cron-job.org to investigate. GitHub and network delays remain possible.',
+      '', '**Refresh checks:** every 30 minutes. Outputs refresh when their two-hour cycle is due. **Watchdog and retry checks:** every 30 minutes; no per-workflow or external 10-minute trigger.',
+      '', '> This is the last saved check, not a live clock. If it is more than 45 minutes old, open Actions to investigate. GitHub and network delays remain possible.',
       '', '| Output | Status at last check | Last verified cycle / check (Oman) | Details | Latest attempt |','|---|---|---|---|---|']
     lines+=['| '+' | '.join([safe(n),s,v,safe(d),link])+' |' for n,s,v,d,link in rows_for(entry)]
     lines+=['', '✅ Updated = verified for the current two-hour cycle. 🔄 Running / retry requested = work is pending. ⚠️ / ❌ = attention or retry needed. The two media outputs share one workflow and both must pass before the combined cycle is complete.',
       '', 'A successful check can keep the same movies or listings when the source has not changed. EPG unresolved channels remain explicit; schedules are never invented.',
       '', '## Today and past days', '', f'- [Today’s detailed timeline](logs/{day}/README.md)', '- [Daily history — all saved dates](logs/README.md)',
-      f'- [All GitHub runs and full logs]({REPO}/actions)', '- [External scheduler](https://console.cron-job.org/jobs/8777026)',
+      f'- [All GitHub runs and full logs]({REPO}/actions)',
       '', '## Issues at this check','']
     issues=entry.get('errors',[])+entry.get('log_errors',[])
     lines+=['- '+safe(x) for x in issues] if issues else ['No watchdog errors reported. Source coverage and unresolved items are shown separately above.']
