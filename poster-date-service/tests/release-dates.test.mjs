@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { validImdbId, formatBadgeDate, chooseMovieDateForTest, chooseTvDateForTest } from '../lib/release-dates.mjs';\nimport { hasExpectedDateBadgeText } from '../lib/coming-tag.mjs';
+import { validImdbId, formatBadgeDate, chooseMovieDateForTest, chooseTvDateForTest } from '../lib/release-dates.mjs';
+import { hasExpectedDateBadgeText } from '../lib/coming-tag.mjs';
 
 const today = '2026-11-12';
 
