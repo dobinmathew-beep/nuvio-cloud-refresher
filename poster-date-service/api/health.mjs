@@ -10,7 +10,7 @@ export default function handler(_req, res) {
     releaseDateSource: 'TMDB',
     tmdbConfigured: configured,
     acceptedCredentials: ['TMDB_API_KEY', 'TMDB_API_READ_ACCESS_TOKEN'],
-    badge: 'UPCOMING • MON DD',
+    badge: 'REL: MON DD',
     failSafe: 'If no confirmed future date is found, the original BetterPosters image is returned unchanged.'
   }));
 }
