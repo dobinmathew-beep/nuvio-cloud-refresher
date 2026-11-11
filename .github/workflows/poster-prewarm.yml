@@ -1,0 +1,50 @@
+name: Great Indian poster pre-generation
+
+on:
+  schedule:
+    # 06:00 and 18:00 Asia/Muscat (UTC+4).
+    - cron: '0 2,14 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/poster-prewarm.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: great-indian-poster-prewarm
+  cancel-in-progress: false
+
+jobs:
+  pre-generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Check out the isolated poster service branch
+        uses: actions/checkout@v4
+        with:
+          ref: poster-date-service
+          path: poster-source
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verify the poster service is ready
+        env:
+          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
+        run: |
+          curl --fail --silent --show-error --retry 3 --retry-delay 5 --retry-connrefused "$POSTER_SERVICE_URL/health" -o health.json
+          node -e "const h=require('./health.json'); if (!h.tmdbConfigured || h.status !== 'ready') { console.error(h); process.exit(1); } console.log('Poster service health check passed.');"
+
+      - name: Scan all eight catalogues and pre-generate ImageKit posters
+        working-directory: poster-source/poster-date-service
+        env:
+          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
+          IMAGEKIT_URL_ENDPOINT: https://ik.imagekit.io/dobin1994
+          PREWARM_CONCURRENCY: '2'
+        run: node scripts/prewarm.mjs
