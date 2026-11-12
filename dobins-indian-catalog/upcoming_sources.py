@@ -3,7 +3,7 @@
 Only announced/confirmed dates are emitted. Predictions, expected dates and
 unverified theatrical-to-OTT estimates are deliberately excluded.
 """
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from bs4 import BeautifulSoup
 import re
 
@@ -24,7 +24,8 @@ PLATFORMS = (
     "Manorama Max", "Aha", "Sun NXT", "Simply South", "JioCinema",
     "Lionsgate Play", "ETV Win", "aha",
 )
-UNCERTAIN = re.compile(r"\b(expected|prediction|predicted|tentative|reported|rumou?red|unconfirmed|not confirmed)\b", re.I)
+UNCERTAIN = re.compile(r"\b(expected|prediction|predicted|tentative|rumou?red|unconfirmed|not confirmed)\b", re.I)
+REPORTED = re.compile(r"\breported\b", re.I)
 CONFIRMED = re.compile(r"\b(confirmed|announced|officially announced|makers confirmed|platform confirmed)\b", re.I)
 SERIES = re.compile(r"\b(series|web series|tv series|season \d+|mini-series)\b", re.I)
 DATE_PATTERNS = (
@@ -37,6 +38,24 @@ def _date(text):
     for fmt in DATE_PATTERNS:
         try:
             return datetime.strptime(value, fmt).date().isoformat()
+        except ValueError:
+            pass
+    return None
+
+def _date_with_current_year(text, today):
+    parsed = _date(text)
+    if parsed:
+        return parsed
+    value = str(text or '').strip()
+    for fmt in ('%d %b', '%d %B', '%b %d', '%B %d'):
+        try:
+            part = datetime.strptime(value, fmt)
+            year = int(today[:4])
+            candidate = date(year, part.month, part.day)
+            current = date.fromisoformat(today)
+            if candidate < current and (current - candidate).days > 180:
+                candidate = date(year + 1, part.month, part.day)
+            return candidate.isoformat()
         except ValueError:
             pass
     return None
@@ -56,7 +75,7 @@ def _title_link(node):
 
 def _record(node, source_name, source_url, today, langs, norm):
     text = node.get_text(" ", strip=True)
-    if not text or UNCERTAIN.search(text) or not CONFIRMED.search(text):
+    if not text or UNCERTAIN.search(text) or not (CONFIRMED.search(text) or REPORTED.search(text)):
         return []
     title_node = _title_link(node)
     if not title_node:
@@ -65,10 +84,10 @@ def _record(node, source_name, source_url, today, langs, norm):
     if not name or len(name) > 140:
         return []
     time_node = node.select_one("time[datetime]")
-    day = _date(time_node.get("datetime")) if time_node else None
+    day = _date_with_current_year(time_node.get("datetime"), today) if time_node else None
     if not day:
-        for candidate in re.findall(r"\b(?:20\d{2}-\d{2}-\d{2}|\d{1,2}\s+[A-Za-z]{3,9}\s+20\d{2}|[A-Za-z]{3,9}\s+\d{1,2},?\s+20\d{2})\b", text):
-            day = _date(candidate)
+        for candidate in re.findall(r"\\b(?:20\\d{2}-\\d{2}-\\d{2}|\\d{1,2}\\s+[A-Za-z]{3,9}(?:\\s+20\\d{2})?|[A-Za-z]{3,9}\\s+\\d{1,2},?(?:\\s+20\\d{2})?)\\b", text):
+            day = _date_with_current_year(candidate, today)
             if day:
                 break
     if not day or day < today:
