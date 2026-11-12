@@ -131,8 +131,8 @@ def collect():
    # First digital premiere wins across sources; a later new-platform date must not reset it.
    old_day=str(m.get('ottDate') or '');new_day=str(e.get('ottDate') or '')
    if e['type']=='movie':
-    old_rank=(0,old_day) if old_day>=TODAY else (1,old_day)
-    new_rank=(0,new_day) if new_day>=TODAY else (1,new_day)
+    old_rank=(0,old_day) if old_day>TODAY else (1,old_day)
+    new_rank=(0,new_day) if new_day>TODAY else (1,new_day)
     if new_rank<old_rank:
      m['ottDate']=new_day
      for field in ('releaseKind','releaseDateBasis','sourceRecord','year'):
