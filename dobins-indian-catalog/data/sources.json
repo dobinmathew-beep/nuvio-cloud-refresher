@@ -1,7 +1,193 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-12T01:20:30.556290+04:00",
+    "checkedAt": "2026-11-12T06:26:47.299102+04:00",
     "records": [
+      {
+        "_id": "6af5220edea24088f2615ab8",
+        "platform": "Prime Video",
+        "title": "Bouma",
+        "createdAt": "2026-11-12T02:18:54.203Z",
+        "genre": "",
+        "imdbRating": null,
+        "languages": [
+          "Malayalam"
+        ],
+        "posterUrl": "https://image.tmdb.org/t/p/w300/l526Yk6NJeEhxSx9dmRMPOwt3tT.jpg",
+        "releaseDate": "2026-11-12",
+        "source_verified": true,
+        "tmdbDetails": {
+          "tmdbId": 1733518,
+          "director": "Rejin S Babu",
+          "cast": [
+            {
+              "name": "Dileesh Pothan",
+              "character": ""
+            },
+            {
+              "name": "Vineeth Radhakrishnan",
+              "character": ""
+            },
+            {
+              "name": "Sagar Surya",
+              "character": "Jacob"
+            },
+            {
+              "name": "Revathy Sharma",
+              "character": ""
+            },
+            {
+              "name": "Aditi Balan",
+              "character": ""
+            },
+            {
+              "name": "Madhupal",
+              "character": ""
+            },
+            {
+              "name": "Lenaa",
+              "character": ""
+            },
+            {
+              "name": "Mokksha",
+              "character": "Rose"
+            }
+          ],
+          "overview": "A struggling singer returns to an isolated, secret-shrouded estate tied to her own forgotten past. Simultaneously, a police investigation into a series of missing women intersects with the estate, blurring past memories and active crime.",
+          "runtime": 113,
+          "genres": [
+            "Mystery",
+            "Thriller"
+          ],
+          "originalLanguage": "ml",
+          "spokenLanguages": [
+            "Malayalam"
+          ],
+          "releaseDate": "2026-11-12",
+          "voteAverage": 0,
+          "fetchedAt": "2026-11-12T02:18:38.299923+00:00"
+        },
+        "tmdbId": 1733518,
+        "type": "Movie",
+        "updatedAt": "2026-11-12T02:18:54.203Z",
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
+        "trendingRankedDateIST": "2026-11-12",
+        "instagramPostedAt": "2026-11-12T02:20:37Z",
+        "verified": true
+      },
+      {
+        "_id": "6af5220edea24088f2615ab9",
+        "platform": "ZEE5",
+        "title": "Bouma",
+        "createdAt": "2026-11-12T02:18:54.418Z",
+        "genre": "",
+        "imdbRating": null,
+        "languages": [
+          "Malayalam"
+        ],
+        "posterUrl": "https://image.tmdb.org/t/p/w300/l526Yk6NJeEhxSx9dmRMPOwt3tT.jpg",
+        "releaseDate": "2026-11-12",
+        "source_verified": true,
+        "tmdbDetails": {
+          "tmdbId": 1733518,
+          "director": "Rejin S Babu",
+          "cast": [
+            {
+              "name": "Dileesh Pothan",
+              "character": ""
+            },
+            {
+              "name": "Vineeth Radhakrishnan",
+              "character": ""
+            },
+            {
+              "name": "Sagar Surya",
+              "character": "Jacob"
+            },
+            {
+              "name": "Revathy Sharma",
+              "character": ""
+            },
+            {
+              "name": "Aditi Balan",
+              "character": ""
+            },
+            {
+              "name": "Madhupal",
+              "character": ""
+            },
+            {
+              "name": "Lenaa",
+              "character": ""
+            },
+            {
+              "name": "Mokksha",
+              "character": "Rose"
+            }
+          ],
+          "overview": "A struggling singer returns to an isolated, secret-shrouded estate tied to her own forgotten past. Simultaneously, a police investigation into a series of missing women intersects with the estate, blurring past memories and active crime.",
+          "runtime": 113,
+          "genres": [
+            "Mystery",
+            "Thriller"
+          ],
+          "originalLanguage": "ml",
+          "spokenLanguages": [
+            "Malayalam"
+          ],
+          "releaseDate": "2026-11-12",
+          "voteAverage": 0,
+          "fetchedAt": "2026-11-12T02:18:38.662666+00:00"
+        },
+        "tmdbId": 1733518,
+        "type": "Movie",
+        "updatedAt": "2026-11-12T02:18:54.418Z",
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
+        "trendingRankedDateIST": "2026-11-12",
+        "instagramPostedAt": "2026-11-12T02:20:37Z",
+        "verified": true
+      },
+      {
+        "_id": "6af5220edea24088f2615aba",
+        "title": "Bouma",
+        "platform": "ManoramaMAX",
+        "createdAt": "2026-11-12T02:18:54.631Z",
+        "genre": "Drama",
+        "imdbRating": null,
+        "languages": [
+          "Malayalam"
+        ],
+        "original_language": "Malayalam",
+        "releaseDate": "2026-11-12",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-12T02:19:46.946Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/l526Yk6NJeEhxSx9dmRMPOwt3tT.jpg",
+        "instagramPostedAt": "2026-11-12T02:20:37Z",
+        "verified": true
+      },
+      {
+        "_id": "6af5220edea24088f2615abb",
+        "title": "Jailer 2",
+        "platform": "Prime Video",
+        "createdAt": "2026-11-12T02:18:54.841Z",
+        "genre": "Action Drama",
+        "imdbRating": null,
+        "languages": [
+          "Tamil"
+        ],
+        "original_language": "Tamil",
+        "releaseDate": "2026-11-12",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-12T02:19:47.994Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/upwdEyhhYZ7pT2hD535fr2MGfpx.jpg",
+        "tmdbRating": 80,
+        "tmdbVotes": 29,
+        "instagramPostedAt": "2026-11-12T02:20:24Z",
+        "verified": true
+      },
       {
         "_id": "6aea960da2c49d881360a924",
         "platform": "ZEE5",
@@ -45,9 +231,9 @@
           "fetchedAt": "2026-11-05T11:13:10.822Z"
         },
         "tmdbId": 1755818,
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
-        "trendingRankedDateIST": "2026-11-11",
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
+        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -141,9 +327,9 @@
         "tmdbId": 1483525,
         "tmdbRating": 75,
         "tmdbVotes": 26,
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
-        "trendingRankedDateIST": "2026-11-11",
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
+        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -177,6 +363,9 @@
         "posterUrl": "https://image.tmdb.org/t/p/w300/6GTzd7ZeivgBOrIn45720nsq0TU.jpg",
         "tmdbRating": 70,
         "tmdbVotes": 369,
+        "trendingRank": 9,
+        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
+        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -198,9 +387,9 @@
         "instagramPostedAt": "2026-11-06T02:21:04Z",
         "tmdbRating": 80,
         "tmdbVotes": 14,
-        "trendingRank": 6,
-        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
-        "trendingRankedDateIST": "2026-11-11",
+        "trendingRank": 8,
+        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
+        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -311,9 +500,9 @@
         },
         "tmdbId": 1475799,
         "instagramPostedAt": "2026-11-07T02:20:20Z",
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
-        "trendingRankedDateIST": "2026-11-11",
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
+        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -458,9 +647,9 @@
           "fetchedAt": "2026-11-06T04:35:11.749Z"
         },
         "tmdbId": 1250502,
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
-        "trendingRankedDateIST": "2026-11-11",
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
+        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -534,9 +723,9 @@
           "fetchedAt": "2026-11-07T13:28:25.859Z"
         },
         "tmdbId": 1538457,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
-        "trendingRankedDateIST": "2026-11-11",
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
+        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -612,8 +801,8 @@
         },
         "tmdbId": 1555215,
         "trendingRank": 10,
-        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
-        "trendingRankedDateIST": "2026-11-11",
+        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
+        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -747,9 +936,6 @@
           "fetchedAt": "2026-11-07T13:28:29.583Z"
         },
         "tmdbId": 1810711,
-        "trendingRank": 7,
-        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
-        "trendingRankedDateIST": "2026-11-11",
         "verified": true
       },
       {
@@ -842,9 +1028,6 @@
         "tmdbRating": 80,
         "tmdbVotes": 15,
         "votes": 1,
-        "trendingRank": 8,
-        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
-        "trendingRankedDateIST": "2026-11-11",
         "verified": true
       },
       {
@@ -917,9 +1100,6 @@
         },
         "tmdbId": 1630420,
         "instagramPostedAt": "2026-11-06T02:21:04Z",
-        "trendingRank": 9,
-        "trendingRankedAt": "2026-11-11T02:19:32.366Z",
-        "trendingRankedDateIST": "2026-11-11",
         "verified": true
       },
       {
@@ -29462,7 +29642,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-12T01:20:30.556290+04:00",
+    "checkedAt": "2026-11-12T06:26:47.299102+04:00",
     "records": [
       {
         "name": "7 Star Boys",
