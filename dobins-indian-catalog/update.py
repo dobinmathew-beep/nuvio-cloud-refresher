@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 from rapidfuzz.fuzz import ratio
 import ast,json,re,subprocess,os,unicodedata,threading,base64,io,textwrap
 from PIL import Image,ImageDraw,ImageFont
-import alternate,physical,series_sources,episode_badges
+import alternate,physical,series_sources,episode_badges,upcoming_sources
 ROOT=Path(__file__).resolve().parent;DATA=ROOT/'data';DATA.mkdir(exist_ok=True)
 LANGS={'malayalam':'ml','tamil':'ta','telugu':'te','hindi':'hi'};ZONE=ZoneInfo('Asia/Muscat');NOW=datetime.now(ZONE);TODAY=NOW.date().isoformat()
 BASE=os.environ.get('ADDON_ORIGIN','https://dobins-indian-catalog.quickfield138.chatgpt.site');POLICY='confirmed-digital-imdb-v1'
@@ -113,6 +113,8 @@ def collect():
   out.extend(latest);old['cinebuds']={'checkedAt':NOW.isoformat(),'records':latest};health.append({'source':'Cinebuds','url':'https://cinebuds.com/ott-release-dates/','state':'live','records':len(latest)})
  except Exception as e:
   cached=old.get('cinebuds',{}).get('records',[]);out.extend(cached);health.append({'source':'Cinebuds','state':'cached' if cached else 'failed','error':str(e)})
+ upcoming_events,upcoming_health=upcoming_sources.collect(get,TODAY,LANGS,norm)
+ out.extend(upcoming_events);health.extend(upcoming_health)
  save('sources.json',old)
  if not any(x['state'] in ('live','frontend-fallback') for x in health):raise RuntimeError('All digital-release sources unavailable; last-good catalogs retained')
  merged={}
@@ -272,7 +274,7 @@ def build():
   episode_at,new_episodes=episode_badges.latest(m.get('videos',[]),NOW) if e['type']=='series' else (None,False)
   if episode_at and episode_at[:10]>e['ottDate']:e['ottDate']=episode_at[:10]
   m['ott']={'date':e['ottDate'],'kind':e.get('releaseKind','digital'),'platforms':e['platforms'],'sources':e['sources']};m['availability']=e.get('availability',[])
-  catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':BASE+'/art/poster/'+aid,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"Home release ({e.get('releaseKind','digital')}): {e['ottDate']} · {', '.join(e['platforms'])}\n\n"+(m.get('description') or e.get('description') or ''),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'ottDate':next((a['date'] for a in e.get('availability',[]) if a['kind']=='digital'),None),'platforms':e['platforms'],'sources':e['sources'],'language':e['language'],'releaseDateBasis':e.get('releaseDateBasis','source release'),'latestEpisodeReleasedAt':episode_at,'hasNewEpisodes':new_episodes,'nextEpisodeReleaseAt':episode_badges.upcoming(m.get('videos',[]),NOW,m.get('seasons',[])) if e['type']=='series' else None})
+  catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':BASE+'/art/poster/'+aid,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"{'Upcoming OTT release' if e['ottDate']>TODAY else 'Home release'} ({e.get('releaseKind','digital')}): {e['ottDate']} · {', '.join(e['platforms'])}\n\n"+(m.get('description') or e.get('description') or ''),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'releaseStatus':'upcoming' if e['ottDate']>TODAY else 'available','availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'ottDate':next((a['date'] for a in e.get('availability',[]) if a['kind']=='digital'),None),'platforms':e['platforms'],'sources':e['sources'],'language':e['language'],'releaseDateBasis':e.get('releaseDateBasis','source release'),'latestEpisodeReleasedAt':episode_at,'hasNewEpisodes':new_episodes,'nextEpisodeReleaseAt':episode_badges.upcoming(m.get('videos',[]),NOW,m.get('seasons',[])) if e['type']=='series' else None})
  for cid,ms in catalogs.items():
   append_legacy_series(ms,old_catalogs.get(cid,[]),TODAY,metas)
   if cid.endswith('_series'):
