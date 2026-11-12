@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-12T18:45:57.485048+04:00",
-  "lastSuccessCycle": "2026-11-12T18:00:00+04:00",
+  "updatedAt": "2026-11-12T21:24:33.298509+04:00",
+  "lastSuccessCycle": "2026-11-12T20:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
   "sources": [
@@ -40,6 +40,18 @@
       "state": "failed",
       "records": 0,
       "error": "No confirmed upcoming rows recognised"
+    },
+    {
+      "source": "DailyOTT upcoming dates",
+      "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
+      "state": "live",
+      "records": 4
+    },
+    {
+      "source": "Cinebuds recent OTT dates",
+      "url": "https://cinebuds.com/ott-release-dates/",
+      "state": "live",
+      "records": 2
     },
     {
       "source": "IndianRegional series discovery",
@@ -148,10 +160,10 @@
     "dobins_te_movie": 68,
     "dobins_te_series": 102,
     "dobins_hi_movie": 75,
-    "dobins_hi_series": 321
+    "dobins_hi_series": 322
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
   "pendingMatches": 89,
-  "checkedCandidates": 928,
+  "checkedCandidates": 929,
   "errors": []
 }
