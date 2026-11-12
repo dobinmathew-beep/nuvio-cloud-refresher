@@ -77,7 +77,7 @@ def dailyott():
  if len(rows)<20:raise RuntimeError('DailyOTT response unexpectedly empty')
  return rows
 
-# Upcoming calendar entries include reported listings with parsed dates and platforms.
+# Upcoming calendar parsing supports reported entries and weekday-prefixed dates.
 def collect():
  health=[];old=load('sources.json',{});out=[];raw=[]
  try:raw=dailyott();old['dailyott']={'checkedAt':NOW.isoformat(),'records':raw};health.append({'source':'DailyOTT','url':'https://www.dailyott.in/','state':'live','records':len(raw)})
