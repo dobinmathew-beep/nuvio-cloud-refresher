@@ -129,7 +129,15 @@ def collect():
   else:
    m=merged[key];m['sources']=list(set(m['sources']+[e['source']]));m['platforms']=list(set(m['platforms']+e['platforms']))
    # First digital premiere wins across sources; a later new-platform date must not reset it.
-   if (e['type']=='series' and e['ottDate']>m['ottDate']) or (e['type']=='movie' and e['ottDate']<m['ottDate']):m['ottDate']=e['ottDate']
+   old_day=str(m.get('ottDate') or '');new_day=str(e.get('ottDate') or '')
+   if e['type']=='movie':
+    old_rank=(0,old_day) if old_day>=TODAY else (1,old_day)
+    new_rank=(0,new_day) if new_day>=TODAY else (1,new_day)
+    if new_rank<old_rank:m['ottDate']=new_day
+   else:
+    old_rank=(0,old_day) if old_day>=TODAY else (1,-int(old_day.replace('-','')) if old_day else 0)
+    new_rank=(0,new_day) if new_day>=TODAY else (1,-int(new_day.replace('-','')) if new_day else 0)
+    if new_rank<old_rank:m['ottDate']=new_day
  return list(merged.values()),health
 
 def candidate_index():
