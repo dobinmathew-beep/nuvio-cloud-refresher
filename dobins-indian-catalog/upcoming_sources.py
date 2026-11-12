@@ -136,6 +136,66 @@ def _generic(soup, source_name, source_url, today, langs, norm):
         out.extend(_record(node, source_name, source_url, today, langs, norm))
     return out
 
+def _dailyott(rows, source_url, today, langs):
+    out = []
+    for row in rows:
+        day = str(row.get('releaseDate') or '')[:10]
+        typ = {'Movie': 'movie', 'Series': 'series'}.get(row.get('type'))
+        if not typ or not re.fullmatch(r'20\d{2}-\d{2}-\d{2}', day) or day < today:
+            continue
+        if not (row.get('verified') or row.get('source_verified')):
+            continue
+        details = row.get('tmdbDetails') or {}
+        original = str(details.get('originalLanguage') or row.get('original_language') or '').lower()
+        language = next((name for name, code in langs.items() if original in (name, code)), None)
+        if not language:
+            raw = [str(x).lower() for x in row.get('languages', [])]
+            found = [name for name in langs if name in raw]
+            if len(found) != 1:
+                continue
+            language = found[0]
+        platform = str(row.get('platform') or '').strip()
+        title = str(row.get('title') or '').strip()
+        if not platform or not title:
+            continue
+        out.append({'name': title, 'language': language, 'type': typ, 'ottDate': day,
+            'platforms': [platform], 'poster': row.get('posterUrl'),
+            'year': str(details.get('releaseDate') or '')[:4] or None,
+            'source': source_url, 'sources': [source_url], 'confirmed': True,
+            'releaseKind': 'digital', 'releaseDateBasis': 'verified DailyOTT date',
+            'sourceRecord': row})
+    return out
+
+def _recent_cinebuds(soup, source_url, today, langs):
+    out = []
+    for row in soup.select('table.ott-table--recent tr.ott-row'):
+        time_node = row.select_one('time[datetime]')
+        title_node = row.select_one('.ott-title')
+        lang_node = row.select_one('.ott-lang')
+        if not time_node or not title_node or not lang_node:
+            continue
+        day = _date(time_node.get('datetime'))
+        if not day or day < today:
+            continue
+        lang_text = lang_node.get_text(' ', strip=True)
+        primary = re.split(r'\b(?:also\s+in|dubbed\s+in|available\s+in)\b', lang_text, maxsplit=1, flags=re.I)[0]
+        found = _languages(primary, langs)
+        if len(found) != 1:
+            continue
+        text = row.get_text(' ', strip=True)
+        platforms = [p for p in PLATFORMS if re.search(re.escape(p), text, re.I)]
+        if not platforms or UNCERTAIN.search(text):
+            continue
+        title = title_node.get_text(' ', strip=True)
+        if not title:
+            continue
+        out.append({'name': title, 'language': found[0], 'type': 'series' if SERIES.search(text) else 'movie',
+            'ottDate': day, 'platforms': list(dict.fromkeys(platforms)), 'poster': None,
+            'year': None, 'source': source_url, 'sources': [source_url],
+            'confirmed': True, 'releaseKind': 'digital', 'releaseDateBasis': 'Cinebuds dated OTT listing',
+            'sourceRecord': {'title': title, 'releaseDate': day, 'source': source_url}})
+    return out
+
 def collect(get, today, langs, norm):
     events = []
     health = []
@@ -155,6 +215,34 @@ def collect(get, today, langs, norm):
             health.append({"source": name, "url": url, "state": "live", "records": len(rows)})
         except Exception as error:
             health.append({"source": name, "url": url, "state": "failed", "records": 0, "error": str(error)[:240]})
+    # Re-check the primary sources used by the main catalog collector. Their
+    # future dates were previously filtered out before the Coming badge stage.
+    daily_url = 'https://www.dailyott.in/api/movies?limit=200&page=1'
+    try:
+        first = get(daily_url)
+        if first.get('status') != 'success':
+            raise ValueError('DailyOTT API did not return success')
+        daily_rows = list(first.get('movies', []))
+        pages = min(int(first.get('totalPages', 1)), 8)
+        for page in range(2, pages + 1):
+            daily_rows.extend(get(f'https://www.dailyott.in/api/movies?limit=200&page={page}').get('movies', []))
+        parsed = _dailyott(daily_rows, 'https://www.dailyott.in/', today, langs)
+        if not parsed:
+            raise ValueError('No verified future DailyOTT records recognised')
+        events.extend(parsed)
+        health.append({'source': 'DailyOTT upcoming dates', 'url': daily_url, 'state': 'live', 'records': len(parsed)})
+    except Exception as error:
+        health.append({'source': 'DailyOTT upcoming dates', 'url': daily_url, 'state': 'failed', 'records': 0, 'error': str(error)[:240]})
+    recent_url = 'https://cinebuds.com/ott-release-dates/'
+    try:
+        soup = BeautifulSoup(get(recent_url, False), 'html.parser')
+        parsed = _recent_cinebuds(soup, recent_url, today, langs)
+        if not parsed:
+            raise ValueError('No future Cinebuds recent-listing rows recognised')
+        events.extend(parsed)
+        health.append({'source': 'Cinebuds recent OTT dates', 'url': recent_url, 'state': 'live', 'records': len(parsed)})
+    except Exception as error:
+        health.append({'source': 'Cinebuds recent OTT dates', 'url': recent_url, 'state': 'failed', 'records': 0, 'error': str(error)[:240]})
     # Deduplicate language/title/date rows while preserving corroborating URLs.
     merged = {}
     for event in events:
@@ -165,6 +253,15 @@ def collect(get, today, langs, norm):
             old = merged[key]
             old["sources"] = list(dict.fromkeys(old.get("sources", []) + event.get("sources", [])))
             old["platforms"] = list(dict.fromkeys(old.get("platforms", []) + event.get("platforms", [])))
+            old_day = str(old.get('ottDate') or '')
+            new_day = str(event.get('ottDate') or '')
+            old_rank = (0, old_day) if old_day >= today else (1, old_day)
+            new_rank = (0, new_day) if new_day >= today else (1, new_day)
+            if new_rank < old_rank:
+                for field in ('ottDate', 'releaseKind', 'releaseDateBasis', 'sourceRecord', 'year'):
+                    if event.get(field) is not None:
+                        old[field] = event[field]
+                old['name'] = event.get('name') or old.get('name')
             if not old.get("poster") and event.get("poster"):
                 old["poster"] = event["poster"]
     return list(merged.values()), health
