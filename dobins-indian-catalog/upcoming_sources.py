@@ -77,11 +77,11 @@ def _record(node, source_name, source_url, today, langs, norm):
     language_text = language_node.get_text(" ", strip=True) if language_node else text
     # Prefer an explicitly declared original language. Otherwise accept only a
     # single language, or the primary language before "also/dubbed/available in".
-    explicit = re.search(r"original(?:ly)?\\s+language\\s*[:=-]\\s*(malayalam|tamil|telugu|hindi)\\b", text, re.I)
+    explicit = re.search(r"original(?:ly)?\s+language\s*[:=-]\s*(malayalam|tamil|telugu|hindi)\b", text, re.I)
     if explicit:
         languages = [explicit.group(1).lower()]
     else:
-        primary_text = re.split(r"\\b(?:also\\s+in|dubbed\\s+in|available\\s+in|languages?\\s*[:=-])\\b", language_text, maxsplit=1, flags=re.I)[0]
+        primary_text = re.split(r"\b(?:also\s+in|dubbed\s+in|available\s+in|languages?\s*[:=-])\b", language_text, maxsplit=1, flags=re.I)[0]
         languages = _languages(primary_text, langs)
         if len(languages) != 1:
             languages = _languages(language_text, langs)
