@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-12T08:13:02.842826+04:00",
+    "checkedAt": "2026-11-12T14:04:50.108759+04:00",
     "records": [
       {
         "_id": "6af5220edea24088f2615ab8",
@@ -239,6 +239,61 @@
         "tmdbRating": 80,
         "tmdbVotes": 29,
         "instagramPostedAt": "2026-11-12T02:20:24Z",
+        "tmdbDetails": {
+          "tmdbId": 1234139,
+          "director": "Nelson",
+          "cast": [
+            {
+              "name": "Rajinikanth",
+              "character": "Muthuvel 'Tiger' Pandian"
+            },
+            {
+              "name": "S. J. Suryah",
+              "character": "Bodhi Kalpak"
+            },
+            {
+              "name": "Suraj Venjaramoodu",
+              "character": "Dileep"
+            },
+            {
+              "name": "Ramya Krishnan",
+              "character": "Vijayalakshmi 'Viji' Pandian"
+            },
+            {
+              "name": "Vidya Balan",
+              "character": "Kantha Kalpak"
+            },
+            {
+              "name": "Namo Narayana",
+              "character": "Moorthi"
+            },
+            {
+              "name": "Yogi Babu",
+              "character": "Vimal"
+            },
+            {
+              "name": "Mirnaa",
+              "character": "Swetha Pandian"
+            }
+          ],
+          "overview": "When a dangerous syndicate threatens his family, retired jailer Tiger Muthuvel Pandian goes undercover as a driver to battle enemies from the shadows.",
+          "runtime": 163,
+          "genres": [
+            "Action",
+            "Comedy",
+            "Drama"
+          ],
+          "originalLanguage": "ta",
+          "spokenLanguages": [
+            "Tamil"
+          ],
+          "releaseDate": "2026-10-14",
+          "voteAverage": 8,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-12T05:50:23.914Z"
+        },
+        "tmdbId": 1234139,
+        "votes": 1,
         "verified": true
       },
       {
@@ -29695,8 +29750,36 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-12T08:13:02.842826+04:00",
+    "checkedAt": "2026-11-12T14:04:50.108759+04:00",
     "records": [
+      {
+        "name": "Jailer 2",
+        "language": "tamil",
+        "type": "movie",
+        "ottDate": "2026-11-12",
+        "platforms": [
+          "Prime Video"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/10/jailer-2-poster-192x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/jailer-2/",
+        "confirmed": true
+      },
+      {
+        "name": "Saayavanam",
+        "language": "tamil",
+        "type": "movie",
+        "ottDate": "2026-11-12",
+        "platforms": [
+          "Aha"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/11/saayavanam-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/saayavanam/",
+        "confirmed": true
+      },
       {
         "name": "7 Star Boys",
         "language": "tamil",

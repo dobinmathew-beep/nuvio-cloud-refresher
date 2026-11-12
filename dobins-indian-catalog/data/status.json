@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-12T08:13:02.842826+04:00",
-  "lastSuccessCycle": "2026-11-12T08:00:00+04:00",
+  "updatedAt": "2026-11-12T14:04:50.108759+04:00",
+  "lastSuccessCycle": "2026-11-12T14:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
   "sources": [
@@ -19,13 +19,13 @@
       "source": "Cinebuds",
       "url": "https://cinebuds.com/ott-release-dates/",
       "state": "live",
-      "records": 30
+      "records": 32
     },
     {
       "source": "Cinebuds upcoming calendar",
       "url": "https://cinebuds.com/ott-releases-this-week/",
       "state": "live",
-      "records": 6
+      "records": 8
     },
     {
       "source": "OTTASIA confirmed calendar",
@@ -141,17 +141,17 @@
     }
   ],
   "counts": {
-    "dobins_ml_movie": 67,
+    "dobins_ml_movie": 68,
     "dobins_ml_series": 60,
-    "dobins_ta_movie": 59,
+    "dobins_ta_movie": 60,
     "dobins_ta_series": 97,
     "dobins_te_movie": 68,
     "dobins_te_series": 102,
-    "dobins_hi_movie": 73,
+    "dobins_hi_movie": 75,
     "dobins_hi_series": 320
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
   "pendingMatches": 89,
-  "checkedCandidates": 922,
+  "checkedCandidates": 926,
   "errors": []
 }
