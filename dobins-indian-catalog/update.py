@@ -77,7 +77,7 @@ def dailyott():
  if len(rows)<20:raise RuntimeError('DailyOTT response unexpectedly empty')
  return rows
 
-# Future digital dates take precedence over same-day or historical availability.
+# Upcoming calendar entries include dated reported listings, not just confirmed announcements.
 def collect():
  health=[];old=load('sources.json',{});out=[];raw=[]
  try:raw=dailyott();old['dailyott']={'checkedAt':NOW.isoformat(),'records':raw};health.append({'source':'DailyOTT','url':'https://www.dailyott.in/','state':'live','records':len(raw)})
