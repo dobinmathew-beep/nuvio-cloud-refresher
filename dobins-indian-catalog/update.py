@@ -91,7 +91,7 @@ def collect():
  kinds={}
  for m in raw:
   day=str(m.get('releaseDate',''))[:10];typ={'Movie':'movie','Series':'series'}.get(m.get('type'))
-  if not typ or not re.fullmatch(r'\d{4}-\d{2}-\d{2}',day) or day>TODAY:continue
+  if not typ or not re.fullmatch(r'\d{4}-\d{2}-\d{2}',day):continue
   if not (m.get('verified') or m.get('source_verified')):continue
   # Never infer a dubbed catalog from a multi-language availability list.
   raw_langs=[str(x).lower() for x in m.get('languages',[])]
@@ -111,7 +111,7 @@ def collect():
    ti=r.select_one('time[datetime]');a=r.select_one('.ott-title');langnode=r.select_one('.ott-lang')
    if not ti or not a or not langnode:continue
    day=ti['datetime'][:10];name=a.get_text(' ',strip=True);ls=langnode.get_text(' ',strip=True).lower();lang=next((l for l in LANGS if ls.startswith(l)),None)
-   if not lang or day>TODAY:continue
+   if not lang:continue
    ks=kinds.get(norm(name),set());typ='series' if 'series' in name.lower() else next(iter(ks)) if len(ks)==1 else 'movie'
    image=r.select_one('img');latest.append({'name':name,'language':lang,'type':typ,'ottDate':day,'platforms':[x.get_text(' ',strip=True) for x in r.select('.cb-badge')],'poster':image.get('src') if image else None,'year':None,'source':'https://cinebuds.com/ott-release-dates/','detail':a.get('href'),'confirmed':True})
   out.extend(latest);old['cinebuds']={'checkedAt':NOW.isoformat(),'records':latest};health.append({'source':'Cinebuds','url':'https://cinebuds.com/ott-release-dates/','state':'live','records':len(latest)})
@@ -181,14 +181,18 @@ def metadata(mid,typ,fallback):
   m['_metadataCheckedAt']=NOW.isoformat();m['_partial']=False;return m
  except Exception:return {'_metadataCheckedAt':NOW.isoformat(),'_partial':True,'id':mid,'type':typ,'name':fallback['name'],'poster':fallback.get('poster'),'releaseInfo':str(fallback.get('releaseInfo',''))}
 
+def event_digital_date(event,today=TODAY):
+ # Prefer the nearest future digital premiere over any historical availability.
+ dates=[str(x.get('date'))[:10] for x in (event.get('availability') or []) if x.get('kind')=='digital' and x.get('date')]
+ if event.get('releaseKind')=='digital' and event.get('ottDate'):dates.append(str(event['ottDate'])[:10])
+ future=sorted(x for x in dates if x>=today)
+ return future[0] if future else (min(dates) if dates else None)
 def release_classification(event,meta):
- # Classify movie entries by the home-release event being advertised,
- # not by the age of the theatrical title.
+ # Classify movie entries by the home-release event being advertised, not the theatrical title's age.
  if event.get('type')!='movie':return None,None,None
  availability=event.get('availability') or []
- digital=next((x.get('date') for x in availability if x.get('kind')=='digital' and x.get('date')),None)
+ digital=event_digital_date(event)
  physical=next((x.get('date') for x in availability if x.get('kind')=='physical' and x.get('date')),None)
- if not digital and event.get('releaseKind')=='digital':digital=event.get('ottDate')
  if digital:label='New OTT arrival';label_date=digital
  elif physical or event.get('releaseKind')=='physical':label='New physical release';label_date=physical or event.get('ottDate')
  else:return None,None,None
@@ -218,7 +222,7 @@ def title_logo(name):
  b=io.BytesIO();im.save(b,format='PNG',optimize=True);return base64.b64encode(b.getvalue()).decode()
 
 def build():
- events,health=collect();series_events,series_health=series_sources.collect(get,load,save,LANGS,TODAY,NOW,norm);events.extend(series_events);health.extend(series_health);disc_events,disc_health=physical.collect(get,load,save,LANGS,TODAY,NOW,norm);events=physical.merge_events(events+disc_events,norm);health.extend(disc_health);pool=candidate_index();matches=load('matches.json',{});metas=load('metadata.json',{});old_catalogs=load('catalogs.json',{});unmatched=[]
+ events,health=collect();series_events,series_health=series_sources.collect(get,load,save,LANGS,TODAY,NOW,norm);events.extend(series_events);health.extend(series_health);disc_events,disc_health=physical.collect(get,load,save,LANGS,TODAY,NOW,norm);events=physical.merge_events(events+disc_events,norm,TODAY);health.extend(disc_health);pool=candidate_index();matches=load('matches.json',{});metas=load('metadata.json',{});old_catalogs=load('catalogs.json',{});unmatched=[]
  for m in metas.values():
   for field,kind in [('poster','posters'),('background','backgrounds')]:
    if str(m.get(field,'')).startswith(BASE):m[field]=next((x for x in m.get('artwork',{}).get(kind,[]) if not x.startswith(BASE)),None)
@@ -309,8 +313,7 @@ def build():
   if episode_at and episode_at[:10]>e['ottDate']:e['ottDate']=episode_at[:10]
   m['availability']=e.get('availability',[])
   release_label,original_release_date,label_date=release_classification(e,m)
-  digital_date=next((a['date'] for a in e.get('availability',[]) if a['kind']=='digital'),None)
-  if not digital_date and e.get('releaseKind')=='digital':digital_date=e['ottDate']
+  digital_date=event_digital_date(e)
   display_date=label_date or e['ottDate']
   display_kind='digital' if digital_date else e.get('releaseKind','digital')
   m['ott']={'date':digital_date or e['ottDate'],'kind':display_kind,'platforms':e['platforms'],'sources':e['sources']}
