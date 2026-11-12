@@ -23,7 +23,7 @@ class CatalogTests(unittest.TestCase):
   e={'name':'Example','language':'tamil','type':'movie','ottDate':'2026-10-30'}
   a={'name':'Example','language':'tamil','type':'movie','releaseInfo':'2026','id':'tt1234567'}
   self.assertIsNone(update.select_candidate(e,[a,dict(a,id='tt7654321')]))
- def test_future_and_unverified_dates_are_excluded(self):
+ def test_verified_future_dates_are_included_and_unverified_dates_are_excluded(self):
   original_data,original_get,original_source=update.DATA,update.get,update.dailyott
   try:
    with tempfile.TemporaryDirectory() as d:
@@ -32,7 +32,7 @@ class CatalogTests(unittest.TestCase):
     update.dailyott=lambda:[dict(base,title='Digital'),dict(base,title='Future',releaseDate=future),dict(base,title='Unverified',verified=False)]
     html='<table class="ott-table--recent">'+''.join('<tr class="ott-row"><td><time datetime="'+today+'"></time></td><td><a class="ott-title">Crosscheck '+str(i)+'</a></td><td class="ott-lang">Tamil</td></tr>' for i in range(6))+'</table>'
     update.get=lambda *a,**k:html
-    events,_=update.collect();names={e['name'] for e in events};self.assertIn('Digital',names);self.assertNotIn('Future',names);self.assertNotIn('Unverified',names)
+    events,_=update.collect();names={e['name'] for e in events};self.assertIn('Digital',names);self.assertIn('Future',names);self.assertNotIn('Unverified',names)
   finally:update.DATA,update.get,update.dailyott=original_data,original_get,original_source
  def test_seasons_share_a_series_identity(self):
   self.assertEqual(update.norm('Example (Season 2)'),update.norm('Example'))
