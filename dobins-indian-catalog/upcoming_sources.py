@@ -47,7 +47,7 @@ def _date_with_current_year(text, today):
     if parsed:
         return parsed
     value = str(text or '').strip()
-    for fmt in ('%d %b', '%d %B', '%b %d', '%B %d'):
+    for fmt in ('%a %d %b', '%a %d %B', '%d %b', '%d %B', '%b %d', '%B %d'):
         try:
             part = datetime.strptime(value, fmt)
             year = int(today[:4])
@@ -86,7 +86,7 @@ def _record(node, source_name, source_url, today, langs, norm):
     time_node = node.select_one("time[datetime]")
     day = _date_with_current_year(time_node.get("datetime"), today) if time_node else None
     if not day:
-        for candidate in re.findall(r"\b(?:20\d{2}-\d{2}-\d{2}|\d{1,2}\s+[A-Za-z]{3,9}(?:\s+20\d{2})?|[A-Za-z]{3,9}\s+\d{1,2},?(?:\s+20\d{2})?)\b", text):
+        for candidate in re.findall(r"\b(?:(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s+)?\d{1,2}\s+[A-Za-z]{3,9}(?:\s+20\d{2})?|\b20\d{2}-\d{2}-\d{2}|\b[A-Za-z]{3,9}\s+\d{1,2},?(?:\s+20\d{2})?", text):
             day = _date_with_current_year(candidate, today)
             if day:
                 break
