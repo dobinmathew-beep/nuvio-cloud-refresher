@@ -1,12 +1,5 @@
 [
   {
-    "name": "Jennifer",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-10-30",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "The Vvaan",
     "language": "hindi",
     "type": "movie",
@@ -14,8 +7,8 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Sub-Inspector Yugandhar",
-    "language": "telugu",
+    "name": "Jennifer",
+    "language": "malayalam",
     "type": "movie",
     "ottDate": "2026-10-30",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
@@ -32,6 +25,13 @@
     "language": "hindi",
     "type": "series",
     "ottDate": "2026-10-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Sub-Inspector Yugandhar",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-10-30",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -56,13 +56,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Marpu - Not For You, But For The Future",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-10-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Chef Mantra Project USA",
     "language": "telugu",
     "type": "series",
@@ -77,8 +70,8 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "The Last Show",
-    "language": "tamil",
+    "name": "Marpu - Not For You, But For The Future",
+    "language": "telugu",
     "type": "movie",
     "ottDate": "2026-10-14",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
@@ -91,13 +84,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Prince of Mollywood",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-09-11",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Cyber",
     "language": "malayalam",
     "type": "series",
@@ -105,10 +91,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Avalaga Irunthal",
-    "language": "tamil",
+    "name": "Prince of Mollywood",
+    "language": "malayalam",
     "type": "movie",
-    "ottDate": "2026-10-14",
+    "ottDate": "2026-09-11",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -116,6 +102,13 @@
     "language": "malayalam",
     "type": "series",
     "ottDate": "2026-04-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "The Last Show",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-10-14",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -130,6 +123,13 @@
     "language": "malayalam",
     "type": "series",
     "ottDate": "2026-04-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Avalaga Irunthal",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-10-14",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -224,13 +224,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Nijame Rujuvainadhi",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-08-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Auto Vijayashanthi (Episode 221)",
     "language": "telugu",
     "type": "series",
@@ -266,13 +259,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Aakali Rajyam",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-08-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Jodi Are U Ready Season 3 (Grand Finale)",
     "language": "tamil",
     "type": "series",
@@ -280,10 +266,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Objection My Lord",
+    "name": "Nijame Rujuvainadhi",
     "language": "telugu",
     "type": "movie",
-    "ottDate": "2026-07-31",
+    "ottDate": "2026-08-14",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -308,6 +294,13 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Aakali Rajyam",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-08-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Cooku with Comali Season 7 (Episode 5)",
     "language": "tamil",
     "type": "series",
@@ -315,10 +308,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Maa Inti Bangaaram",
+    "name": "Objection My Lord",
     "language": "telugu",
     "type": "movie",
-    "ottDate": "2026-07-17",
+    "ottDate": "2026-07-31",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -364,6 +357,13 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Maa Inti Bangaaram",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-07-17",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Clean Up Company",
     "language": "hindi",
     "type": "movie",
@@ -392,17 +392,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Danger Devil",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-06-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Aa Gang Repu 3",
     "language": "telugu",
     "type": "series",
     "ottDate": "2026-04-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Katha Sudha",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-03-22",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -413,17 +413,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Danger Devil",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-06-12",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Breakfast",
     "language": "tamil",
     "type": "movie",
     "ottDate": "2026-06-24",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Katha Sudha",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-03-22",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -441,17 +441,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Leader",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-05-29",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "The Legend of Karna",
     "language": "hindi",
     "type": "movie",
     "ottDate": "2026-07-31",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Leader",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-05-29",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -483,17 +483,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Yellamma",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-18",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Manipur Files",
     "language": "hindi",
     "type": "movie",
     "ottDate": "2026-07-11",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Yellamma",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-05-18",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -553,13 +553,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Sodhara",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-01",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Special Ops: Lioness Season 3",
     "language": "hindi",
     "type": "series",
@@ -567,10 +560,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Phoenix",
-    "language": "tamil",
+    "name": "Sodhara",
+    "language": "telugu",
     "type": "movie",
-    "ottDate": "2026-04-11",
+    "ottDate": "2026-05-01",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -581,10 +574,24 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Phoenix",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-04-11",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "The Eternal Love",
     "language": "telugu",
     "type": "movie",
     "ottDate": "2026-04-24",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Naya Saal",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-05-03",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -606,13 +613,6 @@
     "language": "telugu",
     "type": "movie",
     "ottDate": "2026-04-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Naya Saal",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-05-03",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {

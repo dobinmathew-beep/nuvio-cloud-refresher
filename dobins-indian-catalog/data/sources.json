@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-12T06:26:47.299102+04:00",
+    "checkedAt": "2026-11-12T08:06:28.803911+04:00",
     "records": [
       {
         "_id": "6af5220edea24088f2615ab8",
@@ -165,6 +165,59 @@
         "updatedAt": "2026-11-12T02:19:46.946Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/l526Yk6NJeEhxSx9dmRMPOwt3tT.jpg",
         "instagramPostedAt": "2026-11-12T02:20:37Z",
+        "tmdbDetails": {
+          "tmdbId": 1733518,
+          "director": "Rejin S Babu",
+          "cast": [
+            {
+              "name": "Dileesh Pothan",
+              "character": ""
+            },
+            {
+              "name": "Vineeth Radhakrishnan",
+              "character": ""
+            },
+            {
+              "name": "Sagar Surya",
+              "character": "Jacob"
+            },
+            {
+              "name": "Revathy Sharma",
+              "character": ""
+            },
+            {
+              "name": "Aditi Balan",
+              "character": ""
+            },
+            {
+              "name": "Madhupal",
+              "character": ""
+            },
+            {
+              "name": "Lenaa",
+              "character": ""
+            },
+            {
+              "name": "Mokksha",
+              "character": "Rose"
+            }
+          ],
+          "overview": "A struggling singer returns to an isolated, secret-shrouded estate tied to her own forgotten past. Simultaneously, a police investigation into a series of missing women intersects with the estate, blurring past memories and active crime.",
+          "runtime": 113,
+          "genres": [
+            "Mystery",
+            "Thriller"
+          ],
+          "originalLanguage": "ml",
+          "spokenLanguages": [
+            "Malayalam"
+          ],
+          "releaseDate": "2026-11-12",
+          "voteAverage": null,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-12T03:59:46.128Z"
+        },
+        "tmdbId": 1733518,
         "verified": true
       },
       {
@@ -29642,7 +29695,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-12T06:26:47.299102+04:00",
+    "checkedAt": "2026-11-12T08:06:28.803911+04:00",
     "records": [
       {
         "name": "7 Star Boys",
