@@ -1,7 +1,7 @@
 const TMDB = 'https://api.themoviedb.org/3';
 const memory = new Map();
 const pending = new Map();
-const CACHE_MS = 6 * 60 * 60 * 1000;
+const CACHE_MS = 30 * 60 * 1000;
 const NEGATIVE_CACHE_MS = 30 * 60 * 1000;
 
 export function validImdbId(value) {
@@ -59,6 +59,47 @@ async function tmdbJson(path, credential) {
   if (!response.ok) throw new Error('TMDB lookup failed: ' + response.status);
   return response.json();
 }
+
+function chooseTvScheduleDate(tmdbDetails, tvmazeEpisodes, today) {
+  const next = tmdbDetails.next_episode_to_air;
+  if (!next || !Number.isInteger(next.season_number) || !Number.isInteger(next.episode_number)) {
+    return chooseTvDate(tmdbDetails, today);
+  }
+  const match = (tvmazeEpisodes || []).find(episode =>
+    episode.season === next.season_number &&
+    episode.number === next.episode_number
+  );
+  const tvmazeDate = match?.airdate;
+  if (match && /^\\d{4}-\\d{2}-\\d{2}$/.test(tvmazeDate || '')) {
+    if (isFuture(tvmazeDate, today)) {
+      return {
+        date: tvmazeDate,
+        region: tmdbDetails.origin_country?.[0] || null,
+        source: tvmazeDate === next.air_date ? 'tmdb-tvmaze-confirmed' : 'tvmaze-episode-airdate',
+        kind: 'episode',
+        season: next.season_number,
+        episode: next.episode_number
+      };
+    }
+    // A matched episode schedule says this episode has already aired.
+    // Do not retain a later conflicting TMDB date as an upcoming badge.
+    return null;
+  }
+  return chooseTvDate(tmdbDetails, today);
+}
+async function getTvmazeEpisodes(imdbId) {
+  const lookupUrl = new URL('https://api.tvmaze.com/lookup/shows');
+  lookupUrl.searchParams.set('imdb', imdbId);
+  const lookupResponse = await fetch(lookupUrl, { signal: AbortSignal.timeout(5000) });
+  if (!lookupResponse.ok) throw new Error('TVmaze show lookup failed: ' + lookupResponse.status);
+  const show = await lookupResponse.json();
+  if (!Number.isInteger(show?.id)) return null;
+  const episodesUrl = new URL('https://api.tvmaze.com/shows/' + show.id + '/episodes');
+  episodesUrl.searchParams.set('specials', '0');
+  const episodesResponse = await fetch(episodesUrl, { signal: AbortSignal.timeout(5000) });
+  if (!episodesResponse.ok) throw new Error('TVmaze episode lookup failed: ' + episodesResponse.status);
+  return episodesResponse.json();
+}
 async function resolveDate(imdbId, credential, today) {
   const found = await tmdbJson('/find/' + encodeURIComponent(imdbId), credential);
   const movie = found.movie_results?.[0];
@@ -71,8 +112,31 @@ async function resolveDate(imdbId, credential, today) {
   const show = found.tv_results?.[0];
   if (show?.id) {
     const details = await tmdbJson('/tv/' + show.id, credential);
-    const selected = chooseTvDate(details, today);
-    console.info('[release-date-resolution]', JSON.stringify({ imdbId, mediaType: 'tv', tmdbId: show.id, tmdbNextEpisodeAirDate: details.next_episode_to_air?.air_date || null, tmdbFirstAirDate: details.first_air_date || null, selectedDate: selected?.date || null, selectedSource: selected?.source || null, region: selected?.region || null, dateInterpretation: 'TMDB calendar date; no timezone shift' }));
+    let tvmazeEpisodes = null;
+    let tvmazeError = null;
+    if (details.next_episode_to_air) {
+      try {
+        tvmazeEpisodes = await getTvmazeEpisodes(imdbId);
+      } catch (error) {
+        tvmazeError = error?.message || 'unknown error';
+      }
+    }
+    const selected = chooseTvScheduleDate(details, tvmazeEpisodes, today);
+    const matchingTvmazeEpisode = (tvmazeEpisodes || []).find(episode =>
+      episode.season === details.next_episode_to_air?.season_number &&
+      episode.number === details.next_episode_to_air?.episode_number
+    );
+    console.info('[release-date-resolution]', JSON.stringify({
+      imdbId, mediaType: 'tv', tmdbId: show.id,
+      tmdbSeason: details.next_episode_to_air?.season_number || null,
+      tmdbEpisode: details.next_episode_to_air?.episode_number || null,
+      tmdbNextEpisodeAirDate: details.next_episode_to_air?.air_date || null,
+      tvmazeEpisodeAirDate: matchingTvmazeEpisode?.airdate || null,
+      selectedDate: selected?.date || null,
+      selectedSource: selected?.source || null,
+      tvmazeError,
+      dateInterpretation: 'episode calendar date; no timezone shift'
+    }));
     return selected;
   }
   return null;
