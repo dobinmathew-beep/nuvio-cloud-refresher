@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { validImdbId, formatBadgeDate, chooseMovieDateForTest, chooseTvDateForTest, chooseTvScheduleDateForTest } from '../lib/release-dates.mjs';
+import { validImdbId, formatBadgeDate, chooseMovieDateForTest, chooseTvDateForTest, chooseTvScheduleDateForTest, verifiedTvScheduleOverride } from '../lib/release-dates.mjs';
 import { hasExpectedDateBadgeText } from '../lib/coming-tag.mjs';
 
 const today = '2026-11-12';
@@ -113,4 +113,13 @@ test('matching TVmaze episode already aired prevents a later conflicting upcomin
   const details = { next_episode_to_air: { air_date: '2026-11-15', season_number: 2, episode_number: 3 }, origin_country: ['US'] };
   const episodes = [{ season: 2, number: 3, airdate: '2026-11-10' }];
   assert.equal(chooseTvScheduleDateForTest(details, episodes, today), null);
+});
+
+test('verified Paramount+ schedule correction overrides conflicting metadata only until release day', () => {
+  assert.deepEqual(verifiedTvScheduleOverride('tt33043892', 2, 3, '2026-11-12'), {
+    date: '2026-11-13', region: 'US', source: 'paramount-plus-published-schedule',
+    kind: 'episode', season: 2, episode: 3
+  });
+  assert.equal(verifiedTvScheduleOverride('tt33043892', 2, 3, '2026-11-13'), null);
+  assert.equal(verifiedTvScheduleOverride('tt33043892', 2, 4, '2026-11-12'), null);
 });
