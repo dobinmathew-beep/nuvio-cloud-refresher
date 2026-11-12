@@ -63,6 +63,9 @@ def main():
                 runs=request(API+'/actions/workflows/'+workflow+'/runs?per_page=10')['workflow_runs'];run_cache[kind]=runs
                 if may_dispatch(runs,now):
                     request(API+'/actions/workflows/'+workflow+'/dispatches','POST',{'ref':'main'})
+                    # Refresh the run list after dispatch so the dashboard links to
+                    # the newly queued retry, not the older completed attempt.
+                    run_cache[kind]=request(API+'/actions/workflows/'+workflow+'/runs?per_page=10')['workflow_runs']
                     row['state']='catch-up-dispatched'
                 elif any(r['status']!='completed' for r in runs): row['state']='refresh-in-progress'
                 else:
