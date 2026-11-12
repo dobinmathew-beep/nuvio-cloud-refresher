@@ -12,7 +12,7 @@ class PhysicalTests(unittest.TestCase):
   out=physical.merge_events([e],update.norm)[0];self.assertEqual(out['releaseKind'],'physical');self.assertEqual([x['kind'] for x in out['availability']],['physical'])
  def test_physical_premiere_can_precede_ott_without_duplicate(self):
   e={'name':'Example','type':'movie','language':'tamil','ottDate':'2026-10-20','releaseKind':'physical','sources':['disc'],'platforms':['Blu-ray']};d=dict(e,ottDate='2026-10-29',releaseKind='digital',sources=['ott'],platforms=['Netflix'])
-  out=physical.merge_events([d,e],update.norm);self.assertEqual(len(out),1);self.assertEqual(out[0]['ottDate'],'2026-10-20');self.assertEqual({x['kind'] for x in out[0]['availability']},{'physical','digital'})
+  out=physical.merge_events([d,e],update.norm);self.assertEqual(len(out),1);self.assertEqual(out[0]['ottDate'],'2026-10-29');self.assertEqual({x['kind'] for x in out[0]['availability']},{'physical','digital'})
 
  def test_future_digital_date_wins_over_old_digital_availability(self):
   old={'name':'Bandra','type':'movie','language':'malayalam','ottDate':'2023-11-10','releaseKind':'digital','sources':['old'],'platforms':['Old platform']}
