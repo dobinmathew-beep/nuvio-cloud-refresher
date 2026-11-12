@@ -76,8 +76,8 @@ def _record(node, source_name, source_url, today, langs, norm):
     language_node = node.select_one(".ott-lang, [data-language], [itemprop='inLanguage']")
     language_text = language_node.get_text(" ", strip=True) if language_node else text
     languages = _languages(language_text, langs)
-    if not languages:
-        languages = _languages(text, langs)
+    if len(languages) < 2:
+        languages = list(dict.fromkeys(languages + _languages(text, langs)))
     if not languages:
         return []
     kind_node = node.select_one(".ott-type, .ott-kind, [data-type], [itemprop='genre']")
