@@ -276,8 +276,8 @@ def collect(get, today, langs, norm):
             old["platforms"] = list(dict.fromkeys(old.get("platforms", []) + event.get("platforms", [])))
             old_day = str(old.get('ottDate') or '')
             new_day = str(event.get('ottDate') or '')
-            old_rank = (0, old_day) if old_day >= today else (1, old_day)
-            new_rank = (0, new_day) if new_day >= today else (1, new_day)
+            old_rank = (0, old_day) if old_day > today else (1, old_day)
+            new_rank = (0, new_day) if new_day > today else (1, new_day)
             if new_rank < old_rank:
                 for field in ('ottDate', 'releaseKind', 'releaseDateBasis', 'sourceRecord', 'year'):
                     if event.get(field) is not None:
