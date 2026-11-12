@@ -6,7 +6,7 @@ import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster } from '
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
 const BETTERPOSTERS_RS = 'IM';
 const MAX_BYTES = 15 * 1024 * 1024;
-const RESULT_CACHE_MS = 60 * 60 * 1000;
+const RESULT_CACHE_MS = 15 * 60 * 1000;
 const resultCache = new Map();
 const pendingResults = new Map();
 
@@ -68,7 +68,7 @@ function scheduleImageKitUpload(imdbId, poster) {
 function redirectToImageKit(res, assetUrl) {
   res.statusCode = 302;
   res.setHeader('Location', assetUrl);
-  res.setHeader('Cache-Control', 'public, max-age=21600, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=3600');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Poster-Date-Status', 'imagekit-cache-hit');
   return res.end();
@@ -104,13 +104,12 @@ async function buildPoster(id, knownRelease = undefined) {
   let hasComingTag;
   try {
     hasComingTag = await hasExistingComingDateTag(original.bytes, release.kind, release.date);
-  } catch {
-    hasComingTag = null;
+  } catch (error) {
+    console.warn('[poster-date-ocr-unavailable]', JSON.stringify({ imdbId: id, tmdbDate: release.date, error: error?.message || 'unknown error', action: 'apply-tmdb-date-overlay' }));
+    hasComingTag = false;
   }
 
-  if (hasComingTag === null) {
-    status = 'coming-tag-check-unavailable-original-preserved';
-  } else if (hasComingTag) {
+  if (hasComingTag) {
     status = 'betterposters-coming-tag';
   } else {
     try {

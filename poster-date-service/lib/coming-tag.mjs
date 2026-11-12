@@ -15,12 +15,12 @@ function hasExpectedDateBadgeText(text, kind = 'premiere', isoDate = null) {
   const normalized = normalizedText(text);
   const month = '(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)';
   const dayPattern = '\\d{1,2}(?:st|nd|rd|th)?';
-  if (isoDate && /^\\d{4}-\\d{2}-\\d{2}$/.test(isoDate)) {
-    const [, , monthNumber, dayNumber] = isoDate.match(/^(\\d{4})-(\\d{2})-(\\d{2})$/);
+  if (isoDate && /^\d{4}-\d{2}-\d{2}$/.test(isoDate)) {
+    const [, , monthNumber, dayNumber] = isoDate.match(/^(\d{4})-(\d{2})-(\d{2})$/);
     const months = ['jan(?:uary)?','feb(?:ruary)?','mar(?:ch)?','apr(?:il)?','may','jun(?:e)?','jul(?:y)?','aug(?:ust)?','sep(?:t(?:ember)?)?','oct(?:ober)?','nov(?:ember)?','dec(?:ember)?'];
     const expectedMonth = months[Number(monthNumber) - 1];
     const expectedDay = String(Number(dayNumber)) + '(?:st|nd|rd|th)?';
-    const expectedDate = new RegExp('(?:^|\\\\s)(?:' + expectedDay + '\\\\s+' + expectedMonth + '|' + expectedMonth + '\\\\s+' + expectedDay + ')(?:$|\\\\s)', 'i');
+    const expectedDate = new RegExp('(?:^|\\s)(?:' + expectedDay + '\\s+' + expectedMonth + '|' + expectedMonth + '\\s+' + expectedDay + ')(?:$|\\s)', 'i');
     if (!expectedDate.test(normalized)) return false;
   } else {
     const date = '(?:' + dayPattern + '\\s*' + month + '|' + month + '\\s*' + dayPattern + ')';
