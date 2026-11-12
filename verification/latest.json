@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-12T23:58:28.664152+04:00",
+  "checked_at": "2026-11-13T01:05:27.327155+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
     "addon": {
       "status": "pass",
-      "checked_at": "2026-11-12T23:58:28.664152+04:00",
+      "checked_at": "2026-11-13T01:05:27.327155+04:00",
       "public_url": "https://the-great-indian-addon.vercel.app",
       "checks": [
         {
@@ -50,28 +50,28 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-12T23:58:28.664152+04:00",
+      "checked_at": "2026-11-13T01:05:27.327155+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
           "name": "public status and freshness",
           "status": "pass",
           "details": {
-            "revision": "f12e3953-e5fb-4405-8231-3a6501651eac",
-            "checked_utc": "2026-11-12T18:34:02.818064+00:00",
-            "matched_ids": 618,
+            "revision": "e3f11303-a5bd-4bbf-83f8-34bc0ff7bfd1",
+            "checked_utc": "2026-11-12T20:24:21.679446+00:00",
+            "matched_ids": 619,
             "playlist_channel_ids": 826,
-            "unresolved_ids": 208,
-            "programmes": 66028
+            "unresolved_ids": 207,
+            "programmes": 69527
           }
         },
         {
           "name": "published XMLTV",
           "status": "pass",
           "details": {
-            "bytes": 2061604,
-            "channels": 618,
-            "programmes": 66028
+            "bytes": 2181000,
+            "channels": 619,
+            "programmes": 69527
           }
         },
         {
@@ -85,14 +85,14 @@
           "name": "Unresolved_Channels.csv",
           "status": "pass",
           "details": {
-            "rows": 208
+            "rows": 207
           }
         },
         {
           "name": "Source_Crosscheck_Report.csv",
           "status": "pass",
           "details": {
-            "rows": 2784
+            "rows": 2790
           }
         },
         {
@@ -134,99 +134,51 @@
       ]
     },
     "backdrops": {
-      "status": "fail",
-      "checked_at": "2026-11-12T23:58:28.664152+04:00",
+      "status": "pass",
+      "checked_at": "2026-11-13T01:05:27.327155+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
-      "error": "[{\"status\": \"tamil/series/towers\", \"error\": \"day: '2026-11-13', expected '2026-11-12'\"}, {\"status\": \"tamil/series/neon\", \"error\": \"day: '2026-11-13', expected '2026-11-12'\"}, {\"status\": \"tamil/combined/cascade\", \"error\": \"day: '2026-11-13', expected '2026-11-12'\"}, {\"status\": \"tamil/combined/wall\", \"error\": \"day: '2026-11-13', expected '2026-11-12'\"}, {\"status\": \"tamil/combined/spotlight\", \"error\": \"day: '2026-11-13', expected '2026-11-12'\"}]"
+      "details": {
+        "day": "2026-11-13",
+        "statuses": 160,
+        "images": 16,
+        "states": {
+          "live": 160,
+          "cached": 0
+        },
+        "errors": [],
+        "catalogHeads": {
+          "hindi": "tt27988879",
+          "tamil": "tt33318732",
+          "malayalam": "tt27512908",
+          "telugu": "tt32089596"
+        }
+      },
+      "method": "160 public layout/status checks and 16 JPEG checks"
     },
     "reels": {
-      "status": "pass",
-      "checked_at": "2026-11-12T23:58:28.664152+04:00",
+      "status": "fail",
+      "checked_at": "2026-11-13T01:05:27.327155+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
           "language": "hindi",
-          "status": "pass",
-          "bytes": 6905379,
-          "sha256": "f5e12c58e97c17510acd432c7170c7d17318e5ceb0417599f95be02cdf2484da",
-          "duration_seconds": 50.0,
-          "streams": [
-            {
-              "codec_name": "h264",
-              "codec_type": "video",
-              "width": 1280,
-              "height": 720
-            },
-            {
-              "codec_name": "aac",
-              "codec_type": "audio",
-              "sample_rate": "44100",
-              "channels": 2
-            }
-          ]
+          "status": "fail",
+          "error": "public bytes/hash differ from media manifest"
         },
         {
           "language": "tamil",
-          "status": "pass",
-          "bytes": 6904501,
-          "sha256": "e89e3890d0a15f6bbd174236ad9fe53a19b4684037945e417f175d9857d2a784",
-          "duration_seconds": 50.0,
-          "streams": [
-            {
-              "codec_name": "h264",
-              "codec_type": "video",
-              "width": 1280,
-              "height": 720
-            },
-            {
-              "codec_name": "aac",
-              "codec_type": "audio",
-              "sample_rate": "44100",
-              "channels": 2
-            }
-          ]
+          "status": "fail",
+          "error": "public bytes/hash differ from media manifest"
         },
         {
           "language": "malayalam",
-          "status": "pass",
-          "bytes": 6895492,
-          "sha256": "08882fe6c474dcebbd70c4730d0328afd9f083a960e74d2866798167c93baf4c",
-          "duration_seconds": 50.0,
-          "streams": [
-            {
-              "codec_name": "h264",
-              "codec_type": "video",
-              "width": 1280,
-              "height": 720
-            },
-            {
-              "codec_name": "aac",
-              "codec_type": "audio",
-              "sample_rate": "44100",
-              "channels": 2
-            }
-          ]
+          "status": "fail",
+          "error": "public bytes/hash differ from media manifest"
         },
         {
           "language": "telugu",
-          "status": "pass",
-          "bytes": 6897870,
-          "sha256": "7478be6456b625e7b59e378180c6d829ee2aeca41da395d74fd78526f8307b7b",
-          "duration_seconds": 50.0,
-          "streams": [
-            {
-              "codec_name": "h264",
-              "codec_type": "video",
-              "width": 1280,
-              "height": 720
-            },
-            {
-              "codec_name": "aac",
-              "codec_type": "audio",
-              "sample_rate": "44100",
-              "channels": 2
-            }
-          ]
+          "status": "fail",
+          "error": "public bytes/hash differ from media manifest"
         }
       ],
       "method": "public MP4 download, manifest hash/size, ffprobe and full ffmpeg decode"
