@@ -245,6 +245,8 @@ def collect(get, today, langs, norm):
         health.append({'source': 'Cinebuds recent OTT dates', 'url': recent_url, 'state': 'failed', 'records': 0, 'error': str(error)[:240]})
     # TVmaze is also used by the catalog's series discovery pipeline. Query
     # its upcoming web schedule so confirmed future OTT episodes can be marked.
+    tvmaze_records = 0
+    tvmaze_errors = 0
     for offset in range(1, 15):
         day = (datetime.fromisoformat(today) + timedelta(days=offset)).date().isoformat()
         schedule_url = 'https://api.tvmaze.com/schedule/web?date=' + day
@@ -262,8 +264,10 @@ def collect(get, today, langs, norm):
                     'sources': ['https://api.tvmaze.com/schedule/web', show.get('url', 'https://www.tvmaze.com/')],
                     'confirmed': True, 'releaseKind': 'digital', 'releaseDateBasis': 'TVmaze scheduled web episode',
                     'sourceRecord': {'title': show['name'], 'releaseDate': release_day, 'source': schedule_url}})
-        except Exception as error:
-            health.append({'source': 'TVmaze upcoming web schedule', 'url': schedule_url, 'state': 'failed', 'records': 0, 'error': str(error)[:240]})
+                tvmaze_records += 1
+        except Exception:
+            tvmaze_errors += 1
+    health.append({'source': 'TVmaze upcoming web schedule', 'url': 'https://api.tvmaze.com/schedule/web', 'state': 'live' if tvmaze_errors < 14 else 'failed', 'records': tvmaze_records, 'errors': tvmaze_errors})
     # Deduplicate language/title/date rows while preserving corroborating URLs.
     merged = {}
     for event in events:
