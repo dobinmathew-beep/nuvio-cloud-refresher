@@ -18,7 +18,7 @@ def merge_events(events,norm,today=None):
   else:
    def date_rank(item):
     day=str(item.get('ottDate') or '')[:10];kind=item.get('releaseKind','digital')
-    return (0,day) if kind=='digital' and day>=today else (1,day) if kind=='digital' else (2,day)
+    return (0,day) if kind=='digital' and day>today else (1,day) if kind=='digital' else (2,day)
    pick_new=date_rank(e)<date_rank(old)
   chosen={**(e if pick_new else old)};chosen['releaseKind']=kind if pick_new else old['releaseKind'];chosen['availability']=all_av
   chosen['sources']=list(dict.fromkeys(old.get('sources',[])+e.get('sources',[])))
