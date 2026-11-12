@@ -93,6 +93,7 @@ def collect():
   day=str(m.get('releaseDate',''))[:10];typ={'Movie':'movie','Series':'series'}.get(m.get('type'))
   if not typ or not re.fullmatch(r'\d{4}-\d{2}-\d{2}',day) or day>TODAY:continue
   if not (m.get('verified') or m.get('source_verified')):continue
+  # Never infer a dubbed catalog from a multi-language availability list.
   raw_langs=[str(x).lower() for x in m.get('languages',[])]
   langs=[x for x in raw_langs if x in LANGS]
   original=str(m.get('tmdbDetails',{}).get('originalLanguage') or m.get('original_language') or '').lower()
