@@ -4,7 +4,7 @@ Public installer: https://dobins-indian-catalog.quickfield138.chatgpt.site/
 
 **Install in Nuvio:** add `https://dobins-indian-catalog.quickfield138.chatgpt.site/manifest.json` in the add-on settings.
 
-Eight separate catalogs provide Malayalam, Tamil, Telugu and Hindi movies and series. IMDb `tt` IDs are preferred. Verified TMDB (`tmdb:`) and TVmaze (`tvmaze:`) IDs are retained when no dependable IMDb match exists. Streaming add-ons must support the relevant ID to return playback sources. Titles are sorted by digital premiere dates, not cinema-release dates or IMDb release years. Playback uses your existing stream add-ons; this add-on supplies catalogs and metadata.
+Eight separate catalogs provide Malayalam, Tamil, Telugu and Hindi movies and series. IMDb `tt` IDs are preferred. Verified TMDB (`tmdb:`) and TVmaze (`tvmaze:`) IDs are retained when no dependable IMDb match exists. Streaming add-ons must support the relevant ID to return playback sources. Titles are sorted by digital premiere dates, not cinema-release dates or IMDb release years. Movie entries with a verified digital availability date are explicitly labeled **New OTT arrival**, even when the original theatrical release was years earlier; their original release date/year is retained separately. Physical-only entries are labeled **New physical release**. When a movie has both physical and digital availability, its catalog ordering uses the digital premiere date, while both availability records are retained. Playback uses your existing stream add-ons; this add-on supplies catalogs and metadata.
 
 ## Automatic cloud updates
 
