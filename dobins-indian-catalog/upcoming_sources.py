@@ -75,11 +75,18 @@ def _record(node, source_name, source_url, today, langs, norm):
         return []
     language_node = node.select_one(".ott-lang, [data-language], [itemprop='inLanguage']")
     language_text = language_node.get_text(" ", strip=True) if language_node else text
-    languages = _languages(language_text, langs)
-    if len(languages) < 2:
-        languages = list(dict.fromkeys(languages + _languages(text, langs)))
-    if not languages:
-        return []
+    # Prefer an explicitly declared original language. Otherwise accept only a
+    # single language, or the primary language before "also/dubbed/available in".
+    explicit = re.search(r"original(?:ly)?\\s+language\\s*[:=-]\\s*(malayalam|tamil|telugu|hindi)\\b", text, re.I)
+    if explicit:
+        languages = [explicit.group(1).lower()]
+    else:
+        primary_text = re.split(r"\\b(?:also\\s+in|dubbed\\s+in|available\\s+in|languages?\\s*[:=-])\\b", language_text, maxsplit=1, flags=re.I)[0]
+        languages = _languages(primary_text, langs)
+        if len(languages) != 1:
+            languages = _languages(language_text, langs)
+        if len(languages) != 1:
+            return []
     kind_node = node.select_one(".ott-type, .ott-kind, [data-type], [itemprop='genre']")
     kind_text = (kind_node.get_text(" ", strip=True) if kind_node else "") + " " + text
     typ = "series" if SERIES.search(kind_text) else "movie"
