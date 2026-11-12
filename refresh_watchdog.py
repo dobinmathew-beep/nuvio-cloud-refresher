@@ -9,9 +9,13 @@ REPO = 'dobinmathew-beep/nuvio-cloud-refresher'
 API = 'https://api.github.com/repos/'+REPO
 
 def due(now, kind):
-    # Muscat is UTC+04:00: even local hours also align with even UTC hours.
+    # GitHub scheduled jobs can start a few seconds before the scheduled UTC minute.
+    # Count the final five minutes before a two-hour boundary as that upcoming cycle,
+    # so a runner-startup delay cannot stamp fresh outputs with the previous cycle.
     local=now.astimezone(ZONE)
-    return local.replace(hour=(local.hour//2)*2,minute=0,second=0,microsecond=0)
+    current=local.replace(hour=(local.hour//2)*2,minute=0,second=0,microsecond=0)
+    upcoming=current+timedelta(hours=2)
+    return upcoming if upcoming-local<=timedelta(minutes=5) else current
 
 def fresh(state, kind, target):
     if kind=='media':
