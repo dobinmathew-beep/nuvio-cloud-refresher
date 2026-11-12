@@ -7,11 +7,7 @@ C={'hindi':'hi','tamil':'ta','malayalam':'ml','telugu':'te'}
 A='wall cascade spotlight filmstrip gallery ribbon duo polaroid neon towers'.split();X=A+'mosaic fan orbit triptych cinema steps cross shelf widescreen diamond'.split()
 D=datetime.datetime.now(ZoneInfo('Asia/Muscat')).date().isoformat();feeds={};errors=[];rows=[];lock=threading.Lock()
 
-def service_day_is_current(day, started_at, finished_at):
-    """Accept either side of a request that straddles Oman midnight."""
-    allowed={started_at.astimezone(ZoneInfo('Asia/Muscat')).date().isoformat(),
-             finished_at.astimezone(ZoneInfo('Asia/Muscat')).date().isoformat()}
-    return day in allowed
+from verification_dates import service_day_is_current
 FEATURED=json.loads((Path(__file__).resolve().parent/'state/featured-movies.json').read_text())['languages'];HEADS={}
 def get(u):
  p=subprocess.run(['curl','-fsSL','--connect-timeout','15','--max-time','100','-w','\n%{http_code} %{content_type}',u],capture_output=True)
