@@ -1,7 +1,7 @@
 import unittest
 from datetime import datetime
 from zoneinfo import ZoneInfo
-from verify_backdrops import service_day_is_current
+from verification_dates import service_day_is_current
 
 ZONE = ZoneInfo('Asia/Muscat')
 
