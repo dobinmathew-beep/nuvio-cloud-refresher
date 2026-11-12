@@ -181,6 +181,31 @@ def metadata(mid,typ,fallback):
   m['_metadataCheckedAt']=NOW.isoformat();m['_partial']=False;return m
  except Exception:return {'_metadataCheckedAt':NOW.isoformat(),'_partial':True,'id':mid,'type':typ,'name':fallback['name'],'poster':fallback.get('poster'),'releaseInfo':str(fallback.get('releaseInfo',''))}
 
+def release_classification(event,meta):
+ # Classify movie entries by the home-release event being advertised,
+ # not by the age of the theatrical title.
+ if event.get('type')!='movie':return None,None,None
+ availability=event.get('availability') or []
+ digital=next((x.get('date') for x in availability if x.get('kind')=='digital' and x.get('date')),None)
+ physical=next((x.get('date') for x in availability if x.get('kind')=='physical' and x.get('date')),None)
+ if not digital and event.get('releaseKind')=='digital':digital=event.get('ottDate')
+ if digital:label='New OTT arrival';label_date=digital
+ elif physical or event.get('releaseKind')=='physical':label='New physical release';label_date=physical or event.get('ottDate')
+ else:return None,None,None
+ source=event.get('sourceRecord') or {}
+ details=source.get('tmdbDetails') or {}
+ original=str(details.get('releaseDate') or meta.get('releaseDate') or '')[:10]
+ if not re.fullmatch(r'\d{4}-\d{2}-\d{2}',original):
+  year=str(meta.get('releaseInfo') or source.get('year') or '')[:4]
+  original=year if re.fullmatch(r'\d{4}',year) else None
+ return label,original,label_date
+
+def catalog_sort_date(item):
+ # For movies, a fresh OTT arrival outranks an older physical-edition date.
+ if item.get('type')=='movie':
+  return str(item.get('ottDate') or item.get('releaseDate') or '')
+ return str(max(item.get('latestEpisodeReleasedAt') or '',item.get('releaseDate') or item.get('ottDate') or ''))
+
 def title_logo(name):
  im=Image.new('RGBA',(1200,300));d=ImageDraw.Draw(im)
  try:font=ImageFont.truetype('DejaVuSans-Bold.ttf',90)
@@ -283,7 +308,12 @@ def build():
   episode_at,new_episodes=episode_badges.latest(m.get('videos',[]),NOW) if e['type']=='series' else (None,False)
   if episode_at and episode_at[:10]>e['ottDate']:e['ottDate']=episode_at[:10]
   m['ott']={'date':e['ottDate'],'kind':e.get('releaseKind','digital'),'platforms':e['platforms'],'sources':e['sources']};m['availability']=e.get('availability',[])
-  catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':BASE+'/art/poster/'+aid,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"{'Upcoming OTT release' if e['ottDate']>TODAY else 'Home release'} ({e.get('releaseKind','digital')}): {e['ottDate']} · {', '.join(e['platforms'])}\n\n"+(m.get('description') or e.get('description') or ''),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'releaseStatus':'upcoming' if e['ottDate']>TODAY else 'available','availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'ottDate':next((a['date'] for a in e.get('availability',[]) if a['kind']=='digital'),None),'platforms':e['platforms'],'sources':e['sources'],'language':e['language'],'releaseDateBasis':e.get('releaseDateBasis','source release'),'latestEpisodeReleasedAt':episode_at,'hasNewEpisodes':new_episodes,'nextEpisodeReleaseAt':episode_badges.upcoming(m.get('videos',[]),NOW,m.get('seasons',[])) if e['type']=='series' else None})
+  release_label,original_release_date,label_date=release_classification(e,m)
+  digital_date=next((a['date'] for a in e.get('availability',[]) if a['kind']=='digital'),None)
+  if not digital_date and e.get('releaseKind')=='digital':digital_date=e['ottDate']
+  display_date=label_date or e['ottDate']
+  description_label=release_label or ('Upcoming OTT release' if e['ottDate']>TODAY else 'Home release')
+  catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':BASE+'/art/poster/'+aid,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"{description_label} ({e.get('releaseKind','digital')}): {display_date} · {', '.join(e['platforms'])}\\n\\n"+(m.get('description') or e.get('description') or ''),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'releaseStatus':'upcoming' if display_date>TODAY else 'available','releaseLabel':release_label,'releaseLabelDate':label_date,'originalReleaseDate':original_release_date,'availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'ottDate':digital_date,'platforms':e['platforms'],'sources':e['sources'],'language':e['language'],'releaseDateBasis':e.get('releaseDateBasis','source release'),'latestEpisodeReleasedAt':episode_at,'hasNewEpisodes':new_episodes,'nextEpisodeReleaseAt':episode_badges.upcoming(m.get('videos',[]),NOW,m.get('seasons',[])) if e['type']=='series' else None})
  for cid,ms in catalogs.items():
   append_legacy_series(ms,old_catalogs.get(cid,[]),TODAY,metas)
   if cid.endswith('_series'):
@@ -291,7 +321,7 @@ def build():
     item['nextEpisodeReleaseAt']=episode_badges.upcoming(metas.get(alternate.key('series',item['id']),{}).get('videos',[]),NOW,metas.get(alternate.key('series',item['id']),{}).get('seasons',[]))
     item['latestEpisodeReleasedAt'],item['hasNewEpisodes']=episode_badges.latest(metas.get(alternate.key('series',item['id']),{}).get('videos',[]),NOW)
     if item['latestEpisodeReleasedAt'] and item['latestEpisodeReleasedAt'][:10]>(item.get('releaseDate') or ''):item['releaseDate']=item['latestEpisodeReleasedAt'][:10]
-  ms.sort(key=lambda m:(bool(m.get('hasNewEpisodes')),max(m.get('latestEpisodeReleasedAt') or '',m.get('releaseDate') or m.get('ottDate') or ''),m['name']),reverse=True)
+  ms.sort(key=lambda m:(bool(m.get('hasNewEpisodes')),catalog_sort_date(m),m['name']),reverse=True)
   if not ms and old_catalogs.get(cid):catalogs[cid]=old_catalogs[cid]
  if any(not catalogs[c] for c in catalogs):
   save('metadata.json',metas);save('unmatched.json',unmatched);raise RuntimeError('An empty catalog would be published; retaining last-good catalogs while metadata backfills')
