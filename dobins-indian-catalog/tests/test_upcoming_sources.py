@@ -25,6 +25,25 @@ class UpcomingSourceTests(unittest.TestCase):
         self.assertTrue(all(x["type"] == "movie" for x in rows))
         self.assertTrue(all(x["platforms"] for x in rows))
 
+    def test_dailyott_verified_future_dates_are_included(self):
+        rows = upcoming_sources._dailyott([{
+            'title': 'Bandra', 'type': 'Movie', 'releaseDate': '2026-11-13',
+            'platform': 'ZEE5', 'languages': ['Malayalam'], 'source_verified': True,
+            'tmdbDetails': {'originalLanguage': 'ml', 'releaseDate': '2023-11-10'}
+        }], 'https://www.dailyott.in/', '2026-11-12',
+           {'malayalam':'ml','tamil':'ta','telugu':'te','hindi':'hi'})
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]['ottDate'], '2026-11-13')
+        self.assertEqual(rows[0]['language'], 'malayalam')
+        self.assertEqual(rows[0]['releaseKind'], 'digital')
+
+    def test_dailyott_does_not_promote_unverified_future_dates(self):
+        rows = upcoming_sources._dailyott([{
+            'title': 'Unverified', 'type': 'Movie', 'releaseDate': '2026-11-13',
+            'platform': 'ZEE5', 'languages': ['Malayalam']
+        }], 'https://www.dailyott.in/', '2026-11-12',
+           {'malayalam':'ml','tamil':'ta','telugu':'te','hindi':'hi'})
+        self.assertEqual(rows, [])
     def test_expected_or_predicted_dates_are_excluded(self):
         html = """<table><tr class="ott-row">
           <td><time datetime="2026-11-13">13 Nov</time></td>
