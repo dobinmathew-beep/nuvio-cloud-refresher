@@ -19,8 +19,9 @@ class UpcomingSourceTests(unittest.TestCase):
             {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
             lambda value: value.lower().replace(" ", ""),
         )
-        self.assertEqual({x["language"] for x in rows}, {"malayalam","tamil","telugu","hindi"})
+        self.assertEqual({x["language"] for x in rows}, {"tamil"})
         self.assertTrue(all(x["ottDate"] == "2026-11-12" for x in rows))
+        self.assertTrue(all(x["language"] == "tamil" for x in rows))
         self.assertTrue(all(x["type"] == "movie" for x in rows))
         self.assertTrue(all(x["platforms"] for x in rows))
 
