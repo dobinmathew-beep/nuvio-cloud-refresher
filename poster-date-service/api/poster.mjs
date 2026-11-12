@@ -6,7 +6,7 @@ import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster } from '
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
 const BETTERPOSTERS_RS = 'IM';
 const MAX_BYTES = 15 * 1024 * 1024;
-const RESULT_CACHE_MS = 6 * 60 * 60 * 1000;
+const RESULT_CACHE_MS = 60 * 60 * 1000;
 const resultCache = new Map();
 const pendingResults = new Map();
 
@@ -23,7 +23,7 @@ function imageKitAssetUrl(config, imdbId) {
   return config.endpoint + '/posters/' + encodeURIComponent(imdbId) + '.jpg';
 }
 
-async function findFreshImageKitAsset(imdbId) {
+async function findFreshImageKitAsset(imdbId, releaseInfo) {
   const config = imageKitConfig();
   if (!config) return null;
   const assetUrl = imageKitAssetUrl(config, imdbId);
@@ -40,6 +40,16 @@ async function findFreshImageKitAsset(imdbId) {
     const lastModified = Date.parse(response.headers.get('last-modified') || '');
     if (!Number.isFinite(lastModified) || lastModified < IMAGEKIT_COMPATIBLE_AFTER) return null;
     if (Date.now() - lastModified > IMAGEKIT_REFRESH_MS) return null;
+    // Verify the cached image's visible badge against the current TMDB date.
+    // A fresh upload can still contain a stale date if TMDB rescheduled an episode.
+    const imageResponse = await fetch(assetUrl, { cache: 'no-store', signal: AbortSignal.timeout(5000) });
+    if (!imageResponse.ok) return null;
+    const imageBytes = Buffer.from(await imageResponse.arrayBuffer());
+    const matchesCurrentDate = await hasExistingComingDateTag(imageBytes, releaseInfo.kind, releaseInfo.date);
+    if (!matchesCurrentDate) {
+      console.info('[poster-date-cache-mismatch]', JSON.stringify({ imdbId, tmdbDate: releaseInfo.date, cachedPoster: 'ImageKit', action: 'rebuild-from-BetterPosters' }));
+      return null;
+    }
     return assetUrl;
   } catch {
     return null;
@@ -93,7 +103,7 @@ async function buildPoster(id, knownRelease = undefined) {
   let status = 'unchanged';
   let hasComingTag;
   try {
-    hasComingTag = await hasExistingComingDateTag(original.bytes, release.kind);
+    hasComingTag = await hasExistingComingDateTag(original.bytes, release.kind, release.date);
   } catch {
     hasComingTag = null;
   }
@@ -111,6 +121,7 @@ async function buildPoster(id, knownRelease = undefined) {
       status = 'overlay-failed-original-preserved';
     }
   }
+  console.info('[poster-date-check]', JSON.stringify({ imdbId: id, tmdbDate: release.date, releaseSource: release.source || null, releaseKind: release.kind || 'premiere', betterPostersBadgeMatchesTmdb: hasComingTag, result: status }));
   return { bytes: output, type: original.type, status, releaseDate: release.date, releaseKind: release.kind || 'premiere' };
 }
 
@@ -141,7 +152,7 @@ function setImageHeaders(res, type, status, releaseDate, releaseKind = 'none') {
   res.setHeader('X-Poster-Date-Type', releaseKind);
   // Let Xperience/CDNs reuse the processed result; the in-process cache
   // remains a secondary optimisation, not the only cache.
-  res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
+  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=3600');
 }
 
 export default async function handler(req, res) {
@@ -174,7 +185,7 @@ export default async function handler(req, res) {
     // An ImageKit copy is valid only while TMDB still confirms a future release.
     // This prevents a cached date badge from surviving its release day.
     const releaseInfo = await upcomingRelease(id);
-    const imageKitAsset = await findFreshImageKitAsset(id);
+    const imageKitAsset = releaseInfo?.date ? await findFreshImageKitAsset(id, releaseInfo) : null;
     if (imageKitAsset && releaseInfo?.date) return redirectToImageKit(res, imageKitAsset);
 
     const poster = await getBuiltPoster(id, releaseInfo);

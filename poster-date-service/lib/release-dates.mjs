@@ -64,12 +64,16 @@ async function resolveDate(imdbId, credential, today) {
   const movie = found.movie_results?.[0];
   if (movie?.id) {
     const releaseData = await tmdbJson('/movie/' + movie.id + '/release_dates', credential);
-    return chooseMovieDate(releaseData.results || [], today);
+    const selected = chooseMovieDate(releaseData.results || [], today);
+    console.info('[release-date-resolution]', JSON.stringify({ imdbId, mediaType: 'movie', tmdbId: movie.id, selectedDate: selected?.date || null, selectedSource: selected?.source || null, region: selected?.region || null, dateInterpretation: 'TMDB calendar date; no timezone shift' }));
+    return selected;
   }
   const show = found.tv_results?.[0];
   if (show?.id) {
     const details = await tmdbJson('/tv/' + show.id, credential);
-    return chooseTvDate(details, today);
+    const selected = chooseTvDate(details, today);
+    console.info('[release-date-resolution]', JSON.stringify({ imdbId, mediaType: 'tv', tmdbId: show.id, tmdbNextEpisodeAirDate: details.next_episode_to_air?.air_date || null, tmdbFirstAirDate: details.first_air_date || null, selectedDate: selected?.date || null, selectedSource: selected?.source || null, region: selected?.region || null, dateInterpretation: 'TMDB calendar date; no timezone shift' }));
+    return selected;
   }
   return null;
 }
@@ -88,7 +92,8 @@ export async function upcomingRelease(imdbId, options = {}) {
       memory.set(cacheKey, { value, at: Date.now() });
       while (memory.size > 1200) memory.delete(memory.keys().next().value);
       return value;
-    } catch {
+    } catch (error) {
+      console.warn('[release-date-lookup-failed]', JSON.stringify({ imdbId, error: error?.message || 'unknown error' }));
       return null;
     } finally {
       pending.delete(cacheKey);

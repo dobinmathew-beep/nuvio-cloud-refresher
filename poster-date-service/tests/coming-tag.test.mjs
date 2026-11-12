@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { hasComingDateText } from '../lib/coming-tag.mjs';
+import { hasExpectedDateBadgeText as hasComingDateText } from '../lib/coming-tag.mjs';
 
 test('recognizes BetterPosters Coming day-month labels', () => {
   assert.equal(hasComingDateText('Coming 24 Dec'), true);

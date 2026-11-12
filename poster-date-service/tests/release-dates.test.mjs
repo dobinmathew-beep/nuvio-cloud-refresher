@@ -85,3 +85,11 @@ test('premiere and episode badges are distinguished when preserving existing art
   assert.equal(hasExpectedDateBadgeText('Coming 13 Nov', 'episode'), false);
   assert.equal(hasExpectedDateBadgeText('New Episode 13 Nov', 'premiere'), false);
 });
+
+
+test('a poster badge is preserved only when its date exactly matches TMDB', () => {
+  assert.equal(hasExpectedDateBadgeText('New Episode 13 Nov', 'episode', '2026-11-13'), true);
+  assert.equal(hasExpectedDateBadgeText('New Episode 15 Nov', 'episode', '2026-11-13'), false);
+  assert.equal(hasExpectedDateBadgeText('Coming 13 Nov', 'premiere', '2026-11-13'), true);
+  assert.equal(hasExpectedDateBadgeText('Coming 16 Nov', 'premiere', '2026-11-13'), false);
+});

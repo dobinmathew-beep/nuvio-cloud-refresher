@@ -11,13 +11,21 @@ function normalizedText(text) {
   return String(text || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 }
 
-function hasExpectedDateBadgeText(text, kind = 'premiere') {
+function hasExpectedDateBadgeText(text, kind = 'premiere', isoDate = null) {
   const normalized = normalizedText(text);
   const month = '(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)';
-  const day = '\\d{1,2}(?:st|nd|rd|th)?';
-  const date = '(?:' + day + '\\s*' + month + '|' + month + '\\s*' + day + ')';
-  const hasDate = new RegExp('(?:^|\\s)' + date + '(?:$|\\s)', 'i').test(normalized);
-  if (!hasDate) return false;
+  const dayPattern = '\\d{1,2}(?:st|nd|rd|th)?';
+  if (isoDate && /^\\d{4}-\\d{2}-\\d{2}$/.test(isoDate)) {
+    const [, , monthNumber, dayNumber] = isoDate.match(/^(\\d{4})-(\\d{2})-(\\d{2})$/);
+    const months = ['jan(?:uary)?','feb(?:ruary)?','mar(?:ch)?','apr(?:il)?','may','jun(?:e)?','jul(?:y)?','aug(?:ust)?','sep(?:t(?:ember)?)?','oct(?:ober)?','nov(?:ember)?','dec(?:ember)?'];
+    const expectedMonth = months[Number(monthNumber) - 1];
+    const expectedDay = String(Number(dayNumber)) + '(?:st|nd|rd|th)?';
+    const expectedDate = new RegExp('(?:^|\\\\s)(?:' + expectedDay + '\\\\s+' + expectedMonth + '|' + expectedMonth + '\\\\s+' + expectedDay + ')(?:$|\\\\s)', 'i');
+    if (!expectedDate.test(normalized)) return false;
+  } else {
+    const date = '(?:' + dayPattern + '\\s*' + month + '|' + month + '\\s*' + dayPattern + ')';
+    if (!new RegExp('(?:^|\\s)' + date + '(?:$|\\s)', 'i').test(normalized)) return false;
+  }
   return kind === 'episode' ? /new episode/.test(normalized) : /coming/.test(normalized);
 }
 
@@ -43,8 +51,8 @@ async function getWorker() {
   return workerPromise;
 }
 
-export async function hasExistingComingDateTag(input, kind = 'premiere') {
-  const key = createHash('sha256').update(input).digest('hex') + ':' + kind;
+export async function hasExistingComingDateTag(input, kind = 'premiere', isoDate = null) {
+  const key = createHash('sha256').update(input).digest('hex') + ':' + kind + ':' + (isoDate || 'any-date');
   const cached = cache.get(key);
   if (cached && Date.now() - cached.at < CACHE_MS) return cached.value;
 
@@ -69,7 +77,7 @@ export async function hasExistingComingDateTag(input, kind = 'premiere') {
   for (const mode of ['11', '6']) {
     await worker.setParameters({ tessedit_pageseg_mode: mode });
     const result = await worker.recognize(prepared);
-    if (hasExpectedDateBadgeText(result?.data?.text, kind)) {
+    if (hasExpectedDateBadgeText(result?.data?.text, kind, isoDate)) {
       cache.set(key, { value: true, at: Date.now() });
       return true;
     }
