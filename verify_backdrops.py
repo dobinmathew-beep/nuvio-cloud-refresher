@@ -6,6 +6,12 @@ B='https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site';S='https://83e
 C={'hindi':'hi','tamil':'ta','malayalam':'ml','telugu':'te'}
 A='wall cascade spotlight filmstrip gallery ribbon duo polaroid neon towers'.split();X=A+'mosaic fan orbit triptych cinema steps cross shelf widescreen diamond'.split()
 D=datetime.datetime.now(ZoneInfo('Asia/Muscat')).date().isoformat();feeds={};errors=[];rows=[];lock=threading.Lock()
+
+def service_day_is_current(day, started_at, finished_at):
+    """Accept either side of a request that straddles Oman midnight."""
+    allowed={started_at.astimezone(ZoneInfo('Asia/Muscat')).date().isoformat(),
+             finished_at.astimezone(ZoneInfo('Asia/Muscat')).date().isoformat()}
+    return day in allowed
 FEATURED=json.loads((Path(__file__).resolve().parent/'state/featured-movies.json').read_text())['languages'];HEADS={}
 def get(u):
  p=subprocess.run(['curl','-fsSL','--connect-timeout','15','--max-time','100','-w','\n%{http_code} %{content_type}',u],capture_output=True)
@@ -40,8 +46,11 @@ def src(k):
 def status(k):
  l,t,s=k
  def run():
-  b,_=get(f'{B}/status/{l}/{t}/{s}.json?check=1');d=json.loads(b)
-  for key,val in [('language',l),('kind',t),('style',s),('day',D)]:assert d.get(key)==val,f'{key}: {d.get(key)!r}, expected {val!r}'
+  started_at=datetime.datetime.now(ZoneInfo('Asia/Muscat'))
+  b,_=get(f'{B}/status/{l}/{t}/{s}.json?check=1')
+  finished_at=datetime.datetime.now(ZoneInfo('Asia/Muscat'));d=json.loads(b)
+  for key,val in [('language',l),('kind',t),('style',s)]:assert d.get(key)==val,f'{key}: {d.get(key)!r}, expected {val!r}'
+  assert service_day_is_current(d.get('day'),started_at,finished_at),f"day: {d.get('day')!r}, expected Oman date at request start/end ({started_at.date()} / {finished_at.date()})"
   assert d.get('state') in ('live','cached'),str(d.get('state'))
   cat=C[l];exp=[cat,cat+'_series'] if t=='combined' else cat+('_series' if t=='series' else '')
   assert d.get('catalog')==exp,f'wrong catalog {d.get("catalog")}'
