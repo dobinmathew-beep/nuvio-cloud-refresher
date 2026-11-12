@@ -70,7 +70,7 @@ function chooseTvScheduleDate(tmdbDetails, tvmazeEpisodes, today) {
     episode.number === next.episode_number
   );
   const tvmazeDate = match?.airdate;
-  if (match && /^\\d{4}-\\d{2}-\\d{2}$/.test(tvmazeDate || '')) {
+  if (match && /^\d{4}-\d{2}-\d{2}$/.test(tvmazeDate || '')) {
     if (isFuture(tvmazeDate, today)) {
       return {
         date: tvmazeDate,
@@ -171,4 +171,7 @@ export function chooseMovieDateForTest(rows, today) {
 }
 export function chooseTvDateForTest(details, today) {
   return chooseTvDate(details, today);
+}
+export function chooseTvScheduleDateForTest(details, episodes, today) {
+  return chooseTvScheduleDate(details, episodes, today);
 }
