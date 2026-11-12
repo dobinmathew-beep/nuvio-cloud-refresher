@@ -3,7 +3,7 @@
 Only announced/confirmed dates are emitted. Predictions, expected dates and
 unverified theatrical-to-OTT estimates are deliberately excluded.
 """
-from datetime import datetime
+from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 import re
 
@@ -243,6 +243,27 @@ def collect(get, today, langs, norm):
         health.append({'source': 'Cinebuds recent OTT dates', 'url': recent_url, 'state': 'live', 'records': len(parsed)})
     except Exception as error:
         health.append({'source': 'Cinebuds recent OTT dates', 'url': recent_url, 'state': 'failed', 'records': 0, 'error': str(error)[:240]})
+    # TVmaze is also used by the catalog's series discovery pipeline. Query
+    # its upcoming web schedule so confirmed future OTT episodes can be marked.
+    for offset in range(1, 15):
+        day = (datetime.fromisoformat(today) + timedelta(days=offset)).date().isoformat()
+        schedule_url = 'https://api.tvmaze.com/schedule/web?date=' + day
+        try:
+            for episode in get(schedule_url):
+                show = (episode.get('_embedded') or {}).get('show') or episode.get('show') or {}
+                language = str(show.get('language') or '').lower()
+                release_day = str(episode.get('airdate') or '')[:10]
+                channel = show.get('webChannel') or {}
+                if language not in langs or release_day < today or not channel.get('name') or not show.get('name'):
+                    continue
+                events.append({'name': show['name'], 'language': language, 'type': 'series',
+                    'ottDate': release_day, 'platforms': [channel['name']], 'poster': (show.get('image') or {}).get('original'),
+                    'year': str(show.get('premiered') or '')[:4] or None, 'source': 'https://api.tvmaze.com/schedule/web',
+                    'sources': ['https://api.tvmaze.com/schedule/web', show.get('url', 'https://www.tvmaze.com/')],
+                    'confirmed': True, 'releaseKind': 'digital', 'releaseDateBasis': 'TVmaze scheduled web episode',
+                    'sourceRecord': {'title': show['name'], 'releaseDate': release_day, 'source': schedule_url}})
+        except Exception as error:
+            health.append({'source': 'TVmaze upcoming web schedule', 'url': schedule_url, 'state': 'failed', 'records': 0, 'error': str(error)[:240]})
     # Deduplicate language/title/date rows while preserving corroborating URLs.
     merged = {}
     for event in events:
