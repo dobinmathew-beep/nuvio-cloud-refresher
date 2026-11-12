@@ -126,7 +126,7 @@ def _generic(soup, source_name, source_url, today, langs, norm):
     seen = set()
     for selector in selectors:
         for node in soup.select(selector):
-            marker = (node.name, node.get("id"), node.get("class"), node.get_text(" ", strip=True)[:180])
+            marker = (node.name, node.get("id"), tuple(node.get("class") or []), node.get_text(" ", strip=True)[:180])
             if marker in seen:
                 continue
             seen.add(marker)
