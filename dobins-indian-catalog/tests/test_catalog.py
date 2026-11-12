@@ -29,10 +29,10 @@ class CatalogTests(unittest.TestCase):
    with tempfile.TemporaryDirectory() as d:
     update.DATA=Path(d);today=update.TODAY;future=(date.fromisoformat(today)+timedelta(days=1)).isoformat()
     base={'platform':'Netflix','languages':['Tamil'],'type':'Movie','verified':True,'releaseDate':today}
-    update.dailyott=lambda:[dict(base,title='Digital'),dict(base,title='Future',releaseDate=future),dict(base,title='Unverified',verified=False)]
+    update.dailyott=lambda:[dict(base,title='Digital'),dict(base,title='Digital',releaseDate=future),dict(base,title='Future',releaseDate=future),dict(base,title='Unverified',verified=False)]
     html='<table class="ott-table--recent">'+''.join('<tr class="ott-row"><td><time datetime="'+today+'"></time></td><td><a class="ott-title">Crosscheck '+str(i)+'</a></td><td class="ott-lang">Tamil</td></tr>' for i in range(6))+'</table>'
     update.get=lambda *a,**k:html
-    events,_=update.collect();names={e['name'] for e in events};self.assertIn('Digital',names);self.assertIn('Future',names);self.assertNotIn('Unverified',names)
+    events,_=update.collect();names={e['name'] for e in events};self.assertIn('Digital',names);self.assertIn('Future',names);self.assertNotIn('Unverified',names);self.assertEqual(next(e for e in events if e['name']=='Digital')['ottDate'],future)
   finally:update.DATA,update.get,update.dailyott=original_data,original_get,original_source
  def test_seasons_share_a_series_identity(self):
   self.assertEqual(update.norm('Example (Season 2)'),update.norm('Example'))
