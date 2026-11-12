@@ -6,14 +6,20 @@ from bs4 import BeautifulSoup
 import subprocess,re,os
 import alternate
 POLICY='ott-or-confirmed-physical-v1'
-def merge_events(events,norm):
+def merge_events(events,norm,today=None):
+ today=today or datetime.now().date().isoformat()
  merged={}
  for event in events:
   e=dict(event);k=(e['language'],e['type'],norm(e['name']));kind=e.get('releaseKind','digital')
   availability={'kind':kind,'date':e['ottDate'],'platforms':e.get('platforms',[]),'sources':e.get('sources',[e.get('source')])}
   if k not in merged:merged[k]={**e,'releaseKind':kind,'availability':[availability]};continue
   old=merged[k];all_av=old['availability']+[availability]
-  pick_new=(e['type']=='series' and e['ottDate']>old['ottDate']) or (e['type']=='movie' and e['ottDate']<old['ottDate'])
+  if e['type']=='series':pick_new=e['ottDate']>old['ottDate']
+  else:
+   def date_rank(item):
+    day=str(item.get('ottDate') or '')[:10];kind=item.get('releaseKind','digital')
+    return (0,day) if kind=='digital' and day>=today else (1,day) if kind=='digital' else (2,day)
+   pick_new=date_rank(e)<date_rank(old)
   chosen={**(e if pick_new else old)};chosen['releaseKind']=kind if pick_new else old['releaseKind'];chosen['availability']=all_av
   chosen['sources']=list(dict.fromkeys(old.get('sources',[])+e.get('sources',[])))
   chosen['platforms']=list(dict.fromkeys(old.get('platforms',[])+e.get('platforms',[])))
