@@ -194,7 +194,7 @@ def release_classification(event,meta):
  digital=event_digital_date(event)
  physical=next((x.get('date') for x in availability if x.get('kind')=='physical' and x.get('date')),None)
  if digital:label='New OTT arrival';label_date=digital
- elif physical or event.get('releaseKind')=='physical':label='New physical release';label_date=physical or event.get('ottDate')
+ elif physical or event.get('releaseKind')=='physical':label='New physical release';label_date=None
  else:return None,None,None
  source=event.get('sourceRecord') or {}
  details=source.get('tmdbDetails') or {}
