@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-11T23:39:24.806443+04:00",
+  "checked_at": "2026-11-12T11:16:53.497921+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
     "addon": {
       "status": "pass",
-      "checked_at": "2026-11-11T23:39:24.806443+04:00",
+      "checked_at": "2026-11-12T11:16:53.497921+04:00",
       "public_url": "https://the-great-indian-addon.vercel.app",
       "checks": [
         {
@@ -50,49 +50,49 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-11T23:39:24.806443+04:00",
+      "checked_at": "2026-11-12T11:16:53.497921+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
           "name": "public status and freshness",
           "status": "pass",
           "details": {
-            "revision": "7b0c8b2b-d0d2-42e3-adc5-e55a4d0f00ae",
-            "checked_utc": "2026-11-11T14:02:05.064968+00:00",
-            "matched_ids": 622,
-            "playlist_channel_ids": 824,
-            "unresolved_ids": 202,
-            "programmes": 67333
+            "revision": "a2469dbd-9368-43ac-9f7f-99b2a9601011",
+            "checked_utc": "2026-11-12T02:28:56.987817+00:00",
+            "matched_ids": 616,
+            "playlist_channel_ids": 826,
+            "unresolved_ids": 210,
+            "programmes": 63200
           }
         },
         {
           "name": "published XMLTV",
           "status": "pass",
           "details": {
-            "bytes": 2040501,
-            "channels": 622,
-            "programmes": 67333
+            "bytes": 1929047,
+            "channels": 616,
+            "programmes": 63200
           }
         },
         {
           "name": "Channel_Matching_Report.csv",
           "status": "pass",
           "details": {
-            "rows": 824
+            "rows": 826
           }
         },
         {
           "name": "Unresolved_Channels.csv",
           "status": "pass",
           "details": {
-            "rows": 202
+            "rows": 210
           }
         },
         {
           "name": "Source_Crosscheck_Report.csv",
           "status": "pass",
           "details": {
-            "rows": 3145
+            "rows": 2726
           }
         },
         {
@@ -135,10 +135,10 @@
     },
     "backdrops": {
       "status": "pass",
-      "checked_at": "2026-11-11T23:39:24.806443+04:00",
+      "checked_at": "2026-11-12T11:16:53.497921+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
       "details": {
-        "day": "2026-11-11",
+        "day": "2026-11-12",
         "statuses": 160,
         "images": 16,
         "states": {
@@ -147,8 +147,8 @@
         },
         "errors": [],
         "catalogHeads": {
-          "hindi": "tt27988879",
           "tamil": "tt39239754",
+          "hindi": "tt27988879",
           "malayalam": "tt27512908",
           "telugu": "tt32089596"
         }
@@ -157,14 +157,14 @@
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-11T23:39:24.806443+04:00",
+      "checked_at": "2026-11-12T11:16:53.497921+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
           "language": "hindi",
           "status": "pass",
-          "bytes": 6905330,
-          "sha256": "9038fbb873ced98b066db8855f6fc7fc5f25da461e620146550c77a378d32fcd",
+          "bytes": 6905380,
+          "sha256": "4f6696e62ea2fdc9367ac936bcdd4635240172bc9f6d3f33801cac8aa6d91dc2",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -184,8 +184,8 @@
         {
           "language": "tamil",
           "status": "pass",
-          "bytes": 6904840,
-          "sha256": "27626cae0cfdab4378590f64dac33bf0f83eb781c3761e388e9269c661dbf73e",
+          "bytes": 6904585,
+          "sha256": "b1b14d464f42573a2ad5556f1b8f3f80d25ebab84ede4e8c7e8049f27c9fb6cd",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -205,8 +205,8 @@
         {
           "language": "malayalam",
           "status": "pass",
-          "bytes": 6895633,
-          "sha256": "1b535cc6322ed976557eccbbf1a7ac98ab3e4748e63e2dc5778d13b04e1c6c78",
+          "bytes": 6895380,
+          "sha256": "4b93abb9c1aa6e84d8be4ac995bb28b271f2fb00e06bad824ada9f29e16abfc6",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -226,8 +226,8 @@
         {
           "language": "telugu",
           "status": "pass",
-          "bytes": 6897447,
-          "sha256": "04cad07ef6113763b11019d3679c2f3c9965312c2363fcc3fa4223c50ab075a6",
+          "bytes": 6897726,
+          "sha256": "4ad18eb343b4986d88b8f16cae69024a4c5a2ce38cd536126396b71e81485189",
           "duration_seconds": 50.0,
           "streams": [
             {
