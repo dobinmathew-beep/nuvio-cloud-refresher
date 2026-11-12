@@ -13,4 +13,21 @@ class PhysicalTests(unittest.TestCase):
  def test_physical_premiere_can_precede_ott_without_duplicate(self):
   e={'name':'Example','type':'movie','language':'tamil','ottDate':'2026-10-20','releaseKind':'physical','sources':['disc'],'platforms':['Blu-ray']};d=dict(e,ottDate='2026-10-29',releaseKind='digital',sources=['ott'],platforms=['Netflix'])
   out=physical.merge_events([d,e],update.norm);self.assertEqual(len(out),1);self.assertEqual(out[0]['ottDate'],'2026-10-20');self.assertEqual({x['kind'] for x in out[0]['availability']},{'physical','digital'})
+
+ def test_digital_arrival_is_labeled_even_when_the_theatrical_release_is_old(self):
+  e={'type':'movie','releaseKind':'digital','ottDate':'2026-11-13','availability':[{'kind':'digital','date':'2026-11-13'}]}
+  m={'releaseInfo':'2023','releaseDate':'2023-11-10'}
+  label,original,digital=update.release_classification(e,m)
+  self.assertEqual(label,'New OTT arrival')
+  self.assertEqual(original,'2023-11-10')
+  self.assertEqual(digital,'2026-11-13')
+ def test_physical_only_movie_is_not_mislabeled_as_ott_arrival(self):
+  e={'type':'movie','releaseKind':'physical','ottDate':'2023-12-01','availability':[{'kind':'physical','date':'2023-12-01'}]}
+  label,original,digital=update.release_classification(e,{'releaseInfo':'2023'})
+  self.assertEqual(label,'New physical release')
+  self.assertIsNone(digital)
+ def test_movie_sorting_uses_ott_arrival_date_when_available(self):
+  item={'type':'movie','releaseDate':'2023-11-10','ottDate':'2026-11-13'}
+  self.assertEqual(update.catalog_sort_date(item),'2026-11-13')
+
 if __name__=='__main__':unittest.main()
