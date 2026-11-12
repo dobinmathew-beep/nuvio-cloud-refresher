@@ -24,7 +24,9 @@ The service substitutes the IMDb ID into the BetterPosters template:
 - TMDB is the metadata source.
 - For films, prefer future India (IN) dates, then US and GB; if none are present, use the earliest future announced country date.
 - For series, use the next episode date, or a future premiere date.
-- Past and malformed dates are ignored.
+- Past and malformed dates are ignored, with "today" evaluated in the `Asia/Muscat` time zone.
+- Provider dates that contain only a calendar date remain unchanged (for example, a source-listed `2026-11-13` stays `NOV 13`); the service does not invent a release time or shift a date-only value across time zones.
+- When a source provides an actual release instant, any future local-time conversion must use that instant and its source time zone rather than guessing from a date-only listing.
 - Without an API key or a confirmed future date, the original BetterPosters bytes are returned unchanged.
 
 ## Image treatment

@@ -4,6 +4,25 @@ const pending = new Map();
 const CACHE_MS = 30 * 60 * 1000;
 const NEGATIVE_CACHE_MS = 30 * 60 * 1000;
 
+// All date-only schedules remain source calendar dates. Only the definition of
+// "today" (future/past comparison and override expiry) uses Oman's local day.
+export const RELEASE_DATE_TIME_ZONE = 'Asia/Muscat';
+
+export function getTodayInTimeZone(now = new Date(), timeZone = RELEASE_DATE_TIME_ZONE) {
+  const instant = now instanceof Date ? now : new Date(now);
+  if (!Number.isFinite(instant.getTime())) throw new RangeError('Invalid date supplied to getTodayInTimeZone');
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone,
+    calendar: 'gregory',
+    numberingSystem: 'latn',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).formatToParts(instant);
+  const values = Object.fromEntries(parts.filter(part => part.type !== 'literal').map(part => [part.type, part.value]));
+  return values.year + '-' + values.month + '-' + values.day;
+}
+
 // Verified provider schedule corrections for individual episodes where the
 // general metadata feed conflicts with the streaming platform's published
 // release calendar. Dates are calendar dates, not timezone-shifted timestamps.
@@ -71,7 +90,7 @@ async function tmdbJson(path, credential) {
   return response.json();
 }
 
-export function verifiedTvScheduleOverride(imdbId, season, episode, today = new Date().toISOString().slice(0, 10)) {
+export function verifiedTvScheduleOverride(imdbId, season, episode, today = getTodayInTimeZone()) {
   const override = VERIFIED_TV_SCHEDULE_OVERRIDES.get(imdbId + '|' + season + '|' + episode);
   if (!override || !isFuture(override.date, today)) return null;
   return { date: override.date, region: 'US', source: override.source, kind: 'episode', season, episode };
@@ -123,7 +142,7 @@ async function resolveDate(imdbId, credential, today) {
   if (movie?.id) {
     const releaseData = await tmdbJson('/movie/' + movie.id + '/release_dates', credential);
     const selected = chooseMovieDate(releaseData.results || [], today);
-    console.info('[release-date-resolution]', JSON.stringify({ imdbId, mediaType: 'movie', tmdbId: movie.id, selectedDate: selected?.date || null, selectedSource: selected?.source || null, region: selected?.region || null, dateInterpretation: 'TMDB calendar date; no timezone shift' }));
+    console.info('[release-date-resolution]', JSON.stringify({ imdbId, mediaType: 'movie', tmdbId: movie.id, selectedDate: selected?.date || null, selectedSource: selected?.source || null, region: selected?.region || null, dateInterpretation: 'TMDB calendar date; no timezone shift', comparisonTimeZone: RELEASE_DATE_TIME_ZONE, evaluationDate: today }));
     return selected;
   }
   const show = found.tv_results?.[0];
@@ -152,7 +171,9 @@ async function resolveDate(imdbId, credential, today) {
       selectedDate: selected?.date || null,
       selectedSource: selected?.source || null,
       tvmazeError,
-      dateInterpretation: 'episode calendar date; no timezone shift'
+      dateInterpretation: 'episode calendar date; no timezone shift',
+      comparisonTimeZone: RELEASE_DATE_TIME_ZONE,
+      evaluationDate: today
     }));
     return selected;
   }
@@ -160,7 +181,7 @@ async function resolveDate(imdbId, credential, today) {
 }
 export async function upcomingRelease(imdbId, options = {}) {
   if (!validImdbId(imdbId)) return null;
-  const today = options.today || new Date().toISOString().slice(0, 10);
+  const today = options.today || getTodayInTimeZone(options.now || new Date());
   // Apply a verified episode-specific correction before requiring third-party
   // metadata credentials. This prevents a known conflicting TMDB date from
   // reintroducing an incorrect badge for this published episode schedule.

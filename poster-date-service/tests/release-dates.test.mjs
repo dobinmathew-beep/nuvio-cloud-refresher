@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { validImdbId, formatBadgeDate, chooseMovieDateForTest, chooseTvDateForTest, chooseTvScheduleDateForTest, verifiedTvScheduleOverride } from '../lib/release-dates.mjs';
+import { validImdbId, formatBadgeDate, chooseMovieDateForTest, chooseTvDateForTest, chooseTvScheduleDateForTest, verifiedTvScheduleOverride, getTodayInTimeZone, RELEASE_DATE_TIME_ZONE } from '../lib/release-dates.mjs';
 import { hasExpectedDateBadgeText } from '../lib/coming-tag.mjs';
 
 const today = '2026-11-12';
@@ -14,6 +14,25 @@ test('accepts IMDb title IDs only', () => {
 test('formats a confirmed date for a compact badge', () => {
   assert.equal(formatBadgeDate('2026-12-20'), 'DEC 20');
   assert.equal(formatBadgeDate('not-a-date'), null);
+});
+
+
+test('today is evaluated using the Oman calendar day, including its midnight boundary', () => {
+  assert.equal(RELEASE_DATE_TIME_ZONE, 'Asia/Muscat');
+  assert.equal(getTodayInTimeZone(new Date('2026-11-12T19:59:59.999Z')), '2026-11-12');
+  assert.equal(getTodayInTimeZone(new Date('2026-11-12T20:00:00.000Z')), '2026-11-13');
+  assert.equal(getTodayInTimeZone(new Date('2026-11-12T00:00:00.000Z')), '2026-11-12');
+});
+
+test('date-only provider schedule values are not shifted when formatted for badges', () => {
+  assert.equal(formatBadgeDate('2026-11-13'), 'NOV 13');
+});
+
+test('verified schedule override expires at Oman midnight, not UTC midnight', () => {
+  const beforeOmanMidnight = getTodayInTimeZone(new Date('2026-11-12T19:59:59.999Z'));
+  const atOmanMidnight = getTodayInTimeZone(new Date('2026-11-12T20:00:00.000Z'));
+  assert.equal(verifiedTvScheduleOverride('tt33043892', 2, 3, beforeOmanMidnight)?.date, '2026-11-13');
+  assert.equal(verifiedTvScheduleOverride('tt33043892', 2, 3, atOmanMidnight), null);
 });
 
 test('movie theatrical dates never create a coming badge', () => {
