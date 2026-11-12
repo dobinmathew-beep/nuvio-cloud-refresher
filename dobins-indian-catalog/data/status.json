@@ -4,7 +4,7 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-12T08:06:28.803911+04:00",
+  "updatedAt": "2026-11-12T08:13:02.842826+04:00",
   "lastSuccessCycle": "2026-11-12T08:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
@@ -151,7 +151,7 @@
     "dobins_hi_series": 320
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
-  "pendingMatches": 98,
-  "checkedCandidates": 952,
+  "pendingMatches": 89,
+  "checkedCandidates": 922,
   "errors": []
 }
