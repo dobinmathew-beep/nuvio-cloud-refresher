@@ -14,6 +14,13 @@ class PhysicalTests(unittest.TestCase):
   e={'name':'Example','type':'movie','language':'tamil','ottDate':'2026-10-20','releaseKind':'physical','sources':['disc'],'platforms':['Blu-ray']};d=dict(e,ottDate='2026-10-29',releaseKind='digital',sources=['ott'],platforms=['Netflix'])
   out=physical.merge_events([d,e],update.norm);self.assertEqual(len(out),1);self.assertEqual(out[0]['ottDate'],'2026-10-20');self.assertEqual({x['kind'] for x in out[0]['availability']},{'physical','digital'})
 
+ def test_future_digital_date_wins_over_old_digital_availability(self):
+  old={'name':'Bandra','type':'movie','language':'malayalam','ottDate':'2023-11-10','releaseKind':'digital','sources':['old'],'platforms':['Old platform']}
+  future={'name':'Bandra','type':'movie','language':'malayalam','ottDate':'2026-11-13','releaseKind':'digital','sources':['upcoming'],'platforms':['ZEE5']}
+  out=physical.merge_events([old,future],update.norm,'2026-11-12')[0]
+  self.assertEqual(out['ottDate'],'2026-11-13')
+  self.assertEqual({x['date'] for x in out['availability']},{'2023-11-10','2026-11-13'})
+  self.assertEqual(update.event_digital_date(out,'2026-11-12'),'2026-11-13')
  def test_digital_arrival_is_labeled_even_when_the_theatrical_release_is_old(self):
   e={'type':'movie','releaseKind':'digital','ottDate':'2026-11-13','availability':[{'kind':'digital','date':'2026-11-13'}]}
   m={'releaseInfo':'2023','releaseDate':'2023-11-10'}
