@@ -94,7 +94,8 @@ test('a poster badge is preserved only when its date exactly matches TMDB', () =
   assert.equal(hasExpectedDateBadgeText('Coming 16 Nov', 'premiere', '2026-11-13'), false);
 });
 
-\ntest('TVmaze same-episode streaming air date overrides a conflicting TMDB date', () => {
+
+test('TVmaze same-episode streaming air date overrides a conflicting TMDB date', () => {
   const details = { next_episode_to_air: { air_date: '2026-11-15', season_number: 2, episode_number: 3 }, origin_country: ['US'] };
   const episodes = [{ season: 2, number: 3, airdate: '2026-11-13' }];
   assert.deepEqual(chooseTvScheduleDateForTest(details, episodes, today), {
