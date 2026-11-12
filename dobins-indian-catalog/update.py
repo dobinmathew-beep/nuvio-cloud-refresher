@@ -93,10 +93,13 @@ def collect():
   day=str(m.get('releaseDate',''))[:10];typ={'Movie':'movie','Series':'series'}.get(m.get('type'))
   if not typ or not re.fullmatch(r'\d{4}-\d{2}-\d{2}',day) or day>TODAY:continue
   if not (m.get('verified') or m.get('source_verified')):continue
-  langs=[str(x).lower() for x in m.get('languages',[]) if str(x).lower() in LANGS]
+  raw_langs=[str(x).lower() for x in m.get('languages',[])]
+  langs=[x for x in raw_langs if x in LANGS]
   original=str(m.get('tmdbDetails',{}).get('originalLanguage') or m.get('original_language') or '').lower()
   if original in LANGS:langs=[original]
   elif original in LANGS.values():langs=[next(k for k,v in LANGS.items() if v==original)]
+  elif original:langs=[]
+  elif len(langs)!=1:langs=[]
   for lang in langs:
    out.append({'name':m['title'],'language':lang,'type':typ,'ottDate':day,'platforms':[m.get('platform','')],'poster':m.get('posterUrl'),'description':m.get('tmdbDetails',{}).get('overview',''),'year':str(m.get('tmdbDetails',{}).get('releaseDate',''))[:4] or None,'source':'https://www.dailyott.in/','sourceId':m.get('_id'),'confirmed':True,'sourceRecord':m})
    kinds.setdefault(norm(m['title']),set()).add(typ)
@@ -267,6 +270,11 @@ def build():
   if mid in seen[cid]:continue
   seen[cid].add(mid);m=metas[alternate.key(e['type'],mid)];aid=alternate.artid(e['type'],mid);poster=e.get('poster') or m.get('poster');poster=re.sub(r'/w\d+/','/w780/',poster) if poster and 'image.tmdb.org' in poster else poster
   if not poster:continue
+  # Enforce original-language-only catalogs even when a source labels a dubbed
+  # version as a separate language. Cinemeta's original_language is authoritative.
+  original=str(m.get('original_language') or m.get('originalLanguage') or '').lower()
+  original=next((lang for lang,code in LANGS.items() if original in (lang,code)),None)
+  if original and original!=e['language']:continue
   previous=m.get('artwork',{});m['artwork']={'posters':list(dict.fromkeys(x for x in ([f'https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/{mid}.jpg'] if mid.startswith('tt') else [])+[poster,m.get('poster')]+([f'https://images.metahub.space/poster/medium/{mid}/img'] if mid.startswith('tt') else []) if x)),'backgrounds':list(dict.fromkeys(x for x in [m.get('background')]+([f'https://images.metahub.space/background/medium/{mid}/img'] if mid.startswith('tt') else []) if x))}
   m['artwork']['logos']=list(dict.fromkeys(x for x in [m.get('logo')]+([f'https://images.metahub.space/logo/medium/{mid}/img'] if mid.startswith('tt') else []) if x and not x.startswith(BASE)))
   if not m.get('name'):m['name']=e.get('name') or str(mid)
