@@ -5,7 +5,17 @@ on:
     - cron: '17 */6 * * *'
   push:
     branches: [main]
-    paths: [verify_independent.py, .github/workflows/independent-verification.yml]
+    paths:
+      - verify_independent.py
+      - .github/workflows/independent-verification.yml
+      - .github/workflows/refresh.yml
+      - cloud.py
+      - featured.py
+      - verify_backdrops.py
+      - hero_prepare.py
+      - hero_render.py
+      - state/featured-movies.json
+      - state/success.json
 permissions:
   contents: write
 concurrency:
