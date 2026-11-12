@@ -77,7 +77,7 @@ def dailyott():
  if len(rows)<20:raise RuntimeError('DailyOTT response unexpectedly empty')
  return rows
 
-# Upcoming digital dates are collected independently from the same OTT feeds before event merging.
+# Upcoming digital dates are collected from every supported OTT date feed before event merging.
 def collect():
  health=[];old=load('sources.json',{});out=[];raw=[]
  try:raw=dailyott();old['dailyott']={'checkedAt':NOW.isoformat(),'records':raw};health.append({'source':'DailyOTT','url':'https://www.dailyott.in/','state':'live','records':len(raw)})
