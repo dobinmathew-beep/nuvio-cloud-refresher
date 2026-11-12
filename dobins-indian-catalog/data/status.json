@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-12T14:04:50.108759+04:00",
-  "lastSuccessCycle": "2026-11-12T14:00:00+04:00",
+  "updatedAt": "2026-11-12T18:45:57.485048+04:00",
+  "lastSuccessCycle": "2026-11-12T18:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
   "sources": [
@@ -101,17 +101,17 @@
       "source": "TVmaze streaming episode schedule",
       "url": "https://api.tvmaze.com/schedule/web",
       "state": "live",
-      "records": 0
+      "records": 4
     },
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 542,
+      "records": 545,
       "counts": {
-        "malayalam": 52,
-        "tamil": 92,
+        "malayalam": 53,
+        "tamil": 93,
         "telugu": 96,
-        "hindi": 302
+        "hindi": 303
       },
       "state": "live"
     },
@@ -144,14 +144,14 @@
     "dobins_ml_movie": 68,
     "dobins_ml_series": 60,
     "dobins_ta_movie": 60,
-    "dobins_ta_series": 97,
+    "dobins_ta_series": 98,
     "dobins_te_movie": 68,
     "dobins_te_series": 102,
     "dobins_hi_movie": 75,
-    "dobins_hi_series": 320
+    "dobins_hi_series": 321
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
   "pendingMatches": 89,
-  "checkedCandidates": 926,
+  "checkedCandidates": 928,
   "errors": []
 }

@@ -42,13 +42,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Vadhandhi Season 2: The Mystery of Mani",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-08-07",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Chef Mantra Project USA",
     "language": "telugu",
     "type": "series",
@@ -63,6 +56,13 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Vadhandhi Season 2: The Mystery of Mani",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-08-07",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Marpu - Not For You, But For The Future",
     "language": "telugu",
     "type": "movie",
@@ -70,17 +70,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Second Love",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-07-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Cyber",
     "language": "malayalam",
     "type": "series",
     "ottDate": "2026-05-13",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Second Love",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-07-13",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -98,13 +98,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Mammaatiyaan Stars",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-06-26",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Durga",
     "language": "malayalam",
     "type": "series",
@@ -119,10 +112,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Southern Shadows",
+    "name": "Mammaatiyaan Stars",
     "language": "tamil",
     "type": "series",
-    "ottDate": "2026-05-23",
+    "ottDate": "2026-06-26",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -133,10 +126,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Warrant: From the World of Vilangu",
+    "name": "Southern Shadows",
     "language": "tamil",
     "type": "series",
-    "ottDate": "2026-05-22",
+    "ottDate": "2026-05-23",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -161,6 +154,13 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Warrant: From the World of Vilangu",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-05-22",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Jungle Tales With Mowgli",
     "language": "hindi",
     "type": "movie",
@@ -172,13 +172,6 @@
     "language": "malayalam",
     "type": "series",
     "ottDate": "2026-04-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Exam: The System Exposed",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-05-15",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -196,10 +189,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Neeya Naana",
+    "name": "Exam: The System Exposed",
     "language": "tamil",
     "type": "series",
-    "ottDate": "2026-05-10",
+    "ottDate": "2026-05-15",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -224,7 +217,7 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Cooku with Comali",
+    "name": "Neeya Naana",
     "language": "tamil",
     "type": "series",
     "ottDate": "2026-05-10",
@@ -245,10 +238,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Jodi Are U Ready Season 3 (Grand Finale)",
+    "name": "Cooku with Comali",
     "language": "tamil",
     "type": "series",
-    "ottDate": "2026-05-03",
+    "ottDate": "2026-05-10",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -280,10 +273,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Thai Maaman",
+    "name": "Jodi Are U Ready Season 3 (Grand Finale)",
     "language": "tamil",
     "type": "series",
-    "ottDate": "2026-04-28",
+    "ottDate": "2026-05-03",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -308,10 +301,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Cooku with Comali Season 7 (Episode 5)",
+    "name": "Thai Maaman",
     "language": "tamil",
     "type": "series",
-    "ottDate": "2026-04-18",
+    "ottDate": "2026-04-28",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -322,7 +315,7 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "WWE (Tamil Dub)",
+    "name": "Cooku with Comali Season 7 (Episode 5)",
     "language": "tamil",
     "type": "series",
     "ottDate": "2026-04-18",
@@ -340,6 +333,13 @@
     "language": "hindi",
     "type": "movie",
     "ottDate": "2026-08-15",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "WWE (Tamil Dub)",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-04-18",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -378,17 +378,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Vanakkam Thamizha",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-03-25",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "The Legend of Karna",
     "language": "hindi",
     "type": "movie",
     "ottDate": "2026-07-31",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Vanakkam Thamizha",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-03-25",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
