@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-13T18:41:38.787275+04:00",
+    "checkedAt": "2026-11-13T22:47:54.668097+04:00",
     "records": [
       {
         "_id": "6af6738ddea24088f261c3a9",
@@ -7573,51 +7573,54 @@
           "cast": [
             {
               "name": "Radhika Apte",
-              "character": ""
+              "character": "Padma"
             },
             {
               "name": "Konkona Sen Sharma",
-              "character": ""
+              "character": "Shonali Ghosh"
             },
             {
               "name": "Vijay Varma",
-              "character": ""
+              "character": "Hemant"
             },
             {
               "name": "Abhishek Banerjee",
-              "character": ""
+              "character": "Debendu"
             },
             {
               "name": "Ali Fazal",
-              "character": ""
+              "character": "Varun Apte"
             },
             {
               "name": "Radhikka Madan",
-              "character": ""
+              "character": "Sailee Vaidya"
             },
             {
               "name": "Aditi Rao Hydari",
-              "character": ""
+              "character": "Saira"
             },
             {
               "name": "Siddharth",
-              "character": ""
+              "character": "Badru / Hero Badru"
             }
           ],
           "overview": "Through four bite-sized yet emotionally resonant films, the anthology once again explores lust, love, relationships, and repressed desire, offering fresh perspectives on intimacy, longing, and human connection in all their complexity.",
-          "runtime": null,
+          "runtime": 165,
           "genres": [
             "Romance",
             "Drama"
           ],
           "originalLanguage": "hi",
           "spokenLanguages": [
-            "Hindi"
+            "Hindi",
+            "English",
+            "Malayalam",
+            "Marathi"
           ],
           "releaseDate": "2026-09-18",
-          "voteAverage": null,
+          "voteAverage": 5.9,
           "trailerKey": null,
-          "fetchedAt": "2026-09-18T07:47:06.244Z"
+          "fetchedAt": "2026-11-13T15:14:54.067Z"
         },
         "tmdbId": 1451944,
         "verified": true
@@ -30338,7 +30341,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-13T18:41:38.787275+04:00",
+    "checkedAt": "2026-11-13T22:47:54.668097+04:00",
     "records": [
       {
         "name": "Anbil Avan",
