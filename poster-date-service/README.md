@@ -11,8 +11,8 @@ An isolated per-title poster proxy for Xperience and AIOMetadata. It fetches the
 ## URL pattern
 `https://YOUR-SERVICE-DOMAIN/poster/{imdb_id}.jpg`
 
-The service substitutes the IMDb ID into the BetterPosters template. It deliberately uses the standard route, with no quality suffix or query parameter:
-`https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg`
+The service substitutes the IMDb ID into the BetterPosters template. It deliberately uses the standard `/poster/` route (not `/poster-q/`). The `rs=IM` query selects IMDb as the rating source; it is not a quality-tag switch.
+`https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM`
 
 ## Existing BetterPosters tag handling
 - The original image's top tag row is checked with English OCR.
