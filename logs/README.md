@@ -2,6 +2,7 @@
 
 [← Current status](../DAILY_UPDATES.md)
 
+- [2026-11-14](2026-11-14/README.md) · [Machine-readable records](2026-11-14/checks.jsonl)
 - [2026-11-13](2026-11-13/README.md) · [Machine-readable records](2026-11-13/checks.jsonl)
 - [2026-11-12](2026-11-12/README.md) · [Machine-readable records](2026-11-12/checks.jsonl)
 - [2026-11-11](2026-11-11/README.md) · [Machine-readable records](2026-11-11/checks.jsonl)
