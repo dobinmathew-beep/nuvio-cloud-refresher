@@ -6,6 +6,13 @@ on:
     paths: [refresh_watchdog.py, update_dashboard.py, tests/test_refresh_watchdog.py, tests/test_update_dashboard.py, tests/test_media_schedule.py, tests/test_featured.py, tests/test_verify_backdrops.py, state/success.json, .github/workflows/refresh-watchdog.yml]
   schedule:
     - cron: '3,33 * * * *'
+  workflow_run:
+    workflows:
+      - Nuvio cloud refresh
+      - Dobins Indian Catalog
+      - India EPG daily refresh
+    types: [completed]
+    branches: [main]
 permissions:
   contents: write
   actions: write
