@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import posterHandler from './api/poster.mjs';
 import healthHandler from './api/health.mjs';
+import { resolveTmdbTvImdbId } from './lib/tmdb-external-ids.mjs';
 import { runImageKitMaintenance } from './lib/imagekit-storage.mjs';
 
 const port = Number(process.env.PORT || 10000);
@@ -61,6 +62,30 @@ const server = createServer(async (req, res) => {
     adaptedReq.query.id = templateProbe ? 'tt0111161' : posterMatch[1];
     adaptedReq.probe = templateProbe;
     return posterHandler(adaptedReq, adaptedRes);
+  }
+
+  // TMDB-only catalogue records can use /poster/tmdb/{tmdb_id}.jpg.
+  // Resolve the TV record's IMDb external ID, then reuse the unchanged
+  // BetterPosters/date-overlay pipeline. Existing IMDb URLs remain untouched.
+  const tmdbPosterMatch = url.pathname.match(/^\/poster\/tmdb\/(\d{1,12})\.jpg$/i);
+  if (tmdbPosterMatch) {
+    if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method)) {
+      res.writeHead(405, { 'Allow': 'GET, HEAD, OPTIONS', 'Cache-Control': 'no-store' });
+      return res.end('Method not allowed');
+    }
+    try {
+      const imdbId = await resolveTmdbTvImdbId(tmdbPosterMatch[1]);
+      if (!imdbId) {
+        res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
+        return res.end('No IMDb external ID is available for this TMDB series.');
+      }
+      adaptedReq.query.id = imdbId;
+      return posterHandler(adaptedReq, adaptedRes);
+    } catch (error) {
+      console.warn('[tmdb-poster-id-resolution-failed]', JSON.stringify({ tmdbId: tmdbPosterMatch[1], error: error?.message || 'unknown error' }));
+      res.writeHead(502, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
+      return res.end('Could not resolve the TMDB series to an IMDb ID.');
+    }
   }
 
   res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
