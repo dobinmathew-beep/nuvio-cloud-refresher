@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-13T08:47:05.305243+04:00",
+    "checkedAt": "2026-11-13T11:10:17.329376+04:00",
     "records": [
       {
         "_id": "6af6738ddea24088f261c3a9",
@@ -97,6 +97,47 @@
         "updatedAt": "2026-11-13T02:20:00.349Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/2gKGkD0pN2Ss9LrHA6tv5hEjHOs.jpg",
         "instagramPostedAt": "2026-11-13T02:20:34Z",
+        "tmdbDetails": {
+          "tmdbId": 1493572,
+          "director": "Varun V. Sharma",
+          "cast": [
+            {
+              "name": "Pankaj Tripathi",
+              "character": "Ranjan Dubey"
+            },
+            {
+              "name": "Aditi Rao Hydari",
+              "character": "Helen"
+            },
+            {
+              "name": "Brijendra Kala",
+              "character": ""
+            },
+            {
+              "name": "Sunita Rajwar",
+              "character": ""
+            },
+            {
+              "name": "Vijayant Kohli",
+              "character": ""
+            }
+          ],
+          "overview": "Lucknow's most eligible bachelor finds unexpected love when his charming househelp enters his life, sparking romance, laughs and twists.",
+          "runtime": 115,
+          "genres": [
+            "Romance",
+            "Comedy"
+          ],
+          "originalLanguage": "hi",
+          "spokenLanguages": [
+            "Hindi"
+          ],
+          "releaseDate": "2026-11-13",
+          "voteAverage": null,
+          "trailerKey": "ym4y_aPk0io",
+          "fetchedAt": "2026-11-13T05:09:16.275Z"
+        },
+        "tmdbId": 1493572,
         "verified": true
       },
       {
@@ -421,6 +462,7 @@
         "trendingRank": 3,
         "trendingRankedAt": "2026-11-13T02:19:29.240Z",
         "trendingRankedDateIST": "2026-11-13",
+        "votes": 0,
         "verified": true
       },
       {
@@ -30080,7 +30122,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-13T08:47:05.305243+04:00",
+    "checkedAt": "2026-11-13T11:10:17.329376+04:00",
     "records": [
       {
         "name": "Anbil Avan",
