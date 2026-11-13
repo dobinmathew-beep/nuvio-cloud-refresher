@@ -98,29 +98,40 @@ export function verifiedTvScheduleOverride(imdbId, season, episode, today = getT
 
 function chooseTvScheduleDate(tmdbDetails, tvmazeEpisodes, today) {
   const next = tmdbDetails.next_episode_to_air;
-  if (!next || !Number.isInteger(next.season_number) || !Number.isInteger(next.episode_number)) {
-    return chooseTvDate(tmdbDetails, today);
+
+  // TMDB's next_episode_to_air can lag behind on the day an episode airs.
+  // Search the full TVmaze episode list for the earliest genuinely future
+  // episode instead of stopping when TMDB's current episode is today/past.
+  const futureTvmazeEpisodes = (tvmazeEpisodes || [])
+    .filter(episode =>
+      Number.isInteger(episode.season) &&
+      Number.isInteger(episode.number) &&
+      isFuture(episode.airdate, today)
+    )
+    .sort((a, b) =>
+      a.airdate.localeCompare(b.airdate) ||
+      a.season - b.season ||
+      a.number - b.number
+    );
+
+  if (futureTvmazeEpisodes.length) {
+    const episode = futureTvmazeEpisodes[0];
+    const matchesTmdbNext = episode.season === next?.season_number &&
+      episode.number === next?.episode_number;
+    return {
+      date: episode.airdate,
+      region: tmdbDetails.origin_country?.[0] || null,
+      source: matchesTmdbNext && episode.airdate === next?.air_date
+        ? 'tmdb-tvmaze-confirmed'
+        : 'tvmaze-next-future-episode',
+      kind: 'episode',
+      season: episode.season,
+      episode: episode.number
+    };
   }
-  const match = (tvmazeEpisodes || []).find(episode =>
-    episode.season === next.season_number &&
-    episode.number === next.episode_number
-  );
-  const tvmazeDate = match?.airdate;
-  if (match && /^\d{4}-\d{2}-\d{2}$/.test(tvmazeDate || '')) {
-    if (isFuture(tvmazeDate, today)) {
-      return {
-        date: tvmazeDate,
-        region: tmdbDetails.origin_country?.[0] || null,
-        source: tvmazeDate === next.air_date ? 'tmdb-tvmaze-confirmed' : 'tvmaze-episode-airdate',
-        kind: 'episode',
-        season: next.season_number,
-        episode: next.episode_number
-      };
-    }
-    // A matched episode schedule says this episode has already aired.
-    // Do not retain a later conflicting TMDB date as an upcoming badge.
-    return null;
-  }
+
+  // If TVmaze has no future episode, retain the TMDB fallback for shows
+  // whose episode list is unavailable or not yet populated.
   return chooseTvDate(tmdbDetails, today);
 }
 async function getTvmazeEpisodes(imdbId) {
@@ -150,7 +161,7 @@ async function resolveDate(imdbId, credential, today) {
     const details = await tmdbJson('/tv/' + show.id, credential);
     let tvmazeEpisodes = null;
     let tvmazeError = null;
-    if (details.next_episode_to_air) {
+    {
       try {
         tvmazeEpisodes = await getTvmazeEpisodes(imdbId);
       } catch (error) {
