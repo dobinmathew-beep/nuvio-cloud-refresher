@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-13T11:10:17.329376+04:00",
+    "checkedAt": "2026-11-13T16:49:16.519741+04:00",
     "records": [
       {
         "_id": "6af6738ddea24088f261c3a9",
@@ -40,6 +40,59 @@
         "updatedAt": "2026-11-13T02:19:51.552Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/ouGH1PS0xjDyfTQOhppn7QzJqQZ.jpg",
         "instagramPostedAt": "2026-11-13T02:22:04Z",
+        "tmdbDetails": {
+          "tmdbId": 1050981,
+          "director": "Sian Heder",
+          "cast": [
+            {
+              "name": "Ruth Madeley",
+              "character": "Judith 'Judy' Heumann"
+            },
+            {
+              "name": "Mark Ruffalo",
+              "character": "Joseph Califano"
+            },
+            {
+              "name": "Dylan O'Brien",
+              "character": "Evan White"
+            },
+            {
+              "name": "Madeline Delp",
+              "character": "Kitty Cone"
+            },
+            {
+              "name": "Rob Delaney",
+              "character": "Congressman Miller"
+            },
+            {
+              "name": "Ray Fisher",
+              "character": "Chuck Jackson"
+            },
+            {
+              "name": "Michael Patrick Thornton",
+              "character": "Ed Roberts"
+            },
+            {
+              "name": "Antwan Tolliver",
+              "character": "Brad Lomax"
+            }
+          ],
+          "overview": "Scrappy, defiant, and done being treated like a burden, Judy Heumann turns her outrage into a revolution. In 1977, she and more than 100 disability rights protestors send a very loud message: The system is broken—not us.",
+          "runtime": 127,
+          "genres": [
+            "Drama",
+            "History"
+          ],
+          "originalLanguage": "en",
+          "spokenLanguages": [
+            "English"
+          ],
+          "releaseDate": "2026-11-06",
+          "voteAverage": 8,
+          "trailerKey": "CQp2pUXLvJk",
+          "fetchedAt": "2026-11-13T10:28:10.198Z"
+        },
+        "tmdbId": 1050981,
         "verified": true
       },
       {
@@ -251,6 +304,55 @@
         "updatedAt": "2026-11-13T02:19:55.068Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/2cN2WjL4xQvbJIhxSjGmhXL41rX.jpg",
         "instagramPostedAt": "2026-11-13T02:20:50Z",
+        "tmdbDetails": {
+          "tmdbId": 1431738,
+          "director": "R. Kaarthikeyan",
+          "cast": [
+            {
+              "name": "Ashok Selvan",
+              "character": "Surya"
+            },
+            {
+              "name": "Preity Mukhundhan",
+              "character": "Iyal"
+            },
+            {
+              "name": "Sabumon Abdusamad",
+              "character": ""
+            },
+            {
+              "name": "Kadirbalu",
+              "character": ""
+            },
+            {
+              "name": "Mahadevan Ganesh",
+              "character": ""
+            },
+            {
+              "name": "Jawahar Sakthi",
+              "character": ""
+            },
+            {
+              "name": "Revathi",
+              "character": ""
+            }
+          ],
+          "overview": "A married couple attempts to start a good life together, but unexpected trouble traps them in an unsettling situation that forces them to fight back for their survival.",
+          "runtime": 158,
+          "genres": [
+            "Romance",
+            "Thriller"
+          ],
+          "originalLanguage": "ta",
+          "spokenLanguages": [
+            "Tamil"
+          ],
+          "releaseDate": "2026-10-02",
+          "voteAverage": null,
+          "trailerKey": "h5UFAz7LsSo",
+          "fetchedAt": "2026-11-13T12:41:01.465Z"
+        },
+        "tmdbId": 1431738,
         "verified": true
       },
       {
@@ -270,6 +372,61 @@
         "updatedAt": "2026-11-13T02:19:55.694Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/cXaCyYYbafVyMrs8rwKmxezBYPJ.jpg",
         "instagramPostedAt": "2026-11-13T02:21:02Z",
+        "tmdbDetails": {
+          "tmdbId": 1389379,
+          "director": "Rahul Sankrityan",
+          "cast": [
+            {
+              "name": "Vijay Deverakonda",
+              "character": "Singanamala Bobbili Ranabaali"
+            },
+            {
+              "name": "Rashmika Mandanna",
+              "character": "Jayamma"
+            },
+            {
+              "name": "Arnold Vosloo",
+              "character": "Sir Theodore Hector"
+            },
+            {
+              "name": "Easwari Rao",
+              "character": "Ranabaali's mother"
+            },
+            {
+              "name": "Vinod Sagar",
+              "character": "Easwar"
+            },
+            {
+              "name": "Kishore Kumar Polimera",
+              "character": ""
+            },
+            {
+              "name": "Luke McGibney",
+              "character": "Robert Multhus"
+            },
+            {
+              "name": "Madhunandan",
+              "character": ""
+            }
+          ],
+          "overview": "Set in 19th-century British India, a fierce leader rises from a drought-stricken land to fight colonial oppression and atrocities.",
+          "runtime": 179,
+          "genres": [
+            "History",
+            "Action",
+            "Drama"
+          ],
+          "originalLanguage": "te",
+          "spokenLanguages": [
+            "Telugu",
+            "English"
+          ],
+          "releaseDate": "2026-10-15",
+          "voteAverage": 4.7,
+          "trailerKey": "4AejYUbJiDs",
+          "fetchedAt": "2026-11-13T10:13:20.584Z"
+        },
+        "tmdbId": 1389379,
         "verified": true
       },
       {
@@ -368,6 +525,65 @@
         "tmdbRating": 69,
         "tmdbVotes": 340,
         "instagramPostedAt": "2026-11-13T02:21:34Z",
+        "tmdbDetails": {
+          "tmdbId": 11970,
+          "director": "Ron Clements",
+          "cast": [
+            {
+              "name": "Tate Donovan",
+              "character": "Hercules (voice)"
+            },
+            {
+              "name": "Josh Keaton",
+              "character": "Young Hercules (voice)"
+            },
+            {
+              "name": "Roger Bart",
+              "character": "Young Hercules (singing voice)"
+            },
+            {
+              "name": "Danny DeVito",
+              "character": "Philoctetes (voice)"
+            },
+            {
+              "name": "James Woods",
+              "character": "Hades (voice)"
+            },
+            {
+              "name": "Susan Egan",
+              "character": "Meg (voice)"
+            },
+            {
+              "name": "Bobcat Goldthwait",
+              "character": "Pain (voice)"
+            },
+            {
+              "name": "Matt Frewer",
+              "character": "Panic (voice)"
+            }
+          ],
+          "overview": "Bestowed with superhuman strength, a young mortal named Hercules sets out to prove himself a hero in the eyes of his father, the great god Zeus. Along with his friends Pegasus, a flying horse, and Phil, a personal trainer, Hercules is tricked by the hilarious, hotheaded villain Hades, who's plotting to take over Mount Olympus!",
+          "runtime": 93,
+          "genres": [
+            "Animation",
+            "Family",
+            "Fantasy",
+            "Adventure",
+            "Comedy",
+            "Romance"
+          ],
+          "originalLanguage": "en",
+          "spokenLanguages": [
+            "English",
+            "Spanish",
+            "Greek"
+          ],
+          "releaseDate": "1997-06-13",
+          "voteAverage": 7.497,
+          "trailerKey": "mXRDoJqg5Oo",
+          "fetchedAt": "2026-11-13T08:54:27.884Z"
+        },
+        "tmdbId": 11970,
         "verified": true
       },
       {
@@ -30122,7 +30338,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-13T11:10:17.329376+04:00",
+    "checkedAt": "2026-11-13T16:49:16.519741+04:00",
     "records": [
       {
         "name": "Anbil Avan",
