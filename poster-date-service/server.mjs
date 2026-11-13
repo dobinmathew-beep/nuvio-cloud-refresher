@@ -67,7 +67,9 @@ const server = createServer(async (req, res) => {
   // TMDB-only catalogue records can use /poster/tmdb/{tmdb_id}.jpg.
   // Resolve the TV record's IMDb external ID, then reuse the unchanged
   // BetterPosters/date-overlay pipeline. Existing IMDb URLs remain untouched.
-  const tmdbPosterMatch = url.pathname.match(/^\/poster\/tmdb\/(\d{1,12})\.jpg$/i);
+  // AIOMetadata's generic {id} placeholder can produce tmdb:93544. Accept
+  // both that namespaced form and the explicit /tmdb/ route used by older configs.
+  const tmdbPosterMatch = url.pathname.match(/^\/poster\/tmdb(?:\/|:|%3A)(\d{1,12})\.jpg$/i);
   if (tmdbPosterMatch) {
     if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method)) {
       res.writeHead(405, { 'Allow': 'GET, HEAD, OPTIONS', 'Cache-Control': 'no-store' });
