@@ -2,6 +2,12 @@ const TMDB = 'https://api.themoviedb.org/3';
 const cache = new Map();
 const CACHE_MS = 6 * 60 * 60 * 1000;
 
+// TMDB splits Top Boy into the original Summerhouse run and the Netflix
+// continuation, but IMDb keeps the complete 2011–2023 run under one title.
+const KNOWN_TV_IMDB_IDS = new Map([
+  ['93544', 'tt1830379']
+]);
+
 function credentials() {
   return {
     apiKey: process.env.TMDB_API_KEY || '',
@@ -11,7 +17,7 @@ function credentials() {
 
 export async function resolveTmdbTvImdbId(tmdbId, options = {}) {
   const id = String(tmdbId || '');
-  if (!/^\d{1,12}$/.test(id)) throw new TypeError('A numeric TMDB TV ID is required.');
+  if (!/^\\d{1,12}$/.test(id)) throw new TypeError('A numeric TMDB TV ID is required.');
 
   const cached = cache.get(id);
   if (!options.noCache && cached && cached.expiresAt > Date.now()) return cached.imdbId;
@@ -31,9 +37,9 @@ export async function resolveTmdbTvImdbId(tmdbId, options = {}) {
   if (!response.ok) throw new Error('TMDB external ID lookup failed: ' + response.status);
 
   const data = await response.json();
-  const imdbId = typeof data?.imdb_id === 'string' && /^tt\d{7,10}$/.test(data.imdb_id)
+  const imdbId = typeof data?.imdb_id === 'string' && /^tt\\d{7,10}$/.test(data.imdb_id)
     ? data.imdb_id
-    : null;
+    : KNOWN_TV_IMDB_IDS.get(id) || null;
 
   cache.set(id, { imdbId, expiresAt: Date.now() + CACHE_MS });
   while (cache.size > 1000) cache.delete(cache.keys().next().value);
