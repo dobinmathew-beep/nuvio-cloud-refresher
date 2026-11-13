@@ -1,7 +1,355 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-13T03:49:00.542650+04:00",
+    "checkedAt": "2026-11-13T08:47:05.305243+04:00",
     "records": [
+      {
+        "_id": "6af6738ddea24088f261c3a9",
+        "title": "Heartland",
+        "platform": "Netflix",
+        "createdAt": "2026-11-13T02:18:53.741Z",
+        "genre": "Thriller",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-13",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-13T02:19:52.168Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/osAYIqIGtnVpqz4FDdGjCezE11z.jpg",
+        "tmdbRating": 83,
+        "tmdbVotes": 593,
+        "instagramPostedAt": "2026-11-13T02:22:04Z",
+        "verified": true
+      },
+      {
+        "_id": "6af6738edea24088f261c3aa",
+        "title": "Being Heumann",
+        "platform": "Apple TV+",
+        "createdAt": "2026-11-13T02:18:53.975Z",
+        "genre": "Drama",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-13",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-13T02:19:51.552Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/ouGH1PS0xjDyfTQOhppn7QzJqQZ.jpg",
+        "instagramPostedAt": "2026-11-13T02:22:04Z",
+        "verified": true
+      },
+      {
+        "_id": "6af6738edea24088f261c3ab",
+        "platform": "Apple TV+",
+        "title": "12 12 12",
+        "createdAt": "2026-11-13T02:18:54.207Z",
+        "genre": "Crime, Thriller",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-13",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-13T02:19:50.875Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/jXlPZz943xMbqfp2Ne1OvOWaPo.jpg",
+        "tmdbRating": 71,
+        "tmdbVotes": 49,
+        "verified": true
+      },
+      {
+        "_id": "6af6738edea24088f261c3ad",
+        "platform": "JioHotStar",
+        "title": "Student of the Year: After Dark",
+        "createdAt": "2026-11-13T02:18:54.439Z",
+        "genre": "Thriller",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-13",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-13T02:20:00.994Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/xhCYEdoYL8yl7ijzYUopYO0r6MC.jpg",
+        "verified": true
+      },
+      {
+        "_id": "6af6738edea24088f261c3ae",
+        "platform": "SonyLIV",
+        "title": "Parivarik ManuRanjan",
+        "createdAt": "2026-11-13T02:18:54.671Z",
+        "genre": "Romantic Comedy",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-13",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-13T02:20:00.349Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/2gKGkD0pN2Ss9LrHA6tv5hEjHOs.jpg",
+        "instagramPostedAt": "2026-11-13T02:20:34Z",
+        "verified": true
+      },
+      {
+        "_id": "6af6738fdea24088f261c3af",
+        "platform": "ManoramaMAX",
+        "title": "The Third Murder",
+        "createdAt": "2026-11-13T02:18:54.902Z",
+        "genre": "Crime, Mystery, Psychological Thriller",
+        "imdbRating": 8.4,
+        "languages": [
+          "Malayalam"
+        ],
+        "original_language": "Malayalam",
+        "releaseDate": "2026-11-13",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-13T02:19:53.458Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/xENc6UYviC3JfFqKA6kReHfT2Zt.jpg",
+        "tmdbRating": 66,
+        "tmdbVotes": 319,
+        "instagramPostedAt": "2026-11-13T02:21:13Z",
+        "tmdbDetails": {
+          "tmdbId": 434775,
+          "director": "Hirokazu Kore-eda",
+          "cast": [
+            {
+              "name": "Masaharu Fukuyama",
+              "character": "Tomoaki Shigemori"
+            },
+            {
+              "name": "Koji Yakusho",
+              "character": "Takashi Misumi"
+            },
+            {
+              "name": "Suzu Hirose",
+              "character": "Sakie Yamanaka"
+            },
+            {
+              "name": "Shinnosuke Mitsushima",
+              "character": "Teru Kawashima"
+            },
+            {
+              "name": "Mikako Ichikawa",
+              "character": "Itsuki Shinohara"
+            },
+            {
+              "name": "Izumi Matsuoka",
+              "character": "Akiko Hattori"
+            },
+            {
+              "name": "Aju Makita",
+              "character": "Yuka Shigemori"
+            },
+            {
+              "name": "Tōru Shinagawa",
+              "character": "Watanabe"
+            }
+          ],
+          "overview": "A lawyer tasked with defending a robbery-and-murder suspect begins developing doubts about what truly happened.",
+          "runtime": 125,
+          "genres": [
+            "Drama",
+            "Mystery",
+            "Crime"
+          ],
+          "originalLanguage": "ja",
+          "spokenLanguages": [
+            "Japanese"
+          ],
+          "releaseDate": "2017-09-09",
+          "voteAverage": 6.644,
+          "trailerKey": "5JtiYQouj1E",
+          "fetchedAt": "2026-11-13T03:49:09.847Z"
+        },
+        "tmdbId": 434775,
+        "verified": true
+      },
+      {
+        "_id": "6af6738fdea24088f261c3b0",
+        "platform": "ZEE5",
+        "title": "Bandra",
+        "createdAt": "2026-11-13T02:18:55.133Z",
+        "genre": "Romantic, Action, Gangster Drama",
+        "imdbRating": null,
+        "languages": [
+          "Malayalam"
+        ],
+        "original_language": "Malayalam",
+        "releaseDate": "2026-11-13",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-13T02:19:52.815Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/k5gnPQBFThLWRr4SzOzgl6mXSWz.jpg",
+        "instagramPostedAt": "2026-11-13T02:21:13Z",
+        "verified": true
+      },
+      {
+        "_id": "6af6738fdea24088f261c3b1",
+        "platform": "SonyLIV",
+        "title": "Anbil Avan",
+        "createdAt": "2026-11-13T02:18:55.364Z",
+        "genre": "Romantic Action Thriller",
+        "imdbRating": null,
+        "languages": [
+          "Tamil"
+        ],
+        "original_language": "Tamil",
+        "releaseDate": "2026-11-13",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-13T02:19:55.068Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/2cN2WjL4xQvbJIhxSjGmhXL41rX.jpg",
+        "instagramPostedAt": "2026-11-13T02:20:50Z",
+        "verified": true
+      },
+      {
+        "_id": "6af6738fdea24088f261c3b2",
+        "platform": "Netflix",
+        "title": "Ranabaali",
+        "createdAt": "2026-11-13T02:18:55.596Z",
+        "genre": "Action, Epic, Historical",
+        "imdbRating": 7.4,
+        "languages": [
+          "Telugu"
+        ],
+        "original_language": "Telugu",
+        "releaseDate": "2026-11-13",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-13T02:19:55.694Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/cXaCyYYbafVyMrs8rwKmxezBYPJ.jpg",
+        "instagramPostedAt": "2026-11-13T02:21:02Z",
+        "verified": true
+      },
+      {
+        "_id": "6af6738fdea24088f261c3b3",
+        "platform": "Not specified",
+        "title": "Rolex",
+        "createdAt": "2026-11-13T02:18:55.827Z",
+        "genre": "Comedy, Drama",
+        "imdbRating": null,
+        "languages": [
+          "Kannada"
+        ],
+        "original_language": "Kannada",
+        "releaseDate": "2026-11-13",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-13T02:19:59.698Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/sytQx5qrLOTfGo09R87jAO14mDq.jpg",
+        "instagramPostedAt": "2026-11-13T02:21:35Z",
+        "verified": true
+      },
+      {
+        "_id": "6af67390dea24088f261c3b4",
+        "platform": "Not specified",
+        "title": "Lambodhara 2.0",
+        "createdAt": "2026-11-13T02:18:56.059Z",
+        "genre": "Sci-Fi, Thriller",
+        "imdbRating": null,
+        "languages": [
+          "Kannada"
+        ],
+        "original_language": "Kannada",
+        "releaseDate": "2026-11-13",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-13T02:19:59.048Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/9I5nQegMmMxWeY4agDXe1aa0B9v.jpg",
+        "instagramPostedAt": "2026-11-13T02:21:35Z",
+        "verified": true
+      },
+      {
+        "_id": "6af67390dea24088f261c3b5",
+        "title": "Buddhivantha 2",
+        "platform": "Not specified",
+        "createdAt": "2026-11-13T02:18:56.290Z",
+        "genre": "Action, Romance",
+        "imdbRating": null,
+        "languages": [
+          "Kannada"
+        ],
+        "original_language": "Kannada",
+        "releaseDate": "2026-11-13",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-13T02:19:58.384Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/lk1DF8EqGIBVXlnxYUhFaEZpLwL.jpg",
+        "verified": true
+      },
+      {
+        "_id": "6af67390dea24088f261c3b6",
+        "title": "Mafia",
+        "platform": "Not specified",
+        "createdAt": "2026-11-13T02:18:56.523Z",
+        "genre": "Action, Thriller",
+        "imdbRating": null,
+        "languages": [
+          "Kannada"
+        ],
+        "original_language": "Kannada",
+        "releaseDate": "2026-11-13",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-13T02:19:57.717Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/ewWSPADLdgyfnO26PWv1OrSA1lQ.jpg",
+        "tmdbRating": 59,
+        "tmdbVotes": 15,
+        "instagramPostedAt": "2026-11-13T02:21:34Z",
+        "verified": true
+      },
+      {
+        "_id": "6af67390dea24088f261c3b7",
+        "title": "Hercules",
+        "platform": "Not specified",
+        "createdAt": "2026-11-13T02:18:56.754Z",
+        "genre": "Action, Drama, Romance",
+        "imdbRating": null,
+        "languages": [
+          "Kannada"
+        ],
+        "original_language": "Kannada",
+        "releaseDate": "2026-11-13",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-13T02:19:57.039Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/beKLNtsDRR6EmNCKp7KOTdztL4j.jpg",
+        "tmdbRating": 69,
+        "tmdbVotes": 340,
+        "instagramPostedAt": "2026-11-13T02:21:34Z",
+        "verified": true
+      },
+      {
+        "_id": "6af67391dea24088f261c3b8",
+        "platform": "Not specified",
+        "title": "Pyaar",
+        "createdAt": "2026-11-13T02:18:56.986Z",
+        "genre": "Family, Romance",
+        "imdbRating": null,
+        "languages": [
+          "Kannada"
+        ],
+        "original_language": "Kannada",
+        "releaseDate": "2026-11-13",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-13T02:19:56.380Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/8EHL6nt0sWwEPi8pI0x4u4Jb5oE.jpg",
+        "tmdbRating": 61,
+        "tmdbVotes": 69,
+        "instagramPostedAt": "2026-11-13T02:21:34Z",
+        "verified": true
+      },
       {
         "_id": "6af5220edea24088f2615ab8",
         "platform": "Prime Video",
@@ -69,10 +417,10 @@
         "tmdbId": 1733518,
         "type": "Movie",
         "updatedAt": "2026-11-12T02:18:54.203Z",
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
-        "trendingRankedDateIST": "2026-11-12",
         "instagramPostedAt": "2026-11-12T02:20:37Z",
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-13T02:19:29.240Z",
+        "trendingRankedDateIST": "2026-11-13",
         "verified": true
       },
       {
@@ -142,10 +490,10 @@
         "tmdbId": 1733518,
         "type": "Movie",
         "updatedAt": "2026-11-12T02:18:54.418Z",
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
-        "trendingRankedDateIST": "2026-11-12",
         "instagramPostedAt": "2026-11-12T02:20:37Z",
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-13T02:19:29.240Z",
+        "trendingRankedDateIST": "2026-11-13",
         "verified": true
       },
       {
@@ -218,6 +566,9 @@
           "fetchedAt": "2026-11-12T03:59:46.128Z"
         },
         "tmdbId": 1733518,
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-11-13T02:19:29.240Z",
+        "trendingRankedDateIST": "2026-11-13",
         "verified": true
       },
       {
@@ -294,6 +645,9 @@
         },
         "tmdbId": 1234139,
         "votes": 1,
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-13T02:19:29.240Z",
+        "trendingRankedDateIST": "2026-11-13",
         "verified": true
       },
       {
@@ -339,9 +693,6 @@
           "fetchedAt": "2026-11-05T11:13:10.822Z"
         },
         "tmdbId": 1755818,
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
-        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -435,9 +786,6 @@
         "tmdbId": 1483525,
         "tmdbRating": 75,
         "tmdbVotes": 26,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
-        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -471,9 +819,6 @@
         "posterUrl": "https://image.tmdb.org/t/p/w300/6GTzd7ZeivgBOrIn45720nsq0TU.jpg",
         "tmdbRating": 70,
         "tmdbVotes": 369,
-        "trendingRank": 9,
-        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
-        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -495,9 +840,6 @@
         "instagramPostedAt": "2026-11-06T02:21:04Z",
         "tmdbRating": 80,
         "tmdbVotes": 14,
-        "trendingRank": 8,
-        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
-        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -608,9 +950,6 @@
         },
         "tmdbId": 1475799,
         "instagramPostedAt": "2026-11-07T02:20:20Z",
-        "trendingRank": 7,
-        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
-        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -755,9 +1094,6 @@
           "fetchedAt": "2026-11-06T04:35:11.749Z"
         },
         "tmdbId": 1250502,
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
-        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -831,9 +1167,6 @@
           "fetchedAt": "2026-11-07T13:28:25.859Z"
         },
         "tmdbId": 1538457,
-        "trendingRank": 6,
-        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
-        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -908,9 +1241,6 @@
           "fetchedAt": "2026-11-08T06:04:01.206Z"
         },
         "tmdbId": 1555215,
-        "trendingRank": 10,
-        "trendingRankedAt": "2026-11-12T02:19:27.866Z",
-        "trendingRankedDateIST": "2026-11-12",
         "verified": true
       },
       {
@@ -29750,8 +30080,78 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-13T03:49:00.542650+04:00",
+    "checkedAt": "2026-11-13T08:47:05.305243+04:00",
     "records": [
+      {
+        "name": "Anbil Avan",
+        "language": "tamil",
+        "type": "movie",
+        "ottDate": "2026-11-13",
+        "platforms": [
+          "SonyLIV"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/11/anbil-avan-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/anbil-avan/",
+        "confirmed": true
+      },
+      {
+        "name": "Bandra",
+        "language": "malayalam",
+        "type": "movie",
+        "ottDate": "2026-11-13",
+        "platforms": [
+          "ZEE5"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/10/bandra-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/malayalam-movies-ott-release-dates/",
+        "confirmed": true
+      },
+      {
+        "name": "Daayra",
+        "language": "hindi",
+        "type": "movie",
+        "ottDate": "2026-11-13",
+        "platforms": [
+          "Netflix"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/11/daayra-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/daayra/",
+        "confirmed": true
+      },
+      {
+        "name": "Ranabaali",
+        "language": "telugu",
+        "type": "movie",
+        "ottDate": "2026-11-13",
+        "platforms": [
+          "Netflix"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/10/ranabaali-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/ranabaali/",
+        "confirmed": true
+      },
+      {
+        "name": "The Third Murder",
+        "language": "malayalam",
+        "type": "movie",
+        "ottDate": "2026-11-13",
+        "platforms": [
+          "Manorama Max"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/11/the-third-murder-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/the-third-murder/",
+        "confirmed": true
+      },
       {
         "name": "Jailer 2",
         "language": "tamil",
