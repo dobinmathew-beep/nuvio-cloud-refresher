@@ -3,14 +3,14 @@ import { renderUpcomingBadge } from '../lib/render-poster.mjs';
 import { hasExistingComingDateTag } from '../lib/coming-tag.mjs';
 import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster } from '../lib/imagekit-storage.mjs';
 
-const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
+const BETTERPOSTERS = 'https://btttr.cc/poster-q/imdb/poster-default/';
 const BETTERPOSTERS_RS = 'IM';
 const MAX_BYTES = 15 * 1024 * 1024;
 const RESULT_CACHE_MS = 15 * 60 * 1000;
 const resultCache = new Map();
 const pendingResults = new Map();
 
-function sourceUrl(imdbId) {
+export function sourceUrl(imdbId) {
   return BETTERPOSTERS + encodeURIComponent(imdbId) + '.jpg?rs=' + BETTERPOSTERS_RS;
 }
 
