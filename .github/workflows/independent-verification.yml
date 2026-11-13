@@ -16,6 +16,13 @@ on:
       - hero_render.py
       - state/featured-movies.json
       - state/success.json
+  workflow_run:
+    workflows:
+      - Nuvio cloud refresh
+      - Dobins Indian Catalog
+      - India EPG daily refresh
+    types: [completed]
+    branches: [main]
 permissions:
   contents: write
 concurrency:
