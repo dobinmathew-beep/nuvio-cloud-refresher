@@ -1,8 +1,8 @@
 {
-  "cycle": "2026-11-13",
-  "refresh_cycle": "2026-11-13T22:00:00+04:00",
+  "cycle": "2026-11-14",
+  "refresh_cycle": "2026-11-14T00:00:00+04:00",
   "featuredVersion": 2,
-  "featured_cycle": "2026-11-13T22:00:00+04:00",
+  "featured_cycle": "2026-11-14T00:00:00+04:00",
   "featured_ids": {
     "hindi": "tt27988879",
     "tamil": "tt33318732",
@@ -10,7 +10,7 @@
     "telugu": "tt32324552"
   },
   "backdrops": {
-    "day": "2026-11-13",
+    "day": "2026-11-14",
     "statuses": 160,
     "images": 16,
     "states": {
@@ -32,7 +32,7 @@
       "malayalam",
       "telugu"
     ],
-    "checked_at": "2026-11-13T22:47:18.991116+04:00",
+    "checked_at": "2026-11-14T00:28:39.644746+04:00",
     "films_per_language": 20,
     "opening_version": 1,
     "selection_policy": "imdb-catalog-order-v1"
