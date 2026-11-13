@@ -12,7 +12,7 @@ An isolated per-title poster proxy for Xperience and AIOMetadata. It fetches the
 `https://YOUR-SERVICE-DOMAIN/poster/{imdb_id}.jpg`
 
 The service substitutes the IMDb ID into the BetterPosters template:
-`https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg`
+`https://btttr.cc/poster-q/imdb/poster-default/{imdb_id}.jpg?rs=IM`
 
 ## Existing BetterPosters tag handling
 - The original image's top tag row is checked with English OCR.
