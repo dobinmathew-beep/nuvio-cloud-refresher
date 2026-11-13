@@ -6,10 +6,27 @@ All times are Asia/Muscat (Oman). Records begin when this dashboard was installe
 
 | Check time | Backdrops + reels | Addon | EPG | Check run |
 |---|---|---|---|---|
+| 14 Nov 2026, 01:18 | ✅ Updated | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43509488712) |
 | 14 Nov 2026, 00:20 | 🔄 Retry requested | ✅ Updated | 🔄 Retry requested | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43500577465) |
 
 ## Details for each check
 
+### 14 Nov 2026, 01:18
+
+Trigger: workflow_run. Due cycle: 14 Nov 2026, 00:00.
+
+| Output | Result | Last verified cycle / check | Details | Logs |
+|---|---|---|---|---|
+| Backdrops | ✅ Updated | 14 Nov 2026, 00:00 | 160 layouts; 16 image checks | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43500602262) |
+| Reels | ✅ Updated | 14 Nov 2026, 00:00 | 4 languages; 20 films per reel | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43500602262) |
+| Addon | ✅ Updated | 14 Nov 2026, 00:00 | 856 catalog entries; 89 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43499908794) |
+| EPG | ✅ Updated | 14 Nov 2026, 00:20 | 617 / 829 channel IDs with listings; 212 unresolved; 69566 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43509454359) |
+
+Media attempt: **success**; started 14 Nov 2026, 00:20. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43500602262).
+
+Addon attempt: **success**; started 14 Nov 2026, 00:15. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43499908794).
+
+Epg attempt: **success**; started 14 Nov 2026, 01:18. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43509454359).
 ### 14 Nov 2026, 00:20
 
 Trigger: workflow_run. Due cycle: 14 Nov 2026, 00:00.
