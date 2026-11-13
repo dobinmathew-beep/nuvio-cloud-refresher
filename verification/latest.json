@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-13T18:51:05.154695+04:00",
+  "checked_at": "2026-11-13T18:55:18.430552+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -50,7 +50,7 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-13T18:51:05.154695+04:00",
+      "checked_at": "2026-11-13T18:55:18.430552+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
