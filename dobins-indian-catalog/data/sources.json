@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-14T17:55:56.138621+04:00",
+    "checkedAt": "2026-11-14T18:18:47.320395+04:00",
     "records": [
       {
         "_id": "6af7c50adea24088f2622fb9",
@@ -41,6 +41,60 @@
         "trendingRank": 1,
         "trendingRankedAt": "2026-11-14T02:19:23.387Z",
         "trendingRankedDateIST": "2026-11-14",
+        "tmdbDetails": {
+          "tmdbId": 1543469,
+          "director": "Shana Feste",
+          "cast": [
+            {
+              "name": "Jessica Chastain",
+              "character": "Misty Jones"
+            },
+            {
+              "name": "Garrett Hedlund",
+              "character": "Roy Combs"
+            },
+            {
+              "name": "Carter Faith",
+              "character": "Charlie Heart"
+            },
+            {
+              "name": "Ross Lynch",
+              "character": "Jace"
+            },
+            {
+              "name": "Jennifer Nettles",
+              "character": "Winnie Jo Lean"
+            },
+            {
+              "name": "Paul Sparks",
+              "character": "Donny"
+            },
+            {
+              "name": "Ben Dickey",
+              "character": "Buck"
+            },
+            {
+              "name": "Norbert Leo Butz",
+              "character": "Detective White"
+            }
+          ],
+          "overview": "A former country star, Misty Jones, comes out of seclusion to investigate the disappearance of her missing niece, a rising country musician and must grapple with her own past and Nashville’s seedy underbelly. Her search uncovers a murky side of Nashville where no one, including Misty, is who they seem.",
+          "runtime": 114,
+          "genres": [
+            "Thriller",
+            "Mystery",
+            "Music"
+          ],
+          "originalLanguage": "en",
+          "spokenLanguages": [
+            "English"
+          ],
+          "releaseDate": "2026-11-13",
+          "voteAverage": 6.7,
+          "trailerKey": "ziIz59enN1c",
+          "fetchedAt": "2026-11-14T14:06:13.743Z"
+        },
+        "tmdbId": 1543469,
         "verified": true
       },
       {
@@ -30509,7 +30563,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-14T17:55:56.138621+04:00",
+    "checkedAt": "2026-11-14T18:18:47.320395+04:00",
     "records": [
       {
         "name": "Bandra",
