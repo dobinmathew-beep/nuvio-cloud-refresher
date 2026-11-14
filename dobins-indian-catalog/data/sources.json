@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-14T20:02:40.465927+04:00",
+    "checkedAt": "2026-11-14T23:00:31.390501+04:00",
     "records": [
       {
         "_id": "6af7c50adea24088f2622fb9",
@@ -653,6 +653,39 @@
         "updatedAt": "2026-11-13T02:19:58.384Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/lk1DF8EqGIBVXlnxYUhFaEZpLwL.jpg",
         "instagramPostedAt": "2026-11-14T02:20:17Z",
+        "tmdbDetails": {
+          "tmdbId": 686558,
+          "director": "M Jayaram",
+          "cast": [
+            {
+              "name": "Upendra",
+              "character": ""
+            },
+            {
+              "name": "Meghana Raj",
+              "character": ""
+            },
+            {
+              "name": "Sonal Monteiro",
+              "character": ""
+            }
+          ],
+          "overview": "",
+          "runtime": null,
+          "genres": [
+            "Romance",
+            "Action"
+          ],
+          "originalLanguage": "kn",
+          "spokenLanguages": [
+            "Kannada"
+          ],
+          "releaseDate": null,
+          "voteAverage": null,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-14T18:26:04.193Z"
+        },
+        "tmdbId": 686558,
         "verified": true
       },
       {
@@ -830,6 +863,59 @@
         "tmdbRating": 61,
         "tmdbVotes": 69,
         "instagramPostedAt": "2026-11-13T02:21:34Z",
+        "tmdbDetails": {
+          "tmdbId": 590401,
+          "director": "Akiv Ali",
+          "cast": [
+            {
+              "name": "Ajay Devgn",
+              "character": "Ashish Mehra"
+            },
+            {
+              "name": "Tabu",
+              "character": "Manjana \"Manju\" Rao"
+            },
+            {
+              "name": "Rakul Preet Singh",
+              "character": "Ayesha Khurana"
+            },
+            {
+              "name": "Jimmy Shergill",
+              "character": "Vakil aka VK"
+            },
+            {
+              "name": "Alok Nath",
+              "character": "Veerendra Mehra"
+            },
+            {
+              "name": "Javed Jaffrey",
+              "character": "Samir Khanna"
+            },
+            {
+              "name": "Madhumalti Kapoor",
+              "character": "Suman Mehra"
+            },
+            {
+              "name": "Sunny Singh",
+              "character": "Akash (Cameo appearance)"
+            }
+          ],
+          "overview": "A 50-year-old single father faces disapproval from his family and his ex-wife when he falls in love with a 26-year-old woman.",
+          "runtime": 135,
+          "genres": [
+            "Romance",
+            "Comedy"
+          ],
+          "originalLanguage": "hi",
+          "spokenLanguages": [
+            "Hindi"
+          ],
+          "releaseDate": "2019-05-17",
+          "voteAverage": 6.1,
+          "trailerKey": "iZ2HBssYX20",
+          "fetchedAt": "2026-11-14T18:26:15.691Z"
+        },
+        "tmdbId": 590401,
         "verified": true
       },
       {
@@ -4665,9 +4751,9 @@
             "English"
           ],
           "releaseDate": "1950-07-19",
-          "voteAverage": 6.5,
+          "voteAverage": 6.544,
           "trailerKey": "ez7_3UviUMs",
-          "fetchedAt": "2026-10-11T14:19:53.735Z"
+          "fetchedAt": "2026-11-14T18:29:36.671Z"
         },
         "tmdbId": 6646,
         "tmdbRating": 64,
@@ -30563,7 +30649,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-14T20:02:40.465927+04:00",
+    "checkedAt": "2026-11-14T23:00:31.390501+04:00",
     "records": [
       {
         "name": "Bandra",
