@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-14T23:00:31.390501+04:00",
-  "lastSuccessCycle": "2026-11-14T22:00:00+04:00",
+  "updatedAt": "2026-11-15T00:32:12.755390+04:00",
+  "lastSuccessCycle": "2026-11-15T00:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
   "sources": [
@@ -44,8 +44,9 @@
     {
       "source": "DailyOTT upcoming dates",
       "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-      "state": "live",
-      "records": 1
+      "state": "failed",
+      "records": 0,
+      "error": "No verified future DailyOTT records recognised"
     },
     {
       "source": "Cinebuds recent OTT dates",
