@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-14T06:15:03.900179+04:00",
-  "lastSuccessCycle": "2026-11-14T06:00:00+04:00",
+  "updatedAt": "2026-11-14T10:58:21.902567+04:00",
+  "lastSuccessCycle": "2026-11-14T10:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
   "sources": [
@@ -13,7 +13,7 @@
       "source": "DailyOTT",
       "url": "https://www.dailyott.in/",
       "state": "live",
-      "records": 952
+      "records": 953
     },
     {
       "source": "Cinebuds",
@@ -44,9 +44,8 @@
     {
       "source": "DailyOTT upcoming dates",
       "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-      "state": "failed",
-      "records": 0,
-      "error": "No verified future DailyOTT records recognised"
+      "state": "live",
+      "records": 1
     },
     {
       "source": "Cinebuds recent OTT dates",
@@ -172,7 +171,7 @@
     "dobins_hi_series": 324
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
-  "pendingMatches": 89,
-  "checkedCandidates": 932,
+  "pendingMatches": 90,
+  "checkedCandidates": 933,
   "errors": []
 }

@@ -1,7 +1,24 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-14T06:15:03.900179+04:00",
+    "checkedAt": "2026-11-14T10:58:21.902567+04:00",
     "records": [
+      {
+        "_id": "6af7c50adea24088f2622fb9",
+        "platform": "ZEE5",
+        "title": "Bal Barbarik",
+        "createdAt": "2026-11-14T02:18:50.337Z",
+        "genre": "Animation",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-14",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-14T02:18:50.337Z",
+        "verified": true
+      },
       {
         "_id": "6af6738ddea24088f261c3a9",
         "title": "Heartland",
@@ -21,6 +38,9 @@
         "tmdbRating": 83,
         "tmdbVotes": 593,
         "instagramPostedAt": "2026-11-13T02:22:04Z",
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
+        "trendingRankedDateIST": "2026-11-14",
         "verified": true
       },
       {
@@ -191,6 +211,9 @@
           "fetchedAt": "2026-11-13T05:09:16.275Z"
         },
         "tmdbId": 1493572,
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
+        "trendingRankedDateIST": "2026-11-14",
         "verified": true
       },
       {
@@ -266,6 +289,9 @@
           "fetchedAt": "2026-11-13T03:49:09.847Z"
         },
         "tmdbId": 434775,
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
+        "trendingRankedDateIST": "2026-11-14",
         "verified": true
       },
       {
@@ -285,6 +311,9 @@
         "updatedAt": "2026-11-13T02:19:52.815Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/k5gnPQBFThLWRr4SzOzgl6mXSWz.jpg",
         "instagramPostedAt": "2026-11-13T02:21:13Z",
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
+        "trendingRankedDateIST": "2026-11-14",
         "verified": true
       },
       {
@@ -353,6 +382,9 @@
           "fetchedAt": "2026-11-13T12:41:01.465Z"
         },
         "tmdbId": 1431738,
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
+        "trendingRankedDateIST": "2026-11-14",
         "verified": true
       },
       {
@@ -427,6 +459,9 @@
           "fetchedAt": "2026-11-13T10:13:20.584Z"
         },
         "tmdbId": 1389379,
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
+        "trendingRankedDateIST": "2026-11-14",
         "verified": true
       },
       {
@@ -483,6 +518,7 @@
         "type": "Movie",
         "updatedAt": "2026-11-13T02:19:58.384Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/lk1DF8EqGIBVXlnxYUhFaEZpLwL.jpg",
+        "instagramPostedAt": "2026-11-14T02:20:17Z",
         "verified": true
       },
       {
@@ -675,10 +711,10 @@
         "type": "Movie",
         "updatedAt": "2026-11-12T02:18:54.203Z",
         "instagramPostedAt": "2026-11-12T02:20:37Z",
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-13T02:19:29.240Z",
-        "trendingRankedDateIST": "2026-11-13",
         "votes": 0,
+        "trendingRank": 8,
+        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
+        "trendingRankedDateIST": "2026-11-14",
         "verified": true
       },
       {
@@ -749,9 +785,9 @@
         "type": "Movie",
         "updatedAt": "2026-11-12T02:18:54.418Z",
         "instagramPostedAt": "2026-11-12T02:20:37Z",
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-13T02:19:29.240Z",
-        "trendingRankedDateIST": "2026-11-13",
+        "trendingRank": 9,
+        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
+        "trendingRankedDateIST": "2026-11-14",
         "verified": true
       },
       {
@@ -824,9 +860,6 @@
           "fetchedAt": "2026-11-12T03:59:46.128Z"
         },
         "tmdbId": 1733518,
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-11-13T02:19:29.240Z",
-        "trendingRankedDateIST": "2026-11-13",
         "verified": true
       },
       {
@@ -903,9 +936,6 @@
         },
         "tmdbId": 1234139,
         "votes": 1,
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-13T02:19:29.240Z",
-        "trendingRankedDateIST": "2026-11-13",
         "verified": true
       },
       {
@@ -951,6 +981,9 @@
           "fetchedAt": "2026-11-05T11:13:10.822Z"
         },
         "tmdbId": 1755818,
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
+        "trendingRankedDateIST": "2026-11-14",
         "verified": true
       },
       {
@@ -30341,7 +30374,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-14T06:15:03.900179+04:00",
+    "checkedAt": "2026-11-14T10:58:21.902567+04:00",
     "records": [
       {
         "name": "Anbil Avan",
