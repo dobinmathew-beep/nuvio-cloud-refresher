@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-14T10:58:21.902567+04:00",
+    "checkedAt": "2026-11-14T12:48:19.050475+04:00",
     "records": [
       {
         "_id": "6af7c50adea24088f2622fb9",
@@ -314,6 +314,61 @@
         "trendingRank": 6,
         "trendingRankedAt": "2026-11-14T02:19:23.387Z",
         "trendingRankedDateIST": "2026-11-14",
+        "tmdbDetails": {
+          "tmdbId": 1013057,
+          "director": "Arun Gopy",
+          "cast": [
+            {
+              "name": "Dileep",
+              "character": "Alan Alexander Dominic  'Aala'"
+            },
+            {
+              "name": "Tamannaah Bhatia",
+              "character": "Tara Janaki"
+            },
+            {
+              "name": "Mamta Mohandas",
+              "character": "Sakshi"
+            },
+            {
+              "name": "R. Sarathkumar",
+              "character": "Veera Raghavan IPS"
+            },
+            {
+              "name": "Dino Morea",
+              "character": "Raghavendra Desai"
+            },
+            {
+              "name": "Lenaa",
+              "character": "Hemaji"
+            },
+            {
+              "name": "Easwari Rao",
+              "character": "Rosamma"
+            },
+            {
+              "name": "Rajveer Ankur Singh",
+              "character": "Bala"
+            }
+          ],
+          "overview": "A woman uncovers a dark tale when she investigates the mysterious death of a famous actress.",
+          "runtime": 155,
+          "genres": [
+            "Action",
+            "Drama",
+            "Thriller"
+          ],
+          "originalLanguage": "ml",
+          "spokenLanguages": [
+            "Malayalam",
+            "Hindi"
+          ],
+          "releaseDate": "2023-11-10",
+          "voteAverage": 4,
+          "trailerKey": "IGTRpElZlh8",
+          "fetchedAt": "2026-11-14T07:58:38.175Z"
+        },
+        "tmdbId": 1013057,
         "verified": true
       },
       {
@@ -481,6 +536,31 @@
         "updatedAt": "2026-11-13T02:19:59.698Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/sytQx5qrLOTfGo09R87jAO14mDq.jpg",
         "instagramPostedAt": "2026-11-13T02:21:35Z",
+        "tmdbDetails": {
+          "tmdbId": 1213730,
+          "director": "Lokesh Kanagaraj",
+          "cast": [
+            {
+              "name": "Suriya",
+              "character": "Rolex"
+            }
+          ],
+          "overview": "Spin-off story about Rolex, as a prequel to  Vikram (2022) to show us the rise of the cartel leader during the early 90s.",
+          "runtime": null,
+          "genres": [
+            "Action",
+            "Crime"
+          ],
+          "originalLanguage": "ta",
+          "spokenLanguages": [
+            "Tamil"
+          ],
+          "releaseDate": null,
+          "voteAverage": null,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-14T07:07:43.814Z"
+        },
+        "tmdbId": 1213730,
         "verified": true
       },
       {
@@ -540,6 +620,61 @@
         "tmdbRating": 59,
         "tmdbVotes": 15,
         "instagramPostedAt": "2026-11-13T02:21:34Z",
+        "tmdbDetails": {
+          "tmdbId": 809787,
+          "director": "Catherine Hardwicke",
+          "cast": [
+            {
+              "name": "Toni Collette",
+              "character": "Kristin"
+            },
+            {
+              "name": "Monica Bellucci",
+              "character": "Bianca"
+            },
+            {
+              "name": "Sophia Nomvete",
+              "character": "Jenny"
+            },
+            {
+              "name": "Alessandro Bressanello",
+              "character": "Don Giuseppe Balbano"
+            },
+            {
+              "name": "Eduardo Scarpetta",
+              "character": "Fabrizio"
+            },
+            {
+              "name": "Tommy Rodger",
+              "character": "Domenick"
+            },
+            {
+              "name": "Giulio Maria Corso",
+              "character": "Rudy aka “Lorenzo”"
+            },
+            {
+              "name": "Francesco Mastroianni",
+              "character": "Aldo"
+            }
+          ],
+          "overview": "A suburban American woman inherits her grandfather’s Mafia empire and, guided by the Firm’s trusted consigliere, defies everyone’s expectations, including her own, as the new head of the family business.",
+          "runtime": 101,
+          "genres": [
+            "Comedy",
+            "Crime",
+            "Action"
+          ],
+          "originalLanguage": "en",
+          "spokenLanguages": [
+            "Italian",
+            "English"
+          ],
+          "releaseDate": "2023-04-13",
+          "voteAverage": 6.031,
+          "trailerKey": "4H5pIOz1cOM",
+          "fetchedAt": "2026-11-14T07:08:22.981Z"
+        },
+        "tmdbId": 809787,
         "verified": true
       },
       {
@@ -30374,7 +30509,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-14T10:58:21.902567+04:00",
+    "checkedAt": "2026-11-14T12:48:19.050475+04:00",
     "records": [
       {
         "name": "Anbil Avan",
