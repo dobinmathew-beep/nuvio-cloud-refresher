@@ -9,13 +9,11 @@ REPO = 'dobinmathew-beep/nuvio-cloud-refresher'
 API = 'https://api.github.com/repos/'+REPO
 
 def due(now, kind):
-    # GitHub scheduled jobs can start a few seconds before the scheduled UTC minute.
-    # Count the final five minutes before a two-hour boundary as that upcoming cycle,
-    # so a runner-startup delay cannot stamp fresh outputs with the previous cycle.
+    # A cycle begins only at its actual two-hour boundary. Advancing early lets a
+    # delayed runner dispatch work before the new cycle starts, so its timestamps
+    # are inevitably stamped against the previous cycle.
     local=now.astimezone(ZONE)
-    current=local.replace(hour=(local.hour//2)*2,minute=0,second=0,microsecond=0)
-    upcoming=current+timedelta(hours=2)
-    return upcoming if upcoming-local<=timedelta(minutes=5) else current
+    return local.replace(hour=(local.hour//2)*2,minute=0,second=0,microsecond=0)
 
 def fresh(state, kind, target):
     if kind=='media':
@@ -32,8 +30,17 @@ def fresh(state, kind, target):
     except (TypeError,ValueError): return False
     return checked>=target and (not state.get('errors') if kind=='addon' else bool(state.get('matched_ids')))
 
-def may_dispatch(runs, now):
+def may_dispatch(runs, now, target=None):
     if any(r['status'] in ('queued','in_progress','waiting','pending','requested') for r in runs): return False
+    # A successful run created before this cycle's boundary could only have
+    # processed the previous cycle. If the published state is still stale after
+    # the boundary, allow an immediate catch-up instead of a 30-minute cooldown.
+    if runs and target is not None:
+        latest=runs[0]
+        if latest.get('status')=='completed' and latest.get('conclusion')=='success':
+            try: started=datetime.fromisoformat(latest['created_at'].replace('Z','+00:00'))
+            except (TypeError,ValueError,KeyError): started=None
+            if started is not None and started<target:return True
     return not runs or now-datetime.fromisoformat(runs[0]['created_at'].replace('Z','+00:00'))>=timedelta(minutes=30)
 
 def request(url, method='GET', body=None):
@@ -61,7 +68,7 @@ def main():
             if fresh(state,kind,target): row['state']='fresh'
             else:
                 runs=request(API+'/actions/workflows/'+workflow+'/runs?per_page=10')['workflow_runs'];run_cache[kind]=runs
-                if may_dispatch(runs,now):
+                if may_dispatch(runs,now,target):
                     request(API+'/actions/workflows/'+workflow+'/dispatches','POST',{'ref':'main'})
                     # Refresh the run list after dispatch so the dashboard links to
                     # the newly queued retry, not the older completed attempt.
