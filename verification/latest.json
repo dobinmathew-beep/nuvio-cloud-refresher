@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-15T00:32:21.674072+04:00",
+  "checked_at": "2026-11-15T02:29:13.667495+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
     "addon": {
       "status": "pass",
-      "checked_at": "2026-11-14T23:23:19.845859+04:00",
+      "checked_at": "2026-11-15T02:29:13.667495+04:00",
       "public_url": "https://the-great-indian-addon.vercel.app",
       "checks": [
         {
@@ -50,7 +50,7 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-15T00:32:21.674072+04:00",
+      "checked_at": "2026-11-15T02:29:13.667495+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
@@ -135,10 +135,10 @@
     },
     "backdrops": {
       "status": "pass",
-      "checked_at": "2026-11-14T23:00:28.111667+04:00",
+      "checked_at": "2026-11-15T02:29:13.667495+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
       "details": {
-        "day": "2026-11-14",
+        "day": "2026-11-15",
         "statuses": 160,
         "images": 16,
         "states": {
@@ -147,9 +147,9 @@
         },
         "errors": [],
         "catalogHeads": {
-          "hindi": "tt27988879",
           "tamil": "tt33318732",
           "malayalam": "tt27512908",
+          "hindi": "tt27988879",
           "telugu": "tt32324552"
         }
       },
@@ -157,14 +157,14 @@
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-14T23:00:28.111667+04:00",
+      "checked_at": "2026-11-15T02:29:13.667495+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
           "language": "hindi",
           "status": "pass",
-          "bytes": 6905402,
-          "sha256": "0e831029e4130b5900c0d7e024b003049940e30750d735ef52cd1c1863aade14",
+          "bytes": 6905270,
+          "sha256": "61390d4ba70e88a10f7151d95759dc577a19b05e84de978685537d89ef16ede5",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -184,8 +184,8 @@
         {
           "language": "tamil",
           "status": "pass",
-          "bytes": 6904470,
-          "sha256": "7c0b30b93eb1896e7870a471b0ae0f466d653a660ce4f61f7533350c79ae4846",
+          "bytes": 6904165,
+          "sha256": "5d052c30bdb4f163e4465e521c4f5264f07ba53f4ad6e9fe5abac4d454798e05",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -205,8 +205,8 @@
         {
           "language": "malayalam",
           "status": "pass",
-          "bytes": 6895344,
-          "sha256": "2c3f173a8d38fe60351912b9930f16279e0cf39bf2d321fcf77965a1024e4ae1",
+          "bytes": 6898917,
+          "sha256": "3d3ebe3a925a8d7a05e8f0f639e1348be4fbaa44fa7515ca0e70d86ee072a809",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -226,8 +226,8 @@
         {
           "language": "telugu",
           "status": "pass",
-          "bytes": 6897888,
-          "sha256": "8ebd7037fcf2ae815cfe1263e3a7265025e1ce46aaccbf2d53f09bb8000e89c3",
+          "bytes": 6898816,
+          "sha256": "d82bc613a69851f6592b63fa73aa76368b47b23aec586ea0f8132109cd5373e7",
           "duration_seconds": 50.0,
           "streams": [
             {
