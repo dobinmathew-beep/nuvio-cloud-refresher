@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-14T12:48:19.050475+04:00",
-  "lastSuccessCycle": "2026-11-14T12:00:00+04:00",
+  "updatedAt": "2026-11-14T17:55:56.138621+04:00",
+  "lastSuccessCycle": "2026-11-14T16:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
   "sources": [
@@ -19,13 +19,13 @@
       "source": "Cinebuds",
       "url": "https://cinebuds.com/ott-release-dates/",
       "state": "live",
-      "records": 37
+      "records": 36
     },
     {
       "source": "Cinebuds upcoming calendar",
       "url": "https://cinebuds.com/ott-releases-this-week/",
       "state": "live",
-      "records": 3
+      "records": 4
     },
     {
       "source": "OTTASIA confirmed calendar",
@@ -126,11 +126,11 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 548,
+      "records": 550,
       "counts": {
         "malayalam": 53,
-        "tamil": 93,
-        "telugu": 96,
+        "tamil": 94,
+        "telugu": 97,
         "hindi": 306
       },
       "state": "live"
@@ -164,14 +164,14 @@
     "dobins_ml_movie": 68,
     "dobins_ml_series": 60,
     "dobins_ta_movie": 61,
-    "dobins_ta_series": 98,
+    "dobins_ta_series": 99,
     "dobins_te_movie": 68,
-    "dobins_te_series": 102,
+    "dobins_te_series": 103,
     "dobins_hi_movie": 76,
     "dobins_hi_series": 324
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
   "pendingMatches": 90,
-  "checkedCandidates": 934,
+  "checkedCandidates": 936,
   "errors": []
 }
