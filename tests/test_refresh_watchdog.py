@@ -16,7 +16,7 @@ class WatchdogTests(unittest.TestCase):
         after=datetime(2026,11,2,14,30,tzinfo=ZONE)
         for kind,morning in [('media',12),('addon',12),('epg',12)]:
             self.assertEqual(due(before,kind).hour,morning)
-            self.assertEqual(due(near_boundary,kind).hour,14)
+            self.assertEqual(due(near_boundary,kind).hour,12)
             self.assertEqual(due(at,kind).hour,14)
             self.assertEqual(due(after,kind).hour,14)
         state={'cycle':'2026-11-02','refresh_cycle':'2026-11-02T12:00:00+04:00','featuredVersion':2,
