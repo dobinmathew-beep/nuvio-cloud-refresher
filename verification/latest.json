@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-14T22:09:17.729800+04:00",
+  "checked_at": "2026-11-14T23:00:28.111667+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -135,7 +135,7 @@
     },
     "backdrops": {
       "status": "pass",
-      "checked_at": "2026-11-14T22:09:17.729800+04:00",
+      "checked_at": "2026-11-14T23:00:28.111667+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
       "details": {
         "day": "2026-11-14",
@@ -147,8 +147,8 @@
         },
         "errors": [],
         "catalogHeads": {
-          "tamil": "tt33318732",
           "hindi": "tt27988879",
+          "tamil": "tt33318732",
           "malayalam": "tt27512908",
           "telugu": "tt32324552"
         }
@@ -157,7 +157,7 @@
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-14T22:09:17.729800+04:00",
+      "checked_at": "2026-11-14T23:00:28.111667+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
@@ -184,8 +184,8 @@
         {
           "language": "tamil",
           "status": "pass",
-          "bytes": 6904258,
-          "sha256": "feadbe4ca674f1bf8ba7f957afb7632ec1c473f5958b482052cb442627a567a5",
+          "bytes": 6904470,
+          "sha256": "7c0b30b93eb1896e7870a471b0ae0f466d653a660ce4f61f7533350c79ae4846",
           "duration_seconds": 50.0,
           "streams": [
             {
