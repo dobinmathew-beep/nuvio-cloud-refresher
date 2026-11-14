@@ -24,7 +24,7 @@ class WatchdogTests(unittest.TestCase):
             'featured_ids':{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'},
             'backdrops':{'ok':True},'heroes':{'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}}
         self.assertTrue(fresh(state,'media',due(before,'media')))
-        self.assertFalse(fresh(state,'media',due(near_boundary,'media')))
+        self.assertTrue(fresh(state,'media',due(near_boundary,'media')))
         self.assertFalse(fresh(state,'media',due(at,'media')))
         state['refresh_cycle']=due(at,'media').isoformat()
         state['featured_cycle']=due(at,'media').isoformat()
@@ -40,9 +40,11 @@ class WatchdogTests(unittest.TestCase):
                 self.assertEqual(due(now,kind),now.replace(hour=hour//2*2,minute=0,second=0))
             midnight=datetime(2026,11,3,0,0,tzinfo=ZONE)
             self.assertEqual(due(midnight,kind),midnight)
-    def test_five_minute_boundary_grace_includes_midnight_rollover(self):
-        self.assertEqual(due(datetime(2026,11,2,23,55,tzinfo=ZONE),'media').isoformat(),'2026-11-03T00:00:00+04:00')
-        self.assertEqual(due(datetime(2026,11,2,23,54,59,tzinfo=ZONE),'media').isoformat(),'2026-11-02T22:00:00+04:00')
+    def test_cycle_changes_only_at_the_actual_two_hour_boundary(self):
+        self.assertEqual(due(datetime(2026,11,2,13,59,59,tzinfo=ZONE),'media').isoformat(),'2026-11-02T12:00:00+04:00')
+        self.assertEqual(due(datetime(2026,11,2,14,0,tzinfo=ZONE),'media').isoformat(),'2026-11-02T14:00:00+04:00')
+        self.assertEqual(due(datetime(2026,11,2,23,59,59,tzinfo=ZONE),'media').isoformat(),'2026-11-02T22:00:00+04:00')
+        self.assertEqual(due(datetime(2026,11,3,0,0,tzinfo=ZONE),'media').isoformat(),'2026-11-03T00:00:00+04:00')
 
     def test_utc_input_has_same_local_cycle(self):
         now=datetime.fromisoformat('2026-11-02T10:01:00+00:00')
@@ -62,6 +64,16 @@ class WatchdogTests(unittest.TestCase):
 
     def test_media_partial_success_is_not_fresh(self):
         self.assertFalse(fresh({'cycle':'2026-11-02','backdrops':{'ok':True}},'media',datetime(2026,11,2,6,tzinfo=ZONE)))
+    def test_successful_previous_cycle_run_allows_immediate_catchup(self):
+        target=datetime(2026,11,14,18,0,tzinfo=ZONE)
+        now=datetime(2026,11,14,18,3,tzinfo=ZONE)
+        previous={'status':'completed','conclusion':'success','created_at':'2026-11-14T17:55:43+04:00'}
+        self.assertTrue(may_dispatch([previous],now,target))
+        current={'status':'completed','conclusion':'success','created_at':'2026-11-14T18:01:00+04:00'}
+        self.assertFalse(may_dispatch([current],now,target))
+        active={'status':'in_progress','created_at':'2026-11-14T17:40:00+04:00'}
+        self.assertFalse(may_dispatch([active],now,target))
+
     def test_no_duplicate_or_runaway_dispatch(self):
         now=datetime(2026,11,2,11,30,tzinfo=ZONE)
         self.assertFalse(may_dispatch([{'status':'in_progress','created_at':(now-timedelta(hours=2)).isoformat()}],now))
