@@ -204,8 +204,8 @@
     "mime": "application/json"
   },
   "/hero/daily-manifest.json": {
-    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/fddd4c96755a42f808b8e798-daily-manifest.json",
-    "sha256": "fddd4c96755a42f808b8e798f2d366bef057a5b123b6cb31536ca1a1b3c98b2f",
+    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/ab0fee7a2c4a4309129e2202-daily-manifest.json",
+    "sha256": "ab0fee7a2c4a4309129e2202f301a3c18b8b0b5e2364f0da537d3f91173d24ce",
     "bytes": 61567,
     "mime": "application/json"
   },
@@ -228,14 +228,14 @@
     "mime": "image/jpeg"
   },
   "/hero/hindi-daily.jpg": {
-    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/579a5da6268744d7a6a97fb8-hindi-daily.jpg",
-    "sha256": "579a5da6268744d7a6a97fb8c813abea51176651f7f8454f306d625d9e168cc7",
-    "bytes": 209358,
+    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/822df2c1857b23062f2c9f73-hindi-daily.jpg",
+    "sha256": "822df2c1857b23062f2c9f73972f18cdcae95acd7ddfa78a86a39698e40f1110",
+    "bytes": 209359,
     "mime": "image/jpeg"
   },
   "/hero/hindi-daily.json": {
-    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/f1aaf34c4713c5045779a1c4-hindi-daily.json",
-    "sha256": "f1aaf34c4713c5045779a1c4332b8475406737422775a8ca511f5eb41d59db97",
+    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/cac33ff7188a5f1e7e593b39-hindi-daily.json",
+    "sha256": "cac33ff7188a5f1e7e593b3925ba858b92a0f42565bc6a013af006d3ca8d87e4",
     "bytes": 14514,
     "mime": "application/json"
   },
@@ -258,14 +258,14 @@
     "mime": "image/jpeg"
   },
   "/hero/hindi.mp4": {
-    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/0e831029e4130b5900c0d7e0-hindi.mp4",
-    "sha256": "0e831029e4130b5900c0d7e024b003049940e30750d735ef52cd1c1863aade14",
-    "bytes": 6905402,
+    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/61390d4ba70e88a10f7151d9-hindi.mp4",
+    "sha256": "61390d4ba70e88a10f7151d95759dc577a19b05e84de978685537d89ef16ede5",
+    "bytes": 6905270,
     "mime": "video/mp4"
   },
   "/hero/index.html": {
-    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/b6e688973d03b85d353c93a8-index.html",
-    "sha256": "b6e688973d03b85d353c93a8b6f64cf5346ca0b240bfa8eb0b1de90db1899f17",
+    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/d81f8f04ab97786d1fe6f213-index.html",
+    "sha256": "d81f8f04ab97786d1fe6f21301f878bbf27ac59e36413cec10877e65e9de61ef",
     "bytes": 9201,
     "mime": "text/html; charset=utf-8"
   },
@@ -288,14 +288,14 @@
     "mime": "image/jpeg"
   },
   "/hero/malayalam-daily.jpg": {
-    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/68ae127c553989c98908fbc5-malayalam-daily.jpg",
-    "sha256": "68ae127c553989c98908fbc53cc0d24e7ee65181e11a07392bf4a89e6a6669df",
-    "bytes": 224420,
+    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/47a85072401600b66832e460-malayalam-daily.jpg",
+    "sha256": "47a85072401600b66832e46016d81b4d3e946dc1a2aa4244a0af913070d459c6",
+    "bytes": 222763,
     "mime": "image/jpeg"
   },
   "/hero/malayalam-daily.json": {
-    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/8ba4df9c837015cdd9d7d21f-malayalam-daily.json",
-    "sha256": "8ba4df9c837015cdd9d7d21f20fa921d16dd69464181e7732741245673593041",
+    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/c03f71cb6b572894398d3866-malayalam-daily.json",
+    "sha256": "c03f71cb6b572894398d3866152059bfbc0a410c25b16a1b5b957cc7a58b57d1",
     "bytes": 14191,
     "mime": "application/json"
   },
@@ -318,9 +318,9 @@
     "mime": "image/jpeg"
   },
   "/hero/malayalam.mp4": {
-    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/2c3f173a8d38fe60351912b9-malayalam.mp4",
-    "sha256": "2c3f173a8d38fe60351912b9930f16279e0cf39bf2d321fcf77965a1024e4ae1",
-    "bytes": 6895344,
+    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/3d3ebe3a925a8d7a05e8f0f6-malayalam.mp4",
+    "sha256": "3d3ebe3a925a8d7a05e8f0f639e1348be4fbaa44fa7515ca0e70d86ee072a809",
+    "bytes": 6898917,
     "mime": "video/mp4"
   },
   "/hero/manifest-celluloid-v17.json": {
@@ -372,14 +372,14 @@
     "mime": "image/jpeg"
   },
   "/hero/tamil-daily.jpg": {
-    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/83508556e9cf61511e12379f-tamil-daily.jpg",
-    "sha256": "83508556e9cf61511e12379f3f15f1aee8deae60e8df43e457aed0857bceb759",
-    "bytes": 221229,
+    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/18194733c1dfa0103f1e2bfc-tamil-daily.jpg",
+    "sha256": "18194733c1dfa0103f1e2bfc1b9bcc8a7869636746f42a2ae5085a18685ce593",
+    "bytes": 221234,
     "mime": "image/jpeg"
   },
   "/hero/tamil-daily.json": {
-    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/f0c7f8aa3a1fb555a8311cbd-tamil-daily.json",
-    "sha256": "f0c7f8aa3a1fb555a8311cbd07df38e4019f77db0c0dbcedd71f88c7c2cfd952",
+    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/8536db53f6061d9023a97ecf-tamil-daily.json",
+    "sha256": "8536db53f6061d9023a97ecf1fd72ad8012e4f3eba43955d62b159f53cb6906e",
     "bytes": 14924,
     "mime": "application/json"
   },
@@ -426,9 +426,9 @@
     "mime": "image/jpeg"
   },
   "/hero/tamil.mp4": {
-    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/7c0b30b93eb1896e7870a471-tamil.mp4",
-    "sha256": "7c0b30b93eb1896e7870a471b0ae0f466d653a660ce4f61f7533350c79ae4846",
-    "bytes": 6904470,
+    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/5d052c30bdb4f163e4465e52-tamil.mp4",
+    "sha256": "5d052c30bdb4f163e4465e521c4f5264f07ba53f4ad6e9fe5abac4d454798e05",
+    "bytes": 6904165,
     "mime": "video/mp4"
   },
   "/hero/telugu-celluloid-b92bfd056e.mp4": {
@@ -450,14 +450,14 @@
     "mime": "image/jpeg"
   },
   "/hero/telugu-daily.jpg": {
-    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/6c593ccd6c825f905056187b-telugu-daily.jpg",
-    "sha256": "6c593ccd6c825f905056187ba9918b2c0a888eff6d005929ba809be7c0d1118c",
-    "bytes": 218117,
+    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/0712a59081ef562cd0057148-telugu-daily.jpg",
+    "sha256": "0712a59081ef562cd00571485460f35a41cdb16482369b69e63df9fd0e56e810",
+    "bytes": 218140,
     "mime": "image/jpeg"
   },
   "/hero/telugu-daily.json": {
-    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/018c526b3504fb23d82dbf4e-telugu-daily.json",
-    "sha256": "018c526b3504fb23d82dbf4e0553379b9c3c4d9dc9c0ef5a8cc91a0933ed199a",
+    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/ab8f3b191e26c8b9e46fe105-telugu-daily.json",
+    "sha256": "ab8f3b191e26c8b9e46fe10587a388412beb60afbf0d51fc93d411ff74e7090a",
     "bytes": 14631,
     "mime": "application/json"
   },
@@ -480,9 +480,9 @@
     "mime": "image/jpeg"
   },
   "/hero/telugu.mp4": {
-    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/8ebd7037fcf2ae815cfe1263-telugu.mp4",
-    "sha256": "8ebd7037fcf2ae815cfe1263e3a7265025e1ce46aaccbf2d53f09bb8000e89c3",
-    "bytes": 6897888,
+    "url": "https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/d82bc613a69851f6592b63fa-telugu.mp4",
+    "sha256": "d82bc613a69851f6592b63fa73aa76368b47b23aec586ea0f8132109cd5373e7",
+    "bytes": 6898816,
     "mime": "video/mp4"
   },
   "/index.html": {
