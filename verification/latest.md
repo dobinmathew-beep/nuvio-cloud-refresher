@@ -1,6 +1,6 @@
 # Independent Nuvio output verification
 
-**Checked:** 2026-11-14T18:24:47.833574+04:00 (Oman time)
+**Checked:** 2026-11-14T18:29:57.076445+04:00 (Oman time)
 **Overall:** 4/4 outputs passed
 
 | Output | Result |
@@ -16,11 +16,11 @@
 - **PASS** public health endpoint: {"checkout": {"ready": false, "configured": false, "provider": "Bank Muscat", "amountMode": "provider-entered"}}
 
 ## Epg — PASS
-- **PASS** public status and freshness: {"revision": "b39e8559-4028-45f4-ad07-2b182357585a", "checked_utc": "2026-11-14T08:47:00.083359+00:00", "matched_ids": 613, "playlist_channel_ids": 825, "unresolved_ids": 212, "programmes": 70114}
-- **PASS** published XMLTV: {"bytes": 2173942, "channels": 613, "programmes": 70114}
+- **PASS** public status and freshness: {"revision": "ea7bbe3e-3707-4a6b-a380-abed3ff5dd3c", "checked_utc": "2026-11-14T14:18:54.099450+00:00", "matched_ids": 617, "playlist_channel_ids": 825, "unresolved_ids": 208, "programmes": 69296}
+- **PASS** published XMLTV: {"bytes": 2146882, "channels": 617, "programmes": 69296}
 - **PASS** Channel_Matching_Report.csv: {"rows": 825}
-- **PASS** Unresolved_Channels.csv: {"rows": 212}
-- **PASS** Source_Crosscheck_Report.csv: {"rows": 3196}
+- **PASS** Unresolved_Channels.csv: {"rows": 208}
+- **PASS** Source_Crosscheck_Report.csv: {"rows": 3250}
 - **PASS** Validation_Summary.json: {"keys": ["checked_utc", "playlist_url", "playlist_sha256", "playlist_channel_ids", "matched_ids", "unresolved_ids", "programmes", "sources_with_parsed_guides", "selected_source_counts", "unresolved_reason_counts"]}
 - **PASS** Source_Health_Report.json: {"keys": ["airtel.xml", "ca.xml", "dishtv.xml", "free-epg.xml", "guide.xml", "jiotv.xml", "open-india.xml", "pw.xml", "samsung-in.xml", "sundirectgo.xml"]}
 
@@ -35,10 +35,10 @@
   },
   "errors": [],
   "catalogHeads": {
-    "hindi": "tt27988879",
     "tamil": "tt33318732",
-    "telugu": "tt32324552",
-    "malayalam": "tt27512908"
+    "hindi": "tt27988879",
+    "malayalam": "tt27512908",
+    "telugu": "tt32324552"
   }
 }
 
