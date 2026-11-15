@@ -6,10 +6,27 @@ All times are Asia/Muscat (Oman). Records begin when this dashboard was installe
 
 | Check time | Backdrops + reels | Addon | EPG | Check run |
 |---|---|---|---|---|
+| 16 Nov 2026, 00:58 | ✅ Updated | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43761026479) |
 | 16 Nov 2026, 00:32 | 🔄 Retry requested | 🔄 Retry requested | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43758693668) |
 
 ## Details for each check
 
+### 16 Nov 2026, 00:58
+
+Trigger: schedule. Due cycle: 16 Nov 2026, 00:00.
+
+| Output | Result | Last verified cycle / check | Details | Logs |
+|---|---|---|---|---|
+| Backdrops | ✅ Updated | 16 Nov 2026, 00:00 | 160 layouts; 16 image checks | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43758705010) |
+| Reels | ✅ Updated | 16 Nov 2026, 00:00 | 4 languages; 20 films per reel | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43758705010) |
+| Addon | ✅ Updated | 16 Nov 2026, 00:00 | 859 catalog entries; 91 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43758709531) |
+| EPG | ✅ Updated | 16 Nov 2026, 00:31 | 613 / 823 channel IDs with listings; 210 unresolved; 69077 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43758574167) |
+
+Media attempt: **success**; started 16 Nov 2026, 00:33. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43758705010).
+
+Addon attempt: **success**; started 16 Nov 2026, 00:33. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43758709531).
+
+Epg attempt: **success**; started 16 Nov 2026, 00:31. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/43758574167).
 ### 16 Nov 2026, 00:32
 
 Trigger: workflow_run. Due cycle: 16 Nov 2026, 00:00.
