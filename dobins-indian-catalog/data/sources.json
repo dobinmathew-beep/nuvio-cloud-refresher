@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-15T18:59:59.885694+04:00",
+    "checkedAt": "2026-11-15T20:52:15.849750+04:00",
     "records": [
       {
         "_id": "6af9168d55b49077c85d8819",
@@ -8822,11 +8822,7 @@
           "cast": [
             {
               "name": "Joju George",
-              "character": "'Poly' Polachan"
-            },
-            {
-              "name": "Vani Viswanath",
-              "character": ""
+              "character": "Paulson"
             },
             {
               "name": "Murali Gopy",
@@ -8834,26 +8830,30 @@
             },
             {
               "name": "Arjun Ashokan",
-              "character": "Williams"
-            },
-            {
-              "name": "Saniya Iyyappan",
-              "character": "Lisha"
+              "character": "Williams \"Willy\""
             },
             {
               "name": "Sukanya",
               "character": "Sister Daisy"
             },
             {
-              "name": "Baburaj",
-              "character": ""
+              "name": "Deepak Parambol",
+              "character": "Seban"
             },
             {
-              "name": "Vincy Aloshious",
-              "character": ""
+              "name": "Azees Nedumangad",
+              "character": "Sethu"
+            },
+            {
+              "name": "Baiju Santhosh",
+              "character": "Paappan"
+            },
+            {
+              "name": "Saniya Iyyappan",
+              "character": "Lisha"
             }
           ],
-          "overview": "",
+          "overview": "A family falls victim to the powerful elite in a small town. Time passes, wounds fester. One man's return forces a confrontation that will expose decades of lies and corruption.",
           "runtime": 143,
           "genres": [
             "Action",
@@ -8864,9 +8864,9 @@
             "Malayalam"
           ],
           "releaseDate": "2026-07-16",
-          "voteAverage": null,
+          "voteAverage": 4.5,
           "trailerKey": "aQ7tTufi63s",
-          "fetchedAt": "2026-09-11T02:33:29.849Z"
+          "fetchedAt": "2026-11-15T15:27:02.147Z"
         },
         "tmdbId": 1542187,
         "verified": true
@@ -15642,7 +15642,7 @@
           "releaseDate": "2025-09-26",
           "voteAverage": 5.2,
           "trailerKey": "iulDFgiGngQ",
-          "fetchedAt": "2026-10-14T06:32:04.809Z"
+          "fetchedAt": "2026-11-15T15:25:45.728Z"
         },
         "tmdbId": 1070157,
         "instagramPostedAt": "2026-07-15T18:06:13Z",
@@ -30671,7 +30671,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-15T18:59:59.885694+04:00",
+    "checkedAt": "2026-11-15T20:52:15.849750+04:00",
     "records": [
       {
         "name": "Bandra",
