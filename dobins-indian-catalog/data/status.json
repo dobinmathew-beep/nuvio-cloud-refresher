@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-15T20:52:15.849750+04:00",
-  "lastSuccessCycle": "2026-11-15T20:00:00+04:00",
+  "updatedAt": "2026-11-16T00:33:18.507221+04:00",
+  "lastSuccessCycle": "2026-11-16T00:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
   "sources": [
