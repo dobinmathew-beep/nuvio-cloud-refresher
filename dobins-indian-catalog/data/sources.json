@@ -1,7 +1,25 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-15T04:55:18.339871+04:00",
+    "checkedAt": "2026-11-15T06:24:14.736420+04:00",
     "records": [
+      {
+        "_id": "6af9168d55b49077c85d8819",
+        "platform": "Netflix",
+        "title": "Cunk on Cinema",
+        "createdAt": "2026-11-15T02:18:53.286Z",
+        "genre": "Mockumentary",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-15",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-15T02:19:42.041Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/zrrRRvavkLQupkC6aEkdA8sX4E8.jpg",
+        "verified": true
+      },
       {
         "_id": "6af7c50adea24088f2622fb9",
         "platform": "ZEE5",
@@ -38,9 +56,6 @@
         "tmdbRating": 83,
         "tmdbVotes": 593,
         "instagramPostedAt": "2026-11-13T02:22:04Z",
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
-        "trendingRankedDateIST": "2026-11-14",
         "tmdbDetails": {
           "tmdbId": 1543469,
           "director": "Shana Feste",
@@ -95,6 +110,9 @@
           "fetchedAt": "2026-11-14T14:06:13.743Z"
         },
         "tmdbId": 1543469,
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
+        "trendingRankedDateIST": "2026-11-15",
         "verified": true
       },
       {
@@ -111,7 +129,7 @@
         "releaseDate": "2026-11-13",
         "source_verified": true,
         "type": "Movie",
-        "updatedAt": "2026-11-13T02:19:51.552Z",
+        "updatedAt": "2026-11-15T02:19:42.632Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/ouGH1PS0xjDyfTQOhppn7QzJqQZ.jpg",
         "instagramPostedAt": "2026-11-13T02:22:04Z",
         "tmdbDetails": {
@@ -167,6 +185,11 @@
           "fetchedAt": "2026-11-13T10:28:10.198Z"
         },
         "tmdbId": 1050981,
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
+        "trendingRankedDateIST": "2026-11-15",
+        "tmdbRating": 65,
+        "tmdbVotes": 12,
         "verified": true
       },
       {
@@ -265,9 +288,9 @@
           "fetchedAt": "2026-11-13T05:09:16.275Z"
         },
         "tmdbId": 1493572,
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
-        "trendingRankedDateIST": "2026-11-14",
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
+        "trendingRankedDateIST": "2026-11-15",
         "verified": true
       },
       {
@@ -343,9 +366,6 @@
           "fetchedAt": "2026-11-13T03:49:09.847Z"
         },
         "tmdbId": 434775,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
-        "trendingRankedDateIST": "2026-11-14",
         "verified": true
       },
       {
@@ -365,9 +385,6 @@
         "updatedAt": "2026-11-13T02:19:52.815Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/k5gnPQBFThLWRr4SzOzgl6mXSWz.jpg",
         "instagramPostedAt": "2026-11-13T02:21:13Z",
-        "trendingRank": 6,
-        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
-        "trendingRankedDateIST": "2026-11-14",
         "tmdbDetails": {
           "tmdbId": 1013057,
           "director": "Arun Gopy",
@@ -423,6 +440,9 @@
           "fetchedAt": "2026-11-14T07:58:38.175Z"
         },
         "tmdbId": 1013057,
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
+        "trendingRankedDateIST": "2026-11-15",
         "verified": true
       },
       {
@@ -491,9 +511,9 @@
           "fetchedAt": "2026-11-13T12:41:01.465Z"
         },
         "tmdbId": 1431738,
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
-        "trendingRankedDateIST": "2026-11-14",
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
+        "trendingRankedDateIST": "2026-11-15",
         "verified": true
       },
       {
@@ -569,8 +589,8 @@
         },
         "tmdbId": 1389379,
         "trendingRank": 2,
-        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
-        "trendingRankedDateIST": "2026-11-14",
+        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
+        "trendingRankedDateIST": "2026-11-15",
         "verified": true
       },
       {
@@ -762,6 +782,9 @@
           "fetchedAt": "2026-11-14T07:08:22.981Z"
         },
         "tmdbId": 809787,
+        "trendingRank": 9,
+        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
+        "trendingRankedDateIST": "2026-11-15",
         "verified": true
       },
       {
@@ -987,9 +1010,6 @@
         "updatedAt": "2026-11-12T02:18:54.203Z",
         "instagramPostedAt": "2026-11-12T02:20:37Z",
         "votes": 0,
-        "trendingRank": 8,
-        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
-        "trendingRankedDateIST": "2026-11-14",
         "verified": true
       },
       {
@@ -1060,9 +1080,6 @@
         "type": "Movie",
         "updatedAt": "2026-11-12T02:18:54.418Z",
         "instagramPostedAt": "2026-11-12T02:20:37Z",
-        "trendingRank": 9,
-        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
-        "trendingRankedDateIST": "2026-11-14",
         "verified": true
       },
       {
@@ -1135,6 +1152,9 @@
           "fetchedAt": "2026-11-12T03:59:46.128Z"
         },
         "tmdbId": 1733518,
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
+        "trendingRankedDateIST": "2026-11-15",
         "verified": true
       },
       {
@@ -1256,9 +1276,9 @@
           "fetchedAt": "2026-11-05T11:13:10.822Z"
         },
         "tmdbId": 1755818,
-        "trendingRank": 7,
-        "trendingRankedAt": "2026-11-14T02:19:23.387Z",
-        "trendingRankedDateIST": "2026-11-14",
+        "trendingRank": 8,
+        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
+        "trendingRankedDateIST": "2026-11-15",
         "verified": true
       },
       {
@@ -30649,7 +30669,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-15T04:55:18.339871+04:00",
+    "checkedAt": "2026-11-15T06:24:14.736420+04:00",
     "records": [
       {
         "name": "Bandra",
