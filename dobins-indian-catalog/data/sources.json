@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-15T14:23:04.734092+04:00",
+    "checkedAt": "2026-11-15T18:59:59.885694+04:00",
     "records": [
       {
         "_id": "6af9168d55b49077c85d8819",
@@ -3983,19 +3983,19 @@
             },
             {
               "name": "Manju Pillai",
-              "character": ""
+              "character": "Sheela Zachariah"
             },
             {
               "name": "Babu Antony",
-              "character": ""
+              "character": "Anwar Ali"
             },
             {
               "name": "John Vijay",
-              "character": ""
+              "character": "Ganja Karuppu"
             },
             {
               "name": "Ashokan",
-              "character": ""
+              "character": "Sebastian Xavier"
             },
             {
               "name": "Prem Kumar",
@@ -4003,7 +4003,7 @@
             },
             {
               "name": "Sreekanth Vettiyar",
-              "character": ""
+              "character": "Chathan \"Chethan\" Kumar"
             }
           ],
           "overview": "Four students at strict Liberty Engineering College encounter a gangster who sneaks in as a motivational speaker. The stern principal watches everyone closely as events unfold.",
@@ -4018,7 +4018,7 @@
           "releaseDate": "2025-12-12",
           "voteAverage": null,
           "trailerKey": "vhwe37-xfqs",
-          "fetchedAt": "2026-10-16T02:24:09.823Z"
+          "fetchedAt": "2026-11-15T10:25:29.076Z"
         },
         "tmdbId": 1593963,
         "verified": true
@@ -4090,7 +4090,7 @@
           "releaseDate": "1983-02-10",
           "voteAverage": null,
           "trailerKey": null,
-          "fetchedAt": "2026-10-16T08:24:00.615Z"
+          "fetchedAt": "2026-11-15T11:02:22.801Z"
         },
         "tmdbId": 1558593,
         "verified": true
@@ -5317,19 +5317,20 @@
             }
           ],
           "overview": "Aamir Ali, a notorious gold smuggling kingpin who inherited his multi-million dollar criminal enterprise from a lineage of gangsters, is drawn into a web of vengeance, legacy and power.",
-          "runtime": 157,
+          "runtime": 159,
           "genres": [
-            "Crime",
-            "Action"
+            "Action",
+            "Thriller",
+            "Crime"
           ],
           "originalLanguage": "ml",
           "spokenLanguages": [
             "Malayalam"
           ],
           "releaseDate": "2026-08-20",
-          "voteAverage": 7.1,
+          "voteAverage": 5.219,
           "trailerKey": null,
-          "fetchedAt": "2026-10-09T03:11:55.947Z"
+          "fetchedAt": "2026-11-15T11:02:32.386Z"
         },
         "tmdbId": 1036081,
         "votes": 1,
@@ -7551,7 +7552,7 @@
             },
             {
               "name": "Arty Froushan",
-              "character": "Dr. Tom Benton"
+              "character": "Dr. Thomas Benton"
             },
             {
               "name": "Jeananne Goossen",
@@ -7563,7 +7564,7 @@
             }
           ],
           "overview": "Olive Smith, a biology PhD candidate, and Dr. Adam Carlsen, a hotshot professor and well-known tyrant, enter into a fake relationship, seeing each of their carefully calculated theories on love get thrown into chaos.",
-          "runtime": 110,
+          "runtime": 112,
           "genres": [
             "Romance",
             "Comedy"
@@ -7573,9 +7574,9 @@
             "English"
           ],
           "releaseDate": "2026-09-23",
-          "voteAverage": 8.386,
+          "voteAverage": 7.845,
           "trailerKey": "xwdamnfS6IM",
-          "fetchedAt": "2026-09-24T04:41:07.925Z"
+          "fetchedAt": "2026-11-15T11:01:26.109Z"
         },
         "tmdbId": 1032863,
         "verified": true
@@ -30670,7 +30671,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-15T14:23:04.734092+04:00",
+    "checkedAt": "2026-11-15T18:59:59.885694+04:00",
     "records": [
       {
         "name": "Bandra",
