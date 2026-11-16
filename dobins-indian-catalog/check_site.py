@@ -114,7 +114,9 @@ for route in ['/manifest.json', '/support', '/health.json']:
         if route.endswith('.json'):
             obj = json.loads(body)
             if route == '/manifest.json':
-                assert obj.get('name') == 'The Great Indian Addon' and len(obj.get('catalogs', [])) == 8
+                declared = obj.get('catalogs', [])
+                assert obj.get('name') == 'The Great Indian Addon' and len(declared) == 8
+                assert all(c.get('pageSize') == 50 and any(e.get('name') == 'skip' for e in c.get('extra', [])) for c in declared)
             if route == '/health.json':
                 assert isinstance(obj.get('checkout', {}).get('ready'), bool)
                 if obj.get('checkout', {}).get('configured'):
