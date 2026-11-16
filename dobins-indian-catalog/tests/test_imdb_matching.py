@@ -59,6 +59,19 @@ class ImdbMatchingTests(unittest.TestCase):
             "ottDate": "2026-11-13"
         }))
 
+    def test_missing_year_strings_do_not_crash_imdb_matching(self):
+        update.get = lambda url: {"d": [{
+            "id": "tt1234567", "l": "Example Film", "qid": "movie",
+            "y": "None"
+        }]}
+        result = update.suggestion({
+            "name": "Example Film", "language": "hindi", "type": "movie",
+            "year": "None", "ottDate": "2026-11-20"
+        })
+        self.assertEqual(result["id"], "tt1234567")
+        self.assertEqual(update._year_int("None"), 0)
+        self.assertEqual(update._year_int("2024-05-12"), 2024)
+
     def test_imdb_id_filter_accepts_real_title_ids(self):
         self.assertTrue(update.is_imdb_id("tt1234567"))
         self.assertFalse(update.is_imdb_id("tmdb:123"))
