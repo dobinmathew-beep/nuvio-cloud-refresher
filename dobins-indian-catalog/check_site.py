@@ -49,18 +49,41 @@ for lang in ('ml', 'ta', 'te', 'hi'):
             'path': route, 'localPublishedCount': expected
         }
         try:
-            payload = fetch_json(base + route)
-            metas = payload.get('metas') if isinstance(payload, dict) else None
-            if not isinstance(metas, list) or not metas:
+            # The addon intentionally serves 50 metas per page. Walk the
+            # advertised skip pagination so health checks compare full catalogs,
+            # not just page one.
+            all_metas = []
+            page_counts = []
+            seen_ids = set()
+            skip = 0
+            for page_number in range(20):
+                page_route = route if skip == 0 else route[:-5] + f'/skip={skip}.json'
+                payload = fetch_json(base + page_route)
+                metas = payload.get('metas') if isinstance(payload, dict) else None
+                if not isinstance(metas, list):
+                    raise ValueError(f'Page {page_number + 1} did not return a metas array')
+                page_counts.append(len(metas))
+                for item in metas:
+                    marker = item.get('id') if isinstance(item, dict) else None
+                    if marker and marker not in seen_ids:
+                        seen_ids.add(marker)
+                        all_metas.append(item)
+                if len(metas) < 50:
+                    break
+                skip += len(metas)
+            else:
+                raise ValueError('Pagination exceeded 20 pages; refusing an incomplete health result')
+            if not all_metas:
                 raise ValueError('Endpoint returned no metas')
-            result['endpointReturnedCount'] = len(metas)
-            result['endpointLatestEntry'] = latest_entry(metas)
+            result['endpointReturnedCount'] = len(all_metas)
+            result['endpointPageCounts'] = page_counts
+            result['endpointPageSize'] = 50
+            result['endpointLatestEntry'] = latest_entry(all_metas)
             result['localLatestEntry'] = latest_entry(local.get(cid, []))
-            if expected and len(metas) < expected:
+            if expected and len(all_metas) < expected:
                 result['state'] = 'possible_truncation_or_deployment_lag'
-                result['missingFromResponse'] = expected - len(metas)
-                result['exactly50Returned'] = len(metas) == 50
-            elif expected and len(metas) > expected:
+                result['missingFromResponse'] = expected - len(all_metas)
+            elif expected and len(all_metas) > expected:
                 result['state'] = 'endpoint_ahead_of_local_snapshot'
             else:
                 result['state'] = 'ok'
@@ -101,7 +124,7 @@ result = {
         'checked': len(catalogs),
         'failed': catalog_failures,
         'possibleTruncationOrLag': sum(1 for x in catalogs if x.get('state') == 'possible_truncation_or_deployment_lag'),
-        'exactly50Returned': [x['catalogId'] for x in catalogs if x.get('exactly50Returned')]
+        'firstPageSize50': [x['catalogId'] for x in catalogs if x.get('endpointPageCounts', [None])[0] == 50]
     },
     'method': 'read-only; no payment orders or charges'
 }
