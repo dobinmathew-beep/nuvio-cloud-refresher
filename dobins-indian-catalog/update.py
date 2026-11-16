@@ -159,8 +159,14 @@ def candidate_index():
    fresh=[m for m in rows if m.get('id') and m.get('id') not in seen]
    seen.update(m.get('id') for m in fresh);all_rows.extend(fresh)
    if not fresh or len(rows)<20:break
+  previous=cache.get(key,[])
+  if all_rows and error:
+   merged={str(m.get('id')):m for m in previous if m.get('id')}
+   merged.update({str(m.get('id')):m for m in all_rows if m.get('id')})
+   all_rows=list(merged.values())
+  elif not all_rows:
+   all_rows=previous
   if all_rows:cache[key]=all_rows
-  else:all_rows=cache.get(key,[])
   print('CANDIDATES',key,len(all_rows),'pages',page+1,'error',bool(error),flush=True)
   return [dict(m,language=lang,type=typ) for m in all_rows if re.fullmatch(r'tt\\d+',str(m.get('id',''))) and m.get('name')]
  with ThreadPoolExecutor(max_workers=4) as ex:
