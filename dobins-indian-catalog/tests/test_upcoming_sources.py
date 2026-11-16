@@ -170,7 +170,6 @@ class UpcomingSourceTests(unittest.TestCase):
         self.assertEqual(rows[0]["type"], "series")
         self.assertEqual(rows[0]["platforms"], ["Netflix"])
         self.assertFalse(rows[0]["confirmed"])
-\n
     def test_ottclock_confirmed_upcoming_feed_parses_compact_cards(self):
         html = """<a href="/movie/example">Movie 20 Nov Netflix Example Film Movie · Hindi</a>
         <a href="/series/sample">New 21 Nov Prime Video Sample Series Series · Malayalam</a>
