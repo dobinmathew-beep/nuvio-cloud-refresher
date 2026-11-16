@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-17T02:43:36.736747+04:00",
+  "generatedAt": "2026-11-17T03:40:13.561732+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 29,
@@ -13,8 +13,8 @@
       "movie": 13
     },
     "byMatchState": {
-      "published": 10,
-      "unmatched": 17,
+      "published": 13,
+      "unmatched": 14,
       "metadata_incomplete": 2
     },
     "bySource": {
@@ -172,8 +172,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://newindianmovies.com/"
+        "https://newindianmovies.com/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -225,8 +225,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -355,8 +355,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -415,17 +415,17 @@
       "confirmed": true,
       "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
       "detail": "https://ottasia.com/title/tv/338740/supreme-solaris?country=IN",
-      "matchId": null,
-      "matchState": "unmatched",
-      "metadataComplete": false,
-      "metadataSource": null,
+      "matchId": "tmdb:338740",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "TMDB exact-title search + verified detail page",
       "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
       },
-      "catalog": null
+      "catalog": "dobins_hi_series"
     },
     {
       "title": "Coming Mon 23 Nov Notebook 90s – Kadhal Flashback Tamil · Series SonyLIV",
@@ -467,17 +467,17 @@
       "confirmed": true,
       "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
       "detail": "https://ottasia.com/title/tv/339004/notebook-90s-kadhal-flashback?country=IN",
-      "matchId": null,
-      "matchState": "unmatched",
+      "matchId": "tmdb:339004",
+      "matchState": "published",
       "metadataComplete": false,
-      "metadataSource": null,
+      "metadataSource": "TMDB exact-title search + verified detail page",
       "metadataFields": {
-        "poster": false,
+        "poster": true,
         "description": false,
-        "genres": false,
-        "releaseInfo": false
+        "genres": true,
+        "releaseInfo": true
       },
-      "catalog": null
+      "catalog": "dobins_ta_series"
     },
     {
       "title": "Coming Thu 26 Nov Takshakudu Telugu App not announced",
@@ -611,17 +611,17 @@
       "confirmed": true,
       "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
       "detail": "https://ottasia.com/title/tv/337904/andherpura-curse?country=IN",
-      "matchId": null,
-      "matchState": "unmatched",
-      "metadataComplete": false,
-      "metadataSource": null,
+      "matchId": "tmdb:337904",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "TMDB exact-title search + verified detail page",
       "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
       },
-      "catalog": null
+      "catalog": "dobins_hi_series"
     },
     {
       "title": "Hatela Gang",

@@ -2,10 +2,10 @@
   "name": "Dobins Indian Catalog",
   "policy": "confirmed-digital-imdb-v3",
   "releasePolicy": "ott-or-confirmed-physical-v1",
-  "metadataPolicy": "tmdb-tvmaze-v1",
+  "metadataPolicy": "tmdb-tvmaze-v2",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-17T02:43:36.736747+04:00",
-  "lastMatchRetryAt": "2026-11-17T02:43:36.736747+04:00",
+  "updatedAt": "2026-11-17T03:40:13.561732+04:00",
+  "lastMatchRetryAt": "2026-11-17T03:40:13.561732+04:00",
   "lastSuccessCycle": "2026-11-17T02:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
@@ -202,16 +202,16 @@
     "dobins_ml_movie": 70,
     "dobins_ml_series": 66,
     "dobins_ta_movie": 67,
-    "dobins_ta_series": 110,
-    "dobins_te_movie": 74,
-    "dobins_te_series": 114,
+    "dobins_ta_series": 111,
+    "dobins_te_movie": 76,
+    "dobins_te_series": 115,
     "dobins_hi_movie": 81,
-    "dobins_hi_series": 347
+    "dobins_hi_series": 349
   },
   "catalogFreshness": {
     "dobins_ml_movie": {
       "count": 70,
-      "generatedAt": "2026-11-17T02:43:36.736747+04:00",
+      "generatedAt": "2026-11-17T03:40:13.561732+04:00",
       "latestEntry": {
         "id": "tt27512908",
         "name": "The Third Murder",
@@ -221,7 +221,7 @@
     },
     "dobins_ml_series": {
       "count": 66,
-      "generatedAt": "2026-11-17T02:43:36.736747+04:00",
+      "generatedAt": "2026-11-17T03:40:13.561732+04:00",
       "latestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
@@ -231,7 +231,7 @@
     },
     "dobins_ta_movie": {
       "count": 67,
-      "generatedAt": "2026-11-17T02:43:36.736747+04:00",
+      "generatedAt": "2026-11-17T03:40:13.561732+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -240,18 +240,18 @@
       }
     },
     "dobins_ta_series": {
-      "count": 110,
-      "generatedAt": "2026-11-17T02:43:36.736747+04:00",
+      "count": 111,
+      "generatedAt": "2026-11-17T03:40:13.561732+04:00",
       "latestEntry": {
-        "id": "tt50135636",
-        "name": "Mr & Mrs Office",
-        "releaseDate": "2026-11-18",
+        "id": "tmdb:339004",
+        "name": "Notebook 90s – Kadhal Flashback",
+        "releaseDate": "2026-11-23",
         "hasNewEpisodes": false
       }
     },
     "dobins_te_movie": {
-      "count": 74,
-      "generatedAt": "2026-11-17T02:43:36.736747+04:00",
+      "count": 76,
+      "generatedAt": "2026-11-17T03:40:13.561732+04:00",
       "latestEntry": {
         "id": "tt38676235",
         "name": "Takshakudu",
@@ -260,8 +260,8 @@
       }
     },
     "dobins_te_series": {
-      "count": 114,
-      "generatedAt": "2026-11-17T02:43:36.736747+04:00",
+      "count": 115,
+      "generatedAt": "2026-11-17T03:40:13.561732+04:00",
       "latestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
@@ -271,7 +271,7 @@
     },
     "dobins_hi_movie": {
       "count": 81,
-      "generatedAt": "2026-11-17T02:43:36.736747+04:00",
+      "generatedAt": "2026-11-17T03:40:13.561732+04:00",
       "latestEntry": {
         "id": "tt39390582",
         "name": "Hanuman Ansh",
@@ -280,13 +280,13 @@
       }
     },
     "dobins_hi_series": {
-      "count": 347,
-      "generatedAt": "2026-11-17T02:43:36.736747+04:00",
+      "count": 349,
+      "generatedAt": "2026-11-17T03:40:13.561732+04:00",
       "latestEntry": {
-        "id": "tt38195069",
-        "name": "Tumm Se Tumm Tak",
-        "releaseDate": "2026-11-16T00:00:00+00:00",
-        "hasNewEpisodes": true
+        "id": "tmdb:337904",
+        "name": "AndherPura Curse",
+        "releaseDate": "2026-11-28",
+        "hasNewEpisodes": false
       }
     }
   },
@@ -294,11 +294,11 @@
     "dobins_ml_movie": 2,
     "dobins_ml_series": 4,
     "dobins_ta_movie": 4,
-    "dobins_ta_series": 13,
-    "dobins_te_movie": 11,
-    "dobins_te_series": 10,
+    "dobins_ta_series": 12,
+    "dobins_te_movie": 9,
+    "dobins_te_series": 9,
     "dobins_hi_movie": 15,
-    "dobins_hi_series": 15
+    "dobins_hi_series": 13
   },
   "checkedCandidatesByCatalog": {
     "dobins_ml_movie": 66,
@@ -311,13 +311,13 @@
     "dobins_hi_series": 366
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
-  "pendingMatches": 74,
+  "pendingMatches": 68,
   "checkedCandidates": 1004,
   "malayalamMetadataAudit": {
     "checked": 136,
     "passed": 136,
     "failed": 0,
-    "missingOriginalLanguageField": 109,
+    "missingOriginalLanguageField": 108,
     "policy": "IMDb-or-TMDB identity; exact ID/type; title and metadata integrity"
   },
   "upcoming": {
@@ -388,8 +388,8 @@
       "movie": 13
     },
     "byMatchState": {
-      "published": 10,
-      "unmatched": 17,
+      "published": 13,
+      "unmatched": 14,
       "metadata_incomplete": 2
     },
     "bySource": {

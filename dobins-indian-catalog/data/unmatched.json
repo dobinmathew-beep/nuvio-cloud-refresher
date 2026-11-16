@@ -130,25 +130,6 @@
     }
   },
   {
-    "name": "Notebook 90s – Kadhal Flashback",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-11-23",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
-    ],
-    "platforms": [
-      "SonyLIV"
-    ],
-    "detail": "https://ottasia.com/title/tv/339004/notebook-90s-kadhal-flashback?country=IN",
-    "sourceRecord": {
-      "title": "Notebook 90s – Kadhal Flashback",
-      "releaseDate": "2026-11-23",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    }
-  },
-  {
     "name": "Jindey",
     "language": "hindi",
     "type": "movie",
@@ -162,23 +143,6 @@
     "sourceRecord": {
       "title": "Jindey",
       "releaseDate": "2026-11-27",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    }
-  },
-  {
-    "name": "AndherPura Curse",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-11-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
-    ],
-    "platforms": [],
-    "detail": "https://ottasia.com/title/tv/337904/andherpura-curse?country=IN",
-    "sourceRecord": {
-      "title": "AndherPura Curse",
-      "releaseDate": "2026-11-28",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     }
   },
@@ -232,25 +196,6 @@
     "sourceRecord": {
       "title": "Hatela Gang",
       "releaseDate": "2026-11-28",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    }
-  },
-  {
-    "name": "Supreme Solaris",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-11-22",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
-    ],
-    "platforms": [
-      "YouTube"
-    ],
-    "detail": "https://ottasia.com/title/tv/338740/supreme-solaris?country=IN",
-    "sourceRecord": {
-      "title": "Supreme Solaris",
-      "releaseDate": "2026-11-22",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     }
   },
@@ -976,37 +921,6 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-09-13T02:18:42.361Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Padamati Sandhyaragam",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-04-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f02de830958fd1b959e7c0",
-      "platform": "ZEE5",
-      "title": "Padamati Sandhyaragam",
-      "createdAt": "2026-04-28T03:47:52.257Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-04-28",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-28T03:48:09.815Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/7HhGYljH1rBWCzIaexy0LrL5XZB.jpg",
       "verified": true
     }
   },
@@ -1745,68 +1659,6 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-05-03T03:46:51.209Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Papam Prathap",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-07",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69fc0b0d1f223b56833f1777",
-      "platform": "ETV Win",
-      "title": "Papam Prathap",
-      "createdAt": "2026-05-07T03:46:20.990Z",
-      "genre": "Romance, Drama, Comedy",
-      "imdbRating": 7.8,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-07",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-07T03:46:33.384Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/3yyw0fSAPlrQlAWGAtBXt93YxRe.jpg",
-      "verified": true
-    }
-  },
-  {
-    "name": "Sodhara",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-01",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Aha"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f4224a14fef940afcceda1",
-      "platform": "Aha",
-      "title": "Sodhara",
-      "createdAt": "2026-05-01T03:47:22.757Z",
-      "genre": "Family Drama, Comedy",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-01",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-01T03:47:37.494Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/hJrLhbUUi45lvLdUo85zLlYZRKe.jpg",
       "verified": true
     }
   },
