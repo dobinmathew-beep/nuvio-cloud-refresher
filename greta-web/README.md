@@ -31,7 +31,7 @@ The feedback form opens a pre-filled public GitHub issue. Visitors review and su
 
 ## Scheduled health
 
-The catalog workflow checks every 30 minutes, performs a full catalog refresh every two hours in Asia/Muscat, and then runs `check_site.py` when `GRETA_PUBLIC_URL` is set as a repository variable.
+The catalog workflow checks all eight published endpoints every 30 minutes, performs a full source refresh every two hours in Asia/Muscat, retries failed or cached sources on the next check, and runs `check_site.py` when `GRETA_PUBLIC_URL` is set as a repository variable.
 
 A failed, partial or cached upstream source, or a mismatch between a published catalog and its public endpoint, marks the next 30-minute check as retry-eligible. Healthy sources return to the regular two-hour refresh cadence. A source with no confirmed upcoming dates is reported as informational rather than as a parser failure.
  The website's maintenance date is the updater's successful `updatedAt`, never the visitor's browser time.
