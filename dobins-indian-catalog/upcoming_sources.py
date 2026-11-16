@@ -462,7 +462,7 @@ def collect(get, today, langs, norm):
             if not rows:
                 visible = soup.get_text(' ', strip=True).lower()
                 if "ottasia.com" in url:
-                    raw_lines = soup.get_text('\\n', strip=True)
+                    raw_lines = soup.get_text('\n', strip=True)
                     section_start = re.search(r'upcoming\s+ott\s+releases', raw_lines, re.I)
                     section_text = raw_lines[section_start.start():] if section_start else raw_lines
                     section_text = re.split(r'predicted next on ott', section_text, maxsplit=1, flags=re.I)[0]
