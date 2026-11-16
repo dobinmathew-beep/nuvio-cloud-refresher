@@ -468,9 +468,9 @@ def build():
   if e.get('_languageMismatch'):continue
   key=e['language']+'|'+e['type']+'|'+norm(e['name']);match=matches.get(key,{});mid=match.get('id');cid=f'dobins_{LANGS[e["language"]]}_{e["type"]}'
   if e['language']=='malayalam' and mid and not (is_imdb_id(mid) or re.fullmatch(r'tmdb:\d+',str(mid))):
-   unmatched.append({'name':e['name'],'language':e['language'],'type':e['type'],'ottDate':e['ottDate'],'reason':'Malayalam catalog requires a verified IMDb or TMDB ID'});continue
+   unmatched.append({'name':e['name'],'language':e['language'],'type':e['type'],'ottDate':e['ottDate'],'reason':'Malayalam catalog requires a verified IMDb or TMDB ID','sources':list(dict.fromkeys(e.get('sources') or ([e.get('source')] if e.get('source') else []))),'platforms':e.get('platforms') or [],'detail':e.get('detail'),'sourceRecord':e.get('sourceRecord') or {}});continue
   if not mid or alternate.key(e['type'],mid) not in metas:
-   unmatched.append({'name':e['name'],'language':e['language'],'type':e['type'],'ottDate':e['ottDate'],'reason':match.get('reason','Awaiting metadata backfill')});continue
+   unmatched.append({'name':e['name'],'language':e['language'],'type':e['type'],'ottDate':e['ottDate'],'reason':match.get('reason','Awaiting metadata backfill'),'sources':list(dict.fromkeys(e.get('sources') or ([e.get('source')] if e.get('source') else []))),'platforms':e.get('platforms') or [],'detail':e.get('detail'),'sourceRecord':e.get('sourceRecord') or {}});continue
   if mid in seen[cid]:continue
   seen[cid].add(mid);m=metas[alternate.key(e['type'],mid)];aid=alternate.artid(e['type'],mid);poster=e.get('poster') or m.get('poster');poster=re.sub(r'/w\d+/','/w780/',poster) if poster and 'image.tmdb.org' in poster else poster
   if not poster:continue
@@ -566,7 +566,10 @@ def build():
   for field,value in [('byLanguage',row['language']),('byType',row['type']),('byMatchState',row['matchState'])]:
    discovery_counts[field][value]=discovery_counts[field].get(value,0)+1
   for source in row['sources']:discovery_counts['bySource'][source]=discovery_counts['bySource'].get(source,0)+1
- save('upcoming-discovery.json',{'generatedAt':NOW.isoformat(),'policy':'source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json','counts':discovery_counts,'items':discovery_rows,'sourceHealth':health})
+ malayalam_review=[x for x in unmatched if x.get('language')=='malayalam']
+ malayalam_review_counts={'total':len(malayalam_review),'byType':{}}
+ for row in malayalam_review:malayalam_review_counts['byType'][row['type']]=malayalam_review_counts['byType'].get(row['type'],0)+1
+ save('upcoming-discovery.json',{'generatedAt':NOW.isoformat(),'policy':'source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json','counts':discovery_counts,'items':discovery_rows,'malayalamReview':{'policy':'Unmatched Malayalam source detections are held out until an unambiguous IMDb or TMDB identity and complete metadata are verified.','counts':malayalam_review_counts,'items':malayalam_review},'sourceHealth':health})
  upcoming_source_summary={}
  for item in upcoming_rows:
   for source in item['sources']:
@@ -584,7 +587,7 @@ def build():
  for cid,items in catalogs.items():
   latest=max(items,key=lambda x:str(x.get('latestEpisodeReleasedAt') or x.get('ottDate') or x.get('releaseDate') or ''),default=None)
   freshness[cid]={'count':len(items),'generatedAt':NOW.isoformat(),'latestEntry':None if not latest else {'id':latest.get('id'),'name':latest.get('name'),'releaseDate':latest.get('latestEpisodeReleasedAt') or latest.get('ottDate') or latest.get('releaseDate'),'hasNewEpisodes':latest.get('hasNewEpisodes',False)}}
- status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastMatchRetryAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'malayalamMetadataAudit':malayalam_audit,'upcoming':{'matchedTitles':len(upcoming_rows),'bySource':upcoming_source_summary,'policy':'Only confirmed upcoming titles with a validated IMDb tt-ID are published.'},'upcomingDiscovery':discovery_counts,'errors':resolve_errors}
+ status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastMatchRetryAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'malayalamMetadataAudit':malayalam_audit,'upcoming':{'matchedTitles':len(upcoming_rows),'bySource':upcoming_source_summary,'policy':'Only confirmed upcoming titles with a validated IMDb tt-ID are published.'},'upcomingDiscovery':{**discovery_counts,'malayalamReviewCount':malayalam_review_counts['total']},'errors':resolve_errors}
  save('status.json',status);print('SUCCESS',json.dumps(status),flush=True)
 if __name__=='__main__':
  try:build()
