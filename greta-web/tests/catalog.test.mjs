@@ -29,3 +29,9 @@ test('BetterPosters proxy preserves upstream WebP MIME and source artwork bytes'
  try{const token=encodePosterConfig('https://btttr.cc/poster-q/imdb/poster-default/{imdb_id}.jpg?rs=IM');const route='/install/01/bttr/'+token+'/poster/movie/tt1234567.jpg';const req={url:route,method:'GET',headers:{host:'addon.example'}};const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=body}};await handler(req,res);assert.equal(res.statusCode,200);assert.equal(res.headers['Content-Type'],'image/webp');assert.equal(res.headers['X-Poster-Source'],'betterposters');assert.equal(res.body.length,512);}
  finally{globalThis.fetch=oldFetch}
 });
+
+test('public data-health route exposes GitHub snapshot provenance and catalog counts',async()=>{
+ const oldFetch=globalThis.fetch;globalThis.fetch=async()=>{throw Error('offline fixture')};
+ try{const req={url:'/data-health.json',method:'GET',headers:{host:'addon.example'},query:{path:'/data-health.json'}};const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=JSON.parse(body)}};await handler(req,res);assert.equal(res.statusCode,200);assert(res.body.snapshots['catalogs.json']);assert(res.body.snapshots['status.json']);assert(res.body.snapshots['metadata.json']);assert.equal(typeof res.body.catalogCounts.dobins_ml_movie,'number');assert.equal(typeof res.body.metadataRecords,'number');}
+ finally{globalThis.fetch=oldFetch}
+});
