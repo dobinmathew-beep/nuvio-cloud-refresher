@@ -162,53 +162,43 @@ def _links_between_headings(soup, start_text, end_text):
 
 
 def _ottasia(soup, source_name, source_url, today, langs, norm):
-    """Parse OTTASIA's confirmed upcoming section from its title/type/date text rows."""
-    visible = soup.get_text('\n', strip=True)
-    lower = visible.lower()
-    start_match = re.search(r'upcoming\s+ott\s+releases(?:\s+in\s+india)?', lower)
-    if not start_match:
-        return []
-    start = start_match.start()
-    end = lower.find('predicted next on ott', start)
-    section = visible[start:end if end >= 0 else len(visible)]
-    lines = [line.strip() for line in section.splitlines() if line.strip()]
-    anchors = {
-        a.get_text(' ', strip=True).lower(): a
-        for a in soup.select('a[href]')
-        if a.get_text(' ', strip=True)
-    }
-    images = [img for img in soup.select('img[alt][src]')]
+    """Parse only OTTASIA's explicitly confirmed upcoming cards."""
+    links = _links_between_headings(
+        soup, "Upcoming OTT releases in India: confirmed dates", "Predicted next on OTT"
+    )
+    if not links:
+        links = _links_between_headings(soup, "Upcoming OTT releases", "Predicted next on OTT")
+
     out = []
     seen = set()
-    # The live OTTASIA page sometimes puts the title, type and date in
-    # separate nested elements. Parse the smallest card ancestor containing
-    # all three instead of assuming they are adjacent text lines.
     date_pattern = re.compile(
-        r'\\b(?:from|on)\\s+((?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\\s+)?'
-        r'([A-Za-z]{3,9}\\s+\\d{1,2},?\\s+20\\d{2}|[A-Za-z]{3,9}\\s+\\d{1,2})',
-        re.I
+        r"\b(?:from|on)\s+(?:(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s+)?"
+        r"([A-Za-z]{3,9}\s+\d{1,2},?\s+20\d{2}|[A-Za-z]{3,9}\s+\d{1,2})",
+        re.I,
     )
-    for anchor in soup.select('a[href]'):
-        title = anchor.get_text(' ', strip=True)
+    kind_pattern = re.compile(
+        r"\b(Series|Film)\s*[·•]\s*(Malayalam|Tamil|Telugu|Hindi)\b", re.I
+    )
+
+    for anchor in links:
+        title = anchor.get_text(" ", strip=True)
         if not title or len(title) > 140:
             continue
         node = anchor
-        for _ in range(6):
-            node = getattr(node, 'parent', None)
-            if node is None or not hasattr(node, 'get_text'):
+        for _ in range(10):
+            node = getattr(node, "parent", None)
+            if node is None or not hasattr(node, "get_text"):
                 break
-            card_text = node.get_text(' ', strip=True)
-            if len(card_text) > 1800:
+            card_text = node.get_text(" ", strip=True)
+            if len(card_text) > 1600 or title.casefold() not in card_text.casefold():
                 continue
-            kind_match = re.search(r'\\b(Series|Film)\\s*[·|•]\\s*(Malayalam|Tamil|Telugu|Hindi)\\b', card_text, re.I)
+            kind_match = kind_pattern.search(card_text)
             date_match = date_pattern.search(card_text)
-            if not kind_match or not date_match or title.lower() not in card_text.lower():
+            if not kind_match or not date_match:
                 continue
-            if re.search(r'\\b(predicted|prediction|rumou?red|expected)\\b', card_text, re.I):
+            if re.search(r"\b(predicted|prediction|rumou?red|expected)\b", card_text, re.I):
                 continue
-            day_text = ((date_match.group(1) or '') + date_match.group(2)).strip()
-            day_text = re.sub(r'^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\\s+', '', day_text, flags=re.I)
-            day = _date_with_current_year(day_text, today)
+            day = _date_with_current_year(date_match.group(1), today)
             language = kind_match.group(2).lower()
             if not day or day < today or language not in langs:
                 continue
@@ -216,67 +206,80 @@ def _ottasia(soup, source_name, source_url, today, langs, norm):
             if key in seen:
                 break
             seen.add(key)
-            image = node.select_one('img[alt][src]')
+            image = node.select_one("img[alt][src]")
             platforms = [p for p in PLATFORMS if re.search(re.escape(p), card_text, re.I)]
-            href = anchor.get('href')
+            href = anchor.get("href")
             out.append({
-                'name': title, 'language': language,
-                'type': 'series' if kind_match.group(1).lower() == 'series' else 'movie',
-                'ottDate': day, 'platforms': list(dict.fromkeys(platforms)),
-                'poster': image.get('src') if image else None, 'year': None,
-                'source': source_url, 'sources': [source_url],
-                'detail': urljoin(source_url, href) if href else None,
-                'confirmed': True, 'releaseKind': 'digital',
-                'releaseDateBasis': 'OTTASIA confirmed upcoming calendar',
-                'sourceRecord': {'title': title, 'releaseDate': day, 'source': source_url}
+                "name": title,
+                "language": language,
+                "type": "series" if kind_match.group(1).lower() == "series" else "movie",
+                "ottDate": day,
+                "platforms": list(dict.fromkeys(platforms)),
+                "poster": image.get("src") if image else None,
+                "year": None,
+                "source": source_url,
+                "sources": [source_url],
+                "detail": urljoin(source_url, href) if href else None,
+                "confirmed": True,
+                "releaseKind": "digital",
+                "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+                "sourceRecord": {"title": title, "releaseDate": day, "source": source_url},
             })
             break
-    for index, line in enumerate(lines):
-        kind_match = re.match(r'^(Series|Film)\s*[·|•]\s*(Malayalam|Tamil|Telugu|Hindi)\b', line, re.I)
-        if not kind_match or index == 0 or index + 1 >= len(lines):
-            continue
-        title = lines[index - 1]
-        if title.lower().startswith('image:'):
-            title = title.split(':', 1)[-1].strip()
-        if not title or len(title) > 140:
-            continue
-        date_line = lines[index + 1]
-        date_match = re.search(
-            r'\b(?:from|on)\s+((?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s+)?([A-Za-z]{3,9}\s+\d{1,2},?\s+20\d{2}|[A-Za-z]{3,9}\s+\d{1,2})',
-            date_line, re.I
-        )
-        if not date_match:
-            continue
-        day_text = ((date_match.group(1) or '') + date_match.group(2)).strip()
-        # OTTASIA now writes dates as "from Wed, Nov 18" (weekday before
-        # month/day), while older snapshots used "from November 18, 2026".
-        # The weekday is descriptive; strip it before parsing the actual date.
-        day_text = re.sub(r'^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s+', '', day_text, flags=re.I)
-        day = _date_with_current_year(day_text, today)
-        if not day or day < today:
-            continue
-        language = kind_match.group(2).lower()
-        if language not in langs:
-            continue
-        key = (language, norm(title))
-        if key in seen:
-            continue
-        seen.add(key)
-        anchor = anchors.get(title.lower())
-        href = anchor.get('href') if anchor else None
-        image = next((img for img in images if title.lower() in img.get('alt', '').lower()), None)
-        platforms = [p for p in PLATFORMS if re.search(re.escape(p), date_line, re.I)]
-        out.append({
-            'name': title, 'language': language,
-            'type': 'series' if kind_match.group(1).lower() == 'series' else 'movie',
-            'ottDate': day, 'platforms': list(dict.fromkeys(platforms)),
-            'poster': image.get('src') if image else None, 'year': None,
-            'source': source_url, 'sources': [source_url],
-            'detail': urljoin(source_url, href) if href else None,
-            'confirmed': True, 'releaseKind': 'digital',
-            'releaseDateBasis': 'OTTASIA confirmed upcoming calendar',
-            'sourceRecord': {'title': title, 'releaseDate': day, 'source': source_url}
-        })
+
+    # Text fallback for a layout where the title/type/date are separate
+    # siblings and no single card ancestor contains all three.
+    if not out:
+        visible = soup.get_text("\n", strip=True)
+        lower = visible.lower()
+        start = lower.find("upcoming ott releases")
+        if start >= 0:
+            stop = lower.find("predicted next on ott", start)
+            section = visible[start:stop if stop >= 0 else len(visible)]
+            lines = [line.strip() for line in section.splitlines() if line.strip()]
+            for index, line in enumerate(lines):
+                kind_match = re.match(
+                    r"^(Series|Film)\s*[·•]\s*(Malayalam|Tamil|Telugu|Hindi)\b", line, re.I
+                )
+                if not kind_match:
+                    continue
+                title = lines[index - 1] if index else ""
+                if title.lower().startswith("image:"):
+                    title = title.split(":", 1)[-1].strip()
+                if not title or len(title) > 140 or index + 1 >= len(lines):
+                    continue
+                date_match = date_pattern.search(lines[index + 1])
+                if not date_match:
+                    continue
+                day = _date_with_current_year(date_match.group(1), today)
+                language = kind_match.group(2).lower()
+                if not day or day < today or language not in langs:
+                    continue
+                key = (language, norm(title))
+                if key in seen:
+                    continue
+                seen.add(key)
+                anchor = next(
+                    (a for a in soup.select("a[href]") if a.get_text(" ", strip=True).casefold() == title.casefold()),
+                    None,
+                )
+                platforms = [p for p in PLATFORMS if re.search(re.escape(p), lines[index + 1], re.I)]
+                out.append({
+                    "name": title,
+                    "language": language,
+                    "type": "series" if kind_match.group(1).lower() == "series" else "movie",
+                    "ottDate": day,
+                    "platforms": list(dict.fromkeys(platforms)),
+                    "poster": None,
+                    "year": None,
+                    "source": source_url,
+                    "sources": [source_url],
+                    "detail": urljoin(source_url, anchor.get("href")) if anchor and anchor.get("href") else None,
+                    "confirmed": True,
+                    "releaseKind": "digital",
+                    "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+                    "sourceRecord": {"title": title, "releaseDate": day, "source": source_url},
+                })
     return out
 
 def _new_indian_movies(soup, source_name, source_url, today, langs, norm):
@@ -496,19 +499,6 @@ def collect(get, today, langs, norm):
         try:
             html = get(url, False)
             soup = BeautifulSoup(html, "html.parser")
-            if "ottasia.com" in url:
-                scripts = []
-                for script in soup.find_all('script'):
-                    raw = script.string or script.get_text()
-                    if raw and any(term in raw.lower() for term in ('upcoming', 'release', 'mr & mrs office', 'jennifer')):
-                        scripts.append({'type': script.get('type'), 'id': script.get('id'),
-                                        'length': len(raw), 'snippet': raw[:900]})
-                print('OTTASIA RAW DEBUG', json.dumps({
-                    'htmlLength': len(html), 'title': soup.title.get_text(' ', strip=True) if soup.title else None,
-                    'visiblePrefix': soup.get_text(' ', strip=True)[:700],
-                    'scriptCount': len(soup.find_all('script')), 'scriptMatches': scripts[:5],
-                    'htmlHasMrMrs': 'mr & mrs office' in html.lower()
-                }, ensure_ascii=False), flush=True)
             if "cinebuds.com" in url:
                 rows = _cinebuds(soup, name, url, today, langs, norm)
             elif "ottasia.com" in url:
