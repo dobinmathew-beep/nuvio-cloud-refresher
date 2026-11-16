@@ -255,8 +255,8 @@ def suggestion(e):
    title=str(x.get('l','')).strip()
    if not title:continue
    score=ratio(norm(query),norm(title))
-   year=int(x.get('y') or 0)
-   expected_year=int(str(e.get('year') or 0)[:4] or 0)
+   year=_year_int(x.get('y'))
+   expected_year=_year_int(e.get('year'))
    if expected_year and year and abs(year-expected_year)>1:continue
    # A title-only OTT date is not the original production year. Do not reject
    # an older series merely because a new season has a recent streaming date.
