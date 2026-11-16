@@ -68,8 +68,11 @@ def apply_verified_overrides(events):
    event['_verifiedImdbId']=verified['id'];event['_verifiedImdbName']=verified['name']
   tmdb=VERIFIED_TMDB_OVERRIDES.get(event['language']+'|'+event['type']+'|'+event_name)
   if tmdb and not event.get('_verifiedMetadata'):
-   verified_meta=alternate.tmdb(event,{'tmdbId':tmdb['id']},norm)
-   if verified_meta and verified_meta.get('type')==event['type'] and verified_meta.get('id')=='tmdb:'+str(tmdb['id']):event['_verifiedMetadata']=verified_meta
+   event.setdefault('sourceRecord',{})['tmdbId']=tmdb['id']
+   try:verified_meta=alternate.tmdb(event,get,norm)
+   except Exception as exc:
+    print('VERIFIED TMDB LOOKUP ERROR',event.get('name'),type(exc).__name__,str(exc)[:160],flush=True);verified_meta=None
+   if verified_meta and verified_meta.get('type')==event['type'] and verified_meta.get('id') in ('tmdb:'+str(tmdb['id']),tmdb.get('imdbId')):event['_verifiedMetadata']=verified_meta
  return events
 
 def append_legacy_series(current,legacy,today,metadata_cache=None,require_metadata=False):
