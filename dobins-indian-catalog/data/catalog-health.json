@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-16T22:42:45.513959+00:00",
+  "checkedAt": "2026-11-16T22:45:54.609586+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -11,11 +11,11 @@
         "status.json": "github_raw",
         "metadata.json": "github_raw"
       },
-      "statusTimestampMatches": false,
+      "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
       "metadataRecords": 1064,
-      "warning": "Public status.json timestamp is behind the latest GitHub status; catalog data itself is current.",
+      "warning": null,
       "error": null
     },
     {
