@@ -16,6 +16,16 @@ def needs_retry(status, health=None):
         return True
     if any(item.get('state') in RETRY_SOURCE_STATES for item in status.get('sources', [])):
         return True
+    # Keep working through unresolved title identities between normal two-hour
+    # refreshes. This prevents a large pending backlog waiting an entire cycle.
+    try:
+        pending = int(status.get('pendingMatches', 0) or 0)
+        last_retry = datetime.fromisoformat(status.get('lastMatchRetryAt') or status.get('updatedAt'))
+        if pending and (datetime.now(ZONE) - last_retry.astimezone(ZONE)).total_seconds() >= 1800:
+            return True
+    except (TypeError, ValueError):
+        if int(status.get('pendingMatches', 0) or 0):
+            return True
     if health:
         summary = health.get('catalogSummary', {})
         if health.get('state') != 'ok' or summary.get('failed', 0) or summary.get('countMismatches', 0):
