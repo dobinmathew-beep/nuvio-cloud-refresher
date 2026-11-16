@@ -13,6 +13,7 @@ SOURCES = [
     ("Cinebuds upcoming calendar", "https://cinebuds.com/ott-releases-this-week/"),
     ("OTTASIA confirmed calendar", "https://ottasia.com/ott-releases-this-week?country=IN"),
     ("Vi weekly OTT calendar", "https://www.myvi.in/blog/ott-releases-this-week"),
+    ("Vi Malayalam weekly OTT calendar", "https://www.myvi.in/blog/malayalam-ott-releases-this-week"),
     ("Vi monthly OTT calendar", "https://www.myvi.in/blog/ott-releases-this-month"),
     ("Simply Mollywood Malayalam OTT calendar", "https://simplymollywood.com/ott"),
     ("New Indian Movies OTT calendar", "https://newindianmovies.com/"),
@@ -372,7 +373,8 @@ def _myvi(soup, source_name, source_url, today, langs, norm):
                 continue
             raw_title = values[title_i].strip()
             date_text = values[date_i].strip()
-            if not raw_title or re.search(r"\b(sports?|wwe|league|champions league)\b", raw_title, re.I):
+            genre = values[genre_i] if genre_i is not None and genre_i < len(values) else ""
+            if not raw_title or re.search(r"\b(sports?|wwe|league|champions league)\b", raw_title, re.I) or re.search(r"\bsports?\b", genre, re.I):
                 continue
             # A weekly availability span does not establish a new premiere.
             if re.search(r"\b[A-Za-z]{3,9}\s+\d{1,2}\s*[-–]\s*(?:[A-Za-z]{3,9}\s+)?\d{1,2}\b", date_text):
@@ -387,7 +389,6 @@ def _myvi(soup, source_name, source_url, today, langs, norm):
             platforms = [p for p in PLATFORMS if re.search(re.escape(p), platform_text, re.I)]
             if not platforms:
                 continue
-            genre = values[genre_i] if genre_i is not None and genre_i < len(values) else ""
             kind_text = raw_title + " " + genre
             typ = "series" if SERIES.search(kind_text) or re.search(r"\b(show|reality tv|reality show)\b", genre, re.I) else "movie"
             link = row.select_one("a[href]")
@@ -647,7 +648,7 @@ def collect(get, today, langs, norm):
             if not rows:
                 visible = soup.get_text(' ', strip=True).lower()
                 if "myvi.in" in url:
-                    section_present = "what's new on ott platforms" in visible or "ott releases this month" in visible
+                    section_present = "what's new on ott platforms" in visible or "ott releases this month" in visible or "ott releases this week" in visible
                 elif "simplymollywood.com" in url:
                     section_present = "release calendar" in visible and "ott releases" in visible
                 elif "ottasia.com" in url:
