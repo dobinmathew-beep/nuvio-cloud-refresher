@@ -49,7 +49,7 @@ data_health = {}
 try:
     expected_counts = {key: len(rows) for key, rows in local.items() if isinstance(rows, list)}
     last_error = None
-    for attempt in range(8):
+    for attempt in range(36):
         try:
             data_health = fetch_json(base + '/data-health.json')
             snapshots = data_health.get('snapshots', {})
@@ -58,19 +58,21 @@ try:
             raw_ok = all(value == 'github_raw' for value in sources.values())
             status_ok = data_health.get('statusUpdatedAt') == local_status.get('updatedAt')
             counts_ok = data_health.get('catalogCounts') == expected_counts
-            if raw_ok and counts_ok:
+            expected_ids = {key: sorted(str(x.get('id')) for x in rows if isinstance(x, dict) and x.get('id')) for key, rows in local.items() if isinstance(rows, list)}
+            ids_ok = data_health.get('catalogIdSets') == expected_ids
+            if raw_ok and counts_ok and ids_ok:
                 break
             last_error = 'Public service is still serving an older or fallback snapshot.'
         except Exception as error:
             last_error = str(error)[:180]
-        if attempt < 7:
+        if attempt < 35:
             time.sleep(10)
     # Catalog freshness is authoritative for Nuvio delivery. GitHub's raw
     # status.json can lag behind catalogs.json at its CDN edge; report that
     # separately, but do not mark the catalogs unhealthy when IDs and counts match.
-    state = 'ok' if raw_ok and counts_ok else 'failed'
+    state = 'ok' if raw_ok and counts_ok and ids_ok else 'failed'
     checks.append({'path': '/data-health.json', 'state': state, 'snapshotSources': sources,
-                   'statusTimestampMatches': status_ok, 'catalogCountsMatch': counts_ok,
+                   'statusTimestampMatches': status_ok, 'catalogCountsMatch': counts_ok, 'catalogIdsMatch': ids_ok,
                    'metadataRecords': data_health.get('metadataRecords'),
                    'warning': None if status_ok else 'Public status.json timestamp is behind the latest GitHub status; catalog data itself is current.' if state == 'ok' else None,
                    'error': None if state == 'ok' else last_error})
