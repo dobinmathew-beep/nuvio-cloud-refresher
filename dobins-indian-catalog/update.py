@@ -67,7 +67,7 @@ def apply_verified_overrides(events):
   if verified:
    event['_verifiedImdbId']=verified['id'];event['_verifiedImdbName']=verified['name']
   tmdb=VERIFIED_TMDB_OVERRIDES.get(event['language']+'|'+event['type']+'|'+event_name)
-  if tmdb and not event.get('_verifiedMetadata'):
+  if tmdb:
    event.setdefault('sourceRecord',{})['tmdbId']=tmdb['id']
    try:verified_meta=alternate.tmdb(event,get,norm)
    except Exception as exc:
