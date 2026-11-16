@@ -9,6 +9,7 @@ on:
       - 'dobins-indian-catalog/alternate.py'
       - 'dobins-indian-catalog/series_sources.py'
       - 'dobins-indian-catalog/schedule.py'
+      - 'dobins-indian-catalog/check_site.py'
       - 'dobins-indian-catalog/tests/**'
       - 'dobins-indian-catalog/requirements.txt'
   schedule:
@@ -48,11 +49,14 @@ jobs:
         env:
           FORCE_CANDIDATE_REFRESH: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && 'true' || 'false' }}
           FORCE_MATCH_RETRY: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && 'true' || 'false' }}
+          FORCE_MALAYALAM_REVALIDATION: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && 'true' || 'false' }}
         run: python -u dobins-indian-catalog/update.py
       - name: Check public addon and checkout availability
         if: always()
         id: site_health
         continue-on-error: true
+        env:
+          MALAYALAM_METADATA_AUDIT: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && 'true' || 'false' }}
         run: python3 dobins-indian-catalog/check_site.py
       - name: Preserve metadata caches, catalogs and source health
         if: always()
