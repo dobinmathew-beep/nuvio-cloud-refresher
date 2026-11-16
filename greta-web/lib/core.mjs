@@ -25,7 +25,7 @@ async function upstream(url,timeout=12000){
  return r;
 }
 async function currentDataRef(){
- if(latestDataRef&&Date.now()-latestDataRefAt<300000)return latestDataRef;
+ if(latestDataRef&&Date.now()-latestDataRefAt<60000)return latestDataRef;
  if(latestDataRefJob)return latestDataRefJob;
  latestDataRefJob=(async()=>{
   try{
