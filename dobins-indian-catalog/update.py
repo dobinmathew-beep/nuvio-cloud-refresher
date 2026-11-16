@@ -12,7 +12,7 @@ from PIL import Image,ImageDraw,ImageFont
 import alternate,physical,series_sources,episode_badges,upcoming_sources
 ROOT=Path(__file__).resolve().parent;DATA=ROOT/'data';DATA.mkdir(exist_ok=True)
 LANGS={'malayalam':'ml','tamil':'ta','telugu':'te','hindi':'hi'};ZONE=ZoneInfo('Asia/Muscat');NOW=datetime.now(ZONE);TODAY=NOW.date().isoformat()
-BASE=os.environ.get('ADDON_ORIGIN','https://dobins-indian-catalog.quickfield138.chatgpt.site');POLICY='confirmed-digital-imdb-v2'
+BASE=os.environ.get('ADDON_ORIGIN','https://dobins-indian-catalog.quickfield138.chatgpt.site');POLICY='confirmed-digital-imdb-v3'
 def load_verified_imdb_aliases():
  try:
   aliases=json.loads((DATA/'imdb-aliases.json').read_text())
