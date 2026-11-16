@@ -65,10 +65,14 @@ try:
             last_error = str(error)[:180]
         if attempt < 7:
             time.sleep(10)
-    state = 'ok' if raw_ok and status_ok and counts_ok else 'failed'
+    # Catalog freshness is authoritative for Nuvio delivery. GitHub's raw
+    # status.json can lag behind catalogs.json at its CDN edge; report that
+    # separately, but do not mark the catalogs unhealthy when IDs and counts match.
+    state = 'ok' if raw_ok and counts_ok else 'failed'
     checks.append({'path': '/data-health.json', 'state': state, 'snapshotSources': sources,
                    'statusTimestampMatches': status_ok, 'catalogCountsMatch': counts_ok,
                    'metadataRecords': data_health.get('metadataRecords'),
+                   'warning': None if status_ok else 'Public status.json timestamp is behind the latest GitHub status; catalog data itself is current.' if state == 'ok' else None,
                    'error': None if state == 'ok' else last_error})
 except Exception as error:
     checks.append({'path': '/data-health.json', 'state': 'failed', 'error': str(error)[:180]})
