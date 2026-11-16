@@ -285,6 +285,13 @@
   ],
   "tamil-movie": [
     {
+      "id": "tmdb:1822586||Mazhalai||2026||movie||https://image.tmdb.org/t/p/original/u9MfHqvjqqiHsTKZBCR6lH6taYv.jpg||A%20young%20man%20helps%20his%20friend%20overcome%20his%20insecurities%20about%20cricket%20by%20sharing%20his%20own%20unfulfilled%20childhood%20dream%2C%20reminding%20him%20that%20we%20don't%20have%20to%20be%20good%20at%20something%20to%20enjoy%20doing%20it.%20A%20heartwarming%20story%20about%20friendship%2C%20childhood%20passion%2C%20and%20never%20losing%20the%20inner%20child.",
+      "name": "Mazhalai",
+      "poster": "https://image.tmdb.org/t/p/original/u9MfHqvjqqiHsTKZBCR6lH6taYv.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tmdb:1806311||THEDAL||2026||movie||https://image.tmdb.org/t/p/original/A6mNRWxyZLnvXJcntLn0aDRZmvb.jpg||Battle%20of%20doubts%20and%20journey%20towards%20to%20the%20answer%20of%20a%20failed%20young%20filmmaker..",
       "name": "THEDAL",
       "poster": "https://image.tmdb.org/t/p/original/A6mNRWxyZLnvXJcntLn0aDRZmvb.jpg",
@@ -414,13 +421,6 @@
       "id": "tt39299957",
       "name": "Ananya's Call",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39299957.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt35836025",
-      "name": "Vishwanath & Sons",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35836025.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     }
