@@ -115,7 +115,10 @@ def _record(node, source_name, source_url, today, langs, norm, trusted_context=F
     platform_text = text
     platforms = [p for p in PLATFORMS if re.search(re.escape(p), platform_text, re.I)]
     platforms = list(dict.fromkeys(platforms))
-    if not platforms:
+    # Some editorial calendars confirm a date and platform category but do not
+    # name the streamer. Keep those dated records; the IMDb gate still controls
+    # whether they can ever enter the published upcoming index.
+    if not platforms and not trusted_context:
         return []
     image = node.select_one("img[src]")
     poster = image.get("src") if image else None
@@ -358,10 +361,10 @@ def _calendar_cards(soup, source_name, source_url, today, langs, norm):
                 continue
             seen.add(marker)
             parsed = _record(node, source_name, source_url, today, langs, norm, trusted_context=True)
-        for row in parsed:
-            row["confirmed"] = False
-            row["releaseDateBasis"] = source_name + " reported OTT calendar date"
-        out.extend(parsed)
+            for row in parsed:
+                row["confirmed"] = False
+                row["releaseDateBasis"] = source_name + " reported OTT calendar date"
+            out.extend(parsed)
     merged = {}
     for row in out:
         key = (row["language"], row["type"], norm(row["name"]))
