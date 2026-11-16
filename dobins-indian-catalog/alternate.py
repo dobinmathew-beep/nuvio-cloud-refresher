@@ -4,7 +4,7 @@ from urllib.parse import quote,urlparse
 from bs4 import BeautifulSoup
 from rapidfuzz.fuzz import ratio
 
-POLICY='tmdb-tvmaze-v1'
+POLICY='tmdb-tvmaze-v2'
 def key(typ,mid):return mid if mid.startswith('tt') else typ+'|'+mid
 def artid(typ,mid):return mid if mid.startswith('tt') else typ+'~'+mid
 def plain(name):
