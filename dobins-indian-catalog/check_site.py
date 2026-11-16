@@ -149,7 +149,7 @@ if os.environ.get('MALAYALAM_METADATA_AUDIT') == 'true':
     def inspect_malayalam(pair):
         typ, item = pair
         mid = str(item.get('id') or '')
-        if not (re.fullmatch(r'tt\\d+', mid) or re.fullmatch(r'tmdb:\\d+', mid)):
+        if not (re.fullmatch(r'tt\d+', mid) or re.fullmatch(r'tmdb:\d+', mid)):
             return {'id': mid, 'name': item.get('name'), 'error': 'ID must be a verified IMDb tt-ID or TMDB ID'}
         try:
             payload = fetch_json(base + f'/meta/{typ}/{mid}.json')
