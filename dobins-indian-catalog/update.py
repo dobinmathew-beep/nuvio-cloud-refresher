@@ -144,13 +144,25 @@ def collect():
  return list(merged.values()),health
 
 def candidate_index():
+ # The upstream catalog is paginated. Fetching only its first response silently
+ # starves matching of newer titles beyond that page (and can look like a 50-item cap).
  cache=load('candidates.json',{});pool=[]
  def f(k):
-  lang,typ=k;cat=LANGS[lang]+('_series' if typ=='series' else '');url=f'https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/{typ}/{cat}.json'
-  try:
-   ms=get(url).get('metas',[]);cache[lang+'-'+typ]=ms
-  except Exception:ms=cache.get(lang+'-'+typ,[])
-  return [dict(m,language=lang,type=typ) for m in ms if re.fullmatch(r'tt\d+',str(m.get('id',''))) and m.get('name')]
+  lang,typ=k;cat=LANGS[lang]+('_series' if typ=='series' else '')
+  key=lang+'-'+typ;seen=set();all_rows=[];error=None
+  pages=max(1,int(os.environ.get('CATALOG_CANDIDATE_PAGES','15')))
+  for page in range(pages):
+   url=f'https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/{typ}/{cat}'+(f'/skip={page*20}' if page else '')+'.json'
+   try:rows=get(url).get('metas',[])
+   except Exception as exc:
+    error=str(exc);break
+   fresh=[m for m in rows if m.get('id') and m.get('id') not in seen]
+   seen.update(m.get('id') for m in fresh);all_rows.extend(fresh)
+   if not fresh or len(rows)<20:break
+  if all_rows:cache[key]=all_rows
+  else:all_rows=cache.get(key,[])
+  print('CANDIDATES',key,len(all_rows),'pages',page+1,'error',bool(error),flush=True)
+  return [dict(m,language=lang,type=typ) for m in all_rows if re.fullmatch(r'tt\\d+',str(m.get('id',''))) and m.get('name')]
  with ThreadPoolExecutor(max_workers=4) as ex:
   for ms in ex.map(f,[(l,t) for l in LANGS for t in ('movie','series')]):pool.extend(ms)
  save('candidates.json',cache);return pool
@@ -252,7 +264,7 @@ def build():
   key=e['language']+'|series|'+norm(e['name']);mid=verified['id'];mk=alternate.key('series',mid)
   metas[mk]={**metas.get(mk,{}),**{k:v for k,v in verified.items() if v is not None},'_metadataCheckedAt':NOW.isoformat(),'_partial':False}
   matches[key]={'id':mid,'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'method':verified.get('metadataSource','Verified series source')}
- budget=int(os.environ.get('MAX_NEW_MATCHES','160'));attempts=0;work=[]
+ budget=int(os.environ.get('MAX_NEW_MATCHES','300'));attempts=0;work=[]
  for e in ordered:
   key=e['language']+'|'+e['type']+'|'+norm(e['name']);cached=matches.get(key)
   if cached and alternate.key(e['type'],cached.get('id','')) in metas:
