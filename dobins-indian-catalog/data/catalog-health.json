@@ -1,21 +1,22 @@
 {
-  "checkedAt": "2026-11-16T22:24:23.497120+00:00",
+  "checkedAt": "2026-11-16T22:27:14.064986+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
-  "state": "degraded",
+  "state": "ok",
   "checks": [
     {
       "path": "/data-health.json",
-      "state": "failed",
+      "state": "ok",
       "snapshotSources": {
         "catalogs.json": "github_raw",
         "status.json": "github_raw",
         "metadata.json": "github_raw"
       },
       "statusTimestampMatches": false,
-      "catalogCountsMatch": false,
+      "catalogCountsMatch": true,
+      "catalogIdsMatch": true,
       "metadataRecords": 1062,
-      "warning": null,
-      "error": "Public service is still serving an older or fallback snapshot."
+      "warning": "Public status.json timestamp is behind the latest GitHub status; catalog data itself is current.",
+      "error": null
     },
     {
       "path": "/meta/* (Malayalam catalog audit)",
@@ -49,18 +50,16 @@
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 69,
-      "endpointUniqueIdCount": 69,
+      "endpointRawCount": 70,
+      "endpointUniqueIdCount": 70,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        19
+        20
       ],
       "endpointPageSize": 50,
-      "missingIds": [
-        "tmdb:1813865"
-      ],
+      "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt27512908",
@@ -73,7 +72,7 @@
         "releaseDate": "2026-11-13"
       },
       "latestEntryMatches": true,
-      "state": "public_snapshot_count_mismatch",
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -86,18 +85,16 @@
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 65,
-      "endpointUniqueIdCount": 65,
+      "endpointRawCount": 66,
+      "endpointUniqueIdCount": 66,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        15
+        16
       ],
       "endpointPageSize": 50,
-      "missingIds": [
-        "tmdb:320606"
-      ],
+      "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt8537520",
@@ -110,7 +107,7 @@
         "releaseDate": "2026-11-16T21:30:00+00:00"
       },
       "latestEntryMatches": true,
-      "state": "public_snapshot_count_mismatch",
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -342,8 +339,8 @@
   "catalogSummary": {
     "checked": 8,
     "failed": 0,
-    "possibleTruncationOrLag": 2,
-    "countMismatches": 2,
+    "possibleTruncationOrLag": 0,
+    "countMismatches": 0,
     "firstPageSize50": [
       "dobins_ml_movie",
       "dobins_ml_series",
