@@ -313,7 +313,11 @@ def _calendar_cards(soup, source_name, source_url, today, langs, norm):
             if marker in seen:
                 continue
             seen.add(marker)
-            out.extend(_record(node, source_name, source_url, today, langs, norm, trusted_context=True))
+            parsed = _record(node, source_name, source_url, today, langs, norm, trusted_context=True)
+        for row in parsed:
+            row["confirmed"] = False
+            row["releaseDateBasis"] = source_name + " reported OTT calendar date"
+        out.extend(parsed)
     merged = {}
     for row in out:
         key = (row["language"], row["type"], norm(row["name"]))
