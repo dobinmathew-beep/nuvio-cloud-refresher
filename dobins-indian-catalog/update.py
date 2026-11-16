@@ -37,6 +37,10 @@ def norm(s):
  return re.sub(r'[^a-z0-9]+','',s.removeprefix('the '))
 def is_imdb_id(value):
  return bool(re.fullmatch(r'tt\d+',str(value or '')))
+def _year_int(value):
+ # Source feeds sometimes serialize missing years as the literal string 'None'.
+ match=re.search(r'\b(?:19|20)\d{2}\b',str(value or '').strip())
+ return int(match.group(0)) if match else 0
 def original_language_matches(event,meta):
  original=str(meta.get('original_language') or meta.get('originalLanguage') or '').lower()
  expected=LANGS[event['language']]
