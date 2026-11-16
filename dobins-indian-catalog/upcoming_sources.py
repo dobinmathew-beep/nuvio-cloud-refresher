@@ -4,6 +4,7 @@ Only announced/confirmed dates are emitted. Predictions, expected dates and
 unverified theatrical-to-OTT estimates are deliberately excluded.
 """
 from datetime import datetime, timedelta, date
+from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 import re
 
@@ -117,7 +118,7 @@ def _record(node, source_name, source_url, today, langs, norm, trusted_context=F
     image = node.select_one("img[src]")
     poster = image.get("src") if image else None
     href = title_node.get("href")
-    detail = href if href and href.startswith("http") else (source_url.rstrip("/") + "/" + href.lstrip("/") if href else None)
+    detail = urljoin(source_url, href) if href else None
     return [{
         "name": name, "language": language, "type": typ, "ottDate": day,
         "platforms": platforms, "poster": poster, "year": None,
@@ -224,7 +225,7 @@ def _new_indian_movies(soup, source_name, source_url, today, langs, norm):
         seen.add(key)
         image = anchor.select_one('img[src]')
         href = anchor.get('href')
-        detail = href if href and href.startswith('http') else (source_url.rstrip('/') + '/' + href.lstrip('/') if href else None)
+        detail = urljoin(source_url, href) if href else None
         out.append({
             'name': name, 'language': languages[0],
             'type': 'series' if SERIES.search(raw) else 'movie',
