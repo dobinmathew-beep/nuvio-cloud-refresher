@@ -179,6 +179,57 @@ def _ottasia(soup, source_name, source_url, today, langs, norm):
     images = [img for img in soup.select('img[alt][src]')]
     out = []
     seen = set()
+    # The live OTTASIA page sometimes puts the title, type and date in
+    # separate nested elements. Parse the smallest card ancestor containing
+    # all three instead of assuming they are adjacent text lines.
+    date_pattern = re.compile(
+        r'\\b(?:from|on)\\s+((?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\\s+)?'
+        r'([A-Za-z]{3,9}\\s+\\d{1,2},?\\s+20\\d{2}|[A-Za-z]{3,9}\\s+\\d{1,2})',
+        re.I
+    )
+    for anchor in soup.select('a[href]'):
+        title = anchor.get_text(' ', strip=True)
+        if not title or len(title) > 140:
+            continue
+        node = anchor
+        for _ in range(6):
+            node = getattr(node, 'parent', None)
+            if node is None or not hasattr(node, 'get_text'):
+                break
+            card_text = node.get_text(' ', strip=True)
+            if len(card_text) > 1800:
+                continue
+            kind_match = re.search(r'\\b(Series|Film)\\s*[·|•]\\s*(Malayalam|Tamil|Telugu|Hindi)\\b', card_text, re.I)
+            date_match = date_pattern.search(card_text)
+            if not kind_match or not date_match or title.lower() not in card_text.lower():
+                continue
+            if re.search(r'\\b(predicted|prediction|rumou?red|expected)\\b', card_text, re.I):
+                continue
+            day_text = ((date_match.group(1) or '') + date_match.group(2)).strip()
+            day_text = re.sub(r'^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\\s+', '', day_text, flags=re.I)
+            day = _date_with_current_year(day_text, today)
+            language = kind_match.group(2).lower()
+            if not day or day < today or language not in langs:
+                continue
+            key = (language, norm(title))
+            if key in seen:
+                break
+            seen.add(key)
+            image = node.select_one('img[alt][src]')
+            platforms = [p for p in PLATFORMS if re.search(re.escape(p), card_text, re.I)]
+            href = anchor.get('href')
+            out.append({
+                'name': title, 'language': language,
+                'type': 'series' if kind_match.group(1).lower() == 'series' else 'movie',
+                'ottDate': day, 'platforms': list(dict.fromkeys(platforms)),
+                'poster': image.get('src') if image else None, 'year': None,
+                'source': source_url, 'sources': [source_url],
+                'detail': urljoin(source_url, href) if href else None,
+                'confirmed': True, 'releaseKind': 'digital',
+                'releaseDateBasis': 'OTTASIA confirmed upcoming calendar',
+                'sourceRecord': {'title': title, 'releaseDate': day, 'source': source_url}
+            })
+            break
     for index, line in enumerate(lines):
         kind_match = re.match(r'^(Series|Film)\s*[·|•]\s*(Malayalam|Tamil|Telugu|Hindi)\b', line, re.I)
         if not kind_match or index == 0 or index + 1 >= len(lines):
