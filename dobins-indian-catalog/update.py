@@ -76,7 +76,7 @@ def append_legacy_series(current,legacy,today,metadata_cache=None,require_metada
    old['logo']=BASE+'/art/logo/'+alias
    matched=metadata_cache.get(alias,{})
    if matched.get('imdbRating') not in (None,''):old['imdbRating']=matched['imdbRating']
-  if require_metadata and (not (is_imdb_id(oid) or re.fullmatch(r'tmdb:\\d+',oid)) or alternate.key(typ,oid) not in metadata_cache):continue
+  if require_metadata and (not (is_imdb_id(oid) or re.fullmatch(r'tmdb:\d+',oid)) or alternate.key(typ,oid) not in metadata_cache):continue
   if oid in DISPLAY_NAME_OVERRIDES:old['name']=DISPLAY_NAME_OVERRIDES[oid]
   if oid in IMDB_RATING_OVERRIDES:old['imdbRating']=IMDB_RATING_OVERRIDES[oid]
   if oid in known_ids:
@@ -98,7 +98,7 @@ def validate_malayalam_catalogs(catalogs,metadata):
   cid='dobins_ml_'+typ
   for item in catalogs.get(cid,[]):
    checked+=1;mid=str(item.get('id',''));name=str(item.get('name',''))
-   if not (is_imdb_id(mid) or re.fullmatch(r'tmdb:\\d+',mid)):
+   if not (is_imdb_id(mid) or re.fullmatch(r'tmdb:\d+',mid)):
     errors.append({'catalog':cid,'name':name,'id':mid,'reason':'Malayalam entries require an IMDb or TMDB ID'});continue
    meta=metadata.get(alternate.key(typ,mid))
    if not isinstance(meta,dict) or meta.get('_partial'):
@@ -369,7 +369,7 @@ def build():
  for e in ordered:
   verified=e.get('_verifiedMetadata')
   if not verified or verified.get('type')!='series' or not verified.get('id'):continue
-  if e['language']=='malayalam' and not (is_imdb_id(verified['id']) or re.fullmatch(r'tmdb:\\d+',str(verified['id']))):continue
+  if e['language']=='malayalam' and not (is_imdb_id(verified['id']) or re.fullmatch(r'tmdb:\d+',str(verified['id']))):continue
   key=e['language']+'|series|'+norm(e['name']);mid=verified['id'];mk=alternate.key('series',mid)
   metas[mk]={**metas.get(mk,{}),**{k:v for k,v in verified.items() if v is not None},'_metadataCheckedAt':NOW.isoformat(),'_partial':False}
   matches[key]={'id':mid,'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'method':verified.get('metadataSource','Verified series source')}
@@ -422,7 +422,7 @@ def build():
      fresh={**previous,**fresh,'id':alias,'type':e['type'],'poster':fresh.get('poster') or previous.get('poster'),'metadataSource':'Verified IMDb title match','_partial':False}
     else:fresh={**previous,**fresh,'id':alias,'type':e['type']}
     m=fresh
-  if m and e['language']=='malayalam' and not (is_imdb_id(m.get('id')) or re.fullmatch(r'tmdb:\\d+',str(m.get('id','')))):m=None
+  if m and e['language']=='malayalam' and not (is_imdb_id(m.get('id')) or re.fullmatch(r'tmdb:\d+',str(m.get('id','')))):m=None
   if m and not original_language_matches(e,m):m=None
   if m and m.get('id') in DISPLAY_NAME_OVERRIDES:m['name']=DISPLAY_NAME_OVERRIDES[m['id']]
   if m and m.get('id') in IMDB_RATING_OVERRIDES:m['imdbRating']=IMDB_RATING_OVERRIDES[m['id']]
@@ -446,7 +446,7 @@ def build():
  catalogs={f'dobins_{LANGS[l]}_{t}':[] for l in LANGS for t in ('movie','series')};seen={k:set() for k in catalogs}
  for e in ordered:
   key=e['language']+'|'+e['type']+'|'+norm(e['name']);match=matches.get(key,{});mid=match.get('id');cid=f'dobins_{LANGS[e["language"]]}_{e["type"]}'
-  if e['language']=='malayalam' and mid and not (is_imdb_id(mid) or re.fullmatch(r'tmdb:\\d+',str(mid))):
+  if e['language']=='malayalam' and mid and not (is_imdb_id(mid) or re.fullmatch(r'tmdb:\d+',str(mid))):
    unmatched.append({'name':e['name'],'language':e['language'],'type':e['type'],'ottDate':e['ottDate'],'reason':'Malayalam catalog requires a verified IMDb or TMDB ID'});continue
   if not mid or alternate.key(e['type'],mid) not in metas:
    unmatched.append({'name':e['name'],'language':e['language'],'type':e['type'],'ottDate':e['ottDate'],'reason':match.get('reason','Awaiting metadata backfill')});continue
@@ -485,7 +485,7 @@ def build():
  if malayalam_errors:
   save('metadata.json',metas);save('unmatched.json',unmatched)
   print('MALAYALAM METADATA AUDIT FAILED',json.dumps(malayalam_errors[:20]),flush=True)
-  raise RuntimeError(f'Malayalam metadata audit failed: {len(malayalam_errors)} of {malayalam_audit[\'checked\']} catalog entries failed; last-good catalogs retained')
+  raise RuntimeError('Malayalam metadata audit failed: %s of %s catalog entries failed; last-good catalogs retained' % (len(malayalam_errors),malayalam_audit['checked']))
  if any(not catalogs[c] for c in catalogs):
   save('metadata.json',metas);save('unmatched.json',unmatched);raise RuntimeError('An empty catalog would be published; retaining last-good catalogs while metadata backfills')
  save('metadata.json',metas);save('catalogs.json',catalogs);save('unmatched.json',unmatched)
