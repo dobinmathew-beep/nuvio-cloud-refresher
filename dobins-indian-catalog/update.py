@@ -68,7 +68,7 @@ def apply_verified_overrides(events):
    event['_verifiedImdbId']=verified['id'];event['_verifiedImdbName']=verified['name']
   tmdb=VERIFIED_TMDB_OVERRIDES.get(event['language']+'|'+event['type']+'|'+event_name)
   if tmdb and not event.get('_verifiedMetadata'):
-   verified_meta=alternate.tmdb(event,{'tmdbId':tmdb['id']})
+   verified_meta=alternate.tmdb(event,{'tmdbId':tmdb['id']},norm)
    if verified_meta and verified_meta.get('type')==event['type'] and verified_meta.get('id')=='tmdb:'+str(tmdb['id']):event['_verifiedMetadata']=verified_meta
  return events
 
