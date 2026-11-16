@@ -162,4 +162,10 @@ class CatalogTests(unittest.TestCase):
   rows=update.upcoming_sources._ottasia(BeautifulSoup(html,'html.parser'),'OTTASIA','https://ottasia.com/ott-releases-this-week?country=IN','2026-11-17',['malayalam'],update.norm)
   self.assertTrue(any(x['name']=='Sample Malayalam Series' and x['language']=='malayalam' and x['type']=='series' and x['ottDate']=='2026-11-22' for x in rows))
 
+ def test_kasaragod_embassy_spelling_variant_uses_verified_imdb_id(self):
+  events=[{'name':'Kasaragod Embassy','language':'malayalam','type':'series'}]
+  update.apply_verified_overrides(events)
+  self.assertEqual(events[0]['_verifiedImdbId'],'tt40431801')
+  self.assertEqual(events[0]['_verifiedImdbName'],'Kasargod Embassy')
+
 if __name__=='__main__':unittest.main()
