@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-16T22:31:12.756022+00:00",
+  "checkedAt": "2026-11-16T22:35:39.240651+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,7 +14,7 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1062,
+      "metadataRecords": 1064,
       "warning": null,
       "error": null
     },
@@ -186,31 +186,31 @@
       "language": "te",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_te_movie.json",
-      "localPublishedCount": 73,
-      "localUniqueIdCount": 73,
+      "localPublishedCount": 74,
+      "localUniqueIdCount": 74,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 73,
-      "endpointUniqueIdCount": 73,
+      "endpointRawCount": 74,
+      "endpointUniqueIdCount": 74,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        23
+        24
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt39309264",
-        "name": "Crazy Kalyanam",
-        "releaseDate": "2026-11-20"
+        "id": "tt38676235",
+        "name": "Takshakudu",
+        "releaseDate": "2026-11-26"
       },
       "localLatestEntry": {
-        "id": "tt39309264",
-        "name": "Crazy Kalyanam",
-        "releaseDate": "2026-11-20"
+        "id": "tt38676235",
+        "name": "Takshakudu",
+        "releaseDate": "2026-11-26"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -257,31 +257,31 @@
       "language": "hi",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
-      "localPublishedCount": 80,
-      "localUniqueIdCount": 80,
+      "localPublishedCount": 81,
+      "localUniqueIdCount": 81,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 80,
-      "endpointUniqueIdCount": 80,
+      "endpointRawCount": 81,
+      "endpointUniqueIdCount": 81,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        30
+        31
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt40855841",
-        "name": "Nayyi Navelli",
-        "releaseDate": "2026-11-20"
+        "id": "tt39390582",
+        "name": "Hanuman Ansh",
+        "releaseDate": "2026-11-27"
       },
       "localLatestEntry": {
-        "id": "tt40855841",
-        "name": "Nayyi Navelli",
-        "releaseDate": "2026-11-20"
+        "id": "tt39390582",
+        "name": "Hanuman Ansh",
+        "releaseDate": "2026-11-27"
       },
       "latestEntryMatches": true,
       "state": "ok",
