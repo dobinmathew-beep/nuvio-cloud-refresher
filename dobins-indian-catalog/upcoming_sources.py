@@ -466,10 +466,13 @@ def collect(get, today, langs, norm):
                     section_start = re.search(r'upcoming\s+ott\s+releases', raw_lines, re.I)
                     section_text = raw_lines[section_start.start():] if section_start else raw_lines
                     section_text = re.split(r'predicted next on ott', section_text, maxsplit=1, flags=re.I)[0]
-                    has_tracked_kind = bool(re.search(r'(?:Series|Film)\s*[·|•]\s*(?:Malayalam|Tamil|Telugu|Hindi)', section_text, re.I))
-                    has_dated_row = bool(re.search(r'\b(?:from|on)\s+.{0,35}\b(?:19|20)\d{2}\b', section_text, re.I))
+                    kind_lines = [x.strip() for x in section_text.splitlines() if re.search(r'(?:Series|Film)\s*[·|•]\s*(?:Malayalam|Tamil|Telugu|Hindi)', x, re.I)]
+                    date_lines = [x.strip() for x in section_text.splitlines() if re.search(r'\b(?:from|on)\s+.{0,45}\b(?:19|20)\d{2}\b', x, re.I)]
+                    headings = [raw_lines[m.start():m.start()+100].replace('\\n',' | ') for m in re.finditer(r'upcoming\s+ott\s+releases', raw_lines, re.I)]
+                    has_tracked_kind = bool(kind_lines)
+                    has_dated_row = bool(date_lines)
                     if has_tracked_kind and has_dated_row:
-                        raise ValueError('OTTASIA confirmed section contains tracked dated rows but parser extracted none; excerpt: ' + section_text[:1000])
+                        raise ValueError('OTTASIA confirmed section parser extracted no rows; headings=' + repr(headings[:4]) + '; kinds=' + repr(kind_lines[:8]) + '; dates=' + repr(date_lines[:8]))
                     section_present = bool(section_start)
                 elif "newindianmovies.com" in url:
                     section_present = 'new on ott this week' in visible
@@ -486,7 +489,7 @@ def collect(get, today, langs, norm):
             events.extend(rows)
             health.append({"source": name, "url": url, "state": "live", "records": len(rows)})
         except Exception as error:
-            health.append({"source": name, "url": url, "state": "failed", "records": 0, "error": str(error)[:240]})
+            health.append({"source": name, "url": url, "state": "failed", "records": 0, "error": str(error)[:1000]})
     # Re-check the primary sources used by the main catalog collector. Their
     # future dates were previously filtered out before the Coming badge stage.
     daily_url = 'https://www.dailyott.in/api/movies?limit=200&page=1'
