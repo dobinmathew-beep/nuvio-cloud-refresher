@@ -82,9 +82,12 @@ for lang in ('ml', 'ta', 'te', 'hi'):
             result['localLatestEntry'] = latest_entry(local.get(cid, []))
             endpoint_latest = result['endpointLatestEntry']
             local_latest = result['localLatestEntry']
+            local_latest_is_published = bool(local_latest and any(
+                isinstance(item, dict) and item.get('id') == local_latest.get('id')
+                for item in all_metas
+            ))
             result['latestEntryMatches'] = (not expected) or bool(
-                endpoint_latest and local_latest and
-                endpoint_latest.get('id') == local_latest.get('id') and
+                endpoint_latest and local_latest and local_latest_is_published and
                 endpoint_latest.get('releaseDate') == local_latest.get('releaseDate')
             )
             if expected and len(all_metas) < expected:
