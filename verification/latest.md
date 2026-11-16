@@ -1,6 +1,6 @@
 # Independent Nuvio output verification
 
-**Checked:** 2026-11-16T12:57:08.596090+04:00 (Oman time)
+**Checked:** 2026-11-16T19:13:28.772363+04:00 (Oman time)
 **Overall:** 4/4 outputs passed
 
 | Output | Result |
@@ -16,8 +16,8 @@
 - **PASS** public health endpoint: {"checkout": {"ready": false, "configured": false, "provider": "Bank Muscat", "amountMode": "provider-entered"}}
 
 ## Epg — PASS
-- **PASS** public status and freshness: {"revision": "4941653f-48e1-4052-bd86-54c3bd1e981c", "checked_utc": "2026-11-16T07:46:03.507438+00:00", "matched_ids": 612, "playlist_channel_ids": 823, "unresolved_ids": 211, "programmes": 71547}
-- **PASS** published XMLTV: {"bytes": 2755738, "channels": 612, "programmes": 71547}
+- **PASS** public status and freshness: {"revision": "501fb49a-4938-4d30-9b63-802086150257", "checked_utc": "2026-11-16T08:19:18.044439+00:00", "matched_ids": 612, "playlist_channel_ids": 823, "unresolved_ids": 211, "programmes": 71165}
+- **PASS** published XMLTV: {"bytes": 1910629, "channels": 612, "programmes": 71165}
 - **PASS** Channel_Matching_Report.csv: {"rows": 823}
 - **PASS** Unresolved_Channels.csv: {"rows": 211}
 - **PASS** Source_Crosscheck_Report.csv: {"rows": 3034}
@@ -35,10 +35,10 @@
   },
   "errors": [],
   "catalogHeads": {
-    "tamil": "tt33318732",
     "hindi": "tt27988879",
     "malayalam": "tt27512908",
-    "telugu": "tt32324552"
+    "telugu": "tt32324552",
+    "tamil": "tt33318732"
   }
 }
 
