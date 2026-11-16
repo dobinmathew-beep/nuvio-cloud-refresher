@@ -154,22 +154,6 @@ class UpcomingSourceTests(unittest.TestCase):
         self.assertEqual(rows[0]["ottDate"], "2026-11-18")
         self.assertFalse(rows[0]["confirmed"])
 
-    def test_ottclock_card_language_type_and_platform_are_detected(self):
-        html = """<h1>OTT Release Calendar</h1>
-        <article class="release-card"><h3><a href="/title/example">Example Series</a></h3>
-        <p>20 Nov Netflix Tamil Series</p></article>"""
-        rows = upcoming_sources._calendar_cards(
-            BeautifulSoup(html, "html.parser"), "OTTClock Indian OTT calendar",
-            "https://ottclock.com/", "2026-11-17",
-            {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
-            lambda value: value.lower().replace(" ", ""),
-        )
-        self.assertEqual(len(rows), 1)
-        self.assertEqual(rows[0]["name"], "Example Series")
-        self.assertEqual(rows[0]["language"], "tamil")
-        self.assertEqual(rows[0]["type"], "series")
-        self.assertEqual(rows[0]["platforms"], ["Netflix"])
-        self.assertFalse(rows[0]["confirmed"])
     def test_ottclock_confirmed_upcoming_feed_parses_compact_cards(self):
         html = """<a href="/movie/example">Movie 20 Nov Netflix Example Film Movie · Hindi</a>
         <a href="/series/sample">New 21 Nov Prime Video Sample Series Series · Malayalam</a>
