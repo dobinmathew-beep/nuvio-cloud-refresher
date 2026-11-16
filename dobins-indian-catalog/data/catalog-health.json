@@ -1,0 +1,213 @@
+{
+  "checkedAt": "2026-11-16T20:15:04.368293+00:00",
+  "url": "https://the-great-indian-addon.vercel.app",
+  "state": "ok",
+  "checks": [
+    {
+      "path": "/manifest.json",
+      "state": "ok"
+    },
+    {
+      "path": "/support",
+      "state": "ok"
+    },
+    {
+      "path": "/health.json",
+      "state": "ok"
+    }
+  ],
+  "catalogs": [
+    {
+      "catalogId": "dobins_ml_movie",
+      "language": "ml",
+      "type": "movie",
+      "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
+      "localPublishedCount": 68,
+      "endpointReturnedCount": 50,
+      "endpointLatestEntry": {
+        "id": "tt27512908",
+        "name": "The Third Murder",
+        "releaseDate": "2026-11-13"
+      },
+      "localLatestEntry": {
+        "id": "tt27512908",
+        "name": "The Third Murder",
+        "releaseDate": "2026-11-13"
+      },
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 18,
+      "exactly50Returned": true,
+      "check": "ok"
+    },
+    {
+      "catalogId": "dobins_ml_series",
+      "language": "ml",
+      "type": "series",
+      "path": "/install/ff/catalog/series/dobins_ml_series.json",
+      "localPublishedCount": 60,
+      "endpointReturnedCount": 50,
+      "endpointLatestEntry": {
+        "id": "tt8537520",
+        "name": "Bigg Boss Malayalam",
+        "releaseDate": "2026-11-15T21:30:00+00:00"
+      },
+      "localLatestEntry": {
+        "id": "tt8537520",
+        "name": "Bigg Boss Malayalam",
+        "releaseDate": "2026-11-15T21:30:00+00:00"
+      },
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 10,
+      "exactly50Returned": true,
+      "check": "ok"
+    },
+    {
+      "catalogId": "dobins_ta_movie",
+      "language": "ta",
+      "type": "movie",
+      "path": "/install/ff/catalog/movie/dobins_ta_movie.json",
+      "localPublishedCount": 61,
+      "endpointReturnedCount": 50,
+      "endpointLatestEntry": {
+        "id": "tt39239818",
+        "name": "Haiku",
+        "releaseDate": "2026-11-20"
+      },
+      "localLatestEntry": {
+        "id": "tt39239818",
+        "name": "Haiku",
+        "releaseDate": "2026-11-20"
+      },
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 11,
+      "exactly50Returned": true,
+      "check": "ok"
+    },
+    {
+      "catalogId": "dobins_ta_series",
+      "language": "ta",
+      "type": "series",
+      "path": "/install/ff/catalog/series/dobins_ta_series.json",
+      "localPublishedCount": 98,
+      "endpointReturnedCount": 50,
+      "endpointLatestEntry": {
+        "id": "tt7084920",
+        "name": "Bigg Boss Tamil",
+        "releaseDate": "2026-11-15T21:30:00+00:00"
+      },
+      "localLatestEntry": {
+        "id": "tt7084920",
+        "name": "Bigg Boss Tamil",
+        "releaseDate": "2026-11-15T21:30:00+00:00"
+      },
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 48,
+      "exactly50Returned": true,
+      "check": "ok"
+    },
+    {
+      "catalogId": "dobins_te_movie",
+      "language": "te",
+      "type": "movie",
+      "path": "/install/ff/catalog/movie/dobins_te_movie.json",
+      "localPublishedCount": 68,
+      "endpointReturnedCount": 50,
+      "endpointLatestEntry": {
+        "id": "tt39309264",
+        "name": "Crazy Kalyanam",
+        "releaseDate": "2026-11-20"
+      },
+      "localLatestEntry": {
+        "id": "tt39309264",
+        "name": "Crazy Kalyanam",
+        "releaseDate": "2026-11-20"
+      },
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 18,
+      "exactly50Returned": true,
+      "check": "ok"
+    },
+    {
+      "catalogId": "dobins_te_series",
+      "language": "te",
+      "type": "series",
+      "path": "/install/ff/catalog/series/dobins_te_series.json",
+      "localPublishedCount": 103,
+      "endpointReturnedCount": 50,
+      "endpointLatestEntry": {
+        "id": "tt7805494",
+        "name": "Bigg Boss Telugu",
+        "releaseDate": "2026-11-15T21:30:00+00:00"
+      },
+      "localLatestEntry": {
+        "id": "tt7805494",
+        "name": "Bigg Boss Telugu",
+        "releaseDate": "2026-11-15T21:30:00+00:00"
+      },
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 53,
+      "exactly50Returned": true,
+      "check": "ok"
+    },
+    {
+      "catalogId": "dobins_hi_movie",
+      "language": "hi",
+      "type": "movie",
+      "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
+      "localPublishedCount": 76,
+      "endpointReturnedCount": 50,
+      "endpointLatestEntry": {
+        "id": "tt40855841",
+        "name": "Nayyi Navelli",
+        "releaseDate": "2026-11-20"
+      },
+      "localLatestEntry": {
+        "id": "tt40855841",
+        "name": "Nayyi Navelli",
+        "releaseDate": "2026-11-20"
+      },
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 26,
+      "exactly50Returned": true,
+      "check": "ok"
+    },
+    {
+      "catalogId": "dobins_hi_series",
+      "language": "hi",
+      "type": "series",
+      "path": "/install/ff/catalog/series/dobins_hi_series.json",
+      "localPublishedCount": 324,
+      "endpointReturnedCount": 50,
+      "endpointLatestEntry": {
+        "id": "tt38195069",
+        "name": "Tumm Se Tumm Tak",
+        "releaseDate": "2026-11-16T00:00:00+00:00"
+      },
+      "localLatestEntry": {
+        "id": "tt38195069",
+        "name": "Tumm Se Tumm Tak",
+        "releaseDate": "2026-11-16T00:00:00+00:00"
+      },
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 274,
+      "exactly50Returned": true,
+      "check": "ok"
+    }
+  ],
+  "catalogSummary": {
+    "checked": 8,
+    "failed": 0,
+    "possibleTruncationOrLag": 8,
+    "exactly50Returned": [
+      "dobins_ml_movie",
+      "dobins_ml_series",
+      "dobins_ta_movie",
+      "dobins_ta_series",
+      "dobins_te_movie",
+      "dobins_te_series",
+      "dobins_hi_movie",
+      "dobins_hi_series"
+    ]
+  },
+  "method": "read-only; no payment orders or charges"
+}
