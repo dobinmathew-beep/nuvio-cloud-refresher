@@ -165,7 +165,7 @@ def candidate_index():
  def f(k):
   lang,typ=k;cat=LANGS[lang]+('_series' if typ=='series' else '')
   key=lang+'-'+typ;seen=set();all_rows=[];error=None
-  pages=max(1,int(os.environ.get('CATALOG_CANDIDATE_PAGES','15')))
+  pages=max(1,int(os.environ.get('CATALOG_CANDIDATE_PAGES','25')))
   for page in range(pages):
    url=f'https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/{typ}/{cat}'+(f'/skip={page*20}' if page else '')+'.json'
    try:rows=get(url).get('metas',[])
@@ -202,22 +202,53 @@ def select_candidate(e,pool):
  return matches[0][2]
 
 def suggestion(e):
- q=re.sub(r'\s*\((?:Season\s*\d+|Series)\)|\bSeason\s*\d+','',e['name'],flags=re.I).strip();url='https://v3.sg.media-imdb.com/suggestion/x/'+quote(q,safe='')+'.json'
- try:data=get(url).get('d',[])
- except Exception:return None
- options=[]
- for x in data:
-  if not re.fullmatch(r'tt\d+',str(x.get('id',''))):continue
-  typ='series' if x.get('qid') in ('tvSeries','tvMiniSeries') else 'movie' if x.get('qid') in ('movie','tvMovie','video') else None
-  if typ!=e['type']:continue
-  score=ratio(norm(q),norm(x.get('l','')));year=x.get('y',0)
-  if score<97 or not year or year>int(e['ottDate'][:4]):continue
-  if e.get('year') and str(year)!=str(e['year']):continue
-  if int(e['ottDate'][:4])-year>4 and not e.get('year'):continue
-  options.append((score,year,x))
- options.sort(key=lambda x:(x[0],x[1]),reverse=True)
- if not options or (len(options)>1 and options[0][:2]==options[1][:2]):return None
- x=options[0][2];return {'id':x['id'],'name':x['l'],'type':e['type'],'releaseInfo':str(x.get('y','')),'poster':x.get('i',{}).get('imageUrl')}
+ # IMDb's public suggestion index is queried with title variants, not just one
+ # literal string. This recovers season/episode suffixes and subtitle variants.
+ raw=str(e.get('name','')).strip()
+ base=re.sub(r'\\s*\\((?:Episode\\s*\\d+|Season\\s*\\d+|Series|Web Series)\\)\\s*',' ',raw,flags=re.I)
+ base=re.sub(r'\\bEpisode\\s*\\d+\\b',' ',base,flags=re.I)
+ base=re.sub(r'\\bSeason\\s*\\d+\\b',' ',base,flags=re.I)
+ base=re.sub(r'\\s+',' ',base).strip(' -:–—')
+ variants=[]
+ for value in (raw,base,re.sub(r'\\s*[:–—-].*$','',base).strip()):
+  value=value.strip()
+  if value and norm(value) not in {norm(x) for x in variants}:variants.append(value)
+ if e.get('type')=='series' and re.search(r'\\s+\\d+$',base):
+  short=re.sub(r'\\s+\\d+$','',base).strip()
+  if short and norm(short) not in {norm(x) for x in variants}:variants.append(short)
+ options={}
+ for query in variants[:3]:
+  url='https://v3.sg.media-imdb.com/suggestion/x/'+quote(query,safe='')+'.json'
+  try:data=get(url).get('d',[])
+  except Exception:continue
+  for x in data:
+   mid=str(x.get('id',''))
+   if not re.fullmatch(r'tt\\d+',mid):continue
+   qid=x.get('qid')
+   typ='series' if qid in ('tvSeries','tvMiniSeries') else 'movie' if qid in ('movie','tvMovie','video') else None
+   if typ!=e['type']:continue
+   title=str(x.get('l','')).strip()
+   if not title:continue
+   score=ratio(norm(base or raw),norm(title))
+   year=int(x.get('y') or 0)
+   expected_year=int(str(e.get('year') or 0)[:4] or 0)
+   if expected_year and year and abs(year-expected_year)>1:continue
+   # A title-only OTT date is not the original production year. Do not reject
+   # an older series merely because a new season has a recent streaming date.
+   threshold=94 if expected_year and year else 97
+   if score<threshold:continue
+   prior=options.get(mid)
+   candidate={'id':mid,'name':title,'type':typ,'releaseInfo':str(year or ''),'poster':(x.get('i') or {}).get('imageUrl'),'_matchScore':score,'_query':query}
+   if not prior or score>prior['_matchScore']:options[mid]=candidate
+ if not options:return None
+ ranked=sorted(options.values(),key=lambda x:(x['_matchScore'],bool(x.get('releaseInfo'))),reverse=True)
+ if len(ranked)>1:
+  gap=ranked[0]['_matchScore']-ranked[1]['_matchScore']
+  if gap<5:return None
+ best=ranked[0]
+ if best['_matchScore']<97 and not e.get('year'):return None
+ best.pop('_matchScore',None);best.pop('_query',None)
+ return best
 
 def metadata(mid,typ,fallback):
  try:
@@ -287,7 +318,7 @@ def build():
   key=e['language']+'|series|'+norm(e['name']);mid=verified['id'];mk=alternate.key('series',mid)
   metas[mk]={**metas.get(mk,{}),**{k:v for k,v in verified.items() if v is not None},'_metadataCheckedAt':NOW.isoformat(),'_partial':False}
   matches[key]={'id':mid,'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'method':verified.get('metadataSource','Verified series source')}
- budget=int(os.environ.get('MAX_NEW_MATCHES','300'));attempts=0;work=[]
+ budget=int(os.environ.get('MAX_NEW_MATCHES','600'));attempts=0;work=[]
  for e in ordered:
   key=e['language']+'|'+e['type']+'|'+norm(e['name']);cached=matches.get(key)
   if cached and alternate.key(e['type'],cached.get('id','')) in metas:
@@ -329,6 +360,11 @@ def build():
      fresh={**previous,**fresh,'id':alias,'type':e['type'],'poster':fresh.get('poster') or previous.get('poster'),'metadataSource':'Verified IMDb title match','_partial':False}
     else:fresh={**previous,**fresh,'id':alias,'type':e['type']}
     m=fresh
+  if m:
+   original=str(m.get('original_language') or m.get('originalLanguage') or '').lower()
+   expected=LANGS[e['language']]
+   # Never publish a dubbed/foreign original in the wrong language catalog.
+   if original and original not in (expected,e['language']):m=None
   if m and m.get('id') in DISPLAY_NAME_OVERRIDES:m['name']=DISPLAY_NAME_OVERRIDES[m['id']]
   if m and m.get('id') in IMDB_RATING_OVERRIDES:m['imdbRating']=IMDB_RATING_OVERRIDES[m['id']]
   if not m:return key,{'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'reason':'No unambiguous IMDb, TMDB or TVmaze match'},None
@@ -391,7 +427,7 @@ def build():
  for cid,items in catalogs.items():
   latest=max(items,key=lambda x:str(x.get('latestEpisodeReleasedAt') or x.get('ottDate') or x.get('releaseDate') or ''),default=None)
   freshness[cid]={'count':len(items),'generatedAt':NOW.isoformat(),'latestEntry':None if not latest else {'id':latest.get('id'),'name':latest.get('name'),'releaseDate':latest.get('latestEpisodeReleasedAt') or latest.get('ottDate') or latest.get('releaseDate'),'hasNewEpisodes':latest.get('hasNewEpisodes',False)}}
- status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'errors':[]}
+ status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastMatchRetryAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'errors':[]}
  save('status.json',status);print('SUCCESS',json.dumps(status),flush=True)
 if __name__=='__main__':
  try:build()
