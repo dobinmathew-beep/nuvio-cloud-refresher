@@ -1,5 +1,5 @@
 name: Dobins Indian Catalog
-# Trigger a full validation run when the catalog workflow is intentionally updated.
+# Trigger full validation for the source-parser, pagination and per-catalog freshness fixes.
 on:
   workflow_dispatch:
   push:
