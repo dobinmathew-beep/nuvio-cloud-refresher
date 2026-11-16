@@ -160,10 +160,22 @@ def collect():
     if new_rank<old_rank:m['ottDate']=new_day
  return list(merged.values()),health
 
+def candidate_cache_fresh(cache,now=NOW):
+ try:return (now-datetime.fromisoformat(cache.get('_updatedAt',''))).total_seconds()<7200
+ except (TypeError,ValueError):return False
+
 def candidate_index():
  # The upstream catalog is paginated. Fetching only its first response silently
  # starves matching of newer titles beyond that page (and can look like a 50-item cap).
  cache=load('candidates.json',{});pool=[]
+ if candidate_cache_fresh(cache):
+  for key,rows in cache.items():
+   if key=='_updatedAt':continue
+   lang,typ=key.rsplit('-',1)
+   pool.extend(dict(m,language=lang,type=typ) for m in rows if is_imdb_id(m.get('id','')) and m.get('name'))
+  print('CANDIDATES cache hit',len(pool),'records',flush=True)
+  return pool
+ errors=[]
  def f(k):
   lang,typ=k;cat=LANGS[lang]+('_series' if typ=='series' else '')
   key=lang+'-'+typ;seen=set();all_rows=[];error=None
@@ -184,10 +196,12 @@ def candidate_index():
   elif not all_rows:
    all_rows=previous
   if all_rows:cache[key]=all_rows
+  if error:errors.append(key)
   print('CANDIDATES',key,len(all_rows),'pages',page+1,'error',bool(error),flush=True)
   return [dict(m,language=lang,type=typ) for m in all_rows if is_imdb_id(m.get('id','')) and m.get('name')]
  with ThreadPoolExecutor(max_workers=4) as ex:
   for ms in ex.map(f,[(l,t) for l in LANGS for t in ('movie','series')]):pool.extend(ms)
+ if not errors:cache['_updatedAt']=NOW.isoformat()
  save('candidates.json',cache);return pool
 
 def select_candidate(e,pool):
