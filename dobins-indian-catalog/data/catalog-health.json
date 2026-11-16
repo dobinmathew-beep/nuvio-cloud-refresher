@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-16T21:17:25.236367+00:00",
+  "checkedAt": "2026-11-16T22:01:38.961962+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "degraded",
   "checks": [
@@ -23,10 +23,10 @@
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
       "localPublishedCount": 69,
-      "endpointReturnedCount": 68,
+      "endpointReturnedCount": 69,
       "endpointPageCounts": [
         50,
-        18
+        19
       ],
       "endpointPageSize": 50,
       "endpointLatestEntry": {
@@ -40,8 +40,7 @@
         "releaseDate": "2026-11-13"
       },
       "latestEntryMatches": true,
-      "state": "possible_truncation_or_deployment_lag",
-      "missingFromResponse": 1,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -64,10 +63,10 @@
       "localLatestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
-        "releaseDate": "2026-11-15T21:30:00+00:00"
+        "releaseDate": "2026-11-16T21:30:00+00:00"
       },
-      "latestEntryMatches": true,
-      "state": "ok",
+      "latestEntryMatches": false,
+      "state": "latest_entry_mismatch",
       "check": "ok"
     },
     {
@@ -76,10 +75,10 @@
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ta_movie.json",
       "localPublishedCount": 67,
-      "endpointReturnedCount": 61,
+      "endpointReturnedCount": 67,
       "endpointPageCounts": [
         50,
-        11
+        17
       ],
       "endpointPageSize": 50,
       "endpointLatestEntry": {
@@ -93,8 +92,7 @@
         "releaseDate": "2026-11-20"
       },
       "latestEntryMatches": true,
-      "state": "possible_truncation_or_deployment_lag",
-      "missingFromResponse": 6,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -103,11 +101,11 @@
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ta_series.json",
       "localPublishedCount": 110,
-      "endpointReturnedCount": 108,
+      "endpointReturnedCount": 110,
       "endpointPageCounts": [
         50,
         50,
-        8
+        10
       ],
       "endpointPageSize": 50,
       "endpointLatestEntry": {
@@ -121,8 +119,7 @@
         "releaseDate": "2026-11-18"
       },
       "latestEntryMatches": true,
-      "state": "possible_truncation_or_deployment_lag",
-      "missingFromResponse": 2,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -131,10 +128,10 @@
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_te_movie.json",
       "localPublishedCount": 73,
-      "endpointReturnedCount": 68,
+      "endpointReturnedCount": 73,
       "endpointPageCounts": [
         50,
-        18
+        23
       ],
       "endpointPageSize": 50,
       "endpointLatestEntry": {
@@ -148,8 +145,7 @@
         "releaseDate": "2026-11-20"
       },
       "latestEntryMatches": true,
-      "state": "possible_truncation_or_deployment_lag",
-      "missingFromResponse": 5,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -173,10 +169,10 @@
       "localLatestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
-        "releaseDate": "2026-11-15T21:30:00+00:00"
+        "releaseDate": "2026-11-16T21:30:00+00:00"
       },
-      "latestEntryMatches": true,
-      "state": "ok",
+      "latestEntryMatches": false,
+      "state": "latest_entry_mismatch",
       "check": "ok"
     },
     {
@@ -185,10 +181,10 @@
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
       "localPublishedCount": 80,
-      "endpointReturnedCount": 76,
+      "endpointReturnedCount": 80,
       "endpointPageCounts": [
         50,
-        26
+        30
       ],
       "endpointPageSize": 50,
       "endpointLatestEntry": {
@@ -202,8 +198,7 @@
         "releaseDate": "2026-11-20"
       },
       "latestEntryMatches": true,
-      "state": "possible_truncation_or_deployment_lag",
-      "missingFromResponse": 4,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -212,7 +207,7 @@
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
       "localPublishedCount": 347,
-      "endpointReturnedCount": 343,
+      "endpointReturnedCount": 347,
       "endpointPageCounts": [
         50,
         50,
@@ -220,7 +215,7 @@
         50,
         50,
         50,
-        43
+        47
       ],
       "endpointPageSize": 50,
       "endpointLatestEntry": {
@@ -234,16 +229,15 @@
         "releaseDate": "2026-11-16T00:00:00+00:00"
       },
       "latestEntryMatches": true,
-      "state": "possible_truncation_or_deployment_lag",
-      "missingFromResponse": 4,
+      "state": "ok",
       "check": "ok"
     }
   ],
   "catalogSummary": {
     "checked": 8,
     "failed": 0,
-    "possibleTruncationOrLag": 6,
-    "countMismatches": 6,
+    "possibleTruncationOrLag": 0,
+    "countMismatches": 2,
     "firstPageSize50": [
       "dobins_ml_movie",
       "dobins_ml_series",
