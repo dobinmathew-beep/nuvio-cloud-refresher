@@ -114,16 +114,18 @@ for route in ['/manifest.json', '/support', '/health.json']:
         checks.append({'path': route, 'state': 'failed', 'error': str(error)[:180]})
 
 catalog_failures = sum(1 for x in catalogs if x.get('check') != 'ok')
+count_mismatches = sum(1 for x in catalogs if x.get('state') in ('possible_truncation_or_deployment_lag', 'endpoint_ahead_of_local_snapshot'))
 result = {
     'checkedAt': datetime.now(timezone.utc).isoformat(),
     'url': base,
-    'state': 'ok' if all(x['state'] == 'ok' for x in checks) and catalog_failures == 0 else 'degraded',
+    'state': 'ok' if all(x['state'] == 'ok' for x in checks) and catalog_failures == 0 and count_mismatches == 0 else 'degraded',
     'checks': checks,
     'catalogs': catalogs,
     'catalogSummary': {
         'checked': len(catalogs),
         'failed': catalog_failures,
         'possibleTruncationOrLag': sum(1 for x in catalogs if x.get('state') == 'possible_truncation_or_deployment_lag'),
+        'countMismatches': count_mismatches,
         'firstPageSize50': [x['catalogId'] for x in catalogs if x.get('endpointPageCounts', [None])[0] == 50]
     },
     'method': 'read-only; no payment orders or charges'
