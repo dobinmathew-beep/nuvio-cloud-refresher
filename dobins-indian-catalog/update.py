@@ -353,6 +353,7 @@ def build():
   if os.environ.get('FORCE_MATCH_RETRY') != 'true' and cached and cached.get('alternatePolicy')==alternate.POLICY and not cached.get('id') and not e.get('_verifiedMetadata') and not e.get('_verifiedImdbId') and (NOW-datetime.fromisoformat(cached['checkedAt'])).total_seconds()<1800:continue
   if attempts>=budget:continue
   work.append((key,e));attempts+=1
+ resolve_errors=[]
  def resolve(pair):
   key,e=pair;existing=matches.get(key,{}).get('id') or e.get('_verifiedImdbId');mk=alternate.key(e['type'],existing or '')
   c=metas.get(mk) or ({'id':existing,'name':e.get('_verifiedImdbName',e['name']),'type':e['type']} if is_imdb_id(existing) else None) or select_candidate(e,pool) or e.get('_verifiedMetadata')
@@ -394,8 +395,16 @@ def build():
   if not m:return key,{'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'reason':'No unambiguous IMDb, TMDB or TVmaze match'},None
   m['_metadataCheckedAt']=NOW.isoformat();m['_alternatePolicy']=alternate.POLICY
   return key,{'id':m['id'],'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'method':m.get('metadataSource','IMDb-matched metadata')},m
+ def safe_resolve(pair):
+  try:return resolve(pair)
+  except Exception as exc:
+   key,e=pair
+   message=f"{e.get('name','Unknown title')}: {type(exc).__name__}: {exc}"
+   resolve_errors.append(message)
+   print('RESOLVE ERROR',message,flush=True)
+   return key,{'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'reason':'Temporary resolver error; queued for retry'},None
  with ThreadPoolExecutor(max_workers=4) as ex:
-  for n,(key,match,m) in enumerate(ex.map(resolve,work),1):
+  for n,(key,match,m) in enumerate(ex.map(safe_resolve,work),1):
    matches[key]=match
    if m:metas[alternate.key(m['type'],m['id'])]=m
    if n%10==0:save('matches.json',matches);save('metadata.json',metas);print('MATCHED',n,'/',len(work),flush=True)
@@ -469,7 +478,7 @@ def build():
  for cid,items in catalogs.items():
   latest=max(items,key=lambda x:str(x.get('latestEpisodeReleasedAt') or x.get('ottDate') or x.get('releaseDate') or ''),default=None)
   freshness[cid]={'count':len(items),'generatedAt':NOW.isoformat(),'latestEntry':None if not latest else {'id':latest.get('id'),'name':latest.get('name'),'releaseDate':latest.get('latestEpisodeReleasedAt') or latest.get('ottDate') or latest.get('releaseDate'),'hasNewEpisodes':latest.get('hasNewEpisodes',False)}}
- status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastMatchRetryAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'upcoming':{'matchedTitles':len(upcoming_rows),'bySource':upcoming_source_summary,'policy':'Only confirmed upcoming titles with a validated IMDb tt-ID are published.'},'errors':[]}
+ status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastMatchRetryAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'upcoming':{'matchedTitles':len(upcoming_rows),'bySource':upcoming_source_summary,'policy':'Only confirmed upcoming titles with a validated IMDb tt-ID are published.'},'errors':resolve_errors}
  save('status.json',status);print('SUCCESS',json.dumps(status),flush=True)
 if __name__=='__main__':
  try:build()
