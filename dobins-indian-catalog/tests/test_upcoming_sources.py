@@ -191,5 +191,33 @@ class UpcomingSourceTests(unittest.TestCase):
         self.assertEqual(next(row for row in rows if row["name"] == "Anbil Avan")["ottDate"], "2026-11-20")
         self.assertTrue(all(row["confirmed"] for row in rows))
 
+    def test_ottasia_live_nested_card_layout_extracts_confirmed_future_titles(self):
+        html = """<h2>Upcoming OTT releases in India: confirmed dates</h2>
+        <section class="release-grid">
+          <article class="release-card"><div><a href="/title/mr-mrs-office">Mr &amp; Mrs Office</a></div>
+            <div><span>Series · Tamil</span></div><div>Streaming on JioHotstar from Wed, Nov 18</div></article>
+          <article class="release-card"><div><a href="/title/anbil-avan">Anbil Avan</a></div>
+            <div><span>Film · Tamil</span></div><div>Digital release on November 20, 2026</div></article>
+          <article class="release-card"><div><a href="/title/supreme-solaris">Supreme Solaris</a></div>
+            <div><span>Series · Hindi</span></div><div>Streaming on YouTube from November 22, 2026</div></article>
+          <article class="release-card"><div><a href="/title/takshakudu">Takshakudu</a></div>
+            <div><span>Film · Telugu</span></div><div>Digital release on November 26, 2026</div></article>
+        </section>
+        <h2>Predicted next on OTT</h2>
+        <article><a href="/title/almari">Almari</a><span>Film · Malayalam</span>
+          <p>Predicted November 28, 2026</p></article>"""
+        rows = upcoming_sources._ottasia(
+            BeautifulSoup(html, "html.parser"), "OTTASIA confirmed calendar",
+            "https://ottasia.com/ott-releases-this-week?country=IN", "2026-11-17",
+            {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
+            lambda value: value.lower().replace(" ", ""),
+        )
+        self.assertEqual({row["name"] for row in rows},
+                         {"Mr & Mrs Office", "Anbil Avan", "Supreme Solaris", "Takshakudu"})
+        self.assertEqual({row["type"] for row in rows}, {"movie", "series"})
+        self.assertEqual({row["language"] for row in rows}, {"tamil", "hindi", "telugu"})
+        self.assertEqual(next(row for row in rows if row["name"] == "Mr & Mrs Office")["ottDate"], "2026-11-18")
+        self.assertTrue(all(row["confirmed"] for row in rows))
+
 if __name__ == "__main__":
     unittest.main()
