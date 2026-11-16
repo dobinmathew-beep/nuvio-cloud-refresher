@@ -1,3 +1,4 @@
+import json
 """Conservative discovery of confirmed upcoming Indian OTT releases.
 
 Only announced/confirmed dates are emitted. Predictions, expected dates and
@@ -495,6 +496,19 @@ def collect(get, today, langs, norm):
         try:
             html = get(url, False)
             soup = BeautifulSoup(html, "html.parser")
+            if "ottasia.com" in url:
+                scripts = []
+                for script in soup.find_all('script'):
+                    raw = script.string or script.get_text()
+                    if raw and any(term in raw.lower() for term in ('upcoming', 'release', 'mr & mrs office', 'jennifer')):
+                        scripts.append({'type': script.get('type'), 'id': script.get('id'),
+                                        'length': len(raw), 'snippet': raw[:900]})
+                print('OTTASIA RAW DEBUG', json.dumps({
+                    'htmlLength': len(html), 'title': soup.title.get_text(' ', strip=True) if soup.title else None,
+                    'visiblePrefix': soup.get_text(' ', strip=True)[:700],
+                    'scriptCount': len(soup.find_all('script')), 'scriptMatches': scripts[:5],
+                    'htmlHasMrMrs': 'mr & mrs office' in html.lower()
+                }, ensure_ascii=False), flush=True)
             if "cinebuds.com" in url:
                 rows = _cinebuds(soup, name, url, today, langs, norm)
             elif "ottasia.com" in url:
