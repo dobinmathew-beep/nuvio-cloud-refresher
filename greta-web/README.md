@@ -34,3 +34,14 @@ The feedback form opens a pre-filled public GitHub issue. Visitors review and su
 The existing catalog workflow checks every 30 minutes, performs due catalog work at 06:00/18:00 Muscat plus 01:00 Thu/Fri/Sat, and then runs `check_site.py` when `GRETA_PUBLIC_URL` is set as a repository variable. The website's maintenance date is the updater's successful `updatedAt`, never the visitor's browser time.
 
 Health checks GET the public manifest, support page and read-only checkout status. They do not submit payment orders, charge cards, or assert that real settlements succeeded. Their timestamp and results are stored in `data/payment-health.json` for the support page. Checkout remains visibly unavailable until configured.
+
+
+## Catalog pagination and the 50-entry response
+
+Each catalog endpoint intentionally returns **up to 50 titles per request** so poster metadata and artwork links do not create oversized responses. This is a page size, not a 50-title catalog limit. The manifest advertises the optional `skip` extra, and the endpoint supports paths such as:
+
+- `/catalog/movie/dobins_ml_movie.json` — first page (up to 50).
+- `/catalog/movie/dobins_ml_movie/skip=50.json` — next page.
+- `/catalog/movie/dobins_ml_movie/skip=100.json` — third page.
+
+The catalog workflow's health probe now follows this pagination and compares the complete endpoint result with the generated snapshot. Keep the page size at 50 unless Nuvio's client-side paging behavior is explicitly changed and tested; changing the response size alone can cause overlapping or skipped pages.
