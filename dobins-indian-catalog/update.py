@@ -271,7 +271,7 @@ def suggestion(e):
   gap=ranked[0]['_matchScore']-ranked[1]['_matchScore']
   if gap<5:return None
  best=ranked[0]
- if best['_matchScore']<97 and not e.get('year'):return None
+ if best['_matchScore']<97 and not _year_int(e.get('year')):return None
  best.pop('_matchScore',None);best.pop('_query',None)
  return best
 
