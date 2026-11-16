@@ -32,6 +32,6 @@ test('BetterPosters proxy preserves upstream WebP MIME and source artwork bytes'
 
 test('public data-health route exposes GitHub snapshot provenance and catalog counts',async()=>{
  const oldFetch=globalThis.fetch;globalThis.fetch=async()=>{throw Error('offline fixture')};
- try{const req={url:'/data-health.json',method:'GET',headers:{host:'addon.example'},query:{path:'/data-health.json'}};const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=JSON.parse(body)}};await handler(req,res);assert.equal(res.statusCode,200);assert(res.body.snapshots['catalogs.json']);assert(res.body.snapshots['status.json']);assert(res.body.snapshots['metadata.json']);assert.equal(typeof res.body.catalogCounts.dobins_ml_movie,'number');assert.equal(typeof res.body.metadataRecords,'number');}
+ try{const req={url:'/data-health.json',method:'GET',headers:{host:'addon.example'},query:{path:'/data-health.json'}};const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=JSON.parse(body)}};await handler(req,res);assert.equal(res.statusCode,200);assert(res.body.snapshots['catalogs.json']);assert(res.body.snapshots['status.json']);assert(res.body.snapshots['metadata.json']);assert.equal(typeof res.body.catalogCounts.dobins_ml_movie,'number');assert(Array.isArray(res.body.catalogIdSets.dobins_ml_movie));assert.equal(typeof res.body.metadataRecords,'number');}
  finally{globalThis.fetch=oldFetch}
 });
