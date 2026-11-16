@@ -61,7 +61,7 @@ def collect(get,load,save,langs,today,now,norm):
    if not (re.fullmatch(r'tt\d+',mid) or re.fullmatch(r'tmdb:\d+',mid)) or not m.get('name') or PROMO.search(m['name']):continue
    items[lang+'|'+mid]={'language':lang,'name':m['name'],'id':mid,'poster':m.get('poster'),'source':f'{REGIONAL}/catalog/series/{code}_series.json','discoveryKind':'regional'}
   tmdb={};error=None
-  for page in range(1,int(os.environ.get('SERIES_TMDB_PAGES','3'))+1):
+  for page in range(1,int(os.environ.get('SERIES_TMDB_PAGES','5'))+1):
    form=urlencode({'with_original_language':code,'sort_by':'first_air_date.desc','first_air_date.lte':today,'with_watch_monetization_types':'flatrate|free|ads','watch_region':'IN','page':page,'include_adult':'false','language':'en-US'})
    try:
     html=subprocess.check_output(['curl','-fsSL','--retry','1','--connect-timeout','10','--max-time','40','--data',form,'https://www.themoviedb.org/discover/tv/items']).decode('utf-8','replace');rows=tmdb_rows(html,today)
@@ -156,7 +156,7 @@ def collect(get,load,save,langs,today,now,norm):
    e.update(name=m['name'],ottDate=released,year=None,poster=m['poster'],platforms=platforms,source=item['source'],sources=list(dict.fromkeys([item['source'],m['metadataSource']]+item.get('additionalSources',[]))),confirmed=True,releaseKind='digital',releaseDateBasis=basis,_verifiedMetadata=m)
    return key,{'checkedAt':now.isoformat(),'policy':POLICY,'event':e}
   except Exception as error:return key,{**titles.get(key,{}),'lastAttemptAt':now.isoformat(),'lastError':str(error)}
- max_checks=int(os.environ.get('MAX_SERIES_CHECKS','400'))
+ max_checks=int(os.environ.get('MAX_SERIES_CHECKS','500'))
  with ThreadPoolExecutor(max_workers=4) as pool:
   for i,(key,value) in enumerate(pool.map(inspect,work[:max_checks]),1):
    titles[key]=value
