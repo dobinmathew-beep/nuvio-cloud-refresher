@@ -401,10 +401,12 @@ def build():
    if m and (m.get('type')!=e['type'] or (not (e.get('_verifiedMetadata') or e.get('_verifiedImdbId')) and ratio(norm(alternate.plain(e['name'])),norm(m.get('name','')))<85)):m=None
   if not m or m.get('_partial') or not str(m.get('id','')).startswith('tt'):
    alt=alternate.resolve(e,get,norm)
-   if alt and str(alt.get('id','')).startswith('tt'):
-    fresh=metadata(alt['id'],e['type'],alt)
+   alt_id=str((alt or {}).get('id',''))
+   alt_is_allowed=is_imdb_id(alt_id) or (e['language']=='malayalam' and bool(re.fullmatch(r'tmdb:\\d+',alt_id)))
+   if alt and alt_is_allowed:
+    fresh=metadata(alt_id,e['type'],alt) if is_imdb_id(alt_id) else {**alt,'_partial':False}
     if fresh.get('_partial'):
-     fresh={**alt,**fresh,'id':alt['id'],'type':e['type'],'poster':fresh.get('poster') or alt.get('poster'),'metadataSource':alt.get('metadataSource','Verified IMDb match'),'_partial':False}
+     fresh={**alt,**fresh,'id':alt_id,'type':e['type'],'poster':fresh.get('poster') or alt.get('poster'),'metadataSource':alt.get('metadataSource','Verified metadata match'),'_partial':False}
     m=fresh
    else:
     suggested=None if norm(e.get('name',''))=='femaledog' else (suggested_candidate or suggestion(e))
