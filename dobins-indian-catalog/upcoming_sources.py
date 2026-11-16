@@ -333,10 +333,21 @@ def collect(get, today, langs, norm):
                 rows = _new_indian_movies(soup, name, url, today, langs, norm)
             else:
                 rows = _generic(soup, name, url, today, langs, norm)
-            # A page returning HTML is not enough: report a parser failure if
-            # its structure yielded no confirmed, dated records.
+            # An intact calendar section with no eligible future Indian titles
+            # is informational, not a parser failure. Missing section headings
+            # still signal markup drift and trigger a half-hour retry.
             if not rows:
-                raise ValueError("No confirmed upcoming rows recognised")
+                visible = soup.get_text(' ', strip=True).lower()
+                if "ottasia.com" in url:
+                    section_present = 'upcoming ott releases in india: confirmed dates' in visible
+                elif "newindianmovies.com" in url:
+                    section_present = 'new on ott this week' in visible
+                else:
+                    section_present = 'upcoming' in visible and 'ott' in visible and ('release' in visible or 'this week' in visible)
+                if section_present:
+                    health.append({'source': name, 'url': url, 'state': 'no_confirmed_upcoming', 'records': 0, 'note': 'Calendar section is present; no eligible future releases for the four tracked languages were found.'})
+                    continue
+                raise ValueError("Expected upcoming calendar section not found or parser returned no confirmed rows")
             events.extend(rows)
             health.append({"source": name, "url": url, "state": "live", "records": len(rows)})
         except Exception as error:
