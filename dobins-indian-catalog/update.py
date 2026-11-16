@@ -205,16 +205,16 @@ def suggestion(e):
  # IMDb's public suggestion index is queried with title variants, not just one
  # literal string. This recovers season/episode suffixes and subtitle variants.
  raw=str(e.get('name','')).strip()
- base=re.sub(r'\\s*\\((?:Episode\\s*\\d+|Season\\s*\\d+|Series|Web Series)\\)\\s*',' ',raw,flags=re.I)
- base=re.sub(r'\\bEpisode\\s*\\d+\\b',' ',base,flags=re.I)
- base=re.sub(r'\\bSeason\\s*\\d+\\b',' ',base,flags=re.I)
- base=re.sub(r'\\s+',' ',base).strip(' -:–—')
+ base=re.sub(r'\s*\((?:Episode\s*\d+|Season\s*\d+|Series|Web Series)\)\s*',' ',raw,flags=re.I)
+ base=re.sub(r'\bEpisode\s*\d+\b',' ',base,flags=re.I)
+ base=re.sub(r'\bSeason\s*\d+\b',' ',base,flags=re.I)
+ base=re.sub(r'\s+',' ',base).strip(' -:–—')
  variants=[]
- for value in (raw,base,re.sub(r'\\s*[:–—-].*$','',base).strip()):
+ for value in (raw,base,re.sub(r'\s*[:–—-].*$','',base).strip()):
   value=value.strip()
   if value and norm(value) not in {norm(x) for x in variants}:variants.append(value)
- if e.get('type')=='series' and re.search(r'\\s+\\d+$',base):
-  short=re.sub(r'\\s+\\d+$','',base).strip()
+ if e.get('type')=='series' and re.search(r'\s+\d+$',base):
+  short=re.sub(r'\s+\d+$','',base).strip()
   if short and norm(short) not in {norm(x) for x in variants}:variants.append(short)
  options={}
  for query in variants[:3]:
@@ -223,7 +223,7 @@ def suggestion(e):
   except Exception:continue
   for x in data:
    mid=str(x.get('id',''))
-   if not re.fullmatch(r'tt\\d+',mid):continue
+   if not re.fullmatch(r'tt\d+',mid):continue
    qid=x.get('qid')
    typ='series' if qid in ('tvSeries','tvMiniSeries') else 'movie' if qid in ('movie','tvMovie','video') else None
    if typ!=e['type']:continue
