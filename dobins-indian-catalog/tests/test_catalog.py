@@ -107,4 +107,16 @@ class CatalogTests(unittest.TestCase):
   self.assertEqual(summary['failed'],1)
   self.assertIn('require an IMDb or TMDB ID',errors[0]['reason'])
 
+ def test_verified_malayalam_series_overrides_and_wrong_language_exclusion(self):
+  events=[
+   {'name':'Prince of Mollywood','language':'malayalam','type':'movie'},
+   {'name':'Oru Chiri Iru Chiri Bumper Chiri 3','language':'malayalam','type':'series'},
+   {'name':'Taarini','language':'malayalam','type':'series'}
+  ]
+  update.apply_verified_overrides(events)
+  self.assertEqual(events[0]['type'],'series')
+  self.assertEqual(events[0]['_verifiedImdbId'],'tt44686897')
+  self.assertEqual(events[1]['_verifiedImdbId'],'tt43511363')
+  self.assertEqual(events[2]['_languageMismatch'],'marathi')
+
 if __name__=='__main__':unittest.main()
