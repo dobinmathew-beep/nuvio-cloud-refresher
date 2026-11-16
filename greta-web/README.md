@@ -45,7 +45,7 @@ Health checks GET the public manifest, support page and read-only checkout statu
 
 ## Catalog pagination and the 50-entry response
 
-Each catalog endpoint intentionally returns **up to 50 titles per request** so poster metadata and artwork links do not create oversized responses. This is a page size, not a 50-title catalog limit. The manifest advertises the optional `skip` extra, and the endpoint supports paths such as:
+Each catalog endpoint intentionally returns **up to 50 titles per request** so poster metadata and artwork links do not create oversized responses. This is a page size, not a 50-title catalog limit. The manifest advertises both `pageSize: 50` and the optional `skip` extra. The explicit page size matters for Nuvio clients: without it, some versions can fall back to a 100-item skip step and jump over entries. The endpoint supports paths such as:
 
 - `/catalog/movie/dobins_ml_movie.json` — first page (up to 50).
 - `/catalog/movie/dobins_ml_movie/skip=50.json` — next page.
