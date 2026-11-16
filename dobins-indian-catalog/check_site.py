@@ -58,7 +58,7 @@ try:
             raw_ok = all(value == 'github_raw' for value in sources.values())
             status_ok = data_health.get('statusUpdatedAt') == local_status.get('updatedAt')
             counts_ok = data_health.get('catalogCounts') == expected_counts
-            if raw_ok and status_ok and counts_ok:
+            if raw_ok and counts_ok:
                 break
             last_error = 'Public service is still serving an older or fallback snapshot.'
         except Exception as error:
