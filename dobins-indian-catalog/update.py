@@ -402,7 +402,7 @@ def build():
   if not m or m.get('_partial') or not str(m.get('id','')).startswith('tt'):
    alt=alternate.resolve(e,get,norm)
    alt_id=str((alt or {}).get('id',''))
-   alt_is_allowed=is_imdb_id(alt_id) or (e['language']=='malayalam' and bool(re.fullmatch(r'tmdb:\\d+',alt_id)))
+   alt_is_allowed=is_imdb_id(alt_id) or (e['language']=='malayalam' and bool(re.fullmatch(r'tmdb:\d+',alt_id)))
    if alt and alt_is_allowed:
     fresh=metadata(alt_id,e['type'],alt) if is_imdb_id(alt_id) else {**alt,'_partial':False}
     if fresh.get('_partial'):
