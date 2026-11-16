@@ -345,6 +345,21 @@
     }
   },
   {
+    "name": "The Grand Master",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-11-06",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://cinebuds.com/ott-release-dates/"
+    ],
+    "platforms": [
+      "Sun NXT"
+    ],
+    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+    "sourceRecord": {}
+  },
+  {
     "name": "Sub-Inspector Yugandhar",
     "language": "telugu",
     "type": "movie",
@@ -1510,6 +1525,79 @@
     }
   },
   {
+    "name": "Yezhu Kadal Yezhu Malai",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-05-25",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "SonyLIV"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a13c6a3135bb8f4954ff16b",
+      "platform": "SonyLIV",
+      "title": "Yezhu Kadal Yezhu Malai",
+      "createdAt": "2026-05-25T03:48:51.773Z",
+      "genre": "Drama, Romance, Thriller",
+      "imdbRating": 7.1,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-05-25",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-05-25T03:49:00.986Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/wdWQA1IVCYiTTEZMSnWl1tzhBd3.jpg",
+      "tmdbDetails": {
+        "tmdbId": 954445,
+        "director": "Ram",
+        "cast": [
+          {
+            "name": "Nivin Pauly",
+            "character": ""
+          },
+          {
+            "name": "Anjali",
+            "character": ""
+          },
+          {
+            "name": "Soori",
+            "character": ""
+          },
+          {
+            "name": "Ravi Mariya",
+            "character": ""
+          },
+          {
+            "name": "N. Azhagamperumal",
+            "character": ""
+          }
+        ],
+        "overview": "Caught between family duty and romantic love, a young man faces an impossible choice.",
+        "runtime": 137,
+        "genres": [
+          "Drama",
+          "Romance",
+          "Fantasy"
+        ],
+        "originalLanguage": "ta",
+        "spokenLanguages": [
+          "Tamil"
+        ],
+        "releaseDate": "2026-10-01",
+        "voteAverage": 4,
+        "trailerKey": "g50_PECZ17o",
+        "fetchedAt": "2026-11-05T14:07:15.051Z"
+      },
+      "tmdbId": 954445,
+      "verified": true
+    }
+  },
+  {
     "name": "Musafir Café",
     "language": "hindi",
     "type": "movie",
@@ -1598,6 +1686,23 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-04-25T03:38:30.630Z",
+      "tmdbDetails": {
+        "tmdbId": 1686468,
+        "director": null,
+        "cast": [],
+        "overview": "Ambili, a young girl on a quest to find the \"best color in the world\". The film explores life through her unique, innocent perspective.",
+        "runtime": 82,
+        "genres": [],
+        "originalLanguage": "ml",
+        "spokenLanguages": [
+          "Malayalam"
+        ],
+        "releaseDate": null,
+        "voteAverage": null,
+        "trailerKey": null,
+        "fetchedAt": "2026-11-16T23:43:59.297Z"
+      },
+      "tmdbId": 1686468,
       "verified": true
     }
   },
@@ -1762,8 +1867,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win",
-      "Netflix"
+      "Netflix",
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {

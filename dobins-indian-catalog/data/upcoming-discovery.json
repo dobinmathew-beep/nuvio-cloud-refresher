@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-17T03:40:13.561732+04:00",
+  "generatedAt": "2026-11-17T03:45:59.532464+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 29,
@@ -225,8 +225,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -355,8 +355,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -964,6 +964,23 @@
           "source_verified": true,
           "type": "Movie",
           "updatedAt": "2026-04-25T03:38:30.630Z",
+          "tmdbDetails": {
+            "tmdbId": 1686468,
+            "director": null,
+            "cast": [],
+            "overview": "Ambili, a young girl on a quest to find the \"best color in the world\". The film explores life through her unique, innocent perspective.",
+            "runtime": 82,
+            "genres": [],
+            "originalLanguage": "ml",
+            "spokenLanguages": [
+              "Malayalam"
+            ],
+            "releaseDate": null,
+            "voteAverage": null,
+            "trailerKey": null,
+            "fetchedAt": "2026-11-16T23:43:59.297Z"
+          },
+          "tmdbId": 1686468,
           "verified": true
         }
       }

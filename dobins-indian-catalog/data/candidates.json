@@ -3026,6 +3026,13 @@
   ],
   "hindi-movie": [
     {
+      "id": "tt50107649",
+      "name": "Dilwali Diwali",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt50107649.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tt27988879",
       "name": "Ramayana: Rise of a Legend",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27988879.jpg",
@@ -3155,13 +3162,6 @@
       "id": "tt28540171",
       "name": "Welcome To The Jungle",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28540171.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt35064672",
-      "name": "Cocktail 2",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35064672.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     },
@@ -12512,5 +12512,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-17T03:40:13.561732+04:00"
+  "_updatedAt": "2026-11-17T03:45:59.532464+04:00"
 }

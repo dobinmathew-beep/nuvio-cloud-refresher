@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-17T03:40:13.561732+04:00",
+    "checkedAt": "2026-11-17T03:45:59.532464+04:00",
     "records": [
       {
         "_id": "6af9168d55b49077c85d8819",
@@ -23007,6 +23007,46 @@
         "type": "Movie",
         "updatedAt": "2026-05-07T03:46:33.384Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/3yyw0fSAPlrQlAWGAtBXt93YxRe.jpg",
+        "tmdbDetails": {
+          "tmdbId": 1442077,
+          "director": "SP Durga Naresh",
+          "cast": [
+            {
+              "name": "Thiruveer Reddy",
+              "character": "Pratap"
+            },
+            {
+              "name": "Paayal Radhakrishna",
+              "character": ""
+            },
+            {
+              "name": "Ajay Ghosh",
+              "character": ""
+            },
+            {
+              "name": "Raasi",
+              "character": ""
+            },
+            {
+              "name": "Raghu Babu",
+              "character": ""
+            }
+          ],
+          "overview": "A rural comedy drama about a soft spoken man whose life turned upside down after he married his childhood love.",
+          "runtime": 148,
+          "genres": [
+            "Comedy"
+          ],
+          "originalLanguage": "te",
+          "spokenLanguages": [
+            "Telugu"
+          ],
+          "releaseDate": "2026-04-10",
+          "voteAverage": 5,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-16T23:44:00.711Z"
+        },
+        "tmdbId": 1442077,
         "verified": true
       },
       {
@@ -23752,6 +23792,23 @@
         "type": "Movie",
         "updatedAt": "2026-05-01T03:47:37.494Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/hJrLhbUUi45lvLdUo85zLlYZRKe.jpg",
+        "tmdbDetails": {
+          "tmdbId": 1685629,
+          "director": null,
+          "cast": [],
+          "overview": "Sodara is a heartfelt story set in a rural village where deep-rooted traditions and strong family values shape everyday life. At its center are two brothers-Chiru, the elder, known for his responsibility and unwavering sense of duty, and Pavan, the younger, whose charm and impulsiveness often get him into trouble.",
+          "runtime": 130,
+          "genres": [],
+          "originalLanguage": "te",
+          "spokenLanguages": [
+            "Telugu"
+          ],
+          "releaseDate": "2026-04-25",
+          "voteAverage": null,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-16T23:44:04.078Z"
+        },
+        "tmdbId": 1685629,
         "verified": true
       },
       {
@@ -24380,6 +24437,23 @@
         "source_verified": true,
         "type": "Movie",
         "updatedAt": "2026-04-25T03:38:30.630Z",
+        "tmdbDetails": {
+          "tmdbId": 1686468,
+          "director": null,
+          "cast": [],
+          "overview": "Ambili, a young girl on a quest to find the \"best color in the world\". The film explores life through her unique, innocent perspective.",
+          "runtime": 82,
+          "genres": [],
+          "originalLanguage": "ml",
+          "spokenLanguages": [
+            "Malayalam"
+          ],
+          "releaseDate": null,
+          "voteAverage": null,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-16T23:43:59.297Z"
+        },
+        "tmdbId": 1686468,
         "verified": true
       },
       {
@@ -30719,7 +30793,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-17T03:40:13.561732+04:00",
+    "checkedAt": "2026-11-17T03:45:59.532464+04:00",
     "records": [
       {
         "name": "Bandra",
