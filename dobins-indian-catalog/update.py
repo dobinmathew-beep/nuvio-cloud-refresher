@@ -529,14 +529,14 @@ def build():
  discovery={}
  for e in events:
   day=str(e.get('ottDate') or '')[:10]
-  if not re.fullmatch(r'\\d{4}-\\d{2}-\\d{2}',day) or day<TODAY or e.get('releaseKind','digital')!='digital':continue
+  if not re.fullmatch(r'\d{4}-\d{2}-\d{2}',day) or day<TODAY or e.get('releaseKind','digital')!='digital':continue
   lang=e.get('language');typ=e.get('type');name=str(e.get('name') or '').strip()
   if lang not in LANGS or typ not in ('movie','series') or not name:continue
   key=lang+'|'+typ+'|'+norm(name)
   match=matches.get(key,{})
   mid=str(match.get('id') or e.get('_verifiedImdbId') or '')
   meta=metas.get(alternate.key(typ,mid),{}) if mid else {}
-  complete=bool(mid and meta.get('id')==mid and meta.get('type')==typ and not meta.get('_partial') and meta.get('name'))
+  complete=bool(mid and meta.get('id')==mid and meta.get('type')==typ and not meta.get('_partial') and meta.get('name') and meta.get('poster') and meta.get('description'))
   cid=f'dobins_{LANGS[lang]}_{typ}'
   published=bool(mid and mid in catalog_ids.get(cid,set()))
   state='published' if published else 'matched_not_published' if complete else 'metadata_incomplete' if mid else 'unmatched'
