@@ -1,20 +1,21 @@
 {
-  "checkedAt": "2026-11-16T22:12:08.686187+00:00",
+  "checkedAt": "2026-11-16T22:14:43.217862+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
-  "state": "degraded",
+  "state": "ok",
   "checks": [
     {
       "path": "/data-health.json",
-      "state": "failed",
+      "state": "ok",
       "snapshotSources": {
         "catalogs.json": "github_raw",
         "status.json": "github_raw",
         "metadata.json": "github_raw"
       },
-      "statusTimestampMatches": false,
+      "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "metadataRecords": 1060,
-      "error": "Public service is still serving an older or fallback snapshot."
+      "warning": null,
+      "error": null
     },
     {
       "path": "/meta/* (Malayalam catalog audit)",
