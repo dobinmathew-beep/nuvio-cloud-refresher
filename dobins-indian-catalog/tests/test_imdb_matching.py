@@ -64,5 +64,14 @@ class ImdbMatchingTests(unittest.TestCase):
         self.assertFalse(update.is_imdb_id("tmdb:123"))
         self.assertFalse(update.is_imdb_id("tt-not-an-id"))
 
+    def test_candidate_index_cache_expires_after_two_hours(self):
+        from datetime import datetime, timezone, timedelta
+        now = datetime.now(timezone.utc)
+        self.assertTrue(update.candidate_cache_fresh(
+            {"_updatedAt": (now - timedelta(minutes=90)).isoformat()}, now))
+        self.assertFalse(update.candidate_cache_fresh(
+            {"_updatedAt": (now - timedelta(hours=3)).isoformat()}, now))
+        self.assertFalse(update.candidate_cache_fresh({}, now))
+
 if __name__ == "__main__":
     unittest.main()
