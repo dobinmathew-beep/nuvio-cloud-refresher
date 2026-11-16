@@ -3,7 +3,14 @@ on:
   workflow_dispatch:
   push:
     branches: [dobins-catalog]
-    paths: [dobins-indian-catalog/update.py]
+    paths:
+      - 'dobins-indian-catalog/update.py'
+      - 'dobins-indian-catalog/upcoming_sources.py'
+      - 'dobins-indian-catalog/alternate.py'
+      - 'dobins-indian-catalog/series_sources.py'
+      - 'dobins-indian-catalog/schedule.py'
+      - 'dobins-indian-catalog/tests/**'
+      - 'dobins-indian-catalog/requirements.txt'
   schedule:
     - cron: '0,30 * * * *'
 permissions:
