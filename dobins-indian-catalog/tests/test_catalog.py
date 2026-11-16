@@ -1,4 +1,5 @@
 import unittest,sys,tempfile
+from unittest.mock import patch
 from pathlib import Path
 from datetime import datetime,timedelta,date
 from zoneinfo import ZoneInfo
@@ -118,5 +119,13 @@ class CatalogTests(unittest.TestCase):
   self.assertEqual(events[0]['_verifiedImdbId'],'tt44686897')
   self.assertEqual(events[1]['_verifiedImdbId'],'tt43511363')
   self.assertEqual(events[2]['_languageMismatch'],'marathi')
+
+ def test_patriot_legends_hangout_tmdb_override_requires_verified_metadata(self):
+  events=[{'name':'Patriot Legends Hangout','language':'malayalam','type':'series'}]
+  verified={'id':'tmdb:320606','type':'series','name':'Patriot Legends Hangout','poster':'https://img.example/p.jpg'}
+  with patch.object(update.alternate,'tmdb',return_value=verified) as lookup:
+   update.apply_verified_overrides(events)
+  self.assertEqual(events[0]['_verifiedMetadata'],verified)
+  lookup.assert_called_once()
 
 if __name__=='__main__':unittest.main()
