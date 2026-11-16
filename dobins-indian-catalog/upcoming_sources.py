@@ -434,7 +434,7 @@ def _simply_mollywood(soup, source_name, source_url, today, langs, norm):
         title = before_date
         for platform in sorted(PLATFORMS, key=len, reverse=True):
             title = re.sub(re.escape(platform), " ", title, flags=re.I)
-        title = re.sub(r"\b(?:web\s+series|series|season\s+\d+|movie|film)\b", " ", title, flags=re.I)
+        title = re.sub(r"\b(?:web\s+series|series|season\s+\d+)\b", " ", title, flags=re.I)
         title = re.sub(r"\s+", " ", title).strip(" ·|–-")
         for language in LANG_NAMES:
             title = re.sub(r"\b" + re.escape(language) + r"\b", " ", title, flags=re.I)
