@@ -126,6 +126,6 @@ class CatalogTests(unittest.TestCase):
   with patch.object(update.alternate,'tmdb',return_value=verified) as lookup:
    update.apply_verified_overrides(events)
   self.assertEqual(events[0]['_verifiedMetadata'],verified)
-  lookup.assert_called_once()
+  lookup.assert_called_once_with(events[0],{'tmdbId':320606},update.norm)
 
 if __name__=='__main__':unittest.main()
