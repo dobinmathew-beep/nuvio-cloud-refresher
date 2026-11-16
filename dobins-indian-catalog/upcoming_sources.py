@@ -198,7 +198,7 @@ def _ottasia(soup, source_name, source_url, today, langs, norm):
         # OTTASIA now writes dates as "from Wed, Nov 18" (weekday before
         # month/day), while older snapshots used "from November 18, 2026".
         # The weekday is descriptive; strip it before parsing the actual date.
-        day_text = re.sub(r'^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\\s+', '', day_text, flags=re.I)
+        day_text = re.sub(r'^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s+', '', day_text, flags=re.I)
         day = _date_with_current_year(day_text, today)
         if not day or day < today:
             continue
