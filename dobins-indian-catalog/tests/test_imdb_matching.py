@@ -73,5 +73,12 @@ class ImdbMatchingTests(unittest.TestCase):
             {"_updatedAt": (now - timedelta(hours=3)).isoformat()}, now))
         self.assertFalse(update.candidate_cache_fresh({}, now))
 
+    def test_original_language_is_checked_before_catalog_assignment(self):
+        event = {"language": "telugu"}
+        self.assertTrue(update.original_language_matches(event, {"original_language": "te"}))
+        self.assertTrue(update.original_language_matches(event, {"original_language": "telugu"}))
+        self.assertFalse(update.original_language_matches(event, {"original_language": "en"}))
+        self.assertTrue(update.original_language_matches(event, {}))
+
 if __name__ == "__main__":
     unittest.main()
