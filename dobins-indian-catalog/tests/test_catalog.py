@@ -134,6 +134,7 @@ class CatalogTests(unittest.TestCase):
   html='''<h2>What's New on OTT Platforms This Week</h2><table>
   <tr><th>Movie/Show/Sports</th><th>Platform</th><th>Release Date</th><th>Language</th><th>Genre</th></tr>
   <tr><td>Bigg Boss Season 8</td><td>JioHotstar</td><td>Nov 14-Nov 20, 2026</td><td>Malayalam</td><td>Reality TV</td></tr>
+  <tr><td>Premier League</td><td>JioHotstar</td><td>Nov 20, 2026</td><td>Malayalam Commentary</td><td>Sports</td></tr>
   <tr><td>Sample Malayalam Film</td><td>Netflix</td><td>Nov 20, 2026</td><td>Malayalam</td><td>Drama</td></tr>
   <tr><td>Sample Tamil Series Season 2</td><td>Prime Video</td><td>Nov 21, 2026</td><td>Tamil</td><td>Drama</td></tr>
   </table>'''
