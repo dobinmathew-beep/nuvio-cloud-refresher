@@ -170,5 +170,22 @@ class UpcomingSourceTests(unittest.TestCase):
         self.assertEqual(rows[0]["type"], "series")
         self.assertEqual(rows[0]["platforms"], ["Netflix"])
         self.assertFalse(rows[0]["confirmed"])
-\nif __name__ == "__main__":
+\n
+    def test_ottclock_confirmed_upcoming_feed_parses_compact_cards(self):
+        html = """<a href="/movie/example">Movie 20 Nov Netflix Example Film Movie · Hindi</a>
+        <a href="/series/sample">New 21 Nov Prime Video Sample Series Series · Malayalam</a>
+        <a href="/movie/tba">Movie TBA Prime Video Awarapan 2 Movie · Hindi</a>
+        <a href="/movie/dub">Movie 22 Nov Netflix Dubbed Movie Movie · Tamil, Hindi</a>"""
+        rows = upcoming_sources._ottclock(
+            BeautifulSoup(html, "html.parser"), "OTTClock confirmed upcoming calendar",
+            "https://ottclock.com/upcoming-ott-releases/", "2026-11-17",
+            {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
+            lambda value: value.lower().replace(" ", ""),
+        )
+        self.assertEqual({x["name"] for x in rows}, {"Example Film", "Sample Series"})
+        self.assertEqual({x["type"] for x in rows}, {"movie", "series"})
+        self.assertEqual({x["language"] for x in rows}, {"hindi", "malayalam"})
+        self.assertTrue(all(x["confirmed"] for x in rows))
+
+if __name__ == "__main__":
     unittest.main()
