@@ -59,5 +59,10 @@ class ImdbMatchingTests(unittest.TestCase):
             "ottDate": "2026-11-13"
         }))
 
+    def test_imdb_id_filter_accepts_real_title_ids(self):
+        self.assertTrue(update.is_imdb_id("tt1234567"))
+        self.assertFalse(update.is_imdb_id("tmdb:123"))
+        self.assertFalse(update.is_imdb_id("tt-not-an-id"))
+
 if __name__ == "__main__":
     unittest.main()
