@@ -36,6 +36,12 @@ def tmdb(e,get,norm):
   for x in value if isinstance(value,list) else [value]:
    if isinstance(x,dict) and x.get('@type')==expected:obj=x;break
  if not obj or ratio(norm(plain(e['name'])),norm(obj.get('name','')))<97:return None
+ language_codes={'malayalam':'ml','tamil':'ta','telugu':'te','hindi':'hi'}
+ original_language=next((x.get_text(' ',strip=True).replace('Original Language','').strip().lower() for x in soup.select('p') if x.get_text(' ',strip=True).startswith('Original Language')),None)
+ if original_language:
+  expected=language_codes.get(e['language'],e['language'])
+  if original_language not in (expected,e['language']):return None
+  original_language=expected
  canonical=urlparse(obj.get('url',''));category='movie' if typ=='movie' else 'tv'
  if canonical.hostname not in ('www.themoviedb.org','themoviedb.org') or not re.fullmatch('/'+category+'/'+str(tid)+r'(?:-[^/]*)?/?',canonical.path):return None
  date=next((x.get('startDate','') for x in obj.get('releasedEvent',[]) if isinstance(x,dict)),obj.get('startDate') or obj.get('datePublished',''))
@@ -48,7 +54,7 @@ def tmdb(e,get,norm):
   except Exception:details={}
  images=[a.get('content','').replace('media.themoviedb.org','image.tmdb.org') for a in soup.select('meta[property="og:image"]')]
  poster=(obj.get('image') or row.get('posterUrl') or '').replace('/w500/','/w780/')
- return {'id':mid,'type':typ,'name':obj['name'],'poster':poster,'background':images[1] if len(images)>1 else None,'description':obj.get('description') or details.get('overview',''),'genres':obj.get('genre',details.get('genres',[])),'releaseInfo':date[:4] or str(details.get('releaseDate') or '')[:4],'cast':[x['name'] for x in details.get('cast',[]) if x.get('name')],'director':[details['director']] if details.get('director') else [],'runtime':str(details.get('runtime',''))+' min' if details.get('runtime') else None,'tmdb_id':int(tid),'imdb_id':imdb,'metadataSource':url}
+ return {'id':mid,'type':typ,'name':obj['name'],'poster':poster,'background':images[1] if len(images)>1 else None,'description':obj.get('description') or details.get('overview',''),'genres':obj.get('genre',details.get('genres',[])),'releaseInfo':date[:4] or str(details.get('releaseDate') or '')[:4],'cast':[x['name'] for x in details.get('cast',[]) if x.get('name')],'director':[details['director']] if details.get('director') else [],'runtime':str(details.get('runtime',''))+' min' if details.get('runtime') else None,'tmdb_id':int(tid),'imdb_id':imdb,'original_language':original_language,'metadataSource':url}
 def resolve(e,get,norm):
  for fn in [tvmaze,tmdb]:
   try:
