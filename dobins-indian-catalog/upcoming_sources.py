@@ -156,36 +156,66 @@ def _links_between_headings(soup, start_text, end_text):
 
 
 def _ottasia(soup, source_name, source_url, today, langs, norm):
-    """Parse only OTTASIA's explicitly confirmed upcoming section, never predictions."""
-    links = _links_between_headings(
-        soup, 'Upcoming OTT releases in India: confirmed dates', 'Predicted next on OTT'
-    )
+    """Parse OTTASIA's confirmed upcoming section from its title/type/date text rows."""
+    visible = soup.get_text('\n', strip=True)
+    lower = visible.lower()
+    start = lower.find('upcoming ott releases in india: confirmed dates')
+    if start < 0:
+        return []
+    end = lower.find('predicted next on ott', start)
+    section = visible[start:end if end >= 0 else len(visible)]
+    lines = [line.strip() for line in section.splitlines() if line.strip()]
+    anchors = {
+        a.get_text(' ', strip=True).lower(): a
+        for a in soup.select('a[href]')
+        if a.get_text(' ', strip=True)
+    }
+    images = [img for img in soup.select('img[alt][src]')]
     out = []
     seen = set()
-    for anchor in links:
-        title = anchor.get_text(' ', strip=True)
-        if not title or len(title) < 3:
+    for index, line in enumerate(lines):
+        kind_match = re.match(r'^(Series|Film)\s*[·|•]\s*(Malayalam|Tamil|Telugu|Hindi)\b', line, re.I)
+        if not kind_match or index == 0 or index + 1 >= len(lines):
             continue
-        node = None
-        for parent in anchor.parents:
-            if getattr(parent, 'name', None) not in ('div', 'li', 'article', 'section'):
-                continue
-            text = parent.get_text(' ', strip=True)
-            has_language = re.search(r'\b(?:malayalam|tamil|telugu|hindi)\b', text, re.I)
-            has_date = re.search(r'\b(?:\d{1,2}\s+[A-Za-z]{3,9}|[A-Za-z]{3,9}\s+\d{1,2})', text)
-            has_platform = any(re.search(re.escape(p), text, re.I) for p in PLATFORMS)
-            if has_language and has_date and has_platform:
-                node = parent
-                break
-        if not node:
+        title = lines[index - 1]
+        if title.lower().startswith('image:'):
+            title = title.split(':', 1)[-1].strip()
+        if not title or len(title) > 140:
             continue
-        marker = (title.lower(), node.get_text(' ', strip=True)[:220])
-        if marker in seen:
+        date_line = lines[index + 1]
+        date_match = re.search(
+            r'\b(?:from|on)\s+((?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s+)?([A-Za-z]{3,9}\s+\d{1,2},?\s+20\d{2}|[A-Za-z]{3,9}\s+\d{1,2})',
+            date_line, re.I
+        )
+        if not date_match:
             continue
-        seen.add(marker)
-        out.extend(_record(node, source_name, source_url, today, langs, norm, trusted_context=True))
+        day_text = ((date_match.group(1) or '') + date_match.group(2)).strip()
+        day = _date_with_current_year(day_text, today)
+        if not day or day < today:
+            continue
+        language = kind_match.group(2).lower()
+        if language not in langs:
+            continue
+        key = (language, norm(title))
+        if key in seen:
+            continue
+        seen.add(key)
+        anchor = anchors.get(title.lower())
+        href = anchor.get('href') if anchor else None
+        image = next((img for img in images if title.lower() in img.get('alt', '').lower()), None)
+        platforms = [p for p in PLATFORMS if re.search(re.escape(p), date_line, re.I)]
+        out.append({
+            'name': title, 'language': language,
+            'type': 'series' if kind_match.group(1).lower() == 'series' else 'movie',
+            'ottDate': day, 'platforms': list(dict.fromkeys(platforms)),
+            'poster': image.get('src') if image else None, 'year': None,
+            'source': source_url, 'sources': [source_url],
+            'detail': urljoin(source_url, href) if href else None,
+            'confirmed': True, 'releaseKind': 'digital',
+            'releaseDateBasis': 'OTTASIA confirmed upcoming calendar',
+            'sourceRecord': {'title': title, 'releaseDate': day, 'source': source_url}
+        })
     return out
-
 
 def _new_indian_movies(soup, source_name, source_url, today, langs, norm):
     """Parse dated OTT cards from New Indian Movies' 'New on OTT this week' rail."""
