@@ -349,7 +349,10 @@ def build():
   if attempts>=budget:continue
   work.append((key,e));attempts+=1
  def resolve(pair):
-  key,e=pair;existing=matches.get(key,{}).get('id') or e.get('_verifiedImdbId');mk=alternate.key(e['type'],existing or '');c=metas.get(mk) or ({'id':existing,'name':e.get('_verifiedImdbName',e['name']),'type':e['type']} if re.fullmatch(r'tt\d+',str(existing or '')) else None) or select_candidate(e,pool) or e.get('_verifiedMetadata') or suggestion(e)
+  key,e=pair;existing=matches.get(key,{}).get('id') or e.get('_verifiedImdbId');mk=alternate.key(e['type'],existing or '')
+  c=metas.get(mk) or ({'id':existing,'name':e.get('_verifiedImdbName',e['name']),'type':e['type']} if is_imdb_id(existing) else None) or select_candidate(e,pool) or e.get('_verifiedMetadata')
+  suggested_candidate=None
+  if not c:suggested_candidate=suggestion(e);c=suggested_candidate
   m=e.get('_verifiedMetadata') if c and e.get('_verifiedMetadata',{}).get('id')==c['id'] else None
   if c:
    mid=c['id'];previous=metas.get(alternate.key(e['type'],mid));checked=previous.get('_metadataCheckedAt') if previous else None
@@ -365,7 +368,7 @@ def build():
      fresh={**alt,**fresh,'id':alt['id'],'type':e['type'],'poster':fresh.get('poster') or alt.get('poster'),'metadataSource':alt.get('metadataSource','Verified IMDb match'),'_partial':False}
     m=fresh
    else:
-    suggested=None if norm(e.get('name',''))=='femaledog' else suggestion(e)
+    suggested=None if norm(e.get('name',''))=='femaledog' else (suggested_candidate or suggestion(e))
     if suggested:
      fresh=metadata(suggested['id'],e['type'],suggested)
      if fresh.get('_partial'):
