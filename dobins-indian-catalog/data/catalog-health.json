@@ -1,27 +1,27 @@
 {
-  "checkedAt": "2026-11-16T22:20:51.953288+00:00",
+  "checkedAt": "2026-11-16T22:24:23.497120+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
-  "state": "ok",
+  "state": "degraded",
   "checks": [
     {
       "path": "/data-health.json",
-      "state": "ok",
+      "state": "failed",
       "snapshotSources": {
         "catalogs.json": "github_raw",
         "status.json": "github_raw",
         "metadata.json": "github_raw"
       },
-      "statusTimestampMatches": true,
-      "catalogCountsMatch": true,
-      "metadataRecords": 1060,
+      "statusTimestampMatches": false,
+      "catalogCountsMatch": false,
+      "metadataRecords": 1062,
       "warning": null,
-      "error": null
+      "error": "Public service is still serving an older or fallback snapshot."
     },
     {
       "path": "/meta/* (Malayalam catalog audit)",
       "state": "ok",
-      "checked": 134,
-      "passed": 134,
+      "checked": 136,
+      "passed": 136,
       "failed": 0,
       "missingOriginalLanguageField": 109
     },
@@ -44,8 +44,8 @@
       "language": "ml",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
-      "localPublishedCount": 69,
-      "localUniqueIdCount": 69,
+      "localPublishedCount": 70,
+      "localUniqueIdCount": 70,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
@@ -58,7 +58,9 @@
         19
       ],
       "endpointPageSize": 50,
-      "missingIds": [],
+      "missingIds": [
+        "tmdb:1813865"
+      ],
       "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt27512908",
@@ -71,7 +73,7 @@
         "releaseDate": "2026-11-13"
       },
       "latestEntryMatches": true,
-      "state": "ok",
+      "state": "public_snapshot_count_mismatch",
       "check": "ok"
     },
     {
@@ -79,8 +81,8 @@
       "language": "ml",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ml_series.json",
-      "localPublishedCount": 65,
-      "localUniqueIdCount": 65,
+      "localPublishedCount": 66,
+      "localUniqueIdCount": 66,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
@@ -93,7 +95,9 @@
         15
       ],
       "endpointPageSize": 50,
-      "missingIds": [],
+      "missingIds": [
+        "tmdb:320606"
+      ],
       "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt8537520",
@@ -106,7 +110,7 @@
         "releaseDate": "2026-11-16T21:30:00+00:00"
       },
       "latestEntryMatches": true,
-      "state": "ok",
+      "state": "public_snapshot_count_mismatch",
       "check": "ok"
     },
     {
@@ -329,8 +333,8 @@
   ],
   "malayalamMetadataAudit": {
     "state": "ok",
-    "checked": 134,
-    "passed": 134,
+    "checked": 136,
+    "passed": 136,
     "failed": 0,
     "missingOriginalLanguageField": 109,
     "failures": []
@@ -338,8 +342,8 @@
   "catalogSummary": {
     "checked": 8,
     "failed": 0,
-    "possibleTruncationOrLag": 0,
-    "countMismatches": 0,
+    "possibleTruncationOrLag": 2,
+    "countMismatches": 2,
     "firstPageSize50": [
       "dobins_ml_movie",
       "dobins_ml_series",
