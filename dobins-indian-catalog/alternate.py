@@ -37,7 +37,7 @@ def tmdb(e,get,norm):
    if isinstance(x,dict) and x.get('@type')==expected:obj=x;break
  if not obj or ratio(norm(plain(e['name'])),norm(obj.get('name','')))<97:return None
  language_codes={'malayalam':'ml','tamil':'ta','telugu':'te','hindi':'hi'}
- original_language=next((x.get_text(' ',strip=True).replace('Original Language','').strip().lower() for x in soup.select('p') if x.get_text(' ',strip=True).startswith('Original Language')),None)
+ original_language=next((x.get_text(' ',strip=True).replace('Original Language','').strip().lower().lstrip(': -') for x in soup.select('p') if x.get_text(' ',strip=True).startswith('Original Language')),None)
  if original_language:
   expected=language_codes.get(e['language'],e['language'])
   if original_language not in (expected,e['language']):return None
