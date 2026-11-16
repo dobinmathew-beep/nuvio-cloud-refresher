@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-11-16T21:13:53.814270+00:00",
+  "checkedAt": "2026-11-16T21:17:25.236367+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
-  "state": "ok",
+  "state": "degraded",
   "checks": [
     {
       "path": "/manifest.json",
@@ -22,7 +22,7 @@
       "language": "ml",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
-      "localPublishedCount": 68,
+      "localPublishedCount": 69,
       "endpointReturnedCount": 68,
       "endpointPageCounts": [
         50,
@@ -40,7 +40,8 @@
         "releaseDate": "2026-11-13"
       },
       "latestEntryMatches": true,
-      "state": "ok",
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 1,
       "check": "ok"
     },
     {
@@ -74,7 +75,7 @@
       "language": "ta",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ta_movie.json",
-      "localPublishedCount": 61,
+      "localPublishedCount": 67,
       "endpointReturnedCount": 61,
       "endpointPageCounts": [
         50,
@@ -92,7 +93,8 @@
         "releaseDate": "2026-11-20"
       },
       "latestEntryMatches": true,
-      "state": "ok",
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 6,
       "check": "ok"
     },
     {
@@ -100,7 +102,7 @@
       "language": "ta",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ta_series.json",
-      "localPublishedCount": 108,
+      "localPublishedCount": 110,
       "endpointReturnedCount": 108,
       "endpointPageCounts": [
         50,
@@ -119,7 +121,8 @@
         "releaseDate": "2026-11-18"
       },
       "latestEntryMatches": true,
-      "state": "ok",
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 2,
       "check": "ok"
     },
     {
@@ -127,7 +130,7 @@
       "language": "te",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_te_movie.json",
-      "localPublishedCount": 68,
+      "localPublishedCount": 73,
       "endpointReturnedCount": 68,
       "endpointPageCounts": [
         50,
@@ -145,7 +148,8 @@
         "releaseDate": "2026-11-20"
       },
       "latestEntryMatches": true,
-      "state": "ok",
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 5,
       "check": "ok"
     },
     {
@@ -180,7 +184,7 @@
       "language": "hi",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
-      "localPublishedCount": 76,
+      "localPublishedCount": 80,
       "endpointReturnedCount": 76,
       "endpointPageCounts": [
         50,
@@ -198,7 +202,8 @@
         "releaseDate": "2026-11-20"
       },
       "latestEntryMatches": true,
-      "state": "ok",
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 4,
       "check": "ok"
     },
     {
@@ -206,7 +211,7 @@
       "language": "hi",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
-      "localPublishedCount": 343,
+      "localPublishedCount": 347,
       "endpointReturnedCount": 343,
       "endpointPageCounts": [
         50,
@@ -229,15 +234,16 @@
         "releaseDate": "2026-11-16T00:00:00+00:00"
       },
       "latestEntryMatches": true,
-      "state": "ok",
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 4,
       "check": "ok"
     }
   ],
   "catalogSummary": {
     "checked": 8,
     "failed": 0,
-    "possibleTruncationOrLag": 0,
-    "countMismatches": 0,
+    "possibleTruncationOrLag": 6,
+    "countMismatches": 6,
     "firstPageSize50": [
       "dobins_ml_movie",
       "dobins_ml_series",

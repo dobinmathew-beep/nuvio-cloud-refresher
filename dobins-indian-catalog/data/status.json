@@ -1,10 +1,11 @@
 {
   "name": "Dobins Indian Catalog",
-  "policy": "confirmed-digital-imdb-v1",
+  "policy": "confirmed-digital-imdb-v3",
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-17T00:19:43.858318+04:00",
+  "updatedAt": "2026-11-17T01:14:31.798659+04:00",
+  "lastMatchRetryAt": "2026-11-17T01:14:31.798659+04:00",
   "lastSuccessCycle": "2026-11-17T00:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
@@ -32,13 +33,26 @@
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "failed",
       "records": 0,
-      "error": "No confirmed upcoming rows recognised"
+      "error": "Expected upcoming calendar section not found or parser returned no confirmed rows"
     },
     {
       "source": "New Indian Movies OTT calendar",
       "url": "https://newindianmovies.com/",
       "state": "live",
       "records": 7
+    },
+    {
+      "source": "Indian Movie Reviews OTT calendar",
+      "url": "https://indianmoviereviews.com/ott-releases/",
+      "state": "live",
+      "records": 10
+    },
+    {
+      "source": "OTTClock confirmed upcoming calendar",
+      "url": "https://ottclock.com/upcoming-ott-releases/",
+      "state": "no_confirmed_upcoming",
+      "records": 0,
+      "note": "Calendar section is present; no eligible future releases for the four tracked languages were found."
     },
     {
       "source": "DailyOTT upcoming dates",
@@ -160,19 +174,19 @@
     }
   ],
   "counts": {
-    "dobins_ml_movie": 68,
+    "dobins_ml_movie": 69,
     "dobins_ml_series": 65,
-    "dobins_ta_movie": 61,
-    "dobins_ta_series": 108,
-    "dobins_te_movie": 68,
+    "dobins_ta_movie": 67,
+    "dobins_ta_series": 110,
+    "dobins_te_movie": 73,
     "dobins_te_series": 114,
-    "dobins_hi_movie": 76,
-    "dobins_hi_series": 343
+    "dobins_hi_movie": 80,
+    "dobins_hi_series": 347
   },
   "catalogFreshness": {
     "dobins_ml_movie": {
-      "count": 68,
-      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
+      "count": 69,
+      "generatedAt": "2026-11-17T01:14:31.798659+04:00",
       "latestEntry": {
         "id": "tt27512908",
         "name": "The Third Murder",
@@ -182,7 +196,7 @@
     },
     "dobins_ml_series": {
       "count": 65,
-      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
+      "generatedAt": "2026-11-17T01:14:31.798659+04:00",
       "latestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
@@ -191,8 +205,8 @@
       }
     },
     "dobins_ta_movie": {
-      "count": 61,
-      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
+      "count": 67,
+      "generatedAt": "2026-11-17T01:14:31.798659+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -201,8 +215,8 @@
       }
     },
     "dobins_ta_series": {
-      "count": 108,
-      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
+      "count": 110,
+      "generatedAt": "2026-11-17T01:14:31.798659+04:00",
       "latestEntry": {
         "id": "tt50135636",
         "name": "Mr & Mrs Office",
@@ -211,8 +225,8 @@
       }
     },
     "dobins_te_movie": {
-      "count": 68,
-      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
+      "count": 73,
+      "generatedAt": "2026-11-17T01:14:31.798659+04:00",
       "latestEntry": {
         "id": "tt39309264",
         "name": "Crazy Kalyanam",
@@ -222,7 +236,7 @@
     },
     "dobins_te_series": {
       "count": 114,
-      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
+      "generatedAt": "2026-11-17T01:14:31.798659+04:00",
       "latestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
@@ -231,8 +245,8 @@
       }
     },
     "dobins_hi_movie": {
-      "count": 76,
-      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
+      "count": 80,
+      "generatedAt": "2026-11-17T01:14:31.798659+04:00",
       "latestEntry": {
         "id": "tt40855841",
         "name": "Nayyi Navelli",
@@ -241,8 +255,8 @@
       }
     },
     "dobins_hi_series": {
-      "count": 343,
-      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
+      "count": 347,
+      "generatedAt": "2026-11-17T01:14:31.798659+04:00",
       "latestEntry": {
         "id": "tt38195069",
         "name": "Tumm Se Tumm Tak",
@@ -252,30 +266,76 @@
     }
   },
   "pendingMatchesByCatalog": {
-    "dobins_ml_movie": 5,
-    "dobins_ml_series": 8,
-    "dobins_ta_movie": 9,
-    "dobins_ta_series": 15,
-    "dobins_te_movie": 16,
+    "dobins_ml_movie": 4,
+    "dobins_ml_series": 7,
+    "dobins_ta_movie": 3,
+    "dobins_ta_series": 12,
+    "dobins_te_movie": 11,
     "dobins_te_series": 10,
-    "dobins_hi_movie": 17,
-    "dobins_hi_series": 11
+    "dobins_hi_movie": 13,
+    "dobins_hi_series": 12
   },
   "checkedCandidatesByCatalog": {
     "dobins_ml_movie": 67,
     "dobins_ml_series": 75,
     "dobins_ta_movie": 69,
-    "dobins_ta_series": 125,
-    "dobins_te_movie": 79,
+    "dobins_ta_series": 128,
+    "dobins_te_movie": 80,
     "dobins_te_series": 125,
-    "dobins_hi_movie": 87,
-    "dobins_hi_series": 358
+    "dobins_hi_movie": 88,
+    "dobins_hi_series": 363
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
-  "pendingMatches": 91,
-  "checkedCandidates": 985,
-  "errors": [
-    "invalid literal for int() with base 10: 'None'"
-  ],
-  "lastAttemptAt": "2026-11-17T01:11:28.479312+04:00"
+  "pendingMatches": 72,
+  "checkedCandidates": 995,
+  "upcoming": {
+    "matchedTitles": 8,
+    "bySource": {
+      "https://newindianmovies.com/": {
+        "matchedTitles": 3,
+        "imdbIds": [
+          "tt15295490",
+          "tt50135636",
+          "tt14650074"
+        ]
+      },
+      "https://www.dailyott.in/": {
+        "matchedTitles": 3,
+        "imdbIds": [
+          "tt14650074",
+          "tt35682855",
+          "tt30003786"
+        ]
+      },
+      "https://cinebuds.com/ott-releases-this-week/": {
+        "matchedTitles": 4,
+        "imdbIds": [
+          "tt40855841",
+          "tt35682855",
+          "tt39239818",
+          "tt39309264"
+        ]
+      },
+      "https://api.tvmaze.com/schedule/web": {
+        "matchedTitles": 1,
+        "imdbIds": [
+          "tt30003786"
+        ]
+      },
+      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": {
+        "matchedTitles": 1,
+        "imdbIds": [
+          "tt30003786"
+        ]
+      },
+      "https://v3-cinemeta.strem.io/": {
+        "matchedTitles": 1,
+        "imdbIds": [
+          "tt30003786"
+        ]
+      }
+    },
+    "policy": "Only confirmed upcoming titles with a validated IMDb tt-ID are published."
+  },
+  "errors": []
 }
