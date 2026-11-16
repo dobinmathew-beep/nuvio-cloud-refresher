@@ -12,6 +12,9 @@ import re
 SOURCES = [
     ("Cinebuds upcoming calendar", "https://cinebuds.com/ott-releases-this-week/"),
     ("OTTASIA confirmed calendar", "https://ottasia.com/ott-releases-this-week?country=IN"),
+    ("Vi weekly OTT calendar", "https://www.myvi.in/blog/ott-releases-this-week"),
+    ("Vi monthly OTT calendar", "https://www.myvi.in/blog/ott-releases-this-month"),
+    ("Simply Mollywood Malayalam OTT calendar", "https://simplymollywood.com/ott"),
     ("New Indian Movies OTT calendar", "https://newindianmovies.com/"),
     ("Indian Movie Reviews OTT calendar", "https://indianmoviereviews.com/ott-releases/"),
     ("OTTClock confirmed upcoming calendar", "https://ottclock.com/upcoming-ott-releases/"),
@@ -336,6 +339,127 @@ def _new_indian_movies(soup, source_name, source_url, today, langs, norm):
     return out
 
 
+def _myvi(soup, source_name, source_url, today, langs, norm):
+    """Parse Vi's structured OTT release table.
+
+    A week-long range is an availability window, not a premiere date; only
+    a single explicit future date is eligible for the upcoming feed.
+    """
+    out = []
+    seen = set()
+    for table in soup.select("table"):
+        rows = table.select("tr")
+        if len(rows) < 2:
+            continue
+        header_cells = rows[0].find_all(["th", "td"], recursive=False)
+        headers = [re.sub(r"[^a-z]", "", x.get_text(" ", strip=True).lower()) for x in header_cells]
+        def col(*names):
+            for name in names:
+                if name in headers:
+                    return headers.index(name)
+            return None
+        title_i = col("movieshowsports", "movieshow", "title", "content")
+        platform_i = col("platform", "ottplatform")
+        date_i = col("releasedate", "date")
+        language_i = col("language", "languages", "audiolanguage")
+        genre_i = col("genre", "category")
+        if title_i is None or date_i is None or language_i is None:
+            continue
+        for row in rows[1:]:
+            cells = row.find_all(["th", "td"], recursive=False)
+            values = [x.get_text(" ", strip=True) for x in cells]
+            if max(title_i, date_i, language_i) >= len(values):
+                continue
+            raw_title = values[title_i].strip()
+            date_text = values[date_i].strip()
+            if not raw_title or re.search(r"\b(sports?|wwe|league|champions league)\b", raw_title, re.I):
+                continue
+            # A weekly availability span does not establish a new premiere.
+            if re.search(r"\b[A-Za-z]{3,9}\s+\d{1,2}\s*[-–]\s*(?:[A-Za-z]{3,9}\s+)?\d{1,2}\b", date_text):
+                continue
+            day = _date_with_current_year(date_text, today)
+            if not day or day <= today:
+                continue
+            languages = _languages(values[language_i], langs)
+            if not languages:
+                continue
+            platform_text = values[platform_i] if platform_i is not None and platform_i < len(values) else ""
+            platforms = [p for p in PLATFORMS if re.search(re.escape(p), platform_text, re.I)]
+            if not platforms:
+                continue
+            genre = values[genre_i] if genre_i is not None and genre_i < len(values) else ""
+            kind_text = raw_title + " " + genre
+            typ = "series" if SERIES.search(kind_text) or re.search(r"\b(show|reality tv|reality show)\b", genre, re.I) else "movie"
+            link = row.select_one("a[href]")
+            detail = urljoin(source_url, link.get("href")) if link else source_url
+            for language in languages:
+                key = (language, typ, norm(raw_title), day)
+                if key in seen:
+                    continue
+                seen.add(key)
+                out.append({
+                    "name": raw_title, "language": language, "type": typ,
+                    "ottDate": day, "platforms": list(dict.fromkeys(platforms)),
+                    "poster": None, "year": None, "source": source_url,
+                    "sources": [source_url], "detail": detail, "confirmed": True,
+                    "releaseKind": "digital", "releaseDateBasis": "Vi dated OTT release calendar",
+                    "sourceRecord": {"title": raw_title, "releaseDate": day, "source": source_url,
+                                     "languageText": values[language_i], "dateText": date_text}
+                })
+    return out
+
+
+def _simply_mollywood(soup, source_name, source_url, today, langs, norm):
+    """Read dated title entries from Simply Mollywood's OTT release calendar."""
+    out = []
+    seen = set()
+    date_re = re.compile(r"\b(?:\d{1,2}\s+[A-Za-z]{3,9},?\s+20\d{2}|[A-Za-z]{3,9}\s+\d{1,2},?\s+20\d{2})\b", re.I)
+    for anchor in soup.select("a[href]"):
+        raw = anchor.get_text(" ", strip=True)
+        if not raw or len(raw) > 500:
+            continue
+        date_match = date_re.search(raw)
+        if not date_match:
+            continue
+        day = _date_with_current_year(date_match.group(0), today)
+        if not day or day <= today:
+            continue
+        languages = _languages(raw, langs)
+        if not languages:
+            continue
+        before_date = raw[:date_match.start()].strip(" ·|–-")
+        platforms = [p for p in PLATFORMS if re.search(re.escape(p), before_date, re.I)]
+        if not platforms:
+            continue
+        title = before_date
+        for platform in sorted(PLATFORMS, key=len, reverse=True):
+            title = re.sub(re.escape(platform), " ", title, flags=re.I)
+        title = re.sub(r"\b(?:web\s+series|series|season\s+\d+|movie|film)\b", " ", title, flags=re.I)
+        title = re.sub(r"\s+", " ", title).strip(" ·|–-")
+        for language in LANG_NAMES:
+            title = re.sub(r"\b" + re.escape(language) + r"\b", " ", title, flags=re.I)
+        title = re.sub(r"\s+", " ", title).strip(" ·|–-")
+        if not title or len(title) > 140:
+            continue
+        typ = "series" if SERIES.search(raw) else "movie"
+        for language in languages:
+            key = (language, typ, norm(title), day)
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append({
+                "name": title, "language": language, "type": typ,
+                "ottDate": day, "platforms": list(dict.fromkeys(platforms)),
+                "poster": None, "year": None, "source": source_url,
+                "sources": [source_url], "detail": urljoin(source_url, anchor.get("href")),
+                "confirmed": True, "releaseKind": "digital",
+                "releaseDateBasis": "Simply Mollywood dated OTT release calendar",
+                "sourceRecord": {"title": title, "releaseDate": day, "source": source_url,
+                                 "calendarText": raw}
+            })
+    return out
+
+
 def _generic(soup, source_name, source_url, today, langs, norm):
     selectors = (
         "article", "tr.ott-row", "[data-release-date]", ".release-card",
@@ -505,6 +629,10 @@ def collect(get, today, langs, norm):
                 rows = _cinebuds(soup, name, url, today, langs, norm)
             elif "ottasia.com" in url:
                 rows = _ottasia(soup, name, url, today, langs, norm)
+            elif "myvi.in" in url:
+                rows = _myvi(soup, name, url, today, langs, norm)
+            elif "simplymollywood.com" in url:
+                rows = _simply_mollywood(soup, name, url, today, langs, norm)
             elif "newindianmovies.com" in url:
                 rows = _new_indian_movies(soup, name, url, today, langs, norm)
             elif "ottclock.com" in url:
@@ -518,7 +646,11 @@ def collect(get, today, langs, norm):
             # still signal markup drift and trigger a half-hour retry.
             if not rows:
                 visible = soup.get_text(' ', strip=True).lower()
-                if "ottasia.com" in url:
+                if "myvi.in" in url:
+                    section_present = "what's new on ott platforms" in visible or "ott releases this month" in visible
+                elif "simplymollywood.com" in url:
+                    section_present = "release calendar" in visible and "ott releases" in visible
+                elif "ottasia.com" in url:
                     raw_lines = soup.get_text('\n', strip=True)
                     section_start = re.search(r'upcoming\s+ott\s+releases', raw_lines, re.I)
                     section_text = raw_lines[section_start.start():] if section_start else raw_lines
