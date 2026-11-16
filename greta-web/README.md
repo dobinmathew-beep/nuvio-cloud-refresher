@@ -33,6 +33,10 @@ The feedback form opens a pre-filled public GitHub issue. Visitors review and su
 
 The catalog workflow checks every 30 minutes, performs a full catalog refresh every two hours in Asia/Muscat, and then runs `check_site.py` when `GRETA_PUBLIC_URL` is set as a repository variable. The website's maintenance date is the updater's successful `updatedAt`, never the visitor's browser time.
 
+
+The source branch's `dobins-indian-catalog/data/status.json` now records a separate `catalogFreshness` entry for each of the eight catalogs: total item count, generation timestamp and newest dated title. `catalog-health.json` records the public endpoint's paginated total, per-page counts and newest title for each catalog, so a 50-item first page is never mistaken for the full catalog.
+
+
 Health checks GET the public manifest, support page and read-only checkout status. They do not submit payment orders, charge cards, or assert that real settlements succeeded. Their timestamp and results are stored in `data/payment-health.json` for the support page. Checkout remains visibly unavailable until configured.
 
 
