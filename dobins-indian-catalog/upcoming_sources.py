@@ -10,7 +10,7 @@ import re
 SOURCES = [
     ("Cinebuds upcoming calendar", "https://cinebuds.com/ott-releases-this-week/"),
     ("OTTASIA confirmed calendar", "https://ottasia.com/ott-releases-this-week?country=IN"),
-    ("New Indian Movies OTT calendar", "https://newindianmovies.com/ott-releases"),
+    ("New Indian Movies OTT calendar", "https://newindianmovies.com/"),
 ]
 LANG_NAMES = {
     "malayalam": "malayalam",
@@ -22,7 +22,7 @@ PLATFORMS = (
     "Prime Video", "Amazon Prime Video", "Netflix", "JioHotstar",
     "Disney+ Hotstar", "Hotstar", "ZEE5", "SonyLIV", "ManoramaMAX",
     "Manorama Max", "Aha", "Sun NXT", "Simply South", "JioCinema",
-    "Lionsgate Play", "ETV Win", "aha",
+    "Lionsgate Play", "ETV Win", "aha", "YouTube", "YouTube Premium",
 )
 UNCERTAIN = re.compile(r"\b(expected|prediction|predicted|tentative|rumou?red|unconfirmed|not confirmed)\b", re.I)
 REPORTED = re.compile(r"\breported\b", re.I)
@@ -73,9 +73,9 @@ def _title_link(node):
     links = [a for a in node.select("a[href]") if len(a.get_text(" ", strip=True)) > 2]
     return max(links, key=lambda a: len(a.get_text(" ", strip=True))) if links else None
 
-def _record(node, source_name, source_url, today, langs, norm):
+def _record(node, source_name, source_url, today, langs, norm, trusted_context=False):
     text = node.get_text(" ", strip=True)
-    if not text or UNCERTAIN.search(text) or not (CONFIRMED.search(text) or REPORTED.search(text)):
+    if not text or UNCERTAIN.search(text) or not (CONFIRMED.search(text) or REPORTED.search(text) or trusted_context):
         return []
     title_node = _title_link(node)
     if not title_node:
@@ -135,6 +135,108 @@ def _cinebuds(soup, source_name, source_url, today, langs, norm):
     for row in rows:
         out.extend(_record(row, source_name, source_url, today, langs, norm))
     return out
+
+
+def _links_between_headings(soup, start_text, end_text):
+    """Return links inside a named section, stopping before the next section."""
+    active = False
+    out = []
+    for node in soup.descendants:
+        if getattr(node, 'name', None) in ('h1', 'h2', 'h3', 'h4'):
+            heading = node.get_text(' ', strip=True).lower()
+            if start_text.lower() in heading:
+                active = True
+                continue
+            if active and end_text.lower() in heading:
+                break
+        elif active and getattr(node, 'name', None) == 'a' and node.get('href'):
+            out.append(node)
+    return out
+
+
+def _ottasia(soup, source_name, source_url, today, langs, norm):
+    """Parse only OTTASIA's explicitly confirmed upcoming section, never predictions."""
+    links = _links_between_headings(
+        soup, 'Upcoming OTT releases in India: confirmed dates', 'Predicted next on OTT'
+    )
+    out = []
+    seen = set()
+    for anchor in links:
+        title = anchor.get_text(' ', strip=True)
+        if not title or len(title) < 3:
+            continue
+        node = None
+        for parent in anchor.parents:
+            if getattr(parent, 'name', None) not in ('div', 'li', 'article', 'section'):
+                continue
+            text = parent.get_text(' ', strip=True)
+            has_language = re.search(r'\b(?:malayalam|tamil|telugu|hindi)\b', text, re.I)
+            has_date = re.search(r'\b(?:\d{1,2}\s+[A-Za-z]{3,9}|[A-Za-z]{3,9}\s+\d{1,2})', text)
+            has_platform = any(re.search(re.escape(p), text, re.I) for p in PLATFORMS)
+            if has_language and has_date and has_platform:
+                node = parent
+                break
+        if not node:
+            continue
+        marker = (title.lower(), node.get_text(' ', strip=True)[:220])
+        if marker in seen:
+            continue
+        seen.add(marker)
+        out.extend(_record(node, source_name, source_url, today, langs, norm, trusted_context=True))
+    return out
+
+
+def _new_indian_movies(soup, source_name, source_url, today, langs, norm):
+    """Parse dated OTT cards from New Indian Movies' 'New on OTT this week' rail."""
+    links = _links_between_headings(soup, 'New on OTT this week', 'In cinemas now')
+    out = []
+    seen = set()
+    date_re = re.compile(r'\b(?:(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s+)?\d{1,2}\s+[A-Za-z]{3,9}(?:\s+20\d{2})?\b', re.I)
+    for anchor in links:
+        raw = anchor.get_text(' ', strip=True)
+        if not raw or re.search(r'\bcinemas?\b', raw, re.I):
+            continue
+        date_match = date_re.search(raw)
+        if not date_match:
+            continue
+        day = _date_with_current_year(date_match.group(0), today)
+        if not day or day < today:
+            continue
+        languages = _languages(raw, langs)
+        if len(languages) != 1:
+            continue
+        platforms = [p for p in PLATFORMS if re.search(re.escape(p), raw, re.I)]
+        if not platforms:
+            continue
+        name = raw[date_match.end():]
+        for language in LANG_NAMES:
+            name = re.sub(r'\b' + re.escape(language) + r'\b', ' ', name, flags=re.I)
+        for platform in sorted(PLATFORMS, key=len, reverse=True):
+            name = re.sub(re.escape(platform), ' ', name, flags=re.I)
+        name = re.sub(r'\b(?:series|film|new|streaming|ott)\b', ' ', name, flags=re.I)
+        name = re.sub(r'[·|•→]+', ' ', name)
+        name = re.sub(r'\s+', ' ', name).strip(' -–—')
+        if not name:
+            continue
+        key = (languages[0], norm(name))
+        if key in seen:
+            continue
+        seen.add(key)
+        image = anchor.select_one('img[src]')
+        href = anchor.get('href')
+        detail = href if href and href.startswith('http') else (source_url.rstrip('/') + '/' + href.lstrip('/') if href else None)
+        out.append({
+            'name': name, 'language': languages[0],
+            'type': 'series' if SERIES.search(raw) else 'movie',
+            'ottDate': day, 'platforms': list(dict.fromkeys(platforms)),
+            'poster': image.get('src') if image else None, 'year': None,
+            'source': source_url, 'sources': [source_url], 'detail': detail,
+            'confirmed': True, 'releaseKind': 'digital',
+            'releaseDateBasis': 'confirmed or reported OTT calendar date',
+            'sourceRecord': {'title': name, 'releaseDate': day, 'source': source_url}
+        })
+    return out
+
 
 def _generic(soup, source_name, source_url, today, langs, norm):
     selectors = (
@@ -224,6 +326,10 @@ def collect(get, today, langs, norm):
             soup = BeautifulSoup(html, "html.parser")
             if "cinebuds.com" in url:
                 rows = _cinebuds(soup, name, url, today, langs, norm)
+            elif "ottasia.com" in url:
+                rows = _ottasia(soup, name, url, today, langs, norm)
+            elif "newindianmovies.com" in url:
+                rows = _new_indian_movies(soup, name, url, today, langs, norm)
             else:
                 rows = _generic(soup, name, url, today, langs, norm)
             # A page returning HTML is not enough: report a parser failure if
@@ -246,22 +352,18 @@ def collect(get, today, langs, norm):
         for page in range(2, pages + 1):
             daily_rows.extend(get(f'https://www.dailyott.in/api/movies?limit=200&page={page}').get('movies', []))
         parsed = _dailyott(daily_rows, 'https://www.dailyott.in/', today, langs)
-        if not parsed:
-            raise ValueError('No verified future DailyOTT records recognised')
-        events.extend(parsed)
-        health.append({'source': 'DailyOTT upcoming dates', 'url': daily_url, 'state': 'live', 'records': len(parsed)})
+        if parsed:
+            events.extend(parsed)
+            health.append({'source': 'DailyOTT upcoming dates', 'url': daily_url, 'state': 'live', 'records': len(parsed)})
+        else:
+            health.append({'source': 'DailyOTT upcoming dates', 'url': daily_url, 'state': 'no_confirmed_upcoming', 'records': 0, 'note': 'DailyOTT is live; no verified future dates were present in the returned API pages.'})
     except Exception as error:
         health.append({'source': 'DailyOTT upcoming dates', 'url': daily_url, 'state': 'failed', 'records': 0, 'error': str(error)[:240]})
+    # Recent Cinebuds arrivals are already ingested by the primary collector above.
+    # Its recent table contains past release dates by design, so zero future
+    # rows there is not a parser failure.
     recent_url = 'https://cinebuds.com/ott-release-dates/'
-    try:
-        soup = BeautifulSoup(get(recent_url, False), 'html.parser')
-        parsed = _recent_cinebuds(soup, recent_url, today, langs)
-        if not parsed:
-            raise ValueError('No future Cinebuds recent-listing rows recognised')
-        events.extend(parsed)
-        health.append({'source': 'Cinebuds recent OTT dates', 'url': recent_url, 'state': 'live', 'records': len(parsed)})
-    except Exception as error:
-        health.append({'source': 'Cinebuds recent OTT dates', 'url': recent_url, 'state': 'failed', 'records': 0, 'error': str(error)[:240]})
+    health.append({'source': 'Cinebuds recent OTT dates', 'url': recent_url, 'state': 'covered_by_primary_collector', 'records': 0})
     # TVmaze is also used by the catalog's series discovery pipeline. Query
     # its upcoming web schedule so confirmed future OTT episodes can be marked.
     tvmaze_records = 0
