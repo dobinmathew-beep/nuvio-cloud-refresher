@@ -34,6 +34,21 @@ def norm(s):
  s=unicodedata.normalize('NFKD',str(s)).lower().replace('&',' and ')
  s=re.sub(r'\b(?:season|s)\s*\d+\b|\((?:series|web series)\)',' ',s,flags=re.I)
  return re.sub(r'[^a-z0-9]+','',s.removeprefix('the '))
+TYPE_OVERRIDES={'balbarbarik':'series'}
+VERIFIED_IMDB_OVERRIDES={
+ 'hindi|movie|mirzapur':{'id':'tt34339725','name':'Mirzapur: The Movie'},
+ 'hindi|movie|vvaan':{'id':'tt34498564','name':'The Vvaan: Force of the Forrest'},
+ 'hindi|series|koffeewithkaran9':{'id':'tt0445883','name':'Koffee with Karan'}
+}
+def apply_verified_overrides(events):
+ for event in events:
+  event_name=norm(event['name'])
+  if event_name in TYPE_OVERRIDES:event['type']=TYPE_OVERRIDES[event_name]
+  verified=VERIFIED_IMDB_OVERRIDES.get(event['language']+'|'+event['type']+'|'+event_name)
+  if verified:
+   event['_verifiedImdbId']=verified['id'];event['_verifiedImdbName']=verified['name']
+ return events
+
 def append_legacy_series(current,legacy,today,metadata_cache=None):
  metadata_cache=metadata_cache or {}
  known_ids={str(m.get('id','')) for m in current}
@@ -253,19 +268,7 @@ def title_logo(name):
 
 def build():
  events,health=collect();series_events,series_health=series_sources.collect(get,load,save,LANGS,TODAY,NOW,norm);events.extend(series_events);health.extend(series_health);disc_events,disc_health=physical.collect(get,load,save,LANGS,TODAY,NOW,norm);events=physical.merge_events(events+disc_events,norm,TODAY);health.extend(disc_health)
- # Verified corrections for source records whose content type or canonical IMDb title is independently confirmed.
- TYPE_OVERRIDES={'balbarbarik':'series'}
- VERIFIED_IMDB_OVERRIDES={
-  'hindi|movie|mirzapur':{'id':'tt34339725','name':'Mirzapur: The Movie'},
-  'hindi|movie|vvaan':{'id':'tt34498564','name':'The Vvaan: Force of the Forrest'},
-  'hindi|series|koffeewithkaran9':{'id':'tt0445883','name':'Koffee with Karan'}
- }
- for event in events:
-  event_name=norm(event['name'])
-  if event_name in TYPE_OVERRIDES:event['type']=TYPE_OVERRIDES[event_name]
-  verified=VERIFIED_IMDB_OVERRIDES.get(event['language']+'|'+event['type']+'|'+event_name)
-  if verified:
-   event['_verifiedImdbId']=verified['id'];event['_verifiedImdbName']=verified['name']
+ events=apply_verified_overrides(events)
  pool=candidate_index();matches=load('matches.json',{});metas=load('metadata.json',{});old_catalogs=load('catalogs.json',{});unmatched=[]
  for m in metas.values():
   for field,kind in [('poster','posters'),('background','backgrounds')]:
