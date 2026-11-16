@@ -12,6 +12,13 @@ class CatalogTests(unittest.TestCase):
    instant=datetime.fromisoformat(now).replace(tzinfo=zone)
    self.assertEqual(schedule.due(instant),expected)
    self.assertEqual(update.cycle(instant),expected)
+ def test_failed_or_stale_sources_are_retried_on_the_next_half_hour_check(self):
+  self.assertTrue(schedule.needs_retry({'sources':[{'state':'failed'}]}))
+  self.assertTrue(schedule.needs_retry({'sources':[{'state':'cached'}]}))
+  self.assertTrue(schedule.needs_retry({'sources':[{'state':'partial'}]}))
+  self.assertTrue(schedule.needs_retry({'errors':['updater failed']}))
+  self.assertTrue(schedule.needs_retry({'sources':[]},{'state':'degraded','catalogSummary':{'countMismatches':1}}))
+  self.assertFalse(schedule.needs_retry({'sources':[{'state':'live'},{'state':'no_confirmed_upcoming'},{'state':'covered_by_primary_collector'}]}, {'state':'ok','catalogSummary':{'failed':0,'countMismatches':0}}))
  def test_match_rejects_wrong_kind_language_and_future_year(self):
   event={'name':'Example','language':'tamil','type':'movie','ottDate':'2026-10-30','year':'2026'}
   base={'name':'Example','language':'tamil','type':'movie','id':'tt1234567','releaseInfo':'2026'}
