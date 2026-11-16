@@ -60,7 +60,7 @@ def apply_verified_overrides(events):
    event['_verifiedImdbId']=verified['id'];event['_verifiedImdbName']=verified['name']
  return events
 
-def append_legacy_series(current,legacy,today,metadata_cache=None):
+def append_legacy_series(current,legacy,today,metadata_cache=None,require_metadata=False):
  metadata_cache=metadata_cache or {}
  known_ids={str(m.get('id','')) for m in current}
  known_names={norm(m.get('name','')) for m in current if m.get('name')}
@@ -76,6 +76,7 @@ def append_legacy_series(current,legacy,today,metadata_cache=None):
    old['logo']=BASE+'/art/logo/'+alias
    matched=metadata_cache.get(alias,{})
    if matched.get('imdbRating') not in (None,''):old['imdbRating']=matched['imdbRating']
+  if require_metadata and (not (is_imdb_id(oid) or re.fullmatch(r'tmdb:\\d+',oid)) or alternate.key(typ,oid) not in metadata_cache):continue
   if oid in DISPLAY_NAME_OVERRIDES:old['name']=DISPLAY_NAME_OVERRIDES[oid]
   if oid in IMDB_RATING_OVERRIDES:old['imdbRating']=IMDB_RATING_OVERRIDES[oid]
   if oid in known_ids:
@@ -89,6 +90,34 @@ def append_legacy_series(current,legacy,today,metadata_cache=None):
   current.append(old);known_ids.add(oid)
   if name:known_names.add(name)
  return current
+def validate_malayalam_catalogs(catalogs,metadata):
+ # Malayalam is held to an explicit identity/metadata gate: no TVmaze-only IDs,
+ # no missing metadata records, and no title/type/ID contradictions.
+ checked=0;errors=[];missing_language=0
+ for typ in ('movie','series'):
+  cid='dobins_ml_'+typ
+  for item in catalogs.get(cid,[]):
+   checked+=1;mid=str(item.get('id',''));name=str(item.get('name',''))
+   if not (is_imdb_id(mid) or re.fullmatch(r'tmdb:\\d+',mid)):
+    errors.append({'catalog':cid,'name':name,'id':mid,'reason':'Malayalam entries require an IMDb or TMDB ID'});continue
+   meta=metadata.get(alternate.key(typ,mid))
+   if not isinstance(meta,dict) or meta.get('_partial'):
+    errors.append({'catalog':cid,'name':name,'id':mid,'reason':'Complete metadata record is missing or partial'});continue
+   if meta.get('id')!=mid or meta.get('type')!=typ:
+    errors.append({'catalog':cid,'name':name,'id':mid,'reason':'Metadata ID/type mismatch'});continue
+   if not meta.get('name') or ratio(norm(name),norm(meta.get('name','')))<80:
+    errors.append({'catalog':cid,'name':name,'id':mid,'reason':'Metadata title does not match catalog title'});continue
+   artwork=meta.get('artwork') or {}
+   if not (meta.get('poster') or artwork.get('posters')):
+    errors.append({'catalog':cid,'name':name,'id':mid,'reason':'Metadata poster is missing'});continue
+   if not any(meta.get(k) for k in ('description','releaseInfo','genres','videos','seasons','cast','director')):
+    errors.append({'catalog':cid,'name':name,'id':mid,'reason':'Metadata details are empty'});continue
+   original=str(meta.get('original_language') or meta.get('originalLanguage') or '').lower()
+   if original and original not in ('ml','malayalam'):
+    errors.append({'catalog':cid,'name':name,'id':mid,'reason':'Metadata original language is '+original});continue
+   if not original:missing_language+=1
+ return {'checked':checked,'passed':checked-len(errors),'failed':len(errors),'missingOriginalLanguageField':missing_language,'policy':'IMDb-or-TMDB identity; exact ID/type; title and metadata integrity'},errors
+
 def cycle(now=NOW):
  # Use the same two-hour cycle as the lightweight schedule gate.
  from schedule import due
@@ -340,6 +369,7 @@ def build():
  for e in ordered:
   verified=e.get('_verifiedMetadata')
   if not verified or verified.get('type')!='series' or not verified.get('id'):continue
+  if e['language']=='malayalam' and not (is_imdb_id(verified['id']) or re.fullmatch(r'tmdb:\\d+',str(verified['id']))):continue
   key=e['language']+'|series|'+norm(e['name']);mid=verified['id'];mk=alternate.key('series',mid)
   metas[mk]={**metas.get(mk,{}),**{k:v for k,v in verified.items() if v is not None},'_metadataCheckedAt':NOW.isoformat(),'_partial':False}
   matches[key]={'id':mid,'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'method':verified.get('metadataSource','Verified series source')}
@@ -348,9 +378,11 @@ def build():
   key=e['language']+'|'+e['type']+'|'+norm(e['name']);cached=matches.get(key)
   if cached and alternate.key(e['type'],cached.get('id','')) in metas:
    checked=metas[alternate.key(e['type'],cached['id'])].get('_metadataCheckedAt')
-   if checked and (NOW-datetime.fromisoformat(checked)).total_seconds()<10800 and str(cached.get('id','')).startswith('tt'):continue
+   force_ml=e['language']=='malayalam' and os.environ.get('FORCE_MALAYALAM_REVALIDATION')=='true'
+   if checked and (NOW-datetime.fromisoformat(checked)).total_seconds()<10800 and str(cached.get('id','')).startswith('tt') and not force_ml:continue
   # Revisit unmatched titles after a half-hour discovery retry; a later source page may now contain their IMDb identity.
-  if os.environ.get('FORCE_MATCH_RETRY') != 'true' and cached and cached.get('alternatePolicy')==alternate.POLICY and not cached.get('id') and not e.get('_verifiedMetadata') and not e.get('_verifiedImdbId') and (NOW-datetime.fromisoformat(cached['checkedAt'])).total_seconds()<1800:continue
+  force_ml=e['language']=='malayalam' and os.environ.get('FORCE_MALAYALAM_REVALIDATION')=='true'
+  if not force_ml and os.environ.get('FORCE_MATCH_RETRY') != 'true' and cached and cached.get('alternatePolicy')==alternate.POLICY and not cached.get('id') and not e.get('_verifiedMetadata') and not e.get('_verifiedImdbId') and (NOW-datetime.fromisoformat(cached['checkedAt'])).total_seconds()<1800:continue
   if attempts>=budget:continue
   work.append((key,e));attempts+=1
  resolve_errors=[]
@@ -362,7 +394,8 @@ def build():
   m=e.get('_verifiedMetadata') if c and e.get('_verifiedMetadata',{}).get('id')==c['id'] else None
   if c:
    mid=c['id'];previous=metas.get(alternate.key(e['type'],mid));checked=previous.get('_metadataCheckedAt') if previous else None
-   if previous and checked and (NOW-datetime.fromisoformat(checked)).total_seconds()<10800:m=previous
+   force_ml=e['language']=='malayalam' and os.environ.get('FORCE_MALAYALAM_REVALIDATION')=='true'
+   if previous and checked and (NOW-datetime.fromisoformat(checked)).total_seconds()<10800 and not force_ml:m=previous
    elif not m and mid.startswith('tt'):m=metadata(mid,e['type'],c)
    if m and m.get('_partial') and previous and not previous.get('_partial'):m=previous
    if m and (m.get('type')!=e['type'] or (not (e.get('_verifiedMetadata') or e.get('_verifiedImdbId')) and ratio(norm(alternate.plain(e['name'])),norm(m.get('name','')))<85)):m=None
@@ -389,6 +422,7 @@ def build():
      fresh={**previous,**fresh,'id':alias,'type':e['type'],'poster':fresh.get('poster') or previous.get('poster'),'metadataSource':'Verified IMDb title match','_partial':False}
     else:fresh={**previous,**fresh,'id':alias,'type':e['type']}
     m=fresh
+  if m and e['language']=='malayalam' and not (is_imdb_id(m.get('id')) or re.fullmatch(r'tmdb:\\d+',str(m.get('id','')))):m=None
   if m and not original_language_matches(e,m):m=None
   if m and m.get('id') in DISPLAY_NAME_OVERRIDES:m['name']=DISPLAY_NAME_OVERRIDES[m['id']]
   if m and m.get('id') in IMDB_RATING_OVERRIDES:m['imdbRating']=IMDB_RATING_OVERRIDES[m['id']]
@@ -412,6 +446,8 @@ def build():
  catalogs={f'dobins_{LANGS[l]}_{t}':[] for l in LANGS for t in ('movie','series')};seen={k:set() for k in catalogs}
  for e in ordered:
   key=e['language']+'|'+e['type']+'|'+norm(e['name']);match=matches.get(key,{});mid=match.get('id');cid=f'dobins_{LANGS[e["language"]]}_{e["type"]}'
+  if e['language']=='malayalam' and mid and not (is_imdb_id(mid) or re.fullmatch(r'tmdb:\\d+',str(mid))):
+   unmatched.append({'name':e['name'],'language':e['language'],'type':e['type'],'ottDate':e['ottDate'],'reason':'Malayalam catalog requires a verified IMDb or TMDB ID'});continue
   if not mid or alternate.key(e['type'],mid) not in metas:
    unmatched.append({'name':e['name'],'language':e['language'],'type':e['type'],'ottDate':e['ottDate'],'reason':match.get('reason','Awaiting metadata backfill')});continue
   if mid in seen[cid]:continue
@@ -437,7 +473,7 @@ def build():
   description_label=release_label or ('Upcoming OTT release' if e['ottDate']>TODAY else 'Home release')
   catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':BASE+'/art/poster/'+aid,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"{description_label} ({display_kind}): {display_date} · {', '.join(e['platforms'])}\n\n"+(m.get('description') or e.get('description') or ''),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'releaseStatus':'upcoming' if display_date>TODAY else 'available','releaseLabel':release_label,'releaseLabelDate':label_date,'originalReleaseDate':original_release_date,'availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'ottDate':digital_date,'platforms':e['platforms'],'sources':e['sources'],'language':e['language'],'releaseDateBasis':e.get('releaseDateBasis','source release'),'latestEpisodeReleasedAt':episode_at,'hasNewEpisodes':new_episodes,'nextEpisodeReleaseAt':episode_badges.upcoming(m.get('videos',[]),NOW,m.get('seasons',[])) if e['type']=='series' else None})
  for cid,ms in catalogs.items():
-  append_legacy_series(ms,old_catalogs.get(cid,[]),TODAY,metas)
+  append_legacy_series(ms,old_catalogs.get(cid,[]),TODAY,metas,require_metadata=cid.startswith('dobins_ml_'))
   if cid.endswith('_series'):
    for item in ms:
     item['nextEpisodeReleaseAt']=episode_badges.upcoming(metas.get(alternate.key('series',item['id']),{}).get('videos',[]),NOW,metas.get(alternate.key('series',item['id']),{}).get('seasons',[]))
@@ -445,6 +481,11 @@ def build():
     if item['latestEpisodeReleasedAt'] and item['latestEpisodeReleasedAt'][:10]>(item.get('releaseDate') or ''):item['releaseDate']=item['latestEpisodeReleasedAt'][:10]
   ms.sort(key=lambda m:(bool(m.get('hasNewEpisodes')),catalog_sort_date(m),m['name']),reverse=True)
   if not ms and old_catalogs.get(cid):catalogs[cid]=old_catalogs[cid]
+ malayalam_audit,malayalam_errors=validate_malayalam_catalogs(catalogs,metas)
+ if malayalam_errors:
+  save('metadata.json',metas);save('unmatched.json',unmatched)
+  print('MALAYALAM METADATA AUDIT FAILED',json.dumps(malayalam_errors[:20]),flush=True)
+  raise RuntimeError(f'Malayalam metadata audit failed: {len(malayalam_errors)} of {malayalam_audit[\'checked\']} catalog entries failed; last-good catalogs retained')
  if any(not catalogs[c] for c in catalogs):
   save('metadata.json',metas);save('unmatched.json',unmatched);raise RuntimeError('An empty catalog would be published; retaining last-good catalogs while metadata backfills')
  save('metadata.json',metas);save('catalogs.json',catalogs);save('unmatched.json',unmatched)
@@ -478,7 +519,7 @@ def build():
  for cid,items in catalogs.items():
   latest=max(items,key=lambda x:str(x.get('latestEpisodeReleasedAt') or x.get('ottDate') or x.get('releaseDate') or ''),default=None)
   freshness[cid]={'count':len(items),'generatedAt':NOW.isoformat(),'latestEntry':None if not latest else {'id':latest.get('id'),'name':latest.get('name'),'releaseDate':latest.get('latestEpisodeReleasedAt') or latest.get('ottDate') or latest.get('releaseDate'),'hasNewEpisodes':latest.get('hasNewEpisodes',False)}}
- status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastMatchRetryAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'upcoming':{'matchedTitles':len(upcoming_rows),'bySource':upcoming_source_summary,'policy':'Only confirmed upcoming titles with a validated IMDb tt-ID are published.'},'errors':resolve_errors}
+ status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastMatchRetryAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'malayalamMetadataAudit':malayalam_audit,'upcoming':{'matchedTitles':len(upcoming_rows),'bySource':upcoming_source_summary,'policy':'Only confirmed upcoming titles with a validated IMDb tt-ID are published.'},'errors':resolve_errors}
  save('status.json',status);print('SUCCESS',json.dumps(status),flush=True)
 if __name__=='__main__':
  try:build()
