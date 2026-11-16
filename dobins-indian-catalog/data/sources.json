@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-16T04:53:36.906165+04:00",
+    "checkedAt": "2026-11-16T11:47:25.965214+04:00",
     "records": [
       {
         "_id": "6af9168d55b49077c85d8819",
@@ -110,9 +110,9 @@
           "fetchedAt": "2026-11-14T14:06:13.743Z"
         },
         "tmdbId": 1543469,
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
-        "trendingRankedDateIST": "2026-11-15",
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
+        "trendingRankedDateIST": "2026-11-16",
         "verified": true
       },
       {
@@ -185,11 +185,11 @@
           "fetchedAt": "2026-11-13T10:28:10.198Z"
         },
         "tmdbId": 1050981,
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
-        "trendingRankedDateIST": "2026-11-15",
         "tmdbRating": 65,
         "tmdbVotes": 12,
+        "trendingRank": 8,
+        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
+        "trendingRankedDateIST": "2026-11-16",
         "verified": true
       },
       {
@@ -288,9 +288,6 @@
           "fetchedAt": "2026-11-13T05:09:16.275Z"
         },
         "tmdbId": 1493572,
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
-        "trendingRankedDateIST": "2026-11-15",
         "verified": true
       },
       {
@@ -366,6 +363,9 @@
           "fetchedAt": "2026-11-13T03:49:09.847Z"
         },
         "tmdbId": 434775,
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
+        "trendingRankedDateIST": "2026-11-16",
         "verified": true
       },
       {
@@ -440,9 +440,9 @@
           "fetchedAt": "2026-11-14T07:58:38.175Z"
         },
         "tmdbId": 1013057,
-        "trendingRank": 7,
-        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
-        "trendingRankedDateIST": "2026-11-15",
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
+        "trendingRankedDateIST": "2026-11-16",
         "verified": true
       },
       {
@@ -511,9 +511,6 @@
           "fetchedAt": "2026-11-13T12:41:01.465Z"
         },
         "tmdbId": 1431738,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
-        "trendingRankedDateIST": "2026-11-15",
         "verified": true
       },
       {
@@ -588,9 +585,9 @@
           "fetchedAt": "2026-11-13T10:13:20.584Z"
         },
         "tmdbId": 1389379,
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
-        "trendingRankedDateIST": "2026-11-15",
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
+        "trendingRankedDateIST": "2026-11-16",
         "verified": true
       },
       {
@@ -782,9 +779,6 @@
           "fetchedAt": "2026-11-14T07:08:22.981Z"
         },
         "tmdbId": 809787,
-        "trendingRank": 9,
-        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
-        "trendingRankedDateIST": "2026-11-15",
         "verified": true
       },
       {
@@ -1010,6 +1004,9 @@
         "updatedAt": "2026-11-12T02:18:54.203Z",
         "instagramPostedAt": "2026-11-12T02:20:37Z",
         "votes": 0,
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
+        "trendingRankedDateIST": "2026-11-16",
         "verified": true
       },
       {
@@ -1152,9 +1149,6 @@
           "fetchedAt": "2026-11-12T03:59:46.128Z"
         },
         "tmdbId": 1733518,
-        "trendingRank": 6,
-        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
-        "trendingRankedDateIST": "2026-11-15",
         "verified": true
       },
       {
@@ -1231,6 +1225,9 @@
         },
         "tmdbId": 1234139,
         "votes": 1,
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
+        "trendingRankedDateIST": "2026-11-16",
         "verified": true
       },
       {
@@ -1276,9 +1273,9 @@
           "fetchedAt": "2026-11-05T11:13:10.822Z"
         },
         "tmdbId": 1755818,
-        "trendingRank": 8,
-        "trendingRankedAt": "2026-11-15T02:19:22.740Z",
-        "trendingRankedDateIST": "2026-11-15",
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
+        "trendingRankedDateIST": "2026-11-16",
         "verified": true
       },
       {
@@ -30671,7 +30668,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-16T04:53:36.906165+04:00",
+    "checkedAt": "2026-11-16T11:47:25.965214+04:00",
     "records": [
       {
         "name": "Bandra",
