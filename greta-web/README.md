@@ -31,7 +31,10 @@ The feedback form opens a pre-filled public GitHub issue. Visitors review and su
 
 ## Scheduled health
 
-The catalog workflow checks every 30 minutes, performs a full catalog refresh every two hours in Asia/Muscat, and then runs `check_site.py` when `GRETA_PUBLIC_URL` is set as a repository variable. The website's maintenance date is the updater's successful `updatedAt`, never the visitor's browser time.
+The catalog workflow checks every 30 minutes, performs a full catalog refresh every two hours in Asia/Muscat, and then runs `check_site.py` when `GRETA_PUBLIC_URL` is set as a repository variable.
+
+A failed, partial or cached upstream source, or a mismatch between a published catalog and its public endpoint, marks the next 30-minute check as retry-eligible. Healthy sources return to the regular two-hour refresh cadence. A source with no confirmed upcoming dates is reported as informational rather than as a parser failure.
+ The website's maintenance date is the updater's successful `updatedAt`, never the visitor's browser time.
 
 
 The source branch's `dobins-indian-catalog/data/status.json` now records a separate `catalogFreshness` entry for each of the eight catalogs: total item count, generation timestamp and newest dated title. `catalog-health.json` records the public endpoint's paginated total, per-page counts and newest title for each catalog, so a 50-item first page is never mistaken for the full catalog.
