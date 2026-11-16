@@ -1,8 +1,29 @@
 {
-  "checkedAt": "2026-11-16T22:01:38.961962+00:00",
+  "checkedAt": "2026-11-16T22:04:03.912126+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "degraded",
   "checks": [
+    {
+      "path": "/data-health.json",
+      "state": "failed",
+      "snapshotSources": {
+        "catalogs.json": "github_raw",
+        "status.json": "github_raw",
+        "metadata.json": "github_raw"
+      },
+      "statusTimestampMatches": false,
+      "catalogCountsMatch": true,
+      "metadataRecords": 1060,
+      "error": "Public service is using stale/fallback snapshots or a different catalog revision."
+    },
+    {
+      "path": "/meta/* (Malayalam catalog audit)",
+      "state": "ok",
+      "checked": 134,
+      "passed": 134,
+      "failed": 0,
+      "missingOriginalLanguageField": 134
+    },
     {
       "path": "/manifest.json",
       "state": "ok"
@@ -23,12 +44,21 @@
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
       "localPublishedCount": 69,
-      "endpointReturnedCount": 69,
+      "localUniqueIdCount": 69,
+      "localDuplicateIdCount": 0,
+      "localInvalidIdCount": 0,
+      "localDuplicateIds": [],
+      "endpointRawCount": 69,
+      "endpointUniqueIdCount": 69,
+      "endpointDuplicateIdCount": 0,
+      "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         19
       ],
       "endpointPageSize": 50,
+      "missingIds": [],
+      "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt27512908",
         "name": "The Third Murder",
@@ -49,24 +79,47 @@
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ml_series.json",
       "localPublishedCount": 65,
-      "endpointReturnedCount": 65,
+      "localUniqueIdCount": 65,
+      "localDuplicateIdCount": 0,
+      "localInvalidIdCount": 0,
+      "localDuplicateIds": [],
+      "endpointRawCount": 65,
+      "endpointUniqueIdCount": 65,
+      "endpointDuplicateIdCount": 0,
+      "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         15
       ],
       "endpointPageSize": 50,
+      "missingIds": [
+        "tmdb:101181",
+        "tmdb:277322",
+        "tmdb:277325",
+        "tmdb:277334",
+        "tmdb:282063",
+        "tmdb:73704"
+      ],
+      "extraIds": [
+        "tt11252864",
+        "tt18313602",
+        "tt18313858",
+        "tt39222447",
+        "tt6650508",
+        "tt9315194"
+      ],
       "endpointLatestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
-        "releaseDate": "2026-11-15T21:30:00+00:00"
+        "releaseDate": "2026-11-16T21:30:00+00:00"
       },
       "localLatestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
         "releaseDate": "2026-11-16T21:30:00+00:00"
       },
-      "latestEntryMatches": false,
-      "state": "latest_entry_mismatch",
+      "latestEntryMatches": true,
+      "state": "catalog_id_set_mismatch",
       "check": "ok"
     },
     {
@@ -75,12 +128,21 @@
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ta_movie.json",
       "localPublishedCount": 67,
-      "endpointReturnedCount": 67,
+      "localUniqueIdCount": 67,
+      "localDuplicateIdCount": 0,
+      "localInvalidIdCount": 0,
+      "localDuplicateIds": [],
+      "endpointRawCount": 67,
+      "endpointUniqueIdCount": 67,
+      "endpointDuplicateIdCount": 0,
+      "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         17
       ],
       "endpointPageSize": 50,
+      "missingIds": [],
+      "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -101,13 +163,22 @@
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ta_series.json",
       "localPublishedCount": 110,
-      "endpointReturnedCount": 110,
+      "localUniqueIdCount": 110,
+      "localDuplicateIdCount": 0,
+      "localInvalidIdCount": 0,
+      "localDuplicateIds": [],
+      "endpointRawCount": 110,
+      "endpointUniqueIdCount": 110,
+      "endpointDuplicateIdCount": 0,
+      "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
         10
       ],
       "endpointPageSize": 50,
+      "missingIds": [],
+      "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt50135636",
         "name": "Mr & Mrs Office",
@@ -128,12 +199,21 @@
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_te_movie.json",
       "localPublishedCount": 73,
-      "endpointReturnedCount": 73,
+      "localUniqueIdCount": 73,
+      "localDuplicateIdCount": 0,
+      "localInvalidIdCount": 0,
+      "localDuplicateIds": [],
+      "endpointRawCount": 73,
+      "endpointUniqueIdCount": 73,
+      "endpointDuplicateIdCount": 0,
+      "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         23
       ],
       "endpointPageSize": 50,
+      "missingIds": [],
+      "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt39309264",
         "name": "Crazy Kalyanam",
@@ -154,25 +234,34 @@
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_te_series.json",
       "localPublishedCount": 114,
-      "endpointReturnedCount": 114,
+      "localUniqueIdCount": 114,
+      "localDuplicateIdCount": 0,
+      "localInvalidIdCount": 0,
+      "localDuplicateIds": [],
+      "endpointRawCount": 114,
+      "endpointUniqueIdCount": 114,
+      "endpointDuplicateIdCount": 0,
+      "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
         14
       ],
       "endpointPageSize": 50,
+      "missingIds": [],
+      "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
-        "releaseDate": "2026-11-15T21:30:00+00:00"
+        "releaseDate": "2026-11-16T21:30:00+00:00"
       },
       "localLatestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
         "releaseDate": "2026-11-16T21:30:00+00:00"
       },
-      "latestEntryMatches": false,
-      "state": "latest_entry_mismatch",
+      "latestEntryMatches": true,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -181,12 +270,21 @@
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
       "localPublishedCount": 80,
-      "endpointReturnedCount": 80,
+      "localUniqueIdCount": 80,
+      "localDuplicateIdCount": 0,
+      "localInvalidIdCount": 0,
+      "localDuplicateIds": [],
+      "endpointRawCount": 80,
+      "endpointUniqueIdCount": 80,
+      "endpointDuplicateIdCount": 0,
+      "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         30
       ],
       "endpointPageSize": 50,
+      "missingIds": [],
+      "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt40855841",
         "name": "Nayyi Navelli",
@@ -207,7 +305,14 @@
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
       "localPublishedCount": 347,
-      "endpointReturnedCount": 347,
+      "localUniqueIdCount": 347,
+      "localDuplicateIdCount": 0,
+      "localInvalidIdCount": 0,
+      "localDuplicateIds": [],
+      "endpointRawCount": 347,
+      "endpointUniqueIdCount": 347,
+      "endpointDuplicateIdCount": 0,
+      "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
@@ -218,6 +323,8 @@
         47
       ],
       "endpointPageSize": 50,
+      "missingIds": [],
+      "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt38195069",
         "name": "Tumm Se Tumm Tak",
@@ -233,11 +340,19 @@
       "check": "ok"
     }
   ],
+  "malayalamMetadataAudit": {
+    "state": "ok",
+    "checked": 134,
+    "passed": 134,
+    "failed": 0,
+    "missingOriginalLanguageField": 134,
+    "failures": []
+  },
   "catalogSummary": {
     "checked": 8,
     "failed": 0,
     "possibleTruncationOrLag": 0,
-    "countMismatches": 2,
+    "countMismatches": 1,
     "firstPageSize50": [
       "dobins_ml_movie",
       "dobins_ml_series",
@@ -249,5 +364,5 @@
       "dobins_hi_series"
     ]
   },
-  "method": "read-only; no payment orders or charges"
+  "method": "read-only; compares raw and unique IDs and verifies Malayalam metadata without charging payments"
 }
