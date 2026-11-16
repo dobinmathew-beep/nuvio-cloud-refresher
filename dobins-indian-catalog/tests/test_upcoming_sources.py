@@ -152,6 +152,7 @@ class UpcomingSourceTests(unittest.TestCase):
         self.assertEqual(rows[0]["language"], "hindi")
         self.assertEqual(rows[0]["type"], "series")
         self.assertEqual(rows[0]["ottDate"], "2026-11-18")
+        self.assertFalse(rows[0]["confirmed"])
 
     def test_ottclock_card_language_type_and_platform_are_detected(self):
         html = """<h1>OTT Release Calendar</h1>
@@ -168,5 +169,6 @@ class UpcomingSourceTests(unittest.TestCase):
         self.assertEqual(rows[0]["language"], "tamil")
         self.assertEqual(rows[0]["type"], "series")
         self.assertEqual(rows[0]["platforms"], ["Netflix"])
+        self.assertFalse(rows[0]["confirmed"])
 \nif __name__ == "__main__":
     unittest.main()
