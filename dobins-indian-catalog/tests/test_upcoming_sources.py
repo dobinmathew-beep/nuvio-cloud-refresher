@@ -170,5 +170,26 @@ class UpcomingSourceTests(unittest.TestCase):
         self.assertEqual({x["language"] for x in rows}, {"hindi", "malayalam"})
         self.assertTrue(all(x["confirmed"] for x in rows))
 
+    def test_ottasia_live_weekday_first_date_format(self):
+        html = """<h2>Upcoming OTT releases in India: confirmed dates</h2>
+        <h3>Wednesday, November 18</h3>
+        <div><img alt="Mr &amp; Mrs Office"><a href="/series/mr-mrs-office">Mr &amp; Mrs Office</a>
+        <p>Series · Tamil</p><p>Streaming on JioHotstar from Wed, Nov 18</p></div>
+        <h3>Friday, November 20</h3>
+        <div><a href="/movie/anbil-avan">Anbil Avan</a>
+        <p>Film · Tamil</p><p>Digital release on November 20, 2026</p></div>
+        <h2>Predicted next on OTT</h2>
+        <div><a href="/movie/almari">Almari</a><p>Film · Malayalam · Netflix · Predicted November 20, 2026</p></div>"""
+        rows = upcoming_sources._ottasia(
+            BeautifulSoup(html, "html.parser"), "OTTASIA confirmed calendar",
+            "https://ottasia.com/ott-releases-this-week?country=IN", "2026-11-17",
+            {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
+            lambda value: value.lower().replace(" ", ""),
+        )
+        self.assertEqual({row["name"] for row in rows}, {"Mr & Mrs Office", "Anbil Avan"})
+        self.assertEqual(next(row for row in rows if row["name"] == "Mr & Mrs Office")["ottDate"], "2026-11-18")
+        self.assertEqual(next(row for row in rows if row["name"] == "Anbil Avan")["ottDate"], "2026-11-20")
+        self.assertTrue(all(row["confirmed"] for row in rows))
+
 if __name__ == "__main__":
     unittest.main()
