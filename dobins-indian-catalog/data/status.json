@@ -4,7 +4,7 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-17T00:17:55.552098+04:00",
+  "updatedAt": "2026-11-17T00:19:43.858318+04:00",
   "lastSuccessCycle": "2026-11-17T00:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
@@ -72,7 +72,7 @@
       "language": "malayalam",
       "url": "https://www.themoviedb.org/discover/tv",
       "state": "live",
-      "records": 59
+      "records": 74
     },
     {
       "source": "IndianRegional series discovery",
@@ -86,7 +86,7 @@
       "language": "tamil",
       "url": "https://www.themoviedb.org/discover/tv",
       "state": "live",
-      "records": 59
+      "records": 99
     },
     {
       "source": "IndianRegional series discovery",
@@ -100,7 +100,7 @@
       "language": "telugu",
       "url": "https://www.themoviedb.org/discover/tv",
       "state": "live",
-      "records": 60
+      "records": 100
     },
     {
       "source": "IndianRegional series discovery",
@@ -114,7 +114,7 @@
       "language": "hindi",
       "url": "https://www.themoviedb.org/discover/tv",
       "state": "live",
-      "records": 60
+      "records": 100
     },
     {
       "source": "TVmaze streaming episode schedule",
@@ -125,12 +125,12 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 550,
+      "records": 595,
       "counts": {
-        "malayalam": 53,
-        "tamil": 94,
-        "telugu": 97,
-        "hindi": 306
+        "malayalam": 59,
+        "tamil": 103,
+        "telugu": 108,
+        "hindi": 325
       },
       "state": "live"
     },
@@ -161,18 +161,18 @@
   ],
   "counts": {
     "dobins_ml_movie": 68,
-    "dobins_ml_series": 60,
+    "dobins_ml_series": 65,
     "dobins_ta_movie": 61,
-    "dobins_ta_series": 99,
+    "dobins_ta_series": 108,
     "dobins_te_movie": 68,
-    "dobins_te_series": 103,
+    "dobins_te_series": 114,
     "dobins_hi_movie": 76,
-    "dobins_hi_series": 324
+    "dobins_hi_series": 343
   },
   "catalogFreshness": {
     "dobins_ml_movie": {
       "count": 68,
-      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
+      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
       "latestEntry": {
         "id": "tt27512908",
         "name": "The Third Murder",
@@ -181,8 +181,8 @@
       }
     },
     "dobins_ml_series": {
-      "count": 60,
-      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
+      "count": 65,
+      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
       "latestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
@@ -192,7 +192,7 @@
     },
     "dobins_ta_movie": {
       "count": 61,
-      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
+      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -201,8 +201,8 @@
       }
     },
     "dobins_ta_series": {
-      "count": 99,
-      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
+      "count": 108,
+      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
       "latestEntry": {
         "id": "tt50135636",
         "name": "Mr & Mrs Office",
@@ -212,7 +212,7 @@
     },
     "dobins_te_movie": {
       "count": 68,
-      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
+      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
       "latestEntry": {
         "id": "tt39309264",
         "name": "Crazy Kalyanam",
@@ -221,8 +221,8 @@
       }
     },
     "dobins_te_series": {
-      "count": 103,
-      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
+      "count": 114,
+      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
       "latestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
@@ -232,7 +232,7 @@
     },
     "dobins_hi_movie": {
       "count": 76,
-      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
+      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
       "latestEntry": {
         "id": "tt40855841",
         "name": "Nayyi Navelli",
@@ -241,8 +241,8 @@
       }
     },
     "dobins_hi_series": {
-      "count": 324,
-      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
+      "count": 343,
+      "generatedAt": "2026-11-17T00:19:43.858318+04:00",
       "latestEntry": {
         "id": "tt38195069",
         "name": "Tumm Se Tumm Tak",
@@ -251,8 +251,28 @@
       }
     }
   },
+  "pendingMatchesByCatalog": {
+    "dobins_ml_movie": 5,
+    "dobins_ml_series": 8,
+    "dobins_ta_movie": 9,
+    "dobins_ta_series": 15,
+    "dobins_te_movie": 16,
+    "dobins_te_series": 10,
+    "dobins_hi_movie": 17,
+    "dobins_hi_series": 11
+  },
+  "checkedCandidatesByCatalog": {
+    "dobins_ml_movie": 67,
+    "dobins_ml_series": 75,
+    "dobins_ta_movie": 69,
+    "dobins_ta_series": 125,
+    "dobins_te_movie": 79,
+    "dobins_te_series": 125,
+    "dobins_hi_movie": 87,
+    "dobins_hi_series": 358
+  },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
   "pendingMatches": 91,
-  "checkedCandidates": 940,
+  "checkedCandidates": 985,
   "errors": []
 }

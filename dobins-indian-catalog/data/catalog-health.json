@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-11-16T20:19:20.834853+00:00",
+  "checkedAt": "2026-11-16T20:22:14.522869+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
-  "state": "ok",
+  "state": "degraded",
   "checks": [
     {
       "path": "/manifest.json",
@@ -39,6 +39,7 @@
         "name": "The Third Murder",
         "releaseDate": "2026-11-13"
       },
+      "latestEntryMatches": true,
       "state": "ok",
       "check": "ok"
     },
@@ -47,7 +48,7 @@
       "language": "ml",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ml_series.json",
-      "localPublishedCount": 60,
+      "localPublishedCount": 65,
       "endpointReturnedCount": 60,
       "endpointPageCounts": [
         50,
@@ -64,7 +65,9 @@
         "name": "Bigg Boss Malayalam",
         "releaseDate": "2026-11-15T21:30:00+00:00"
       },
-      "state": "ok",
+      "latestEntryMatches": true,
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 5,
       "check": "ok"
     },
     {
@@ -89,6 +92,7 @@
         "name": "Haiku",
         "releaseDate": "2026-11-20"
       },
+      "latestEntryMatches": true,
       "state": "ok",
       "check": "ok"
     },
@@ -97,7 +101,7 @@
       "language": "ta",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ta_series.json",
-      "localPublishedCount": 99,
+      "localPublishedCount": 108,
       "endpointReturnedCount": 99,
       "endpointPageCounts": [
         50,
@@ -114,7 +118,9 @@
         "name": "Mr & Mrs Office",
         "releaseDate": "2026-11-18"
       },
-      "state": "ok",
+      "latestEntryMatches": true,
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 9,
       "check": "ok"
     },
     {
@@ -139,6 +145,7 @@
         "name": "Crazy Kalyanam",
         "releaseDate": "2026-11-20"
       },
+      "latestEntryMatches": true,
       "state": "ok",
       "check": "ok"
     },
@@ -147,7 +154,7 @@
       "language": "te",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_te_series.json",
-      "localPublishedCount": 103,
+      "localPublishedCount": 114,
       "endpointReturnedCount": 103,
       "endpointPageCounts": [
         50,
@@ -165,7 +172,9 @@
         "name": "Bigg Boss Telugu",
         "releaseDate": "2026-11-15T21:30:00+00:00"
       },
-      "state": "ok",
+      "latestEntryMatches": true,
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 11,
       "check": "ok"
     },
     {
@@ -190,6 +199,7 @@
         "name": "Nayyi Navelli",
         "releaseDate": "2026-11-20"
       },
+      "latestEntryMatches": true,
       "state": "ok",
       "check": "ok"
     },
@@ -198,7 +208,7 @@
       "language": "hi",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
-      "localPublishedCount": 324,
+      "localPublishedCount": 343,
       "endpointReturnedCount": 324,
       "endpointPageCounts": [
         50,
@@ -220,15 +230,17 @@
         "name": "Tumm Se Tumm Tak",
         "releaseDate": "2026-11-16T00:00:00+00:00"
       },
-      "state": "ok",
+      "latestEntryMatches": true,
+      "state": "possible_truncation_or_deployment_lag",
+      "missingFromResponse": 19,
       "check": "ok"
     }
   ],
   "catalogSummary": {
     "checked": 8,
     "failed": 0,
-    "possibleTruncationOrLag": 0,
-    "countMismatches": 0,
+    "possibleTruncationOrLag": 4,
+    "countMismatches": 4,
     "firstPageSize50": [
       "dobins_ml_movie",
       "dobins_ml_series",
