@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-16T23:39:42.515880+00:00",
+  "checkedAt": "2026-11-16T23:45:34.658613+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,7 +14,7 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1064,
+      "metadataRecords": 1070,
       "warning": null,
       "error": null
     },
@@ -24,7 +24,7 @@
       "checked": 136,
       "passed": 136,
       "failed": 0,
-      "missingOriginalLanguageField": 109
+      "missingOriginalLanguageField": 108
     },
     {
       "path": "/manifest.json",
@@ -150,32 +150,32 @@
       "language": "ta",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ta_series.json",
-      "localPublishedCount": 110,
-      "localUniqueIdCount": 110,
+      "localPublishedCount": 111,
+      "localUniqueIdCount": 111,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 110,
-      "endpointUniqueIdCount": 110,
+      "endpointRawCount": 111,
+      "endpointUniqueIdCount": 111,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
-        10
+        11
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt50135636",
-        "name": "Mr & Mrs Office",
-        "releaseDate": "2026-11-18"
+        "id": "tmdb:339004",
+        "name": "Notebook 90s \u2013 Kadhal Flashback",
+        "releaseDate": "2026-11-23"
       },
       "localLatestEntry": {
-        "id": "tt50135636",
-        "name": "Mr & Mrs Office",
-        "releaseDate": "2026-11-18"
+        "id": "tmdb:339004",
+        "name": "Notebook 90s \u2013 Kadhal Flashback",
+        "releaseDate": "2026-11-23"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -186,18 +186,18 @@
       "language": "te",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_te_movie.json",
-      "localPublishedCount": 74,
-      "localUniqueIdCount": 74,
+      "localPublishedCount": 76,
+      "localUniqueIdCount": 76,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 74,
-      "endpointUniqueIdCount": 74,
+      "endpointRawCount": 76,
+      "endpointUniqueIdCount": 76,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        24
+        26
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -221,19 +221,19 @@
       "language": "te",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_te_series.json",
-      "localPublishedCount": 114,
-      "localUniqueIdCount": 114,
+      "localPublishedCount": 115,
+      "localUniqueIdCount": 115,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 114,
-      "endpointUniqueIdCount": 114,
+      "endpointRawCount": 115,
+      "endpointUniqueIdCount": 115,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
-        14
+        15
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -292,13 +292,13 @@
       "language": "hi",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
-      "localPublishedCount": 347,
-      "localUniqueIdCount": 347,
+      "localPublishedCount": 349,
+      "localUniqueIdCount": 349,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 347,
-      "endpointUniqueIdCount": 347,
+      "endpointRawCount": 349,
+      "endpointUniqueIdCount": 349,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
@@ -308,20 +308,20 @@
         50,
         50,
         50,
-        47
+        49
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt38195069",
-        "name": "Tumm Se Tumm Tak",
-        "releaseDate": "2026-11-16T00:00:00+00:00"
+        "id": "tmdb:337904",
+        "name": "AndherPura Curse",
+        "releaseDate": "2026-11-28"
       },
       "localLatestEntry": {
-        "id": "tt38195069",
-        "name": "Tumm Se Tumm Tak",
-        "releaseDate": "2026-11-16T00:00:00+00:00"
+        "id": "tmdb:337904",
+        "name": "AndherPura Curse",
+        "releaseDate": "2026-11-28"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -333,7 +333,7 @@
     "checked": 136,
     "passed": 136,
     "failed": 0,
-    "missingOriginalLanguageField": 109,
+    "missingOriginalLanguageField": 108,
     "failures": []
   },
   "catalogSummary": {
