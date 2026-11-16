@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from urllib.parse import urlparse
 from concurrent.futures import ThreadPoolExecutor
 from difflib import SequenceMatcher
-import os, json, subprocess, re
+import os, json, subprocess, re, time
 
 D = Path(__file__).resolve().parent / 'data'
 D.mkdir(exist_ok=True)
@@ -47,20 +47,29 @@ except Exception:
 checks = []
 data_health = {}
 try:
-    data_health = fetch_json(base + '/data-health.json')
-    snapshots = data_health.get('snapshots', {})
-    sources = {name: (snapshots.get(name) or {}).get('source') for name in
-               ('catalogs.json', 'status.json', 'metadata.json')}
-    raw_ok = all(value == 'github_raw' for value in sources.values())
-    status_ok = data_health.get('statusUpdatedAt') == local_status.get('updatedAt')
-    counts_ok = data_health.get('catalogCounts') == {
-        key: len(rows) for key, rows in local.items() if isinstance(rows, list)
-    }
+    expected_counts = {key: len(rows) for key, rows in local.items() if isinstance(rows, list)}
+    last_error = None
+    for attempt in range(8):
+        try:
+            data_health = fetch_json(base + '/data-health.json')
+            snapshots = data_health.get('snapshots', {})
+            sources = {name: (snapshots.get(name) or {}).get('source') for name in
+                       ('catalogs.json', 'status.json', 'metadata.json')}
+            raw_ok = all(value == 'github_raw' for value in sources.values())
+            status_ok = data_health.get('statusUpdatedAt') == local_status.get('updatedAt')
+            counts_ok = data_health.get('catalogCounts') == expected_counts
+            if raw_ok and status_ok and counts_ok:
+                break
+            last_error = 'Public service is still serving an older or fallback snapshot.'
+        except Exception as error:
+            last_error = str(error)[:180]
+        if attempt < 7:
+            time.sleep(10)
     state = 'ok' if raw_ok and status_ok and counts_ok else 'failed'
     checks.append({'path': '/data-health.json', 'state': state, 'snapshotSources': sources,
                    'statusTimestampMatches': status_ok, 'catalogCountsMatch': counts_ok,
                    'metadataRecords': data_health.get('metadataRecords'),
-                   'error': None if state == 'ok' else 'Public service is using stale/fallback snapshots or a different catalog revision.'})
+                   'error': None if state == 'ok' else last_error})
 except Exception as error:
     checks.append({'path': '/data-health.json', 'state': 'failed', 'error': str(error)[:180]})
 
@@ -86,7 +95,7 @@ for lang in ('ml', 'ta', 'te', 'hi'):
             skip = 0
             for page_number in range(20):
                 page_route = route if skip == 0 else route[:-5] + f'/skip={skip}.json'
-                payload = fetch_json(base + page_route)
+                payload = fetch_json(base + page_route + ('&' if '?' in page_route else '?') + f'health_check={int(datetime.now(timezone.utc).timestamp())}-{page_number}')
                 metas = payload.get('metas') if isinstance(payload, dict) else None
                 if not isinstance(metas, list):
                     raise ValueError(f'Page {page_number + 1} did not return a metas array')
@@ -152,7 +161,7 @@ if os.environ.get('MALAYALAM_METADATA_AUDIT') == 'true':
         if not (re.fullmatch(r'tt\d+', mid) or re.fullmatch(r'tmdb:\d+', mid)):
             return {'id': mid, 'name': item.get('name'), 'error': 'ID must be a verified IMDb tt-ID or TMDB ID'}
         try:
-            payload = fetch_json(base + f'/meta/{typ}/{mid}.json')
+            payload = fetch_json(base + f'/meta/{typ}/{mid}.json?health_check={int(datetime.now(timezone.utc).timestamp())}')
             meta = payload.get('meta') if isinstance(payload, dict) else None
             if not isinstance(meta, dict):
                 raise ValueError('Public metadata endpoint returned no metadata')
