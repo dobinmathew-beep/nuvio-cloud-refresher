@@ -22,4 +22,21 @@ class AlternateTests(unittest.TestCase):
   obj['url']='https://www.themoviedb.org/movie/12-example'
   obj['name']='Other Movie';self.assertIsNone(alternate.tmdb(e,get,update.norm))
   obj['name']='Example';obj['releasedEvent'][0]['startDate']='2027-01-01';self.assertIsNone(alternate.tmdb(e,get,update.norm))
+ def test_tmdb_search_fallback_requires_exact_type_title_and_malayalam_language(self):
+  e={'name':'Example','language':'malayalam','type':'movie','ottDate':'2026-10-30'}
+  obj={'@type':'Movie','name':'Example','url':'https://www.themoviedb.org/movie/12-example','image':'https://image.tmdb.org/t/p/w500/a.jpg','releasedEvent':[{'startDate':'2026-10-01'}]}
+  def get(url,*args):
+   if '/search?' in url:return '<a href="/movie/12-example"><h2>Example</h2></a>'
+   return '<p>Original Language: Malayalam</p><script type="application/ld+json">'+json.dumps(obj)+'</script>'
+  found=alternate.tmdb_search(e,get,update.norm)
+  self.assertEqual(found['id'],'tmdb:12')
+  self.assertEqual(found['original_language'],'ml')
+  self.assertIn('verified detail page',found['metadataSource'])
+  obj['name']='Other Title'
+  self.assertIsNone(alternate.tmdb_search(e,get,update.norm))
+  obj['name']='Example'
+  def wrong_language(url,*args):
+   if '/search?' in url:return '<a href="/movie/12-example"><h2>Example</h2></a>'
+   return '<p>Original Language: Tamil</p><script type="application/ld+json">'+json.dumps(obj)+'</script>'
+  self.assertIsNone(alternate.tmdb_search(e,wrong_language,update.norm))
 if __name__=='__main__':unittest.main()
