@@ -97,5 +97,39 @@ class UpcomingSourceTests(unittest.TestCase):
         )
         self.assertEqual(rows, [])
 
+
+    def test_ottasia_confirmed_section_is_parsed_but_predictions_are_not(self):
+        html = """<h2>Upcoming OTT releases in India: confirmed dates</h2>
+        <div><a href="/shows/mr-mrs-office">Mr &amp; Mrs Office</a>
+        <p>Series · Tamil</p><p>Streaming on JioHotstar from November 18, 2026</p></div>
+        <h2>Predicted next on OTT</h2>
+        <div><a href="/movie/almari">Almari</a><p>Hindi · Netflix · Predicted November 20, 2026</p></div>"""
+        rows = upcoming_sources._ottasia(
+            BeautifulSoup(html, "html.parser"), "OTTASIA confirmed calendar",
+            "https://ottasia.com/ott-releases-this-week?country=IN", "2026-11-17",
+            {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
+            lambda value: value.lower().replace(" ", ""),
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["name"], "Mr & Mrs Office")
+        self.assertEqual(rows[0]["language"], "tamil")
+        self.assertEqual(rows[0]["type"], "series")
+        self.assertEqual(rows[0]["ottDate"], "2026-11-18")
+
+    def test_new_indian_movies_weekly_ott_rail_is_parsed(self):
+        html = """<h2>New on OTT this week</h2>
+        <a href="/title/anbil-avan">Fri 20 Nov Anbil Avan Tamil·SonyLIV</a>
+        <a href="/title/campus-diaries">Wed 18 Nov Campus Diaries season 2 Hindi·Prime Video·Series</a>
+        <h2>In cinemas now</h2><a href="/title/other">Fri 20 Nov Other Tamil·Cinemas</a>"""
+        rows = upcoming_sources._new_indian_movies(
+            BeautifulSoup(html, "html.parser"), "New Indian Movies OTT calendar",
+            "https://newindianmovies.com/", "2026-11-17",
+            {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
+            lambda value: value.lower().replace(" ", ""),
+        )
+        self.assertEqual({x["name"] for x in rows}, {"Anbil Avan", "Campus Diaries season 2"})
+        self.assertEqual({x["type"] for x in rows}, {"movie", "series"})
+        self.assertTrue(all(x["ottDate"] >= "2026-11-17" for x in rows))
+
 if __name__ == "__main__":
     unittest.main()
