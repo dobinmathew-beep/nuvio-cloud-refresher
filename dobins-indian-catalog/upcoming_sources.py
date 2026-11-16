@@ -12,6 +12,8 @@ SOURCES = [
     ("Cinebuds upcoming calendar", "https://cinebuds.com/ott-releases-this-week/"),
     ("OTTASIA confirmed calendar", "https://ottasia.com/ott-releases-this-week?country=IN"),
     ("New Indian Movies OTT calendar", "https://newindianmovies.com/"),
+    ("Indian Movie Reviews OTT calendar", "https://indianmoviereviews.com/ott-releases/"),
+    ("OTTClock Indian OTT calendar", "https://ottclock.com/"),
 ]
 LANG_NAMES = {
     "malayalam": "malayalam",
@@ -288,6 +290,37 @@ def _generic(soup, source_name, source_url, today, langs, norm):
         out.extend(_record(node, source_name, source_url, today, langs, norm))
     return out
 
+
+def _calendar_cards(soup, source_name, source_url, today, langs, norm):
+    """Parse dated OTT calendar cards without requiring a particular CSS class.
+
+    Each candidate still needs a title link, explicit date and unambiguous
+    tracked language. Predicted/TBA entries are excluded by _record.
+    """
+    selectors = (
+        "article", "li", "tr", "[data-release-date]", ".release-card",
+        ".ott-card", ".movie-card", ".show-card", "[class*=release]",
+        "[class*=movie]", "[class*=show]",
+    )
+    out = []
+    seen = set()
+    for selector in selectors:
+        for node in soup.select(selector):
+            text = node.get_text(" ", strip=True)
+            if not text or len(text) > 1800:
+                continue
+            marker = (node.name, node.get("id"), tuple(node.get("class") or []), text[:220])
+            if marker in seen:
+                continue
+            seen.add(marker)
+            out.extend(_record(node, source_name, source_url, today, langs, norm, trusted_context=True))
+    merged = {}
+    for row in out:
+        key = (row["language"], row["type"], norm(row["name"]))
+        if key not in merged or len(row["name"]) < len(merged[key]["name"]):
+            merged[key] = row
+    return list(merged.values())
+
 def _dailyott(rows, source_url, today, langs):
     out = []
     for row in rows:
@@ -361,6 +394,8 @@ def collect(get, today, langs, norm):
                 rows = _ottasia(soup, name, url, today, langs, norm)
             elif "newindianmovies.com" in url:
                 rows = _new_indian_movies(soup, name, url, today, langs, norm)
+            elif "indianmoviereviews.com" in url or "ottclock.com" in url:
+                rows = _calendar_cards(soup, name, url, today, langs, norm)
             else:
                 rows = _generic(soup, name, url, today, langs, norm)
             # An intact calendar section with no eligible future Indian titles
@@ -372,6 +407,10 @@ def collect(get, today, langs, norm):
                     section_present = 'upcoming ott releases in india: confirmed dates' in visible
                 elif "newindianmovies.com" in url:
                     section_present = 'new on ott this week' in visible
+                elif "indianmoviereviews.com" in url:
+                    section_present = 'ott release calendar' in visible or ('this week' in visible and 'coming next' in visible)
+                elif "ottclock.com" in url:
+                    section_present = 'ott release calendar' in visible or 'all ott releases' in visible
                 else:
                     section_present = 'upcoming' in visible and 'ott' in visible and ('release' in visible or 'this week' in visible)
                 if section_present:
