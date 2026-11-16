@@ -164,7 +164,7 @@ def _ottasia(soup, source_name, source_url, today, langs, norm):
     """Parse OTTASIA's confirmed upcoming section from its title/type/date text rows."""
     visible = soup.get_text('\n', strip=True)
     lower = visible.lower()
-    start_match = re.search(r'upcoming\s+ott\\s+releases(?:\s+in\s+india)?', lower)
+    start_match = re.search(r'upcoming\s+ott\s+releases(?:\s+in\s+india)?', lower)
     if not start_match:
         return []
     start = start_match.start()
@@ -462,7 +462,7 @@ def collect(get, today, langs, norm):
             if not rows:
                 visible = soup.get_text(' ', strip=True).lower()
                 if "ottasia.com" in url:
-                    section_present = bool(re.search(r'upcoming\s+ott\\s+releases', visible))
+                    section_present = bool(re.search(r'upcoming\s+ott\s+releases', visible))
                 elif "newindianmovies.com" in url:
                     section_present = 'new on ott this week' in visible
                 elif "indianmoviereviews.com" in url:
