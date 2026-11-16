@@ -55,8 +55,47 @@ def tmdb(e,get,norm):
  images=[a.get('content','').replace('media.themoviedb.org','image.tmdb.org') for a in soup.select('meta[property="og:image"]')]
  poster=(obj.get('image') or row.get('posterUrl') or '').replace('/w500/','/w780/')
  return {'id':mid,'type':typ,'name':obj['name'],'poster':poster,'background':images[1] if len(images)>1 else None,'description':obj.get('description') or details.get('overview',''),'genres':obj.get('genre',details.get('genres',[])),'releaseInfo':date[:4] or str(details.get('releaseDate') or '')[:4],'cast':[x['name'] for x in details.get('cast',[]) if x.get('name')],'director':[details['director']] if details.get('director') else [],'runtime':str(details.get('runtime',''))+' min' if details.get('runtime') else None,'tmdb_id':int(tid),'imdb_id':imdb,'original_language':original_language,'metadataSource':url}
+def tmdb_search(e,get,norm):
+ """Discover an unlinked TMDB ID by exact title/type, then verify its detail page.
+
+ Search results are candidates only: the canonical detail page must independently
+ confirm its media type, title, release date and (for Malayalam) original language.
+ Ambiguous same-title results are deliberately left unmatched.
+ """
+ name=plain(str(e.get('name') or '').strip())
+ if not name:return None
+ url='https://www.themoviedb.org/search?query='+quote(name,safe='')
+ soup=BeautifulSoup(get(url,False),'html.parser')
+ expected_path='movie' if e['type']=='movie' else 'tv'
+ candidates={}
+ for anchor in soup.select('a[href]'):
+  href=str(anchor.get('href') or '')
+  path=urlparse(href).path
+  match=re.fullmatch(r'/(movie|tv)/(\\d+)(?:-[^/]*)?/?',path)
+  if not match or match.group(1)!=expected_path:continue
+  title=anchor.get_text(' ',strip=True)
+  if not title:
+   image=anchor.select_one('img[alt]')
+   title=str(image.get('alt') or '').strip() if image else ''
+  score=ratio(norm(name),norm(title))
+  if score<97:continue
+  tid=match.group(2)
+  candidates[tid]=max(score,candidates.get(tid,0))
+ if not candidates:return None
+ ranked=sorted(candidates.items(),key=lambda x:x[1],reverse=True)
+ if len(ranked)>1 and ranked[0][1]-ranked[1][1]<5:return None
+ tid=ranked[0][0]
+ event=dict(e)
+ event['sourceRecord']={**(e.get('sourceRecord') or {}),'tmdbId':int(tid)}
+ result=tmdb(event,get,norm)
+ if not result or not result.get('poster'):return None
+ if e.get('language')=='malayalam' and str(result.get('original_language') or '').lower() not in ('ml','malayalam'):
+  return None
+ result['metadataSource']='TMDB exact-title search + verified detail page'
+ return result
+
 def resolve(e,get,norm):
- for fn in [tvmaze,tmdb]:
+ for fn in [tvmaze,tmdb,tmdb_search]:
   try:
    m=fn(e,get,norm)
    if m and m.get('poster'):return m
