@@ -48,7 +48,8 @@ def original_language_matches(event,meta):
 TYPE_OVERRIDES={'balbarbarik':'series','princeofmollywood':'series'}
 LANGUAGE_OVERRIDES={'taarini':'marathi'}
 VERIFIED_TMDB_OVERRIDES={
- 'malayalam|series|patriotlegendshangout':{'id':320606,'name':'Patriot Legends Hangout'}
+ 'malayalam|series|patriotlegendshangout':{'id':320606,'name':'Patriot Legends Hangout'},
+ 'malayalam|movie|jennifer':{'id':1813865,'name':'Jennifer'}
 }
 VERIFIED_IMDB_OVERRIDES={
  'malayalam|series|princeofmollywood':{'id':'tt44686897','name':'Prince of Mollywood'},
