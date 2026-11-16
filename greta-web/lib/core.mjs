@@ -6,7 +6,8 @@ const PAGE='';const ICON='';
 // Keep response payloads bounded; Stremio/Nuvio clients fetch later pages with skip=50.
 const CATALOG_PAGE_SIZE=50;
 const ORIGIN='https://dobins-indian-catalog.quickfield138.chatgpt.site';
-const RAW='https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/';
+const RAW='https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/';
+const REF_API='https://api.github.com/repos/dobinmathew-beep/nuvio-cloud-refresher/commits/dobins-catalog';
 const LANGS={ml:'Malayalam',ta:'Tamil',te:'Telugu',hi:'Hindi'};
 function artId(type,id){return id.startsWith('tt')?id:type+'~'+id;}
 function metaKey(type,id){return id.startsWith('tt')?id:type+'|'+id;}
@@ -16,9 +17,54 @@ const CORS={'Access-Control-Allow-Origin':'*','Access-Control-Allow-Methods':'GE
 const catalogDefs=Object.entries(LANGS).flatMap(([code,label])=>['movie','series'].map(type=>({id:'dobins_'+code+'_'+type,type,name:label+' · Latest Home '+(type==='movie'?'Movies':'Series'),pageSize:CATALOG_PAGE_SIZE,extra:[{name:'skip',isRequired:false},{name:'search',isRequired:false}]})));
 const manifest={id:'com.dobin.indian.digital.catalog',version:'1.3.0',name:'Dobins Indian Catalog',description:'Eight verified Malayalam, Tamil, Telugu and Hindi movie and series catalogs. IMDb, TMDB and TVmaze metadata. Confirmed OTT and released DVD/Blu-ray movies, newest home releases first. Full source refresh every two hours in Asia/Muscat; all eight published catalog endpoints are checked every 30 minutes, with failed-source retries on the next check. Catalog companion for AIOMetadata. AIOMetadata supplies detail pages, trailers, recommendations and episodes; playback uses existing stream add-ons.',logo:ORIGIN+'/icon.png',resources:[{name:'catalog',types:['movie','series']}],types:['movie','series'],idPrefixes:['tt','tmdb:','tvmaze:'],catalogs:catalogDefs,behaviorHints:{configurable:false,configurationRequired:false}};
 const snapshots=new Map(),jobs=new Map(),snapshotHealth=new Map();
-async function upstream(url,timeout=12000){const headers=url.startsWith(RAW)?{'Cache-Control':'no-cache','Pragma':'no-cache'}:{};const r=await fetch(url,{headers,cache:'no-store',signal:AbortSignal.timeout(timeout)});if(!r.ok)throw Error('Upstream '+r.status);return r;}
-async function data(name){const old=snapshots.get(name);if(old&&Date.now()-old.at<60000)return old.value;if(jobs.has(name))return jobs.get(name);const task=(async()=>{try{const r=await upstream(RAW+name+'?v='+Date.now());const value=await r.json();if(!value||typeof value!=='object')throw Error('Invalid catalog snapshot');snapshots.set(name,{value,at:Date.now()});snapshotHealth.set(name,{source:'github_raw',fetchedAt:new Date().toISOString()});return value;}catch(error){const detail=String(error?.message||error).slice(0,180);if(old){snapshotHealth.set(name,{source:'memory_cache',fetchedAt:new Date(old.at).toISOString(),error:detail});return old.value;}const seed=SEED[name]||{};snapshotHealth.set(name,{source:Object.keys(seed).length?'build_seed':'unavailable',fetchedAt:null,error:detail});return seed;}})();jobs.set(name,task);try{return await task;}finally{jobs.delete(name);}}
-async function dataHealth(){const [catalogs,status,metadata]=await Promise.all([data('catalogs.json'),data('status.json'),data('metadata.json')]);return {checkedAt:new Date().toISOString(),snapshots:Object.fromEntries(['catalogs.json','status.json','metadata.json'].map(name=>[name,snapshotHealth.get(name)||{source:'memory_cache',fetchedAt:null}])),statusUpdatedAt:status.updatedAt||null,catalogCounts:Object.fromEntries(Object.entries(catalogs).map(([id,rows])=>[id,Array.isArray(rows)?rows.length:0])),catalogIdSets:Object.fromEntries(Object.entries(catalogs).map(([id,rows])=>[id,Array.isArray(rows)?rows.map(x=>String(x?.id||'')).filter(Boolean).sort():[]])),metadataRecords:Object.keys(metadata).length};}
+let latestDataRef='',latestDataRefAt=0,latestDataRefJob=null;
+async function upstream(url,timeout=12000){
+ const headers=url.startsWith(REF_API)?{'Accept':'application/vnd.github+json','User-Agent':'the-great-indian-addon','Cache-Control':'no-cache','Pragma':'no-cache'}:url.startsWith(RAW)?{'Cache-Control':'no-cache','Pragma':'no-cache'}:{};
+ const r=await fetch(url,{headers,cache:'no-store',signal:AbortSignal.timeout(timeout)});
+ if(!r.ok)throw Error('Upstream '+r.status);
+ return r;
+}
+async function currentDataRef(){
+ if(latestDataRef&&Date.now()-latestDataRefAt<300000)return latestDataRef;
+ if(latestDataRefJob)return latestDataRefJob;
+ latestDataRefJob=(async()=>{
+  try{
+   const r=await upstream(REF_API,10000);
+   const value=await r.json();
+   if(!/^[a-f0-9]{40}$/i.test(value.sha||''))throw Error('GitHub returned an invalid catalog commit');
+   latestDataRef=value.sha;latestDataRefAt=Date.now();return latestDataRef;
+  }catch(error){
+   if(latestDataRef)return latestDataRef;
+   throw error;
+  }
+ })();
+ try{return await latestDataRefJob;}finally{latestDataRefJob=null;}
+}
+async function data(name){
+ const old=snapshots.get(name);
+ if(old&&Date.now()-old.at<60000)return old.value;
+ if(jobs.has(name))return jobs.get(name);
+ const task=(async()=>{
+  try{
+   const ref=await currentDataRef();
+   const r=await upstream(RAW+ref+'/dobins-indian-catalog/data/'+name+'?v='+ref);
+   const value=await r.json();
+   if(!value||typeof value!=='object')throw Error('Invalid catalog snapshot');
+   snapshots.set(name,{value,at:Date.now()});
+   snapshotHealth.set(name,{source:'github_raw',fetchedAt:new Date().toISOString(),commit:ref});
+   return value;
+  }catch(error){
+   const detail=String(error?.message||error).slice(0,180);
+   if(old){snapshotHealth.set(name,{source:'memory_cache',fetchedAt:new Date(old.at).toISOString(),error:detail});return old.value;}
+   const seed=SEED[name]||{};
+   snapshotHealth.set(name,{source:Object.keys(seed).length?'build_seed':'unavailable',fetchedAt:null,error:detail});
+   return seed;
+  }
+ })();
+ jobs.set(name,task);
+ try{return await task;}finally{jobs.delete(name);}
+}
+async function dataHealth(){const [catalogs,status,metadata]=await Promise.all([data('catalogs.json'),data('status.json'),data('metadata.json')]);return {checkedAt:new Date().toISOString(),sourceCommit:latestDataRef||null,snapshots:Object.fromEntries(['catalogs.json','status.json','metadata.json'].map(name=>[name,snapshotHealth.get(name)||{source:'memory_cache',fetchedAt:null}])),statusUpdatedAt:status.updatedAt||null,catalogCounts:Object.fromEntries(Object.entries(catalogs).map(([id,rows])=>[id,Array.isArray(rows)?rows.length:0])),catalogIdSets:Object.fromEntries(Object.entries(catalogs).map(([id,rows])=>[id,Array.isArray(rows)?rows.map(x=>String(x?.id||'')).filter(Boolean).sort():[]])),metadataRecords:Object.keys(metadata).length};}
 function json(value,status=200){return Response.json(value,{status,headers:{...CORS,'Cache-Control':'public, max-age=300','X-Content-Type-Options':'nosniff'}});}
 async function meta(type,id){const all=await data('metadata.json');let m=all[metaKey(type,id)]||(ID_ALIASES[id]?all[ID_ALIASES[id]]:null);if(!m||m.type!==type)return null;m={...m};
  if(type==='series'&&id.startsWith('tt')&&(!m.videos||!m.videos.length)){try{const fresh=(await(await upstream('https://v3-cinemeta.strem.io/meta/'+type+'/'+id+'.json')).json()).meta;if(fresh?.id===id&&fresh.type===type)m={...m,...fresh};}catch{}
