@@ -90,4 +90,21 @@ class CatalogTests(unittest.TestCase):
   result=update.append_legacy_series(current,old,'2026-11-10')
   self.assertEqual([x['name'] for x in result],['Kaakee Circus','Older Series'])
   self.assertEqual(result[0]['id'],'tt41100531')
+ def test_malayalam_catalog_audit_requires_verified_id_and_complete_matching_metadata(self):
+  catalogs={
+   'dobins_ml_movie':[{'id':'tt1234567','type':'movie','name':'Sample Movie'},
+                      {'id':'tmdb:123','type':'movie','name':'Sample Film'},
+                      {'id':'tvmaze:99','type':'movie','name':'Unverified ID'}],
+   'dobins_ml_series':[]
+  }
+  metadata={
+   'tt1234567':{'id':'tt1234567','type':'movie','name':'Sample Movie','poster':'https://img.example/a.jpg','description':'A complete title','original_language':'ml','_partial':False},
+   'movie|tmdb:123':{'id':'tmdb:123','type':'movie','name':'Sample Film','poster':'https://img.example/b.jpg','genres':['Drama'],'original_language':'ml','_partial':False}
+  }
+  summary,errors=update.validate_malayalam_catalogs(catalogs,metadata)
+  self.assertEqual(summary['checked'],3)
+  self.assertEqual(summary['passed'],2)
+  self.assertEqual(summary['failed'],1)
+  self.assertIn('require an IMDb or TMDB ID',errors[0]['reason'])
+
 if __name__=='__main__':unittest.main()
