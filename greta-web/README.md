@@ -31,7 +31,7 @@ The feedback form opens a pre-filled public GitHub issue. Visitors review and su
 
 ## Scheduled health
 
-The existing catalog workflow checks every 30 minutes, performs due catalog work at 06:00/18:00 Muscat plus 01:00 Thu/Fri/Sat, and then runs `check_site.py` when `GRETA_PUBLIC_URL` is set as a repository variable. The website's maintenance date is the updater's successful `updatedAt`, never the visitor's browser time.
+The catalog workflow checks every 30 minutes, performs a full catalog refresh every two hours in Asia/Muscat, and then runs `check_site.py` when `GRETA_PUBLIC_URL` is set as a repository variable. The website's maintenance date is the updater's successful `updatedAt`, never the visitor's browser time.
 
 Health checks GET the public manifest, support page and read-only checkout status. They do not submit payment orders, charge cards, or assert that real settlements succeeded. Their timestamp and results are stored in `data/payment-health.json` for the support page. Checkout remains visibly unavailable until configured.
 
