@@ -44,6 +44,18 @@ class CatalogTests(unittest.TestCase):
    update.get,update.DATA=original_get,original_data
    if old_pages is None:update.os.environ.pop('CATALOG_CANDIDATE_PAGES',None)
    else:update.os.environ['CATALOG_CANDIDATE_PAGES']=old_pages
+ def test_verified_title_overrides_correct_type_and_imdb_identity(self):
+  events=[
+   {'name':'Bal Barbarik','language':'hindi','type':'movie'},
+   {'name':'Mirzapur','language':'hindi','type':'movie'},
+   {'name':'The Vvaan','language':'hindi','type':'movie'},
+   {'name':'Koffee with Karan 9','language':'hindi','type':'series'}
+  ]
+  update.apply_verified_overrides(events)
+  self.assertEqual(events[0]['type'],'series')
+  self.assertEqual(events[1]['_verifiedImdbId'],'tt34339725')
+  self.assertEqual(events[2]['_verifiedImdbId'],'tt34498564')
+  self.assertEqual(events[3]['_verifiedImdbId'],'tt0445883')
  def test_match_rejects_wrong_kind_language_and_future_year(self):
   event={'name':'Example','language':'tamil','type':'movie','ottDate':'2026-10-30','year':'2026'}
   base={'name':'Example','language':'tamil','type':'movie','id':'tt1234567','releaseInfo':'2026'}
