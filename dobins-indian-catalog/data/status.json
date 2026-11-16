@@ -4,7 +4,7 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v1",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-17T00:15:27.047250+04:00",
+  "updatedAt": "2026-11-17T00:17:55.552098+04:00",
   "lastSuccessCycle": "2026-11-17T00:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
@@ -172,7 +172,7 @@
   "catalogFreshness": {
     "dobins_ml_movie": {
       "count": 68,
-      "generatedAt": "2026-11-17T00:15:27.047250+04:00",
+      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
       "latestEntry": {
         "id": "tt27512908",
         "name": "The Third Murder",
@@ -182,7 +182,7 @@
     },
     "dobins_ml_series": {
       "count": 60,
-      "generatedAt": "2026-11-17T00:15:27.047250+04:00",
+      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
       "latestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
@@ -192,7 +192,7 @@
     },
     "dobins_ta_movie": {
       "count": 61,
-      "generatedAt": "2026-11-17T00:15:27.047250+04:00",
+      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -202,7 +202,7 @@
     },
     "dobins_ta_series": {
       "count": 99,
-      "generatedAt": "2026-11-17T00:15:27.047250+04:00",
+      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
       "latestEntry": {
         "id": "tt50135636",
         "name": "Mr & Mrs Office",
@@ -212,7 +212,7 @@
     },
     "dobins_te_movie": {
       "count": 68,
-      "generatedAt": "2026-11-17T00:15:27.047250+04:00",
+      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
       "latestEntry": {
         "id": "tt39309264",
         "name": "Crazy Kalyanam",
@@ -222,7 +222,7 @@
     },
     "dobins_te_series": {
       "count": 103,
-      "generatedAt": "2026-11-17T00:15:27.047250+04:00",
+      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
       "latestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
@@ -232,7 +232,7 @@
     },
     "dobins_hi_movie": {
       "count": 76,
-      "generatedAt": "2026-11-17T00:15:27.047250+04:00",
+      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
       "latestEntry": {
         "id": "tt40855841",
         "name": "Nayyi Navelli",
@@ -242,7 +242,7 @@
     },
     "dobins_hi_series": {
       "count": 324,
-      "generatedAt": "2026-11-17T00:15:27.047250+04:00",
+      "generatedAt": "2026-11-17T00:17:55.552098+04:00",
       "latestEntry": {
         "id": "tt38195069",
         "name": "Tumm Se Tumm Tak",
