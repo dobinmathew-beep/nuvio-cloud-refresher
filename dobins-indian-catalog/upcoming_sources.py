@@ -13,7 +13,7 @@ SOURCES = [
     ("OTTASIA confirmed calendar", "https://ottasia.com/ott-releases-this-week?country=IN"),
     ("New Indian Movies OTT calendar", "https://newindianmovies.com/"),
     ("Indian Movie Reviews OTT calendar", "https://indianmoviereviews.com/ott-releases/"),
-    ("OTTClock Indian OTT calendar", "https://ottclock.com/"),
+    ("OTTClock confirmed upcoming calendar", "https://ottclock.com/upcoming-ott-releases/"),
 ]
 LANG_NAMES = {
     "malayalam": "malayalam",
@@ -291,6 +291,50 @@ def _generic(soup, source_name, source_url, today, langs, norm):
     return out
 
 
+
+def _ottclock(soup, source_name, source_url, today, langs, norm):
+    """Parse OTTClock's compact, linked release rows (e.g. 'Movie 20 Nov Netflix …')."""
+    out = []
+    seen = set()
+    platforms = sorted(PLATFORMS + ("Apple TV+", "Saina Play"), key=len, reverse=True)
+    for anchor in soup.select("a[href]"):
+        raw = anchor.get_text(" ", strip=True)
+        match = re.match(r"^(?:New|Movie|Series)\\s+(?P<date>\\d{1,2}\\s+[A-Za-z]{3,9}|TBA)\\s+(?P<rest>.+)$", raw, re.I)
+        if not match or match.group("date").upper() == "TBA":
+            continue
+        day = _date_with_current_year(match.group("date"), today)
+        if not day or day < today:
+            continue
+        rest = match.group("rest").strip()
+        kind = re.search(r"\\b(?P<kind>Movie|Series)\\s*[·•]\\s*(?P<language>[^·•]+)$", rest, re.I)
+        if not kind:
+            continue
+        language_hits = _languages(kind.group("language"), langs)
+        if len(language_hits) != 1:
+            continue
+        prefix = rest[:kind.start()].strip()
+        platform = next((p for p in platforms if prefix.lower().startswith(p.lower())), None)
+        if not platform:
+            continue
+        title = prefix[len(platform):].strip(" ·|–—-")
+        if not title or len(title) > 140:
+            continue
+        typ = "series" if kind.group("kind").lower() == "series" else "movie"
+        key = (language_hits[0], typ, norm(title))
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append({
+            "name": title, "language": language_hits[0], "type": typ,
+            "ottDate": day, "platforms": [platform], "poster": None,
+            "year": None, "source": source_url, "sources": [source_url],
+            "detail": urljoin(source_url, anchor.get("href", "")),
+            "confirmed": True, "releaseKind": "digital",
+            "releaseDateBasis": "OTTClock confirmed upcoming release",
+            "sourceRecord": {"title": title, "releaseDate": day, "source": source_url},
+        })
+    return out
+
 def _calendar_cards(soup, source_name, source_url, today, langs, norm):
     """Parse dated OTT calendar cards without requiring a particular CSS class.
 
@@ -398,7 +442,9 @@ def collect(get, today, langs, norm):
                 rows = _ottasia(soup, name, url, today, langs, norm)
             elif "newindianmovies.com" in url:
                 rows = _new_indian_movies(soup, name, url, today, langs, norm)
-            elif "indianmoviereviews.com" in url or "ottclock.com" in url:
+            elif "ottclock.com" in url:
+                rows = _ottclock(soup, name, url, today, langs, norm)
+            elif "indianmoviereviews.com" in url:
                 rows = _calendar_cards(soup, name, url, today, langs, norm)
             else:
                 rows = _generic(soup, name, url, today, langs, norm)
@@ -414,7 +460,7 @@ def collect(get, today, langs, norm):
                 elif "indianmoviereviews.com" in url:
                     section_present = 'ott release calendar' in visible or ('this week' in visible and 'coming next' in visible)
                 elif "ottclock.com" in url:
-                    section_present = 'ott release calendar' in visible or 'all ott releases' in visible
+                    section_present = 'upcoming ott releases' in visible
                 else:
                     section_present = 'upcoming' in visible and 'ott' in visible and ('release' in visible or 'this week' in visible)
                 if section_present:
