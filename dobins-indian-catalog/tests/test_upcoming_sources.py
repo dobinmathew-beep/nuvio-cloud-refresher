@@ -102,6 +102,8 @@ class UpcomingSourceTests(unittest.TestCase):
         html = """<h2>Upcoming OTT releases in India: confirmed dates</h2>
         <div><a href="/shows/mr-mrs-office">Mr &amp; Mrs Office</a>
         <p>Series · Tamil</p><p>Streaming on JioHotstar from November 18, 2026</p></div>
+        <h3>Friday, November 20</h3><a href="/movie/anbil-avan">Anbil Avan</a>
+        <p>Film · Tamil</p><p>Digital release on November 20, 2026</p>
         <h2>Predicted next on OTT</h2>
         <div><a href="/movie/almari">Almari</a><p>Hindi · Netflix · Predicted November 20, 2026</p></div>"""
         rows = upcoming_sources._ottasia(
@@ -110,11 +112,11 @@ class UpcomingSourceTests(unittest.TestCase):
             {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
             lambda value: value.lower().replace(" ", ""),
         )
-        self.assertEqual(len(rows), 1)
-        self.assertEqual(rows[0]["name"], "Mr & Mrs Office")
-        self.assertEqual(rows[0]["language"], "tamil")
-        self.assertEqual(rows[0]["type"], "series")
-        self.assertEqual(rows[0]["ottDate"], "2026-11-18")
+        self.assertEqual({row["name"] for row in rows}, {"Mr & Mrs Office", "Anbil Avan"})
+        self.assertEqual(next(row for row in rows if row["name"] == "Mr & Mrs Office")["type"], "series")
+        self.assertEqual(next(row for row in rows if row["name"] == "Anbil Avan")["type"], "movie")
+        self.assertEqual(next(row for row in rows if row["name"] == "Mr & Mrs Office")["ottDate"], "2026-11-18")
+        self.assertEqual(next(row for row in rows if row["name"] == "Anbil Avan")["platforms"], [])
 
     def test_new_indian_movies_weekly_ott_rail_is_parsed(self):
         html = """<h2>New on OTT this week</h2>
