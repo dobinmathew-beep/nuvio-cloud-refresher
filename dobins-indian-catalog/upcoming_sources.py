@@ -229,7 +229,9 @@ def _ottasia(soup, source_name, source_url, today, langs, norm):
 
     # Text fallback for a layout where the title/type/date are separate
     # siblings and no single card ancestor contains all three.
-    if not out:
+    # Also inspect the section's text sequence: some OTTASIA cards expose
+    # title/type/date as siblings without a shared card wrapper.
+    if soup is not None:
         visible = soup.get_text("\n", strip=True)
         lower = visible.lower()
         start = lower.find("upcoming ott releases")
