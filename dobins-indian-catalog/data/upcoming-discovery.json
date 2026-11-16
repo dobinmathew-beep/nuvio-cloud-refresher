@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-17T02:36:58.323507+04:00",
+  "generatedAt": "2026-11-17T02:39:57.516681+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 29,
@@ -172,8 +172,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://newindianmovies.com/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://newindianmovies.com/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -225,8 +225,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -355,8 +355,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -804,6 +804,13 @@
       "url": "https://www.myvi.in/blog/ott-releases-this-week",
       "state": "live",
       "records": 2
+    },
+    {
+      "source": "Vi Malayalam weekly OTT calendar",
+      "url": "https://www.myvi.in/blog/malayalam-ott-releases-this-week",
+      "state": "no_confirmed_upcoming",
+      "records": 0,
+      "note": "Calendar section is present; no eligible future releases for the four tracked languages were found."
     },
     {
       "source": "Vi monthly OTT calendar",
