@@ -299,14 +299,14 @@ def _ottclock(soup, source_name, source_url, today, langs, norm):
     platforms = sorted(PLATFORMS + ("Apple TV+", "Saina Play"), key=len, reverse=True)
     for anchor in soup.select("a[href]"):
         raw = anchor.get_text(" ", strip=True)
-        match = re.match(r"^(?:New|Movie|Series)\\s+(?P<date>\\d{1,2}\\s+[A-Za-z]{3,9}|TBA)\\s+(?P<rest>.+)$", raw, re.I)
+        match = re.match(r"^(?:New|Movie|Series)\s+(?P<date>\d{1,2}\s+[A-Za-z]{3,9}|TBA)\s+(?P<rest>.+)$", raw, re.I)
         if not match or match.group("date").upper() == "TBA":
             continue
         day = _date_with_current_year(match.group("date"), today)
         if not day or day < today:
             continue
         rest = match.group("rest").strip()
-        kind = re.search(r"\\b(?P<kind>Movie|Series)\\s*[·•]\\s*(?P<language>[^·•]+)$", rest, re.I)
+        kind = re.search(r"\b(?P<kind>Movie|Series)\s*[·•]\s*(?P<language>[^·•]+)$", rest, re.I)
         if not kind:
             continue
         language_hits = _languages(kind.group("language"), langs)
