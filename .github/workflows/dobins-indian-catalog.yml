@@ -12,6 +12,7 @@ on:
       - 'dobins-indian-catalog/check_site.py'
       - 'dobins-indian-catalog/tests/**'
       - 'dobins-indian-catalog/requirements.txt'
+      - '.github/workflows/dobins-indian-catalog.yml'
   schedule:
     - cron: '0,30 * * * *'
 permissions:
@@ -51,15 +52,9 @@ jobs:
           FORCE_MATCH_RETRY: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && 'true' || 'false' }}
           FORCE_MALAYALAM_REVALIDATION: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && 'true' || 'false' }}
         run: python -u dobins-indian-catalog/update.py
-      - name: Check public addon and checkout availability
+      - name: Persist refreshed catalogs, metadata and source health
         if: always()
-        id: site_health
-        continue-on-error: true
-        env:
-          MALAYALAM_METADATA_AUDIT: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && 'true' || 'false' }}
-        run: python3 dobins-indian-catalog/check_site.py
-      - name: Preserve metadata caches, catalogs and source health
-        if: always()
+        id: persist
         run: |
           set -e
           git config user.name 'Dobins Indian Catalog'
@@ -93,6 +88,42 @@ jobs:
 
           echo 'Catalog data could not be persisted after five safe push attempts.'
           exit 1
+      - name: Check public addon and checkout availability
+        if: always()
+        id: site_health
+        continue-on-error: true
+        env:
+          MALAYALAM_METADATA_AUDIT: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && 'true' || 'false' }}
+        run: python3 dobins-indian-catalog/check_site.py
+      - name: Persist public catalog health report
+        if: always()
+        id: health_report
+        run: |
+          set -e
+          git config user.name 'Dobins Indian Catalog'
+          git config user.email 'dobins-catalog@users.noreply.github.com'
+          git add dobins-indian-catalog/data/catalog-health.json
+          if git diff --cached --quiet; then
+            echo 'No public health report changes to persist.'
+            exit 0
+          fi
+          git commit -m 'Record public catalog and metadata health'
+          for attempt in 1 2 3 4 5; do
+            git fetch origin dobins-catalog
+            if ! git rebase origin/dobins-catalog; then
+              git rebase --abort || true
+              echo 'Cannot safely rebase public health report; refusing to overwrite remote changes.'
+              exit 1
+            fi
+            if git push origin HEAD:dobins-catalog; then
+              echo "Public health report persisted successfully (push attempt $attempt)."
+              exit 0
+            fi
+            echo "Branch advanced or push failed on attempt $attempt; retrying after fetch/rebase."
+            sleep 2
+          done
+          echo 'Public health report could not be persisted after five safe push attempts.'
+          exit 1
       - name: Keep failed work pending for the next 30-minute check
-        if: steps.update.outcome == 'failure' || steps.site_health.outcome == 'failure'
+        if: steps.update.outcome == 'failure' || steps.persist.outcome == 'failure' || steps.site_health.outcome == 'failure' || steps.health_report.outcome == 'failure'
         run: exit 1
