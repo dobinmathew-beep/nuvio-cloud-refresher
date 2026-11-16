@@ -522,6 +522,50 @@ def build():
    row['sources']=list(dict.fromkeys(row['sources']+item.get('sources',[])))
  upcoming_rows=sorted(upcoming_by_id.values(),key=lambda x:(x['releaseDate'] or '',x['language'],x['name']))
  save('upcoming.json',{'generatedAt':NOW.isoformat(),'policy':'confirmed-source-and-imdb-match-v1','count':len(upcoming_rows),'items':upcoming_rows})
+ # Keep a full discovery ledger alongside the strict public feed. This makes
+ # source coverage and unresolved titles visible without weakening publication
+ # rules or assigning speculative IDs.
+ catalog_ids={cid:{str(x.get('id')) for x in items} for cid,items in catalogs.items()}
+ discovery={}
+ for e in events:
+  day=str(e.get('ottDate') or '')[:10]
+  if not re.fullmatch(r'\\d{4}-\\d{2}-\\d{2}',day) or day<TODAY or e.get('releaseKind','digital')!='digital':continue
+  lang=e.get('language');typ=e.get('type');name=str(e.get('name') or '').strip()
+  if lang not in LANGS or typ not in ('movie','series') or not name:continue
+  key=lang+'|'+typ+'|'+norm(name)
+  match=matches.get(key,{})
+  mid=str(match.get('id') or e.get('_verifiedImdbId') or '')
+  meta=metas.get(alternate.key(typ,mid),{}) if mid else {}
+  complete=bool(mid and meta.get('id')==mid and meta.get('type')==typ and not meta.get('_partial') and meta.get('name'))
+  cid=f'dobins_{LANGS[lang]}_{typ}'
+  published=bool(mid and mid in catalog_ids.get(cid,set()))
+  state='published' if published else 'matched_not_published' if complete else 'metadata_incomplete' if mid else 'unmatched'
+  rowkey=(lang,typ,norm(name),day)
+  if rowkey not in discovery:
+   discovery[rowkey]={'title':name,'language':lang,'type':typ,'releaseDate':day,
+    'platforms':list(dict.fromkeys(e.get('platforms') or [])),
+    'sources':list(dict.fromkeys(e.get('sources') or ([e.get('source')] if e.get('source') else []))),
+    'confirmed':bool(e.get('confirmed')),'releaseDateBasis':e.get('releaseDateBasis'),
+    'detail':e.get('detail'),'matchId':mid or None,'matchState':state,
+    'metadataComplete':complete,'metadataSource':meta.get('metadataSource') or match.get('method'),
+    'metadataFields':{'poster':bool(meta.get('poster')),'description':bool(meta.get('description')),
+     'genres':bool(meta.get('genres')),'releaseInfo':bool(meta.get('releaseInfo'))},
+    'catalog':cid if published else None}
+  else:
+   prior=discovery[rowkey]
+   prior['sources']=list(dict.fromkeys(prior['sources']+(e.get('sources') or ([e.get('source')] if e.get('source') else []))))
+   prior['platforms']=list(dict.fromkeys(prior['platforms']+(e.get('platforms') or [])))
+   prior['confirmed']=prior['confirmed'] or bool(e.get('confirmed'))
+   if not prior.get('detail') and e.get('detail'):prior['detail']=e['detail']
+   if prior['matchState']!='published' and state=='published':
+    prior.update(matchId=mid,matchState=state,metadataComplete=complete,metadataSource=meta.get('metadataSource') or match.get('method'),catalog=cid)
+ discovery_rows=sorted(discovery.values(),key=lambda x:(x['releaseDate'],x['language'],x['type'],x['title']))
+ discovery_counts={'total':len(discovery_rows),'byLanguage':{},'byType':{},'byMatchState':{},'bySource':{}}
+ for row in discovery_rows:
+  for field,value in [('byLanguage',row['language']),('byType',row['type']),('byMatchState',row['matchState'])]:
+   discovery_counts[field][value]=discovery_counts[field].get(value,0)+1
+  for source in row['sources']:discovery_counts['bySource'][source]=discovery_counts['bySource'].get(source,0)+1
+ save('upcoming-discovery.json',{'generatedAt':NOW.isoformat(),'policy':'source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json','counts':discovery_counts,'items':discovery_rows,'sourceHealth':health})
  upcoming_source_summary={}
  for item in upcoming_rows:
   for source in item['sources']:
@@ -539,7 +583,7 @@ def build():
  for cid,items in catalogs.items():
   latest=max(items,key=lambda x:str(x.get('latestEpisodeReleasedAt') or x.get('ottDate') or x.get('releaseDate') or ''),default=None)
   freshness[cid]={'count':len(items),'generatedAt':NOW.isoformat(),'latestEntry':None if not latest else {'id':latest.get('id'),'name':latest.get('name'),'releaseDate':latest.get('latestEpisodeReleasedAt') or latest.get('ottDate') or latest.get('releaseDate'),'hasNewEpisodes':latest.get('hasNewEpisodes',False)}}
- status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastMatchRetryAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'malayalamMetadataAudit':malayalam_audit,'upcoming':{'matchedTitles':len(upcoming_rows),'bySource':upcoming_source_summary,'policy':'Only confirmed upcoming titles with a validated IMDb tt-ID are published.'},'errors':resolve_errors}
+ status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastMatchRetryAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'malayalamMetadataAudit':malayalam_audit,'upcoming':{'matchedTitles':len(upcoming_rows),'bySource':upcoming_source_summary,'policy':'Only confirmed upcoming titles with a validated IMDb tt-ID are published.'},'upcomingDiscovery':discovery_counts,'errors':resolve_errors}
  save('status.json',status);print('SUCCESS',json.dumps(status),flush=True)
 if __name__=='__main__':
  try:build()
