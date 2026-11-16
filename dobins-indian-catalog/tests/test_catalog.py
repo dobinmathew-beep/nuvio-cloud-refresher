@@ -19,6 +19,31 @@ class CatalogTests(unittest.TestCase):
   self.assertTrue(schedule.needs_retry({'errors':['updater failed']}))
   self.assertTrue(schedule.needs_retry({'sources':[]},{'state':'degraded','catalogSummary':{'countMismatches':1}}))
   self.assertFalse(schedule.needs_retry({'sources':[{'state':'live'},{'state':'no_confirmed_upcoming'},{'state':'covered_by_primary_collector'}]}, {'state':'ok','catalogSummary':{'failed':0,'countMismatches':0}}))
+ def test_candidate_index_paginates_each_language_and_content_type(self):
+  original_get,original_data=update.get,update.DATA
+  old_pages=update.os.environ.get('CATALOG_CANDIDATE_PAGES')
+  try:
+   with tempfile.TemporaryDirectory() as d:
+    update.DATA=Path(d)
+    update.os.environ['CATALOG_CANDIDATE_PAGES']='3'
+    calls=[]
+    def fake_get(url):
+     calls.append(url)
+     cat=url.split('/catalog/')[1].split('/')[1].split('.')[0]
+     page=0 if '/skip=' not in url else int(url.split('/skip=')[1].split('.')[0])//20
+     base=sum(ord(ch) for ch in cat)%100000
+     if page>1:return {'metas':[]}
+     start=page*20
+     return {'metas':[{'id':f'tt{base+i+1:07d}','name':f'{cat} title {i+1}'} for i in range(start,start+20)]}
+    update.get=fake_get
+    pool=update.candidate_index()
+    self.assertEqual(len(pool),8*40)
+    self.assertEqual(len([url for url in calls if '/skip=20' in url]),8)
+    self.assertEqual(len([url for url in calls if '/skip=40' in url]),8)
+  finally:
+   update.get,update.DATA=original_get,original_data
+   if old_pages is None:update.os.environ.pop('CATALOG_CANDIDATE_PAGES',None)
+   else:update.os.environ['CATALOG_CANDIDATE_PAGES']=old_pages
  def test_match_rejects_wrong_kind_language_and_future_year(self):
   event={'name':'Example','language':'tamil','type':'movie','ottDate':'2026-10-30','year':'2026'}
   base={'name':'Example','language':'tamil','type':'movie','id':'tt1234567','releaseInfo':'2026'}
