@@ -462,7 +462,15 @@ def collect(get, today, langs, norm):
             if not rows:
                 visible = soup.get_text(' ', strip=True).lower()
                 if "ottasia.com" in url:
-                    section_present = bool(re.search(r'upcoming\s+ott\s+releases', visible))
+                    raw_lines = soup.get_text('\\n', strip=True)
+                    section_start = re.search(r'upcoming\s+ott\s+releases', raw_lines, re.I)
+                    section_text = raw_lines[section_start.start():] if section_start else raw_lines
+                    section_text = re.split(r'predicted next on ott', section_text, maxsplit=1, flags=re.I)[0]
+                    has_tracked_kind = bool(re.search(r'(?:Series|Film)\s*[·|•]\s*(?:Malayalam|Tamil|Telugu|Hindi)', section_text, re.I))
+                    has_dated_row = bool(re.search(r'\b(?:from|on)\s+.{0,35}\b(?:19|20)\d{2}\b', section_text, re.I))
+                    if has_tracked_kind and has_dated_row:
+                        raise ValueError('OTTASIA confirmed section contains tracked dated rows but parser extracted none; excerpt: ' + section_text[:1000])
+                    section_present = bool(section_start)
                 elif "newindianmovies.com" in url:
                     section_present = 'new on ott this week' in visible
                 elif "indianmoviereviews.com" in url:
