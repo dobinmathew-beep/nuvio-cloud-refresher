@@ -1,4 +1,5 @@
 """IMDb-matched digital-release catalogs. Public sources only; no AI or paid API."""
+# A maintenance commit also serves as a one-off deep-refresh trigger via Actions.
 # Preserve last-good catalog entries when a refresh source has incomplete metadata.
 from pathlib import Path
 from datetime import datetime,timedelta,date,timezone
