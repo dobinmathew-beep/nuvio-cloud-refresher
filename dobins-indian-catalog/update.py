@@ -47,6 +47,9 @@ def original_language_matches(event,meta):
  return not original or original in (expected,event['language'])
 TYPE_OVERRIDES={'balbarbarik':'series','princeofmollywood':'series'}
 LANGUAGE_OVERRIDES={'taarini':'marathi'}
+VERIFIED_TMDB_OVERRIDES={
+ 'malayalam|series|patriotlegendshangout':{'id':320606,'name':'Patriot Legends Hangout'}
+}
 VERIFIED_IMDB_OVERRIDES={
  'malayalam|series|princeofmollywood':{'id':'tt44686897','name':'Prince of Mollywood'},
  'malayalam|series|oruchiriiruchiribumperchiri3':{'id':'tt43511363','name':'Oru Chiri Iru Chiri Bumper Chiri 3'},
@@ -62,6 +65,10 @@ def apply_verified_overrides(events):
   verified=VERIFIED_IMDB_OVERRIDES.get(event['language']+'|'+event['type']+'|'+event_name)
   if verified:
    event['_verifiedImdbId']=verified['id'];event['_verifiedImdbName']=verified['name']
+  tmdb=VERIFIED_TMDB_OVERRIDES.get(event['language']+'|'+event['type']+'|'+event_name)
+  if tmdb and not event.get('_verifiedMetadata'):
+   verified_meta=alternate.tmdb(event,{'tmdbId':tmdb['id']})
+   if verified_meta and verified_meta.get('type')==event['type'] and verified_meta.get('id')=='tmdb:'+str(tmdb['id']):event['_verifiedMetadata']=verified_meta
  return events
 
 def append_legacy_series(current,legacy,today,metadata_cache=None,require_metadata=False):
