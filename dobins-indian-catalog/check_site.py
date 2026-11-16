@@ -80,11 +80,20 @@ for lang in ('ml', 'ta', 'te', 'hi'):
             result['endpointPageSize'] = 50
             result['endpointLatestEntry'] = latest_entry(all_metas)
             result['localLatestEntry'] = latest_entry(local.get(cid, []))
+            endpoint_latest = result['endpointLatestEntry']
+            local_latest = result['localLatestEntry']
+            result['latestEntryMatches'] = (not expected) or bool(
+                endpoint_latest and local_latest and
+                endpoint_latest.get('id') == local_latest.get('id') and
+                endpoint_latest.get('releaseDate') == local_latest.get('releaseDate')
+            )
             if expected and len(all_metas) < expected:
                 result['state'] = 'possible_truncation_or_deployment_lag'
                 result['missingFromResponse'] = expected - len(all_metas)
             elif expected and len(all_metas) > expected:
                 result['state'] = 'endpoint_ahead_of_local_snapshot'
+            elif not result['latestEntryMatches']:
+                result['state'] = 'latest_entry_mismatch'
             else:
                 result['state'] = 'ok'
             result['check'] = 'ok'
@@ -114,7 +123,7 @@ for route in ['/manifest.json', '/support', '/health.json']:
         checks.append({'path': route, 'state': 'failed', 'error': str(error)[:180]})
 
 catalog_failures = sum(1 for x in catalogs if x.get('check') != 'ok')
-count_mismatches = sum(1 for x in catalogs if x.get('state') in ('possible_truncation_or_deployment_lag', 'endpoint_ahead_of_local_snapshot'))
+count_mismatches = sum(1 for x in catalogs if x.get('state') in ('possible_truncation_or_deployment_lag', 'endpoint_ahead_of_local_snapshot', 'latest_entry_mismatch'))
 result = {
     'checkedAt': datetime.now(timezone.utc).isoformat(),
     'url': base,
