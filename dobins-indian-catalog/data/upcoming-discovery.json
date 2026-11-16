@@ -1,0 +1,959 @@
+{
+  "generatedAt": "2026-11-17T02:36:58.323507+04:00",
+  "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
+  "counts": {
+    "total": 29,
+    "byLanguage": {
+      "hindi": 17,
+      "tamil": 8,
+      "telugu": 4
+    },
+    "byType": {
+      "series": 16,
+      "movie": 13
+    },
+    "byMatchState": {
+      "published": 10,
+      "unmatched": 17,
+      "metadata_incomplete": 2
+    },
+    "bySource": {
+      "https://newindianmovies.com/": 4,
+      "https://www.myvi.in/blog/ott-releases-this-week": 2,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 8,
+      "https://cinebuds.com/ott-releases-this-week/": 4,
+      "https://www.dailyott.in/": 3,
+      "https://indianmoviereviews.com/ott-releases/": 10,
+      "https://api.tvmaze.com/schedule/web": 1,
+      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
+      "https://v3-cinemeta.strem.io/": 1
+    }
+  },
+  "items": [
+    {
+      "title": "Campus Diaries season 2",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-18",
+      "platforms": [
+        "Prime Video",
+        "Amazon MX Player"
+      ],
+      "sources": [
+        "https://newindianmovies.com/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "confirmed or reported OTT calendar date",
+      "detail": "https://newindianmovies.com/movie/campus-diaries-season-2",
+      "matchId": "tt15295490",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "Mr. And Mrs. Office",
+      "language": "tamil",
+      "type": "movie",
+      "releaseDate": "2026-11-18",
+      "platforms": [
+        "JioHotstar",
+        "Hotstar"
+      ],
+      "sources": [
+        "https://www.myvi.in/blog/ott-releases-this-week"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "Vi dated OTT release calendar",
+      "detail": "https://www.myvi.in/blog/ott-releases-this-week",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "Mr & Mrs Office",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-11-18",
+      "platforms": [
+        "JioHotstar",
+        "Hotstar"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/tv/338502/mr-mrs-office?country=IN",
+      "matchId": "tt50135636",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_ta_series"
+    },
+    {
+      "title": "Nayyi Navelli",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Prime Video"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-releases-this-week/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "confirmed announcement",
+      "detail": "https://cinebuds.com/movies/nayyi-navelli/",
+      "matchId": "tt40855841",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_movie"
+    },
+    {
+      "title": "Teen Tigada",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://www.myvi.in/blog/ott-releases-this-week"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "Vi dated OTT release calendar",
+      "detail": "https://www.myvi.in/blog/ott-releases-this-week",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "Dhindora Season 1",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://newindianmovies.com/",
+        "https://www.dailyott.in/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": null,
+      "detail": null,
+      "matchId": "tt14650074",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "Teen Tigada",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://newindianmovies.com/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "confirmed or reported OTT calendar date",
+      "detail": "https://newindianmovies.com/movie/teen-tigada",
+      "matchId": "tt50943841",
+      "matchState": "metadata_incomplete",
+      "metadataComplete": false,
+      "metadataSource": "Verified IMDb title/year match",
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": true
+      },
+      "catalog": null
+    },
+    {
+      "title": "Anbil Avan",
+      "language": "tamil",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "SonyLIV"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "confirmed announcement",
+      "detail": null,
+      "matchId": "tt35682855",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_ta_movie"
+    },
+    {
+      "title": "Haiku",
+      "language": "tamil",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-releases-this-week/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "confirmed announcement",
+      "detail": "https://cinebuds.com/movies/haiku/",
+      "matchId": "tt39239818",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_ta_movie"
+    },
+    {
+      "title": "Anumana Pakshi",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Sun NXT"
+      ],
+      "sources": [
+        "https://newindianmovies.com/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "confirmed or reported OTT calendar date",
+      "detail": "https://newindianmovies.com/movie/anumana-pakshi",
+      "matchId": "tt39000001",
+      "matchState": "metadata_incomplete",
+      "metadataComplete": false,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": false,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": null
+    },
+    {
+      "title": "Crazy Kalyanam",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Aha",
+        "aha"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-releases-this-week/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "confirmed announcement",
+      "detail": "https://cinebuds.com/movies/crazy-kalyanam/",
+      "matchId": "tt39309264",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_te_movie"
+    },
+    {
+      "title": "Coming Sat 21 Nov AndherPura Curse Hindi · Series App not announced",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-21",
+      "platforms": [],
+      "sources": [
+        "https://indianmoviereviews.com/ott-releases/"
+      ],
+      "confirmed": false,
+      "releaseDateBasis": "Indian Movie Reviews OTT calendar reported OTT calendar date",
+      "detail": "https://indianmoviereviews.com/series/andherpura-curse-2026/",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "The Great Indian Kapil Show Season 5",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-21",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": null,
+      "detail": null,
+      "matchId": "tt30003786",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "Coming Sun 22 Nov Supreme Solaris Hindi · Series YouTube",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-22",
+      "platforms": [
+        "YouTube"
+      ],
+      "sources": [
+        "https://indianmoviereviews.com/ott-releases/"
+      ],
+      "confirmed": false,
+      "releaseDateBasis": "Indian Movie Reviews OTT calendar reported OTT calendar date",
+      "detail": "https://indianmoviereviews.com/series/supreme-solaris-2026/",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "Supreme Solaris",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-22",
+      "platforms": [
+        "YouTube"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/tv/338740/supreme-solaris?country=IN",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "Coming Mon 23 Nov Notebook 90s – Kadhal Flashback Tamil · Series SonyLIV",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-11-23",
+      "platforms": [
+        "SonyLIV"
+      ],
+      "sources": [
+        "https://indianmoviereviews.com/ott-releases/"
+      ],
+      "confirmed": false,
+      "releaseDateBasis": "Indian Movie Reviews OTT calendar reported OTT calendar date",
+      "detail": "https://indianmoviereviews.com/series/notebook-90s-kadhal-flashback-2026/",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "Notebook 90s – Kadhal Flashback",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-11-23",
+      "platforms": [
+        "SonyLIV"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/tv/339004/notebook-90s-kadhal-flashback?country=IN",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "Coming Thu 26 Nov Takshakudu Telugu App not announced",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-26",
+      "platforms": [],
+      "sources": [
+        "https://indianmoviereviews.com/ott-releases/"
+      ],
+      "confirmed": false,
+      "releaseDateBasis": "Indian Movie Reviews OTT calendar reported OTT calendar date",
+      "detail": "https://indianmoviereviews.com/movie/takshakudu-2026-review/",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "Takshakudu",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-26",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/movie/1442399/takshakudu?country=IN",
+      "matchId": "tt38676235",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_te_movie"
+    },
+    {
+      "title": "Coming Fri 27 Nov Hanuman Ansh Hindi App not announced 3.3 /5 · 5 critics",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "platforms": [],
+      "sources": [
+        "https://indianmoviereviews.com/ott-releases/"
+      ],
+      "confirmed": false,
+      "releaseDateBasis": "Indian Movie Reviews OTT calendar reported OTT calendar date",
+      "detail": "https://indianmoviereviews.com/movie/hanuman-ansh-2026-review/",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "Hanuman Ansh",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/movie/1709391/hanuman-ansh?country=IN",
+      "matchId": "tt39390582",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_movie"
+    },
+    {
+      "title": "Jindey",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/movie/1765369/jindey?country=IN",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "AndherPura Curse",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-28",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/tv/337904/andherpura-curse?country=IN",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "Hatela Gang",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-28",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/movie/1787832/hatela-gang?country=IN",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "Coming Thu 3 Dec The Conjunction Hindi App not announced",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-12-03",
+      "platforms": [],
+      "sources": [
+        "https://indianmoviereviews.com/ott-releases/"
+      ],
+      "confirmed": false,
+      "releaseDateBasis": "Indian Movie Reviews OTT calendar reported OTT calendar date",
+      "detail": "https://indianmoviereviews.com/movie/the-conjunction-2026-review/",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "Coming Thu 3 Dec Madam Police Tamil · Series SonyLIV",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-12-03",
+      "platforms": [
+        "SonyLIV"
+      ],
+      "sources": [
+        "https://indianmoviereviews.com/ott-releases/"
+      ],
+      "confirmed": false,
+      "releaseDateBasis": "Indian Movie Reviews OTT calendar reported OTT calendar date",
+      "detail": "https://indianmoviereviews.com/series/madam-police-2026/",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "O Coming Fri 4 Dec O Saathi Re Hindi · Series Netflix",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-12-04",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://indianmoviereviews.com/ott-releases/"
+      ],
+      "confirmed": false,
+      "releaseDateBasis": "Indian Movie Reviews OTT calendar reported OTT calendar date",
+      "detail": "https://indianmoviereviews.com/series/o-saathi-re-2026/",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "Coming Fri 25 Dec Teen Kauwe Hindi · Series App not announced",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-12-25",
+      "platforms": [],
+      "sources": [
+        "https://indianmoviereviews.com/ott-releases/"
+      ],
+      "confirmed": false,
+      "releaseDateBasis": "Indian Movie Reviews OTT calendar reported OTT calendar date",
+      "detail": "https://indianmoviereviews.com/series/teen-kauwe-2026/",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "O Coming Thu 31 Dec Octopus Tamil · Series ZEE5",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-12-31",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://indianmoviereviews.com/ott-releases/"
+      ],
+      "confirmed": false,
+      "releaseDateBasis": "Indian Movie Reviews OTT calendar reported OTT calendar date",
+      "detail": "https://indianmoviereviews.com/series/octopus-2026/",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    }
+  ],
+  "sourceHealth": [
+    {
+      "source": "DailyOTT",
+      "url": "https://www.dailyott.in/",
+      "state": "live",
+      "records": 954
+    },
+    {
+      "source": "Cinebuds",
+      "url": "https://cinebuds.com/ott-release-dates/",
+      "state": "live",
+      "records": 36
+    },
+    {
+      "source": "Cinebuds upcoming calendar",
+      "url": "https://cinebuds.com/ott-releases-this-week/",
+      "state": "live",
+      "records": 4
+    },
+    {
+      "source": "OTTASIA confirmed calendar",
+      "url": "https://ottasia.com/ott-releases-this-week?country=IN",
+      "state": "live",
+      "records": 9
+    },
+    {
+      "source": "Vi weekly OTT calendar",
+      "url": "https://www.myvi.in/blog/ott-releases-this-week",
+      "state": "live",
+      "records": 2
+    },
+    {
+      "source": "Vi monthly OTT calendar",
+      "url": "https://www.myvi.in/blog/ott-releases-this-month",
+      "state": "live",
+      "records": 1
+    },
+    {
+      "source": "Simply Mollywood Malayalam OTT calendar",
+      "url": "https://simplymollywood.com/ott",
+      "state": "no_confirmed_upcoming",
+      "records": 0,
+      "note": "Calendar section is present; no eligible future releases for the four tracked languages were found."
+    },
+    {
+      "source": "New Indian Movies OTT calendar",
+      "url": "https://newindianmovies.com/",
+      "state": "live",
+      "records": 7
+    },
+    {
+      "source": "Indian Movie Reviews OTT calendar",
+      "url": "https://indianmoviereviews.com/ott-releases/",
+      "state": "live",
+      "records": 10
+    },
+    {
+      "source": "OTTClock confirmed upcoming calendar",
+      "url": "https://ottclock.com/upcoming-ott-releases/",
+      "state": "no_confirmed_upcoming",
+      "records": 0,
+      "note": "Calendar section is present; no eligible future releases for the four tracked languages were found."
+    },
+    {
+      "source": "DailyOTT upcoming dates",
+      "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
+      "state": "no_confirmed_upcoming",
+      "records": 0,
+      "note": "DailyOTT is live; no verified future dates were present in the returned API pages."
+    },
+    {
+      "source": "Cinebuds recent OTT dates",
+      "url": "https://cinebuds.com/ott-release-dates/",
+      "state": "covered_by_primary_collector",
+      "records": 0
+    },
+    {
+      "source": "TVmaze upcoming web schedule",
+      "url": "https://api.tvmaze.com/schedule/web",
+      "state": "live",
+      "records": 3,
+      "errors": 0
+    },
+    {
+      "source": "IndianRegional series discovery",
+      "language": "malayalam",
+      "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
+      "state": "live",
+      "records": 41
+    },
+    {
+      "source": "TMDB streaming-series discovery",
+      "language": "malayalam",
+      "url": "https://www.themoviedb.org/discover/tv",
+      "state": "live",
+      "records": 74
+    },
+    {
+      "source": "IndianRegional series discovery",
+      "language": "tamil",
+      "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
+      "state": "live",
+      "records": 74
+    },
+    {
+      "source": "TMDB streaming-series discovery",
+      "language": "tamil",
+      "url": "https://www.themoviedb.org/discover/tv",
+      "state": "live",
+      "records": 99
+    },
+    {
+      "source": "IndianRegional series discovery",
+      "language": "telugu",
+      "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
+      "state": "live",
+      "records": 72
+    },
+    {
+      "source": "TMDB streaming-series discovery",
+      "language": "telugu",
+      "url": "https://www.themoviedb.org/discover/tv",
+      "state": "live",
+      "records": 100
+    },
+    {
+      "source": "IndianRegional series discovery",
+      "language": "hindi",
+      "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
+      "state": "live",
+      "records": 300
+    },
+    {
+      "source": "TMDB streaming-series discovery",
+      "language": "hindi",
+      "url": "https://www.themoviedb.org/discover/tv",
+      "state": "live",
+      "records": 100
+    },
+    {
+      "source": "TVmaze streaming episode schedule",
+      "url": "https://api.tvmaze.com/schedule/web",
+      "state": "live",
+      "records": 4
+    },
+    {
+      "source": "Verified multi-source series backfill",
+      "policy": "multi-source-series-v1",
+      "records": 595,
+      "counts": {
+        "malayalam": 59,
+        "tamil": 103,
+        "telugu": 108,
+        "hindi": 325
+      },
+      "state": "live"
+    },
+    {
+      "source": "TMDB physical releases",
+      "language": "malayalam",
+      "state": "live",
+      "records": 0
+    },
+    {
+      "source": "TMDB physical releases",
+      "language": "tamil",
+      "state": "live",
+      "records": 0
+    },
+    {
+      "source": "TMDB physical releases",
+      "language": "telugu",
+      "state": "live",
+      "records": 0
+    },
+    {
+      "source": "TMDB physical releases",
+      "language": "hindi",
+      "state": "live",
+      "records": 16
+    }
+  ]
+}
