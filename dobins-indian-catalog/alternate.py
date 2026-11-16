@@ -71,7 +71,7 @@ def tmdb_search(e,get,norm):
  for anchor in soup.select('a[href]'):
   href=str(anchor.get('href') or '')
   path=urlparse(href).path
-  match=re.fullmatch(r'/(movie|tv)/(\\d+)(?:-[^/]*)?/?',path)
+  match=re.fullmatch(r'/(movie|tv)/(\d+)(?:-[^/]*)?/?',path)
   if not match or match.group(1)!=expected_path:continue
   title=anchor.get_text(' ',strip=True)
   if not title:
