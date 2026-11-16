@@ -183,7 +183,7 @@ def candidate_index():
    all_rows=previous
   if all_rows:cache[key]=all_rows
   print('CANDIDATES',key,len(all_rows),'pages',page+1,'error',bool(error),flush=True)
-  return [dict(m,language=lang,type=typ) for m in all_rows if re.fullmatch(r'tt\\d+',str(m.get('id',''))) and m.get('name')]
+  return [dict(m,language=lang,type=typ) for m in all_rows if re.fullmatch(r'tt\d+',str(m.get('id',''))) and m.get('name')]
  with ThreadPoolExecutor(max_workers=4) as ex:
   for ms in ex.map(f,[(l,t) for l in LANGS for t in ('movie','series')]):pool.extend(ms)
  save('candidates.json',cache);return pool
