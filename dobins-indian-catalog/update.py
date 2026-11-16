@@ -291,7 +291,7 @@ def build():
    checked=metas[alternate.key(e['type'],cached['id'])].get('_metadataCheckedAt')
    if checked and (NOW-datetime.fromisoformat(checked)).total_seconds()<10800 and str(cached.get('id','')).startswith('tt'):continue
   # Revisit unmatched titles after a half-hour discovery retry; a later source page may now contain their IMDb identity.
-  if cached and cached.get('alternatePolicy')==alternate.POLICY and not cached.get('id') and not e.get('_verifiedMetadata') and (NOW-datetime.fromisoformat(cached['checkedAt'])).total_seconds()<1800:continue
+  if cached and cached.get('alternatePolicy')==alternate.POLICY and not cached.get('id') and not e.get('_verifiedMetadata') and not e.get('_verifiedImdbId') and (NOW-datetime.fromisoformat(cached['checkedAt'])).total_seconds()<1800:continue
   if attempts>=budget:continue
   work.append((key,e));attempts+=1
  def resolve(pair):
