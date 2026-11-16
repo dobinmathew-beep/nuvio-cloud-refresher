@@ -34,6 +34,8 @@ def norm(s):
  s=unicodedata.normalize('NFKD',str(s)).lower().replace('&',' and ')
  s=re.sub(r'\b(?:season|s)\s*\d+\b|\((?:series|web series)\)',' ',s,flags=re.I)
  return re.sub(r'[^a-z0-9]+','',s.removeprefix('the '))
+def is_imdb_id(value):
+ return bool(re.fullmatch(r'tt\d+',str(value or '')))
 TYPE_OVERRIDES={'balbarbarik':'series'}
 VERIFIED_IMDB_OVERRIDES={
  'hindi|movie|mirzapur':{'id':'tt34339725','name':'Mirzapur: The Movie'},
@@ -183,7 +185,7 @@ def candidate_index():
    all_rows=previous
   if all_rows:cache[key]=all_rows
   print('CANDIDATES',key,len(all_rows),'pages',page+1,'error',bool(error),flush=True)
-  return [dict(m,language=lang,type=typ) for m in all_rows if re.fullmatch(r'tt\d+',str(m.get('id',''))) and m.get('name')]
+  return [dict(m,language=lang,type=typ) for m in all_rows if is_imdb_id(m.get('id','')) and m.get('name')]
  with ThreadPoolExecutor(max_workers=4) as ex:
   for ms in ex.map(f,[(l,t) for l in LANGS for t in ('movie','series')]):pool.extend(ms)
  save('candidates.json',cache);return pool
