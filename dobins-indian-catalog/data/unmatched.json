@@ -35,13 +35,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Koffee with Karan 9",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Mirzapur",
     "language": "hindi",
     "type": "movie",
@@ -49,10 +42,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Vadhandhi Season 2: The Mystery of Mani",
-    "language": "tamil",
+    "name": "Koffee with Karan 9",
+    "language": "hindi",
     "type": "series",
-    "ottDate": "2026-08-07",
+    "ottDate": "2026-10-28",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -63,10 +56,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Marpu - Not For You, But For The Future",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-10-14",
+    "name": "Vadhandhi Season 2: The Mystery of Mani",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-08-07",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -74,6 +67,13 @@
     "language": "hindi",
     "type": "movie",
     "ottDate": "2026-10-23",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Marpu - Not For You, But For The Future",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-10-14",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -91,13 +91,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Second Love",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-07-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Prince of Mollywood",
     "language": "malayalam",
     "type": "movie",
@@ -112,6 +105,13 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Second Love",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-07-13",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Durga",
     "language": "malayalam",
     "type": "series",
@@ -119,17 +119,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Mammaatiyaan Stars",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-06-26",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Avalaga Irunthal",
     "language": "tamil",
     "type": "movie",
     "ottDate": "2026-10-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Mammaatiyaan Stars",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-06-26",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -141,6 +141,13 @@
   },
   {
     "name": "Taarini",
+    "language": "malayalam",
+    "type": "series",
+    "ottDate": "2026-04-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Manjil Virinja Poovu",
     "language": "malayalam",
     "type": "series",
     "ottDate": "2026-04-28",
@@ -161,13 +168,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Manjil Virinja Poovu",
-    "language": "malayalam",
-    "type": "series",
-    "ottDate": "2026-04-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Chikoo Vs Bunty: Kushti Ki Jung",
     "language": "hindi",
     "type": "movie",
@@ -175,31 +175,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Koffee with Karan (Season 9)",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Patriot: Legends Hangout",
     "language": "malayalam",
     "type": "series",
     "ottDate": "2026-04-23",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Exam: The System Exposed",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-05-15",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Nijame Rujuvainadhi",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-08-14",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -217,10 +196,24 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Neeya Naana",
+    "name": "Koffee with Karan (Season 9)",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Exam: The System Exposed",
     "language": "tamil",
     "type": "series",
-    "ottDate": "2026-05-10",
+    "ottDate": "2026-05-15",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Nijame Rujuvainadhi",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-08-14",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -238,17 +231,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Cooku with Comali",
+    "name": "Neeya Naana",
     "language": "tamil",
     "type": "series",
     "ottDate": "2026-05-10",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Objection My Lord",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-07-31",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -266,6 +252,27 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Cooku with Comali",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-05-10",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Objection My Lord",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-07-31",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Aakali Rajyam",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-08-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Jodi Are U Ready Season 3 (Grand Finale)",
     "language": "tamil",
     "type": "series",
@@ -280,6 +287,13 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Padamati Sandhyaragam",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-04-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Chumbak Part 2",
     "language": "hindi",
     "type": "series",
@@ -287,22 +301,8 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Aakali Rajyam",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-08-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Thai Maaman",
     "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-04-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Padamati Sandhyaragam",
-    "language": "telugu",
     "type": "series",
     "ottDate": "2026-04-28",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
@@ -322,13 +322,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Cooku with Comali Season 7 (Episode 5)",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-04-18",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Meghasandesam",
     "language": "telugu",
     "type": "series",
@@ -343,17 +336,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "WWE (Tamil Dub)",
+    "name": "Cooku with Comali Season 7 (Episode 5)",
     "language": "tamil",
     "type": "series",
     "ottDate": "2026-04-18",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Kaakkee Circus",
+    "name": "WWE (Tamil Dub)",
     "language": "tamil",
     "type": "series",
-    "ottDate": "2026-04-10",
+    "ottDate": "2026-04-18",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -371,10 +364,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Love Beyond Wicket",
+    "name": "Kaakkee Circus",
     "language": "tamil",
     "type": "series",
-    "ottDate": "2026-04-09",
+    "ottDate": "2026-04-10",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -385,17 +378,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Love Beyond Wicket",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-04-09",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Katha Sudha",
     "language": "telugu",
     "type": "series",
     "ottDate": "2026-03-22",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Vanakkam Thamizha",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-03-25",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -406,10 +399,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Uthutha Herolu",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-21",
+    "name": "Vanakkam Thamizha",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-03-25",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -427,6 +420,13 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Uthutha Herolu",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-05-21",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Musafir Café",
     "language": "hindi",
     "type": "movie",
@@ -434,17 +434,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Yellamma",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-18",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Yezhu Kadal Yezhu Malai",
     "language": "tamil",
     "type": "movie",
     "ottDate": "2026-05-25",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Yellamma",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-05-18",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -462,17 +462,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Superhit",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-08",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Aadu 3: One Last Ride – Part 1",
     "language": "malayalam",
     "type": "movie",
     "ottDate": "2026-05-01",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Superhit",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-05-08",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {

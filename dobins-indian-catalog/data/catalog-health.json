@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-16T20:15:04.368293+00:00",
+  "checkedAt": "2026-11-16T20:17:24.497861+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -23,7 +23,12 @@
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
       "localPublishedCount": 68,
-      "endpointReturnedCount": 50,
+      "endpointReturnedCount": 68,
+      "endpointPageCounts": [
+        50,
+        18
+      ],
+      "endpointPageSize": 50,
       "endpointLatestEntry": {
         "id": "tt27512908",
         "name": "The Third Murder",
@@ -34,9 +39,7 @@
         "name": "The Third Murder",
         "releaseDate": "2026-11-13"
       },
-      "state": "possible_truncation_or_deployment_lag",
-      "missingFromResponse": 18,
-      "exactly50Returned": true,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -45,7 +48,12 @@
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ml_series.json",
       "localPublishedCount": 60,
-      "endpointReturnedCount": 50,
+      "endpointReturnedCount": 60,
+      "endpointPageCounts": [
+        50,
+        10
+      ],
+      "endpointPageSize": 50,
       "endpointLatestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
@@ -56,9 +64,7 @@
         "name": "Bigg Boss Malayalam",
         "releaseDate": "2026-11-15T21:30:00+00:00"
       },
-      "state": "possible_truncation_or_deployment_lag",
-      "missingFromResponse": 10,
-      "exactly50Returned": true,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -67,7 +73,12 @@
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ta_movie.json",
       "localPublishedCount": 61,
-      "endpointReturnedCount": 50,
+      "endpointReturnedCount": 61,
+      "endpointPageCounts": [
+        50,
+        11
+      ],
+      "endpointPageSize": 50,
       "endpointLatestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -78,9 +89,7 @@
         "name": "Haiku",
         "releaseDate": "2026-11-20"
       },
-      "state": "possible_truncation_or_deployment_lag",
-      "missingFromResponse": 11,
-      "exactly50Returned": true,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -88,21 +97,24 @@
       "language": "ta",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ta_series.json",
-      "localPublishedCount": 98,
-      "endpointReturnedCount": 50,
+      "localPublishedCount": 99,
+      "endpointReturnedCount": 99,
+      "endpointPageCounts": [
+        50,
+        49
+      ],
+      "endpointPageSize": 50,
       "endpointLatestEntry": {
         "id": "tt7084920",
         "name": "Bigg Boss Tamil",
         "releaseDate": "2026-11-15T21:30:00+00:00"
       },
       "localLatestEntry": {
-        "id": "tt7084920",
-        "name": "Bigg Boss Tamil",
-        "releaseDate": "2026-11-15T21:30:00+00:00"
+        "id": "tt50135636",
+        "name": "Mr & Mrs Office",
+        "releaseDate": "2026-11-18"
       },
-      "state": "possible_truncation_or_deployment_lag",
-      "missingFromResponse": 48,
-      "exactly50Returned": true,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -111,7 +123,12 @@
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_te_movie.json",
       "localPublishedCount": 68,
-      "endpointReturnedCount": 50,
+      "endpointReturnedCount": 68,
+      "endpointPageCounts": [
+        50,
+        18
+      ],
+      "endpointPageSize": 50,
       "endpointLatestEntry": {
         "id": "tt39309264",
         "name": "Crazy Kalyanam",
@@ -122,9 +139,7 @@
         "name": "Crazy Kalyanam",
         "releaseDate": "2026-11-20"
       },
-      "state": "possible_truncation_or_deployment_lag",
-      "missingFromResponse": 18,
-      "exactly50Returned": true,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -133,7 +148,13 @@
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_te_series.json",
       "localPublishedCount": 103,
-      "endpointReturnedCount": 50,
+      "endpointReturnedCount": 103,
+      "endpointPageCounts": [
+        50,
+        50,
+        3
+      ],
+      "endpointPageSize": 50,
       "endpointLatestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
@@ -144,9 +165,7 @@
         "name": "Bigg Boss Telugu",
         "releaseDate": "2026-11-15T21:30:00+00:00"
       },
-      "state": "possible_truncation_or_deployment_lag",
-      "missingFromResponse": 53,
-      "exactly50Returned": true,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -155,7 +174,12 @@
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
       "localPublishedCount": 76,
-      "endpointReturnedCount": 50,
+      "endpointReturnedCount": 76,
+      "endpointPageCounts": [
+        50,
+        26
+      ],
+      "endpointPageSize": 50,
       "endpointLatestEntry": {
         "id": "tt40855841",
         "name": "Nayyi Navelli",
@@ -166,9 +190,7 @@
         "name": "Nayyi Navelli",
         "releaseDate": "2026-11-20"
       },
-      "state": "possible_truncation_or_deployment_lag",
-      "missingFromResponse": 26,
-      "exactly50Returned": true,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -177,7 +199,17 @@
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
       "localPublishedCount": 324,
-      "endpointReturnedCount": 50,
+      "endpointReturnedCount": 324,
+      "endpointPageCounts": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        24
+      ],
+      "endpointPageSize": 50,
       "endpointLatestEntry": {
         "id": "tt38195069",
         "name": "Tumm Se Tumm Tak",
@@ -188,17 +220,15 @@
         "name": "Tumm Se Tumm Tak",
         "releaseDate": "2026-11-16T00:00:00+00:00"
       },
-      "state": "possible_truncation_or_deployment_lag",
-      "missingFromResponse": 274,
-      "exactly50Returned": true,
+      "state": "ok",
       "check": "ok"
     }
   ],
   "catalogSummary": {
     "checked": 8,
     "failed": 0,
-    "possibleTruncationOrLag": 8,
-    "exactly50Returned": [
+    "possibleTruncationOrLag": 0,
+    "firstPageSize50": [
       "dobins_ml_movie",
       "dobins_ml_series",
       "dobins_ta_movie",
