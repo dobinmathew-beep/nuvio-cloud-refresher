@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-16T19:13:45.249219+04:00",
+    "checkedAt": "2026-11-16T22:10:12.726344+04:00",
     "records": [
       {
         "_id": "6af9168d55b49077c85d8819",
@@ -651,6 +651,57 @@
         "updatedAt": "2026-11-13T02:19:59.048Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/9I5nQegMmMxWeY4agDXe1aa0B9v.jpg",
         "instagramPostedAt": "2026-11-13T02:21:35Z",
+        "tmdbDetails": {
+          "tmdbId": 1805816,
+          "director": "Suni",
+          "cast": [
+            {
+              "name": "Anil Shetty",
+              "character": "Avyakta"
+            },
+            {
+              "name": "Kunal Karan Kapoor",
+              "character": ""
+            },
+            {
+              "name": "Saachi Bindra",
+              "character": ""
+            },
+            {
+              "name": "Meghana Gaonkar",
+              "character": ""
+            },
+            {
+              "name": "Malavika Avinash",
+              "character": ""
+            },
+            {
+              "name": "Macwin Ian D'Souza",
+              "character": ""
+            },
+            {
+              "name": "Martha Machaca Paye",
+              "character": ""
+            }
+          ],
+          "overview": "A young man is drawn into a revolutionary AI-powered game that promises true happiness, only to discover it is a hidden system designed to study and control human emotion.",
+          "runtime": 137,
+          "genres": [
+            "Drama",
+            "Science Fiction",
+            "Thriller"
+          ],
+          "originalLanguage": "kn",
+          "spokenLanguages": [
+            "Kannada",
+            "Hindi"
+          ],
+          "releaseDate": "2026-11-13",
+          "voteAverage": null,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-16T15:16:51.427Z"
+        },
+        "tmdbId": 1805816,
         "verified": true
       },
       {
@@ -30668,7 +30719,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-16T19:13:45.249219+04:00",
+    "checkedAt": "2026-11-16T22:10:12.726344+04:00",
     "records": [
       {
         "name": "Bandra",
