@@ -133,5 +133,40 @@ class UpcomingSourceTests(unittest.TestCase):
         self.assertEqual({x["type"] for x in rows}, {"movie", "series"})
         self.assertTrue(all(x["ottDate"] >= "2026-11-17" for x in rows))
 
-if __name__ == "__main__":
+
+    def test_indian_movie_reviews_cards_require_date_language_and_title(self):
+        html = """<h1>OTT release calendar</h1>
+        <article><h3><a href="/review/mazhalai">Mazhalai</a></h3>
+        <p>Tamil · on OTT Mon 16 Nov · Streaming</p></article>
+        <article><h3><a href="/review/queen">Queen</a></h3>
+        <p>Hindi · Series · on OTT Wed 18 Nov · Streaming</p></article>
+        <article><h3><a href="/review/rumour">Rumour</a></h3>
+        <p>Malayalam · expected 20 Nov</p></article>"""
+        rows = upcoming_sources._calendar_cards(
+            BeautifulSoup(html, "html.parser"), "Indian Movie Reviews OTT calendar",
+            "https://indianmoviereviews.com/ott-releases/", "2026-11-17",
+            {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
+            lambda value: value.lower().replace(" ", ""),
+        )
+        self.assertEqual({x["name"] for x in rows}, {"Queen"})
+        self.assertEqual(rows[0]["language"], "hindi")
+        self.assertEqual(rows[0]["type"], "series")
+        self.assertEqual(rows[0]["ottDate"], "2026-11-18")
+
+    def test_ottclock_card_language_type_and_platform_are_detected(self):
+        html = """<h1>OTT Release Calendar</h1>
+        <article class="release-card"><h3><a href="/title/example">Example Series</a></h3>
+        <p>20 Nov Netflix Tamil Series</p></article>"""
+        rows = upcoming_sources._calendar_cards(
+            BeautifulSoup(html, "html.parser"), "OTTClock Indian OTT calendar",
+            "https://ottclock.com/", "2026-11-17",
+            {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
+            lambda value: value.lower().replace(" ", ""),
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["name"], "Example Series")
+        self.assertEqual(rows[0]["language"], "tamil")
+        self.assertEqual(rows[0]["type"], "series")
+        self.assertEqual(rows[0]["platforms"], ["Netflix"])
+\nif __name__ == "__main__":
     unittest.main()
