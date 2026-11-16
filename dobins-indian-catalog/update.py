@@ -231,7 +231,7 @@ def suggestion(e):
    if typ!=e['type']:continue
    title=str(x.get('l','')).strip()
    if not title:continue
-   score=ratio(norm(base or raw),norm(title))
+   score=ratio(norm(query),norm(title))
    year=int(x.get('y') or 0)
    expected_year=int(str(e.get('year') or 0)[:4] or 0)
    if expected_year and year and abs(year-expected_year)>1:continue
