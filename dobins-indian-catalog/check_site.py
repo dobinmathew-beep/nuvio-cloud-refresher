@@ -26,11 +26,11 @@ def latest_entry(rows):
              (x.get('releaseDate') or x.get('ottDate') or x.get('latestEpisodeReleasedAt'))]
     if not dated:
         return None
-    item = max(dated, key=lambda x: str(x.get('latestEpisodeReleasedAt') or x.get('releaseDate') or x.get('ottDate') or ''))
+    item = max(dated, key=lambda x: str(x.get('latestEpisodeReleasedAt') or x.get('ottDate') or x.get('releaseDate') or ''))
     return {
         'id': item.get('id'),
         'name': item.get('name'),
-        'releaseDate': item.get('latestEpisodeReleasedAt') or item.get('releaseDate') or item.get('ottDate')
+        'releaseDate': item.get('latestEpisodeReleasedAt') or item.get('ottDate') or item.get('releaseDate')
     }
 
 try:
