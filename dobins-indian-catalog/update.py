@@ -45,8 +45,11 @@ def original_language_matches(event,meta):
  original=str(meta.get('original_language') or meta.get('originalLanguage') or '').lower()
  expected=LANGS[event['language']]
  return not original or original in (expected,event['language'])
-TYPE_OVERRIDES={'balbarbarik':'series'}
+TYPE_OVERRIDES={'balbarbarik':'series','princeofmollywood':'series'}
+LANGUAGE_OVERRIDES={'taarini':'marathi'}
 VERIFIED_IMDB_OVERRIDES={
+ 'malayalam|series|princeofmollywood':{'id':'tt44686897','name':'Prince of Mollywood'},
+ 'malayalam|series|oruchiriiruchiribumperchiri3':{'id':'tt43511363','name':'Oru Chiri Iru Chiri Bumper Chiri 3'},
  'hindi|movie|mirzapur':{'id':'tt34339725','name':'Mirzapur: The Movie'},
  'hindi|movie|vvaan':{'id':'tt34498564','name':'The Vvaan: Force of the Forrest'},
  'hindi|series|koffeewithkaran9':{'id':'tt0445883','name':'Koffee with Karan'}
@@ -55,6 +58,7 @@ def apply_verified_overrides(events):
  for event in events:
   event_name=norm(event['name'])
   if event_name in TYPE_OVERRIDES:event['type']=TYPE_OVERRIDES[event_name]
+  if event_name in LANGUAGE_OVERRIDES:event['_languageMismatch']=LANGUAGE_OVERRIDES[event_name]
   verified=VERIFIED_IMDB_OVERRIDES.get(event['language']+'|'+event['type']+'|'+event_name)
   if verified:
    event['_verifiedImdbId']=verified['id'];event['_verifiedImdbName']=verified['name']
@@ -367,6 +371,7 @@ def build():
  # Source collectors have already verified identity and release evidence. Do not
  # make verified backfill compete with unrelated fuzzy-search matching budgets.
  for e in ordered:
+  if e.get('_languageMismatch'):continue
   verified=e.get('_verifiedMetadata')
   if not verified or verified.get('type')!='series' or not verified.get('id'):continue
   if e['language']=='malayalam' and not (is_imdb_id(verified['id']) or re.fullmatch(r'tmdb:\d+',str(verified['id']))):continue
@@ -375,6 +380,7 @@ def build():
   matches[key]={'id':mid,'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'method':verified.get('metadataSource','Verified series source')}
  budget=int(os.environ.get('MAX_NEW_MATCHES','600'));attempts=0;work=[]
  for e in ordered:
+  if e.get('_languageMismatch'):continue
   key=e['language']+'|'+e['type']+'|'+norm(e['name']);cached=matches.get(key)
   if cached and alternate.key(e['type'],cached.get('id','')) in metas:
    checked=metas[alternate.key(e['type'],cached['id'])].get('_metadataCheckedAt')
@@ -447,6 +453,7 @@ def build():
  save('matches.json',matches)
  catalogs={f'dobins_{LANGS[l]}_{t}':[] for l in LANGS for t in ('movie','series')};seen={k:set() for k in catalogs}
  for e in ordered:
+  if e.get('_languageMismatch'):continue
   key=e['language']+'|'+e['type']+'|'+norm(e['name']);match=matches.get(key,{});mid=match.get('id');cid=f'dobins_{LANGS[e["language"]]}_{e["type"]}'
   if e['language']=='malayalam' and mid and not (is_imdb_id(mid) or re.fullmatch(r'tmdb:\d+',str(mid))):
    unmatched.append({'name':e['name'],'language':e['language'],'type':e['type'],'ottDate':e['ottDate'],'reason':'Malayalam catalog requires a verified IMDb or TMDB ID'});continue
