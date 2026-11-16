@@ -36,6 +36,10 @@ def norm(s):
  return re.sub(r'[^a-z0-9]+','',s.removeprefix('the '))
 def is_imdb_id(value):
  return bool(re.fullmatch(r'tt\d+',str(value or '')))
+def original_language_matches(event,meta):
+ original=str(meta.get('original_language') or meta.get('originalLanguage') or '').lower()
+ expected=LANGS[event['language']]
+ return not original or original in (expected,event['language'])
 TYPE_OVERRIDES={'balbarbarik':'series'}
 VERIFIED_IMDB_OVERRIDES={
  'hindi|movie|mirzapur':{'id':'tt34339725','name':'Mirzapur: The Movie'},
@@ -376,11 +380,7 @@ def build():
      fresh={**previous,**fresh,'id':alias,'type':e['type'],'poster':fresh.get('poster') or previous.get('poster'),'metadataSource':'Verified IMDb title match','_partial':False}
     else:fresh={**previous,**fresh,'id':alias,'type':e['type']}
     m=fresh
-  if m:
-   original=str(m.get('original_language') or m.get('originalLanguage') or '').lower()
-   expected=LANGS[e['language']]
-   # Never publish a dubbed/foreign original in the wrong language catalog.
-   if original and original not in (expected,e['language']):m=None
+  if m and not original_language_matches(e,m):m=None
   if m and m.get('id') in DISPLAY_NAME_OVERRIDES:m['name']=DISPLAY_NAME_OVERRIDES[m['id']]
   if m and m.get('id') in IMDB_RATING_OVERRIDES:m['imdbRating']=IMDB_RATING_OVERRIDES[m['id']]
   if not m:return key,{'checkedAt':NOW.isoformat(),'alternatePolicy':alternate.POLICY,'reason':'No unambiguous IMDb, TMDB or TVmaze match'},None
