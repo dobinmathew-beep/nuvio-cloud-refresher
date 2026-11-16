@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-16T22:07:32.481787+00:00",
+  "checkedAt": "2026-11-16T22:12:08.686187+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "degraded",
   "checks": [
@@ -22,7 +22,7 @@
       "checked": 134,
       "passed": 134,
       "failed": 0,
-      "missingOriginalLanguageField": 134
+      "missingOriginalLanguageField": 109
     },
     {
       "path": "/manifest.json",
@@ -92,22 +92,8 @@
         15
       ],
       "endpointPageSize": 50,
-      "missingIds": [
-        "tmdb:101181",
-        "tmdb:277322",
-        "tmdb:277325",
-        "tmdb:277334",
-        "tmdb:282063",
-        "tmdb:73704"
-      ],
-      "extraIds": [
-        "tt11252864",
-        "tt18313602",
-        "tt18313858",
-        "tt39222447",
-        "tt6650508",
-        "tt9315194"
-      ],
+      "missingIds": [],
+      "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
@@ -119,7 +105,7 @@
         "releaseDate": "2026-11-16T21:30:00+00:00"
       },
       "latestEntryMatches": true,
-      "state": "catalog_id_set_mismatch",
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -345,14 +331,14 @@
     "checked": 134,
     "passed": 134,
     "failed": 0,
-    "missingOriginalLanguageField": 134,
+    "missingOriginalLanguageField": 109,
     "failures": []
   },
   "catalogSummary": {
     "checked": 8,
     "failed": 0,
     "possibleTruncationOrLag": 0,
-    "countMismatches": 1,
+    "countMismatches": 0,
     "firstPageSize50": [
       "dobins_ml_movie",
       "dobins_ml_series",
