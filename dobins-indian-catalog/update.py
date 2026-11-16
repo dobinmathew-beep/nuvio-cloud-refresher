@@ -172,7 +172,7 @@ def candidate_index():
  # The upstream catalog is paginated. Fetching only its first response silently
  # starves matching of newer titles beyond that page (and can look like a 50-item cap).
  cache=load('candidates.json',{});pool=[]
- if candidate_cache_fresh(cache):
+ if candidate_cache_fresh(cache) and os.environ.get('FORCE_CANDIDATE_REFRESH') != 'true':
   for key,rows in cache.items():
    if key=='_updatedAt':continue
    lang,typ=key.rsplit('-',1)
@@ -345,7 +345,7 @@ def build():
    checked=metas[alternate.key(e['type'],cached['id'])].get('_metadataCheckedAt')
    if checked and (NOW-datetime.fromisoformat(checked)).total_seconds()<10800 and str(cached.get('id','')).startswith('tt'):continue
   # Revisit unmatched titles after a half-hour discovery retry; a later source page may now contain their IMDb identity.
-  if cached and cached.get('alternatePolicy')==alternate.POLICY and not cached.get('id') and not e.get('_verifiedMetadata') and not e.get('_verifiedImdbId') and (NOW-datetime.fromisoformat(cached['checkedAt'])).total_seconds()<1800:continue
+  if os.environ.get('FORCE_MATCH_RETRY') != 'true' and cached and cached.get('alternatePolicy')==alternate.POLICY and not cached.get('id') and not e.get('_verifiedMetadata') and not e.get('_verifiedImdbId') and (NOW-datetime.fromisoformat(cached['checkedAt'])).total_seconds()<1800:continue
   if attempts>=budget:continue
   work.append((key,e));attempts+=1
  def resolve(pair):
@@ -434,6 +434,24 @@ def build():
  if any(not catalogs[c] for c in catalogs):
   save('metadata.json',metas);save('unmatched.json',unmatched);raise RuntimeError('An empty catalog would be published; retaining last-good catalogs while metadata backfills')
  save('metadata.json',metas);save('catalogs.json',catalogs);save('unmatched.json',unmatched)
+ # Publish a dedicated upcoming-release index only after a real IMDb ID and
+ # complete metadata have been resolved. Unmatched source rows remain diagnostic
+ # data in unmatched.json and can never leak into the user-facing upcoming feed.
+ upcoming_by_id={}
+ for cid,items in catalogs.items():
+  for item in items:
+   if item.get('releaseStatus')!='upcoming' or not is_imdb_id(item.get('id')):continue
+   key=(item.get('language'),item.get('type'),item['id'])
+   row=upcoming_by_id.setdefault(key,{'id':item['id'],'name':item['name'],'language':item['language'],'type':item['type'],'releaseDate':item.get('ottDate') or item.get('releaseDate'),'platforms':[],'sources':[],'catalog':cid})
+   row['platforms']=list(dict.fromkeys(row['platforms']+item.get('platforms',[])))
+   row['sources']=list(dict.fromkeys(row['sources']+item.get('sources',[])))
+ upcoming_rows=sorted(upcoming_by_id.values(),key=lambda x:(x['releaseDate'] or '',x['language'],x['name']))
+ save('upcoming.json',{'generatedAt':NOW.isoformat(),'policy':'confirmed-source-and-imdb-match-v1','count':len(upcoming_rows),'items':upcoming_rows})
+ upcoming_source_summary={}
+ for item in upcoming_rows:
+  for source in item['sources']:
+   row=upcoming_source_summary.setdefault(source,{'matchedTitles':0,'imdbIds':[]})
+   row['matchedTitles']+=1;row['imdbIds'].append(item['id'])
  freshness={}
  pending_by_catalog={cid:0 for cid in catalogs}
  checked_by_catalog={cid:0 for cid in catalogs}
@@ -446,7 +464,7 @@ def build():
  for cid,items in catalogs.items():
   latest=max(items,key=lambda x:str(x.get('latestEpisodeReleasedAt') or x.get('ottDate') or x.get('releaseDate') or ''),default=None)
   freshness[cid]={'count':len(items),'generatedAt':NOW.isoformat(),'latestEntry':None if not latest else {'id':latest.get('id'),'name':latest.get('name'),'releaseDate':latest.get('latestEpisodeReleasedAt') or latest.get('ottDate') or latest.get('releaseDate'),'hasNewEpisodes':latest.get('hasNewEpisodes',False)}}
- status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastMatchRetryAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'errors':[]}
+ status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastMatchRetryAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'upcoming':{'matchedTitles':len(upcoming_rows),'bySource':upcoming_source_summary,'policy':'Only confirmed upcoming titles with a validated IMDb tt-ID are published.'},'errors':[]}
  save('status.json',status);print('SUCCESS',json.dumps(status),flush=True)
 if __name__=='__main__':
  try:build()
