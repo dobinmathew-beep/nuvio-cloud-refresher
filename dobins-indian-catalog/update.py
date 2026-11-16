@@ -252,7 +252,21 @@ def title_logo(name):
  b=io.BytesIO();im.save(b,format='PNG',optimize=True);return base64.b64encode(b.getvalue()).decode()
 
 def build():
- events,health=collect();series_events,series_health=series_sources.collect(get,load,save,LANGS,TODAY,NOW,norm);events.extend(series_events);health.extend(series_health);disc_events,disc_health=physical.collect(get,load,save,LANGS,TODAY,NOW,norm);events=physical.merge_events(events+disc_events,norm,TODAY);health.extend(disc_health);pool=candidate_index();matches=load('matches.json',{});metas=load('metadata.json',{});old_catalogs=load('catalogs.json',{});unmatched=[]
+ events,health=collect();series_events,series_health=series_sources.collect(get,load,save,LANGS,TODAY,NOW,norm);events.extend(series_events);health.extend(series_health);disc_events,disc_health=physical.collect(get,load,save,LANGS,TODAY,NOW,norm);events=physical.merge_events(events+disc_events,norm,TODAY);health.extend(disc_health)
+ # Verified corrections for source records whose content type or canonical IMDb title is independently confirmed.
+ TYPE_OVERRIDES={'balbarbarik':'series'}
+ VERIFIED_IMDB_OVERRIDES={
+  'hindi|movie|mirzapur':{'id':'tt34339725','name':'Mirzapur: The Movie'},
+  'hindi|movie|vvaan':{'id':'tt34498564','name':'The Vvaan: Force of the Forrest'},
+  'hindi|series|koffeewithkaran9':{'id':'tt0445883','name':'Koffee with Karan'}
+ }
+ for event in events:
+  event_name=norm(event['name'])
+  if event_name in TYPE_OVERRIDES:event['type']=TYPE_OVERRIDES[event_name]
+  verified=VERIFIED_IMDB_OVERRIDES.get(event['language']+'|'+event['type']+'|'+event_name)
+  if verified:
+   event['_verifiedImdbId']=verified['id'];event['_verifiedImdbName']=verified['name']
+ pool=candidate_index();matches=load('matches.json',{});metas=load('metadata.json',{});old_catalogs=load('catalogs.json',{});unmatched=[]
  for m in metas.values():
   for field,kind in [('poster','posters'),('background','backgrounds')]:
    if str(m.get(field,'')).startswith(BASE):m[field]=next((x for x in m.get('artwork',{}).get(kind,[]) if not x.startswith(BASE)),None)
@@ -281,14 +295,14 @@ def build():
   if attempts>=budget:continue
   work.append((key,e));attempts+=1
  def resolve(pair):
-  key,e=pair;existing=matches.get(key,{}).get('id');mk=alternate.key(e['type'],existing or '');c=metas.get(mk) or ({'id':existing,'name':e['name'],'type':e['type']} if re.fullmatch(r'tt\d+',str(existing or '')) else None) or select_candidate(e,pool) or e.get('_verifiedMetadata') or suggestion(e)
+  key,e=pair;existing=matches.get(key,{}).get('id') or e.get('_verifiedImdbId');mk=alternate.key(e['type'],existing or '');c=metas.get(mk) or ({'id':existing,'name':e.get('_verifiedImdbName',e['name']),'type':e['type']} if re.fullmatch(r'tt\d+',str(existing or '')) else None) or select_candidate(e,pool) or e.get('_verifiedMetadata') or suggestion(e)
   m=e.get('_verifiedMetadata') if c and e.get('_verifiedMetadata',{}).get('id')==c['id'] else None
   if c:
    mid=c['id'];previous=metas.get(alternate.key(e['type'],mid));checked=previous.get('_metadataCheckedAt') if previous else None
    if previous and checked and (NOW-datetime.fromisoformat(checked)).total_seconds()<10800:m=previous
    elif not m and mid.startswith('tt'):m=metadata(mid,e['type'],c)
    if m and m.get('_partial') and previous and not previous.get('_partial'):m=previous
-   if m and (m.get('type')!=e['type'] or (not e.get('_verifiedMetadata') and ratio(norm(alternate.plain(e['name'])),norm(m.get('name','')))<85)):m=None
+   if m and (m.get('type')!=e['type'] or (not (e.get('_verifiedMetadata') or e.get('_verifiedImdbId')) and ratio(norm(alternate.plain(e['name'])),norm(m.get('name','')))<85)):m=None
   if not m or m.get('_partial') or not str(m.get('id','')).startswith('tt'):
    alt=alternate.resolve(e,get,norm)
    if alt and str(alt.get('id','')).startswith('tt'):
