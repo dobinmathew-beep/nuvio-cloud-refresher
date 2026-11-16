@@ -1,5 +1,7 @@
 {
-  "attempted_at": "2026-11-16T12:09:32.754586+04:00",
+  "attempted_at": "2026-11-16T19:13:50.842407+04:00",
   "cycle": "2026-11-16",
-  "errors": []
+  "errors": [
+    "heroes: Download failed after retry policy: https://github.com/dobinmathew-beep/nuvio-cloud-refresher/releases/download/live-heroes/2545ae5418106cf2bf72a9ee-telugu.mp4 curl: (22) The requested URL returned error: 404"
+  ]
 }
