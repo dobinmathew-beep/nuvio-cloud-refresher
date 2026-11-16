@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-17T02:27:33.529032+04:00",
+  "generatedAt": "2026-11-17T02:31:29.609683+04:00",
   "policy": "confirmed-source-and-imdb-match-v1",
-  "count": 8,
+  "count": 10,
   "items": [
     {
       "id": "tt15295490",
@@ -29,7 +29,7 @@
         "Hotstar"
       ],
       "sources": [
-        "https://newindianmovies.com/"
+        "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
       "catalog": "dobins_ta_series"
     },
@@ -116,12 +116,36 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
       "catalog": "dobins_hi_series"
+    },
+    {
+      "id": "tt38676235",
+      "name": "Takshakudu",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-26",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "catalog": "dobins_te_movie"
+    },
+    {
+      "id": "tt39390582",
+      "name": "Hanuman Ansh",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "catalog": "dobins_hi_movie"
     }
   ]
 }

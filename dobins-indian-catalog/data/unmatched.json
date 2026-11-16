@@ -7,13 +7,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Coming Thu 26 Nov Takshakudu Telugu App not announced",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-11-26",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Coming Thu 3 Dec The Conjunction Hindi App not announced",
     "language": "hindi",
     "type": "movie",
@@ -35,10 +28,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Coming Fri 27 Nov Hanuman Ansh Hindi App not announced 3.3 /5 · 5 critics",
-    "language": "hindi",
+    "name": "Coming Thu 26 Nov Takshakudu Telugu App not announced",
+    "language": "telugu",
     "type": "movie",
-    "ottDate": "2026-11-27",
+    "ottDate": "2026-11-26",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -49,10 +42,52 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Notebook 90s – Kadhal Flashback",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-11-23",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Jindey",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "AndherPura Curse",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-11-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Coming Mon 23 Nov Notebook 90s – Kadhal Flashback Tamil · Series SonyLIV",
     "language": "tamil",
     "type": "series",
     "ottDate": "2026-11-23",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Coming Fri 27 Nov Hanuman Ansh Hindi App not announced 3.3 /5 · 5 critics",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Hatela Gang",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-11-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Supreme Solaris",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-11-22",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -77,13 +112,6 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Bal Barbarik",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-11-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Sub-Inspector Yugandhar",
     "language": "telugu",
     "type": "movie",
@@ -98,10 +126,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Sumo Didi",
+    "name": "Bal Barbarik",
     "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-10-23",
+    "type": "series",
+    "ottDate": "2026-11-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Cyber",
+    "language": "malayalam",
+    "type": "series",
+    "ottDate": "2026-05-13",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -112,10 +147,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Cyber",
-    "language": "malayalam",
-    "type": "series",
-    "ottDate": "2026-05-13",
+    "name": "Sumo Didi",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-10-23",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -168,31 +203,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-09-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Auto Vijayashanthi (Episode 221)",
     "language": "telugu",
     "type": "series",
     "ottDate": "2026-05-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Jungle Tales With Mowgli",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-09-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Nijame Rujuvainadhi",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-08-14",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -203,6 +217,13 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-09-13",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Shadow Play",
     "language": "malayalam",
     "type": "series",
@@ -210,10 +231,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Roadies Rebirth",
+    "name": "Nijame Rujuvainadhi",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-08-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "Jungle Tales With Mowgli",
     "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-16",
+    "type": "movie",
+    "ottDate": "2026-09-12",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -245,24 +273,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Roadies Rebirth",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "Jodi Are U Ready Season 3 (Grand Finale)",
     "language": "tamil",
     "type": "series",
     "ottDate": "2026-05-03",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Clean Up Company",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-08-21",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
-    "name": "Thai Maaman",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-04-28",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -273,17 +294,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "108 Base Hospital Uri",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-08-15",
+    "name": "Thai Maaman",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-04-28",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Chumbak Part 2",
+    "name": "Clean Up Company",
     "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-02",
+    "type": "movie",
+    "ottDate": "2026-08-21",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -294,6 +315,20 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
+    "name": "Katha Sudha",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-03-22",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "108 Base Hospital Uri",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-08-15",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
     "name": "WWE (Tamil Dub)",
     "language": "tamil",
     "type": "series",
@@ -301,10 +336,10 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "Katha Sudha",
-    "language": "telugu",
+    "name": "Chumbak Part 2",
+    "language": "hindi",
     "type": "series",
-    "ottDate": "2026-03-22",
+    "ottDate": "2026-10-02",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
@@ -329,17 +364,17 @@
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
-    "name": "The Legend of Karna",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-07-31",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
-  },
-  {
     "name": "Uthutha Herolu",
     "language": "telugu",
     "type": "movie",
     "ottDate": "2026-05-21",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match"
+  },
+  {
+    "name": "The Legend of Karna",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-07-31",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match"
   },
   {
