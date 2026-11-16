@@ -13,22 +13,27 @@ Targets in **Asia/Muscat (UTC+4)**:
 - 06:00 and 18:00 every day.
 - An additional 01:00 on Thursday, Friday and Saturday.
 
-The default branch's `.github/workflows/dobins-indian-catalog.yml` checks every 30 minutes. The schedule gate groups checks into two-hour slots in Asia/Muscat, and the full release-source check and catalog updater run once per slot after the first eligible check. If an update fails, the error keeps the cycle pending and the next 30-minute check retries it. Newly reported releases may therefore wait until the next two-hour slot, plus any GitHub scheduling delay. GitHub may delay scheduled jobs, so exact-time execution is not guaranteed. Manual dispatch and code pushes on this branch force a check. There are no AI calls, paid API requirements, personal-computer runners or long-lived account tokens. Standard public GitHub-hosted runners are used.
+The default branch's `.github/workflows/dobins-indian-catalog.yml` checks every 30 minutes. Normal full catalog refreshes run in two-hour Asia/Muscat slots. When unresolved IMDb matches remain, a retry gate also runs the updater every 30 minutes until the backlog is cleared or titles remain genuinely ambiguous. Failed sources and unhealthy endpoints are retried on the next 30-minute check. Newly reported releases may therefore wait up to 30 minutes during match-backfill mode or the next two-hour slot during normal mode, plus any GitHub scheduling delay. GitHub may delay scheduled jobs, so exact-time execution is not guaranteed. Manual dispatch and code pushes on this branch force a check. There are no AI calls, paid API requirements, personal-computer runners or long-lived account tokens. Standard public GitHub-hosted runners are used.
 
 The updater and its data live on the separate `dobins-catalog` branch, under `dobins-indian-catalog/`. The workflow checks out and commits only to that branch. This prevents simultaneous catalog and existing backdrop/reel refreshes from competing for the same branch state. The backdrop/reel workflow and URLs are unaffected.
 
 ## Release reporting and verification
 
-1. **DailyOTT** public structured release data (`https://www.dailyott.in/api/movies`), with automatic discovery of its public frontend snapshot if the API is unavailable. Only records explicitly marked verified and dated today or earlier are eligible.
-2. **Cinebuds** confirmed recently-released OTT table (`https://cinebuds.com/ott-release-dates/`) supplies an independent cross-check and additional releases. Upcoming, expected and date-TBA sections are excluded.
+1. **DailyOTT** public structured release data (`https://www.dailyott.in/api/movies`), with automatic discovery of its public frontend snapshot if the API is unavailable. Only records explicitly marked verified are eligible.
+2. **Cinebuds** recent and upcoming OTT calendars supply dated release records; expected, predicted and date-TBA sections are excluded.
+3. **OTTASIA** confirmed upcoming India calendar, with its predicted section excluded.
+4. **New Indian Movies** weekly OTT rail and archive, with release title, language, type and date parsed independently.
+5. **Indian Movie Reviews** OTT calendar, used as an additional dated cross-check.
+6. **OTTClock** Indian OTT release calendar, used as another independent discovery pass.
+7. **TVmaze** web schedules and multi-source series discovery supplement ongoing series/episode updates.
 
-We compared these with OTTClock and NET27 Watch. DailyOTT exposes dated movie/series records and Cinebuds separates confirmed streaming dates from estimates. This is a practical source choice, not a guarantee of exhaustive coverage or perfect reporting. The updater does not depend on rotating download-site domains, theatrical-release lists or streaming-link scrapers. Dates concern Indian OTT availability; availability elsewhere may differ.
+Each collector has an independent health state, parser and failure retry. This is broader coverage, not a guarantee that every publisher updates instantly or that every calendar item is correct. The updater does not depend on rotating download-site domains, theatrical-release lists or streaming-link scrapers. Dates concern Indian OTT availability; availability elsewhere may differ.
 
 Every entry retains its release-reporting source and platform. Movie duplicate reports retain the earliest digital date; series track the latest reported season premiere. Similar titles, incorrect types, mismatched years and ambiguous IMDb matches are held back instead of receiving guessed IDs.
 
 IndianRegional's language catalogs are used only as an IMDb identity lookup aid, never as evidence that a movie has reached OTT. Exact IMDb suggestion matches are followed by TVmaze title/language verification and source-linked TMDB title pages. TMDB type, canonical ID, title and release dates are checked before publication. TVmaze can also recover IMDb IDs, including for older shows with a new OTT premiere. Cinemeta, TMDB public title metadata and TVmaze supply full metadata; series episodes can also fall back to an IMDb-verified TVMaze lookup. Some newly released shows may not yet have indexed episode data. TMDB fallback reads public title pages and DailyOTT’s public TMDB-derived details, without storing or requiring a TMDB API key.
 
-`data/unmatched.json` records pending/uncertain matches. New matching work is fairly distributed across all eight catalogs and bounded to 160 titles per update. This allows gradual history backfill without monopolising a runner. Metadata is refreshed after three hours, so each two-hour output cycle rechecks series metadata.
+`data/unmatched.json` records pending/uncertain matches. New matching work is fairly distributed across all eight catalogs and bounded to 600 titles per update. Candidate identity lookup now paginates up to 25 pages per language/type. IMDb suggestion lookup tries title, season/episode-stripped and subtitle-stripped variants, validates IMDb title type, compares names and known original years, and rejects close ambiguous matches. Cinemeta original-language metadata is checked before a match can enter a language catalog. Unresolved identities are retried every 30 minutes while a backlog remains; the normal two-hour refresh remains in place. Metadata is refreshed after three hours.
 
 ## Posters, fanart and logos
 
