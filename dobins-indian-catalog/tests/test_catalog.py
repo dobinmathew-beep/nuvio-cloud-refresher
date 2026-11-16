@@ -129,4 +129,37 @@ class CatalogTests(unittest.TestCase):
   lookup.assert_called_once_with(events[0],update.get,update.norm)
   self.assertEqual(events[0]['sourceRecord']['tmdbId'],320606)
 
+ def test_vi_parser_discovers_future_malayalam_release_but_not_weekly_window(self):
+  from bs4 import BeautifulSoup
+  html='''<h2>What's New on OTT Platforms This Week</h2><table>
+  <tr><th>Movie/Show/Sports</th><th>Platform</th><th>Release Date</th><th>Language</th><th>Genre</th></tr>
+  <tr><td>Bigg Boss Season 8</td><td>JioHotstar</td><td>Nov 14-Nov 20, 2026</td><td>Malayalam</td><td>Reality TV</td></tr>
+  <tr><td>Sample Malayalam Film</td><td>Netflix</td><td>Nov 20, 2026</td><td>Malayalam</td><td>Drama</td></tr>
+  <tr><td>Sample Tamil Series Season 2</td><td>Prime Video</td><td>Nov 21, 2026</td><td>Tamil</td><td>Drama</td></tr>
+  </table>'''
+  rows=update.upcoming_sources._myvi(BeautifulSoup(html,'html.parser'),'Vi','https://www.myvi.in/blog/ott-releases-this-week','2026-11-17',['malayalam','tamil'],update.norm)
+  self.assertEqual([(x['name'],x['language'],x['type'],x['ottDate']) for x in rows],[
+   ('Sample Malayalam Film','malayalam','movie','2026-11-20'),
+   ('Sample Tamil Series Season 2','tamil','series','2026-11-21')
+  ])
+
+ def test_simply_mollywood_parser_handles_multilingual_upcoming_entries_and_ignores_tba(self):
+  from bs4 import BeautifulSoup
+  html='''<h2>Release Calendar</h2>
+  <a href="/movie/example">Example Film Netflix 20 Nov 2026 · Malayalam, Tamil</a>
+  <a href="/movie/tba">Unannounced Film Netflix Date TBA · Malayalam</a>
+  <a href="/movie/past">Already Released Netflix 10 Nov 2026 · Malayalam</a>'''
+  rows=update.upcoming_sources._simply_mollywood(BeautifulSoup(html,'html.parser'),'Simply Mollywood','https://simplymollywood.com/ott','2026-11-17',['malayalam','tamil'],update.norm)
+  self.assertEqual({(x['name'],x['language'],x['ottDate']) for x in rows},{
+   ('Example Film','malayalam','2026-11-20'),('Example Film','tamil','2026-11-20')
+  })
+
+ def test_ottasia_sibling_layout_extracts_confirmed_malayalam_title(self):
+  from bs4 import BeautifulSoup
+  html='''<h2>Upcoming OTT releases in India: confirmed dates</h2>
+  <div><p>Sample Malayalam Series</p><p>Series · Malayalam</p><p>from Nov 22, 2026</p></div>
+  <h2>Predicted next on OTT</h2>'''
+  rows=update.upcoming_sources._ottasia(BeautifulSoup(html,'html.parser'),'OTTASIA','https://ottasia.com/ott-releases-this-week?country=IN','2026-11-17',['malayalam'],update.norm)
+  self.assertTrue(any(x['name']=='Sample Malayalam Series' and x['language']=='malayalam' and x['type']=='series' and x['ottDate']=='2026-11-22' for x in rows))
+
 if __name__=='__main__':unittest.main()
