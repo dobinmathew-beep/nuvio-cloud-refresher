@@ -1,38 +1,8 @@
 {
-  "generatedAt": "2026-11-17T23:58:03.106511+04:00",
+  "generatedAt": "2026-11-18T00:05:22.921381+04:00",
   "policy": "confirmed-source-and-imdb-match-v1",
-  "count": 22,
+  "count": 20,
   "items": [
-    {
-      "id": "tt15295490",
-      "name": "Campus Diaries",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-18",
-      "platforms": [
-        "Prime Video",
-        "Amazon MX Player"
-      ],
-      "sources": [
-        "https://newindianmovies.com/"
-      ],
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "id": "tt50135636",
-      "name": "Mr & Mrs Office",
-      "language": "tamil",
-      "type": "series",
-      "releaseDate": "2026-11-18",
-      "platforms": [
-        "JioHotstar",
-        "Hotstar"
-      ],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "catalog": "dobins_ta_series"
-    },
     {
       "id": "tt38984184",
       "name": "418",
@@ -242,8 +212,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],

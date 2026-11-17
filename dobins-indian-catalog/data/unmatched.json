@@ -1,5 +1,22 @@
 [
   {
+    "name": "Sathyameva",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://ottasia.com/ott-releases-this-week?country=IN"
+    ],
+    "platforms": [],
+    "detail": "https://ottasia.com/title/movie/1816491/sathyameva?country=IN",
+    "sourceRecord": {
+      "title": "Sathyameva",
+      "releaseDate": "2026-11-27",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
     "name": "Satyameva",
     "language": "malayalam",
     "type": "series",
@@ -124,28 +141,6 @@
       "title": "Coming Thu 26 Nov Takshakudu Telugu App not announced",
       "releaseDate": "2026-11-26",
       "source": "https://indianmoviereviews.com/ott-releases/"
-    }
-  },
-  {
-    "name": "Mr. And Mrs. Office",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-11-18",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.myvi.in/blog/ott-releases-this-week"
-    ],
-    "platforms": [
-      "JioHotstar",
-      "Hotstar"
-    ],
-    "detail": "https://www.myvi.in/blog/ott-releases-this-week",
-    "sourceRecord": {
-      "title": "Mr. And Mrs. Office",
-      "releaseDate": "2026-11-18",
-      "source": "https://www.myvi.in/blog/ott-releases-this-week",
-      "languageText": "Tamil",
-      "dateText": "Nov 18, 2026"
     }
   },
   {
@@ -371,6 +366,21 @@
     }
   },
   {
+    "name": "The Grand Master",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-11-06",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://cinebuds.com/ott-release-dates/"
+    ],
+    "platforms": [
+      "Sun NXT"
+    ],
+    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+    "sourceRecord": {}
+  },
+  {
     "name": "Coming Sat 21 Nov AndherPura Curse Hindi · Series App not announced",
     "language": "hindi",
     "type": "series",
@@ -386,21 +396,6 @@
       "releaseDate": "2026-11-21",
       "source": "https://indianmoviereviews.com/ott-releases/"
     }
-  },
-  {
-    "name": "The Grand Master",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-11-06",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://cinebuds.com/ott-release-dates/"
-    ],
-    "platforms": [
-      "Sun NXT"
-    ],
-    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
-    "sourceRecord": {}
   },
   {
     "name": "Chef Mantra Project USA",
@@ -572,6 +567,38 @@
     }
   },
   {
+    "name": "Avalaga Irunthal",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-10-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6acee68b3249ff69efda4163",
+      "platform": "ZEE5",
+      "title": "Avalaga Irunthal",
+      "createdAt": "2026-10-14T02:18:51.600Z",
+      "genre": "Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "original_language": "Tamil",
+      "releaseDate": "2026-10-14",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-10-14T02:18:51.600Z",
+      "votes": 0,
+      "verified": true
+    }
+  },
+  {
     "name": "Marpu - Not For You, But For The Future",
     "language": "telugu",
     "type": "movie",
@@ -668,38 +695,6 @@
         "fetchedAt": "2026-10-23T06:06:02.722Z"
       },
       "tmdbId": 1186823,
-      "verified": true
-    }
-  },
-  {
-    "name": "Avalaga Irunthal",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-10-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6acee68b3249ff69efda4163",
-      "platform": "ZEE5",
-      "title": "Avalaga Irunthal",
-      "createdAt": "2026-10-14T02:18:51.600Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "original_language": "Tamil",
-      "releaseDate": "2026-10-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-10-14T02:18:51.600Z",
-      "votes": 0,
       "verified": true
     }
   },
@@ -1383,36 +1378,6 @@
     }
   },
   {
-    "name": "Kakkippada-2",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-05-29",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a190c98135bb8f4954fffcc",
-      "platform": "ZEE5",
-      "title": "Kakkippada-2",
-      "createdAt": "2026-05-29T03:48:40.285Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Malayalam"
-      ],
-      "releaseDate": "2026-05-29",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-29T03:48:40.285Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Love Beyond Wicket",
     "language": "tamil",
     "type": "series",
@@ -1475,6 +1440,36 @@
     }
   },
   {
+    "name": "Kakkippada-2",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-05-29",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a190c98135bb8f4954fffcc",
+      "platform": "ZEE5",
+      "title": "Kakkippada-2",
+      "createdAt": "2026-05-29T03:48:40.285Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Malayalam"
+      ],
+      "releaseDate": "2026-05-29",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-05-29T03:48:40.285Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Vanakkam Thamizha",
     "language": "tamil",
     "type": "series",
@@ -1501,39 +1496,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-03-25T17:08:15.700Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "The Legend of Karna",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-07-31",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "SonyLIV"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a6c25cc1638e3b61f1d6767",
-      "platform": "SonyLIV",
-      "title": "The Legend of Karna",
-      "createdAt": "2026-07-31T04:34:20.405Z",
-      "genre": "Mythology",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-07-31",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-07-31T04:34:44.156Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/jzVP9rqT2YH2nTx3l3csmmU9B1q.jpg",
-      "instagramPostedAt": "2026-07-31T04:35:54Z",
       "verified": true
     }
   },
@@ -1607,6 +1569,39 @@
         "fetchedAt": "2026-11-05T14:07:15.051Z"
       },
       "tmdbId": 954445,
+      "verified": true
+    }
+  },
+  {
+    "name": "The Legend of Karna",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-07-31",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "SonyLIV"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a6c25cc1638e3b61f1d6767",
+      "platform": "SonyLIV",
+      "title": "The Legend of Karna",
+      "createdAt": "2026-07-31T04:34:20.405Z",
+      "genre": "Mythology",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-07-31",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-07-31T04:34:44.156Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/jzVP9rqT2YH2nTx3l3csmmU9B1q.jpg",
+      "instagramPostedAt": "2026-07-31T04:35:54Z",
       "verified": true
     }
   },
@@ -1703,6 +1698,37 @@
     }
   },
   {
+    "name": "Manipur Files",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-07-11",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "YouTube"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a51d36fcf19d56322acc442",
+      "platform": "YouTube",
+      "title": "Manipur Files",
+      "createdAt": "2026-07-11T05:23:58.919Z",
+      "genre": "Documentary",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-07-11",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-07-11T05:23:58.919Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Iruniram",
     "language": "malayalam",
     "type": "movie",
@@ -1746,37 +1772,6 @@
         "fetchedAt": "2026-11-16T23:43:59.297Z"
       },
       "tmdbId": 1686468,
-      "verified": true
-    }
-  },
-  {
-    "name": "Manipur Files",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-07-11",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "YouTube"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a51d36fcf19d56322acc442",
-      "platform": "YouTube",
-      "title": "Manipur Files",
-      "createdAt": "2026-07-11T05:23:58.919Z",
-      "genre": "Documentary",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-07-11",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-07-11T05:23:58.919Z",
       "verified": true
     }
   },
@@ -1910,8 +1905,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix",
-      "ETV Win"
+      "ETV Win",
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {
