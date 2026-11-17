@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-17T03:45:59.532464+04:00",
+  "generatedAt": "2026-11-17T05:59:45.318328+04:00",
   "policy": "confirmed-source-and-imdb-match-v1",
   "count": 10,
   "items": [
@@ -43,8 +43,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://newindianmovies.com/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://newindianmovies.com/"
       ],
       "catalog": "dobins_hi_series"
     },

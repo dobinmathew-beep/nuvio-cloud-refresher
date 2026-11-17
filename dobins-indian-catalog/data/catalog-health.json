@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-16T23:50:13.584921+00:00",
+  "checkedAt": "2026-11-17T02:04:38.321605+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -11,20 +11,12 @@
         "status.json": "github_raw",
         "metadata.json": "github_raw"
       },
-      "statusTimestampMatches": true,
+      "statusTimestampMatches": false,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
       "metadataRecords": 1038,
-      "warning": null,
+      "warning": "Public status.json timestamp is behind the latest GitHub status; catalog data itself is current.",
       "error": null
-    },
-    {
-      "path": "/meta/* (Malayalam catalog audit)",
-      "state": "ok",
-      "checked": 133,
-      "passed": 133,
-      "failed": 0,
-      "missingOriginalLanguageField": 104
     },
     {
       "path": "/manifest.json",
@@ -329,11 +321,11 @@
     }
   ],
   "malayalamMetadataAudit": {
-    "state": "ok",
-    "checked": 133,
-    "passed": 133,
+    "state": "skipped",
+    "checked": 0,
+    "passed": 0,
     "failed": 0,
-    "missingOriginalLanguageField": 104,
+    "missingOriginalLanguageField": 0,
     "failures": []
   },
   "catalogSummary": {

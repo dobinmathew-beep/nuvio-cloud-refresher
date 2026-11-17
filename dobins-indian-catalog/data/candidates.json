@@ -3166,6 +3166,13 @@
       "type": "movie"
     },
     {
+      "id": "tt35064672",
+      "name": "Cocktail 2",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35064672.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tt36822418",
       "name": "Governor",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36822418.jpg",
@@ -3295,13 +3302,6 @@
       "id": "tt36118360",
       "name": "Tu Yaa Main",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36118360.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt27673536",
-      "name": "Mardaani 3",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27673536.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     },
@@ -12512,5 +12512,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-17T03:45:59.532464+04:00"
+  "_updatedAt": "2026-11-17T05:59:45.318328+04:00"
 }

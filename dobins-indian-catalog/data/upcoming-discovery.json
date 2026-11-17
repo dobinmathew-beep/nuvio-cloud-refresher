@@ -1,23 +1,24 @@
 {
-  "generatedAt": "2026-11-17T03:45:59.532464+04:00",
+  "generatedAt": "2026-11-17T05:59:45.318328+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 29,
+    "total": 30,
     "byLanguage": {
-      "hindi": 17,
+      "hindi": 18,
       "tamil": 8,
       "telugu": 4
     },
     "byType": {
-      "series": 16,
+      "series": 17,
       "movie": 13
     },
     "byMatchState": {
-      "published": 13,
+      "published": 14,
       "unmatched": 14,
       "metadata_incomplete": 2
     },
     "bySource": {
+      "https://www.themoviedb.org/tv/338390": 1,
       "https://newindianmovies.com/": 4,
       "https://www.myvi.in/blog/ott-releases-this-week": 2,
       "https://ottasia.com/ott-releases-this-week?country=IN": 8,
@@ -30,6 +31,30 @@
     }
   },
   "items": [
+    {
+      "title": "Apsara",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-17",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/338390"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "premiere",
+      "detail": null,
+      "matchId": "tt50063835",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
     {
       "title": "Campus Diaries season 2",
       "language": "hindi",
@@ -172,8 +197,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://newindianmovies.com/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://newindianmovies.com/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
