@@ -21,12 +21,20 @@ def prepare(lang):
   if re.search(r'OTT\s*Releases|Hindi\s*Dubbed|promo|unlock',name,re.I):continue
   if any(x['id']==mid for x in recent):continue
   poster=HERO/'posters'/(mid+'.jpg')
+  needs_download=not poster.exists() or (mid not in all_pinned and cached_sources.get(mid)!=m['poster'])
   try:
-   if not poster.exists() or (mid not in all_pinned and cached_sources.get(mid)!=m['poster']):
+   if needs_download:
     raw=get(m['poster']);img=Image.open(io.BytesIO(raw)).convert('RGB');assert img.width>=100 and img.height>=140
     img=ImageOps.contain(img,(600,900),Image.Resampling.LANCZOS);tmp=poster.with_suffix('.'+lang+'.tmp');img.save(tmp,format='JPEG',quality=93,optimize=True);tmp.replace(poster)
   except Exception as e:
-   if not poster.exists():raise RuntimeError(lang+': required top catalog poster unavailable for '+name+'; retaining last-good reel') from e
+   # A broken catalog poster must not abort all four language reels. Reuse an
+   # existing poster only when it is known to match this exact source URL;
+   # otherwise skip this candidate and continue down the catalog order.
+   if poster.exists() and (mid in all_pinned or cached_sources.get(mid)==m['poster']):
+    print('WARNING',lang,'using verified cached poster for',name,':',str(e)[:160],flush=True)
+   else:
+    print('SKIP',lang,'unavailable poster for',name,':',str(e)[:160],flush=True)
+    continue
   year=re.search(r'\d{4}',str(m.get('releaseInfo','')))
   recent.append({'language':lang,'id':mid,'name':name,'year':int(year.group()) if year else None,'poster_source':m['poster'],'catalog_source':url,'pinned':False})
   if len(recent)==12:break
