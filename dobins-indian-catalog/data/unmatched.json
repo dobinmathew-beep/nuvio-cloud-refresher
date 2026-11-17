@@ -149,40 +149,6 @@
     }
   },
   {
-    "name": "Jindey",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-11-27",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
-    ],
-    "platforms": [],
-    "detail": "https://ottasia.com/title/movie/1765369/jindey?country=IN",
-    "sourceRecord": {
-      "title": "Jindey",
-      "releaseDate": "2026-11-27",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    }
-  },
-  {
-    "name": "Hatela Gang",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-11-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
-    ],
-    "platforms": [],
-    "detail": "https://ottasia.com/title/movie/1787832/hatela-gang?country=IN",
-    "sourceRecord": {
-      "title": "Hatela Gang",
-      "releaseDate": "2026-11-28",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    }
-  },
-  {
     "name": "Coming Fri 27 Nov Hanuman Ansh Hindi App not announced 3.3 /5 · 5 critics",
     "language": "hindi",
     "type": "movie",
@@ -200,22 +166,20 @@
     }
   },
   {
-    "name": "Coming Sun 22 Nov Supreme Solaris Hindi · Series YouTube",
+    "name": "Hatela Gang",
     "language": "hindi",
     "type": "series",
-    "ottDate": "2026-11-22",
+    "ottDate": "2026-11-28",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
-      "https://indianmoviereviews.com/ott-releases/"
+      "https://ottasia.com/ott-releases-this-week?country=IN"
     ],
-    "platforms": [
-      "YouTube"
-    ],
-    "detail": "https://indianmoviereviews.com/series/supreme-solaris-2026/",
+    "platforms": [],
+    "detail": "https://ottasia.com/title/movie/1787832/hatela-gang?country=IN",
     "sourceRecord": {
-      "title": "Coming Sun 22 Nov Supreme Solaris Hindi · Series YouTube",
-      "releaseDate": "2026-11-22",
-      "source": "https://indianmoviereviews.com/ott-releases/"
+      "title": "Hatela Gang",
+      "releaseDate": "2026-11-28",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     }
   },
   {
@@ -240,19 +204,38 @@
     }
   },
   {
-    "name": "Coming Sat 21 Nov AndherPura Curse Hindi · Series App not announced",
+    "name": "Jindey",
     "language": "hindi",
     "type": "series",
-    "ottDate": "2026-11-21",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://ottasia.com/ott-releases-this-week?country=IN"
+    ],
+    "platforms": [],
+    "detail": "https://ottasia.com/title/movie/1765369/jindey?country=IN",
+    "sourceRecord": {
+      "title": "Jindey",
+      "releaseDate": "2026-11-27",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
+    "name": "Coming Sun 22 Nov Supreme Solaris Hindi · Series YouTube",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-11-22",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://indianmoviereviews.com/ott-releases/"
     ],
-    "platforms": [],
-    "detail": "https://indianmoviereviews.com/series/andherpura-curse-2026/",
+    "platforms": [
+      "YouTube"
+    ],
+    "detail": "https://indianmoviereviews.com/series/supreme-solaris-2026/",
     "sourceRecord": {
-      "title": "Coming Sat 21 Nov AndherPura Curse Hindi · Series App not announced",
-      "releaseDate": "2026-11-21",
+      "title": "Coming Sun 22 Nov Supreme Solaris Hindi · Series YouTube",
+      "releaseDate": "2026-11-22",
       "source": "https://indianmoviereviews.com/ott-releases/"
     }
   },
@@ -345,6 +328,23 @@
     }
   },
   {
+    "name": "Coming Sat 21 Nov AndherPura Curse Hindi · Series App not announced",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-11-21",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://indianmoviereviews.com/ott-releases/"
+    ],
+    "platforms": [],
+    "detail": "https://indianmoviereviews.com/series/andherpura-curse-2026/",
+    "sourceRecord": {
+      "title": "Coming Sat 21 Nov AndherPura Curse Hindi · Series App not announced",
+      "releaseDate": "2026-11-21",
+      "source": "https://indianmoviereviews.com/ott-releases/"
+    }
+  },
+  {
     "name": "The Grand Master",
     "language": "tamil",
     "type": "movie",
@@ -391,6 +391,21 @@
     }
   },
   {
+    "name": "Sub-Inspector Yugandhar",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-10-30",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://cinebuds.com/ott-release-dates/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": "https://cinebuds.com/movies/sub-inspector-yugandhar/",
+    "sourceRecord": {}
+  },
+  {
     "name": "Bal Barbarik",
     "language": "hindi",
     "type": "series",
@@ -420,21 +435,6 @@
       "updatedAt": "2026-11-14T02:18:50.337Z",
       "verified": true
     }
-  },
-  {
-    "name": "Sub-Inspector Yugandhar",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-10-30",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://cinebuds.com/ott-release-dates/"
-    ],
-    "platforms": [
-      "Netflix"
-    ],
-    "detail": "https://cinebuds.com/movies/sub-inspector-yugandhar/",
-    "sourceRecord": {}
   },
   {
     "name": "Cyber",
@@ -560,71 +560,6 @@
     }
   },
   {
-    "name": "Avalaga Irunthal",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-10-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6acee68b3249ff69efda4163",
-      "platform": "ZEE5",
-      "title": "Avalaga Irunthal",
-      "createdAt": "2026-10-14T02:18:51.600Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "original_language": "Tamil",
-      "releaseDate": "2026-10-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-10-14T02:18:51.600Z",
-      "votes": 0,
-      "verified": true
-    }
-  },
-  {
-    "name": "Second Love",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-07-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a547c90cf19d56322acc4d2",
-      "platform": "JioHotStar",
-      "title": "Second Love",
-      "createdAt": "2026-07-13T05:50:08.799Z",
-      "genre": "Dating Reality Show",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "original_language": "Tamil",
-      "releaseDate": "2026-07-13",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-07-13T05:50:20.074Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/uyPIZNfoBndX1Dltaaql4v5TXwC.jpg",
-      "votes": 1,
-      "verified": true
-    }
-  },
-  {
     "name": "Sumo Didi",
     "language": "hindi",
     "type": "movie",
@@ -690,6 +625,71 @@
         "fetchedAt": "2026-10-23T06:06:02.722Z"
       },
       "tmdbId": 1186823,
+      "verified": true
+    }
+  },
+  {
+    "name": "Avalaga Irunthal",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-10-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6acee68b3249ff69efda4163",
+      "platform": "ZEE5",
+      "title": "Avalaga Irunthal",
+      "createdAt": "2026-10-14T02:18:51.600Z",
+      "genre": "Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "original_language": "Tamil",
+      "releaseDate": "2026-10-14",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-10-14T02:18:51.600Z",
+      "votes": 0,
+      "verified": true
+    }
+  },
+  {
+    "name": "Second Love",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-07-13",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a547c90cf19d56322acc4d2",
+      "platform": "JioHotStar",
+      "title": "Second Love",
+      "createdAt": "2026-07-13T05:50:08.799Z",
+      "genre": "Dating Reality Show",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "original_language": "Tamil",
+      "releaseDate": "2026-07-13",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-07-13T05:50:20.074Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/uyPIZNfoBndX1Dltaaql4v5TXwC.jpg",
+      "votes": 1,
       "verified": true
     }
   },
@@ -878,6 +878,37 @@
     }
   },
   {
+    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-09-13",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6aa608021ead141338245394",
+      "platform": "JioHotStar",
+      "title": "Chikoo Vs Bunty: Kushti Ki Jung",
+      "createdAt": "2026-09-13T02:18:42.361Z",
+      "genre": "Animation",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-09-13",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-09-13T02:18:42.361Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Chamanthi",
     "language": "telugu",
     "type": "series",
@@ -908,10 +939,10 @@
     }
   },
   {
-    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
+    "name": "Jungle Tales With Mowgli",
     "language": "hindi",
     "type": "movie",
-    "ottDate": "2026-09-13",
+    "ottDate": "2026-09-12",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
@@ -921,20 +952,20 @@
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6aa608021ead141338245394",
+      "_id": "6aa4b6881ead1413382425a4",
+      "title": "Jungle Tales With Mowgli",
       "platform": "JioHotStar",
-      "title": "Chikoo Vs Bunty: Kushti Ki Jung",
-      "createdAt": "2026-09-13T02:18:42.361Z",
-      "genre": "Animation",
+      "createdAt": "2026-09-12T02:18:48.886Z",
+      "genre": "Animation, Adventure",
       "imdbRating": null,
       "languages": [
         "Hindi"
       ],
       "original_language": "Hindi",
-      "releaseDate": "2026-09-13",
+      "releaseDate": "2026-09-12",
       "source_verified": true,
       "type": "Movie",
-      "updatedAt": "2026-09-13T02:18:42.361Z",
+      "updatedAt": "2026-09-12T02:18:48.886Z",
       "verified": true
     }
   },
@@ -1001,68 +1032,6 @@
     }
   },
   {
-    "name": "Jungle Tales With Mowgli",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-09-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6aa4b6881ead1413382425a4",
-      "title": "Jungle Tales With Mowgli",
-      "platform": "JioHotStar",
-      "createdAt": "2026-09-12T02:18:48.886Z",
-      "genre": "Animation, Adventure",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-09-12",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-09-12T02:18:48.886Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Roadies Rebirth",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6ad1898c3249ff69efda9cee",
-      "platform": "JioHotStar",
-      "title": "Roadies Rebirth",
-      "createdAt": "2026-10-16T02:18:52.613Z",
-      "genre": "Reality, Adventure",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-10-16",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-10-16T02:18:52.613Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Jodi Are U Ready Season 3 (Grand Finale)",
     "language": "tamil",
     "type": "series",
@@ -1119,6 +1088,37 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-04-23T03:43:25.822Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Roadies Rebirth",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6ad1898c3249ff69efda9cee",
+      "platform": "JioHotStar",
+      "title": "Roadies Rebirth",
+      "createdAt": "2026-10-16T02:18:52.613Z",
+      "genre": "Reality, Adventure",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-10-16",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-10-16T02:18:52.613Z",
       "verified": true
     }
   },
@@ -1214,36 +1214,6 @@
     }
   },
   {
-    "name": "WWE (Tamil Dub)",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-04-18",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Netflix"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69e2fc0930958fd1b908a124",
-      "title": "WWE (Tamil Dub)",
-      "platform": "Netflix",
-      "createdAt": "2026-04-18T03:35:37.425Z",
-      "genre": "Sports Entertainment, Action",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-04-18",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-18T03:35:37.425Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Clean Up Company",
     "language": "hindi",
     "type": "movie",
@@ -1277,10 +1247,10 @@
     }
   },
   {
-    "name": "Chumbak Part 2",
-    "language": "hindi",
+    "name": "WWE (Tamil Dub)",
+    "language": "tamil",
     "type": "series",
-    "ottDate": "2026-10-02",
+    "ottDate": "2026-04-18",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
@@ -1290,20 +1260,19 @@
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6abf148aa856b7606726225e",
+      "_id": "69e2fc0930958fd1b908a124",
+      "title": "WWE (Tamil Dub)",
       "platform": "Netflix",
-      "title": "Chumbak Part 2",
-      "createdAt": "2026-10-02T02:18:50.680Z",
-      "genre": "Comedy",
+      "createdAt": "2026-04-18T03:35:37.425Z",
+      "genre": "Sports Entertainment, Action",
       "imdbRating": null,
       "languages": [
-        "Hindi"
+        "Tamil"
       ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-10-02",
+      "releaseDate": "2026-04-18",
       "source_verified": true,
       "type": "Series",
-      "updatedAt": "2026-10-02T02:18:50.680Z",
+      "updatedAt": "2026-04-18T03:35:37.425Z",
       "verified": true
     }
   },
@@ -1367,6 +1336,37 @@
       "updatedAt": "2026-08-17T01:43:50.495Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/s2zF4NDPU0xTPKb5wrOhsFdYARR.jpg",
       "instagramPostedAt": "2026-08-17T01:44:13Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Chumbak Part 2",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-02",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6abf148aa856b7606726225e",
+      "platform": "Netflix",
+      "title": "Chumbak Part 2",
+      "createdAt": "2026-10-02T02:18:50.680Z",
+      "genre": "Comedy",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-10-02",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-10-02T02:18:50.680Z",
       "verified": true
     }
   },
@@ -1458,6 +1458,39 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-03-25T17:08:15.700Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "The Legend of Karna",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-07-31",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "SonyLIV"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a6c25cc1638e3b61f1d6767",
+      "platform": "SonyLIV",
+      "title": "The Legend of Karna",
+      "createdAt": "2026-07-31T04:34:20.405Z",
+      "genre": "Mythology",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-07-31",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-07-31T04:34:44.156Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/jzVP9rqT2YH2nTx3l3csmmU9B1q.jpg",
+      "instagramPostedAt": "2026-07-31T04:35:54Z",
       "verified": true
     }
   },
@@ -1561,39 +1594,6 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-05-21T03:48:15.770Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "The Legend of Karna",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-07-31",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "SonyLIV"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a6c25cc1638e3b61f1d6767",
-      "platform": "SonyLIV",
-      "title": "The Legend of Karna",
-      "createdAt": "2026-07-31T04:34:20.405Z",
-      "genre": "Mythology",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-07-31",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-07-31T04:34:44.156Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/jzVP9rqT2YH2nTx3l3csmmU9B1q.jpg",
-      "instagramPostedAt": "2026-07-31T04:35:54Z",
       "verified": true
     }
   },
@@ -1867,8 +1867,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win",
-      "Netflix"
+      "Netflix",
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {

@@ -496,7 +496,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39014003",
       "releaseInfo": "2025",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.5",
+      "imdbRating": "7.8",
       "genres": [
         "Comedy"
       ],
@@ -685,7 +685,7 @@
         "Crime",
         "Thriller"
       ],
-      "description": "New OTT arrival (digital): 2026-10-09 · Prime Video, Aha, ManoramaMAX, Simply South\n\nAamir Ali, a notorious gold smuggling kingpin who inherited his multi-million dollar criminal enterprise from a lineage of gangsters, is drawn into a web of vengeance, legacy and power.",
+      "description": "New OTT arrival (digital): 2026-10-09 · Prime Video, Aha, Simply South, ManoramaMAX\n\nAamir Ali, a notorious gold smuggling kingpin who inherited his multi-million dollar criminal enterprise from a lineage of gangsters, is drawn into a web of vengeance, legacy and power.",
       "releaseDate": "2026-10-09",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -699,8 +699,8 @@
           "platforms": [
             "Prime Video",
             "Aha",
-            "ManoramaMAX",
-            "Simply South"
+            "Simply South",
+            "ManoramaMAX"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -712,8 +712,8 @@
       "platforms": [
         "Prime Video",
         "Aha",
-        "ManoramaMAX",
-        "Simply South"
+        "Simply South",
+        "ManoramaMAX"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -1211,7 +1211,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt35076988",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.5",
+      "imdbRating": "6.4",
       "genres": [
         "Drama",
         "Romance"
@@ -3113,7 +3113,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt11322908",
       "releaseInfo": "2025",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "2.4",
+      "imdbRating": "2.5",
       "genres": [
         "Adventure",
         "Drama"
@@ -3500,7 +3500,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt47657304",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.2",
+      "imdbRating": null,
       "genres": [
         "Documentary",
         "Talk"
@@ -3850,7 +3850,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt43639419",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.1",
+      "imdbRating": "6.3",
       "genres": [
         "Documentary"
       ],
@@ -6730,20 +6730,19 @@
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt18933846",
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt18933846",
-      "releaseInfo": "2026",
+      "releaseInfo": "",
       "metadataSource": "https://v3-cinemeta.strem.io/",
       "imdbRating": null,
       "genres": [
-        "Romance",
-        "Drama"
+        "Romance"
       ],
-      "description": "New OTT arrival (digital): 2026-11-06 · ZEE5\n\nVino and Fenny's lives intertwine in a poignant tale of love, hope, and heartbreak.",
+      "description": "New OTT arrival (digital): 2026-11-06 · ZEE5\n\n",
       "releaseDate": "2026-11-06",
       "releaseKind": "digital",
       "releaseStatus": "available",
       "releaseLabel": "New OTT arrival",
       "releaseLabelDate": "2026-11-06",
-      "originalReleaseDate": "2026",
+      "originalReleaseDate": null,
       "availability": [
         {
           "kind": "digital",
@@ -6780,13 +6779,13 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt38097205",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.1",
+      "imdbRating": "5.9",
       "genres": [
         "Comedy",
         "Romance",
         "Drama"
       ],
-      "description": "New OTT arrival (digital): 2026-11-06 · SonyLIV\n\nAfter facing rejection in love and getting into a fight, Jeeva learns about his father Siva's struggles and sacrifices. Inspired by his grandfather's legacy and father's dedication, Jeeva changes his outlook and works hard toward his musical dream. Through determination and perseverance, Jeeva earns recognition in the music industry and brings pride to his family.",
+      "description": "New OTT arrival (digital): 2026-11-06 · SonyLIV\n\nAfter heartbreak and turmoil, Jeeva uncovers his father's quiet sacrifices, inspiring him to chase his musical dreams and make his family proud.",
       "releaseDate": "2026-11-06",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -6831,7 +6830,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39089210",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "9.4",
+      "imdbRating": "8.7",
       "genres": [
         "Family",
         "Drama"
@@ -6870,53 +6869,6 @@
       "nextEpisodeReleaseAt": null
     },
     {
-      "id": "tt44917900",
-      "type": "movie",
-      "name": "7 Star Boys",
-      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt44917900",
-      "posterShape": "poster",
-      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt44917900",
-      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt44917900",
-      "releaseInfo": "2026",
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.0",
-      "genres": [
-        "Drama"
-      ],
-      "description": "New OTT arrival (digital): 2026-11-06 · Aha\n\nA group of boys passionate about football cleans up an abandoned field with help from a local hero. When a tournament is announced, a professional player arrives to coach them toward their dreams of victory.",
-      "releaseDate": "2026-11-06",
-      "releaseKind": "digital",
-      "releaseStatus": "available",
-      "releaseLabel": "New OTT arrival",
-      "releaseLabelDate": "2026-11-06",
-      "originalReleaseDate": "2026",
-      "availability": [
-        {
-          "kind": "digital",
-          "date": "2026-11-06",
-          "platforms": [
-            "Aha"
-          ],
-          "sources": [
-            "https://cinebuds.com/ott-release-dates/"
-          ]
-        }
-      ],
-      "physicalReleases": [],
-      "ottDate": "2026-11-06",
-      "platforms": [
-        "Aha"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-release-dates/"
-      ],
-      "language": "tamil",
-      "releaseDateBasis": "source release",
-      "latestEpisodeReleasedAt": null,
-      "hasNewEpisodes": false,
-      "nextEpisodeReleaseAt": null
-    },
-    {
       "id": "tt45370533",
       "type": "movie",
       "name": "The Dark Heaven",
@@ -6926,7 +6878,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt45370533",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.3",
+      "imdbRating": "6.2",
       "genres": [
         "Crime",
         "Thriller"
@@ -7029,7 +6981,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt36931126",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.5",
+      "imdbRating": "7.0",
       "genres": [
         "Romance",
         "Thriller",
@@ -7604,7 +7556,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt37563829",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "3.0",
+      "imdbRating": "3.1",
       "genres": [
         "Action",
         "Thriller"
@@ -15383,7 +15335,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt41221277",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.9",
+      "imdbRating": "6.1",
       "genres": [
         "Action",
         "Drama",
@@ -15530,7 +15482,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt32089596",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.6",
+      "imdbRating": "8.0",
       "genres": [
         "Romance",
         "Action",
@@ -15679,7 +15631,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt42602688",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.5",
+      "imdbRating": "5.6",
       "genres": [
         "Mystery",
         "Drama"
@@ -15727,7 +15679,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt45382318",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.7",
+      "imdbRating": "5.6",
       "genres": [
         "Drama",
         "Romance"
@@ -15816,7 +15768,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt35448218",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.2",
+      "imdbRating": "5.1",
       "genres": [
         "Romance",
         "Drama"
@@ -16109,7 +16061,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39818587",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.8",
+      "imdbRating": "6.9",
       "genres": [
         "Mystery",
         "Thriller"
@@ -16675,7 +16627,7 @@
         "Music",
         "Drama"
       ],
-      "description": "New OTT arrival (digital): 2026-06-11 · ETV Win, Netflix\n\nIn an isolated village, young Prathap seeks opportunity but enters a world of deception. Drawn into uncontrollable forces, he's caught between progress and preservation, testing his beliefs and purpose.",
+      "description": "New OTT arrival (digital): 2026-06-11 · Netflix, ETV Win\n\nIn an isolated village, young Prathap seeks opportunity but enters a world of deception. Drawn into uncontrollable forces, he's caught between progress and preservation, testing his beliefs and purpose.",
       "releaseDate": "2026-06-11",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -16687,8 +16639,8 @@
           "kind": "digital",
           "date": "2026-06-11",
           "platforms": [
-            "ETV Win",
-            "Netflix"
+            "Netflix",
+            "ETV Win"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -16698,8 +16650,8 @@
       "physicalReleases": [],
       "ottDate": "2026-06-11",
       "platforms": [
-        "ETV Win",
-        "Netflix"
+        "Netflix",
+        "ETV Win"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -16720,7 +16672,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt35992024",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.8",
+      "imdbRating": "6.7",
       "genres": [
         "Romance",
         "Drama",
@@ -17000,7 +16952,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt38907386",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.4",
+      "imdbRating": "5.5",
       "genres": [
         "Action",
         "Comedy",
@@ -17148,7 +17100,7 @@
         "Romance",
         "Drama"
       ],
-      "description": "New OTT arrival (digital): 2026-05-18 · Shreyas ET, BookMyShow Stream, Zeeplex\n\n",
+      "description": "New OTT arrival (digital): 2026-05-18 · Zeeplex, Shreyas ET, BookMyShow Stream\n\n",
       "releaseDate": "2026-05-18",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -17160,9 +17112,9 @@
           "kind": "digital",
           "date": "2026-05-18",
           "platforms": [
+            "Zeeplex",
             "Shreyas ET",
-            "BookMyShow Stream",
-            "Zeeplex"
+            "BookMyShow Stream"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -17172,9 +17124,9 @@
       "physicalReleases": [],
       "ottDate": "2026-05-18",
       "platforms": [
+        "Zeeplex",
         "Shreyas ET",
-        "BookMyShow Stream",
-        "Zeeplex"
+        "BookMyShow Stream"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -18854,51 +18806,6 @@
       "nextEpisodeReleaseAt": null
     },
     {
-      "id": "tt39216437",
-      "type": "series",
-      "name": "Varam",
-      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt39216437",
-      "posterShape": "poster",
-      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt39216437",
-      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39216437",
-      "releaseInfo": "2026–",
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "3.7",
-      "genres": [
-        "Drama",
-        "Crime",
-        "Sci-Fi & Fantasy"
-      ],
-      "description": "Home release (digital): 2026-11-05 · \n\nA poor slum dweller's life takes a massive, unexpected turn when he receives a mysterious boon (varam) that alters his fate, fortune, and future.",
-      "releaseDate": "2026-11-05",
-      "releaseKind": "digital",
-      "releaseStatus": "available",
-      "releaseLabel": null,
-      "releaseLabelDate": null,
-      "originalReleaseDate": null,
-      "availability": [
-        {
-          "kind": "digital",
-          "date": "2026-10-22",
-          "platforms": [],
-          "sources": [
-            "https://www.themoviedb.org/tv/337474"
-          ]
-        }
-      ],
-      "physicalReleases": [],
-      "ottDate": "2026-10-22",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/337474"
-      ],
-      "language": "telugu",
-      "releaseDateBasis": "premiere",
-      "latestEpisodeReleasedAt": "2026-11-05T00:00:01+00:00",
-      "hasNewEpisodes": false,
-      "nextEpisodeReleaseAt": null
-    },
-    {
       "id": "tt40856774",
       "type": "series",
       "name": "The Traitors Telugu",
@@ -18992,6 +18899,51 @@
       "language": "telugu",
       "releaseDateBasis": "premiere",
       "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null
+    },
+    {
+      "id": "tt39216437",
+      "type": "series",
+      "name": "Varam",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt39216437",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt39216437",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39216437",
+      "releaseInfo": "2026–",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "4.2",
+      "genres": [
+        "Drama",
+        "Crime",
+        "Sci-Fi & Fantasy"
+      ],
+      "description": "Home release (digital): 2026-10-29 · \n\nA poor slum dweller's life takes a massive, unexpected turn when he receives a mysterious boon (varam) that alters his fate, fortune, and future.",
+      "releaseDate": "2026-10-29",
+      "releaseKind": "digital",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-10-22",
+          "platforms": [],
+          "sources": [
+            "https://www.themoviedb.org/tv/337474"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "ottDate": "2026-10-22",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/337474"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "premiere",
+      "latestEpisodeReleasedAt": "2026-10-29T00:00:01+00:00",
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null
     },
@@ -19100,7 +19052,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt45381529",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.0",
+      "imdbRating": "6.1",
       "genres": [
         "Crime",
         "Mystery"
@@ -24453,9 +24405,12 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt26242352",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": null,
-      "genres": [],
-      "description": "New OTT arrival (digital): 2026-11-11 · ZEE5\n\nA Cop, under suspension, is on the trail of Missing Cash.",
+      "imdbRating": "6.0",
+      "genres": [
+        "Crime",
+        "Thriller"
+      ],
+      "description": "New OTT arrival (digital): 2026-11-11 · ZEE5\n\nA suspended police officer tracks down a missing fortune and a dangerous secret.",
       "releaseDate": "2026-11-11",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -27456,7 +27411,7 @@
         "Comedy",
         "Crime"
       ],
-      "description": "New OTT arrival (digital): 2026-03-14 · JioHotStar, SonyLIV\n\nA rogue cop takes on a dangerous crime syndicate, using his own over-the-top methods to deliver justice in a high-octane, stylized action world.",
+      "description": "New OTT arrival (digital): 2026-03-14 · SonyLIV, JioHotStar\n\nA rogue cop takes on a dangerous crime syndicate, using his own over-the-top methods to deliver justice in a high-octane, stylized action world.",
       "releaseDate": "2026-03-14",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -27468,8 +27423,8 @@
           "kind": "digital",
           "date": "2026-03-14",
           "platforms": [
-            "JioHotStar",
-            "SonyLIV"
+            "SonyLIV",
+            "JioHotStar"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -27479,8 +27434,8 @@
       "physicalReleases": [],
       "ottDate": "2026-03-14",
       "platforms": [
-        "JioHotStar",
-        "SonyLIV"
+        "SonyLIV",
+        "JioHotStar"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -29256,6 +29211,47 @@
       "nextEpisodeReleaseAt": null
     },
     {
+      "id": "tt41496092",
+      "type": "series",
+      "name": "Dhai Chaal",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt41496092",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt41496092",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt41496092",
+      "releaseInfo": "2026–",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": null,
+      "genres": [],
+      "description": "Upcoming OTT release (digital): 2026-11-27 · \n\nAn ambitious politician navigates the treacherous corridors of power, bending rules and forging alliances in a ruthless climb to the top. Morality blurs as survival demands compromise in this dark exploration of political machinations.",
+      "releaseDate": "2026-11-27",
+      "releaseKind": "digital",
+      "releaseStatus": "upcoming",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-11-27",
+          "platforms": [],
+          "sources": [
+            "https://ottasia.com/ott-releases-this-week?country=IN"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "ottDate": "2026-11-27",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": "2026-11-27T00:00:00+00:00"
+    },
+    {
       "id": "tmdb:338740",
       "type": "series",
       "name": "Supreme Solaris",
@@ -29665,9 +29661,9 @@
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt50286925",
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt50286925",
-      "releaseInfo": "2026",
-      "metadataSource": "Verified IMDb title/year match",
-      "imdbRating": null,
+      "releaseInfo": "2026–",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "5.8",
       "genres": [
         "Mystery"
       ],
@@ -29709,7 +29705,7 @@
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
-      "latestEpisodeReleasedAt": null,
+      "latestEpisodeReleasedAt": "2026-10-28T00:00:06+00:00",
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null
     },
@@ -31387,7 +31383,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt36643714",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.6",
+      "imdbRating": "8.5",
       "genres": [
         "Drama"
       ],
@@ -36348,7 +36344,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt38716267",
       "releaseInfo": "2025–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.4",
+      "imdbRating": "6.3",
       "genres": [],
       "description": "Home release (digital): 2025-09-22 · \n\nLeft by her husband for having daughters, Ganga defiantly raises her girls in Varanasi. Their achievements despite adversity become her ultimate triumph.",
       "releaseDate": "2025-09-22",
@@ -38517,7 +38513,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt30145246",
       "releaseInfo": "2024–2025",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.9",
+      "imdbRating": "8.8",
       "genres": [
         "Drama",
         "Family"
@@ -40602,7 +40598,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt32468359",
       "releaseInfo": "2024–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "4.7",
+      "imdbRating": "4.8",
       "genres": [
         "Drama"
       ],
@@ -42296,7 +42292,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt29802022",
       "releaseInfo": "2023–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.3",
+      "imdbRating": "6.5",
       "genres": [
         "Documentary"
       ],
@@ -45219,7 +45215,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt27548904",
       "releaseInfo": "2023–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.3",
+      "imdbRating": "5.2",
       "genres": [],
       "description": "Home release (digital): 2023-04-21 · \n\nMoushmi is accused of killing her best friend and roommate, but claims that it is a demon who made her do this, she is innocent.",
       "releaseDate": "2023-04-21",

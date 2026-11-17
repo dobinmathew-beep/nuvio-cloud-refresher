@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-17T10:46:44.458598+00:00",
+  "checkedAt": "2026-11-17T11:36:52.594055+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "degraded",
   "checks": [
@@ -14,7 +14,7 @@
       "statusTimestampMatches": false,
       "catalogCountsMatch": false,
       "catalogIdsMatch": false,
-      "metadataRecords": 1038,
+      "metadataRecords": 1041,
       "warning": null,
       "error": "Public service is still serving an older or fallback snapshot."
     },
@@ -42,35 +42,29 @@
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 67,
-      "endpointUniqueIdCount": 67,
+      "endpointRawCount": 69,
+      "endpointUniqueIdCount": 69,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        17
+        19
       ],
       "endpointPageSize": 50,
-      "missingIds": [
-        "tt38984184",
-        "tt39239818",
-        "tt45692999"
-      ],
-      "extraIds": [
-        "tt44878818"
-      ],
+      "missingIds": [],
+      "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt27512908",
-        "name": "The Third Murder",
-        "releaseDate": "2026-11-13"
+        "id": "tt39239818",
+        "name": "Haiku",
+        "releaseDate": "2026-11-20"
       },
       "localLatestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
         "releaseDate": "2026-11-20"
       },
-      "latestEntryMatches": false,
-      "state": "public_snapshot_count_mismatch",
+      "latestEntryMatches": true,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -83,18 +77,16 @@
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 66,
-      "endpointUniqueIdCount": 66,
+      "endpointRawCount": 67,
+      "endpointUniqueIdCount": 67,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        16
+        17
       ],
       "endpointPageSize": 50,
-      "missingIds": [
-        "tmdb:281333"
-      ],
+      "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt8537520",
@@ -107,7 +99,7 @@
         "releaseDate": "2026-11-16T21:30:00+00:00"
       },
       "latestEntryMatches": true,
-      "state": "public_snapshot_count_mismatch",
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -115,24 +107,24 @@
       "language": "ta",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ta_movie.json",
-      "localPublishedCount": 68,
-      "localUniqueIdCount": 68,
+      "localPublishedCount": 67,
+      "localUniqueIdCount": 67,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 67,
-      "endpointUniqueIdCount": 67,
+      "endpointRawCount": 68,
+      "endpointUniqueIdCount": 68,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        17
+        18
       ],
       "endpointPageSize": 50,
-      "missingIds": [
-        "tt38984184"
+      "missingIds": [],
+      "extraIds": [
+        "tt44917900"
       ],
-      "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -193,33 +185,29 @@
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 74,
-      "endpointUniqueIdCount": 74,
+      "endpointRawCount": 77,
+      "endpointUniqueIdCount": 77,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        24
+        27
       ],
       "endpointPageSize": 50,
-      "missingIds": [
-        "tt30768979",
-        "tt38984184",
-        "tt39239818"
-      ],
+      "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt38676235",
-        "name": "Takshakudu",
-        "releaseDate": "2026-11-26"
+        "id": "tt30768979",
+        "name": "Aadarsha Kutumbam House No: 47 - AK47",
+        "releaseDate": "2026-11-27"
       },
       "localLatestEntry": {
         "id": "tt30768979",
         "name": "Aadarsha Kutumbam House No: 47 - AK47",
         "releaseDate": "2026-11-27"
       },
-      "latestEntryMatches": false,
-      "state": "public_snapshot_count_mismatch",
+      "latestEntryMatches": true,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -268,19 +256,16 @@
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 81,
-      "endpointUniqueIdCount": 81,
+      "endpointRawCount": 83,
+      "endpointUniqueIdCount": 83,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        31
+        33
       ],
       "endpointPageSize": 50,
-      "missingIds": [
-        "tt38984184",
-        "tt39239818"
-      ],
+      "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt39390582",
@@ -293,7 +278,7 @@
         "releaseDate": "2026-11-27"
       },
       "latestEntryMatches": true,
-      "state": "public_snapshot_count_mismatch",
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -301,13 +286,13 @@
       "language": "hi",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
-      "localPublishedCount": 348,
-      "localUniqueIdCount": 348,
+      "localPublishedCount": 349,
+      "localUniqueIdCount": 349,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 347,
-      "endpointUniqueIdCount": 347,
+      "endpointRawCount": 348,
+      "endpointUniqueIdCount": 348,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
@@ -317,11 +302,11 @@
         50,
         50,
         50,
-        47
+        48
       ],
       "endpointPageSize": 50,
       "missingIds": [
-        "tt50943841"
+        "tt41496092"
       ],
       "extraIds": [],
       "endpointLatestEntry": {
@@ -350,8 +335,8 @@
   "catalogSummary": {
     "checked": 8,
     "failed": 0,
-    "possibleTruncationOrLag": 6,
-    "countMismatches": 6,
+    "possibleTruncationOrLag": 2,
+    "countMismatches": 2,
     "firstPageSize50": [
       "dobins_ml_movie",
       "dobins_ml_series",

@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-11-17T14:33:28.673522+04:00",
+  "generatedAt": "2026-11-17T15:27:01.856030+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 41,
+    "total": 42,
     "byLanguage": {
-      "hindi": 22,
+      "hindi": 23,
       "tamil": 9,
       "malayalam": 3,
       "telugu": 7
     },
     "byType": {
-      "series": 18,
-      "movie": 23
+      "series": 20,
+      "movie": 22
     },
     "byMatchState": {
-      "published": 26,
+      "published": 27,
       "unmatched": 14,
       "metadata_incomplete": 1
     },
@@ -23,7 +23,7 @@
       "https://www.dailyott.in/": 5,
       "https://newindianmovies.com/": 4,
       "https://www.myvi.in/blog/ott-releases-this-week": 2,
-      "https://ottasia.com/ott-releases-this-week?country=IN": 7,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 8,
       "https://simplymollywood.com/ott": 8,
       "https://cinebuds.com/ott-releases-this-week/": 7,
       "https://indianmoviereviews.com/ott-releases/": 10,
@@ -867,9 +867,33 @@
       "catalog": "dobins_hi_movie"
     },
     {
+      "title": "Dhai Chaal",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/tv/342384/dhai-chaal?country=IN",
+      "matchId": "tt41496092",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": false,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
       "title": "Jindey",
       "language": "hindi",
-      "type": "movie",
+      "type": "series",
       "releaseDate": "2026-11-27",
       "platforms": [],
       "sources": [
@@ -1326,7 +1350,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 9
+      "records": 10
     },
     {
       "source": "Vi weekly OTT calendar",

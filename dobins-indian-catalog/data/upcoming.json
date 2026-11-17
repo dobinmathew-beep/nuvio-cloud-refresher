@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-17T14:33:28.673522+04:00",
+  "generatedAt": "2026-11-17T15:27:01.856030+04:00",
   "policy": "confirmed-source-and-imdb-match-v1",
-  "count": 21,
+  "count": 22,
   "items": [
     {
       "id": "tt15295490",
@@ -260,6 +260,18 @@
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
       "catalog": "dobins_te_movie"
+    },
+    {
+      "id": "tt41496092",
+      "name": "Dhai Chaal",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "catalog": "dobins_hi_series"
     },
     {
       "id": "tt27050858",
