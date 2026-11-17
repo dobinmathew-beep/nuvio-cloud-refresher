@@ -40,13 +40,9 @@ jobs:
         id: update
         continue-on-error: true
         run: python -u dobins-indian-catalog/update.py
-      - name: Check public addon and checkout availability
-        if: always()
-        id: site_health
-        continue-on-error: true
-        run: python3 dobins-indian-catalog/check_site.py
       - name: Preserve metadata caches, catalogs and source health
         if: always()
+        id: persist
         run: |
           set -e
           git config user.name 'Dobins Indian Catalog'
@@ -78,6 +74,12 @@ jobs:
 
           echo 'Catalog data could not be persisted after five safe push attempts.'
           exit 1
+      # Verify the public service only after the new snapshot has been pushed.
+      - name: Check public addon and checkout availability
+        if: always() && steps.persist.outcome == 'success'
+        id: site_health
+        continue-on-error: true
+        run: python3 dobins-indian-catalog/check_site.py
       - name: Keep failed work pending for the next 30-minute check
         if: steps.update.outcome == 'failure' || steps.site_health.outcome == 'failure'
         run: exit 1
