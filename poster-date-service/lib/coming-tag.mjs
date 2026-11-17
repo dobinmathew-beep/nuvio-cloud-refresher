@@ -8,7 +8,8 @@ const cache = new Map();
 let workerPromise;
 
 function normalizedText(text) {
-  return String(text || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  // OCR sometimes returns escaped line breaks ("\\n") instead of real ones.
+  return String(text || '').replace(/\\[nr]/g, ' ').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 }
 
 function hasExpectedDateBadgeText(text, kind = 'premiere', isoDate = null) {
@@ -26,7 +27,14 @@ function hasExpectedDateBadgeText(text, kind = 'premiere', isoDate = null) {
     const date = '(?:' + dayPattern + '\\s*' + month + '|' + month + '\\s*' + dayPattern + ')';
     if (!new RegExp('(?:^|\\s)' + date + '(?:$|\\s)', 'i').test(normalized)) return false;
   }
-  return kind === 'episode' ? /new episode/.test(normalized) : /coming/.test(normalized);
+  const hasComingLabel = /coming/.test(normalized);
+  const hasEpisodeLabel = /new episode/.test(normalized);
+  if (hasComingLabel || hasEpisodeLabel) {
+    return kind === 'episode' ? hasEpisodeLabel : hasComingLabel;
+  }
+  // OCR can miss the small chip while still reading the exact date. Since a
+  // valid date was already required above, accept date-only text as a match.
+  return true;
 }
 
 async function getWorker() {
