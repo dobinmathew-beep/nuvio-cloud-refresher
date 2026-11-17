@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-17T18:34:03.061221+04:00",
+  "generatedAt": "2026-11-17T23:41:42.849407+04:00",
   "policy": "confirmed-source-and-imdb-match-v1",
   "count": 22,
   "items": [
@@ -267,7 +267,10 @@
       "language": "hindi",
       "type": "series",
       "releaseDate": "2026-11-27",
-      "platforms": [],
+      "platforms": [
+        "JioHotstar",
+        "Hotstar"
+      ],
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
@@ -280,8 +283,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/",

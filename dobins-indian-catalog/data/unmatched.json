@@ -1,5 +1,24 @@
 [
   {
+    "name": "Satyameva",
+    "language": "malayalam",
+    "type": "series",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://ottasia.com/ott-releases-this-week?country=IN"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": "https://ottasia.com/title/tv/342403/satyameva?country=IN",
+    "sourceRecord": {
+      "title": "Satyameva",
+      "releaseDate": "2026-11-27",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
     "name": "O Coming Thu 31 Dec Octopus Tamil · Series ZEE5",
     "language": "tamil",
     "type": "series",
@@ -212,12 +231,36 @@
     "sources": [
       "https://ottasia.com/ott-releases-this-week?country=IN"
     ],
-    "platforms": [],
+    "platforms": [
+      "JioHotstar",
+      "Hotstar",
+      "ZEE5"
+    ],
     "detail": "https://ottasia.com/title/movie/1765369/jindey?country=IN",
     "sourceRecord": {
       "title": "Jindey",
       "releaseDate": "2026-11-27",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
+    "name": "Coming Fri 27 Nov Dhai Chaal Hindi · Series JioHotstar",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://indianmoviereviews.com/ott-releases/"
+    ],
+    "platforms": [
+      "JioHotstar",
+      "Hotstar"
+    ],
+    "detail": "https://indianmoviereviews.com/series/dhai-chaal-2026/",
+    "sourceRecord": {
+      "title": "Coming Fri 27 Nov Dhai Chaal Hindi · Series JioHotstar",
+      "releaseDate": "2026-11-27",
+      "source": "https://indianmoviereviews.com/ott-releases/"
     }
   },
   {
@@ -1092,37 +1135,6 @@
     }
   },
   {
-    "name": "Roadies Rebirth",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6ad1898c3249ff69efda9cee",
-      "platform": "JioHotStar",
-      "title": "Roadies Rebirth",
-      "createdAt": "2026-10-16T02:18:52.613Z",
-      "genre": "Reality, Adventure",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-10-16",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-10-16T02:18:52.613Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Thai Maaman",
     "language": "tamil",
     "type": "series",
@@ -1150,6 +1162,37 @@
       "type": "Series",
       "updatedAt": "2026-04-28T03:48:08.007Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/8GGzM0vq3xttbYA0GNOHDI6iVlT.jpg",
+      "verified": true
+    }
+  },
+  {
+    "name": "Roadies Rebirth",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6ad1898c3249ff69efda9cee",
+      "platform": "JioHotStar",
+      "title": "Roadies Rebirth",
+      "createdAt": "2026-10-16T02:18:52.613Z",
+      "genre": "Reality, Adventure",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-10-16",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-10-16T02:18:52.613Z",
       "verified": true
     }
   },
@@ -1340,37 +1383,6 @@
     }
   },
   {
-    "name": "Chumbak Part 2",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-02",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Netflix"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6abf148aa856b7606726225e",
-      "platform": "Netflix",
-      "title": "Chumbak Part 2",
-      "createdAt": "2026-10-02T02:18:50.680Z",
-      "genre": "Comedy",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-10-02",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-10-02T02:18:50.680Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Kakkippada-2",
     "language": "malayalam",
     "type": "movie",
@@ -1428,6 +1440,37 @@
       "type": "Series",
       "updatedAt": "2026-04-09T03:37:09.017Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/tC5K8MkLipwV9bIdJV9SQcCzgUF.jpg",
+      "verified": true
+    }
+  },
+  {
+    "name": "Chumbak Part 2",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-02",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6abf148aa856b7606726225e",
+      "platform": "Netflix",
+      "title": "Chumbak Part 2",
+      "createdAt": "2026-10-02T02:18:50.680Z",
+      "genre": "Comedy",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-10-02",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-10-02T02:18:50.680Z",
       "verified": true
     }
   },
@@ -1867,8 +1910,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix",
-      "ETV Win"
+      "ETV Win",
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {
@@ -1916,37 +1959,6 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-03-25T17:08:15.211Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "BAKI-DOU: The Invincible Samurai",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-02-26",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Netflix"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "699fbc8c0265db7795223e90",
-      "platform": "Netflix",
-      "releaseDate": "2026-02-26",
-      "title": "BAKI-DOU: The Invincible Samurai",
-      "createdAt": "2026-02-26T03:22:52.158Z",
-      "languages": [
-        "Japanese",
-        "English",
-        "Hindi"
-      ],
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-03-19T03:40:30.946Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/frtzbwANetYd0M4zdrZ5gx0E89q.jpg",
       "verified": true
     }
   },

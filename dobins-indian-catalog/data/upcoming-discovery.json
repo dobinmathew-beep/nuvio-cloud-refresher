@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-11-17T18:34:03.061221+04:00",
+  "generatedAt": "2026-11-17T23:41:42.849407+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 42,
+    "total": 44,
     "byLanguage": {
-      "hindi": 23,
+      "hindi": 24,
       "tamil": 9,
-      "malayalam": 3,
+      "malayalam": 4,
       "telugu": 7
     },
     "byType": {
-      "series": 20,
+      "series": 22,
       "movie": 22
     },
     "byMatchState": {
       "published": 27,
-      "unmatched": 14,
+      "unmatched": 16,
       "metadata_incomplete": 1
     },
     "bySource": {
@@ -23,10 +23,10 @@
       "https://www.dailyott.in/": 5,
       "https://newindianmovies.com/": 4,
       "https://www.myvi.in/blog/ott-releases-this-week": 2,
-      "https://ottasia.com/ott-releases-this-week?country=IN": 8,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 9,
       "https://simplymollywood.com/ott": 8,
       "https://cinebuds.com/ott-releases-this-week/": 7,
-      "https://indianmoviereviews.com/ott-releases/": 10,
+      "https://indianmoviereviews.com/ott-releases/": 11,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
       "https://v3-cinemeta.strem.io/": 1
@@ -818,8 +818,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/",
@@ -867,11 +867,41 @@
       "catalog": "dobins_hi_movie"
     },
     {
+      "title": "Coming Fri 27 Nov Dhai Chaal Hindi · Series JioHotstar",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "platforms": [
+        "JioHotstar",
+        "Hotstar"
+      ],
+      "sources": [
+        "https://indianmoviereviews.com/ott-releases/"
+      ],
+      "confirmed": false,
+      "releaseDateBasis": "Indian Movie Reviews OTT calendar reported OTT calendar date",
+      "detail": "https://indianmoviereviews.com/series/dhai-chaal-2026/",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
       "title": "Dhai Chaal",
       "language": "hindi",
       "type": "series",
       "releaseDate": "2026-11-27",
-      "platforms": [],
+      "platforms": [
+        "JioHotstar",
+        "Hotstar"
+      ],
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
@@ -885,7 +915,7 @@
       "metadataFields": {
         "poster": true,
         "description": true,
-        "genres": false,
+        "genres": true,
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
@@ -895,13 +925,43 @@
       "language": "hindi",
       "type": "series",
       "releaseDate": "2026-11-27",
-      "platforms": [],
+      "platforms": [
+        "JioHotstar",
+        "Hotstar",
+        "ZEE5"
+      ],
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
       "confirmed": true,
       "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
       "detail": "https://ottasia.com/title/movie/1765369/jindey?country=IN",
+      "matchId": null,
+      "matchState": "unmatched",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "Satyameva",
+      "language": "malayalam",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/tv/342403/satyameva?country=IN",
       "matchId": null,
       "matchState": "unmatched",
       "metadataComplete": false,
@@ -1118,13 +1178,32 @@
   "malayalamReview": {
     "policy": "Unmatched Malayalam source detections are held out until an unambiguous IMDb or TMDB identity and complete metadata are verified.",
     "counts": {
-      "total": 6,
+      "total": 7,
       "byType": {
-        "series": 4,
+        "series": 5,
         "movie": 2
       }
     },
     "items": [
+      {
+        "name": "Satyameva",
+        "language": "malayalam",
+        "type": "series",
+        "ottDate": "2026-11-27",
+        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+        "sources": [
+          "https://ottasia.com/ott-releases-this-week?country=IN"
+        ],
+        "platforms": [
+          "ZEE5"
+        ],
+        "detail": "https://ottasia.com/title/tv/342403/satyameva?country=IN",
+        "sourceRecord": {
+          "title": "Satyameva",
+          "releaseDate": "2026-11-27",
+          "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+        }
+      },
       {
         "name": "Cyber",
         "language": "malayalam",
@@ -1350,7 +1429,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 10
+      "records": 11
     },
     {
       "source": "Vi weekly OTT calendar",
@@ -1387,7 +1466,7 @@
       "source": "Indian Movie Reviews OTT calendar",
       "url": "https://indianmoviereviews.com/ott-releases/",
       "state": "live",
-      "records": 10
+      "records": 11
     },
     {
       "source": "OTTClock confirmed upcoming calendar",
@@ -1434,8 +1513,8 @@
       "source": "IndianRegional series discovery",
       "language": "tamil",
       "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
-      "state": "live",
-      "records": 74
+      "state": "cached",
+      "records": 40
     },
     {
       "source": "TMDB streaming-series discovery",
@@ -1481,10 +1560,10 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 598,
+      "records": 613,
       "counts": {
         "malayalam": 60,
-        "tamil": 103,
+        "tamil": 118,
         "telugu": 108,
         "hindi": 327
       },

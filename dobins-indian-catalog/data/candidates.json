@@ -4279,13 +4279,6 @@
       "type": "movie"
     },
     {
-      "id": "tt27744786",
-      "name": "Shaitaan",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27744786.jpg",
-      "releaseInfo": "2024",
-      "type": "movie"
-    },
-    {
       "id": "tt30970235",
       "name": "Article 370",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt30970235.jpg",
@@ -7834,6 +7827,13 @@
       "type": "movie"
     },
     {
+      "id": "tt33337133",
+      "name": "Racharikam",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33337133.jpg",
+      "releaseInfo": "2025",
+      "type": "movie"
+    },
+    {
       "id": "tt35380379",
       "name": "Mokshapatam",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35380379.jpg",
@@ -7872,13 +7872,6 @@
       "id": "tt16539454",
       "name": "Pushpa 2 - The Rule",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt16539454.jpg",
-      "releaseInfo": "2024",
-      "type": "movie"
-    },
-    {
-      "id": "tt27191250",
-      "name": "Mechanic Rocky",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27191250.jpg",
       "releaseInfo": "2024",
       "type": "movie"
     },
@@ -12526,5 +12519,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-17T18:34:03.061221+04:00"
+  "_updatedAt": "2026-11-17T23:41:42.849407+04:00"
 }

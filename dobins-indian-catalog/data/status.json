@@ -4,9 +4,9 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v2",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-17T18:34:03.061221+04:00",
-  "lastMatchRetryAt": "2026-11-17T18:34:03.061221+04:00",
-  "lastSuccessCycle": "2026-11-17T18:00:00+04:00",
+  "updatedAt": "2026-11-17T23:41:42.849407+04:00",
+  "lastMatchRetryAt": "2026-11-17T23:41:42.849407+04:00",
+  "lastSuccessCycle": "2026-11-17T22:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
   "sources": [
@@ -32,7 +32,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 10
+      "records": 11
     },
     {
       "source": "Vi weekly OTT calendar",
@@ -69,7 +69,7 @@
       "source": "Indian Movie Reviews OTT calendar",
       "url": "https://indianmoviereviews.com/ott-releases/",
       "state": "live",
-      "records": 10
+      "records": 11
     },
     {
       "source": "OTTClock confirmed upcoming calendar",
@@ -116,8 +116,8 @@
       "source": "IndianRegional series discovery",
       "language": "tamil",
       "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
-      "state": "live",
-      "records": 74
+      "state": "cached",
+      "records": 40
     },
     {
       "source": "TMDB streaming-series discovery",
@@ -163,10 +163,10 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 598,
+      "records": 613,
       "counts": {
         "malayalam": 60,
-        "tamil": 103,
+        "tamil": 118,
         "telugu": 108,
         "hindi": 327
       },
@@ -204,13 +204,13 @@
     "dobins_ta_series": 111,
     "dobins_te_movie": 77,
     "dobins_te_series": 114,
-    "dobins_hi_movie": 83,
+    "dobins_hi_movie": 84,
     "dobins_hi_series": 349
   },
   "catalogFreshness": {
     "dobins_ml_movie": {
       "count": 69,
-      "generatedAt": "2026-11-17T18:34:03.061221+04:00",
+      "generatedAt": "2026-11-17T23:41:42.849407+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -220,7 +220,7 @@
     },
     "dobins_ml_series": {
       "count": 67,
-      "generatedAt": "2026-11-17T18:34:03.061221+04:00",
+      "generatedAt": "2026-11-17T23:41:42.849407+04:00",
       "latestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
@@ -230,7 +230,7 @@
     },
     "dobins_ta_movie": {
       "count": 68,
-      "generatedAt": "2026-11-17T18:34:03.061221+04:00",
+      "generatedAt": "2026-11-17T23:41:42.849407+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -240,7 +240,7 @@
     },
     "dobins_ta_series": {
       "count": 111,
-      "generatedAt": "2026-11-17T18:34:03.061221+04:00",
+      "generatedAt": "2026-11-17T23:41:42.849407+04:00",
       "latestEntry": {
         "id": "tmdb:339004",
         "name": "Notebook 90s – Kadhal Flashback",
@@ -250,7 +250,7 @@
     },
     "dobins_te_movie": {
       "count": 77,
-      "generatedAt": "2026-11-17T18:34:03.061221+04:00",
+      "generatedAt": "2026-11-17T23:41:42.849407+04:00",
       "latestEntry": {
         "id": "tt30768979",
         "name": "Aadarsha Kutumbam House No: 47 - AK47",
@@ -260,7 +260,7 @@
     },
     "dobins_te_series": {
       "count": 114,
-      "generatedAt": "2026-11-17T18:34:03.061221+04:00",
+      "generatedAt": "2026-11-17T23:41:42.849407+04:00",
       "latestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
@@ -269,8 +269,8 @@
       }
     },
     "dobins_hi_movie": {
-      "count": 83,
-      "generatedAt": "2026-11-17T18:34:03.061221+04:00",
+      "count": 84,
+      "generatedAt": "2026-11-17T23:41:42.849407+04:00",
       "latestEntry": {
         "id": "tt39390582",
         "name": "Hanuman Ansh",
@@ -280,7 +280,7 @@
     },
     "dobins_hi_series": {
       "count": 349,
-      "generatedAt": "2026-11-17T18:34:03.061221+04:00",
+      "generatedAt": "2026-11-17T23:41:42.849407+04:00",
       "latestEntry": {
         "id": "tmdb:337904",
         "name": "AndherPura Curse",
@@ -291,27 +291,27 @@
   },
   "pendingMatchesByCatalog": {
     "dobins_ml_movie": 2,
-    "dobins_ml_series": 4,
+    "dobins_ml_series": 5,
     "dobins_ta_movie": 6,
     "dobins_ta_series": 12,
     "dobins_te_movie": 9,
     "dobins_te_series": 9,
-    "dobins_hi_movie": 14,
-    "dobins_hi_series": 14
+    "dobins_hi_movie": 13,
+    "dobins_hi_series": 15
   },
   "checkedCandidatesByCatalog": {
     "dobins_ml_movie": 67,
-    "dobins_ml_series": 77,
+    "dobins_ml_series": 78,
     "dobins_ta_movie": 71,
     "dobins_ta_series": 129,
     "dobins_te_movie": 84,
     "dobins_te_series": 125,
     "dobins_hi_movie": 92,
-    "dobins_hi_series": 368
+    "dobins_hi_series": 369
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
-  "pendingMatches": 70,
-  "checkedCandidates": 1013,
+  "pendingMatches": 71,
+  "checkedCandidates": 1015,
   "malayalamMetadataAudit": {
     "checked": 136,
     "passed": 136,
@@ -394,20 +394,20 @@
     "policy": "Only confirmed upcoming titles with a validated IMDb tt-ID are published."
   },
   "upcomingDiscovery": {
-    "total": 42,
+    "total": 44,
     "byLanguage": {
-      "hindi": 23,
+      "hindi": 24,
       "tamil": 9,
-      "malayalam": 3,
+      "malayalam": 4,
       "telugu": 7
     },
     "byType": {
-      "series": 20,
+      "series": 22,
       "movie": 22
     },
     "byMatchState": {
       "published": 27,
-      "unmatched": 14,
+      "unmatched": 16,
       "metadata_incomplete": 1
     },
     "bySource": {
@@ -415,15 +415,15 @@
       "https://www.dailyott.in/": 5,
       "https://newindianmovies.com/": 4,
       "https://www.myvi.in/blog/ott-releases-this-week": 2,
-      "https://ottasia.com/ott-releases-this-week?country=IN": 8,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 9,
       "https://simplymollywood.com/ott": 8,
       "https://cinebuds.com/ott-releases-this-week/": 7,
-      "https://indianmoviereviews.com/ott-releases/": 10,
+      "https://indianmoviereviews.com/ott-releases/": 11,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
       "https://v3-cinemeta.strem.io/": 1
     },
-    "malayalamReviewCount": 6
+    "malayalamReviewCount": 7
   },
   "errors": []
 }
