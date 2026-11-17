@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-17T02:10:14.752124+04:00",
+  "checked_at": "2026-11-17T06:00:22.278655+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -50,28 +50,28 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-17T02:10:14.752124+04:00",
+      "checked_at": "2026-11-17T06:00:22.278655+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
           "name": "public status and freshness",
           "status": "pass",
           "details": {
-            "revision": "60af3cd8-1a14-449e-add4-29c453c95bac",
-            "checked_utc": "2026-11-16T20:13:40.871034+00:00",
-            "matched_ids": 613,
+            "revision": "ad8c9acb-7212-402b-a698-fa23327c3166",
+            "checked_utc": "2026-11-17T01:58:34.672075+00:00",
+            "matched_ids": 610,
             "playlist_channel_ids": 823,
-            "unresolved_ids": 210,
-            "programmes": 63851
+            "unresolved_ids": 213,
+            "programmes": 64317
           }
         },
         {
           "name": "published XMLTV",
           "status": "pass",
           "details": {
-            "bytes": 1777193,
-            "channels": 613,
-            "programmes": 63851
+            "bytes": 1841003,
+            "channels": 610,
+            "programmes": 64317
           }
         },
         {
@@ -85,14 +85,14 @@
           "name": "Unresolved_Channels.csv",
           "status": "pass",
           "details": {
-            "rows": 210
+            "rows": 213
           }
         },
         {
           "name": "Source_Crosscheck_Report.csv",
           "status": "pass",
           "details": {
-            "rows": 2769
+            "rows": 2497
           }
         },
         {
