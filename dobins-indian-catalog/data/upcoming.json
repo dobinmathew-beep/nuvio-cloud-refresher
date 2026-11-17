@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-17T06:33:52.803991+04:00",
+  "generatedAt": "2026-11-17T14:33:28.673522+04:00",
   "policy": "confirmed-source-and-imdb-match-v1",
-  "count": 10,
+  "count": 21,
   "items": [
     {
       "id": "tt15295490",
@@ -34,6 +34,20 @@
       "catalog": "dobins_ta_series"
     },
     {
+      "id": "tt38984184",
+      "name": "418",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
+      ],
+      "catalog": "dobins_hi_movie"
+    },
+    {
       "id": "tt14650074",
       "name": "Dhindora",
       "language": "hindi",
@@ -49,6 +63,20 @@
       "catalog": "dobins_hi_series"
     },
     {
+      "id": "tt39239818",
+      "name": "Haiku",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
+      ],
+      "catalog": "dobins_hi_movie"
+    },
+    {
       "id": "tt40855841",
       "name": "Nayyi Navelli",
       "language": "hindi",
@@ -61,6 +89,76 @@
         "https://cinebuds.com/ott-releases-this-week/"
       ],
       "catalog": "dobins_hi_movie"
+    },
+    {
+      "id": "tt50943841",
+      "name": "Teen Tigada",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://newindianmovies.com/"
+      ],
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "id": "tt38984184",
+      "name": "418",
+      "language": "malayalam",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
+      ],
+      "catalog": "dobins_ml_movie"
+    },
+    {
+      "id": "tt45692999",
+      "name": "Chiram",
+      "language": "malayalam",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Sun NXT"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
+      ],
+      "catalog": "dobins_ml_movie"
+    },
+    {
+      "id": "tt39239818",
+      "name": "Haiku",
+      "language": "malayalam",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
+      ],
+      "catalog": "dobins_ml_movie"
+    },
+    {
+      "id": "tt38984184",
+      "name": "418",
+      "language": "tamil",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
+      ],
+      "catalog": "dobins_ta_movie"
     },
     {
       "id": "tt35682855",
@@ -92,6 +190,20 @@
       "catalog": "dobins_ta_movie"
     },
     {
+      "id": "tt38984184",
+      "name": "418",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
+      ],
+      "catalog": "dobins_te_movie"
+    },
+    {
       "id": "tt39309264",
       "name": "Crazy Kalyanam",
       "language": "telugu",
@@ -103,6 +215,20 @@
       ],
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/"
+      ],
+      "catalog": "dobins_te_movie"
+    },
+    {
+      "id": "tt39239818",
+      "name": "Haiku",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
       ],
       "catalog": "dobins_te_movie"
     },
@@ -136,16 +262,48 @@
       "catalog": "dobins_te_movie"
     },
     {
+      "id": "tt27050858",
+      "name": "Drishyam: The Conclusion",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "platforms": [
+        "Prime Video",
+        "Netflix"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
+      ],
+      "catalog": "dobins_hi_movie"
+    },
+    {
       "id": "tt39390582",
       "name": "Hanuman Ansh",
       "language": "hindi",
       "type": "movie",
       "releaseDate": "2026-11-27",
-      "platforms": [],
+      "platforms": [
+        "SonyLIV"
+      ],
       "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "catalog": "dobins_hi_movie"
+    },
+    {
+      "id": "tt30768979",
+      "name": "Aadarsha Kutumbam House No: 47 - AK47",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-releases-this-week/"
+      ],
+      "catalog": "dobins_te_movie"
     }
   ]
 }

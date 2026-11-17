@@ -1,22 +1,22 @@
 {
-  "checkedAt": "2026-11-17T02:38:06.663768+00:00",
+  "checkedAt": "2026-11-17T10:46:44.458598+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
-  "state": "ok",
+  "state": "degraded",
   "checks": [
     {
       "path": "/data-health.json",
-      "state": "ok",
+      "state": "failed",
       "snapshotSources": {
         "catalogs.json": "github_raw",
         "status.json": "github_raw",
         "metadata.json": "github_raw"
       },
       "statusTimestampMatches": false,
-      "catalogCountsMatch": true,
-      "catalogIdsMatch": true,
+      "catalogCountsMatch": false,
+      "catalogIdsMatch": false,
       "metadataRecords": 1038,
-      "warning": "Public status.json timestamp is behind the latest GitHub status; catalog data itself is current.",
-      "error": null
+      "warning": null,
+      "error": "Public service is still serving an older or fallback snapshot."
     },
     {
       "path": "/manifest.json",
@@ -37,8 +37,8 @@
       "language": "ml",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
-      "localPublishedCount": 67,
-      "localUniqueIdCount": 67,
+      "localPublishedCount": 69,
+      "localUniqueIdCount": 69,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
@@ -51,20 +51,26 @@
         17
       ],
       "endpointPageSize": 50,
-      "missingIds": [],
-      "extraIds": [],
+      "missingIds": [
+        "tt38984184",
+        "tt39239818",
+        "tt45692999"
+      ],
+      "extraIds": [
+        "tt44878818"
+      ],
       "endpointLatestEntry": {
         "id": "tt27512908",
         "name": "The Third Murder",
         "releaseDate": "2026-11-13"
       },
       "localLatestEntry": {
-        "id": "tt27512908",
-        "name": "The Third Murder",
-        "releaseDate": "2026-11-13"
+        "id": "tt39239818",
+        "name": "Haiku",
+        "releaseDate": "2026-11-20"
       },
-      "latestEntryMatches": true,
-      "state": "ok",
+      "latestEntryMatches": false,
+      "state": "public_snapshot_count_mismatch",
       "check": "ok"
     },
     {
@@ -72,8 +78,8 @@
       "language": "ml",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ml_series.json",
-      "localPublishedCount": 66,
-      "localUniqueIdCount": 66,
+      "localPublishedCount": 67,
+      "localUniqueIdCount": 67,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
@@ -86,7 +92,9 @@
         16
       ],
       "endpointPageSize": 50,
-      "missingIds": [],
+      "missingIds": [
+        "tmdb:281333"
+      ],
       "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt8537520",
@@ -99,7 +107,7 @@
         "releaseDate": "2026-11-16T21:30:00+00:00"
       },
       "latestEntryMatches": true,
-      "state": "ok",
+      "state": "public_snapshot_count_mismatch",
       "check": "ok"
     },
     {
@@ -107,8 +115,8 @@
       "language": "ta",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ta_movie.json",
-      "localPublishedCount": 67,
-      "localUniqueIdCount": 67,
+      "localPublishedCount": 68,
+      "localUniqueIdCount": 68,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
@@ -121,7 +129,9 @@
         17
       ],
       "endpointPageSize": 50,
-      "missingIds": [],
+      "missingIds": [
+        "tt38984184"
+      ],
       "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt39239818",
@@ -134,7 +144,7 @@
         "releaseDate": "2026-11-20"
       },
       "latestEntryMatches": true,
-      "state": "ok",
+      "state": "public_snapshot_count_mismatch",
       "check": "ok"
     },
     {
@@ -178,8 +188,8 @@
       "language": "te",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_te_movie.json",
-      "localPublishedCount": 74,
-      "localUniqueIdCount": 74,
+      "localPublishedCount": 77,
+      "localUniqueIdCount": 77,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
@@ -192,7 +202,11 @@
         24
       ],
       "endpointPageSize": 50,
-      "missingIds": [],
+      "missingIds": [
+        "tt30768979",
+        "tt38984184",
+        "tt39239818"
+      ],
       "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt38676235",
@@ -200,12 +214,12 @@
         "releaseDate": "2026-11-26"
       },
       "localLatestEntry": {
-        "id": "tt38676235",
-        "name": "Takshakudu",
-        "releaseDate": "2026-11-26"
+        "id": "tt30768979",
+        "name": "Aadarsha Kutumbam House No: 47 - AK47",
+        "releaseDate": "2026-11-27"
       },
-      "latestEntryMatches": true,
-      "state": "ok",
+      "latestEntryMatches": false,
+      "state": "public_snapshot_count_mismatch",
       "check": "ok"
     },
     {
@@ -249,8 +263,8 @@
       "language": "hi",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
-      "localPublishedCount": 81,
-      "localUniqueIdCount": 81,
+      "localPublishedCount": 83,
+      "localUniqueIdCount": 83,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
@@ -263,7 +277,10 @@
         31
       ],
       "endpointPageSize": 50,
-      "missingIds": [],
+      "missingIds": [
+        "tt38984184",
+        "tt39239818"
+      ],
       "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt39390582",
@@ -276,7 +293,7 @@
         "releaseDate": "2026-11-27"
       },
       "latestEntryMatches": true,
-      "state": "ok",
+      "state": "public_snapshot_count_mismatch",
       "check": "ok"
     },
     {
@@ -284,8 +301,8 @@
       "language": "hi",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
-      "localPublishedCount": 347,
-      "localUniqueIdCount": 347,
+      "localPublishedCount": 348,
+      "localUniqueIdCount": 348,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
@@ -303,7 +320,9 @@
         47
       ],
       "endpointPageSize": 50,
-      "missingIds": [],
+      "missingIds": [
+        "tt50943841"
+      ],
       "extraIds": [],
       "endpointLatestEntry": {
         "id": "tmdb:337904",
@@ -316,7 +335,7 @@
         "releaseDate": "2026-11-28"
       },
       "latestEntryMatches": true,
-      "state": "ok",
+      "state": "public_snapshot_count_mismatch",
       "check": "ok"
     }
   ],
@@ -331,8 +350,8 @@
   "catalogSummary": {
     "checked": 8,
     "failed": 0,
-    "possibleTruncationOrLag": 0,
-    "countMismatches": 0,
+    "possibleTruncationOrLag": 6,
+    "countMismatches": 6,
     "firstPageSize50": [
       "dobins_ml_movie",
       "dobins_ml_series",

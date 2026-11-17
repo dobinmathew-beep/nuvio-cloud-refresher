@@ -1,29 +1,31 @@
 {
-  "generatedAt": "2026-11-17T06:33:52.803991+04:00",
+  "generatedAt": "2026-11-17T14:33:28.673522+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 31,
+    "total": 41,
     "byLanguage": {
-      "hindi": 19,
-      "tamil": 8,
-      "telugu": 4
+      "hindi": 22,
+      "tamil": 9,
+      "malayalam": 3,
+      "telugu": 7
     },
     "byType": {
       "series": 18,
-      "movie": 13
+      "movie": 23
     },
     "byMatchState": {
-      "published": 15,
+      "published": 26,
       "unmatched": 14,
-      "metadata_incomplete": 2
+      "metadata_incomplete": 1
     },
     "bySource": {
       "https://www.themoviedb.org/tv/338390": 1,
-      "https://www.dailyott.in/": 4,
+      "https://www.dailyott.in/": 5,
       "https://newindianmovies.com/": 4,
       "https://www.myvi.in/blog/ott-releases-this-week": 2,
-      "https://ottasia.com/ott-releases-this-week?country=IN": 8,
-      "https://cinebuds.com/ott-releases-this-week/": 4,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 7,
+      "https://simplymollywood.com/ott": 8,
+      "https://cinebuds.com/ott-releases-this-week/": 7,
       "https://indianmoviereviews.com/ott-releases/": 10,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
@@ -163,6 +165,58 @@
       "catalog": "dobins_ta_series"
     },
     {
+      "title": "418",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "Simply Mollywood dated OTT release calendar",
+      "detail": "https://simplymollywood.com/movie/418",
+      "matchId": "tt38984184",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_movie"
+    },
+    {
+      "title": "Haiku",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "Simply Mollywood dated OTT release calendar",
+      "detail": "https://simplymollywood.com/movie/haiku",
+      "matchId": "tt39239818",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_movie"
+    },
+    {
       "title": "Nayyi Navelli",
       "language": "hindi",
       "type": "movie",
@@ -256,16 +310,120 @@
       "releaseDateBasis": "confirmed or reported OTT calendar date",
       "detail": "https://newindianmovies.com/movie/teen-tigada",
       "matchId": "tt50943841",
-      "matchState": "metadata_incomplete",
+      "matchState": "published",
       "metadataComplete": false,
       "metadataSource": "Verified IMDb title/year match",
       "metadataFields": {
-        "poster": false,
+        "poster": true,
         "description": false,
         "genres": false,
         "releaseInfo": true
       },
-      "catalog": null
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "418",
+      "language": "malayalam",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "Simply Mollywood dated OTT release calendar",
+      "detail": "https://simplymollywood.com/movie/418",
+      "matchId": "tt38984184",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_ml_movie"
+    },
+    {
+      "title": "Chiram",
+      "language": "malayalam",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Sun NXT"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "Simply Mollywood dated OTT release calendar",
+      "detail": "https://simplymollywood.com/movie/chiram",
+      "matchId": "tt45692999",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_ml_movie"
+    },
+    {
+      "title": "Haiku",
+      "language": "malayalam",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "Simply Mollywood dated OTT release calendar",
+      "detail": "https://simplymollywood.com/movie/haiku",
+      "matchId": "tt39239818",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_ml_movie"
+    },
+    {
+      "title": "418",
+      "language": "tamil",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "Simply Mollywood dated OTT release calendar",
+      "detail": "https://simplymollywood.com/movie/418",
+      "matchId": "tt38984184",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_ta_movie"
     },
     {
       "title": "Anbil Avan",
@@ -321,6 +479,32 @@
       "catalog": "dobins_ta_movie"
     },
     {
+      "title": "418",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "Simply Mollywood dated OTT release calendar",
+      "detail": "https://simplymollywood.com/movie/418",
+      "matchId": "tt38984184",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_te_movie"
+    },
+    {
       "title": "Anumana Pakshi",
       "language": "telugu",
       "type": "movie",
@@ -362,6 +546,32 @@
       "releaseDateBasis": "confirmed announcement",
       "detail": "https://cinebuds.com/movies/crazy-kalyanam/",
       "matchId": "tt39309264",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_te_movie"
+    },
+    {
+      "title": "Haiku",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://simplymollywood.com/ott"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "Simply Mollywood dated OTT release calendar",
+      "detail": "https://simplymollywood.com/movie/haiku",
+      "matchId": "tt39239818",
       "matchState": "published",
       "metadataComplete": true,
       "metadataSource": "IMDb-matched metadata",
@@ -603,17 +813,47 @@
       "catalog": null
     },
     {
+      "title": "Drishyam: The Conclusion",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "platforms": [
+        "Prime Video",
+        "Netflix"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "confirmed announcement",
+      "detail": null,
+      "matchId": "tt27050858",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_movie"
+    },
+    {
       "title": "Hanuman Ansh",
       "language": "hindi",
       "type": "movie",
       "releaseDate": "2026-11-27",
-      "platforms": [],
+      "platforms": [
+        "SonyLIV"
+      ],
       "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "confirmed": true,
-      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
-      "detail": "https://ottasia.com/title/movie/1709391/hanuman-ansh?country=IN",
+      "releaseDateBasis": "confirmed announcement",
+      "detail": "https://cinebuds.com/movies/hanuman-ansh/",
       "matchId": "tt39390582",
       "matchState": "published",
       "metadataComplete": true,
@@ -649,6 +889,32 @@
         "releaseInfo": false
       },
       "catalog": null
+    },
+    {
+      "title": "Aadarsha Kutumbam House No: 47 – AK47",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-releases-this-week/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "confirmed announcement",
+      "detail": "https://cinebuds.com/movies/aadarsha-kutumbam-house-no-47-ak47/",
+      "matchId": "tt30768979",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_te_movie"
     },
     {
       "title": "AndherPura Curse",
@@ -1042,19 +1308,19 @@
       "source": "DailyOTT",
       "url": "https://www.dailyott.in/",
       "state": "live",
-      "records": 955
+      "records": 952
     },
     {
       "source": "Cinebuds",
       "url": "https://cinebuds.com/ott-release-dates/",
       "state": "live",
-      "records": 36
+      "records": 31
     },
     {
       "source": "Cinebuds upcoming calendar",
       "url": "https://cinebuds.com/ott-releases-this-week/",
       "state": "live",
-      "records": 4
+      "records": 7
     },
     {
       "source": "OTTASIA confirmed calendar",
@@ -1084,9 +1350,8 @@
     {
       "source": "Simply Mollywood Malayalam OTT calendar",
       "url": "https://simplymollywood.com/ott",
-      "state": "no_confirmed_upcoming",
-      "records": 0,
-      "note": "Calendar section is present; no eligible future releases for the four tracked languages were found."
+      "state": "live",
+      "records": 9
     },
     {
       "source": "New Indian Movies OTT calendar",
@@ -1192,9 +1457,9 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 595,
+      "records": 596,
       "counts": {
-        "malayalam": 59,
+        "malayalam": 60,
         "tamil": 103,
         "telugu": 108,
         "hindi": 325
