@@ -1,22 +1,22 @@
 {
-  "checkedAt": "2026-11-17T14:28:33.659454+00:00",
+  "checkedAt": "2026-11-17T14:38:13.798959+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
-  "state": "degraded",
+  "state": "ok",
   "checks": [
     {
       "path": "/data-health.json",
-      "state": "failed",
+      "state": "ok",
       "snapshotSources": {
         "catalogs.json": "github_raw",
         "status.json": "github_raw",
         "metadata.json": "github_raw"
       },
-      "statusTimestampMatches": false,
-      "catalogCountsMatch": false,
-      "catalogIdsMatch": false,
-      "metadataRecords": 1042,
+      "statusTimestampMatches": true,
+      "catalogCountsMatch": true,
+      "catalogIdsMatch": true,
+      "metadataRecords": 1043,
       "warning": null,
-      "error": "Public service is still serving an older or fallback snapshot."
+      "error": null
     },
     {
       "path": "/manifest.json",
@@ -112,18 +112,16 @@
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 67,
-      "endpointUniqueIdCount": 67,
+      "endpointRawCount": 68,
+      "endpointUniqueIdCount": 68,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        17
+        18
       ],
       "endpointPageSize": 50,
-      "missingIds": [
-        "tt44917900"
-      ],
+      "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt39239818",
@@ -136,7 +134,7 @@
         "releaseDate": "2026-11-20"
       },
       "latestEntryMatches": true,
-      "state": "public_snapshot_count_mismatch",
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -305,12 +303,8 @@
         49
       ],
       "endpointPageSize": 50,
-      "missingIds": [
-        "tt28450216"
-      ],
-      "extraIds": [
-        "tmdb:334412"
-      ],
+      "missingIds": [],
+      "extraIds": [],
       "endpointLatestEntry": {
         "id": "tmdb:337904",
         "name": "AndherPura Curse",
@@ -322,7 +316,7 @@
         "releaseDate": "2026-11-28"
       },
       "latestEntryMatches": true,
-      "state": "catalog_id_set_mismatch",
+      "state": "ok",
       "check": "ok"
     }
   ],
@@ -337,8 +331,8 @@
   "catalogSummary": {
     "checked": 8,
     "failed": 0,
-    "possibleTruncationOrLag": 1,
-    "countMismatches": 2,
+    "possibleTruncationOrLag": 0,
+    "countMismatches": 0,
     "firstPageSize50": [
       "dobins_ml_movie",
       "dobins_ml_series",
