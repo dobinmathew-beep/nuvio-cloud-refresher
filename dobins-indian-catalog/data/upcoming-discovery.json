@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-17T05:59:45.318328+04:00",
+  "generatedAt": "2026-11-17T06:17:40.002642+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 30,
@@ -197,8 +197,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://newindianmovies.com/"
+        "https://newindianmovies.com/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -250,8 +250,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -380,8 +380,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
