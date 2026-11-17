@@ -24,5 +24,17 @@
       "telugu": "tt32324552",
       "malayalam": "tt27512908"
     }
+  },
+  "heroes": {
+    "languages": [
+      "hindi",
+      "tamil",
+      "malayalam",
+      "telugu"
+    ],
+    "checked_at": "2026-11-17T06:51:14.472176+04:00",
+    "films_per_language": 20,
+    "opening_version": 1,
+    "selection_policy": "imdb-catalog-order-v1"
   }
 }
