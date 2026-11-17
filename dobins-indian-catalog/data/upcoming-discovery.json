@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-17T18:15:55.502159+04:00",
+  "generatedAt": "2026-11-17T18:28:59.722741+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 41,
@@ -1486,7 +1486,7 @@
       "source": "TMDB physical releases",
       "language": "hindi",
       "state": "live",
-      "records": 16
+      "records": 17
     }
   ]
 }
