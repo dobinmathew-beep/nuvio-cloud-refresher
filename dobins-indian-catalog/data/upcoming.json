@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-17T06:17:40.002642+04:00",
+  "generatedAt": "2026-11-17T06:33:52.803991+04:00",
   "policy": "confirmed-source-and-imdb-match-v1",
   "count": 10,
   "items": [
@@ -43,8 +43,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://newindianmovies.com/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://newindianmovies.com/"
       ],
       "catalog": "dobins_hi_series"
     },
@@ -116,8 +116,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],

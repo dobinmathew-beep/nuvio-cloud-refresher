@@ -3306,6 +3306,13 @@
       "type": "movie"
     },
     {
+      "id": "tt27673536",
+      "name": "Mardaani 3",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27673536.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tt30387012",
       "name": "Border 2",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt30387012.jpg",
@@ -12519,5 +12526,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-17T06:17:40.002642+04:00"
+  "_updatedAt": "2026-11-17T06:33:52.803991+04:00"
 }

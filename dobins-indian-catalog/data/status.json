@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v2",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-17T06:17:40.002642+04:00",
-  "lastMatchRetryAt": "2026-11-17T06:17:40.002642+04:00",
+  "updatedAt": "2026-11-17T06:33:52.803991+04:00",
+  "lastMatchRetryAt": "2026-11-17T06:33:52.803991+04:00",
   "lastSuccessCycle": "2026-11-17T06:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
@@ -14,7 +14,7 @@
       "source": "DailyOTT",
       "url": "https://www.dailyott.in/",
       "state": "live",
-      "records": 954
+      "records": 955
     },
     {
       "source": "Cinebuds",
@@ -211,7 +211,7 @@
   "catalogFreshness": {
     "dobins_ml_movie": {
       "count": 67,
-      "generatedAt": "2026-11-17T06:17:40.002642+04:00",
+      "generatedAt": "2026-11-17T06:33:52.803991+04:00",
       "latestEntry": {
         "id": "tt27512908",
         "name": "The Third Murder",
@@ -221,7 +221,7 @@
     },
     "dobins_ml_series": {
       "count": 66,
-      "generatedAt": "2026-11-17T06:17:40.002642+04:00",
+      "generatedAt": "2026-11-17T06:33:52.803991+04:00",
       "latestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
@@ -231,7 +231,7 @@
     },
     "dobins_ta_movie": {
       "count": 67,
-      "generatedAt": "2026-11-17T06:17:40.002642+04:00",
+      "generatedAt": "2026-11-17T06:33:52.803991+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -241,7 +241,7 @@
     },
     "dobins_ta_series": {
       "count": 111,
-      "generatedAt": "2026-11-17T06:17:40.002642+04:00",
+      "generatedAt": "2026-11-17T06:33:52.803991+04:00",
       "latestEntry": {
         "id": "tmdb:339004",
         "name": "Notebook 90s – Kadhal Flashback",
@@ -251,7 +251,7 @@
     },
     "dobins_te_movie": {
       "count": 74,
-      "generatedAt": "2026-11-17T06:17:40.002642+04:00",
+      "generatedAt": "2026-11-17T06:33:52.803991+04:00",
       "latestEntry": {
         "id": "tt38676235",
         "name": "Takshakudu",
@@ -261,7 +261,7 @@
     },
     "dobins_te_series": {
       "count": 114,
-      "generatedAt": "2026-11-17T06:17:40.002642+04:00",
+      "generatedAt": "2026-11-17T06:33:52.803991+04:00",
       "latestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
@@ -271,7 +271,7 @@
     },
     "dobins_hi_movie": {
       "count": 81,
-      "generatedAt": "2026-11-17T06:17:40.002642+04:00",
+      "generatedAt": "2026-11-17T06:33:52.803991+04:00",
       "latestEntry": {
         "id": "tt39390582",
         "name": "Hanuman Ansh",
@@ -281,7 +281,7 @@
     },
     "dobins_hi_series": {
       "count": 347,
-      "generatedAt": "2026-11-17T06:17:40.002642+04:00",
+      "generatedAt": "2026-11-17T06:33:52.803991+04:00",
       "latestEntry": {
         "id": "tmdb:337904",
         "name": "AndherPura Curse",
@@ -377,28 +377,28 @@
     "policy": "Only confirmed upcoming titles with a validated IMDb tt-ID are published."
   },
   "upcomingDiscovery": {
-    "total": 30,
+    "total": 31,
     "byLanguage": {
-      "hindi": 18,
+      "hindi": 19,
       "tamil": 8,
       "telugu": 4
     },
     "byType": {
-      "series": 17,
+      "series": 18,
       "movie": 13
     },
     "byMatchState": {
-      "published": 14,
+      "published": 15,
       "unmatched": 14,
       "metadata_incomplete": 2
     },
     "bySource": {
       "https://www.themoviedb.org/tv/338390": 1,
+      "https://www.dailyott.in/": 4,
       "https://newindianmovies.com/": 4,
       "https://www.myvi.in/blog/ott-releases-this-week": 2,
       "https://ottasia.com/ott-releases-this-week?country=IN": 8,
       "https://cinebuds.com/ott-releases-this-week/": 4,
-      "https://www.dailyott.in/": 3,
       "https://indianmoviereviews.com/ott-releases/": 10,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,

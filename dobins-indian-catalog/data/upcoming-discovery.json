@@ -1,29 +1,29 @@
 {
-  "generatedAt": "2026-11-17T06:17:40.002642+04:00",
+  "generatedAt": "2026-11-17T06:33:52.803991+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 30,
+    "total": 31,
     "byLanguage": {
-      "hindi": 18,
+      "hindi": 19,
       "tamil": 8,
       "telugu": 4
     },
     "byType": {
-      "series": 17,
+      "series": 18,
       "movie": 13
     },
     "byMatchState": {
-      "published": 14,
+      "published": 15,
       "unmatched": 14,
       "metadata_incomplete": 2
     },
     "bySource": {
       "https://www.themoviedb.org/tv/338390": 1,
+      "https://www.dailyott.in/": 4,
       "https://newindianmovies.com/": 4,
       "https://www.myvi.in/blog/ott-releases-this-week": 2,
       "https://ottasia.com/ott-releases-this-week?country=IN": 8,
       "https://cinebuds.com/ott-releases-this-week/": 4,
-      "https://www.dailyott.in/": 3,
       "https://indianmoviereviews.com/ott-releases/": 10,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
@@ -44,6 +44,32 @@
       "releaseDateBasis": "premiere",
       "detail": null,
       "matchId": "tt50063835",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "Bigg Boss Season 20",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-17",
+      "platforms": [
+        "JioHotStar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": null,
+      "detail": null,
+      "matchId": "tt1281973",
       "matchState": "published",
       "metadataComplete": true,
       "metadataSource": "IMDb-matched metadata",
@@ -197,8 +223,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://newindianmovies.com/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://newindianmovies.com/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -380,8 +406,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -1016,7 +1042,7 @@
       "source": "DailyOTT",
       "url": "https://www.dailyott.in/",
       "state": "live",
-      "records": 954
+      "records": 955
     },
     {
       "source": "Cinebuds",

@@ -1,7 +1,26 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-17T06:17:40.002642+04:00",
+    "checkedAt": "2026-11-17T06:33:52.803991+04:00",
     "records": [
+      {
+        "_id": "6afbb98655b49077c85e2926",
+        "platform": "Netflix",
+        "title": "Mike Ward: Modest",
+        "createdAt": "2026-11-17T02:18:46.447Z",
+        "genre": "Comedy",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-17",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-17T02:19:35.547Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/oB9Pcb5grM5Gk0TDWZeBZ3vHhDZ.jpg",
+        "instagramPostedAt": "2026-11-17T02:20:05Z",
+        "verified": true
+      },
       {
         "_id": "6af9168d55b49077c85d8819",
         "platform": "Netflix",
@@ -16,8 +35,10 @@
         "releaseDate": "2026-11-15",
         "source_verified": true,
         "type": "Series",
-        "updatedAt": "2026-11-15T02:19:42.041Z",
+        "updatedAt": "2026-11-17T02:19:36.128Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/zrrRRvavkLQupkC6aEkdA8sX4E8.jpg",
+        "tmdbRating": 75,
+        "tmdbVotes": 12,
         "verified": true
       },
       {
@@ -110,9 +131,9 @@
           "fetchedAt": "2026-11-14T14:06:13.743Z"
         },
         "tmdbId": 1543469,
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
-        "trendingRankedDateIST": "2026-11-16",
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-17T02:19:17.278Z",
+        "trendingRankedDateIST": "2026-11-17",
         "verified": true
       },
       {
@@ -187,9 +208,9 @@
         "tmdbId": 1050981,
         "tmdbRating": 65,
         "tmdbVotes": 12,
-        "trendingRank": 8,
-        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
-        "trendingRankedDateIST": "2026-11-16",
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-11-17T02:19:17.278Z",
+        "trendingRankedDateIST": "2026-11-17",
         "verified": true
       },
       {
@@ -363,9 +384,9 @@
           "fetchedAt": "2026-11-13T03:49:09.847Z"
         },
         "tmdbId": 434775,
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
-        "trendingRankedDateIST": "2026-11-16",
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-11-17T02:19:17.278Z",
+        "trendingRankedDateIST": "2026-11-17",
         "verified": true
       },
       {
@@ -441,8 +462,8 @@
         },
         "tmdbId": 1013057,
         "trendingRank": 5,
-        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
-        "trendingRankedDateIST": "2026-11-16",
+        "trendingRankedAt": "2026-11-17T02:19:17.278Z",
+        "trendingRankedDateIST": "2026-11-17",
         "verified": true
       },
       {
@@ -511,6 +532,9 @@
           "fetchedAt": "2026-11-13T12:41:01.465Z"
         },
         "tmdbId": 1431738,
+        "trendingRank": 9,
+        "trendingRankedAt": "2026-11-17T02:19:17.278Z",
+        "trendingRankedDateIST": "2026-11-17",
         "verified": true
       },
       {
@@ -585,9 +609,9 @@
           "fetchedAt": "2026-11-13T10:13:20.584Z"
         },
         "tmdbId": 1389379,
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
-        "trendingRankedDateIST": "2026-11-16",
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-11-17T02:19:17.278Z",
+        "trendingRankedDateIST": "2026-11-17",
         "verified": true
       },
       {
@@ -830,6 +854,9 @@
           "fetchedAt": "2026-11-14T07:08:22.981Z"
         },
         "tmdbId": 809787,
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-17T02:19:17.278Z",
+        "trendingRankedDateIST": "2026-11-17",
         "verified": true
       },
       {
@@ -1055,9 +1082,6 @@
         "updatedAt": "2026-11-12T02:18:54.203Z",
         "instagramPostedAt": "2026-11-12T02:20:37Z",
         "votes": 0,
-        "trendingRank": 7,
-        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
-        "trendingRankedDateIST": "2026-11-16",
         "verified": true
       },
       {
@@ -1200,6 +1224,9 @@
           "fetchedAt": "2026-11-12T03:59:46.128Z"
         },
         "tmdbId": 1733518,
+        "trendingRank": 8,
+        "trendingRankedAt": "2026-11-17T02:19:17.278Z",
+        "trendingRankedDateIST": "2026-11-17",
         "verified": true
       },
       {
@@ -1276,9 +1303,6 @@
         },
         "tmdbId": 1234139,
         "votes": 1,
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
-        "trendingRankedDateIST": "2026-11-16",
         "verified": true
       },
       {
@@ -1324,9 +1348,9 @@
           "fetchedAt": "2026-11-05T11:13:10.822Z"
         },
         "tmdbId": 1755818,
-        "trendingRank": 6,
-        "trendingRankedAt": "2026-11-16T02:19:30.282Z",
-        "trendingRankedDateIST": "2026-11-16",
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-17T02:19:17.278Z",
+        "trendingRankedDateIST": "2026-11-17",
         "verified": true
       },
       {
@@ -30793,7 +30817,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-17T06:17:40.002642+04:00",
+    "checkedAt": "2026-11-17T06:33:52.803991+04:00",
     "records": [
       {
         "name": "Bandra",
