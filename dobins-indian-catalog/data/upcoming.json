@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-17T15:27:01.856030+04:00",
+  "generatedAt": "2026-11-17T18:15:55.502159+04:00",
   "policy": "confirmed-source-and-imdb-match-v1",
   "count": 22,
   "items": [
@@ -170,8 +170,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "catalog": "dobins_ta_movie"
     },
@@ -284,8 +284,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "catalog": "dobins_hi_movie"
     },

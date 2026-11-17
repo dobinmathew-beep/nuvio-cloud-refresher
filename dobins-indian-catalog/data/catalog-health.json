@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-17T11:36:52.594055+00:00",
+  "checkedAt": "2026-11-17T14:28:33.659454+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "degraded",
   "checks": [
@@ -14,7 +14,7 @@
       "statusTimestampMatches": false,
       "catalogCountsMatch": false,
       "catalogIdsMatch": false,
-      "metadataRecords": 1041,
+      "metadataRecords": 1042,
       "warning": null,
       "error": "Public service is still serving an older or fallback snapshot."
     },
@@ -107,24 +107,24 @@
       "language": "ta",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ta_movie.json",
-      "localPublishedCount": 67,
-      "localUniqueIdCount": 67,
+      "localPublishedCount": 68,
+      "localUniqueIdCount": 68,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 68,
-      "endpointUniqueIdCount": 68,
+      "endpointRawCount": 67,
+      "endpointUniqueIdCount": 67,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        18
+        17
       ],
       "endpointPageSize": 50,
-      "missingIds": [],
-      "extraIds": [
+      "missingIds": [
         "tt44917900"
       ],
+      "extraIds": [],
       "endpointLatestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -291,8 +291,8 @@
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 348,
-      "endpointUniqueIdCount": 348,
+      "endpointRawCount": 349,
+      "endpointUniqueIdCount": 349,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
@@ -302,13 +302,15 @@
         50,
         50,
         50,
-        48
+        49
       ],
       "endpointPageSize": 50,
       "missingIds": [
-        "tt41496092"
+        "tt28450216"
       ],
-      "extraIds": [],
+      "extraIds": [
+        "tmdb:334412"
+      ],
       "endpointLatestEntry": {
         "id": "tmdb:337904",
         "name": "AndherPura Curse",
@@ -320,7 +322,7 @@
         "releaseDate": "2026-11-28"
       },
       "latestEntryMatches": true,
-      "state": "public_snapshot_count_mismatch",
+      "state": "catalog_id_set_mismatch",
       "check": "ok"
     }
   ],
@@ -335,7 +337,7 @@
   "catalogSummary": {
     "checked": 8,
     "failed": 0,
-    "possibleTruncationOrLag": 2,
+    "possibleTruncationOrLag": 1,
     "countMismatches": 2,
     "firstPageSize50": [
       "dobins_ml_movie",
