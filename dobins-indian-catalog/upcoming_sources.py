@@ -545,6 +545,7 @@ def _keralatv(soup, source_name, source_url, today, langs, norm, get):
         if not platforms:
             continue
         title = re.split(r"\s+(?:OTT\s+Release|Movie\s+OTT|Series\s+OTT|OTT\s+Date)", headline, maxsplit=1, flags=re.I)[0].strip(" –—:-")
+        title = re.sub(r"\s+(?:Malayalam|Tamil|Telugu|Hindi)\s+(?:Movie|Film|Series|Web\s+Series)$", "", title, flags=re.I).strip()
         if not title or len(title) > 140:
             continue
         typ = "series" if SERIES.search(headline + " " + text[:500]) else "movie"
