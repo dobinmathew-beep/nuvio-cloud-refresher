@@ -246,6 +246,32 @@ class UpcomingSourceTests(unittest.TestCase):
         self.assertTrue(movie["confirmed"])
         self.assertEqual(movie["detail"], "https://www.ottchecker.com/movie/madhuramee-jeevitham-2026")
 
+    def test_keralatv_discovers_recent_and_upcoming_titles_for_all_four_languages(self):
+        html = """<section>
+          <article><h2><a href="/madhuramee">Madhuramee Jeevitham OTT Release Date – Malayalam Movie Now Streaming</a></h2>
+            <p>The Malayalam family drama Madhuramee Jeevitham started streaming on Prime Video on 13 November 2026.</p></article>
+          <article><h2><a href="/anbil-avan">Anbil Avan OTT Release Date – Tamil Movie</a></h2>
+            <p>The Tamil romantic drama Anbil Avan will premiere on SonyLIV on 20 November 2026.</p></article>
+          <article><h2><a href="/418">418 Telugu Movie OTT Release Date</a></h2>
+            <p>The Telugu film 418 is scheduled to premiere on Netflix on 20 November 2026.</p></article>
+          <article><h2><a href="/teen-tigada">Teen Tigada OTT Release Date – Hindi Series</a></h2>
+            <p>The Hindi original series Teen Tigada will begin streaming on ZEE5 on 20 November 2026.</p></article>
+        </section>"""
+        rows = upcoming_sources._keralatv(
+            BeautifulSoup(html, "html.parser"), "Kerala TV multi-language OTT releases",
+            "https://www.keralatv.in/channel/ott/", "2026-11-19",
+            {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
+            lambda value: value.lower().replace(" ", ""),
+            lambda *args: "",
+        )
+        self.assertEqual({(x["name"], x["language"], x["type"], x["ottDate"]) for x in rows}, {
+            ("Madhuramee Jeevitham", "malayalam", "movie", "2026-11-13"),
+            ("Anbil Avan", "tamil", "movie", "2026-11-20"),
+            ("418", "telugu", "movie", "2026-11-20"),
+            ("Teen Tigada", "hindi", "series", "2026-11-20"),
+        })
+        self.assertTrue(all(x["confirmed"] for x in rows))
+
     def test_ottchecker_recent_release_is_language_scoped_and_windowed(self):
         html = """<ul>
           <li><a href="/movie/old">Old Film (2024) Movie · Netflix Streaming since 1 Jan 2025</a></li>
