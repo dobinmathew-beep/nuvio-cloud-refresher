@@ -1,28 +1,29 @@
 {
-  "generatedAt": "2026-11-18T14:28:16.524688+04:00",
+  "generatedAt": "2026-11-18T18:15:22.047669+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 43,
+    "total": 44,
     "byLanguage": {
-      "hindi": 22,
+      "hindi": 23,
       "tamil": 8,
       "malayalam": 6,
       "telugu": 7
     },
     "byType": {
-      "series": 21,
+      "series": 22,
       "movie": 22
     },
     "byMatchState": {
-      "published": 25,
+      "published": 26,
       "unmatched": 17,
       "metadata_incomplete": 1
     },
     "bySource": {
+      "https://www.dailyott.in/": 7,
       "https://newindianmovies.com/": 4,
-      "https://www.dailyott.in/": 6,
       "https://www.tvmaze.com/shows/59979/campus-diaries": 1,
       "https://ottasia.com/ott-releases-this-week?country=IN": 10,
+      "https://www.themoviedb.org/tv/338502": 1,
       "https://simplymollywood.com/ott": 8,
       "https://cinebuds.com/ott-releases-this-week/": 7,
       "https://www.myvi.in/blog/ott-releases-this-week": 1,
@@ -34,6 +35,32 @@
   },
   "items": [
     {
+      "title": "Bigg Boss Season 20",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-18",
+      "platforms": [
+        "JioHotStar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": null,
+      "detail": null,
+      "matchId": "tt1281973",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
       "title": "Campus Diaries Season 2",
       "language": "hindi",
       "type": "series",
@@ -43,8 +70,8 @@
         "Amazon MX Player"
       ],
       "sources": [
-        "https://newindianmovies.com/",
         "https://www.dailyott.in/",
+        "https://newindianmovies.com/",
         "https://www.tvmaze.com/shows/59979/campus-diaries"
       ],
       "confirmed": true,
@@ -68,13 +95,14 @@
       "type": "series",
       "releaseDate": "2026-11-18",
       "platforms": [
+        "JioHotStar",
         "JioHotstar",
-        "Hotstar",
-        "JioHotStar"
+        "Hotstar"
       ],
       "sources": [
+        "https://www.dailyott.in/",
         "https://ottasia.com/ott-releases-this-week?country=IN",
-        "https://www.dailyott.in/"
+        "https://www.themoviedb.org/tv/338502"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -204,8 +232,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://newindianmovies.com/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://newindianmovies.com/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -543,8 +571,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -842,7 +870,7 @@
       "metadataFields": {
         "poster": true,
         "description": true,
-        "genres": false,
+        "genres": true,
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
@@ -1573,10 +1601,10 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 614,
+      "records": 615,
       "counts": {
         "malayalam": 60,
-        "tamil": 118,
+        "tamil": 119,
         "telugu": 108,
         "hindi": 328
       },

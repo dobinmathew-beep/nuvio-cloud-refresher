@@ -4,9 +4,9 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v2",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-18T14:28:16.524688+04:00",
-  "lastMatchRetryAt": "2026-11-18T14:28:16.524688+04:00",
-  "lastSuccessCycle": "2026-11-18T14:00:00+04:00",
+  "updatedAt": "2026-11-18T18:15:22.047669+04:00",
+  "lastMatchRetryAt": "2026-11-18T18:15:22.047669+04:00",
+  "lastSuccessCycle": "2026-11-18T18:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
   "sources": [
@@ -163,10 +163,10 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 614,
+      "records": 615,
       "counts": {
         "malayalam": 60,
-        "tamil": 118,
+        "tamil": 119,
         "telugu": 108,
         "hindi": 328
       },
@@ -210,7 +210,7 @@
   "catalogFreshness": {
     "dobins_ml_movie": {
       "count": 69,
-      "generatedAt": "2026-11-18T14:28:16.524688+04:00",
+      "generatedAt": "2026-11-18T18:15:22.047669+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -220,7 +220,7 @@
     },
     "dobins_ml_series": {
       "count": 67,
-      "generatedAt": "2026-11-18T14:28:16.524688+04:00",
+      "generatedAt": "2026-11-18T18:15:22.047669+04:00",
       "latestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
@@ -230,7 +230,7 @@
     },
     "dobins_ta_movie": {
       "count": 68,
-      "generatedAt": "2026-11-18T14:28:16.524688+04:00",
+      "generatedAt": "2026-11-18T18:15:22.047669+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -240,7 +240,7 @@
     },
     "dobins_ta_series": {
       "count": 111,
-      "generatedAt": "2026-11-18T14:28:16.524688+04:00",
+      "generatedAt": "2026-11-18T18:15:22.047669+04:00",
       "latestEntry": {
         "id": "tmdb:339004",
         "name": "Notebook 90s – Kadhal Flashback",
@@ -250,7 +250,7 @@
     },
     "dobins_te_movie": {
       "count": 77,
-      "generatedAt": "2026-11-18T14:28:16.524688+04:00",
+      "generatedAt": "2026-11-18T18:15:22.047669+04:00",
       "latestEntry": {
         "id": "tt30768979",
         "name": "Aadarsha Kutumbam House No: 47 - AK47",
@@ -260,7 +260,7 @@
     },
     "dobins_te_series": {
       "count": 114,
-      "generatedAt": "2026-11-18T14:28:16.524688+04:00",
+      "generatedAt": "2026-11-18T18:15:22.047669+04:00",
       "latestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
@@ -270,7 +270,7 @@
     },
     "dobins_hi_movie": {
       "count": 83,
-      "generatedAt": "2026-11-18T14:28:16.524688+04:00",
+      "generatedAt": "2026-11-18T18:15:22.047669+04:00",
       "latestEntry": {
         "id": "tt39390582",
         "name": "Hanuman Ansh",
@@ -280,7 +280,7 @@
     },
     "dobins_hi_series": {
       "count": 349,
-      "generatedAt": "2026-11-18T14:28:16.524688+04:00",
+      "generatedAt": "2026-11-18T18:15:22.047669+04:00",
       "latestEntry": {
         "id": "tmdb:337904",
         "name": "AndherPura Curse",
@@ -335,13 +335,6 @@
           "tt39239818"
         ]
       },
-      "https://newindianmovies.com/": {
-        "matchedTitles": 2,
-        "imdbIds": [
-          "tt14650074",
-          "tt50943841"
-        ]
-      },
       "https://www.dailyott.in/": {
         "matchedTitles": 4,
         "imdbIds": [
@@ -349,6 +342,13 @@
           "tt35682855",
           "tt30003786",
           "tt27050858"
+        ]
+      },
+      "https://newindianmovies.com/": {
+        "matchedTitles": 2,
+        "imdbIds": [
+          "tt14650074",
+          "tt50943841"
         ]
       },
       "https://cinebuds.com/ott-releases-this-week/": {
@@ -392,27 +392,28 @@
     "policy": "Only confirmed upcoming titles with a validated IMDb tt-ID are published."
   },
   "upcomingDiscovery": {
-    "total": 43,
+    "total": 44,
     "byLanguage": {
-      "hindi": 22,
+      "hindi": 23,
       "tamil": 8,
       "malayalam": 6,
       "telugu": 7
     },
     "byType": {
-      "series": 21,
+      "series": 22,
       "movie": 22
     },
     "byMatchState": {
-      "published": 25,
+      "published": 26,
       "unmatched": 17,
       "metadata_incomplete": 1
     },
     "bySource": {
+      "https://www.dailyott.in/": 7,
       "https://newindianmovies.com/": 4,
-      "https://www.dailyott.in/": 6,
       "https://www.tvmaze.com/shows/59979/campus-diaries": 1,
       "https://ottasia.com/ott-releases-this-week?country=IN": 10,
+      "https://www.themoviedb.org/tv/338502": 1,
       "https://simplymollywood.com/ott": 8,
       "https://cinebuds.com/ott-releases-this-week/": 7,
       "https://www.myvi.in/blog/ott-releases-this-week": 1,
