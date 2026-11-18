@@ -4,7 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 import subprocess,json,re,tempfile
 ROOT=Path(__file__).resolve().parent;D=ROOT/'data';D.mkdir(exist_ok=True)
 FILES=['catalogs.json','metadata.json','status.json','matches.json','candidates.json','sources.json','unmatched.json','physical.json']
-POLICY='tmdb-tvmaze-v1'
+POLICY='tmdb-tvmaze-v2'
 try:status=json.loads((D/'status.json').read_text())
 except Exception:status={}
 if not (D/'catalogs.json').exists() or status.get('metadataPolicy')!=POLICY or status.get('releasePolicy')!='ott-or-confirmed-physical-v1':
