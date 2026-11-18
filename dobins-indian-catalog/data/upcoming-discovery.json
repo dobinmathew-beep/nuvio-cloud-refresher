@@ -1,26 +1,26 @@
 {
-  "generatedAt": "2026-11-18T13:36:44.570527+04:00",
+  "generatedAt": "2026-11-18T14:28:16.524688+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 44,
+    "total": 43,
     "byLanguage": {
-      "hindi": 23,
+      "hindi": 22,
       "tamil": 8,
       "malayalam": 6,
       "telugu": 7
     },
     "byType": {
-      "series": 22,
+      "series": 21,
       "movie": 22
     },
     "byMatchState": {
-      "published": 26,
+      "published": 25,
       "unmatched": 17,
       "metadata_incomplete": 1
     },
     "bySource": {
-      "https://www.dailyott.in/": 7,
       "https://newindianmovies.com/": 4,
+      "https://www.dailyott.in/": 6,
       "https://www.tvmaze.com/shows/59979/campus-diaries": 1,
       "https://ottasia.com/ott-releases-this-week?country=IN": 10,
       "https://simplymollywood.com/ott": 8,
@@ -34,32 +34,6 @@
   },
   "items": [
     {
-      "title": "Bigg Boss Season 20",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-18",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": null,
-      "matchId": "tt1281973",
-      "matchState": "published",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
       "title": "Campus Diaries Season 2",
       "language": "hindi",
       "type": "series",
@@ -69,8 +43,8 @@
         "Amazon MX Player"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://newindianmovies.com/",
+        "https://www.dailyott.in/",
         "https://www.tvmaze.com/shows/59979/campus-diaries"
       ],
       "confirmed": true,
@@ -95,12 +69,12 @@
       "releaseDate": "2026-11-18",
       "platforms": [
         "JioHotstar",
-        "JioHotStar",
-        "Hotstar"
+        "Hotstar",
+        "JioHotStar"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://ottasia.com/ott-releases-this-week?country=IN"
+        "https://ottasia.com/ott-releases-this-week?country=IN",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -230,8 +204,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://newindianmovies.com/"
+        "https://newindianmovies.com/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -868,7 +842,7 @@
       "metadataFields": {
         "poster": true,
         "description": true,
-        "genres": true,
+        "genres": false,
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
