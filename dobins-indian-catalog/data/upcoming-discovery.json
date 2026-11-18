@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T03:24:29.621477+04:00",
+  "generatedAt": "2026-11-19T03:28:15.310881+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 41,
@@ -483,8 +483,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -1454,6 +1454,13 @@
       "records": 19
     },
     {
+      "source": "Kerala TV multi-language OTT releases",
+      "url": "https://www.keralatv.in/channel/ott/",
+      "state": "no_confirmed_recent_releases",
+      "records": 0,
+      "note": "Feed loaded; no eligible dated releases for the rolling 35-day window were extracted."
+    },
+    {
       "source": "DailyOTT upcoming dates",
       "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
       "state": "no_confirmed_upcoming",
@@ -1472,6 +1479,404 @@
       "state": "live",
       "records": 2,
       "errors": 0
+    },
+    {
+      "source": "Per-language source coverage",
+      "url": "internal://source-coverage",
+      "state": "live",
+      "records": 110,
+      "languageCoverage": {
+        "malayalam": {
+          "checkedSources": 14,
+          "healthySources": 14,
+          "failedSources": 0,
+          "sourcesWithRecords": 4,
+          "detectedRecords": 19,
+          "coverageStatus": "ok",
+          "sources": [
+            {
+              "source": "Cinebuds upcoming calendar",
+              "url": "https://cinebuds.com/ott-releases-this-week/",
+              "state": "live",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "OTTASIA confirmed calendar",
+              "url": "https://ottasia.com/ott-releases-this-week?country=IN",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 2
+            },
+            {
+              "source": "Vi weekly OTT calendar",
+              "url": "https://www.myvi.in/blog/ott-releases-this-week",
+              "state": "live",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "Vi Malayalam weekly OTT calendar",
+              "url": "https://www.myvi.in/blog/malayalam-ott-releases-this-week",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "Vi monthly OTT calendar",
+              "url": "https://www.myvi.in/blog/ott-releases-this-month",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "Simply Mollywood Malayalam OTT calendar",
+              "url": "https://simplymollywood.com/ott",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 3
+            },
+            {
+              "source": "New Indian Movies OTT calendar",
+              "url": "https://newindianmovies.com/",
+              "state": "live",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "Indian Movie Reviews OTT calendar",
+              "url": "https://indianmoviereviews.com/ott-releases/",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 1
+            },
+            {
+              "source": "OTTClock confirmed upcoming calendar",
+              "url": "https://ottclock.com/upcoming-ott-releases/",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "OTTChecker Malayalam recent releases",
+              "url": "https://www.ottchecker.com/ott-releases/malayalam",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 13
+            },
+            {
+              "source": "Kerala TV multi-language OTT releases",
+              "url": "https://www.keralatv.in/channel/ott/",
+              "state": "no_confirmed_recent_releases",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "DailyOTT upcoming dates",
+              "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "Cinebuds recent OTT dates",
+              "url": "https://cinebuds.com/ott-release-dates/",
+              "state": "covered_by_primary_collector",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "TVmaze upcoming web schedule",
+              "url": "https://api.tvmaze.com/schedule/web",
+              "state": "live",
+              "languageState": "checked_no_records",
+              "records": 0
+            }
+          ]
+        },
+        "tamil": {
+          "checkedSources": 12,
+          "healthySources": 12,
+          "failedSources": 0,
+          "sourcesWithRecords": 5,
+          "detectedRecords": 27,
+          "coverageStatus": "ok",
+          "sources": [
+            {
+              "source": "Cinebuds upcoming calendar",
+              "url": "https://cinebuds.com/ott-releases-this-week/",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 2
+            },
+            {
+              "source": "OTTASIA confirmed calendar",
+              "url": "https://ottasia.com/ott-releases-this-week?country=IN",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 3
+            },
+            {
+              "source": "Vi weekly OTT calendar",
+              "url": "https://www.myvi.in/blog/ott-releases-this-week",
+              "state": "live",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "Vi monthly OTT calendar",
+              "url": "https://www.myvi.in/blog/ott-releases-this-month",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "New Indian Movies OTT calendar",
+              "url": "https://newindianmovies.com/",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 2
+            },
+            {
+              "source": "Indian Movie Reviews OTT calendar",
+              "url": "https://indianmoviereviews.com/ott-releases/",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 3
+            },
+            {
+              "source": "OTTClock confirmed upcoming calendar",
+              "url": "https://ottclock.com/upcoming-ott-releases/",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "OTTChecker Tamil recent releases",
+              "url": "https://www.ottchecker.com/ott-releases/tamil",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 17
+            },
+            {
+              "source": "Kerala TV multi-language OTT releases",
+              "url": "https://www.keralatv.in/channel/ott/",
+              "state": "no_confirmed_recent_releases",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "DailyOTT upcoming dates",
+              "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "Cinebuds recent OTT dates",
+              "url": "https://cinebuds.com/ott-release-dates/",
+              "state": "covered_by_primary_collector",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "TVmaze upcoming web schedule",
+              "url": "https://api.tvmaze.com/schedule/web",
+              "state": "live",
+              "languageState": "checked_no_records",
+              "records": 0
+            }
+          ]
+        },
+        "telugu": {
+          "checkedSources": 12,
+          "healthySources": 12,
+          "failedSources": 0,
+          "sourcesWithRecords": 5,
+          "detectedRecords": 23,
+          "coverageStatus": "ok",
+          "sources": [
+            {
+              "source": "Cinebuds upcoming calendar",
+              "url": "https://cinebuds.com/ott-releases-this-week/",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 2
+            },
+            {
+              "source": "OTTASIA confirmed calendar",
+              "url": "https://ottasia.com/ott-releases-this-week?country=IN",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 1
+            },
+            {
+              "source": "Vi weekly OTT calendar",
+              "url": "https://www.myvi.in/blog/ott-releases-this-week",
+              "state": "live",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "Vi monthly OTT calendar",
+              "url": "https://www.myvi.in/blog/ott-releases-this-month",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "New Indian Movies OTT calendar",
+              "url": "https://newindianmovies.com/",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 3
+            },
+            {
+              "source": "Indian Movie Reviews OTT calendar",
+              "url": "https://indianmoviereviews.com/ott-releases/",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 1
+            },
+            {
+              "source": "OTTClock confirmed upcoming calendar",
+              "url": "https://ottclock.com/upcoming-ott-releases/",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "OTTChecker Telugu recent releases",
+              "url": "https://www.ottchecker.com/ott-releases/telugu",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 16
+            },
+            {
+              "source": "Kerala TV multi-language OTT releases",
+              "url": "https://www.keralatv.in/channel/ott/",
+              "state": "no_confirmed_recent_releases",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "DailyOTT upcoming dates",
+              "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "Cinebuds recent OTT dates",
+              "url": "https://cinebuds.com/ott-release-dates/",
+              "state": "covered_by_primary_collector",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "TVmaze upcoming web schedule",
+              "url": "https://api.tvmaze.com/schedule/web",
+              "state": "live",
+              "languageState": "checked_no_records",
+              "records": 0
+            }
+          ]
+        },
+        "hindi": {
+          "checkedSources": 12,
+          "healthySources": 12,
+          "failedSources": 0,
+          "sourcesWithRecords": 7,
+          "detectedRecords": 41,
+          "coverageStatus": "ok",
+          "sources": [
+            {
+              "source": "Cinebuds upcoming calendar",
+              "url": "https://cinebuds.com/ott-releases-this-week/",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 3
+            },
+            {
+              "source": "OTTASIA confirmed calendar",
+              "url": "https://ottasia.com/ott-releases-this-week?country=IN",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 7
+            },
+            {
+              "source": "Vi weekly OTT calendar",
+              "url": "https://www.myvi.in/blog/ott-releases-this-week",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 1
+            },
+            {
+              "source": "Vi monthly OTT calendar",
+              "url": "https://www.myvi.in/blog/ott-releases-this-month",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "New Indian Movies OTT calendar",
+              "url": "https://newindianmovies.com/",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 2
+            },
+            {
+              "source": "Indian Movie Reviews OTT calendar",
+              "url": "https://indianmoviereviews.com/ott-releases/",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 7
+            },
+            {
+              "source": "OTTClock confirmed upcoming calendar",
+              "url": "https://ottclock.com/upcoming-ott-releases/",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "OTTChecker Hindi recent releases",
+              "url": "https://www.ottchecker.com/ott-releases/hindi",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 19
+            },
+            {
+              "source": "Kerala TV multi-language OTT releases",
+              "url": "https://www.keralatv.in/channel/ott/",
+              "state": "no_confirmed_recent_releases",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "DailyOTT upcoming dates",
+              "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "Cinebuds recent OTT dates",
+              "url": "https://cinebuds.com/ott-release-dates/",
+              "state": "covered_by_primary_collector",
+              "languageState": "checked_no_records",
+              "records": 0
+            },
+            {
+              "source": "TVmaze upcoming web schedule",
+              "url": "https://api.tvmaze.com/schedule/web",
+              "state": "live",
+              "languageState": "records_found",
+              "records": 2
+            }
+          ]
+        }
+      }
     },
     {
       "source": "IndianRegional series discovery",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T03:24:29.621477+04:00",
+  "generatedAt": "2026-11-19T03:28:15.310881+04:00",
   "policy": "confirmed-source-and-imdb-match-v1",
   "count": 21,
   "items": [
@@ -226,8 +226,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
