@@ -650,15 +650,20 @@ def _ottchecker_recent(soup, source_url, today, langs):
             continue
         # OTTChecker currently wraps the entire release row in the title link,
         # not just the title. Extract the title/year prefix before Movie/Series.
-        title_match = re.match(r"^(.*?)\s*(?:\((20\d{2})\))?\s+(?:Movie|Series)\b", anchor_text, re.I)
+        title_match = re.match(
+            r"^(.*?)\s*(?:\((20\d{2})\))?\s+(Movie|Series)\b(?=\s*(?:[·|•]|$))",
+            anchor_text, re.I,
+        )
         if title_match and title_match.group(1).strip():
             name = title_match.group(1).strip()
             year = title_match.group(2)
+            row_kind = title_match.group(3).lower()
         else:
             name = anchor_text
             year_match = re.search(r"\((20\d{2})\)", name) or re.search(r"\((20\d{2})\)", text)
             year = year_match.group(1) if year_match else None
             name = re.sub(r"\s*\(20\d{2}\)\s*$", "", name).strip()
+            row_kind = kind.group(1).lower()
         if not name or len(name) > 140:
             continue
         platform_text = text[kind.end():streaming.start()]
@@ -683,7 +688,7 @@ def _ottchecker_recent(soup, source_url, today, langs):
         href = title_node.get("href")
         out.append({
             "name": name, "language": language,
-            "type": "series" if kind.group(1).lower() == "series" else "movie",
+            "type": "series" if row_kind == "series" else "movie",
             "ottDate": day, "platforms": platforms,
             "poster": image.get("src") if image else None, "year": year,
             "source": source_url, "sources": [source_url],
