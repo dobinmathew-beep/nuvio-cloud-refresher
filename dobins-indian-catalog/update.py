@@ -434,6 +434,8 @@ def build():
       fresh={**(alt or m or {}),**fresh,'id':suggested['id'],'type':e['type'],'poster':fresh.get('poster') or suggested.get('poster') or (alt or {}).get('poster'),'metadataSource':'Verified IMDb title/year match','_partial':False}
      m=fresh
     elif not m or m.get('_partial'):m=alt or m
+  if m and not m.get('poster') and c and c.get('poster'):
+   m['poster']=c['poster']
   if m and not str(m.get('id','')).startswith('tt'):
    alias=IMDB_ALIAS_BY_METADATA.get(alternate.key(e['type'],str(m.get('id',''))))
    if alias:
@@ -509,6 +511,32 @@ def build():
   raise RuntimeError('Malayalam metadata audit failed: %s of %s catalog entries failed; last-good catalogs retained' % (len(malayalam_errors),malayalam_audit['checked']))
  if any(not catalogs[c] for c in catalogs):
   save('metadata.json',metas);save('unmatched.json',unmatched);raise RuntimeError('An empty catalog would be published; retaining last-good catalogs while metadata backfills')
+ # Audit recently streamed releases independently of the upcoming-only feed.
+ recent_start=(date.fromisoformat(TODAY)-timedelta(days=35)).isoformat()
+ recent_release_items=[]
+ for e in events:
+  sources=e.get('sources') or ([e.get('source')] if e.get('source') else [])
+  if not any('ottchecker.com' in str(source) for source in sources):continue
+  day=str(e.get('ottDate') or '')[:10]
+  if not re.fullmatch(r'\d{4}-\d{2}-\d{2}',day) or day<recent_start or day>TODAY:continue
+  key=e['language']+'|'+e['type']+'|'+norm(e['name'])
+  match=matches.get(key,{})
+  mid=str(match.get('id') or e.get('_verifiedImdbId') or '')
+  meta=metas.get(alternate.key(e['type'],mid),{}) if mid else {}
+  original=str(meta.get('original_language') or meta.get('originalLanguage') or '').lower()
+  expected=LANGS[e['language']]
+  complete=bool(mid and meta.get('id')==mid and meta.get('type')==e['type'] and not meta.get('_partial') and meta.get('name') and meta.get('description') and meta.get('poster'))
+  published=bool(mid and mid in catalog_ids.get(f"dobins_{expected}_{e['type']}",set()))
+  state='language_mismatch' if original and original not in (expected,e['language']) else 'published' if published else 'matched_not_published' if complete else 'metadata_incomplete' if mid else 'unmatched'
+  recent_release_items.append({'title':e['name'],'language':e['language'],'type':e['type'],'releaseDate':day,'id':mid or None,'matchState':state,'platforms':e.get('platforms') or [],'sources':list(dict.fromkeys(sources)),'detail':e.get('detail')})
+ recent_counts={}
+ for row in recent_release_items:recent_counts[row['matchState']]=recent_counts.get(row['matchState'],0)+1
+ recent_release_audit={'windowDays':35,'source':'OTTChecker recent streaming pages','detected':len(recent_release_items),'byMatchState':recent_counts,'items':recent_release_items}
+ save('recent-release-audit.json',recent_release_audit)
+ blocked=[row for row in recent_release_items if row['matchState']=='matched_not_published']
+ if blocked:
+  save('metadata.json',metas);save('unmatched.json',unmatched)
+  raise RuntimeError('Recent OTTChecker releases resolved to complete metadata but were not published: '+', '.join(x['title'] for x in blocked[:10]))
  save('metadata.json',metas);save('catalogs.json',catalogs);save('unmatched.json',unmatched)
  # Publish a dedicated upcoming-release index only after a real IMDb ID and
  # complete metadata have been resolved. Unmatched source rows remain diagnostic
@@ -587,7 +615,7 @@ def build():
  for cid,items in catalogs.items():
   latest=max(items,key=lambda x:str(x.get('latestEpisodeReleasedAt') or x.get('ottDate') or x.get('releaseDate') or ''),default=None)
   freshness[cid]={'count':len(items),'generatedAt':NOW.isoformat(),'latestEntry':None if not latest else {'id':latest.get('id'),'name':latest.get('name'),'releaseDate':latest.get('latestEpisodeReleasedAt') or latest.get('ottDate') or latest.get('releaseDate'),'hasNewEpisodes':latest.get('hasNewEpisodes',False)}}
- status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastMatchRetryAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'malayalamMetadataAudit':malayalam_audit,'upcoming':{'matchedTitles':len(upcoming_rows),'bySource':upcoming_source_summary,'policy':'Only confirmed upcoming titles with a validated IMDb tt-ID are published.'},'upcomingDiscovery':{**discovery_counts,'malayalamReviewCount':malayalam_review_counts['total']},'errors':resolve_errors}
+ status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastMatchRetryAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'malayalamMetadataAudit':malayalam_audit,'upcoming':{'matchedTitles':len(upcoming_rows),'bySource':upcoming_source_summary,'policy':'Only confirmed upcoming titles with a validated IMDb tt-ID are published.'},'upcomingDiscovery':{**discovery_counts,'malayalamReviewCount':malayalam_review_counts['total']},'recentReleaseAudit':recent_release_audit,'errors':resolve_errors}
  save('status.json',status);print('SUCCESS',json.dumps(status),flush=True)
 if __name__=='__main__':
  try:build()
