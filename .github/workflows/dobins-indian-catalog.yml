@@ -1,5 +1,6 @@
 name: Dobins Indian Catalog
 # Trigger full validation for the source-parser, pagination and per-catalog freshness fixes.
+# Also validate rolling recent-release ingestion from the dobins-catalog branch.
 on:
   workflow_dispatch:
   push:
