@@ -960,7 +960,7 @@ def collect(get, today, langs, norm):
     # independent check for all four languages; language-specific feeds only
     # count for their own language. Failed sources remain visible per language.
     healthy_states = {"live", "no_confirmed_upcoming", "no_confirmed_recent_releases",
-                      "covered_by_primary_collector", "frontend-fallback"}
+                      "no_recent_releases", "covered_by_primary_collector", "frontend-fallback"}
     source_coverage = {}
     for language in langs:
         checked = []
