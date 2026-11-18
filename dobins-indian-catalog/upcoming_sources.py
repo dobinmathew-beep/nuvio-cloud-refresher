@@ -645,13 +645,21 @@ def _ottchecker_recent(soup, source_url, today, langs):
         day = _date_with_current_year(streaming.group(1), today)
         if not day or day > today or day < cutoff:
             continue
-        name = title_node.get_text(" ", strip=True)
-        if not name or len(name) > 140:
+        anchor_text = title_node.get_text(" ", strip=True)
+        if not anchor_text or len(anchor_text) > 500:
             continue
-        year_match = re.search(r"\((20\d{2})\)", name) or re.search(r"\((20\d{2})\)", text)
-        year = year_match.group(1) if year_match else None
-        name = re.sub(r"\s*\(20\d{2}\)\s*$", "", name).strip()
-        if not name:
+        # OTTChecker currently wraps the entire release row in the title link,
+        # not just the title. Extract the title/year prefix before Movie/Series.
+        title_match = re.match(r"^(.*?)\s*(?:\((20\d{2})\))?\s+(?:Movie|Series)\b", anchor_text, re.I)
+        if title_match and title_match.group(1).strip():
+            name = title_match.group(1).strip()
+            year = title_match.group(2)
+        else:
+            name = anchor_text
+            year_match = re.search(r"\((20\d{2})\)", name) or re.search(r"\((20\d{2})\)", text)
+            year = year_match.group(1) if year_match else None
+            name = re.sub(r"\s*\(20\d{2}\)\s*$", "", name).strip()
+        if not name or len(name) > 140:
             continue
         platform_text = text[kind.end():streaming.start()]
         platform_text = re.sub(r"·?\s*IMDb\s*[0-9]+(?:\.[0-9]+)?", " ", platform_text, flags=re.I)
@@ -661,7 +669,8 @@ def _ottchecker_recent(soup, source_url, today, langs):
             p.lower() != other.lower() and p.lower() in other.lower()
             for other in matches
         )]
-        platforms = list(dict.fromkeys(platforms))
+        platform_seen = set()
+        platforms = [p for p in platforms if not (p.lower() in platform_seen or platform_seen.add(p.lower()))]
         if not platforms:
             continue
         image = node.select_one("img[src]")
