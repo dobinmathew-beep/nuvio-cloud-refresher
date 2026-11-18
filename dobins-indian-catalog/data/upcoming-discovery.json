@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T06:12:51.119256+04:00",
+  "generatedAt": "2026-11-18T13:36:44.570527+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 44,
@@ -14,12 +14,12 @@
       "movie": 22
     },
     "byMatchState": {
-      "published": 25,
+      "published": 26,
       "unmatched": 17,
-      "metadata_incomplete": 2
+      "metadata_incomplete": 1
     },
     "bySource": {
-      "https://www.dailyott.in/": 5,
+      "https://www.dailyott.in/": 7,
       "https://newindianmovies.com/": 4,
       "https://www.tvmaze.com/shows/59979/campus-diaries": 1,
       "https://ottasia.com/ott-releases-this-week?country=IN": 10,
@@ -60,7 +60,7 @@
       "catalog": "dobins_hi_series"
     },
     {
-      "title": "Campus Diaries season 2",
+      "title": "Campus Diaries Season 2",
       "language": "hindi",
       "type": "series",
       "releaseDate": "2026-11-18",
@@ -69,12 +69,13 @@
         "Amazon MX Player"
       ],
       "sources": [
+        "https://www.dailyott.in/",
         "https://newindianmovies.com/",
         "https://www.tvmaze.com/shows/59979/campus-diaries"
       ],
       "confirmed": true,
-      "releaseDateBasis": "confirmed or reported OTT calendar date",
-      "detail": "https://newindianmovies.com/movie/campus-diaries-season-2",
+      "releaseDateBasis": null,
+      "detail": null,
       "matchId": "tt15295490",
       "matchState": "published",
       "metadataComplete": true,
@@ -94,14 +95,16 @@
       "releaseDate": "2026-11-18",
       "platforms": [
         "JioHotstar",
+        "JioHotStar",
         "Hotstar"
       ],
       "sources": [
+        "https://www.dailyott.in/",
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
       "confirmed": true,
-      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
-      "detail": "https://ottasia.com/title/tv/338502/mr-mrs-office?country=IN",
+      "releaseDateBasis": null,
+      "detail": null,
       "matchId": "tt50135636",
       "matchState": "published",
       "metadataComplete": true,
@@ -227,8 +230,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://newindianmovies.com/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://newindianmovies.com/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -260,16 +263,16 @@
       "releaseDateBasis": "confirmed or reported OTT calendar date",
       "detail": "https://newindianmovies.com/movie/teen-tigada",
       "matchId": "tt50943841",
-      "matchState": "metadata_incomplete",
+      "matchState": "published",
       "metadataComplete": false,
-      "metadataSource": "IMDb-matched metadata",
+      "metadataSource": "Verified IMDb title/year match",
       "metadataFields": {
-        "poster": false,
+        "poster": true,
         "description": false,
         "genres": false,
-        "releaseInfo": false
+        "releaseInfo": true
       },
-      "catalog": null
+      "catalog": "dobins_hi_series"
     },
     {
       "title": "418",
@@ -384,8 +387,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -566,8 +569,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -768,12 +771,12 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -1447,7 +1450,7 @@
       "source": "DailyOTT",
       "url": "https://www.dailyott.in/",
       "state": "live",
-      "records": 952
+      "records": 955
     },
     {
       "source": "Cinebuds",
@@ -1515,9 +1518,8 @@
     {
       "source": "DailyOTT upcoming dates",
       "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-      "state": "no_confirmed_upcoming",
-      "records": 0,
-      "note": "DailyOTT is live; no verified future dates were present in the returned API pages."
+      "state": "live",
+      "records": 2
     },
     {
       "source": "Cinebuds recent OTT dates",

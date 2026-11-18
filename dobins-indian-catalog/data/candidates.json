@@ -3446,6 +3446,13 @@
       "type": "movie"
     },
     {
+      "id": "tt29247040",
+      "name": "Baramulla",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt29247040.jpg",
+      "releaseInfo": "2025",
+      "type": "movie"
+    },
+    {
       "id": "tt32495339",
       "name": "The Taj Story",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32495339.jpg",
@@ -3859,6 +3866,13 @@
       "type": "movie"
     },
     {
+      "id": "tt27757805",
+      "name": "Baby John",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27757805.jpg",
+      "releaseInfo": "2024",
+      "type": "movie"
+    },
+    {
       "id": "tt27139868",
       "name": "Yo Yo Honey Singh: Famous",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27139868.jpg",
@@ -4268,6 +4282,13 @@
       "id": "tt27028399",
       "name": "Murder Mubarak",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27028399.jpg",
+      "releaseInfo": "2024",
+      "type": "movie"
+    },
+    {
+      "id": "tt27744786",
+      "name": "Shaitaan",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27744786.jpg",
       "releaseInfo": "2024",
       "type": "movie"
     },
@@ -12519,5 +12540,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-18T06:12:51.119256+04:00"
+  "_updatedAt": "2026-11-18T13:36:44.570527+04:00"
 }

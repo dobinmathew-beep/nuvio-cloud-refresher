@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-18T06:12:51.119256+04:00",
+  "generatedAt": "2026-11-18T13:36:44.570527+04:00",
   "policy": "confirmed-source-and-imdb-match-v1",
-  "count": 19,
+  "count": 20,
   "items": [
     {
       "id": "tt38984184",
@@ -27,8 +27,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://newindianmovies.com/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://newindianmovies.com/"
       ],
       "catalog": "dobins_hi_series"
     },
@@ -59,6 +59,20 @@
         "https://cinebuds.com/ott-releases-this-week/"
       ],
       "catalog": "dobins_hi_movie"
+    },
+    {
+      "id": "tt50943841",
+      "name": "Teen Tigada",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://newindianmovies.com/"
+      ],
+      "catalog": "dobins_hi_series"
     },
     {
       "id": "tt38984184",
@@ -126,8 +140,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "catalog": "dobins_ta_movie"
     },
@@ -198,8 +212,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -239,12 +253,12 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "catalog": "dobins_hi_movie"
     },
