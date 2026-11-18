@@ -5,7 +5,7 @@ Only announced/confirmed dates are emitted. Predictions, expected dates and
 unverified theatrical-to-OTT estimates are deliberately excluded.
 """
 from datetime import datetime, timedelta, date
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 from bs4 import BeautifulSoup
 import re
 
@@ -988,11 +988,25 @@ def collect(get, today, langs, norm):
             checked.append({"source": source_name, "url": url, "state": state,
                             "languageState": "failed" if state == "failed" else "records_found" if records else "checked_no_records",
                             "records": records})
-        healthy = sum(1 for x in checked if x["state"] in healthy_states)
-        failed = sum(1 for x in checked if x["state"] == "failed")
+        # Count independent publishers, not URLs: three Vi pages or four
+        # OTTChecker language pages are one publisher each, not three/four
+        # independent confirmations.
+        domain_states = {}
+        for item in checked:
+            host = urlsplit(item["url"]).netloc.lower().removeprefix("www.")
+            if not host:
+                continue
+            domain_states.setdefault(host, set()).add(item["state"])
+        healthy_domains = sorted(host for host, states in domain_states.items()
+                                if states.intersection(healthy_states))
+        failed_domains = sorted(host for host, states in domain_states.items()
+                               if "failed" in states and not states.intersection(healthy_states))
+        healthy = len(healthy_domains)
+        failed = len(failed_domains)
         source_coverage[language] = {
-            "checkedSources": len(checked), "healthySources": healthy,
-            "failedSources": failed,
+            "checkedFeeds": len(checked), "checkedSources": len(domain_states),
+            "healthySources": healthy, "failedSources": failed,
+            "healthySourceDomains": healthy_domains, "failedSourceDomains": failed_domains,
             "sourcesWithRecords": sum(1 for x in checked if x["records"]),
             "detectedRecords": sum(x["records"] for x in checked),
             "coverageStatus": "ok" if healthy >= 2 and failed == 0 else "partial" if healthy >= 2 else "degraded",
