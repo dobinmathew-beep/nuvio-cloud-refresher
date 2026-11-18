@@ -666,6 +666,9 @@ def _ottchecker_recent(soup, source_url, today, langs):
             year = year_match.group(1) if year_match else None
             name = re.sub(r"\s*\(20\d{2}\)\s*$", "", name).strip()
             row_kind = kind.group(1).lower()
+        # A future-dated film cannot already be a confirmed recent stream.
+        if year and int(year) > int(today[:4]):
+            continue
         if not name or len(name) > 140:
             continue
         platform_text = text[kind.end():streaming.start()]
