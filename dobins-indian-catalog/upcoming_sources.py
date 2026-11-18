@@ -862,7 +862,7 @@ def collect(get, today, langs, norm):
             if not rows and "keralatv.in" in url:
                 visible = soup.get_text(" ", strip=True).lower()
                 article_links = soup.select("h2 a[href], h3 a[href], article h2 a[href], article h3 a[href]")
-                date_pattern = r"(?:stream(?:ing)?|premier(?:e|es|ed)|release\\s+date|released)[^.]{0,150}?((?:\\d{1,2}\\s+[A-Za-z]{3,9},?\\s+20\\d{2})|(?:[A-Za-z]{3,9}\\s+\\d{1,2},?\\s+20\\d{2})|20\\d{2}-\\d{2}-\\d{2})"
+                date_pattern = r"(?:stream(?:ing)?|premier(?:e|es|ed)|release\s+date|released)[^.]{0,150}?((?:\d{1,2}\s+[A-Za-z]{3,9},?\s+20\d{2})|(?:[A-Za-z]{3,9}\s+\d{1,2},?\s+20\d{2})|20\d{2}-\d{2}-\d{2})"
                 cutoff = (date.fromisoformat(today) - timedelta(days=35)).isoformat()
                 recent_dated_evidence = any(
                     (parsed := _date_with_current_year(match.group(1), today)) and parsed >= cutoff
