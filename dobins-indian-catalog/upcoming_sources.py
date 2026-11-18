@@ -19,6 +19,10 @@ SOURCES = [
     ("New Indian Movies OTT calendar", "https://newindianmovies.com/"),
     ("Indian Movie Reviews OTT calendar", "https://indianmoviereviews.com/ott-releases/"),
     ("OTTClock confirmed upcoming calendar", "https://ottclock.com/upcoming-ott-releases/"),
+    ("OTTChecker Malayalam recent releases", "https://www.ottchecker.com/ott-releases/malayalam"),
+    ("OTTChecker Tamil recent releases", "https://www.ottchecker.com/ott-releases/tamil"),
+    ("OTTChecker Telugu recent releases", "https://www.ottchecker.com/ott-releases/telugu"),
+    ("OTTChecker Hindi recent releases", "https://www.ottchecker.com/ott-releases/hindi"),
 ]
 LANG_NAMES = {
     "malayalam": "malayalam",
@@ -619,6 +623,66 @@ def _recent_cinebuds(soup, source_url, today, langs):
             'sourceRecord': {'title': title, 'releaseDate': day, 'source': source_url}})
     return out
 
+def _ottchecker_recent(soup, source_url, today, langs):
+    """Parse explicit streaming dates from OTTChecker's four language pages."""
+    language = source_url.rstrip("/").rsplit("/", 1)[-1].lower()
+    if language not in langs:
+        raise ValueError("OTTChecker language route is not tracked")
+    out = []
+    cutoff = (date.fromisoformat(today) - timedelta(days=35)).isoformat()
+    for node in soup.select("li"):
+        text = node.get_text(" ", strip=True)
+        streaming = re.search(
+            r"\bStreaming\s+since\s+((?:(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s+)?\d{1,2}\s+[A-Za-z]{3,9}(?:\s+20\d{2})?)",
+            text, re.I,
+        )
+        if not streaming:
+            continue
+        title_node = node.select_one("a[href]")
+        kind = re.search(r"\b(Movie|Series)\b", text, re.I)
+        if not title_node or not kind:
+            continue
+        day = _date_with_current_year(streaming.group(1), today)
+        if not day or day > today or day < cutoff:
+            continue
+        name = title_node.get_text(" ", strip=True)
+        if not name or len(name) > 140:
+            continue
+        year_match = re.search(r"\((20\d{2})\)", name) or re.search(r"\((20\d{2})\)", text)
+        year = year_match.group(1) if year_match else None
+        name = re.sub(r"\s*\(20\d{2}\)\s*$", "", name).strip()
+        if not name:
+            continue
+        platform_text = text[kind.end():streaming.start()]
+        platform_text = re.sub(r"·?\s*IMDb\s*[0-9]+(?:\.[0-9]+)?", " ", platform_text, flags=re.I)
+        matches = [p for p in sorted(PLATFORMS, key=len, reverse=True)
+                   if re.search(re.escape(p), platform_text, re.I)]
+        platforms = [p for p in matches if not any(
+            p.lower() != other.lower() and p.lower() in other.lower()
+            for other in matches
+        )]
+        platforms = list(dict.fromkeys(platforms))
+        if not platforms:
+            continue
+        image = node.select_one("img[src]")
+        href = title_node.get("href")
+        out.append({
+            "name": name, "language": language,
+            "type": "series" if kind.group(1).lower() == "series" else "movie",
+            "ottDate": day, "platforms": platforms,
+            "poster": image.get("src") if image else None, "year": year,
+            "source": source_url, "sources": [source_url],
+            "detail": urljoin(source_url, href) if href else None,
+            "confirmed": True, "releaseKind": "digital",
+            "releaseDateBasis": "OTTChecker explicit streaming-since date",
+            "sourceRecord": {
+                "title": name, "releaseDate": day, "language": language,
+                "platforms": platforms, "source": source_url,
+            },
+        })
+    return out
+
+
 def collect(get, today, langs, norm):
     events = []
     health = []
@@ -638,6 +702,8 @@ def collect(get, today, langs, norm):
                 rows = _new_indian_movies(soup, name, url, today, langs, norm)
             elif "ottclock.com" in url:
                 rows = _ottclock(soup, name, url, today, langs, norm)
+            elif "ottchecker.com" in url:
+                rows = _ottchecker_recent(soup, url, today, langs)
             elif "indianmoviereviews.com" in url:
                 rows = _calendar_cards(soup, name, url, today, langs, norm)
             else:
@@ -645,6 +711,13 @@ def collect(get, today, langs, norm):
             # An intact calendar section with no eligible future Indian titles
             # is informational, not a parser failure. Missing section headings
             # still signal markup drift and trigger a half-hour retry.
+            if not rows and "ottchecker.com" in url:
+                visible = soup.get_text(" ", strip=True).lower()
+                if "streaming since" in visible and re.search(r"\b(Movie|Series)\b", visible, re.I):
+                    raise ValueError("OTTChecker streaming rows exist but parser extracted none; markup may have changed")
+                health.append({"source": name, "url": url, "state": "no_recent_releases", "records": 0,
+                               "note": "Page loaded; no dated releases in the rolling 35-day window."})
+                continue
             if not rows:
                 visible = soup.get_text(' ', strip=True).lower()
                 if "myvi.in" in url:
