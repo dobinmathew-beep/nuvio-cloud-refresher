@@ -669,8 +669,14 @@ def _ottchecker_recent(soup, source_url, today, langs):
             p.lower() != other.lower() and p.lower() in other.lower()
             for other in matches
         )]
-        platform_seen = set()
-        platforms = [p for p in platforms if not (p.lower() in platform_seen or platform_seen.add(p.lower()))]
+        deduplicated_platforms = []
+        for platform in platforms:
+            lower = platform.lower()
+            if any(lower == existing.lower() or lower in existing.lower()
+                   for existing in deduplicated_platforms):
+                continue
+            deduplicated_platforms.append(platform)
+        platforms = deduplicated_platforms
         if not platforms:
             continue
         image = node.select_one("img[src]")
