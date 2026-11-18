@@ -222,10 +222,8 @@ class UpcomingSourceTests(unittest.TestCase):
 
     def test_ottchecker_recent_release_parses_past_streaming_rows(self):
         html = """<section><ul>
-          <li><a href="/movie/madhuramee-jeevitham-2026">Madhuramee Jeevitham (2026)</a>
-            Movie · IMDb 7.2 Amazon Prime Video Streaming since 12 Nov</li>
-          <li><a href="/movie/bandra-2023">Bandra (2023)</a>
-            Movie · IMDb 3.9 ZEE5 Streaming since 12 Nov</li>
+          <li><a href="/movie/madhuramee-jeevitham-2026">Madhuramee Jeevitham (2026) Movie · IMDb 7.2 Amazon Prime Video Streaming since 12 Nov</a></li>
+          <li><a href="/movie/bandra-2023">Bandra (2023) Movie · IMDb 3.9 ZEE5 Streaming since 12 Nov</a></li>
           <li><a href="/movie/not-yet">Not Yet (2026)</a>
             Movie · Prime Video Expected 22 Nov</li>
           <li><a href="/movie/no-date">No Date (2026)</a> Movie · Prime Video</li>
@@ -248,9 +246,9 @@ class UpcomingSourceTests(unittest.TestCase):
 
     def test_ottchecker_recent_release_is_language_scoped_and_windowed(self):
         html = """<ul>
-          <li><a href="/movie/old">Old Film (2024)</a> Movie · Netflix Streaming since 1 Jan 2025</li>
-          <li><a href="/movie/future">Future Film (2026)</a> Movie · Netflix Streaming since 20 Nov</li>
-          <li><a href="/series/sample">Sample Series (2026)</a> Series · Netflix Streaming since 18 Nov</li>
+          <li><a href="/movie/old">Old Film (2024) Movie · Netflix Streaming since 1 Jan 2025</a></li>
+          <li><a href="/movie/future">Future Film (2026) Movie · Netflix Streaming since 20 Nov</a></li>
+          <li><a href="/series/sample">Sample Series (2026) Series · Netflix Streaming since 18 Nov</a></li>
         </ul>"""
         rows = upcoming_sources._ottchecker_recent(
             BeautifulSoup(html, "html.parser"),
