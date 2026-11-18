@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-18T23:17:08.177398+04:00",
+  "checked_at": "2026-11-19T00:36:35.875333+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
     "addon": {
       "status": "pass",
-      "checked_at": "2026-11-18T23:05:31.079403+04:00",
+      "checked_at": "2026-11-19T00:36:35.875333+04:00",
       "public_url": "https://the-great-indian-addon.vercel.app",
       "checks": [
         {
@@ -50,7 +50,7 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-18T23:17:08.177398+04:00",
+      "checked_at": "2026-11-19T00:36:35.875333+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
@@ -135,10 +135,10 @@
     },
     "backdrops": {
       "status": "pass",
-      "checked_at": "2026-11-18T22:40:38.049557+04:00",
+      "checked_at": "2026-11-19T00:36:35.875333+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
       "details": {
-        "day": "2026-11-18",
+        "day": "2026-11-19",
         "statuses": 160,
         "images": 16,
         "states": {
@@ -148,8 +148,8 @@
         "errors": [],
         "catalogHeads": {
           "hindi": "tt50107649",
-          "malayalam": "tt27512908",
           "tamil": "tt33318732",
+          "malayalam": "tt27512908",
           "telugu": "tt32324552"
         }
       },
@@ -157,7 +157,7 @@
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-18T22:40:38.049557+04:00",
+      "checked_at": "2026-11-19T00:36:35.875333+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
