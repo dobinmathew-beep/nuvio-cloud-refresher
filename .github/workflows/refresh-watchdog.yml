@@ -56,3 +56,4 @@ jobs:
         if: steps.check.outcome == 'failure'
         run: exit 1
 # Manual catch-up wake-up: 2026-11-18 18:06 Asia/Muscat
+# Manual post-refresh watchdog verification: 2026-11-18 18:27 Asia/Muscat
