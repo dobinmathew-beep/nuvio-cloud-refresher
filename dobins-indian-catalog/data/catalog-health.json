@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-11-18T22:54:14.310565+00:00",
+  "checkedAt": "2026-11-18T22:57:13.260664+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
-  "state": "degraded",
+  "state": "ok",
   "checks": [
     {
       "path": "/data-health.json",
@@ -14,17 +14,17 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 336,
+      "metadataRecords": 1057,
       "warning": null,
       "error": null
     },
     {
       "path": "/meta/* (Malayalam catalog audit)",
-      "state": "failed",
-      "checked": 71,
-      "passed": 70,
-      "failed": 1,
-      "missingOriginalLanguageField": 70
+      "state": "ok",
+      "checked": 142,
+      "passed": 142,
+      "failed": 0,
+      "missingOriginalLanguageField": 110
     },
     {
       "path": "/manifest.json",
@@ -45,31 +45,31 @@
       "language": "ml",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
-      "localPublishedCount": 60,
-      "localUniqueIdCount": 60,
+      "localPublishedCount": 75,
+      "localUniqueIdCount": 75,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 60,
-      "endpointUniqueIdCount": 60,
+      "endpointRawCount": 75,
+      "endpointUniqueIdCount": 75,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        10
+        25
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt34792531",
-        "name": "Avaraachan & Sons",
-        "releaseDate": "2026-10-30"
+        "id": "tt39239818",
+        "name": "Haiku",
+        "releaseDate": "2026-11-20"
       },
       "localLatestEntry": {
-        "id": "tt34792531",
-        "name": "Avaraachan & Sons",
-        "releaseDate": "2026-10-30"
+        "id": "tt39239818",
+        "name": "Haiku",
+        "releaseDate": "2026-11-20"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -80,30 +80,31 @@
       "language": "ml",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ml_series.json",
-      "localPublishedCount": 11,
-      "localUniqueIdCount": 11,
+      "localPublishedCount": 67,
+      "localUniqueIdCount": 67,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 11,
-      "endpointUniqueIdCount": 11,
+      "endpointRawCount": 67,
+      "endpointUniqueIdCount": 67,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
-        11
+        50,
+        17
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt48461761",
-        "name": "Eyes",
-        "releaseDate": "2026-10-09"
+        "id": "tt8537520",
+        "name": "Bigg Boss Malayalam",
+        "releaseDate": "2026-11-18T21:30:00+00:00"
       },
       "localLatestEntry": {
-        "id": "tt48461761",
-        "name": "Eyes",
-        "releaseDate": "2026-10-09"
+        "id": "tt8537520",
+        "name": "Bigg Boss Malayalam",
+        "releaseDate": "2026-11-18T21:30:00+00:00"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -114,31 +115,31 @@
       "language": "ta",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ta_movie.json",
-      "localPublishedCount": 51,
-      "localUniqueIdCount": 51,
+      "localPublishedCount": 73,
+      "localUniqueIdCount": 73,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 51,
-      "endpointUniqueIdCount": 51,
+      "endpointRawCount": 73,
+      "endpointUniqueIdCount": 73,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        1
+        23
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt45370533",
-        "name": "The Dark Heaven",
-        "releaseDate": "2026-10-30"
+        "id": "tt39239818",
+        "name": "Haiku",
+        "releaseDate": "2026-11-20"
       },
       "localLatestEntry": {
-        "id": "tt45370533",
-        "name": "The Dark Heaven",
-        "releaseDate": "2026-10-30"
+        "id": "tt39239818",
+        "name": "Haiku",
+        "releaseDate": "2026-11-20"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -149,30 +150,32 @@
       "language": "ta",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ta_series.json",
-      "localPublishedCount": 13,
-      "localUniqueIdCount": 13,
+      "localPublishedCount": 112,
+      "localUniqueIdCount": 112,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 13,
-      "endpointUniqueIdCount": 13,
+      "endpointRawCount": 112,
+      "endpointUniqueIdCount": 112,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
-        13
+        50,
+        50,
+        12
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt29625288",
-        "name": "Akka",
-        "releaseDate": "2026-10-30"
+        "id": "tmdb:339004",
+        "name": "Notebook 90s \u2013 Kadhal Flashback",
+        "releaseDate": "2026-11-23"
       },
       "localLatestEntry": {
-        "id": "tt29625288",
-        "name": "Akka",
-        "releaseDate": "2026-10-30"
+        "id": "tmdb:339004",
+        "name": "Notebook 90s \u2013 Kadhal Flashback",
+        "releaseDate": "2026-11-23"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -183,31 +186,31 @@
       "language": "te",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_te_movie.json",
-      "localPublishedCount": 61,
-      "localUniqueIdCount": 61,
+      "localPublishedCount": 82,
+      "localUniqueIdCount": 82,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 61,
-      "endpointUniqueIdCount": 61,
+      "endpointRawCount": 82,
+      "endpointUniqueIdCount": 82,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        11
+        32
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt47421307",
-        "name": "SI Yugandhar",
-        "releaseDate": "2026-10-30"
+        "id": "tt30768979",
+        "name": "Aadarsha Kutumbam House No: 47 - AK47",
+        "releaseDate": "2026-11-27"
       },
       "localLatestEntry": {
-        "id": "tt47421307",
-        "name": "SI Yugandhar",
-        "releaseDate": "2026-10-30"
+        "id": "tt30768979",
+        "name": "Aadarsha Kutumbam House No: 47 - AK47",
+        "releaseDate": "2026-11-27"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -218,30 +221,32 @@
       "language": "te",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_te_series.json",
-      "localPublishedCount": 15,
-      "localUniqueIdCount": 15,
+      "localPublishedCount": 114,
+      "localUniqueIdCount": 114,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 15,
-      "endpointUniqueIdCount": 15,
+      "endpointRawCount": 114,
+      "endpointUniqueIdCount": 114,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
-        15
+        50,
+        50,
+        14
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt40856774",
-        "name": "The Traitors (Telugu)",
-        "releaseDate": "2026-10-15"
+        "id": "tt7805494",
+        "name": "Bigg Boss Telugu",
+        "releaseDate": "2026-11-18T21:30:00+00:00"
       },
       "localLatestEntry": {
-        "id": "tt40856774",
-        "name": "The Traitors (Telugu)",
-        "releaseDate": "2026-10-15"
+        "id": "tt7805494",
+        "name": "Bigg Boss Telugu",
+        "releaseDate": "2026-11-18T21:30:00+00:00"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -252,31 +257,31 @@
       "language": "hi",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
-      "localPublishedCount": 60,
-      "localUniqueIdCount": 60,
+      "localPublishedCount": 90,
+      "localUniqueIdCount": 90,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 60,
-      "endpointUniqueIdCount": 60,
+      "endpointRawCount": 90,
+      "endpointUniqueIdCount": 90,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        10
+        40
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tmdb:1453407",
-        "name": "Gajab Raat",
-        "releaseDate": "2026-10-23"
+        "id": "tt39390582",
+        "name": "Hanuman Ansh",
+        "releaseDate": "2026-11-27"
       },
       "localLatestEntry": {
-        "id": "tmdb:1453407",
-        "name": "Gajab Raat",
-        "releaseDate": "2026-10-23"
+        "id": "tt39390582",
+        "name": "Hanuman Ansh",
+        "releaseDate": "2026-11-27"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -287,31 +292,36 @@
       "language": "hi",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
-      "localPublishedCount": 59,
-      "localUniqueIdCount": 59,
+      "localPublishedCount": 349,
+      "localUniqueIdCount": 349,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 59,
-      "endpointUniqueIdCount": 59,
+      "endpointRawCount": 349,
+      "endpointUniqueIdCount": 349,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        9
+        50,
+        50,
+        50,
+        50,
+        50,
+        49
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt29625288",
-        "name": "Akka",
-        "releaseDate": "2026-10-30"
+        "id": "tmdb:337904",
+        "name": "AndherPura Curse",
+        "releaseDate": "2026-11-28"
       },
       "localLatestEntry": {
-        "id": "tt29625288",
-        "name": "Akka",
-        "releaseDate": "2026-10-30"
+        "id": "tmdb:337904",
+        "name": "AndherPura Curse",
+        "releaseDate": "2026-11-28"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -319,18 +329,12 @@
     }
   ],
   "malayalamMetadataAudit": {
-    "state": "failed",
-    "checked": 71,
-    "passed": 70,
-    "failed": 1,
-    "missingOriginalLanguageField": 70,
-    "failures": [
-      {
-        "id": "tvmaze:37295",
-        "name": "Bigg Boss Malayalam",
-        "error": "ID must be a verified IMDb tt-ID or TMDB ID"
-      }
-    ]
+    "state": "ok",
+    "checked": 142,
+    "passed": 142,
+    "failed": 0,
+    "missingOriginalLanguageField": 110,
+    "failures": []
   },
   "catalogSummary": {
     "checked": 8,
@@ -339,8 +343,11 @@
     "countMismatches": 0,
     "firstPageSize50": [
       "dobins_ml_movie",
+      "dobins_ml_series",
       "dobins_ta_movie",
+      "dobins_ta_series",
       "dobins_te_movie",
+      "dobins_te_series",
       "dobins_hi_movie",
       "dobins_hi_series"
     ]
