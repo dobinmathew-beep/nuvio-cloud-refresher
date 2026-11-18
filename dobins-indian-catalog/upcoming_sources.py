@@ -476,9 +476,24 @@ def _keralatv(soup, source_name, source_url, today, langs, norm, get):
     out = []
     seen = set()
     cutoff = (date.fromisoformat(today) - timedelta(days=35)).isoformat()
-    anchors = soup.select("h2 a[href], h3 a[href], article h2 a[href], article h3 a[href]")
-    if not anchors:
-        anchors = [a for a in soup.select("a[href]") if re.search(r"OTT Release|OTT Date", a.get_text(" ", strip=True), re.I)]
+    # The category is paginated. Inspect up to four pages so a 35-day
+    # release audit is not limited to the newest ten editorial posts.
+    page_soups = [soup]
+    page_links = {}
+    for link in soup.select("a[href]"):
+        absolute = urljoin(source_url, link.get("href", ""))
+        match = re.search(r"/page/(\\d+)/?$", urlsplit(absolute).path)
+        if match and 2 <= int(match.group(1)) <= 4:
+            page_links[int(match.group(1))] = absolute
+    for page_number in sorted(page_links):
+        page_html = get(page_links[page_number], False)
+        page_soups.append(BeautifulSoup(page_html, "html.parser"))
+    anchors = []
+    for page_soup in page_soups:
+        page_anchors = page_soup.select("h2 a[href], h3 a[href], article h2 a[href], article h3 a[href]")
+        if not page_anchors:
+            page_anchors = [a for a in page_soup.select("a[href]") if re.search(r"OTT Release|OTT Date", a.get_text(" ", strip=True), re.I)]
+        anchors.extend(page_anchors)
     for anchor in anchors:
         headline = anchor.get_text(" ", strip=True)
         href = anchor.get("href")
