@@ -639,25 +639,27 @@ def _ottchecker_recent(soup, source_url, today, langs):
         if not streaming:
             continue
         title_node = node.select_one("a[href]")
-        kind = re.search(r"\b(Movie|Series)\b", text, re.I)
-        if not title_node or not kind:
+        kind_matches = list(re.finditer(r"\b(Movie|Series)\b", text, re.I))
+        if not title_node or not kind_matches:
             continue
+        kind = kind_matches[-1]
         day = _date_with_current_year(streaming.group(1), today)
         if not day or day > today or day < cutoff:
             continue
         anchor_text = title_node.get_text(" ", strip=True)
         if not anchor_text or len(anchor_text) > 500:
             continue
-        # OTTChecker currently wraps the entire release row in the title link,
-        # not just the title. Extract the title/year prefix before Movie/Series.
-        title_match = re.match(
-            r"^(.*?)\s*(?:\((20\d{2})\))?\s+(Movie|Series)\b(?=\s*(?:[·|•]|$))",
-            anchor_text, re.I,
-        )
-        if title_match and title_match.group(1).strip():
-            name = title_match.group(1).strip()
-            year = title_match.group(2)
-            row_kind = title_match.group(3).lower()
+        # Some OTTChecker cards wrap the entire row in the title link; others
+        # link only the title. Use the last type token so words like "Series"
+        # inside a movie/show title are not mistaken for the row's content type.
+        anchor_kinds = list(re.finditer(r"\b(Movie|Series)\b", anchor_text, re.I))
+        if anchor_kinds:
+            anchor_kind = anchor_kinds[-1]
+            prefix = anchor_text[:anchor_kind.start()].strip()
+            year_match = re.search(r"\((20\d{2})\)\s*$", prefix)
+            year = year_match.group(1) if year_match else None
+            name = prefix[:year_match.start()].strip() if year_match else prefix
+            row_kind = anchor_kind.group(1).lower()
         else:
             name = anchor_text
             year_match = re.search(r"\((20\d{2})\)", name) or re.search(r"\((20\d{2})\)", text)
