@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T02:57:26.052023+04:00",
+  "generatedAt": "2026-11-19T03:02:34.436571+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 41,
@@ -301,8 +301,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -685,12 +685,12 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -1095,9 +1095,9 @@
   "malayalamReview": {
     "policy": "Unmatched Malayalam source detections are held out until an unambiguous IMDb or TMDB identity and complete metadata are verified.",
     "counts": {
-      "total": 10,
+      "total": 9,
       "byType": {
-        "movie": 4,
+        "movie": 3,
         "series": 6
       }
     },
@@ -1155,29 +1155,6 @@
           "title": "S Coming Fri 27 Nov Satyameva Malayalam · Series ZEE5",
           "releaseDate": "2026-11-27",
           "source": "https://indianmoviereviews.com/ott-releases/"
-        }
-      },
-      {
-        "name": "DNA",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-11-12",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://www.ottchecker.com/ott-releases/malayalam"
-        ],
-        "platforms": [
-          "Sun NXT"
-        ],
-        "detail": "https://www.ottchecker.com/movie/dna-2024",
-        "sourceRecord": {
-          "title": "DNA",
-          "releaseDate": "2026-11-12",
-          "language": "malayalam",
-          "platforms": [
-            "Sun NXT"
-          ],
-          "source": "https://www.ottchecker.com/ott-releases/malayalam"
         }
       },
       {
@@ -1474,7 +1451,7 @@
       "source": "OTTChecker Hindi recent releases",
       "url": "https://www.ottchecker.com/ott-releases/hindi",
       "state": "live",
-      "records": 20
+      "records": 19
     },
     {
       "source": "DailyOTT upcoming dates",

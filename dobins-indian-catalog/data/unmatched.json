@@ -258,29 +258,6 @@
     }
   },
   {
-    "name": "DNA",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-11-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.ottchecker.com/ott-releases/malayalam"
-    ],
-    "platforms": [
-      "Sun NXT"
-    ],
-    "detail": "https://www.ottchecker.com/movie/dna-2024",
-    "sourceRecord": {
-      "title": "DNA",
-      "releaseDate": "2026-11-12",
-      "language": "malayalam",
-      "platforms": [
-        "Sun NXT"
-      ],
-      "source": "https://www.ottchecker.com/ott-releases/malayalam"
-    }
-  },
-  {
     "name": "Coming Fri 27 Nov Dhai Chaal Hindi · Series JioHotstar",
     "language": "hindi",
     "type": "series",
@@ -408,29 +385,6 @@
     }
   },
   {
-    "name": "Blood Roses",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-11-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.ottchecker.com/ott-releases/telugu"
-    ],
-    "platforms": [
-      "Amazon Prime Video"
-    ],
-    "detail": "https://www.ottchecker.com/movie/blood-roses-2026",
-    "sourceRecord": {
-      "title": "Blood Roses",
-      "releaseDate": "2026-11-13",
-      "language": "telugu",
-      "platforms": [
-        "Amazon Prime Video"
-      ],
-      "source": "https://www.ottchecker.com/ott-releases/telugu"
-    }
-  },
-  {
     "name": "Coming Sat 21 Nov AndherPura Curse Hindi · Series App not announced",
     "language": "hindi",
     "type": "series",
@@ -445,29 +399,6 @@
       "title": "Coming Sat 21 Nov AndherPura Curse Hindi · Series App not announced",
       "releaseDate": "2026-11-21",
       "source": "https://indianmoviereviews.com/ott-releases/"
-    }
-  },
-  {
-    "name": "Vidrohi",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-11-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.ottchecker.com/ott-releases/telugu"
-    ],
-    "platforms": [
-      "Amazon Prime Video"
-    ],
-    "detail": "https://www.ottchecker.com/movie/vidrohi-2025",
-    "sourceRecord": {
-      "title": "Vidrohi",
-      "releaseDate": "2026-11-12",
-      "language": "telugu",
-      "platforms": [
-        "Amazon Prime Video"
-      ],
-      "source": "https://www.ottchecker.com/ott-releases/telugu"
     }
   },
   {
@@ -502,29 +433,6 @@
     }
   },
   {
-    "name": "Ramayana: Part Two",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-11-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.ottchecker.com/ott-releases/hindi"
-    ],
-    "platforms": [
-      "YouTube"
-    ],
-    "detail": "https://www.ottchecker.com/movie/ramayana-part-two-2028",
-    "sourceRecord": {
-      "title": "Ramayana: Part Two",
-      "releaseDate": "2026-11-13",
-      "language": "hindi",
-      "platforms": [
-        "YouTube"
-      ],
-      "source": "https://www.ottchecker.com/ott-releases/hindi"
-    }
-  },
-  {
     "name": "Bal Barbarik",
     "language": "hindi",
     "type": "series",
@@ -554,22 +462,6 @@
       "updatedAt": "2026-11-14T02:18:50.337Z",
       "verified": true
     }
-  },
-  {
-    "name": "Sub-Inspector Yugandhar",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-10-30",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://cinebuds.com/ott-release-dates/",
-      "https://www.ottchecker.com/ott-releases/telugu"
-    ],
-    "platforms": [
-      "Netflix"
-    ],
-    "detail": "https://cinebuds.com/movies/sub-inspector-yugandhar/",
-    "sourceRecord": {}
   },
   {
     "name": "Cyber",
@@ -1187,37 +1079,6 @@
     }
   },
   {
-    "name": "Nijame Rujuvainadhi",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-08-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a7e75993fab9691478b3be2",
-      "platform": "ETV Win",
-      "title": "Nijame Rujuvainadhi",
-      "createdAt": "2026-08-14T01:55:36.933Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "original_language": "Telugu",
-      "releaseDate": "2026-08-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-08-14T01:55:36.933Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Chikoo Vs Bunty: Kushti Ki Jung",
     "language": "hindi",
     "type": "movie",
@@ -1249,32 +1110,33 @@
     }
   },
   {
-    "name": "WWE (Tamil Dub)",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-04-18",
+    "name": "Nijame Rujuvainadhi",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-08-14",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix"
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "69e2fc0930958fd1b908a124",
-      "title": "WWE (Tamil Dub)",
-      "platform": "Netflix",
-      "createdAt": "2026-04-18T03:35:37.425Z",
-      "genre": "Sports Entertainment, Action",
+      "_id": "6a7e75993fab9691478b3be2",
+      "platform": "ETV Win",
+      "title": "Nijame Rujuvainadhi",
+      "createdAt": "2026-08-14T01:55:36.933Z",
+      "genre": "Drama, Romance",
       "imdbRating": null,
       "languages": [
-        "Tamil"
+        "Telugu"
       ],
-      "releaseDate": "2026-04-18",
+      "original_language": "Telugu",
+      "releaseDate": "2026-08-14",
       "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-18T03:35:37.425Z",
+      "type": "Movie",
+      "updatedAt": "2026-08-14T01:55:36.933Z",
       "verified": true
     }
   },
@@ -1306,6 +1168,36 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-09-12T02:18:48.886Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "WWE (Tamil Dub)",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-04-18",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69e2fc0930958fd1b908a124",
+      "title": "WWE (Tamil Dub)",
+      "platform": "Netflix",
+      "createdAt": "2026-04-18T03:35:37.425Z",
+      "genre": "Sports Entertainment, Action",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-04-18",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-18T03:35:37.425Z",
       "verified": true
     }
   },
@@ -1528,79 +1420,6 @@
     }
   },
   {
-    "name": "Yezhu Kadal Yezhu Malai",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-05-25",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "SonyLIV"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a13c6a3135bb8f4954ff16b",
-      "platform": "SonyLIV",
-      "title": "Yezhu Kadal Yezhu Malai",
-      "createdAt": "2026-05-25T03:48:51.773Z",
-      "genre": "Drama, Romance, Thriller",
-      "imdbRating": 7.1,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-05-25",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-25T03:49:00.986Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/wdWQA1IVCYiTTEZMSnWl1tzhBd3.jpg",
-      "tmdbDetails": {
-        "tmdbId": 954445,
-        "director": "Ram",
-        "cast": [
-          {
-            "name": "Nivin Pauly",
-            "character": ""
-          },
-          {
-            "name": "Anjali",
-            "character": ""
-          },
-          {
-            "name": "Soori",
-            "character": ""
-          },
-          {
-            "name": "Ravi Mariya",
-            "character": ""
-          },
-          {
-            "name": "N. Azhagamperumal",
-            "character": ""
-          }
-        ],
-        "overview": "Caught between family duty and romantic love, a young man faces an impossible choice.",
-        "runtime": 137,
-        "genres": [
-          "Drama",
-          "Romance",
-          "Fantasy"
-        ],
-        "originalLanguage": "ta",
-        "spokenLanguages": [
-          "Tamil"
-        ],
-        "releaseDate": "2026-10-01",
-        "voteAverage": 4,
-        "trailerKey": "g50_PECZ17o",
-        "fetchedAt": "2026-11-05T14:07:15.051Z"
-      },
-      "tmdbId": 954445,
-      "verified": true
-    }
-  },
-  {
     "name": "Uthutha Herolu",
     "language": "telugu",
     "type": "movie",
@@ -1756,6 +1575,37 @@
     }
   },
   {
+    "name": "Manipur Files",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-07-11",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "YouTube"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a51d36fcf19d56322acc442",
+      "platform": "YouTube",
+      "title": "Manipur Files",
+      "createdAt": "2026-07-11T05:23:58.919Z",
+      "genre": "Documentary",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-07-11",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-07-11T05:23:58.919Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Iruniram",
     "language": "malayalam",
     "type": "movie",
@@ -1799,37 +1649,6 @@
         "fetchedAt": "2026-11-16T23:43:59.297Z"
       },
       "tmdbId": 1686468,
-      "verified": true
-    }
-  },
-  {
-    "name": "Manipur Files",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-07-11",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "YouTube"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a51d36fcf19d56322acc442",
-      "platform": "YouTube",
-      "title": "Manipur Files",
-      "createdAt": "2026-07-11T05:23:58.919Z",
-      "genre": "Documentary",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-07-11",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-07-11T05:23:58.919Z",
       "verified": true
     }
   },
@@ -1933,8 +1752,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix",
-      "ETV Win"
+      "ETV Win",
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {
