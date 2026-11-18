@@ -34,7 +34,7 @@ PLATFORMS = (
     "Prime Video", "Amazon Prime Video", "Netflix", "JioHotstar",
     "Disney+ Hotstar", "Hotstar", "ZEE5", "SonyLIV", "ManoramaMAX",
     "Manorama Max", "Aha", "Sun NXT", "Simply South", "JioCinema",
-    "Lionsgate Play", "ETV Win", "aha", "YouTube", "YouTube Premium",
+    "Lionsgate Play", "ETV Win", "aha", "YouTube", "YouTube Premium", "SimplySouth",
 )
 UNCERTAIN = re.compile(r"\b(expected|prediction|predicted|tentative|rumou?red|unconfirmed|not confirmed)\b", re.I)
 REPORTED = re.compile(r"\breported\b", re.I)
