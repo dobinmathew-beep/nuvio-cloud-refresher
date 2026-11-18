@@ -169,4 +169,11 @@ class CatalogTests(unittest.TestCase):
   self.assertEqual(events[0]['_verifiedImdbId'],'tt40431801')
   self.assertEqual(events[0]['_verifiedImdbName'],'Kasargod Embassy')
 
+ def test_bootstrap_policy_matches_current_catalog_metadata_policy(self):
+  root=Path(__file__).resolve().parents[1]
+  bootstrap_source=(root/'bootstrap.py').read_text()
+  update_source=(root/'update.py').read_text()
+  self.assertIn("POLICY='tmdb-tvmaze-v2'",bootstrap_source)
+  self.assertIn("'metadataPolicy':'tmdb-tvmaze-v2'",update_source)
+
 if __name__=='__main__':unittest.main()
