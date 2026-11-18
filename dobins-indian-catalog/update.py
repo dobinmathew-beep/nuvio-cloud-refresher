@@ -515,13 +515,14 @@ def build():
   raise RuntimeError('Malayalam metadata audit failed: %s of %s catalog entries failed; last-good catalogs retained' % (len(malayalam_errors),malayalam_audit['checked']))
  if any(not catalogs[c] for c in catalogs):
   save('metadata.json',metas);save('unmatched.json',unmatched);raise RuntimeError('An empty catalog would be published; retaining last-good catalogs while metadata backfills')
- # Audit recently streamed releases independently of the upcoming-only feed.
+ # Audit recent releases from every active discovery source, not only OTTChecker.
+ # This prevents a source-specific blind spot from making the audit look healthy
+ # while DailyOTT, Cinebuds or another collector has detected the same release.
  catalog_ids={cid:{str(x.get('id')) for x in items} for cid,items in catalogs.items()}
  recent_start=(date.fromisoformat(TODAY)-timedelta(days=35)).isoformat()
  recent_release_items=[]
  for e in events:
   sources=e.get('sources') or ([e.get('source')] if e.get('source') else [])
-  if not any('ottchecker.com' in str(source) for source in sources):continue
   day=str(e.get('ottDate') or '')[:10]
   if not re.fullmatch(r'\d{4}-\d{2}-\d{2}',day) or day<recent_start or day>TODAY:continue
   key=e['language']+'|'+e['type']+'|'+norm(e['name'])
@@ -536,12 +537,12 @@ def build():
   recent_release_items.append({'title':e['name'],'language':e['language'],'type':e['type'],'releaseDate':day,'id':mid or None,'matchState':state,'platforms':e.get('platforms') or [],'sources':list(dict.fromkeys(sources)),'detail':e.get('detail')})
  recent_counts={}
  for row in recent_release_items:recent_counts[row['matchState']]=recent_counts.get(row['matchState'],0)+1
- recent_release_audit={'windowDays':35,'source':'OTTChecker recent streaming pages','detected':len(recent_release_items),'byMatchState':recent_counts,'items':recent_release_items}
+ recent_release_audit={'windowDays':35,'source':'all active discovery sources (rolling 35-day window)','detected':len(recent_release_items),'byMatchState':recent_counts,'items':recent_release_items}
  save('recent-release-audit.json',recent_release_audit)
  blocked=[row for row in recent_release_items if row['matchState']=='matched_not_published']
  if blocked:
   save('metadata.json',metas);save('unmatched.json',unmatched)
-  raise RuntimeError('Recent OTTChecker releases resolved to complete metadata but were not published: '+', '.join(x['title'] for x in blocked[:10]))
+  raise RuntimeError('Recent releases from active discovery sources resolved to complete metadata but were not published: '+', '.join(x['title'] for x in blocked[:10]))
  save('metadata.json',metas);save('catalogs.json',catalogs);save('unmatched.json',unmatched)
  # Publish a dedicated upcoming-release index only after a real IMDb ID and
  # complete metadata have been resolved. Unmatched source rows remain diagnostic
