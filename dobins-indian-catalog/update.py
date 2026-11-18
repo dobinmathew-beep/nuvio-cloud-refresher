@@ -56,6 +56,9 @@ VERIFIED_IMDB_OVERRIDES={
  'malayalam|series|oruchiriiruchiribumperchiri3':{'id':'tt43511363','name':'Oru Chiri Iru Chiri Bumper Chiri 3'},
  'malayalam|series|kasaragodembassy':{'id':'tt40431801','name':'Kasargod Embassy'},
  'malayalam|movie|dna':{'id':'tt27470699','name':'DNA'},
+ 'telugu|movie|subinspectoryugandhar':{'id':'tt47421307','name':'Sub-Inspector Yugandhar'},
+ 'telugu|movie|bloodroses':{'id':'tt39440956','name':'Blood Roses'},
+ 'telugu|movie|vidrohi':{'id':'tt37937823','name':'Vidhrohi'},
  'hindi|movie|mirzapur':{'id':'tt34339725','name':'Mirzapur: The Movie'},
  'hindi|movie|vvaan':{'id':'tt34498564','name':'The Vvaan: Force of the Forrest'},
  'hindi|series|koffeewithkaran9':{'id':'tt0445883','name':'Koffee with Karan'}
