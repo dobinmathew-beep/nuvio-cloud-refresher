@@ -482,7 +482,7 @@ def _keralatv(soup, source_name, source_url, today, langs, norm, get):
     page_links = {}
     for link in soup.select("a[href]"):
         absolute = urljoin(source_url, link.get("href", ""))
-        match = re.search(r"/page/(\\d+)/?$", urlsplit(absolute).path)
+        match = re.search(r"/page/(\d+)/?$", urlsplit(absolute).path)
         if match and 2 <= int(match.group(1)) <= 4:
             page_links[int(match.group(1))] = absolute
     for page_number in sorted(page_links):
