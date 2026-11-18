@@ -845,9 +845,12 @@ def collect(get, today, langs, norm):
             # still signal markup drift and trigger a half-hour retry.
             if not rows and "keralatv.in" in url:
                 visible = soup.get_text(" ", strip=True).lower()
-                if "ott releases" in visible and ("streaming" in visible or "premiere" in visible):
+                article_links = soup.select("h2 a[href], h3 a[href], article h2 a[href], article h3 a[href]")
+                if article_links:
+                    raise ValueError("Kerala TV article cards exist but no dated release records were extracted; parser drift or detail-page failure suspected")
+                if "ott releases" in visible:
                     health.append({"source": name, "url": url, "state": "no_confirmed_recent_releases", "records": 0,
-                                   "note": "Feed loaded; no eligible dated releases for the rolling 35-day window were extracted."})
+                                   "note": "Feed loaded and no article cards were present for the rolling 35-day window."})
                     continue
                 raise ValueError("Kerala TV OTT feed did not expose its expected release listing")
             if not rows and "ottchecker.com" in url:
