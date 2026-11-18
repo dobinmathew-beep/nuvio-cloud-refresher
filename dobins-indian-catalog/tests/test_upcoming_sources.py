@@ -224,6 +224,7 @@ class UpcomingSourceTests(unittest.TestCase):
         html = """<section><ul>
           <li><a href="/movie/madhuramee-jeevitham-2026">Madhuramee Jeevitham (2026) Movie · IMDb 7.2 Amazon Prime Video Streaming since 12 Nov</a></li>
           <li><a href="/movie/bandra-2023">Bandra (2023) Movie · IMDb 3.9 ZEE5 Streaming since 12 Nov</a></li>
+          <li><a href="/movie/tony-xavier-2026">Tony Xavier (2026) Movie Manorama Max Streaming since 10 Nov</a></li>
           <li><a href="/movie/not-yet">Not Yet (2026)</a>
             Movie · Prime Video Expected 22 Nov</li>
           <li><a href="/movie/no-date">No Date (2026)</a> Movie · Prime Video</li>
@@ -234,7 +235,7 @@ class UpcomingSourceTests(unittest.TestCase):
             "2026-11-19",
             {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
         )
-        self.assertEqual({x["name"] for x in rows}, {"Madhuramee Jeevitham", "Bandra"})
+        self.assertEqual({x["name"] for x in rows}, {"Madhuramee Jeevitham", "Bandra", "Tony Xavier"})
         movie = next(x for x in rows if x["name"] == "Madhuramee Jeevitham")
         self.assertEqual(movie["language"], "malayalam")
         self.assertEqual(movie["type"], "movie")
