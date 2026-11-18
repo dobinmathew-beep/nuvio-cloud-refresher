@@ -1,25 +1,29 @@
-# Project handover presentation — slide source
-**The Great Indian Addon | 18 November 2026**
+# The Great Indian Addon — Animated Project Handover
+**18 November 2026 | Updated after Render workspace inspection**
 
-1. **Cover** — The Great Indian Addon: project handover; completed work only; evidence date 18 Nov 2026.
-2. **Architecture** — Public sources → GitHub Actions → repository/state → Vercel + public media hosting → Nuvio/browser.
-3. **Branch map** — main = automation/state/reports; dobins-catalog = generated catalog data; greta-site = website/API. poster-date-service and upcoming-poster-stack are listed only as non-production/unfinished.
-4. **Automation** — 30-minute check/watchdog; two-hour output refresh cadence in Asia/Muscat; preserve last-good outputs; retry unfinished work.
-5. **Latest verification** — 18 Nov 2026 06:19 Oman: 4/4 public outputs passed.
-6. **Addon catalogs** — 8 catalogs; 50 records returned per public endpoint; Nuvio pagination compatibility; 937 entries in daily dashboard; 73 pending identity matches; checkout not configured.
-7. **India EPG** — 612/820 channel IDs matched; 66,531 programmes; 208 unresolved; reports validated.
-8. **Backdrops** — 160 live statuses; 16 image checks; first eligible IMDb-linked catalog movie is centre artwork.
-9. **Hero reels** — Hindi/Tamil/Malayalam/Telugu; catalog-order selection; 20 films per language in latest daily status; compact MP4/projector format; last-good output protection.
-10. **Vercel** — latest production-target deployment READY; branch greta-site; commit dcc11ed04167b67ef73d2a3dbdb8427991b6cc89; Node 22.x.
-11. **Render** — Star Cards previously confirmed deployed from main; A24 asset refresh commit 3d24b3123750c52cf22ae1ee2d77b1eb342515ce; current Render deployment not freshly rechecked.
-12. **Related repositories** — nuvio-cloud-refresher; nuvio-star-cards; aiometadata-nuvio-edition (fork, not confirmed deployed).
-13. **Owner's health check** — Daily updates → independent verification → Actions logs → public endpoint → exact hosting deployment commit.
-14. **Excluded items** — OTTASIA parser resolution, pending identity matches, upcoming poster badge, AIOMetadata Nuvio deployment, payment checkout, unverified Render redeployments.
-15. **Evidence directory** — repository README, DAILY_UPDATES.md, verification/latest.md, logs, Actions, Vercel project.
+This Markdown companion is the maintained slide-by-slide source. The downloadable PowerPoint includes animated GIF motion backgrounds and an animated pipeline sequence. GIF animation plays in Slide Show mode.
+
+1. **Cinematic cover** — The Great Indian Addon: project, technology and working system.
+2. **System map** — Public sources → GitHub cloud → Vercel/Render → Nuvio/browser.
+3. **Animated pipeline** — Source feed → parser → GitHub → hosting → Nuvio.
+4. **Latest health check** — 18 Nov 2026, 06:19 Oman time: 4/4 public outputs passed.
+5. **Addon catalogue** — Eight language/type catalogs; all eight endpoints returned 50 entries each; pagination compatibility; 937 entries in the latest daily dashboard; 73 pending identity matches.
+6. **OTTASIA parser — complete** — Owner-confirmed functioning parser; source response is translated into the standard catalogue structure before identity and metadata checks. Parser completion does not resolve every title ID automatically.
+7. **India EPG** — 612 matched IDs, 208 unresolved, 66,531 programmes, validated reports.
+8. **Regional backdrops** — 160 live statuses, 16 image checks, no errors.
+9. **Hero reels** — Hindi, Tamil, Malayalam and Telugu; all public endpoints passed.
+10. **Upcoming poster badges — live** — Render service and latest live commit f67bf31; OCR badge matching, exact TVmaze episode dates, next-future-episode selection and generic TMDB poster ID support.
+11. **Poster request flow** — Client request → title resolution → episode date → OCR/date matching → poster response.
+12. **Render: both services live** — Star Cards on main (A24 refresh commit 3d24b312); upcoming posters on poster-date-service (badge OCR commit f67bf31). Both auto-deploy and are not suspended.
+13. **Vercel** — Great Indian Addon production deployment READY; greta-site branch; Node 22.x.
+14. **GitHub branches** — main (automation/state), dobins-catalog (generated catalogs), greta-site (website/API), poster-date-service (live Render service), upcoming-poster-stack (not production).
+15. **Owner's five-minute check** — Daily status → independent verification → Actions → public URL → exact deployment commit.
+16. **Still open / not claimed** — Checkout configuration, pending identity matches, AIOMetadata Nuvio-specific deployment.
 
 ## Presenter notes
-- A PASS on a public endpoint is distinct from a scheduled refresh being fully completed.
-- The dashboard at 06:20 showed addon and EPG updated at 06:00, while the combined backdrop/reel cycle was still running/queued from 04:00. The independent check at 06:19 passed all four public endpoints.
-- A Vercel READY deployment confirms build/deploy state, not every site interaction.
-- Do not claim the latest A24 asset commit is on Render until the service's latest deployed commit is checked.
-- Pending matches and unresolved EPG channels are reported honestly, not silently filled.
+- Render was inspected in the user's confirmed workspace, “Dobin's workspace”, on 18 Nov 2026.
+- Star Cards deployment dep-dbu3smtg1s2s73es8m60 is LIVE, commit 3d24b3123750c52cf22ae1ee2d77b1eb342515ce.
+- Upcoming poster deployment dep-dbts0e3m8hqs73f79oa0 is LIVE, commit f67bf31e21b1995f8eed15950a4ef80925c8716c.
+- The owner confirms poster badges and OTTASIA parser are functioning. Render deployment history supports the poster service being live; the parser status is explicitly labelled owner-confirmed rather than independently audited from a test report.
+- A public endpoint PASS is distinct from a scheduled refresh completing.
+- Pending identities and unresolved EPG channels remain visible; do not claim they have been silently fixed.
