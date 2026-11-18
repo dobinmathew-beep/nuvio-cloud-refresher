@@ -55,6 +55,7 @@ VERIFIED_IMDB_OVERRIDES={
  'malayalam|series|princeofmollywood':{'id':'tt44686897','name':'Prince of Mollywood'},
  'malayalam|series|oruchiriiruchiribumperchiri3':{'id':'tt43511363','name':'Oru Chiri Iru Chiri Bumper Chiri 3'},
  'malayalam|series|kasaragodembassy':{'id':'tt40431801','name':'Kasargod Embassy'},
+ 'malayalam|movie|dna':{'id':'tt27470699','name':'DNA'},
  'hindi|movie|mirzapur':{'id':'tt34339725','name':'Mirzapur: The Movie'},
  'hindi|movie|vvaan':{'id':'tt34498564','name':'The Vvaan: Force of the Forrest'},
  'hindi|series|koffeewithkaran9':{'id':'tt0445883','name':'Koffee with Karan'}
