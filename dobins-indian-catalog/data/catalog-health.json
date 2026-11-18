@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-18T23:01:54.741172+00:00",
+  "checkedAt": "2026-11-18T23:04:54.536680+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,17 +14,17 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1057,
+      "metadataRecords": 1079,
       "warning": null,
       "error": null
     },
     {
       "path": "/meta/* (Malayalam catalog audit)",
       "state": "ok",
-      "checked": 142,
-      "passed": 142,
+      "checked": 143,
+      "passed": 143,
       "failed": 0,
-      "missingOriginalLanguageField": 110
+      "missingOriginalLanguageField": 112
     },
     {
       "path": "/manifest.json",
@@ -45,18 +45,18 @@
       "language": "ml",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
-      "localPublishedCount": 75,
-      "localUniqueIdCount": 75,
+      "localPublishedCount": 76,
+      "localUniqueIdCount": 76,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 75,
-      "endpointUniqueIdCount": 75,
+      "endpointRawCount": 76,
+      "endpointUniqueIdCount": 76,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        25
+        26
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -186,18 +186,18 @@
       "language": "te",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_te_movie.json",
-      "localPublishedCount": 82,
-      "localUniqueIdCount": 82,
+      "localPublishedCount": 84,
+      "localUniqueIdCount": 84,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 82,
-      "endpointUniqueIdCount": 82,
+      "endpointRawCount": 84,
+      "endpointUniqueIdCount": 84,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        32
+        34
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -292,13 +292,13 @@
       "language": "hi",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
-      "localPublishedCount": 349,
-      "localUniqueIdCount": 349,
+      "localPublishedCount": 351,
+      "localUniqueIdCount": 351,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 349,
-      "endpointUniqueIdCount": 349,
+      "endpointRawCount": 351,
+      "endpointUniqueIdCount": 351,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
@@ -308,7 +308,8 @@
         50,
         50,
         50,
-        49
+        50,
+        1
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -330,10 +331,10 @@
   ],
   "malayalamMetadataAudit": {
     "state": "ok",
-    "checked": 142,
-    "passed": 142,
+    "checked": 143,
+    "passed": 143,
     "failed": 0,
-    "missingOriginalLanguageField": 110,
+    "missingOriginalLanguageField": 112,
     "failures": []
   },
   "catalogSummary": {
