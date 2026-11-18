@@ -228,6 +228,7 @@ class UpcomingSourceTests(unittest.TestCase):
           <li><a href="/movie/not-yet">Not Yet (2026)</a>
             Movie · Prime Video Expected 22 Nov</li>
           <li><a href="/movie/no-date">No Date (2026)</a> Movie · Prime Video</li>
+          <li><a href="/movie/ramayana-part-two-2028">Ramayana: Part Two (2028) Movie · YouTube Streaming since 13 Nov</a></li>
         </ul></section>"""
         rows = upcoming_sources._ottchecker_recent(
             BeautifulSoup(html, "html.parser"),
