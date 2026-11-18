@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-19T03:32:11.148252+04:00",
+  "generatedAt": "2026-11-19T03:36:37.621599+04:00",
   "policy": "confirmed-source-and-imdb-match-v1",
-  "count": 21,
+  "count": 22,
   "items": [
     {
       "id": "tt38984184",
@@ -303,6 +303,27 @@
         "https://cinebuds.com/ott-releases-this-week/"
       ],
       "catalog": "dobins_te_movie"
+    },
+    {
+      "id": "tt35933285",
+      "name": "O Saathi Re",
+      "language": "malayalam",
+      "type": "series",
+      "releaseDate": "2026-12-04",
+      "platforms": [
+        "Prime Video",
+        "ManoramaMAX",
+        "JioHotstar",
+        "Netflix",
+        "SonyLIV",
+        "ZEE5",
+        "Aha",
+        "aha"
+      ],
+      "sources": [
+        "https://www.keralatv.in/channel/ott/"
+      ],
+      "catalog": "dobins_ml_series"
     }
   ]
 }

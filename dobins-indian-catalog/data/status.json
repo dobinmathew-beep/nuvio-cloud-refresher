@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v2",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-19T03:32:11.148252+04:00",
-  "lastMatchRetryAt": "2026-11-19T03:32:11.148252+04:00",
+  "updatedAt": "2026-11-19T03:36:37.621599+04:00",
+  "lastMatchRetryAt": "2026-11-19T03:36:37.621599+04:00",
   "lastSuccessCycle": "2026-11-19T02:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
@@ -75,9 +75,9 @@
     {
       "source": "OTTClock confirmed upcoming calendar",
       "url": "https://ottclock.com/upcoming-ott-releases/",
-      "state": "failed",
+      "state": "no_confirmed_upcoming",
       "records": 0,
-      "error": "Source unavailable: https://ottclock.com/upcoming-ott-releases/"
+      "note": "Calendar section is present; no eligible future releases for the four tracked languages were found."
     },
     {
       "source": "OTTChecker Malayalam recent releases",
@@ -107,7 +107,7 @@
       "source": "Kerala TV multi-language OTT releases",
       "url": "https://www.keralatv.in/channel/ott/",
       "state": "live",
-      "records": 7
+      "records": 26
     },
     {
       "source": "DailyOTT upcoming dates",
@@ -132,14 +132,14 @@
     {
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
-      "state": "partial",
-      "records": 120,
+      "state": "live",
+      "records": 141,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
           "checkedSources": 11,
-          "healthySources": 10,
-          "failedSources": 1,
+          "healthySources": 11,
+          "failedSources": 0,
           "healthySourceDomains": [
             "api.tvmaze.com",
             "cinebuds.com",
@@ -150,14 +150,13 @@
             "newindianmovies.com",
             "ottasia.com",
             "ottchecker.com",
+            "ottclock.com",
             "simplymollywood.com"
           ],
-          "failedSourceDomains": [
-            "ottclock.com"
-          ],
+          "failedSourceDomains": [],
           "sourcesWithRecords": 5,
-          "detectedRecords": 24,
-          "coverageStatus": "partial",
+          "detectedRecords": 32,
+          "coverageStatus": "ok",
           "sources": [
             {
               "source": "Cinebuds upcoming calendar",
@@ -218,8 +217,8 @@
             {
               "source": "OTTClock confirmed upcoming calendar",
               "url": "https://ottclock.com/upcoming-ott-releases/",
-              "state": "failed",
-              "languageState": "failed",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
               "records": 0
             },
             {
@@ -234,7 +233,7 @@
               "url": "https://www.keralatv.in/channel/ott/",
               "state": "live",
               "languageState": "records_found",
-              "records": 5
+              "records": 13
             },
             {
               "source": "DailyOTT upcoming dates",
@@ -262,8 +261,8 @@
         "tamil": {
           "checkedFeeds": 12,
           "checkedSources": 10,
-          "healthySources": 9,
-          "failedSources": 1,
+          "healthySources": 10,
+          "failedSources": 0,
           "healthySourceDomains": [
             "api.tvmaze.com",
             "cinebuds.com",
@@ -273,14 +272,13 @@
             "myvi.in",
             "newindianmovies.com",
             "ottasia.com",
-            "ottchecker.com"
-          ],
-          "failedSourceDomains": [
+            "ottchecker.com",
             "ottclock.com"
           ],
+          "failedSourceDomains": [],
           "sourcesWithRecords": 6,
-          "detectedRecords": 29,
-          "coverageStatus": "partial",
+          "detectedRecords": 37,
+          "coverageStatus": "ok",
           "sources": [
             {
               "source": "Cinebuds upcoming calendar",
@@ -327,8 +325,8 @@
             {
               "source": "OTTClock confirmed upcoming calendar",
               "url": "https://ottclock.com/upcoming-ott-releases/",
-              "state": "failed",
-              "languageState": "failed",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
               "records": 0
             },
             {
@@ -343,7 +341,7 @@
               "url": "https://www.keralatv.in/channel/ott/",
               "state": "live",
               "languageState": "records_found",
-              "records": 2
+              "records": 10
             },
             {
               "source": "DailyOTT upcoming dates",
@@ -371,8 +369,8 @@
         "telugu": {
           "checkedFeeds": 12,
           "checkedSources": 10,
-          "healthySources": 9,
-          "failedSources": 1,
+          "healthySources": 10,
+          "failedSources": 0,
           "healthySourceDomains": [
             "api.tvmaze.com",
             "cinebuds.com",
@@ -382,14 +380,13 @@
             "myvi.in",
             "newindianmovies.com",
             "ottasia.com",
-            "ottchecker.com"
-          ],
-          "failedSourceDomains": [
+            "ottchecker.com",
             "ottclock.com"
           ],
+          "failedSourceDomains": [],
           "sourcesWithRecords": 6,
-          "detectedRecords": 24,
-          "coverageStatus": "partial",
+          "detectedRecords": 29,
+          "coverageStatus": "ok",
           "sources": [
             {
               "source": "Cinebuds upcoming calendar",
@@ -436,8 +433,8 @@
             {
               "source": "OTTClock confirmed upcoming calendar",
               "url": "https://ottclock.com/upcoming-ott-releases/",
-              "state": "failed",
-              "languageState": "failed",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
               "records": 0
             },
             {
@@ -452,7 +449,7 @@
               "url": "https://www.keralatv.in/channel/ott/",
               "state": "live",
               "languageState": "records_found",
-              "records": 1
+              "records": 6
             },
             {
               "source": "DailyOTT upcoming dates",
@@ -480,8 +477,8 @@
         "hindi": {
           "checkedFeeds": 12,
           "checkedSources": 10,
-          "healthySources": 9,
-          "failedSources": 1,
+          "healthySources": 10,
+          "failedSources": 0,
           "healthySourceDomains": [
             "api.tvmaze.com",
             "cinebuds.com",
@@ -491,14 +488,13 @@
             "myvi.in",
             "newindianmovies.com",
             "ottasia.com",
-            "ottchecker.com"
-          ],
-          "failedSourceDomains": [
+            "ottchecker.com",
             "ottclock.com"
           ],
+          "failedSourceDomains": [],
           "sourcesWithRecords": 8,
           "detectedRecords": 43,
-          "coverageStatus": "partial",
+          "coverageStatus": "ok",
           "sources": [
             {
               "source": "Cinebuds upcoming calendar",
@@ -545,8 +541,8 @@
             {
               "source": "OTTClock confirmed upcoming calendar",
               "url": "https://ottclock.com/upcoming-ott-releases/",
-              "state": "failed",
-              "languageState": "failed",
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
               "records": 0
             },
             {
@@ -689,7 +685,7 @@
   ],
   "counts": {
     "dobins_ml_movie": 76,
-    "dobins_ml_series": 68,
+    "dobins_ml_series": 69,
     "dobins_ta_movie": 73,
     "dobins_ta_series": 112,
     "dobins_te_movie": 84,
@@ -700,7 +696,7 @@
   "catalogFreshness": {
     "dobins_ml_movie": {
       "count": 76,
-      "generatedAt": "2026-11-19T03:32:11.148252+04:00",
+      "generatedAt": "2026-11-19T03:36:37.621599+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -709,8 +705,8 @@
       }
     },
     "dobins_ml_series": {
-      "count": 68,
-      "generatedAt": "2026-11-19T03:32:11.148252+04:00",
+      "count": 69,
+      "generatedAt": "2026-11-19T03:36:37.621599+04:00",
       "latestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
@@ -720,7 +716,7 @@
     },
     "dobins_ta_movie": {
       "count": 73,
-      "generatedAt": "2026-11-19T03:32:11.148252+04:00",
+      "generatedAt": "2026-11-19T03:36:37.621599+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -730,7 +726,7 @@
     },
     "dobins_ta_series": {
       "count": 112,
-      "generatedAt": "2026-11-19T03:32:11.148252+04:00",
+      "generatedAt": "2026-11-19T03:36:37.621599+04:00",
       "latestEntry": {
         "id": "tmdb:339004",
         "name": "Notebook 90s – Kadhal Flashback",
@@ -740,7 +736,7 @@
     },
     "dobins_te_movie": {
       "count": 84,
-      "generatedAt": "2026-11-19T03:32:11.148252+04:00",
+      "generatedAt": "2026-11-19T03:36:37.621599+04:00",
       "latestEntry": {
         "id": "tt30768979",
         "name": "Aadarsha Kutumbam House No: 47 - AK47",
@@ -750,7 +746,7 @@
     },
     "dobins_te_series": {
       "count": 114,
-      "generatedAt": "2026-11-19T03:32:11.148252+04:00",
+      "generatedAt": "2026-11-19T03:36:37.621599+04:00",
       "latestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
@@ -760,7 +756,7 @@
     },
     "dobins_hi_movie": {
       "count": 90,
-      "generatedAt": "2026-11-19T03:32:11.148252+04:00",
+      "generatedAt": "2026-11-19T03:36:37.621599+04:00",
       "latestEntry": {
         "id": "tt39390582",
         "name": "Hanuman Ansh",
@@ -770,7 +766,7 @@
     },
     "dobins_hi_series": {
       "count": 351,
-      "generatedAt": "2026-11-19T03:32:11.148252+04:00",
+      "generatedAt": "2026-11-19T03:36:37.621599+04:00",
       "latestEntry": {
         "id": "tmdb:337904",
         "name": "AndherPura Curse",
@@ -781,36 +777,36 @@
   },
   "pendingMatchesByCatalog": {
     "dobins_ml_movie": 3,
-    "dobins_ml_series": 8,
+    "dobins_ml_series": 15,
     "dobins_ta_movie": 3,
-    "dobins_ta_series": 12,
+    "dobins_ta_series": 20,
     "dobins_te_movie": 8,
-    "dobins_te_series": 10,
+    "dobins_te_series": 11,
     "dobins_hi_movie": 13,
     "dobins_hi_series": 15
   },
   "checkedCandidatesByCatalog": {
     "dobins_ml_movie": 75,
-    "dobins_ml_series": 82,
+    "dobins_ml_series": 90,
     "dobins_ta_movie": 74,
-    "dobins_ta_series": 130,
+    "dobins_ta_series": 138,
     "dobins_te_movie": 90,
-    "dobins_te_series": 126,
+    "dobins_te_series": 127,
     "dobins_hi_movie": 99,
     "dobins_hi_series": 369
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
-  "pendingMatches": 72,
-  "checkedCandidates": 1045,
+  "pendingMatches": 88,
+  "checkedCandidates": 1062,
   "malayalamMetadataAudit": {
-    "checked": 144,
-    "passed": 144,
+    "checked": 145,
+    "passed": 145,
     "failed": 0,
-    "missingOriginalLanguageField": 113,
+    "missingOriginalLanguageField": 114,
     "policy": "IMDb-or-TMDB identity; exact ID/type; title and metadata integrity"
   },
   "upcoming": {
-    "matchedTitles": 21,
+    "matchedTitles": 22,
     "bySource": {
       "https://simplymollywood.com/ott": {
         "matchedTitles": 8,
@@ -878,25 +874,31 @@
           "tt38676235",
           "tt41496092"
         ]
+      },
+      "https://www.keralatv.in/channel/ott/": {
+        "matchedTitles": 1,
+        "imdbIds": [
+          "tt35933285"
+        ]
       }
     },
     "policy": "Only confirmed upcoming titles with a validated IMDb tt-ID are published."
   },
   "upcomingDiscovery": {
-    "total": 41,
+    "total": 50,
     "byLanguage": {
       "hindi": 21,
-      "malayalam": 6,
-      "tamil": 7,
-      "telugu": 7
+      "malayalam": 11,
+      "tamil": 10,
+      "telugu": 8
     },
     "byType": {
       "movie": 22,
-      "series": 19
+      "series": 28
     },
     "byMatchState": {
-      "published": 24,
-      "unmatched": 17
+      "published": 25,
+      "unmatched": 25
     },
     "bySource": {
       "https://simplymollywood.com/ott": 8,
@@ -904,21 +906,22 @@
       "https://www.myvi.in/blog/ott-releases-this-week": 1,
       "https://newindianmovies.com/": 3,
       "https://www.dailyott.in/": 4,
+      "https://www.keralatv.in/channel/ott/": 9,
       "https://indianmoviereviews.com/ott-releases/": 12,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
       "https://v3-cinemeta.strem.io/": 1,
       "https://ottasia.com/ott-releases-this-week?country=IN": 9
     },
-    "malayalamReviewCount": 11
+    "malayalamReviewCount": 18
   },
   "recentReleaseAudit": {
     "windowDays": 35,
     "source": "all active discovery sources (rolling 35-day window)",
-    "detected": 116,
+    "detected": 124,
     "byMatchState": {
       "published": 110,
-      "unmatched": 6
+      "unmatched": 14
     },
     "items": [
       {
@@ -977,8 +980,8 @@
         "id": "tt28450216",
         "matchState": "published",
         "platforms": [
-          "JioHotStar",
-          "JioHotstar"
+          "JioHotstar",
+          "JioHotStar"
         ],
         "sources": [
           "https://www.ottchecker.com/ott-releases/hindi",
@@ -1275,10 +1278,10 @@
         "id": "tt45370533",
         "matchState": "published",
         "platforms": [
+          "Aha",
           "SimplySouth",
           "Amazon Prime Video",
-          "Prime Video",
-          "Aha"
+          "Prime Video"
         ],
         "sources": [
           "https://www.ottchecker.com/ott-releases/tamil",
@@ -1437,8 +1440,8 @@
         "id": "tt13854248",
         "matchState": "published",
         "platforms": [
-          "JioHotStar",
-          "JioHotstar"
+          "JioHotstar",
+          "JioHotStar"
         ],
         "sources": [
           "https://www.ottchecker.com/ott-releases/hindi",
@@ -1823,8 +1826,8 @@
           "Netflix"
         ],
         "sources": [
-          "https://www.ottchecker.com/ott-releases/hindi",
-          "https://cinebuds.com/ott-release-dates/"
+          "https://cinebuds.com/ott-release-dates/",
+          "https://www.ottchecker.com/ott-releases/hindi"
         ],
         "detail": "https://cinebuds.com/movies/daayra/"
       },
@@ -1836,8 +1839,8 @@
         "id": "tt27512908",
         "matchState": "published",
         "platforms": [
-          "SimplySouth",
-          "Manorama Max"
+          "Manorama Max",
+          "SimplySouth"
         ],
         "sources": [
           "https://www.ottchecker.com/ott-releases/malayalam",
@@ -1935,8 +1938,8 @@
           "Prime Video"
         ],
         "sources": [
-          "https://www.ottchecker.com/ott-releases/hindi",
-          "https://cinebuds.com/ott-release-dates/"
+          "https://cinebuds.com/ott-release-dates/",
+          "https://www.ottchecker.com/ott-releases/hindi"
         ],
         "detail": "https://cinebuds.com/movies/the-vvaan/"
       },
@@ -1951,8 +1954,8 @@
           "Netflix"
         ],
         "sources": [
-          "https://www.ottchecker.com/ott-releases/hindi",
           "https://cinebuds.com/ott-release-dates/",
+          "https://www.ottchecker.com/ott-releases/hindi",
           "https://www.tvmaze.com/shows/95295/akka"
         ],
         "detail": "https://cinebuds.com/movies/akka/"
@@ -2292,7 +2295,8 @@
         "id": "tmdb:1748499",
         "matchState": "published",
         "platforms": [
-          "Aha"
+          "Aha",
+          "aha"
         ],
         "sources": [
           "https://www.ottchecker.com/ott-releases/telugu"
@@ -2637,6 +2641,172 @@
         "detail": "https://www.keralatv.in/kla-kla-klee-klee-nazriya-thirinjunookki-ott-release-date/"
       },
       {
+        "title": "Sameer",
+        "language": "malayalam",
+        "type": "series",
+        "releaseDate": "2026-11-13",
+        "id": null,
+        "matchState": "unmatched",
+        "platforms": [
+          "Prime Video",
+          "ManoramaMAX",
+          "JioHotstar",
+          "Netflix",
+          "SonyLIV",
+          "Sun NXT",
+          "ZEE5",
+          "Aha",
+          "aha"
+        ],
+        "sources": [
+          "https://www.keralatv.in/channel/ott/"
+        ],
+        "detail": "https://www.keralatv.in/sameer-malayalam-movie-ott-release-date-manoramamax/"
+      },
+      {
+        "title": "November 2026",
+        "language": "tamil",
+        "type": "series",
+        "releaseDate": "2026-11-05",
+        "id": null,
+        "matchState": "unmatched",
+        "platforms": [
+          "Lionsgate Play",
+          "Prime Video",
+          "ManoramaMAX",
+          "JioHotstar",
+          "Netflix",
+          "SonyLIV",
+          "Sun NXT",
+          "ZEE5",
+          "Aha",
+          "aha"
+        ],
+        "sources": [
+          "https://www.keralatv.in/channel/ott/"
+        ],
+        "detail": "https://www.keralatv.in/november-2026-ott-releases/"
+      },
+      {
+        "title": "Jeffy Thomas as Basheer in The Third Murder – Malayalam Actor Gains Attention with ManoramaMAX Release",
+        "language": "malayalam",
+        "type": "series",
+        "releaseDate": "2026-11-13",
+        "id": null,
+        "matchState": "unmatched",
+        "platforms": [
+          "Prime Video",
+          "ManoramaMAX",
+          "JioHotstar",
+          "Netflix",
+          "SonyLIV",
+          "ZEE5",
+          "Aha",
+          "aha"
+        ],
+        "sources": [
+          "https://www.keralatv.in/channel/ott/"
+        ],
+        "detail": "https://www.keralatv.in/jeffy-thomas-as-basheer-the-third-murder-movie/"
+      },
+      {
+        "title": "DNA",
+        "language": "malayalam",
+        "type": "series",
+        "releaseDate": "2026-11-13",
+        "id": null,
+        "matchState": "unmatched",
+        "platforms": [
+          "Sun NXT"
+        ],
+        "sources": [
+          "https://www.keralatv.in/channel/ott/"
+        ],
+        "detail": "https://www.keralatv.in/dna-malayalam-movie-ott-release-date-sun-nxt/"
+      },
+      {
+        "title": "The Rings of Power Season 3 Now Streaming on Prime Video – Malayalam, Tamil, Telugu, Hindi and Kannada Audio Available",
+        "language": "tamil",
+        "type": "series",
+        "releaseDate": "2026-11-11",
+        "id": null,
+        "matchState": "unmatched",
+        "platforms": [
+          "Prime Video",
+          "ManoramaMAX",
+          "JioHotstar",
+          "Netflix",
+          "SonyLIV",
+          "ZEE5",
+          "Aha",
+          "aha"
+        ],
+        "sources": [
+          "https://www.keralatv.in/channel/ott/"
+        ],
+        "detail": "https://www.keralatv.in/the-rings-of-power-season-3-ott-release-prime-video/"
+      },
+      {
+        "title": "Scene",
+        "language": "tamil",
+        "type": "series",
+        "releaseDate": "2026-11-06",
+        "id": null,
+        "matchState": "unmatched",
+        "platforms": [
+          "Lionsgate Play",
+          "Prime Video",
+          "ManoramaMAX",
+          "JioHotstar",
+          "Netflix",
+          "SonyLIV",
+          "ZEE5",
+          "Aha",
+          "aha"
+        ],
+        "sources": [
+          "https://www.keralatv.in/channel/ott/"
+        ],
+        "detail": "https://www.keralatv.in/scene-movie-ott-release-date-netflix/"
+      },
+      {
+        "title": "All Pass Tamil Movie Now Streaming on Prime Video – 6 November",
+        "language": "tamil",
+        "type": "series",
+        "releaseDate": "2026-11-06",
+        "id": null,
+        "matchState": "unmatched",
+        "platforms": [
+          "Prime Video"
+        ],
+        "sources": [
+          "https://www.keralatv.in/channel/ott/"
+        ],
+        "detail": "https://www.keralatv.in/all-pass-tamil-movie-ott-release-date-prime-video/"
+      },
+      {
+        "title": "Kauriburi: The Cursed Temple Now Streaming on Netflix in Hindi, Tamil and Telugu – 6-Episode Horror Series",
+        "language": "tamil",
+        "type": "series",
+        "releaseDate": "2026-11-06",
+        "id": null,
+        "matchState": "unmatched",
+        "platforms": [
+          "Prime Video",
+          "ManoramaMAX",
+          "JioHotstar",
+          "Netflix",
+          "SonyLIV",
+          "ZEE5",
+          "Aha",
+          "aha"
+        ],
+        "sources": [
+          "https://www.keralatv.in/channel/ott/"
+        ],
+        "detail": "https://www.keralatv.in/kauriburi-the-cursed-temple-ott-release-netflix/"
+      },
+      {
         "title": "Madam Inspector",
         "language": "hindi",
         "type": "series",
@@ -2787,8 +2957,8 @@
     "malayalam": {
       "checkedFeeds": 14,
       "checkedSources": 11,
-      "healthySources": 10,
-      "failedSources": 1,
+      "healthySources": 11,
+      "failedSources": 0,
       "healthySourceDomains": [
         "api.tvmaze.com",
         "cinebuds.com",
@@ -2799,14 +2969,13 @@
         "newindianmovies.com",
         "ottasia.com",
         "ottchecker.com",
+        "ottclock.com",
         "simplymollywood.com"
       ],
-      "failedSourceDomains": [
-        "ottclock.com"
-      ],
+      "failedSourceDomains": [],
       "sourcesWithRecords": 5,
-      "detectedRecords": 24,
-      "coverageStatus": "partial",
+      "detectedRecords": 32,
+      "coverageStatus": "ok",
       "sources": [
         {
           "source": "Cinebuds upcoming calendar",
@@ -2867,8 +3036,8 @@
         {
           "source": "OTTClock confirmed upcoming calendar",
           "url": "https://ottclock.com/upcoming-ott-releases/",
-          "state": "failed",
-          "languageState": "failed",
+          "state": "no_confirmed_upcoming",
+          "languageState": "checked_no_records",
           "records": 0
         },
         {
@@ -2883,7 +3052,7 @@
           "url": "https://www.keralatv.in/channel/ott/",
           "state": "live",
           "languageState": "records_found",
-          "records": 5
+          "records": 13
         },
         {
           "source": "DailyOTT upcoming dates",
@@ -2911,8 +3080,8 @@
     "tamil": {
       "checkedFeeds": 12,
       "checkedSources": 10,
-      "healthySources": 9,
-      "failedSources": 1,
+      "healthySources": 10,
+      "failedSources": 0,
       "healthySourceDomains": [
         "api.tvmaze.com",
         "cinebuds.com",
@@ -2922,14 +3091,13 @@
         "myvi.in",
         "newindianmovies.com",
         "ottasia.com",
-        "ottchecker.com"
-      ],
-      "failedSourceDomains": [
+        "ottchecker.com",
         "ottclock.com"
       ],
+      "failedSourceDomains": [],
       "sourcesWithRecords": 6,
-      "detectedRecords": 29,
-      "coverageStatus": "partial",
+      "detectedRecords": 37,
+      "coverageStatus": "ok",
       "sources": [
         {
           "source": "Cinebuds upcoming calendar",
@@ -2976,8 +3144,8 @@
         {
           "source": "OTTClock confirmed upcoming calendar",
           "url": "https://ottclock.com/upcoming-ott-releases/",
-          "state": "failed",
-          "languageState": "failed",
+          "state": "no_confirmed_upcoming",
+          "languageState": "checked_no_records",
           "records": 0
         },
         {
@@ -2992,7 +3160,7 @@
           "url": "https://www.keralatv.in/channel/ott/",
           "state": "live",
           "languageState": "records_found",
-          "records": 2
+          "records": 10
         },
         {
           "source": "DailyOTT upcoming dates",
@@ -3020,8 +3188,8 @@
     "telugu": {
       "checkedFeeds": 12,
       "checkedSources": 10,
-      "healthySources": 9,
-      "failedSources": 1,
+      "healthySources": 10,
+      "failedSources": 0,
       "healthySourceDomains": [
         "api.tvmaze.com",
         "cinebuds.com",
@@ -3031,14 +3199,13 @@
         "myvi.in",
         "newindianmovies.com",
         "ottasia.com",
-        "ottchecker.com"
-      ],
-      "failedSourceDomains": [
+        "ottchecker.com",
         "ottclock.com"
       ],
+      "failedSourceDomains": [],
       "sourcesWithRecords": 6,
-      "detectedRecords": 24,
-      "coverageStatus": "partial",
+      "detectedRecords": 29,
+      "coverageStatus": "ok",
       "sources": [
         {
           "source": "Cinebuds upcoming calendar",
@@ -3085,8 +3252,8 @@
         {
           "source": "OTTClock confirmed upcoming calendar",
           "url": "https://ottclock.com/upcoming-ott-releases/",
-          "state": "failed",
-          "languageState": "failed",
+          "state": "no_confirmed_upcoming",
+          "languageState": "checked_no_records",
           "records": 0
         },
         {
@@ -3101,7 +3268,7 @@
           "url": "https://www.keralatv.in/channel/ott/",
           "state": "live",
           "languageState": "records_found",
-          "records": 1
+          "records": 6
         },
         {
           "source": "DailyOTT upcoming dates",
@@ -3129,8 +3296,8 @@
     "hindi": {
       "checkedFeeds": 12,
       "checkedSources": 10,
-      "healthySources": 9,
-      "failedSources": 1,
+      "healthySources": 10,
+      "failedSources": 0,
       "healthySourceDomains": [
         "api.tvmaze.com",
         "cinebuds.com",
@@ -3140,14 +3307,13 @@
         "myvi.in",
         "newindianmovies.com",
         "ottasia.com",
-        "ottchecker.com"
-      ],
-      "failedSourceDomains": [
+        "ottchecker.com",
         "ottclock.com"
       ],
+      "failedSourceDomains": [],
       "sourcesWithRecords": 8,
       "detectedRecords": 43,
-      "coverageStatus": "partial",
+      "coverageStatus": "ok",
       "sources": [
         {
           "source": "Cinebuds upcoming calendar",
@@ -3194,8 +3360,8 @@
         {
           "source": "OTTClock confirmed upcoming calendar",
           "url": "https://ottclock.com/upcoming-ott-releases/",
-          "state": "failed",
-          "languageState": "failed",
+          "state": "no_confirmed_upcoming",
+          "languageState": "checked_no_records",
           "records": 0
         },
         {

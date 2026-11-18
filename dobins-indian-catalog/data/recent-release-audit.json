@@ -1,10 +1,10 @@
 {
   "windowDays": 35,
   "source": "all active discovery sources (rolling 35-day window)",
-  "detected": 116,
+  "detected": 124,
   "byMatchState": {
     "published": 110,
-    "unmatched": 6
+    "unmatched": 14
   },
   "items": [
     {
@@ -63,8 +63,8 @@
       "id": "tt28450216",
       "matchState": "published",
       "platforms": [
-        "JioHotStar",
-        "JioHotstar"
+        "JioHotstar",
+        "JioHotStar"
       ],
       "sources": [
         "https://www.ottchecker.com/ott-releases/hindi",
@@ -361,10 +361,10 @@
       "id": "tt45370533",
       "matchState": "published",
       "platforms": [
+        "Aha",
         "SimplySouth",
         "Amazon Prime Video",
-        "Prime Video",
-        "Aha"
+        "Prime Video"
       ],
       "sources": [
         "https://www.ottchecker.com/ott-releases/tamil",
@@ -523,8 +523,8 @@
       "id": "tt13854248",
       "matchState": "published",
       "platforms": [
-        "JioHotStar",
-        "JioHotstar"
+        "JioHotstar",
+        "JioHotStar"
       ],
       "sources": [
         "https://www.ottchecker.com/ott-releases/hindi",
@@ -909,8 +909,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "detail": "https://cinebuds.com/movies/daayra/"
     },
@@ -922,8 +922,8 @@
       "id": "tt27512908",
       "matchState": "published",
       "platforms": [
-        "SimplySouth",
-        "Manorama Max"
+        "Manorama Max",
+        "SimplySouth"
       ],
       "sources": [
         "https://www.ottchecker.com/ott-releases/malayalam",
@@ -1021,8 +1021,8 @@
         "Prime Video"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "detail": "https://cinebuds.com/movies/the-vvaan/"
     },
@@ -1037,8 +1037,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
         "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.tvmaze.com/shows/95295/akka"
       ],
       "detail": "https://cinebuds.com/movies/akka/"
@@ -1378,7 +1378,8 @@
       "id": "tmdb:1748499",
       "matchState": "published",
       "platforms": [
-        "Aha"
+        "Aha",
+        "aha"
       ],
       "sources": [
         "https://www.ottchecker.com/ott-releases/telugu"
@@ -1721,6 +1722,172 @@
         "https://www.keralatv.in/channel/ott/"
       ],
       "detail": "https://www.keralatv.in/kla-kla-klee-klee-nazriya-thirinjunookki-ott-release-date/"
+    },
+    {
+      "title": "Sameer",
+      "language": "malayalam",
+      "type": "series",
+      "releaseDate": "2026-11-13",
+      "id": null,
+      "matchState": "unmatched",
+      "platforms": [
+        "Prime Video",
+        "ManoramaMAX",
+        "JioHotstar",
+        "Netflix",
+        "SonyLIV",
+        "Sun NXT",
+        "ZEE5",
+        "Aha",
+        "aha"
+      ],
+      "sources": [
+        "https://www.keralatv.in/channel/ott/"
+      ],
+      "detail": "https://www.keralatv.in/sameer-malayalam-movie-ott-release-date-manoramamax/"
+    },
+    {
+      "title": "November 2026",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-11-05",
+      "id": null,
+      "matchState": "unmatched",
+      "platforms": [
+        "Lionsgate Play",
+        "Prime Video",
+        "ManoramaMAX",
+        "JioHotstar",
+        "Netflix",
+        "SonyLIV",
+        "Sun NXT",
+        "ZEE5",
+        "Aha",
+        "aha"
+      ],
+      "sources": [
+        "https://www.keralatv.in/channel/ott/"
+      ],
+      "detail": "https://www.keralatv.in/november-2026-ott-releases/"
+    },
+    {
+      "title": "Jeffy Thomas as Basheer in The Third Murder – Malayalam Actor Gains Attention with ManoramaMAX Release",
+      "language": "malayalam",
+      "type": "series",
+      "releaseDate": "2026-11-13",
+      "id": null,
+      "matchState": "unmatched",
+      "platforms": [
+        "Prime Video",
+        "ManoramaMAX",
+        "JioHotstar",
+        "Netflix",
+        "SonyLIV",
+        "ZEE5",
+        "Aha",
+        "aha"
+      ],
+      "sources": [
+        "https://www.keralatv.in/channel/ott/"
+      ],
+      "detail": "https://www.keralatv.in/jeffy-thomas-as-basheer-the-third-murder-movie/"
+    },
+    {
+      "title": "DNA",
+      "language": "malayalam",
+      "type": "series",
+      "releaseDate": "2026-11-13",
+      "id": null,
+      "matchState": "unmatched",
+      "platforms": [
+        "Sun NXT"
+      ],
+      "sources": [
+        "https://www.keralatv.in/channel/ott/"
+      ],
+      "detail": "https://www.keralatv.in/dna-malayalam-movie-ott-release-date-sun-nxt/"
+    },
+    {
+      "title": "The Rings of Power Season 3 Now Streaming on Prime Video – Malayalam, Tamil, Telugu, Hindi and Kannada Audio Available",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-11-11",
+      "id": null,
+      "matchState": "unmatched",
+      "platforms": [
+        "Prime Video",
+        "ManoramaMAX",
+        "JioHotstar",
+        "Netflix",
+        "SonyLIV",
+        "ZEE5",
+        "Aha",
+        "aha"
+      ],
+      "sources": [
+        "https://www.keralatv.in/channel/ott/"
+      ],
+      "detail": "https://www.keralatv.in/the-rings-of-power-season-3-ott-release-prime-video/"
+    },
+    {
+      "title": "Scene",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-11-06",
+      "id": null,
+      "matchState": "unmatched",
+      "platforms": [
+        "Lionsgate Play",
+        "Prime Video",
+        "ManoramaMAX",
+        "JioHotstar",
+        "Netflix",
+        "SonyLIV",
+        "ZEE5",
+        "Aha",
+        "aha"
+      ],
+      "sources": [
+        "https://www.keralatv.in/channel/ott/"
+      ],
+      "detail": "https://www.keralatv.in/scene-movie-ott-release-date-netflix/"
+    },
+    {
+      "title": "All Pass Tamil Movie Now Streaming on Prime Video – 6 November",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-11-06",
+      "id": null,
+      "matchState": "unmatched",
+      "platforms": [
+        "Prime Video"
+      ],
+      "sources": [
+        "https://www.keralatv.in/channel/ott/"
+      ],
+      "detail": "https://www.keralatv.in/all-pass-tamil-movie-ott-release-date-prime-video/"
+    },
+    {
+      "title": "Kauriburi: The Cursed Temple Now Streaming on Netflix in Hindi, Tamil and Telugu – 6-Episode Horror Series",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-11-06",
+      "id": null,
+      "matchState": "unmatched",
+      "platforms": [
+        "Prime Video",
+        "ManoramaMAX",
+        "JioHotstar",
+        "Netflix",
+        "SonyLIV",
+        "ZEE5",
+        "Aha",
+        "aha"
+      ],
+      "sources": [
+        "https://www.keralatv.in/channel/ott/"
+      ],
+      "detail": "https://www.keralatv.in/kauriburi-the-cursed-temple-ott-release-netflix/"
     },
     {
       "title": "Madam Inspector",
