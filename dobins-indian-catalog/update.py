@@ -512,6 +512,7 @@ def build():
  if any(not catalogs[c] for c in catalogs):
   save('metadata.json',metas);save('unmatched.json',unmatched);raise RuntimeError('An empty catalog would be published; retaining last-good catalogs while metadata backfills')
  # Audit recently streamed releases independently of the upcoming-only feed.
+ catalog_ids={cid:{str(x.get('id')) for x in items} for cid,items in catalogs.items()}
  recent_start=(date.fromisoformat(TODAY)-timedelta(days=35)).isoformat()
  recent_release_items=[]
  for e in events:
