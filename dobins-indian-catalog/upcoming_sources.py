@@ -23,6 +23,7 @@ SOURCES = [
     ("OTTChecker Tamil recent releases", "https://www.ottchecker.com/ott-releases/tamil"),
     ("OTTChecker Telugu recent releases", "https://www.ottchecker.com/ott-releases/telugu"),
     ("OTTChecker Hindi recent releases", "https://www.ottchecker.com/ott-releases/hindi"),
+    ("Kerala TV multi-language OTT releases", "https://www.keralatv.in/channel/ott/"),
 ]
 LANG_NAMES = {
     "malayalam": "malayalam",
@@ -465,6 +466,104 @@ def _simply_mollywood(soup, source_name, source_url, today, langs, norm):
     return out
 
 
+def _keralatv(soup, source_name, source_url, today, langs, norm, get):
+    """Discover dated OTT announcements from Kerala TV's cross-language feed.
+
+    The feed includes article headlines and excerpts. We require an explicit
+    streaming/premiere phrase, a date, a primary language and a named platform;
+    the article's publication date alone is never treated as the OTT date.
+    """
+    out = []
+    seen = set()
+    cutoff = (date.fromisoformat(today) - timedelta(days=35)).isoformat()
+    anchors = soup.select("h2 a[href], h3 a[href], article h2 a[href], article h3 a[href]")
+    if not anchors:
+        anchors = [a for a in soup.select("a[href]") if re.search(r"OTT Release|OTT Date", a.get_text(" ", strip=True), re.I)]
+    for anchor in anchors:
+        headline = anchor.get_text(" ", strip=True)
+        href = anchor.get("href")
+        if not headline or not href or len(headline) > 300:
+            continue
+        detail = urljoin(source_url, href)
+        # The listing excerpt often contains all required facts; fetch the
+        # detail page only when the excerpt is incomplete.
+        node = anchor
+        card_text = ""
+        for _ in range(6):
+            node = getattr(node, "parent", None)
+            if node is None or not hasattr(node, "get_text"):
+                break
+            candidate = node.get_text(" ", strip=True)
+            if len(candidate) >= len(headline) and len(candidate) <= 1800:
+                card_text = candidate
+                if re.search(r"stream|premier|OTT release", candidate, re.I):
+                    break
+        text = card_text or headline
+        release_phrase = re.search(
+            r"(?:stream(?:ing)?|premier(?:e|es|ed)|release\s+date|released)"
+            r"[^.]{0,150}?(\d{1,2}\s+[A-Za-z]{3,9},?\s+20\d{4}|"
+            r"[A-Za-z]{3,9}\s+\d{1,2},?\s+20\d{4}|20\d{2}-\d{2}-\d{2})",
+            text, re.I,
+        )
+        if not release_phrase:
+            try:
+                detail_html = get(detail, False)
+                detail_soup = BeautifulSoup(detail_html, "html.parser")
+                text = detail_soup.get_text(" ", strip=True)
+                h1 = detail_soup.select_one("h1")
+                if h1:
+                    headline = h1.get_text(" ", strip=True)
+                release_phrase = re.search(
+                    r"(?:stream(?:ing)?|premier(?:e|es|ed)|release\s+date|released)"
+                    r"[^.]{0,150}?(\d{1,2}\s+[A-Za-z]{3,9},?\s+20\d{4}|"
+                    r"[A-Za-z]{3,9}\s+\d{1,2},?\s+20\d{4}|20\d{2}-\d{2}-\d{2})",
+                    text, re.I,
+                )
+            except Exception:
+                continue
+        if not release_phrase:
+            continue
+        day = _date_with_current_year(release_phrase.group(1), today)
+        if not day or day < cutoff:
+            continue
+        # Original-language cues take precedence over dubbed/audio languages.
+        lang_match = re.search(
+            r"(?:original(?:ly)?\s+language\s*[:=-]?\s*|the\s+|\b)"
+            r"(Malayalam|Tamil|Telugu|Hindi)\s+(?:original|movie|film|series|web\s+series|"
+            r"family\s+drama|romantic\s+drama|thriller|action\s+thriller|drama)",
+            text, re.I,
+        )
+        if not lang_match:
+            lang_match = re.search(r"\b(Malayalam|Tamil|Telugu|Hindi)\s+(?:movie|film|series)\b", headline, re.I)
+        if not lang_match:
+            continue
+        language = lang_match.group(1).lower()
+        if language not in langs:
+            continue
+        platforms = [p for p in sorted(PLATFORMS, key=len, reverse=True) if re.search(re.escape(p), text, re.I)]
+        platforms = [p for p in platforms if not any(p.lower() != q.lower() and p.lower() in q.lower() for q in platforms)]
+        if not platforms:
+            continue
+        title = re.split(r"\s+(?:OTT\s+Release|Movie\s+OTT|Series\s+OTT|OTT\s+Date)", headline, maxsplit=1, flags=re.I)[0].strip(" –—:-")
+        if not title or len(title) > 140:
+            continue
+        typ = "series" if SERIES.search(headline + " " + text[:500]) else "movie"
+        key = (language, typ, norm(title))
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append({
+            "name": title, "language": language, "type": typ, "ottDate": day,
+            "platforms": list(dict.fromkeys(platforms)), "poster": None, "year": None,
+            "source": source_url, "sources": [source_url], "detail": detail,
+            "confirmed": True, "releaseKind": "digital",
+            "releaseDateBasis": "Kerala TV dated OTT announcement",
+            "sourceRecord": {"title": title, "releaseDate": day, "source": source_url,
+                             "headline": headline},
+        })
+    return out
+
+
 def _generic(soup, source_name, source_url, today, langs, norm):
     selectors = (
         "article", "tr.ott-row", "[data-release-date]", ".release-card",
@@ -729,6 +828,8 @@ def collect(get, today, langs, norm):
                 rows = _ottclock(soup, name, url, today, langs, norm)
             elif "ottchecker.com" in url:
                 rows = _ottchecker_recent(soup, url, today, langs)
+            elif "keralatv.in" in url:
+                rows = _keralatv(soup, name, url, today, langs, norm, get)
             elif "indianmoviereviews.com" in url:
                 rows = _calendar_cards(soup, name, url, today, langs, norm)
             else:
@@ -736,6 +837,13 @@ def collect(get, today, langs, norm):
             # An intact calendar section with no eligible future Indian titles
             # is informational, not a parser failure. Missing section headings
             # still signal markup drift and trigger a half-hour retry.
+            if not rows and "keralatv.in" in url:
+                visible = soup.get_text(" ", strip=True).lower()
+                if "ott releases" in visible and ("streaming" in visible or "premiere" in visible):
+                    health.append({"source": name, "url": url, "state": "no_confirmed_recent_releases", "records": 0,
+                                   "note": "Feed loaded; no eligible dated releases for the rolling 35-day window were extracted."})
+                    continue
+                raise ValueError("Kerala TV OTT feed did not expose its expected release listing")
             if not rows and "ottchecker.com" in url:
                 visible = soup.get_text(" ", strip=True).lower()
                 if "streaming since" in visible and re.search(r"\b(Movie|Series)\b", visible, re.I):
@@ -848,4 +956,41 @@ def collect(get, today, langs, norm):
                 old['name'] = event.get('name') or old.get('name')
             if not old.get("poster") and event.get("poster"):
                 old["poster"] = event["poster"]
+    # Publish source coverage for every language. A general feed is an
+    # independent check for all four languages; language-specific feeds only
+    # count for their own language. Failed sources remain visible per language.
+    healthy_states = {"live", "no_confirmed_upcoming", "no_confirmed_recent_releases",
+                      "covered_by_primary_collector", "frontend-fallback"}
+    source_coverage = {}
+    for language in langs:
+        checked = []
+        for item in health:
+            url = str(item.get("url") or "")
+            source_name = str(item.get("source") or "")
+            scoped = re.search(r"/(malayalam|tamil|telugu|hindi)(?:/|$)", url, re.I)
+            named_scope = next((x for x in LANG_NAMES if x in source_name.lower()), None)
+            scope = (scoped.group(1).lower() if scoped else named_scope)
+            if scope and scope != language:
+                continue
+            records = sum(1 for event in events if event.get("language") == language and
+                          (url in (event.get("sources") or [event.get("source")]) or
+                           (source_name == "TVmaze upcoming web schedule" and event.get("source") == url)))
+            state = item.get("state", "unknown")
+            checked.append({"source": source_name, "url": url, "state": state,
+                            "languageState": "failed" if state == "failed" else "records_found" if records else "checked_no_records",
+                            "records": records})
+        healthy = sum(1 for x in checked if x["state"] in healthy_states)
+        failed = sum(1 for x in checked if x["state"] == "failed")
+        source_coverage[language] = {
+            "checkedSources": len(checked), "healthySources": healthy,
+            "failedSources": failed,
+            "sourcesWithRecords": sum(1 for x in checked if x["records"]),
+            "detectedRecords": sum(x["records"] for x in checked),
+            "coverageStatus": "ok" if healthy >= 2 and failed == 0 else "partial" if healthy >= 2 else "degraded",
+            "sources": checked,
+        }
+    health.append({"source": "Per-language source coverage", "url": "internal://source-coverage",
+                   "state": "live" if all(x["coverageStatus"] == "ok" for x in source_coverage.values()) else "partial",
+                   "records": sum(x["detectedRecords"] for x in source_coverage.values()),
+                   "languageCoverage": source_coverage})
     return list(merged.values()), health
