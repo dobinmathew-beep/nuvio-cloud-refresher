@@ -4,8 +4,8 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v2",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-18T22:40:33.470725+04:00",
-  "lastMatchRetryAt": "2026-11-18T22:40:33.470725+04:00",
+  "updatedAt": "2026-11-18T22:58:36.502749+04:00",
+  "lastMatchRetryAt": "2026-11-18T22:58:36.502749+04:00",
   "lastSuccessCycle": "2026-11-18T22:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
@@ -210,7 +210,7 @@
   "catalogFreshness": {
     "dobins_ml_movie": {
       "count": 69,
-      "generatedAt": "2026-11-18T22:40:33.470725+04:00",
+      "generatedAt": "2026-11-18T22:58:36.502749+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -220,7 +220,7 @@
     },
     "dobins_ml_series": {
       "count": 67,
-      "generatedAt": "2026-11-18T22:40:33.470725+04:00",
+      "generatedAt": "2026-11-18T22:58:36.502749+04:00",
       "latestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
@@ -230,7 +230,7 @@
     },
     "dobins_ta_movie": {
       "count": 68,
-      "generatedAt": "2026-11-18T22:40:33.470725+04:00",
+      "generatedAt": "2026-11-18T22:58:36.502749+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -240,7 +240,7 @@
     },
     "dobins_ta_series": {
       "count": 111,
-      "generatedAt": "2026-11-18T22:40:33.470725+04:00",
+      "generatedAt": "2026-11-18T22:58:36.502749+04:00",
       "latestEntry": {
         "id": "tmdb:339004",
         "name": "Notebook 90s – Kadhal Flashback",
@@ -250,7 +250,7 @@
     },
     "dobins_te_movie": {
       "count": 77,
-      "generatedAt": "2026-11-18T22:40:33.470725+04:00",
+      "generatedAt": "2026-11-18T22:58:36.502749+04:00",
       "latestEntry": {
         "id": "tt30768979",
         "name": "Aadarsha Kutumbam House No: 47 - AK47",
@@ -260,7 +260,7 @@
     },
     "dobins_te_series": {
       "count": 114,
-      "generatedAt": "2026-11-18T22:40:33.470725+04:00",
+      "generatedAt": "2026-11-18T22:58:36.502749+04:00",
       "latestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
@@ -270,7 +270,7 @@
     },
     "dobins_hi_movie": {
       "count": 83,
-      "generatedAt": "2026-11-18T22:40:33.470725+04:00",
+      "generatedAt": "2026-11-18T22:58:36.502749+04:00",
       "latestEntry": {
         "id": "tt39390582",
         "name": "Hanuman Ansh",
@@ -280,7 +280,7 @@
     },
     "dobins_hi_series": {
       "count": 349,
-      "generatedAt": "2026-11-18T22:40:33.470725+04:00",
+      "generatedAt": "2026-11-18T22:58:36.502749+04:00",
       "latestEntry": {
         "id": "tmdb:337904",
         "name": "AndherPura Curse",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T22:40:33.470725+04:00",
+  "generatedAt": "2026-11-18T22:58:36.502749+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 45,
@@ -122,8 +122,8 @@
       "releaseDate": "2026-11-18",
       "platforms": [
         "JioHotstar",
-        "JioHotStar",
-        "Hotstar"
+        "Hotstar",
+        "JioHotStar"
       ],
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN",
@@ -896,7 +896,7 @@
       "metadataFields": {
         "poster": true,
         "description": true,
-        "genres": false,
+        "genres": true,
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
