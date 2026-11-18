@@ -89,6 +89,25 @@
     }
   },
   {
+    "name": "S Coming Fri 27 Nov Satyameva Malayalam · Series ZEE5",
+    "language": "malayalam",
+    "type": "series",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://indianmoviereviews.com/ott-releases/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": "https://indianmoviereviews.com/series/satyameva-2026/",
+    "sourceRecord": {
+      "title": "S Coming Fri 27 Nov Satyameva Malayalam · Series ZEE5",
+      "releaseDate": "2026-11-27",
+      "source": "https://indianmoviereviews.com/ott-releases/"
+    }
+  },
+  {
     "name": "Coming Thu 3 Dec Madam Police Tamil · Series SonyLIV",
     "language": "tamil",
     "type": "series",
@@ -536,37 +555,6 @@
     }
   },
   {
-    "name": "Durga",
-    "language": "malayalam",
-    "type": "series",
-    "ottDate": "2026-04-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f02de730958fd1b959e7b9",
-      "title": "Durga",
-      "platform": "ZEE5",
-      "createdAt": "2026-04-28T03:47:50.929Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Malayalam"
-      ],
-      "releaseDate": "2026-04-28",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-28T03:48:06.951Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/o930uPaXiIdn6K0Ja8iYnrHrYTr.jpg",
-      "verified": true
-    }
-  },
-  {
     "name": "Avalaga Irunthal",
     "language": "tamil",
     "type": "movie",
@@ -695,6 +683,37 @@
         "fetchedAt": "2026-10-23T06:06:02.722Z"
       },
       "tmdbId": 1186823,
+      "verified": true
+    }
+  },
+  {
+    "name": "Durga",
+    "language": "malayalam",
+    "type": "series",
+    "ottDate": "2026-04-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69f02de730958fd1b959e7b9",
+      "title": "Durga",
+      "platform": "ZEE5",
+      "createdAt": "2026-04-28T03:47:50.929Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Malayalam"
+      ],
+      "releaseDate": "2026-04-28",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-28T03:48:06.951Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/o930uPaXiIdn6K0Ja8iYnrHrYTr.jpg",
       "verified": true
     }
   },
@@ -885,37 +904,6 @@
     }
   },
   {
-    "name": "Shadow Play",
-    "language": "malayalam",
-    "type": "series",
-    "ottDate": "2026-04-05",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ManoramaMAX"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69d1d9b7274f38a6ea4c4c03",
-      "platform": "ManoramaMAX",
-      "title": "Shadow Play",
-      "createdAt": "2026-04-05T03:40:39.055Z",
-      "genre": "Mystery, Thriller, Investigative",
-      "imdbRating": null,
-      "languages": [
-        "Malayalam"
-      ],
-      "releaseDate": "2026-04-05",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-05T03:40:53.735Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/Aj8xNoAiDC2It0UVQFuv1ABhhgq.jpg",
-      "verified": true
-    }
-  },
-  {
     "name": "Chikoo Vs Bunty: Kushti Ki Jung",
     "language": "hindi",
     "type": "movie",
@@ -943,6 +931,37 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-09-13T02:18:42.361Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Shadow Play",
+    "language": "malayalam",
+    "type": "series",
+    "ottDate": "2026-04-05",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ManoramaMAX"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69d1d9b7274f38a6ea4c4c03",
+      "platform": "ManoramaMAX",
+      "title": "Shadow Play",
+      "createdAt": "2026-04-05T03:40:39.055Z",
+      "genre": "Mystery, Thriller, Investigative",
+      "imdbRating": null,
+      "languages": [
+        "Malayalam"
+      ],
+      "releaseDate": "2026-04-05",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-05T03:40:53.735Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/Aj8xNoAiDC2It0UVQFuv1ABhhgq.jpg",
       "verified": true
     }
   },
@@ -1954,6 +1973,37 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-03-25T17:08:15.211Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "BAKI-DOU: The Invincible Samurai",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-02-26",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "699fbc8c0265db7795223e90",
+      "platform": "Netflix",
+      "releaseDate": "2026-02-26",
+      "title": "BAKI-DOU: The Invincible Samurai",
+      "createdAt": "2026-02-26T03:22:52.158Z",
+      "languages": [
+        "Japanese",
+        "English",
+        "Hindi"
+      ],
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-03-19T03:40:30.946Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/frtzbwANetYd0M4zdrZ5gx0E89q.jpg",
       "verified": true
     }
   },

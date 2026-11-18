@@ -2905,13 +2905,6 @@
       "type": "movie"
     },
     {
-      "id": "tt36821438",
-      "name": "Ottam Thullal",
-      "poster": "https://live.metahub.space/poster/small/tt36821438/img",
-      "releaseInfo": 2026,
-      "type": "movie"
-    },
-    {
       "id": "tt34284946",
       "name": "I'm Game",
       "poster": "https://images.metahub.space/poster/small/tt34284946/img",
@@ -3022,6 +3015,13 @@
       "poster": "https://live.metahub.space/poster/small/tt33083436/img",
       "releaseInfo": 2026,
       "type": "movie"
+    },
+    {
+      "id": "tt35815094",
+      "name": "Angam Attahasam",
+      "poster": "https://live.metahub.space/poster/small/tt35815094/img",
+      "releaseInfo": 2026,
+      "type": "movie"
     }
   ],
   "hindi-movie": [
@@ -3071,6 +3071,13 @@
       "id": "tt39667834",
       "name": "Lust Stories 3",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39667834.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
+      "id": "tt32634611",
+      "name": "Daayra",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32634611.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     },
@@ -3155,13 +3162,6 @@
       "id": "tt28363783",
       "name": "Alpha",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28363783.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt28540171",
-      "name": "Welcome To The Jungle",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28540171.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     },
@@ -4965,6 +4965,13 @@
       "type": "movie"
     },
     {
+      "id": "tt24973142",
+      "name": "All India Rank",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt24973142.jpg",
+      "releaseInfo": "2024",
+      "type": "movie"
+    },
+    {
       "id": "tt23864864",
       "name": "Joram",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt23864864.jpg",
@@ -5658,9 +5665,9 @@
       "type": "movie"
     },
     {
-      "id": "tt13131636",
-      "name": "Velle",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13131636.jpg",
+      "id": "tt10083640",
+      "name": "Bhoot Police",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10083640.jpg",
       "releaseInfo": "2021",
       "type": "movie"
     },
@@ -6494,13 +6501,6 @@
       "id": "tt9248952",
       "name": "Jawaani Jaaneman",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt9248952.jpg",
-      "releaseInfo": "2020",
-      "type": "movie"
-    },
-    {
-      "id": "tt12841428",
-      "name": "A Rifle and a Bag",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt12841428.jpg",
       "releaseInfo": "2020",
       "type": "movie"
     }
@@ -8282,6 +8282,13 @@
       "type": "movie"
     },
     {
+      "id": "tt24059780",
+      "name": "Virupaksha",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt24059780.jpg",
+      "releaseInfo": "2023",
+      "type": "movie"
+    },
+    {
       "id": "tt27441163",
       "name": "O Kala",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27441163.jpg",
@@ -9148,6 +9155,13 @@
       "id": "tt42733581",
       "name": "Shekhar Tonite",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt42733581.jpg",
+      "releaseInfo": "2026",
+      "type": "series"
+    },
+    {
+      "id": "tt40617563",
+      "name": "Vimal Khanna",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt40617563.jpg",
       "releaseInfo": "2026",
       "type": "series"
     },
@@ -11105,6 +11119,13 @@
       "type": "series"
     },
     {
+      "id": "tt27050076",
+      "name": "Hunter - Tootega Nahi, Todega",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27050076.jpg",
+      "releaseInfo": "2023",
+      "type": "series"
+    },
+    {
       "id": "tt27161705",
       "name": "Baalveer",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27161705.jpg",
@@ -11658,9 +11679,9 @@
       "type": "series"
     },
     {
-      "id": "tt21272252",
-      "name": "Doon Kand",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt21272252.jpg",
+      "id": "tt20724948",
+      "name": "Delhi Khabbar",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt20724948.jpg",
       "releaseInfo": "2022",
       "type": "series"
     },
@@ -11717,6 +11738,13 @@
       "id": "tt19396408",
       "name": "Pyar Ka Pehla Naam: Radha Mohan",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt19396408.jpg",
+      "releaseInfo": "2022",
+      "type": "series"
+    },
+    {
+      "id": "tt19818704",
+      "name": "Anupama: Namaste America",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt19818704.jpg",
       "releaseInfo": "2022",
       "type": "series"
     },
@@ -12489,21 +12517,7 @@
       "poster": "https://image.tmdb.org/t/p/original/tNZwgPQVdAULjWoSQoNPVIS47ZH.jpg",
       "releaseInfo": "2021",
       "type": "series"
-    },
-    {
-      "id": "tt13923092",
-      "name": "1962: The War In The Hills",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13923092.jpg",
-      "releaseInfo": "2021",
-      "type": "series"
-    },
-    {
-      "id": "tt13937912",
-      "name": "Mehndi Hai Rachne Waali",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13937912.jpg",
-      "releaseInfo": "2021",
-      "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-18T00:05:22.921381+04:00"
+  "_updatedAt": "2026-11-18T05:59:58.986992+04:00"
 }

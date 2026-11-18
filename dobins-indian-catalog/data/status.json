@@ -4,9 +4,9 @@
   "releasePolicy": "ott-or-confirmed-physical-v1",
   "metadataPolicy": "tmdb-tvmaze-v2",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-18T00:05:22.921381+04:00",
-  "lastMatchRetryAt": "2026-11-18T00:05:22.921381+04:00",
-  "lastSuccessCycle": "2026-11-18T00:00:00+04:00",
+  "updatedAt": "2026-11-18T05:59:58.986992+04:00",
+  "lastMatchRetryAt": "2026-11-18T05:59:58.986992+04:00",
+  "lastSuccessCycle": "2026-11-18T04:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
   "sources": [
@@ -70,7 +70,7 @@
       "source": "Indian Movie Reviews OTT calendar",
       "url": "https://indianmoviereviews.com/ott-releases/",
       "state": "live",
-      "records": 11
+      "records": 12
     },
     {
       "source": "OTTClock confirmed upcoming calendar",
@@ -146,7 +146,7 @@
       "language": "hindi",
       "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
       "state": "live",
-      "records": 299
+      "records": 300
     },
     {
       "source": "TMDB streaming-series discovery",
@@ -205,13 +205,13 @@
     "dobins_ta_series": 111,
     "dobins_te_movie": 77,
     "dobins_te_series": 114,
-    "dobins_hi_movie": 84,
-    "dobins_hi_series": 349
+    "dobins_hi_movie": 83,
+    "dobins_hi_series": 348
   },
   "catalogFreshness": {
     "dobins_ml_movie": {
       "count": 69,
-      "generatedAt": "2026-11-18T00:05:22.921381+04:00",
+      "generatedAt": "2026-11-18T05:59:58.986992+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -221,17 +221,17 @@
     },
     "dobins_ml_series": {
       "count": 67,
-      "generatedAt": "2026-11-18T00:05:22.921381+04:00",
+      "generatedAt": "2026-11-18T05:59:58.986992+04:00",
       "latestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
-        "releaseDate": "2026-11-16T21:30:00+00:00",
+        "releaseDate": "2026-11-17T21:30:00+00:00",
         "hasNewEpisodes": true
       }
     },
     "dobins_ta_movie": {
       "count": 68,
-      "generatedAt": "2026-11-18T00:05:22.921381+04:00",
+      "generatedAt": "2026-11-18T05:59:58.986992+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -241,7 +241,7 @@
     },
     "dobins_ta_series": {
       "count": 111,
-      "generatedAt": "2026-11-18T00:05:22.921381+04:00",
+      "generatedAt": "2026-11-18T05:59:58.986992+04:00",
       "latestEntry": {
         "id": "tmdb:339004",
         "name": "Notebook 90s – Kadhal Flashback",
@@ -251,7 +251,7 @@
     },
     "dobins_te_movie": {
       "count": 77,
-      "generatedAt": "2026-11-18T00:05:22.921381+04:00",
+      "generatedAt": "2026-11-18T05:59:58.986992+04:00",
       "latestEntry": {
         "id": "tt30768979",
         "name": "Aadarsha Kutumbam House No: 47 - AK47",
@@ -261,17 +261,17 @@
     },
     "dobins_te_series": {
       "count": 114,
-      "generatedAt": "2026-11-18T00:05:22.921381+04:00",
+      "generatedAt": "2026-11-18T05:59:58.986992+04:00",
       "latestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
-        "releaseDate": "2026-11-16T21:30:00+00:00",
+        "releaseDate": "2026-11-17T21:30:00+00:00",
         "hasNewEpisodes": true
       }
     },
     "dobins_hi_movie": {
-      "count": 84,
-      "generatedAt": "2026-11-18T00:05:22.921381+04:00",
+      "count": 83,
+      "generatedAt": "2026-11-18T05:59:58.986992+04:00",
       "latestEntry": {
         "id": "tt39390582",
         "name": "Hanuman Ansh",
@@ -280,8 +280,8 @@
       }
     },
     "dobins_hi_series": {
-      "count": 349,
-      "generatedAt": "2026-11-18T00:05:22.921381+04:00",
+      "count": 348,
+      "generatedAt": "2026-11-18T05:59:58.986992+04:00",
       "latestEntry": {
         "id": "tmdb:337904",
         "name": "AndherPura Curse",
@@ -292,17 +292,17 @@
   },
   "pendingMatchesByCatalog": {
     "dobins_ml_movie": 3,
-    "dobins_ml_series": 5,
+    "dobins_ml_series": 6,
     "dobins_ta_movie": 5,
     "dobins_ta_series": 12,
     "dobins_te_movie": 9,
     "dobins_te_series": 9,
-    "dobins_hi_movie": 13,
+    "dobins_hi_movie": 14,
     "dobins_hi_series": 15
   },
   "checkedCandidatesByCatalog": {
     "dobins_ml_movie": 68,
-    "dobins_ml_series": 78,
+    "dobins_ml_series": 79,
     "dobins_ta_movie": 70,
     "dobins_ta_series": 129,
     "dobins_te_movie": 84,
@@ -311,8 +311,8 @@
     "dobins_hi_series": 369
   },
   "artworkPolicy": "RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback",
-  "pendingMatches": 71,
-  "checkedCandidates": 1015,
+  "pendingMatches": 73,
+  "checkedCandidates": 1016,
   "malayalamMetadataAudit": {
     "checked": 136,
     "passed": 136,
@@ -321,7 +321,7 @@
     "policy": "IMDb-or-TMDB identity; exact ID/type; title and metadata integrity"
   },
   "upcoming": {
-    "matchedTitles": 20,
+    "matchedTitles": 19,
     "bySource": {
       "https://simplymollywood.com/ott": {
         "matchedTitles": 8,
@@ -336,13 +336,6 @@
           "tt39239818"
         ]
       },
-      "https://newindianmovies.com/": {
-        "matchedTitles": 2,
-        "imdbIds": [
-          "tt14650074",
-          "tt50943841"
-        ]
-      },
       "https://www.dailyott.in/": {
         "matchedTitles": 4,
         "imdbIds": [
@@ -350,6 +343,12 @@
           "tt35682855",
           "tt30003786",
           "tt27050858"
+        ]
+      },
+      "https://newindianmovies.com/": {
+        "matchedTitles": 1,
+        "imdbIds": [
+          "tt14650074"
         ]
       },
       "https://cinebuds.com/ott-releases-this-week/": {
@@ -393,21 +392,21 @@
     "policy": "Only confirmed upcoming titles with a validated IMDb tt-ID are published."
   },
   "upcomingDiscovery": {
-    "total": 42,
+    "total": 43,
     "byLanguage": {
       "hindi": 22,
       "tamil": 8,
-      "malayalam": 5,
+      "malayalam": 6,
       "telugu": 7
     },
     "byType": {
-      "series": 20,
+      "series": 21,
       "movie": 22
     },
     "byMatchState": {
-      "published": 25,
-      "unmatched": 16,
-      "metadata_incomplete": 1
+      "published": 24,
+      "unmatched": 17,
+      "metadata_incomplete": 2
     },
     "bySource": {
       "https://newindianmovies.com/": 4,
@@ -417,12 +416,12 @@
       "https://cinebuds.com/ott-releases-this-week/": 7,
       "https://www.myvi.in/blog/ott-releases-this-week": 1,
       "https://www.dailyott.in/": 4,
-      "https://indianmoviereviews.com/ott-releases/": 11,
+      "https://indianmoviereviews.com/ott-releases/": 12,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
       "https://v3-cinemeta.strem.io/": 1
     },
-    "malayalamReviewCount": 8
+    "malayalamReviewCount": 9
   },
   "errors": []
 }
