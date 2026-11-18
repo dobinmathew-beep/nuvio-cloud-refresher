@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-18T19:04:56.801621+00:00",
+  "checkedAt": "2026-11-18T22:49:17.430772+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,9 +14,17 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1053,
+      "metadataRecords": 1010,
       "warning": null,
       "error": null
+    },
+    {
+      "path": "/meta/* (Malayalam catalog audit)",
+      "state": "ok",
+      "checked": 137,
+      "passed": 137,
+      "failed": 0,
+      "missingOriginalLanguageField": 107
     },
     {
       "path": "/manifest.json",
@@ -37,18 +45,18 @@
       "language": "ml",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
-      "localPublishedCount": 69,
-      "localUniqueIdCount": 69,
+      "localPublishedCount": 70,
+      "localUniqueIdCount": 70,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 69,
-      "endpointUniqueIdCount": 69,
+      "endpointRawCount": 70,
+      "endpointUniqueIdCount": 70,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        19
+        20
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -91,12 +99,12 @@
       "endpointLatestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
-        "releaseDate": "2026-11-17T21:30:00+00:00"
+        "releaseDate": "2026-11-18T21:30:00+00:00"
       },
       "localLatestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
-        "releaseDate": "2026-11-17T21:30:00+00:00"
+        "releaseDate": "2026-11-18T21:30:00+00:00"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -213,19 +221,19 @@
       "language": "te",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_te_series.json",
-      "localPublishedCount": 114,
-      "localUniqueIdCount": 114,
+      "localPublishedCount": 113,
+      "localUniqueIdCount": 113,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 114,
-      "endpointUniqueIdCount": 114,
+      "endpointRawCount": 113,
+      "endpointUniqueIdCount": 113,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
-        14
+        13
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -233,12 +241,12 @@
       "endpointLatestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
-        "releaseDate": "2026-11-17T21:30:00+00:00"
+        "releaseDate": "2026-11-18T21:30:00+00:00"
       },
       "localLatestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
-        "releaseDate": "2026-11-17T21:30:00+00:00"
+        "releaseDate": "2026-11-18T21:30:00+00:00"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -249,18 +257,18 @@
       "language": "hi",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
-      "localPublishedCount": 83,
-      "localUniqueIdCount": 83,
+      "localPublishedCount": 78,
+      "localUniqueIdCount": 78,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 83,
-      "endpointUniqueIdCount": 83,
+      "endpointRawCount": 78,
+      "endpointUniqueIdCount": 78,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        33
+        28
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -284,13 +292,13 @@
       "language": "hi",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
-      "localPublishedCount": 349,
-      "localUniqueIdCount": 349,
+      "localPublishedCount": 347,
+      "localUniqueIdCount": 347,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 349,
-      "endpointUniqueIdCount": 349,
+      "endpointRawCount": 347,
+      "endpointUniqueIdCount": 347,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
@@ -300,7 +308,7 @@
         50,
         50,
         50,
-        49
+        47
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -321,11 +329,11 @@
     }
   ],
   "malayalamMetadataAudit": {
-    "state": "skipped",
-    "checked": 0,
-    "passed": 0,
+    "state": "ok",
+    "checked": 137,
+    "passed": 137,
     "failed": 0,
-    "missingOriginalLanguageField": 0,
+    "missingOriginalLanguageField": 107,
     "failures": []
   },
   "catalogSummary": {
