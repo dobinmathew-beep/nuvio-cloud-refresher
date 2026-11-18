@@ -55,3 +55,4 @@ jobs:
       - name: Report stale or failed checks visibly
         if: steps.check.outcome == 'failure'
         run: exit 1
+# Manual catch-up wake-up: 2026-11-18 18:06 Asia/Muscat
