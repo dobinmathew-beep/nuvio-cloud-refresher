@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-18T18:15:22.047669+04:00",
+    "checkedAt": "2026-11-18T22:40:33.470725+04:00",
     "records": [
       {
         "_id": "6afd0b087544018d4aade8e1",
@@ -4082,9 +4082,9 @@
             "Hindi"
           ],
           "releaseDate": "2026-08-06",
-          "voteAverage": 7.8,
+          "voteAverage": 7.7,
           "trailerKey": null,
-          "fetchedAt": "2026-10-16T02:24:28.631Z"
+          "fetchedAt": "2026-11-18T16:15:10.350Z"
         },
         "tmdbId": 1479832,
         "verified": true
@@ -17607,7 +17607,8 @@
           ],
           "releaseDate": "2026-03-13",
           "voteAverage": null,
-          "fetchedAt": "2026-07-11T15:30:22.009Z"
+          "trailerKey": "fmfooM3v2AU",
+          "fetchedAt": "2026-11-18T16:15:34.813Z"
         },
         "tmdbId": 1597280,
         "verified": true
@@ -30663,7 +30664,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-18T18:15:22.047669+04:00",
+    "checkedAt": "2026-11-18T22:40:33.470725+04:00",
     "records": [
       {
         "name": "Bandra",

@@ -1,28 +1,28 @@
 {
-  "generatedAt": "2026-11-18T18:15:22.047669+04:00",
+  "generatedAt": "2026-11-18T22:40:33.470725+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 44,
+    "total": 45,
     "byLanguage": {
-      "hindi": 23,
+      "hindi": 24,
       "tamil": 8,
       "malayalam": 6,
       "telugu": 7
     },
     "byType": {
-      "series": 22,
+      "series": 23,
       "movie": 22
     },
     "byMatchState": {
       "published": 26,
       "unmatched": 17,
-      "metadata_incomplete": 1
+      "metadata_incomplete": 2
     },
     "bySource": {
       "https://www.dailyott.in/": 7,
       "https://newindianmovies.com/": 4,
       "https://www.tvmaze.com/shows/59979/campus-diaries": 1,
-      "https://ottasia.com/ott-releases-this-week?country=IN": 10,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 11,
       "https://www.themoviedb.org/tv/338502": 1,
       "https://simplymollywood.com/ott": 8,
       "https://cinebuds.com/ott-releases-this-week/": 7,
@@ -70,8 +70,8 @@
         "Amazon MX Player"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://newindianmovies.com/",
+        "https://www.dailyott.in/",
         "https://www.tvmaze.com/shows/59979/campus-diaries"
       ],
       "confirmed": true,
@@ -90,18 +90,44 @@
       "catalog": "dobins_hi_series"
     },
     {
+      "title": "Lo Chudail Chali Sasural",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-18",
+      "platforms": [
+        "SonyLIV"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/tv/338656/lo-chudail-chali-sasural?country=IN",
+      "matchId": "tt43636966",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "Verified IMDb title/year match",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
       "title": "Mr & Mrs Office",
       "language": "tamil",
       "type": "series",
       "releaseDate": "2026-11-18",
       "platforms": [
-        "JioHotStar",
         "JioHotstar",
+        "JioHotStar",
         "Hotstar"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://ottasia.com/ott-releases-this-week?country=IN",
+        "https://www.dailyott.in/",
         "https://www.themoviedb.org/tv/338502"
       ],
       "confirmed": true,
@@ -232,8 +258,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://newindianmovies.com/"
+        "https://newindianmovies.com/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -265,16 +291,16 @@
       "releaseDateBasis": "confirmed or reported OTT calendar date",
       "detail": "https://newindianmovies.com/movie/teen-tigada",
       "matchId": "tt50943841",
-      "matchState": "published",
+      "matchState": "metadata_incomplete",
       "metadataComplete": false,
-      "metadataSource": "Verified IMDb title/year match",
+      "metadataSource": "IMDb-matched metadata",
       "metadataFields": {
-        "poster": true,
+        "poster": false,
         "description": false,
         "genres": false,
-        "releaseInfo": true
+        "releaseInfo": false
       },
-      "catalog": "dobins_hi_series"
+      "catalog": null
     },
     {
       "title": "418",
@@ -571,8 +597,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -773,8 +799,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Prime Video",
-        "Netflix"
+        "Netflix",
+        "Prime Video"
       ],
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/",
@@ -870,7 +896,7 @@
       "metadataFields": {
         "poster": true,
         "description": true,
-        "genres": true,
+        "genres": false,
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
@@ -1470,7 +1496,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 12
+      "records": 13
     },
     {
       "source": "Vi weekly OTT calendar",
