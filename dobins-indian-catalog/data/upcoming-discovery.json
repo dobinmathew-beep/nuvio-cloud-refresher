@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T02:49:40.151609+04:00",
+  "generatedAt": "2026-11-19T02:54:29.763439+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 41,
@@ -21,8 +21,8 @@
       "https://simplymollywood.com/ott": 8,
       "https://cinebuds.com/ott-releases-this-week/": 7,
       "https://www.myvi.in/blog/ott-releases-this-week": 1,
-      "https://newindianmovies.com/": 3,
       "https://www.dailyott.in/": 4,
+      "https://newindianmovies.com/": 3,
       "https://indianmoviereviews.com/ott-releases/": 12,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
@@ -144,8 +144,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://newindianmovies.com/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://newindianmovies.com/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -301,8 +301,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -483,8 +483,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -685,12 +685,12 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -1095,9 +1095,9 @@
   "malayalamReview": {
     "policy": "Unmatched Malayalam source detections are held out until an unambiguous IMDb or TMDB identity and complete metadata are verified.",
     "counts": {
-      "total": 21,
+      "total": 10,
       "byType": {
-        "movie": 15,
+        "movie": 4,
         "series": 6
       }
     },
@@ -1158,53 +1158,7 @@
         }
       },
       {
-        "name": "Bandra (2023) Movie · IMDb 3.9 ZEE5 Streaming since 12 Nov",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-11-12",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://www.ottchecker.com/ott-releases/malayalam"
-        ],
-        "platforms": [
-          "ZEE5"
-        ],
-        "detail": "https://www.ottchecker.com/movie/bandra-2023",
-        "sourceRecord": {
-          "title": "Bandra (2023) Movie · IMDb 3.9 ZEE5 Streaming since 12 Nov",
-          "releaseDate": "2026-11-12",
-          "language": "malayalam",
-          "platforms": [
-            "ZEE5"
-          ],
-          "source": "https://www.ottchecker.com/ott-releases/malayalam"
-        }
-      },
-      {
-        "name": "Madhuramee Jeevitham (2026) Movie · IMDb 7.1 Amazon Prime Video Streaming since 12 Nov",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-11-12",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://www.ottchecker.com/ott-releases/malayalam"
-        ],
-        "platforms": [
-          "Amazon Prime Video"
-        ],
-        "detail": "https://www.ottchecker.com/movie/madhuramee-jeevitham-2026",
-        "sourceRecord": {
-          "title": "Madhuramee Jeevitham (2026) Movie · IMDb 7.1 Amazon Prime Video Streaming since 12 Nov",
-          "releaseDate": "2026-11-12",
-          "language": "malayalam",
-          "platforms": [
-            "Amazon Prime Video"
-          ],
-          "source": "https://www.ottchecker.com/ott-releases/malayalam"
-        }
-      },
-      {
-        "name": "DNA (2024) Movie · IMDb 4.8 Sun NXT Streaming since 12 Nov",
+        "name": "DNA",
         "language": "malayalam",
         "type": "movie",
         "ottDate": "2026-11-12",
@@ -1217,155 +1171,11 @@
         ],
         "detail": "https://www.ottchecker.com/movie/dna-2024",
         "sourceRecord": {
-          "title": "DNA (2024) Movie · IMDb 4.8 Sun NXT Streaming since 12 Nov",
+          "title": "DNA",
           "releaseDate": "2026-11-12",
           "language": "malayalam",
           "platforms": [
             "Sun NXT"
-          ],
-          "source": "https://www.ottchecker.com/ott-releases/malayalam"
-        }
-      },
-      {
-        "name": "The Third Murder (2026) Movie · IMDb 4.8 Manorama Max SimplySouth Streaming since 10 Nov",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-11-10",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://www.ottchecker.com/ott-releases/malayalam"
-        ],
-        "platforms": [
-          "Manorama Max",
-          "SimplySouth"
-        ],
-        "detail": "https://www.ottchecker.com/movie/the-third-murder-2026",
-        "sourceRecord": {
-          "title": "The Third Murder (2026) Movie · IMDb 4.8 Manorama Max SimplySouth Streaming since 10 Nov",
-          "releaseDate": "2026-11-10",
-          "language": "malayalam",
-          "platforms": [
-            "Manorama Max",
-            "SimplySouth"
-          ],
-          "source": "https://www.ottchecker.com/ott-releases/malayalam"
-        }
-      },
-      {
-        "name": "Tony Xavier (2026) Movie Manorama Max Streaming since 10 Nov",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-11-10",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://www.ottchecker.com/ott-releases/malayalam"
-        ],
-        "platforms": [
-          "Manorama Max"
-        ],
-        "detail": "https://www.ottchecker.com/movie/tony-xavier-2026",
-        "sourceRecord": {
-          "title": "Tony Xavier (2026) Movie Manorama Max Streaming since 10 Nov",
-          "releaseDate": "2026-11-10",
-          "language": "malayalam",
-          "platforms": [
-            "Manorama Max"
-          ],
-          "source": "https://www.ottchecker.com/ott-releases/malayalam"
-        }
-      },
-      {
-        "name": "I'm Game (2026) Movie · IMDb 5.9 JioHotstar Streaming since 5 Nov",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-11-05",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://www.ottchecker.com/ott-releases/malayalam"
-        ],
-        "platforms": [
-          "JioHotstar"
-        ],
-        "detail": "https://www.ottchecker.com/movie/im-game-2026",
-        "sourceRecord": {
-          "title": "I'm Game (2026) Movie · IMDb 5.9 JioHotstar Streaming since 5 Nov",
-          "releaseDate": "2026-11-05",
-          "language": "malayalam",
-          "platforms": [
-            "JioHotstar"
-          ],
-          "source": "https://www.ottchecker.com/ott-releases/malayalam"
-        }
-      },
-      {
-        "name": "Ottam Thullal (2026) Movie · IMDb 4.8 Manorama Max Amazon Prime Video SimplySouth Streaming since 5 Nov",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-11-05",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://www.ottchecker.com/ott-releases/malayalam"
-        ],
-        "platforms": [
-          "Amazon Prime Video",
-          "Manorama Max",
-          "SimplySouth"
-        ],
-        "detail": "https://www.ottchecker.com/movie/ottam-thullal-2026",
-        "sourceRecord": {
-          "title": "Ottam Thullal (2026) Movie · IMDb 4.8 Manorama Max Amazon Prime Video SimplySouth Streaming since 5 Nov",
-          "releaseDate": "2026-11-05",
-          "language": "malayalam",
-          "platforms": [
-            "Amazon Prime Video",
-            "Manorama Max",
-            "SimplySouth"
-          ],
-          "source": "https://www.ottchecker.com/ott-releases/malayalam"
-        }
-      },
-      {
-        "name": "ICU (2026) Movie Sun NXT Streaming since 5 Nov",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-11-05",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://www.ottchecker.com/ott-releases/malayalam"
-        ],
-        "platforms": [
-          "Sun NXT"
-        ],
-        "detail": "https://www.ottchecker.com/movie/icu-2026",
-        "sourceRecord": {
-          "title": "ICU (2026) Movie Sun NXT Streaming since 5 Nov",
-          "releaseDate": "2026-11-05",
-          "language": "malayalam",
-          "platforms": [
-            "Sun NXT"
-          ],
-          "source": "https://www.ottchecker.com/ott-releases/malayalam"
-        }
-      },
-      {
-        "name": "Jennifer (2026) Movie Manorama Max Streaming since 30 Oct",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-10-30",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://www.ottchecker.com/ott-releases/malayalam"
-        ],
-        "platforms": [
-          "Manorama Max"
-        ],
-        "detail": "https://www.ottchecker.com/movie/jennifer-2026",
-        "sourceRecord": {
-          "title": "Jennifer (2026) Movie Manorama Max Streaming since 30 Oct",
-          "releaseDate": "2026-10-30",
-          "language": "malayalam",
-          "platforms": [
-            "Manorama Max"
           ],
           "source": "https://www.ottchecker.com/ott-releases/malayalam"
         }
@@ -1399,29 +1209,6 @@
           "updatedAt": "2026-05-13T03:46:44.534Z",
           "posterUrl": "https://image.tmdb.org/t/p/w300/p56xB5YJDeYaGGOaYFtsjWycTYl.jpg",
           "verified": true
-        }
-      },
-      {
-        "name": "Avaraachan & Sons (2026) Movie · IMDb 5.5 Netflix Streaming since 26 Oct",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-10-26",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://www.ottchecker.com/ott-releases/malayalam"
-        ],
-        "platforms": [
-          "Netflix"
-        ],
-        "detail": "https://www.ottchecker.com/movie/avaraachan-sons-2026",
-        "sourceRecord": {
-          "title": "Avaraachan & Sons (2026) Movie · IMDb 5.5 Netflix Streaming since 26 Oct",
-          "releaseDate": "2026-10-26",
-          "language": "malayalam",
-          "platforms": [
-            "Netflix"
-          ],
-          "source": "https://www.ottchecker.com/ott-releases/malayalam"
         }
       },
       {
@@ -1483,52 +1270,6 @@
           "updatedAt": "2026-04-28T03:48:06.951Z",
           "posterUrl": "https://image.tmdb.org/t/p/w300/o930uPaXiIdn6K0Ja8iYnrHrYTr.jpg",
           "verified": true
-        }
-      },
-      {
-        "name": "Aaru Aanugal (2026) Movie · IMDb 5.6 Manorama Max Streaming since 23 Oct",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-10-23",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://www.ottchecker.com/ott-releases/malayalam"
-        ],
-        "platforms": [
-          "Manorama Max"
-        ],
-        "detail": "https://www.ottchecker.com/movie/aaru-aanugal-2026",
-        "sourceRecord": {
-          "title": "Aaru Aanugal (2026) Movie · IMDb 5.6 Manorama Max Streaming since 23 Oct",
-          "releaseDate": "2026-10-23",
-          "language": "malayalam",
-          "platforms": [
-            "Manorama Max"
-          ],
-          "source": "https://www.ottchecker.com/ott-releases/malayalam"
-        }
-      },
-      {
-        "name": "Dhoomakethu (2026) Movie · IMDb 6.5 Netflix Streaming since 22 Oct",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-10-22",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://www.ottchecker.com/ott-releases/malayalam"
-        ],
-        "platforms": [
-          "Netflix"
-        ],
-        "detail": "https://www.ottchecker.com/movie/dhoomakethu-2026",
-        "sourceRecord": {
-          "title": "Dhoomakethu (2026) Movie · IMDb 6.5 Netflix Streaming since 22 Oct",
-          "releaseDate": "2026-10-22",
-          "language": "malayalam",
-          "platforms": [
-            "Netflix"
-          ],
-          "source": "https://www.ottchecker.com/ott-releases/malayalam"
         }
       },
       {
