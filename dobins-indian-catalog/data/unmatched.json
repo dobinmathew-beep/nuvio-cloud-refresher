@@ -563,7 +563,8 @@
       "https://www.ottchecker.com/ott-releases/malayalam"
     ],
     "platforms": [
-      "Manorama Max"
+      "Manorama Max",
+      "SimplySouth"
     ],
     "detail": "https://www.ottchecker.com/movie/the-third-murder-2026",
     "sourceRecord": {
@@ -571,7 +572,8 @@
       "releaseDate": "2026-11-10",
       "language": "malayalam",
       "platforms": [
-        "Manorama Max"
+        "Manorama Max",
+        "SimplySouth"
       ],
       "source": "https://www.ottchecker.com/ott-releases/malayalam"
     }
@@ -947,7 +949,8 @@
     ],
     "platforms": [
       "Amazon Prime Video",
-      "Manorama Max"
+      "Manorama Max",
+      "SimplySouth"
     ],
     "detail": "https://www.ottchecker.com/movie/ottam-thullal-2026",
     "sourceRecord": {
@@ -956,7 +959,8 @@
       "language": "malayalam",
       "platforms": [
         "Amazon Prime Video",
-        "Manorama Max"
+        "Manorama Max",
+        "SimplySouth"
       ],
       "source": "https://www.ottchecker.com/ott-releases/malayalam"
     }
@@ -1655,6 +1659,7 @@
     ],
     "platforms": [
       "Amazon Prime Video",
+      "SimplySouth",
       "Aha",
       "aha"
     ],
@@ -1665,6 +1670,7 @@
       "language": "tamil",
       "platforms": [
         "Amazon Prime Video",
+        "SimplySouth",
         "Aha",
         "aha"
       ],
@@ -3470,8 +3476,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win",
-      "Netflix"
+      "Netflix",
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {

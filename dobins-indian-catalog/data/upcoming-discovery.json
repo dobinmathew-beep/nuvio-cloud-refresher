@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T02:44:36.953915+04:00",
+  "generatedAt": "2026-11-19T02:49:40.151609+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 41,
@@ -14,16 +14,15 @@
       "series": 19
     },
     "byMatchState": {
-      "published": 22,
-      "unmatched": 17,
-      "metadata_incomplete": 2
+      "published": 24,
+      "unmatched": 17
     },
     "bySource": {
       "https://simplymollywood.com/ott": 8,
       "https://cinebuds.com/ott-releases-this-week/": 7,
       "https://www.myvi.in/blog/ott-releases-this-week": 1,
-      "https://www.dailyott.in/": 4,
       "https://newindianmovies.com/": 3,
+      "https://www.dailyott.in/": 4,
       "https://indianmoviereviews.com/ott-releases/": 12,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
@@ -145,8 +144,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://newindianmovies.com/"
+        "https://newindianmovies.com/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -178,16 +177,16 @@
       "releaseDateBasis": "confirmed or reported OTT calendar date",
       "detail": "https://newindianmovies.com/movie/teen-tigada",
       "matchId": "tt50943841",
-      "matchState": "metadata_incomplete",
+      "matchState": "published",
       "metadataComplete": false,
       "metadataSource": "IMDb-matched metadata",
       "metadataFields": {
-        "poster": false,
+        "poster": true,
         "description": false,
         "genres": false,
         "releaseInfo": false
       },
-      "catalog": null
+      "catalog": "dobins_hi_series"
     },
     {
       "title": "418",
@@ -302,8 +301,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -387,16 +386,16 @@
       "releaseDateBasis": "confirmed or reported OTT calendar date",
       "detail": "https://newindianmovies.com/movie/anumana-pakshi",
       "matchId": "tt39000001",
-      "matchState": "metadata_incomplete",
-      "metadataComplete": false,
+      "matchState": "published",
+      "metadataComplete": true,
       "metadataSource": "IMDb-matched metadata",
       "metadataFields": {
-        "poster": false,
+        "poster": true,
         "description": true,
         "genres": true,
         "releaseInfo": true
       },
-      "catalog": null
+      "catalog": "dobins_te_movie"
     },
     {
       "title": "Crazy Kalyanam",
@@ -686,12 +685,12 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Prime Video",
-        "Netflix"
+        "Netflix",
+        "Prime Video"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -1237,7 +1236,8 @@
           "https://www.ottchecker.com/ott-releases/malayalam"
         ],
         "platforms": [
-          "Manorama Max"
+          "Manorama Max",
+          "SimplySouth"
         ],
         "detail": "https://www.ottchecker.com/movie/the-third-murder-2026",
         "sourceRecord": {
@@ -1245,7 +1245,8 @@
           "releaseDate": "2026-11-10",
           "language": "malayalam",
           "platforms": [
-            "Manorama Max"
+            "Manorama Max",
+            "SimplySouth"
           ],
           "source": "https://www.ottchecker.com/ott-releases/malayalam"
         }
@@ -1307,7 +1308,8 @@
         ],
         "platforms": [
           "Amazon Prime Video",
-          "Manorama Max"
+          "Manorama Max",
+          "SimplySouth"
         ],
         "detail": "https://www.ottchecker.com/movie/ottam-thullal-2026",
         "sourceRecord": {
@@ -1316,7 +1318,8 @@
           "language": "malayalam",
           "platforms": [
             "Amazon Prime Video",
-            "Manorama Max"
+            "Manorama Max",
+            "SimplySouth"
           ],
           "source": "https://www.ottchecker.com/ott-releases/malayalam"
         }
