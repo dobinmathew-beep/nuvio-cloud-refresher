@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-17T20:10:22.447619+00:00",
+  "checkedAt": "2026-11-18T02:06:35.048619+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,7 +14,7 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1052,
+      "metadataRecords": 1051,
       "warning": null,
       "error": null
     },
@@ -91,12 +91,12 @@
       "endpointLatestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
-        "releaseDate": "2026-11-16T21:30:00+00:00"
+        "releaseDate": "2026-11-17T21:30:00+00:00"
       },
       "localLatestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
-        "releaseDate": "2026-11-16T21:30:00+00:00"
+        "releaseDate": "2026-11-17T21:30:00+00:00"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -233,12 +233,12 @@
       "endpointLatestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
-        "releaseDate": "2026-11-16T21:30:00+00:00"
+        "releaseDate": "2026-11-17T21:30:00+00:00"
       },
       "localLatestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
-        "releaseDate": "2026-11-16T21:30:00+00:00"
+        "releaseDate": "2026-11-17T21:30:00+00:00"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -249,18 +249,18 @@
       "language": "hi",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
-      "localPublishedCount": 84,
-      "localUniqueIdCount": 84,
+      "localPublishedCount": 83,
+      "localUniqueIdCount": 83,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 84,
-      "endpointUniqueIdCount": 84,
+      "endpointRawCount": 83,
+      "endpointUniqueIdCount": 83,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        34
+        33
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -284,13 +284,13 @@
       "language": "hi",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
-      "localPublishedCount": 349,
-      "localUniqueIdCount": 349,
+      "localPublishedCount": 348,
+      "localUniqueIdCount": 348,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 349,
-      "endpointUniqueIdCount": 349,
+      "endpointRawCount": 348,
+      "endpointUniqueIdCount": 348,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
@@ -300,7 +300,7 @@
         50,
         50,
         50,
-        49
+        48
       ],
       "endpointPageSize": 50,
       "missingIds": [],
