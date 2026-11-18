@@ -169,6 +169,15 @@ class CatalogTests(unittest.TestCase):
   self.assertEqual(events[0]['_verifiedImdbId'],'tt27470699')
   self.assertEqual(events[0]['_verifiedImdbName'],'DNA')
 
+ def test_recent_ottchecker_backlog_titles_have_verified_imdb_ids(self):
+  events=[
+   {'name':'Sub-Inspector Yugandhar','language':'telugu','type':'movie'},
+   {'name':'Blood Roses','language':'telugu','type':'movie'},
+   {'name':'Vidrohi','language':'telugu','type':'movie'},
+  ]
+  update.apply_verified_overrides(events)
+  self.assertEqual([x['_verifiedImdbId'] for x in events],['tt47421307','tt39440956','tt37937823'])
+
  def test_kasaragod_embassy_spelling_variant_uses_verified_imdb_id(self):
   events=[{'name':'Kasaragod Embassy','language':'malayalam','type':'series'}]
   update.apply_verified_overrides(events)
