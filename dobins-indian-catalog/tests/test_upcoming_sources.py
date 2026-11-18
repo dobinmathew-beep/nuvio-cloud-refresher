@@ -219,5 +219,48 @@ class UpcomingSourceTests(unittest.TestCase):
         self.assertEqual(next(row for row in rows if row["name"] == "Mr & Mrs Office")["ottDate"], "2026-11-18")
         self.assertTrue(all(row["confirmed"] for row in rows))
 
+
+    def test_ottchecker_recent_release_parses_past_streaming_rows(self):
+        html = """<section><ul>
+          <li><a href="/movie/madhuramee-jeevitham-2026">Madhuramee Jeevitham (2026)</a>
+            Movie · IMDb 7.2 Amazon Prime Video Streaming since 12 Nov</li>
+          <li><a href="/movie/bandra-2023">Bandra (2023)</a>
+            Movie · IMDb 3.9 ZEE5 Streaming since 12 Nov</li>
+          <li><a href="/movie/not-yet">Not Yet (2026)</a>
+            Movie · Prime Video Expected 22 Nov</li>
+          <li><a href="/movie/no-date">No Date (2026)</a> Movie · Prime Video</li>
+        </ul></section>"""
+        rows = upcoming_sources._ottchecker_recent(
+            BeautifulSoup(html, "html.parser"),
+            "https://www.ottchecker.com/ott-releases/malayalam",
+            "2026-11-19",
+            {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
+        )
+        self.assertEqual({x["name"] for x in rows}, {"Madhuramee Jeevitham", "Bandra"})
+        movie = next(x for x in rows if x["name"] == "Madhuramee Jeevitham")
+        self.assertEqual(movie["language"], "malayalam")
+        self.assertEqual(movie["type"], "movie")
+        self.assertEqual(movie["ottDate"], "2026-11-12")
+        self.assertEqual(movie["year"], "2026")
+        self.assertEqual(movie["platforms"], ["Amazon Prime Video"])
+        self.assertTrue(movie["confirmed"])
+        self.assertEqual(movie["detail"], "https://www.ottchecker.com/movie/madhuramee-jeevitham-2026")
+
+    def test_ottchecker_recent_release_is_language_scoped_and_windowed(self):
+        html = """<ul>
+          <li><a href="/movie/old">Old Film (2024)</a> Movie · Netflix Streaming since 1 Jan 2025</li>
+          <li><a href="/movie/future">Future Film (2026)</a> Movie · Netflix Streaming since 20 Nov</li>
+          <li><a href="/series/sample">Sample Series (2026)</a> Series · Netflix Streaming since 18 Nov</li>
+        </ul>"""
+        rows = upcoming_sources._ottchecker_recent(
+            BeautifulSoup(html, "html.parser"),
+            "https://www.ottchecker.com/ott-releases/tamil",
+            "2026-11-19",
+            {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
+        )
+        self.assertEqual([x["name"] for x in rows], ["Sample Series"])
+        self.assertEqual(rows[0]["language"], "tamil")
+        self.assertEqual(rows[0]["type"], "series")
+
 if __name__ == "__main__":
     unittest.main()
