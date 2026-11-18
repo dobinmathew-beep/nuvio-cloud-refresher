@@ -496,7 +496,12 @@ def _keralatv(soup, source_name, source_url, today, langs, norm, get):
             candidate = node.get_text(" ", strip=True)
             if len(candidate) >= len(headline) and len(candidate) <= 1800:
                 card_text = candidate
-                if re.search(r"stream|premier|OTT release", candidate, re.I):
+                if re.search(
+                    r"(?:stream(?:ing)?|premier(?:e|es|ed)|release\\s+date|released)"
+                    r"[^.]{0,150}?(?:\\d{1,2}\\s+[A-Za-z]{3,9},?\\s+20\\d{2}|"
+                    r"[A-Za-z]{3,9}\\s+\\d{1,2},?\\s+20\\d{2}|20\\d{2}-\\d{2}-\\d{2})",
+                    candidate, re.I,
+                ):
                     break
         text = card_text or headline
         release_phrase = re.search(
