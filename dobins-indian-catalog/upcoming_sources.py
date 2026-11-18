@@ -862,11 +862,17 @@ def collect(get, today, langs, norm):
             if not rows and "keralatv.in" in url:
                 visible = soup.get_text(" ", strip=True).lower()
                 article_links = soup.select("h2 a[href], h3 a[href], article h2 a[href], article h3 a[href]")
-                if article_links:
-                    raise ValueError("Kerala TV article cards exist but no dated release records were extracted; parser drift or detail-page failure suspected")
+                date_pattern = r"(?:stream(?:ing)?|premier(?:e|es|ed)|release\\s+date|released)[^.]{0,150}?((?:\\d{1,2}\\s+[A-Za-z]{3,9},?\\s+20\\d{2})|(?:[A-Za-z]{3,9}\\s+\\d{1,2},?\\s+20\\d{2})|20\\d{2}-\\d{2}-\\d{2})"
+                cutoff = (date.fromisoformat(today) - timedelta(days=35)).isoformat()
+                recent_dated_evidence = any(
+                    (parsed := _date_with_current_year(match.group(1), today)) and parsed >= cutoff
+                    for match in re.finditer(date_pattern, visible, re.I)
+                )
+                if article_links and recent_dated_evidence:
+                    raise ValueError("Kerala TV has recent dated OTT article cards but no records were extracted; parser drift suspected")
                 if "ott releases" in visible:
                     health.append({"source": name, "url": url, "state": "no_confirmed_recent_releases", "records": 0,
-                                   "note": "Feed loaded and no article cards were present for the rolling 35-day window."})
+                                   "note": "Feed loaded; no parseable recent confirmed releases were present in the rolling 35-day window."})
                     continue
                 raise ValueError("Kerala TV OTT feed did not expose its expected release listing")
             if not rows and "ottchecker.com" in url:
