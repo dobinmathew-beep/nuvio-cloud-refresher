@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-11-18T05:59:58.986992+04:00",
+  "generatedAt": "2026-11-18T06:12:51.119256+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 43,
+    "total": 44,
     "byLanguage": {
-      "hindi": 22,
+      "hindi": 23,
       "tamil": 8,
       "malayalam": 6,
       "telugu": 7
     },
     "byType": {
-      "series": 21,
+      "series": 22,
       "movie": 22
     },
     "byMatchState": {
-      "published": 24,
+      "published": 25,
       "unmatched": 17,
       "metadata_incomplete": 2
     },
     "bySource": {
+      "https://www.dailyott.in/": 5,
       "https://newindianmovies.com/": 4,
       "https://www.tvmaze.com/shows/59979/campus-diaries": 1,
       "https://ottasia.com/ott-releases-this-week?country=IN": 10,
       "https://simplymollywood.com/ott": 8,
       "https://cinebuds.com/ott-releases-this-week/": 7,
       "https://www.myvi.in/blog/ott-releases-this-week": 1,
-      "https://www.dailyott.in/": 4,
       "https://indianmoviereviews.com/ott-releases/": 12,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
@@ -33,6 +33,32 @@
     }
   },
   "items": [
+    {
+      "title": "Bigg Boss Season 20",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-18",
+      "platforms": [
+        "JioHotStar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": null,
+      "detail": null,
+      "matchId": "tt1281973",
+      "matchState": "published",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
     {
       "title": "Campus Diaries season 2",
       "language": "hindi",
@@ -201,8 +227,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://newindianmovies.com/"
+        "https://newindianmovies.com/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -742,8 +768,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Prime Video",
-        "Netflix"
+        "Netflix",
+        "Prime Video"
       ],
       "sources": [
         "https://www.dailyott.in/",

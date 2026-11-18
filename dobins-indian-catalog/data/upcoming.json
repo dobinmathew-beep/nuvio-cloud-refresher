@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T05:59:58.986992+04:00",
+  "generatedAt": "2026-11-18T06:12:51.119256+04:00",
   "policy": "confirmed-source-and-imdb-match-v1",
   "count": 19,
   "items": [
@@ -27,8 +27,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://newindianmovies.com/"
+        "https://newindianmovies.com/",
+        "https://www.dailyott.in/"
       ],
       "catalog": "dobins_hi_series"
     },
@@ -239,8 +239,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Prime Video",
-        "Netflix"
+        "Netflix",
+        "Prime Video"
       ],
       "sources": [
         "https://www.dailyott.in/",

@@ -3166,6 +3166,13 @@
       "type": "movie"
     },
     {
+      "id": "tt28540171",
+      "name": "Welcome To The Jungle",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28540171.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tt35064672",
       "name": "Cocktail 2",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35064672.jpg",
@@ -3435,13 +3442,6 @@
       "id": "tt36642456",
       "name": "Haq",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36642456.jpg",
-      "releaseInfo": "2025",
-      "type": "movie"
-    },
-    {
-      "id": "tt29247040",
-      "name": "Baramulla",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt29247040.jpg",
       "releaseInfo": "2025",
       "type": "movie"
     },
@@ -12519,5 +12519,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-18T05:59:58.986992+04:00"
+  "_updatedAt": "2026-11-18T06:12:51.119256+04:00"
 }
