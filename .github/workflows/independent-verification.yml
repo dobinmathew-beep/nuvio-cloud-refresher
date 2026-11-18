@@ -78,3 +78,4 @@ jobs:
         run: |
           echo 'One or more public outputs failed independent verification.'
           exit 1
+# Manual full verification wake-up: 2026-11-18 18:25 Asia/Muscat
