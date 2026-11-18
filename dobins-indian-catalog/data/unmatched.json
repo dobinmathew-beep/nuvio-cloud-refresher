@@ -562,8 +562,8 @@
     "ottDate": "2026-10-30",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
-      "https://www.ottchecker.com/ott-releases/telugu",
-      "https://cinebuds.com/ott-release-dates/"
+      "https://cinebuds.com/ott-release-dates/",
+      "https://www.ottchecker.com/ott-releases/telugu"
     ],
     "platforms": [
       "Netflix"
@@ -1933,8 +1933,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win",
-      "Netflix"
+      "Netflix",
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {
