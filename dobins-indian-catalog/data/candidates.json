@@ -3901,6 +3901,13 @@
       "type": "movie"
     },
     {
+      "id": "tt34365591",
+      "name": "Mahavatar Narsimha",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt34365591.jpg",
+      "releaseInfo": "2025",
+      "type": "movie"
+    },
+    {
       "id": "tt23988936",
       "name": "Saali Mohabbat",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt23988936.jpg",
@@ -4408,13 +4415,6 @@
       "id": "tt30151562",
       "name": "Zakir Khan: Mannpasand",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt30151562.jpg",
-      "releaseInfo": "2023",
-      "type": "movie"
-    },
-    {
-      "id": "tt13751694",
-      "name": "Animal",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13751694.jpg",
       "releaseInfo": "2023",
       "type": "movie"
     },
@@ -12533,5 +12533,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-18T22:58:36.502749+04:00"
+  "_updatedAt": "2026-11-19T02:44:36.953915+04:00"
 }
