@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-18T11:34:46.403320+04:00",
+  "checked_at": "2026-11-18T13:36:39.913811+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -135,7 +135,7 @@
     },
     "backdrops": {
       "status": "pass",
-      "checked_at": "2026-11-18T11:34:46.403320+04:00",
+      "checked_at": "2026-11-18T13:36:39.913811+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
       "details": {
         "day": "2026-11-18",
@@ -157,14 +157,14 @@
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-18T11:34:46.403320+04:00",
+      "checked_at": "2026-11-18T13:36:39.913811+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
           "language": "hindi",
           "status": "pass",
-          "bytes": 6902449,
-          "sha256": "cf91f06aecaae4a033df9a8f30cf9658a4bbfd52c302814dc80c2d846eadbf3a",
+          "bytes": 6902431,
+          "sha256": "cc9881d48068468d06ce430fb7abef839d02ff74c8575722ea766b938ef3204f",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -184,8 +184,8 @@
         {
           "language": "tamil",
           "status": "pass",
-          "bytes": 6904108,
-          "sha256": "992c13ad6ab610784600f41d189fc2452a6adfbcee7a3943d3042653c046fbeb",
+          "bytes": 6904016,
+          "sha256": "730691642346e2f7fd21fcd8b1db50c36e48e2237a0d1d3024ccd077c4519e16",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -226,8 +226,8 @@
         {
           "language": "telugu",
           "status": "pass",
-          "bytes": 6897289,
-          "sha256": "c53af46e754c3db8b388d6bc69fd3fc681a8f325899ae7e9a9da8d2fb6f12412",
+          "bytes": 6897360,
+          "sha256": "98d2c643dd4f3592612ac28b76785a206c3fc91ef2f0c0d1a5a078d7d95b5490",
           "duration_seconds": 50.0,
           "streams": [
             {
