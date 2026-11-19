@@ -46,6 +46,18 @@ class ReleaseOrderTests(unittest.TestCase):
         self.assertEqual(merged[0]["releaseKind"], "digital")
         self.assertEqual(merged[0]["ottDate"], "2026-11-12")
 
+    def test_digital_release_precedes_physical_when_no_theatrical_date_exists(self):
+        events = [
+            {"name": "Later OTT", "language": "tamil", "type": "movie",
+             "ottDate": "2026-11-20", "releaseKind": "digital"},
+            {"name": "Later OTT", "language": "tamil", "type": "movie",
+             "ottDate": "2026-08-01", "releaseKind": "physical"},
+        ]
+        merged = physical.merge_events(events, lambda x: x.lower().replace(" ", ""),
+                                       "2026-11-19")
+        self.assertEqual(merged[0]["releaseKind"], "digital")
+        self.assertEqual(merged[0]["ottDate"], "2026-11-20")
+
     def test_catalog_release_sort_date_uses_canonical_movie_date(self):
         movie = {"type": "movie", "releaseDate": "2026-08-10",
                  "ottDate": "2026-11-15"}
