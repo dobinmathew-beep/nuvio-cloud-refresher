@@ -1,6 +1,6 @@
 # Great Indian Upcoming Poster Service
 
-An isolated per-title poster proxy for Xperience and AIOMetadata. It fetches the original BetterPosters image and only adds a date label when TMDB returns a confirmed future date and BetterPosters does not already show its own "Coming [date]" tag.
+An isolated per-title poster proxy for Xperience, AIOMetadata and the Great Indian Catalog. It preserves BetterPosters artwork, detects existing badges with OCR, adds a confirmed future-date label when needed, and adds a "JUST ADDED" badge for newly published catalog movies when BetterPosters has no matching tag.
 
 ## Isolation
 - Lives in its own `poster-date-service/` directory.
@@ -17,8 +17,15 @@ The service substitutes the IMDb ID into the BetterPosters template. It delibera
 ## Existing BetterPosters tag handling
 - The original image's top tag row is checked with English OCR.
 - If it already contains a "Coming [day month]" label, the source poster is returned unchanged and no second badge is added.
-- If OCR cannot run, the service fails safely and returns the original poster rather than risk stacking duplicate labels.
+- If OCR confirms a matching "Coming [date]" tag, the source poster is returned unchanged.
+- For an explicit `?badge=just-added` request, OCR checks whether BetterPosters already has a "Just Added" tag. If not, the service draws one on the original image. If OCR is unavailable, it applies the requested badge rather than silently omitting it.
 - OCR results are cached in memory by source-image hash to avoid repeating work for the same image.
+
+## Just Added badge rules
+- The Great Indian Catalog sends `?badge=just-added` only for movie entries newly added to that catalog; the catalog keeps the first-added timestamp for 14 days.
+- The service checks BetterPosters for an existing "Just Added" label and avoids stacking a duplicate.
+- When BetterPosters has no such label, the service adds a compact dark-glass "JUST ADDED" chip without cropping or resizing the poster.
+- This badge is separate from upcoming release labels; only already-released newly added movies are sent this request.
 
 ## Release date rules
 - TMDB is the metadata source.
