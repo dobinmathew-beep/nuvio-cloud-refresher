@@ -22,7 +22,7 @@ on:
       - Dobins Indian Catalog
       - India EPG daily refresh
     types: [completed]
-    branches: [main]
+    branches: [main, dobins-catalog]
 permissions:
   contents: write
 concurrency:
