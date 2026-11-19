@@ -37,10 +37,30 @@ jobs:
           state=json.loads(p.read_text()) if p.exists() else {}
           target=due(datetime.datetime.now(ZoneInfo('Asia/Muscat')),'media')
           done=fresh(state,'media',target)
+          if done:
+              # A source catalog can change order mid-cycle. Do not skip a refresh
+              # merely because the two-hour media cycle was previously completed.
+              try:
+                  from featured import LANGS, SOURCE, get, first_valid
+                  live={}
+                  for lang,cat in LANGS.items():
+                      metas=get(f'{SOURCE}/catalog/movie/{cat}.json').get('metas',[])
+                      chosen=first_valid(metas,lang)
+                      if not chosen:
+                          raise RuntimeError(f'{lang}: no valid current catalog head')
+                      live[lang]=str(chosen.get('id','')).split('||',1)[0]
+                  saved=state.get('featured_ids',{})
+                  if live != saved:
+                      print('Catalog head changed within the completed cycle:', {'saved':saved,'live':live})
+                      done=False
+                  else:
+                      print('Current cycle and all four live catalog heads are already verified.')
+              except Exception as exc:
+                  print('Live catalog-head check failed; scheduling a safe retry:', str(exc))
+                  done=False
           with open(os.environ['GITHUB_OUTPUT'],'a') as f:
-              f.write('pending='+('false' if done else 'true')+'\n')
-          print('Current cycle already complete.' if done else 'Refresh work is pending.')
-          PY
+              f.write('pending='+('false' if done else 'true')+'\\n')
+          print('Refresh work is pending.' if not done else 'Current cycle already complete.')
       - uses: actions/setup-python@v5
         if: steps.plan.outputs.pending == 'true'
         with:
