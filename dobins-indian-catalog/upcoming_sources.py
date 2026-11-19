@@ -599,7 +599,8 @@ def _keralatv(soup, source_name, source_url, today, langs, norm, get):
         language = lang_match.group(1).lower()
         if language not in langs:
             continue
-        platforms = [p for p in sorted(PLATFORMS, key=len, reverse=True) if re.search(re.escape(p), text, re.I)]
+        platform_context = text[max(0, release_phrase.start() - 100):min(len(text), release_phrase.end() + 140)]
+        platforms = [p for p in sorted(PLATFORMS, key=len, reverse=True) if re.search(re.escape(p), platform_context, re.I)]
         platforms = [p for p in platforms if not any(p.lower() != q.lower() and p.lower() in q.lower() for q in platforms)]
         if not platforms:
             continue
