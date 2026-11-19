@@ -1,13 +1,13 @@
 {
   "cycle": "2026-11-19",
-  "refresh_cycle": "2026-11-19T18:00:00+04:00",
+  "refresh_cycle": "2026-11-19T20:00:00+04:00",
   "featuredVersion": 2,
-  "featured_cycle": "2026-11-19T18:00:00+04:00",
+  "featured_cycle": "2026-11-19T20:00:00+04:00",
   "featured_ids": {
     "hindi": "tt50107649",
     "tamil": "tt33318732",
     "malayalam": "tt41944351",
-    "telugu": "tt32324552"
+    "telugu": "tt36915004"
   },
   "backdrops": {
     "day": "2026-11-19",
@@ -19,10 +19,10 @@
     },
     "errors": [],
     "catalogHeads": {
-      "hindi": "tt50107649",
       "tamil": "tt33318732",
+      "hindi": "tt50107649",
       "malayalam": "tt41944351",
-      "telugu": "tt32324552"
+      "telugu": "tt36915004"
     }
   },
   "heroes": {
@@ -32,7 +32,7 @@
       "malayalam",
       "telugu"
     ],
-    "checked_at": "2026-11-19T18:40:01.514861+04:00",
+    "checked_at": "2026-11-19T21:40:01.910864+04:00",
     "films_per_language": 20,
     "opening_version": 1,
     "selection_policy": "imdb-catalog-order-v1"
