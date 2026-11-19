@@ -211,28 +211,26 @@ def main():
     progress_path=STATE/'success.json';progress=json.loads(progress_path.read_text()) if progress_path.exists() else {}
     if progress.get('refresh_cycle',progress.get('cycle','')+'T06:00:00+04:00')!=refresh_cycle:progress={'cycle':cycle,'refresh_cycle':refresh_cycle}
     if progress.get('heroes',{}).get('opening_version')!=1 or progress.get('heroes',{}).get('selection_policy')!='imdb-catalog-order-v1':progress.pop('heroes',None)
+    # Re-check the live source head even inside a completed two-hour cycle.
+    # IndianRegional can reorder its catalog between scheduled refresh boundaries.
+    try:
+        selected=featured_movies()
+        selected_ids={lang:str(item.get('id','')) for lang,item in selected.get('languages',{}).items()}
+        if set(selected_ids)!=set(LANGS) or not all(re.fullmatch(r'tt\\d+',value) for value in selected_ids.values()):
+            raise RuntimeError('Current IndianRegional head selection did not verify all four IMDb movie IDs')
+        if selected_ids!=progress.get('featured_ids'):
+            progress.pop('backdrops',None);progress.pop('heroes',None)
+        progress['featuredVersion']=2
+        progress['featured_cycle']=refresh_cycle
+        progress['featured_ids']=selected_ids
+    except Exception as e:
+        atomic(STATE/'last-run.json',{'attempted_at':now.isoformat(),'cycle':cycle,'errors':['Current IndianRegional catalog-head selection: '+str(e)]})
+        print('FAILED current IndianRegional catalog-head verification; retained last-good backdrops:',str(e),flush=True)
+        return 1
     if (progress.get('backdrops') and progress.get('heroes') and progress.get('featuredVersion')==2
         and progress.get('featured_cycle')==refresh_cycle and set(progress.get('featured_ids',{}))==set(LANGS)):
-        print('Current Muscat refresh cycle already verified; nothing to refresh.');return 0
+        print('Current Muscat refresh cycle and live catalog heads already verified; nothing to refresh.');return 0
     bootstrap();failed=[]
-    # Refresh the live IndianRegional catalog head once per two-hour cycle.
-    # Persist the IDs with the successful outputs so a retry does not repeatedly
-    # query the source, and invalidate both media outputs if the head changed.
-    if progress.get('featured_cycle')!=refresh_cycle or progress.get('featuredVersion')!=2:
-        try:
-            selected=featured_movies()
-            selected_ids={lang:str(item.get('id','')) for lang,item in selected.get('languages',{}).items()}
-            if set(selected_ids)!=set(LANGS) or not all(re.fullmatch(r'tt\d+',value) for value in selected_ids.values()):
-                raise RuntimeError('Current IndianRegional head selection did not verify all four IMDb movie IDs')
-            if selected_ids!=progress.get('featured_ids'):
-                progress.pop('backdrops',None);progress.pop('heroes',None)
-            progress['featuredVersion']=2
-            progress['featured_cycle']=refresh_cycle
-            progress['featured_ids']=selected_ids
-        except Exception as e:
-            atomic(STATE/'last-run.json',{'attempted_at':now.isoformat(),'cycle':cycle,'errors':['Current IndianRegional catalog-head selection: '+str(e)]})
-            print('FAILED current catalog-head verification; retained last-good backdrops:',str(e),flush=True)
-            return 1
     for key,fn in [('backdrops',backdrop),('heroes',heroes)]:
         if progress.get(key):continue
         try:progress[key]=fn();print(key,'verified',flush=True)
