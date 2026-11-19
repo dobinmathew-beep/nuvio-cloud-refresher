@@ -132,14 +132,20 @@ def featured_movies():
     # Allow the HTTP service to observe the new pointer before full verification.
     def probe(lang):
         try:
-            d=json.loads(get('https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site/status/'+lang+'/movies/gallery.json?check=1'))
+            url=('https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site/status/'+lang+
+                 '/movies/gallery.json?check=1&refresh='+str(time.time_ns()))
+            p=subprocess.run(['curl','-fsSL','--connect-timeout','5','--max-time','10',
+                              '-H','Cache-Control: no-cache',url],
+                             capture_output=True,text=True,timeout=12)
+            if p.returncode:return False
+            d=json.loads(p.stdout)
             return d.get('centerMovie',{}).get('id')==result['languages'][lang]['id'] and d.get('renderVersion')=='catalog-head-v2'
         except Exception:return False
-    for attempt in range(30):
+    for attempt in range(20):
         with ThreadPoolExecutor(max_workers=4) as pool:ready=all(pool.map(probe,LANGS))
         if ready:break
-        if attempt==29:raise RuntimeError('New confirmed centre selections are not yet visible; retained last-good images')
-        time.sleep(10)
+        if attempt==19:raise RuntimeError('New confirmed centre selections are not yet visible; retained last-good images')
+        time.sleep(5)
     return result
 
 def build_hero_index(dist):
