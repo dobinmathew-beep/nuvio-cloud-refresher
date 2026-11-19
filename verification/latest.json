@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-20T03:42:26.025224+04:00",
+  "checked_at": "2026-11-20T03:55:03.892232+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
     "addon": {
       "status": "pass",
-      "checked_at": "2026-11-20T02:09:44.009396+04:00",
+      "checked_at": "2026-11-20T03:55:03.892232+04:00",
       "public_url": "https://the-great-indian-addon.vercel.app",
       "checks": [
         {
@@ -50,28 +50,28 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-20T00:46:22.722555+04:00",
+      "checked_at": "2026-11-20T03:55:03.892232+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
           "name": "public status and freshness",
           "status": "pass",
           "details": {
-            "revision": "10db1390-04d0-4f25-91eb-0534be4dc9a4",
-            "checked_utc": "2026-11-19T18:32:11.939109+00:00",
+            "revision": "c74e29c6-2697-4be9-9644-2c535caee371",
+            "checked_utc": "2026-11-19T22:04:19.947924+00:00",
             "matched_ids": 623,
             "playlist_channel_ids": 833,
             "unresolved_ids": 210,
-            "programmes": 66297
+            "programmes": 68667
           }
         },
         {
           "name": "published XMLTV",
           "status": "pass",
           "details": {
-            "bytes": 2081733,
+            "bytes": 2125164,
             "channels": 623,
-            "programmes": 66297
+            "programmes": 68667
           }
         },
         {
@@ -92,7 +92,7 @@
           "name": "Source_Crosscheck_Report.csv",
           "status": "pass",
           "details": {
-            "rows": 2781
+            "rows": 2783
           }
         },
         {
@@ -135,13 +135,13 @@
     },
     "backdrops": {
       "status": "fail",
-      "checked_at": "2026-11-20T03:42:26.025224+04:00",
+      "checked_at": "2026-11-20T03:55:03.892232+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
-      "error": "[{\"status\": \"hindi/movies/spotlight\", \"error\": \"saved featured selection is stale: tt50107649 != current catalog head tt37200939\"}, {\"status\": \"hindi/movies/filmstrip\", \"error\": \"saved featured selection is stale: tt50107649 != current catalog head tt37200939\"}, {\"status\": \"hindi/movies/wall\", \"error\": \"saved featured selection is stale: tt50107649 != current catalog head tt37200939\"}, {\"status\": \"hindi/movies/cascade\", \"error\": \"saved featured selection is stale: tt50107649 != current catalog head tt37200939\"}, {\"status\": \"hindi/movies/ribbon\", \"error\": \"saved featured selection is stale: tt50107649 != current catalog head tt37200939\"}]"
+      "error": "[{\"status\": \"hindi/movies/cascade\", \"error\": \"saved featured selection is stale: tt50107649 != current catalog head tt37200939\"}, {\"status\": \"hindi/movies/wall\", \"error\": \"saved featured selection is stale: tt50107649 != current catalog head tt37200939\"}, {\"status\": \"hindi/movies/filmstrip\", \"error\": \"saved featured selection is stale: tt50107649 != current catalog head tt37200939\"}, {\"status\": \"hindi/movies/spotlight\", \"error\": \"saved featured selection is stale: tt50107649 != current catalog head tt37200939\"}, {\"status\": \"hindi/movies/duo\", \"error\": \"saved featured selection is stale: tt50107649 != current catalog head tt37200939\"}]"
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-20T03:42:26.025224+04:00",
+      "checked_at": "2026-11-20T03:55:03.892232+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
