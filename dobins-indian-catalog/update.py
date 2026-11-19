@@ -332,11 +332,12 @@ def metadata(mid,typ,fallback):
  except Exception:return {'_metadataCheckedAt':NOW.isoformat(),'_partial':True,'id':mid,'type':typ,'name':fallback['name'],'poster':fallback.get('poster'),'releaseInfo':str(fallback.get('releaseInfo',''))}
 
 def event_digital_date(event,today=TODAY):
- # Preserve the first verified digital/OTT arrival, separate from the canonical first release date.
+ # Use the newest verified digital/OTT arrival when multiple dates are known.
+ # The theatrical/physical history remains separately available for provenance.
  dates=[str(x.get('date'))[:10] for x in (event.get('availability') or []) if x.get('kind')=='digital' and x.get('date')]
  if event.get('releaseKind')=='digital' and event.get('ottDate'):dates.append(str(event['ottDate'])[:10])
  valid=[x for x in dates if re.fullmatch(r'\d{4}-\d{2}-\d{2}',x)]
- return min(valid) if valid else None
+ return max(valid) if valid else None
 def release_classification(event,meta):
  # Classify movie entries by the home-release event being advertised, not the theatrical title's age.
  if event.get('type')!='movie':return None,None,None
