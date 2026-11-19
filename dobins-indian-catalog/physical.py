@@ -77,7 +77,7 @@ def theatrical_releases(html,today):
   heading=table.select_one('h2.release');country=heading.get_text(' ',strip=True) if heading else 'Unspecified';region=heading.get('id') if heading else None
   for row in table.select('tbody tr'):
    cells=[x.get_text(' ',strip=True) for x in row.select('td')]
-   if len(cells)<5 or cells[2].lower()!='theatrical':continue
+   if len(cells)<5 or not cells[2].lower().startswith('theatrical'):continue
    try:day=datetime.strptime(cells[0],'%d/%m/%Y').date().isoformat()
    except ValueError:continue
    if day<=today:found.append({'date':day,'country':country,'region':region,'note':cells[4]})
