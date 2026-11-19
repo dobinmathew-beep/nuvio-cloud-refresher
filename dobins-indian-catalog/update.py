@@ -372,6 +372,10 @@ def is_just_added_movie(event, added_time, now=NOW):
  # confirmed digital/OTT release. This catches a fresh OTT arrival even when
  # the title was already known to the catalog or its theatrical date is older.
  if event.get('type') != 'movie':return False
+ availability=event.get('availability') or []
+ has_digital=(event.get('releaseKind') == 'digital' or
+              any(x.get('kind') == 'digital' for x in availability if isinstance(x,dict)))
+ if not has_digital:return False
  digital=event_digital_date(event)
  if digital:
   try:
