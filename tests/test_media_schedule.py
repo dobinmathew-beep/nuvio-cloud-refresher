@@ -6,7 +6,7 @@ from zoneinfo import ZoneInfo
 import cloud
 
 class MediaScheduleTests(unittest.TestCase):
-    def test_morning_success_does_not_skip_afternoon_and_retry_does_not_repeat_it(self):
+    def test_refresh_rechecks_catalog_head_without_rerendering_unchanged_media(self):
         now=datetime(2026,11,2,14,0,tzinfo=ZoneInfo('Asia/Muscat'))
         heroes={'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}
         with tempfile.TemporaryDirectory() as folder:
@@ -23,6 +23,6 @@ class MediaScheduleTests(unittest.TestCase):
                 self.assertEqual(saved['featured_cycle'],'2026-11-02T14:00:00+04:00')
                 self.assertEqual(saved['featured_ids'],{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'})
                 self.assertEqual(cloud.main(),0)
-                featured.assert_called_once();backdrop.assert_called_once();hero.assert_called_once()
+                self.assertEqual(featured.call_count,2);backdrop.assert_called_once();hero.assert_called_once()
 
 if __name__=='__main__':unittest.main()
