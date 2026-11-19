@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-19T14:18:37.461853+00:00",
+  "checkedAt": "2026-11-19T14:25:49.689892+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,7 +14,7 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1081,
+      "metadataRecords": 1090,
       "warning": null,
       "error": null
     },
@@ -150,32 +150,32 @@
       "language": "ta",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ta_series.json",
-      "localPublishedCount": 112,
-      "localUniqueIdCount": 112,
+      "localPublishedCount": 114,
+      "localUniqueIdCount": 114,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 112,
-      "endpointUniqueIdCount": 112,
+      "endpointRawCount": 114,
+      "endpointUniqueIdCount": 114,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
-        12
+        14
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tmdb:339004",
-        "name": "Notebook 90s \u2013 Kadhal Flashback",
-        "releaseDate": "2026-11-23"
+        "id": "tmdb:339001",
+        "name": "Madam Police",
+        "releaseDate": "2026-12-03"
       },
       "localLatestEntry": {
-        "id": "tmdb:339004",
-        "name": "Notebook 90s \u2013 Kadhal Flashback",
-        "releaseDate": "2026-11-23"
+        "id": "tmdb:339001",
+        "name": "Madam Police",
+        "releaseDate": "2026-12-03"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -186,18 +186,18 @@
       "language": "te",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_te_movie.json",
-      "localPublishedCount": 84,
-      "localUniqueIdCount": 84,
+      "localPublishedCount": 86,
+      "localUniqueIdCount": 86,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 84,
-      "endpointUniqueIdCount": 84,
+      "endpointRawCount": 86,
+      "endpointUniqueIdCount": 86,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        34
+        36
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -257,18 +257,18 @@
       "language": "hi",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
-      "localPublishedCount": 90,
-      "localUniqueIdCount": 90,
+      "localPublishedCount": 91,
+      "localUniqueIdCount": 91,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 90,
-      "endpointUniqueIdCount": 90,
+      "endpointRawCount": 91,
+      "endpointUniqueIdCount": 91,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        40
+        41
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -292,13 +292,13 @@
       "language": "hi",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
-      "localPublishedCount": 351,
-      "localUniqueIdCount": 351,
+      "localPublishedCount": 353,
+      "localUniqueIdCount": 353,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 351,
-      "endpointUniqueIdCount": 351,
+      "endpointRawCount": 353,
+      "endpointUniqueIdCount": 353,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
@@ -309,20 +309,20 @@
         50,
         50,
         50,
-        1
+        3
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tmdb:337904",
-        "name": "AndherPura Curse",
-        "releaseDate": "2026-11-28"
+        "id": "tt37020592",
+        "name": "Teen Kauwe",
+        "releaseDate": "2026-12-25"
       },
       "localLatestEntry": {
-        "id": "tmdb:337904",
-        "name": "AndherPura Curse",
-        "releaseDate": "2026-11-28"
+        "id": "tt37020592",
+        "name": "Teen Kauwe",
+        "releaseDate": "2026-12-25"
       },
       "latestEntryMatches": true,
       "state": "ok",
