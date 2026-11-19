@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-19T13:05:06.311262+04:00",
+  "checked_at": "2026-11-19T13:16:58.192202+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -50,49 +50,49 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-19T11:30:27.624134+04:00",
+      "checked_at": "2026-11-19T13:16:58.192202+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
           "name": "public status and freshness",
           "status": "pass",
           "details": {
-            "revision": "9f28701c-6a3b-415c-9dec-10c7fb83388f",
-            "checked_utc": "2026-11-19T00:47:26.920407+00:00",
-            "matched_ids": 613,
-            "playlist_channel_ids": 819,
-            "unresolved_ids": 206,
-            "programmes": 67346
+            "revision": "99384cad-1c90-4b6c-bab0-7dd8e4185e67",
+            "checked_utc": "2026-11-19T08:27:17.832365+00:00",
+            "matched_ids": 622,
+            "playlist_channel_ids": 833,
+            "unresolved_ids": 211,
+            "programmes": 70704
           }
         },
         {
           "name": "published XMLTV",
           "status": "pass",
           "details": {
-            "bytes": 2086666,
-            "channels": 613,
-            "programmes": 67346
+            "bytes": 2164223,
+            "channels": 622,
+            "programmes": 70704
           }
         },
         {
           "name": "Channel_Matching_Report.csv",
           "status": "pass",
           "details": {
-            "rows": 819
+            "rows": 833
           }
         },
         {
           "name": "Unresolved_Channels.csv",
           "status": "pass",
           "details": {
-            "rows": 206
+            "rows": 211
           }
         },
         {
           "name": "Source_Crosscheck_Report.csv",
           "status": "pass",
           "details": {
-            "rows": 2692
+            "rows": 3238
           }
         },
         {
