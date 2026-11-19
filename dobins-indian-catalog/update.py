@@ -520,8 +520,15 @@ def build():
     item['nextEpisodeReleaseAt']=episode_badges.upcoming(metas.get(alternate.key('series',item['id']),{}).get('videos',[]),NOW,metas.get(alternate.key('series',item['id']),{}).get('seasons',[]))
     item['latestEpisodeReleasedAt'],item['hasNewEpisodes']=episode_badges.latest(metas.get(alternate.key('series',item['id']),{}).get('videos',[]),NOW)
     if item['latestEpisodeReleasedAt'] and item['latestEpisodeReleasedAt'][:10]>(item.get('releaseDate') or ''):item['releaseDate']=item['latestEpisodeReleasedAt'][:10]
-  ms.sort(key=lambda m:(bool(m.get('hasNewEpisodes')),catalog_sort_date(m),m['name']),reverse=True)
+  ms.sort(key=lambda m:(catalog_sort_date(m),m['name']),reverse=True)
   if not ms and old_catalogs.get(cid):catalogs[cid]=old_catalogs[cid]
+ save('catalog-added.json',added_at)
+ sort_audit={}
+ for cid,items in catalogs.items():
+  dates=[catalog_sort_date(item) for item in items]
+  sort_audit[cid]={'count':len(items),'sortedNewestToOldest':dates==sorted(dates,reverse=True),'newestDate':dates[0] if dates else None,'oldestDate':dates[-1] if dates else None}
+  if not sort_audit[cid]['sortedNewestToOldest']:
+   raise RuntimeError('Catalog ordering audit failed for '+cid)
  malayalam_audit,malayalam_errors=validate_malayalam_catalogs(catalogs,metas)
  if malayalam_errors:
   save('metadata.json',metas);save('unmatched.json',unmatched)
@@ -642,7 +649,7 @@ def build():
  for cid,items in catalogs.items():
   latest=max(items,key=lambda x:str(x.get('latestEpisodeReleasedAt') or x.get('ottDate') or x.get('releaseDate') or ''),default=None)
   freshness[cid]={'count':len(items),'generatedAt':NOW.isoformat(),'latestEntry':None if not latest else {'id':latest.get('id'),'name':latest.get('name'),'releaseDate':latest.get('latestEpisodeReleasedAt') or latest.get('ottDate') or latest.get('releaseDate'),'hasNewEpisodes':latest.get('hasNewEpisodes',False)}}
- status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastMatchRetryAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'RPDB posters first, high-resolution artwork fallbacks, original title logos with readable PNG fallback','pendingMatches':len(unmatched),'checkedCandidates':len(events),'malayalamMetadataAudit':malayalam_audit,'upcoming':{'matchedTitles':len(upcoming_rows),'bySource':upcoming_source_summary,'policy':'Only confirmed upcoming titles with a validated IMDb tt-ID are published.'},'upcomingDiscovery':{**discovery_counts,'malayalamReviewCount':malayalam_review_counts['total']},'recentReleaseAudit':recent_release_audit,'sourceCoverage':source_coverage,'coveragePolicy':'Each language requires at least two healthy independent publisher domains; failed feeds remain visible and trigger retry.','errors':resolve_errors}
+ status={'name':'Dobins Indian Catalog','policy':POLICY,'releasePolicy':physical.POLICY,'metadataPolicy':alternate.POLICY,'seriesPolicy':series_sources.POLICY,'updatedAt':NOW.isoformat(),'lastMatchRetryAt':NOW.isoformat(),'lastSuccessCycle':cycle(),'timezone':'Asia/Muscat','schedule':'Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries','sources':health,'counts':{k:len(v) for k,v in catalogs.items()},'catalogFreshness':freshness,'pendingMatchesByCatalog':pending_by_catalog,'checkedCandidatesByCatalog':checked_by_catalog,'artworkPolicy':'BetterPosters proxy for Just Added and upcoming date badges; RPDB/source artwork fallbacks; original title logos with readable PNG fallback','catalogSortAudit':sort_audit,'movieSortPolicy':'Earliest verified release date wins: theatrical, then digital/OTT, then physical; catalog arrays newest-to-oldest.','pendingMatches':len(unmatched),'checkedCandidates':len(events),'malayalamMetadataAudit':malayalam_audit,'upcoming':{'matchedTitles':len(upcoming_rows),'bySource':upcoming_source_summary,'policy':'Only confirmed upcoming titles with a validated IMDb tt-ID are published.'},'upcomingDiscovery':{**discovery_counts,'malayalamReviewCount':malayalam_review_counts['total']},'recentReleaseAudit':recent_release_audit,'sourceCoverage':source_coverage,'coveragePolicy':'Each language requires at least two healthy independent publisher domains; failed feeds remain visible and trigger retry.','errors':resolve_errors}
  save('status.json',status);print('SUCCESS',json.dumps(status),flush=True)
 if __name__=='__main__':
  try:build()
