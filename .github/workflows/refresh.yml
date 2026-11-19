@@ -59,7 +59,7 @@ jobs:
                   print('Live catalog-head check failed; scheduling a safe retry:', str(exc))
                   done=False
           with open(os.environ['GITHUB_OUTPUT'],'a') as f:
-              f.write('pending='+('false' if done else 'true')+'\\n')
+              f.write('pending='+('false' if done else 'true')+'\n')
           print('Refresh work is pending.' if not done else 'Current cycle already complete.')
       - uses: actions/setup-python@v5
         if: steps.plan.outputs.pending == 'true'
