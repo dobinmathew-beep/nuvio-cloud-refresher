@@ -99,6 +99,10 @@ export async function hasExistingComingDateTag(input, kind = 'premiere', isoDate
 export { hasExpectedDateBadgeText };
 
 
+export function hasJustAddedBadgeText(text) {
+  return /\\bjust\\s+added\\b/i.test(normalizedText(text));
+}
+
 export async function hasExistingJustAddedTag(input) {
   const key = createHash('sha256').update(input).digest('hex') + ':just-added';
   const cached = cache.get(key);
