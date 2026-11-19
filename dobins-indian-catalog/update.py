@@ -558,7 +558,8 @@ def build():
   complete=bool(mid and meta.get('id')==mid and meta.get('type')==e['type'] and not meta.get('_partial') and meta.get('name') and meta.get('description') and meta.get('poster'))
   published=bool(mid and mid in catalog_ids.get(f"dobins_{expected}_{e['type']}",set()))
   state='language_mismatch' if original and original not in (expected,e['language']) else 'published' if published else 'matched_not_published' if complete else 'metadata_incomplete' if mid else 'unmatched'
-  recent_release_items.append({'title':e['name'],'language':e['language'],'type':e['type'],'releaseDate':day,'id':mid or None,'matchState':state,'platforms':e.get('platforms') or [],'sources':list(dict.fromkeys(sources)),'detail':e.get('detail')})
+  reason=('Original metadata language does not match the detected catalogue language' if state=='language_mismatch' else match.get('reason') or match.get('method') or ('Title identity is not yet resolved' if not mid else 'Matched identity is not yet metadata-complete' if not complete else 'Matched metadata is not yet present in the target catalog'))
+  recent_release_items.append({'title':e['name'],'language':e['language'],'type':e['type'],'releaseDate':day,'id':mid or None,'matchState':state,'matchReason':reason,'platforms':e.get('platforms') or [],'sources':list(dict.fromkeys(sources)),'detail':e.get('detail')})
  recent_counts={}
  for row in recent_release_items:recent_counts[row['matchState']]=recent_counts.get(row['matchState'],0)+1
  recent_release_audit={'windowDays':35,'source':'all active discovery sources (rolling 35-day window)','detected':len(recent_release_items),'byMatchState':recent_counts,'items':recent_release_items}
