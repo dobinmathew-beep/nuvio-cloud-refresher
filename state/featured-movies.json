@@ -1,31 +1,31 @@
 {
   "version": 2,
-  "checkedAt": "2026-11-19T22:09:53.198708+00:00",
+  "checkedAt": "2026-11-19T23:55:22.829834+00:00",
   "selection": "first IMDb-linked movie in the matching IndianRegional catalog order; no external release-date filtering",
   "languages": {
     "hindi": {
-      "id": "tt50107649",
-      "name": "Dilwali Diwali",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt50107649.jpg",
+      "id": "tt37200939",
+      "name": "Parivarik ManuRanjan",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt37200939.jpg",
       "catalog": "hi",
       "type": "movie",
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/hi.json",
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-11-19T22:09:53.198708+00:00"
+      "verifiedAt": "2026-11-19T23:55:22.829834+00:00"
     },
     "tamil": {
-      "id": "tt33318732",
-      "name": "Jailer 2",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33318732.jpg",
+      "id": "tt18933846",
+      "name": "Nooru Kodi Vaanavil",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt18933846.jpg",
       "catalog": "ta",
       "type": "movie",
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/ta.json",
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-11-19T22:09:53.198708+00:00"
+      "verifiedAt": "2026-11-19T23:55:22.829834+00:00"
     },
     "malayalam": {
       "id": "tt41944351",
@@ -37,7 +37,7 @@
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-11-19T22:09:53.198708+00:00"
+      "verifiedAt": "2026-11-19T23:55:22.829834+00:00"
     },
     "telugu": {
       "id": "tt36915004",
@@ -49,7 +49,7 @@
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-11-19T22:09:53.198708+00:00"
+      "verifiedAt": "2026-11-19T23:55:22.829834+00:00"
     }
   },
   "warnings": []
