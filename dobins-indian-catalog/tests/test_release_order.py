@@ -9,12 +9,13 @@ class ReleaseOrderTests(unittest.TestCase):
           <tbody>
             <tr><td>10/10/2026</td><td>Oct 10</td><td>Theatrical</td><td>Wide</td><td>Original theatrical release</td></tr>
             <tr><td>20/12/2026</td><td>Dec 20</td><td>Physical</td><td>Wide</td><td>4K Blu-ray</td></tr>
+            <tr><td>12/10/2026</td><td>Oct 12</td><td>Theatrical (limited)</td><td>Limited</td><td>Limited theatrical release</td></tr>
             <tr><td>20/11/2026</td><td>Nov 20</td><td>Theatrical</td><td>Wide</td><td>Future premiere</td></tr>
           </tbody>
         </table>
         """
         rows = physical.theatrical_releases(html, "2026-11-19")
-        self.assertEqual([x["date"] for x in rows], ["2026-10-10"])
+        self.assertEqual([x["date"] for x in rows], ["2026-10-10", "2026-10-12"])
         self.assertEqual(rows[0]["country"], "India")
 
     def test_movie_uses_theatrical_date_even_when_ott_arrives_later(self):
