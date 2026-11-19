@@ -1053,13 +1053,16 @@ def collect(get, today, langs, norm):
             scope = (scoped.group(1).lower() if scoped else named_scope)
             if scope and scope != language:
                 continue
-            records = sum(1 for event in events if event.get("language") == language and
-                          (url in (event.get("sources") or [event.get("source")]) or
-                           (source_name == "TVmaze upcoming web schedule" and event.get("source") == url)))
+            def from_this_source(event):
+                return (url in (event.get("sources") or [event.get("source")]) or
+                        (source_name == "TVmaze upcoming web schedule" and event.get("source") == url))
+            movie_records = sum(1 for event in events if event.get("language") == language and event.get("type") == "movie" and from_this_source(event))
+            series_records = sum(1 for event in events if event.get("language") == language and event.get("type") == "series" and from_this_source(event))
+            records = movie_records + series_records
             state = item.get("state", "unknown")
             checked.append({"source": source_name, "url": url, "state": state,
                             "languageState": "failed" if state == "failed" else "records_found" if records else "checked_no_records",
-                            "records": records})
+                            "records": records, "movieRecords": movie_records, "seriesRecords": series_records})
         # Count independent publishers, not URLs: three Vi pages or four
         # OTTChecker language pages are one publisher each, not three/four
         # independent confirmations.
@@ -1081,13 +1084,27 @@ def collect(get, today, langs, norm):
             if item["records"] and item["state"] in healthy_states and urlsplit(item["url"]).netloc
         })
         record_sources = len(record_domains)
+        movie_domains = sorted({
+            urlsplit(item["url"]).netloc.lower().removeprefix("www.")
+            for item in checked
+            if item["movieRecords"] and item["state"] in healthy_states and urlsplit(item["url"]).netloc
+        })
+        series_domains = sorted({
+            urlsplit(item["url"]).netloc.lower().removeprefix("www.")
+            for item in checked
+            if item["seriesRecords"] and item["state"] in healthy_states and urlsplit(item["url"]).netloc
+        })
+        movie_sources = len(movie_domains)
+        series_sources = len(series_domains)
         source_coverage[language] = {
             "checkedFeeds": len(checked), "checkedSources": len(domain_states),
             "healthySources": healthy, "failedSources": failed,
             "healthySourceDomains": healthy_domains, "failedSourceDomains": failed_domains,
             "sourcesWithRecords": record_sources, "sourceDomainsWithRecords": record_domains,
+            "sourcesWithMovieRecords": movie_sources, "sourceDomainsWithMovieRecords": movie_domains,
+            "sourcesWithSeriesRecords": series_sources, "sourceDomainsWithSeriesRecords": series_domains,
             "detectedRecords": sum(x["records"] for x in checked),
-            "coverageStatus": "ok" if healthy >= 2 and record_sources >= 2 and failed == 0 else "partial" if healthy >= 2 else "degraded",
+            "coverageStatus": "ok" if healthy >= 2 and record_sources >= 2 and movie_sources >= 2 and series_sources >= 2 and failed == 0 else "partial" if healthy >= 2 else "degraded",
             "sources": checked,
         }
     health.append({"source": "Per-language source coverage", "url": "internal://source-coverage",
