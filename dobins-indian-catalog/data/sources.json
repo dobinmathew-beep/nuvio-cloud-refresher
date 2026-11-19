@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-19T03:36:37.621599+04:00",
+    "checkedAt": "2026-11-19T18:19:24.099437+04:00",
     "records": [
       {
         "_id": "6afd0b087544018d4aade8e1",
@@ -16,9 +16,67 @@
         "releaseDate": "2026-11-18",
         "source_verified": true,
         "type": "Movie",
-        "updatedAt": "2026-11-18T02:19:35.528Z",
+        "updatedAt": "2026-11-19T02:19:34.833Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/wWNizZ4IcSld3xXH1WEXziJiNJN.jpg",
         "instagramPostedAt": "2026-11-18T02:20:14Z",
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
+        "trendingRankedDateIST": "2026-11-19",
+        "tmdbRating": 70,
+        "tmdbVotes": 12,
+        "tmdbDetails": {
+          "tmdbId": 1551025,
+          "director": "Elizabeth Allen Rosenbaum",
+          "cast": [
+            {
+              "name": "Leighton Meester",
+              "character": "Hannah"
+            },
+            {
+              "name": "Jared Padalecki",
+              "character": "Jack"
+            },
+            {
+              "name": "Andie MacDowell",
+              "character": "Connie Stapleton"
+            },
+            {
+              "name": "Walker Hayes",
+              "character": "Sheriff Sanderson"
+            },
+            {
+              "name": "Noah LaLonde",
+              "character": "Hank Stapleton"
+            },
+            {
+              "name": "Toby Sandeman",
+              "character": "Robbie"
+            },
+            {
+              "name": "Phil Brooks",
+              "character": "Doghouse"
+            },
+            {
+              "name": "Ava Max",
+              "character": "Kennedy Monroe"
+            }
+          ],
+          "overview": "When a no-nonsense bodyguard is assigned to protect a charming action star over the holidays, sparks fly, secrets unravel, and Christmas gets a whole lot more complicated.",
+          "runtime": 109,
+          "genres": [
+            "Romance",
+            "Comedy"
+          ],
+          "originalLanguage": "en",
+          "spokenLanguages": [
+            "English"
+          ],
+          "releaseDate": "2026-11-18",
+          "voteAverage": 7.25,
+          "trailerKey": "mFvtVPMa5ak",
+          "fetchedAt": "2026-11-19T09:28:24.718Z"
+        },
+        "tmdbId": 1551025,
         "verified": true
       },
       {
@@ -73,9 +131,9 @@
         "updatedAt": "2026-11-17T02:19:35.547Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/oB9Pcb5grM5Gk0TDWZeBZ3vHhDZ.jpg",
         "instagramPostedAt": "2026-11-17T02:20:05Z",
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-18T02:19:16.758Z",
-        "trendingRankedDateIST": "2026-11-18",
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
+        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -189,8 +247,8 @@
         },
         "tmdbId": 1543469,
         "trendingRank": 2,
-        "trendingRankedAt": "2026-11-18T02:19:16.758Z",
-        "trendingRankedDateIST": "2026-11-18",
+        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
+        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -265,9 +323,9 @@
         "tmdbId": 1050981,
         "tmdbRating": 65,
         "tmdbVotes": 12,
-        "trendingRank": 8,
-        "trendingRankedAt": "2026-11-18T02:19:16.758Z",
-        "trendingRankedDateIST": "2026-11-18",
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
+        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -366,9 +424,9 @@
           "fetchedAt": "2026-11-13T05:09:16.275Z"
         },
         "tmdbId": 1493572,
-        "trendingRank": 9,
-        "trendingRankedAt": "2026-11-18T02:19:16.758Z",
-        "trendingRankedDateIST": "2026-11-18",
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
+        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -444,9 +502,9 @@
           "fetchedAt": "2026-11-13T03:49:09.847Z"
         },
         "tmdbId": 434775,
-        "trendingRank": 6,
-        "trendingRankedAt": "2026-11-18T02:19:16.758Z",
-        "trendingRankedDateIST": "2026-11-18",
+        "trendingRank": 8,
+        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
+        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -521,9 +579,9 @@
           "fetchedAt": "2026-11-14T07:58:38.175Z"
         },
         "tmdbId": 1013057,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-18T02:19:16.758Z",
-        "trendingRankedDateIST": "2026-11-18",
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
+        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -592,9 +650,6 @@
           "fetchedAt": "2026-11-13T12:41:01.465Z"
         },
         "tmdbId": 1431738,
-        "trendingRank": 7,
-        "trendingRankedAt": "2026-11-18T02:19:16.758Z",
-        "trendingRankedDateIST": "2026-11-18",
         "verified": true
       },
       {
@@ -669,9 +724,9 @@
           "fetchedAt": "2026-11-13T10:13:20.584Z"
         },
         "tmdbId": 1389379,
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-18T02:19:16.758Z",
-        "trendingRankedDateIST": "2026-11-18",
+        "trendingRank": 9,
+        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
+        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -786,6 +841,9 @@
           "fetchedAt": "2026-11-16T15:16:51.427Z"
         },
         "tmdbId": 1805816,
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
+        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -914,9 +972,6 @@
           "fetchedAt": "2026-11-14T07:08:22.981Z"
         },
         "tmdbId": 809787,
-        "trendingRank": 10,
-        "trendingRankedAt": "2026-11-18T02:19:16.758Z",
-        "trendingRankedDateIST": "2026-11-18",
         "verified": true
       },
       {
@@ -1071,6 +1126,9 @@
           "fetchedAt": "2026-11-14T18:26:15.691Z"
         },
         "tmdbId": 590401,
+        "trendingRank": 10,
+        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
+        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -1147,9 +1205,6 @@
         },
         "tmdbId": 1234139,
         "votes": 1,
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-18T02:19:16.758Z",
-        "trendingRankedDateIST": "2026-11-18",
         "verified": true
       },
       {
@@ -30664,7 +30719,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-19T03:36:37.621599+04:00",
+    "checkedAt": "2026-11-19T18:19:24.099437+04:00",
     "records": [
       {
         "name": "Bandra",

@@ -2891,13 +2891,6 @@
   ],
   "malayalam-movie": [
     {
-      "id": "tt27512908",
-      "name": "The Third Murder",
-      "poster": "https://live.metahub.space/poster/small/tt27512908/img",
-      "releaseInfo": 2026,
-      "type": "movie"
-    },
-    {
       "id": "tt41944351",
       "name": "Madhuramee Jeevitham",
       "poster": "https://live.metahub.space/poster/small/tt41944351/img",
@@ -3021,6 +3014,13 @@
       "name": "Angam Attahasam",
       "poster": "https://live.metahub.space/poster/small/tt35815094/img",
       "releaseInfo": 2026,
+      "type": "movie"
+    },
+    {
+      "id": "tt26445387",
+      "name": "i, Nobody",
+      "poster": "https://images.metahub.space/poster/small/tt26445387/img",
+      "releaseInfo": "2026",
       "type": "movie"
     }
   ],
@@ -3351,6 +3351,13 @@
       "id": "tt35146696",
       "name": "Tu Meri Main Tera Main Tera Tu Meri",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35146696.jpg",
+      "releaseInfo": "2025",
+      "type": "movie"
+    },
+    {
+      "id": "tt31146564",
+      "name": "Durlabh Prasad Ki Dusri Shadi",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31146564.jpg",
       "releaseInfo": "2025",
       "type": "movie"
     },
@@ -4419,6 +4426,13 @@
       "type": "movie"
     },
     {
+      "id": "tt13751694",
+      "name": "Animal",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13751694.jpg",
+      "releaseInfo": "2023",
+      "type": "movie"
+    },
+    {
       "id": "tt10786774",
       "name": "Sam Bahadur",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10786774.jpg",
@@ -4555,6 +4569,13 @@
       "id": "tt20754156",
       "name": "Tumse Na Ho Payega",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt20754156.jpg",
+      "releaseInfo": "2023",
+      "type": "movie"
+    },
+    {
+      "id": "tt23554840",
+      "name": "The Vaccine War",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt23554840.jpg",
       "releaseInfo": "2023",
       "type": "movie"
     },
@@ -5665,16 +5686,16 @@
       "type": "movie"
     },
     {
-      "id": "tt7518786",
-      "name": "83",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7518786.jpg",
+      "id": "tt15250998",
+      "name": "Ankahi Kahaniya",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15250998.jpg",
       "releaseInfo": "2021",
       "type": "movie"
     },
     {
-      "id": "tt13723562",
-      "name": "420 IPC",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13723562.jpg",
+      "id": "tt13451792",
+      "name": "Kya Meri Sonam Gupta Bewafa Hai?",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13451792.jpg",
       "releaseInfo": "2021",
       "type": "movie"
     },
@@ -6503,20 +6524,6 @@
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10023024.jpg",
       "releaseInfo": "2020",
       "type": "movie"
-    },
-    {
-      "id": "tt9877170",
-      "name": "Malang",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt9877170.jpg",
-      "releaseInfo": "2020",
-      "type": "movie"
-    },
-    {
-      "id": "tt9248952",
-      "name": "Jawaani Jaaneman",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt9248952.jpg",
-      "releaseInfo": "2020",
-      "type": "movie"
     }
   ],
   "telugu-series": [
@@ -7309,13 +7316,6 @@
       "type": "movie"
     },
     {
-      "id": "tt38162660",
-      "name": "Thimmarajupalli TV",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt38162660.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
       "id": "tt30413898",
       "name": "Dacoit",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt30413898.jpg",
@@ -7865,13 +7865,6 @@
       "id": "tt27611340",
       "name": "Bachhala Malli",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27611340.jpg",
-      "releaseInfo": "2024",
-      "type": "movie"
-    },
-    {
-      "id": "tt16539454",
-      "name": "Pushpa 2 - The Rule",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt16539454.jpg",
       "releaseInfo": "2024",
       "type": "movie"
     },
@@ -9033,6 +9026,13 @@
   ],
   "hindi-series": [
     {
+      "id": "tmdb:338656||Lo Chudail Chali Sasural||2026||series||https://image.tmdb.org/t/p/original/i7sliUK1jQkM2PvwvTjYlBaoZ69.jpg||Urvashi%2C%20a%20chudail%20longing%20for%20a%20human%20family%2C%20marries%20Aarav%20Patel%20and%20joins%20his%20lively%20Gujarati%20joint%20family.%20As%20her%20magic%20causes%20hilarious%20mishaps%2C%20Aarav%20struggles%20to%20protect%20her%20secret%20while%20her%20human-hating%20mother%20Kamini%20fuels%20the%20chaos.%20Amid%20magical%20mayhem%2C%20and%20family%20drama%2C%20love%20finds%20a%20way.",
+      "name": "Lo Chudail Chali Sasural",
+      "poster": "https://image.tmdb.org/t/p/original/i7sliUK1jQkM2PvwvTjYlBaoZ69.jpg",
+      "releaseInfo": "2026",
+      "type": "series"
+    },
+    {
       "id": "tt28450216",
       "name": "Student of the Year: After Dark",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28450216.jpg",
@@ -9162,13 +9162,6 @@
       "id": "tt39643967",
       "name": "Desi Bling",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39643967.jpg",
-      "releaseInfo": "2026",
-      "type": "series"
-    },
-    {
-      "id": "tt42733581",
-      "name": "Shekhar Tonite",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt42733581.jpg",
       "releaseInfo": "2026",
       "type": "series"
     },
@@ -12533,5 +12526,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-19T03:36:37.621599+04:00"
+  "_updatedAt": "2026-11-19T18:19:24.099437+04:00"
 }
