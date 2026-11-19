@@ -23,9 +23,21 @@ def merge_events(events,norm,today=None):
   if e['type']=='series':
    pick_new=str(e.get('ottDate') or '')>str(old.get('ottDate') or '')
   else:
-   def rank(item):
-    return (PRIORITY.get(item.get('releaseKind','digital'),1),str(item.get('ottDate') or '')[:10])
-   pick_new=rank(e)<rank(old)
+   new_kind=e.get('releaseKind','digital')
+   old_kind=old.get('releaseKind','digital')
+   new_date=str(e.get('ottDate') or '')[:10]
+   old_date=str(old.get('ottDate') or '')[:10]
+   new_priority=PRIORITY.get(new_kind,1)
+   old_priority=PRIORITY.get(old_kind,1)
+   if new_priority!=old_priority:
+    pick_new=new_priority<old_priority
+   elif new_kind=='digital':
+    # For repeated OTT detections, keep the newest confirmed digital arrival.
+    # Theatrical remains higher priority, and physical/theatrical events retain
+    # their earliest confirmed release date.
+    pick_new=new_date>old_date
+   else:
+    pick_new=new_date<old_date
   chosen={**(e if pick_new else old)}
   chosen['releaseKind']=kind if pick_new else old.get('releaseKind','digital')
   chosen['ottDate']=str(chosen.get('ottDate') or '')[:10]
