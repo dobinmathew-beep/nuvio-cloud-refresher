@@ -529,7 +529,8 @@ def build():
  sort_audit={}
  for cid,items in catalogs.items():
   dates=[catalog_sort_date(item) for item in items]
-  sort_audit[cid]={'count':len(items),'sortedNewestToOldest':dates==sorted(dates,reverse=True),'newestDate':dates[0] if dates else None,'oldestDate':dates[-1] if dates else None}
+  kinds=sorted({str(item.get('releaseKind') or 'unknown') for item in items})
+  sort_audit[cid]={'count':len(items),'sortedNewestToOldest':dates==sorted(dates,reverse=True),'newestDate':dates[0] if dates else None,'oldestDate':dates[-1] if dates else None,'missingReleaseDates':sum(1 for day in dates if not day),'releaseKinds':{kind:sum(1 for item in items if str(item.get('releaseKind') or 'unknown')==kind) for kind in kinds}}
   if not sort_audit[cid]['sortedNewestToOldest']:
    raise RuntimeError('Catalog ordering audit failed for '+cid)
  malayalam_audit,malayalam_errors=validate_malayalam_catalogs(catalogs,metas)
