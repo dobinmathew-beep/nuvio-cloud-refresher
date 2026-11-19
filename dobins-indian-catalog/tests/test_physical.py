@@ -55,7 +55,7 @@ class PhysicalTests(unittest.TestCase):
   self.assertFalse(update.is_just_added_movie(event,None,now))
 
  def test_physical_only_movie_does_not_get_just_added_badge(self):
-  from datetime import datetime,timezone
+  from datetime import datetime,timezone,timedelta
   event={'type':'movie','releaseKind':'physical','ottDate':'2026-11-19','availability':[{'kind':'physical','date':'2026-11-19'}]}
   now=datetime(2026,11,20,tzinfo=timezone.utc)
   self.assertFalse(update.is_just_added_movie(event,now-timedelta(days=1),now))
