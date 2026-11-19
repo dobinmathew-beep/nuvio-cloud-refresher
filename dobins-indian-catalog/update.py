@@ -473,6 +473,8 @@ def build():
    if n%10==0:save('matches.json',matches);save('metadata.json',metas);print('MATCHED',n,'/',len(work),flush=True)
  save('matches.json',matches)
  catalogs={f'dobins_{LANGS[l]}_{t}':[] for l in LANGS for t in ('movie','series')};seen={k:set() for k in catalogs}
+ previous_ids={cid:{str(x.get('id')) for x in items} for cid,items in old_catalogs.items()}
+ added_at=load('catalog-added.json',{})
  for e in ordered:
   if e.get('_languageMismatch'):continue
   key=e['language']+'|'+e['type']+'|'+norm(e['name']);match=matches.get(key,{});mid=match.get('id');cid=f'dobins_{LANGS[e["language"]]}_{e["type"]}'
@@ -501,7 +503,16 @@ def build():
   display_kind='digital' if digital_date else e.get('releaseKind','digital')
   m['ott']={'date':digital_date or e['ottDate'],'kind':display_kind,'platforms':e['platforms'],'sources':e['sources']}
   description_label=release_label or ('Upcoming OTT release' if e['ottDate']>TODAY else 'Home release')
-  catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':BASE+'/art/poster/'+aid,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"{description_label} ({display_kind}): {display_date} · {', '.join(e['platforms'])}\n\n"+(m.get('description') or e.get('description') or ''),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'releaseStatus':'upcoming' if display_date>TODAY else 'available','releaseLabel':release_label,'releaseLabelDate':label_date,'originalReleaseDate':original_release_date,'availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'ottDate':digital_date,'platforms':e['platforms'],'sources':e['sources'],'language':e['language'],'releaseDateBasis':e.get('releaseDateBasis','source release'),'latestEpisodeReleasedAt':episode_at,'hasNewEpisodes':new_episodes,'nextEpisodeReleaseAt':episode_badges.upcoming(m.get('videos',[]),NOW,m.get('seasons',[])) if e['type']=='series' else None})
+  added_key=cid+'|'+str(mid)
+  if e['type']=='movie' and e['ottDate']<=TODAY and str(mid) not in previous_ids.get(cid,set()) and added_key not in added_at:
+   added_at[added_key]=NOW.isoformat()
+  added_time=None
+  if added_key in added_at:
+   try:added_time=datetime.fromisoformat(added_at[added_key])
+   except (TypeError,ValueError):added_time=None
+  just_added=bool(e['type']=='movie' and added_time and NOW-added_time<=timedelta(days=14))
+  poster_url=("https://great-indian-upcoming-posters.onrender.com/poster/"+mid+".jpg?badge=just-added" if just_added and is_imdb_id(mid) else BASE+'/art/poster/'+aid)
+  catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':poster_url,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"{description_label} ({display_kind}): {display_date} · {', '.join(e['platforms'])}\n\n"+(m.get('description') or e.get('description') or ''),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'releaseStatus':'upcoming' if display_date>TODAY else 'available','releaseLabel':release_label,'releaseLabelDate':label_date,'originalReleaseDate':original_release_date,'availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'theatricalReleases':e.get('theatricalReleases',[]),'ottDate':digital_date,'platforms':e['platforms'],'sources':e['sources'],'language':e['language'],'releaseDateBasis':e.get('releaseDateBasis','source release'),'latestEpisodeReleasedAt':episode_at,'hasNewEpisodes':new_episodes,'nextEpisodeReleaseAt':episode_badges.upcoming(m.get('videos',[]),NOW,m.get('seasons',[])) if e['type']=='series' else None,'justAdded':just_added,'catalogAddedAt':added_at.get(added_key)})
  for cid,ms in catalogs.items():
   append_legacy_series(ms,old_catalogs.get(cid,[]),TODAY,metas,require_metadata=cid.startswith('dobins_ml_'))
   if cid.endswith('_series'):
