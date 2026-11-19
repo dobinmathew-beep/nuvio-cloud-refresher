@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import posterHandler from './api/poster.mjs';
 import healthHandler from './api/health.mjs';
-import { resolveTmdbTvImdbId } from './lib/tmdb-external-ids.mjs';
+import { resolveTmdbExternalImdbId } from './lib/tmdb-external-ids.mjs';
 import { runImageKitMaintenance } from './lib/imagekit-storage.mjs';
 
 const port = Number(process.env.PORT || 10000);
@@ -64,11 +64,8 @@ const server = createServer(async (req, res) => {
     return posterHandler(adaptedReq, adaptedRes);
   }
 
-  // TMDB-only catalogue records can use /poster/tmdb/{tmdb_id}.jpg.
-  // Resolve the TV record's IMDb external ID, then reuse the unchanged
-  // BetterPosters/date-overlay pipeline. Existing IMDb URLs remain untouched.
-  // AIOMetadata's generic {id} placeholder can produce tmdb:93544. Accept
-  // both that namespaced form and the explicit /tmdb/ route used by older configs.
+  // TMDB-only movie and series records can use /poster/tmdb/{tmdb_id}.jpg.
+  // Resolve the matching IMDb external ID, then reuse the BetterPosters pipeline.
   const tmdbPosterMatch = url.pathname.match(/^\/poster\/tmdb(?:\/|:|%3A)(\d{1,12})\.jpg$/i);
   if (tmdbPosterMatch) {
     if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method)) {
@@ -76,7 +73,8 @@ const server = createServer(async (req, res) => {
       return res.end('Method not allowed');
     }
     try {
-      const imdbId = await resolveTmdbTvImdbId(tmdbPosterMatch[1]);
+      const mediaType = String(url.searchParams.get('type') || 'tv').toLowerCase() === 'movie' ? 'movie' : 'tv';
+      const imdbId = await resolveTmdbExternalImdbId(tmdbPosterMatch[1], mediaType);
       if (!imdbId) {
         res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
         return res.end('No IMDb external ID is available for this TMDB series.');
@@ -84,7 +82,7 @@ const server = createServer(async (req, res) => {
       adaptedReq.query.id = imdbId;
       return posterHandler(adaptedReq, adaptedRes);
     } catch (error) {
-      console.warn('[tmdb-poster-id-resolution-failed]', JSON.stringify({ tmdbId: tmdbPosterMatch[1], error: error?.message || 'unknown error' }));
+      console.warn('[tmdb-poster-id-resolution-failed]', JSON.stringify({ tmdbId: tmdbPosterMatch[1], mediaType: String(url.searchParams.get('type') || 'tv'), error: error?.message || 'unknown error' }));
       res.writeHead(502, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
       return res.end('Could not resolve the TMDB series to an IMDb ID.');
     }
