@@ -42,7 +42,7 @@ test('resolves a TMDB movie ID through the movie external IDs API', async () => 
     noCache: true,
     credentials: { apiKey: 'test-key', readToken: '' },
     fetch: async (url) => {
-      assert.match(String(url), /\\/movie\\/550\\/external_ids/);
+      assert.ok(String(url).includes('/movie/550/external_ids'));
       return { ok: true, json: async () => ({ id: 550, imdb_id: 'tt0137523' }) };
     }
   });
