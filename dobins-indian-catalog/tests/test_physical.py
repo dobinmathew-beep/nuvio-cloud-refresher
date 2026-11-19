@@ -54,6 +54,18 @@ class PhysicalTests(unittest.TestCase):
   now=datetime(2026,11,20,tzinfo=timezone.utc)
   self.assertFalse(update.is_just_added_movie(event,None,now))
 
+ def test_physical_only_movie_does_not_get_just_added_badge(self):
+  from datetime import datetime,timezone
+  event={'type':'movie','releaseKind':'physical','ottDate':'2026-11-19','availability':[{'kind':'physical','date':'2026-11-19'}]}
+  now=datetime(2026,11,20,tzinfo=timezone.utc)
+  self.assertFalse(update.is_just_added_movie(event,now-timedelta(days=1),now))
+
+ def test_digital_arrival_badge_survives_theatrical_first_classification(self):
+  from datetime import datetime,timezone
+  event={'type':'movie','releaseKind':'theatrical','ottDate':'2020-01-01','availability':[{'kind':'theatrical','date':'2020-01-01'},{'kind':'digital','date':'2026-11-10'}]}
+  now=datetime(2026,11,20,tzinfo=timezone.utc)
+  self.assertTrue(update.is_just_added_movie(event,None,now))
+
  def test_series_does_not_receive_movie_just_added_badge(self):
   from datetime import datetime,timezone
   event={'type':'series','releaseKind':'digital','ottDate':'2026-11-19','availability':[{'kind':'digital','date':'2026-11-19'}]}
