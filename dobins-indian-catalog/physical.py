@@ -139,3 +139,10 @@ def collect(get,load,save,langs,today,now,norm):
     first=theatrical[0];event={**event,'ottDate':first['date'],'theatricalReleases':theatrical,'platforms':['Theatrical · '+first['country']]}
    events.append(event)
  return events,health
+
+
+def catalog_release_date(item):
+ """Canonical date used for every catalog's newest-first ordering."""
+ if item.get('type')=='series' and item.get('latestEpisodeReleasedAt'):
+  return str(item.get('latestEpisodeReleasedAt') or '')[:10]
+ return str(item.get('releaseDate') or item.get('ottDate') or '')[:10]
