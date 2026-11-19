@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T21:40:41.748347+04:00",
+  "generatedAt": "2026-11-19T22:27:06.717585+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 41,
@@ -204,8 +204,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://newindianmovies.com/"
+        "https://newindianmovies.com/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -395,8 +395,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -665,8 +665,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -775,8 +775,8 @@
         "Prime Video"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -899,7 +899,7 @@
         "poster": true,
         "description": true,
         "genres": true,
-        "releaseInfo": true
+        "releaseInfo": false
       },
       "catalog": "dobins_ml_series"
     },
@@ -2203,7 +2203,7 @@
       "language": "hindi",
       "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
       "state": "live",
-      "records": 299
+      "records": 298
     },
     {
       "source": "TMDB streaming-series discovery",

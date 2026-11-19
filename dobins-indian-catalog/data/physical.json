@@ -161,6 +161,7 @@
       ]
     },
     "hindi|431582": {
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
       "editions": [
         {
           "date": "2020-11-02",
@@ -170,57 +171,59 @@
           "note": "Blu-ray"
         }
       ],
-      "event": {
-        "name": "Line of Descent",
-        "type": "movie",
-        "language": "hindi",
-        "ottDate": "2020-11-02",
-        "sourceRecord": {
-          "tmdbId": 431582
-        },
-        "poster": "https://image.tmdb.org/t/p/w780/zLmTVXptNrCevJhM1lrsMdAl0f1.jpg",
-        "year": "2019",
-        "platforms": [
-          "Blu-ray · United States"
-        ],
-        "source": "https://www.themoviedb.org/movie/431582/releases",
-        "sources": [
-          "https://www.themoviedb.org/movie/431582/releases"
-        ],
-        "confirmed": true,
-        "releaseKind": "physical",
-        "physicalReleases": [
-          {
-            "date": "2020-11-02",
-            "format": "Blu-ray",
-            "country": "United States",
-            "region": "US",
-            "note": "Blu-ray"
-          }
-        ],
-        "_verifiedMetadata": {
-          "id": "tmdb:431582",
-          "type": "movie",
+      "theatrical": [],
+      "events": [
+        {
           "name": "Line of Descent",
+          "type": "movie",
+          "language": "hindi",
+          "ottDate": "2020-11-02",
+          "sourceRecord": {
+            "tmdbId": 431582
+          },
           "poster": "https://image.tmdb.org/t/p/w780/zLmTVXptNrCevJhM1lrsMdAl0f1.jpg",
-          "background": "https://image.tmdb.org/t/p/w780/xoUciFLRXkoiEA8ben5BFEA2JMS.jpg",
-          "description": "A classic crime narrative in the backdrop of Delhi merges a dysfunctional, mafia family at war with each other as an undercover officer fights his demons by assisting in their downfall.",
-          "genres": [
-            "Crime",
-            "Drama"
+          "year": "2019",
+          "platforms": [
+            "Blu-ray · United States"
           ],
-          "releaseInfo": "2019",
-          "cast": [],
-          "director": [],
-          "runtime": null,
-          "tmdb_id": 431582,
-          "imdb_id": null,
-          "original_language": "hi",
-          "metadataSource": "https://www.themoviedb.org/movie/431582"
+          "source": "https://www.themoviedb.org/movie/431582/releases",
+          "sources": [
+            "https://www.themoviedb.org/movie/431582/releases"
+          ],
+          "confirmed": true,
+          "releaseKind": "physical",
+          "releaseDateBasis": "TMDB physical release date",
+          "physicalReleases": [
+            {
+              "date": "2020-11-02",
+              "format": "Blu-ray",
+              "country": "United States",
+              "region": "US",
+              "note": "Blu-ray"
+            }
+          ],
+          "_verifiedMetadata": {
+            "id": "tmdb:431582",
+            "type": "movie",
+            "name": "Line of Descent",
+            "poster": "https://image.tmdb.org/t/p/w780/zLmTVXptNrCevJhM1lrsMdAl0f1.jpg",
+            "background": "https://image.tmdb.org/t/p/w780/xoUciFLRXkoiEA8ben5BFEA2JMS.jpg",
+            "description": "A classic crime narrative in the backdrop of Delhi merges a dysfunctional, mafia family at war with each other as an undercover officer fights his demons by assisting in their downfall.",
+            "genres": [
+              "Crime",
+              "Drama"
+            ],
+            "releaseInfo": "2019",
+            "cast": [],
+            "director": [],
+            "runtime": null,
+            "tmdb_id": 431582,
+            "imdb_id": null,
+            "original_language": "hi",
+            "metadataSource": "https://www.themoviedb.org/movie/431582"
+          }
         }
-      },
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/431582/releases"
+      ]
     },
     "hindi|56969": {
       "lastError": "Physical title identity could not be verified"
@@ -2152,18 +2155,19 @@
           "metadataSource": "https://www.themoviedb.org/movie/1160018"
         }
       },
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1279012": {
       "editions": [],
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1137712": {
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
       "editions": [],
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/1137712/releases"
+      "theatrical": [],
+      "events": []
     },
     "hindi|285803": {
       "checkedAt": "2026-11-19T19:06:30.638410+04:00",
@@ -2172,6 +2176,7 @@
       "events": []
     },
     "hindi|20453": {
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
       "editions": [
         {
           "date": "2010-01-10",
@@ -2195,71 +2200,165 @@
           "note": "DVD"
         }
       ],
-      "event": {
-        "name": "3 Idiots",
-        "type": "movie",
-        "language": "hindi",
-        "ottDate": "2010-01-10",
-        "sourceRecord": {
-          "tmdbId": 20453
+      "theatrical": [
+        {
+          "date": "2010-01-01",
+          "country": "Brazil",
+          "region": "BR",
+          "note": ""
         },
-        "poster": "https://image.tmdb.org/t/p/w780/66A9MqXOyVFCssoloscw79z8Tew.jpg",
-        "year": "2009",
-        "platforms": [
-          "DVD · India"
-        ],
-        "source": "https://www.themoviedb.org/movie/20453/releases",
-        "sources": [
-          "https://www.themoviedb.org/movie/20453/releases"
-        ],
-        "confirmed": true,
-        "releaseKind": "physical",
-        "physicalReleases": [
-          {
-            "date": "2010-01-10",
-            "format": "DVD",
-            "country": "India",
-            "region": "IN",
-            "note": "DVD / VCD (Premium edition)"
-          },
-          {
-            "date": "2010-05-11",
-            "format": "Blu-ray",
-            "country": "India",
-            "region": "IN",
-            "note": "Special Edition Blu-ray"
-          },
-          {
-            "date": "2011-02-12",
-            "format": "DVD",
-            "country": "Germany",
-            "region": "DE",
-            "note": "DVD"
-          }
-        ],
-        "_verifiedMetadata": {
-          "id": "tmdb:20453",
-          "type": "movie",
-          "name": "3 Idiots",
-          "poster": "https://image.tmdb.org/t/p/w780/66A9MqXOyVFCssoloscw79z8Tew.jpg",
-          "background": "https://image.tmdb.org/t/p/w780/u7kuUaySqXBVAtqEl9vkTkAzHV9.jpg",
-          "description": "Rascal. Joker. Dreamer. Genius... You've never met a college student quite like \"Rancho.\" From the moment he arrives at India's most prestigious university, Rancho's outlandish schemes turn the campus upside down—along with the lives of his two newfound best friends. Together, they make life miserable for \"Virus,\" the school’s uptight and heartless dean. But when Rancho catches the eye of the dean's daughter, Virus sets his sights on flunking out the \"3 idiots\" once and for all.",
-          "genres": [
-            "Drama",
-            "Comedy"
-          ],
-          "releaseInfo": "2009",
-          "cast": [],
-          "director": [],
-          "runtime": null,
-          "tmdb_id": 20453,
-          "imdb_id": null,
-          "original_language": "hi",
-          "metadataSource": "https://www.themoviedb.org/movie/20453"
+        {
+          "date": "2011-01-09",
+          "country": "Hong Kong SAR China",
+          "region": "HK",
+          "note": ""
+        },
+        {
+          "date": "2013-08-05",
+          "country": "Philippines",
+          "region": "PH",
+          "note": "Jay"
+        },
+        {
+          "date": "2026-06-11",
+          "country": "Taiwan",
+          "region": "TW",
+          "note": ""
         }
-      },
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/20453/releases"
+      ],
+      "events": [
+        {
+          "name": "3 Idiots",
+          "type": "movie",
+          "language": "hindi",
+          "ottDate": "2010-01-01",
+          "sourceRecord": {
+            "tmdbId": 20453
+          },
+          "poster": "https://image.tmdb.org/t/p/w780/66A9MqXOyVFCssoloscw79z8Tew.jpg",
+          "year": "2009",
+          "platforms": [
+            "Theatrical · Brazil"
+          ],
+          "source": "https://www.themoviedb.org/movie/20453/releases",
+          "sources": [
+            "https://www.themoviedb.org/movie/20453/releases"
+          ],
+          "confirmed": true,
+          "releaseKind": "theatrical",
+          "releaseDateBasis": "TMDB first theatrical release date",
+          "theatricalReleases": [
+            {
+              "date": "2010-01-01",
+              "country": "Brazil",
+              "region": "BR",
+              "note": ""
+            },
+            {
+              "date": "2011-01-09",
+              "country": "Hong Kong SAR China",
+              "region": "HK",
+              "note": ""
+            },
+            {
+              "date": "2013-08-05",
+              "country": "Philippines",
+              "region": "PH",
+              "note": "Jay"
+            },
+            {
+              "date": "2026-06-11",
+              "country": "Taiwan",
+              "region": "TW",
+              "note": ""
+            }
+          ],
+          "_verifiedMetadata": {
+            "id": "tmdb:20453",
+            "type": "movie",
+            "name": "3 Idiots",
+            "poster": "https://image.tmdb.org/t/p/w780/66A9MqXOyVFCssoloscw79z8Tew.jpg",
+            "background": "https://image.tmdb.org/t/p/w780/u7kuUaySqXBVAtqEl9vkTkAzHV9.jpg",
+            "description": "Rascal. Joker. Dreamer. Genius... You've never met a college student quite like \"Rancho.\" From the moment he arrives at India's most prestigious university, Rancho's outlandish schemes turn the campus upside down—along with the lives of his two newfound best friends. Together, they make life miserable for \"Virus,\" the school’s uptight and heartless dean. But when Rancho catches the eye of the dean's daughter, Virus sets his sights on flunking out the \"3 idiots\" once and for all.",
+            "genres": [
+              "Drama",
+              "Comedy"
+            ],
+            "releaseInfo": "2009",
+            "cast": [],
+            "director": [],
+            "runtime": null,
+            "tmdb_id": 20453,
+            "imdb_id": null,
+            "original_language": "hi",
+            "metadataSource": "https://www.themoviedb.org/movie/20453"
+          }
+        },
+        {
+          "name": "3 Idiots",
+          "type": "movie",
+          "language": "hindi",
+          "ottDate": "2010-01-10",
+          "sourceRecord": {
+            "tmdbId": 20453
+          },
+          "poster": "https://image.tmdb.org/t/p/w780/66A9MqXOyVFCssoloscw79z8Tew.jpg",
+          "year": "2009",
+          "platforms": [
+            "DVD · India"
+          ],
+          "source": "https://www.themoviedb.org/movie/20453/releases",
+          "sources": [
+            "https://www.themoviedb.org/movie/20453/releases"
+          ],
+          "confirmed": true,
+          "releaseKind": "physical",
+          "releaseDateBasis": "TMDB physical release date",
+          "physicalReleases": [
+            {
+              "date": "2010-01-10",
+              "format": "DVD",
+              "country": "India",
+              "region": "IN",
+              "note": "DVD / VCD (Premium edition)"
+            },
+            {
+              "date": "2010-05-11",
+              "format": "Blu-ray",
+              "country": "India",
+              "region": "IN",
+              "note": "Special Edition Blu-ray"
+            },
+            {
+              "date": "2011-02-12",
+              "format": "DVD",
+              "country": "Germany",
+              "region": "DE",
+              "note": "DVD"
+            }
+          ],
+          "_verifiedMetadata": {
+            "id": "tmdb:20453",
+            "type": "movie",
+            "name": "3 Idiots",
+            "poster": "https://image.tmdb.org/t/p/w780/66A9MqXOyVFCssoloscw79z8Tew.jpg",
+            "background": "https://image.tmdb.org/t/p/w780/u7kuUaySqXBVAtqEl9vkTkAzHV9.jpg",
+            "description": "Rascal. Joker. Dreamer. Genius... You've never met a college student quite like \"Rancho.\" From the moment he arrives at India's most prestigious university, Rancho's outlandish schemes turn the campus upside down—along with the lives of his two newfound best friends. Together, they make life miserable for \"Virus,\" the school’s uptight and heartless dean. But when Rancho catches the eye of the dean's daughter, Virus sets his sights on flunking out the \"3 idiots\" once and for all.",
+            "genres": [
+              "Drama",
+              "Comedy"
+            ],
+            "releaseInfo": "2009",
+            "cast": [],
+            "director": [],
+            "runtime": null,
+            "tmdb_id": 20453,
+            "imdb_id": null,
+            "original_language": "hi",
+            "metadataSource": "https://www.themoviedb.org/movie/20453"
+          }
+        }
+      ]
     },
     "hindi|85985": {
       "checkedAt": "2026-11-19T19:06:30.638410+04:00",
@@ -2398,7 +2497,7 @@
     },
     "hindi|84092": {
       "editions": [],
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|26022": {
@@ -2488,8 +2587,8 @@
           "metadataSource": "https://www.themoviedb.org/movie/26022"
         }
       },
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/26022/releases"
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
+      "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|404401": {
       "checkedAt": "2026-11-19T19:06:30.638410+04:00",
@@ -4629,7 +4728,7 @@
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|1506736": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "tamil|1766087": {
@@ -4711,7 +4810,7 @@
       "events": []
     },
     "telugu|1577326": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1772825": {
@@ -4739,7 +4838,7 @@
       "events": []
     },
     "hindi|1640396": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|1602830": {
@@ -4761,7 +4860,7 @@
       "events": []
     },
     "hindi|1269325": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|1473603": {
@@ -5303,7 +5402,7 @@
       ]
     },
     "tamil|1819399": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1732945": {
@@ -5319,11 +5418,11 @@
       "events": []
     },
     "malayalam|1722975": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "tamil|1764201": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1723579": {
@@ -5420,11 +5519,11 @@
       "events": []
     },
     "malayalam|1616268": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "tamil|1542884": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1729155": {
@@ -5446,7 +5545,7 @@
       "events": []
     },
     "tamil|1505305": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1408170": {
@@ -5676,7 +5775,7 @@
       "events": []
     },
     "telugu|1443961": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1451944": {
@@ -5698,7 +5797,7 @@
       "events": []
     },
     "telugu|1442396": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1215889": {
@@ -5884,7 +5983,7 @@
       ]
     },
     "malayalam|1248251": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "tamil|1779939": {
@@ -6077,7 +6176,7 @@
       "events": []
     },
     "hindi|1769098": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|1740844": {
@@ -6111,7 +6210,7 @@
       "events": []
     },
     "tamil|1740942": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1528499": {
@@ -6133,7 +6232,7 @@
       "events": []
     },
     "tamil|1489543": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1725479": {
@@ -6155,7 +6254,7 @@
       "events": []
     },
     "tamil|1745623": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1716652": {
@@ -6177,7 +6276,7 @@
       "events": []
     },
     "tamil|1479832": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1227241": {
@@ -6211,7 +6310,7 @@
       "events": []
     },
     "hindi|1790057": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|847742": {
@@ -6257,11 +6356,11 @@
       "events": []
     },
     "hindi|1709391": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|1300501": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "tamil|965483": {
@@ -6430,7 +6529,7 @@
       ]
     },
     "hindi|1378537": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|1444032": {
@@ -6645,11 +6744,11 @@
       "events": []
     },
     "telugu|1057265": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1512084": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|1272121": {
@@ -6729,7 +6828,7 @@
       ]
     },
     "tamil|1297181": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1679791": {
@@ -6809,7 +6908,7 @@
       ]
     },
     "hindi|1122030": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|627336": {
@@ -7008,11 +7107,11 @@
       ]
     },
     "tamil|1045021": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1451078": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1020951": {
@@ -7028,11 +7127,11 @@
       "events": []
     },
     "tamil|1398359": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1423251": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1431068": {
@@ -7223,7 +7322,7 @@
       ]
     },
     "tamil|1265827": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1417849": {
@@ -7967,7 +8066,7 @@
       "events": []
     },
     "hindi|1171094": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|842106": {
@@ -7977,11 +8076,11 @@
       "events": []
     },
     "tamil|1316912": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|56986": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1239134": {
@@ -8641,7 +8740,7 @@
       ]
     },
     "telugu|1060046": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1595507": {
@@ -8763,19 +8862,81 @@
       "events": []
     },
     "tamil|786345": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/786345/releases"
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
     },
     "telugu|586369": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/586369/releases"
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
+      "editions": [],
+      "theatrical": [
+        {
+          "date": "2025-04-04",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "events": [
+        {
+          "name": "28 Degree Celsius",
+          "type": "movie",
+          "language": "telugu",
+          "ottDate": "2025-04-04",
+          "sourceRecord": {
+            "tmdbId": 586369
+          },
+          "poster": "https://image.tmdb.org/t/p/w780/9uh1vtpaSAc8geSdnJ8SciiH0LS.jpg",
+          "year": "2025",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "source": "https://www.themoviedb.org/movie/586369/releases",
+          "sources": [
+            "https://www.themoviedb.org/movie/586369/releases"
+          ],
+          "confirmed": true,
+          "releaseKind": "theatrical",
+          "releaseDateBasis": "TMDB first theatrical release date",
+          "theatricalReleases": [
+            {
+              "date": "2025-04-04",
+              "country": "United States",
+              "region": "US",
+              "note": ""
+            }
+          ],
+          "_verifiedMetadata": {
+            "id": "tmdb:586369",
+            "type": "movie",
+            "name": "28 Degree Celsius",
+            "poster": "https://image.tmdb.org/t/p/w780/9uh1vtpaSAc8geSdnJ8SciiH0LS.jpg",
+            "background": "https://image.tmdb.org/t/p/w780/6TBV2xzcN8mAvjmt4ttKfVogHqY.jpg",
+            "description": "28 degrees celsius is a romantic suspense thriller centred around Anjali, who suffers from a brain injury that makes her vulnerable to extreme temperatures and she must remain at a constant 28C to survive. As Karthik fights to protect her, unexpected twists unfold, blending love and suspense in a gripping narrative that keeps audiences on the edge.",
+            "genres": [
+              "Thriller",
+              "Mystery",
+              "Drama"
+            ],
+            "releaseInfo": "2025",
+            "cast": [],
+            "director": [],
+            "runtime": null,
+            "tmdb_id": 586369,
+            "imdb_id": null,
+            "original_language": "te",
+            "metadataSource": "https://www.themoviedb.org/movie/586369"
+          }
+        }
+      ]
     },
     "hindi|1339876": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/1339876/releases"
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
+      "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|501606": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "tamil|1016300": {
@@ -8953,7 +9114,7 @@
       ]
     },
     "tamil|743563": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1436660": {
@@ -8963,7 +9124,7 @@
       "events": []
     },
     "hindi|1291608": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|381691": {
@@ -9123,7 +9284,7 @@
       "events": []
     },
     "hindi|758923": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|341895": {
@@ -9214,7 +9375,7 @@
       ]
     },
     "tamil|673692": {
-      "lastAttemptAt": "2026-11-19T18:59:02.285194+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1202235": {
@@ -9472,7 +9633,7 @@
       ]
     },
     "hindi|1383072": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|217581": {
@@ -9911,11 +10072,11 @@
       ]
     },
     "telugu|857598": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1257960": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|405995": {
@@ -10001,7 +10162,7 @@
       "events": []
     },
     "malayalam|137308": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "tamil|646518": {
@@ -10011,7 +10172,7 @@
       "events": []
     },
     "telugu|1380109": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1623851": {
@@ -10164,7 +10325,7 @@
       "events": []
     },
     "hindi|1014214": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|318779": {
@@ -10366,7 +10527,7 @@
       ]
     },
     "hindi|980599": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|318786": {
@@ -10436,7 +10597,7 @@
       "events": []
     },
     "telugu|1252542": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|984101": {
@@ -10908,7 +11069,7 @@
       "events": []
     },
     "tamil|307181": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1336352": {
@@ -10930,7 +11091,7 @@
       "events": []
     },
     "tamil|66228": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|85813": {
@@ -11831,7 +11992,7 @@
       "events": []
     },
     "hindi|814215": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|307200": {
@@ -11898,7 +12059,7 @@
       ]
     },
     "tamil|612912": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1174110": {
@@ -11908,7 +12069,7 @@
       "events": []
     },
     "hindi|781732": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "malayalam|32841": {
@@ -11990,7 +12151,7 @@
       "events": []
     },
     "telugu|1045385": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|720557": {
@@ -12160,15 +12321,15 @@
       "events": []
     },
     "telugu|965489": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1184060": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "tamil|148284": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1087948": {
@@ -12178,7 +12339,7 @@
       "events": []
     },
     "hindi|872906": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "tamil|112566": {
@@ -12218,7 +12379,7 @@
       "events": []
     },
     "telugu|811945": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1020376": {
@@ -12228,11 +12389,11 @@
       "events": []
     },
     "tamil|35643": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|1071455": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1142643": {
@@ -12739,7 +12900,7 @@
       ]
     },
     "telugu|775344": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|755045": {
@@ -12815,7 +12976,7 @@
       "events": []
     },
     "hindi|882826": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "tamil|276204": {
@@ -12888,11 +13049,11 @@
       "events": []
     },
     "hindi|851783": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "tamil|29811": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|658113": {
@@ -12902,7 +13063,7 @@
       "events": []
     },
     "hindi|496331": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "tamil|274486": {
@@ -12966,7 +13127,7 @@
       ]
     },
     "telugu|496495": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|972116": {
@@ -13422,7 +13583,7 @@
       "events": []
     },
     "hindi|916363": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|534530": {
@@ -13501,8 +13662,10 @@
       ]
     },
     "hindi|1305770": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/1305770/releases"
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
     },
     "telugu|549938": {
       "checkedAt": "2026-11-19T19:06:30.638410+04:00",
@@ -13535,20 +13698,80 @@
       "events": []
     },
     "hindi|1325243": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/1325243/releases"
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
     },
     "telugu|534333": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|1127644": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/1127644"
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
+      "editions": [],
+      "theatrical": [
+        {
+          "date": "2021-05-05",
+          "country": "United States",
+          "region": "US",
+          "note": "New York City Independent Film Festival"
+        }
+      ],
+      "events": [
+        {
+          "name": "Happy Birthday",
+          "type": "movie",
+          "language": "hindi",
+          "ottDate": "2021-05-05",
+          "sourceRecord": {
+            "tmdbId": 1127644
+          },
+          "poster": "https://image.tmdb.org/t/p/w780/pTXYfzAB37n5VLb96LLZTfGwIFC.jpg",
+          "year": "2021",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "source": "https://www.themoviedb.org/movie/1127644/releases",
+          "sources": [
+            "https://www.themoviedb.org/movie/1127644/releases"
+          ],
+          "confirmed": true,
+          "releaseKind": "theatrical",
+          "releaseDateBasis": "TMDB first theatrical release date",
+          "theatricalReleases": [
+            {
+              "date": "2021-05-05",
+              "country": "United States",
+              "region": "US",
+              "note": "New York City Independent Film Festival"
+            }
+          ],
+          "_verifiedMetadata": {
+            "id": "tmdb:1127644",
+            "type": "movie",
+            "name": "Happy Birthday",
+            "poster": "https://image.tmdb.org/t/p/w780/pTXYfzAB37n5VLb96LLZTfGwIFC.jpg",
+            "background": null,
+            "description": "68 years old Parsi man, RATANSHI OSHIDAAR (RATTOO), lives alone in his old but massive house and leads a simple life. But he has a unique profession - he is an AUTOMATIC WRITER And HEALER; someone who communicates with the spirit world.  37 year old BETH ROSE, a Christian single mother, who has recently lost her son to Cancer, ends up reaching out to Rattoo as the last possible way to reach out to her son.",
+            "genres": [],
+            "releaseInfo": "2021",
+            "cast": [],
+            "director": [],
+            "runtime": null,
+            "tmdb_id": 1127644,
+            "imdb_id": null,
+            "original_language": "hi",
+            "metadataSource": "https://www.themoviedb.org/movie/1127644"
+          }
+        }
+      ]
     },
     "telugu|547884": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/547884/releases"
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
     },
     "hindi|1080376": {
       "checkedAt": "2026-11-19T19:06:30.638410+04:00",
@@ -13774,8 +13997,79 @@
       ]
     },
     "telugu|495362": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/495362/releases"
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
+      "editions": [],
+      "theatrical": [
+        {
+          "date": "2018-09-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2018-10-01",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        }
+      ],
+      "events": [
+        {
+          "name": "Agnyaathavaasi",
+          "type": "movie",
+          "language": "telugu",
+          "ottDate": "2018-09-01",
+          "sourceRecord": {
+            "tmdbId": 495362
+          },
+          "poster": "https://image.tmdb.org/t/p/w780/lbG8xZlRnSpEAFEswG85suN1erA.jpg",
+          "year": "2018",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "source": "https://www.themoviedb.org/movie/495362/releases",
+          "sources": [
+            "https://www.themoviedb.org/movie/495362/releases"
+          ],
+          "confirmed": true,
+          "releaseKind": "theatrical",
+          "releaseDateBasis": "TMDB first theatrical release date",
+          "theatricalReleases": [
+            {
+              "date": "2018-09-01",
+              "country": "United States",
+              "region": "US",
+              "note": ""
+            },
+            {
+              "date": "2018-10-01",
+              "country": "India",
+              "region": "IN",
+              "note": ""
+            }
+          ],
+          "_verifiedMetadata": {
+            "id": "tmdb:495362",
+            "type": "movie",
+            "name": "Agnyaathavaasi",
+            "poster": "https://image.tmdb.org/t/p/w780/lbG8xZlRnSpEAFEswG85suN1erA.jpg",
+            "background": "https://image.tmdb.org/t/p/w780/hW06kx8nY3JZw8N59mkP6kRXN56.jpg",
+            "description": "A billionaire Govinda Bhargav and his son are murdered with the aim of a hostile takeover of their company. But what his enemies do not know is that he has an heir that no one knows of.",
+            "genres": [
+              "Drama",
+              "Action"
+            ],
+            "releaseInfo": "2018",
+            "cast": [],
+            "director": [],
+            "runtime": null,
+            "tmdb_id": 495362,
+            "imdb_id": null,
+            "original_language": "te",
+            "metadataSource": "https://www.themoviedb.org/movie/495362"
+          }
+        }
+      ]
     },
     "hindi|759425": {
       "checkedAt": "2026-11-19T19:06:30.638410+04:00",
@@ -13842,8 +14136,10 @@
       ]
     },
     "telugu|303024": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/303024/releases"
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
     },
     "hindi|661043": {
       "checkedAt": "2026-11-19T19:06:30.638410+04:00",
@@ -14056,11 +14352,81 @@
       "events": []
     },
     "telugu|459803": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/459803/releases"
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
+      "editions": [],
+      "theatrical": [
+        {
+          "date": "2017-05-05",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2017-05-05",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        }
+      ],
+      "events": [
+        {
+          "name": "Babu Baga Busy",
+          "type": "movie",
+          "language": "telugu",
+          "ottDate": "2017-05-05",
+          "sourceRecord": {
+            "tmdbId": 459803
+          },
+          "poster": "https://image.tmdb.org/t/p/w780/9KTD6PBU0KDZj4XZNOviko5xFTv.jpg",
+          "year": "2017",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "source": "https://www.themoviedb.org/movie/459803/releases",
+          "sources": [
+            "https://www.themoviedb.org/movie/459803/releases"
+          ],
+          "confirmed": true,
+          "releaseKind": "theatrical",
+          "releaseDateBasis": "TMDB first theatrical release date",
+          "theatricalReleases": [
+            {
+              "date": "2017-05-05",
+              "country": "United States",
+              "region": "US",
+              "note": ""
+            },
+            {
+              "date": "2017-05-05",
+              "country": "India",
+              "region": "IN",
+              "note": ""
+            }
+          ],
+          "_verifiedMetadata": {
+            "id": "tmdb:459803",
+            "type": "movie",
+            "name": "Babu Baga Busy",
+            "poster": "https://image.tmdb.org/t/p/w780/9KTD6PBU0KDZj4XZNOviko5xFTv.jpg",
+            "background": "https://image.tmdb.org/t/p/w780/mn3fwdPr4W3ANUNeorvq5BbJQku.jpg",
+            "description": "A man's sexual affairs with different woman in different stages of life comes to an end when he meets a girl accidentally.",
+            "genres": [
+              "Comedy"
+            ],
+            "releaseInfo": "2017",
+            "cast": [],
+            "director": [],
+            "runtime": null,
+            "tmdb_id": 459803,
+            "imdb_id": null,
+            "original_language": "te",
+            "metadataSource": "https://www.themoviedb.org/movie/459803"
+          }
+        }
+      ]
     },
     "hindi|926679": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|440794": {
@@ -14070,7 +14436,7 @@
       "events": []
     },
     "hindi|596650": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|419245": {
@@ -14080,7 +14446,7 @@
       "events": []
     },
     "hindi|649742": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "telugu|369925": {
@@ -14090,8 +14456,10 @@
       "events": []
     },
     "hindi|577328": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/577328/releases"
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
     },
     "telugu|256040": {
       "checkedAt": "2026-11-19T19:06:30.638410+04:00",
@@ -14533,7 +14901,7 @@
       "events": []
     },
     "telugu|308525": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|817875": {
@@ -14543,15 +14911,129 @@
       "events": []
     },
     "telugu|308237": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/308237"
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
+      "editions": [],
+      "theatrical": [
+        {
+          "date": "2014-09-10",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "events": [
+        {
+          "name": "Ottesi Cheputunna",
+          "type": "movie",
+          "language": "telugu",
+          "ottDate": "2014-09-10",
+          "sourceRecord": {
+            "tmdbId": 308237
+          },
+          "poster": "https://image.tmdb.org/t/p/w780/5THcSkZEfbQu9U1muJF4rqrZC9K.jpg",
+          "year": "2003",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "source": "https://www.themoviedb.org/movie/308237/releases",
+          "sources": [
+            "https://www.themoviedb.org/movie/308237/releases"
+          ],
+          "confirmed": true,
+          "releaseKind": "theatrical",
+          "releaseDateBasis": "TMDB first theatrical release date",
+          "theatricalReleases": [
+            {
+              "date": "2014-09-10",
+              "country": "United States",
+              "region": "US",
+              "note": ""
+            }
+          ],
+          "_verifiedMetadata": {
+            "id": "tmdb:308237",
+            "type": "movie",
+            "name": "Ottesi Cheputunna",
+            "poster": "https://image.tmdb.org/t/p/w780/5THcSkZEfbQu9U1muJF4rqrZC9K.jpg",
+            "background": null,
+            "description": "Film starring Srikanth, Sravanthi, Sivaji",
+            "genres": [],
+            "releaseInfo": "2003",
+            "cast": [],
+            "director": [],
+            "runtime": null,
+            "tmdb_id": 308237,
+            "imdb_id": null,
+            "original_language": "te",
+            "metadataSource": "https://www.themoviedb.org/movie/308237"
+          }
+        }
+      ]
     },
     "hindi|595633": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/595633/releases"
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
+      "editions": [],
+      "theatrical": [
+        {
+          "date": "2019-04-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "events": [
+        {
+          "name": "The Last Color",
+          "type": "movie",
+          "language": "hindi",
+          "ottDate": "2019-04-01",
+          "sourceRecord": {
+            "tmdbId": 595633
+          },
+          "poster": "https://image.tmdb.org/t/p/w780/fhTAeX32Sq62IIcU9hg2STX55Va.jpg",
+          "year": "2019",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "source": "https://www.themoviedb.org/movie/595633/releases",
+          "sources": [
+            "https://www.themoviedb.org/movie/595633/releases"
+          ],
+          "confirmed": true,
+          "releaseKind": "theatrical",
+          "releaseDateBasis": "TMDB first theatrical release date",
+          "theatricalReleases": [
+            {
+              "date": "2019-04-01",
+              "country": "United States",
+              "region": "US",
+              "note": ""
+            }
+          ],
+          "_verifiedMetadata": {
+            "id": "tmdb:595633",
+            "type": "movie",
+            "name": "The Last Color",
+            "poster": "https://image.tmdb.org/t/p/w780/fhTAeX32Sq62IIcU9hg2STX55Va.jpg",
+            "background": "https://image.tmdb.org/t/p/w780/quntBTMkNDDlJzidzies8DrhssX.jpg",
+            "description": "The film is the screen adaptation of Chef Vikas Khanna's novel The Last Color, which follows the friendship between a young tight-rope walker and a widow named Noor in Banaras. The duo yearns to play with colors on the occasion of Holi, but Noor and the other widows are held back by tradition.",
+            "genres": [
+              "Drama"
+            ],
+            "releaseInfo": "2019",
+            "cast": [],
+            "director": [],
+            "runtime": null,
+            "tmdb_id": 595633,
+            "imdb_id": null,
+            "original_language": "hi",
+            "metadataSource": "https://www.themoviedb.org/movie/595633"
+          }
+        }
+      ]
     },
     "telugu|307751": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|496076": {
@@ -14561,8 +15043,8 @@
       "events": []
     },
     "telugu|307736": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/307736/releases"
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
+      "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|496328": {
       "checkedAt": "2026-11-19T19:06:30.638410+04:00",
@@ -14653,12 +15135,72 @@
       "events": []
     },
     "telugu|307370": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/307370/releases"
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
     },
     "hindi|513126": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/513126/releases"
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
+      "editions": [],
+      "theatrical": [
+        {
+          "date": "2018-07-04",
+          "country": "United States",
+          "region": "US",
+          "note": "SFFilm Festival"
+        }
+      ],
+      "events": [
+        {
+          "name": "Skywards",
+          "type": "movie",
+          "language": "hindi",
+          "ottDate": "2018-07-04",
+          "sourceRecord": {
+            "tmdbId": 513126
+          },
+          "poster": "https://image.tmdb.org/t/p/w780/5AF9q0v1HRkqVT3r5ggOD9SF9ad.jpg",
+          "year": "2018",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "source": "https://www.themoviedb.org/movie/513126/releases",
+          "sources": [
+            "https://www.themoviedb.org/movie/513126/releases"
+          ],
+          "confirmed": true,
+          "releaseKind": "theatrical",
+          "releaseDateBasis": "TMDB first theatrical release date",
+          "theatricalReleases": [
+            {
+              "date": "2018-07-04",
+              "country": "United States",
+              "region": "US",
+              "note": "SFFilm Festival"
+            }
+          ],
+          "_verifiedMetadata": {
+            "id": "tmdb:513126",
+            "type": "movie",
+            "name": "Skywards",
+            "poster": "https://image.tmdb.org/t/p/w780/5AF9q0v1HRkqVT3r5ggOD9SF9ad.jpg",
+            "background": null,
+            "description": "A dazzling display of flying pigeons above the cacophony of Old Delhi.",
+            "genres": [
+              "Documentary"
+            ],
+            "releaseInfo": "2018",
+            "cast": [],
+            "director": [],
+            "runtime": null,
+            "tmdb_id": 513126,
+            "imdb_id": null,
+            "original_language": "hi",
+            "metadataSource": "https://www.themoviedb.org/movie/513126"
+          }
+        }
+      ]
     },
     "hindi|501192": {
       "checkedAt": "2026-11-19T19:06:30.638410+04:00",
@@ -14737,7 +15279,7 @@
       ]
     },
     "hindi|461649": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|493620": {
@@ -14833,12 +15375,14 @@
       "events": []
     },
     "hindi|461816": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
+      "lastAttemptAt": "2026-11-19T22:27:06.717585+04:00",
       "lastError": "Theatrical/physical title identity could not be verified"
     },
     "hindi|465310": {
-      "lastAttemptAt": "2026-11-19T19:06:30.638410+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/movie/465310/releases"
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
     },
     "hindi|401285": {
       "checkedAt": "2026-11-19T19:06:30.638410+04:00",
@@ -14923,7 +15467,7 @@
   },
   "discovery": {
     "malayalam": {
-      "checkedAt": "2026-11-19T21:40:41.748347+04:00",
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
       "titles": {
         "1533928": "Bachelor Party D'eux",
         "1828678": "Grahanam",
@@ -15486,7 +16030,7 @@
       }
     },
     "tamil": {
-      "checkedAt": "2026-11-19T21:40:41.748347+04:00",
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
       "titles": {
         "1384528": "O.M: Operation Mole",
         "1822586": "Mazhalai",
@@ -16133,7 +16677,7 @@
       }
     },
     "telugu": {
-      "checkedAt": "2026-11-19T21:40:41.748347+04:00",
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
       "titles": {
         "1505644": "ENE Repeat",
         "1826465": "Jayannth & The Jingo Pen",
@@ -16868,7 +17412,7 @@
       }
     },
     "hindi": {
-      "checkedAt": "2026-11-19T21:40:41.748347+04:00",
+      "checkedAt": "2026-11-19T22:27:06.717585+04:00",
       "titles": {
         "1590846": "V. Shantaram",
         "1830694": "Here Among Strangers",

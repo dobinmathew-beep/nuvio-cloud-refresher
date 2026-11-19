@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T21:40:41.748347+04:00",
+  "generatedAt": "2026-11-19T22:27:06.717585+04:00",
   "policy": "confirmed-source-and-imdb-match-v1",
   "count": 26,
   "items": [
@@ -27,8 +27,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://newindianmovies.com/"
+        "https://newindianmovies.com/",
+        "https://www.dailyott.in/"
       ],
       "catalog": "dobins_hi_series"
     },
@@ -141,8 +141,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "catalog": "dobins_ta_movie"
     },
@@ -241,8 +241,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -286,8 +286,8 @@
         "Prime Video"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "catalog": "dobins_hi_movie"
     },
