@@ -33,8 +33,12 @@ class PhysicalTests(unittest.TestCase):
   label,original,digital=update.release_classification(e,{'releaseInfo':'2023'})
   self.assertEqual(label,'New physical release')
   self.assertIsNone(digital)
- def test_movie_sorting_uses_ott_arrival_date_when_available(self):
+ def test_movie_sorting_prefers_original_theatrical_date_over_later_ott_arrival(self):
   item={'type':'movie','releaseDate':'2023-11-10','ottDate':'2026-11-13'}
+  self.assertEqual(update.catalog_sort_date(item),'2023-11-10')
+
+ def test_movie_sorting_falls_back_to_ott_date_when_no_original_release_exists(self):
+  item={'type':'movie','ottDate':'2026-11-13'}
   self.assertEqual(update.catalog_sort_date(item),'2026-11-13')
 
 if __name__=='__main__':unittest.main()
