@@ -4,6 +4,8 @@ import { resolve } from 'node:path';
 import posterHandler from './api/poster.mjs';
 import healthHandler from './api/health.mjs';
 import { resolveTmdbExternalImdbId } from './lib/tmdb-external-ids.mjs';
+import { renderJustAddedBadge } from './lib/render-poster.mjs';
+import { hasExistingJustAddedTag } from './lib/coming-tag.mjs';
 import { runImageKitMaintenance } from './lib/imagekit-storage.mjs';
 
 const port = Number(process.env.PORT || 10000);
@@ -16,6 +18,54 @@ function responseAdapter(res) {
     setHeader(name, value) { res.setHeader(name, value); },
     end(body) { res.end(body); }
   };
+}
+
+async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
+  if (String(req.query?.badge || '').toLowerCase() !== 'just-added') {
+    res.statusCode = 404;
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-store');
+    return res.end('No IMDb external ID is available for this TMDB title.');
+  }
+  const apiKey = process.env.TMDB_API_KEY || '';
+  const readToken = process.env.TMDB_API_READ_ACCESS_TOKEN || '';
+  if (!apiKey && !readToken) throw new Error('TMDB credentials are not configured.');
+  const detailsUrl = new URL('https://api.themoviedb.org/3/' + mediaType + '/' + encodeURIComponent(tmdbId));
+  const headers = { accept: 'application/json' };
+  if (readToken) headers.authorization = 'Bearer ' + readToken;
+  else detailsUrl.searchParams.set('api_key', apiKey);
+  const detailsResponse = await fetch(detailsUrl, { headers, signal: AbortSignal.timeout(9000) });
+  if (!detailsResponse.ok) throw new Error('TMDB poster lookup failed: ' + detailsResponse.status);
+  const details = await detailsResponse.json();
+  if (!details.poster_path) throw new Error('TMDB title has no poster image.');
+  const imageResponse = await fetch('https://image.tmdb.org/t/p/w780' + details.poster_path, {
+    headers: { accept: 'image/avif,image/webp,image/jpeg,image/png,*/*' },
+    signal: AbortSignal.timeout(10000)
+  });
+  const type = (imageResponse.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
+  if (!imageResponse.ok || !['image/jpeg', 'image/png', 'image/webp', 'image/avif'].includes(type)) {
+    throw new Error('TMDB did not return a supported poster image.');
+  }
+  const original = Buffer.from(await imageResponse.arrayBuffer());
+  if (!original.length || original.length > 15 * 1024 * 1024) throw new Error('TMDB poster exceeds size limit.');
+  let output = original;
+  let status = 'just-added-overlay';
+  try {
+    if (await hasExistingJustAddedTag(original)) status = 'tmdb-poster-already-just-added';
+    else output = await renderJustAddedBadge(original);
+  } catch (error) {
+    console.warn('[tmdb-just-added-ocr-unavailable]', JSON.stringify({ tmdbId, mediaType, error: error?.message || 'unknown error' }));
+    output = await renderJustAddedBadge(original);
+  }
+  res.statusCode = 200;
+  res.setHeader('Content-Type', type);
+  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=3600');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Poster-Date-Status', status);
+  res.setHeader('X-Poster-Date', 'none');
+  res.setHeader('X-Poster-Date-Type', 'none');
+  return res.end(req.method === 'HEAD' ? undefined : output);
 }
 
 const server = createServer(async (req, res) => {
@@ -76,8 +126,7 @@ const server = createServer(async (req, res) => {
       const mediaType = String(url.searchParams.get('type') || 'tv').toLowerCase() === 'movie' ? 'movie' : 'tv';
       const imdbId = await resolveTmdbExternalImdbId(tmdbPosterMatch[1], mediaType);
       if (!imdbId) {
-        res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
-        return res.end('No IMDb external ID is available for this TMDB series.');
+        return sendTmdbPosterFallback(tmdbPosterMatch[1], mediaType, adaptedReq, adaptedRes);
       }
       adaptedReq.query.id = imdbId;
       return posterHandler(adaptedReq, adaptedRes);
