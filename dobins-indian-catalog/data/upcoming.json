@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T22:27:06.717585+04:00",
+  "generatedAt": "2026-11-19T22:32:41.643692+04:00",
   "policy": "confirmed-source-and-imdb-match-v1",
   "count": 26,
   "items": [
@@ -282,8 +282,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/",

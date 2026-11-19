@@ -112,6 +112,23 @@
     }
   },
   {
+    "name": "AndherPura Curse",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-11-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://ottasia.com/ott-releases-this-week?country=IN"
+    ],
+    "platforms": [],
+    "detail": "https://ottasia.com/title/tv/337904/andherpura-curse?country=IN",
+    "sourceRecord": {
+      "title": "AndherPura Curse",
+      "releaseDate": "2026-11-28",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
     "name": "New",
     "language": "tamil",
     "type": "movie",
@@ -171,23 +188,6 @@
       "source": "https://www.myvi.in/blog/ott-releases-this-week",
       "languageText": "Hindi",
       "dateText": "Nov 20, 2026"
-    }
-  },
-  {
-    "name": "AndherPura Curse",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-11-21",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
-    ],
-    "platforms": [],
-    "detail": "https://ottasia.com/title/tv/337904/andherpura-curse?country=IN",
-    "sourceRecord": {
-      "title": "AndherPura Curse",
-      "releaseDate": "2026-11-21",
-      "source": "https://indianmoviereviews.com/ott-releases/"
     }
   },
   {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T22:27:06.717585+04:00",
+  "generatedAt": "2026-11-19T22:32:41.643692+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 41,
@@ -25,10 +25,10 @@
       "https://www.myvi.in/blog/ott-releases-this-week": 1,
       "https://newindianmovies.com/": 3,
       "https://www.keralatv.in/channel/ott/": 3,
-      "https://ottasia.com/ott-releases-this-week?country=IN": 11,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
       "https://v3-cinemeta.strem.io/": 1,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 11,
       "https://indianmoviereviews.com/ott-releases/": 4
     }
   },
@@ -632,31 +632,6 @@
       "catalog": "dobins_te_movie"
     },
     {
-      "title": "AndherPura Curse",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-21",
-      "platforms": [],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "Indian Movie Reviews OTT calendar reported OTT calendar date",
-      "detail": "https://ottasia.com/title/tv/337904/andherpura-curse?country=IN",
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
-    {
       "title": "The Great Indian Kapil Show Season 5",
       "language": "hindi",
       "type": "series",
@@ -771,8 +746,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/",
@@ -969,6 +944,31 @@
       "confirmed": true,
       "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
       "detail": "https://ottasia.com/title/movie/1787832/hatela-gang?country=IN",
+      "matchId": null,
+      "matchState": "unmatched",
+      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
+      "title": "AndherPura Curse",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-28",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/tv/337904/andherpura-curse?country=IN",
       "matchId": null,
       "matchState": "unmatched",
       "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
@@ -1454,7 +1454,7 @@
       "source": "Indian Movie Reviews OTT calendar",
       "url": "https://indianmoviereviews.com/ott-releases/",
       "state": "live",
-      "records": 14
+      "records": 13
     },
     {
       "source": "OTTClock confirmed upcoming calendar",
@@ -1517,7 +1517,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 147,
+      "records": 145,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -2041,7 +2041,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 51,
+          "detectedRecords": 49,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -2094,9 +2094,9 @@
               "url": "https://indianmoviereviews.com/ott-releases/",
               "state": "live",
               "languageState": "records_found",
-              "records": 13,
+              "records": 11,
               "movieRecords": 4,
-              "seriesRecords": 9
+              "seriesRecords": 7
             },
             {
               "source": "OTTClock confirmed upcoming calendar",
@@ -2203,7 +2203,7 @@
       "language": "hindi",
       "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
       "state": "live",
-      "records": 298
+      "records": 299
     },
     {
       "source": "TMDB streaming-series discovery",
@@ -2793,7 +2793,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 51,
+      "detectedRecords": 49,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2846,9 +2846,9 @@
           "url": "https://indianmoviereviews.com/ott-releases/",
           "state": "live",
           "languageState": "records_found",
-          "records": 13,
+          "records": 11,
           "movieRecords": 4,
-          "seriesRecords": 9
+          "seriesRecords": 7
         },
         {
           "source": "OTTClock confirmed upcoming calendar",
