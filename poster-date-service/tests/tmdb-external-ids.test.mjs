@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { resolveTmdbTvImdbId } from '../lib/tmdb-external-ids.mjs';
+import { resolveTmdbTvImdbId, resolveTmdbExternalImdbId } from '../lib/tmdb-external-ids.mjs';
 
 test('resolves the known Top Boy Netflix TMDB ID without external API credentials', async () => {
   const result = await resolveTmdbTvImdbId('93544', {
@@ -34,5 +34,17 @@ test('returns null when TMDB has no IMDb external ID', async () => {
 test('rejects non-numeric TMDB IDs', async () => {
   await assert.rejects(() => resolveTmdbTvImdbId('tt1830379', {
     credentials: { apiKey: 'test-key', readToken: '' }
-  }), /numeric TMDB TV ID/);
+  }), /numeric TMDB ID/);
+});
+
+test('resolves a TMDB movie ID through the movie external IDs API', async () => {
+  const result = await resolveTmdbExternalImdbId('550', 'movie', {
+    noCache: true,
+    credentials: { apiKey: 'test-key', readToken: '' },
+    fetch: async (url) => {
+      assert.match(String(url), /\\/movie\\/550\\/external_ids/);
+      return { ok: true, json: async () => ({ id: 550, imdb_id: 'tt0137523' }) };
+    }
+  });
+  assert.equal(result, 'tt0137523');
 });
