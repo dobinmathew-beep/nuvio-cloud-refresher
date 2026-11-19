@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-19T15:06:12.520742+00:00",
+  "checkedAt": "2026-11-19T15:11:10.600246+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -11,20 +11,12 @@
         "status.json": "github_raw",
         "metadata.json": "github_raw"
       },
-      "statusTimestampMatches": true,
+      "statusTimestampMatches": false,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1110,
-      "warning": null,
+      "metadataRecords": 1170,
+      "warning": "Public status.json timestamp is behind the latest GitHub status; catalog data itself is current.",
       "error": null
-    },
-    {
-      "path": "/meta/* (Malayalam catalog audit)",
-      "state": "ok",
-      "checked": 152,
-      "passed": 152,
-      "failed": 0,
-      "missingOriginalLanguageField": 114
     },
     {
       "path": "/manifest.json",
@@ -45,18 +37,18 @@
       "language": "ml",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
-      "localPublishedCount": 83,
-      "localUniqueIdCount": 83,
+      "localPublishedCount": 95,
+      "localUniqueIdCount": 95,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 83,
-      "endpointUniqueIdCount": 83,
+      "endpointRawCount": 95,
+      "endpointUniqueIdCount": 95,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        33
+        45
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -115,18 +107,18 @@
       "language": "ta",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ta_movie.json",
-      "localPublishedCount": 79,
-      "localUniqueIdCount": 79,
+      "localPublishedCount": 91,
+      "localUniqueIdCount": 91,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 79,
-      "endpointUniqueIdCount": 79,
+      "endpointRawCount": 91,
+      "endpointUniqueIdCount": 91,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        29
+        41
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -186,18 +178,19 @@
       "language": "te",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_te_movie.json",
-      "localPublishedCount": 92,
-      "localUniqueIdCount": 92,
+      "localPublishedCount": 104,
+      "localUniqueIdCount": 104,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 92,
-      "endpointUniqueIdCount": 92,
+      "endpointRawCount": 104,
+      "endpointUniqueIdCount": 104,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        42
+        50,
+        4
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -257,18 +250,19 @@
       "language": "hi",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
-      "localPublishedCount": 92,
-      "localUniqueIdCount": 92,
+      "localPublishedCount": 114,
+      "localUniqueIdCount": 114,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 92,
-      "endpointUniqueIdCount": 92,
+      "endpointRawCount": 114,
+      "endpointUniqueIdCount": 114,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        42
+        50,
+        14
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -330,11 +324,11 @@
     }
   ],
   "malayalamMetadataAudit": {
-    "state": "ok",
-    "checked": 152,
-    "passed": 152,
+    "state": "skipped",
+    "checked": 0,
+    "passed": 0,
     "failed": 0,
-    "missingOriginalLanguageField": 114,
+    "missingOriginalLanguageField": 0,
     "failures": []
   },
   "catalogSummary": {
