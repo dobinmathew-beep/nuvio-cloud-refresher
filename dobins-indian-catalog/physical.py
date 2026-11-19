@@ -39,7 +39,7 @@ def merge_events(events,norm,today=None):
   merged[k]=chosen
  return list(merged.values())
 
-def discover(code,today,release_type='5'):
+def discover(code,today,release_type='5',max_pages=5):
  url='https://www.themoviedb.org/discover/movie/items'
  form=urlencode({'with_original_language':code,'with_release_type':str(release_type),'release_date.lte':today,'sort_by':'release_date.desc','page':'1','include_adult':'false','region':'','language':'en-US'})
  html=subprocess.check_output(['curl','-fsSL','--retry','1','--connect-timeout','10','--max-time','40','--data',form,url]).decode('utf-8','replace')
@@ -83,7 +83,7 @@ def collect(get,load,save,langs,today,now,norm):
  cache=load('physical.json',{'titles':{},'discovery':{}});titles=cache.setdefault('titles',{});discovery=cache.setdefault('discovery',{});candidates={};health=[]
  def listing(pair):
   lang,code=pair;result={};errors=[]
-  for release_type,label in (('3','theatrical'),('5','physical')):
+  for release_type,label in (('2','theatrical'),('3','theatrical'),('5','physical')):
    try:
     rows=discover(code,today,release_type)
     for tid,name in rows.items():
@@ -99,10 +99,12 @@ def collect(get,load,save,langs,today,now,norm):
    for tid,value in use.items():candidates[lang+'|'+tid]=(lang,tid,value['name'])
    health.append({'source':'TMDB theatrical and physical releases','language':lang,'state':'live' if not error else 'cached' if use else 'failed','records':len(use),'theatricalCandidates':sum('theatrical' in value['kinds'] for value in use.values()),'physicalCandidates':sum('physical' in value['kinds'] for value in use.values()),**({'error':error} if error else {})})
  work=[]
+ buckets={lang:[] for lang in langs}
  for key,(lang,tid,name) in candidates.items():
   old=titles.get(key,{});checked=old.get('lastAttemptAt') or old.get('checkedAt')
   if checked and (now-datetime.fromisoformat(checked)).total_seconds()<10800:continue
-  work.append((key,lang,tid,name))
+  buckets[lang].append((key,lang,tid,name))
+ work=[rows[i] for i in range(max((len(rows) for rows in buckets.values()),default=0)) for rows in buckets.values() if i<len(rows)]
  def inspect(item):
   key,lang,tid,name=item;url='https://www.themoviedb.org/movie/'+tid+'/releases'
   try:
@@ -123,7 +125,7 @@ def collect(get,load,save,langs,today,now,norm):
   except Exception as error:
    old=titles.get(key,{});return key,{**old,'lastAttemptAt':now.isoformat(),'lastError':str(error)}
  with ThreadPoolExecutor(max_workers=4) as pool:
-  for key,value in pool.map(inspect,work[:int(os.environ.get('MAX_PHYSICAL_CHECKS','120'))]):titles[key]=value
+  for key,value in pool.map(inspect,work[:int(os.environ.get('MAX_PHYSICAL_CHECKS','160'))]):titles[key]=value
  save('physical.json',cache)
  events=[]
  for value in titles.values():
