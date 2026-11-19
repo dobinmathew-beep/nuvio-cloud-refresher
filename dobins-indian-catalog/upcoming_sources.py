@@ -1058,13 +1058,19 @@ def collect(get, today, langs, norm):
                                if "failed" in states and not states.intersection(healthy_states))
         healthy = len(healthy_domains)
         failed = len(failed_domains)
+        record_domains = sorted({
+            urlsplit(item["url"]).netloc.lower().removeprefix("www.")
+            for item in checked
+            if item["records"] and item["state"] in healthy_states and urlsplit(item["url"]).netloc
+        })
+        record_sources = len(record_domains)
         source_coverage[language] = {
             "checkedFeeds": len(checked), "checkedSources": len(domain_states),
             "healthySources": healthy, "failedSources": failed,
             "healthySourceDomains": healthy_domains, "failedSourceDomains": failed_domains,
-            "sourcesWithRecords": sum(1 for x in checked if x["records"]),
+            "sourcesWithRecords": record_sources, "sourceDomainsWithRecords": record_domains,
             "detectedRecords": sum(x["records"] for x in checked),
-            "coverageStatus": "ok" if healthy >= 2 and failed == 0 else "partial" if healthy >= 2 else "degraded",
+            "coverageStatus": "ok" if healthy >= 2 and record_sources >= 2 and failed == 0 else "partial" if healthy >= 2 else "degraded",
             "sources": checked,
         }
     health.append({"source": "Per-language source coverage", "url": "internal://source-coverage",
