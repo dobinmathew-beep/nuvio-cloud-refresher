@@ -117,3 +117,5 @@ jobs:
         run: exit 1
 
 # Regression: validate newest digital-arrival date precedence in physical.py.
+
+# Regression: verify latest digital-arrival date and catalog sort precedence.
