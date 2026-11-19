@@ -1,6 +1,6 @@
 import { upcomingRelease, validImdbId } from '../lib/release-dates.mjs';
-import { renderUpcomingBadge } from '../lib/render-poster.mjs';
-import { hasExistingComingDateTag } from '../lib/coming-tag.mjs';
+import { renderUpcomingBadge, renderJustAddedBadge } from '../lib/render-poster.mjs';
+import { hasExistingComingDateTag, hasExistingJustAddedTag } from '../lib/coming-tag.mjs';
 import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster } from '../lib/imagekit-storage.mjs';
 
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
@@ -90,11 +90,32 @@ async function getOriginal(imdbId) {
   return { bytes, type };
 }
 
-async function buildPoster(id, knownRelease = undefined) {
+async function buildPoster(id, knownRelease = undefined, badge = '') {
+  const original = await getOriginal(id);
+  // Newly published catalogue movies request this explicit badge. BetterPosters
+  // remains the source image; OCR prevents duplicate "Just Added" chips.
+  if (badge === 'just-added') {
+    let alreadyTagged = false;
+    try {
+      alreadyTagged = await hasExistingJustAddedTag(original.bytes);
+    } catch (error) {
+      console.warn('[poster-just-added-ocr-unavailable]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error', action: 'apply-just-added-overlay' }));
+    }
+    if (alreadyTagged) {
+      return { bytes: original.bytes, type: original.type, status: 'betterposters-just-added-tag', releaseDate: 'none', releaseKind: 'none' };
+    }
+    try {
+      const output = await renderJustAddedBadge(original.bytes);
+      console.info('[poster-just-added-check]', JSON.stringify({ imdbId: id, betterPostersBadge: false, result: 'just-added-overlay' }));
+      return { bytes: output, type: original.type, status: 'just-added-overlay', releaseDate: 'none', releaseKind: 'none' };
+    } catch (error) {
+      console.warn('[poster-just-added-overlay-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
+      return { bytes: original.bytes, type: original.type, status: 'just-added-overlay-failed-original-preserved', releaseDate: 'none', releaseKind: 'none' };
+    }
+  }
   // Resolve TMDB first. Most catalogue titles have no future release date,
   // so there is no reason to run OCR for them.
   const release = knownRelease === undefined ? await upcomingRelease(id) : knownRelease;
-  const original = await getOriginal(id);
   if (!release?.date) {
     return { bytes: original.bytes, type: original.type, status: 'no-upcoming-release', releaseDate: 'none', releaseKind: 'none' };
   }
@@ -124,14 +145,14 @@ async function buildPoster(id, knownRelease = undefined) {
   return { bytes: output, type: original.type, status, releaseDate: release.date, releaseKind: release.kind || 'premiere' };
 }
 
-async function getBuiltPoster(id, knownRelease = undefined) {
+async function getBuiltPoster(id, knownRelease = undefined, badge = '') {
   const today = new Date().toISOString().slice(0, 10);
-  const cacheKey = id + '|' + today;
+  const cacheKey = id + '|' + today + '|' + badge;
   const cached = resultCache.get(cacheKey);
   if (cached && cached.expiresAt > Date.now()) return cached.value;
   if (pendingResults.has(cacheKey)) return pendingResults.get(cacheKey);
 
-  const pending = buildPoster(id, knownRelease).then(value => {
+  const pending = buildPoster(id, knownRelease, badge).then(value => {
     resultCache.set(cacheKey, { value, expiresAt: Date.now() + RESULT_CACHE_MS });
     while (resultCache.size > 500) resultCache.delete(resultCache.keys().next().value);
     return value;
@@ -183,11 +204,12 @@ export default async function handler(req, res) {
 
     // An ImageKit copy is valid only while TMDB still confirms a future release.
     // This prevents a cached date badge from surviving its release day.
-    const releaseInfo = await upcomingRelease(id);
+    const badge = String(req.query?.badge || '').toLowerCase() === 'just-added' ? 'just-added' : '';
+    const releaseInfo = badge ? null : await upcomingRelease(id);
     const imageKitAsset = releaseInfo?.date ? await findFreshImageKitAsset(id, releaseInfo) : null;
     if (imageKitAsset && releaseInfo?.date) return redirectToImageKit(res, imageKitAsset);
 
-    const poster = await getBuiltPoster(id, releaseInfo);
+    const poster = await getBuiltPoster(id, releaseInfo, badge);
     // Only genuine upcoming-date overlays are stored. Ordinary, released,
     // unknown-date and BetterPosters-already-tagged posters stay out of DAM.
     const canStore = poster.status === 'upcoming-date-overlay' &&
