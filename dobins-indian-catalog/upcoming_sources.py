@@ -560,15 +560,23 @@ def _keralatv(soup, source_name, source_url, today, langs, norm, get):
         day = _date_with_current_year(release_phrase.group(1), today)
         if not day or day < cutoff:
             continue
-        # Original-language cues take precedence over dubbed/audio languages.
+        # Accept only a primary-language cue. A list of dubbed/audio
+        # languages is not evidence of the title's original language.
         lang_match = re.search(
-            r"(?:original(?:ly)?\s+language\s*[:=-]?\s*|the\s+|\b)"
-            r"(Malayalam|Tamil|Telugu|Hindi)\s+(?:original|movie|film|series|web\s+series|"
-            r"family\s+drama|romantic\s+drama|thriller|action\s+thriller|drama)",
+            r"original(?:ly)?\s+language\s*[:=-]?\s*(Malayalam|Tamil|Telugu|Hindi)\b",
             text, re.I,
         )
         if not lang_match:
-            lang_match = re.search(r"\b(Malayalam|Tamil|Telugu|Hindi)\s+(?:movie|film|series)\b", headline, re.I)
+            lang_match = re.search(
+                r"\b(Malayalam|Tamil|Telugu|Hindi)\s+(?:original|movie|film|series|web\s+series|"
+                r"family\s+drama|romantic\s+drama|thriller|action\s+thriller|drama)\b",
+                headline, re.I,
+            )
+        if not lang_match:
+            lang_match = re.search(
+                r"\b(Malayalam|Tamil|Telugu|Hindi)\s+(?:original|movie|film|series|web\s+series)\b",
+                text[:350], re.I,
+            )
         if not lang_match:
             continue
         language = lang_match.group(1).lower()
@@ -578,15 +586,23 @@ def _keralatv(soup, source_name, source_url, today, langs, norm, get):
         platforms = [p for p in platforms if not any(p.lower() != q.lower() and p.lower() in q.lower() for q in platforms)]
         if not platforms:
             continue
-        title = re.split(r"\s+(?:Trailer\s+Released|Now\s+Streaming|OTT\s+Release|Movie\s+OTT|Series\s+OTT|OTT\s+Date|Streaming\s+Updates|Streaming\s+From)", headline, maxsplit=1, flags=re.I)[0].strip(" –—:-")
+        if re.fullmatch(r"(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+20\d{2}", headline, re.I):
+            continue
+        title = re.split(r"\s+(?:Trailer\s+Released|Now\s+Streaming|OTT\s+Release|Movie\s+OTT|Series\s+OTT|OTT\s+Date|Streaming\s+Updates|Streaming\s+From|Streaming\s+Soon)", headline, maxsplit=1, flags=re.I)[0].strip(" –—:-")
         title = re.sub(r"\s+(?:Malayalam|Tamil|Telugu|Hindi)\s+(?:Movie|Film|Series|Web\s+Series)$", "", title, flags=re.I).strip()
         title = re.sub(r"\s+(?:Malayalam|Tamil|Telugu|Hindi)$", "", title, flags=re.I).strip()
         if not title or len(title) > 140:
             continue
         if re.search(r"\b(?:movie|film)\b", headline, re.I):
             typ = "movie"
+        elif re.search(r"\b(?:series|web\s+series|season\s+\d+)\b", headline, re.I):
+            typ = "series"
+        elif "/series/" in urlsplit(detail).path.lower() or "/tv/" in urlsplit(detail).path.lower():
+            typ = "series"
+        elif "/movie/" in urlsplit(detail).path.lower():
+            typ = "movie"
         else:
-            typ = "series" if SERIES.search(headline) or SERIES.search(text[:500]) else "movie"
+            continue
         key = (language, typ, norm(title))
         if key in seen:
             continue
