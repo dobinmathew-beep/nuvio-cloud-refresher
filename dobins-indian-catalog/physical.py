@@ -168,4 +168,4 @@ def catalog_release_date(item):
  """Canonical date used for every catalog's newest-first ordering."""
  if item.get('type')=='series' and item.get('latestEpisodeReleasedAt'):
   return str(item.get('latestEpisodeReleasedAt') or '')[:10]
- return str(item.get('releaseDate') or item.get('ottDate') or '')[:10]
+ return str(item.get('ottDate') or item.get('releaseDate') or '')[:10]
