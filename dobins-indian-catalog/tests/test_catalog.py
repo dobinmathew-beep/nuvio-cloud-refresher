@@ -190,5 +190,8 @@ class CatalogTests(unittest.TestCase):
   alternate_source=(root/'alternate.py').read_text()
   self.assertIn("POLICY='tmdb-tvmaze-v2'",bootstrap_source)
   self.assertIn("POLICY='tmdb-tvmaze-v2'",alternate_source)
+  # A newer release policy must not trigger restoration from the older bootstrap seed.
+  self.assertIn("or not status.get('releasePolicy'):",bootstrap_source)
+  self.assertNotIn("status.get('releasePolicy')!='ott-or-confirmed-physical-v1'",bootstrap_source)
 
 if __name__=='__main__':unittest.main()
