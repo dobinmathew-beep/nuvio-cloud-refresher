@@ -41,12 +41,16 @@ def merge_events(events,norm,today=None):
 
 def discover(code,today,release_type='5',max_pages=5):
  url='https://www.themoviedb.org/discover/movie/items'
- form=urlencode({'with_original_language':code,'with_release_type':str(release_type),'release_date.lte':today,'sort_by':'release_date.desc','page':'1','include_adult':'false','region':'','language':'en-US'})
- html=subprocess.check_output(['curl','-fsSL','--retry','1','--connect-timeout','10','--max-time','40','--data',form,url]).decode('utf-8','replace')
- soup=BeautifulSoup(html,'html.parser');out={}
- for a in soup.select('a[href]'):
-  match=re.match(r'/movie/(\d+)',a['href']);name=a.get_text(' ',strip=True)
-  if match and name:out[match.group(1)]=name
+ out={}
+ for page in range(1,max_pages+1):
+  form=urlencode({'with_original_language':code,'with_release_type':str(release_type),'release_date.lte':today,'sort_by':'release_date.desc','page':str(page),'include_adult':'false','region':'','language':'en-US'})
+  html=subprocess.check_output(['curl','-fsSL','--retry','1','--connect-timeout','10','--max-time','40','--data',form,url]).decode('utf-8','replace')
+  soup=BeautifulSoup(html,'html.parser')
+  found=0
+  for a in soup.select('a[href]'):
+   match=re.match(r'/movie/(\d+)',a['href']);name=a.get_text(' ',strip=True)
+   if match and name:out[match.group(1)]=name;found+=1
+  if not found:break
  return out
 
 def releases(html,today):
