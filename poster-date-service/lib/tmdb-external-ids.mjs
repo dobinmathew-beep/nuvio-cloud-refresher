@@ -2,8 +2,6 @@ const TMDB = 'https://api.themoviedb.org/3';
 const cache = new Map();
 const CACHE_MS = 6 * 60 * 60 * 1000;
 
-// TMDB splits Top Boy into the original Summerhouse run and the Netflix
-// continuation, but IMDb keeps the complete 2011–2023 run under one title.
 const KNOWN_TV_IMDB_IDS = new Map([
   ['93544', 'tt1830379']
 ]);
@@ -15,21 +13,20 @@ function credentials() {
   };
 }
 
-export async function resolveTmdbTvImdbId(tmdbId, options = {}) {
+export async function resolveTmdbExternalImdbId(tmdbId, mediaType = 'tv', options = {}) {
   const id = String(tmdbId || '');
-  if (!/^\d{1,12}$/.test(id)) throw new TypeError('A numeric TMDB TV ID is required.');
+  if (!/^\d{1,12}$/.test(id)) throw new TypeError('A numeric TMDB ID is required.');
+  if (!['movie', 'tv'].includes(mediaType)) throw new TypeError('TMDB media type must be movie or tv.');
+  if (mediaType === 'tv' && KNOWN_TV_IMDB_IDS.has(id)) return KNOWN_TV_IMDB_IDS.get(id);
 
-  // Use verified mappings before making any external request. This also
-  // keeps known titles working when TMDB credentials or its API are unavailable.
-  if (KNOWN_TV_IMDB_IDS.has(id)) return KNOWN_TV_IMDB_IDS.get(id);
-
-  const cached = cache.get(id);
+  const cacheKey = mediaType + ':' + id;
+  const cached = cache.get(cacheKey);
   if (!options.noCache && cached && cached.expiresAt > Date.now()) return cached.imdbId;
 
   const auth = options.credentials || credentials();
   if (!auth.apiKey && !auth.readToken) throw new Error('TMDB credentials are not configured.');
 
-  const url = new URL(TMDB + '/tv/' + encodeURIComponent(id) + '/external_ids');
+  const url = new URL(TMDB + '/' + mediaType + '/' + encodeURIComponent(id) + '/external_ids');
   const headers = { accept: 'application/json' };
   if (auth.readToken) headers.authorization = 'Bearer ' + auth.readToken;
   else url.searchParams.set('api_key', auth.apiKey);
@@ -45,7 +42,11 @@ export async function resolveTmdbTvImdbId(tmdbId, options = {}) {
     ? data.imdb_id
     : null;
 
-  cache.set(id, { imdbId, expiresAt: Date.now() + CACHE_MS });
+  cache.set(cacheKey, { imdbId, expiresAt: Date.now() + CACHE_MS });
   while (cache.size > 1000) cache.delete(cache.keys().next().value);
   return imdbId;
+}
+
+export async function resolveTmdbTvImdbId(tmdbId, options = {}) {
+  return resolveTmdbExternalImdbId(tmdbId, 'tv', options);
 }
