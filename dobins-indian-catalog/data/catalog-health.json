@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-19T09:04:24.639467+00:00",
+  "checkedAt": "2026-11-19T14:18:37.461853+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -17,6 +17,14 @@
       "metadataRecords": 1081,
       "warning": null,
       "error": null
+    },
+    {
+      "path": "/meta/* (Malayalam catalog audit)",
+      "state": "ok",
+      "checked": 145,
+      "passed": 145,
+      "failed": 0,
+      "missingOriginalLanguageField": 114
     },
     {
       "path": "/manifest.json",
@@ -322,11 +330,11 @@
     }
   ],
   "malayalamMetadataAudit": {
-    "state": "skipped",
-    "checked": 0,
-    "passed": 0,
+    "state": "ok",
+    "checked": 145,
+    "passed": 145,
     "failed": 0,
-    "missingOriginalLanguageField": 0,
+    "missingOriginalLanguageField": 114,
     "failures": []
   },
   "catalogSummary": {
