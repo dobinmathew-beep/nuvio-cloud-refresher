@@ -121,10 +121,10 @@ def collect(get,load,save,langs,today,now,norm):
    events=[]
    if theatrical:
     first=theatrical[0]
-    events.append({**event,'name':meta['name'],'poster':meta.get('poster'),'year':meta.get('releaseInfo') or None,'ottDate':first['date'],'platforms':['Theatrical · '+first['country']],'source':url,'sources':[url],'confirmed':True,'releaseKind':'theatrical','theatricalReleases':theatrical,'_verifiedMetadata':meta})
+    events.append({**event,'name':meta['name'],'poster':meta.get('poster'),'year':meta.get('releaseInfo') or None,'ottDate':first['date'],'platforms':['Theatrical · '+first['country']],'source':url,'sources':[url],'confirmed':True,'releaseKind':'theatrical','releaseDateBasis':'TMDB first theatrical release date','theatricalReleases':theatrical,'_verifiedMetadata':meta})
    if editions:
     first=editions[0]
-    events.append({**event,'name':meta['name'],'poster':meta.get('poster'),'year':meta.get('releaseInfo') or None,'ottDate':first['date'],'platforms':[first['format']+' · '+first['country']],'source':url,'sources':[url],'confirmed':True,'releaseKind':'physical','physicalReleases':editions,'_verifiedMetadata':meta})
+    events.append({**event,'name':meta['name'],'poster':meta.get('poster'),'year':meta.get('releaseInfo') or None,'ottDate':first['date'],'platforms':[first['format']+' · '+first['country']],'source':url,'sources':[url],'confirmed':True,'releaseKind':'physical','releaseDateBasis':'TMDB physical release date','physicalReleases':editions,'_verifiedMetadata':meta})
    return key,{'checkedAt':now.isoformat(),'editions':editions,'theatrical':theatrical,'events':events}
   except Exception as error:
    old=titles.get(key,{});return key,{**old,'lastAttemptAt':now.isoformat(),'lastError':str(error)}
