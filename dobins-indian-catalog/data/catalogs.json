@@ -684,7 +684,7 @@
       "metadataSource": "https://v3-cinemeta.strem.io/",
       "imdbRating": "",
       "genres": [],
-      "description": "New OTT arrival (digital): 2026-11-05 · JioHotstar, JioHotStar\n\nA fearless gambler who trusts luck more than life gets caught in a series of crazy and unexpected events that turn his world upside down.",
+      "description": "New OTT arrival (digital): 2026-11-05 · JioHotStar, JioHotstar\n\nA fearless gambler who trusts luck more than life gets caught in a series of crazy and unexpected events that turn his world upside down.",
       "releaseDate": "2026-11-05",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -696,8 +696,8 @@
           "kind": "digital",
           "date": "2026-11-05",
           "platforms": [
-            "JioHotstar",
-            "JioHotStar"
+            "JioHotStar",
+            "JioHotstar"
           ],
           "sources": [
             "https://cinebuds.com/ott-release-dates/",
@@ -710,8 +710,8 @@
       "theatricalReleases": [],
       "ottDate": "2026-11-05",
       "platforms": [
-        "JioHotstar",
-        "JioHotStar"
+        "JioHotStar",
+        "JioHotstar"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
@@ -1152,7 +1152,7 @@
         "Crime",
         "Thriller"
       ],
-      "description": "New OTT arrival (digital): 2026-10-09 · Simply South, Prime Video, ManoramaMAX, Aha\n\nAamir Ali, a notorious gold smuggling kingpin who inherited his multi-million dollar criminal enterprise from a lineage of gangsters, is drawn into a web of vengeance, legacy and power.",
+      "description": "New OTT arrival (digital): 2026-10-09 · Prime Video, Simply South, Aha, ManoramaMAX\n\nAamir Ali, a notorious gold smuggling kingpin who inherited his multi-million dollar criminal enterprise from a lineage of gangsters, is drawn into a web of vengeance, legacy and power.",
       "releaseDate": "2026-10-09",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -1164,10 +1164,10 @@
           "kind": "digital",
           "date": "2026-10-09",
           "platforms": [
-            "Simply South",
             "Prime Video",
-            "ManoramaMAX",
-            "Aha"
+            "Simply South",
+            "Aha",
+            "ManoramaMAX"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -1178,10 +1178,10 @@
       "theatricalReleases": [],
       "ottDate": "2026-10-09",
       "platforms": [
-        "Simply South",
         "Prime Video",
-        "ManoramaMAX",
-        "Aha"
+        "Simply South",
+        "Aha",
+        "ManoramaMAX"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -4583,6 +4583,719 @@
       "nextEpisodeReleaseAt": null,
       "justAdded": true,
       "catalogAddedAt": "2026-11-19T18:59:02.285194+04:00"
+    },
+    {
+      "id": "tmdb:217581",
+      "type": "movie",
+      "name": "Karma Cartel",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/217581.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:217581",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:217581",
+      "releaseInfo": "2014",
+      "metadataSource": "https://www.themoviedb.org/movie/217581",
+      "imdbRating": null,
+      "genres": [
+        "Action",
+        "Drama",
+        "Adventure",
+        "Thriller"
+      ],
+      "description": "Home release (theatrical): 2014-04-01 · Theatrical · Canada\n\nIn an urban Indian city, A struggling actor battles for his career, but his friend who loses money in a scam deal commits an action that puts both of their lives in danger. The three last days before the incident follows the struggling actor, an ambitious filmmaker, a wannabe hustler, an opportunist, a lover and two cinephile thugs, through an inter-twining vignette of their lives.",
+      "releaseDate": "2014-04-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2014-04-01",
+          "platforms": [
+            "Theatrical · Canada"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/217581/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2014-04-01",
+          "country": "Canada",
+          "region": "CA",
+          "note": ""
+        },
+        {
+          "date": "2015-07-08",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · Canada"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/217581/releases"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:321274",
+      "type": "movie",
+      "name": "Police Maman",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/321274.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:321274",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:321274",
+      "releaseInfo": "2013",
+      "metadataSource": "https://www.themoviedb.org/movie/321274",
+      "imdbRating": null,
+      "genres": [
+        "Comedy"
+      ],
+      "description": "Home release (theatrical): 2013-12-07 · Theatrical · United States\n\nShankaranunni (Baburaj) is an eccentric cop in the Kerala Police Dept. with a lackadaisical characteristic and is married to Lekshmy (Sunitha Varma), the only daughter of a senseless politician from Tamil Nadu. Instead of serving his duty or investigate crimes, he likes to remain at his home 'Pulikkattil' as he does agriculture work, continuously opting for medical leaves. But as the murder of a college student comes to fore, he is forced to take charge of the investigation. How he sorts out the mystery forms the rest of the movie.",
+      "releaseDate": "2013-12-07",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2013-12-07",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/321274/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2013-12-07",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2013-12-07",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/321274/releases"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:318774",
+      "type": "movie",
+      "name": "Rain, Rain .. Come Again",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/318774.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:318774",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:318774",
+      "releaseInfo": "2004",
+      "metadataSource": "https://www.themoviedb.org/movie/318774",
+      "imdbRating": null,
+      "genres": [
+        "Drama",
+        "Mystery"
+      ],
+      "description": "Home release (theatrical): 2004-01-01 · Theatrical · United States\n\nThe plot follows the rivalry between a men's and a women's college. Amidst, a professor who heads a cult of Satan worshippers tries to lure the students.",
+      "releaseDate": "2004-01-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2004-01-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/318774/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2004-01-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2004-08-08",
+          "country": "India",
+          "region": "IN",
+          "note": "Initial Release"
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/318774/releases"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:318779",
+      "type": "movie",
+      "name": "Saivar Thirumeni",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/318779.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:318779",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:318779",
+      "releaseInfo": "2001",
+      "metadataSource": "https://www.themoviedb.org/movie/318779",
+      "imdbRating": null,
+      "genres": [],
+      "description": "Home release (theatrical): 2001-01-01 · Theatrical · United States\n\nSaivar Thirumeni (transl. Saivar high priest) is a 2001 Indian Malayalam-language action drama film directed by Shajoon Karyal and written by Robin Thirumala. It features Suresh Gopi, Manoj K. Jayan, Samyuktha Varma, Narendra Prasad, Nedumudi Venu, Jagathy Sreekumar, Sangeetha Mohan, and K. P. A. C. Lalitha in major roles. The music was composed by Raveendran. The plot revolves around Devadatthan (Suresh Gopi), a Namboothiri youth.",
+      "releaseDate": "2001-01-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2001-01-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/318779/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2001-01-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/318779/releases"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:318786",
+      "type": "movie",
+      "name": "Thattakam",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/318786.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:318786",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:318786",
+      "releaseInfo": "1998",
+      "metadataSource": "https://www.themoviedb.org/movie/318786",
+      "imdbRating": null,
+      "genres": [],
+      "description": "Home release (theatrical): 1998-01-01 · Theatrical · United States\n\nThattakam is a 1998 Indian Malayalam film directed by Ramesh Das and starring Nedumudi Venu and Ranjitha in the lead roles.",
+      "releaseDate": "1998-01-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "1998-01-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/318786/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "1998-01-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/318786/releases"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt0274158",
+      "type": "movie",
+      "name": "Thalolam",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt0274158.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt0274158",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt0274158",
+      "releaseInfo": "1998",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "5.7",
+      "genres": [
+        "Drama"
+      ],
+      "description": "Home release (theatrical): 1998-01-01 · Theatrical · United States\n\nHaridas leaves his daughter in Sankaran Unni's care and goes to Paris. The child dies and 16 years later when Haridas returns, Sankaran Unni is forced to present his daughter as Haridas'.",
+      "releaseDate": "1998-01-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "1998-01-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/318785/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "1998-01-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "1998-01-01",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/318785/releases"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:23771",
+      "type": "movie",
+      "name": "Mahathma",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/23771.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:23771",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:23771",
+      "releaseInfo": "1996",
+      "metadataSource": "https://www.themoviedb.org/movie/23771",
+      "imdbRating": null,
+      "genres": [],
+      "description": "Home release (theatrical): 1996-01-01 · Theatrical · United States\n\n'Mahathma' is a 1996 Malayalam action film. Directed by Shaji Kailas, with Suresh Gopi, Ganesh Kumar, Devan, Rajan P. Dev, Biju Menon and Ramya Krishnan appearing in lead roles, this film revolved the growth of an underworld don. The story is unfolded in flashback, travelling through the memories of Devadevan, the protagonist. Produced at a huge budget, the film bombed at box office. It is an adaptation of the 1983 Al Pacino film Scarface.",
+      "releaseDate": "1996-01-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "1996-01-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/23771/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "1996-01-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/23771/releases"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt0257955",
+      "type": "movie",
+      "name": "Nazhikakallu",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt0257955.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt0257955",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt0257955",
+      "releaseInfo": "1970",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": null,
+      "genres": [],
+      "description": "Home release (theatrical): 1970-01-01 · Theatrical · United States\n\n1970 film from  Sudin Menon starring Thikkurisi Sukumaran Nair and Prem Nazir",
+      "releaseDate": "1970-01-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "1970-01-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/302224/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "1970-01-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/302224/releases"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:319790",
+      "type": "movie",
+      "name": "Ramanan",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/319790.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:319790",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:319790",
+      "releaseInfo": "1967",
+      "metadataSource": "https://www.themoviedb.org/movie/319790",
+      "imdbRating": null,
+      "genres": [
+        "Romance"
+      ],
+      "description": "Home release (theatrical): 1967-01-01 · Theatrical · United States\n\nRamanan  and Madanan  are the two shepherds who are bosom pals. Meek and handsome, Ramanan used to sing and play the flute as he led the flock to the pastures Chandrika , the daughter of the wealthy Advocate Peshkar  gets fascinated by the charming shepherd with the sweet voice. Madanan warns Ramanan about the treacherous ways of the wealthy and advises him to keep away from Chandrika. But Ramanan is blinded by his love for Chandrika.",
+      "releaseDate": "1967-01-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "1967-01-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/319790/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "1967-01-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "1967-01-01",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/319790/releases"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt0254465",
+      "type": "movie",
+      "name": "Kadathukaran",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt0254465.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt0254465",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt0254465",
+      "releaseInfo": "1965",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": null,
+      "genres": [],
+      "description": "Home release (theatrical): 1965-12-03 · Theatrical · United States\n\nFilm starring Sathyan, Adoor Bhasi and Vinodini",
+      "releaseDate": "1965-12-03",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "1965-12-03",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/319958/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "1965-12-03",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/319958/releases"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:307200",
+      "type": "movie",
+      "name": "Ninamanija Kalpadukal",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/307200.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:307200",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:307200",
+      "releaseInfo": "1963",
+      "metadataSource": "https://www.themoviedb.org/movie/307200",
+      "imdbRating": null,
+      "genres": [
+        "Drama",
+        "War"
+      ],
+      "description": "Home release (theatrical): 1963-01-01 · Theatrical · United States\n\nThe film is based on a novel by Parappurath and portrays the trials the Indo-China war.",
+      "releaseDate": "1963-01-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "1963-01-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/307200/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "1963-01-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/307200/releases"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:32841",
+      "type": "movie",
+      "name": "Naadodikal",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/32841.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:32841",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:32841",
+      "releaseInfo": "1959",
+      "metadataSource": "https://www.themoviedb.org/movie/32841",
+      "imdbRating": null,
+      "genres": [],
+      "description": "Home release (theatrical): 1959-01-01 · Theatrical · United States\n\n",
+      "releaseDate": "1959-01-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "1959-01-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/32841/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "1959-01-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "1959-11-09",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/32841/releases"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
     }
   ],
   "dobins_ml_series": [
@@ -7507,53 +8220,6 @@
       "catalogAddedAt": null
     },
     {
-      "id": "tt14803240",
-      "type": "series",
-      "name": "Padatha Painkili",
-      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt14803240",
-      "posterShape": "poster",
-      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt14803240",
-      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt14803240",
-      "releaseInfo": "2020–2020",
-      "metadataSource": "https://www.themoviedb.org/tv/338501",
-      "imdbRating": "2.8",
-      "genres": [
-        "Family",
-        "Drama"
-      ],
-      "description": "Home release (digital): 2020-11-09 · \n\nThe story revolves around Kanmani, a humble, hardworking, and devoted young woman.Kanmani works and lives closely with the family of Ananda Varma and his wife, Susheela, who treat her with deep affection—almost like their own daughter.The family's daughters-in-law (Swapna, Ananya, and eldest daughter Tanuja) deeply resent Kanmani. They fear that Kanmani will end up inheriting a share of the family property, which would reduce their own financial stake in the household. Because of this, they constantly mistreat, humiliate, and plot against her.",
-      "releaseDate": "2020-11-09",
-      "releaseKind": "digital",
-      "releaseStatus": "available",
-      "releaseLabel": null,
-      "releaseLabelDate": null,
-      "originalReleaseDate": null,
-      "availability": [
-        {
-          "kind": "digital",
-          "date": "2020-09-07",
-          "platforms": [],
-          "sources": [
-            "https://www.themoviedb.org/tv/338501"
-          ]
-        }
-      ],
-      "physicalReleases": [],
-      "theatricalReleases": [],
-      "ottDate": "2020-11-09",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/338501"
-      ],
-      "language": "malayalam",
-      "releaseDateBasis": "premiere",
-      "latestEpisodeReleasedAt": "2020-11-09T00:00:00+00:00",
-      "hasNewEpisodes": false,
-      "nextEpisodeReleaseAt": null,
-      "justAdded": false,
-      "catalogAddedAt": null
-    },
-    {
       "id": "tmdb:277331",
       "type": "series",
       "name": "Lets Rock & Roll",
@@ -7641,6 +8307,53 @@
       "language": "malayalam",
       "releaseDateBasis": "premiere",
       "latestEpisodeReleasedAt": "2020-09-21T00:00:00+00:00",
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": false,
+      "catalogAddedAt": null
+    },
+    {
+      "id": "tt14803240",
+      "type": "series",
+      "name": "Padatha Painkili",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt14803240",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt14803240",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt14803240",
+      "releaseInfo": "2020–2020",
+      "metadataSource": "https://www.themoviedb.org/tv/338501",
+      "imdbRating": "2.8",
+      "genres": [
+        "Family",
+        "Drama"
+      ],
+      "description": "Home release (digital): 2020-09-07 · \n\nThe story revolves around Kanmani, a humble, hardworking, and devoted young woman.Kanmani works and lives closely with the family of Ananda Varma and his wife, Susheela, who treat her with deep affection—almost like their own daughter.The family's daughters-in-law (Swapna, Ananya, and eldest daughter Tanuja) deeply resent Kanmani. They fear that Kanmani will end up inheriting a share of the family property, which would reduce their own financial stake in the household. Because of this, they constantly mistreat, humiliate, and plot against her.",
+      "releaseDate": "2020-09-07",
+      "releaseKind": "digital",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2020-09-07",
+          "platforms": [],
+          "sources": [
+            "https://www.themoviedb.org/tv/338501"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [],
+      "ottDate": "2020-09-07",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/338501"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "premiere",
+      "latestEpisodeReleasedAt": "2020-09-07T00:00:00+00:00",
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null,
       "justAdded": false,
@@ -8416,8 +9129,8 @@
           ],
           "sources": [
             "https://cinebuds.com/ott-release-dates/",
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -8430,8 +9143,8 @@
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -8728,8 +9441,8 @@
           ],
           "sources": [
             "https://cinebuds.com/ott-release-dates/",
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -8741,8 +9454,8 @@
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -8767,7 +9480,7 @@
         "Crime",
         "Thriller"
       ],
-      "description": "New OTT arrival (digital): 2026-10-29 · Prime Video, Amazon Prime Video, SimplySouth, Aha\n\nIn the Hill Village of Mekkarai, Where It is Customary for Men to Die Every Seven Years During the Month of June, a Newly Appointed Police Inspector Arrives to Investigate a Series of Mysterious Murders. As He Digs Deeper Into the Village's Dark Secrets and Long-standing Beliefs, He Finds Himself Trapped in a Web of Crime, Fear, and Hidden Truths.",
+      "description": "New OTT arrival (digital): 2026-10-29 · SimplySouth, Prime Video, Aha, Amazon Prime Video\n\nIn the Hill Village of Mekkarai, Where It is Customary for Men to Die Every Seven Years During the Month of June, a Newly Appointed Police Inspector Arrives to Investigate a Series of Mysterious Murders. As He Digs Deeper Into the Village's Dark Secrets and Long-standing Beliefs, He Finds Himself Trapped in a Web of Crime, Fear, and Hidden Truths.",
       "releaseDate": "2026-10-29",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -8779,15 +9492,15 @@
           "kind": "digital",
           "date": "2026-10-29",
           "platforms": [
-            "Prime Video",
-            "Amazon Prime Video",
             "SimplySouth",
-            "Aha"
+            "Prime Video",
+            "Aha",
+            "Amazon Prime Video"
           ],
           "sources": [
             "https://cinebuds.com/ott-release-dates/",
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -8795,15 +9508,15 @@
       "theatricalReleases": [],
       "ottDate": "2026-10-29",
       "platforms": [
-        "Prime Video",
-        "Amazon Prime Video",
         "SimplySouth",
-        "Aha"
+        "Prime Video",
+        "Aha",
+        "Amazon Prime Video"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -8845,8 +9558,8 @@
           ],
           "sources": [
             "https://cinebuds.com/ott-release-dates/",
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -8858,8 +9571,8 @@
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -8956,8 +9669,8 @@
           ],
           "sources": [
             "https://cinebuds.com/ott-release-dates/",
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -8969,8 +9682,8 @@
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -9063,8 +9776,8 @@
           ],
           "sources": [
             "https://cinebuds.com/ott-release-dates/",
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -9076,8 +9789,8 @@
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -10685,7 +11398,7 @@
         "Action",
         "Thriller"
       ],
-      "description": "New OTT arrival (digital): 2026-05-14 · Simply South, JioHotStar\n\nCenters on secret intelligence agency cases involving five major national threats that were thwarted through covert operations.",
+      "description": "New OTT arrival (digital): 2026-05-14 · JioHotStar, Simply South\n\nCenters on secret intelligence agency cases involving five major national threats that were thwarted through covert operations.",
       "releaseDate": "2026-05-14",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -10697,8 +11410,8 @@
           "kind": "digital",
           "date": "2026-05-14",
           "platforms": [
-            "Simply South",
-            "JioHotStar"
+            "JioHotStar",
+            "Simply South"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -10709,8 +11422,8 @@
       "theatricalReleases": [],
       "ottDate": "2026-05-14",
       "platforms": [
-        "Simply South",
-        "JioHotStar"
+        "JioHotStar",
+        "Simply South"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -12239,6 +12952,65 @@
       "catalogAddedAt": "2026-11-19T18:59:02.285194+04:00"
     },
     {
+      "id": "tt5959980",
+      "type": "movie",
+      "name": "Vada Chennai",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt5959980.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt5959980",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt5959980",
+      "releaseInfo": "2018",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "8.4",
+      "genres": [
+        "Action",
+        "Crime",
+        "Drama"
+      ],
+      "description": "Home release (theatrical): 2023-12-10 · Theatrical · India\n\nA young carrom player in north Chennai becomes a reluctant participant in a war between two warring gangsters.",
+      "releaseDate": "2023-12-10",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2023-12-10",
+          "platforms": [
+            "Theatrical · India"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/410331/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2023-12-10",
+          "country": "India",
+          "region": "IN",
+          "note": "re-release"
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · India"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/410331/releases"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
       "id": "tt11663228",
       "type": "movie",
       "name": "Jailer",
@@ -12457,6 +13229,692 @@
       "nextEpisodeReleaseAt": null,
       "justAdded": true,
       "catalogAddedAt": "2026-11-19T18:59:02.285194+04:00"
+    },
+    {
+      "id": "tt5080556",
+      "type": "movie",
+      "name": "2.0",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt5080556.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt5080556",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt5080556",
+      "releaseInfo": "2018",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "6.0",
+      "genres": [
+        "Action",
+        "Fantasy",
+        "Sci-Fi"
+      ],
+      "description": "Home release (theatrical): 2019-06-09 · Theatrical · China\n\nA brilliant scientist must reactivate his decommissioned robot to face off against a deadly winged creature threatening the city.",
+      "releaseDate": "2019-06-09",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2019-06-09",
+          "platforms": [
+            "Theatrical · China"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/373449/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2019-06-09",
+          "country": "China",
+          "region": "CN",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · China"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/373449/releases"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:515981",
+      "type": "movie",
+      "name": "Power to the Children",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/515981.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:515981",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:515981",
+      "releaseInfo": "2018",
+      "metadataSource": "https://www.themoviedb.org/movie/515981",
+      "imdbRating": null,
+      "genres": [
+        "Documentary",
+        "Animation"
+      ],
+      "description": "Home release (theatrical): 2018-04-03 · Theatrical · United States\n\nChildren in India have taken their lives into their own hands. They don’t want to tolerate social grievances as well as environmental pollution any longer. They have been founding childrens parliaments and electing their own ministers in order to stand up for their rights. They are not only changing their own lives for the better, but also those of their communities. This documentary introduces us to several villages in India, whose powerful actions even take their voices to the UN.",
+      "releaseDate": "2018-04-03",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2018-04-03",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/515981/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2018-04-03",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/515981/releases"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:387252",
+      "type": "movie",
+      "name": "Kadhalum Kadanthu Pogum",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/387252.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:387252",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:387252",
+      "releaseInfo": "2016",
+      "metadataSource": "https://www.themoviedb.org/movie/387252",
+      "imdbRating": null,
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance"
+      ],
+      "description": "Home release (theatrical): 2016-10-03 · Theatrical · Kuwait\n\nA small-time rowdy fresh out of prison and a runaway woman seeking a new life in Chennai become unexpected neighbors. Bound by loneliness, they form an unusual bond—one that teeters between friendship and love. As they navigate their struggles together, their lives take a heartwarming turn in this charming romantic comedy-drama.",
+      "releaseDate": "2016-10-03",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2016-10-03",
+          "platforms": [
+            "Theatrical · Kuwait"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/387252/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2016-10-03",
+          "country": "Kuwait",
+          "region": "KW",
+          "note": ""
+        },
+        {
+          "date": "2016-11-03",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2016-11-03",
+          "country": "Australia",
+          "region": "AU",
+          "note": ""
+        },
+        {
+          "date": "2016-11-03",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        },
+        {
+          "date": "2016-11-03",
+          "country": "Ireland",
+          "region": "IE",
+          "note": ""
+        },
+        {
+          "date": "2016-11-03",
+          "country": "Malaysia",
+          "region": "MY",
+          "note": ""
+        },
+        {
+          "date": "2016-11-03",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · Kuwait"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/387252/releases"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt2212302",
+      "type": "movie",
+      "name": "Thandavakone",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt2212302.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt2212302",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt2212302",
+      "releaseInfo": "2011",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": null,
+      "genres": [
+        "Drama"
+      ],
+      "description": "Home release (theatrical): 2011-01-01 · Theatrical · United States\n\n",
+      "releaseDate": "2011-01-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2011-01-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/302774/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2011-01-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/302774/releases"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt0479751",
+      "type": "movie",
+      "name": "Sivaji",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt0479751.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt0479751",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt0479751",
+      "releaseInfo": "2007",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "7.5",
+      "genres": [
+        "Action",
+        "Crime",
+        "Drama"
+      ],
+      "description": "Home release (theatrical): 2007-08-06 · Theatrical · United Kingdom\n\nA software engineer comes to India in order to serve the nation and invest in its welfare. A few corrupt officials and politicians try to stop him while he tries to do good for the poor.",
+      "releaseDate": "2007-08-06",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2007-08-06",
+          "platforms": [
+            "Theatrical · United Kingdom"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/24049/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2007-08-06",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": "cut"
+        },
+        {
+          "date": "2012-12-12",
+          "country": "India",
+          "region": "IN",
+          "note": "Cut-Down 3-D Version"
+        },
+        {
+          "date": "2013-03-01",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": "3-D Censored Version"
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United Kingdom"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/24049/releases"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt0222012",
+      "type": "movie",
+      "name": "Hey Ram",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt0222012.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt0222012",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt0222012",
+      "releaseInfo": "2000",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "8.0",
+      "genres": [
+        "Crime",
+        "Drama",
+        "History"
+      ],
+      "description": "Home release (theatrical): 2006-09-03 · Theatrical · Germany\n\nSaketh Ram's wife is raped and killed during direct action day riots in Calcutta. He is convinced that Mahatma Gandhi is responsible for all the problems happening in the country and sets out to kill him.",
+      "releaseDate": "2006-09-03",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2006-09-03",
+          "platforms": [
+            "Theatrical · Germany"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/60579/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2006-09-03",
+          "country": "Germany",
+          "region": "DE",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · Germany"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/60579/releases"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt0446439",
+      "type": "movie",
+      "name": "Priyamana Thozhi",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt0446439.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt0446439",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt0446439",
+      "releaseInfo": "2003",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "6.0",
+      "genres": [
+        "Musical",
+        "Drama",
+        "Romance"
+      ],
+      "description": "Home release (theatrical): 2003-11-07 · Theatrical · United States\n\nMadhavan and Sridevi are inseparable friends since childhood. Their friendship is entirely platonic. The narration gains grip when their friendship undergoes a test and relinquish.",
+      "releaseDate": "2003-11-07",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2003-11-07",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/276029/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2003-11-07",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2003-11-07",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/276029/releases"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt14592642",
+      "type": "movie",
+      "name": "Lady Killer",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt14592642.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt14592642",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt14592642",
+      "releaseInfo": "",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": null,
+      "genres": [],
+      "description": "Home release (theatrical): 1995-01-01 · Theatrical · United States\n\nLady Killer is about Josie Schuller, a picture-perfect 1950s housewife who has a secret life as a killer for hire.",
+      "releaseDate": "1995-01-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "1995-01-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/596071/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "1995-01-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/596071/releases"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:319546",
+      "type": "movie",
+      "name": "Rasukutti",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/319546.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:319546",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:319546",
+      "releaseInfo": "1992",
+      "metadataSource": "https://www.themoviedb.org/movie/319546",
+      "imdbRating": null,
+      "genres": [],
+      "description": "Home release (theatrical): 1992-01-01 · Theatrical · United States\n\nRasukutti is the spoiled and idle son of rich parents who, upon falling in love with a respected society girl named Aishwarya, must prove his value and worth to her and her family. Will his lazy and irresponsible ways and lack of education mean Rasukutti loses the woman of his dreams? Determined to win over Aishwarya, Rasukutti sets about proving his love and character and, in the process, learns something about life.",
+      "releaseDate": "1992-01-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "1992-01-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/319546/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "1992-01-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/319546/releases"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt0318991",
+      "type": "movie",
+      "name": "Anbulla Malare",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt0318991.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt0318991",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt0318991",
+      "releaseInfo": "1984",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": null,
+      "genres": [
+        "Drama"
+      ],
+      "description": "Home release (theatrical): 1984-11-05 · Theatrical · United States\n\n",
+      "releaseDate": "1984-11-05",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "1984-11-05",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/304151/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "1984-11-05",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/304151/releases"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt3460798",
+      "type": "movie",
+      "name": "Panchavarna Kili",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt3460798.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt3460798",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt3460798",
+      "releaseInfo": "1965",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": null,
+      "genres": [],
+      "description": "Home release (theatrical): 1965-01-01 · Theatrical · United States\n\nIndian film starring Jaishankar, Manorama and Muthuraman",
+      "releaseDate": "1965-01-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "1965-01-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/319780/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "1965-01-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/319780/releases"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
     }
   ],
   "dobins_ta_series": [
@@ -23188,6 +24646,961 @@
       "catalogAddedAt": "2026-11-19T18:59:02.285194+04:00"
     },
     {
+      "id": "tt14209618",
+      "type": "movie",
+      "name": "Game Changer",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt14209618.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt14209618",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt14209618",
+      "releaseInfo": "2025",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "5.0",
+      "genres": [
+        "Action",
+        "Drama",
+        "Thriller"
+      ],
+      "description": "Home release (theatrical): 2025-09-01 · Theatrical · Germany\n\nAn honest IAS officer's fight against a corrupt political system through fair and transparent elections.",
+      "releaseDate": "2025-09-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2025-09-01",
+          "platforms": [
+            "Theatrical · Germany"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/811944/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2025-09-01",
+          "country": "Germany",
+          "region": "DE",
+          "note": ""
+        },
+        {
+          "date": "2025-10-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2025-10-01",
+          "country": "Australia",
+          "region": "AU",
+          "note": ""
+        },
+        {
+          "date": "2025-10-01",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        },
+        {
+          "date": "2025-10-01",
+          "country": "Ireland",
+          "region": "IE",
+          "note": ""
+        },
+        {
+          "date": "2025-10-01",
+          "country": "New Zealand",
+          "region": "NZ",
+          "note": ""
+        },
+        {
+          "date": "2025-10-01",
+          "country": "South Africa",
+          "region": "ZA",
+          "note": ""
+        },
+        {
+          "date": "2025-10-01",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": "Passed with cuts"
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · Germany"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/811944/releases"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt12735488",
+      "type": "movie",
+      "name": "Kalki 2898 AD",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt12735488.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt12735488",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt12735488",
+      "releaseInfo": "2024",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "7.0",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Fantasy"
+      ],
+      "description": "Home release (theatrical): 2025-03-01 · Theatrical · Japan\n\nA pregnant woman comes under the protection of an immortal warrior while being tracked down by bounty hunters.",
+      "releaseDate": "2025-03-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2025-03-01",
+          "platforms": [
+            "Theatrical · Japan"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/801688/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2025-03-01",
+          "country": "Japan",
+          "region": "JP",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · Japan"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/801688/releases"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt15845656",
+      "type": "movie",
+      "name": "Dr. A. P. J. Abdul Kalam",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt15845656.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt15845656",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt15845656",
+      "releaseInfo": "2024",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": null,
+      "genres": [
+        "Drama",
+        "History"
+      ],
+      "description": "Home release (theatrical): 2024-11-10 · Theatrical · United States\n\nThe inspirational journey of Dr. Avul Pakir Jainulabdeen Abdul Kalam, Indian aerospace scientist and statesman who served as the 11th president of India from 2002 to 2007.",
+      "releaseDate": "2024-11-10",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2024-11-10",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/1208462/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2024-11-10",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2024-11-10",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/1208462/releases"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt11821912",
+      "type": "movie",
+      "name": "Devara Part 1",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt11821912.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt11821912",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt11821912",
+      "releaseInfo": "2024",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "6.0",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama"
+      ],
+      "description": "Home release (theatrical): 2024-10-10 · Theatrical · Portugal\n\nA mighty sea warrior takes a violent stand against the criminal deeds of his village. Years later, his mild-mannered son walks a path of his own.",
+      "releaseDate": "2024-10-10",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2024-10-10",
+          "platforms": [
+            "Theatrical · Portugal"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/811941/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2024-10-10",
+          "country": "Portugal",
+          "region": "PT",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · Portugal"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/811941/releases"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt1183907",
+      "type": "movie",
+      "name": "Murari",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt1183907.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt1183907",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt1183907",
+      "releaseInfo": "2001",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "7.8",
+      "genres": [
+        "Drama",
+        "Romance",
+        "Thriller"
+      ],
+      "description": "Home release (theatrical): 2024-09-08 · Theatrical · United States\n\nA family is under a curse due to an old sin; due to which a male is bound to die every 48 years.",
+      "releaseDate": "2024-09-08",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2024-09-08",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/85813/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2024-09-08",
+          "country": "United States",
+          "region": "US",
+          "note": "Re-release"
+        },
+        {
+          "date": "2024-09-08",
+          "country": "India",
+          "region": "IN",
+          "note": "Re-release"
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/85813/releases"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt27043130",
+      "type": "movie",
+      "name": "Manamey",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt27043130.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt27043130",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt27043130",
+      "releaseInfo": "2024",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "5.3",
+      "genres": [
+        "Drama",
+        "Family"
+      ],
+      "description": "Home release (theatrical): 2024-06-06 · Theatrical · United States\n\nA charismatic playboy's life takes an unexpected turn when a young boy enters his world. Initially causing chaos, the boy gradually becomes an integral part of their lives.",
+      "releaseDate": "2024-06-06",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2024-06-06",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/1095889/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2024-06-06",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2024-07-06",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/1095889/releases"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt12422308",
+      "type": "movie",
+      "name": "Sarkaru Vaari Paata",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt12422308.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt12422308",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt12422308",
+      "releaseInfo": "2022",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "5.6",
+      "genres": [
+        "Action",
+        "Drama"
+      ],
+      "description": "Home release (theatrical): 2022-11-05 · Theatrical · United States\n\nAfter being conned by the woman he loves, a finance agent arrives in India from USA to retrieve his money from the woman's father who is a powerful MP and industrialist.",
+      "releaseDate": "2022-11-05",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2022-11-05",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/784696/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2022-11-05",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2022-12-05",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/784696/releases"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt0816258",
+      "type": "movie",
+      "name": "Pokiri",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt0816258.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt0816258",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt0816258",
+      "releaseInfo": "2006",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "8.0",
+      "genres": [
+        "Action",
+        "Crime",
+        "Thriller"
+      ],
+      "description": "Home release (theatrical): 2022-09-08 · Theatrical · United States\n\nA money-minded criminal has to deal with two rival gangs as well as an evil cop threatening his girlfriend.",
+      "releaseDate": "2022-09-08",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2022-09-08",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/23381/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2022-09-08",
+          "country": "United States",
+          "region": "US",
+          "note": "Re-release"
+        },
+        {
+          "date": "2022-09-08",
+          "country": "India",
+          "region": "IN",
+          "note": "Re-release"
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/23381/releases"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt9077528",
+      "type": "movie",
+      "name": "NTR: Mahanayakudu",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt9077528.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt9077528",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt9077528",
+      "releaseInfo": "2019",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "5.4",
+      "genres": [
+        "Biography",
+        "Drama"
+      ],
+      "description": "Home release (theatrical): 2019-06-02 · Theatrical · Canada\n\nA follow up to NTR: Kathanayakudu which was based on N.T. Rama Rao's life and acting career. This movie will focus on his political career.",
+      "releaseDate": "2019-06-02",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2019-06-02",
+          "platforms": [
+            "Theatrical · Canada"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/676542/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2019-06-02",
+          "country": "Canada",
+          "region": "CA",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · Canada"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/676542/releases"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt7765910",
+      "type": "movie",
+      "name": "Aravindha Sametha",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt7765910.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt7765910",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt7765910",
+      "releaseInfo": "2018",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "7.3",
+      "genres": [
+        "Action",
+        "Drama"
+      ],
+      "description": "Home release (theatrical): 2018-11-10 · Theatrical · United States\n\nA young scion of a powerful family with a long history of violence decides to put an end to the bloodshed which leads him to a path of self discovery.",
+      "releaseDate": "2018-11-10",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2018-11-10",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/534530/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2018-11-10",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2018-11-10",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/534530/releases"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt2631186",
+      "type": "movie",
+      "name": "Baahubali: The Beginning",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt2631186.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt2631186",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt2631186",
+      "releaseInfo": "2015",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "8.0",
+      "genres": [
+        "Action",
+        "Drama"
+      ],
+      "description": "New physical release (theatrical): 2015-09-07 · Theatrical · United States, DVD · Egypt\n\nA child from the Mahishmati kingdom is raised by tribal people and one day learns about his royal heritage, his father's bravery in battle and a mission to overthrow the incumbent ruler.",
+      "releaseDate": "2015-09-07",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": "New physical release",
+      "releaseLabelDate": null,
+      "originalReleaseDate": "2015-09-07",
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2015-09-07",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/256040/releases"
+          ]
+        },
+        {
+          "kind": "physical",
+          "date": "2021-12-09",
+          "platforms": [
+            "DVD · Egypt"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/256040/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [
+        {
+          "date": "2021-12-09",
+          "format": "DVD",
+          "country": "Egypt",
+          "region": "EG",
+          "note": "DVD"
+        }
+      ],
+      "theatricalReleases": [
+        {
+          "date": "2015-09-07",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2015-09-07",
+          "country": "Canada",
+          "region": "CA",
+          "note": ""
+        },
+        {
+          "date": "2015-09-07",
+          "country": "South Africa",
+          "region": "ZA",
+          "note": ""
+        },
+        {
+          "date": "2015-10-07",
+          "country": "Australia",
+          "region": "AU",
+          "note": ""
+        },
+        {
+          "date": "2015-10-07",
+          "country": "Cambodia",
+          "region": "KH",
+          "note": ""
+        },
+        {
+          "date": "2015-10-07",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        },
+        {
+          "date": "2015-10-07",
+          "country": "Ireland",
+          "region": "IE",
+          "note": ""
+        },
+        {
+          "date": "2015-10-07",
+          "country": "Laos",
+          "region": "LA",
+          "note": ""
+        },
+        {
+          "date": "2015-10-07",
+          "country": "Malaysia",
+          "region": "MY",
+          "note": ""
+        },
+        {
+          "date": "2015-10-07",
+          "country": "Myanmar (Burma)",
+          "region": "MM",
+          "note": ""
+        },
+        {
+          "date": "2015-10-07",
+          "country": "Netherlands",
+          "region": "NL",
+          "note": ""
+        },
+        {
+          "date": "2015-10-07",
+          "country": "New Zealand",
+          "region": "NZ",
+          "note": ""
+        },
+        {
+          "date": "2015-10-07",
+          "country": "South Korea",
+          "region": "KR",
+          "note": ""
+        },
+        {
+          "date": "2015-10-07",
+          "country": "Thailand",
+          "region": "TH",
+          "note": ""
+        },
+        {
+          "date": "2015-10-07",
+          "country": "Timor-Leste",
+          "region": "TL",
+          "note": ""
+        },
+        {
+          "date": "2015-10-07",
+          "country": "United Arab Emirates",
+          "region": "AE",
+          "note": ""
+        },
+        {
+          "date": "2015-10-07",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": ""
+        },
+        {
+          "date": "2015-10-07",
+          "country": "Vietnam",
+          "region": "VN",
+          "note": ""
+        },
+        {
+          "date": "2015-11-07",
+          "country": "Brazil",
+          "region": "BR",
+          "note": ""
+        },
+        {
+          "date": "2016-08-06",
+          "country": "France",
+          "region": "FR",
+          "note": ""
+        },
+        {
+          "date": "2016-10-11",
+          "country": "South Korea",
+          "region": "KR",
+          "note": ""
+        },
+        {
+          "date": "2017-07-04",
+          "country": "India",
+          "region": "IN",
+          "note": "Re-release"
+        },
+        {
+          "date": "2017-08-04",
+          "country": "Italy",
+          "region": "IT",
+          "note": ""
+        },
+        {
+          "date": "2017-08-04",
+          "country": "Japan",
+          "region": "JP",
+          "note": ""
+        },
+        {
+          "date": "2018-04-01",
+          "country": "Russia",
+          "region": "RU",
+          "note": ""
+        },
+        {
+          "date": "2020-03-01",
+          "country": "Colombia",
+          "region": "CO",
+          "note": ""
+        },
+        {
+          "date": "2020-06-11",
+          "country": "India",
+          "region": "IN",
+          "note": "Re-release"
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States",
+        "DVD · Egypt"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/256040/releases"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt3885748",
+      "type": "movie",
+      "name": "Nuvvala Nenila",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt3885748.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt3885748",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt3885748",
+      "releaseInfo": "2014",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "5.4",
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance"
+      ],
+      "description": "Home release (theatrical): 2014-08-08 · Theatrical · United States\n\nChildhood friends Varun and Mahalakshmi grow up together, but unspoken feelings and unexpected twists complicate their relationship as they navigate love, friendship, and destiny.",
+      "releaseDate": "2014-08-08",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2014-08-08",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/300751/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2014-08-08",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/300751/releases"
+      ],
+      "language": "telugu",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
       "id": "tt2198161",
       "type": "movie",
       "name": "Seethamma Vaakitlo Sirimalle Chettu",
@@ -23488,7 +25901,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39216437",
       "releaseInfo": "2026–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "3.7",
+      "imdbRating": "3.8",
       "genres": [
         "Drama",
         "Crime",
@@ -23766,7 +26179,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt45381529",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.0",
+      "imdbRating": "6.1",
       "genres": [
         "Crime",
         "Mystery"
@@ -24099,7 +26512,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt43632572",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.2",
+      "imdbRating": "8.1",
       "genres": [
         "Comedy",
         "Drama"
@@ -29527,8 +31940,8 @@
             "SonyLIV"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         }
       ],
@@ -29539,8 +31952,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "language": "hindi",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -29632,8 +32045,8 @@
             "ZEE5"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         }
       ],
@@ -29644,8 +32057,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -30045,8 +32458,8 @@
           ],
           "sources": [
             "https://cinebuds.com/ott-release-dates/",
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         }
       ],
@@ -30058,8 +32471,8 @@
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -30339,8 +32752,8 @@
             "ZEE5"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         }
       ],
@@ -30351,8 +32764,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "language": "hindi",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -30391,8 +32804,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         }
       ],
@@ -30403,8 +32816,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "language": "hindi",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -31347,8 +33760,8 @@
             "Lionsgate Play"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         }
       ],
@@ -31359,8 +33772,8 @@
         "Lionsgate Play"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -33695,6 +36108,137 @@
       "language": "hindi"
     },
     {
+      "id": "tt32223398",
+      "type": "movie",
+      "name": "Jaat",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt32223398.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt32223398",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt32223398",
+      "releaseInfo": "2025",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "6.0",
+      "genres": [
+        "Action",
+        "Crime",
+        "Drama"
+      ],
+      "description": "Home release (theatrical): 2025-10-04 · Theatrical · United States\n\nAfter a ruffian accidentally ruins his meal, a traveler retorts violently and demands an apology, unintentionally finding himself in a web of violence, crime and corruption spun by a feared criminal.",
+      "releaseDate": "2025-10-04",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2025-10-04",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/1306845/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2025-10-04",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2025-10-04",
+          "country": "Australia",
+          "region": "AU",
+          "note": ""
+        },
+        {
+          "date": "2025-10-04",
+          "country": "Canada",
+          "region": "CA",
+          "note": ""
+        },
+        {
+          "date": "2025-10-04",
+          "country": "Germany",
+          "region": "DE",
+          "note": ""
+        },
+        {
+          "date": "2025-10-04",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        },
+        {
+          "date": "2025-10-04",
+          "country": "Ireland",
+          "region": "IE",
+          "note": ""
+        },
+        {
+          "date": "2025-10-04",
+          "country": "New Zealand",
+          "region": "NZ",
+          "note": ""
+        },
+        {
+          "date": "2025-10-04",
+          "country": "Russia",
+          "region": "RU",
+          "note": ""
+        },
+        {
+          "date": "2025-10-04",
+          "country": "Singapore",
+          "region": "SG",
+          "note": ""
+        },
+        {
+          "date": "2025-10-04",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": ""
+        },
+        {
+          "date": "2025-11-04",
+          "country": "Indonesia",
+          "region": "ID",
+          "note": ""
+        },
+        {
+          "date": "2025-11-04",
+          "country": "South Africa",
+          "region": "ZA",
+          "note": ""
+        },
+        {
+          "date": "2026-06-02",
+          "country": "Spain",
+          "region": "ES",
+          "note": "Cutrecon 15"
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/1306845/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
       "id": "tt28259207",
       "type": "movie",
       "name": "Kill",
@@ -33755,6 +36299,853 @@
       "catalogAddedAt": null
     },
     {
+      "id": "tmdb:1623851",
+      "type": "movie",
+      "name": "My Home",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/1623851.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:1623851",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:1623851",
+      "releaseInfo": "2024",
+      "metadataSource": "https://www.themoviedb.org/movie/1623851",
+      "imdbRating": null,
+      "genres": [
+        "Drama"
+      ],
+      "description": "Home release (theatrical): 2024-11-11 · Theatrical · United States\n\nA heart-wrenching tale of love, loss, and longing—a story of four women waiting for the return of Mohan, a migrant worker and the family's sole breadwinner. Over the years, their lives are defined by hope, yearning, and dreams that seem increasingly out of reach.",
+      "releaseDate": "2024-11-11",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2024-11-11",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/1623851/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2024-11-11",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/1623851/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt18072316",
+      "type": "movie",
+      "name": "Bade Miyan Chote Miyan",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt18072316.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt18072316",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt18072316",
+      "releaseInfo": "2024",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "3.7",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Sci-Fi"
+      ],
+      "description": "Home release (theatrical): 2024-11-04 · Theatrical · United States\n\nTwo elite soldiers with troubled pasts are enlisted for a daring mission when a deadly masked villain threatens India's defenses.",
+      "releaseDate": "2024-11-04",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2024-11-04",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/936622/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2024-11-04",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2024-11-04",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        },
+        {
+          "date": "2024-11-04",
+          "country": "Indonesia",
+          "region": "ID",
+          "note": ""
+        },
+        {
+          "date": "2024-11-04",
+          "country": "Malaysia",
+          "region": "MY",
+          "note": ""
+        },
+        {
+          "date": "2024-11-04",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/936622/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt27459160",
+      "type": "movie",
+      "name": "Teri Baaton Mein Aisa Uljha Jiya",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt27459160.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt27459160",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt27459160",
+      "releaseInfo": "2024",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "6.2",
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance"
+      ],
+      "description": "Home release (theatrical): 2024-09-02 · Theatrical · United States\n\nAryan is not able to find a perfect life partner. He meets a perfect girl, Sifra, during an official assignment in the US and falls in love with her only to discover later that it's an impossible love story.",
+      "releaseDate": "2024-09-02",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2024-09-02",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/1110390/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2024-09-02",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2024-09-02",
+          "country": "France",
+          "region": "FR",
+          "note": ""
+        },
+        {
+          "date": "2024-09-02",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        },
+        {
+          "date": "2024-09-02",
+          "country": "Ireland",
+          "region": "IE",
+          "note": ""
+        },
+        {
+          "date": "2024-09-02",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/1110390/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt27744786",
+      "type": "movie",
+      "name": "Shaitaan",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt27744786.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt27744786",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt27744786",
+      "releaseInfo": "2024",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "6.5",
+      "genres": [
+        "Drama",
+        "Horror",
+        "Thriller"
+      ],
+      "description": "Home release (theatrical): 2024-08-03 · Theatrical · United States\n\nA family's getaway turns terrifying when an intruder possesses the teen daughter's body, putting her at the mercy of his increasingly sinister commands.",
+      "releaseDate": "2024-08-03",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2024-08-03",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/1187619/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2024-08-03",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2024-08-03",
+          "country": "Australia",
+          "region": "AU",
+          "note": ""
+        },
+        {
+          "date": "2024-08-03",
+          "country": "Belgium",
+          "region": "BE",
+          "note": ""
+        },
+        {
+          "date": "2024-08-03",
+          "country": "Canada",
+          "region": "CA",
+          "note": ""
+        },
+        {
+          "date": "2024-08-03",
+          "country": "Germany",
+          "region": "DE",
+          "note": ""
+        },
+        {
+          "date": "2024-08-03",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        },
+        {
+          "date": "2024-08-03",
+          "country": "Indonesia",
+          "region": "ID",
+          "note": ""
+        },
+        {
+          "date": "2024-08-03",
+          "country": "Ireland",
+          "region": "IE",
+          "note": ""
+        },
+        {
+          "date": "2024-08-03",
+          "country": "Israel",
+          "region": "IL",
+          "note": ""
+        },
+        {
+          "date": "2024-08-03",
+          "country": "Spain",
+          "region": "ES",
+          "note": ""
+        },
+        {
+          "date": "2024-08-03",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/1187619/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt28962154",
+      "type": "movie",
+      "name": "Band of Maharajas",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt28962154.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt28962154",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt28962154",
+      "releaseInfo": "2024",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": null,
+      "genres": [
+        "Drama",
+        "Music"
+      ],
+      "description": "Home release (theatrical): 2024-01-01 · Theatrical · United States\n\nThe film narrates the inspiring and emotional journey of three young musicians from a small border village in Punjab. Driven by their passion for music, they daringly cross the border into Pakistan, a country where music often encounters resistance from radical elements. The story portrays their courage, perseverance, and the unifying power of art.",
+      "releaseDate": "2024-01-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2024-01-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/1399247/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2024-01-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/1399247/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt18411490",
+      "type": "movie",
+      "name": "Tiger 3",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt18411490.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt18411490",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt18411490",
+      "releaseInfo": "2023",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "5.6",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Thriller"
+      ],
+      "description": "Home release (theatrical): 2023-11-11 · Theatrical · United States\n\nSpy couple Tiger and Zoya face a ruthless enemy with a personal vendetta.",
+      "releaseDate": "2023-11-11",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2023-11-11",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/720557/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2023-11-11",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2023-12-11",
+          "country": "Canada",
+          "region": "CA",
+          "note": ""
+        },
+        {
+          "date": "2023-12-11",
+          "country": "Germany",
+          "region": "DE",
+          "note": ""
+        },
+        {
+          "date": "2023-12-11",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        },
+        {
+          "date": "2023-12-11",
+          "country": "Indonesia",
+          "region": "ID",
+          "note": ""
+        },
+        {
+          "date": "2023-12-11",
+          "country": "Russia",
+          "region": "RU",
+          "note": ""
+        },
+        {
+          "date": "2023-12-11",
+          "country": "Spain",
+          "region": "ES",
+          "note": ""
+        },
+        {
+          "date": "2023-12-11",
+          "country": "Switzerland",
+          "region": "CH",
+          "note": ""
+        },
+        {
+          "date": "2023-12-11",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/720557/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt15302222",
+      "type": "movie",
+      "name": "Bholaa",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt15302222.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt15302222",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt15302222",
+      "releaseInfo": "2023",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "5.8",
+      "genres": [
+        "Action",
+        "Crime",
+        "Drama"
+      ],
+      "description": "Home release (theatrical): 2023-06-04 · Theatrical · Israel\n\nAfter getting out of prison with the desire to meet his daughter, Bholaa's plans are interrupted by a well-orchestrated drug bust.",
+      "releaseDate": "2023-06-04",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2023-06-04",
+          "platforms": [
+            "Theatrical · Israel"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/965606/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2023-06-04",
+          "country": "Israel",
+          "region": "IL",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · Israel"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/965606/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt7705476",
+      "type": "movie",
+      "name": "10 Nahi 40",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt7705476.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt7705476",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt7705476",
+      "releaseInfo": "2022",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "8.6",
+      "genres": [
+        "Drama"
+      ],
+      "description": "Home release (theatrical): 2022-11-03 · Theatrical · United States\n\nAn educational entertainer sending a message to the society to understand and care for the elderly.To know their insecurities and fears as they approach the twilight of their lives. The movie is based on the fact that in the flag end of life all that old people need is love and companionship. Loneliness,insecurity and unpredictability of life makes them bitter. The main attraction of the movie is the unique revolutionary solution to all these issues that will be revealed to the audience in this movie. Laced with humour,10 nahi 40 sends out a message to the youngsters to be more understanding towards the elder people and to the older people it emphasises that life is beautiful and has to be lived with zest and",
+      "releaseDate": "2022-11-03",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2022-11-03",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/989114/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2022-11-03",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/989114/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt15135004",
+      "type": "movie",
+      "name": "Hacker: Trust No One",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt15135004.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt15135004",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt15135004",
+      "releaseInfo": "2021",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "2.3",
+      "genres": [
+        "Drama",
+        "Mystery",
+        "Thriller"
+      ],
+      "description": "Home release (theatrical): 2022-08-02 · Theatrical · United States\n\nDanny was set to be rich with his new crypto currency until he was caught hacking finding himself and his girlfriend on a hit list.",
+      "releaseDate": "2022-08-02",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2022-08-02",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/915617/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2022-08-02",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/915617/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:972116",
+      "type": "movie",
+      "name": "The Conversion",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/972116.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:972116",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:972116",
+      "releaseInfo": "2022",
+      "metadataSource": "https://www.themoviedb.org/movie/972116",
+      "imdbRating": null,
+      "genres": [],
+      "description": "Home release (theatrical): 2022-06-05 · Theatrical · United States\n\nA Movie that explores the sensitive topic of religious conversion, this movie is a captivating drama depicting girl's dilemma of what happens in an inter-faith marriage that results in religious conversion.",
+      "releaseDate": "2022-06-05",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2022-06-05",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/972116/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2022-06-05",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/972116/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt24178362",
+      "type": "movie",
+      "name": "Guilt 2",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt24178362.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt24178362",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt24178362",
+      "releaseInfo": "2022",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "7.2",
+      "genres": [],
+      "description": "Home release (theatrical): 2022-02-02 · Theatrical · United States\n\nA young Housewife struggling to find joy in her life , joins a new job. Boss of the company makes her a offer she never thought of?",
+      "releaseDate": "2022-02-02",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2022-02-02",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/1088228/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2022-02-02",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/1088228/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt15007122",
+      "type": "movie",
+      "name": "Angithee",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt15007122.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt15007122",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt15007122",
+      "releaseInfo": "2021",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "5.5",
+      "genres": [],
+      "description": "Home release (theatrical): 2021-09-01 · Theatrical · United States\n\nA free spirited woman named Firdous is married off in a house where even watching TV seems like a crime. Her husband Hameed is nice to her but has no guts to stand infront of his conservative father. Hameed's old friend Shahid comes back from Punjab where he was a labour contracter and has evolved a lot by travelling outside. Shahid and Firdous get close to each other and end up falling in love and living their desires together. Firdous has a different life whenever she is with Shahid, things change big time when Hameed gets to know about the fact that his wife is sleeping with his friend",
+      "releaseDate": "2021-09-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2021-09-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/1080376/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2021-09-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/1080376/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
       "id": "tt2257284",
       "type": "movie",
       "name": "The Field",
@@ -33813,6 +37204,472 @@
       "catalogAddedAt": null
     },
     {
+      "id": "tt1703807",
+      "type": "movie",
+      "name": "Depth of Pyaar",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt1703807.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt1703807",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt1703807",
+      "releaseInfo": "2020",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "6.6",
+      "genres": [
+        "Thriller",
+        "Drama",
+        "Romance"
+      ],
+      "description": "Home release (theatrical): 2020-10-03 · Theatrical · United States\n\nA film about two brothers - Yash is a charismatic young lawyer frustrated in his pursuit of justice, while Ansh is a social recluse due to his medical limitations - and how their lives are overturned when a sociopathic criminal targets them and their loved ones. Both are forced to make decisions about how far they will go for the people whom they love.",
+      "releaseDate": "2020-10-03",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2020-10-03",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/759425/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2020-10-03",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/759425/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:661043",
+      "type": "movie",
+      "name": "Malang",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/661043.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:661043",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:661043",
+      "releaseInfo": "2020",
+      "metadataSource": "https://www.themoviedb.org/movie/661043",
+      "imdbRating": null,
+      "genres": [
+        "Romance",
+        "Action",
+        "Adventure",
+        "Crime",
+        "Thriller"
+      ],
+      "description": "Home release (theatrical): 2020-06-02 · Theatrical · United Arab Emirates\n\nAdvait visits Goa where he meets Sara, a free-spirited girl who lives life unshackled. Opposites attract and all goes well until life turns upside down. Years later, Advait is on a killing spree with cops Aghase and Michael in his way.",
+      "releaseDate": "2020-06-02",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2020-06-02",
+          "platforms": [
+            "Theatrical · United Arab Emirates"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/661043/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2020-06-02",
+          "country": "United Arab Emirates",
+          "region": "AE",
+          "note": ""
+        },
+        {
+          "date": "2020-07-02",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2020-07-02",
+          "country": "Australia",
+          "region": "AU",
+          "note": ""
+        },
+        {
+          "date": "2020-07-02",
+          "country": "Canada",
+          "region": "CA",
+          "note": ""
+        },
+        {
+          "date": "2020-07-02",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        },
+        {
+          "date": "2020-07-02",
+          "country": "Indonesia",
+          "region": "ID",
+          "note": ""
+        },
+        {
+          "date": "2020-07-02",
+          "country": "Ireland",
+          "region": "IE",
+          "note": ""
+        },
+        {
+          "date": "2020-07-02",
+          "country": "New Zealand",
+          "region": "NZ",
+          "note": ""
+        },
+        {
+          "date": "2020-07-02",
+          "country": "Spain",
+          "region": "ES",
+          "note": "subtitled version"
+        },
+        {
+          "date": "2020-07-02",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": ""
+        },
+        {
+          "date": "2020-08-02",
+          "country": "Spain",
+          "region": "ES",
+          "note": "subtitled version"
+        },
+        {
+          "date": "2020-09-02",
+          "country": "Germany",
+          "region": "DE",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United Arab Emirates"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/661043/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:518497",
+      "type": "movie",
+      "name": "Sir",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/518497.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:518497",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:518497",
+      "releaseInfo": "2018",
+      "metadataSource": "https://www.themoviedb.org/movie/518497",
+      "imdbRating": null,
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "description": "New physical release (theatrical): 2019-02-08 · Theatrical · Japan, DVD · Netherlands\n\nA prosperous young Indian man falls in love with his servant, a widow with the dream of becoming a fashion designer.",
+      "releaseDate": "2019-02-08",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": "New physical release",
+      "releaseLabelDate": null,
+      "originalReleaseDate": "2019-02-08",
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2019-02-08",
+          "platforms": [
+            "Theatrical · Japan"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/518497/releases"
+          ]
+        },
+        {
+          "kind": "physical",
+          "date": "2019-06-02",
+          "platforms": [
+            "DVD · Netherlands"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/518497/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [
+        {
+          "date": "2019-06-02",
+          "format": "DVD",
+          "country": "Netherlands",
+          "region": "NL",
+          "note": "DVD"
+        }
+      ],
+      "theatricalReleases": [
+        {
+          "date": "2019-02-08",
+          "country": "Japan",
+          "region": "JP",
+          "note": ""
+        },
+        {
+          "date": "2019-10-01",
+          "country": "Austria",
+          "region": "AT",
+          "note": ""
+        },
+        {
+          "date": "2019-12-07",
+          "country": "Sweden",
+          "region": "SE",
+          "note": ""
+        },
+        {
+          "date": "2020-11-06",
+          "country": "Greece",
+          "region": "GR",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · Japan",
+        "DVD · Netherlands"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/518497/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:470641",
+      "type": "movie",
+      "name": "Mukkabaaz",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/470641.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:470641",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:470641",
+      "releaseInfo": "2018",
+      "metadataSource": "https://www.themoviedb.org/movie/470641",
+      "imdbRating": null,
+      "genres": [
+        "Drama"
+      ],
+      "description": "Home release (theatrical): 2018-12-01 · Theatrical · United States\n\nA low caste boxer, Shravan, trains at a gym controlled by a local Don, Mishra. Shravan falls for Mishra's niece, Sunaina. Mishra does not approve of this match. Shravan strives to win Sunaina's hand in marriage and become a successful boxer while trying to avoid retaliation from Mishra.",
+      "releaseDate": "2018-12-01",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2018-12-01",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/470641/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2018-12-01",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2018-12-01",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/470641/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt5325684",
+      "type": "movie",
+      "name": "Hate Story IV",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt5325684.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt5325684",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt5325684",
+      "releaseInfo": "2018",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "3.4",
+      "genres": [
+        "Crime",
+        "Drama",
+        "Thriller"
+      ],
+      "description": "Home release (theatrical): 2018-09-03 · Theatrical · United States\n\nAryan and Rajveer, sons of a wealthy businessman, Vikram Khurana, fall in love with the same woman, Tasha. Not only do they commit a deed they cannot undo but also end up as targets in a revenge plan.",
+      "releaseDate": "2018-09-03",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2018-09-03",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/501192/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2018-09-03",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        },
+        {
+          "date": "2018-09-03",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/501192/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tmdb:745535",
+      "type": "movie",
+      "name": "The Affair",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tmdb/745535.jpg?badge=just-added&type=movie",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/movie~tmdb:745535",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/movie~tmdb:745535",
+      "releaseInfo": "2017",
+      "metadataSource": "https://www.themoviedb.org/movie/745535",
+      "imdbRating": null,
+      "genres": [
+        "Romance"
+      ],
+      "description": "Home release (theatrical): 2017-12-07 · Theatrical · United States\n\nIn a city of a billion, everyday, a man and a woman meet each other. They turn their backs to the city as they go about their relationship. But this affair can only last for a few minutes, since back at their homes someone waits for them.",
+      "releaseDate": "2017-12-07",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2017-12-07",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/745535/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2017-12-07",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · United States"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/745535/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
       "id": "tt2016894",
       "type": "movie",
       "name": "Ek Tha Tiger",
@@ -33828,14 +37685,24 @@
         "Adventure",
         "Drama"
       ],
-      "description": "New physical release (physical): 2012-09-10 · 4K Blu-ray · United States\n\nWhen a secret agent investigates a scientist suspected of leaking sensitive research, he doesn't expect to fall for the scientist's enigmatic caretaker.",
-      "releaseDate": "2012-09-10",
-      "releaseKind": "physical",
+      "description": "New physical release (theatrical): 2013-06-12 · Theatrical · Romania, 4K Blu-ray · United States\n\nWhen a secret agent investigates a scientist suspected of leaking sensitive research, he doesn't expect to fall for the scientist's enigmatic caretaker.",
+      "releaseDate": "2013-06-12",
+      "releaseKind": "theatrical",
       "releaseStatus": "available",
       "releaseLabel": "New physical release",
       "releaseLabelDate": null,
-      "originalReleaseDate": "2025",
+      "originalReleaseDate": "2013-06-12",
       "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2013-06-12",
+          "platforms": [
+            "Theatrical · Romania"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/85985/releases"
+          ]
+        },
         {
           "kind": "physical",
           "date": "2012-09-10",
@@ -33856,16 +37723,30 @@
           "note": "Blu-ray / Blu-ray 3D / 4K Ultra HD"
         }
       ],
-      "theatricalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2013-06-12",
+          "country": "Romania",
+          "region": "RO",
+          "note": ""
+        },
+        {
+          "date": "2013-08-02",
+          "country": "Germany",
+          "region": "DE",
+          "note": ""
+        }
+      ],
       "ottDate": null,
       "platforms": [
+        "Theatrical · Romania",
         "4K Blu-ray · United States"
       ],
       "sources": [
         "https://www.themoviedb.org/movie/85985/releases"
       ],
       "language": "hindi",
-      "releaseDateBasis": "source release",
+      "releaseDateBasis": "TMDB first theatrical release date",
       "latestEpisodeReleasedAt": null,
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null,
@@ -34033,14 +37914,24 @@
         "Drama",
         "Family"
       ],
-      "description": "New physical release (physical): 2009-09-10 · DVD · Albania\n\nA young boy is thought to be nothing but a lazy troublemaker until the new art teacher has the patience and compassion to discover the real problem behind his struggles in school.",
-      "releaseDate": "2009-09-10",
-      "releaseKind": "physical",
+      "description": "New physical release (theatrical): 2008-12-09 · Theatrical · India, DVD · Albania\n\nA young boy is thought to be nothing but a lazy troublemaker until the new art teacher has the patience and compassion to discover the real problem behind his struggles in school.",
+      "releaseDate": "2008-12-09",
+      "releaseKind": "theatrical",
       "releaseStatus": "available",
       "releaseLabel": "New physical release",
       "releaseLabelDate": null,
-      "originalReleaseDate": "2007",
+      "originalReleaseDate": "2008-12-09",
       "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2008-12-09",
+          "platforms": [
+            "Theatrical · India"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/7508/releases"
+          ]
+        },
         {
           "kind": "physical",
           "date": "2009-09-10",
@@ -34705,21 +38596,331 @@
           "note": "DVD"
         }
       ],
-      "theatricalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2008-12-09",
+          "country": "India",
+          "region": "IN",
+          "note": "Tamil and Telugu dub"
+        },
+        {
+          "date": "2012-06-09",
+          "country": "South Korea",
+          "region": "KR",
+          "note": ""
+        }
+      ],
       "ottDate": null,
       "platforms": [
+        "Theatrical · India",
         "DVD · Albania"
       ],
       "sources": [
         "https://www.themoviedb.org/movie/7508/releases"
       ],
       "language": "hindi",
-      "releaseDateBasis": "source release",
+      "releaseDateBasis": "TMDB first theatrical release date",
       "latestEpisodeReleasedAt": null,
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null,
       "justAdded": false,
       "catalogAddedAt": null
+    },
+    {
+      "id": "tt0112870",
+      "type": "movie",
+      "name": "Dilwale Dulhania Le Jayenge",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt0112870.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt0112870",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt0112870",
+      "releaseInfo": "2025",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "8.0",
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "description": "Home release (theatrical): 2008-08-02 · Theatrical · Germany\n\nWhen Raj meets Simran in Europe, it isn't love at first sight but when Simran moves to India for an arranged marriage, love makes its presence felt.",
+      "releaseDate": "2008-08-02",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "2008-08-02",
+          "platforms": [
+            "Theatrical · Germany"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/19404/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "2008-08-02",
+          "country": "Germany",
+          "region": "DE",
+          "note": ""
+        },
+        {
+          "date": "2023-10-02",
+          "country": "India",
+          "region": "IN",
+          "note": "Re-release"
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · Germany"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/19404/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt0073707",
+      "type": "movie",
+      "name": "Sholay",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt0073707.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt0073707",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt0073707",
+      "releaseInfo": "1975",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "8.1",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Comedy"
+      ],
+      "description": "Home release (theatrical): 1975-11-10 · Theatrical · India\n\nAfter his family is murdered by a notorious and ruthless bandit, a former police officer enlists the services of two outlaws to capture the bandit.",
+      "releaseDate": "1975-11-10",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "1975-11-10",
+          "platforms": [
+            "Theatrical · India"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/12259/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "1975-11-10",
+          "country": "India",
+          "region": "IN",
+          "note": ""
+        },
+        {
+          "date": "2014-03-01",
+          "country": "India",
+          "region": "IN",
+          "note": "3D"
+        },
+        {
+          "date": "2025-11-12",
+          "country": "United Arab Emirates",
+          "region": "AE",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "United States",
+          "region": "US",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "Australia",
+          "region": "AU",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "Bahrain",
+          "region": "BH",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "Canada",
+          "region": "CA",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "Denmark",
+          "region": "DK",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "Fiji",
+          "region": "FJ",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "India",
+          "region": "IN",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "Ireland",
+          "region": "IE",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "Israel",
+          "region": "IL",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "Nepal",
+          "region": "NP",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "Netherlands",
+          "region": "NL",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "Norway",
+          "region": "NO",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "Oman",
+          "region": "OM",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "Singapore",
+          "region": "SG",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "South Africa",
+          "region": "ZA",
+          "note": "The Final Cut"
+        },
+        {
+          "date": "2025-12-12",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": "The Final Cut"
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · India"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/12259/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
+    },
+    {
+      "id": "tt0050188",
+      "type": "movie",
+      "name": "Mother India",
+      "poster": "https://great-indian-upcoming-posters.onrender.com/poster/tt0050188.jpg?badge=just-added",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt0050188",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt0050188",
+      "releaseInfo": "1957",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "7.8",
+      "genres": [
+        "Action",
+        "Comedy",
+        "Drama"
+      ],
+      "description": "Home release (theatrical): 1962-05-03 · Theatrical · SU\n\nIn this melodrama, a poverty-stricken woman raises her sons through many trials and tribulations. But no matter the struggles, she always sticks to her own moral code.",
+      "releaseDate": "1962-05-03",
+      "releaseKind": "theatrical",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "theatrical",
+          "date": "1962-05-03",
+          "platforms": [
+            "Theatrical · SU"
+          ],
+          "sources": [
+            "https://www.themoviedb.org/movie/917/releases"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [
+        {
+          "date": "1962-05-03",
+          "country": "SU",
+          "region": "SU",
+          "note": ""
+        },
+        {
+          "date": "2002-02-05",
+          "country": "United Kingdom",
+          "region": "GB",
+          "note": ""
+        }
+      ],
+      "ottDate": null,
+      "platforms": [
+        "Theatrical · SU"
+      ],
+      "sources": [
+        "https://www.themoviedb.org/movie/917/releases"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "TMDB first theatrical release date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-19T19:06:30.638410+04:00"
     }
   ],
   "dobins_hi_series": [
@@ -35309,7 +39510,7 @@
         "Mystery",
         "Drama"
       ],
-      "description": "Home release (digital): 2026-11-13 · JioHotstar, JioHotStar\n\nStudent of the Year: After Dark reimagines the St. Teresa's campus as the setting of a murder mystery after the school's queen bee, Aayesha Malik, is found dead in a frozen lake. Refusing to believe it was an accident, her introverted twin sister Aditi goes undercover at the elite institution to investigate her death.",
+      "description": "Home release (digital): 2026-11-13 · JioHotStar, JioHotstar\n\nStudent of the Year: After Dark reimagines the St. Teresa's campus as the setting of a murder mystery after the school's queen bee, Aayesha Malik, is found dead in a frozen lake. Refusing to believe it was an accident, her introverted twin sister Aditi goes undercover at the elite institution to investigate her death.",
       "releaseDate": "2026-11-13",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -35321,12 +39522,12 @@
           "kind": "digital",
           "date": "2026-11-13",
           "platforms": [
-            "JioHotstar",
-            "JioHotStar"
+            "JioHotStar",
+            "JioHotstar"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         },
         {
@@ -35353,12 +39554,12 @@
       "theatricalReleases": [],
       "ottDate": "2026-11-13",
       "platforms": [
-        "JioHotstar",
-        "JioHotStar"
+        "JioHotStar",
+        "JioHotstar"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.themoviedb.org/tv/334412",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/",
@@ -35666,9 +39867,9 @@
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt50286925",
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt50286925",
-      "releaseInfo": "2026–",
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.5",
+      "releaseInfo": "2026",
+      "metadataSource": "Verified IMDb title/year match",
+      "imdbRating": null,
       "genres": [
         "Mystery"
       ],
@@ -35711,7 +39912,7 @@
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
-      "latestEpisodeReleasedAt": "2026-10-28T00:00:06+00:00",
+      "latestEpisodeReleasedAt": null,
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null,
       "justAdded": false,
@@ -35887,7 +40088,7 @@
         "Action",
         "Adventure"
       ],
-      "description": "Home release (digital): 2026-10-23 · JioHotstar, JioHotStar\n\nWhen the power-hungry Ravan tore through the world to unleash evil, in his way stood a humble vaanar awoken to his divinity to become an immortal legend.",
+      "description": "Home release (digital): 2026-10-23 · JioHotStar, JioHotstar\n\nWhen the power-hungry Ravan tore through the world to unleash evil, in his way stood a humble vaanar awoken to his divinity to become an immortal legend.",
       "releaseDate": "2026-10-23",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -35899,12 +40100,12 @@
           "kind": "digital",
           "date": "2026-10-23",
           "platforms": [
-            "JioHotstar",
-            "JioHotStar"
+            "JioHotStar",
+            "JioHotstar"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         }
       ],
@@ -35912,12 +40113,12 @@
       "theatricalReleases": [],
       "ottDate": "2026-10-23",
       "platforms": [
-        "JioHotstar",
-        "JioHotStar"
+        "JioHotStar",
+        "JioHotstar"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -39962,7 +44163,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt43720139",
       "releaseInfo": "2026–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.0",
+      "imdbRating": "4.5",
       "genres": [],
       "description": "Home release (digital): 2026-03-20 · \n\nAway from the Viranis, power couple Angad and Vrinda journey to Jamshedpur on a secret mission. With love and wits, can they unveil the big conspiracy?",
       "releaseDate": "2026-03-20",
@@ -42612,7 +46813,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt38716267",
       "releaseInfo": "2025–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.4",
+      "imdbRating": "6.3",
       "genres": [],
       "description": "Home release (digital): 2025-09-22 · \n\nLeft by her husband for having daughters, Ganga defiantly raises her girls in Varanasi. Their achievements despite adversity become her ultimate triumph.",
       "releaseDate": "2025-09-22",
