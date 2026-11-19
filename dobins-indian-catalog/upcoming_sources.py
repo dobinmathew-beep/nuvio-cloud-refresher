@@ -231,7 +231,6 @@ def _ottasia(soup, source_name, source_url, today, langs, norm):
             image = node.select_one("img[alt][src]")
             platforms = [p for p in PLATFORMS if re.search(re.escape(p), card_text, re.I)]
             href = anchor.get("href")
-            href = anchor.get("href")
             detail = urljoin(source_url, href) if href else None
             detail_path = urlsplit(detail).path.lower() if detail else ""
             if "/title/movie/" in detail_path:
