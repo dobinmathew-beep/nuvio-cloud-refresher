@@ -627,14 +627,14 @@ def build():
  source_coverage=next((x.get('languageCoverage') for x in health if x.get('source')=='Per-language source coverage'),{})
  if not source_coverage:
   source_coverage={language:{'checkedSources':0,'healthySources':0,'failedSources':0,'sourcesWithRecords':0,'detectedRecords':0,'coverageStatus':'degraded','sources':[]} for language in LANGS}
- coverage_degraded=[language for language,summary in source_coverage.items() if summary.get('healthySources',0)<2 or summary.get('sourcesWithRecords',0)<2]
+ coverage_degraded=[language for language,summary in source_coverage.items() if summary.get('healthySources',0)<2 or summary.get('sourcesWithRecords',0)<2 or summary.get('sourcesWithMovieRecords',0)<2 or summary.get('sourcesWithSeriesRecords',0)<2]
  if coverage_degraded:
   health.append({'source':'Minimum independent source coverage','url':'internal://source-coverage-gate','state':'partial','records':0,
                  'error':'Fewer than two healthy independent publisher domains with actual title detections for: '+', '.join(coverage_degraded)})
  malayalam_review=[x for x in unmatched if x.get('language')=='malayalam']
  malayalam_review_counts={'total':len(malayalam_review),'byType':{}}
  for row in malayalam_review:malayalam_review_counts['byType'][row['type']]=malayalam_review_counts['byType'].get(row['type'],0)+1
- save('upcoming-discovery.json',{'generatedAt':NOW.isoformat(),'policy':'source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json','counts':discovery_counts,'items':discovery_rows,'malayalamReview':{'policy':'Unmatched Malayalam source detections are held out until an unambiguous IMDb or TMDB identity and complete metadata are verified.','counts':malayalam_review_counts,'items':malayalam_review},'sourceHealth':health,'sourceCoverage':source_coverage,'coveragePolicy':'Each language requires at least two healthy independent publisher domains with actual title detections; failed feeds remain visible and trigger retry.'})
+ save('upcoming-discovery.json',{'generatedAt':NOW.isoformat(),'policy':'source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json','counts':discovery_counts,'items':discovery_rows,'malayalamReview':{'policy':'Unmatched Malayalam source detections are held out until an unambiguous IMDb or TMDB identity and complete metadata are verified.','counts':malayalam_review_counts,'items':malayalam_review},'sourceHealth':health,'sourceCoverage':source_coverage,'coveragePolicy':'Each language requires at least two healthy independent publisher domains with actual movie and series detections; failed feeds remain visible and trigger retry.'})
  upcoming_source_summary={}
  for item in upcoming_rows:
   for source in item['sources']:
