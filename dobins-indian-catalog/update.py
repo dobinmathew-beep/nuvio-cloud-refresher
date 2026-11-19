@@ -105,6 +105,7 @@ def append_legacy_series(current,legacy,today,metadata_cache=None,require_metada
    legacy_meta=metadata_cache.get(alternate.key(typ,oid),{})
    original=str(legacy_meta.get('original_language') or legacy_meta.get('originalLanguage') or '').lower()
    if original and original not in ('ml','malayalam'):continue
+  if oid in DISPLAY_NAME_OVERRIDES:old['name']=DISPLAY_NAME_OVERRIDES[oid]
   if oid in IMDB_RATING_OVERRIDES:old['imdbRating']=IMDB_RATING_OVERRIDES[oid]
   if oid in known_ids:
    for existing in current:
