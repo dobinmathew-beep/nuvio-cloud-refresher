@@ -80,6 +80,8 @@ jobs:
         if: always() && steps.persist.outcome == 'success'
         id: site_health
         continue-on-error: true
+        env:
+          MALAYALAM_METADATA_AUDIT: 'true'
         run: python3 dobins-indian-catalog/check_site.py
       - name: Persist public catalog health diagnostics
         if: always() && steps.persist.outcome == 'success'
