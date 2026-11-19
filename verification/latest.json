@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-19T05:24:38.014511+04:00",
+  "checked_at": "2026-11-19T11:30:27.624134+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
     "addon": {
       "status": "pass",
-      "checked_at": "2026-11-19T05:24:05.742747+04:00",
+      "checked_at": "2026-11-19T11:30:27.624134+04:00",
       "public_url": "https://the-great-indian-addon.vercel.app",
       "checks": [
         {
@@ -50,7 +50,7 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-19T05:24:38.014511+04:00",
+      "checked_at": "2026-11-19T11:30:27.624134+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
@@ -134,30 +134,14 @@
       ]
     },
     "backdrops": {
-      "status": "pass",
-      "checked_at": "2026-11-19T04:47:11.600343+04:00",
+      "status": "fail",
+      "checked_at": "2026-11-19T11:30:27.624134+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
-      "details": {
-        "day": "2026-11-19",
-        "statuses": 160,
-        "images": 16,
-        "states": {
-          "live": 160,
-          "cached": 0
-        },
-        "errors": [],
-        "catalogHeads": {
-          "tamil": "tt33318732",
-          "malayalam": "tt27512908",
-          "hindi": "tt50107649",
-          "telugu": "tt32324552"
-        }
-      },
-      "method": "160 public layout/status checks and 16 JPEG checks"
+      "error": "[{\"status\": \"malayalam/movies/wall\", \"error\": \"saved featured selection is stale: tt27512908 != current catalog head tt41944351\"}, {\"status\": \"malayalam/movies/cascade\", \"error\": \"saved featured selection is stale: tt27512908 != current catalog head tt41944351\"}, {\"status\": \"malayalam/movies/spotlight\", \"error\": \"saved featured selection is stale: tt27512908 != current catalog head tt41944351\"}, {\"status\": \"malayalam/movies/ribbon\", \"error\": \"saved featured selection is stale: tt27512908 != current catalog head tt41944351\"}, {\"status\": \"malayalam/movies/filmstrip\", \"error\": \"saved featured selection is stale: tt27512908 != current catalog head tt41944351\"}]"
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-19T04:47:11.600343+04:00",
+      "checked_at": "2026-11-19T11:30:27.624134+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
@@ -249,8 +233,8 @@
     }
   },
   "summary": {
-    "passed": 4,
+    "passed": 3,
     "total": 4,
-    "status": "pass"
+    "status": "fail"
   }
 }
