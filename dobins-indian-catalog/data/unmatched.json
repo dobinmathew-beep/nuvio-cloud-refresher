@@ -1101,33 +1101,33 @@
     }
   },
   {
-    "name": "Nijame Rujuvainadhi",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-08-14",
+    "name": "Love Beyond Wicket",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-04-09",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win"
+      "JioHotStar"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6a7e75993fab9691478b3be2",
-      "platform": "ETV Win",
-      "title": "Nijame Rujuvainadhi",
-      "createdAt": "2026-08-14T01:55:36.933Z",
-      "genre": "Drama, Romance",
+      "_id": "69d71ed1eb1fc7a84cb42f98",
+      "platform": "JioHotStar",
+      "title": "Love Beyond Wicket",
+      "createdAt": "2026-04-09T03:36:49.253Z",
+      "genre": "Sports, Drama, Romance",
       "imdbRating": null,
       "languages": [
-        "Telugu"
+        "Tamil"
       ],
-      "original_language": "Telugu",
-      "releaseDate": "2026-08-14",
+      "releaseDate": "2026-04-09",
       "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-08-14T01:55:36.933Z",
+      "type": "Series",
+      "updatedAt": "2026-04-09T03:37:09.017Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/tC5K8MkLipwV9bIdJV9SQcCzgUF.jpg",
       "verified": true
     }
   },
@@ -1163,33 +1163,33 @@
     }
   },
   {
-    "name": "Love Beyond Wicket",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-04-09",
+    "name": "Nijame Rujuvainadhi",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-08-14",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "JioHotStar"
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "69d71ed1eb1fc7a84cb42f98",
-      "platform": "JioHotStar",
-      "title": "Love Beyond Wicket",
-      "createdAt": "2026-04-09T03:36:49.253Z",
-      "genre": "Sports, Drama, Romance",
+      "_id": "6a7e75993fab9691478b3be2",
+      "platform": "ETV Win",
+      "title": "Nijame Rujuvainadhi",
+      "createdAt": "2026-08-14T01:55:36.933Z",
+      "genre": "Drama, Romance",
       "imdbRating": null,
       "languages": [
-        "Tamil"
+        "Telugu"
       ],
-      "releaseDate": "2026-04-09",
+      "original_language": "Telugu",
+      "releaseDate": "2026-08-14",
       "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-09T03:37:09.017Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/tC5K8MkLipwV9bIdJV9SQcCzgUF.jpg",
+      "type": "Movie",
+      "updatedAt": "2026-08-14T01:55:36.933Z",
       "verified": true
     }
   },
@@ -1320,36 +1320,6 @@
     }
   },
   {
-    "name": "Uthutha Herolu",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-21",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a0e807fffe2674e7ae98250",
-      "title": "Uthutha Herolu",
-      "platform": "ETV Win",
-      "createdAt": "2026-05-21T03:48:15.770Z",
-      "genre": "Crime Comedy",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-21",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-21T03:48:15.770Z",
-      "verified": true
-    }
-  },
-  {
     "name": "The Legend of Karna",
     "language": "hindi",
     "type": "movie",
@@ -1379,6 +1349,36 @@
       "updatedAt": "2026-07-31T04:34:44.156Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/jzVP9rqT2YH2nTx3l3csmmU9B1q.jpg",
       "instagramPostedAt": "2026-07-31T04:35:54Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Uthutha Herolu",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-05-21",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a0e807fffe2674e7ae98250",
+      "title": "Uthutha Herolu",
+      "platform": "ETV Win",
+      "createdAt": "2026-05-21T03:48:15.770Z",
+      "genre": "Crime Comedy",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-21",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-05-21T03:48:15.770Z",
       "verified": true
     }
   },
@@ -1652,8 +1652,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix",
-      "ETV Win"
+      "ETV Win",
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {

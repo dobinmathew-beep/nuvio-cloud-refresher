@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T18:19:24.099437+04:00",
+  "generatedAt": "2026-11-19T18:59:02.285194+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 41,
@@ -204,8 +204,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://newindianmovies.com/"
+        "https://newindianmovies.com/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -395,8 +395,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -665,8 +665,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -771,12 +771,12 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -899,7 +899,7 @@
         "poster": true,
         "description": true,
         "genres": true,
-        "releaseInfo": false
+        "releaseInfo": true
       },
       "catalog": "dobins_ml_series"
     },
@@ -1473,7 +1473,7 @@
       "source": "OTTChecker Tamil recent releases",
       "url": "https://www.ottchecker.com/ott-releases/tamil",
       "state": "live",
-      "records": 17
+      "records": 18
     },
     {
       "source": "OTTChecker Telugu recent releases",
@@ -1517,7 +1517,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 145,
+      "records": 147,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1729,7 +1729,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 34,
+          "detectedRecords": 36,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1800,8 +1800,8 @@
               "url": "https://www.ottchecker.com/ott-releases/tamil",
               "state": "live",
               "languageState": "records_found",
-              "records": 17,
-              "movieRecords": 14,
+              "records": 19,
+              "movieRecords": 16,
               "seriesRecords": 3
             },
             {
@@ -2221,12 +2221,12 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 616,
+      "records": 617,
       "counts": {
         "malayalam": 60,
         "tamil": 119,
         "telugu": 108,
-        "hindi": 329
+        "hindi": 330
       },
       "state": "live"
     },
@@ -2481,7 +2481,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 34,
+      "detectedRecords": 36,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2552,8 +2552,8 @@
           "url": "https://www.ottchecker.com/ott-releases/tamil",
           "state": "live",
           "languageState": "records_found",
-          "records": 17,
-          "movieRecords": 14,
+          "records": 19,
+          "movieRecords": 16,
           "seriesRecords": 3
         },
         {

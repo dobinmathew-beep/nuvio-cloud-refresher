@@ -3579,13 +3579,6 @@
       "type": "movie"
     },
     {
-      "id": "tt27425164",
-      "name": "War 2",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27425164.jpg",
-      "releaseInfo": "2025",
-      "type": "movie"
-    },
-    {
       "id": "tt23865942",
       "name": "Sarzameen",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt23865942.jpg",
@@ -9166,6 +9159,13 @@
       "type": "series"
     },
     {
+      "id": "tt42733581",
+      "name": "Shekhar Tonite",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt42733581.jpg",
+      "releaseInfo": "2026",
+      "type": "series"
+    },
+    {
       "id": "tt40617563",
       "name": "Vimal Khanna",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt40617563.jpg",
@@ -9295,13 +9295,6 @@
       "id": "tt39313294",
       "name": "Space Gen: Chandrayaan",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39313294.jpg",
-      "releaseInfo": "2026",
-      "type": "series"
-    },
-    {
-      "id": "tt35335046",
-      "name": "Taskaree: The Smuggler's Web",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35335046.jpg",
       "releaseInfo": "2026",
       "type": "series"
     },
@@ -12526,5 +12519,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-19T18:19:24.099437+04:00"
+  "_updatedAt": "2026-11-19T18:59:02.285194+04:00"
 }
