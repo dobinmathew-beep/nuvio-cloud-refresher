@@ -115,3 +115,5 @@ jobs:
       - name: Keep failed work pending for the next 30-minute check
         if: steps.update.outcome == 'failure' || steps.persist.outcome == 'failure' || steps.site_health.outcome == 'failure' || steps.health_report.outcome == 'failure'
         run: exit 1
+
+# Regression: validate newest digital-arrival date precedence in physical.py.
