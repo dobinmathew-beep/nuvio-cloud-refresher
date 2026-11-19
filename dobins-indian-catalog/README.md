@@ -4,7 +4,7 @@ Public installer: https://dobins-indian-catalog.quickfield138.chatgpt.site/
 
 **Install in Nuvio:** add `https://dobins-indian-catalog.quickfield138.chatgpt.site/manifest.json` in the add-on settings.
 
-Eight separate catalogs provide Malayalam, Tamil, Telugu and Hindi movies and series. IMDb `tt` IDs are preferred. Verified TMDB (`tmdb:`) and TVmaze (`tvmaze:`) IDs are retained when no dependable IMDb match exists. Streaming add-ons must support the relevant ID to return playback sources. Titles are sorted by digital premiere dates, not cinema-release dates or IMDb release years. Movie entries with a verified digital availability date are explicitly labeled **New OTT arrival**, even when the original theatrical release was years earlier; their original release date/year is retained separately. Physical-only entries are labeled **New physical release**. When a movie has both physical and digital availability, its catalog ordering uses the digital premiere date, while both availability records are retained. Playback uses your existing stream add-ons; this add-on supplies catalogs and metadata.
+Eight separate catalogs provide Malayalam, Tamil, Telugu and Hindi movies and series. IMDb `tt` IDs are preferred. Verified TMDB (`tmdb:`) and TVmaze (`tvmaze:`) IDs are retained when no dependable IMDb match exists. Streaming add-ons must support the relevant ID to return playback sources. All eight catalogs are sorted newest-to-oldest by the canonical release date. For movies, a verified theatrical release date takes precedence over a later digital/OTT arrival; if no theatrical date is available, the first confirmed digital/OTT date is used, and physical-edition dates are only a fallback when neither exists. The OTT date remains separately available in `ottDate` and the availability records. Movie entries with a verified digital availability date are labeled **New OTT arrival**, while their canonical first-release date remains the sorting date. Newly added, already-released movies receive a **JUST ADDED** poster chip for 14 days unless BetterPosters already supplies that badge. Physical-only entries are labeled **New physical release**. Playback uses your existing stream add-ons; this add-on supplies catalogs and metadata.
 
 ## Automatic cloud updates
 
@@ -30,7 +30,7 @@ The updater and its data live on the separate `dobins-catalog` branch, under `do
 
 Each collector has an independent health state, parser and failure retry. This is broader coverage, not a guarantee that every publisher updates instantly or that every calendar item is correct. The updater does not depend on rotating download-site domains, theatrical-release lists or streaming-link scrapers. Dates concern Indian OTT availability; availability elsewhere may differ.
 
-Every entry retains its release-reporting source and platform. Movie duplicate reports retain the earliest digital date; series track the latest reported season premiere. Similar titles, incorrect types, mismatched years and ambiguous IMDb matches are held back instead of receiving guessed IDs.
+Every entry retains its release-reporting source and platform. Movie duplicates preserve theatrical, digital/OTT and physical availability separately; the catalog sort date uses theatrical first, otherwise first digital/OTT, otherwise physical. Series use the latest verified aired episode date when available. Similar titles, incorrect types, mismatched years and ambiguous IMDb matches are held back instead of receiving guessed IDs.
 
 IndianRegional's language catalogs are used only as an IMDb identity lookup aid, never as evidence that a movie has reached OTT. Exact IMDb suggestion matches are followed by TVmaze title/language verification and source-linked TMDB title pages. TMDB type, canonical ID, title and release dates are checked before publication. TVmaze can also recover IMDb IDs, including for older shows with a new OTT premiere. Cinemeta, TMDB public title metadata and TVmaze supply full metadata; series episodes can also fall back to an IMDb-verified TVMaze lookup. Some newly released shows may not yet have indexed episode data. TMDB fallback reads public title pages and DailyOTT’s public TMDB-derived details, without storing or requiring a TMDB API key.
 
@@ -51,6 +51,7 @@ The public HTTPS service implements the Stremio-compatible `manifest`, `catalog`
 Generated data:
 
 - `data/catalogs.json`: eight sorted catalog arrays.
+- `data/catalog-added.json`: first-added timestamps used for the 14-day Just Added poster badge.
 - `data/metadata.json`: IMDb-matched detail/episode data and artwork alternatives.
 - `data/status.json`: last success, schedule, source health and catalog counts.
 - `data/matches.json`, `data/candidates.json`, `data/sources.json`: reusable matching and source caches.
