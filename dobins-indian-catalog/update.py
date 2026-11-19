@@ -46,7 +46,7 @@ def original_language_matches(event,meta):
  expected=LANGS[event['language']]
  return not original or original in (expected,event['language'])
 TYPE_OVERRIDES={'balbarbarik':'series','princeofmollywood':'series'}
-LANGUAGE_OVERRIDES={'taarini':'marathi'}
+LANGUAGE_OVERRIDES={'taarini':'marathi','lawandorder':'english'}
 VERIFIED_TMDB_OVERRIDES={
  'malayalam|series|patriotlegendshangout':{'id':320606,'name':'Patriot Legends Hangout'},
  'malayalam|movie|jennifer':{'id':1813865,'name':'Jennifer'}
@@ -96,8 +96,15 @@ def append_legacy_series(current,legacy,today,metadata_cache=None,require_metada
    old['logo']=BASE+'/art/logo/'+alias
    matched=metadata_cache.get(alias,{})
    if matched.get('imdbRating') not in (None,''):old['imdbRating']=matched['imdbRating']
-  if require_metadata and (not (is_imdb_id(oid) or re.fullmatch(r'tmdb:\d+',oid)) or alternate.key(typ,oid) not in metadata_cache):continue
-  if oid in DISPLAY_NAME_OVERRIDES:old['name']=DISPLAY_NAME_OVERRIDES[oid]
+  if require_metadata:
+   if not (is_imdb_id(oid) or re.fullmatch(r'tmdb:\\d+',oid)) or alternate.key(typ,oid) not in metadata_cache:continue
+   # Legacy entries bypass the normal event resolver. Re-apply original-language
+   # validation here so an old English-language series cannot survive in Malayalam.
+   if LANGUAGE_OVERRIDES.get(name) not in (None, 'malayalam'):continue
+   if oid == 'tt0098844':continue  # Law & Order (1990), TMDB 549, original language English.
+   legacy_meta=metadata_cache.get(alternate.key(typ,oid),{})
+   original=str(legacy_meta.get('original_language') or legacy_meta.get('originalLanguage') or '').lower()
+   if original and original not in ('ml','malayalam'):continue
   if oid in IMDB_RATING_OVERRIDES:old['imdbRating']=IMDB_RATING_OVERRIDES[oid]
   if oid in known_ids:
    for existing in current:
@@ -359,6 +366,19 @@ def release_classification(event,meta):
 def catalog_sort_date(item):
  return physical.catalog_release_date(item)
 
+def is_just_added_movie(event, added_time, now=NOW):
+ # Badge a movie for 14 days after either its first catalog addition OR its
+ # confirmed digital/OTT release. This catches a fresh OTT arrival even when
+ # the title was already known to the catalog or its theatrical date is older.
+ if event.get('type') != 'movie':return False
+ digital=event_digital_date(event)
+ if digital:
+  try:
+   age=(now.date()-date.fromisoformat(digital)).days
+   if 0 <= age <= 14:return True
+  except ValueError:pass
+ return bool(added_time and timedelta(0) <= now-added_time <= timedelta(days=14))
+
 def title_logo(name):
  im=Image.new('RGBA',(1200,300));d=ImageDraw.Draw(im)
  try:font=ImageFont.truetype('DejaVuSans-Bold.ttf',90)
@@ -506,7 +526,7 @@ def build():
   if added_key in added_at:
    try:added_time=datetime.fromisoformat(added_at[added_key])
    except (TypeError,ValueError):added_time=None
-  just_added=bool(e['type']=='movie' and added_time and NOW-added_time<=timedelta(days=14))
+  just_added=is_just_added_movie(e,added_time)
   tmdb_id=re.fullmatch(r'tmdb:(\d+)',str(mid))
   if just_added and is_imdb_id(mid):
    poster_url="https://great-indian-upcoming-posters.onrender.com/poster/"+mid+".jpg?badge=just-added"
