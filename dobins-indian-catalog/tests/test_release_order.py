@@ -36,9 +36,9 @@ class ReleaseOrderTests(unittest.TestCase):
 
     def test_movie_without_theatrical_date_uses_digital_then_physical(self):
         events = [
-            {"name": "Digital First", "language": "tamil", "type": "movie",
+            {"name": "Same Film", "language": "tamil", "type": "movie",
              "ottDate": "2026-11-12", "releaseKind": "digital"},
-            {"name": "Disc Edition", "language": "tamil", "type": "movie",
+            {"name": "Same Film", "language": "tamil", "type": "movie",
              "ottDate": "2026-11-14", "releaseKind": "physical"},
         ]
         merged = physical.merge_events(events, lambda x: x.lower().replace(" ", ""),
