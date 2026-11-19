@@ -524,7 +524,7 @@ def _keralatv(soup, source_name, source_url, today, langs, norm, get):
             if len(candidate) >= len(headline) and len(candidate) <= 1800:
                 card_text = candidate
                 if re.search(
-                    r"(?:stream(?:ing)?|premier(?:e|es|ed)|release\s+date|released)"
+                    r"(?:started\s+streaming\s+(?:on|from)|stream(?:ing)?\s+(?:from|on)|premier(?:e|es|ed)\s+(?:on|from)|available\s+(?:on|from)|(?:OTT|digital)\s+release\s+date\s*[:=-])"
                     r"[^.]{0,150}?(?:\d{1,2}\s+[A-Za-z]{3,9},?\s+20\d{2}|"
                     r"[A-Za-z]{3,9}\s+\d{1,2},?\s+20\d{2}|20\d{2}-\d{2}-\d{2})",
                     candidate, re.I,
@@ -532,7 +532,7 @@ def _keralatv(soup, source_name, source_url, today, langs, norm, get):
                     break
         text = card_text or headline
         release_phrase = re.search(
-            r"(?:stream(?:ing)?|premier(?:e|es|ed)|release\s+date|released)"
+            r"(?:started\s+streaming\s+(?:on|from)|stream(?:ing)?\s+(?:from|on)|premier(?:e|es|ed)\s+(?:on|from)|available\s+(?:on|from)|(?:OTT|digital)\s+release\s+date\s*[:=-])"
             r"[^.]{0,150}?(\d{1,2}\s+[A-Za-z]{3,9},?\s+20\d{2}|"
             r"[A-Za-z]{3,9}\s+\d{1,2},?\s+20\d{2}|20\d{2}-\d{2}-\d{2})",
             text, re.I,
@@ -546,7 +546,7 @@ def _keralatv(soup, source_name, source_url, today, langs, norm, get):
                 if h1:
                     headline = h1.get_text(" ", strip=True)
                 release_phrase = re.search(
-                    r"(?:stream(?:ing)?|premier(?:e|es|ed)|release\s+date|released)"
+                    r"(?:started\s+streaming\s+(?:on|from)|stream(?:ing)?\s+(?:from|on)|premier(?:e|es|ed)\s+(?:on|from)|available\s+(?:on|from)|(?:OTT|digital)\s+release\s+date\s*[:=-])"
                     r"[^.]{0,150}?(\d{1,2}\s+[A-Za-z]{3,9},?\s+20\d{2}|"
                     r"[A-Za-z]{3,9}\s+\d{1,2},?\s+20\d{2}|20\d{2}-\d{2}-\d{2})",
                     text, re.I,
@@ -554,6 +554,8 @@ def _keralatv(soup, source_name, source_url, today, langs, norm, get):
             except Exception:
                 continue
         if not release_phrase:
+            continue
+        if re.search(r"(?:streaming|release)\s+date\s+(?:awaiting|awaited|not\s+announced|to\s+be\s+announced|tba)", headline + " " + text, re.I):
             continue
         day = _date_with_current_year(release_phrase.group(1), today)
         if not day or day < cutoff:
@@ -576,12 +578,15 @@ def _keralatv(soup, source_name, source_url, today, langs, norm, get):
         platforms = [p for p in platforms if not any(p.lower() != q.lower() and p.lower() in q.lower() for q in platforms)]
         if not platforms:
             continue
-        title = re.split(r"\s+(?:OTT\s+Release|Movie\s+OTT|Series\s+OTT|OTT\s+Date)", headline, maxsplit=1, flags=re.I)[0].strip(" –—:-")
+        title = re.split(r"\s+(?:Trailer\s+Released|Now\s+Streaming|OTT\s+Release|Movie\s+OTT|Series\s+OTT|OTT\s+Date|Streaming\s+Updates|Streaming\s+From)", headline, maxsplit=1, flags=re.I)[0].strip(" –—:-")
         title = re.sub(r"\s+(?:Malayalam|Tamil|Telugu|Hindi)\s+(?:Movie|Film|Series|Web\s+Series)$", "", title, flags=re.I).strip()
         title = re.sub(r"\s+(?:Malayalam|Tamil|Telugu|Hindi)$", "", title, flags=re.I).strip()
         if not title or len(title) > 140:
             continue
-        typ = "series" if SERIES.search(headline + " " + text[:500]) else "movie"
+        if re.search(r"\b(?:movie|film)\b", headline, re.I):
+            typ = "movie"
+        else:
+            typ = "series" if SERIES.search(headline) or SERIES.search(text[:500]) else "movie"
         key = (language, typ, norm(title))
         if key in seen:
             continue
