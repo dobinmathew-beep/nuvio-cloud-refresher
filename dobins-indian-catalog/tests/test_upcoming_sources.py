@@ -118,6 +118,22 @@ class UpcomingSourceTests(unittest.TestCase):
         self.assertEqual(next(row for row in rows if row["name"] == "Mr & Mrs Office")["ottDate"], "2026-11-18")
         self.assertEqual(next(row for row in rows if row["name"] == "Anbil Avan")["platforms"], [])
 
+    def test_ottasia_detail_path_overrides_inconsistent_card_type(self):
+        html = """<h2>Upcoming OTT releases in India: confirmed dates</h2>
+        <div><a href="/title/movie/1765369/jindey">Jindey</a>
+        <p>Series · Hindi</p><p>Streaming on JioHotstar from November 27, 2026</p></div>
+        <div><a href="/title/movie/1787832/hatela-gang">Hatela Gang</a>
+        <p>Series · Hindi</p><p>Streaming on Netflix from November 28, 2026</p></div>
+        <h2>Predicted next on OTT</h2>"""
+        rows = upcoming_sources._ottasia(
+            BeautifulSoup(html, "html.parser"), "OTTASIA confirmed calendar",
+            "https://ottasia.com/ott-releases-this-week?country=IN", "2026-11-19",
+            {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
+            lambda value: value.lower().replace(" ", ""),
+        )
+        self.assertEqual({row["name"]: row["type"] for row in rows},
+                         {"Jindey": "movie", "Hatela Gang": "movie"})
+
     def test_new_indian_movies_weekly_ott_rail_is_parsed(self):
         html = """<h2>New on OTT this week</h2>
         <a href="/title/anbil-avan">Fri 20 Nov Anbil Avan Tamil·SonyLIV</a>
