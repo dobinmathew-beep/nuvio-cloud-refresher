@@ -231,17 +231,26 @@ def _ottasia(soup, source_name, source_url, today, langs, norm):
             image = node.select_one("img[alt][src]")
             platforms = [p for p in PLATFORMS if re.search(re.escape(p), card_text, re.I)]
             href = anchor.get("href")
+            href = anchor.get("href")
+            detail = urljoin(source_url, href) if href else None
+            detail_path = urlsplit(detail).path.lower() if detail else ""
+            if "/title/movie/" in detail_path:
+                title_type = "movie"
+            elif "/title/tv/" in detail_path:
+                title_type = "series"
+            else:
+                title_type = "series" if kind_match.group(1).lower() == "series" else "movie"
             out.append({
                 "name": title,
                 "language": language,
-                "type": "series" if kind_match.group(1).lower() == "series" else "movie",
+                "type": title_type,
                 "ottDate": day,
                 "platforms": list(dict.fromkeys(platforms)),
                 "poster": image.get("src") if image else None,
                 "year": None,
                 "source": source_url,
                 "sources": [source_url],
-                "detail": urljoin(source_url, href) if href else None,
+                "detail": detail,
                 "confirmed": True,
                 "releaseKind": "digital",
                 "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
@@ -288,17 +297,25 @@ def _ottasia(soup, source_name, source_url, today, langs, norm):
                     None,
                 )
                 platforms = [p for p in PLATFORMS if re.search(re.escape(p), lines[index + 1], re.I)]
+                detail = urljoin(source_url, anchor.get("href")) if anchor and anchor.get("href") else None
+                detail_path = urlsplit(detail).path.lower() if detail else ""
+                if "/title/movie/" in detail_path:
+                    title_type = "movie"
+                elif "/title/tv/" in detail_path:
+                    title_type = "series"
+                else:
+                    title_type = "series" if kind_match.group(1).lower() == "series" else "movie"
                 out.append({
                     "name": title,
                     "language": language,
-                    "type": "series" if kind_match.group(1).lower() == "series" else "movie",
+                    "type": title_type,
                     "ottDate": day,
                     "platforms": list(dict.fromkeys(platforms)),
                     "poster": None,
                     "year": None,
                     "source": source_url,
                     "sources": [source_url],
-                    "detail": urljoin(source_url, anchor.get("href")) if anchor and anchor.get("href") else None,
+                    "detail": detail,
                     "confirmed": True,
                     "releaseKind": "digital",
                     "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
