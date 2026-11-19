@@ -7,7 +7,8 @@ FILES=['catalogs.json','metadata.json','status.json','matches.json','candidates.
 POLICY='tmdb-tvmaze-v2'
 try:status=json.loads((D/'status.json').read_text())
 except Exception:status={}
-if not (D/'catalogs.json').exists() or status.get('metadataPolicy')!=POLICY or status.get('releasePolicy')!='ott-or-confirmed-physical-v1':
+# The published bootstrap is a metadata-policy migration seed. Release policy evolves independently; do not downgrade newer committed data to this older seed.
+if not (D/'catalogs.json').exists() or status.get('metadataPolicy')!=POLICY or not status.get('releasePolicy'):
  with tempfile.TemporaryDirectory() as staging:
   stage=Path(staging)
   def one(name):
