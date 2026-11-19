@@ -41,4 +41,33 @@ class PhysicalTests(unittest.TestCase):
   item={'type':'movie','ottDate':'2026-11-13'}
   self.assertEqual(update.catalog_sort_date(item),'2026-11-13')
 
+
+ def test_recent_ott_release_gets_just_added_even_if_title_was_already_known(self):
+  from datetime import datetime,timezone
+  event={'type':'movie','releaseKind':'digital','ottDate':'2026-11-10','availability':[{'kind':'digital','date':'2026-11-10'}]}
+  now=datetime(2026,11,20,tzinfo=timezone.utc)
+  self.assertTrue(update.is_just_added_movie(event,None,now))
+
+ def test_old_ott_release_does_not_get_just_added_without_recent_catalog_addition(self):
+  from datetime import datetime,timezone
+  event={'type':'movie','releaseKind':'digital','ottDate':'2026-10-01','availability':[{'kind':'digital','date':'2026-10-01'}]}
+  now=datetime(2026,11,20,tzinfo=timezone.utc)
+  self.assertFalse(update.is_just_added_movie(event,None,now))
+
+ def test_series_does_not_receive_movie_just_added_badge(self):
+  from datetime import datetime,timezone
+  event={'type':'series','releaseKind':'digital','ottDate':'2026-11-19','availability':[{'kind':'digital','date':'2026-11-19'}]}
+  now=datetime(2026,11,20,tzinfo=timezone.utc)
+  self.assertFalse(update.is_just_added_movie(event,None,now))
+
+ def test_legacy_law_and_order_is_not_retained_in_malayalam_series(self):
+  old={'id':'tt0098844','type':'series','name':'Law & Order','releaseDate':'1990-09-13'}
+  metadata={'series|tt0098844':{'id':'tt0098844','type':'series','original_language':'en'}}
+  self.assertEqual(update.append_legacy_series([], [old], '2026-11-20', metadata, require_metadata=True), [])
+
+ def test_legacy_non_malayalam_original_language_is_rejected(self):
+  old={'id':'tt1234567','type':'series','name':'Example English Series','releaseDate':'2020-01-01'}
+  metadata={'series|tt1234567':{'id':'tt1234567','type':'series','original_language':'en'}}
+  self.assertEqual(update.append_legacy_series([], [old], '2026-11-20', metadata, require_metadata=True), [])
+
 if __name__=='__main__':unittest.main()
