@@ -310,6 +310,20 @@ class UpcomingSourceTests(unittest.TestCase):
         self.assertEqual([(x["name"], x["type"], x["ottDate"]) for x in rows],
                          [("Chiram", "movie", "2026-11-20")])
 
+    def test_keralatv_does_not_misclassify_dubbed_audio_languages_as_original(self):
+        html = """<section>
+          <article><h2><a href="/rings-of-power">The Rings of Power Season 3 Now Streaming on Prime Video – Malayalam, Tamil, Telugu and Hindi Audio Available</a></h2>
+            <p>Now streaming on Prime Video from 11 November 2026. Malayalam, Tamil, Telugu and Hindi audio tracks are available.</p></article>
+        </section>"""
+        rows = upcoming_sources._keralatv(
+            BeautifulSoup(html, "html.parser"), "Kerala TV multi-language OTT releases",
+            "https://www.keralatv.in/channel/ott/", "2026-11-19",
+            {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
+            lambda value: value.lower().replace(" ", ""),
+            lambda *args: "",
+        )
+        self.assertEqual(rows, [])
+
     def test_ottchecker_recent_release_is_language_scoped_and_windowed(self):
         html = """<ul>
           <li><a href="/movie/old">Old Film (2024) Movie · Netflix Streaming since 1 Jan 2025</a></li>
