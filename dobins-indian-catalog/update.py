@@ -628,7 +628,7 @@ def build():
  coverage_degraded=[language for language,summary in source_coverage.items() if summary.get('healthySources',0)<2 or summary.get('sourcesWithRecords',0)<2]
  if coverage_degraded:
   health.append({'source':'Minimum independent source coverage','url':'internal://source-coverage-gate','state':'partial','records':0,
-                 'error':'Fewer than two healthy independent publisher domains for: '+', '.join(coverage_degraded)})
+                 'error':'Fewer than two healthy independent publisher domains with actual title detections for: '+', '.join(coverage_degraded)})
  malayalam_review=[x for x in unmatched if x.get('language')=='malayalam']
  malayalam_review_counts={'total':len(malayalam_review),'byType':{}}
  for row in malayalam_review:malayalam_review_counts['byType'][row['type']]=malayalam_review_counts['byType'].get(row['type'],0)+1
