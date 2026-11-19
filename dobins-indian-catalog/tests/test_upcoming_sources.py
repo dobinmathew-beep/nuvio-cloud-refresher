@@ -272,6 +272,44 @@ class UpcomingSourceTests(unittest.TestCase):
         })
         self.assertTrue(all(x["confirmed"] for x in rows))
 
+    def test_calendar_title_cleanup_and_linked_type_are_correct(self):
+        html = """<article>
+          <h2><a href="/series/madam-police-2026/">Coming Thu 3 Dec Madam Police Tamil · Series SonyLIV</a></h2>
+          <p>Confirmed Tamil series Madam Police premieres on SonyLIV on 3 December 2026.</p>
+        </article>"""
+        rows = upcoming_sources._generic(
+            BeautifulSoup(html, "html.parser"),
+            "Indian Movie Reviews OTT calendar",
+            "https://indianmoviereviews.com/ott-releases/",
+            "2026-11-19",
+            {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
+            lambda value: value.lower().replace(" ", ""),
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["name"], "Madam Police")
+        self.assertEqual(rows[0]["type"], "series")
+        self.assertEqual(rows[0]["language"], "tamil")
+        self.assertEqual(rows[0]["ottDate"], "2026-12-03")
+
+    def test_keralatv_ignores_awaiting_and_publication_date_only_articles(self):
+        html = """<section>
+          <article><h2><a href="/chiram">Chiram Malayalam Movie OTT Release Date – Sun NXT Streaming From</a></h2>
+            <p>The Malayalam movie Chiram will be streaming from Sun NXT on 20 November 2026.</p></article>
+          <article><h2><a href="/aashram">Aashram Season 4 Shooting Completed – Streaming Date Awaiting</a></h2>
+            <p>The Hindi series release date is awaiting confirmation. Article updated 4 December 2026.</p></article>
+          <article><h2><a href="/other-worlds">Other Worlds: A Stranger Things Adventure – New Prequel Series for 2028</a></h2>
+            <p>Netflix announced a new series. Article updated 4 December 2026.</p></article>
+        </section>"""
+        rows = upcoming_sources._keralatv(
+            BeautifulSoup(html, "html.parser"), "Kerala TV multi-language OTT releases",
+            "https://www.keralatv.in/channel/ott/", "2026-11-19",
+            {"malayalam":"ml","tamil":"ta","telugu":"te","hindi":"hi"},
+            lambda value: value.lower().replace(" ", ""),
+            lambda *args: "",
+        )
+        self.assertEqual([(x["name"], x["type"], x["ottDate"]) for x in rows],
+                         [("Chiram", "movie", "2026-11-20")])
+
     def test_ottchecker_recent_release_is_language_scoped_and_windowed(self):
         html = """<ul>
           <li><a href="/movie/old">Old Film (2024) Movie · Netflix Streaming since 1 Jan 2025</a></li>
