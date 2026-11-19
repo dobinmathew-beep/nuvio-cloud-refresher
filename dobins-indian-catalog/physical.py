@@ -24,7 +24,7 @@ def merge_events(events,norm,today=None):
    pick_new=str(e.get('ottDate') or '')>str(old.get('ottDate') or '')
   else:
    def rank(item):
-    return (str(item.get('ottDate') or '')[:10],PRIORITY.get(item.get('releaseKind','digital'),1))
+    return (PRIORITY.get(item.get('releaseKind','digital'),1),str(item.get('ottDate') or '')[:10])
    pick_new=rank(e)<rank(old)
   chosen={**(e if pick_new else old)}
   chosen['releaseKind']=kind if pick_new else old.get('releaseKind','digital')
