@@ -216,7 +216,7 @@ def main():
     try:
         selected=featured_movies()
         selected_ids={lang:str(item.get('id','')) for lang,item in selected.get('languages',{}).items()}
-        if set(selected_ids)!=set(LANGS) or not all(re.fullmatch(r'tt\\d+',value) for value in selected_ids.values()):
+        if set(selected_ids)!=set(LANGS) or not all(re.fullmatch(r'tt\d+',value) for value in selected_ids.values()):
             raise RuntimeError('Current IndianRegional head selection did not verify all four IMDb movie IDs')
         if selected_ids!=progress.get('featured_ids'):
             progress.pop('backdrops',None);progress.pop('heroes',None)
