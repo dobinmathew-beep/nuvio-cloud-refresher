@@ -348,7 +348,8 @@ def release_classification(event,meta):
  else:return None,None,None
  source=event.get('sourceRecord') or {}
  details=source.get('tmdbDetails') or {}
- original=str(details.get('releaseDate') or meta.get('releaseDate') or '')[:10]
+ theatrical=sorted(str(x.get('date') or '')[:10] for x in event.get('theatricalReleases',[]) if x.get('date'))
+ original=theatrical[0] if theatrical else str(details.get('releaseDate') or meta.get('releaseDate') or '')[:10]
  if not re.fullmatch(r'\d{4}-\d{2}-\d{2}',original):
   year=str(meta.get('releaseInfo') or source.get('year') or '')[:4]
   original=year if re.fullmatch(r'\d{4}',year) else None
