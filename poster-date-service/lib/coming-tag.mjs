@@ -97,3 +97,35 @@ export async function hasExistingComingDateTag(input, kind = 'premiere', isoDate
 }
 
 export { hasExpectedDateBadgeText };
+
+
+export async function hasExistingJustAddedTag(input) {
+  const key = createHash('sha256').update(input).digest('hex') + ':just-added';
+  const cached = cache.get(key);
+  if (cached && Date.now() - cached.at < CACHE_MS) return cached.value;
+  const { default: sharp } = await import('sharp');
+  const metadata = await sharp(input, { limitInputPixels: 40000000 }).metadata();
+  if (!metadata.width || !metadata.height) throw new Error('Cannot inspect poster dimensions');
+  const cropHeight = Math.max(180, Math.min(metadata.height, Math.round(metadata.height * 0.65)));
+  const prepared = await sharp(input, { limitInputPixels: 40000000 })
+    .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
+    .resize({ width: Math.min(1800, metadata.width * 2) })
+    .grayscale()
+    .normalize()
+    .sharpen()
+    .extend({ top: 16, bottom: 16, left: 16, right: 16, background: '#ffffff' })
+    .png()
+    .toBuffer();
+  const worker = await getWorker();
+  for (const mode of ['11', '6']) {
+    await worker.setParameters({ tessedit_pageseg_mode: mode });
+    const result = await worker.recognize(prepared);
+    if (/\bjust\s+added\b/i.test(normalizedText(result?.data?.text))) {
+      cache.set(key, { value: true, at: Date.now() });
+      return true;
+    }
+  }
+  cache.set(key, { value: false, at: Date.now() });
+  while (cache.size > 1200) cache.delete(cache.keys().next().value);
+  return false;
+}
