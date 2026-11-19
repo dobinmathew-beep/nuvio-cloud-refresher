@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import subprocess,re,os
 import alternate
 
-POLICY='earliest-verified-release-v2'
+POLICY='theatrical-first-multipage-v3'
 PRIORITY={'theatrical':0,'digital':1,'physical':2}
 
 def merge_events(events,norm,today=None):
@@ -85,6 +85,10 @@ def theatrical_releases(html,today):
 
 def collect(get,load,save,langs,today,now,norm):
  cache=load('physical.json',{'titles':{},'discovery':{}});titles=cache.setdefault('titles',{});discovery=cache.setdefault('discovery',{});candidates={};health=[]
+ if cache.get('policy')!=POLICY:
+  for value in titles.values():
+   value.pop('checkedAt',None);value.pop('lastAttemptAt',None)
+  cache['policy']=POLICY
  def listing(pair):
   lang,code=pair;result={};errors=[]
   for release_type,label in (('2','theatrical'),('3','theatrical'),('5','physical')):
@@ -130,7 +134,7 @@ def collect(get,load,save,langs,today,now,norm):
   except Exception as error:
    old=titles.get(key,{});return key,{**old,'lastAttemptAt':now.isoformat(),'lastError':str(error)}
  with ThreadPoolExecutor(max_workers=4) as pool:
-  for key,value in pool.map(inspect,work[:int(os.environ.get('MAX_PHYSICAL_CHECKS','160'))]):titles[key]=value
+  for key,value in pool.map(inspect,work[:int(os.environ.get('MAX_PHYSICAL_CHECKS','240'))]):titles[key]=value
  save('physical.json',cache)
  events=[]
  for value in titles.values():
