@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-19T11:30:27.624134+04:00",
+  "checked_at": "2026-11-19T12:29:46.166424+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -134,21 +134,37 @@
       ]
     },
     "backdrops": {
-      "status": "fail",
-      "checked_at": "2026-11-19T11:30:27.624134+04:00",
+      "status": "pass",
+      "checked_at": "2026-11-19T12:29:46.166424+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
-      "error": "[{\"status\": \"malayalam/movies/wall\", \"error\": \"saved featured selection is stale: tt27512908 != current catalog head tt41944351\"}, {\"status\": \"malayalam/movies/cascade\", \"error\": \"saved featured selection is stale: tt27512908 != current catalog head tt41944351\"}, {\"status\": \"malayalam/movies/spotlight\", \"error\": \"saved featured selection is stale: tt27512908 != current catalog head tt41944351\"}, {\"status\": \"malayalam/movies/ribbon\", \"error\": \"saved featured selection is stale: tt27512908 != current catalog head tt41944351\"}, {\"status\": \"malayalam/movies/filmstrip\", \"error\": \"saved featured selection is stale: tt27512908 != current catalog head tt41944351\"}]"
+      "details": {
+        "day": "2026-11-19",
+        "statuses": 160,
+        "images": 16,
+        "states": {
+          "live": 160,
+          "cached": 0
+        },
+        "errors": [],
+        "catalogHeads": {
+          "hindi": "tt50107649",
+          "tamil": "tt33318732",
+          "malayalam": "tt41944351",
+          "telugu": "tt32324552"
+        }
+      },
+      "method": "160 public layout/status checks and 16 JPEG checks"
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-19T11:30:27.624134+04:00",
+      "checked_at": "2026-11-19T12:29:46.166424+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
           "language": "hindi",
           "status": "pass",
-          "bytes": 6902341,
-          "sha256": "3f3709b095f2378df6f8a69b50578cd6b8d343d56170c70a524958425099c028",
+          "bytes": 6902379,
+          "sha256": "5c8ca47c7dc1556118a93ed277c5b9b4dfddd2f76f3734b3ae30404b2426efcc",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -168,8 +184,8 @@
         {
           "language": "tamil",
           "status": "pass",
-          "bytes": 6904240,
-          "sha256": "1bb76ab232d6e3f5301524da6d19c165e873d5a8e92f13fe71b5da6be18f67ff",
+          "bytes": 6904312,
+          "sha256": "6384cd791e98084c5d6175ff94a436079988393773e9b97bc40afe49b9823bcb",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -189,8 +205,8 @@
         {
           "language": "malayalam",
           "status": "pass",
-          "bytes": 6897863,
-          "sha256": "9a8c6a9fdaf814d0c9ca949f249a8b7ff378e34372f5a1b016a4663bb5fd31a1",
+          "bytes": 6902906,
+          "sha256": "73999d814f58657e9895563491319afe48632ad3cb85117d42615d81c4a5657f",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -210,8 +226,8 @@
         {
           "language": "telugu",
           "status": "pass",
-          "bytes": 6898141,
-          "sha256": "e408d4112a47252290e8b6f12f5296c31233b9796ee4ff5bc4121d19d5b96bb7",
+          "bytes": 6898632,
+          "sha256": "08602badb9b95f085989be2ab9599d0daba9f0fc2b4d14ab15b3baedbaeae2d7",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -233,8 +249,8 @@
     }
   },
   "summary": {
-    "passed": 3,
+    "passed": 4,
     "total": 4,
-    "status": "fail"
+    "status": "pass"
   }
 }

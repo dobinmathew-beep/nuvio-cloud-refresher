@@ -1,13 +1,13 @@
 # Independent Nuvio output verification
 
-**Checked:** 2026-11-19T11:30:27.624134+04:00 (Oman time)
-**Overall:** 3/4 outputs passed
+**Checked:** 2026-11-19T12:29:46.166424+04:00 (Oman time)
+**Overall:** 4/4 outputs passed
 
 | Output | Result |
 |---|---|
 | Addon | PASS |
 | Epg | PASS |
-| Backdrops | FAIL |
+| Backdrops | PASS |
 | Reels | PASS |
 
 ## Addon — PASS
@@ -24,8 +24,23 @@
 - **PASS** Validation_Summary.json: {"keys": ["checked_utc", "playlist_url", "playlist_sha256", "playlist_channel_ids", "matched_ids", "unresolved_ids", "programmes", "sources_with_parsed_guides", "selected_source_counts", "unresolved_reason_counts"]}
 - **PASS** Source_Health_Report.json: {"keys": ["airtel.xml", "ca.xml", "dishtv.xml", "free-epg.xml", "guide.xml", "jiotv.xml", "open-india.xml", "pw.xml", "samsung-in.xml", "sundirectgo.xml"]}
 
-## Backdrops — FAIL
-"[{\"status\": \"malayalam/movies/wall\", \"error\": \"saved featured selection is stale: tt27512908 != current catalog head tt41944351\"}, {\"status\": \"malayalam/movies/cascade\", \"error\": \"saved featured selection is stale: tt27512908 != current catalog head tt41944351\"}, {\"status\": \"malayalam/movies/spotlight\", \"error\": \"saved featured selection is stale: tt27512908 != current catalog head tt41944351\"}, {\"status\": \"malayalam/movies/ribbon\", \"error\": \"saved featured selection is stale: tt27512908 != current catalog head tt41944351\"}, {\"status\": \"malayalam/movies/filmstrip\", \"error\": \"saved featured selection is stale: tt27512908 != current catalog head tt41944351\"}]"
+## Backdrops — PASS
+{
+  "day": "2026-11-19",
+  "statuses": 160,
+  "images": 16,
+  "states": {
+    "live": 160,
+    "cached": 0
+  },
+  "errors": [],
+  "catalogHeads": {
+    "hindi": "tt50107649",
+    "tamil": "tt33318732",
+    "malayalam": "tt41944351",
+    "telugu": "tt32324552"
+  }
+}
 
 ## Reels — PASS
 - **PASS** hindi: 50.0
