@@ -1,5 +1,24 @@
 [
   {
+    "name": "Drones",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-11-20",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://cinebuds.com/ott-releases-this-week/"
+    ],
+    "platforms": [
+      "Prime Video"
+    ],
+    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+    "sourceRecord": {
+      "title": "Drones",
+      "releaseDate": "2026-11-20",
+      "source": "https://cinebuds.com/ott-releases-this-week/"
+    }
+  },
+  {
     "name": "The Conjunction",
     "language": "hindi",
     "type": "movie",
@@ -14,6 +33,26 @@
       "title": "The Conjunction",
       "releaseDate": "2026-12-03",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
+    "name": "Pendulum",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-11-20",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.keralatv.in/channel/ott/"
+    ],
+    "platforms": [
+      "Prime Video"
+    ],
+    "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
+    "sourceRecord": {
+      "title": "Pendulum",
+      "releaseDate": "2026-11-20",
+      "source": "https://www.keralatv.in/channel/ott/",
+      "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
     }
   },
   {
@@ -33,25 +72,6 @@
       "title": "Satyameva",
       "releaseDate": "2026-11-27",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    }
-  },
-  {
-    "name": "Drones",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-11-20",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://cinebuds.com/ott-releases-this-week/"
-    ],
-    "platforms": [
-      "Prime Video"
-    ],
-    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
-    "sourceRecord": {
-      "title": "Drones",
-      "releaseDate": "2026-11-20",
-      "source": "https://cinebuds.com/ott-releases-this-week/"
     }
   },
   {
@@ -92,43 +112,6 @@
     }
   },
   {
-    "name": "Pendulum",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-11-20",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.keralatv.in/channel/ott/"
-    ],
-    "platforms": [
-      "Prime Video"
-    ],
-    "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
-    "sourceRecord": {
-      "title": "Pendulum",
-      "releaseDate": "2026-11-20",
-      "source": "https://www.keralatv.in/channel/ott/",
-      "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
-    }
-  },
-  {
-    "name": "AndherPura Curse",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-11-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
-    ],
-    "platforms": [],
-    "detail": "https://ottasia.com/title/tv/337904/andherpura-curse?country=IN",
-    "sourceRecord": {
-      "title": "AndherPura Curse",
-      "releaseDate": "2026-11-28",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    }
-  },
-  {
     "name": "New",
     "language": "tamil",
     "type": "movie",
@@ -146,6 +129,23 @@
       "releaseDate": "2026-11-20",
       "source": "https://www.keralatv.in/channel/ott/",
       "headline": "New Tamil Movie OTT Releases This Week – Drones Streaming on Prime Video From 20 November 2026"
+    }
+  },
+  {
+    "name": "I Coming Mon 7 Dec Itihasa: Ramayana Beyond Borders with Shashi Tharoor",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-12-07",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://indianmoviereviews.com/ott-releases/"
+    ],
+    "platforms": [],
+    "detail": "https://indianmoviereviews.com/series/itihasa-ramayana-beyond-borders-with-shashi-tharoor-2026/",
+    "sourceRecord": {
+      "title": "I Coming Mon 7 Dec Itihasa: Ramayana Beyond Borders with Shashi Tharoor",
+      "releaseDate": "2026-12-07",
+      "source": "https://indianmoviereviews.com/ott-releases/"
     }
   },
   {
@@ -167,27 +167,6 @@
       "title": "Jindey",
       "releaseDate": "2026-11-27",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    }
-  },
-  {
-    "name": "Teen Tigada",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-11-20",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.myvi.in/blog/ott-releases-this-week"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": "https://www.myvi.in/blog/ott-releases-this-week",
-    "sourceRecord": {
-      "title": "Teen Tigada",
-      "releaseDate": "2026-11-20",
-      "source": "https://www.myvi.in/blog/ott-releases-this-week",
-      "languageText": "Hindi",
-      "dateText": "Nov 20, 2026"
     }
   },
   {
@@ -530,6 +509,38 @@
     }
   },
   {
+    "name": "Avalaga Irunthal",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-10-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6acee68b3249ff69efda4163",
+      "platform": "ZEE5",
+      "title": "Avalaga Irunthal",
+      "createdAt": "2026-10-14T02:18:51.600Z",
+      "genre": "Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "original_language": "Tamil",
+      "releaseDate": "2026-10-14",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-10-14T02:18:51.600Z",
+      "votes": 0,
+      "verified": true
+    }
+  },
+  {
     "name": "Southern Shadows",
     "language": "tamil",
     "type": "series",
@@ -591,8 +602,8 @@
     }
   },
   {
-    "name": "Avalaga Irunthal",
-    "language": "tamil",
+    "name": "Marpu - Not For You, But For The Future",
+    "language": "telugu",
     "type": "movie",
     "ottDate": "2026-10-14",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
@@ -604,21 +615,20 @@
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6acee68b3249ff69efda4163",
+      "_id": "6acee68b3249ff69efda4164",
       "platform": "ZEE5",
-      "title": "Avalaga Irunthal",
-      "createdAt": "2026-10-14T02:18:51.600Z",
-      "genre": "Drama, Romance",
+      "title": "Marpu - Not For You, But For The Future",
+      "createdAt": "2026-10-14T02:18:51.826Z",
+      "genre": "Drama",
       "imdbRating": null,
       "languages": [
-        "Tamil"
+        "Telugu"
       ],
-      "original_language": "Tamil",
+      "original_language": "Telugu",
       "releaseDate": "2026-10-14",
       "source_verified": true,
       "type": "Movie",
-      "updatedAt": "2026-10-14T02:18:51.600Z",
-      "votes": 0,
+      "updatedAt": "2026-10-14T02:18:51.826Z",
       "verified": true
     }
   },
@@ -650,37 +660,6 @@
       "type": "Series",
       "updatedAt": "2026-04-30T03:47:03.617Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/lMmVs6FC8pkc0n1BW3gemZRFhqb.jpg",
-      "verified": true
-    }
-  },
-  {
-    "name": "Marpu - Not For You, But For The Future",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-10-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6acee68b3249ff69efda4164",
-      "platform": "ZEE5",
-      "title": "Marpu - Not For You, But For The Future",
-      "createdAt": "2026-10-14T02:18:51.826Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "original_language": "Telugu",
-      "releaseDate": "2026-10-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-10-14T02:18:51.826Z",
       "verified": true
     }
   },
@@ -746,37 +725,6 @@
     }
   },
   {
-    "name": "Roadies Rebirth",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6ad1898c3249ff69efda9cee",
-      "platform": "JioHotStar",
-      "title": "Roadies Rebirth",
-      "createdAt": "2026-10-16T02:18:52.613Z",
-      "genre": "Reality, Adventure",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-10-16",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-10-16T02:18:52.613Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Meghasandesam",
     "language": "telugu",
     "type": "series",
@@ -804,6 +752,37 @@
       "type": "Series",
       "updatedAt": "2026-04-28T03:48:09.012Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/eQSJas8emasLl5sMpmooUJ0GWiT.jpg",
+      "verified": true
+    }
+  },
+  {
+    "name": "Roadies Rebirth",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6ad1898c3249ff69efda9cee",
+      "platform": "JioHotStar",
+      "title": "Roadies Rebirth",
+      "createdAt": "2026-10-16T02:18:52.613Z",
+      "genre": "Reality, Adventure",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-10-16",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-10-16T02:18:52.613Z",
       "verified": true
     }
   },
@@ -959,33 +938,33 @@
     }
   },
   {
-    "name": "Chumbak Part 2",
+    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
     "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-02",
+    "type": "movie",
+    "ottDate": "2026-09-13",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix"
+      "JioHotStar"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6abf148aa856b7606726225e",
-      "platform": "Netflix",
-      "title": "Chumbak Part 2",
-      "createdAt": "2026-10-02T02:18:50.680Z",
-      "genre": "Comedy",
+      "_id": "6aa608021ead141338245394",
+      "platform": "JioHotStar",
+      "title": "Chikoo Vs Bunty: Kushti Ki Jung",
+      "createdAt": "2026-09-13T02:18:42.361Z",
+      "genre": "Animation",
       "imdbRating": null,
       "languages": [
         "Hindi"
       ],
       "original_language": "Hindi",
-      "releaseDate": "2026-10-02",
+      "releaseDate": "2026-09-13",
       "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-10-02T02:18:50.680Z",
+      "type": "Movie",
+      "updatedAt": "2026-09-13T02:18:42.361Z",
       "verified": true
     }
   },
@@ -1020,6 +999,37 @@
     }
   },
   {
+    "name": "Jungle Tales With Mowgli",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-09-12",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6aa4b6881ead1413382425a4",
+      "title": "Jungle Tales With Mowgli",
+      "platform": "JioHotStar",
+      "createdAt": "2026-09-12T02:18:48.886Z",
+      "genre": "Animation, Adventure",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-09-12",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-09-12T02:18:48.886Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Kaakkee Circus",
     "language": "tamil",
     "type": "series",
@@ -1050,33 +1060,33 @@
     }
   },
   {
-    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
+    "name": "Chumbak Part 2",
     "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-09-13",
+    "type": "series",
+    "ottDate": "2026-10-02",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "JioHotStar"
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6aa608021ead141338245394",
-      "platform": "JioHotStar",
-      "title": "Chikoo Vs Bunty: Kushti Ki Jung",
-      "createdAt": "2026-09-13T02:18:42.361Z",
-      "genre": "Animation",
+      "_id": "6abf148aa856b7606726225e",
+      "platform": "Netflix",
+      "title": "Chumbak Part 2",
+      "createdAt": "2026-10-02T02:18:50.680Z",
+      "genre": "Comedy",
       "imdbRating": null,
       "languages": [
         "Hindi"
       ],
       "original_language": "Hindi",
-      "releaseDate": "2026-09-13",
+      "releaseDate": "2026-10-02",
       "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-09-13T02:18:42.361Z",
+      "type": "Series",
+      "updatedAt": "2026-10-02T02:18:50.680Z",
       "verified": true
     }
   },
@@ -1108,37 +1118,6 @@
       "type": "Series",
       "updatedAt": "2026-04-09T03:37:09.017Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/tC5K8MkLipwV9bIdJV9SQcCzgUF.jpg",
-      "verified": true
-    }
-  },
-  {
-    "name": "Jungle Tales With Mowgli",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-09-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6aa4b6881ead1413382425a4",
-      "title": "Jungle Tales With Mowgli",
-      "platform": "JioHotStar",
-      "createdAt": "2026-09-12T02:18:48.886Z",
-      "genre": "Animation, Adventure",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-09-12",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-09-12T02:18:48.886Z",
       "verified": true
     }
   },
@@ -1333,36 +1312,6 @@
     }
   },
   {
-    "name": "Uthutha Herolu",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-21",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a0e807fffe2674e7ae98250",
-      "title": "Uthutha Herolu",
-      "platform": "ETV Win",
-      "createdAt": "2026-05-21T03:48:15.770Z",
-      "genre": "Crime Comedy",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-21",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-21T03:48:15.770Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Musafir Café",
     "language": "hindi",
     "type": "movie",
@@ -1391,6 +1340,36 @@
       "type": "Movie",
       "updatedAt": "2026-07-24T06:03:23.967Z",
       "votes": 3,
+      "verified": true
+    }
+  },
+  {
+    "name": "Uthutha Herolu",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-05-21",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a0e807fffe2674e7ae98250",
+      "title": "Uthutha Herolu",
+      "platform": "ETV Win",
+      "createdAt": "2026-05-21T03:48:15.770Z",
+      "genre": "Crime Comedy",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-21",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-05-21T03:48:15.770Z",
       "verified": true
     }
   },
@@ -1425,32 +1404,33 @@
     }
   },
   {
-    "name": "Vani Na Rani",
-    "language": "telugu",
+    "name": "Manipur Files",
+    "language": "hindi",
     "type": "movie",
-    "ottDate": "2026-05-16",
+    "ottDate": "2026-07-11",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win"
+      "YouTube"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6a07e9279dcddba08328ec63",
-      "platform": "ETV Win",
-      "title": "Vani Na Rani",
-      "createdAt": "2026-05-16T03:48:55.554Z",
-      "genre": "Family Drama",
+      "_id": "6a51d36fcf19d56322acc442",
+      "platform": "YouTube",
+      "title": "Manipur Files",
+      "createdAt": "2026-07-11T05:23:58.919Z",
+      "genre": "Documentary",
       "imdbRating": null,
       "languages": [
-        "Telugu"
+        "Hindi"
       ],
-      "releaseDate": "2026-05-16",
+      "original_language": "Hindi",
+      "releaseDate": "2026-07-11",
       "source_verified": true,
       "type": "Movie",
-      "updatedAt": "2026-05-16T03:48:55.554Z",
+      "updatedAt": "2026-07-11T05:23:58.919Z",
       "verified": true
     }
   },
@@ -1502,33 +1482,32 @@
     }
   },
   {
-    "name": "Manipur Files",
-    "language": "hindi",
+    "name": "Vani Na Rani",
+    "language": "telugu",
     "type": "movie",
-    "ottDate": "2026-07-11",
+    "ottDate": "2026-05-16",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "YouTube"
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6a51d36fcf19d56322acc442",
-      "platform": "YouTube",
-      "title": "Manipur Files",
-      "createdAt": "2026-07-11T05:23:58.919Z",
-      "genre": "Documentary",
+      "_id": "6a07e9279dcddba08328ec63",
+      "platform": "ETV Win",
+      "title": "Vani Na Rani",
+      "createdAt": "2026-05-16T03:48:55.554Z",
+      "genre": "Family Drama",
       "imdbRating": null,
       "languages": [
-        "Hindi"
+        "Telugu"
       ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-07-11",
+      "releaseDate": "2026-05-16",
       "source_verified": true,
       "type": "Movie",
-      "updatedAt": "2026-07-11T05:23:58.919Z",
+      "updatedAt": "2026-05-16T03:48:55.554Z",
       "verified": true
     }
   },
