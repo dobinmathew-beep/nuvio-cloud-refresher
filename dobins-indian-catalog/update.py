@@ -356,10 +356,12 @@ def release_classification(event,meta):
  return label,original,label_date
 
 def catalog_sort_date(item):
- # For movies, a fresh OTT arrival outranks an older physical-edition date.
- if item.get('type')=='movie':
-  return str(item.get('ottDate') or item.get('releaseDate') or '')
- return str(max(item.get('latestEpisodeReleasedAt') or '',item.get('releaseDate') or item.get('ottDate') or ''))
+ # Every catalog is newest-to-oldest by its canonical first release date.
+ # Movies use theatrical when verified, otherwise first digital/OTT, then physical.
+ # Series use their latest aired episode date when available.
+ if item.get('type')=='series' and item.get('latestEpisodeReleasedAt'):
+  return str(item.get('latestEpisodeReleasedAt') or '')[:10]
+ return str(item.get('releaseDate') or item.get('ottDate') or '')[:10]
 
 def title_logo(name):
  im=Image.new('RGBA',(1200,300));d=ImageDraw.Draw(im)
