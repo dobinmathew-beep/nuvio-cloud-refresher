@@ -522,7 +522,9 @@ def build():
     item['latestEpisodeReleasedAt'],item['hasNewEpisodes']=episode_badges.latest(metas.get(alternate.key('series',item['id']),{}).get('videos',[]),NOW)
     if item['latestEpisodeReleasedAt'] and item['latestEpisodeReleasedAt'][:10]>(item.get('releaseDate') or ''):item['releaseDate']=item['latestEpisodeReleasedAt'][:10]
   ms.sort(key=lambda m:(catalog_sort_date(m),m['name']),reverse=True)
-  if not ms and old_catalogs.get(cid):catalogs[cid]=old_catalogs[cid]
+  if not ms and old_catalogs.get(cid):
+   catalogs[cid]=old_catalogs[cid]
+   catalogs[cid].sort(key=lambda m:(catalog_sort_date(m),m.get('name','')),reverse=True)
  save('catalog-added.json',added_at)
  sort_audit={}
  for cid,items in catalogs.items():
