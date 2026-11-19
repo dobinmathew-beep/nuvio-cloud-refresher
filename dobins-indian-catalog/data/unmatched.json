@@ -153,26 +153,6 @@
     }
   },
   {
-    "name": "CULT",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-11-20",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.keralatv.in/channel/ott/"
-    ],
-    "platforms": [
-      "Prime Video"
-    ],
-    "detail": "https://www.keralatv.in/cult-telugu-movie-ott-release-prime-video/",
-    "sourceRecord": {
-      "title": "CULT",
-      "releaseDate": "2026-11-20",
-      "source": "https://www.keralatv.in/channel/ott/",
-      "headline": "CULT Telugu Movie OTT Release on Prime Video – Vishwak Sen’s Psychological Slasher Thriller Now Streaming in 5 Languages"
-    }
-  },
-  {
     "name": "Teen Tigada",
     "language": "hindi",
     "type": "movie",
@@ -1652,8 +1632,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win",
-      "Netflix"
+      "Netflix",
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {
