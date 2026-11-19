@@ -606,6 +606,7 @@ def build():
     'sources':list(dict.fromkeys(e.get('sources') or ([e.get('source')] if e.get('source') else []))),
     'confirmed':bool(e.get('confirmed')),'releaseDateBasis':e.get('releaseDateBasis'),
     'detail':e.get('detail'),'matchId':mid or None,'matchState':state,
+    'matchReason':match.get('reason') or match.get('method') or ('Title identity is not yet resolved' if not mid else 'Matched identity is not yet metadata-complete' if not complete else 'Matched metadata is not yet present in the target catalog'),
     'metadataComplete':complete,'metadataSource':meta.get('metadataSource') or match.get('method'),
     'metadataFields':{'poster':bool(meta.get('poster')),'description':bool(meta.get('description')),
      'genres':bool(meta.get('genres')),'releaseInfo':bool(meta.get('releaseInfo'))},
@@ -617,7 +618,7 @@ def build():
    prior['confirmed']=prior['confirmed'] or bool(e.get('confirmed'))
    if not prior.get('detail') and e.get('detail'):prior['detail']=e['detail']
    if prior['matchState']!='published' and state=='published':
-    prior.update(matchId=mid,matchState=state,metadataComplete=complete,metadataSource=meta.get('metadataSource') or match.get('method'),catalog=cid)
+    prior.update(matchId=mid,matchState=state,matchReason=match.get('reason') or match.get('method'),metadataComplete=complete,metadataSource=meta.get('metadataSource') or match.get('method'),catalog=cid)
  discovery_rows=sorted(discovery.values(),key=lambda x:(x['releaseDate'],x['language'],x['type'],x['title']))
  discovery_counts={'total':len(discovery_rows),'byLanguage':{},'byType':{},'byMatchState':{},'bySource':{}}
  for row in discovery_rows:
