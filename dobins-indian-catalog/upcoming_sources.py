@@ -94,10 +94,11 @@ def _record(node, source_name, source_url, today, langs, norm, trusted_context=F
     if not title_node:
         return []
     raw_name = title_node.get_text(" ", strip=True)
-    name = re.sub(r"^(?:Coming|New)\s+(?:(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s+)?\d{1,2}\s+[A-Za-z]{3,9}\s+", "", raw_name, flags=re.I)
+    name = re.sub(r"^(?:(?:O|S)\s+)?(?:Coming|New)\s+(?:(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s+)?\d{1,2}\s+[A-Za-z]{3,9}\s+", "", raw_name, flags=re.I)
     name = re.sub(r"\s+(?:Malayalam|Tamil|Telugu|Hindi)\s*[·•]\s*(?:Series|Movie|Film)\b.*$", "", name, flags=re.I)
     name = re.sub(r"\s+(?:Malayalam|Tamil|Telugu|Hindi)\s+(?:Series|Movie|Film)\b.*$", "", name, flags=re.I)
     name = re.sub(r"\s+(?:App not announced|Not announced|Netflix|ZEE5|SonyLIV|JioHotstar|JioHotStar|YouTube|Prime Video)\b.*$", "", name, flags=re.I)
+    name = re.sub(r"\s+(?:Malayalam|Tamil|Telugu|Hindi)$", "", name, flags=re.I)
     name = re.sub(r"\s+\d+(?:\.\d+)?\s*/\s*5.*$", "", name, flags=re.I).strip(" ·|–—-")
     if not name or len(name) > 140:
         return []
