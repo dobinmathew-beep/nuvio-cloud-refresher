@@ -93,7 +93,12 @@ def _record(node, source_name, source_url, today, langs, norm, trusted_context=F
     title_node = _title_link(node)
     if not title_node:
         return []
-    name = title_node.get_text(" ", strip=True)
+    raw_name = title_node.get_text(" ", strip=True)
+    name = re.sub(r"^(?:Coming|New)\s+(?:(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s+)?\d{1,2}\s+[A-Za-z]{3,9}\s+", "", raw_name, flags=re.I)
+    name = re.sub(r"\s+(?:Malayalam|Tamil|Telugu|Hindi)\s*[·•]\s*(?:Series|Movie|Film)\b.*$", "", name, flags=re.I)
+    name = re.sub(r"\s+(?:Malayalam|Tamil|Telugu|Hindi)\s+(?:Series|Movie|Film)\b.*$", "", name, flags=re.I)
+    name = re.sub(r"\s+(?:App not announced|Not announced|Netflix|ZEE5|SonyLIV|JioHotstar|JioHotStar|YouTube|Prime Video)\b.*$", "", name, flags=re.I)
+    name = re.sub(r"\s+\d+(?:\.\d+)?\s*/\s*5.*$", "", name, flags=re.I).strip(" ·|–—-")
     if not name or len(name) > 140:
         return []
     time_node = node.select_one("time[datetime]")
@@ -121,7 +126,14 @@ def _record(node, source_name, source_url, today, langs, norm, trusted_context=F
             return []
     kind_node = node.select_one(".ott-type, .ott-kind, [data-type], [itemprop='genre']")
     kind_text = (kind_node.get_text(" ", strip=True) if kind_node else "") + " " + text
-    typ = "series" if SERIES.search(kind_text) else "movie"
+    href = title_node.get("href") or ""
+    href_path = urlsplit(urljoin(source_url, href)).path.lower()
+    if "/series/" in href_path or "/tv/" in href_path:
+        typ = "series"
+    elif "/movie/" in href_path:
+        typ = "movie"
+    else:
+        typ = "series" if SERIES.search(kind_text) else "movie"
     platform_text = text
     platforms = [p for p in PLATFORMS if re.search(re.escape(p), platform_text, re.I)]
     platforms = list(dict.fromkeys(platforms))
