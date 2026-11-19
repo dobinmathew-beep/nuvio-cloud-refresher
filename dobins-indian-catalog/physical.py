@@ -106,7 +106,8 @@ def collect(get,load,save,langs,today,now,norm):
  buckets={lang:[] for lang in langs}
  for key,(lang,tid,name) in candidates.items():
   old=titles.get(key,{});checked=old.get('lastAttemptAt') or old.get('checkedAt')
-  if checked and (now-datetime.fromisoformat(checked)).total_seconds()<10800:continue
+  retry_after=10800 if old.get('lastError') else 2592000
+  if checked and (now-datetime.fromisoformat(checked)).total_seconds()<retry_after:continue
   buckets[lang].append((key,lang,tid,name))
  work=[rows[i] for i in range(max((len(rows) for rows in buckets.values()),default=0)) for rows in buckets.values() if i<len(rows)]
  def inspect(item):
