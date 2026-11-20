@@ -5,7 +5,6 @@ import posterHandler from './api/poster.mjs';
 import healthHandler from './api/health.mjs';
 import { resolveTmdbExternalImdbId } from './lib/tmdb-external-ids.mjs';
 import { renderJustAddedBadge, renderUpcomingBadge } from './lib/render-poster.mjs';
-import { hasExistingJustAddedTag } from './lib/coming-tag.mjs';
 import { upcomingReleaseByTmdbId, getTodayInTimeZone } from './lib/release-dates.mjs';
 import { isCatalogRecentlyAdded } from './lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
@@ -89,12 +88,7 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
     try { justAdded = await isCatalogRecentlyAdded(['tmdb:' + tmdbId]); }
     catch (error) { console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ tmdbId, error: error?.message || 'unknown error' })); }
   }
-  if (!justAdded) {
-    try { justAdded = await hasExistingJustAddedTag(original.bytes); }
-    catch (error) {
-      console.warn('[poster-just-added-detection-failed]', JSON.stringify({ tmdbId, error: error?.message || 'unknown error' }));
-    }
-  }
+  // TMDB/RPDB artwork cannot carry a BetterPosters tag; use catalog eligibility only.
 
   if (release?.date) {
     try {
@@ -174,10 +168,7 @@ async function sendTvmazePosterFallback(tvmazeId, req, res) {
     try { justAdded = await isCatalogRecentlyAdded(['tvmaze:' + tvmazeId]); }
     catch (error) { console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ tvmazeId, error: error?.message || 'unknown error' })); }
   }
-  if (!justAdded) {
-    try { justAdded = await hasExistingJustAddedTag(original); }
-    catch (error) { console.warn('[poster-just-added-detection-failed]', JSON.stringify({ tvmazeId, error: error?.message || 'unknown error' })); }
-  }
+  // TVmaze artwork cannot carry a BetterPosters tag; use catalog eligibility only.
   if (release?.date) {
     try {
       output = await renderUpcomingBadge(output, release.date, release.kind, 0.105);
