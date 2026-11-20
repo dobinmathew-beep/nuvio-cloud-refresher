@@ -12,6 +12,7 @@ import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
 
 import { imageKitConfig, canStoreImageKitPoster, getImageKitStorageSnapshot, uploadPosterToImageKit, runImageKitMaintenance, initializeImageKitStorageSnapshot } from './lib/imagekit-storage.mjs';
 import { runManifestCatalogRefresh, resumeIncompleteManifestCatalogRefresh } from './lib/catalog-manifest-refresh.mjs';
+import { getRefreshLease } from './lib/refresh-coordination.mjs';
 import { hasExistingComingDateTag, hasExistingJustAddedTag } from './lib/coming-tag.mjs';
 
 let catalogRefreshJob = null;
@@ -306,22 +307,39 @@ const server = createServer(async (req, res) => {
       return res.end(JSON.stringify({ error: 'Unauthorized' }));
     }
     if (url.pathname === '/catalog-refresh/status') {
+      let sharedLease;
+      try {
+        sharedLease = await getRefreshLease();
+      } catch (error) {
+        res.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+        return res.end(JSON.stringify({ status: 'coordination-unavailable', error: error?.message || 'Redis unavailable' }));
+      }
+      const response = sharedLease
+        ? { status: 'running', jobId: sharedLease.jobId, coordinated: true }
+        : catalogRefreshJob && catalogRefreshReport?.status !== 'already-running'
+          ? { status: 'running', jobId: catalogRefreshJob }
+          : catalogRefreshError
+            ? { status: 'failed', error: catalogRefreshError }
+            : catalogRefreshReport && catalogRefreshReport.status !== 'already-running'
+              ? { status: 'completed', report: catalogRefreshReport }
+              : { status: 'idle' };
       res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
-      return res.end(JSON.stringify(catalogRefreshJob
-        ? { status: 'running', jobId: catalogRefreshJob }
-        : catalogRefreshError
-          ? { status: 'failed', error: catalogRefreshError }
-          : catalogRefreshReport
-            ? { status: 'completed', report: catalogRefreshReport }
-            : { status: 'idle' }));
+      return res.end(JSON.stringify(response));
     }
     if (req.method !== 'POST') {
       res.writeHead(405, { 'Allow': 'POST', 'Cache-Control': 'no-store' });
       return res.end('Method not allowed');
     }
-    if (catalogRefreshJob) {
+    let sharedLease;
+    try {
+      sharedLease = await getRefreshLease();
+    } catch (error) {
+      res.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+      return res.end(JSON.stringify({ status: 'coordination-unavailable', error: error?.message || 'Redis unavailable' }));
+    }
+    if (catalogRefreshJob || sharedLease) {
       res.writeHead(409, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
-      return res.end(JSON.stringify({ status: 'already-running', jobId: catalogRefreshJob }));
+      return res.end(JSON.stringify({ status: 'already-running', jobId: sharedLease?.jobId || catalogRefreshJob }));
     }
     const jobId = randomUUID();
     catalogRefreshJob = jobId;
