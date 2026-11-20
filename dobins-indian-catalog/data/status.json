@@ -4,8 +4,8 @@
   "releasePolicy": "theatrical-first-multipage-v3",
   "metadataPolicy": "tmdb-tvmaze-v2",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-20T04:05:20.464877+04:00",
-  "lastMatchRetryAt": "2026-11-20T04:05:20.464877+04:00",
+  "updatedAt": "2026-11-20T04:48:15.713373+04:00",
+  "lastMatchRetryAt": "2026-11-20T04:48:15.713373+04:00",
   "lastSuccessCycle": "2026-11-20T04:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
@@ -897,7 +897,7 @@
   "catalogFreshness": {
     "dobins_ml_movie": {
       "count": 95,
-      "generatedAt": "2026-11-20T04:05:20.464877+04:00",
+      "generatedAt": "2026-11-20T04:48:15.713373+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -907,7 +907,7 @@
     },
     "dobins_ml_series": {
       "count": 68,
-      "generatedAt": "2026-11-20T04:05:20.464877+04:00",
+      "generatedAt": "2026-11-20T04:48:15.713373+04:00",
       "latestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
@@ -917,7 +917,7 @@
     },
     "dobins_ta_movie": {
       "count": 91,
-      "generatedAt": "2026-11-20T04:05:20.464877+04:00",
+      "generatedAt": "2026-11-20T04:48:15.713373+04:00",
       "latestEntry": {
         "id": "tt39239818",
         "name": "Haiku",
@@ -927,7 +927,7 @@
     },
     "dobins_ta_series": {
       "count": 115,
-      "generatedAt": "2026-11-20T04:05:20.464877+04:00",
+      "generatedAt": "2026-11-20T04:48:15.713373+04:00",
       "latestEntry": {
         "id": "tmdb:339001",
         "name": "Madam Police",
@@ -937,7 +937,7 @@
     },
     "dobins_te_movie": {
       "count": 109,
-      "generatedAt": "2026-11-20T04:05:20.464877+04:00",
+      "generatedAt": "2026-11-20T04:48:15.713373+04:00",
       "latestEntry": {
         "id": "tt30768979",
         "name": "Aadarsha Kutumbam House No: 47 - AK47",
@@ -947,7 +947,7 @@
     },
     "dobins_te_series": {
       "count": 114,
-      "generatedAt": "2026-11-20T04:05:20.464877+04:00",
+      "generatedAt": "2026-11-20T04:48:15.713373+04:00",
       "latestEntry": {
         "id": "tt44841089",
         "name": "Part-Timers",
@@ -957,7 +957,7 @@
     },
     "dobins_hi_movie": {
       "count": 117,
-      "generatedAt": "2026-11-20T04:05:20.464877+04:00",
+      "generatedAt": "2026-11-20T04:48:15.713373+04:00",
       "latestEntry": {
         "id": "tt39390582",
         "name": "Hanuman Ansh",
@@ -967,7 +967,7 @@
     },
     "dobins_hi_series": {
       "count": 355,
-      "generatedAt": "2026-11-20T04:05:20.464877+04:00",
+      "generatedAt": "2026-11-20T04:48:15.713373+04:00",
       "latestEntry": {
         "id": "tt37020592",
         "name": "Teen Kauwe",
@@ -1493,8 +1493,8 @@
         "matchState": "published",
         "matchReason": "IMDb-matched metadata",
         "platforms": [
-          "Prime Video",
-          "SunNXT"
+          "SunNXT",
+          "Prime Video"
         ],
         "sources": [
           "https://www.dailyott.in/"
@@ -1597,10 +1597,10 @@
         "matchState": "published",
         "matchReason": "IMDb-matched metadata",
         "platforms": [
-          "SimplySouth",
           "Amazon Prime Video",
-          "Prime Video",
-          "Aha"
+          "Aha",
+          "SimplySouth",
+          "Prime Video"
         ],
         "sources": [
           "https://www.ottchecker.com/ott-releases/tamil",
@@ -1673,8 +1673,8 @@
           "Netflix"
         ],
         "sources": [
-          "https://newindianmovies.com/",
-          "https://www.dailyott.in/"
+          "https://www.dailyott.in/",
+          "https://newindianmovies.com/"
         ],
         "detail": null
       },
@@ -1701,7 +1701,7 @@
         "releaseDate": "2026-10-28",
         "id": "tt50286925",
         "matchState": "published",
-        "matchReason": "Verified IMDb title/year match",
+        "matchReason": "IMDb-matched metadata",
         "platforms": [
           "ZEE5"
         ],

@@ -297,8 +297,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Prime Video",
-        "SunNXT"
+        "SunNXT",
+        "Prime Video"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -401,10 +401,10 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "SimplySouth",
         "Amazon Prime Video",
-        "Prime Video",
-        "Aha"
+        "Aha",
+        "SimplySouth",
+        "Prime Video"
       ],
       "sources": [
         "https://www.ottchecker.com/ott-releases/tamil",
@@ -477,8 +477,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://newindianmovies.com/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://newindianmovies.com/"
       ],
       "detail": null
     },
@@ -505,7 +505,7 @@
       "releaseDate": "2026-10-28",
       "id": "tt50286925",
       "matchState": "published",
-      "matchReason": "Verified IMDb title/year match",
+      "matchReason": "IMDb-matched metadata",
       "platforms": [
         "ZEE5"
       ],

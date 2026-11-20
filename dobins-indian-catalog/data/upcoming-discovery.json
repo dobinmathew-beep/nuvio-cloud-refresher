@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-20T04:05:20.464877+04:00",
+  "generatedAt": "2026-11-20T04:48:15.713373+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 36,
@@ -97,8 +97,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://newindianmovies.com/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://newindianmovies.com/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,

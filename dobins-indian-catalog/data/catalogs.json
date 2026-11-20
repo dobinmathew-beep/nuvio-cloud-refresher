@@ -2643,7 +2643,7 @@
         "Comedy",
         "Thriller"
       ],
-      "description": "New OTT arrival (digital): 2026-05-22 · Prime Video, SunNXT\n\nTwo men meet by chance, setting off a night of chaos with romance and action, as their paths cross and intertwine through various unexpected events.",
+      "description": "New OTT arrival (digital): 2026-05-22 · SunNXT, Prime Video\n\nTwo men meet by chance, setting off a night of chaos with romance and action, as their paths cross and intertwine through various unexpected events.",
       "releaseDate": "2026-05-22",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -2655,8 +2655,8 @@
           "kind": "digital",
           "date": "2026-05-22",
           "platforms": [
-            "Prime Video",
-            "SunNXT"
+            "SunNXT",
+            "Prime Video"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -2667,8 +2667,8 @@
       "theatricalReleases": [],
       "ottDate": "2026-05-22",
       "platforms": [
-        "Prime Video",
-        "SunNXT"
+        "SunNXT",
+        "Prime Video"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -8155,6 +8155,53 @@
       "catalogAddedAt": null
     },
     {
+      "id": "tt14803240",
+      "type": "series",
+      "name": "Padatha Painkili",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt14803240",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt14803240",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt14803240",
+      "releaseInfo": "2020–2020",
+      "metadataSource": "https://www.themoviedb.org/tv/338501",
+      "imdbRating": "2.8",
+      "genres": [
+        "Family",
+        "Drama"
+      ],
+      "description": "Home release (digital): 2020-11-09 · \n\nThe story revolves around Kanmani, a humble, hardworking, and devoted young woman.Kanmani works and lives closely with the family of Ananda Varma and his wife, Susheela, who treat her with deep affection—almost like their own daughter.The family's daughters-in-law (Swapna, Ananya, and eldest daughter Tanuja) deeply resent Kanmani. They fear that Kanmani will end up inheriting a share of the family property, which would reduce their own financial stake in the household. Because of this, they constantly mistreat, humiliate, and plot against her.",
+      "releaseDate": "2020-11-09",
+      "releaseKind": "digital",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2020-09-07",
+          "platforms": [],
+          "sources": [
+            "https://www.themoviedb.org/tv/338501"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [],
+      "ottDate": "2020-11-09",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/338501"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "premiere",
+      "latestEpisodeReleasedAt": "2020-11-09T00:00:00+00:00",
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": false,
+      "catalogAddedAt": null
+    },
+    {
       "id": "tmdb:277331",
       "type": "series",
       "name": "Lets Rock & Roll",
@@ -8242,53 +8289,6 @@
       "language": "malayalam",
       "releaseDateBasis": "premiere",
       "latestEpisodeReleasedAt": "2020-09-21T00:00:00+00:00",
-      "hasNewEpisodes": false,
-      "nextEpisodeReleaseAt": null,
-      "justAdded": false,
-      "catalogAddedAt": null
-    },
-    {
-      "id": "tt14803240",
-      "type": "series",
-      "name": "Padatha Painkili",
-      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt14803240",
-      "posterShape": "poster",
-      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt14803240",
-      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt14803240",
-      "releaseInfo": "2020–2020",
-      "metadataSource": "https://www.themoviedb.org/tv/338501",
-      "imdbRating": "2.8",
-      "genres": [
-        "Family",
-        "Drama"
-      ],
-      "description": "Home release (digital): 2020-09-07 · \n\nThe story revolves around Kanmani, a humble, hardworking, and devoted young woman.Kanmani works and lives closely with the family of Ananda Varma and his wife, Susheela, who treat her with deep affection—almost like their own daughter.The family's daughters-in-law (Swapna, Ananya, and eldest daughter Tanuja) deeply resent Kanmani. They fear that Kanmani will end up inheriting a share of the family property, which would reduce their own financial stake in the household. Because of this, they constantly mistreat, humiliate, and plot against her.",
-      "releaseDate": "2020-09-07",
-      "releaseKind": "digital",
-      "releaseStatus": "available",
-      "releaseLabel": null,
-      "releaseLabelDate": null,
-      "originalReleaseDate": null,
-      "availability": [
-        {
-          "kind": "digital",
-          "date": "2020-09-07",
-          "platforms": [],
-          "sources": [
-            "https://www.themoviedb.org/tv/338501"
-          ]
-        }
-      ],
-      "physicalReleases": [],
-      "theatricalReleases": [],
-      "ottDate": "2020-09-07",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/338501"
-      ],
-      "language": "malayalam",
-      "releaseDateBasis": "premiere",
-      "latestEpisodeReleasedAt": "2020-09-07T00:00:00+00:00",
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null,
       "justAdded": false,
@@ -9416,7 +9416,7 @@
         "Crime",
         "Thriller"
       ],
-      "description": "New OTT arrival (digital): 2026-10-29 · SimplySouth, Amazon Prime Video, Prime Video, Aha\n\nIn the Hill Village of Mekkarai, Where It is Customary for Men to Die Every Seven Years During the Month of June, a Newly Appointed Police Inspector Arrives to Investigate a Series of Mysterious Murders. As He Digs Deeper Into the Village's Dark Secrets and Long-standing Beliefs, He Finds Himself Trapped in a Web of Crime, Fear, and Hidden Truths.",
+      "description": "New OTT arrival (digital): 2026-10-29 · Amazon Prime Video, Aha, SimplySouth, Prime Video\n\nIn the Hill Village of Mekkarai, Where It is Customary for Men to Die Every Seven Years During the Month of June, a Newly Appointed Police Inspector Arrives to Investigate a Series of Mysterious Murders. As He Digs Deeper Into the Village's Dark Secrets and Long-standing Beliefs, He Finds Himself Trapped in a Web of Crime, Fear, and Hidden Truths.",
       "releaseDate": "2026-10-29",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -9428,10 +9428,10 @@
           "kind": "digital",
           "date": "2026-10-29",
           "platforms": [
-            "SimplySouth",
             "Amazon Prime Video",
-            "Prime Video",
-            "Aha"
+            "Aha",
+            "SimplySouth",
+            "Prime Video"
           ],
           "sources": [
             "https://www.ottchecker.com/ott-releases/tamil",
@@ -9444,10 +9444,10 @@
       "theatricalReleases": [],
       "ottDate": "2026-10-29",
       "platforms": [
-        "SimplySouth",
         "Amazon Prime Video",
-        "Prime Video",
-        "Aha"
+        "Aha",
+        "SimplySouth",
+        "Prime Video"
       ],
       "sources": [
         "https://www.ottchecker.com/ott-releases/tamil",
@@ -12254,7 +12254,7 @@
         "Thriller",
         "Action"
       ],
-      "description": "New OTT arrival (digital): 2026-03-13 · Prime Video, Aha\n\nIt is story about a Honest and straightforward lady police Inspector Yogi works in Coimbatore, where she proves a textile mill owner’s “suicide” is actually a murder by his own son, leading to her transfer to the punishment area Vyasarpadi in North Chennai. There she confronts ruthless don Shekar Babu, who controls the area and its police through fear, power, and political influence, but Yogi refuses to bow down and begins taking action against his network.",
+      "description": "New OTT arrival (digital): 2026-03-13 · Aha, Prime Video\n\nIt is story about a Honest and straightforward lady police Inspector Yogi works in Coimbatore, where she proves a textile mill owner’s “suicide” is actually a murder by his own son, leading to her transfer to the punishment area Vyasarpadi in North Chennai. There she confronts ruthless don Shekar Babu, who controls the area and its police through fear, power, and political influence, but Yogi refuses to bow down and begins taking action against his network.",
       "releaseDate": "2026-03-13",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -12266,8 +12266,8 @@
           "kind": "digital",
           "date": "2026-03-13",
           "platforms": [
-            "Prime Video",
-            "Aha"
+            "Aha",
+            "Prime Video"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -12278,8 +12278,8 @@
       "theatricalReleases": [],
       "ottDate": "2026-03-13",
       "platforms": [
-        "Prime Video",
-        "Aha"
+        "Aha",
+        "Prime Video"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -18514,7 +18514,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt21340072",
       "releaseInfo": "2022–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.9",
+      "imdbRating": "5.8",
       "genres": [
         "Comedy",
         "Drama"
@@ -20561,7 +20561,7 @@
         "Comedy",
         "Crime"
       ],
-      "description": "New OTT arrival (digital): 2026-11-06 · Prime Video, SunNXT\n\nA single misplaced object sets off a wild 24-hour chain reaction, sweeping six strangers into chaotic fun. As it changes hands, petty blunders and comic mix-ups collide, forging unexpected connections that upend all their lives forever.",
+      "description": "New OTT arrival (digital): 2026-11-06 · SunNXT, Prime Video\n\nA single misplaced object sets off a wild 24-hour chain reaction, sweeping six strangers into chaotic fun. As it changes hands, petty blunders and comic mix-ups collide, forging unexpected connections that upend all their lives forever.",
       "releaseDate": "2026-11-06",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -20573,8 +20573,8 @@
           "kind": "digital",
           "date": "2026-11-06",
           "platforms": [
-            "Prime Video",
-            "SunNXT"
+            "SunNXT",
+            "Prime Video"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -20585,8 +20585,8 @@
       "theatricalReleases": [],
       "ottDate": "2026-11-06",
       "platforms": [
-        "Prime Video",
-        "SunNXT"
+        "SunNXT",
+        "Prime Video"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -22947,7 +22947,7 @@
         "Romance",
         "Drama"
       ],
-      "description": "New OTT arrival (digital): 2026-05-18 · Zeeplex, BookMyShow Stream, Shreyas ET\n\n",
+      "description": "New OTT arrival (digital): 2026-05-18 · Shreyas ET, Zeeplex, BookMyShow Stream\n\n",
       "releaseDate": "2026-05-18",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -22959,9 +22959,9 @@
           "kind": "digital",
           "date": "2026-05-18",
           "platforms": [
+            "Shreyas ET",
             "Zeeplex",
-            "BookMyShow Stream",
-            "Shreyas ET"
+            "BookMyShow Stream"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -22972,9 +22972,9 @@
       "theatricalReleases": [],
       "ottDate": "2026-05-18",
       "platforms": [
+        "Shreyas ET",
         "Zeeplex",
-        "BookMyShow Stream",
-        "Shreyas ET"
+        "BookMyShow Stream"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -26176,7 +26176,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39216437",
       "releaseInfo": "2026–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "4.7",
+      "imdbRating": "3.7",
       "genres": [
         "Drama",
         "Crime",
@@ -26294,14 +26294,11 @@
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt49873734",
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt49873734",
-      "releaseInfo": "2026–",
+      "releaseInfo": "",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.9",
-      "genres": [
-        "Crime",
-        "Mystery"
-      ],
-      "description": "Home release (digital): 2026-10-30 · ZEE5\n\nAn honest police officer, SI Siva kumar, investigates a mysterious disappearance and a gruesome headless corpse in a small town.",
+      "imdbRating": null,
+      "genres": [],
+      "description": "Home release (digital): 2026-10-30 · ZEE5\n\n",
       "releaseDate": "2026-10-30",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -26340,7 +26337,7 @@
       ],
       "language": "telugu",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
-      "latestEpisodeReleasedAt": "2026-10-30T00:00:06+00:00",
+      "latestEpisodeReleasedAt": null,
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null,
       "justAdded": false,
@@ -26790,7 +26787,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt43632572",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.1",
+      "imdbRating": "8.2",
       "genres": [
         "Comedy",
         "Drama"
@@ -40460,9 +40457,9 @@
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt50286925",
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt50286925",
-      "releaseInfo": "2026",
-      "metadataSource": "Verified IMDb title/year match",
-      "imdbRating": null,
+      "releaseInfo": "2026–",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "5.5",
       "genres": [
         "Mystery"
       ],
@@ -40505,7 +40502,7 @@
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
-      "latestEpisodeReleasedAt": null,
+      "latestEpisodeReleasedAt": "2026-10-28T00:00:06+00:00",
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null,
       "justAdded": false,
@@ -57577,8 +57574,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://newindianmovies.com/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://newindianmovies.com/"
           ]
         }
       ],
@@ -57589,8 +57586,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://newindianmovies.com/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://newindianmovies.com/"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
