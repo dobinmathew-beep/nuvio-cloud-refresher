@@ -35,8 +35,24 @@ const worker = await createWorker('eng', 1, {
 });
 
 function hasJustAdded(text) {
-  return String(text || '').replace(/\\\\[nr]/g, ' ').toLowerCase()
+  return String(text || '').replace(/\\[nr]/g, ' ').toLowerCase()
     .replace(/[^a-z0-9]+/g, ' ').trim().includes('just added');
+}
+
+let ocrQueue = Promise.resolve();
+async function detectBadge(prepared) {
+  const job = ocrQueue.then(async () => {
+    await worker.setParameters({ tessedit_pageseg_mode: '11' });
+    let recognized = await worker.recognize(prepared);
+    let text = String(recognized?.data?.text || '').trim();
+    if (hasJustAdded(text)) return { visible: true, text };
+    await worker.setParameters({ tessedit_pageseg_mode: '6' });
+    recognized = await worker.recognize(prepared);
+    const second = String(recognized?.data?.text || '').trim();
+    return { visible: hasJustAdded(second), text: (text + ' | ' + second).slice(0, 480) };
+  });
+  ocrQueue = job.then(() => undefined, () => undefined);
+  return job;
 }
 
 async function inspect(entry) {
@@ -87,17 +103,9 @@ async function inspect(entry) {
       .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
       .resize({ width: Math.min(1500, Math.max(900, metadata.width * 2)) })
       .grayscale().normalize().sharpen().png().toBuffer();
-    await worker.setParameters({ tessedit_pageseg_mode: '11' });
-    let recognized = await worker.recognize(prepared);
-    result.ocrText = String(recognized?.data?.text || '').trim().slice(0, 240);
-    result.badgeVisible = hasJustAdded(result.ocrText);
-    if (!result.badgeVisible) {
-      await worker.setParameters({ tessedit_pageseg_mode: '6' });
-      recognized = await worker.recognize(prepared);
-      const secondText = String(recognized?.data?.text || '').trim();
-      result.ocrText = (result.ocrText + ' | ' + secondText).slice(0, 480);
-      result.badgeVisible = hasJustAdded(secondText);
-    }
+    const ocr = await detectBadge(prepared);
+    result.ocrText = ocr.text;
+    result.badgeVisible = ocr.visible;
     return result;
   } catch (error) {
     result.error = String(error?.message || error).slice(0, 240);
