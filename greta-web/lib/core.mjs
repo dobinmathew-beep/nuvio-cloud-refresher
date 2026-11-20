@@ -10,6 +10,17 @@ const RAW='https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refres
 const REF_API='https://api.github.com/repos/dobinmathew-beep/nuvio-cloud-refresher/commits/dobins-catalog';
 const LANGS={ml:'Malayalam',ta:'Tamil',te:'Telugu',hi:'Hindi'};
 function artId(type,id){return id.startsWith('tt')?id:type+'~'+id;}
+const JUST_ADDED_RENDERER_ORIGIN='https://great-indian-upcoming-posters.onrender.com';
+export function buildJustAddedRendererUrl(type,id){
+ const value=String(id||'');
+ if(/^tt\\d{7,10}$/.test(value))return JUST_ADDED_RENDERER_ORIGIN+'/poster/'+value+'.jpg?badge=just-added&v=3';
+ const tmdb=value.match(/^tmdb:(\\d{1,12})$/);
+ if(tmdb)return JUST_ADDED_RENDERER_ORIGIN+'/poster/tmdb/'+tmdb[1]+'.jpg?badge=just-added&type='+(type==='movie'?'movie':'tv')+'&v=3';
+ return null;
+}
+export function buildCatalogPosterUrl(origin,type,id,justAdded=false){
+ return origin+'/art/poster/'+artId(type,id)+(justAdded?'?badge=just-added&v=3':'');
+}
 function metaKey(type,id){return id.startsWith('tt')?id:type+'|'+id;}
 const ID_ALIASES={"tt34221824":"series|tmdb:273771","tt37541677":"movie|tmdb:1576369","tt8537520":"series|tvmaze:37295","tt43695670":"series|tmdb:332989","tt7084920":"series|tvmaze:31247","tt7805494":"series|tvmaze:78507","tt32086077":"movie|tmdb:927547","tt2257284":"movie|tmdb:431582","tt2016894":"movie|tmdb:85985","tt1188996":"movie|tmdb:26022","tt1187043":"movie|tmdb:20453","tt0986264":"movie|tmdb:7508","tt28259207":"movie|tmdb:1160018","tt16997004":"series|tmdb:249765","tt14420552":"series|tvmaze:55676","tt50286925":"series|tmdb:340197","tt37971394":"movie|tmdb:1515729","tt37458112":"movie|tmdb:1433117","tt30460421":"movie|tmdb:1209511","tt22797990":"movie|tmdb:1036081","tt10908160":"movie|tmdb:1503567","tt14682792":"series|tmdb:224729","tt18313998":"series|tmdb:277329","tt14803240":"series|tmdb:338501","tt31398701":"series|tmdb:236891","tt27327486":"series|tmdb:275991","tt30632873":"series|tmdb:236425","tt33702419":"series|tmdb:294178","tt32176709":"series|tmdb:254896","tt38509392":"series|tmdb:276584","tt34799015":"series|tmdb:278802","tt30831829":"series|tmdb:278795","tt32512778":"series|tmdb:337265","tt32062538":"series|tmdb:276607","tt32589618":"series|tmdb:278797","tt31643804":"series|tmdb:276615","tt32335206":"series|tmdb:276612","tt41100531":"series|tmdb:317896","tt40494646":"series|tmdb:315927","tt39989131":"series|tmdb:315194","tt35666025":"series|tmdb:281733","tt35376041":"series|tmdb:263299","tt27519661":"series|tmdb:209334","tt31914057":"series|tmdb:282467","tt37678386":"series|tmdb:297839","tt49702110":"series|tmdb:339474","tt50063835":"series|tmdb:338390","tt44101690":"series|tmdb:331932","tt43708665":"series|tmdb:328818","tt44112767":"series|tmdb:332299","tt40859434":"series|tmdb:316958","tt42755616":"series|tmdb:217167","tt31863147":"series|tmdb:249771","tt5162390":"movie|tmdb:1166688"};
 const IMDB_BY_META=Object.fromEntries(Object.entries(ID_ALIASES).map(([imdb,key])=>[key,imdb]));
@@ -73,11 +84,71 @@ async function meta(type,id){const all=await data('metadata.json');let m=all[met
  const ott=m.ott;const description=(ott?(ott.kind==='physical'?'Physical release: ':'Digital release: ')+ott.date+' · '+(ott.platforms||[]).join(' · ')+'\n\n':'')+(m.description||'');
  const clean=Object.fromEntries(Object.entries(m).filter(([k])=>!k.startsWith('_')&&!['artwork','ott'].includes(k)));return {...clean,id,type,poster:ORIGIN+'/art/poster/'+artId(type,id),background:ORIGIN+'/art/background/'+artId(type,id),logo:ORIGIN+'/art/logo/'+artId(type,id),description};}
 const artHosts=['image.tmdb.org','images.metahub.space','live.metahub.space','m.media-amazon.com','assets.fanart.tv','api.ratingposterdb.com','cinebuds.com','www.cinebuds.com','static.tvmaze.com'];
-async function art(kind,id,request){const all=await data('metadata.json');const bits=id.split('~');const type=bits.length===2?bits[0]:'';const rawId=bits.length===2?bits[1]:id;const m=all[bits.length===2?metaKey(type,rawId):id]||(ID_ALIASES[id]?all[ID_ALIASES[id]]:null)||{};const catalogs=await data('catalogs.json');const catalogEntry=Object.values(catalogs).flatMap(items=>Array.isArray(items)?items:[]).find(item=>item?.id===rawId&&(!type||item.type===type))||{};const artwork=m.artwork?.[kind==='poster'?'posters':kind==='logo'?'logos':'backgrounds'];const catalogArtwork=catalogEntry.artwork?.[kind==='poster'?'posters':kind==='logo'?'logos':'backgrounds'];const candidates=[...(Array.isArray(artwork)?artwork:[]),m[kind],...(Array.isArray(catalogArtwork)?catalogArtwork:[]),catalogEntry[kind]].filter((value,index,array)=>typeof value==='string'&&value.trim()&&array.indexOf(value)===index);if(!candidates.length&&kind!=='logo')return new Response('Artwork unavailable',{status:503,headers:{...CORS,'Retry-After':'60'}});let cache;try{if(globalThis.caches)cache=await caches.open('dobins-indian-art-v1');}catch{}const key=new Request(ORIGIN+'/art/'+kind+'/'+id);const saved=await cache?.match(key);if(saved)return saved;
- for(const candidate of candidates){try{const u=new URL(candidate);if(!artHosts.includes(u.hostname))continue;const r=await upstream(u.href,10000);const mime=r.headers.get('Content-Type')||'';if(!mime.startsWith('image/'))continue;const bytes=await r.arrayBuffer();if(bytes.byteLength<500||bytes.byteLength>15000000)continue;const image=new Response(bytes,{headers:{...CORS,'Content-Type':mime,'Cache-Control':'public, max-age=86400','X-Content-Type-Options':'nosniff'}});if(cache)await cache.put(key,image.clone());return image;}catch{}}
+async function art(kind,id,request){
+ const requestUrl=new URL(request.url);
+ const badgeRequested=kind==='poster'&&requestUrl.searchParams.get('badge')==='just-added';
+ const bits=id.split('~');
+ const type=bits.length===2?bits[0]:'';
+ const rawId=bits.length===2?bits[1]:id;
+ let cache;
+ try{if(globalThis.caches)cache=await caches.open('dobins-indian-art-v2');}catch{}
+ const key=new Request(ORIGIN+'/art/'+kind+'/'+id+(badgeRequested?'?badge=just-added&v=3':''));
+ const saved=await cache?.match(key);
+ if(saved)return saved;
+
+ // The catalog adds this query only to titles inside their 14-day Just Added window.
+ // Use the dedicated renderer first, preserving the same eligibility decision in Nuvio.
+ if(badgeRequested){
+  const badgeUrl=buildJustAddedRendererUrl(type,rawId);
+  if(badgeUrl){
+   try{
+    const r=await upstream(badgeUrl,15000);
+    const mime=(r.headers.get('Content-Type')||'').split(';')[0].trim().toLowerCase();
+    if(mime.startsWith('image/')){
+     const bytes=await r.arrayBuffer();
+     if(bytes.byteLength>=500&&bytes.byteLength<=15000000){
+      const headers={...CORS,'Content-Type':mime,'Cache-Control':'public, max-age=3600, stale-while-revalidate=3600','X-Content-Type-Options':'nosniff','X-Poster-Badge':'Just Added'};
+      const badgeStatus=r.headers.get('X-Poster-Date-Status');
+      const source=r.headers.get('X-Poster-Source');
+      if(badgeStatus)headers['X-Poster-Date-Status']=badgeStatus;
+      if(source)headers['X-Poster-Source']=source;
+      const image=new Response(bytes,{headers});
+      if(cache)await cache.put(key,image.clone());
+      return image;
+     }
+    }
+   }catch{}
+  }
+ }
+
+ const all=await data('metadata.json');
+ const m=all[bits.length===2?metaKey(type,rawId):id]||(ID_ALIASES[id]?all[ID_ALIASES[id]]:null)||{};
+ const catalogs=await data('catalogs.json');
+ const catalogEntry=Object.values(catalogs).flatMap(items=>Array.isArray(items)?items:[]).find(item=>item?.id===rawId&&(!type||item.type===type))||{};
+ const artwork=m.artwork?.[kind==='poster'?'posters':kind==='logo'?'logos':'backgrounds'];
+ const catalogArtwork=catalogEntry.artwork?.[kind==='poster'?'posters':kind==='logo'?'logos':'backgrounds'];
+ const candidates=[...(Array.isArray(artwork)?artwork:[]),m[kind],...(Array.isArray(catalogArtwork)?catalogArtwork:[]),catalogEntry[kind]].filter((value,index,array)=>typeof value==='string'&&value.trim()&&array.indexOf(value)===index);
+ if(!candidates.length&&kind!=='logo')return new Response('Artwork unavailable',{status:503,headers:{...CORS,'Retry-After':'60'}});
+ for(const candidate of candidates){
+  try{
+   const u=new URL(candidate);
+   if(!artHosts.includes(u.hostname))continue;
+   const r=await upstream(u.href,10000);
+   const mime=r.headers.get('Content-Type')||'';
+   if(!mime.startsWith('image/'))continue;
+   const bytes=await r.arrayBuffer();
+   if(bytes.byteLength<500||bytes.byteLength>15000000)continue;
+   const headers={...CORS,'Content-Type':mime,'Cache-Control':badgeRequested?'public, max-age=60':'public, max-age=86400','X-Content-Type-Options':'nosniff'};
+   if(badgeRequested)headers['X-Poster-Badge']='missing';
+   const image=new Response(bytes,{headers});
+   if(cache&&!badgeRequested)await cache.put(key,image.clone());
+   return image;
+  }catch{}
+ }
  if(kind==='logo'&&m._logoFallback)return new Response(Uint8Array.from(atob(m._logoFallback),c=>c.charCodeAt(0)),{headers:{...CORS,'Content-Type':'image/png','Cache-Control':'public, max-age=3600'}});
- return new Response('Artwork temporarily unavailable',{status:503,headers:{...CORS,'Retry-After':'60'}});}
-export {manifest,data,meta,dataHealth};
+ return new Response('Artwork temporarily unavailable',{status:503,headers:{...CORS,'Retry-After':'60'}});
+}
+export {manifest,data,meta,dataHealth,buildCatalogPosterUrl,buildJustAddedRendererUrl};
 export default {async fetch(request){const url=new URL(request.url);try{url.pathname=decodeURIComponent(url.pathname);}catch{}if(request.method==='OPTIONS')return new Response(null,{status:204,headers:CORS});if(!['GET','HEAD'].includes(request.method))return json({error:'Method not allowed'},405);let response;
  if(url.pathname==='/')response=new Response(PAGE,{headers:{...CORS,'Content-Type':'text/html; charset=utf-8','Cache-Control':'public, max-age=300'}});
  else if(url.pathname==='/icon.png')response=new Response(Uint8Array.from(atob(ICON),c=>c.charCodeAt(0)),{headers:{...CORS,'Content-Type':'image/png','Cache-Control':'public, max-age=86400'}});
@@ -87,7 +158,7 @@ export default {async fetch(request){const url=new URL(request.url);try{url.path
  else if(url.pathname==='/status.json')response=json(await data('status.json'));
  else if(url.pathname==='/upcoming-discovery.json')response=json(await data('upcoming-discovery.json'));
  else {const a=url.pathname.match(/^\/art\/(poster|background|logo)\/((?:tt\d+)|(?:(?:movie|series)~(?:tmdb|tvmaze):\d+))$/),m=url.pathname.match(/^\/meta\/(movie|series)\/((?:tt\d+)|(?:(?:tmdb|tvmaze):\d+))\.json$/),c=url.pathname.match(/^\/catalog\/(movie|series)\/(dobins_(?:ml|ta|te|hi)_(?:movie|series))(?:\/(.*))?\.json$/);
-  if(a)response=await art(a[1],a[2],request);else if(m)response=json({meta:await meta(m[1],m[2])});else if(c){const def=catalogDefs.find(d=>d.id===c[2]&&d.type===c[1]);if(!def)response=json({metas:[]});else {let p;try{p=new URLSearchParams(c[3]?decodeURIComponent(c[3]):url.search);}catch{p=new URLSearchParams();}const skip=Math.max(0,parseInt(p.get('skip')||'0',10)||0),search=(p.get('search')||'').toLowerCase();let all=(await data('catalogs.json'))[c[2]]||[];const details=await data('metadata.json');if(c[1]==='series')all=[...all].sort((a,b)=>Number(hasNewEpisodes(b))-Number(hasNewEpisodes(a))||releaseSortTime(b)-releaseSortTime(a));response=json({metas:all.filter(x=>!search||x.name.toLowerCase().includes(search)).slice(skip,skip+CATALOG_PAGE_SIZE).map(m=>{const d=details[metaKey(c[1],m.id)]||{};const enriched={...m};for(const key of ['released','releaseDate','release_date','ottDate','ott','releaseKind','availability','digitalReleaseDate','nextReleaseDate','nextEpisodeReleaseAt','nextSeasonReleaseAt','videos','seasons','imdb_id','imdbId','imdb','externals','externalIds','ids'])if(d[key]!==undefined)enriched[key]=d[key];const aliasImdb=IMDB_BY_META[metaKey(c[1],m.id)];if(!enriched.imdb_id&&aliasImdb)enriched.imdb_id=aliasImdb;return {...enriched,poster:ORIGIN+'/art/poster/'+artId(m.type,m.id),background:ORIGIN+'/art/background/'+artId(m.type,m.id),logo:ORIGIN+'/art/logo/'+artId(m.type,m.id)}})});}}else response=json({error:'Not found'},404);
+  if(a)response=await art(a[1],a[2],request);else if(m)response=json({meta:await meta(m[1],m[2])});else if(c){const def=catalogDefs.find(d=>d.id===c[2]&&d.type===c[1]);if(!def)response=json({metas:[]});else {let p;try{p=new URLSearchParams(c[3]?decodeURIComponent(c[3]):url.search);}catch{p=new URLSearchParams();}const skip=Math.max(0,parseInt(p.get('skip')||'0',10)||0),search=(p.get('search')||'').toLowerCase();let all=(await data('catalogs.json'))[c[2]]||[];const details=await data('metadata.json');if(c[1]==='series')all=[...all].sort((a,b)=>Number(hasNewEpisodes(b))-Number(hasNewEpisodes(a))||releaseSortTime(b)-releaseSortTime(a));response=json({metas:all.filter(x=>!search||x.name.toLowerCase().includes(search)).slice(skip,skip+CATALOG_PAGE_SIZE).map(m=>{const d=details[metaKey(c[1],m.id)]||{};const enriched={...m};for(const key of ['released','releaseDate','release_date','ottDate','ott','releaseKind','availability','digitalReleaseDate','nextReleaseDate','nextEpisodeReleaseAt','nextSeasonReleaseAt','videos','seasons','imdb_id','imdbId','imdb','externals','externalIds','ids'])if(d[key]!==undefined)enriched[key]=d[key];const aliasImdb=IMDB_BY_META[metaKey(c[1],m.id)];if(!enriched.imdb_id&&aliasImdb)enriched.imdb_id=aliasImdb;return {...enriched,poster:buildCatalogPosterUrl(ORIGIN,m.type,m.id,m.justAdded===true),background:ORIGIN+'/art/background/'+artId(m.type,m.id),logo:ORIGIN+'/art/logo/'+artId(m.type,m.id)}})});}}else response=json({error:'Not found'},404);
  }
  return request.method==='HEAD'?new Response(null,{status:response.status,headers:response.headers}):response;
 }};
