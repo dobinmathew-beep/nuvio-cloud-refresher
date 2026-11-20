@@ -200,7 +200,7 @@ async function sendTvmazePosterFallback(tvmazeId, req, res) {
   res.statusCode = 200;
   res.setHeader('Content-Type', type);
   res.setHeader('X-Poster-Source', 'TVmaze');
-  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=3600');
+  res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Poster-Date-Status', status);
