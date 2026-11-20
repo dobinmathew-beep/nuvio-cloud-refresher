@@ -6,17 +6,13 @@
     "ottDate": "2026-11-20",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
-      "https://cinebuds.com/ott-releases-this-week/"
+      "https://cinebuds.com/ott-release-dates/"
     ],
     "platforms": [
       "Prime Video"
     ],
     "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
-    "sourceRecord": {
-      "title": "Drones",
-      "releaseDate": "2026-11-20",
-      "source": "https://cinebuds.com/ott-releases-this-week/"
-    }
+    "sourceRecord": {}
   },
   {
     "name": "The Conjunction",
@@ -254,9 +250,6 @@
         "fetchedAt": "2026-11-14T18:26:15.691Z"
       },
       "tmdbId": 590401,
-      "trendingRank": 10,
-      "trendingRankedAt": "2026-11-19T02:19:12.945Z",
-      "trendingRankedDateIST": "2026-11-19",
       "verified": true
     }
   },
@@ -509,38 +502,6 @@
     }
   },
   {
-    "name": "Avalaga Irunthal",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-10-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6acee68b3249ff69efda4163",
-      "platform": "ZEE5",
-      "title": "Avalaga Irunthal",
-      "createdAt": "2026-10-14T02:18:51.600Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "original_language": "Tamil",
-      "releaseDate": "2026-10-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-10-14T02:18:51.600Z",
-      "votes": 0,
-      "verified": true
-    }
-  },
-  {
     "name": "Southern Shadows",
     "language": "tamil",
     "type": "series",
@@ -598,6 +559,38 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-05-12T03:46:33.489Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Avalaga Irunthal",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-10-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6acee68b3249ff69efda4163",
+      "platform": "ZEE5",
+      "title": "Avalaga Irunthal",
+      "createdAt": "2026-10-14T02:18:51.600Z",
+      "genre": "Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "original_language": "Tamil",
+      "releaseDate": "2026-10-14",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-10-14T02:18:51.600Z",
+      "votes": 0,
       "verified": true
     }
   },
@@ -1374,6 +1367,53 @@
     }
   },
   {
+    "name": "Iruniram",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-04-25",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ManoramaMAX"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69ec373630958fd1b959e408",
+      "platform": "ManoramaMAX",
+      "title": "Iruniram",
+      "createdAt": "2026-04-25T03:38:30.630Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Malayalam"
+      ],
+      "releaseDate": "2026-04-25",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-04-25T03:38:30.630Z",
+      "tmdbDetails": {
+        "tmdbId": 1686468,
+        "director": null,
+        "cast": [],
+        "overview": "Ambili, a young girl on a quest to find the \"best color in the world\". The film explores life through her unique, innocent perspective.",
+        "runtime": 82,
+        "genres": [],
+        "originalLanguage": "ml",
+        "spokenLanguages": [
+          "Malayalam"
+        ],
+        "releaseDate": null,
+        "voteAverage": null,
+        "trailerKey": null,
+        "fetchedAt": "2026-11-16T23:43:59.297Z"
+      },
+      "tmdbId": 1686468,
+      "verified": true
+    }
+  },
+  {
     "name": "Varumaiyil Thaal",
     "language": "tamil",
     "type": "movie",
@@ -1431,53 +1471,6 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-07-11T05:23:58.919Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Iruniram",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-04-25",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ManoramaMAX"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69ec373630958fd1b959e408",
-      "platform": "ManoramaMAX",
-      "title": "Iruniram",
-      "createdAt": "2026-04-25T03:38:30.630Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Malayalam"
-      ],
-      "releaseDate": "2026-04-25",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-04-25T03:38:30.630Z",
-      "tmdbDetails": {
-        "tmdbId": 1686468,
-        "director": null,
-        "cast": [],
-        "overview": "Ambili, a young girl on a quest to find the \"best color in the world\". The film explores life through her unique, innocent perspective.",
-        "runtime": 82,
-        "genres": [],
-        "originalLanguage": "ml",
-        "spokenLanguages": [
-          "Malayalam"
-        ],
-        "releaseDate": null,
-        "voteAverage": null,
-        "trailerKey": null,
-        "fetchedAt": "2026-11-16T23:43:59.297Z"
-      },
-      "tmdbId": 1686468,
       "verified": true
     }
   },

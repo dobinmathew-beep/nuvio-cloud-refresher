@@ -1,7 +1,228 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-20T05:17:57.683820+04:00",
+    "checkedAt": "2026-11-20T09:00:27.290069+04:00",
     "records": [
+      {
+        "_id": "6af6738fdea24088f261c3b1",
+        "platform": "SonyLIV",
+        "title": "Anbil Avan",
+        "createdAt": "2026-11-13T02:18:55.364Z",
+        "genre": "Thriller, Romance, Drama",
+        "imdbRating": null,
+        "languages": [
+          "Tamil"
+        ],
+        "original_language": "Tamil",
+        "releaseDate": "2026-11-20",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-20T02:18:51.186Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/2cN2WjL4xQvbJIhxSjGmhXL41rX.jpg",
+        "instagramPostedAt": "2026-11-13T02:20:50Z",
+        "tmdbDetails": {
+          "tmdbId": 1431738,
+          "director": "R. Kaarthikeyan",
+          "cast": [
+            {
+              "name": "Ashok Selvan",
+              "character": "Surya"
+            },
+            {
+              "name": "Preity Mukhundhan",
+              "character": "Iyal"
+            },
+            {
+              "name": "Sabumon Abdusamad",
+              "character": ""
+            },
+            {
+              "name": "Kadirbalu",
+              "character": ""
+            },
+            {
+              "name": "Mahadevan Ganesh",
+              "character": ""
+            },
+            {
+              "name": "Jawahar Sakthi",
+              "character": ""
+            },
+            {
+              "name": "Revathi",
+              "character": ""
+            }
+          ],
+          "overview": "A married couple attempts to start a good life together, but unexpected trouble traps them in an unsettling situation that forces them to fight back for their survival.",
+          "runtime": 158,
+          "genres": [
+            "Romance",
+            "Thriller"
+          ],
+          "originalLanguage": "ta",
+          "spokenLanguages": [
+            "Tamil"
+          ],
+          "releaseDate": "2026-10-02",
+          "voteAverage": null,
+          "trailerKey": "h5UFAz7LsSo",
+          "fetchedAt": "2026-11-13T12:41:01.465Z"
+        },
+        "tmdbId": 1431738,
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-11-20T02:19:25.523Z",
+        "trendingRankedDateIST": "2026-11-20",
+        "verified": true
+      },
+      {
+        "_id": "6affae0accead6edc4ce6634",
+        "platform": "JioHotStar",
+        "title": "Percy Jackson & the Olympians",
+        "createdAt": "2026-11-20T02:18:50.122Z",
+        "genre": "Fantasy Adventure",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-20",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-20T02:19:45.201Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/zofPiEpwCRYaezOncTlQwXebHFU.jpg",
+        "tmdbRating": 73,
+        "tmdbVotes": 877,
+        "verified": true
+      },
+      {
+        "_id": "6affae0accead6edc4ce6635",
+        "title": "Steps",
+        "platform": "Netflix",
+        "createdAt": "2026-11-20T02:18:50.338Z",
+        "genre": "Animation, Comedy",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-20",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-20T02:19:44.541Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/guKx4FP8QYBsyGZchJp1BaXPCJl.jpg",
+        "tmdbRating": 87,
+        "tmdbVotes": 20,
+        "instagramPostedAt": "2026-11-20T02:20:59Z",
+        "verified": true
+      },
+      {
+        "_id": "6affae0accead6edc4ce6636",
+        "title": "Dhindora 2",
+        "platform": "Netflix",
+        "createdAt": "2026-11-20T02:18:50.550Z",
+        "genre": "Comedy, Drama",
+        "imdbRating": 8.8,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-20",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-20T02:18:50.550Z",
+        "verified": true
+      },
+      {
+        "_id": "6affae0accead6edc4ce6637",
+        "title": "Teen Tigada",
+        "platform": "ZEE5",
+        "createdAt": "2026-11-20T02:18:50.762Z",
+        "genre": "Drama",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-20",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-20T02:19:49.251Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/3RdK0k5nbh0PHQeX2A54Fcf3Wm1.jpg",
+        "verified": true
+      },
+      {
+        "_id": "6affae0bccead6edc4ce6638",
+        "title": "The Vvaan: Force of the Forrest",
+        "platform": "Prime Video",
+        "createdAt": "2026-11-20T02:18:50.973Z",
+        "genre": "Fantasy, Thriller",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-20",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-20T02:18:50.973Z",
+        "verified": true
+      },
+      {
+        "_id": "6affae0bccead6edc4ce6639",
+        "title": "Haiku",
+        "platform": "Netflix",
+        "createdAt": "2026-11-20T02:18:51.398Z",
+        "genre": "Romance, Drama, Comedy",
+        "imdbRating": null,
+        "languages": [
+          "Tamil"
+        ],
+        "original_language": "Tamil",
+        "releaseDate": "2026-11-20",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-20T02:19:46.195Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/thZGedKvZnnvuLpNWEA1nmalM7K.jpg",
+        "instagramPostedAt": "2026-11-20T02:20:24Z",
+        "verified": true
+      },
+      {
+        "_id": "6affae0bccead6edc4ce663a",
+        "platform": "SunNXT",
+        "title": "Anumana Pakshi",
+        "createdAt": "2026-11-20T02:18:51.610Z",
+        "genre": "Comedy Thriller",
+        "imdbRating": null,
+        "languages": [
+          "Telugu"
+        ],
+        "original_language": "Telugu",
+        "releaseDate": "2026-11-20",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-20T02:19:48.187Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/ee6LvOKRPN88llyeaOMMXSg9u5N.jpg",
+        "instagramPostedAt": "2026-11-20T02:20:38Z",
+        "verified": true
+      },
+      {
+        "_id": "6affae0bccead6edc4ce663b",
+        "platform": "Aha",
+        "title": "Crazy Kalyanam",
+        "createdAt": "2026-11-20T02:18:51.821Z",
+        "genre": "Romance/Comedy",
+        "imdbRating": null,
+        "languages": [
+          "Telugu"
+        ],
+        "original_language": "Telugu",
+        "releaseDate": "2026-11-20",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-20T02:19:47.526Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/dt6VT9GSCH6PSnTvngbF0IEnAho.jpg",
+        "instagramPostedAt": "2026-11-20T02:20:38Z",
+        "verified": true
+      },
       {
         "_id": "6afd0b087544018d4aade8e1",
         "platform": "Netflix",
@@ -19,9 +240,6 @@
         "updatedAt": "2026-11-19T02:19:34.833Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/wWNizZ4IcSld3xXH1WEXziJiNJN.jpg",
         "instagramPostedAt": "2026-11-18T02:20:14Z",
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
-        "trendingRankedDateIST": "2026-11-19",
         "tmdbRating": 70,
         "tmdbVotes": 12,
         "tmdbDetails": {
@@ -77,6 +295,9 @@
           "fetchedAt": "2026-11-19T09:28:24.718Z"
         },
         "tmdbId": 1551025,
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-20T02:19:25.523Z",
+        "trendingRankedDateIST": "2026-11-20",
         "verified": true
       },
       {
@@ -131,9 +352,9 @@
         "updatedAt": "2026-11-17T02:19:35.547Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/oB9Pcb5grM5Gk0TDWZeBZ3vHhDZ.jpg",
         "instagramPostedAt": "2026-11-17T02:20:05Z",
-        "trendingRank": 6,
-        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
-        "trendingRankedDateIST": "2026-11-19",
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-20T02:19:25.523Z",
+        "trendingRankedDateIST": "2026-11-20",
         "verified": true
       },
       {
@@ -246,9 +467,6 @@
           "fetchedAt": "2026-11-14T14:06:13.743Z"
         },
         "tmdbId": 1543469,
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
-        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -323,9 +541,6 @@
         "tmdbId": 1050981,
         "tmdbRating": 65,
         "tmdbVotes": 12,
-        "trendingRank": 7,
-        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
-        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -424,9 +639,6 @@
           "fetchedAt": "2026-11-13T05:09:16.275Z"
         },
         "tmdbId": 1493572,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
-        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -502,9 +714,6 @@
           "fetchedAt": "2026-11-13T03:49:09.847Z"
         },
         "tmdbId": 434775,
-        "trendingRank": 8,
-        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
-        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -579,77 +788,6 @@
           "fetchedAt": "2026-11-14T07:58:38.175Z"
         },
         "tmdbId": 1013057,
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
-        "trendingRankedDateIST": "2026-11-19",
-        "verified": true
-      },
-      {
-        "_id": "6af6738fdea24088f261c3b1",
-        "platform": "SonyLIV",
-        "title": "Anbil Avan",
-        "createdAt": "2026-11-13T02:18:55.364Z",
-        "genre": "Romantic Action Thriller",
-        "imdbRating": null,
-        "languages": [
-          "Tamil"
-        ],
-        "original_language": "Tamil",
-        "releaseDate": "2026-11-13",
-        "source_verified": true,
-        "type": "Movie",
-        "updatedAt": "2026-11-13T02:19:55.068Z",
-        "posterUrl": "https://image.tmdb.org/t/p/w300/2cN2WjL4xQvbJIhxSjGmhXL41rX.jpg",
-        "instagramPostedAt": "2026-11-13T02:20:50Z",
-        "tmdbDetails": {
-          "tmdbId": 1431738,
-          "director": "R. Kaarthikeyan",
-          "cast": [
-            {
-              "name": "Ashok Selvan",
-              "character": "Surya"
-            },
-            {
-              "name": "Preity Mukhundhan",
-              "character": "Iyal"
-            },
-            {
-              "name": "Sabumon Abdusamad",
-              "character": ""
-            },
-            {
-              "name": "Kadirbalu",
-              "character": ""
-            },
-            {
-              "name": "Mahadevan Ganesh",
-              "character": ""
-            },
-            {
-              "name": "Jawahar Sakthi",
-              "character": ""
-            },
-            {
-              "name": "Revathi",
-              "character": ""
-            }
-          ],
-          "overview": "A married couple attempts to start a good life together, but unexpected trouble traps them in an unsettling situation that forces them to fight back for their survival.",
-          "runtime": 158,
-          "genres": [
-            "Romance",
-            "Thriller"
-          ],
-          "originalLanguage": "ta",
-          "spokenLanguages": [
-            "Tamil"
-          ],
-          "releaseDate": "2026-10-02",
-          "voteAverage": null,
-          "trailerKey": "h5UFAz7LsSo",
-          "fetchedAt": "2026-11-13T12:41:01.465Z"
-        },
-        "tmdbId": 1431738,
         "verified": true
       },
       {
@@ -724,9 +862,6 @@
           "fetchedAt": "2026-11-13T10:13:20.584Z"
         },
         "tmdbId": 1389379,
-        "trendingRank": 9,
-        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
-        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -841,9 +976,6 @@
           "fetchedAt": "2026-11-16T15:16:51.427Z"
         },
         "tmdbId": 1805816,
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
-        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -1126,9 +1258,6 @@
           "fetchedAt": "2026-11-14T18:26:15.691Z"
         },
         "tmdbId": 590401,
-        "trendingRank": 10,
-        "trendingRankedAt": "2026-11-19T02:19:12.945Z",
-        "trendingRankedDateIST": "2026-11-19",
         "verified": true
       },
       {
@@ -30719,8 +30848,78 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-20T05:17:57.683820+04:00",
+    "checkedAt": "2026-11-20T09:00:27.290069+04:00",
     "records": [
+      {
+        "name": "Anbil Avan",
+        "language": "tamil",
+        "type": "movie",
+        "ottDate": "2026-11-20",
+        "platforms": [
+          "SonyLIV"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/11/anbil-avan-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/anbil-avan/",
+        "confirmed": true
+      },
+      {
+        "name": "Crazy Kalyanam",
+        "language": "telugu",
+        "type": "movie",
+        "ottDate": "2026-11-20",
+        "platforms": [
+          "Aha"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/10/crazy-kalyanam-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/crazy-kalyanam/",
+        "confirmed": true
+      },
+      {
+        "name": "Drones",
+        "language": "tamil",
+        "type": "movie",
+        "ottDate": "2026-11-20",
+        "platforms": [
+          "Prime Video"
+        ],
+        "poster": null,
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+        "confirmed": true
+      },
+      {
+        "name": "Haiku",
+        "language": "tamil",
+        "type": "movie",
+        "ottDate": "2026-11-20",
+        "platforms": [
+          "Netflix"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/10/haiku-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/haiku/",
+        "confirmed": true
+      },
+      {
+        "name": "Nayyi Navelli",
+        "language": "hindi",
+        "type": "movie",
+        "ottDate": "2026-11-20",
+        "platforms": [
+          "Prime Video"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/11/nayyi-navelli-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/nayyi-navelli/",
+        "confirmed": true
+      },
       {
         "name": "Bandra",
         "language": "malayalam",
