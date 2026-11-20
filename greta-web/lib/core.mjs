@@ -13,13 +13,13 @@ function artId(type,id){return id.startsWith('tt')?id:type+'~'+id;}
 const JUST_ADDED_RENDERER_ORIGIN='https://great-indian-upcoming-posters.onrender.com';
 export function buildJustAddedRendererUrl(type,id){
  const value=String(id||'');
- if(/^tt\d{7,10}$/.test(value))return JUST_ADDED_RENDERER_ORIGIN+'/poster/'+value+'.jpg?badge=just-added&v=3';
+ if(/^tt\d{7,10}$/.test(value))return JUST_ADDED_RENDERER_ORIGIN+'/poster/'+value+'.jpg?badge=just-added&v=4';
  const tmdb=value.match(/^tmdb:(\d{1,12})$/);
  if(tmdb)return JUST_ADDED_RENDERER_ORIGIN+'/poster/tmdb/'+tmdb[1]+'.jpg?badge=just-added&type='+(type==='movie'?'movie':'tv')+'&v=3';
  return null;
 }
 export function buildCatalogPosterUrl(origin,type,id,justAdded=false){
- return origin+'/art/poster/'+artId(type,id)+(justAdded?'?badge=just-added&v=3':'');
+ return origin+'/art/poster/'+artId(type,id)+(justAdded?'?badge=just-added&v=4':'');
 }
 function metaKey(type,id){return id.startsWith('tt')?id:type+'|'+id;}
 const ID_ALIASES={"tt34221824":"series|tmdb:273771","tt37541677":"movie|tmdb:1576369","tt8537520":"series|tvmaze:37295","tt43695670":"series|tmdb:332989","tt7084920":"series|tvmaze:31247","tt7805494":"series|tvmaze:78507","tt32086077":"movie|tmdb:927547","tt2257284":"movie|tmdb:431582","tt2016894":"movie|tmdb:85985","tt1188996":"movie|tmdb:26022","tt1187043":"movie|tmdb:20453","tt0986264":"movie|tmdb:7508","tt28259207":"movie|tmdb:1160018","tt16997004":"series|tmdb:249765","tt14420552":"series|tvmaze:55676","tt50286925":"series|tmdb:340197","tt37971394":"movie|tmdb:1515729","tt37458112":"movie|tmdb:1433117","tt30460421":"movie|tmdb:1209511","tt22797990":"movie|tmdb:1036081","tt10908160":"movie|tmdb:1503567","tt14682792":"series|tmdb:224729","tt18313998":"series|tmdb:277329","tt14803240":"series|tmdb:338501","tt31398701":"series|tmdb:236891","tt27327486":"series|tmdb:275991","tt30632873":"series|tmdb:236425","tt33702419":"series|tmdb:294178","tt32176709":"series|tmdb:254896","tt38509392":"series|tmdb:276584","tt34799015":"series|tmdb:278802","tt30831829":"series|tmdb:278795","tt32512778":"series|tmdb:337265","tt32062538":"series|tmdb:276607","tt32589618":"series|tmdb:278797","tt31643804":"series|tmdb:276615","tt32335206":"series|tmdb:276612","tt41100531":"series|tmdb:317896","tt40494646":"series|tmdb:315927","tt39989131":"series|tmdb:315194","tt35666025":"series|tmdb:281733","tt35376041":"series|tmdb:263299","tt27519661":"series|tmdb:209334","tt31914057":"series|tmdb:282467","tt37678386":"series|tmdb:297839","tt49702110":"series|tmdb:339474","tt50063835":"series|tmdb:338390","tt44101690":"series|tmdb:331932","tt43708665":"series|tmdb:328818","tt44112767":"series|tmdb:332299","tt40859434":"series|tmdb:316958","tt42755616":"series|tmdb:217167","tt31863147":"series|tmdb:249771","tt5162390":"movie|tmdb:1166688"};
@@ -92,7 +92,7 @@ async function art(kind,id,request){
  const rawId=bits.length===2?bits[1]:id;
  let cache;
  try{if(globalThis.caches)cache=await caches.open('dobins-indian-art-v2');}catch{}
- const key=new Request(ORIGIN+'/art/'+kind+'/'+id+(badgeRequested?'?badge=just-added&v=3':''));
+ const key=new Request(ORIGIN+'/art/'+kind+'/'+id+(badgeRequested?'?badge=just-added&v=4':''));
  const saved=await cache?.match(key);
  if(saved)return saved;
 
