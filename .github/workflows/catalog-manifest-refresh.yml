@@ -22,13 +22,13 @@ jobs:
         id: start
         env:
           POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
-          SCAN_TOKEN: \${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
+          SCAN_TOKEN: ${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
         run: |
           if [ -z "$SCAN_TOKEN" ]; then
             echo "::error::POSTER_CATALOG_SCAN_TOKEN repository secret is missing."
             exit 1
           fi
-          # Attach to a refresh that is already running (including after a Render restart).
+          # Attach to an existing refresh after Render restarts instead of failing on HTTP 409.
           http_response=$(curl --silent --show-error --max-time 90 \
             -w '%{http_code}' \
             -X POST "$POSTER_SERVICE_URL/catalog-refresh" \
@@ -53,11 +53,10 @@ jobs:
       - name: Wait for scan and poster generation
         env:
           POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
-          SCAN_TOKEN: \${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
-          JOB_ID: \${{ steps.start.outputs.job_id }}
+          SCAN_TOKEN: ${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
+          JOB_ID: ${{ steps.start.outputs.job_id }}
         run: |
-          # Render free instances may restart during a long scan. Treat transient
-          # 5xx/network errors as retryable; the service resumes from its durable ledger.
+          # Render free instances may restart; transient endpoint errors are retryable.
           for attempt in $(seq 1 700); do
             if ! response=$(curl --silent --show-error --fail-with-body \
               --max-time 30 \
@@ -80,85 +79,5 @@ jobs:
             fi
             sleep 30
           done
-          echo "::error::Timed out waiting for Render catalogue refresh after the six-hour GitHub job limit."
-          exit 1
-\n'}"
-          response="${http_response%
-
-      - name: Wait for scan and poster generation
-        env:
-          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
-          SCAN_TOKEN: \${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
-          JOB_ID: \${{ steps.start.outputs.job_id }}
-        run: |
-          # Render free instances may restart during a long scan. Treat transient
-          # 5xx/network errors as retryable; the service resumes from its durable ledger.
-          for attempt in $(seq 1 700); do
-            if ! response=$(curl --silent --show-error --fail-with-body \
-              --max-time 30 \
-              "$POSTER_SERVICE_URL/catalog-refresh/status" \
-              -H "Authorization: Bearer $SCAN_TOKEN" \
-              -H "Accept: application/json"); then
-              echo "::warning::Render status endpoint temporarily unavailable; retrying ($attempt/700)."
-              sleep 30
-              continue
-            fi
-            echo "$response"
-            status=$(echo "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).status||'')}catch{console.log('')}})")
-            if [ "$status" = "completed" ]; then
-              echo "$response" >> "$GITHUB_STEP_SUMMARY"
-              exit 0
-            fi
-            if [ "$status" = "failed" ]; then
-              echo "::error::Catalogue refresh failed."
-              exit 1
-            fi
-            sleep 30
-          done
-          echo "::error::Timed out waiting for Render catalogue refresh after the six-hour GitHub job limit."
-          exit 1
-\n'*}"
-          echo "$response"
-          if [ "$http_code" != "202" ] && [ "$http_code" != "409" ]; then
-            echo "::error::Unexpected Render response: HTTP $http_code"
-            exit 1
-          fi
-          job_id=$(echo "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).jobId||'')}catch{console.log('')}})")
-          if [ -z "$job_id" ]; then
-            echo "::error::Render did not return a catalogue refresh job ID."
-            exit 1
-          fi
-          echo "job_id=$job_id" >> "$GITHUB_OUTPUT"
-
-      - name: Wait for scan and poster generation
-        env:
-          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
-          SCAN_TOKEN: \${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
-          JOB_ID: \${{ steps.start.outputs.job_id }}
-        run: |
-          # Render free instances may restart during a long scan. Treat transient
-          # 5xx/network errors as retryable; the service resumes from its durable ledger.
-          for attempt in $(seq 1 700); do
-            if ! response=$(curl --silent --show-error --fail-with-body \
-              --max-time 30 \
-              "$POSTER_SERVICE_URL/catalog-refresh/status" \
-              -H "Authorization: Bearer $SCAN_TOKEN" \
-              -H "Accept: application/json"); then
-              echo "::warning::Render status endpoint temporarily unavailable; retrying ($attempt/700)."
-              sleep 30
-              continue
-            fi
-            echo "$response"
-            status=$(echo "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).status||'')}catch{console.log('')}})")
-            if [ "$status" = "completed" ]; then
-              echo "$response" >> "$GITHUB_STEP_SUMMARY"
-              exit 0
-            fi
-            if [ "$status" = "failed" ]; then
-              echo "::error::Catalogue refresh failed."
-              exit 1
-            fi
-            sleep 30
-          done
-          echo "::error::Timed out waiting for Render catalogue refresh after the six-hour GitHub job limit."
+          echo "::error::Timed out waiting for Render catalogue refresh after six hours."
           exit 1
