@@ -1,1 +1,1 @@
-Rerun full title-by-title Just Added audit after fixing poster SVG label rendering.
+Verify every catalog entry and OCR the v4 poster URLs after replacing provider badges with our title-case overlay.
