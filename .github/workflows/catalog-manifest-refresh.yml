@@ -28,19 +28,28 @@ jobs:
             echo "::error::POSTER_CATALOG_SCAN_TOKEN repository secret is missing."
             exit 1
           fi
-          # A Render refresh may already be active (including one resumed after
-          # an instance restart). Attach this workflow to it instead of treating
-          # HTTP 409 as a failed run or launching a duplicate refresh.
+          # Attach to a refresh that is already running (including after a Render restart).
           http_response=$(curl --silent --show-error --max-time 90 \
-            -w '\n%{http_code}' \
+            -w '%{http_code}' \
             -X POST "$POSTER_SERVICE_URL/catalog-refresh" \
             -H "Authorization: Bearer $SCAN_TOKEN" \
             -H "Accept: application/json") || {
               echo "::error::Could not reach the Render catalogue refresh endpoint."
               exit 1
             }
-          http_code="${http_response##*
-
+          http_code="${http_response: -3}"
+          response="${http_response:0:${#http_response}-3}"
+          echo "$response"
+          if [ "$http_code" != "202" ] && [ "$http_code" != "409" ]; then
+            echo "::error::Unexpected Render response: HTTP $http_code"
+            exit 1
+          fi
+          job_id=$(echo "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).jobId||'')}catch{console.log('')}})")
+          if [ -z "$job_id" ]; then
+            echo "::error::Render did not return a catalogue refresh job ID."
+            exit 1
+          fi
+          echo "job_id=$job_id" >> "$GITHUB_OUTPUT"
       - name: Wait for scan and poster generation
         env:
           POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
