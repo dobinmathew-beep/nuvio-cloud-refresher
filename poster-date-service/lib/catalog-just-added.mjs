@@ -27,7 +27,7 @@ async function loadIndex(fetcher) {
         error: error?.message || 'unknown error',
         action: 'fall back to BetterPosters tag detection'
       }));
-      cachedIndex = null;
+      cachedIndex = {};
       cachedAt = Date.now() - INDEX_TTL_MS + 60 * 1000;
       return null;
     } finally {
