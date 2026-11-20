@@ -478,6 +478,7 @@ async function runManifestCatalogRefreshInternal(lease) {
         await lease?.assertOwned?.();
         await writeJson(config, CHECKPOINT_PATH, checkpoint);
       } catch (error) {
+        if (/coordination lease/.test(error?.message || '')) throw error;
         const failed = {
           source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
           pages: 0, records: 0, titles: [], error: error?.message || 'catalogue fetch failed'
@@ -609,7 +610,6 @@ async function runManifestCatalogRefreshInternal(lease) {
         // the next run retries only this small batch and recognizes completed
         // uploads through the poster service's ImageKit cache-validation path.
         await lease?.assertOwned?.();
-        await lease?.assertOwned?.();
         await persistLedgerShards(config, ledgerCache, [shard]);
 
         if (pendingItems.length) {
@@ -637,6 +637,7 @@ async function runManifestCatalogRefreshInternal(lease) {
           resultCounts['upload-pending'] = Math.max(0, (resultCounts['upload-pending'] || 0) - pendingItems.length);
           if (!resultCounts['upload-pending']) delete resultCounts['upload-pending'];
         }
+        await lease?.assertOwned?.();
         await persistLedgerShards(config, ledgerCache, [shard]);
       }
 
@@ -683,6 +684,7 @@ async function runManifestCatalogRefreshInternal(lease) {
       version: 2, complete: true, updatedAt: new Date().toISOString(),
       completedCatalogues, titleFiles
     };
+    await lease?.assertOwned?.();
     await writeJson(config, CHECKPOINT_PATH, checkpoint);
   }
   console.log('[catalog-refresh-complete]', JSON.stringify(report));
