@@ -18,7 +18,6 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const LEDGER_DIR = '/catalog-state/poster-processing';
 const LEDGER_VERSION = 1;
 const LEDGER_SHARDS = '0123456789abcdef';
-const LEDGER_TTL_MS = 6 * 60 * 60 * 1000;
 const PREWARM_BATCH_SIZE = Math.max(10, Math.min(50, Number(process.env.CATALOG_PREWARM_BATCH_SIZE || 25)));
 const PREWARM_CONCURRENCY = Math.max(1, Math.min(2, Number(process.env.CATALOG_PREWARM_CONCURRENCY || 2)));
 const VERIFY_CONCURRENCY = Math.max(1, Math.min(6, Number(process.env.CATALOG_VERIFY_CONCURRENCY || 4)));
@@ -61,11 +60,13 @@ function ledgerRecord(item, status, extra = {}) {
     ...extra
   };
 }
-function reusableLedgerRecord(record, item, now = Date.now()) {
+function reusableLedgerRecord(record, item) {
+  // A verified poster is reusable for as long as the catalogue identity and
+  // poster fingerprint are unchanged and ImageKit still serves the asset.
+  // Do not expire completed work after six hours: long refreshes and Render
+  // restarts must not force already-verified titles through the pipeline again.
   if (!record || !['verified', 'cache-hit'].includes(record.status)) return false;
-  if (record.fingerprint !== itemFingerprint(item)) return false;
-  const completedAt = Date.parse(record.verifiedAt || record.updatedAt || '');
-  return Number.isFinite(completedAt) && now - completedAt >= 0 && now - completedAt < LEDGER_TTL_MS;
+  return record.fingerprint === itemFingerprint(item);
 }
 
 function imageKitConfig() {
@@ -522,8 +523,8 @@ async function runManifestCatalogRefreshInternal() {
   }
 
   // The ledger lives in ImageKit beside the catalogue checkpoints, not on the
-  // ephemeral Render filesystem. A verified record is reusable for six hours
-  // only when the catalogue fingerprint matches and the asset still exists.
+  // ephemeral Render filesystem. Verified records do not expire: a matching
+  // fingerprint plus a live ImageKit HEAD check is the completion proof.
   for (const [shard, shardItems] of itemsByShard) {
     const ledgerCache = new Map();
     const records = await loadLedgerShard(config, shard, ledgerCache);
