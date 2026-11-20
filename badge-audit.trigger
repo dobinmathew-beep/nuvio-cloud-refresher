@@ -1,1 +1,1 @@
-Run full end-to-end poster audit for all eight catalogs and every title through shared Render renderer v7. Inspect Coming/New Episode dates and Just Added overlays, including unflagged posters and TMDB/TVmaze IDs.
+Run full end-to-end poster audit v8 across every title in all eight catalogs using the live Render shared renderer. Verify central Coming/New Episode dates, central 14-day Just Added eligibility, BetterPosters tag normalization and exact title-case response label.
