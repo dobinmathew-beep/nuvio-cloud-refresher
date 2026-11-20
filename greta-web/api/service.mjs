@@ -83,20 +83,6 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
  res.statusCode=fallback.status;
  for(const [k,v] of fallback.headers)res.setHeader(k,v);
  return res.end(req.method==='HEAD'?undefined:Buffer.from(await fallback.arrayBuffer()));
- // Preserve a working image if the shared renderer is unavailable.
- const imdb=rendererId.startsWith('tt')?rendererId:'';
- if(imdb){
-  const rated=ratedPoster(posterTemplate,imdb,'');
-  if(rated){
-   try{
-    const image=await fetchPoster(rated);
-    const mime=image.contentType||'image/jpeg';
-    res.statusCode=200;
-    for(const [k,v] of Object.entries({'Content-Type':mime,'Access-Control-Allow-Origin':'*','Cache-Control':'private,max-age=300','X-Content-Type-Options':'nosniff','X-Poster-Source':'betterposters-fallback'}))res.setHeader(k,v);
-    return res.end(req.method==='HEAD'?undefined:image);
-   }catch{}
-  }
- }
 }
 const catalogRequest=route.match(/^\/catalog\/(movie|series)\/([^/]+?)(?:\.json|\/)/);if(catalogRequest&&!buildManifest(origin,scopeMask).catalogs.some(c=>c.type===catalogRequest[1]&&c.id===catalogRequest[2]))return send(200,{metas:[]});
  const request=new Request(origin+route+(requestParams.size?'?'+requestParams.toString():''),{method:req.method});const result=await worker.fetch(request);const contentType=result.headers.get('content-type')||'';if(contentType.includes('application/json')){const value=replaceOrigin(await result.json(),origin);const posterBase=posterTemplate?'/install/'+scopeMask.toString(16).padStart(2,'0')+'/bttr/'+encodePosterConfig(posterTemplate):'';if(posterTemplate){const posterUrl=m=>buildConfiguredPosterUrl(m,origin,posterBase,posterTemplate);for(const m of value.metas||[])m.poster=posterUrl(m);if(value.meta)value.meta.poster=posterUrl(value.meta)}if(route==='/status.json')value.name='The Great Indian Addon';return send(result.status,value,{'Cache-Control':posterTemplate?'private,no-store':result.headers.get('cache-control')||'public,max-age=300'})}res.statusCode=result.status;for(const [k,v] of result.headers)res.setHeader(k,v);res.end(req.method==='HEAD'?undefined:Buffer.from(await result.arrayBuffer()));}catch{send(503,{error:'This service is temporarily unavailable. Please try again shortly.'})}}
