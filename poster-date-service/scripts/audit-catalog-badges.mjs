@@ -74,10 +74,10 @@ function hasJustAdded(text) {
 }
 
 function hasComingDate(text) {
-  const normalized = String(text || '').replace(/\\\\[nr]/g, ' ').toLowerCase()
+  const normalized = String(text || '').replace(/\\[nr]/g, ' ').toLowerCase()
     .replace(/[^a-z0-9]+/g, ' ').trim();
-  return /(?:coming|new episode)\\s+\\d{1,2}\\s+(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)(?:ember)?/.test(normalized) ||
-    /(?:coming|new episode)\\s+(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)(?:ember)?\\s+\\d{1,2}/.test(normalized);
+  return /(?:coming|new episode)\s+\d{1,2}\s+(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)(?:ember)?/.test(normalized) ||
+    /(?:coming|new episode)\s+(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)(?:ember)?\s+\d{1,2}/.test(normalized);
 }
 
 let ocrQueue = Promise.resolve();
