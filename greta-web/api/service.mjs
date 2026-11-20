@@ -51,7 +51,7 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
  if(!['GET','HEAD'].includes(req.method))return send(405,{error:'Method not allowed.'});
  if(route==='/manifest.json'||route==='/standalone/manifest.json'){const m=buildManifest(origin,scopeMask,route==='/standalone/manifest.json',posterTemplate);return m?send(200,m,{'Cache-Control':posterTemplate?'private,no-store':'public,max-age=300'}):send(400,{error:'Select at least one catalog.'})}
  if(route==='/health.json')return send(200,await paymentHealth());if(route==='/data-health.json')return send(200,await dataHealth(),{'Cache-Control':'no-store'});
- const posterRoute=route.replace(/%3A/gi,':').match(/^\/poster\/(movie|series)\/((?:tt\\d+)|(?:(?:tmdb|tvmaze):\\d+))\\.jpg$/);if(posterRoute&&posterTemplate){
+ const posterRoute=route.replace(/%3A/gi,':').match(/^\/poster\/(movie|series)\/((?:tt\d+)|(?:(?:tmdb|tvmaze):\d+))\.jpg$/);if(posterRoute&&posterTemplate){
  const [,type,id]=posterRoute;
  const badgeRequested=requestParams.get('badge')==='just-added';
  const fallbackId=id.startsWith('tt')?id:type+'~'+id;
