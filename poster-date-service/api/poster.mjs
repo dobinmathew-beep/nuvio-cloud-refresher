@@ -98,8 +98,11 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
     }
 
     const hasJustAddedBadge = await hasExistingJustAddedTag(imageBytes);
-    if (expectedJustAdded && !hasJustAddedBadge) {
-      console.info('[poster-just-added-cache-mismatch]', JSON.stringify({ imdbId, action: 'rebuild-from-BetterPosters' }));
+    if (hasJustAddedBadge !== Boolean(expectedJustAdded)) {
+      console.info('[poster-just-added-cache-mismatch]', JSON.stringify({
+        imdbId, expectedJustAdded: Boolean(expectedJustAdded), cachedJustAdded: hasJustAddedBadge,
+        action: 'rebuild-from-BetterPosters'
+      }));
       return null;
     }
 
@@ -216,20 +219,10 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
       console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
     }
   }
-  // Only BetterPosters artwork can contain a BetterPosters badge. Avoid
-  // running OCR on RPDB, Metahub or catalog fallback artwork.
-  if (!shouldRenderJustAdded && /betterposters/i.test(original.source || '')) {
-    try {
-      shouldRenderJustAdded = await hasExistingJustAddedTag(original.bytes);
-      if (shouldRenderJustAdded) justAddedSource = 'betterposters-tag';
-    } catch (error) {
-      console.warn('[poster-just-added-detection-failed]', JSON.stringify({
-        imdbId: id,
-        error: error?.message || 'unknown error',
-        action: 'continue-with-release-date-check'
-      }));
-    }
-  }
+  // The catalogue's recent-add index is authoritative for whether to add
+  // our Just Added overlay. Do not OCR every BetterPosters source when the
+  // catalogue says false: any badge already baked into the source bytes remains
+  // visible, while this avoids a costly Tesseract pass for nearly every title.
 
   const release = knownRelease === undefined ? await upcomingRelease(id) : knownRelease;
   let output = original.bytes;
