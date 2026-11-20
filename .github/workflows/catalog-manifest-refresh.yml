@@ -14,7 +14,7 @@ permissions:
 
 concurrency:
   group: manifest-catalogue-poster-refresh
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   refresh:
@@ -56,11 +56,14 @@ jobs:
             echo "$response"
             status=$(echo "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).status||''))")
             if [ "$status" = "completed" ]; then
-              echo 'Catalogue scan and poster processing completed.' >> "$GITHUB_STEP_SUMMARY"
+              complete=$(echo "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).report?.scanComplete===true?'true':'false'))")
               echo "$response" >> "$GITHUB_STEP_SUMMARY"
+              if [ "$complete" != "true" ]; then echo "::error::Scan completed with catalogue fetch errors or pagination truncation; inspect the report."; exit 1; fi
+              echo 'All discovered catalogues scanned and poster processing completed.' >> "$GITHUB_STEP_SUMMARY"
               exit 0
             fi
             if [ "$status" = "failed" ]; then echo "::error::Catalogue refresh failed."; exit 1; fi
+            if [ "$status" = "idle" ]; then echo "::error::Render lost the in-memory refresh job state; rerun after the service is live."; exit 1; fi
             sleep 30
           done
           echo "::error::Timed out waiting for Render catalogue refresh."
