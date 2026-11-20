@@ -1,6 +1,6 @@
 import { upcomingRelease, validImdbId } from '../lib/release-dates.mjs';
 import { renderUpcomingBadge, renderJustAddedBadge } from '../lib/render-poster.mjs';
-import { hasExistingComingDateTag } from '../lib/coming-tag.mjs';
+import { hasExistingComingDateTag, hasExistingJustAddedTag } from '../lib/coming-tag.mjs';
 import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster } from '../lib/imagekit-storage.mjs';
 
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
@@ -128,21 +128,35 @@ async function getOriginal(imdbId, fallbackUrl = '') {
 
 async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl = '') {
   const original = await getOriginal(id, fallbackUrl);
-  // Always paint our own title-case chip over the provider's badge area.
-  // This replaces any uppercase BetterPosters tag instead of preserving it.
-  if (badge === 'just-added') {
+
+  // The shared URL normalizes a BetterPosters "Just Added" tag for every
+  // client, not only the Great Indian catalog. The explicit query flag is
+  // still required when an upstream catalog knows a title is newly added
+  // but BetterPosters has no such tag of its own.
+  let shouldRenderJustAdded = badge === 'just-added';
+  if (!shouldRenderJustAdded) {
+    try {
+      shouldRenderJustAdded = await hasExistingJustAddedTag(original.bytes);
+    } catch (error) {
+      console.warn('[poster-just-added-detection-failed]', JSON.stringify({
+        imdbId: id,
+        error: error?.message || 'unknown error',
+        action: 'continue-with-release-date-check'
+      }));
+    }
+  }
+  if (shouldRenderJustAdded) {
     try {
       const output = await renderJustAddedBadge(original.bytes);
-      console.info('[poster-just-added-check]', JSON.stringify({
-        imdbId: id,
-        result: 'just-added-overlay-replaced-provider-tag'
-      }));
+      const result = badge === 'just-added' ? 'just-added-overlay-for-flagged-title' : 'just-added-provider-tag-normalized';
+      console.info('[poster-just-added-check]', JSON.stringify({ imdbId: id, result }));
       return { bytes: output, type: original.type, source: original.source, status: 'just-added-overlay', releaseDate: 'none', releaseKind: 'none' };
     } catch (error) {
       console.warn('[poster-just-added-overlay-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
       return { bytes: original.bytes, type: original.type, source: original.source, status: 'just-added-overlay-failed-original-preserved', releaseDate: 'none', releaseKind: 'none' };
     }
   }
+
   // Resolve TMDB first. Most catalogue titles have no future release date,
   // so there is no reason to run OCR for them.
   const release = knownRelease === undefined ? await upcomingRelease(id) : knownRelease;
