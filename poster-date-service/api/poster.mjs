@@ -1,6 +1,7 @@
 import { upcomingRelease, validImdbId } from '../lib/release-dates.mjs';
 import { renderUpcomingBadge, renderJustAddedBadge } from '../lib/render-poster.mjs';
 import { hasExistingComingDateTag, hasExistingJustAddedTag } from '../lib/coming-tag.mjs';
+import { isCatalogRecentlyAdded } from '../lib/catalog-just-added.mjs';
 import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster } from '../lib/imagekit-storage.mjs';
 
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
@@ -133,6 +134,13 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
   // for every client using this shared URL. Catalogs can additionally force
   // the badge for titles they know were newly added.
   let shouldRenderJustAdded = badge === 'just-added';
+  if (!shouldRenderJustAdded) {
+    try {
+      shouldRenderJustAdded = await isCatalogRecentlyAdded([id]);
+    } catch (error) {
+      console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
+    }
+  }
   if (!shouldRenderJustAdded) {
     try {
       shouldRenderJustAdded = await hasExistingJustAddedTag(original.bytes);
