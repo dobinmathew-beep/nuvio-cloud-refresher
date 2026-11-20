@@ -1,5 +1,6 @@
 import { Buffer } from 'node:buffer';
 import { createHash } from 'node:crypto';
+import { withRefreshLease } from './refresh-coordination.mjs';
 
 const MANIFEST_KEYS = [
   'CATALOG_MANIFEST_ELFHOSTED_URL',
@@ -173,7 +174,7 @@ function catalogueCheckpointPath(fingerprint) {
   return CATALOG_CHECKPOINT_DIR + '/' + key + '.json';
 }
 
-async function collectCatalog(manifest, catalog, config, fingerprint) {
+async function collectCatalog(manifest, catalog, config, fingerprint, lease) {
   const path = catalogueCheckpointPath(fingerprint);
   const saved = await readState(config, path);
   const titles = new Map();
@@ -221,6 +222,7 @@ async function collectCatalog(manifest, catalog, config, fingerprint) {
     const done = batch.length < PAGE_SIZE || (page > 0 && newIds === 0) || page + 1 >= MAX_PAGES;
     // Keep each catalogue's resumable page state separate. This avoids
     // rewriting the entire multi-source title index after every catalogue.
+    await lease?.assertOwned?.();
     await writeJson(config, path, {
       version: 1, complete: done, nextPage: page + 1, pages, records: uniqueRecords,
       seenPageIds: [...seenPageIds], titles: Object.fromEntries(titles)
@@ -358,11 +360,12 @@ export async function resumeIncompleteManifestCatalogRefresh() {
 
 export function runManifestCatalogRefresh() {
   if (activeRefreshPromise) return activeRefreshPromise;
-  activeRefreshPromise = runManifestCatalogRefreshInternal().finally(() => { activeRefreshPromise = null; });
+  activeRefreshPromise = withRefreshLease(lease => runManifestCatalogRefreshInternal(lease)).finally(() => { activeRefreshPromise = null; });
   return activeRefreshPromise;
 }
 
-async function runManifestCatalogRefreshInternal() {
+async function runManifestCatalogRefreshInternal(lease) {
+  await lease?.assertOwned?.();
   const startedAt = new Date().toISOString();
   const configured = MANIFEST_KEYS.filter(key => process.env[key]);
   if (!configured.length) throw new Error('No catalogue manifest URLs are configured');
@@ -373,6 +376,7 @@ async function runManifestCatalogRefreshInternal() {
   // an incomplete checkpoint is a crash-safe resume point after an OOM/restart.
   if (!checkpoint || checkpoint.complete === true || ![1, 2].includes(checkpoint.version)) {
     checkpoint = { version: 2, complete: false, updatedAt: startedAt, completedCatalogues: {}, titleFiles: {} };
+    await lease?.assertOwned?.();
     await writeJson(config, CHECKPOINT_PATH, checkpoint);
   }
   const completedCatalogues = checkpoint.completedCatalogues && typeof checkpoint.completedCatalogues === 'object'
@@ -447,7 +451,7 @@ async function runManifestCatalogRefreshInternal() {
       }
 
       try {
-        const result = await collectCatalog(manifest, catalog, config, fingerprint);
+        const result = await collectCatalog(manifest, catalog, config, fingerprint, lease);
         for (const item of result.titles) if (!current.has(item.id)) current.set(item.id, item);
         delete result.titles;
         completedCatalogues[fingerprint] = {
@@ -471,6 +475,7 @@ async function runManifestCatalogRefreshInternal() {
           version: 2, complete: false, updatedAt: new Date().toISOString(),
           completedCatalogues, titleFiles
         };
+        await lease?.assertOwned?.();
         await writeJson(config, CHECKPOINT_PATH, checkpoint);
       } catch (error) {
         const failed = {
@@ -510,7 +515,9 @@ async function runManifestCatalogRefreshInternal() {
   } catch {}
   const scanComplete = catalogues.every(c => !c.error && !c.truncated);
   const nextState = { initialized: true, complete: scanComplete, updatedAt: new Date(now).toISOString(), seen, added };
+  await lease?.assertOwned?.();
   await writeJson(config, STATE_PATH, nextState);
+  await lease?.assertOwned?.();
   await writeJson(config, INDEX_PATH, index);
 
   const items = [...current.values()];
@@ -540,6 +547,7 @@ async function runManifestCatalogRefreshInternal() {
     const records = await loadLedgerShard(config, shard, ledgerCache);
 
     for (let offset = 0; offset < shardItems.length; offset += PREWARM_BATCH_SIZE) {
+      await lease?.assertOwned?.();
       const batch = shardItems.slice(offset, offset + PREWARM_BATCH_SIZE);
       const reusable = await Promise.all(batch.map(async item => {
         const record = records[item.id];
@@ -600,6 +608,8 @@ async function runManifestCatalogRefreshInternal() {
         // Save the pending queue before verification. If Render restarts here,
         // the next run retries only this small batch and recognizes completed
         // uploads through the poster service's ImageKit cache-validation path.
+        await lease?.assertOwned?.();
+        await lease?.assertOwned?.();
         await persistLedgerShards(config, ledgerCache, [shard]);
 
         if (pendingItems.length) {
