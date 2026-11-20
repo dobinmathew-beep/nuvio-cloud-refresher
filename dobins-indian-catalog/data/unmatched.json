@@ -595,37 +595,6 @@
     }
   },
   {
-    "name": "Marpu - Not For You, But For The Future",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-10-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6acee68b3249ff69efda4164",
-      "platform": "ZEE5",
-      "title": "Marpu - Not For You, But For The Future",
-      "createdAt": "2026-10-14T02:18:51.826Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "original_language": "Telugu",
-      "releaseDate": "2026-10-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-10-14T02:18:51.826Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Soul Trip",
     "language": "telugu",
     "type": "series",
@@ -653,6 +622,37 @@
       "type": "Series",
       "updatedAt": "2026-04-30T03:47:03.617Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/lMmVs6FC8pkc0n1BW3gemZRFhqb.jpg",
+      "verified": true
+    }
+  },
+  {
+    "name": "Marpu - Not For You, But For The Future",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-10-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6acee68b3249ff69efda4164",
+      "platform": "ZEE5",
+      "title": "Marpu - Not For You, But For The Future",
+      "createdAt": "2026-10-14T02:18:51.826Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "original_language": "Telugu",
+      "releaseDate": "2026-10-14",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-10-14T02:18:51.826Z",
       "verified": true
     }
   },

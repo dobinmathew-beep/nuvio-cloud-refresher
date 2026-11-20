@@ -86,7 +86,7 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/tamil",
+        "https://ottasia.com/ott-releases-this-week?country=IN",
         "https://www.dailyott.in/",
         "https://cinebuds.com/ott-release-dates/"
       ],
@@ -295,8 +295,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Amazon Prime Video",
-        "Prime Video"
+        "Prime Video",
+        "Amazon Prime Video"
       ],
       "sources": [
         "https://www.ottchecker.com/ott-releases/tamil",
@@ -386,8 +386,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "SunNXT",
-        "Prime Video"
+        "Prime Video",
+        "SunNXT"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -490,10 +490,10 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "SimplySouth",
-        "Amazon Prime Video",
+        "Prime Video",
         "Aha",
-        "Prime Video"
+        "SimplySouth",
+        "Amazon Prime Video"
       ],
       "sources": [
         "https://www.ottchecker.com/ott-releases/tamil",
@@ -594,7 +594,7 @@
       "releaseDate": "2026-10-28",
       "id": "tt50286925",
       "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
+      "matchReason": "Verified IMDb title/year match",
       "platforms": [
         "ZEE5"
       ],
@@ -1123,8 +1123,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Manorama Max",
-        "SimplySouth"
+        "SimplySouth",
+        "Manorama Max"
       ],
       "sources": [
         "https://www.ottchecker.com/ott-releases/malayalam",
@@ -1224,8 +1224,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Amazon Prime Video",
-        "Prime Video"
+        "Prime Video",
+        "Amazon Prime Video"
       ],
       "sources": [
         "https://www.ottchecker.com/ott-releases/hindi",
@@ -1260,8 +1260,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Amazon Prime Video",
-        "Prime Video"
+        "Prime Video",
+        "Amazon Prime Video"
       ],
       "sources": [
         "https://www.ottchecker.com/ott-releases/telugu",
@@ -1386,6 +1386,22 @@
         "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": "https://cinebuds.com/movies/naa-wife-missing/"
+    },
+    {
+      "title": "418",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-20",
+      "id": "tt38984184",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "detail": "https://ottasia.com/title/movie/1606527/418?country=IN"
     },
     {
       "title": "Madhuramee Jeevitham",
@@ -1600,22 +1616,6 @@
         "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "detail": "https://www.ottchecker.com/movie/4-idiots-2026"
-    },
-    {
-      "title": "418",
-      "language": "telugu",
-      "type": "movie",
-      "releaseDate": "2026-11-20",
-      "id": "tt38984184",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "platforms": [
-        "Netflix"
-      ],
-      "sources": [
-        "https://www.ottchecker.com/ott-releases/telugu"
-      ],
-      "detail": "https://www.ottchecker.com/movie/418-2026"
     },
     {
       "title": "#Cult",

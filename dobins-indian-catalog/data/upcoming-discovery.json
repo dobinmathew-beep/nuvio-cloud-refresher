@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-11-20T09:00:27.290069+04:00",
+  "generatedAt": "2026-11-20T11:59:52.541822+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 35,
+    "total": 36,
     "byLanguage": {
       "hindi": 18,
       "malayalam": 4,
       "tamil": 7,
-      "telugu": 6
+      "telugu": 7
     },
     "byType": {
-      "movie": 16,
+      "movie": 17,
       "series": 19
     },
     "byMatchState": {
-      "published": 26,
+      "published": 27,
       "unmatched": 9
     },
     "bySource": {
@@ -26,14 +26,13 @@
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json": 1,
       "https://v3-cinemeta.strem.io/": 3,
       "https://www.themoviedb.org/tv/331750": 1,
-      "https://www.ottchecker.com/ott-releases/telugu": 1,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 14,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json": 1,
       "https://www.themoviedb.org/tv/332943": 1,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
-      "https://ottasia.com/ott-releases-this-week?country=IN": 11,
       "https://cinebuds.com/ott-releases-this-week/": 3,
-      "https://indianmoviereviews.com/ott-releases/": 5
+      "https://indianmoviereviews.com/ott-releases/": 4
     }
   },
   "items": [
@@ -348,11 +347,11 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/telugu"
+        "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
       "confirmed": true,
-      "releaseDateBasis": "OTTChecker explicit streaming-since date",
-      "detail": "https://www.ottchecker.com/movie/418-2026",
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/movie/1606527/418?country=IN",
       "matchId": "tt38984184",
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
@@ -567,8 +566,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/",
@@ -864,11 +863,11 @@
         "Netflix"
       ],
       "sources": [
-        "https://indianmoviereviews.com/ott-releases/"
+        "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
-      "confirmed": false,
-      "releaseDateBasis": "Indian Movie Reviews OTT calendar reported OTT calendar date",
-      "detail": "https://indianmoviereviews.com/series/o-saathi-re-2026/",
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/tv/281722/o-saathi-re?country=IN",
       "matchId": "tt35933285",
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
@@ -881,6 +880,31 @@
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "Srimathi",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-12-04",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/movie/1737773/srimathi?country=IN",
+      "matchId": "tmdb:1737773",
+      "matchState": "published",
+      "matchReason": "TMDB exact-title search + verified detail page",
+      "metadataComplete": true,
+      "metadataSource": "TMDB exact-title search + verified detail page",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_te_movie"
     },
     {
       "title": "I Coming Mon 7 Dec Itihasa: Ramayana Beyond Borders with Shashi Tharoor",
@@ -1262,7 +1286,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 13
+      "records": 17
     },
     {
       "source": "Vi weekly OTT calendar",
@@ -1302,7 +1326,7 @@
       "source": "Indian Movie Reviews OTT calendar",
       "url": "https://indianmoviereviews.com/ott-releases/",
       "state": "live",
-      "records": 14
+      "records": 15
     },
     {
       "source": "OTTClock confirmed upcoming calendar",
@@ -1364,7 +1388,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 140,
+      "records": 149,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1572,7 +1596,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 34,
+          "detectedRecords": 36,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1589,8 +1613,8 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 3,
-              "movieRecords": 1,
+              "records": 4,
+              "movieRecords": 2,
               "seriesRecords": 2
             },
             {
@@ -1643,8 +1667,8 @@
               "url": "https://www.ottchecker.com/ott-releases/tamil",
               "state": "live",
               "languageState": "records_found",
-              "records": 21,
-              "movieRecords": 18,
+              "records": 22,
+              "movieRecords": 19,
               "seriesRecords": 3
             },
             {
@@ -1725,7 +1749,7 @@
           "sourceDomainsWithSeriesRecords": [
             "ottchecker.com"
           ],
-          "detectedRecords": 34,
+          "detectedRecords": 37,
           "coverageStatus": "partial",
           "sources": [
             {
@@ -1742,8 +1766,8 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 1,
-              "movieRecords": 1,
+              "records": 3,
+              "movieRecords": 3,
               "seriesRecords": 0
             },
             {
@@ -1796,8 +1820,8 @@
               "url": "https://www.ottchecker.com/ott-releases/telugu",
               "state": "live",
               "languageState": "records_found",
-              "records": 20,
-              "movieRecords": 17,
+              "records": 21,
+              "movieRecords": 18,
               "seriesRecords": 3
             },
             {
@@ -1882,7 +1906,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 48,
+          "detectedRecords": 52,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1899,9 +1923,9 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 8,
+              "records": 9,
               "movieRecords": 5,
-              "seriesRecords": 3
+              "seriesRecords": 4
             },
             {
               "source": "Vi weekly OTT calendar",
@@ -1935,9 +1959,9 @@
               "url": "https://indianmoviereviews.com/ott-releases/",
               "state": "live",
               "languageState": "records_found",
-              "records": 12,
+              "records": 15,
               "movieRecords": 4,
-              "seriesRecords": 8
+              "seriesRecords": 11
             },
             {
               "source": "OTTClock confirmed upcoming calendar",
@@ -2318,7 +2342,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 34,
+      "detectedRecords": 36,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2335,8 +2359,8 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 3,
-          "movieRecords": 1,
+          "records": 4,
+          "movieRecords": 2,
           "seriesRecords": 2
         },
         {
@@ -2389,8 +2413,8 @@
           "url": "https://www.ottchecker.com/ott-releases/tamil",
           "state": "live",
           "languageState": "records_found",
-          "records": 21,
-          "movieRecords": 18,
+          "records": 22,
+          "movieRecords": 19,
           "seriesRecords": 3
         },
         {
@@ -2471,7 +2495,7 @@
       "sourceDomainsWithSeriesRecords": [
         "ottchecker.com"
       ],
-      "detectedRecords": 34,
+      "detectedRecords": 37,
       "coverageStatus": "partial",
       "sources": [
         {
@@ -2488,8 +2512,8 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 1,
-          "movieRecords": 1,
+          "records": 3,
+          "movieRecords": 3,
           "seriesRecords": 0
         },
         {
@@ -2542,8 +2566,8 @@
           "url": "https://www.ottchecker.com/ott-releases/telugu",
           "state": "live",
           "languageState": "records_found",
-          "records": 20,
-          "movieRecords": 17,
+          "records": 21,
+          "movieRecords": 18,
           "seriesRecords": 3
         },
         {
@@ -2628,7 +2652,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 48,
+      "detectedRecords": 52,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2645,9 +2669,9 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 8,
+          "records": 9,
           "movieRecords": 5,
-          "seriesRecords": 3
+          "seriesRecords": 4
         },
         {
           "source": "Vi weekly OTT calendar",
@@ -2681,9 +2705,9 @@
           "url": "https://indianmoviereviews.com/ott-releases/",
           "state": "live",
           "languageState": "records_found",
-          "records": 12,
+          "records": 15,
           "movieRecords": 4,
-          "seriesRecords": 8
+          "seriesRecords": 11
         },
         {
           "source": "OTTClock confirmed upcoming calendar",
