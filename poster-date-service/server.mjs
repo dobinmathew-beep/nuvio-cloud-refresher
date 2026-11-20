@@ -369,7 +369,7 @@ const server = createServer(async (req, res) => {
   if (templateProbe || posterMatch) {
     adaptedReq.query.id = templateProbe ? 'tt0111161' : posterMatch[1];
     adaptedReq.probe = templateProbe;
-    return posterHandler(adaptedReq, adaptedRes);
+    return await posterHandler(adaptedReq, adaptedRes);
   }
 
   // TMDB-only movie and series records can use /poster/tmdb/{tmdb_id}.jpg.
@@ -384,10 +384,10 @@ const server = createServer(async (req, res) => {
       const mediaType = String(url.searchParams.get('type') || 'tv').toLowerCase() === 'movie' ? 'movie' : 'tv';
       const imdbId = await resolveTmdbExternalImdbId(tmdbPosterMatch[1], mediaType);
       if (!imdbId) {
-        return sendTmdbPosterFallback(tmdbPosterMatch[1], mediaType, adaptedReq, adaptedRes);
+        return await sendTmdbPosterFallback(tmdbPosterMatch[1], mediaType, adaptedReq, adaptedRes);
       }
       adaptedReq.query.id = imdbId;
-      return posterHandler(adaptedReq, adaptedRes);
+      return await posterHandler(adaptedReq, adaptedRes);
     } catch (error) {
       console.warn('[tmdb-poster-id-resolution-failed]', JSON.stringify({ tmdbId: tmdbPosterMatch[1], mediaType: String(url.searchParams.get('type') || 'tv'), error: error?.message || 'unknown error' }));
       res.writeHead(502, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
@@ -412,10 +412,10 @@ const server = createServer(async (req, res) => {
       const show = await showResponse.json();
       const imdbId = String(show?.externals?.imdb || '');
       if (!/^tt\d{7,10}$/.test(imdbId)) {
-        return sendTvmazePosterFallback(tvmazePosterMatch[1], req, res);
+        return await sendTvmazePosterFallback(tvmazePosterMatch[1], req, res);
       }
       adaptedReq.query.id = imdbId;
-      return posterHandler(adaptedReq, adaptedRes);
+      return await posterHandler(adaptedReq, adaptedRes);
     } catch (error) {
       console.warn('[tvmaze-poster-id-resolution-failed]', JSON.stringify({ tvmazeId: tvmazePosterMatch[1], error: error?.message || 'unknown error' }));
       res.writeHead(502, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
