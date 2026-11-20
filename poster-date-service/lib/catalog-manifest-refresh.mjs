@@ -1,4 +1,5 @@
 import { Buffer } from 'node:buffer';
+import { createHash } from 'node:crypto';
 
 const MANIFEST_KEYS = [
   'CATALOG_MANIFEST_ELFHOSTED_URL',
@@ -10,6 +11,7 @@ const MAX_PAGES = Math.max(1, Math.min(500, Number(process.env.CATALOG_SCAN_MAX_
 const CONCURRENCY = Math.max(1, Math.min(4, Number(process.env.CATALOG_SCAN_CONCURRENCY || 2)));
 const STATE_PATH = '/catalog-state/manifest-scan-state.json';
 const CHECKPOINT_PATH = '/catalog-state/manifest-scan-checkpoint.json';
+const CATALOG_CHECKPOINT_DIR = '/catalog-state/catalogues';
 const INDEX_PATH = '/catalog-state/catalog-added.json';
 const INDEX_TTL_MS = 14 * 24 * 60 * 60 * 1000;
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -113,14 +115,34 @@ function unresolvedRequiredExtras(catalog) {
     });
 }
 
-async function collectCatalog(manifest, catalog) {
+function catalogueCheckpointPath(fingerprint) {
+  const key = createHash('sha256').update(fingerprint).digest('hex').slice(0, 24);
+  return CATALOG_CHECKPOINT_DIR + '/' + key + '.json';
+}
+
+async function collectCatalog(manifest, catalog, config, fingerprint) {
+  const path = catalogueCheckpointPath(fingerprint);
+  const saved = await readState(config, path);
   const titles = new Map();
-  const seenPageIds = new Set();
-  let pages = 0;
-  let uniqueRecords = 0;
+  if (saved?.titles && typeof saved.titles === 'object') {
+    for (const [id, item] of Object.entries(saved.titles)) {
+      if (item && item.id === id) titles.set(id, item);
+    }
+  }
+  const seenPageIds = new Set(Array.isArray(saved?.seenPageIds) ? saved.seenPageIds : []);
+  let pages = Number.isInteger(saved?.pages) ? saved.pages : 0;
+  let uniqueRecords = Number.isInteger(saved?.records) ? saved.records : 0;
   let lastBatchSize = 0;
   let lastPageNewIds = 0;
-  for (let page = 0; page < MAX_PAGES; page++) {
+  if (saved?.complete === true) {
+    return {
+      source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
+      pages, records: uniqueRecords, titles: [...titles.values()], truncated: false,
+      resumedFromPageCheckpoint: true
+    };
+  }
+  const firstPage = Number.isInteger(saved?.nextPage) ? saved.nextPage : 0;
+  for (let page = firstPage; page < MAX_PAGES; page++) {
     const data = await fetchJson(catalogUrl(manifest.base, catalog, page * PAGE_SIZE));
     const batch = Array.isArray(data.metas) ? data.metas : [];
     let newIds = 0;
@@ -143,13 +165,21 @@ async function collectCatalog(manifest, catalog) {
     lastBatchSize = batch.length;
     lastPageNewIds = newIds;
     pages++;
+    const done = batch.length < PAGE_SIZE || (page > 0 && newIds === 0) || page + 1 >= MAX_PAGES;
+    // Keep each catalogue's resumable page state separate. This avoids
+    // rewriting the entire multi-source title index after every catalogue.
+    await writeJson(config, path, {
+      version: 1, complete: done, nextPage: page + 1, pages, records: uniqueRecords,
+      seenPageIds: [...seenPageIds], titles: Object.fromEntries(titles)
+    });
     if (pages % 25 === 0) console.log('[catalog-page-progress]', JSON.stringify({ source: manifest.name, id: catalog.id, pages, uniqueRecords, supportedTitles: titles.size }));
-    if (batch.length < PAGE_SIZE || (page > 0 && newIds === 0)) break;
+    if (done) break;
   }
   return {
     source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
     pages, records: uniqueRecords, titles: [...titles.values()],
-    truncated: pages === MAX_PAGES && lastBatchSize === PAGE_SIZE && lastPageNewIds > 0
+    truncated: pages >= MAX_PAGES && lastBatchSize === PAGE_SIZE && lastPageNewIds > 0,
+    resumedFromPageCheckpoint: firstPage > 0
   };
 }
 function catalogueFingerprint(catalog) {
@@ -258,12 +288,13 @@ export async function runManifestCatalogRefresh() {
   let checkpoint = await readState(config, CHECKPOINT_PATH);
   // A completed checkpoint belongs to the previous run. Start a clean scan;
   // an incomplete checkpoint is a crash-safe resume point after an OOM/restart.
-  if (!checkpoint || checkpoint.complete === true || checkpoint.version !== 1) {
-    checkpoint = { version: 1, complete: false, updatedAt: startedAt, completedCatalogues: {}, titles: {} };
+  if (!checkpoint || checkpoint.complete === true || ![1, 2].includes(checkpoint.version)) {
+    checkpoint = { version: 2, complete: false, updatedAt: startedAt, completedCatalogues: {}, titleFiles: {} };
     await writeJson(config, CHECKPOINT_PATH, checkpoint);
   }
   const completedCatalogues = checkpoint.completedCatalogues && typeof checkpoint.completedCatalogues === 'object'
     ? { ...checkpoint.completedCatalogues } : {};
+  const titleFiles = checkpoint.titleFiles && typeof checkpoint.titleFiles === 'object' ? { ...checkpoint.titleFiles } : {};
   const current = new Map();
   if (checkpoint.titles && typeof checkpoint.titles === 'object') {
     for (const [id, item] of Object.entries(checkpoint.titles)) {
@@ -298,6 +329,10 @@ export async function runManifestCatalogRefresh() {
 
       const saved = completedCatalogues[fingerprint];
       if (saved) {
+        const perCatalog = await readState(config, titleFiles[fingerprint] || catalogueCheckpointPath(fingerprint));
+        if (perCatalog?.titles && typeof perCatalog.titles === 'object') {
+          for (const [id, item] of Object.entries(perCatalog.titles)) if (item?.id === id && !current.has(id)) current.set(id, item);
+        }
         handledFingerprints.set(fingerprint, {
           source: saved.source, type: catalog.type, id: catalog.id, name: catalog.name
         });
@@ -329,7 +364,7 @@ export async function runManifestCatalogRefresh() {
       }
 
       try {
-        const result = await collectCatalog(manifest, catalog);
+        const result = await collectCatalog(manifest, catalog, config, fingerprint);
         for (const item of result.titles) if (!current.has(item.id)) current.set(item.id, item);
         delete result.titles;
         completedCatalogues[fingerprint] = {
@@ -340,16 +375,18 @@ export async function runManifestCatalogRefresh() {
           source: result.source, type: result.type, id: result.id, name: result.name
         });
         cataloguesScannedThisRun++;
+        if (result.resumedFromPageCheckpoint) cataloguesResumed++;
+        titleFiles[fingerprint] = catalogueCheckpointPath(fingerprint);
         catalogues.push(result);
         console.log('[catalog-discovered]', JSON.stringify({
           source: result.source, type: result.type, id: result.id, name: result.name,
           pages: result.pages, records: result.records, uniqueTitles: current.size
         }));
-        // Persist after every completed catalogue. If Render restarts, only the
-        // unfinished catalogues need fetching again.
+        // The per-catalogue page file holds title data. The top-level checkpoint
+        // stays compact and records only which catalogues are complete.
         checkpoint = {
-          version: 1, complete: false, updatedAt: new Date().toISOString(),
-          completedCatalogues, titles: Object.fromEntries(current)
+          version: 2, complete: false, updatedAt: new Date().toISOString(),
+          completedCatalogues, titleFiles
         };
         await writeJson(config, CHECKPOINT_PATH, checkpoint);
       } catch (error) {
@@ -419,8 +456,8 @@ export async function runManifestCatalogRefresh() {
   // finish cleanly. A subsequent scheduled run will start a fresh scan.
   if (scanComplete && prewarmReport.failures === 0) {
     checkpoint = {
-      version: 1, complete: true, updatedAt: new Date().toISOString(),
-      completedCatalogues, titles: Object.fromEntries(current)
+      version: 2, complete: true, updatedAt: new Date().toISOString(),
+      completedCatalogues, titleFiles
     };
     await writeJson(config, CHECKPOINT_PATH, checkpoint);
   }
