@@ -1,25 +1,25 @@
 {
-  "generatedAt": "2026-11-20T02:04:09.537454+04:00",
+  "generatedAt": "2026-11-20T04:05:20.464877+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 35,
+    "total": 36,
     "byLanguage": {
-      "hindi": 17,
+      "hindi": 18,
       "malayalam": 4,
       "tamil": 7,
       "telugu": 7
     },
     "byType": {
       "movie": 17,
-      "series": 18
+      "series": 19
     },
     "byMatchState": {
-      "published": 26,
+      "published": 27,
       "unmatched": 9
     },
     "bySource": {
       "https://cinebuds.com/ott-releases-this-week/": 7,
-      "https://www.dailyott.in/": 5,
+      "https://www.dailyott.in/": 6,
       "https://newindianmovies.com/": 3,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
       "https://v3-cinemeta.strem.io/": 4,
@@ -62,6 +62,33 @@
       "catalog": "dobins_hi_movie"
     },
     {
+      "title": "Bigg Boss Season 20",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "JioHotStar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": null,
+      "detail": null,
+      "matchId": "tt1281973",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
       "title": "Dhindora Season 1",
       "language": "hindi",
       "type": "series",
@@ -70,8 +97,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://newindianmovies.com/"
+        "https://newindianmovies.com/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -455,8 +482,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -565,8 +592,8 @@
         "Prime Video"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",

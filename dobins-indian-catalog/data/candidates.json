@@ -817,6 +817,13 @@
       "type": "movie"
     },
     {
+      "id": "tt18933846",
+      "name": "Nooru Kodi Vaanavil",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt18933846.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tmdb:1806311||THEDAL||2026||movie||https://image.tmdb.org/t/p/original/A6mNRWxyZLnvXJcntLn0aDRZmvb.jpg||Battle%20of%20doubts%20and%20journey%20towards%20to%20the%20answer%20of%20a%20failed%20young%20filmmaker..",
       "name": "THEDAL",
       "poster": "https://image.tmdb.org/t/p/original/A6mNRWxyZLnvXJcntLn0aDRZmvb.jpg",
@@ -939,13 +946,6 @@
       "id": "tt39260895",
       "name": "Pyaar Prema Kalyanam",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39260895.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt39299957",
-      "name": "Ananya's Call",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39299957.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     },
@@ -3018,6 +3018,13 @@
     }
   ],
   "hindi-movie": [
+    {
+      "id": "tt37200939",
+      "name": "Parivarik ManuRanjan",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt37200939.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
     {
       "id": "tt50107649",
       "name": "Dilwali Diwali",
@@ -7841,13 +7848,6 @@
       "type": "movie"
     },
     {
-      "id": "tt27611340",
-      "name": "Bachhala Malli",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27611340.jpg",
-      "releaseInfo": "2024",
-      "type": "movie"
-    },
-    {
       "id": "tt16539454",
       "name": "Pushpa 2 - The Rule",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt16539454.jpg",
@@ -12512,5 +12512,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-20T02:04:09.537454+04:00"
+  "_updatedAt": "2026-11-20T04:05:20.464877+04:00"
 }
