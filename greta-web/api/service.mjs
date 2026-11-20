@@ -2,13 +2,15 @@ import {fetchPoster} from '../lib/episode-posters.mjs';
 import {decodePosterConfig,encodePosterConfig,ratedPoster} from '../public/poster-config.js';
 import {readFileSync} from 'node:fs';import {fileURLToPath} from 'node:url';import path from 'node:path';import worker,{manifest as originalManifest,dataHealth} from '../lib/core.mjs';import {checkout,configuration} from '../lib/payments.mjs';
 const SHARED_POSTER_RENDERER='https://great-indian-upcoming-posters.onrender.com';
-export function buildSharedRendererUrl(type,id,justAdded=false,version='6'){
+export function buildSharedRendererUrl(type,id,justAdded=false,version='7'){
  const value=String(id||'');
- const v=/^\d{1,8}$/.test(String(version))?String(version):'6';
+ const v=/^\d{1,8}$/.test(String(version))?String(version):'7';
  const badge=justAdded?'badge=just-added&':'';
  if(/^tt\d{7,10}$/.test(value))return SHARED_POSTER_RENDERER+'/poster/'+value+'.jpg?'+badge+'v='+v;
  const tmdb=value.match(/^tmdb:(\d{1,12})$/);
  if(tmdb)return SHARED_POSTER_RENDERER+'/poster/tmdb/'+tmdb[1]+'.jpg?'+badge+'type='+(type==='movie'?'movie':'tv')+'&v='+v;
+ const tvmaze=value.match(/^tvmaze:(\d{1,12})$/);
+ if(tvmaze)return SHARED_POSTER_RENDERER+'/poster/tvmaze/'+tvmaze[1]+'.jpg?'+badge+'type=tv&v='+v;
  return null;
 }
 
@@ -32,7 +34,7 @@ async function paymentHealth(){if(healthCache.at&&Date.now()-healthCache.at<6000
 const ratingId=m=>[m?.id,m?.imdb_id,m?.imdbId,m?.imdb,m?.externals?.imdb,m?.externalIds?.imdb,m?.ids?.imdb].find(v=>typeof v==='string'&&/^tt[0-9]+$/.test(v))||'';
 export function buildConfiguredPosterUrl(m,origin,posterBase,_posterTemplate){
  const posterId=ratingId(m)||String(m?.id||'');
- const query=m?.justAdded===true?'?badge=just-added&v=6':'?v=6';
+ const query=m?.justAdded===true?'?badge=just-added&v=7':'?v=7';
  return origin+posterBase+'/poster/'+m.type+'/'+posterId+'.jpg'+query;
 }
 export {buildManifest,replaceOrigin};
@@ -53,7 +55,7 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
  const [,type,id]=posterRoute;
  const badgeRequested=requestParams.get('badge')==='just-added';
  const rendererId=await resolveRendererId(id);
- const rendererUrl=buildSharedRendererUrl(type,rendererId,badgeRequested,requestParams.get('v')||'6');
+ const rendererUrl=buildSharedRendererUrl(type,rendererId,badgeRequested,requestParams.get('v')||'7');
  if(rendererUrl){
   try{
    const rendered=await fetch(rendererUrl,{cache:'no-store',signal:AbortSignal.timeout(15000)});
@@ -75,6 +77,12 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
    console.warn('[shared-poster-renderer-proxy-failed]',JSON.stringify({id,type,error:String(error?.message||error).slice(0,180)}));
   }
  }
+ const fallbackId=rendererId.startsWith('tt')?rendererId:type+'~'+id;
+ const fallbackUrl=origin+'/art/poster/'+fallbackId+(badgeRequested?'?badge=just-added&v=7':'?v=7');
+ const fallback=await worker.fetch(new Request(fallbackUrl,{method:req.method}));
+ res.statusCode=fallback.status;
+ for(const [k,v] of fallback.headers)res.setHeader(k,v);
+ return res.end(req.method==='HEAD'?undefined:Buffer.from(await fallback.arrayBuffer()));
  // Preserve a working image if the shared renderer is unavailable.
  const imdb=rendererId.startsWith('tt')?rendererId:'';
  if(imdb){
@@ -89,12 +97,6 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
    }catch{}
   }
  }
- const fallbackId=rendererId.startsWith('tt')?rendererId:type+'~'+id;
- const fallbackUrl=origin+'/art/poster/'+fallbackId+(badgeRequested?'?badge=just-added&v=6':'?v=6');
- const fallback=await worker.fetch(new Request(fallbackUrl,{method:req.method}));
- res.statusCode=fallback.status;
- for(const [k,v] of fallback.headers)res.setHeader(k,v);
- return res.end(req.method==='HEAD'?undefined:Buffer.from(await fallback.arrayBuffer()));
 }
 const catalogRequest=route.match(/^\/catalog\/(movie|series)\/([^/]+?)(?:\.json|\/)/);if(catalogRequest&&!buildManifest(origin,scopeMask).catalogs.some(c=>c.type===catalogRequest[1]&&c.id===catalogRequest[2]))return send(200,{metas:[]});
  const request=new Request(origin+route+(requestParams.size?'?'+requestParams.toString():''),{method:req.method});const result=await worker.fetch(request);const contentType=result.headers.get('content-type')||'';if(contentType.includes('application/json')){const value=replaceOrigin(await result.json(),origin);const posterBase=posterTemplate?'/install/'+scopeMask.toString(16).padStart(2,'0')+'/bttr/'+encodePosterConfig(posterTemplate):'';if(posterTemplate){const posterUrl=m=>buildConfiguredPosterUrl(m,origin,posterBase,posterTemplate);for(const m of value.metas||[])m.poster=posterUrl(m);if(value.meta)value.meta.poster=posterUrl(value.meta)}if(route==='/status.json')value.name='The Great Indian Addon';return send(result.status,value,{'Cache-Control':posterTemplate?'private,no-store':result.headers.get('cache-control')||'public,max-age=300'})}res.statusCode=result.status;for(const [k,v] of result.headers)res.setHeader(k,v);res.end(req.method==='HEAD'?undefined:Buffer.from(await result.arrayBuffer()));}catch{send(503,{error:'This service is temporarily unavailable. Please try again shortly.'})}}
