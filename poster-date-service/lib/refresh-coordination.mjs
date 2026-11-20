@@ -4,7 +4,6 @@ import { createClient } from 'redis';
 const LEASE_KEY = 'great-indian:catalog-refresh:lease';
 const LEASE_TTL_MS = 120_000;
 const HEARTBEAT_MS = 30_000;
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 let clientPromise;
 
 async function redisClient() {
