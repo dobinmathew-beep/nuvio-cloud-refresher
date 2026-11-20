@@ -368,16 +368,16 @@ def catalog_sort_date(item):
  return physical.catalog_release_date(item)
 
 def is_just_added_title(event, added_time, now=NOW):
- # Newly added series and movies receive the label for 14 days after their
- # first catalog appearance. Movies also qualify for 14 days after a confirmed
- # digital/OTT release, even if they were already known to the catalog.
+ # Newly added series receive the label for 14 days after first catalog
+ # appearance. Movies retain the stricter digital/OTT-arrival eligibility.
  recently_added=bool(added_time and timedelta(0) <= now-added_time <= timedelta(days=14))
- if recently_added:return True
+ if event.get('type') == 'series':return recently_added
  if event.get('type') != 'movie':return False
  availability=event.get('availability') or []
  has_digital=(event.get('releaseKind') == 'digital' or
               any(x.get('kind') == 'digital' for x in availability if isinstance(x,dict)))
  if not has_digital:return False
+ if recently_added:return True
  digital=event_digital_date(event)
  if digital:
   try:
@@ -385,6 +385,11 @@ def is_just_added_title(event, added_time, now=NOW):
    if 0 <= age <= 14:return True
   except ValueError:pass
  return False
+
+def is_just_added_movie(event, added_time, now=NOW):
+ # Backward-compatible movie-only predicate for older tests/callers.
+ if event.get('type') != 'movie':return False
+ return is_just_added_title(event, added_time, now)
 
 def title_logo(name):
  im=Image.new('RGBA',(1200,300));d=ImageDraw.Draw(im)
