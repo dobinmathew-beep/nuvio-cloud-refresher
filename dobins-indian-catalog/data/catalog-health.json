@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-20T05:08:19.816974+00:00",
+  "checkedAt": "2026-11-20T08:04:46.983005+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,7 +14,7 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1179,
+      "metadataRecords": 1180,
       "warning": null,
       "error": null
     },
@@ -186,32 +186,32 @@
       "language": "te",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_te_movie.json",
-      "localPublishedCount": 109,
-      "localUniqueIdCount": 109,
+      "localPublishedCount": 110,
+      "localUniqueIdCount": 110,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 109,
-      "endpointUniqueIdCount": 109,
+      "endpointRawCount": 110,
+      "endpointUniqueIdCount": 110,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
-        9
+        10
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt30768979",
-        "name": "Aadarsha Kutumbam House No: 47 - AK47",
-        "releaseDate": "2026-11-27"
+        "id": "tmdb:1737773",
+        "name": "Srimathi",
+        "releaseDate": "2026-12-04"
       },
       "localLatestEntry": {
-        "id": "tt30768979",
-        "name": "Aadarsha Kutumbam House No: 47 - AK47",
-        "releaseDate": "2026-11-27"
+        "id": "tmdb:1737773",
+        "name": "Srimathi",
+        "releaseDate": "2026-12-04"
       },
       "latestEntryMatches": true,
       "state": "ok",
