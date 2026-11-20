@@ -34,7 +34,7 @@ async function paymentHealth(){if(healthCache.at&&Date.now()-healthCache.at<6000
 const ratingId=m=>[m?.id,m?.imdb_id,m?.imdbId,m?.imdb,m?.externals?.imdb,m?.externalIds?.imdb,m?.ids?.imdb].find(v=>typeof v==='string'&&/^tt[0-9]+$/.test(v))||'';
 export function buildConfiguredPosterUrl(m,origin,posterBase,_posterTemplate){
  const posterId=ratingId(m)||String(m?.id||'');
- const query=m?.justAdded===true?'?badge=just-added&v=7':'?v=7';
+ const query=m?.justAdded===true?'?badge=just-added&v=8':'?v=8';
  return origin+posterBase+'/poster/'+m.type+'/'+posterId+'.jpg'+query;
 }
 export {buildManifest,replaceOrigin};
@@ -78,7 +78,7 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
   }
  }
  const fallbackId=rendererId.startsWith('tt')?rendererId:type+'~'+id;
- const fallbackUrl=origin+'/art/poster/'+fallbackId+(badgeRequested?'?badge=just-added&v=7':'?v=7');
+ const fallbackUrl=origin+'/art/poster/'+fallbackId+(badgeRequested?'?badge=just-added&v=8':'?v=8');
  const fallback=await worker.fetch(new Request(fallbackUrl,{method:req.method}));
  res.statusCode=fallback.status;
  for(const [k,v] of fallback.headers)res.setHeader(k,v);
