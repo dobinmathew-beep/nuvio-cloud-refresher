@@ -8,7 +8,7 @@ const cache = new Map();
 let workerPromise;
 let ocrQueue = Promise.resolve();
 let workerRecognitionCount = 0;
-const MAX_WORKER_RECOGNITIONS = 24;
+const MAX_WORKER_RECOGNITIONS = 8;
 
 function withOcrQueue(task) {
   const job = ocrQueue.then(task);
