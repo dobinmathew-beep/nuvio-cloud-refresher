@@ -41,6 +41,29 @@ test('configured poster route forwards Just Added requests to the Render rendere
  }
 });
 
+test('configured poster proxy preserves badge query embedded inside Vercel path parameter',async()=>{
+ const oldFetch=globalThis.fetch,oldOrigin=process.env.PUBLIC_ORIGIN;
+ process.env.PUBLIC_ORIGIN='https://addon.example';
+ let requested='';
+ globalThis.fetch=async url=>{
+  requested=String(url);
+  return new Response(new Uint8Array(512).fill(7),{status:200,headers:{'content-type':'image/jpeg','x-poster-date-status':'just-added-overlay','x-poster-source':'BetterPosters'}});
+ };
+ try{
+  const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');
+  const route='/install/ff/bttr/'+token+'/poster/movie/tt45692999.jpg?badge=just-added&v=3';
+  const req={url:'/api/service?path='+encodeURIComponent(route),method:'GET',headers:{host:'addon.example'},query:{path:route}};
+  const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=body}};
+  await handler(req,res);
+  assert.equal(res.statusCode,200);
+  assert.equal(requested,'https://great-indian-upcoming-posters.onrender.com/poster/tt45692999.jpg?badge=just-added&v=3');
+  assert.equal(res.headers['x-poster-badge'],'Just Added');
+ }finally{
+  globalThis.fetch=oldFetch;
+  if(oldOrigin===undefined)delete process.env.PUBLIC_ORIGIN;else process.env.PUBLIC_ORIGIN=oldOrigin;
+ }
+});
+
 test('all 255 catalog selections contain exactly the requested language/type bits',()=>{for(let mask=1;mask<256;mask++){const m=buildManifest('https://greta.example',mask);assert.equal(m.catalogs.length,mask.toString(2).replace(/0/g,'').length);for(const c of m.catalogs){assert.equal(c.pageSize,50);assert(c.extra.some(x=>x.name==='skip'));const i=['ml','ta','te','hi'].indexOf(c.id.split('_')[1])*2+(c.type==='series'?1:0);assert(mask&(1<<i))}assert(m.resources.every(r=>r.name==='catalog'));assert.equal(m.name,'The Great Indian Addon');assert.equal(m.version,'2.3.3');assert(!JSON.stringify(m).includes('chatgpt'))}assert.equal(buildManifest('https://greta.example',0),null)});
 
 test('catalog endpoints expose 50-item pages and continue with skip pagination',async()=>{
