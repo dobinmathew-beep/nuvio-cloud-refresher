@@ -2,6 +2,7 @@ name: Poster service tests
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
     paths:
       - 'poster-date-service/**'
       - '.github/workflows/poster-service-tests.yml'
