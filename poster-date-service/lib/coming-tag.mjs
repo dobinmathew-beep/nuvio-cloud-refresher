@@ -7,6 +7,8 @@ const CACHE_MS = 6 * 60 * 60 * 1000;
 const cache = new Map();
 let workerPromise;
 let ocrQueue = Promise.resolve();
+let workerRecognitionCount = 0;
+const MAX_WORKER_RECOGNITIONS = 24;
 
 function withOcrQueue(task) {
   const job = ocrQueue.then(task);
@@ -14,14 +16,28 @@ function withOcrQueue(task) {
   return job;
 }
 
-async function recognizeWithModes(worker, prepared, predicate) {
+async function recognizeWithModes(prepared, predicate) {
   return withOcrQueue(async () => {
+    // Keep a single OCR task queue, but recycle the WASM worker periodically.
+    // The Render free instance has a 512 MiB memory ceiling; long catalogue
+    // prewarms otherwise retain the Tesseract heap until the process is killed.
+    const worker = await getWorker();
+    let found = false;
     for (const mode of ['11', '6']) {
       await worker.setParameters({ tessedit_pageseg_mode: mode });
       const result = await worker.recognize(prepared);
-      if (predicate(result?.data?.text)) return true;
+      workerRecognitionCount++;
+      if (predicate(result?.data?.text)) {
+        found = true;
+        break;
+      }
     }
-    return false;
+    if (workerRecognitionCount >= MAX_WORKER_RECOGNITIONS) {
+      await worker.terminate();
+      workerPromise = null;
+      workerRecognitionCount = 0;
+    }
+    return found;
   });
 }
 
@@ -99,8 +115,7 @@ export async function hasExistingComingDateTag(input, kind = 'premiere', isoDate
     .png()
     .toBuffer();
 
-  const worker = await getWorker();
-  const found = await recognizeWithModes(worker, prepared, text => hasExpectedDateBadgeText(text, kind, isoDate));
+  const found = await recognizeWithModes(prepared, text => hasExpectedDateBadgeText(text, kind, isoDate));
   if (found) {
     cache.set(key, { value: true, at: Date.now() });
     return true;
@@ -119,6 +134,7 @@ export async function terminateOcrWorker() {
     await worker.terminate();
   } finally {
     workerPromise = null;
+    workerRecognitionCount = 0;
   }
 }
 
@@ -145,8 +161,7 @@ export async function hasExistingJustAddedTag(input) {
     .extend({ top: 12, bottom: 12, left: 12, right: 12, background: '#ffffff' })
     .png()
     .toBuffer();
-  const worker = await getWorker();
-  const found = await recognizeWithModes(worker, prepared, text => hasJustAddedBadgeText(text));
+  const found = await recognizeWithModes(prepared, text => hasJustAddedBadgeText(text));
   if (found) {
     cache.set(key, { value: true, at: Date.now() });
     return true;
