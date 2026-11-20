@@ -121,7 +121,7 @@ function canonicalId(meta) {
 }
 function posterPath(id, type) {
   if (/^tt\d{7,10}$/.test(id)) return '/poster/' + id + '.jpg';
-  if (id.startsWith('tmdb:')) return '/poster/tmdb/' + id.slice(5) + '.jpg?type=' + (type === 'movie' ? 'movie' : 'tv');
+  if (id.startsWith('tmdb:')) return '/poster/tmdb/' + id.slice(5) + '.jpg?type=' + (String(type).toLowerCase().includes('movie') ? 'movie' : 'tv');
   if (id.startsWith('tvmaze:')) return '/poster/tvmaze/' + id.slice(7) + '.jpg';
   return null;
 }
@@ -139,10 +139,29 @@ async function runPool(items, worker) {
   }));
   return output;
 }
+async function checkImageKit(id) {
+  const endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\/$/, '');
+  if (!endpoint) return false;
+  try {
+    const response = await fetch(endpoint + '/posters/' + encodeURIComponent(id) + '.jpg', { method: 'HEAD', cache: 'no-store', signal: AbortSignal.timeout(6000) });
+    return response.ok && (response.headers.get('content-type') || '').toLowerCase().startsWith('image/');
+  } catch { return false; }
+}
+async function waitForImageKit(id) {
+  const deadline = Date.now() + 60000;
+  while (Date.now() < deadline) {
+    if (await checkImageKit(id)) return true;
+    await sleep(3000);
+  }
+  return false;
+}
 async function prewarm(item) {
   const path = posterPath(item.id, item.type);
   if (!path) return { id: item.id, status: 'unsupported-id-format' };
-  const response = await fetch((process.env.POSTER_SERVICE_URL || 'https://great-indian-upcoming-posters.onrender.com').replace(/\/$/, '') + path, {
+  const fallback = item.poster ? '&fallback=' + encodeURIComponent(item.poster) : '';
+  const separator = path.includes('?') ? '' : '?';
+  const requestPath = path + (fallback ? separator + fallback.slice(1) : '');
+  const response = await fetch((process.env.POSTER_SERVICE_URL || 'https://great-indian-upcoming-posters.onrender.com').replace(/\/$/, '') + requestPath, {
     headers: { accept: 'image/*' }, redirect: 'manual', signal: AbortSignal.timeout(60000)
   });
   if (response.status >= 300 && response.status < 400) {
@@ -154,8 +173,14 @@ async function prewarm(item) {
     throw new Error('Poster service returned HTTP ' + response.status);
   }
   const status = response.headers.get('x-poster-date-status') || 'rendered';
+  const storage = response.headers.get('x-imagekit-storage') || 'not-stored';
   await response.arrayBuffer();
-  return { id: item.id, status };
+  if (storage === 'pending') {
+    if (await waitForImageKit(item.id)) return { id: item.id, status: 'generated-and-cached', posterStatus: status };
+    return { id: item.id, status: 'imagekit-upload-timeout', posterStatus: status };
+  }
+  if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit', posterStatus: status };
+  return { id: item.id, status: 'rendered-not-cached', posterStatus: status };
 }
 export async function runManifestCatalogRefresh() {
   const startedAt = new Date().toISOString();
