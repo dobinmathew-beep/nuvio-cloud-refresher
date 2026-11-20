@@ -1,4 +1,4 @@
-const INDEX_URL = 'https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/catalog-added.json';
+const INDEX_URL = String(process.env.CATALOG_ADDED_INDEX_URL || 'https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/catalog-added.json').trim();
 const INDEX_TTL_MS = 5 * 60 * 1000;
 const ELIGIBILITY_MS = 14 * 24 * 60 * 60 * 1000;
 let cachedIndex = null;
