@@ -5,6 +5,20 @@ const INDEX_TTL_MS = 5 * 60 * 1000;
 let cachedIndex = null;
 let cachedAt = 0;
 let pendingIndex = null;
+let cachedAliasIndex = null;
+
+function buildAliasIndex(items) {
+  const index = new Map();
+  for (const item of items) {
+    const aliases = [item?.id, ...(Array.isArray(item?.aliases) ? item.aliases : [])]
+      .map(value => String(value || '').trim()).filter(Boolean);
+    for (const alias of aliases) {
+      if (!index.has(alias)) index.set(alias, []);
+      index.get(alias).push(item);
+    }
+  }
+  return index;
+}
 
 async function loadIndex(fetcher) {
   if (cachedIndex && Date.now() - cachedAt < INDEX_TTL_MS) return cachedIndex;
@@ -20,6 +34,7 @@ async function loadIndex(fetcher) {
       const items = Array.isArray(payload?.items) ? payload.items : null;
       if (!items) throw new Error('upcoming index has an invalid shape');
       cachedIndex = items;
+      cachedAliasIndex = buildAliasIndex(items);
       cachedAt = Date.now();
       return cachedIndex;
     } catch (error) {
@@ -28,6 +43,7 @@ async function loadIndex(fetcher) {
         action: 'fall back to TMDB/TVmaze release lookup'
       }));
       cachedIndex = [];
+      cachedAliasIndex = new Map();
       cachedAt = Date.now() - INDEX_TTL_MS + 60 * 1000;
       return cachedIndex;
     } finally {
@@ -44,13 +60,13 @@ export async function upcomingReleaseFromCatalog(ids, options = {}) {
   if (!values.size) return null;
   const fetcher = options.fetch || globalThis.fetch;
   if (typeof fetcher !== 'function') return null;
-  const items = await loadIndex(fetcher);
+  await loadIndex(fetcher);
+  const aliasIndex = cachedAliasIndex || new Map();
   const today = options.today || getTodayInTimeZone(options.now || new Date());
   const matches = [];
-  for (const item of items) {
-    const aliases = [item?.id, ...(Array.isArray(item?.aliases) ? item.aliases : [])]
-      .map(value => String(value || '').trim()).filter(Boolean);
-    if (!aliases.some(alias => values.has(alias))) continue;
+  const matchedItems = new Set();
+  for (const value of values) for (const item of aliasIndex.get(value) || []) matchedItems.add(item);
+  for (const item of matchedItems) {
     const date = String(item?.releaseDate || '').slice(0, 10);
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || date <= today) continue;
     matches.push({
@@ -67,6 +83,7 @@ export async function upcomingReleaseFromCatalog(ids, options = {}) {
 
 export function resetCatalogUpcomingIndexForTest() {
   cachedIndex = null;
+  cachedAliasIndex = null;
   cachedAt = 0;
   pendingIndex = null;
 }

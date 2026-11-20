@@ -12,6 +12,7 @@ import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
 
 import { imageKitConfig, canStoreImageKitPoster, getImageKitStorageSnapshot, uploadPosterToImageKit, runImageKitMaintenance, initializeImageKitStorageSnapshot } from './lib/imagekit-storage.mjs';
 import { runManifestCatalogRefresh, resumeIncompleteManifestCatalogRefresh } from './lib/catalog-manifest-refresh.mjs';
+import { getRefreshLease } from './lib/refresh-coordination.mjs';
 import { hasExistingComingDateTag, hasExistingJustAddedTag } from './lib/coming-tag.mjs';
 
 let catalogRefreshJob = null;
@@ -306,22 +307,39 @@ const server = createServer(async (req, res) => {
       return res.end(JSON.stringify({ error: 'Unauthorized' }));
     }
     if (url.pathname === '/catalog-refresh/status') {
+      let sharedLease;
+      try {
+        sharedLease = await getRefreshLease();
+      } catch (error) {
+        res.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+        return res.end(JSON.stringify({ status: 'coordination-unavailable', error: error?.message || 'Redis unavailable' }));
+      }
+      const response = sharedLease
+        ? { status: 'running', jobId: sharedLease.jobId, coordinated: true }
+        : catalogRefreshJob && catalogRefreshReport?.status !== 'already-running'
+          ? { status: 'running', jobId: catalogRefreshJob }
+          : catalogRefreshError
+            ? { status: 'failed', error: catalogRefreshError }
+            : catalogRefreshReport && catalogRefreshReport.status !== 'already-running'
+              ? { status: 'completed', report: catalogRefreshReport }
+              : { status: 'idle' };
       res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
-      return res.end(JSON.stringify(catalogRefreshJob
-        ? { status: 'running', jobId: catalogRefreshJob }
-        : catalogRefreshError
-          ? { status: 'failed', error: catalogRefreshError }
-          : catalogRefreshReport
-            ? { status: 'completed', report: catalogRefreshReport }
-            : { status: 'idle' }));
+      return res.end(JSON.stringify(response));
     }
     if (req.method !== 'POST') {
       res.writeHead(405, { 'Allow': 'POST', 'Cache-Control': 'no-store' });
       return res.end('Method not allowed');
     }
-    if (catalogRefreshJob) {
+    let sharedLease;
+    try {
+      sharedLease = await getRefreshLease();
+    } catch (error) {
+      res.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+      return res.end(JSON.stringify({ status: 'coordination-unavailable', error: error?.message || 'Redis unavailable' }));
+    }
+    if (catalogRefreshJob || sharedLease) {
       res.writeHead(409, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
-      return res.end(JSON.stringify({ status: 'already-running', jobId: catalogRefreshJob }));
+      return res.end(JSON.stringify({ status: 'already-running', jobId: sharedLease?.jobId || catalogRefreshJob }));
     }
     const jobId = randomUUID();
     catalogRefreshJob = jobId;
@@ -369,7 +387,7 @@ const server = createServer(async (req, res) => {
   if (templateProbe || posterMatch) {
     adaptedReq.query.id = templateProbe ? 'tt0111161' : posterMatch[1];
     adaptedReq.probe = templateProbe;
-    return posterHandler(adaptedReq, adaptedRes);
+    return await posterHandler(adaptedReq, adaptedRes);
   }
 
   // TMDB-only movie and series records can use /poster/tmdb/{tmdb_id}.jpg.
@@ -384,10 +402,10 @@ const server = createServer(async (req, res) => {
       const mediaType = String(url.searchParams.get('type') || 'tv').toLowerCase() === 'movie' ? 'movie' : 'tv';
       const imdbId = await resolveTmdbExternalImdbId(tmdbPosterMatch[1], mediaType);
       if (!imdbId) {
-        return sendTmdbPosterFallback(tmdbPosterMatch[1], mediaType, adaptedReq, adaptedRes);
+        return await sendTmdbPosterFallback(tmdbPosterMatch[1], mediaType, adaptedReq, adaptedRes);
       }
       adaptedReq.query.id = imdbId;
-      return posterHandler(adaptedReq, adaptedRes);
+      return await posterHandler(adaptedReq, adaptedRes);
     } catch (error) {
       console.warn('[tmdb-poster-id-resolution-failed]', JSON.stringify({ tmdbId: tmdbPosterMatch[1], mediaType: String(url.searchParams.get('type') || 'tv'), error: error?.message || 'unknown error' }));
       res.writeHead(502, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
@@ -412,10 +430,10 @@ const server = createServer(async (req, res) => {
       const show = await showResponse.json();
       const imdbId = String(show?.externals?.imdb || '');
       if (!/^tt\d{7,10}$/.test(imdbId)) {
-        return sendTvmazePosterFallback(tvmazePosterMatch[1], req, res);
+        return await sendTvmazePosterFallback(tvmazePosterMatch[1], req, res);
       }
       adaptedReq.query.id = imdbId;
-      return posterHandler(adaptedReq, adaptedRes);
+      return await posterHandler(adaptedReq, adaptedRes);
     } catch (error) {
       console.warn('[tvmaze-poster-id-resolution-failed]', JSON.stringify({ tvmazeId: tvmazePosterMatch[1], error: error?.message || 'unknown error' }));
       res.writeHead(502, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });

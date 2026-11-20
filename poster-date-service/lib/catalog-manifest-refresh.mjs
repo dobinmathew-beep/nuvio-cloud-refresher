@@ -1,5 +1,6 @@
 import { Buffer } from 'node:buffer';
 import { createHash } from 'node:crypto';
+import { withRefreshLease } from './refresh-coordination.mjs';
 
 const MANIFEST_KEYS = [
   'CATALOG_MANIFEST_ELFHOSTED_URL',
@@ -18,10 +19,9 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const LEDGER_DIR = '/catalog-state/poster-processing';
 const LEDGER_VERSION = 1;
 const LEDGER_SHARDS = '0123456789abcdef';
-const LEDGER_TTL_MS = 6 * 60 * 60 * 1000;
-const PREWARM_BATCH_SIZE = Math.max(10, Math.min(50, Number(process.env.CATALOG_PREWARM_BATCH_SIZE || 25)));
-const PREWARM_CONCURRENCY = Math.max(1, Math.min(2, Number(process.env.CATALOG_PREWARM_CONCURRENCY || 2)));
-const VERIFY_CONCURRENCY = Math.max(1, Math.min(6, Number(process.env.CATALOG_VERIFY_CONCURRENCY || 4)));
+const PREWARM_BATCH_SIZE = Math.max(10, Math.min(50, Number(process.env.CATALOG_PREWARM_BATCH_SIZE || 50)));
+const PREWARM_CONCURRENCY = Math.max(1, Math.min(6, Number(process.env.CATALOG_PREWARM_CONCURRENCY || 4)));
+const VERIFY_CONCURRENCY = Math.max(1, Math.min(8, Number(process.env.CATALOG_VERIFY_CONCURRENCY || 6)));
 
 function ledgerShard(id) {
   return createHash('sha256').update(String(id)).digest('hex')[0];
@@ -61,11 +61,13 @@ function ledgerRecord(item, status, extra = {}) {
     ...extra
   };
 }
-function reusableLedgerRecord(record, item, now = Date.now()) {
+function reusableLedgerRecord(record, item) {
+  // A verified poster is reusable for as long as the catalogue identity and
+  // poster fingerprint are unchanged and ImageKit still serves the asset.
+  // Do not expire completed work after six hours: long refreshes and Render
+  // restarts must not force already-verified titles through the pipeline again.
   if (!record || !['verified', 'cache-hit'].includes(record.status)) return false;
-  if (record.fingerprint !== itemFingerprint(item)) return false;
-  const completedAt = Date.parse(record.verifiedAt || record.updatedAt || '');
-  return Number.isFinite(completedAt) && now - completedAt >= 0 && now - completedAt < LEDGER_TTL_MS;
+  return record.fingerprint === itemFingerprint(item);
 }
 
 function imageKitConfig() {
@@ -172,7 +174,7 @@ function catalogueCheckpointPath(fingerprint) {
   return CATALOG_CHECKPOINT_DIR + '/' + key + '.json';
 }
 
-async function collectCatalog(manifest, catalog, config, fingerprint) {
+async function collectCatalog(manifest, catalog, config, fingerprint, lease) {
   const path = catalogueCheckpointPath(fingerprint);
   const saved = await readState(config, path);
   const titles = new Map();
@@ -220,6 +222,7 @@ async function collectCatalog(manifest, catalog, config, fingerprint) {
     const done = batch.length < PAGE_SIZE || (page > 0 && newIds === 0) || page + 1 >= MAX_PAGES;
     // Keep each catalogue's resumable page state separate. This avoids
     // rewriting the entire multi-source title index after every catalogue.
+    await lease?.assertOwned?.();
     await writeJson(config, path, {
       version: 1, complete: done, nextPage: page + 1, pages, records: uniqueRecords,
       seenPageIds: [...seenPageIds], titles: Object.fromEntries(titles)
@@ -257,6 +260,16 @@ function posterPath(id, type) {
   if (id.startsWith('tvmaze:')) return '/poster/tvmaze/' + id.slice(7) + '.jpg';
   return null;
 }
+function adaptivePrewarmConcurrency() {
+  // Render's free instance has a tight memory budget. Increase network
+  // throughput by default, but back off automatically if native/image work
+  // pushes resident memory toward the safety ceiling.
+  const rssMiB = process.memoryUsage().rss / (1024 * 1024);
+  if (rssMiB >= 360) return Math.min(2, PREWARM_CONCURRENCY);
+  if (rssMiB >= 300) return Math.min(3, PREWARM_CONCURRENCY);
+  return PREWARM_CONCURRENCY;
+}
+
 async function runPool(items, worker, concurrency = CONCURRENCY) {
   const counts = {};
   let failures = 0;
@@ -347,11 +360,12 @@ export async function resumeIncompleteManifestCatalogRefresh() {
 
 export function runManifestCatalogRefresh() {
   if (activeRefreshPromise) return activeRefreshPromise;
-  activeRefreshPromise = runManifestCatalogRefreshInternal().finally(() => { activeRefreshPromise = null; });
+  activeRefreshPromise = withRefreshLease(lease => runManifestCatalogRefreshInternal(lease)).finally(() => { activeRefreshPromise = null; });
   return activeRefreshPromise;
 }
 
-async function runManifestCatalogRefreshInternal() {
+async function runManifestCatalogRefreshInternal(lease) {
+  await lease?.assertOwned?.();
   const startedAt = new Date().toISOString();
   const configured = MANIFEST_KEYS.filter(key => process.env[key]);
   if (!configured.length) throw new Error('No catalogue manifest URLs are configured');
@@ -362,6 +376,7 @@ async function runManifestCatalogRefreshInternal() {
   // an incomplete checkpoint is a crash-safe resume point after an OOM/restart.
   if (!checkpoint || checkpoint.complete === true || ![1, 2].includes(checkpoint.version)) {
     checkpoint = { version: 2, complete: false, updatedAt: startedAt, completedCatalogues: {}, titleFiles: {} };
+    await lease?.assertOwned?.();
     await writeJson(config, CHECKPOINT_PATH, checkpoint);
   }
   const completedCatalogues = checkpoint.completedCatalogues && typeof checkpoint.completedCatalogues === 'object'
@@ -436,7 +451,7 @@ async function runManifestCatalogRefreshInternal() {
       }
 
       try {
-        const result = await collectCatalog(manifest, catalog, config, fingerprint);
+        const result = await collectCatalog(manifest, catalog, config, fingerprint, lease);
         for (const item of result.titles) if (!current.has(item.id)) current.set(item.id, item);
         delete result.titles;
         completedCatalogues[fingerprint] = {
@@ -460,8 +475,10 @@ async function runManifestCatalogRefreshInternal() {
           version: 2, complete: false, updatedAt: new Date().toISOString(),
           completedCatalogues, titleFiles
         };
+        await lease?.assertOwned?.();
         await writeJson(config, CHECKPOINT_PATH, checkpoint);
       } catch (error) {
+        if (/coordination lease/.test(error?.message || '')) throw error;
         const failed = {
           source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
           pages: 0, records: 0, titles: [], error: error?.message || 'catalogue fetch failed'
@@ -499,7 +516,9 @@ async function runManifestCatalogRefreshInternal() {
   } catch {}
   const scanComplete = catalogues.every(c => !c.error && !c.truncated);
   const nextState = { initialized: true, complete: scanComplete, updatedAt: new Date(now).toISOString(), seen, added };
+  await lease?.assertOwned?.();
   await writeJson(config, STATE_PATH, nextState);
+  await lease?.assertOwned?.();
   await writeJson(config, INDEX_PATH, index);
 
   const items = [...current.values()];
@@ -522,13 +541,58 @@ async function runManifestCatalogRefreshInternal() {
   }
 
   // The ledger lives in ImageKit beside the catalogue checkpoints, not on the
-  // ephemeral Render filesystem. A verified record is reusable for six hours
-  // only when the catalogue fingerprint matches and the asset still exists.
+  // ephemeral Render filesystem. Verified records do not expire: a matching
+  // fingerprint plus a live ImageKit HEAD check is the completion proof.
   for (const [shard, shardItems] of itemsByShard) {
     const ledgerCache = new Map();
     const records = await loadLedgerShard(config, shard, ledgerCache);
+    // All writes for this shard are serialized so overlapping verification
+    // cannot overwrite a newer pending/verified record with an older snapshot.
+    let ledgerWriteChain = Promise.resolve();
+    const persistShard = () => {
+      ledgerWriteChain = ledgerWriteChain.then(async () => {
+        await lease?.assertOwned?.();
+        await persistLedgerShards(config, ledgerCache, [shard]);
+      });
+      return ledgerWriteChain;
+    };
+    const inFlightVerifications = [];
+
+    const verifyPendingBatch = async pendingItems => {
+      const verification = await runPool(pendingItems, async item => {
+        if (await waitForImageKit(item.id)) {
+          records[item.id] = ledgerRecord(item, 'verified', {
+            verifiedAt: new Date().toISOString(),
+            verification: 'imagekit-head-confirmed'
+          });
+          return { id: item.id, status: 'generated-and-cached' };
+        }
+        records[item.id] = ledgerRecord(item, 'failed', {
+          attempts: Number(records[item.id]?.attempts) || 0,
+          lastError: 'ImageKit upload did not become visible within 60 seconds'
+        });
+        throw new Error('ImageKit upload did not become visible within 60 seconds');
+      }, VERIFY_CONCURRENCY);
+
+      for (const [status, count] of Object.entries(verification.counts)) {
+        resultCounts[status] = (resultCounts[status] || 0) + count;
+      }
+      totalFailures += verification.failures;
+      verifiedUploads += verification.counts['generated-and-cached'] || 0;
+      uploadPending -= pendingItems.length;
+      resultCounts['upload-pending'] = Math.max(0, (resultCounts['upload-pending'] || 0) - pendingItems.length);
+      if (!resultCounts['upload-pending']) delete resultCounts['upload-pending'];
+      await persistShard();
+    };
 
     for (let offset = 0; offset < shardItems.length; offset += PREWARM_BATCH_SIZE) {
+      // Keep at most two verification batches in flight. The next prewarm
+      // overlaps ImageKit visibility checks, but memory and outbound requests
+      // remain bounded on Render's free instance.
+      if (inFlightVerifications.length >= 2) {
+        await inFlightVerifications.shift();
+      }
+      await lease?.assertOwned?.();
       const batch = shardItems.slice(offset, offset + PREWARM_BATCH_SIZE);
       const reusable = await Promise.all(batch.map(async item => {
         const record = records[item.id];
@@ -579,44 +643,19 @@ async function runManifestCatalogRefreshInternal() {
             });
             throw error;
           }
-        }, PREWARM_CONCURRENCY);
+        }, adaptivePrewarmConcurrency());
 
         for (const [status, count] of Object.entries(prewarmReport.counts)) {
           resultCounts[status] = (resultCounts[status] || 0) + count;
         }
         totalFailures += prewarmReport.failures;
 
-        // Save the pending queue before verification. If Render restarts here,
-        // the next run retries only this small batch and recognizes completed
-        // uploads through the poster service's ImageKit cache-validation path.
-        await persistLedgerShards(config, ledgerCache, [shard]);
-
+        // Persist pending records before their asynchronous verification starts.
+        // A restart can safely HEAD-check or retry only this incomplete batch.
+        await persistShard();
         if (pendingItems.length) {
-          const verification = await runPool(pendingItems, async item => {
-            if (await waitForImageKit(item.id)) {
-              records[item.id] = ledgerRecord(item, 'verified', {
-                verifiedAt: new Date().toISOString(),
-                verification: 'imagekit-head-confirmed'
-              });
-              return { id: item.id, status: 'generated-and-cached' };
-            }
-            records[item.id] = ledgerRecord(item, 'failed', {
-              attempts: Number(records[item.id]?.attempts) || 0,
-              lastError: 'ImageKit upload did not become visible within 60 seconds'
-            });
-            throw new Error('ImageKit upload did not become visible within 60 seconds');
-          }, VERIFY_CONCURRENCY);
-
-          for (const [status, count] of Object.entries(verification.counts)) {
-            resultCounts[status] = (resultCounts[status] || 0) + count;
-          }
-          totalFailures += verification.failures;
-          verifiedUploads += verification.counts['generated-and-cached'] || 0;
-          uploadPending -= pendingItems.length;
-          resultCounts['upload-pending'] = Math.max(0, (resultCounts['upload-pending'] || 0) - pendingItems.length);
-          if (!resultCounts['upload-pending']) delete resultCounts['upload-pending'];
+          inFlightVerifications.push(verifyPendingBatch([...pendingItems]));
         }
-        await persistLedgerShards(config, ledgerCache, [shard]);
       }
 
       batchesProcessed++;
@@ -626,10 +665,15 @@ async function runManifestCatalogRefreshInternal() {
         console.log('[catalog-ledger-progress]', JSON.stringify({
           visited: postersVisited, total: items.length, batch: batchesProcessed,
           batchSize: batch.length, ledgerHits, verifiedUploads, verifiedCacheHits,
-          uploadPending, failures: totalFailures, rssMiB: rss
+          uploadPending, failures: totalFailures, rssMiB: rss,
+          prewarmConcurrency: adaptivePrewarmConcurrency(),
+          verificationBatchesInFlight: inFlightVerifications.length
         }));
       }
     }
+
+    await Promise.all(inFlightVerifications);
+    await ledgerWriteChain;
     ledgerCache.clear();
   }
   const prewarmReport = { counts: resultCounts, failures: totalFailures };
@@ -662,6 +706,7 @@ async function runManifestCatalogRefreshInternal() {
       version: 2, complete: true, updatedAt: new Date().toISOString(),
       completedCatalogues, titleFiles
     };
+    await lease?.assertOwned?.();
     await writeJson(config, CHECKPOINT_PATH, checkpoint);
   }
   console.log('[catalog-refresh-complete]', JSON.stringify(report));

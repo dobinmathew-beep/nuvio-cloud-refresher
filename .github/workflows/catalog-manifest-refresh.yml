@@ -77,6 +77,28 @@ jobs:
               echo "::error::Catalogue refresh failed."
               exit 1
             fi
+            # A Render rolling deploy can briefly leave the replacement
+            # instance idle before its boot-resume hook has claimed the job.
+            # Re-POST on idle: HTTP 202 starts/resumes it, HTTP 409 attaches
+            # to the instance that already owns it. Workflow concurrency keeps
+            # scheduled/manual GitHub runs serialized.
+            if [ "$status" = "idle" ]; then
+              start_response=$(curl --silent --show-error --max-time 90 \
+                -w '%{http_code}' \
+                -X POST "$POSTER_SERVICE_URL/catalog-refresh" \
+                -H "Authorization: Bearer $SCAN_TOKEN" \
+                -H "Accept: application/json") || {
+                  echo "::warning::Could not re-attach after Render restart; retrying."
+                  sleep 30
+                  continue
+                }
+              start_code="${start_response: -3}"
+              start_body="${start_response:0:${#start_response}-3}"
+              echo "$start_body"
+              if [ "$start_code" != "202" ] && [ "$start_code" != "409" ]; then
+                echo "::warning::Refresh re-attach returned HTTP $start_code; retrying."
+              fi
+            fi
             sleep 30
           done
           echo "::error::Timed out waiting for Render catalogue refresh after six hours."
