@@ -2,6 +2,7 @@ import { upcomingRelease, validImdbId } from '../lib/release-dates.mjs';
 import { renderUpcomingBadge, renderJustAddedBadge } from '../lib/render-poster.mjs';
 import { hasExistingComingDateTag, hasExistingJustAddedTag } from '../lib/coming-tag.mjs';
 import { isCatalogRecentlyAdded } from '../lib/catalog-just-added.mjs';
+import { upcomingReleaseFromCatalog } from '../lib/catalog-upcoming.mjs';
 import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster } from '../lib/imagekit-storage.mjs';
 
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
@@ -270,7 +271,7 @@ export default async function handler(req, res) {
     // An ImageKit copy is valid only while TMDB still confirms a future release.
     // This prevents a cached date badge from surviving its release day.
     const badge = String(req.query?.badge || '').toLowerCase() === 'just-added' ? 'just-added' : '';
-    const releaseInfo = await upcomingRelease(id);
+    const releaseInfo = await upcomingReleaseFromCatalog([id]) || await upcomingRelease(id);
     // Always render through this service; cached ImageKit copies can omit a
     // provider-supplied Just Added label and therefore bypass normalization.
 
