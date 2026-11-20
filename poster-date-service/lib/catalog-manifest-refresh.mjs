@@ -339,7 +339,7 @@ export async function runManifestCatalogRefresh() {
         cataloguesResumed++;
         catalogues.push({
           source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
-          pages: saved.pages || 0, records: saved.records || 0, resumed: true
+          pages: saved.pages || 0, records: saved.records || 0, truncated: Boolean(saved.truncated), resumed: true
         });
         console.info('[catalog-resumed-from-checkpoint]', JSON.stringify({
           source: manifest.name, type: catalog.type, id: catalog.id,
@@ -369,7 +369,7 @@ export async function runManifestCatalogRefresh() {
         delete result.titles;
         completedCatalogues[fingerprint] = {
           source: result.source, type: result.type, id: result.id, name: result.name,
-          pages: result.pages, records: result.records
+          pages: result.pages, records: result.records, truncated: Boolean(result.truncated)
         };
         handledFingerprints.set(fingerprint, {
           source: result.source, type: result.type, id: result.id, name: result.name
