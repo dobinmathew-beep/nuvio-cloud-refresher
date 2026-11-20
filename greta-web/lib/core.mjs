@@ -15,7 +15,7 @@ export function buildJustAddedRendererUrl(type,id){
  const value=String(id||'');
  if(/^tt\d{7,10}$/.test(value))return JUST_ADDED_RENDERER_ORIGIN+'/poster/'+value+'.jpg?badge=just-added&v=4';
  const tmdb=value.match(/^tmdb:(\d{1,12})$/);
- if(tmdb)return JUST_ADDED_RENDERER_ORIGIN+'/poster/tmdb/'+tmdb[1]+'.jpg?badge=just-added&type='+(type==='movie'?'movie':'tv')+'&v=3';
+ if(tmdb)return JUST_ADDED_RENDERER_ORIGIN+'/poster/tmdb/'+tmdb[1]+'.jpg?badge=just-added&type='+(type==='movie'?'movie':'tv')+'&v=4';
  return null;
 }
 export function buildCatalogPosterUrl(origin,type,id,justAdded=false){
