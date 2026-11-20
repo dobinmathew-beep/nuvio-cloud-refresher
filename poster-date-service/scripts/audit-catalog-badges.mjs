@@ -235,6 +235,8 @@ for (const [catalog, items] of Object.entries(catalogs)) {
   };
 }
 const visibleTitles = results.filter(row => row.badgeVisible);
+const justAddedTitles = results.filter(row => row.justAddedBadgeVisible);
+const comingDateTitles = results.filter(row => row.comingBadgeVisible);
 const report = {
   generatedAt: new Date().toISOString(),
   catalogUpdatedAt: catalogStatus.updatedAt || null,
@@ -274,11 +276,15 @@ const lines = [
 for (const [catalog, value] of Object.entries(byCatalog)) {
   lines.push('| ' + catalog + ' | ' + value.total + ' | ' + value.catalogFlagged + ' | ' + value.imagesInspected + ' | ' + value.comingDateVisible + ' | ' + value.justAddedVisible + ' | ' + value.visibleBadge + ' | ' + value.unavailable + ' |');
 }
-lines.push('', '**Total titles:** ' + report.totalTitles, '**Catalog entries checked:** ' + report.scannedTitles, '**Flagged poster images inspected:** ' + report.posterImagesInspected, '**Service-confirmed overlays:** ' + report.serviceConfirmedCount, '**OCR-confirmed labels:** ' + report.ocrConfirmedCount, '**Unflagged entries not downloaded:** ' + report.unflaggedTitlesNotDownloaded, '**Catalog flagged:** ' + report.catalogFlaggedCount, '**Visible “Just Added” labels:** ' + results.filter(row => row.justAddedBadgeVisible).length, '**Unavailable posters:** ' + report.unavailableCount, '', '## Titles with a visible Just Added label');
-for (const row of visibleTitles) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + ')');
-lines.push('', '## Flagged in catalog but badge not detected');
-for (const row of report.flaggedButNotVisible) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + '): ' + (row.error || 'OCR did not detect the label'));
-lines.push('', 'Unflagged titles were checked against all catalog badge flags and were not downloaded because the custom Just Added renderer is only requested for flagged entries.');
+lines.push('', '**Total titles:** ' + report.totalTitles, '**Catalog entries checked:** ' + report.scannedTitles, '**Poster images inspected:** ' + report.posterImagesInspected, '**Service-confirmed overlays:** ' + report.serviceConfirmedCount, '**Visible Coming/New Episode labels:** ' + comingDateTitles.length, '**Visible “Just Added” labels:** ' + justAddedTitles.length, '**Just Added casing mismatches:** ' + report.justAddedLabelMismatchCount, '**Unavailable posters:** ' + report.unavailableCount, '', '## Titles with a visible Just Added label');
+for (const row of justAddedTitles) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + ')');
+lines.push('', '## Titles with a visible Coming/New Episode date');
+for (const row of comingDateTitles) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + '): ' + row.comingDate);
+lines.push('', '## Just Added casing mismatches');
+for (const row of report.justAddedLabelMismatch) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + '): ' + String(row.badgeText));
+lines.push('', '## Catalog flagged but Just Added badge missing');
+for (const row of report.flaggedButNotVisible) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + '): ' + (row.error || 'Service did not confirm Just Added'));
+lines.push('', 'Every poster URL was requested and checked; titles without a future release date or Just Added eligibility are not counted as missing badges.');
 await writeFile(resolve(outputDir, 'just-added-audit.md'), lines.join('\n') + '\n');
 console.log('AUDIT_RESULT ' + JSON.stringify({
   totalTitles: report.totalTitles,
@@ -292,5 +298,7 @@ console.log('AUDIT_RESULT ' + JSON.stringify({
   unflaggedTitlesNotDownloaded: report.unflaggedTitlesNotDownloaded,
   byCatalog,
   visibleTitles: visibleTitles.map(row => ({ catalog: row.catalog, title: row.title, id: row.id, comingDate: row.comingDate, justAdded: row.justAddedBadgeVisible })),
+  justAddedTitles: justAddedTitles.map(row => ({ catalog: row.catalog, title: row.title, id: row.id })),
+  comingDateTitles: comingDateTitles.map(row => ({ catalog: row.catalog, title: row.title, id: row.id, date: row.comingDate, kind: row.comingKind })),
   flaggedButNotVisible: report.flaggedButNotVisible.map(row => ({ catalog: row.catalog, title: row.title, id: row.id, error: row.error })),
 }));
