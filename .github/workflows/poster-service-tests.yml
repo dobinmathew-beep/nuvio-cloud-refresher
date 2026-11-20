@@ -1,0 +1,34 @@
+name: Poster service tests
+
+on:
+  pull_request:
+    paths:
+      - 'poster-date-service/**'
+      - '.github/workflows/poster-service-tests.yml'
+  push:
+    branches:
+      - poster-refresh-optimizations
+    paths:
+      - 'poster-date-service/**'
+      - '.github/workflows/poster-service-tests.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: poster-date-service/package.json
+      - name: Install dependencies
+        working-directory: poster-date-service
+        run: npm install --no-audit --no-fund
+      - name: Run regression tests
+        working-directory: poster-date-service
+        run: npm test
