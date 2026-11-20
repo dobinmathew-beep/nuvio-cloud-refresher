@@ -10,7 +10,7 @@ import { upcomingReleaseByTmdbId, getTodayInTimeZone } from './lib/release-dates
 import { isCatalogRecentlyAdded } from './lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
 
-import { imageKitConfig, canStoreImageKitPoster, getImageKitStorageSnapshot, uploadPosterToImageKit, runImageKitMaintenance } from './lib/imagekit-storage.mjs';
+import { imageKitConfig, canStoreImageKitPoster, getImageKitStorageSnapshot, uploadPosterToImageKit, runImageKitMaintenance, initializeImageKitStorageSnapshot } from './lib/imagekit-storage.mjs';
 import { runManifestCatalogRefresh, resumeIncompleteManifestCatalogRefresh } from './lib/catalog-manifest-refresh.mjs';
 import { hasExistingComingDateTag, hasExistingJustAddedTag } from './lib/coming-tag.mjs';
 
@@ -81,7 +81,7 @@ async function redirectCachedFallback(storageId, req, res, releaseInfo, justAdde
 
 async function cacheFallbackPoster(storageId, bytes, type) {
   try {
-    if (!getImageKitStorageSnapshot().known) await runImageKitMaintenance();
+    if (!getImageKitStorageSnapshot().known) await initializeImageKitStorageSnapshot();
     if (!canStoreImageKitPoster(storageId, bytes.length)) return false;
     void uploadPosterToImageKit(storageId, { bytes, type })
       .catch(error => console.warn('[imagekit-fallback-upload-failed]', JSON.stringify({ storageId, error: error?.message || 'unknown error' })));
@@ -331,7 +331,7 @@ const server = createServer(async (req, res) => {
     res.end(JSON.stringify({ status: 'accepted', jobId }));
     void (async () => {
       try {
-        await runImageKitMaintenance();
+        await initializeImageKitStorageSnapshot();
         catalogRefreshReport = await runManifestCatalogRefresh();
         console.log('[catalog-refresh-job-complete]', JSON.stringify({ jobId, status: 'completed' }));
       } catch (error) {
