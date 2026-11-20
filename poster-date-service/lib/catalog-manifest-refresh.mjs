@@ -79,7 +79,8 @@ async function readManifest(key) {
     base: manifestBase(manifestUrl),
     catalogs: manifest.catalogs.filter(c => c && c.type && c.id).map(c => ({
       type: String(c.type), id: String(c.id), name: String(c.name || c.id),
-      extra: Array.isArray(c.extraSupported) ? c.extraSupported : [],
+      extra: Array.isArray(c.extra) ? c.extra : [],
+      extraSupported: Array.isArray(c.extraSupported) ? c.extraSupported : [],
       required: Array.isArray(c.extraRequired) ? c.extraRequired : []
     }))
   };
@@ -89,13 +90,28 @@ function catalogUrl(base, catalog, skip) {
   if (skip) url.searchParams.set('skip', String(skip));
   // Required extras are populated conservatively from the descriptor's first
   // advertised option when available; skip remains the pagination cursor.
-  for (const extra of catalog.required) {
-    if (!extra || extra.name === 'skip') continue;
-    const options = Array.isArray(extra.options) ? extra.options : [];
-    if (options.length) url.searchParams.set(extra.name, String(options[0]));
+  for (const requirement of catalog.required) {
+    const name = typeof requirement === 'string' ? requirement : String(requirement?.name || '');
+    if (!name || name === 'skip') continue;
+    const descriptor = catalog.extra.find(item => item && typeof item === 'object' && item.name === name);
+    const options = Array.isArray(descriptor?.options) ? descriptor.options
+      : Array.isArray(requirement?.options) ? requirement.options : [];
+    if (options.length) url.searchParams.set(name, String(options[0]));
   }
   return url;
 }
+function unresolvedRequiredExtras(catalog) {
+  return catalog.required.map(item => typeof item === 'string' ? item : String(item?.name || ''))
+    .filter(name => name && name !== 'skip')
+    .filter(name => {
+      const descriptor = catalog.extra.find(item => item && typeof item === 'object' && item.name === name);
+      const requiredItem = catalog.required.find(item => (typeof item === 'string' ? item : item?.name) === name);
+      const options = Array.isArray(descriptor?.options) ? descriptor.options
+        : Array.isArray(requiredItem?.options) ? requiredItem.options : [];
+      return options.length === 0;
+    });
+}
+
 async function collectCatalog(manifest, catalog) {
   const metas = [];
   const seenPageIds = new Set();
@@ -205,6 +221,20 @@ export async function runManifestCatalogRefresh() {
   const catalogues = [];
   for (const manifest of manifests) {
     for (const catalog of manifest.catalogs) {
+      const unresolvedExtras = unresolvedRequiredExtras(catalog);
+      if (unresolvedExtras.length) {
+        const skipped = {
+          source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
+          pages: 0, metas: [], skipped: true,
+          skipReason: 'Requires user-supplied catalogue extras: ' + unresolvedExtras.join(', ')
+        };
+        catalogues.push(skipped);
+        console.info('[catalog-skipped-dynamic]', JSON.stringify({
+          source: skipped.source, type: skipped.type, id: skipped.id,
+          name: skipped.name, requiredExtras: unresolvedExtras
+        }));
+        continue;
+      }
       try {
         const result = await collectCatalog(manifest, catalog);
         catalogues.push(result);
@@ -255,8 +285,15 @@ export async function runManifestCatalogRefresh() {
   const failures = results.filter(r => r.status === 'failed');
   const report = {
     startedAt, finishedAt: new Date().toISOString(), manifests: manifests.map(m => ({ source: m.name || m.key, catalogs: m.catalogs.length })),
-    catalogues: catalogues.map(c => ({ source: c.source, type: c.type, id: c.id, name: c.name, pages: c.pages, records: c.metas.length, truncated: Boolean(c.truncated), error: c.error || null })),
-    cataloguesDiscovered: catalogues.length, uniqueTitles: items.length, newlyDiscovered, scanComplete,
+    catalogues: catalogues.map(c => ({
+      source: c.source, type: c.type, id: c.id, name: c.name, pages: c.pages,
+      records: c.metas.length, truncated: Boolean(c.truncated),
+      skipped: Boolean(c.skipped), skipReason: c.skipReason || null, error: c.error || null
+    })),
+    cataloguesDiscovered: catalogues.length,
+    cataloguesSkippedDynamic: catalogues.filter(c => c.skipped).length,
+    cataloguesFailed: catalogues.filter(c => c.error).length,
+    uniqueTitles: items.length, newlyDiscovered, scanComplete,
     postersProcessed: results.length, failures: failures.length,
     results: results.reduce((counts, r) => { counts[r.status] = (counts[r.status] || 0) + 1; return counts; }, {})
   };
