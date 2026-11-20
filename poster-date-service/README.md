@@ -17,16 +17,16 @@ The service substitutes the IMDb ID into the BetterPosters template. It delibera
 ## Existing BetterPosters tag handling
 - The original image's top tag row is checked with English OCR.
 - Every eligible title is checked against TMDB's current future release schedule. A confirmed date is rendered by this service, replacing the source tag area rather than trusting stale provider text.
-- Every normal GET through the shared URL checks the BetterPosters top tag row for an existing "Just Added" label. When found, the service normalizes it to the exact title-case "Just Added" artwork. This applies to Xperience, both AIOmetadata instances, and the Great Indian catalogs whenever their poster requests pass through this URL.
+- Every normal GET through the shared URL checks the central Great Indian `catalog-added.json` index for a title added to any of the eight catalogs in the last 14 days, and also checks BetterPosters for an existing "Just Added" tag. Either condition produces the exact title-case "Just Added" artwork. This applies to Xperience, both AIOmetadata instances, and the Great Indian catalogs whenever their poster requests pass through this URL.
 - An explicit `?badge=just-added` request forces the same artwork even when BetterPosters has no such label. The caller should send this flag only for titles that are genuinely newly added.
 - OCR results are cached in memory by source-image hash to avoid repeating work for the same image.
 
 ## Just Added badge rules
 - The Great Indian Catalog sends `?badge=just-added` for any newly added movie or series entry; the catalog keeps the first-added timestamp for 14 days.
 - Other clients automatically receive title-case normalization when BetterPosters itself already marks the poster "Just Added".
-- For a title that BetterPosters does not mark, another client must pass `?badge=just-added` only when its own catalog metadata confirms that the title is newly added. The shared poster service cannot infer a title's first-added date from an IMDb ID alone.
+- For a title outside the eight Great Indian catalogs that BetterPosters does not mark, another client must pass `?badge=just-added` only when its own catalog metadata confirms that the title is newly added. The renderer cannot infer a third-party catalog's first-added date from an IMDb ID alone.
 - When the flag is present, the service adds a compact dark-glass "Just Added" chip without cropping or resizing the poster.
-- If both a future release date and Just Added eligibility apply, the service stacks both labels vertically. The Coming/New Episode label appears first and Just Added below it. A title is not marked "Just Added" merely because it passes through the shared URL.
+- If both a future release date and Just Added eligibility apply, the service stacks both labels vertically. The Coming/New Episode label appears first and Just Added below it. The central index lets AIOmetadata and Xperience receive Just Added for the same recently-added Great Indian titles without requiring them to send the query flag. A title is not marked "Just Added" merely because it passes through the shared URL.
 
 ## Release date rules
 - TMDB is the metadata source.
