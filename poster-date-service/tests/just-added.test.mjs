@@ -14,7 +14,7 @@ test('badge SVG embeds the exact title-case Just Added label', () => {
   const svg = buildJustAddedBadgeSvg(400, 70, 12, 38).toString('utf8');
   assert.equal(JUST_ADDED_BADGE_TEXT, 'Just Added');
   assert.match(svg, /<text[^>]*>Just Added<\\/text>/);
-  assert.doesNotMatch(svg, /\\$\\{JUST_ADDED_BADGE_TEXT\\}/);
+  assert.doesNotMatch(svg, /\$\{JUST_ADDED_BADGE_TEXT\}/);
 });
 
 test('OCR text normalisation recognises the Just Added wording', () => {
@@ -46,7 +46,7 @@ test('rendered poster visibly contains the exact Just Added label', async () => 
   try {
     await worker.setParameters({ tessedit_pageseg_mode: '11' });
     const result = await worker.recognize(crop);
-    const text = String(result?.data?.text || '').replace(/\\s+/g, ' ').trim();
+    const text = String(result?.data?.text || '').replace(/\s+/g, ' ').trim();
     assert.match(text, /Just Added/i, 'rendered poster must visibly display Just Added');
     assert.doesNotMatch(text, /\\$\\{JUST_ADDED_BADGE_TEXT\\}/, 'template variable must not appear on the poster');
   } finally {
