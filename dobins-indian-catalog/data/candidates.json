@@ -3075,13 +3075,6 @@
       "type": "movie"
     },
     {
-      "id": "tt40856286",
-      "name": "Vibe",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt40856286.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
       "id": "tt39667834",
       "name": "Lust Stories 3",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39667834.jpg",
@@ -3092,6 +3085,13 @@
       "id": "tt32634611",
       "name": "Daayra",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32634611.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
+      "id": "tt40856286",
+      "name": "Vibe",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt40856286.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     },
@@ -7890,6 +7890,13 @@
       "type": "movie"
     },
     {
+      "id": "tt27611340",
+      "name": "Bachhala Malli",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27611340.jpg",
+      "releaseInfo": "2024",
+      "type": "movie"
+    },
+    {
       "id": "tt16539454",
       "name": "Pushpa 2 - The Rule",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt16539454.jpg",
@@ -12554,5 +12561,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-20T11:59:52.541822+04:00"
+  "_updatedAt": "2026-11-20T17:51:06.849866+04:00"
 }

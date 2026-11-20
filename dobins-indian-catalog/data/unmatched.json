@@ -71,6 +71,29 @@
     }
   },
   {
+    "name": "Drones1",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-11-20",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.ottchecker.com/ott-releases/tamil"
+    ],
+    "platforms": [
+      "Amazon Prime Video"
+    ],
+    "detail": "https://www.ottchecker.com/movie/drones1-2026",
+    "sourceRecord": {
+      "title": "Drones1",
+      "releaseDate": "2026-11-20",
+      "language": "tamil",
+      "platforms": [
+        "Amazon Prime Video"
+      ],
+      "source": "https://www.ottchecker.com/ott-releases/tamil"
+    }
+  },
+  {
     "name": "Hatela Gang",
     "language": "hindi",
     "type": "movie",
@@ -502,6 +525,38 @@
     }
   },
   {
+    "name": "Avalaga Irunthal",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-10-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6acee68b3249ff69efda4163",
+      "platform": "ZEE5",
+      "title": "Avalaga Irunthal",
+      "createdAt": "2026-10-14T02:18:51.600Z",
+      "genre": "Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "original_language": "Tamil",
+      "releaseDate": "2026-10-14",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-10-14T02:18:51.600Z",
+      "votes": 0,
+      "verified": true
+    }
+  },
+  {
     "name": "Southern Shadows",
     "language": "tamil",
     "type": "series",
@@ -563,8 +618,8 @@
     }
   },
   {
-    "name": "Avalaga Irunthal",
-    "language": "tamil",
+    "name": "Marpu - Not For You, But For The Future",
+    "language": "telugu",
     "type": "movie",
     "ottDate": "2026-10-14",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
@@ -576,21 +631,20 @@
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6acee68b3249ff69efda4163",
+      "_id": "6acee68b3249ff69efda4164",
       "platform": "ZEE5",
-      "title": "Avalaga Irunthal",
-      "createdAt": "2026-10-14T02:18:51.600Z",
-      "genre": "Drama, Romance",
+      "title": "Marpu - Not For You, But For The Future",
+      "createdAt": "2026-10-14T02:18:51.826Z",
+      "genre": "Drama",
       "imdbRating": null,
       "languages": [
-        "Tamil"
+        "Telugu"
       ],
-      "original_language": "Tamil",
+      "original_language": "Telugu",
       "releaseDate": "2026-10-14",
       "source_verified": true,
       "type": "Movie",
-      "updatedAt": "2026-10-14T02:18:51.600Z",
-      "votes": 0,
+      "updatedAt": "2026-10-14T02:18:51.826Z",
       "verified": true
     }
   },
@@ -622,37 +676,6 @@
       "type": "Series",
       "updatedAt": "2026-04-30T03:47:03.617Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/lMmVs6FC8pkc0n1BW3gemZRFhqb.jpg",
-      "verified": true
-    }
-  },
-  {
-    "name": "Marpu - Not For You, But For The Future",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-10-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6acee68b3249ff69efda4164",
-      "platform": "ZEE5",
-      "title": "Marpu - Not For You, But For The Future",
-      "createdAt": "2026-10-14T02:18:51.826Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "original_language": "Telugu",
-      "releaseDate": "2026-10-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-10-14T02:18:51.826Z",
       "verified": true
     }
   },
@@ -749,36 +772,6 @@
     }
   },
   {
-    "name": "The Eternal Love - Prologue",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-04-23",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69e9955d30958fd1b959de4b",
-      "platform": "ETV Win",
-      "title": "The Eternal Love - Prologue",
-      "createdAt": "2026-04-23T03:43:25.822Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-04-23",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-23T03:43:25.822Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Roadies Rebirth",
     "language": "hindi",
     "type": "series",
@@ -806,6 +799,36 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-10-16T02:18:52.613Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "The Eternal Love - Prologue",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-04-23",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69e9955d30958fd1b959de4b",
+      "platform": "ETV Win",
+      "title": "The Eternal Love - Prologue",
+      "createdAt": "2026-04-23T03:43:25.822Z",
+      "genre": "Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-04-23",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-23T03:43:25.822Z",
       "verified": true
     }
   },
@@ -901,36 +924,6 @@
     }
   },
   {
-    "name": "Katha Sudha",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-03-22",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69bf625ee9d9be413445ad25",
-      "platform": "ETV Win",
-      "title": "Katha Sudha",
-      "createdAt": "2026-03-22T03:30:38.016Z",
-      "genre": "Drama, Anthology",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-03-22",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-03-22T03:30:38.016Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Chikoo Vs Bunty: Kushti Ki Jung",
     "language": "hindi",
     "type": "movie",
@@ -962,32 +955,32 @@
     }
   },
   {
-    "name": "WWE (Tamil Dub)",
-    "language": "tamil",
+    "name": "Katha Sudha",
+    "language": "telugu",
     "type": "series",
-    "ottDate": "2026-04-18",
+    "ottDate": "2026-03-22",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix"
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "69e2fc0930958fd1b908a124",
-      "title": "WWE (Tamil Dub)",
-      "platform": "Netflix",
-      "createdAt": "2026-04-18T03:35:37.425Z",
-      "genre": "Sports Entertainment, Action",
+      "_id": "69bf625ee9d9be413445ad25",
+      "platform": "ETV Win",
+      "title": "Katha Sudha",
+      "createdAt": "2026-03-22T03:30:38.016Z",
+      "genre": "Drama, Anthology",
       "imdbRating": null,
       "languages": [
-        "Tamil"
+        "Telugu"
       ],
-      "releaseDate": "2026-04-18",
+      "releaseDate": "2026-03-22",
       "source_verified": true,
       "type": "Series",
-      "updatedAt": "2026-04-18T03:35:37.425Z",
+      "updatedAt": "2026-03-22T03:30:38.016Z",
       "verified": true
     }
   },
@@ -1019,6 +1012,36 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-09-12T02:18:48.886Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "WWE (Tamil Dub)",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-04-18",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69e2fc0930958fd1b908a124",
+      "title": "WWE (Tamil Dub)",
+      "platform": "Netflix",
+      "createdAt": "2026-04-18T03:35:37.425Z",
+      "genre": "Sports Entertainment, Action",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-04-18",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-18T03:35:37.425Z",
       "verified": true
     }
   },
@@ -1146,36 +1169,6 @@
     }
   },
   {
-    "name": "Vanakkam Thamizha",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-03-25",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "SunNXT"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69c4167f991033953144f107",
-      "platform": "SunNXT",
-      "title": "Vanakkam Thamizha",
-      "createdAt": "2026-03-25T17:08:15.700Z",
-      "genre": "Talk Show, Entertainment",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-03-25",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-03-25T17:08:15.700Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Clean Up Company",
     "language": "hindi",
     "type": "movie",
@@ -1205,6 +1198,36 @@
       "updatedAt": "2026-08-21T02:09:08.752Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/sVMcco0EdfDvFpyPlHU9n6RPrQj.jpg",
       "instagramPostedAt": "2026-08-21T02:09:49Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Vanakkam Thamizha",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-03-25",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "SunNXT"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69c4167f991033953144f107",
+      "platform": "SunNXT",
+      "title": "Vanakkam Thamizha",
+      "createdAt": "2026-03-25T17:08:15.700Z",
+      "genre": "Talk Show, Entertainment",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-03-25",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-03-25T17:08:15.700Z",
       "verified": true
     }
   },

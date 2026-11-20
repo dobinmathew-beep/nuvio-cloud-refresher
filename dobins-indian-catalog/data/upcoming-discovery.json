@@ -1,33 +1,34 @@
 {
-  "generatedAt": "2026-11-20T12:05:16.122654+04:00",
+  "generatedAt": "2026-11-20T17:51:06.849866+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 37,
+    "total": 39,
     "byLanguage": {
-      "hindi": 19,
+      "hindi": 20,
       "malayalam": 4,
       "tamil": 7,
-      "telugu": 7
+      "telugu": 8
     },
     "byType": {
       "movie": 17,
-      "series": 20
+      "series": 22
     },
     "byMatchState": {
-      "published": 28,
-      "unmatched": 9
+      "published": 29,
+      "unmatched": 10
     },
     "bySource": {
       "https://cinebuds.com/ott-release-dates/": 3,
+      "https://www.themoviedb.org/tv/338390": 1,
       "https://www.dailyott.in/": 10,
-      "https://newindianmovies.com/": 4,
+      "https://newindianmovies.com/": 2,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
       "https://v3-cinemeta.strem.io/": 4,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 17,
       "https://www.keralatv.in/channel/ott/": 3,
       "https://www.ottchecker.com/ott-releases/tamil": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json": 1,
       "https://www.themoviedb.org/tv/331750": 1,
-      "https://ottasia.com/ott-releases-this-week?country=IN": 14,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json": 1,
       "https://www.themoviedb.org/tv/332943": 1,
       "https://api.tvmaze.com/schedule/web": 1,
@@ -62,6 +63,31 @@
         "releaseInfo": true
       },
       "catalog": "dobins_hi_movie"
+    },
+    {
+      "title": "Apsara",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-20",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/338390"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "premiere",
+      "detail": null,
+      "matchId": "tt50063835",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
     },
     {
       "title": "Bigg Boss Season 20",
@@ -184,7 +210,7 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://newindianmovies.com/"
+        "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -297,18 +323,18 @@
       "confirmed": true,
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
       "detail": "https://www.ottchecker.com/movie/drones1-2026",
-      "matchId": "tmdb:1728763",
-      "matchState": "published",
-      "matchReason": "TMDB exact-title search + verified detail page",
-      "metadataComplete": true,
-      "metadataSource": "TMDB exact-title search + verified detail page",
+      "matchId": null,
+      "matchState": "unmatched",
+      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
+      "metadataComplete": false,
+      "metadataSource": null,
       "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
       },
-      "catalog": "dobins_ta_movie"
+      "catalog": null
     },
     {
       "title": "New",
@@ -405,7 +431,7 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://newindianmovies.com/"
+        "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -429,12 +455,12 @@
       "type": "movie",
       "releaseDate": "2026-11-20",
       "platforms": [
-        "aha",
-        "Aha"
+        "Aha",
+        "aha"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
         "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/",
         "https://newindianmovies.com/"
       ],
       "confirmed": true,
@@ -452,6 +478,33 @@
         "releaseInfo": true
       },
       "catalog": "dobins_te_movie"
+    },
+    {
+      "title": "Mangolik",
+      "language": "telugu",
+      "type": "series",
+      "releaseDate": "2026-11-20",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/tv/342653/mangolik?country=IN",
+      "matchId": "tt50526708",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": false,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": "dobins_te_series"
     },
     {
       "title": "Part-Timers",
@@ -595,8 +648,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
         "https://www.dailyott.in/",
@@ -707,7 +760,9 @@
       "language": "malayalam",
       "type": "series",
       "releaseDate": "2026-11-27",
-      "platforms": [],
+      "platforms": [
+        "ZEE5"
+      ],
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
@@ -723,7 +778,7 @@
         "poster": true,
         "description": true,
         "genres": true,
-        "releaseInfo": false
+        "releaseInfo": true
       },
       "catalog": "dobins_ml_series"
     },
@@ -1315,7 +1370,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 17
+      "records": 20
     },
     {
       "source": "Vi weekly OTT calendar",
@@ -1416,8 +1471,8 @@
     {
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
-      "state": "partial",
-      "records": 149,
+      "state": "live",
+      "records": 154,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1774,12 +1829,13 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "sourcesWithSeriesRecords": 1,
+          "sourcesWithSeriesRecords": 2,
           "sourceDomainsWithSeriesRecords": [
+            "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 37,
-          "coverageStatus": "partial",
+          "detectedRecords": 40,
+          "coverageStatus": "ok",
           "sources": [
             {
               "source": "Cinebuds upcoming calendar",
@@ -1795,9 +1851,9 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 3,
-              "movieRecords": 3,
-              "seriesRecords": 0
+              "records": 5,
+              "movieRecords": 4,
+              "seriesRecords": 1
             },
             {
               "source": "Vi weekly OTT calendar",
@@ -1822,8 +1878,8 @@
               "url": "https://newindianmovies.com/",
               "state": "live",
               "languageState": "records_found",
-              "records": 2,
-              "movieRecords": 2,
+              "records": 3,
+              "movieRecords": 3,
               "seriesRecords": 0
             },
             {
@@ -1935,7 +1991,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 52,
+          "detectedRecords": 54,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1952,9 +2008,9 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 9,
+              "records": 10,
               "movieRecords": 5,
-              "seriesRecords": 4
+              "seriesRecords": 5
             },
             {
               "source": "Vi weekly OTT calendar",
@@ -1979,9 +2035,9 @@
               "url": "https://newindianmovies.com/",
               "state": "live",
               "languageState": "records_found",
-              "records": 2,
+              "records": 3,
               "movieRecords": 0,
-              "seriesRecords": 2
+              "seriesRecords": 3
             },
             {
               "source": "Indian Movie Reviews OTT calendar",
@@ -2115,10 +2171,10 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 617,
+      "records": 618,
       "counts": {
         "malayalam": 60,
-        "tamil": 119,
+        "tamil": 120,
         "telugu": 108,
         "hindi": 330
       },
@@ -2155,13 +2211,6 @@
       "records": 208,
       "theatricalCandidates": 193,
       "physicalCandidates": 16
-    },
-    {
-      "source": "Minimum independent source coverage",
-      "url": "internal://source-coverage-gate",
-      "state": "partial",
-      "records": 0,
-      "error": "Fewer than two healthy independent publisher domains with actual title detections for: telugu"
     }
   ],
   "sourceCoverage": {
@@ -2520,12 +2569,13 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "sourcesWithSeriesRecords": 1,
+      "sourcesWithSeriesRecords": 2,
       "sourceDomainsWithSeriesRecords": [
+        "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 37,
-      "coverageStatus": "partial",
+      "detectedRecords": 40,
+      "coverageStatus": "ok",
       "sources": [
         {
           "source": "Cinebuds upcoming calendar",
@@ -2541,9 +2591,9 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 3,
-          "movieRecords": 3,
-          "seriesRecords": 0
+          "records": 5,
+          "movieRecords": 4,
+          "seriesRecords": 1
         },
         {
           "source": "Vi weekly OTT calendar",
@@ -2568,8 +2618,8 @@
           "url": "https://newindianmovies.com/",
           "state": "live",
           "languageState": "records_found",
-          "records": 2,
-          "movieRecords": 2,
+          "records": 3,
+          "movieRecords": 3,
           "seriesRecords": 0
         },
         {
@@ -2681,7 +2731,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 52,
+      "detectedRecords": 54,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2698,9 +2748,9 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 9,
+          "records": 10,
           "movieRecords": 5,
-          "seriesRecords": 4
+          "seriesRecords": 5
         },
         {
           "source": "Vi weekly OTT calendar",
@@ -2725,9 +2775,9 @@
           "url": "https://newindianmovies.com/",
           "state": "live",
           "languageState": "records_found",
-          "records": 2,
+          "records": 3,
           "movieRecords": 0,
-          "seriesRecords": 2
+          "seriesRecords": 3
         },
         {
           "source": "Indian Movie Reviews OTT calendar",
