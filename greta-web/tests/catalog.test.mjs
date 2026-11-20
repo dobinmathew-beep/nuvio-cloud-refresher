@@ -1,4 +1,4 @@
-import test from 'node:test';import assert from 'node:assert/strict';import {buildManifest,replaceOrigin,buildConfiguredPosterUrl,buildSharedRendererUrl} from '../api/service.mjs';import {buildCatalogPosterUrl,buildJustAddedRendererUrl} from '../lib/core.mjs';
+import test from 'node:test';import assert from 'node:assert/strict';import worker from '../lib/core.mjs';import {buildManifest,replaceOrigin,buildConfiguredPosterUrl,buildSharedRendererUrl} from '../api/service.mjs';import {buildCatalogPosterUrl,buildJustAddedRendererUrl} from '../lib/core.mjs';
 
 test('only Just Added-eligible catalog entries receive a badge poster request',()=>{
  assert.equal(buildCatalogPosterUrl('https://addon.example','movie','tt1234567',true),'https://addon.example/art/poster/tt1234567?badge=just-added&v=8');
