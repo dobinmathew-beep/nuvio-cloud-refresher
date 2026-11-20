@@ -61,6 +61,15 @@ export async function renderUpcomingBadge(input, isoDate, kind = 'premiere') {
 }
 
 
+export function buildJustAddedBadgeSvg(badgeWidth, badgeHeight, radius, fontSize) {
+  return Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="' + badgeWidth + '" height="' + badgeHeight + '">' +
+    '<defs><linearGradient id="chip" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#252525" stop-opacity=".96"/><stop offset="100%" stop-color="#080808" stop-opacity=".96"/></linearGradient>' +
+    '<linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF" stop-opacity=".16"/><stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient></defs>' +
+    '<rect x=".75" y=".75" width="' + (badgeWidth - 1.5) + '" height="' + (badgeHeight - 1.5) + '" rx="' + radius + '" fill="url(#chip)" stroke="#FFFFFF" stroke-opacity=".24" stroke-width="1.5"/>' +
+    '<rect x="2" y="2" width="' + (badgeWidth - 4) + '" height="' + Math.round(badgeHeight * .42) + '" rx="' + Math.max(4, radius - 1) + '" fill="url(#sheen)"/>' +
+    '<text x="' + (badgeWidth / 2) + '" y="' + (badgeHeight / 2) + '" text-anchor="middle" dominant-baseline="central" font-family="Arial, Helvetica, sans-serif" font-size="' + fontSize + '" font-weight="700" letter-spacing="0" fill="#FFFFFF">' + JUST_ADDED_BADGE_TEXT + '</text></svg>');
+}
+
 export async function renderJustAddedBadge(input) {
   const { default: sharp } = await import('sharp');
   const metadata = await sharp(input, { limitInputPixels: 40000000 }).metadata();
@@ -84,12 +93,7 @@ export async function renderJustAddedBadge(input) {
     .png()
     .toBuffer();
   const fontSize = Math.round(badgeHeight * 0.56);
-  const svg = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="' + badgeWidth + '" height="' + badgeHeight + '">' +
-    '<defs><linearGradient id="chip" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#252525" stop-opacity=".96"/><stop offset="100%" stop-color="#080808" stop-opacity=".96"/></linearGradient>' +
-    '<linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFFFFF" stop-opacity=".16"/><stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient></defs>' +
-    '<rect x=".75" y=".75" width="' + (badgeWidth - 1.5) + '" height="' + (badgeHeight - 1.5) + '" rx="' + radius + '" fill="url(#chip)" stroke="#FFFFFF" stroke-opacity=".24" stroke-width="1.5"/>' +
-    '<rect x="2" y="2" width="' + (badgeWidth - 4) + '" height="' + Math.round(badgeHeight * .42) + '" rx="' + Math.max(4, radius - 1) + '" fill="url(#sheen)"/>' +
-    '<text x="' + (badgeWidth / 2) + '" y="' + (badgeHeight / 2) + '" text-anchor="middle" dominant-baseline="central" font-family="Arial, Helvetica, sans-serif" font-size="' + fontSize + '" font-weight="700" letter-spacing="0" fill="#FFFFFF">' + JUST_ADDED_BADGE_TEXT + '</text></svg>');
+  const svg = buildJustAddedBadgeSvg(badgeWidth, badgeHeight, radius, fontSize);
   let image = sharp(input).composite([{ input: blurred, left, top }, { input: svg, left, top }]);
   if (metadata.format === 'webp') image = image.webp({ quality: 94, effort: 4 });
   else if (metadata.format === 'png') image = image.png({ compressionLevel: 8 });
