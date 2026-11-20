@@ -5,10 +5,11 @@ import { dirname } from 'node:path';
 const require = createRequire(import.meta.url);
 const CACHE_MS = 6 * 60 * 60 * 1000;
 const cache = new Map();
+let sharpConfigured = false;
 let workerPromise;
 let ocrQueue = Promise.resolve();
 let workerRecognitionCount = 0;
-const MAX_WORKER_RECOGNITIONS = 8;
+const MAX_WORKER_RECOGNITIONS = 4;
 
 function withOcrQueue(task) {
   const job = ocrQueue.then(task);
@@ -99,6 +100,11 @@ export async function hasExistingComingDateTag(input, kind = 'premiere', isoDate
   if (cached && Date.now() - cached.at < CACHE_MS) return cached.value;
 
   const { default: sharp } = await import('sharp');
+  if (!sharpConfigured) {
+    sharp.cache({ memory: 24, files: 0, items: 24 });
+    sharp.concurrency(1);
+    sharpConfigured = true;
+  }
   const metadata = await sharp(input, { limitInputPixels: 40000000 }).metadata();
   if (!metadata.width || !metadata.height) throw new Error('Cannot inspect poster dimensions');
 
@@ -107,7 +113,7 @@ export async function hasExistingComingDateTag(input, kind = 'premiere', isoDate
   const cropHeight = Math.max(180, Math.min(metadata.height, Math.round(metadata.height * 0.65)));
   const prepared = await sharp(input, { limitInputPixels: 40000000 })
     .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
-    .resize({ width: Math.min(1800, metadata.width * 2) })
+    .resize({ width: Math.min(1200, metadata.width * 2) })
     .grayscale()
     .normalize()
     .sharpen()
@@ -147,6 +153,11 @@ export async function hasExistingJustAddedTag(input) {
   const cached = cache.get(key);
   if (cached && Date.now() - cached.at < CACHE_MS) return cached.value;
   const { default: sharp } = await import('sharp');
+  if (!sharpConfigured) {
+    sharp.cache({ memory: 24, files: 0, items: 24 });
+    sharp.concurrency(1);
+    sharpConfigured = true;
+  }
   const metadata = await sharp(input, { limitInputPixels: 40000000 }).metadata();
   if (!metadata.width || !metadata.height) throw new Error('Cannot inspect poster dimensions');
   // The chip sits in the top strip; this compact crop is much faster on
