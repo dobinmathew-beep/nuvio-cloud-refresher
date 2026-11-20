@@ -126,41 +126,46 @@ async function getOriginal(imdbId, fallbackUrl = '') {
   throw new Error('No poster provider returned a usable image for ' + imdbId + ' (' + failures.join('; ') + ')');
 }
 
+async function renderJustAddedPoster(id, original, reason) {
+  try {
+    const output = await renderJustAddedBadge(original.bytes);
+    console.info('[poster-just-added-check]', JSON.stringify({ imdbId: id, result: reason }));
+    return { bytes: output, type: original.type, source: original.source, status: 'just-added-overlay', releaseDate: 'none', releaseKind: 'none' };
+  } catch (error) {
+    console.warn('[poster-just-added-overlay-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
+    return { bytes: original.bytes, type: original.type, source: original.source, status: 'just-added-overlay-failed-original-preserved', releaseDate: 'none', releaseKind: 'none' };
+  }
+}
+
 async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl = '') {
   const original = await getOriginal(id, fallbackUrl);
 
-  // The shared URL normalizes a BetterPosters "Just Added" tag for every
-  // client, not only the Great Indian catalog. The explicit query flag is
-  // still required when an upstream catalog knows a title is newly added
-  // but BetterPosters has no such tag of its own.
-  let shouldRenderJustAdded = badge === 'just-added';
-  if (!shouldRenderJustAdded) {
-    try {
-      shouldRenderJustAdded = await hasExistingJustAddedTag(original.bytes);
-    } catch (error) {
-      console.warn('[poster-just-added-detection-failed]', JSON.stringify({
-        imdbId: id,
-        error: error?.message || 'unknown error',
-        action: 'continue-with-release-date-check'
-      }));
-    }
-  }
-  if (shouldRenderJustAdded) {
-    try {
-      const output = await renderJustAddedBadge(original.bytes);
-      const result = badge === 'just-added' ? 'just-added-overlay-for-flagged-title' : 'just-added-provider-tag-normalized';
-      console.info('[poster-just-added-check]', JSON.stringify({ imdbId: id, result }));
-      return { bytes: output, type: original.type, source: original.source, status: 'just-added-overlay', releaseDate: 'none', releaseKind: 'none' };
-    } catch (error) {
-      console.warn('[poster-just-added-overlay-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
-      return { bytes: original.bytes, type: original.type, source: original.source, status: 'just-added-overlay-failed-original-preserved', releaseDate: 'none', releaseKind: 'none' };
-    }
+  // A catalog may explicitly mark a genuinely new title even when BetterPosters
+  // has no tag. Explicit eligibility takes precedence over release-date labels.
+  if (badge === 'just-added') {
+    return renderJustAddedPoster(id, original, 'just-added-overlay-for-flagged-title');
   }
 
-  // Resolve TMDB first. Most catalogue titles have no future release date,
-  // so there is no reason to run OCR for them.
+  // Normalize a provider's own Just Added chip for every client using this URL.
+  // This detection is independent of whether the title has an upcoming date.
+  let providerHasJustAdded = false;
+  try {
+    providerHasJustAdded = await hasExistingJustAddedTag(original.bytes);
+  } catch (error) {
+    console.warn('[poster-just-added-detection-failed]', JSON.stringify({
+      imdbId: id,
+      error: error?.message || 'unknown error',
+      action: 'continue-with-release-date-check'
+    }));
+  }
+
+  // A confirmed upcoming date is more useful than a generic Just Added tag,
+  // so render the Coming/New Episode treatment first when both are applicable.
   const release = knownRelease === undefined ? await upcomingRelease(id) : knownRelease;
   if (!release?.date) {
+    if (providerHasJustAdded) {
+      return renderJustAddedPoster(id, original, 'just-added-provider-tag-normalized');
+    }
     return { bytes: original.bytes, type: original.type, source: original.source, status: 'no-upcoming-release', releaseDate: 'none', releaseKind: 'none' };
   }
 
