@@ -2,12 +2,13 @@ import {fetchPoster} from '../lib/episode-posters.mjs';
 import {decodePosterConfig,encodePosterConfig,ratedPoster} from '../public/poster-config.js';
 import {readFileSync} from 'node:fs';import {fileURLToPath} from 'node:url';import path from 'node:path';import worker,{manifest as originalManifest,dataHealth} from '../lib/core.mjs';import {checkout,configuration} from '../lib/payments.mjs';
 const SHARED_POSTER_RENDERER='https://great-indian-upcoming-posters.onrender.com';
-export function buildSharedRendererUrl(type,id,justAdded=false){
+export function buildSharedRendererUrl(type,id,justAdded=false,version='6'){
  const value=String(id||'');
+ const v=/^\\d{1,8}$/.test(String(version))?String(version):'6';
  const badge=justAdded?'badge=just-added&':'';
- if(/^tt\\d{7,10}$/.test(value))return SHARED_POSTER_RENDERER+'/poster/'+value+'.jpg?'+badge+'v=6';
+ if(/^tt\\d{7,10}$/.test(value))return SHARED_POSTER_RENDERER+'/poster/'+value+'.jpg?'+badge+'v='+v;
  const tmdb=value.match(/^tmdb:(\\d{1,12})$/);
- if(tmdb)return SHARED_POSTER_RENDERER+'/poster/tmdb/'+tmdb[1]+'.jpg?'+badge+'type='+(type==='movie'?'movie':'tv')+'&v=6';
+ if(tmdb)return SHARED_POSTER_RENDERER+'/poster/tmdb/'+tmdb[1]+'.jpg?'+badge+'type='+(type==='movie'?'movie':'tv')+'&v='+v;
  return null;
 }
 const legacy='https://dobins-indian-catalog.quickfield138.chatgpt.site';const raw='https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/';const healthCache={};
@@ -38,7 +39,7 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
  const posterRoute=route.replace(/%3A/gi,':').match(/^\\/poster\\/(movie|series)\\/((?:tt\\d+)|(?:(?:tmdb|tvmaze):\\d+))\\.jpg$/);if(posterRoute&&posterTemplate){
  const [,type,id]=posterRoute;
  const badgeRequested=requestParams.get('badge')==='just-added';
- const rendererUrl=buildSharedRendererUrl(type,id,badgeRequested);
+ const rendererUrl=buildSharedRendererUrl(type,id,badgeRequested,requestParams.get('v')||'6');
  if(rendererUrl){
   try{
    const rendered=await upstream(rendererUrl,15000,'GET');
