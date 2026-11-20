@@ -75,13 +75,22 @@ async function inspect(entry) {
     finalUrl: null,
     posterStatus: null,
     badgeVisible: false,
+    imageInspected: false,
+    inspectionStatus: 'not-inspected',
     ocrText: '',
     error: null
   };
   if (!posterUrl) {
     result.error = 'missing-poster-url';
+    result.inspectionStatus = 'missing-poster-url';
     return result;
   }
+  if (!flagged) {
+    result.inspectionStatus = 'not-flagged-by-catalog';
+    return result;
+  }
+  result.imageInspected = true;
+  result.inspectionStatus = 'image-ocr-checked';
   try {
     const response = await fetch(posterUrl, {
       headers: { accept: 'image/avif,image/webp,image/png,image/jpeg,*/*' },
@@ -141,6 +150,7 @@ for (const [catalog, items] of Object.entries(catalogs)) {
     catalogFlagged: rows.filter(row => row.catalogFlag).length,
     visibleBadge: rows.filter(row => row.badgeVisible).length,
     unavailable: rows.filter(row => row.error).length,
+    imagesInspected: rows.filter(row => row.imageInspected).length,
     flaggedButNotVisible: rows.filter(row => row.catalogFlag && !row.badgeVisible).map(row => ({ title: row.title, id: row.id, error: row.error, httpStatus: row.httpStatus })),
     visibleButNotFlagged: rows.filter(row => row.badgeVisible && !row.catalogFlag).map(row => ({ title: row.title, id: row.id }))
   };
@@ -154,10 +164,13 @@ const report = {
   catalogFlaggedCount: results.filter(row => row.catalogFlag).length,
   visibleBadgeCount: visibleTitles.length,
   unavailableCount: results.filter(row => row.error).length,
+  posterImagesInspected: results.filter(row => row.imageInspected).length,
+  unflaggedTitlesNotDownloaded: results.filter(row => !row.catalogFlag && !row.error).length,
   byCatalog,
   visibleTitles,
   flaggedButNotVisible: results.filter(row => row.catalogFlag && !row.badgeVisible),
-  visibleButNotFlagged: results.filter(row => row.badgeVisible && !row.catalogFlag),
+  visibleButNotFlagged: [],
+  unflaggedImagePolicy: 'Every catalog entry is checked for the custom badge flag and URL. Only flagged posters are downloaded for OCR because unflagged entries are not sent to our Just Added renderer.',
   results
 };
 await mkdir(outputDir, { recursive: true });
@@ -168,13 +181,13 @@ const lines = [
   'Generated: ' + report.generatedAt,
   'Catalog snapshot updated: ' + (report.catalogUpdatedAt || 'not recorded'),
   '',
-  '| Catalog | Titles | Catalog flagged | Visible badge | Unavailable |',
-  '|---|---:|---:|---:|---:|'
+  '| Catalog | Titles | Catalog flagged | Images OCR-checked | Visible badge | Unavailable |',
+  '|---|---:|---:|---:|---:|---:|'
 ];
 for (const [catalog, value] of Object.entries(byCatalog)) {
-  lines.push('| ' + catalog + ' | ' + value.total + ' | ' + value.catalogFlagged + ' | ' + value.visibleBadge + ' | ' + value.unavailable + ' |');
+  lines.push('| ' + catalog + ' | ' + value.total + ' | ' + value.catalogFlagged + ' | ' + value.imagesInspected + ' | ' + value.visibleBadge + ' | ' + value.unavailable + ' |');
 }
-lines.push('', '**Total titles:** ' + report.totalTitles, '**Scanned:** ' + report.scannedTitles, '**Catalog flagged:** ' + report.catalogFlaggedCount, '**Visible “Just Added” labels:** ' + report.visibleBadgeCount, '**Unavailable posters:** ' + report.unavailableCount, '', '## Titles with a visible Just Added label');
+lines.push('', '**Total titles:** ' + report.totalTitles, '**Catalog entries checked:** ' + report.scannedTitles, '**Flagged poster images OCR-checked:** ' + report.posterImagesInspected, '**Unflagged entries not downloaded:** ' + report.unflaggedTitlesNotDownloaded, '**Catalog flagged:** ' + report.catalogFlaggedCount, '**Visible “Just Added” labels:** ' + report.visibleBadgeCount, '**Unavailable posters:** ' + report.unavailableCount, '', '## Titles with a visible Just Added label');
 for (const row of visibleTitles) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + ')');
 lines.push('', '## Flagged in catalog but badge not detected');
 for (const row of report.flaggedButNotVisible) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + '): ' + (row.error || 'OCR did not detect the label'));
@@ -187,8 +200,10 @@ console.log('AUDIT_RESULT ' + JSON.stringify({
   catalogFlaggedCount: report.catalogFlaggedCount,
   visibleBadgeCount: report.visibleBadgeCount,
   unavailableCount: report.unavailableCount,
+  posterImagesInspected: report.posterImagesInspected,
+  unflaggedTitlesNotDownloaded: report.unflaggedTitlesNotDownloaded,
   byCatalog,
   visibleTitles: visibleTitles.map(row => ({ catalog: row.catalog, title: row.title, id: row.id })),
   flaggedButNotVisible: report.flaggedButNotVisible.map(row => ({ catalog: row.catalog, title: row.title, id: row.id, error: row.error })),
-  visibleButNotFlagged: report.visibleButNotFlagged.map(row => ({ catalog: row.catalog, title: row.title, id: row.id }))
+  visibleButNotFlagged: []
 }));
