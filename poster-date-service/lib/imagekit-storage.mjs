@@ -311,11 +311,11 @@ export async function runImageKitMaintenance({ force = false } = {}) {
         }
         const status = await getReleaseStatus(id, today);
         if (status.status === 'expired' || status.status === 'ineligible') {
-          await deleteImageKitFile(current.fileId);
-          deletedFileIds.add(current.fileId);
-          accountBytes = Math.max(0, accountBytes - (Number(current.size) || 0));
-          expiredDeleted++;
-          console.log('ImageKit ineligible or expired poster deleted:', id, status.date || status.reason);
+          // The folder now stores the complete Nuvio poster cache, not only
+          // upcoming-release assets. Keep the artwork; the request pipeline
+          // refreshes badge state before it is served.
+          unknownRetained++;
+          console.log('ImageKit general poster cache retained:', id, status.date || status.reason);
         } else if (status.status === 'upcoming') {
           active.push({ id, date: status.date, file: current });
         } else {
