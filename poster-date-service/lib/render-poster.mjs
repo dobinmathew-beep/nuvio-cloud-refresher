@@ -1,6 +1,6 @@
 export const JUST_ADDED_BADGE_TEXT = 'Just Added';
 
-export async function renderUpcomingBadge(input, isoDate, kind = 'premiere') {
+export async function renderUpcomingBadge(input, isoDate, kind = 'premiere', topRatio = 0.105) {
   const date = new Date(isoDate + 'T00:00:00Z');
   const month = new Intl.DateTimeFormat('en', { month: 'short', timeZone: 'UTC' }).format(date);
   const day = String(date.getUTCDate());
@@ -16,7 +16,7 @@ export async function renderUpcomingBadge(input, isoDate, kind = 'premiere') {
   const badgeWidth = Math.round(width * 0.78);
   const badgeHeight = Math.max(40, Math.round(width * 0.135));
   const left = Math.round((width - badgeWidth) / 2);
-  const top = Math.round(height * 0.105);
+  const top = Math.round(height * topRatio);
   const radius = Math.round(badgeHeight * 0.18);
   const blurRadius = Math.max(4, Math.round(width * 0.012));
 
@@ -70,7 +70,7 @@ export function buildJustAddedBadgeSvg(badgeWidth, badgeHeight, radius, fontSize
     '<text x="' + (badgeWidth / 2) + '" y="' + (badgeHeight / 2) + '" text-anchor="middle" dominant-baseline="central" font-family="Arial, Helvetica, sans-serif" font-size="' + fontSize + '" font-weight="700" letter-spacing="0" fill="#FFFFFF">' + JUST_ADDED_BADGE_TEXT + '</text></svg>');
 }
 
-export async function renderJustAddedBadge(input) {
+export async function renderJustAddedBadge(input, topRatio = 0.105) {
   const { default: sharp } = await import('sharp');
   const metadata = await sharp(input, { limitInputPixels: 40000000 }).metadata();
   if (!metadata.width || !metadata.height || metadata.width < 160 || metadata.height < 240) {
@@ -80,7 +80,7 @@ export async function renderJustAddedBadge(input) {
   const badgeWidth = Math.round(width * 0.78);
   const badgeHeight = Math.max(40, Math.round(width * 0.135));
   const left = Math.round((width - badgeWidth) / 2);
-  const top = Math.round(height * 0.105);
+  const top = Math.round(height * topRatio);
   const radius = Math.round(badgeHeight * 0.18);
   const blurRadius = Math.max(4, Math.round(width * 0.012));
   const mask = Buffer.from(
