@@ -2,9 +2,9 @@ import {fetchPoster} from '../lib/episode-posters.mjs';
 import {decodePosterConfig,encodePosterConfig,ratedPoster} from '../public/poster-config.js';
 import {readFileSync} from 'node:fs';import {fileURLToPath} from 'node:url';import path from 'node:path';import worker,{manifest as originalManifest,dataHealth} from '../lib/core.mjs';import {checkout,configuration} from '../lib/payments.mjs';
 const SHARED_POSTER_RENDERER='https://great-indian-upcoming-posters.onrender.com';
-export function buildSharedRendererUrl(type,id,justAdded=false,version='7'){
+export function buildSharedRendererUrl(type,id,justAdded=false,version='8'){
  const value=String(id||'');
- const v=/^\d{1,8}$/.test(String(version))?String(version):'7';
+ const v=/^\d{1,8}$/.test(String(version))?String(version):'8';
  const badge=justAdded?'badge=just-added&':'';
  if(/^tt\d{7,10}$/.test(value))return SHARED_POSTER_RENDERER+'/poster/'+value+'.jpg?'+badge+'v='+v;
  const tmdb=value.match(/^tmdb:(\d{1,12})$/);
@@ -55,7 +55,7 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
  const [,type,id]=posterRoute;
  const badgeRequested=requestParams.get('badge')==='just-added';
  const rendererId=await resolveRendererId(id);
- const rendererUrl=buildSharedRendererUrl(type,rendererId,badgeRequested,requestParams.get('v')||'7');
+ const rendererUrl=buildSharedRendererUrl(type,rendererId,badgeRequested,requestParams.get('v')||'8');
  if(rendererUrl){
   try{
    const rendered=await fetch(rendererUrl,{cache:'no-store',signal:AbortSignal.timeout(15000)});
