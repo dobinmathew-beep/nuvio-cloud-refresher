@@ -1,1 +1,1 @@
-Verify every catalog entry and OCR the v4 poster URLs after replacing provider badges with our title-case overlay.
+Run the full eight-catalog Just Added audit with whitespace-tolerant OCR after the title-case renderer fix.
