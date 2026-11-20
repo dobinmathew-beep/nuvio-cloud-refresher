@@ -1,0 +1,33 @@
+name: Greta site checks
+on:
+  workflow_dispatch:
+  push:
+    branches: [greta-site]
+    paths:
+      - 'greta-web/**'
+      - '.github/workflows/greta-site-checks.yml'
+permissions:
+  contents: read
+concurrency:
+  group: greta-site-checks
+  cancel-in-progress: false
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: greta-web
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --ignore-scripts=false
+      - name: Check JavaScript syntax
+        run: node --check api/service.mjs && node --check lib/core.mjs
+      - name: Run Greta site tests
+        run: npm test
