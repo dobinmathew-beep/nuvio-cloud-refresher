@@ -66,6 +66,33 @@ test('badge renderer rejects untrusted catalog fallback hosts', async () => {
   }
 });
 
+test('shared poster URL normalizes a BetterPosters Just Added tag without a query flag', async () => {
+  const base = await sharp({ create: { width: 600, height: 900, channels: 3, background: '#456789' } }).jpeg().toBuffer();
+  const tag = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="100"><rect width="600" height="100" fill="#111111"/><text x="300" y="66" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700" fill="#ffffff">JUST ADDED</text></svg>');
+  const sourceImage = await sharp(base).composite([{ input: tag, left: 0, top: 20 }]).jpeg().toBuffer();
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async url => {
+    if (String(url).startsWith('https://btttr.cc/poster/imdb/poster-default/')) {
+      return new Response(sourceImage, { status: 200, headers: { 'content-type': 'image/jpeg', 'content-length': String(sourceImage.length) } });
+    }
+    return new Response('not found', { status: 404, headers: { 'content-type': 'text/plain' } });
+  };
+  try {
+    const handler = (await import('../api/poster.mjs')).default;
+    const req = { method: 'GET', url: '/poster/tt76543210.jpg', query: { id: 'tt76543210' } };
+    const res = { headers: {}, setHeader(name, value) { this.headers[name] = value; }, end(body) { this.body = body; } };
+    await handler(req, res);
+    assert.equal(res.statusCode, 200);
+    assert.equal(res.headers['X-Poster-Date-Status'], 'just-added-overlay');
+    assert.equal(res.headers['X-Poster-Just-Added'], 'true');
+    const metadata = await sharp(res.body).metadata();
+    assert.equal(metadata.width, 600);
+    assert.equal(metadata.height, 900);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test('overlay preserves poster dimensions', async () => {
   const input = await sharp({ create: { width: 600, height: 900, channels: 3, background: '#456789' } }).jpeg().toBuffer();
   const output = await renderJustAddedBadge(input);
