@@ -291,6 +291,10 @@ export async function savePosterValidationMetadata(imdbId, metadata) {
   return true;
 }
 
+export function isRetryableImageKitUploadStatus(status) {
+  return [408, 425, 429, 500, 502, 503, 504].includes(Number(status));
+}
+
 export async function uploadPosterToImageKit(imdbId, poster) {
   const config = imageKitConfig();
   if (!config) return { stored: false, reason: 'imagekit-not-configured' };
@@ -306,16 +310,34 @@ export async function uploadPosterToImageKit(imdbId, poster) {
   form.set('overwriteFile', 'true');
   form.set('isPrivateFile', 'false');
 
-  const response = await fetch(UPLOAD_API, {
-    method: 'POST',
-    headers: { Authorization: 'Basic ' + Buffer.from(config.privateKey + ':').toString('base64') },
-    body: form,
-    signal: AbortSignal.timeout(20000)
-  });
-  if (!response.ok) {
+  let response;
+  
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    try {
+      response = await fetch(UPLOAD_API, {
+        method: 'POST',
+        headers: { Authorization: 'Basic ' + Buffer.from(config.privateKey + ':').toString('base64') },
+        body: form,
+        signal: AbortSignal.timeout(20000)
+      });
+    } catch (error) {
+      if (attempt === 4) throw new Error('ImageKit upload request failed after four attempts: ' + (error?.message || 'network error'));
+      const delay = Math.min(12000, 1500 * (2 ** (attempt - 1)));
+      console.warn('[imagekit-upload-retry]', JSON.stringify({ imdbId, attempt, nextDelayMs: delay, error: error?.message || 'network error' }));
+      await new Promise(resolve => setTimeout(resolve, delay));
+      continue;
+    }
+    if (response.ok) break;
+    const status = response.status;
     const detail = (await response.text()).slice(0, 300);
-    throw new Error('ImageKit upload failed (' + response.status + '): ' + detail);
+    if (!isRetryableImageKitUploadStatus(status) || attempt === 4) {
+      throw new Error('ImageKit upload failed (' + status + '): ' + detail);
+    }
+    const delay = Math.min(12000, 1500 * (2 ** (attempt - 1)));
+    console.warn('[imagekit-upload-retry]', JSON.stringify({ imdbId, attempt, status, nextDelayMs: delay }));
+    await new Promise(resolve => setTimeout(resolve, delay));
   }
+  if (!response?.ok) throw new Error('ImageKit upload failed without a successful response');
   const result = await response.json();
   if (!result.url || !result.fileId) throw new Error('ImageKit upload response did not include file identity');
   recordImageKitUpload('/posters/' + imdbId + '.jpg', result.fileId, poster.bytes.length);

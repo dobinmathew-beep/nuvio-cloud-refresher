@@ -36,3 +36,13 @@ test('uploads fail closed until a verified storage inventory exists', () => {
   assert.equal(snapshot.known, false);
   assert.equal(canStoreImageKitPoster('tt0111161', 1024), false);
 });
+
+test('retryable ImageKit upload responses are limited to transient HTTP statuses', async () => {
+  const { isRetryableImageKitUploadStatus } = await import('../lib/imagekit-storage.mjs');
+  for (const status of [408, 425, 429, 500, 502, 503, 504]) {
+    assert.equal(isRetryableImageKitUploadStatus(status), true, String(status));
+  }
+  for (const status of [400, 401, 403, 404, 413]) {
+    assert.equal(isRetryableImageKitUploadStatus(status), false, String(status));
+  }
+});
