@@ -11,7 +11,7 @@ import { isCatalogRecentlyAdded } from './lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
 
 import { imageKitConfig, canStoreImageKitPoster, getImageKitStorageSnapshot, uploadPosterToImageKit, runImageKitMaintenance } from './lib/imagekit-storage.mjs';
-import { runManifestCatalogRefresh } from './lib/catalog-manifest-refresh.mjs';
+import { runManifestCatalogRefresh, resumeIncompleteManifestCatalogRefresh } from './lib/catalog-manifest-refresh.mjs';
 import { hasExistingComingDateTag, hasExistingJustAddedTag } from './lib/coming-tag.mjs';
 
 let catalogRefreshJob = null;
@@ -437,7 +437,7 @@ server.listen(port, '0.0.0.0', () => {
     catalogRefreshError = null;
     catalogRefreshReport = null;
     setImmediate(() => {
-      void runManifestCatalogRefresh()
+      void resumeIncompleteManifestCatalogRefresh()
         .then(report => {
           catalogRefreshReport = report;
           console.log('[catalog-refresh-autoresume-complete]', JSON.stringify({ jobId, status: 'completed' }));
