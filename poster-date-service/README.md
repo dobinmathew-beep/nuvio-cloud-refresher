@@ -1,6 +1,6 @@
 # Great Indian Upcoming Poster Service
 
-An isolated per-title poster proxy for Xperience, AIOMetadata and the Great Indian Catalog. It preserves BetterPosters artwork, detects existing badges with OCR, adds a confirmed future-date label when needed, and adds a "JUST ADDED" badge for newly published catalog movies when BetterPosters has no matching tag.
+An isolated per-title poster proxy for Xperience, AIOMetadata and the Great Indian Catalog. It preserves BetterPosters artwork, detects existing badges with OCR, adds a confirmed future-date label when needed, and adds a "Just Added" badge for newly published catalog movies when BetterPosters has no matching tag.
 
 ## Isolation
 - Lives in its own `poster-date-service/` directory.
@@ -24,7 +24,7 @@ The service substitutes the IMDb ID into the BetterPosters template. It delibera
 ## Just Added badge rules
 - The Great Indian Catalog sends `?badge=just-added` only for movie entries newly added to that catalog; the catalog keeps the first-added timestamp for 14 days.
 - The service checks BetterPosters for an existing "Just Added" label and avoids stacking a duplicate.
-- When BetterPosters has no such label, the service adds a compact dark-glass "JUST ADDED" chip without cropping or resizing the poster.
+- When BetterPosters has no such label, the service adds a compact dark-glass "Just Added" chip without cropping or resizing the poster.
 - This badge is separate from upcoming release labels; only already-released newly added movies are sent this request.
 
 ## Release date rules
