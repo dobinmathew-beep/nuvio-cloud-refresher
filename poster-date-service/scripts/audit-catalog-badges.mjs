@@ -35,8 +35,9 @@ const worker = await createWorker('eng', 1, {
 });
 
 function hasJustAdded(text) {
-  return String(text || '').replace(/\\[nr]/g, ' ').toLowerCase()
-    .replace(/[^a-z0-9]+/g, ' ').trim().includes('just added');
+  const normalized = String(text || '').replace(/\\[nr]/g, ' ').toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ').trim();
+  return normalized.includes('just added') || normalized.replace(/\\s+/g, '').includes('justadded');
 }
 
 let ocrQueue = Promise.resolve();
