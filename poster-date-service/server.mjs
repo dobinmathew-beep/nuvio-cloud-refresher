@@ -8,6 +8,7 @@ import { renderJustAddedBadge, renderUpcomingBadge } from './lib/render-poster.m
 import { hasExistingJustAddedTag } from './lib/coming-tag.mjs';
 import { upcomingReleaseByTmdbId, getTodayInTimeZone } from './lib/release-dates.mjs';
 import { isCatalogRecentlyAdded } from './lib/catalog-just-added.mjs';
+import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
 
 import { runImageKitMaintenance } from './lib/imagekit-storage.mjs';
 
@@ -80,7 +81,7 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
 
   if (!sources.length) throw new Error('No poster source available for TMDB ID ' + tmdbId);
   const original = sources[0];
-  const release = await upcomingReleaseByTmdbId(tmdbId, mediaType);
+  const release = await upcomingReleaseFromCatalog(['tmdb:' + tmdbId]) || await upcomingReleaseByTmdbId(tmdbId, mediaType);
   let output = original.bytes;
   let dateRendered = false;
   let justAdded = String(req.query?.badge || '').toLowerCase() === 'just-added';
@@ -161,9 +162,9 @@ async function sendTvmazePosterFallback(tvmazeId, req, res) {
     .sort((a, b) => a.airdate.localeCompare(b.airdate))[0];
   const premiere = /^\d{4}-\d{2}-\d{2}$/.test(String(show?.premiered || '')) && show.premiered > today
     ? show.premiered : null;
-  const release = nextEpisode
+  const release = await upcomingReleaseFromCatalog(['tvmaze:' + tvmazeId]) || (nextEpisode
     ? { date: nextEpisode.airdate, kind: 'episode', source: 'tvmaze-next-episode' }
-    : premiere ? { date: premiere, kind: 'premiere', source: 'tvmaze-series-premiere' } : null;
+    : premiere ? { date: premiere, kind: 'premiere', source: 'tvmaze-series-premiere' } : null);
 
   let output = original;
   let dateRendered = false;
