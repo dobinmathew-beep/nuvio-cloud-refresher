@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-11-20T18:50:36.593874+04:00",
+  "generatedAt": "2026-11-20T19:11:48.285209+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 37,
+    "total": 38,
     "byLanguage": {
       "hindi": 16,
-      "malayalam": 7,
+      "malayalam": 8,
       "tamil": 6,
       "telugu": 8
     },
     "byType": {
       "movie": 20,
-      "series": 17
+      "series": 18
     },
     "byMatchState": {
-      "published": 28,
+      "published": 29,
       "unmatched": 9
     },
     "bySource": {
@@ -23,10 +23,12 @@
       "https://newindianmovies.com/": 2,
       "https://www.tvmaze.com/shows/70529/dhindora": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
-      "https://v3-cinemeta.strem.io/": 4,
+      "https://v3-cinemeta.strem.io/": 5,
       "https://ottasia.com/ott-releases-this-week?country=IN": 17,
       "https://www.keralatv.in/channel/ott/": 5,
       "https://www.ottchecker.com/ott-releases/malayalam": 1,
+      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json": 1,
+      "https://www.themoviedb.org/tv/332061": 1,
       "https://www.ottchecker.com/ott-releases/tamil": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json": 1,
       "https://www.themoviedb.org/tv/331750": 1,
@@ -260,6 +262,33 @@
       "catalog": "dobins_ml_movie"
     },
     {
+      "title": "Prince of Mollywood",
+      "language": "malayalam",
+      "type": "series",
+      "releaseDate": "2026-11-20",
+      "platforms": [],
+      "sources": [
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/332061"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "episode",
+      "detail": null,
+      "matchId": "tt44686897",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_ml_series"
+    },
+    {
       "title": "Drones",
       "language": "tamil",
       "type": "movie",
@@ -403,8 +432,8 @@
       "type": "movie",
       "releaseDate": "2026-11-20",
       "platforms": [
-        "Sun NXT",
-        "SunNXT"
+        "SunNXT",
+        "Sun NXT"
       ],
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN",
@@ -432,12 +461,12 @@
       "type": "movie",
       "releaseDate": "2026-11-20",
       "platforms": [
-        "Aha",
-        "aha"
+        "aha",
+        "Aha"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
         "https://newindianmovies.com/",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.dailyott.in/"
       ],
       "confirmed": true,
@@ -519,8 +548,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
