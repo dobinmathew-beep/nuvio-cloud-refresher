@@ -73,6 +73,13 @@ function hasJustAdded(text) {
   return normalized.includes('just added') || normalized.replace(/\s+/g, '').includes('justadded');
 }
 
+function hasComingDate(text) {
+  const normalized = String(text || '').replace(/\\\\[nr]/g, ' ').toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ').trim();
+  return /(?:coming|new episode)\\s+\\d{1,2}\\s+(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)(?:ember)?/.test(normalized) ||
+    /(?:coming|new episode)\\s+(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)(?:ember)?\\s+\\d{1,2}/.test(normalized);
+}
+
 let ocrQueue = Promise.resolve();
 async function detectBadge(prepared) {
   const job = ocrQueue.then(async () => {
@@ -113,6 +120,12 @@ async function inspect(entry) {
     badgeVisible: false,
     ocrDetectedBadge: false,
     serviceConfirmed: false,
+    serviceConfirmedComing: false,
+    serviceConfirmedJustAdded: false,
+    comingDate: null,
+    comingKind: null,
+    comingBadgeVisible: false,
+    justAddedBadgeVisible: false,
     imageInspected: false,
     inspectionStatus: 'not-inspected',
     ocrText: '',
@@ -121,10 +134,6 @@ async function inspect(entry) {
   if (!posterUrl) {
     result.error = 'missing-poster-url';
     result.inspectionStatus = 'missing-poster-url';
-    return result;
-  }
-  if (!flagged) {
-    result.inspectionStatus = 'not-flagged-by-catalog';
     return result;
   }
   result.imageInspected = true;
@@ -141,6 +150,8 @@ async function inspect(entry) {
     result.posterStatus = response.headers.get('x-poster-date-status');
     result.posterSource = response.headers.get('x-poster-source');
     result.posterBadgeText = response.headers.get('x-poster-badge');
+    result.comingDate = response.headers.get('x-poster-date');
+    result.comingKind = response.headers.get('x-poster-date-type');
     if (!response.ok) throw new Error('HTTP ' + response.status);
     if (!result.contentType.startsWith('image/')) throw new Error('Non-image response: ' + result.contentType);
     const bytes = Buffer.from(await response.arrayBuffer());
@@ -155,9 +166,13 @@ async function inspect(entry) {
     const ocr = await detectBadge(prepared);
     result.ocrText = ocr.text;
     result.ocrDetectedBadge = ocr.visible;
-    result.serviceConfirmed = result.posterStatus === 'just-added-overlay' && (!publicAddonBase || result.posterBadgeText === 'Just Added');
-    result.badgeVisible = result.serviceConfirmed || result.ocrDetectedBadge;
-    if (result.serviceConfirmed && !result.ocrDetectedBadge) result.inspectionStatus = 'service-overlay-confirmed-ocr-low-confidence';
+    result.serviceConfirmedJustAdded = response.headers.get('x-poster-just-added') === 'true' || result.posterStatus === 'just-added-overlay' || result.posterStatus === 'upcoming-date+just-added-overlay';
+    result.serviceConfirmedComing = result.posterStatus === 'upcoming-date-overlay' || result.posterStatus === 'upcoming-date+just-added-overlay';
+    result.comingBadgeVisible = result.serviceConfirmedComing || hasComingDate(ocr.text);
+    result.justAddedBadgeVisible = result.serviceConfirmedJustAdded || result.ocrDetectedBadge;
+    result.serviceConfirmed = result.serviceConfirmedJustAdded || result.serviceConfirmedComing;
+    result.badgeVisible = result.justAddedBadgeVisible || result.comingBadgeVisible;
+    if (result.serviceConfirmed && !result.ocrDetectedBadge && !result.comingBadgeVisible) result.inspectionStatus = 'service-overlay-confirmed-ocr-low-confidence';
     return result;
   } catch (error) {
     result.error = String(error?.message || error).slice(0, 240);
@@ -192,11 +207,15 @@ for (const [catalog, items] of Object.entries(catalogs)) {
     total: rows.length,
     catalogFlagged: rows.filter(row => row.catalogFlag).length,
     visibleBadge: rows.filter(row => row.badgeVisible).length,
+    justAddedVisible: rows.filter(row => row.justAddedBadgeVisible).length,
+    comingDateVisible: rows.filter(row => row.comingBadgeVisible).length,
+    comingDateEligible: rows.filter(row => row.serviceConfirmedComing).length,
     serviceConfirmed: rows.filter(row => row.serviceConfirmed).length,
-    ocrConfirmed: rows.filter(row => row.ocrDetectedBadge).length,
+    ocrConfirmed: rows.filter(row => row.ocrDetectedBadge || row.comingBadgeVisible).length,
     unavailable: rows.filter(row => row.error).length,
     imagesInspected: rows.filter(row => row.imageInspected).length,
-    flaggedButNotVisible: rows.filter(row => row.catalogFlag && !row.badgeVisible).map(row => ({ title: row.title, id: row.id, error: row.error, httpStatus: row.httpStatus })),
+    flaggedButNotVisible: rows.filter(row => row.catalogFlag && !row.justAddedBadgeVisible).map(row => ({ title: row.title, id: row.id, error: row.error, httpStatus: row.httpStatus })),
+    postersWithNoComingDate: rows.filter(row => !row.serviceConfirmedComing).map(row => ({ title: row.title, id: row.id, status: row.posterStatus, error: row.error })),
     visibleButNotFlagged: rows.filter(row => row.badgeVisible && !row.catalogFlag).map(row => ({ title: row.title, id: row.id }))
   };
 }
@@ -214,11 +233,11 @@ const report = {
   posterImagesInspected: results.filter(row => row.imageInspected).length,
   serviceConfirmedCount: results.filter(row => row.serviceConfirmed).length,
   ocrConfirmedCount: results.filter(row => row.ocrDetectedBadge).length,
-  unflaggedTitlesNotDownloaded: results.filter(row => !row.catalogFlag && !row.error).length,
+  unflaggedTitlesNotDownloaded: 0,
   byCatalog,
   visibleTitles,
   flaggedButNotVisible: results.filter(row => row.catalogFlag && !row.badgeVisible),
-  unflaggedImagePolicy: 'Every catalog entry is checked for the custom badge flag and URL. Only flagged posters are downloaded for OCR because unflagged entries are not sent to our Just Added renderer.',
+  auditPolicy: 'Every poster in all eight catalogs is downloaded and inspected through the public custom poster route. Coming-date eligibility is taken from the shared Render response; Just Added eligibility comes from the catalog flag or a detected BetterPosters tag.',
   results
 };
 await mkdir(outputDir, { recursive: true });
@@ -232,13 +251,13 @@ const lines = [
   'Poster route tested: ' + (posterToken ? 'personalised BetterPosters install proxy' : 'default public proxy'),
   'GitHub snapshot title count: ' + report.snapshotTitleCount,
   '',
-  '| Catalog | Titles | Catalog flagged | Images OCR-checked | Service confirmed | OCR confirmed | Visible badge | Unavailable |',
+  '| Catalog | Titles | Catalog flagged | Images checked | Coming date | Just Added | Any visible badge | Unavailable |',
   '|---|---:|---:|---:|---:|---:|---:|---:|'
 ];
 for (const [catalog, value] of Object.entries(byCatalog)) {
-  lines.push('| ' + catalog + ' | ' + value.total + ' | ' + value.catalogFlagged + ' | ' + value.imagesInspected + ' | ' + value.serviceConfirmed + ' | ' + value.ocrConfirmed + ' | ' + value.visibleBadge + ' | ' + value.unavailable + ' |');
+  lines.push('| ' + catalog + ' | ' + value.total + ' | ' + value.catalogFlagged + ' | ' + value.imagesInspected + ' | ' + value.comingDateVisible + ' | ' + value.justAddedVisible + ' | ' + value.visibleBadge + ' | ' + value.unavailable + ' |');
 }
-lines.push('', '**Total titles:** ' + report.totalTitles, '**Catalog entries checked:** ' + report.scannedTitles, '**Flagged poster images inspected:** ' + report.posterImagesInspected, '**Service-confirmed overlays:** ' + report.serviceConfirmedCount, '**OCR-confirmed labels:** ' + report.ocrConfirmedCount, '**Unflagged entries not downloaded:** ' + report.unflaggedTitlesNotDownloaded, '**Catalog flagged:** ' + report.catalogFlaggedCount, '**Visible “Just Added” labels:** ' + report.visibleBadgeCount, '**Unavailable posters:** ' + report.unavailableCount, '', '## Titles with a visible Just Added label');
+lines.push('', '**Total titles:** ' + report.totalTitles, '**Catalog entries checked:** ' + report.scannedTitles, '**Flagged poster images inspected:** ' + report.posterImagesInspected, '**Service-confirmed overlays:** ' + report.serviceConfirmedCount, '**OCR-confirmed labels:** ' + report.ocrConfirmedCount, '**Unflagged entries not downloaded:** ' + report.unflaggedTitlesNotDownloaded, '**Catalog flagged:** ' + report.catalogFlaggedCount, '**Visible “Just Added” labels:** ' + results.filter(row => row.justAddedBadgeVisible).length, '**Unavailable posters:** ' + report.unavailableCount, '', '## Titles with a visible Just Added label');
 for (const row of visibleTitles) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + ')');
 lines.push('', '## Flagged in catalog but badge not detected');
 for (const row of report.flaggedButNotVisible) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + '): ' + (row.error || 'OCR did not detect the label'));
@@ -255,6 +274,6 @@ console.log('AUDIT_RESULT ' + JSON.stringify({
   ocrConfirmedCount: report.ocrConfirmedCount,
   unflaggedTitlesNotDownloaded: report.unflaggedTitlesNotDownloaded,
   byCatalog,
-  visibleTitles: visibleTitles.map(row => ({ catalog: row.catalog, title: row.title, id: row.id })),
+  visibleTitles: visibleTitles.map(row => ({ catalog: row.catalog, title: row.title, id: row.id, comingDate: row.comingDate, justAdded: row.justAddedBadgeVisible })),
   flaggedButNotVisible: report.flaggedButNotVisible.map(row => ({ catalog: row.catalog, title: row.title, id: row.id, error: row.error })),
 }));
