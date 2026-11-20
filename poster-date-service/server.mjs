@@ -6,7 +6,8 @@ import healthHandler from './api/health.mjs';
 import { resolveTmdbExternalImdbId } from './lib/tmdb-external-ids.mjs';
 import { renderJustAddedBadge, renderUpcomingBadge } from './lib/render-poster.mjs';
 import { hasExistingJustAddedTag } from './lib/coming-tag.mjs';
-import { upcomingReleaseByTmdbId } from './lib/release-dates.mjs';
+import { upcomingReleaseByTmdbId, getTodayInTimeZone } from './lib/release-dates.mjs';
+import { isCatalogRecentlyAdded } from './lib/catalog-just-added.mjs';
 
 import { runImageKitMaintenance } from './lib/imagekit-storage.mjs';
 
@@ -84,6 +85,10 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
   let dateRendered = false;
   let justAdded = String(req.query?.badge || '').toLowerCase() === 'just-added';
   if (!justAdded) {
+    try { justAdded = await isCatalogRecentlyAdded(['tmdb:' + tmdbId]); }
+    catch (error) { console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ tmdbId, error: error?.message || 'unknown error' })); }
+  }
+  if (!justAdded) {
     try { justAdded = await hasExistingJustAddedTag(original.bytes); }
     catch (error) {
       console.warn('[poster-just-added-detection-failed]', JSON.stringify({ tmdbId, error: error?.message || 'unknown error' }));
@@ -122,6 +127,87 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
   res.setHeader('X-Poster-Date-Type', dateRendered ? (release.kind || 'none') : 'none');
   return res.end(req.method === 'HEAD' ? undefined : output);
 }
+
+async function sendTvmazePosterFallback(tvmazeId, req, res) {
+  if (req.method === 'OPTIONS') {
+    res.statusCode = 204;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+    return res.end();
+  }
+  const showResponse = await fetch('https://api.tvmaze.com/shows/' + encodeURIComponent(tvmazeId) + '?embed=episodes', {
+    headers: { accept: 'application/json' },
+    signal: AbortSignal.timeout(8000)
+  });
+  if (!showResponse.ok) throw new Error('TVmaze show HTTP ' + showResponse.status);
+  const show = await showResponse.json();
+  const imageUrl = show?.image?.original || show?.image?.medium;
+  if (!imageUrl) throw new Error('TVmaze show has no poster image');
+  const imageResponse = await fetch(imageUrl, {
+    headers: { accept: 'image/avif,image/webp,image/jpeg,image/png,*/*' },
+    signal: AbortSignal.timeout(10000)
+  });
+  const type = (imageResponse.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
+  if (!imageResponse.ok || !['image/jpeg', 'image/png', 'image/webp', 'image/avif'].includes(type)) {
+    throw new Error('TVmaze poster HTTP ' + imageResponse.status);
+  }
+  const original = Buffer.from(await imageResponse.arrayBuffer());
+  if (!original.length || original.length > 15 * 1024 * 1024) throw new Error('TVmaze poster exceeds size limit');
+
+  const today = getTodayInTimeZone();
+  const episodes = show?._embedded?.episodes || [];
+  const nextEpisode = episodes
+    .filter(episode => /^\d{4}-\d{2}-\d{2}$/.test(String(episode?.airdate || '')) && episode.airdate > today)
+    .sort((a, b) => a.airdate.localeCompare(b.airdate))[0];
+  const premiere = /^\d{4}-\d{2}-\d{2}$/.test(String(show?.premiered || '')) && show.premiered > today
+    ? show.premiered : null;
+  const release = nextEpisode
+    ? { date: nextEpisode.airdate, kind: 'episode', source: 'tvmaze-next-episode' }
+    : premiere ? { date: premiere, kind: 'premiere', source: 'tvmaze-series-premiere' } : null;
+
+  let output = original;
+  let dateRendered = false;
+  let justAdded = String(req.query?.badge || '').toLowerCase() === 'just-added';
+  if (!justAdded) {
+    try { justAdded = await isCatalogRecentlyAdded(['tvmaze:' + tvmazeId]); }
+    catch (error) { console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ tvmazeId, error: error?.message || 'unknown error' })); }
+  }
+  if (!justAdded) {
+    try { justAdded = await hasExistingJustAddedTag(original); }
+    catch (error) { console.warn('[poster-just-added-detection-failed]', JSON.stringify({ tvmazeId, error: error?.message || 'unknown error' })); }
+  }
+  if (release?.date) {
+    try {
+      output = await renderUpcomingBadge(output, release.date, release.kind, 0.105);
+      dateRendered = true;
+    } catch (error) {
+      console.warn('[poster-date-overlay-failed]', JSON.stringify({ tvmazeId, date: release.date, error: error?.message || 'unknown error' }));
+    }
+  }
+  if (justAdded) {
+    try { output = await renderJustAddedBadge(output, dateRendered ? 0.255 : 0.105); }
+    catch (error) {
+      console.warn('[poster-just-added-overlay-failed]', JSON.stringify({ tvmazeId, error: error?.message || 'unknown error' }));
+      justAdded = false;
+    }
+  }
+  const status = dateRendered && justAdded ? 'upcoming-date+just-added-overlay'
+    : dateRendered ? 'upcoming-date-overlay'
+    : justAdded ? 'just-added-overlay'
+    : 'no-upcoming-release';
+  res.statusCode = 200;
+  res.setHeader('Content-Type', type);
+  res.setHeader('X-Poster-Source', 'TVmaze');
+  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=3600');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Poster-Date-Status', status);
+  res.setHeader('X-Poster-Just-Added', justAdded ? 'true' : 'false');
+  res.setHeader('X-Poster-Date', dateRendered ? release.date : 'none');
+  res.setHeader('X-Poster-Date-Type', dateRendered ? release.kind : 'none');
+  return res.end(req.method === 'HEAD' ? undefined : output);
+}
+
 
 const server = createServer(async (req, res) => {
   const url = new URL(req.url || '/', 'http://localhost');
@@ -209,8 +295,7 @@ const server = createServer(async (req, res) => {
       const show = await showResponse.json();
       const imdbId = String(show?.externals?.imdb || '');
       if (!/^tt\d{7,10}$/.test(imdbId)) {
-        res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
-        return res.end('TVmaze title has no IMDb external ID for release-date lookup.');
+        return sendTvmazePosterFallback(tvmazePosterMatch[1], req, res);
       }
       adaptedReq.query.id = imdbId;
       return posterHandler(adaptedReq, adaptedRes);
