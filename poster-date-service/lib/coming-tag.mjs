@@ -165,7 +165,7 @@ export async function hasExistingJustAddedTag(input) {
   const cropHeight = Math.max(120, Math.min(metadata.height, Math.round(metadata.height * 0.3)));
   const prepared = await sharp(input, { limitInputPixels: 40000000 })
     .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
-    .resize({ width: Math.min(1200, metadata.width * 2) })
+    .resize({ width: Math.min(900, metadata.width * 2) })
     .grayscale()
     .normalize()
     .sharpen()
