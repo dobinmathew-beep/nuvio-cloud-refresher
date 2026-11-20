@@ -49,6 +49,31 @@ test('configured poster route forwards Just Added requests to the Render rendere
  }
 });
 
+test('TVmaze-only configured poster IDs resolve to IMDb before shared rendering',async()=>{
+ const oldFetch=globalThis.fetch,oldOrigin=process.env.PUBLIC_ORIGIN;
+ process.env.PUBLIC_ORIGIN='https://addon.example';
+ const requested=[];
+ globalThis.fetch=async url=>{
+  const value=String(url);requested.push(value);
+  if(value==='https://api.tvmaze.com/shows/123')return new Response(JSON.stringify({externals:{imdb:'tt7654321'}}),{status:200,headers:{'content-type':'application/json'}});
+  return new Response(new Uint8Array(512).fill(7),{status:200,headers:{'content-type':'image/jpeg','x-poster-date-status':'upcoming-date-overlay','x-poster-date':'2026-12-20','x-poster-source':'BetterPosters','x-poster-just-added':'false'}});
+ };
+ try{
+  const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');
+  const route='/install/01/bttr/'+token+'/poster/series/tvmaze:123.jpg?v=6';
+  const req={url:route,method:'GET',headers:{host:'addon.example'}};
+  const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=body}};
+  await handler(req,res);
+  assert.equal(res.statusCode,200);
+  assert.equal(requested[0],'https://api.tvmaze.com/shows/123');
+  assert.equal(requested[1],'https://great-indian-upcoming-posters.onrender.com/poster/tt7654321.jpg?v=6');
+  assert.equal(res.headers['X-Poster-Date-Status'],'upcoming-date-overlay');
+ }finally{
+  globalThis.fetch=oldFetch;
+  if(oldOrigin===undefined)delete process.env.PUBLIC_ORIGIN;else process.env.PUBLIC_ORIGIN=oldOrigin;
+ }
+});
+
 test('configured poster proxy preserves badge query embedded inside Vercel path parameter',async()=>{
  const oldFetch=globalThis.fetch,oldOrigin=process.env.PUBLIC_ORIGIN;
  process.env.PUBLIC_ORIGIN='https://addon.example';
