@@ -544,14 +544,37 @@ async function runManifestCatalogRefreshInternal(lease) {
   await lease?.assertOwned?.();
   await writeJson(config, INDEX_PATH, index);
 
-  const items = [...current.values()];
-  const resultCounts = {};
+  // Keep the complete catalogue inventory, but only send unresolved titles
+  // through poster generation. Verified ledger entries are retained when the
+  // fingerprint still matches and ImageKit confirms the asset is available.
+  const allItems = [...current.values()];
+  const preflightLedgerCache = new Map();
+  const items = [];
+  let preflightVerifiedHits = 0;
+  for (const item of allItems) {
+    const shard = ledgerShard(item.id);
+    const records = await loadLedgerShard(config, shard, preflightLedgerCache);
+    const record = records[item.id];
+    if (reusableLedgerRecord(record, item) && await checkImageKit(item.id)) {
+      preflightVerifiedHits++;
+    } else {
+      items.push(item);
+    }
+  }
+  preflightLedgerCache.clear();
+  console.info('[catalog-recovery-targeted]', JSON.stringify({
+    catalogueTitles: allItems.length,
+    retryCandidates: items.length,
+    alreadyVerified: preflightVerifiedHits,
+    strategy: 'retry-only-unresolved-or-missing-imagekit-assets'
+  }));
+  const resultCounts = preflightVerifiedHits ? { 'ledger-hit': preflightVerifiedHits } : {};
   let totalFailures = 0;
-  let ledgerHits = 0;
+  let ledgerHits = preflightVerifiedHits;
   let batchesProcessed = 0;
   let postersVisited = 0;
   let verifiedUploads = 0;
-  let verifiedCacheHits = 0;
+  let verifiedCacheHits = preflightVerifiedHits;
   let uploadPending = 0;
 
   // Process one deterministic ledger shard at a time. This keeps memory bounded
