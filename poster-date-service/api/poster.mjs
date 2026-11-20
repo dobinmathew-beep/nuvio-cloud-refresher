@@ -76,10 +76,10 @@ async function findFreshImageKitAsset(imdbId, releaseInfo) {
 }
 
 function scheduleImageKitUpload(imdbId, poster) {
-  if (!imageKitConfig() || poster.status !== 'upcoming-date-overlay' || !poster.releaseDate) return;
+  if (!imageKitConfig()) return;
   if (pendingImageKitUploads.has(imdbId)) return;
   const job = uploadPosterToImageKit(imdbId, poster)
-    .catch(error => console.warn('ImageKit upcoming poster upload skipped for', imdbId, error.message))
+    .catch(error => console.warn('ImageKit poster upload skipped for', imdbId, error.message))
     .finally(() => pendingImageKitUploads.delete(imdbId));
   pendingImageKitUploads.set(imdbId, job);
 }
@@ -309,10 +309,9 @@ export default async function handler(req, res) {
     const version = String(req.query?.v || '');
     const fallbackUrl = String(req.query?.fallback || '');
     const poster = await getBuiltPoster(id, releaseInfo, badge, version, fallbackUrl);
-    // Only genuine upcoming-date overlays are stored. Just Added posters are
-    // rendered on demand so the exact title-case label is always current.
-    const canStore = poster.status === 'upcoming-date-overlay' &&
-      canStoreImageKitPoster(id, poster.bytes.length);
+    // Cache every successfully rendered poster, including Just Added and
+    // unbadged BetterPosters originals, so a newly requested title is warmed.
+    const canStore = canStoreImageKitPoster(id, poster.bytes.length);
     if (canStore) scheduleImageKitUpload(id, poster);
     setImageHeaders(res, poster.type, poster.status, poster.releaseDate, poster.releaseKind);
     res.setHeader('X-Poster-Source', poster.source || 'BetterPosters');
