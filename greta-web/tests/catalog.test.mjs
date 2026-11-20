@@ -74,13 +74,13 @@ test('TVmaze-only configured poster IDs resolve to IMDb before shared rendering'
  }
 });
 
-test('configured poster proxy preserves badge query embedded inside Vercel path parameter',async()=>{
- const oldFetch=globalThis.fetch,oldOrigin=process.env.PUBLIC_ORIGIN;
+test('configured poster proxy delegates once to the shared core renderer and preserves badge flags',async()=>{
+ const oldWorkerFetch=worker.fetch,oldOrigin=process.env.PUBLIC_ORIGIN;
  process.env.PUBLIC_ORIGIN='https://addon.example';
  let requested='';
- globalThis.fetch=async url=>{
-  requested=String(url);
-  return new Response(new Uint8Array(512).fill(7),{status:200,headers:{'content-type':'image/jpeg','x-poster-date-status':'just-added-overlay','x-poster-just-added':'true','x-poster-source':'BetterPosters'}});
+ worker.fetch=async request=>{
+  requested=String(request.url);
+  return new Response(new Uint8Array(512).fill(7),{status:200,headers:{'content-type':'image/jpeg','x-poster-date-status':'just-added-overlay','x-poster-just-added':'true','x-poster-badge':'Just Added','x-poster-source':'BetterPosters','cache-control':'public,max-age=300'}});
  };
  try{
   const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');
@@ -89,10 +89,11 @@ test('configured poster proxy preserves badge query embedded inside Vercel path 
   const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=body}};
   await handler(req,res);
   assert.equal(res.statusCode,200);
-  assert.equal(requested,'https://great-indian-upcoming-posters.onrender.com/poster/tt45692999.jpg?badge=just-added&v=5');
+  assert.equal(requested,'https://addon.example/art/poster/tt45692999?badge=just-added&v=8');
   assert.equal(res.headers['X-Poster-Badge'],'Just Added');
+  assert.equal(res.headers['Cache-Control'],'public,max-age=300');
  }finally{
-  globalThis.fetch=oldFetch;
+  worker.fetch=oldWorkerFetch;
   if(oldOrigin===undefined)delete process.env.PUBLIC_ORIGIN;else process.env.PUBLIC_ORIGIN=oldOrigin;
  }
 });
