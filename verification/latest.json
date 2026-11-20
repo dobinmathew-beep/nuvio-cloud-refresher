@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-20T18:50:57.841425+04:00",
+  "checked_at": "2026-11-20T18:55:29.123931+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
     "addon": {
       "status": "pass",
-      "checked_at": "2026-11-20T18:50:57.841425+04:00",
+      "checked_at": "2026-11-20T18:55:29.123931+04:00",
       "public_url": "https://the-great-indian-addon.vercel.app",
       "checks": [
         {
@@ -50,28 +50,28 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-20T18:50:57.841425+04:00",
+      "checked_at": "2026-11-20T18:55:29.123931+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
           "name": "public status and freshness",
           "status": "pass",
           "details": {
-            "revision": "2c7df0f6-1291-453b-8b65-7766c019c084",
-            "checked_utc": "2026-11-20T13:51:15.573852+00:00",
+            "revision": "a56ae183-facf-482e-9892-a70a090855b2",
+            "checked_utc": "2026-11-20T14:50:33.227801+00:00",
             "matched_ids": 641,
             "playlist_channel_ids": 849,
             "unresolved_ids": 208,
-            "programmes": 70889
+            "programmes": 69870
           }
         },
         {
           "name": "published XMLTV",
           "status": "pass",
           "details": {
-            "bytes": 2049864,
+            "bytes": 2025942,
             "channels": 641,
-            "programmes": 70889
+            "programmes": 69870
           }
         },
         {
@@ -92,7 +92,7 @@
           "name": "Source_Crosscheck_Report.csv",
           "status": "pass",
           "details": {
-            "rows": 3366
+            "rows": 3365
           }
         },
         {
@@ -134,30 +134,14 @@
       ]
     },
     "backdrops": {
-      "status": "pass",
-      "checked_at": "2026-11-20T18:50:57.841425+04:00",
+      "status": "fail",
+      "checked_at": "2026-11-20T18:55:29.123931+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
-      "details": {
-        "day": "2026-11-20",
-        "statuses": 160,
-        "images": 16,
-        "states": {
-          "live": 160,
-          "cached": 0
-        },
-        "errors": [],
-        "catalogHeads": {
-          "hindi": "tt37200939",
-          "tamil": "tt18933846",
-          "malayalam": "tt41944351",
-          "telugu": "tt36915004"
-        }
-      },
-      "method": "160 public layout/status checks and 16 JPEG checks"
+      "error": "[{\"status\": \"tamil/movies/wall\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/filmstrip\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/gallery\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}]"
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-20T18:50:57.841425+04:00",
+      "checked_at": "2026-11-20T18:55:29.123931+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
@@ -249,8 +233,8 @@
     }
   },
   "summary": {
-    "passed": 4,
+    "passed": 3,
     "total": 4,
-    "status": "pass"
+    "status": "fail"
   }
 }
