@@ -329,7 +329,6 @@ async function prewarm(item) {
   if (storage === 'pending') {
     // Do not occupy a scan worker while ImageKit finishes its asynchronous
     // upload. Verification is performed in a separate bounded stage.
-    pendingUploadIds.add(item.id);
     return { id: item.id, status: 'upload-pending', posterStatus: status };
   }
   if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit', posterStatus: status };
