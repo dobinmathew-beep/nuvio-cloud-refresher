@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-11-20T15:16:41.316811+00:00",
+  "checkedAt": "2026-11-20T15:21:26.029551+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
-  "state": "degraded",
+  "state": "ok",
   "checks": [
     {
       "path": "/data-health.json",
@@ -97,17 +97,17 @@
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt8537520",
-        "name": "Bigg Boss Malayalam",
-        "releaseDate": "2026-11-19T21:30:00+00:00"
+        "id": "tt50508547",
+        "name": "Sathyameva",
+        "releaseDate": "2026-11-27"
       },
       "localLatestEntry": {
         "id": "tt50508547",
         "name": "Sathyameva",
         "releaseDate": "2026-11-27"
       },
-      "latestEntryMatches": false,
-      "state": "latest_entry_mismatch",
+      "latestEntryMatches": true,
+      "state": "ok",
       "check": "ok"
     },
     {
@@ -343,7 +343,7 @@
     "checked": 8,
     "failed": 0,
     "possibleTruncationOrLag": 0,
-    "countMismatches": 1,
+    "countMismatches": 0,
     "firstPageSize50": [
       "dobins_ml_movie",
       "dobins_ml_series",
