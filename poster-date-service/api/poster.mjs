@@ -34,20 +34,17 @@ export function sourceUrl(imdbId) {
 }
 
 const IMAGEKIT_REFRESH_MS = 6 * 60 * 60 * 1000;
-// Do not serve pre-change ImageKit files: they may contain the old generic or theatrical-date badge.
-const IMAGEKIT_COMPATIBLE_AFTER = Date.now();
 const pendingImageKitUploads = new Map();
 
 function imageKitAssetUrl(config, imdbId) {
   return config.endpoint + '/posters/' + encodeURIComponent(imdbId) + '.jpg';
 }
 
-async function findFreshImageKitAsset(imdbId, releaseInfo) {
+async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
   const config = imageKitConfig();
   if (!config) return null;
   const assetUrl = imageKitAssetUrl(config, imdbId);
   const checkUrl = new URL(assetUrl);
-  // A changing check key avoids trusting a stale edge-cached HEAD response.
   checkUrl.searchParams.set('poster-cache-check', String(Math.floor(Date.now() / IMAGEKIT_REFRESH_MS)));
   try {
     const response = await fetch(checkUrl, {
@@ -57,16 +54,33 @@ async function findFreshImageKitAsset(imdbId, releaseInfo) {
     });
     if (!response.ok) return null;
     const lastModified = Date.parse(response.headers.get('last-modified') || '');
-    if (!Number.isFinite(lastModified) || lastModified < IMAGEKIT_COMPATIBLE_AFTER) return null;
-    if (Date.now() - lastModified > IMAGEKIT_REFRESH_MS) return null;
-    // Verify the cached image's visible badge against the current TMDB date.
-    // A fresh upload can still contain a stale date if TMDB rescheduled an episode.
+    if (!Number.isFinite(lastModified) || Date.now() - lastModified > IMAGEKIT_REFRESH_MS) return null;
+
     const imageResponse = await fetch(assetUrl, { cache: 'no-store', signal: AbortSignal.timeout(5000) });
     if (!imageResponse.ok) return null;
     const imageBytes = Buffer.from(await imageResponse.arrayBuffer());
-    const matchesCurrentDate = await hasExistingComingDateTag(imageBytes, releaseInfo.kind, releaseInfo.date);
-    if (!matchesCurrentDate) {
-      console.info('[poster-date-cache-mismatch]', JSON.stringify({ imdbId, tmdbDate: releaseInfo.date, cachedPoster: 'ImageKit', action: 'rebuild-from-BetterPosters' }));
+
+    // A cached image is reusable only if its visible release-date label still
+    // agrees with current metadata. When there is no upcoming release, reject
+    // cached images that still contain an old date badge.
+    const hasDateBadge = await hasExistingComingDateTag(
+      imageBytes,
+      releaseInfo?.kind || 'premiere',
+      releaseInfo?.date || null
+    );
+    const dateMatches = releaseInfo?.date ? hasDateBadge : !hasDateBadge;
+    if (!dateMatches) {
+      console.info('[poster-date-cache-mismatch]', JSON.stringify({
+        imdbId, tmdbDate: releaseInfo?.date || null, cachedPoster: 'ImageKit',
+        action: 'rebuild-from-BetterPosters'
+      }));
+      return null;
+    }
+
+    // If the current catalogue index requires Just Added, never serve an
+    // unbadged cached file. A non-required native BetterPosters badge is kept.
+    if (expectedJustAdded && !(await hasExistingJustAddedTag(imageBytes))) {
+      console.info('[poster-just-added-cache-mismatch]', JSON.stringify({ imdbId, action: 'rebuild-from-BetterPosters' }));
       return null;
     }
     return assetUrl;
@@ -84,12 +98,16 @@ function scheduleImageKitUpload(imdbId, poster) {
   pendingImageKitUploads.set(imdbId, job);
 }
 
-function redirectToImageKit(res, assetUrl) {
+function redirectToImageKit(res, assetUrl, releaseInfo, justAdded) {
   res.statusCode = 302;
   res.setHeader('Location', assetUrl);
   res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Poster-Date-Status', 'imagekit-cache-hit');
+  res.setHeader('X-Poster-Just-Added', justAdded ? 'true' : 'false');
+  res.setHeader('X-Poster-Date', releaseInfo?.date || 'none');
+  res.setHeader('X-Poster-Date-Type', releaseInfo?.kind || 'none');
+  if (justAdded) res.setHeader('X-Poster-Badge', 'Just Added');
   return res.end();
 }
 
@@ -303,11 +321,22 @@ export default async function handler(req, res) {
     // This prevents a cached date badge from surviving its release day.
     const badge = String(req.query?.badge || '').toLowerCase() === 'just-added' ? 'just-added' : '';
     const releaseInfo = await upcomingReleaseFromCatalog([id]) || await upcomingRelease(id);
-    // Always render through this service; cached ImageKit copies can omit a
-    // provider-supplied Just Added label and therefore bypass normalization.
-
     const version = String(req.query?.v || '');
     const fallbackUrl = String(req.query?.fallback || '');
+    let expectedJustAdded = badge === 'just-added';
+    if (!expectedJustAdded) {
+      try { expectedJustAdded = await isCatalogRecentlyAdded([id]); }
+      catch (error) {
+        console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
+      }
+    }
+
+    // Reuse a recent ImageKit poster when its visible date badge is still
+    // correct. This avoids repeatedly downloading, OCR-checking and uploading
+    // every catalogue poster on each scheduled refresh or after a restart.
+    const cachedAsset = await findFreshImageKitAsset(id, releaseInfo, expectedJustAdded);
+    if (cachedAsset) return redirectToImageKit(res, cachedAsset, releaseInfo, expectedJustAdded);
+
     const poster = await getBuiltPoster(id, releaseInfo, badge, version, fallbackUrl);
     // Initialise the ImageKit storage safety snapshot on first live Nuvio use.
     // This is a no-op after the snapshot has been populated by maintenance.
