@@ -3,19 +3,13 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '17 */6 * * *'
+  # Producer changes are verified after their refresh workflow completes.
+  # Avoid racing a media publish by running the full check on the producer's
+  # workflow_run completion rather than immediately on its source-code push.
   push:
     branches: [main]
     paths:
       - verify_independent.py
-      - .github/workflows/independent-verification.yml
-      - .github/workflows/refresh.yml
-      - cloud.py
-      - featured.py
-      - verify_backdrops.py
-      - hero_prepare.py
-      - hero_render.py
-      - state/featured-movies.json
-      - state/success.json
   workflow_run:
     workflows:
       - Nuvio cloud refresh
