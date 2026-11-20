@@ -3,7 +3,7 @@ import { renderUpcomingBadge, renderJustAddedBadge } from '../lib/render-poster.
 import { hasExistingComingDateTag, hasExistingJustAddedTag } from '../lib/coming-tag.mjs';
 import { isCatalogRecentlyAdded } from '../lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from '../lib/catalog-upcoming.mjs';
-import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster } from '../lib/imagekit-storage.mjs';
+import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster, getImageKitStorageSnapshot, runImageKitMaintenance } from '../lib/imagekit-storage.mjs';
 
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
 const BETTERPOSTERS_RATING_SOURCE = 'IM';
@@ -309,6 +309,12 @@ export default async function handler(req, res) {
     const version = String(req.query?.v || '');
     const fallbackUrl = String(req.query?.fallback || '');
     const poster = await getBuiltPoster(id, releaseInfo, badge, version, fallbackUrl);
+    // Initialise the ImageKit storage safety snapshot on first live Nuvio use.
+    // This is a no-op after the snapshot has been populated by maintenance.
+    if (!getImageKitStorageSnapshot().known) {
+      try { await runImageKitMaintenance(); }
+      catch (error) { console.warn('[imagekit-initial-snapshot-failed]', error?.message || 'unknown error'); }
+    }
     // Cache every successfully rendered poster, including Just Added and
     // unbadged BetterPosters originals, so a newly requested title is warmed.
     const canStore = canStoreImageKitPoster(id, poster.bytes.length);
