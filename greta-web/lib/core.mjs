@@ -91,72 +91,74 @@ async function art(kind,id,request){
  const type=bits.length===2?bits[0]:'';
  const rawId=bits.length===2?bits[1]:id;
  let cache;
- try{if(globalThis.caches)cache=await caches.open('dobins-indian-art-v2');}catch{}
- const key=new Request(ORIGIN+'/art/'+kind+'/'+id+(badgeRequested?'?badge=just-added&v=6':''));
+ try{if(globalThis.caches)cache=await caches.open('dobins-indian-art-v3');}catch{}
+ const key=new Request(ORIGIN+'/art/'+kind+'/'+id+(badgeRequested?'?badge=just-added&v=7':'?v=7'));
  const saved=await cache?.match(key);
  if(saved)return saved;
 
- // The catalog adds this query only to titles inside their 14-day Just Added window.
- // Use the dedicated renderer first, preserving the same eligibility decision in Nuvio.
- if(badgeRequested){
-  const badgeUrl=buildJustAddedRendererUrl(type,rawId);
-  if(badgeUrl){
+ const all=await data('metadata.json');
+ const m=all[bits.length===2?metaKey(type,rawId):rawId]||(ID_ALIASES[rawId]?all[ID_ALIASES[rawId]]:null)||{};
+ const catalogs=await data('catalogs.json');
+ const catalogEntry=Object.values(catalogs).flatMap(items=>Array.isArray(items)?items:[]).find(item=>item?.id===rawId&&(!type||item.type===type))||{};
+ if(kind==='poster'){
+  // Resolve every supported catalog ID to the shared Render poster pipeline.
+  // IMDb is preferred; TMDB and TVmaze aliases are handled by Render as well.
+  const imdbId=rawId.startsWith('tt')?rawId:
+   (IMDB_BY_META[metaKey(type,rawId)]||m.imdb_id||m.imdbId||m.imdb||m.externals?.imdb||'');
+  let rendererUrl=null;
+  if(/^tt\\d{7,10}$/.test(String(imdbId))){
+   rendererUrl=new URL('/poster/'+imdbId+'.jpg',JUST_ADDED_RENDERER_ORIGIN);
+  }else{
+   const tmdb=rawId.match(/^tmdb:(\\d{1,12})$/);
+   const tvmaze=rawId.match(/^tvmaze:(\\d{1,12})$/);
+   if(tmdb){
+    rendererUrl=new URL('/poster/tmdb/'+tmdb[1]+'.jpg',JUST_ADDED_RENDERER_ORIGIN);
+    rendererUrl.searchParams.set('type',type==='movie'?'movie':'tv');
+   }else if(tvmaze){
+    rendererUrl=new URL('/poster/tvmaze/'+tvmaze[1]+'.jpg',JUST_ADDED_RENDERER_ORIGIN);
+    rendererUrl.searchParams.set('type','tv');
+   }
+  }
+
+  const artworkCandidates=[
+   ...(Array.isArray(m.artwork?.posters)?m.artwork.posters:[]),m.poster,
+   ...(Array.isArray(catalogEntry.artwork?.posters)?catalogEntry.artwork.posters:[]),catalogEntry.poster
+  ].filter((value,index,array)=>typeof value==='string'&&value.trim()&&array.indexOf(value)===index);
+  const fallback=artworkCandidates.find(value=>{
    try{
-    const r=await upstream(badgeUrl,15000);
+    const u=new URL(value);
+    return u.protocol==='https:'&&!u.username&&!u.password&&!u.port&&
+     artHosts.includes(u.hostname)&&!['btttr.cc','api.ratingposterdb.com','live.metahub.space'].includes(u.hostname)&&
+     /\\.(?:jpe?g|png|webp|avif)$/i.test(u.pathname);
+   }catch{return false;}
+  });
+
+  if(rendererUrl){
+   if(badgeRequested)rendererUrl.searchParams.set('badge','just-added');
+   rendererUrl.searchParams.set('v','7');
+   if(fallback)rendererUrl.searchParams.set('fallback',fallback);
+   try{
+    const r=await upstream(rendererUrl.href,20000);
     const mime=(r.headers.get('Content-Type')||'').split(';')[0].trim().toLowerCase();
-    if(!mime.startsWith('image/'))throw Error('Renderer returned '+(mime||'no image content type'));
+    const status=r.headers.get('X-Poster-Date-Status')||'';
+    if(!r.ok||!mime.startsWith('image/')||!status)throw Error('Shared renderer unavailable or returned an unprocessed image (HTTP '+r.status+', '+(status||'no badge status')+')');
     const bytes=await r.arrayBuffer();
     if(bytes.byteLength<500||bytes.byteLength>15000000)throw Error('Renderer image size outside limits');
-    const headers={...CORS,'Content-Type':mime,'Cache-Control':'public, max-age=3600, stale-while-revalidate=3600','X-Content-Type-Options':'nosniff','X-Poster-Badge':'Just Added'};
-    const badgeStatus=r.headers.get('X-Poster-Date-Status');
-    const source=r.headers.get('X-Poster-Source');
-    if(badgeStatus)headers['X-Poster-Date-Status']=badgeStatus;
-    if(source)headers['X-Poster-Source']=source;
+    const justAdded=r.headers.get('X-Poster-Just-Added')==='true';
+    const releaseDate=r.headers.get('X-Poster-Date')||'none';
+    const releaseKind=r.headers.get('X-Poster-Date-Type')||'none';
+    const headers={...CORS,'Content-Type':mime,'Cache-Control':'public, max-age=3600, stale-while-revalidate=3600','X-Content-Type-Options':'nosniff','X-Poster-Date-Status':status,'X-Poster-Just-Added':justAdded?'true':'false','X-Poster-Date':releaseDate,'X-Poster-Date-Type':releaseKind,'X-Poster-Source':r.headers.get('X-Poster-Source')||'BetterPosters'};
+    if(justAdded)headers['X-Poster-Badge']='Just Added';
+    else if(status.includes('upcoming-date'))headers['X-Poster-Badge']=releaseKind==='episode'?'New Episode':'Coming';
     const image=new Response(bytes,{headers});
     if(cache)await cache.put(key,image.clone());
     return image;
    }catch(error){
-    console.warn('[just-added-renderer-proxy-failed]',JSON.stringify({id:rawId,error:String(error?.message||error).slice(0,180)}));
-   }
-
-   // If the poster providers do not carry this title, retry with an allowlisted
-   // poster source already present in our catalog metadata (e.g. Cinebuds).
-   try{
-    const all=await data('metadata.json');
-    const m=all[bits.length===2?metaKey(type,rawId):rawId]||(ID_ALIASES[rawId]?all[ID_ALIASES[rawId]]:null)||{};
-    const candidates=[...(Array.isArray(m.artwork?.posters)?m.artwork.posters:[]),m.poster]
-     .filter((value,index,array)=>typeof value==='string'&&value.trim()&&array.indexOf(value)===index);
-    const fallback=candidates.find(value=>{
-     try{
-      const u=new URL(value);
-      return u.protocol==='https:'&&artHosts.includes(u.hostname)&&!['btttr.cc','api.ratingposterdb.com','live.metahub.space'].includes(u.hostname);
-     }catch{return false;}
-    });
-    if(fallback){
-     const retryUrl=new URL(badgeUrl);
-     retryUrl.searchParams.set('fallback',fallback);
-     retryUrl.searchParams.set('v','5');
-     const r=await upstream(retryUrl.href,15000);
-     const mime=(r.headers.get('Content-Type')||'').split(';')[0].trim().toLowerCase();
-     if(!mime.startsWith('image/'))throw Error('Catalog fallback renderer returned '+(mime||'no image content type'));
-     const bytes=await r.arrayBuffer();
-     if(bytes.byteLength<500||bytes.byteLength>15000000)throw Error('Catalog fallback image size outside limits');
-     const headers={...CORS,'Content-Type':mime,'Cache-Control':'public, max-age=3600, stale-while-revalidate=3600','X-Content-Type-Options':'nosniff','X-Poster-Badge':'Just Added','X-Poster-Source':r.headers.get('X-Poster-Source')||'CatalogArtwork','X-Poster-Fallback':'catalog-artwork'};
-     const badgeStatus=r.headers.get('X-Poster-Date-Status');
-     if(badgeStatus)headers['X-Poster-Date-Status']=badgeStatus;
-     const image=new Response(bytes,{headers});
-     if(cache)await cache.put(key,image.clone());
-     return image;
-    }
-   }catch(error){
-    console.warn('[just-added-catalog-fallback-failed]',JSON.stringify({id:rawId,error:String(error?.message||error).slice(0,180)}));
+    console.warn('[shared-poster-renderer-failed]',JSON.stringify({id:rawId,type,imdbId:imdbId||null,badgeRequested,error:String(error?.message||error).slice(0,200)}));
    }
   }
  }
- const all=await data('metadata.json');
- const m=all[bits.length===2?metaKey(type,rawId):id]||(ID_ALIASES[id]?all[ID_ALIASES[id]]:null)||{};
- const catalogs=await data('catalogs.json');
- const catalogEntry=Object.values(catalogs).flatMap(items=>Array.isArray(items)?items:[]).find(item=>item?.id===rawId&&(!type||item.type===type))||{};
+
  const artwork=m.artwork?.[kind==='poster'?'posters':kind==='logo'?'logos':'backgrounds'];
  const catalogArtwork=catalogEntry.artwork?.[kind==='poster'?'posters':kind==='logo'?'logos':'backgrounds'];
  const candidates=[...(Array.isArray(artwork)?artwork:[]),m[kind],...(Array.isArray(catalogArtwork)?catalogArtwork:[]),catalogEntry[kind]].filter((value,index,array)=>typeof value==='string'&&value.trim()&&array.indexOf(value)===index);
@@ -173,7 +175,7 @@ async function art(kind,id,request){
    const headers={...CORS,'Content-Type':mime,'Cache-Control':badgeRequested?'public, max-age=60':'public, max-age=86400','X-Content-Type-Options':'nosniff'};
    if(badgeRequested)headers['X-Poster-Badge']='missing';
    const image=new Response(bytes,{headers});
-   if(cache&&!badgeRequested)await cache.put(key,image.clone());
+   if(cache&&!badgeRequested&&kind!=='poster')await cache.put(key,image.clone());
    return image;
   }catch{}
  }
