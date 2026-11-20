@@ -163,7 +163,7 @@ const server = createServer(async (req, res) => {
 
   // TVmaze-only catalog IDs are resolved to their IMDb external ID so
   // they can use the exact same release-date and poster rendering pipeline.
-  const tvmazePosterMatch = url.pathname.match(/^\\/poster\\/tvmaze\\/(\\d{1,12})\\.jpg$/i);
+  const tvmazePosterMatch = url.pathname.match(/^\/poster\/tvmaze\/(\d{1,12})\.jpg$/i);
   if (tvmazePosterMatch) {
     if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method)) {
       res.writeHead(405, { 'Allow': 'GET, HEAD, OPTIONS', 'Cache-Control': 'no-store' });
@@ -177,7 +177,7 @@ const server = createServer(async (req, res) => {
       if (!showResponse.ok) throw new Error('TVmaze show HTTP ' + showResponse.status);
       const show = await showResponse.json();
       const imdbId = String(show?.externals?.imdb || '');
-      if (!/^tt\\d{7,10}$/.test(imdbId)) {
+      if (!/^tt\d{7,10}$/.test(imdbId)) {
         res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
         return res.end('TVmaze title has no IMDb external ID for release-date lookup.');
       }
