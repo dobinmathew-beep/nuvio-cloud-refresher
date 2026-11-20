@@ -16,7 +16,7 @@ The service substitutes the IMDb ID into the BetterPosters template. It delibera
 
 ## Existing BetterPosters tag handling
 - The original image's top tag row is checked with English OCR.
-- Every eligible title is checked against TMDB's current future release schedule. A confirmed date is rendered by this service, replacing the source tag area rather than trusting stale provider text.
+- Every poster is checked against the central upcoming index generated from the eight catalogs' verified source records first. Movie entries use future OTT dates; series use the next future episode date. If no central date is available, the service falls back to TMDB/TVmaze. A confirmed date is rendered by this service, replacing the source tag area rather than trusting stale provider text.
 - Every normal GET through the shared URL checks the central Great Indian `catalog-added.json` index for a title added to any of the eight catalogs in the last 14 days, and also checks BetterPosters for an existing "Just Added" tag. Either condition produces the exact title-case "Just Added" artwork. This applies to Xperience, both AIOmetadata instances, and the Great Indian catalogs whenever their poster requests pass through this URL.
 - An explicit `?badge=just-added` request forces the same artwork even when BetterPosters has no such label. The caller should send this flag only for titles that are genuinely newly added.
 - OCR results are cached in memory by source-image hash to avoid repeating work for the same image.
