@@ -26,13 +26,13 @@ test('configured poster templates preserve Just Added eligibility instead of ove
  assert.equal(buildConfiguredPosterUrl({id:'tt1234567',type:'movie',justAdded:false},'https://addon.example',base,template),'https://addon.example/install/01/bttr/token/poster/movie/tt1234567.jpg?v=8');
  assert.equal(buildConfiguredPosterUrl({id:'tmdb:1819380',type:'movie',justAdded:true},'https://addon.example',base,template),'https://addon.example/install/01/bttr/token/poster/movie/tmdb:1819380.jpg?badge=just-added&v=8');
 });
-test('configured poster route forwards Just Added requests to the Render renderer',async()=>{
- const oldFetch=globalThis.fetch,oldOrigin=process.env.PUBLIC_ORIGIN;
+test('configured poster route forwards Just Added requests through the shared core renderer',async()=>{
+ const oldWorkerFetch=worker.fetch,oldOrigin=process.env.PUBLIC_ORIGIN;
  process.env.PUBLIC_ORIGIN='https://addon.example';
  let requested='';
- globalThis.fetch=async url=>{
-  requested=String(url);
-  return new Response(new Uint8Array(512).fill(7),{status:200,headers:{'content-type':'image/jpeg','x-poster-date-status':'just-added-overlay','x-poster-just-added':'true','x-poster-source':'BetterPosters'}});
+ worker.fetch=async request=>{
+  requested=String(request.url);
+  return new Response(new Uint8Array(512).fill(7),{status:200,headers:{'content-type':'image/jpeg','x-poster-date-status':'just-added-overlay','x-poster-just-added':'true','x-poster-badge':'Just Added','x-poster-source':'BetterPosters','cache-control':'public,max-age=300'}});
  };
  try{
   const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');
@@ -41,22 +41,21 @@ test('configured poster route forwards Just Added requests to the Render rendere
   const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=body}};
   await handler(req,res);
   assert.equal(res.statusCode,200);
-  assert.equal(requested,'https://great-indian-upcoming-posters.onrender.com/poster/tt1234567.jpg?badge=just-added&v=5');
+  assert.equal(requested,'https://addon.example/art/poster/tt1234567?badge=just-added&v=8');
   assert.equal(res.headers['X-Poster-Badge'],'Just Added');
  }finally{
-  globalThis.fetch=oldFetch;
+  worker.fetch=oldWorkerFetch;
   if(oldOrigin===undefined)delete process.env.PUBLIC_ORIGIN;else process.env.PUBLIC_ORIGIN=oldOrigin;
  }
 });
 
-test('TVmaze-only configured poster IDs resolve to IMDb before shared rendering',async()=>{
- const oldFetch=globalThis.fetch,oldOrigin=process.env.PUBLIC_ORIGIN;
+test('TVmaze-only configured poster IDs use the shared renderer without a separate IMDb lookup',async()=>{
+ const oldWorkerFetch=worker.fetch,oldOrigin=process.env.PUBLIC_ORIGIN;
  process.env.PUBLIC_ORIGIN='https://addon.example';
- const requested=[];
- globalThis.fetch=async url=>{
-  const value=String(url);requested.push(value);
-  if(value==='https://api.tvmaze.com/shows/123')return new Response(JSON.stringify({externals:{imdb:'tt7654321'}}),{status:200,headers:{'content-type':'application/json'}});
-  return new Response(new Uint8Array(512).fill(7),{status:200,headers:{'content-type':'image/jpeg','x-poster-date-status':'upcoming-date-overlay','x-poster-date':'2026-12-20','x-poster-source':'BetterPosters','x-poster-just-added':'false'}});
+ let requested='';
+ worker.fetch=async request=>{
+  requested=String(request.url);
+  return new Response(new Uint8Array(512).fill(7),{status:200,headers:{'content-type':'image/jpeg','x-poster-date-status':'upcoming-date-overlay','x-poster-date':'2026-12-20','x-poster-date-type':'episode','x-poster-source':'BetterPosters','x-poster-just-added':'false','cache-control':'public,max-age=300'}});
  };
  try{
   const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');
@@ -65,11 +64,10 @@ test('TVmaze-only configured poster IDs resolve to IMDb before shared rendering'
   const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=body}};
   await handler(req,res);
   assert.equal(res.statusCode,200);
-  assert.equal(requested[0],'https://api.tvmaze.com/shows/123');
-  assert.equal(requested[1],'https://great-indian-upcoming-posters.onrender.com/poster/tt7654321.jpg?v=8');
+  assert.equal(requested,'https://addon.example/art/poster/series~tvmaze:123?v=8');
   assert.equal(res.headers['X-Poster-Date-Status'],'upcoming-date-overlay');
  }finally{
-  globalThis.fetch=oldFetch;
+  worker.fetch=oldWorkerFetch;
   if(oldOrigin===undefined)delete process.env.PUBLIC_ORIGIN;else process.env.PUBLIC_ORIGIN=oldOrigin;
  }
 });
@@ -128,11 +126,31 @@ test('configured installation serves rated posters through catalog pagination an
 test('accepts exact BetterPosters IMDb underscore placeholder and encoded copies',()=>{const exact='https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM';assert.equal(normalizePosterTemplate(exact),exact);assert.equal(normalizePosterTemplate(exact.replace('{imdb_id}','%7Bimdb_id%7D')),exact);assert.equal(decodePosterConfig(encodePosterConfig(exact)),exact);assert.equal(ratedPoster(exact,'tt0133093','fallback'),'https://btttr.cc/poster/imdb/poster-default/tt0133093.jpg?rs=IM');});
 
 
-test('configured poster route sends normal titles through the shared renderer and preserves its date headers',async()=>{
- const oldFetch=globalThis.fetch;let requested='';
- globalThis.fetch=async url=>{requested=String(url);return new Response(new Uint8Array(512).fill(7),{status:200,headers:{'content-type':'image/webp','content-length':'512','x-poster-date-status':'upcoming-date-overlay','x-poster-date':'2026-12-20','x-poster-date-type':'premiere','x-poster-source':'BetterPosters','x-poster-just-added':'false'}})};
- try{const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');const route='/install/01/bttr/'+token+'/poster/movie/tt1234567.jpg?v=8';const req={url:route,method:'GET',headers:{host:'addon.example'}};const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=body}};await handler(req,res);assert.equal(res.statusCode,200);assert.equal(requested,'https://great-indian-upcoming-posters.onrender.com/poster/tt1234567.jpg?v=8');assert.equal(res.headers['Content-Type'],'image/webp');assert.equal(res.headers['X-Poster-Source'],'BetterPosters');assert.equal(res.headers['X-Poster-Date-Status'],'upcoming-date-overlay');assert.equal(res.headers['X-Poster-Date'],'2026-12-20');assert.equal(res.body.length,512);}
- finally{globalThis.fetch=oldFetch}
+test('configured poster route sends normal titles through the shared core renderer and preserves date headers',async()=>{
+ const oldWorkerFetch=worker.fetch,oldOrigin=process.env.PUBLIC_ORIGIN;
+ process.env.PUBLIC_ORIGIN='https://addon.example';
+ let requested='';
+ worker.fetch=async request=>{
+  requested=String(request.url);
+  return new Response(new Uint8Array(512).fill(7),{status:200,headers:{'content-type':'image/webp','content-length':'512','x-poster-date-status':'upcoming-date-overlay','x-poster-date':'2026-12-20','x-poster-date-type':'premiere','x-poster-source':'BetterPosters','x-poster-just-added':'false','cache-control':'public,max-age=300'}});
+ };
+ try{
+  const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');
+  const route='/install/01/bttr/'+token+'/poster/movie/tt1234567.jpg?v=8';
+  const req={url:route,method:'GET',headers:{host:'addon.example'}};
+  const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=body}};
+  await handler(req,res);
+  assert.equal(res.statusCode,200);
+  assert.equal(requested,'https://addon.example/art/poster/tt1234567?v=8');
+  assert.equal(res.headers['Content-Type'],'image/webp');
+  assert.equal(res.headers['X-Poster-Source'],'BetterPosters');
+  assert.equal(res.headers['X-Poster-Date-Status'],'upcoming-date-overlay');
+  assert.equal(res.headers['X-Poster-Date'],'2026-12-20');
+  assert.equal(res.body.length,512);
+ }finally{
+  worker.fetch=oldWorkerFetch;
+  if(oldOrigin===undefined)delete process.env.PUBLIC_ORIGIN;else process.env.PUBLIC_ORIGIN=oldOrigin;
+ }
 });
 
 test('public data-health route exposes GitHub snapshot provenance and catalog counts',async()=>{
