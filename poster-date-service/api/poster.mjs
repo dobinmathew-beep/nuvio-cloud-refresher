@@ -8,6 +8,21 @@ const BETTERPOSTERS_RATING_SOURCE = 'IM';
 const RPDB = 'https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/';
 const METAHUB = 'https://live.metahub.space/poster/small/';
 const MAX_BYTES = 15 * 1024 * 1024;
+const CATALOG_POSTER_FALLBACK_HOSTS = new Set([
+  'cinebuds.com', 'www.cinebuds.com', 'image.tmdb.org',
+  'images.metahub.space', 'live.metahub.space', 'm.media-amazon.com',
+  'assets.fanart.tv', 'static.tvmaze.com'
+]);
+function validCatalogPosterFallback(value) {
+  try {
+    const url = new URL(String(value || ''));
+    return url.protocol === 'https:' && !url.username && !url.password && !url.port &&
+      CATALOG_POSTER_FALLBACK_HOSTS.has(url.hostname) &&
+      /\.(?:jpe?g|png|webp|avif)$/i.test(url.pathname);
+  } catch {
+    return false;
+  }
+}
 const RESULT_CACHE_MS = 15 * 60 * 1000;
 const resultCache = new Map();
 const pendingResults = new Map();
@@ -76,12 +91,15 @@ function redirectToImageKit(res, assetUrl) {
   return res.end();
 }
 
-async function getOriginal(imdbId) {
+async function getOriginal(imdbId, fallbackUrl = '') {
   const candidates = [
     { source: 'BetterPosters', url: sourceUrl(imdbId), timeout: 10000 },
     { source: 'RPDB', url: RPDB + encodeURIComponent(imdbId) + '.jpg', timeout: 8000 },
     { source: 'Metahub', url: METAHUB + encodeURIComponent(imdbId) + '/img', timeout: 8000 }
   ];
+  if (validCatalogPosterFallback(fallbackUrl)) {
+    candidates.push({ source: 'CatalogArtwork', url: fallbackUrl, timeout: 8000 });
+  }
   const failures = [];
   for (const candidate of candidates) {
     try {
@@ -108,8 +126,8 @@ async function getOriginal(imdbId) {
   throw new Error('No poster provider returned a usable image for ' + imdbId + ' (' + failures.join('; ') + ')');
 }
 
-async function buildPoster(id, knownRelease = undefined, badge = '') {
-  const original = await getOriginal(id);
+async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl = '') {
+  const original = await getOriginal(id, fallbackUrl);
   // Always paint our own title-case chip over the provider's badge area.
   // This replaces any uppercase BetterPosters tag instead of preserving it.
   if (badge === 'just-added') {
@@ -157,14 +175,14 @@ async function buildPoster(id, knownRelease = undefined, badge = '') {
   return { bytes: output, type: original.type, source: original.source, status, releaseDate: release.date, releaseKind: release.kind || 'premiere' };
 }
 
-async function getBuiltPoster(id, knownRelease = undefined, badge = '', version = '') {
+async function getBuiltPoster(id, knownRelease = undefined, badge = '', version = '', fallbackUrl = '') {
   const today = new Date().toISOString().slice(0, 10);
-  const cacheKey = id + '|' + today + '|' + badge + '|' + version;
+  const cacheKey = id + '|' + today + '|' + badge + '|' + version + '|' + fallbackUrl;
   const cached = resultCache.get(cacheKey);
   if (cached && cached.expiresAt > Date.now()) return cached.value;
   if (pendingResults.has(cacheKey)) return pendingResults.get(cacheKey);
 
-  const pending = buildPoster(id, knownRelease, badge).then(value => {
+  const pending = buildPoster(id, knownRelease, badge, fallbackUrl).then(value => {
     resultCache.set(cacheKey, { value, expiresAt: Date.now() + RESULT_CACHE_MS });
     while (resultCache.size > 500) resultCache.delete(resultCache.keys().next().value);
     return value;
@@ -223,7 +241,8 @@ export default async function handler(req, res) {
     if (imageKitAsset && releaseInfo?.date) return redirectToImageKit(res, imageKitAsset);
 
     const version = String(req.query?.v || '');
-    const poster = await getBuiltPoster(id, releaseInfo, badge, version);
+    const fallbackUrl = badge ? String(req.query?.fallback || '') : '';
+    const poster = await getBuiltPoster(id, releaseInfo, badge, version, fallbackUrl);
     // Only genuine upcoming-date overlays are stored. Just Added posters are
     // rendered on demand so the exact title-case label is always current.
     const canStore = poster.status === 'upcoming-date-overlay' &&
