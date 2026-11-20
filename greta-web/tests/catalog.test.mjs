@@ -42,7 +42,7 @@ test('configured poster route forwards Just Added requests to the Render rendere
   await handler(req,res);
   assert.equal(res.statusCode,200);
   assert.equal(requested,'https://great-indian-upcoming-posters.onrender.com/poster/tt1234567.jpg?badge=just-added&v=6');
-  assert.equal(res.headers['x-poster-badge'],'Just Added');
+  assert.equal(res.headers['X-Poster-Badge'],'Just Added');
  }finally{
   globalThis.fetch=oldFetch;
   if(oldOrigin===undefined)delete process.env.PUBLIC_ORIGIN;else process.env.PUBLIC_ORIGIN=oldOrigin;
@@ -65,7 +65,7 @@ test('configured poster proxy preserves badge query embedded inside Vercel path 
   await handler(req,res);
   assert.equal(res.statusCode,200);
   assert.equal(requested,'https://great-indian-upcoming-posters.onrender.com/poster/tt45692999.jpg?badge=just-added&v=5');
-  assert.equal(res.headers['x-poster-badge'],'Just Added');
+  assert.equal(res.headers['X-Poster-Badge'],'Just Added');
  }finally{
   globalThis.fetch=oldFetch;
   if(oldOrigin===undefined)delete process.env.PUBLIC_ORIGIN;else process.env.PUBLIC_ORIGIN=oldOrigin;
