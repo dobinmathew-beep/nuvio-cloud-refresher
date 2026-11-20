@@ -48,7 +48,7 @@ test('rendered poster visibly contains the exact Just Added label', async () => 
     const result = await worker.recognize(crop);
     const text = String(result?.data?.text || '').replace(/\s+/g, ' ').trim();
     assert.match(text, /Just Added/i, 'rendered poster must visibly display Just Added');
-    assert.doesNotMatch(text, /\\$\\{JUST_ADDED_BADGE_TEXT\\}/, 'template variable must not appear on the poster');
+    assert.equal(text.includes('${JUST_ADDED_BADGE_TEXT}'), false, 'template variable must not appear on the poster');
   } finally {
     await worker.terminate();
   }
