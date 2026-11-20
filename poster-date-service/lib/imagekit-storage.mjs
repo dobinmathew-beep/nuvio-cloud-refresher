@@ -137,6 +137,55 @@ export function recordImageKitUpload(path, fileId, bytes) {
   storageSnapshot.checkedAt = Date.now();
 }
 
+export async function readPosterValidationMetadata(imdbId) {
+  if (!/^tt\\d{7,10}$/.test(String(imdbId || ''))) return null;
+  const config = imageKitConfig();
+  if (!config) return null;
+  const url = new URL(config.endpoint + '/catalog-state/poster-validation/' + encodeURIComponent(imdbId) + '.json');
+  url.searchParams.set('v', String(Math.floor(Date.now() / 300000)));
+  try {
+    const response = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(3000) });
+    if (response.status === 404) return null;
+    if (!response.ok) return null;
+    const value = await response.json();
+    return value && value.version === 1 && value.imdbId === imdbId ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+export async function savePosterValidationMetadata(imdbId, metadata) {
+  if (!/^tt\\d{7,10}$/.test(String(imdbId || ''))) return false;
+  const config = imageKitConfig();
+  if (!config) return false;
+  const value = {
+    version: 1,
+    imdbId,
+    releaseDate: metadata?.releaseDate || null,
+    releaseKind: metadata?.releaseKind || null,
+    justAdded: metadata?.justAdded === true,
+    uploadedAt: metadata?.uploadedAt || new Date().toISOString()
+  };
+  const form = new FormData();
+  const bytes = Buffer.from(JSON.stringify(value));
+  form.set('file', new Blob([bytes], { type: 'application/json' }), imdbId + '.json');
+  form.set('fileName', imdbId + '.json');
+  form.set('folder', '/catalog-state/poster-validation');
+  form.set('useUniqueFileName', 'false');
+  form.set('overwriteFile', 'true');
+  form.set('isPrivateFile', 'false');
+  const response = await fetch(UPLOAD_API, {
+    method: 'POST',
+    headers: { Authorization: 'Basic ' + Buffer.from(config.privateKey + ':').toString('base64') },
+    body: form,
+    signal: AbortSignal.timeout(10000)
+  });
+  if (!response.ok) {
+    throw new Error('ImageKit poster validation metadata upload failed (' + response.status + '): ' + (await response.text()).slice(0, 200));
+  }
+  return true;
+}
+
 export async function uploadPosterToImageKit(imdbId, poster) {
   const config = imageKitConfig();
   if (!config) return { stored: false, reason: 'imagekit-not-configured' };
@@ -165,6 +214,20 @@ export async function uploadPosterToImageKit(imdbId, poster) {
   const result = await response.json();
   if (!result.url || !result.fileId) throw new Error('ImageKit upload response did not include file identity');
   recordImageKitUpload('/posters/' + imdbId + '.jpg', result.fileId, poster.bytes.length);
+  if (/^tt\\d{7,10}$/.test(imdbId) && poster && typeof poster.status === 'string') {
+    try {
+      await savePosterValidationMetadata(imdbId, {
+        releaseDate: poster.releaseDate === 'none' ? null : poster.releaseDate,
+        releaseKind: poster.releaseKind === 'none' ? null : poster.releaseKind,
+        justAdded: poster.status.includes('just-added'),
+        uploadedAt: new Date().toISOString()
+      });
+    } catch (error) {
+      console.warn('[poster-validation-sidecar-save-failed]', JSON.stringify({
+        imdbId, error: error?.message || 'unknown error'
+      }));
+    }
+  }
   console.log('ImageKit upcoming poster stored:', imdbId, poster.bytes.length, 'bytes');
   return { stored: true, url: result.url, fileId: result.fileId };
 }
