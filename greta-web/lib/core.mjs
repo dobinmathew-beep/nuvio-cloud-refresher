@@ -148,7 +148,7 @@ async function art(kind,id,request){
  if(kind==='logo'&&m._logoFallback)return new Response(Uint8Array.from(atob(m._logoFallback),c=>c.charCodeAt(0)),{headers:{...CORS,'Content-Type':'image/png','Cache-Control':'public, max-age=3600'}});
  return new Response('Artwork temporarily unavailable',{status:503,headers:{...CORS,'Retry-After':'60'}});
 }
-export {manifest,data,meta,dataHealth,buildCatalogPosterUrl,buildJustAddedRendererUrl};
+export {manifest,data,meta,dataHealth};
 export default {async fetch(request){const url=new URL(request.url);try{url.pathname=decodeURIComponent(url.pathname);}catch{}if(request.method==='OPTIONS')return new Response(null,{status:204,headers:CORS});if(!['GET','HEAD'].includes(request.method))return json({error:'Method not allowed'},405);let response;
  if(url.pathname==='/')response=new Response(PAGE,{headers:{...CORS,'Content-Type':'text/html; charset=utf-8','Cache-Control':'public, max-age=300'}});
  else if(url.pathname==='/icon.png')response=new Response(Uint8Array.from(atob(ICON),c=>c.charCodeAt(0)),{headers:{...CORS,'Content-Type':'image/png','Cache-Control':'public, max-age=86400'}});
