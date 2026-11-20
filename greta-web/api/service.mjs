@@ -14,14 +14,14 @@ export function buildSharedRendererUrl(type,id,justAdded=false,version='6'){
 
 async function resolveRendererId(id){
  const value=String(id||'');
- const tvmaze=value.match(/^tvmaze:(\\d{1,12})$/);
+ const tvmaze=value.match(/^tvmaze:(\d{1,12})$/);
  if(!tvmaze)return value;
  try{
   const response=await fetch('https://api.tvmaze.com/shows/'+tvmaze[1],{cache:'no-store',signal:AbortSignal.timeout(7000)});
   if(!response.ok)return value;
   const show=await response.json();
   const imdb=show?.externals?.imdb;
-  return typeof imdb==='string'&&/^tt\\d{7,10}$/.test(imdb)?imdb:value;
+  return typeof imdb==='string'&&/^tt\d{7,10}$/.test(imdb)?imdb:value;
  }catch{return value;}
 }
 const legacy='https://dobins-indian-catalog.quickfield138.chatgpt.site';const raw='https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/';const healthCache={};
@@ -52,7 +52,8 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
  const posterRoute=route.replace(/%3A/gi,':').match(/^\/poster\/(movie|series)\/((?:tt\d+)|(?:(?:tmdb|tvmaze):\d+))\.jpg$/);if(posterRoute&&posterTemplate){
  const [,type,id]=posterRoute;
  const badgeRequested=requestParams.get('badge')==='just-added';
- const rendererId=await resolveRendererId(id);\n const rendererUrl=buildSharedRendererUrl(type,rendererId,badgeRequested,requestParams.get('v')||'6');
+ const rendererId=await resolveRendererId(id);
+ const rendererUrl=buildSharedRendererUrl(type,rendererId,badgeRequested,requestParams.get('v')||'6');
  if(rendererUrl){
   try{
    const rendered=await fetch(rendererUrl,{cache:'no-store',signal:AbortSignal.timeout(15000)});
