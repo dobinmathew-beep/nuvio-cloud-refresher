@@ -52,7 +52,7 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
     const value=rendered.headers.get(name);
     if(value)headers[name]=value;
    }
-   if(badgeRequested||rendered.headers.get('X-Poster-Just-Added')==='true')headers['X-Poster-Badge']='Just Added';
+   if(rendered.headers.get('X-Poster-Just-Added')==='true')headers['X-Poster-Badge']='Just Added';
    res.statusCode=200;
    for(const [k,v] of Object.entries(headers))res.setHeader(k,v);
    return res.end(req.method==='HEAD'?undefined:Buffer.from(bytes));
