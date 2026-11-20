@@ -1,1 +1,1 @@
-Run full end-to-end poster audit v8 across every title in all eight catalogs using the live Render shared renderer. Verify central Coming/New Episode dates, central 14-day Just Added eligibility, BetterPosters tag normalization and exact title-case response label.
+Run complete paginated v9 audit of all titles in all eight public catalogs. Verify every poster through the live single-pass Vercel-to-Render route; report central upcoming dates, 14-day Just Added eligibility, BetterPosters tag normalization, exact title-case labels, missing renderer headers, and source failures.
