@@ -1,8 +1,8 @@
-import test from 'node:test';
+import test, { after } from 'node:test';
 import assert from 'node:assert/strict';
 import sharp from 'sharp';
 import { renderJustAddedBadge, JUST_ADDED_BADGE_TEXT, buildJustAddedBadgeSvg } from '../lib/render-poster.mjs';
-import { hasJustAddedBadgeText } from '../lib/coming-tag.mjs';
+import { hasJustAddedBadgeText, terminateOcrWorker } from '../lib/coming-tag.mjs';
 
 test('badge SVG embeds the exact title-case Just Added label', () => {
   const svg = buildJustAddedBadgeSvg(400, 70, 12, 38).toString('utf8');
@@ -101,3 +101,5 @@ test('overlay preserves poster dimensions', async () => {
   assert.equal(after.width, before.width);
   assert.equal(after.height, before.height);
 });
+
+after(async () => { await terminateOcrWorker(); });
