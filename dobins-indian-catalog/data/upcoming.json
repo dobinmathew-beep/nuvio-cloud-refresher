@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-20T19:21:44.758643+04:00",
+  "generatedAt": "2026-11-20T20:53:58.757865+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 20,
+  "count": 21,
   "items": [
     {
       "id": "tt1281973",
@@ -37,14 +37,14 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
       "catalog": "dobins_hi_series",
       "region": "IN",
-      "source": "https://api.tvmaze.com/schedule/web"
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tt45692999",
@@ -221,12 +221,34 @@
         "Prime Video"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "catalog": "dobins_hi_movie",
       "region": "IN",
-      "source": "https://cinebuds.com/ott-releases-this-week/"
+      "source": "https://www.dailyott.in/"
+    },
+    {
+      "id": "tt39632118",
+      "aliases": [
+        "tt39632118"
+      ],
+      "name": "Family Kirana Store",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "kind": "episode",
+      "platforms": [
+        "YouTube (TVF)"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tt39390582",

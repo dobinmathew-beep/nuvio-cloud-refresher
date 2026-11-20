@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-20T19:21:44.758643+04:00",
+    "checkedAt": "2026-11-20T20:53:58.757865+04:00",
     "records": [
       {
         "_id": "6af6738fdea24088f261c3b1",
@@ -310,6 +310,59 @@
         "updatedAt": "2026-11-20T02:19:48.187Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/ee6LvOKRPN88llyeaOMMXSg9u5N.jpg",
         "instagramPostedAt": "2026-11-20T02:20:38Z",
+        "tmdbDetails": {
+          "tmdbId": 1542674,
+          "director": "Vimal Krishna",
+          "cast": [
+            {
+              "name": "Rag Mayur",
+              "character": ""
+            },
+            {
+              "name": "Merin Philip",
+              "character": ""
+            },
+            {
+              "name": "Prince Cecil",
+              "character": ""
+            },
+            {
+              "name": "Anannya",
+              "character": ""
+            },
+            {
+              "name": "Charith",
+              "character": ""
+            },
+            {
+              "name": "Brahmaji",
+              "character": "Brahmos"
+            },
+            {
+              "name": "Raasi",
+              "character": ""
+            },
+            {
+              "name": "Ajay",
+              "character": ""
+            }
+          ],
+          "overview": "Follows a man whose parents want to send him away as a house husband. A girl falls in love with him, but the story takes an unexpected turn involving investigation thriller elements.",
+          "runtime": 111,
+          "genres": [
+            "Comedy",
+            "Drama"
+          ],
+          "originalLanguage": "te",
+          "spokenLanguages": [
+            "Telugu"
+          ],
+          "releaseDate": "2026-09-25",
+          "voteAverage": null,
+          "trailerKey": "D1qrLKVYCjc",
+          "fetchedAt": "2026-11-20T16:49:23.234Z"
+        },
+        "tmdbId": 1542674,
         "verified": true
       },
       {
@@ -30998,7 +31051,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-20T19:21:44.758643+04:00",
+    "checkedAt": "2026-11-20T20:53:58.757865+04:00",
     "records": [
       {
         "name": "Anbil Avan",

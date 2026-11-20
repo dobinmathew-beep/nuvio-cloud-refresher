@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-11-20T19:21:44.758643+04:00",
+  "generatedAt": "2026-11-20T20:53:58.757865+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 37,
+    "total": 36,
     "byLanguage": {
       "hindi": 16,
       "malayalam": 7,
       "tamil": 6,
-      "telugu": 8
+      "telugu": 7
     },
     "byType": {
       "movie": 20,
-      "series": 17
+      "series": 16
     },
     "byMatchState": {
-      "published": 28,
+      "published": 27,
       "unmatched": 9
     },
     "bySource": {
@@ -23,15 +23,13 @@
       "https://newindianmovies.com/": 2,
       "https://www.tvmaze.com/shows/70529/dhindora": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
-      "https://v3-cinemeta.strem.io/": 4,
+      "https://v3-cinemeta.strem.io/": 3,
       "https://ottasia.com/ott-releases-this-week?country=IN": 17,
       "https://www.keralatv.in/channel/ott/": 5,
       "https://www.ottchecker.com/ott-releases/malayalam": 1,
       "https://www.ottchecker.com/ott-releases/tamil": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json": 1,
       "https://www.themoviedb.org/tv/331750": 1,
-      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json": 1,
-      "https://www.themoviedb.org/tv/332943": 1,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://cinebuds.com/ott-releases-this-week/": 3
     }
@@ -186,8 +184,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -403,12 +401,12 @@
       "type": "movie",
       "releaseDate": "2026-11-20",
       "platforms": [
-        "Sun NXT",
-        "SunNXT"
+        "SunNXT",
+        "Sun NXT"
       ],
       "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -432,8 +430,8 @@
       "type": "movie",
       "releaseDate": "2026-11-20",
       "platforms": [
-        "Aha",
-        "aha"
+        "aha",
+        "Aha"
       ],
       "sources": [
         "https://newindianmovies.com/",
@@ -484,33 +482,6 @@
       "catalog": "dobins_te_series"
     },
     {
-      "title": "Part-Timers",
-      "language": "telugu",
-      "type": "series",
-      "releaseDate": "2026-11-20",
-      "platforms": [],
-      "sources": [
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/",
-        "https://www.themoviedb.org/tv/332943"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "episode",
-      "detail": null,
-      "matchId": "tt44841089",
-      "matchState": "published",
-      "matchReason": "https://v3-cinemeta.strem.io/",
-      "metadataComplete": true,
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_te_series"
-    },
-    {
       "title": "The Great Indian Kapil Show Season 5",
       "language": "hindi",
       "type": "series",
@@ -519,8 +490,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -710,8 +681,8 @@
         "Prime Video"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -808,7 +779,7 @@
       "metadataFields": {
         "poster": true,
         "description": true,
-        "genres": false,
+        "genres": true,
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
