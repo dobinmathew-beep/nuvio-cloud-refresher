@@ -749,6 +749,36 @@
     }
   },
   {
+    "name": "The Eternal Love - Prologue",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-04-23",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69e9955d30958fd1b959de4b",
+      "platform": "ETV Win",
+      "title": "The Eternal Love - Prologue",
+      "createdAt": "2026-04-23T03:43:25.822Z",
+      "genre": "Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-04-23",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-23T03:43:25.822Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Roadies Rebirth",
     "language": "hindi",
     "type": "series",
@@ -776,36 +806,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-10-16T02:18:52.613Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "The Eternal Love - Prologue",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-04-23",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69e9955d30958fd1b959de4b",
-      "platform": "ETV Win",
-      "title": "The Eternal Love - Prologue",
-      "createdAt": "2026-04-23T03:43:25.822Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-04-23",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-23T03:43:25.822Z",
       "verified": true
     }
   },
@@ -1604,8 +1604,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix",
-      "ETV Win"
+      "ETV Win",
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {
