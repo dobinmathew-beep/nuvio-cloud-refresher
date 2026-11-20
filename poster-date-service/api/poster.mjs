@@ -25,7 +25,7 @@ function validCatalogPosterFallback(value) {
     return false;
   }
 }
-const RESULT_CACHE_MS = 15 * 60 * 1000;
+const RESULT_CACHE_MS = 5 * 60 * 1000;
 const resultCache = new Map();
 const pendingResults = new Map();
 
@@ -87,7 +87,7 @@ function scheduleImageKitUpload(imdbId, poster) {
 function redirectToImageKit(res, assetUrl) {
   res.statusCode = 302;
   res.setHeader('Location', assetUrl);
-  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=3600');
+  res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Poster-Date-Status', 'imagekit-cache-hit');
   return res.end();
