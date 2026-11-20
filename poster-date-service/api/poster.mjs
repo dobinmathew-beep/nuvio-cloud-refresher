@@ -384,12 +384,15 @@ export default async function handler(req, res) {
     res.setHeader('X-Poster-Source', poster.source || 'BetterPosters');
     res.setHeader('X-ImageKit-Storage', canStore ? 'pending' : 'not-stored');
     return res.end(poster.bytes);
-  } catch {
-    // Never replace a working BetterPosters poster with a text/JSON error page.
-    // If our proxy cannot retrieve/process the image, let the client fetch the
-    // original provider URL directly. The date badge is skipped for this request.
+  } catch (error) {
+    // Preserve the client-side source fallback, but retain the actual failure
+    // reason in service logs and response headers so the catalogue scanner can
+    // distinguish provider outages from missing artwork during recovery.
+    const reason = String(error?.message || 'poster processing failed').slice(0, 240);
+    console.warn('[poster-source-fallback]', JSON.stringify({ imdbId: id, reason }));
     res.statusCode = 302;
     res.setHeader('Location', sourceUrl(id));
+    res.setHeader('X-Poster-Fallback-Reason', reason);
     res.setHeader('Cache-Control', 'public, max-age=300');
     res.setHeader('Access-Control-Allow-Origin', '*');
     return res.end();
