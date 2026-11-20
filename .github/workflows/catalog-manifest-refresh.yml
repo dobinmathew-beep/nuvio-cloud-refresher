@@ -35,7 +35,8 @@ jobs:
 
           start_refresh() {
             for attempt in $(seq 1 20); do
-              if curl --silent --fail --max-time 20 "$POSTER_SERVICE_URL/health" >/dev/null; then
+              if curl --silent --fail --max-time 20 "$POSTER_SERVICE_URL/catalog-refresh/status" \
+                -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json" >/dev/null; then
                 break
               fi
               if [ "$attempt" -eq 20 ]; then
@@ -50,7 +51,7 @@ jobs:
               -X POST "$POSTER_SERVICE_URL/catalog-refresh" \
               -H "Authorization: Bearer $SCAN_TOKEN" \
               -H "Accept: application/json")
-            echo "Refresh start response: $response"
+            echo "Refresh start response: $response" >&2
             job_id=$(echo "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).jobId||''))")
             if [ -z "$job_id" ]; then
               response=$(curl --silent --show-error --fail-with-body --max-time 60 \
