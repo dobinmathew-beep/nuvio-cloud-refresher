@@ -1,0 +1,83 @@
+name: Just Added poster audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'badge-audit.trigger'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: OCR audit of all eight catalogs
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Check out poster audit code
+        uses: actions/checkout@v4
+        with:
+          ref: poster-date-service
+          path: poster-service
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            poster-date-service
+          sparse-checkout-cone-mode: false
+
+      - name: Check out current catalog snapshot
+        uses: actions/checkout@v4
+        with:
+          ref: dobins-catalog
+          path: catalog-data
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            dobins-indian-catalog/data/catalogs.json
+            dobins-indian-catalog/data/catalog-added.json
+            dobins-indian-catalog/data/status.json
+          sparse-checkout-cone-mode: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: poster-service/poster-date-service/package.json
+
+      - name: Install OCR and image dependencies
+        working-directory: poster-service/poster-date-service
+        run: npm install --no-audit --no-fund
+
+      - name: Test poster renderer and OCR rules
+        working-directory: poster-service/poster-date-service
+        run: npm test
+
+      - name: Inspect every poster in all eight catalogs
+        env:
+          CATALOGS_PATH: catalog-data/dobins-indian-catalog/data/catalogs.json
+          ADDED_PATH: catalog-data/dobins-indian-catalog/data/catalog-added.json
+          STATUS_PATH: catalog-data/dobins-indian-catalog/data/status.json
+          OUTPUT_DIR: audit-output
+          AUDIT_CONCURRENCY: '4'
+        working-directory: poster-service/poster-date-service
+        run: node scripts/audit-catalog-badges.mjs
+
+      - name: Add audit summary to workflow run
+        if: always()
+        working-directory: poster-service/poster-date-service
+        run: |
+          if [ -f audit-output/just-added-audit.md ]; then
+            cat audit-output/just-added-audit.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload complete title-by-title audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: just-added-poster-audit
+          path: poster-service/poster-date-service/audit-output/
+          if-no-files-found: warn
+          retention-days: 30
