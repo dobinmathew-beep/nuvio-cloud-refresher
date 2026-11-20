@@ -1,22 +1,22 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {buildManifest,replaceOrigin,buildConfiguredPosterUrl} from '../api/service.mjs';import {buildCatalogPosterUrl,buildJustAddedRendererUrl} from '../lib/core.mjs';
 
 test('only Just Added-eligible catalog entries receive a badge poster request',()=>{
- assert.equal(buildCatalogPosterUrl('https://addon.example','movie','tt1234567',true),'https://addon.example/art/poster/tt1234567?badge=just-added&v=3');
+ assert.equal(buildCatalogPosterUrl('https://addon.example','movie','tt1234567',true),'https://addon.example/art/poster/tt1234567?badge=just-added&v=4');
  assert.equal(buildCatalogPosterUrl('https://addon.example','movie','tt1234567',false),'https://addon.example/art/poster/tt1234567');
- assert.equal(buildCatalogPosterUrl('https://addon.example','movie','tmdb:1819380',true),'https://addon.example/art/poster/movie~tmdb:1819380?badge=just-added&v=3');
+ assert.equal(buildCatalogPosterUrl('https://addon.example','movie','tmdb:1819380',true),'https://addon.example/art/poster/movie~tmdb:1819380?badge=just-added&v=4');
 });
 test('Just Added renderer URL supports IMDb and TMDB movie/series IDs',()=>{
- assert.equal(buildJustAddedRendererUrl('movie','tt1234567'),'https://great-indian-upcoming-posters.onrender.com/poster/tt1234567.jpg?badge=just-added&v=3');
- assert.equal(buildJustAddedRendererUrl('movie','tmdb:1819380'),'https://great-indian-upcoming-posters.onrender.com/poster/tmdb/1819380.jpg?badge=just-added&type=movie&v=3');
- assert.equal(buildJustAddedRendererUrl('series','tmdb:1819380'),'https://great-indian-upcoming-posters.onrender.com/poster/tmdb/1819380.jpg?badge=just-added&type=tv&v=3');
+ assert.equal(buildJustAddedRendererUrl('movie','tt1234567'),'https://great-indian-upcoming-posters.onrender.com/poster/tt1234567.jpg?badge=just-added&v=4');
+ assert.equal(buildJustAddedRendererUrl('movie','tmdb:1819380'),'https://great-indian-upcoming-posters.onrender.com/poster/tmdb/1819380.jpg?badge=just-added&type=movie&v=4');
+ assert.equal(buildJustAddedRendererUrl('series','tmdb:1819380'),'https://great-indian-upcoming-posters.onrender.com/poster/tmdb/1819380.jpg?badge=just-added&type=tv&v=4');
  assert.equal(buildJustAddedRendererUrl('movie','tvmaze:123'),null);
 });
 test('configured poster templates preserve Just Added eligibility instead of overriding it',()=>{
  const template='https://btttr.cc/poster-q/imdb/poster-default/{imdb_id}.jpg?rs=IM';
  const base='/install/01/bttr/token';
- assert.equal(buildConfiguredPosterUrl({id:'tt1234567',type:'movie',justAdded:true},'https://addon.example',base,template),'https://addon.example/install/01/bttr/token/poster/movie/tt1234567.jpg?badge=just-added&v=3');
+ assert.equal(buildConfiguredPosterUrl({id:'tt1234567',type:'movie',justAdded:true},'https://addon.example',base,template),'https://addon.example/install/01/bttr/token/poster/movie/tt1234567.jpg?badge=just-added&v=4');
  assert.equal(buildConfiguredPosterUrl({id:'tt1234567',type:'movie',justAdded:false},'https://addon.example',base,template),'https://btttr.cc/poster-q/imdb/poster-default/tt1234567.jpg?rs=IM');
- assert.equal(buildConfiguredPosterUrl({id:'tmdb:1819380',type:'movie',justAdded:true},'https://addon.example',base,template),'https://addon.example/install/01/bttr/token/poster/movie/tmdb:1819380.jpg?badge=just-added&v=3');
+ assert.equal(buildConfiguredPosterUrl({id:'tmdb:1819380',type:'movie',justAdded:true},'https://addon.example',base,template),'https://addon.example/install/01/bttr/token/poster/movie/tmdb:1819380.jpg?badge=just-added&v=4');
 });
 test('configured poster route forwards Just Added requests to the Render renderer',async()=>{
  const oldFetch=globalThis.fetch,oldOrigin=process.env.PUBLIC_ORIGIN;
@@ -28,12 +28,12 @@ test('configured poster route forwards Just Added requests to the Render rendere
  };
  try{
   const token=encodePosterConfig('https://btttr.cc/poster-q/imdb/poster-default/{imdb_id}.jpg?rs=IM');
-  const route='/install/01/bttr/'+token+'/poster/movie/tt1234567.jpg?badge=just-added&v=3';
+  const route='/install/01/bttr/'+token+'/poster/movie/tt1234567.jpg?badge=just-added&v=4';
   const req={url:route,method:'GET',headers:{host:'addon.example'},query:{path:route.split('?')[0]}};
   const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=body}};
   await handler(req,res);
   assert.equal(res.statusCode,200);
-  assert.equal(requested,'https://great-indian-upcoming-posters.onrender.com/poster/tt1234567.jpg?badge=just-added&v=3');
+  assert.equal(requested,'https://great-indian-upcoming-posters.onrender.com/poster/tt1234567.jpg?badge=just-added&v=4');
   assert.equal(res.headers['x-poster-badge'],'Just Added');
  }finally{
   globalThis.fetch=oldFetch;
@@ -51,12 +51,12 @@ test('configured poster proxy preserves badge query embedded inside Vercel path 
  };
  try{
   const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');
-  const route='/install/ff/bttr/'+token+'/poster/movie/tt45692999.jpg?badge=just-added&v=3';
+  const route='/install/ff/bttr/'+token+'/poster/movie/tt45692999.jpg?badge=just-added&v=4';
   const req={url:'/api/service?path='+encodeURIComponent(route),method:'GET',headers:{host:'addon.example'},query:{path:route}};
   const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=body}};
   await handler(req,res);
   assert.equal(res.statusCode,200);
-  assert.equal(requested,'https://great-indian-upcoming-posters.onrender.com/poster/tt45692999.jpg?badge=just-added&v=3');
+  assert.equal(requested,'https://great-indian-upcoming-posters.onrender.com/poster/tt45692999.jpg?badge=just-added&v=4');
   assert.equal(res.headers['x-poster-badge'],'Just Added');
  }finally{
   globalThis.fetch=oldFetch;
@@ -87,7 +87,7 @@ test('poster URL settings preserve provider options and substitute only matching
 test('configured installation serves rated posters through catalog pagination and keeps selection',async()=>{const oldFetch=globalThis.fetch,oldOrigin=process.env.PUBLIC_ORIGIN;process.env.PUBLIC_ORIGIN='https://addon.example';globalThis.fetch=async()=>{throw Error('offline fixture')};try{const token=encodePosterConfig('https://btttr.cc/poster-q/imdb/poster-default/{imdb_id}.jpg?rs=IM');async function request(tail){const req={url:'/install/01/bttr/'+token+tail,method:'GET',headers:{host:'addon.example'}};const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=JSON.parse(body)}};await handler(req,res);return res}const manifest=await request('/manifest.json');assert.equal(manifest.statusCode,200);assert.equal(manifest.body.catalogs.length,1);assert(manifest.body.configurationURL.includes('#bttr='+token));const page=await request('/catalog/movie/dobins_ml_movie/skip=1.json');assert.equal(page.statusCode,200);assert(page.body.metas.length>0);for(const m of page.body.metas){
  const imdb=[m.id,m.imdb_id,m.imdbId,m.imdb,m.externals?.imdb,m.externalIds?.imdb,m.ids?.imdb].find(v=>typeof v==='string'&&v.startsWith('tt')&&v.slice(2).length>0&&[...v.slice(2)].every(ch=>ch>='0'&&ch<='9'));
  const local='https://addon.example/install/01/bttr/'+token+'/poster/'+m.type+'/'+m.id+'.jpg';
- if(m.justAdded===true)assert.equal(m.poster,local+'?badge=just-added&v=3');
+ if(m.justAdded===true)assert.equal(m.poster,local+'?badge=just-added&v=4');
  else if(imdb)assert.equal(m.poster,'https://btttr.cc/poster-q/imdb/poster-default/'+imdb+'.jpg?rs=IM');
  else assert.equal(m.poster,local);
 }assert.equal(page.headers['Cache-Control'],'private,no-store');assert.deepEqual((await request('/catalog/series/dobins_ml_series.json')).body,{metas:[]});}finally{globalThis.fetch=oldFetch;if(oldOrigin===undefined)delete process.env.PUBLIC_ORIGIN;else process.env.PUBLIC_ORIGIN=oldOrigin}});
