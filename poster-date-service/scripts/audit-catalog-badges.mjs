@@ -26,7 +26,9 @@ if (publicAddonBase) {
   for (const catalog of Object.keys(snapshotCatalogs)) {
     const kind = catalog.endsWith('_series') ? 'series' : 'movie';
     const rows = [];
+    const seenIds = new Set();
     let skip = 0;
+    let pagesFetched = 0;
     for (let page = 0; page < 100; page++) {
       const path = '/catalog/' + kind + '/' + catalog + (skip ? '/skip=' + skip : '') + '.json';
       const endpoint = catalogBase + path;
@@ -38,12 +40,20 @@ if (publicAddonBase) {
       const payload = await response.json();
       const metas = Array.isArray(payload.metas) ? payload.metas : [];
       if (!metas.length) break;
-      rows.push(...metas);
-      if (metas.length < 50) break;
+      let newCount = 0;
+      for (const meta of metas) {
+        const id = String(meta?.id || '');
+        if (!id || seenIds.has(id)) continue;
+        seenIds.add(id);
+        rows.push(meta);
+        newCount++;
+      }
+      pagesFetched++;
+      if (!newCount) break;
       skip += metas.length;
     }
     liveCatalogs[catalog] = rows;
-    console.log('PUBLIC_CATALOG ' + catalog + ' ' + rows.length);
+    console.log('PUBLIC_CATALOG ' + catalog + ' ' + rows.length + ' pages=' + pagesFetched);
   }
   catalogs = liveCatalogs;
 }
