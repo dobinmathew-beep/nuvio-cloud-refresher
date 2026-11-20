@@ -168,11 +168,17 @@ async function runPool(items, worker) {
   }));
   return output;
 }
+function imageKitStorageId(id) {
+  if (id.startsWith('tmdb:')) return 'tmdb-' + id.slice(5);
+  if (id.startsWith('tvmaze:')) return 'tvmaze-' + id.slice(7);
+  return id;
+}
 async function checkImageKit(id) {
   const endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\/$/, '');
   if (!endpoint) return false;
   try {
-    const response = await fetch(endpoint + '/posters/' + encodeURIComponent(id) + '.jpg', { method: 'HEAD', cache: 'no-store', signal: AbortSignal.timeout(6000) });
+    const storageId = imageKitStorageId(id);
+    const response = await fetch(endpoint + '/posters/' + encodeURIComponent(storageId) + '.jpg', { method: 'HEAD', cache: 'no-store', signal: AbortSignal.timeout(6000) });
     return response.ok && (response.headers.get('content-type') || '').toLowerCase().startsWith('image/');
   } catch { return false; }
 }
