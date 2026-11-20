@@ -86,6 +86,7 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Poster-Date-Status', 'just-added-overlay');
+  res.setHeader('X-Poster-Just-Added', 'true');
   res.setHeader('X-Poster-Date', 'none');
   res.setHeader('X-Poster-Date-Type', 'none');
   return res.end(req.method === 'HEAD' ? undefined : output);
