@@ -98,17 +98,28 @@ function catalogUrl(base, catalog, skip) {
 }
 async function collectCatalog(manifest, catalog) {
   const metas = [];
+  const seenPageIds = new Set();
   let pages = 0;
   let lastBatchSize = 0;
+  let lastPageNewIds = 0;
   for (let page = 0; page < MAX_PAGES; page++) {
     const data = await fetchJson(catalogUrl(manifest.base, catalog, page * PAGE_SIZE));
     const batch = Array.isArray(data.metas) ? data.metas : [];
-    metas.push(...batch);
+    let newIds = 0;
+    for (const meta of batch) {
+      const identity = String(meta?.id || (String(meta?.name || meta?.title || '') + '|' + String(meta?.releaseInfo?.year || meta?.year || '')));
+      if (!identity || seenPageIds.has(identity)) continue;
+      seenPageIds.add(identity);
+      metas.push(meta);
+      newIds++;
+    }
     lastBatchSize = batch.length;
+    lastPageNewIds = newIds;
     pages++;
-    if (batch.length < PAGE_SIZE) break;
+    if (pages % 25 === 0) console.log('[catalog-page-progress]', JSON.stringify({ source: manifest.name, id: catalog.id, pages, uniqueRecords: metas.length }));
+    if (batch.length < PAGE_SIZE || (page > 0 && newIds === 0)) break;
   }
-  return { source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name, pages, metas, truncated: pages === MAX_PAGES && lastBatchSize === PAGE_SIZE };
+  return { source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name, pages, metas, truncated: pages === MAX_PAGES && lastBatchSize === PAGE_SIZE && lastPageNewIds > 0 };
 }
 function canonicalId(meta) {
   const raw = String(meta?.id || '').trim();
