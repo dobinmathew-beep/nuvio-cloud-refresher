@@ -11,6 +11,19 @@ export function buildSharedRendererUrl(type,id,justAdded=false,version='6'){
  if(tmdb)return SHARED_POSTER_RENDERER+'/poster/tmdb/'+tmdb[1]+'.jpg?'+badge+'type='+(type==='movie'?'movie':'tv')+'&v='+v;
  return null;
 }
+
+async function resolveRendererId(id){
+ const value=String(id||'');
+ const tvmaze=value.match(/^tvmaze:(\\d{1,12})$/);
+ if(!tvmaze)return value;
+ try{
+  const response=await fetch('https://api.tvmaze.com/shows/'+tvmaze[1],{cache:'no-store',signal:AbortSignal.timeout(7000)});
+  if(!response.ok)return value;
+  const show=await response.json();
+  const imdb=show?.externals?.imdb;
+  return typeof imdb==='string'&&/^tt\\d{7,10}$/.test(imdb)?imdb:value;
+ }catch{return value;}
+}
 const legacy='https://dobins-indian-catalog.quickfield138.chatgpt.site';const raw='https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/';const healthCache={};
 function originFor(req){const configured=process.env.PUBLIC_ORIGIN;if(configured){const u=new URL(configured);if(u.protocol!=='https:')throw Error('PUBLIC_ORIGIN must use HTTPS');return u.origin}const host=req.headers.host;if(!host||!/^[a-zA-Z0-9.-]+(?::\d+)?$/.test(host))throw Error('Invalid host');return (host.startsWith('localhost')||host.startsWith('127.0.0.1')||host.startsWith('terminal.local:')?'http://':'https://')+host}
 const replaceOrigin=(x,origin)=>typeof x==='string'?x.replaceAll(legacy,origin):Array.isArray(x)?x.map(v=>replaceOrigin(v,origin)):x&&typeof x==='object'?Object.fromEntries(Object.entries(x).map(([k,v])=>[k,replaceOrigin(v,origin)])):x;
@@ -39,7 +52,7 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
  const posterRoute=route.replace(/%3A/gi,':').match(/^\/poster\/(movie|series)\/((?:tt\d+)|(?:(?:tmdb|tvmaze):\d+))\.jpg$/);if(posterRoute&&posterTemplate){
  const [,type,id]=posterRoute;
  const badgeRequested=requestParams.get('badge')==='just-added';
- const rendererUrl=buildSharedRendererUrl(type,id,badgeRequested,requestParams.get('v')||'6');
+ const rendererId=await resolveRendererId(id);\n const rendererUrl=buildSharedRendererUrl(type,rendererId,badgeRequested,requestParams.get('v')||'6');
  if(rendererUrl){
   try{
    const rendered=await fetch(rendererUrl,{cache:'no-store',signal:AbortSignal.timeout(15000)});
@@ -62,7 +75,7 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
   }
  }
  // Preserve a working image if the shared renderer is unavailable.
- const imdb=id.startsWith('tt')?id:'';
+ const imdb=rendererId.startsWith('tt')?rendererId:'';
  if(imdb){
   const rated=ratedPoster(posterTemplate,imdb,'');
   if(rated){
@@ -75,7 +88,7 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
    }catch{}
   }
  }
- const fallbackId=id.startsWith('tt')?id:type+'~'+id;
+ const fallbackId=rendererId.startsWith('tt')?rendererId:type+'~'+id;
  const fallbackUrl=origin+'/art/poster/'+fallbackId+(badgeRequested?'?badge=just-added&v=6':'?v=6');
  const fallback=await worker.fetch(new Request(fallbackUrl,{method:req.method}));
  res.statusCode=fallback.status;
