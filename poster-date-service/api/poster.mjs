@@ -71,7 +71,7 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
     const metadataMatches = metadataBelongsToAsset &&
       (metadata.releaseDate || null) === expectedDate &&
       (!expectedDate || metadata.releaseKind === expectedKind) &&
-      (!expectedJustAdded || metadata.justAdded === true);
+      metadata.justAdded === Boolean(expectedJustAdded);
     if (metadataMatches) return assetUrl;
 
     // Legacy assets have no sidecar yet. Verify them once using the existing
