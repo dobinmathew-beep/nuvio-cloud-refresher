@@ -534,13 +534,16 @@ def build():
   added_key=cid+'|'+str(mid)
   if str(mid) not in previous_ids.get(cid,set()) and added_key not in added_at:
    added_at[added_key]=NOW.isoformat()
+  imdb_alias=next((str(value) for value in [m.get('imdb_id'),m.get('imdbId'),m.get('imdb'),(m.get('externals') or {}).get('imdb'),(m.get('externalIds') or {}).get('imdb')] if isinstance(value,str) and is_imdb_id(value)),None)
+  if is_imdb_id(mid):imdb_alias=mid
+  if imdb_alias and added_key in added_at:added_at[cid+'|'+imdb_alias]=added_at[added_key]
   added_time=None
   if added_key in added_at:
    try:added_time=datetime.fromisoformat(added_at[added_key])
    except (TypeError,ValueError):added_time=None
   just_added=is_just_added_title(e,added_time)
   poster_url=BASE+'/art/poster/'+aid+('?badge=just-added&v=7' if just_added else '?v=7')
-  catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':poster_url,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"{description_label} ({display_kind}): {display_date} · {', '.join(e['platforms'])}\n\n"+(m.get('description') or e.get('description') or ''),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'releaseStatus':'upcoming' if display_date>TODAY else 'available','releaseLabel':release_label,'releaseLabelDate':label_date,'originalReleaseDate':original_release_date,'availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'theatricalReleases':e.get('theatricalReleases',[]),'ottDate':digital_date,'platforms':e['platforms'],'sources':e['sources'],'language':e['language'],'releaseDateBasis':e.get('releaseDateBasis','source release'),'latestEpisodeReleasedAt':episode_at,'hasNewEpisodes':new_episodes,'nextEpisodeReleaseAt':episode_badges.upcoming(m.get('videos',[]),NOW,m.get('seasons',[])) if e['type']=='series' else None,'justAdded':just_added,'catalogAddedAt':added_at.get(added_key)})
+  catalogs[cid].append({'id':mid,'imdbId':imdb_alias,'type':e['type'],'name':m['name'],'poster':poster_url,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"{description_label} ({display_kind}): {display_date} · {', '.join(e['platforms'])}\n\n"+(m.get('description') or e.get('description') or ''),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'releaseStatus':'upcoming' if display_date>TODAY else 'available','releaseLabel':release_label,'releaseLabelDate':label_date,'originalReleaseDate':original_release_date,'availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'theatricalReleases':e.get('theatricalReleases',[]),'ottDate':digital_date,'platforms':e['platforms'],'sources':e['sources'],'language':e['language'],'releaseDateBasis':e.get('releaseDateBasis','source release'),'latestEpisodeReleasedAt':episode_at,'hasNewEpisodes':new_episodes,'nextEpisodeReleaseAt':episode_badges.upcoming(m.get('videos',[]),NOW,m.get('seasons',[])) if e['type']=='series' else None,'justAdded':just_added,'catalogAddedAt':added_at.get(added_key)})
  for cid,ms in catalogs.items():
   append_legacy_series(ms,old_catalogs.get(cid,[]),TODAY,metas,require_metadata=cid.startswith('dobins_ml_'))
   if cid.endswith('_series'):
@@ -603,13 +606,30 @@ def build():
  upcoming_by_id={}
  for cid,items in catalogs.items():
   for item in items:
-   if item.get('releaseStatus')!='upcoming' or not is_imdb_id(item.get('id')):continue
-   key=(item.get('language'),item.get('type'),item['id'])
-   row=upcoming_by_id.setdefault(key,{'id':item['id'],'name':item['name'],'language':item['language'],'type':item['type'],'releaseDate':item.get('ottDate') or item.get('releaseDate'),'platforms':[],'sources':[],'catalog':cid})
+   mid=str(item.get('id') or '')
+   if not (is_imdb_id(mid) or re.fullmatch(r'tmdb:\\d+',mid) or re.fullmatch(r'tvmaze:\\d+',mid)):continue
+   release_date=None;kind='premiere'
+   if item.get('type')=='movie':
+    release_date=item.get('ottDate')
+   else:
+    next_episode=item.get('nextEpisodeReleaseAt')
+    if next_episode and str(next_episode)[:10]>TODAY:
+     release_date=next_episode;kind='episode'
+    else:
+     candidate=item.get('ottDate') or item.get('releaseDate')
+     if candidate and str(candidate)[:10]>TODAY and item.get('releaseStatus')=='upcoming':
+      release_date=candidate;kind='premiere'
+   if not release_date or str(release_date)[:10]<=TODAY:continue
+   aliases=list(dict.fromkeys(x for x in [mid,item.get('imdbId')] if isinstance(x,str) and x))
+   key=(item.get('language'),item.get('type'),mid)
+   row=upcoming_by_id.setdefault(key,{'id':mid,'aliases':aliases,'name':item['name'],'language':item['language'],'type':item['type'],'releaseDate':str(release_date)[:10],'kind':kind,'platforms':[],'sources':[],'catalog':cid})
+   if str(release_date)[:10]<row['releaseDate']:
+    row['releaseDate']=str(release_date)[:10];row['kind']=kind
+   row['aliases']=list(dict.fromkeys(row['aliases']+aliases))
    row['platforms']=list(dict.fromkeys(row['platforms']+item.get('platforms',[])))
    row['sources']=list(dict.fromkeys(row['sources']+item.get('sources',[])))
  upcoming_rows=sorted(upcoming_by_id.values(),key=lambda x:(x['releaseDate'] or '',x['language'],x['name']))
- save('upcoming.json',{'generatedAt':NOW.isoformat(),'policy':'confirmed-source-and-imdb-match-v1','count':len(upcoming_rows),'items':upcoming_rows})
+ save('upcoming.json',{'generatedAt':NOW.isoformat(),'policy':'confirmed-source-matched-id-v2','count':len(upcoming_rows),'items':upcoming_rows})
  # Keep a full discovery ledger alongside the strict public feed. This makes
  # source coverage and unresolved titles visible without weakening publication
  # rules or assigning speculative IDs.
