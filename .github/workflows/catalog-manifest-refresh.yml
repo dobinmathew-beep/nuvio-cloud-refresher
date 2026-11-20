@@ -1,4 +1,5 @@
 name: Manifest catalogue poster refresh
+# Triggered after the poster service's final pagination and cache deployment.
 
 on:
   workflow_dispatch:
