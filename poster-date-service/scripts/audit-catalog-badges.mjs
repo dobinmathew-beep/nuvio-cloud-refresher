@@ -180,7 +180,7 @@ lines.push('', '## Flagged in catalog but badge not detected');
 for (const row of report.flaggedButNotVisible) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + '): ' + (row.error || 'OCR did not detect the label'));
 lines.push('', '## Visible badge without a catalog flag');
 for (const row of report.visibleButNotFlagged) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + ')');
-await writeFile(resolve(outputDir, 'just-added-audit.md'), lines.join('\\n') + '\\n');
+await writeFile(resolve(outputDir, 'just-added-audit.md'), lines.join('\n') + '\n');
 console.log('AUDIT_RESULT ' + JSON.stringify({
   totalTitles: report.totalTitles,
   scannedTitles: report.scannedTitles,
