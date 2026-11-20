@@ -213,8 +213,17 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
   let justAddedSource = shouldRenderJustAdded ? 'catalog-flag' : null;
   if (!shouldRenderJustAdded) {
     try {
-      shouldRenderJustAdded = await isCatalogRecentlyAdded([id]);
-      if (shouldRenderJustAdded) justAddedSource = 'catalog-index';
+      const catalogResult = await isCatalogRecentlyAdded([id]);
+      if (catalogResult === null) {
+        // Only run OCR when the authoritative catalogue index is unavailable.
+        // This preserves BetterPosters' baked-in Just Added tag without adding
+        // an OCR pass to the normal, indexed bulk-refresh path.
+        shouldRenderJustAdded = await hasExistingJustAddedTag(original.bytes);
+        if (shouldRenderJustAdded) justAddedSource = 'betterposters-tag-fallback';
+      } else {
+        shouldRenderJustAdded = catalogResult;
+        if (shouldRenderJustAdded) justAddedSource = 'catalog-index';
+      }
     } catch (error) {
       console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
     }
