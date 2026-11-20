@@ -19,6 +19,53 @@ test('OCR text normalisation recognises the Just Added wording', () => {
   assert.equal(hasJustAddedBadgeText('COMING NOV 20'), false);
 });
 
+test('badge renderer uses an allowlisted catalog poster when standard providers fail', async () => {
+  const fallbackUrl = 'https://cinebuds.com/wp-content/uploads/2026/11/saayavanam-poster-200x300.jpg';
+  const input = await sharp({ create: { width: 600, height: 900, channels: 3, background: '#456789' } }).jpeg().toBuffer();
+  const originalFetch = globalThis.fetch;
+  const requested = [];
+  globalThis.fetch = async url => {
+    const value = String(url);
+    requested.push(value);
+    if (value === fallbackUrl) return new Response(input, { status: 200, headers: { 'content-type': 'image/jpeg', 'content-length': String(input.length) } });
+    return new Response('not found', { status: 404, headers: { 'content-type': 'text/plain' } });
+  };
+  try {
+    const handler = (await import('../api/poster.mjs')).default;
+    const req = { method: 'GET', url: '/poster/tt39195686.jpg?badge=just-added&v=5', query: { id: 'tt39195686', badge: 'just-added', v: '5', fallback: fallbackUrl } };
+    const res = { headers: {}, setHeader(name, value) { this.headers[name] = value; }, end(body) { this.body = body; } };
+    await handler(req, res);
+    assert.equal(res.statusCode, 200);
+    assert.equal(res.headers['X-Poster-Date-Status'], 'just-added-overlay');
+    assert.equal(res.headers['X-Poster-Source'], 'CatalogArtwork');
+    assert(requested.includes(fallbackUrl));
+    const metadata = await sharp(res.body).metadata();
+    assert.equal(metadata.width, 600);
+    assert.equal(metadata.height, 900);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('badge renderer rejects untrusted catalog fallback hosts', async () => {
+  const originalFetch = globalThis.fetch;
+  const requested = [];
+  globalThis.fetch = async url => {
+    requested.push(String(url));
+    return new Response('not found', { status: 404, headers: { 'content-type': 'text/plain' } });
+  };
+  try {
+    const handler = (await import('../api/poster.mjs')).default;
+    const req = { method: 'GET', url: '/poster/tt39195686.jpg?badge=just-added&v=5', query: { id: 'tt39195686', badge: 'just-added', v: '5', fallback: 'https://evil.example/poster.jpg' } };
+    const res = { headers: {}, setHeader(name, value) { this.headers[name] = value; }, end(body) { this.body = body; } };
+    await handler(req, res);
+    assert.equal(res.statusCode, 302);
+    assert.equal(requested.some(url => url.startsWith('https://evil.example/')), false);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test('overlay preserves poster dimensions', async () => {
   const input = await sharp({ create: { width: 600, height: 900, channels: 3, background: '#456789' } }).jpeg().toBuffer();
   const output = await renderJustAddedBadge(input);
