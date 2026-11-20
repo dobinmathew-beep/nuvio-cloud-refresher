@@ -22,12 +22,15 @@ class WatchdogTests(unittest.TestCase):
         state={'cycle':'2026-11-02','refresh_cycle':'2026-11-02T12:00:00+04:00','featuredVersion':2,
             'featured_cycle':'2026-11-02T12:00:00+04:00',
             'featured_ids':{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'},
+            'current_featured_ids':{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'},
+            'current_featured_checked_at':'2026-11-02T12:00:00+04:00',
             'backdrops':{'ok':True},'heroes':{'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}}
         self.assertTrue(fresh(state,'media',due(before,'media')))
         self.assertTrue(fresh(state,'media',due(near_boundary,'media')))
         self.assertFalse(fresh(state,'media',due(at,'media')))
         state['refresh_cycle']=due(at,'media').isoformat()
         state['featured_cycle']=due(at,'media').isoformat()
+        state['current_featured_checked_at']=due(at,'media').isoformat()
         self.assertTrue(fresh(state,'media',due(at,'media')))
         self.assertFalse(fresh({'checked_utc':'2026-11-02T04:10:00+00:00','matched_ids':642},'epg',due(at,'epg')))
         self.assertTrue(fresh({'checked_utc':'2026-11-02T10:10:00+00:00','matched_ids':642},'epg',due(at,'epg')))
@@ -53,15 +56,21 @@ class WatchdogTests(unittest.TestCase):
         target=datetime(2026,11,2,14,tzinfo=ZONE)
         state={'refresh_cycle':target.isoformat(),'featured_cycle':target.isoformat(),'featuredVersion':2,
             'featured_ids':{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'},
+            'current_featured_ids':{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'},
+            'current_featured_checked_at':target.isoformat(),
             'backdrops':{'ok':True},'heroes':{'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}}
         self.assertTrue(fresh(state,'media',target))
         stale=dict(state);stale.pop('featured_cycle')
         self.assertFalse(fresh(stale,'media',target))
         incomplete=dict(state,featured_ids={'hindi':'tt100'})
         self.assertFalse(fresh(incomplete,'media',target))
-        tmdb=dict(state,featured_ids={**state['featured_ids'],'tamil':'tmdb:1822586'})
+        tmdb_ids={**state['featured_ids'],'tamil':'tmdb:1822586'}
+        tmdb=dict(state,featured_ids=tmdb_ids,current_featured_ids=tmdb_ids)
         self.assertTrue(fresh(tmdb,'media',target))
-        invalid=dict(state,featured_ids={**state['featured_ids'],'telugu':'tmdb:not-a-number'})
+        mismatch=dict(state,current_featured_ids={**state['current_featured_ids'],'tamil':'tmdb:1822586'})
+        self.assertFalse(fresh(mismatch,'media',target))
+        invalid_ids={**state['featured_ids'],'telugu':'tmdb:not-a-number'}
+        invalid=dict(state,featured_ids=invalid_ids,current_featured_ids=invalid_ids)
         self.assertFalse(fresh(invalid,'media',target))
 
     def test_media_partial_success_is_not_fresh(self):

@@ -18,8 +18,12 @@ def due(now, kind):
 def fresh(state, kind, target):
     if kind=='media':
         ids=state.get('featured_ids',{})
+        current_ids=state.get('current_featured_ids',{})
+        try: featured_checked=datetime.fromisoformat(state.get('current_featured_checked_at',''))
+        except (TypeError,ValueError): return False
         valid_ids=(isinstance(ids,dict) and set(ids)=={'hindi','tamil','malayalam','telugu'}
-            and all((str(v).startswith('tt') and str(v)[2:].isdigit()) or (str(v).startswith('tmdb:') and str(v)[5:].isdigit()) for v in ids.values()))
+            and all((str(v).startswith('tt') and str(v)[2:].isdigit()) or (str(v).startswith('tmdb:') and str(v)[5:].isdigit()) for v in ids.values())
+            and isinstance(current_ids,dict) and set(current_ids)==set(ids) and current_ids==ids and featured_checked>=target)
         return (state.get('refresh_cycle',state.get('cycle','')+'T06:00:00+04:00')==target.isoformat() and bool(state.get('backdrops'))
             and bool(state.get('heroes')) and state.get('featuredVersion')==2
             and state.get('featured_cycle')==target.isoformat() and valid_ids
@@ -58,7 +62,14 @@ def repository_json(path, ref='main'):
 
 def main():
     now=datetime.now(ZONE);results=[];errors=[];states={};run_cache={};log_errors=[]
-    sources=[('media','refresh.yml',lambda:repository_json('state/success.json')),
+    def media_state():
+        state=repository_json('state/success.json')
+        featured=repository_json('state/featured-movies.json')
+        languages=featured.get('languages',{}) if isinstance(featured,dict) else {}
+        state['current_featured_ids']={lang:item.get('id') for lang,item in languages.items() if isinstance(item,dict)}
+        state['current_featured_checked_at']=featured.get('checkedAt') if isinstance(featured,dict) else None
+        return state
+    sources=[('media','refresh.yml',media_state),
         ('addon','dobins-indian-catalog.yml',lambda:repository_json('dobins-indian-catalog/data/status.json','dobins-catalog')),
         ('epg','india-epg.yml',lambda:request('https://dobin-india-epg-feed.quickfield138.chatgpt.site/status.json'))]
     for kind,workflow,read in sources:
