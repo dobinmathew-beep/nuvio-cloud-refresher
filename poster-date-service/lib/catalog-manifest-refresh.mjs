@@ -158,9 +158,9 @@ async function waitForImageKit(id) {
 async function prewarm(item) {
   const path = posterPath(item.id, item.type);
   if (!path) return { id: item.id, status: 'unsupported-id-format' };
-  const fallback = item.poster ? '&fallback=' + encodeURIComponent(item.poster) : '';
-  const separator = path.includes('?') ? '' : '?';
-  const requestPath = path + (fallback ? separator + fallback.slice(1) : '');
+  const requestPath = item.poster
+    ? path + (path.includes('?') ? '&' : '?') + 'fallback=' + encodeURIComponent(item.poster)
+    : path;
   const response = await fetch((process.env.POSTER_SERVICE_URL || 'https://great-indian-upcoming-posters.onrender.com').replace(/\/$/, '') + requestPath, {
     headers: { accept: 'image/*' }, redirect: 'manual', signal: AbortSignal.timeout(60000)
   });
