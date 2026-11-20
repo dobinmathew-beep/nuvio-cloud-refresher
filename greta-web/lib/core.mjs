@@ -135,10 +135,10 @@ async function art(kind,id,request){
 
   if(rendererUrl){
    if(badgeRequested)rendererUrl.searchParams.set('badge','just-added');
-   rendererUrl.searchParams.set('v','7');
+   rendererUrl.searchParams.set('v','8');
    if(fallback)rendererUrl.searchParams.set('fallback',fallback);
    try{
-    const r=await upstream(rendererUrl.href,20000);
+    const r=await upstream(rendererUrl.href,45000);
     const mime=(r.headers.get('Content-Type')||'').split(';')[0].trim().toLowerCase();
     const status=r.headers.get('X-Poster-Date-Status')||'';
     if(!r.ok||!mime.startsWith('image/')||!status)throw Error('Shared renderer unavailable or returned an unprocessed image (HTTP '+r.status+', '+(status||'no badge status')+')');
