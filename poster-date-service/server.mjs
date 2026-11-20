@@ -10,7 +10,7 @@ import { upcomingReleaseByTmdbId, getTodayInTimeZone } from './lib/release-dates
 import { isCatalogRecentlyAdded } from './lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
 
-import { runImageKitMaintenance } from './lib/imagekit-storage.mjs';
+import { imageKitConfig, canStoreImageKitPoster, getImageKitStorageSnapshot, uploadPosterToImageKit, runImageKitMaintenance } from './lib/imagekit-storage.mjs';
 import { runManifestCatalogRefresh } from './lib/catalog-manifest-refresh.mjs';
 
 let catalogRefreshJob = null;
@@ -36,6 +36,46 @@ function responseAdapter(res) {
     setHeader(name, value) { res.setHeader(name, value); },
     end(body) { res.end(body); }
   };
+}
+
+function fallbackImageKitId(prefix, id) {
+  return prefix + '-' + String(id);
+}
+
+async function redirectCachedFallback(storageId, req, res, justAdded) {
+  if (justAdded) return false;
+  const config = imageKitConfig();
+  if (!config) return false;
+  const assetUrl = config.endpoint + '/posters/' + encodeURIComponent(storageId) + '.jpg';
+  try {
+    const response = await fetch(assetUrl, { method: 'HEAD', cache: 'no-store', signal: AbortSignal.timeout(3000) });
+    if (!response.ok) return false;
+    const updatedAt = Date.parse(response.headers.get('last-modified') || '');
+    if (!Number.isFinite(updatedAt) || Date.now() - updatedAt > 6 * 60 * 60 * 1000) return false;
+    res.statusCode = 302;
+    res.setHeader('Location', assetUrl);
+    res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('X-Poster-Date-Status', 'imagekit-cache-hit');
+    res.setHeader('X-Poster-Just-Added', 'false');
+    res.setHeader('X-ImageKit-Storage', 'hit');
+    return res.end();
+  } catch {
+    return false;
+  }
+}
+
+async function cacheFallbackPoster(storageId, bytes, type) {
+  try {
+    if (!getImageKitStorageSnapshot().known) await runImageKitMaintenance();
+    if (!canStoreImageKitPoster(storageId, bytes.length)) return false;
+    void uploadPosterToImageKit(storageId, { bytes, type })
+      .catch(error => console.warn('[imagekit-fallback-upload-failed]', JSON.stringify({ storageId, error: error?.message || 'unknown error' })));
+    return true;
+  } catch (error) {
+    console.warn('[imagekit-fallback-storage-unavailable]', JSON.stringify({ storageId, error: error?.message || 'unknown error' }));
+    return false;
+  }
 }
 
 async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
@@ -104,6 +144,8 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
     catch (error) { console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ tmdbId, error: error?.message || 'unknown error' })); }
   }
   // TMDB/RPDB artwork cannot carry a BetterPosters tag; use catalog eligibility only.
+  const storageId = fallbackImageKitId('tmdb', tmdbId);
+  if (await redirectCachedFallback(storageId, req, res, justAdded)) return;
 
   if (release?.date) {
     try {
@@ -136,6 +178,8 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
   res.setHeader('X-Poster-Date', dateRendered ? release.date : 'none');
   res.setHeader('X-Poster-Date-Type', dateRendered ? (release.kind || 'none') : 'none');
   if (justAdded) res.setHeader('X-Poster-Badge', 'Just Added');
+  const stored = req.method === 'HEAD' ? false : await cacheFallbackPoster(storageId, output, original.type);
+  res.setHeader('X-ImageKit-Storage', stored ? 'pending' : 'not-stored');
   return res.end(req.method === 'HEAD' ? undefined : output);
 }
 
@@ -184,6 +228,8 @@ async function sendTvmazePosterFallback(tvmazeId, req, res) {
     catch (error) { console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ tvmazeId, error: error?.message || 'unknown error' })); }
   }
   // TVmaze artwork cannot carry a BetterPosters tag; use catalog eligibility only.
+  const storageId = fallbackImageKitId('tvmaze', tvmazeId);
+  if (await redirectCachedFallback(storageId, req, res, justAdded)) return;
   if (release?.date) {
     try {
       output = await renderUpcomingBadge(output, release.date, release.kind, 0.105);
@@ -214,6 +260,8 @@ async function sendTvmazePosterFallback(tvmazeId, req, res) {
   res.setHeader('X-Poster-Date', dateRendered ? release.date : 'none');
   res.setHeader('X-Poster-Date-Type', dateRendered ? release.kind : 'none');
   if (justAdded) res.setHeader('X-Poster-Badge', 'Just Added');
+  const stored = req.method === 'HEAD' ? false : await cacheFallbackPoster(storageId, output, type);
+  res.setHeader('X-ImageKit-Storage', stored ? 'pending' : 'not-stored');
   return res.end(req.method === 'HEAD' ? undefined : output);
 }
 
