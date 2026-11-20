@@ -18,7 +18,7 @@ jobs:
   audit:
     name: OCR audit of all eight catalogs
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 120
     steps:
       - name: Check out poster audit code
         uses: actions/checkout@v4
@@ -65,7 +65,7 @@ jobs:
           PUBLIC_ADDON_BASE: https://the-great-indian-addon.vercel.app
           POSTER_TEMPLATE: 'https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM'
           OUTPUT_DIR: ${{ github.workspace }}/audit-output
-          AUDIT_CONCURRENCY: '1'
+          AUDIT_CONCURRENCY: '2'
         working-directory: poster-service/poster-date-service
         run: node scripts/audit-catalog-badges.mjs
 
