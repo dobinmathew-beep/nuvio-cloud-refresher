@@ -169,7 +169,6 @@ const report = {
   byCatalog,
   visibleTitles,
   flaggedButNotVisible: results.filter(row => row.catalogFlag && !row.badgeVisible),
-  visibleButNotFlagged: [],
   unflaggedImagePolicy: 'Every catalog entry is checked for the custom badge flag and URL. Only flagged posters are downloaded for OCR because unflagged entries are not sent to our Just Added renderer.',
   results
 };
@@ -191,8 +190,7 @@ lines.push('', '**Total titles:** ' + report.totalTitles, '**Catalog entries che
 for (const row of visibleTitles) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + ')');
 lines.push('', '## Flagged in catalog but badge not detected');
 for (const row of report.flaggedButNotVisible) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + '): ' + (row.error || 'OCR did not detect the label'));
-lines.push('', '## Visible badge without a catalog flag');
-for (const row of report.visibleButNotFlagged) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + ')');
+lines.push('', 'Unflagged titles were checked against all catalog badge flags and were not downloaded because the custom Just Added renderer is only requested for flagged entries.');
 await writeFile(resolve(outputDir, 'just-added-audit.md'), lines.join('\n') + '\n');
 console.log('AUDIT_RESULT ' + JSON.stringify({
   totalTitles: report.totalTitles,
@@ -205,5 +203,4 @@ console.log('AUDIT_RESULT ' + JSON.stringify({
   byCatalog,
   visibleTitles: visibleTitles.map(row => ({ catalog: row.catalog, title: row.title, id: row.id })),
   flaggedButNotVisible: report.flaggedButNotVisible.map(row => ({ catalog: row.catalog, title: row.title, id: row.id, error: row.error })),
-  visibleButNotFlagged: []
 }));
