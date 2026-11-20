@@ -192,16 +192,19 @@ async function resolveDate(imdbId, credential, today) {
   }
   const show = found.tv_results?.[0];
   if (show?.id) {
-    const details = await tmdbJson('/tv/' + show.id, credential);
+    // TMDB details and TVmaze corroboration are independent once the
+    // IMDb-to-TMDB match is known. Run both concurrently to avoid serial
+    // network wait while preserving the exact-episode matching rules below.
     let tvmazeEpisodes = null;
     let tvmazeError = null;
-    {
-      try {
-        tvmazeEpisodes = await getTvmazeEpisodes(imdbId);
-      } catch (error) {
-        tvmazeError = error?.message || 'unknown error';
-      }
-    }
+    const [detailsResult, tvmazeResult] = await Promise.allSettled([
+      tmdbJson('/tv/' + show.id, credential),
+      getTvmazeEpisodes(imdbId)
+    ]);
+    if (detailsResult.status === 'rejected') throw detailsResult.reason;
+    const details = detailsResult.value;
+    if (tvmazeResult.status === 'fulfilled') tvmazeEpisodes = tvmazeResult.value;
+    else tvmazeError = tvmazeResult.reason?.message || 'unknown error';
     const selected = chooseTvScheduleDate(details, tvmazeEpisodes, today);
     const matchingTvmazeEpisode = (tvmazeEpisodes || []).find(episode =>
       episode.season === details.next_episode_to_air?.season_number &&
