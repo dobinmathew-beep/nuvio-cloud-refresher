@@ -7,10 +7,17 @@ import { createRequire } from 'node:module';
 import { dirname } from 'node:path';
 
 const require = createRequire(import.meta.url);
-import { renderJustAddedBadge, JUST_ADDED_BADGE_TEXT } from '../lib/render-poster.mjs';
+import { renderJustAddedBadge, JUST_ADDED_BADGE_TEXT, buildJustAddedBadgeSvg } from '../lib/render-poster.mjs';
 import { hasJustAddedBadgeText } from '../lib/coming-tag.mjs';
 
-test('OCR detects an existing Just Added tag', () => {
+test('badge SVG embeds the exact title-case Just Added label', () => {
+  const svg = buildJustAddedBadgeSvg(400, 70, 12, 38).toString('utf8');
+  assert.equal(JUST_ADDED_BADGE_TEXT, 'Just Added');
+  assert.match(svg, /<text[^>]*>Just Added<\\/text>/);
+  assert.doesNotMatch(svg, /\\$\\{JUST_ADDED_BADGE_TEXT\\}/);
+});
+
+test('OCR text normalisation recognises the Just Added wording', () => {
   assert.equal(JUST_ADDED_BADGE_TEXT, 'Just Added');
   assert.equal(hasJustAddedBadgeText('Just Added'), true);
   assert.equal(hasJustAddedBadgeText('JUST ADDED'), true);
