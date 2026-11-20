@@ -126,6 +126,7 @@ async function inspect(entry) {
     comingKind: null,
     comingBadgeVisible: false,
     justAddedBadgeVisible: false,
+    justAddedLabelMismatch: false,
     imageInspected: false,
     inspectionStatus: 'not-inspected',
     ocrText: '',
@@ -183,6 +184,7 @@ async function inspect(entry) {
     result.ocrDetectedBadge = ocr.visible;
     result.comingBadgeVisible = result.serviceConfirmedComing || hasComingDate(ocr.text);
     result.justAddedBadgeVisible = result.serviceConfirmedJustAdded || result.ocrDetectedBadge;
+    result.justAddedLabelMismatch = result.serviceConfirmedJustAdded && result.posterBadgeText !== 'Just Added';
     result.badgeVisible = result.justAddedBadgeVisible || result.comingBadgeVisible;
     return result;
   } catch (error) {
@@ -226,6 +228,7 @@ for (const [catalog, items] of Object.entries(catalogs)) {
     unavailable: rows.filter(row => row.error).length,
     imagesInspected: rows.filter(row => row.imageInspected).length,
     flaggedButNotVisible: rows.filter(row => row.catalogFlag && !row.justAddedBadgeVisible).map(row => ({ title: row.title, id: row.id, error: row.error, httpStatus: row.httpStatus })),
+    justAddedLabelMismatch: rows.filter(row => row.justAddedLabelMismatch).map(row => ({ title: row.title, id: row.id, badgeText: row.posterBadgeText })),
     postersWithNoComingDate: rows.filter(row => !row.serviceConfirmedComing).map(row => ({ title: row.title, id: row.id, status: row.posterStatus, error: row.error })),
     visibleButNotFlagged: rows.filter(row => row.badgeVisible && !row.catalogFlag).map(row => ({ title: row.title, id: row.id }))
   };
