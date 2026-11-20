@@ -504,7 +504,6 @@ async function runManifestCatalogRefreshInternal() {
   await writeJson(config, INDEX_PATH, index);
 
   const items = [...current.values()];
-  const ledgerCache = new Map();
   const resultCounts = {};
   let totalFailures = 0;
   let ledgerHits = 0;
@@ -514,112 +513,125 @@ async function runManifestCatalogRefreshInternal() {
   let verifiedCacheHits = 0;
   let uploadPending = 0;
 
-  // The ledger lives in ImageKit, alongside the existing catalogue checkpoints.
-  // This is durable on the free Render web service (which has no local persistent disk).
-  // A completed title is reusable for six hours only when its catalogue fingerprint
-  // still matches and the ImageKit asset still exists.
-  for (let offset = 0; offset < items.length; offset += PREWARM_BATCH_SIZE) {
-    const batch = items.slice(offset, offset + PREWARM_BATCH_SIZE);
-    const batchShards = [...new Set(batch.map(item => ledgerShard(item.id)))];
-    for (const shard of batchShards) await loadLedgerShard(config, shard, ledgerCache);
+  // Process one deterministic ledger shard at a time. This keeps memory bounded
+  // and avoids rewriting many unrelated ledger files for every batch.
+  const itemsByShard = new Map();
+  for (const item of items) {
+    const shard = ledgerShard(item.id);
+    if (!itemsByShard.has(shard)) itemsByShard.set(shard, []);
+    itemsByShard.get(shard).push(item);
+  }
 
-    const pendingItems = [];
-    const toProcess = [];
-    for (const item of batch) {
-      const records = ledgerCache.get(ledgerShard(item.id));
-      const record = records[item.id];
-      if (reusableLedgerRecord(record, item) && await checkImageKit(item.id)) {
-        ledgerHits++;
-        verifiedCacheHits++;
-        resultCounts['ledger-hit'] = (resultCounts['ledger-hit'] || 0) + 1;
-        continue;
-      }
-      toProcess.push(item);
-    }
+  // The ledger lives in ImageKit beside the catalogue checkpoints, not on the
+  // ephemeral Render filesystem. A verified record is reusable for six hours
+  // only when the catalogue fingerprint matches and the asset still exists.
+  for (const [shard, shardItems] of itemsByShard) {
+    const ledgerCache = new Map();
+    const records = await loadLedgerShard(config, shard, ledgerCache);
 
-    if (toProcess.length) {
-      const prewarmReport = await runPool(toProcess, async item => {
-        try {
-          const result = await prewarm(item);
-          const records = ledgerCache.get(ledgerShard(item.id));
-          if (result.status === 'upload-pending') {
-            records[item.id] = ledgerRecord(item, 'upload-pending', {
-              attempts: (Number(records[item.id]?.attempts) || 0) + 1,
-              posterStatus: result.posterStatus || null
-            });
-            pendingItems.push(item);
-            uploadPending++;
-          } else if (result.status === 'imagekit-hit') {
-            records[item.id] = ledgerRecord(item, 'verified', {
-              verifiedAt: new Date().toISOString(),
-              verification: 'poster-service-cache-hit',
-              posterStatus: result.posterStatus || null
-            });
-            verifiedCacheHits++;
-          } else {
-            records[item.id] = ledgerRecord(item, 'retry', {
-              attempts: (Number(records[item.id]?.attempts) || 0) + 1,
-              lastError: result.status
-            });
-          }
-          return result;
-        } catch (error) {
-          const records = ledgerCache.get(ledgerShard(item.id));
-          records[item.id] = ledgerRecord(item, 'failed', {
-            attempts: (Number(records[item.id]?.attempts) || 0) + 1,
-            lastError: error?.message || 'unknown error'
-          });
-          throw error;
+    for (let offset = 0; offset < shardItems.length; offset += PREWARM_BATCH_SIZE) {
+      const batch = shardItems.slice(offset, offset + PREWARM_BATCH_SIZE);
+      const reusable = await Promise.all(batch.map(async item => {
+        const record = records[item.id];
+        return reusableLedgerRecord(record, item) && await checkImageKit(item.id);
+      }));
+      const pendingItems = [];
+      const toProcess = [];
+      for (let index = 0; index < batch.length; index++) {
+        const item = batch[index];
+        if (reusable[index]) {
+          ledgerHits++;
+          verifiedCacheHits++;
+          resultCounts['ledger-hit'] = (resultCounts['ledger-hit'] || 0) + 1;
+        } else {
+          toProcess.push(item);
         }
-      }, PREWARM_CONCURRENCY);
-
-      for (const [status, count] of Object.entries(prewarmReport.counts)) {
-        resultCounts[status] = (resultCounts[status] || 0) + count;
       }
-      totalFailures += prewarmReport.failures;
-      // Persist pending states before waiting for ImageKit. A restart can resume
-      // this batch without repeating the whole 4,917-title catalogue.
-      await persistLedgerShards(config, ledgerCache, batchShards);
 
-      if (pendingItems.length) {
-        const verification = await runPool(pendingItems, async item => {
-          if (await waitForImageKit(item.id)) {
-            const records = ledgerCache.get(ledgerShard(item.id));
-            records[item.id] = ledgerRecord(item, 'verified', {
-              verifiedAt: new Date().toISOString(),
-              verification: 'imagekit-head-confirmed'
+      if (toProcess.length) {
+        const prewarmReport = await runPool(toProcess, async item => {
+          try {
+            const result = await prewarm(item);
+            if (result.status === 'upload-pending') {
+              records[item.id] = ledgerRecord(item, 'upload-pending', {
+                attempts: (Number(records[item.id]?.attempts) || 0) + 1,
+                posterStatus: result.posterStatus || null
+              });
+              pendingItems.push(item);
+              uploadPending++;
+            } else if (result.status === 'imagekit-hit') {
+              records[item.id] = ledgerRecord(item, 'verified', {
+                verifiedAt: new Date().toISOString(),
+                verification: 'poster-service-cache-hit',
+                posterStatus: result.posterStatus || null
+              });
+              verifiedCacheHits++;
+            } else {
+              records[item.id] = ledgerRecord(item, 'retry', {
+                attempts: (Number(records[item.id]?.attempts) || 0) + 1,
+                lastError: result.status
+              });
+            }
+            return result;
+          } catch (error) {
+            records[item.id] = ledgerRecord(item, 'failed', {
+              attempts: (Number(records[item.id]?.attempts) || 0) + 1,
+              lastError: error?.message || 'unknown error'
             });
-            return { id: item.id, status: 'generated-and-cached' };
+            throw error;
           }
-          const records = ledgerCache.get(ledgerShard(item.id));
-          records[item.id] = ledgerRecord(item, 'failed', {
-            attempts: (Number(records[item.id]?.attempts) || 0),
-            lastError: 'ImageKit upload did not become visible within 60 seconds'
-          });
-          throw new Error('ImageKit upload did not become visible within 60 seconds');
-        }, VERIFY_CONCURRENCY);
-        for (const [status, count] of Object.entries(verification.counts)) {
+        }, PREWARM_CONCURRENCY);
+
+        for (const [status, count] of Object.entries(prewarmReport.counts)) {
           resultCounts[status] = (resultCounts[status] || 0) + count;
         }
-        totalFailures += verification.failures;
-        verifiedUploads += verification.counts['generated-and-cached'] || 0;
-        uploadPending -= pendingItems.length;
-        resultCounts['upload-pending'] = Math.max(0, (resultCounts['upload-pending'] || 0) - pendingItems.length);
-        if (!resultCounts['upload-pending']) delete resultCounts['upload-pending'];
-      }
-      await persistLedgerShards(config, ledgerCache, batchShards);
-    }
+        totalFailures += prewarmReport.failures;
 
-    batchesProcessed++;
-    postersVisited += batch.length;
-    if (batchesProcessed % 4 === 0 || offset + batch.length === items.length) {
-      const rss = Math.round(process.memoryUsage().rss / (1024 * 1024));
-      console.log('[catalog-ledger-progress]', JSON.stringify({
-        visited: postersVisited, total: items.length, batch: batchesProcessed,
-        batchSize: batch.length, ledgerHits, verifiedUploads, verifiedCacheHits,
-        uploadPending, failures: totalFailures, rssMiB: rss
-      }));
+        // Save the pending queue before verification. If Render restarts here,
+        // the next run retries only this small batch and recognizes completed
+        // uploads through the poster service's ImageKit cache-validation path.
+        await persistLedgerShards(config, ledgerCache, [shard]);
+
+        if (pendingItems.length) {
+          const verification = await runPool(pendingItems, async item => {
+            if (await waitForImageKit(item.id)) {
+              records[item.id] = ledgerRecord(item, 'verified', {
+                verifiedAt: new Date().toISOString(),
+                verification: 'imagekit-head-confirmed'
+              });
+              return { id: item.id, status: 'generated-and-cached' };
+            }
+            records[item.id] = ledgerRecord(item, 'failed', {
+              attempts: Number(records[item.id]?.attempts) || 0,
+              lastError: 'ImageKit upload did not become visible within 60 seconds'
+            });
+            throw new Error('ImageKit upload did not become visible within 60 seconds');
+          }, VERIFY_CONCURRENCY);
+
+          for (const [status, count] of Object.entries(verification.counts)) {
+            resultCounts[status] = (resultCounts[status] || 0) + count;
+          }
+          totalFailures += verification.failures;
+          verifiedUploads += verification.counts['generated-and-cached'] || 0;
+          uploadPending -= pendingItems.length;
+          resultCounts['upload-pending'] = Math.max(0, (resultCounts['upload-pending'] || 0) - pendingItems.length);
+          if (!resultCounts['upload-pending']) delete resultCounts['upload-pending'];
+        }
+        await persistLedgerShards(config, ledgerCache, [shard]);
+      }
+
+      batchesProcessed++;
+      postersVisited += batch.length;
+      if (batchesProcessed % 4 === 0 || postersVisited === items.length) {
+        const rss = Math.round(process.memoryUsage().rss / (1024 * 1024));
+        console.log('[catalog-ledger-progress]', JSON.stringify({
+          visited: postersVisited, total: items.length, batch: batchesProcessed,
+          batchSize: batch.length, ledgerHits, verifiedUploads, verifiedCacheHits,
+          uploadPending, failures: totalFailures, rssMiB: rss
+        }));
+      }
     }
+    ledgerCache.clear();
   }
   const prewarmReport = { counts: resultCounts, failures: totalFailures };
 
