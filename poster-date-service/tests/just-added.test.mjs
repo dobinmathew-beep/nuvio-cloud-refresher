@@ -14,6 +14,7 @@ test('badge SVG embeds the exact title-case Just Added label', () => {
 
 test('OCR text normalisation recognises the Just Added wording', () => {
   assert.equal(hasJustAddedBadgeText('Just Added'), true);
+  assert.equal(hasJustAddedBadgeText('JustAdded'), true);
   assert.equal(hasJustAddedBadgeText('JUST ADDED'), true);
   assert.equal(hasJustAddedBadgeText('COMING NOV 20'), false);
 });
