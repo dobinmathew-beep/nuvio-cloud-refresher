@@ -59,7 +59,7 @@ export async function isCatalogRecentlyAdded(ids, options = {}) {
   const fetcher = options.fetch || globalThis.fetch;
   if (typeof fetcher !== 'function') return false;
   const index = await loadIndex(fetcher);
-  if (!index) return false;
+  if (!index) return null;
   const now = options.now instanceof Date ? options.now.getTime() : Number(options.now || Date.now());
   const idIndex = cachedIds || buildIdIndex(index);
   for (const id of values) {
