@@ -18,9 +18,9 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const LEDGER_DIR = '/catalog-state/poster-processing';
 const LEDGER_VERSION = 1;
 const LEDGER_SHARDS = '0123456789abcdef';
-const PREWARM_BATCH_SIZE = Math.max(10, Math.min(50, Number(process.env.CATALOG_PREWARM_BATCH_SIZE || 25)));
-const PREWARM_CONCURRENCY = Math.max(1, Math.min(2, Number(process.env.CATALOG_PREWARM_CONCURRENCY || 2)));
-const VERIFY_CONCURRENCY = Math.max(1, Math.min(6, Number(process.env.CATALOG_VERIFY_CONCURRENCY || 4)));
+const PREWARM_BATCH_SIZE = Math.max(10, Math.min(50, Number(process.env.CATALOG_PREWARM_BATCH_SIZE || 50)));
+const PREWARM_CONCURRENCY = Math.max(1, Math.min(6, Number(process.env.CATALOG_PREWARM_CONCURRENCY || 4)));
+const VERIFY_CONCURRENCY = Math.max(1, Math.min(8, Number(process.env.CATALOG_VERIFY_CONCURRENCY || 6)));
 
 function ledgerShard(id) {
   return createHash('sha256').update(String(id)).digest('hex')[0];
@@ -258,6 +258,16 @@ function posterPath(id, type) {
   if (id.startsWith('tvmaze:')) return '/poster/tvmaze/' + id.slice(7) + '.jpg';
   return null;
 }
+function adaptivePrewarmConcurrency() {
+  // Render's free instance has a tight memory budget. Increase network
+  // throughput by default, but back off automatically if native/image work
+  // pushes resident memory toward the safety ceiling.
+  const rssMiB = process.memoryUsage().rss / (1024 * 1024);
+  if (rssMiB >= 360) return Math.min(2, PREWARM_CONCURRENCY);
+  if (rssMiB >= 300) return Math.min(3, PREWARM_CONCURRENCY);
+  return PREWARM_CONCURRENCY;
+}
+
 async function runPool(items, worker, concurrency = CONCURRENCY) {
   const counts = {};
   let failures = 0;
@@ -580,7 +590,7 @@ async function runManifestCatalogRefreshInternal() {
             });
             throw error;
           }
-        }, PREWARM_CONCURRENCY);
+        }, adaptivePrewarmConcurrency());
 
         for (const [status, count] of Object.entries(prewarmReport.counts)) {
           resultCounts[status] = (resultCounts[status] || 0) + count;
