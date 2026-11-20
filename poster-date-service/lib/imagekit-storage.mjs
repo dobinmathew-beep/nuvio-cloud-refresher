@@ -4,11 +4,16 @@ const API = 'https://api.imagekit.io/v1';
 const UPLOAD_API = 'https://upload.imagekit.io/api/v1/files/upload';
 export const IMAGEKIT_STORAGE_LIMIT_BYTES = Math.floor(2.25 * 1000 * 1000 * 1000);
 const MAINTENANCE_COOLDOWN_MS = 6 * 60 * 60 * 1000;
+const STORAGE_SNAPSHOT_PATH = '/catalog-state/imagekit-storage-snapshot.json';
+const STORAGE_SNAPSHOT_TTL_MS = 6 * 60 * 60 * 1000;
 let storageSnapshot = { known: false, bytes: 0, checkedAt: 0, filesByPath: {} };
 const UPLOAD_HEADROOM_BYTES = 32 * 1024 * 1024;
 let maintenancePromise;
 let lastMaintenanceAt = 0;
 let lastMaintenanceReport = null;
+let snapshotInitializationPromise = null;
+let snapshotPersistPromise = null;
+let snapshotDirtyUploads = 0;
 
 export function imageKitConfig() {
   let endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').trim();
@@ -118,6 +123,98 @@ async function pruneOldFileVersions(file) {
   return { deleted, extraBytes, checked: true };
 }
 
+async function persistStorageSnapshot() {
+  if (!storageSnapshot.known) return false;
+  if (snapshotPersistPromise) return snapshotPersistPromise;
+  const dirtyAtStart = snapshotDirtyUploads;
+  const config = imageKitConfig();
+  if (!config) return false;
+  snapshotPersistPromise = (async () => {
+    const value = {
+      version: 1,
+      updatedAt: new Date().toISOString(),
+      bytes: storageSnapshot.bytes,
+      filesByPath: storageSnapshot.filesByPath
+    };
+    const form = new FormData();
+    form.set('file', new Blob([JSON.stringify(value)], { type: 'application/json' }), 'imagekit-storage-snapshot.json');
+    form.set('fileName', 'imagekit-storage-snapshot.json');
+    form.set('folder', '/catalog-state');
+    form.set('useUniqueFileName', 'false');
+    form.set('overwriteFile', 'true');
+    form.set('isPrivateFile', 'false');
+    const response = await fetch(UPLOAD_API, {
+      method: 'POST',
+      headers: { Authorization: 'Basic ' + Buffer.from(config.privateKey + ':').toString('base64') },
+      body: form,
+      signal: AbortSignal.timeout(20000)
+    });
+    if (!response.ok) throw new Error('ImageKit storage snapshot upload failed (' + response.status + ')');
+    snapshotDirtyUploads = Math.max(0, snapshotDirtyUploads - dirtyAtStart);
+    return true;
+  })().finally(() => {
+    snapshotPersistPromise = null;
+    if (snapshotDirtyUploads >= 25) {
+      void persistStorageSnapshot().catch(error => console.warn('[imagekit-storage-snapshot-persist-failed]', error?.message || 'unknown error'));
+    }
+  });
+  return snapshotPersistPromise;
+}
+
+export async function initializeImageKitStorageSnapshot() {
+  if (storageSnapshot.known) return getImageKitStorageSnapshot();
+  if (snapshotInitializationPromise) return snapshotInitializationPromise;
+  snapshotInitializationPromise = (async () => {
+    const config = imageKitConfig();
+    if (!config) throw new Error('ImageKit credentials are not configured');
+    const snapshotUrl = config.endpoint + STORAGE_SNAPSHOT_PATH;
+    try {
+      const response = await fetch(snapshotUrl, { cache: 'no-store', signal: AbortSignal.timeout(5000) });
+      if (response.ok) {
+        const saved = await response.json();
+        const savedAt = Date.parse(saved?.updatedAt || '');
+        if (saved?.version === 1 && Number.isFinite(savedAt) &&
+            Date.now() - savedAt >= 0 && Date.now() - savedAt < STORAGE_SNAPSHOT_TTL_MS &&
+            Number.isFinite(saved.bytes) && saved.filesByPath && typeof saved.filesByPath === 'object') {
+          storageSnapshot = {
+            known: true,
+            bytes: Math.max(0, Number(saved.bytes) || 0),
+            checkedAt: savedAt,
+            filesByPath: saved.filesByPath
+          };
+          console.log('[imagekit-storage-snapshot-restored]', JSON.stringify({
+            accountBytes: storageSnapshot.bytes,
+            indexedFiles: Object.keys(storageSnapshot.filesByPath).length,
+            ageMinutes: Math.round((Date.now() - savedAt) / 60000)
+          }));
+          return getImageKitStorageSnapshot();
+        }
+      }
+    } catch (error) {
+      console.warn('[imagekit-storage-snapshot-restore-failed]', error?.message || 'unknown error');
+    }
+
+    // Capacity checks need only the file inventory. Avoid the much slower
+    // duplicate/version/TMDB maintenance audit on the poster request path.
+    const files = await listImageKitFiles();
+    const filesByPath = {};
+    let bytes = 0;
+    for (const file of files) {
+      const size = Math.max(0, Number(file.size) || 0);
+      bytes += size;
+      if (file.filePath && file.fileId) filesByPath[file.filePath] = { fileId: file.fileId, size };
+    }
+    storageSnapshot = { known: true, bytes, checkedAt: Date.now(), filesByPath };
+    console.log('[imagekit-storage-snapshot-ready]', JSON.stringify({
+      accountBytes: bytes,
+      indexedFiles: Object.keys(filesByPath).length
+    }));
+    await persistStorageSnapshot().catch(error => console.warn('[imagekit-storage-snapshot-persist-failed]', error?.message || 'unknown error'));
+    return getImageKitStorageSnapshot();
+  })().finally(() => { snapshotInitializationPromise = null; });
+  return snapshotInitializationPromise;
+}
+
 export function getImageKitStorageSnapshot() {
   return { ...storageSnapshot };
 }
@@ -135,6 +232,10 @@ export function recordImageKitUpload(path, fileId, bytes) {
   storageSnapshot.bytes = Math.max(0, storageSnapshot.bytes - (Number(previous?.size) || 0) + bytes);
   storageSnapshot.filesByPath[path] = { fileId, size: bytes };
   storageSnapshot.checkedAt = Date.now();
+  snapshotDirtyUploads++;
+  if (snapshotDirtyUploads >= 25) {
+    void persistStorageSnapshot().catch(error => console.warn('[imagekit-storage-snapshot-persist-failed]', error?.message || 'unknown error'));
+  }
 }
 
 export async function readPosterValidationMetadata(imdbId) {
@@ -412,6 +513,7 @@ export async function runImageKitMaintenance({ force = false } = {}) {
       if (file.filePath && file.fileId && !deletedFileIds.has(file.fileId)) filesByPath[file.filePath] = { fileId: file.fileId, size: Number(file.size) || 0 };
     }
     storageSnapshot = { known: true, bytes: accountBytes, checkedAt: Date.now(), filesByPath };
+    await persistStorageSnapshot().catch(error => console.warn('[imagekit-storage-snapshot-persist-failed]', error?.message || 'unknown error'));
     const report = {
       checkedAt: new Date().toISOString(),
       accountFiles: files.length,
