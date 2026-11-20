@@ -3579,6 +3579,13 @@
       "type": "movie"
     },
     {
+      "id": "tt27425164",
+      "name": "War 2",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27425164.jpg",
+      "releaseInfo": "2025",
+      "type": "movie"
+    },
+    {
       "id": "tt23865942",
       "name": "Sarzameen",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt23865942.jpg",
@@ -3708,13 +3715,6 @@
       "id": "tt3562110",
       "name": "Kesari Chapter 2: The Untold Story of Jallianwala Bagh",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3562110.jpg",
-      "releaseInfo": "2025",
-      "type": "movie"
-    },
-    {
-      "id": "tt16436848",
-      "name": "Chhorii 2",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt16436848.jpg",
       "releaseInfo": "2025",
       "type": "movie"
     },
@@ -12512,5 +12512,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-20T04:05:20.464877+04:00"
+  "_updatedAt": "2026-11-20T05:17:57.683820+04:00"
 }

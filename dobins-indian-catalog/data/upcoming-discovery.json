@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-11-20T04:48:15.713373+04:00",
+  "generatedAt": "2026-11-20T05:17:57.683820+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 36,
+    "total": 35,
     "byLanguage": {
       "hindi": 18,
       "malayalam": 4,
       "tamil": 7,
-      "telugu": 7
+      "telugu": 6
     },
     "byType": {
       "movie": 17,
-      "series": 19
+      "series": 18
     },
     "byMatchState": {
-      "published": 27,
+      "published": 26,
       "unmatched": 9
     },
     "bySource": {
@@ -22,12 +22,10 @@
       "https://www.dailyott.in/": 6,
       "https://newindianmovies.com/": 3,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
-      "https://v3-cinemeta.strem.io/": 4,
+      "https://v3-cinemeta.strem.io/": 3,
       "https://www.keralatv.in/channel/ott/": 5,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json": 1,
       "https://www.themoviedb.org/tv/331750": 1,
-      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json": 1,
-      "https://www.themoviedb.org/tv/332943": 1,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://ottasia.com/ott-releases-this-week?country=IN": 11,
       "https://indianmoviereviews.com/ott-releases/": 5
@@ -97,8 +95,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://newindianmovies.com/"
+        "https://newindianmovies.com/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -447,33 +445,6 @@
       "catalog": "dobins_te_movie"
     },
     {
-      "title": "Part-Timers",
-      "language": "telugu",
-      "type": "series",
-      "releaseDate": "2026-11-20",
-      "platforms": [],
-      "sources": [
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/te_series.json",
-        "https://v3-cinemeta.strem.io/",
-        "https://www.themoviedb.org/tv/332943"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "episode",
-      "detail": null,
-      "matchId": "tt44841089",
-      "matchState": "published",
-      "matchReason": "https://v3-cinemeta.strem.io/",
-      "metadataComplete": true,
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_te_series"
-    },
-    {
       "title": "The Great Indian Kapil Show Season 5",
       "language": "hindi",
       "type": "series",
@@ -690,7 +661,7 @@
       "metadataFields": {
         "poster": true,
         "description": true,
-        "genres": false,
+        "genres": true,
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
@@ -716,7 +687,7 @@
         "poster": true,
         "description": true,
         "genres": true,
-        "releaseInfo": false
+        "releaseInfo": true
       },
       "catalog": "dobins_ml_series"
     },
