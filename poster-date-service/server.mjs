@@ -161,6 +161,35 @@ const server = createServer(async (req, res) => {
     }
   }
 
+  // TVmaze-only catalog IDs are resolved to their IMDb external ID so
+  // they can use the exact same release-date and poster rendering pipeline.
+  const tvmazePosterMatch = url.pathname.match(/^\\/poster\\/tvmaze\\/(\\d{1,12})\\.jpg$/i);
+  if (tvmazePosterMatch) {
+    if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method)) {
+      res.writeHead(405, { 'Allow': 'GET, HEAD, OPTIONS', 'Cache-Control': 'no-store' });
+      return res.end('Method not allowed');
+    }
+    try {
+      const showResponse = await fetch('https://api.tvmaze.com/shows/' + encodeURIComponent(tvmazePosterMatch[1]), {
+        headers: { accept: 'application/json' },
+        signal: AbortSignal.timeout(7000)
+      });
+      if (!showResponse.ok) throw new Error('TVmaze show HTTP ' + showResponse.status);
+      const show = await showResponse.json();
+      const imdbId = String(show?.externals?.imdb || '');
+      if (!/^tt\\d{7,10}$/.test(imdbId)) {
+        res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
+        return res.end('TVmaze title has no IMDb external ID for release-date lookup.');
+      }
+      adaptedReq.query.id = imdbId;
+      return posterHandler(adaptedReq, adaptedRes);
+    } catch (error) {
+      console.warn('[tvmaze-poster-id-resolution-failed]', JSON.stringify({ tvmazeId: tvmazePosterMatch[1], error: error?.message || 'unknown error' }));
+      res.writeHead(502, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
+      return res.end('Could not resolve the TVmaze series to an IMDb ID.');
+    }
+  }
+
   res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
   res.end('Not found');
 });
