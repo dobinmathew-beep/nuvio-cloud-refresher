@@ -1,0 +1,59 @@
+name: Manifest catalogue poster refresh
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Oman is UTC+4: 06:00 and 18:00 local time.
+    - cron: '0 2,14 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: manifest-catalogue-poster-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Start authenticated full catalogue refresh
+        id: start
+        env:
+          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
+          SCAN_TOKEN: \${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
+        run: |
+          if [ -z "$SCAN_TOKEN" ]; then
+            echo "::error::POSTER_CATALOG_SCAN_TOKEN repository secret is missing."
+            exit 1
+          fi
+          response=$(curl --silent --show-error --fail-with-body --max-time 90 \
+            -X POST "$POSTER_SERVICE_URL/catalog-refresh" \
+            -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json")
+          echo "$response"
+          job_id=$(echo "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).jobId||''))")
+          if [ -z "$job_id" ]; then echo "::error::No refresh job ID returned."; exit 1; fi
+          echo "job_id=$job_id" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for scan and poster generation
+        env:
+          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
+          SCAN_TOKEN: \${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
+        run: |
+          for attempt in $(seq 1 120); do
+            response=$(curl --silent --show-error --fail-with-body --max-time 60 \
+              "$POSTER_SERVICE_URL/catalog-refresh/status" \
+              -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json")
+            echo "$response"
+            status=$(echo "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).status||''))")
+            if [ "$status" = "completed" ]; then
+              echo 'Catalogue scan and poster processing completed.' >> "$GITHUB_STEP_SUMMARY"
+              echo "$response" >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+            if [ "$status" = "failed" ]; then echo "::error::Catalogue refresh failed."; exit 1; fi
+            sleep 30
+          done
+          echo "::error::Timed out waiting for Render catalogue refresh."
+          exit 1
