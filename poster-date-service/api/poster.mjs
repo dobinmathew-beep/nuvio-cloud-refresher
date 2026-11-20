@@ -126,72 +126,77 @@ async function getOriginal(imdbId, fallbackUrl = '') {
   throw new Error('No poster provider returned a usable image for ' + imdbId + ' (' + failures.join('; ') + ')');
 }
 
-async function renderJustAddedPoster(id, original, reason) {
-  try {
-    const output = await renderJustAddedBadge(original.bytes);
-    console.info('[poster-just-added-check]', JSON.stringify({ imdbId: id, result: reason }));
-    return { bytes: output, type: original.type, source: original.source, status: 'just-added-overlay', releaseDate: 'none', releaseKind: 'none' };
-  } catch (error) {
-    console.warn('[poster-just-added-overlay-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
-    return { bytes: original.bytes, type: original.type, source: original.source, status: 'just-added-overlay-failed-original-preserved', releaseDate: 'none', releaseKind: 'none' };
-  }
-}
-
 async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl = '') {
   const original = await getOriginal(id, fallbackUrl);
 
-  // A catalog may explicitly mark a genuinely new title even when BetterPosters
-  // has no tag. Explicit eligibility takes precedence over release-date labels.
-  if (badge === 'just-added') {
-    return renderJustAddedPoster(id, original, 'just-added-overlay-for-flagged-title');
-  }
-
-  // Normalize a provider's own Just Added chip for every client using this URL.
-  // This detection is independent of whether the title has an upcoming date.
-  let providerHasJustAdded = false;
-  try {
-    providerHasJustAdded = await hasExistingJustAddedTag(original.bytes);
-  } catch (error) {
-    console.warn('[poster-just-added-detection-failed]', JSON.stringify({
-      imdbId: id,
-      error: error?.message || 'unknown error',
-      action: 'continue-with-release-date-check'
-    }));
-  }
-
-  // A confirmed upcoming date is more useful than a generic Just Added tag,
-  // so render the Coming/New Episode treatment first when both are applicable.
-  const release = knownRelease === undefined ? await upcomingRelease(id) : knownRelease;
-  if (!release?.date) {
-    if (providerHasJustAdded) {
-      return renderJustAddedPoster(id, original, 'just-added-provider-tag-normalized');
-    }
-    return { bytes: original.bytes, type: original.type, source: original.source, status: 'no-upcoming-release', releaseDate: 'none', releaseKind: 'none' };
-  }
-
-  let output = original.bytes;
-  let status = 'unchanged';
-  let hasComingTag;
-  try {
-    hasComingTag = await hasExistingComingDateTag(original.bytes, release.kind, release.date);
-  } catch (error) {
-    console.warn('[poster-date-ocr-unavailable]', JSON.stringify({ imdbId: id, tmdbDate: release.date, error: error?.message || 'unknown error', action: 'apply-tmdb-date-overlay' }));
-    hasComingTag = false;
-  }
-
-  if (hasComingTag) {
-    status = 'betterposters-coming-tag';
-  } else {
+  // BetterPosters may already mark a title as Just Added. Normalize that tag
+  // for every client using this shared URL. Catalogs can additionally force
+  // the badge for titles they know were newly added.
+  let shouldRenderJustAdded = badge === 'just-added';
+  if (!shouldRenderJustAdded) {
     try {
-      output = await renderUpcomingBadge(original.bytes, release.date, release.kind);
-      status = 'upcoming-date-overlay';
-    } catch {
-      output = original.bytes;
-      status = 'overlay-failed-original-preserved';
+      shouldRenderJustAdded = await hasExistingJustAddedTag(original.bytes);
+    } catch (error) {
+      console.warn('[poster-just-added-detection-failed]', JSON.stringify({
+        imdbId: id,
+        error: error?.message || 'unknown error',
+        action: 'continue-with-release-date-check'
+      }));
     }
   }
-  console.info('[poster-date-check]', JSON.stringify({ imdbId: id, tmdbDate: release.date, releaseSource: release.source || null, releaseKind: release.kind || 'premiere', betterPostersBadgeMatchesTmdb: hasComingTag, result: status }));
-  return { bytes: output, type: original.type, source: original.source, status, releaseDate: release.date, releaseKind: release.kind || 'premiere' };
+
+  const release = knownRelease === undefined ? await upcomingRelease(id) : knownRelease;
+  let output = original.bytes;
+  let dateStatus = 'no-upcoming-release';
+  let justAddedStatus = false;
+
+  // Both labels can apply to one title. Stack them vertically so neither
+  // overwrites the other: release date first, Just Added immediately below.
+  if (release?.date) {
+    try {
+      output = await renderUpcomingBadge(output, release.date, release.kind, 0.105);
+      dateStatus = 'upcoming-date-overlay';
+    } catch (error) {
+      dateStatus = 'overlay-failed-original-preserved';
+      console.warn('[poster-date-overlay-failed]', JSON.stringify({ imdbId: id, date: release.date, error: error?.message || 'unknown error' }));
+    }
+  }
+
+  if (shouldRenderJustAdded) {
+    try {
+      output = await renderJustAddedBadge(output, release?.date ? 0.255 : 0.105);
+      justAddedStatus = true;
+    } catch (error) {
+      console.warn('[poster-just-added-overlay-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
+    }
+  }
+
+  const status = justAddedStatus && release?.date
+    ? 'upcoming-date+just-added-overlay'
+    : justAddedStatus
+      ? 'just-added-overlay'
+      : release?.date
+        ? dateStatus
+        : 'no-upcoming-release';
+
+  console.info('[poster-render-result]', JSON.stringify({
+    imdbId: id,
+    releaseDate: release?.date || null,
+    releaseSource: release?.source || null,
+    releaseKind: release?.kind || null,
+    justAdded: justAddedStatus,
+    justAddedSource: badge === 'just-added' ? 'catalog-flag' : justAddedStatus ? 'betterposters-tag' : null,
+    result: status
+  }));
+
+  return {
+    bytes: output,
+    type: original.type,
+    source: original.source,
+    status,
+    releaseDate: release?.date || 'none',
+    releaseKind: release?.kind || 'none'
+  };
 }
 
 async function getBuiltPoster(id, knownRelease = undefined, badge = '', version = '', fallbackUrl = '') {
@@ -217,7 +222,7 @@ function setImageHeaders(res, type, status, releaseDate, releaseKind = 'none') {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Poster-Date-Status', status);
-  res.setHeader('X-Poster-Just-Added', status === 'just-added-overlay' ? 'true' : 'false');
+  res.setHeader('X-Poster-Just-Added', status.includes('just-added-overlay') ? 'true' : 'false');
   res.setHeader('X-Poster-Date', releaseDate);
   res.setHeader('X-Poster-Date-Type', releaseKind);
   // Let Xperience/CDNs reuse the processed result; the in-process cache
@@ -256,12 +261,12 @@ export default async function handler(req, res) {
     // An ImageKit copy is valid only while TMDB still confirms a future release.
     // This prevents a cached date badge from surviving its release day.
     const badge = String(req.query?.badge || '').toLowerCase() === 'just-added' ? 'just-added' : '';
-    const releaseInfo = badge ? null : await upcomingRelease(id);
-    const imageKitAsset = releaseInfo?.date ? await findFreshImageKitAsset(id, releaseInfo) : null;
-    if (imageKitAsset && releaseInfo?.date) return redirectToImageKit(res, imageKitAsset);
+    const releaseInfo = await upcomingRelease(id);
+    // Always render through this service; cached ImageKit copies can omit a
+    // provider-supplied Just Added label and therefore bypass normalization.
 
     const version = String(req.query?.v || '');
-    const fallbackUrl = badge ? String(req.query?.fallback || '') : '';
+    const fallbackUrl = String(req.query?.fallback || '');
     const poster = await getBuiltPoster(id, releaseInfo, badge, version, fallbackUrl);
     // Only genuine upcoming-date overlays are stored. Just Added posters are
     // rendered on demand so the exact title-case label is always current.
