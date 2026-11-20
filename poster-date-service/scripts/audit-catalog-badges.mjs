@@ -29,7 +29,7 @@ if (publicAddonBase) {
     let skip = 0;
     for (let page = 0; page < 100; page++) {
       const path = '/catalog/' + kind + '/' + catalog + (skip ? '/skip=' + skip : '') + '.json';
-      const endpoint = new URL(path.replace(/^\\/+/, ''), catalogBase.replace(/\\/$/, '') + '/').href;
+      const endpoint = catalogBase + path;
       const response = await fetch(endpoint, {
         headers: { accept: 'application/json' },
         signal: AbortSignal.timeout(20000)
