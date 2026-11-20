@@ -10,7 +10,7 @@ export default function handler(_req, res) {
     releaseDateSource: 'TMDB',
     tmdbConfigured: configured,
     acceptedCredentials: ['TMDB_API_KEY', 'TMDB_API_READ_ACCESS_TOKEN'],
-    badge: 'JUST ADDED or REL: MON DD',
-    failSafe: 'If no confirmed future date is found, the original BetterPosters image is returned unchanged.'
+    badges: ['Just Added (detected or explicitly requested)', 'Coming [Date]', 'New Episode [Date]'],
+    failSafe: 'If no confirmed future date is found, the original BetterPosters image is returned unchanged; detected Just Added tags are normalized independently.'
   }));
 }
