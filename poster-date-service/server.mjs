@@ -12,6 +12,7 @@ import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
 
 import { imageKitConfig, canStoreImageKitPoster, getImageKitStorageSnapshot, uploadPosterToImageKit, runImageKitMaintenance } from './lib/imagekit-storage.mjs';
 import { runManifestCatalogRefresh } from './lib/catalog-manifest-refresh.mjs';
+import { hasExistingComingDateTag, hasExistingJustAddedTag } from './lib/coming-tag.mjs';
 
 let catalogRefreshJob = null;
 let catalogRefreshReport = null;
@@ -42,8 +43,7 @@ function fallbackImageKitId(prefix, id) {
   return prefix + '-' + String(id);
 }
 
-async function redirectCachedFallback(storageId, req, res, justAdded) {
-  if (justAdded) return false;
+async function redirectCachedFallback(storageId, req, res, releaseInfo, justAdded) {
   const config = imageKitConfig();
   if (!config) return false;
   const assetUrl = config.endpoint + '/posters/' + encodeURIComponent(storageId) + '.jpg';
@@ -52,13 +52,27 @@ async function redirectCachedFallback(storageId, req, res, justAdded) {
     if (!response.ok) return false;
     const updatedAt = Date.parse(response.headers.get('last-modified') || '');
     if (!Number.isFinite(updatedAt) || Date.now() - updatedAt > 6 * 60 * 60 * 1000) return false;
+
+    const imageResponse = await fetch(assetUrl, { cache: 'no-store', signal: AbortSignal.timeout(5000) });
+    if (!imageResponse.ok) return false;
+    const bytes = Buffer.from(await imageResponse.arrayBuffer());
+    const hasDateBadge = await hasExistingComingDateTag(
+      bytes, releaseInfo?.kind || 'premiere', releaseInfo?.date || null
+    );
+    const dateMatches = releaseInfo?.date ? hasDateBadge : !hasDateBadge;
+    const justAddedMatches = (await hasExistingJustAddedTag(bytes)) === Boolean(justAdded);
+    if (!dateMatches || !justAddedMatches) return false;
+
     res.statusCode = 302;
     res.setHeader('Location', assetUrl);
     res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('X-Poster-Date-Status', 'imagekit-cache-hit');
-    res.setHeader('X-Poster-Just-Added', 'false');
+    res.setHeader('X-Poster-Just-Added', justAdded ? 'true' : 'false');
+    res.setHeader('X-Poster-Date', releaseInfo?.date || 'none');
+    res.setHeader('X-Poster-Date-Type', releaseInfo?.kind || 'none');
     res.setHeader('X-ImageKit-Storage', 'hit');
+    if (justAdded) res.setHeader('X-Poster-Badge', 'Just Added');
     return res.end();
   } catch {
     return false;
@@ -145,7 +159,7 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
   }
   // TMDB/RPDB artwork cannot carry a BetterPosters tag; use catalog eligibility only.
   const storageId = fallbackImageKitId('tmdb', tmdbId);
-  if (await redirectCachedFallback(storageId, req, res, justAdded)) return;
+  if (await redirectCachedFallback(storageId, req, res, release, justAdded)) return;
 
   if (release?.date) {
     try {
