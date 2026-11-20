@@ -1,10 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import sharp from 'sharp';
-import { renderJustAddedBadge } from '../lib/render-poster.mjs';
+import { renderJustAddedBadge, JUST_ADDED_BADGE_TEXT } from '../lib/render-poster.mjs';
 import { hasJustAddedBadgeText } from '../lib/coming-tag.mjs';
 
 test('OCR detects an existing Just Added tag', () => {
+  assert.equal(JUST_ADDED_BADGE_TEXT, 'Just Added');
+  assert.equal(hasJustAddedBadgeText('Just Added'), true);
   assert.equal(hasJustAddedBadgeText('JUST ADDED'), true);
   assert.equal(hasJustAddedBadgeText('COMING NOV 20'), false);
 });
