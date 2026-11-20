@@ -8,7 +8,7 @@ function buildManifest(origin,mask=255,standalone=false,posterTemplate=''){if(!N
 async function paymentHealth(){if(healthCache.at&&Date.now()-healthCache.at<60000)return healthCache.value;let saved={};try{const r=await fetch(raw+'payment-health.json?minute='+Math.floor(Date.now()/60000),{signal:AbortSignal.timeout(5000)});if(r.ok)saved=await r.json()}catch{}const c=configuration();let gatewayAvailable=false;if(c.ready){try{const probe=await fetch(c.url,{method:'HEAD',redirect:'manual',signal:AbortSignal.timeout(8000)});gatewayAvailable=probe.status>=200&&probe.status<400}catch{}}const result={state:c.ready?(gatewayAvailable?'ok':'degraded'):'not-configured',lastCheckedAt:saved.checkedAt||null,checkout:{ready:c.ready&&gatewayAvailable,configured:c.ready,provider:'Bank Muscat',amountMode:c.mode},checks:saved.checks||[],note:'Availability checks never charge a payment method.'};healthCache.at=Date.now();healthCache.value=result;return result}
 const ratingId=m=>[m?.id,m?.imdb_id,m?.imdbId,m?.imdb,m?.externals?.imdb,m?.externalIds?.imdb,m?.ids?.imdb].find(v=>typeof v==='string'&&/^tt[0-9]+$/.test(v))||'';
 export function buildConfiguredPosterUrl(m,origin,posterBase,posterTemplate){
- if(m?.justAdded===true)return origin+posterBase+'/poster/'+m.type+'/'+m.id+'.jpg?badge=just-added&v=3';
+ if(m?.justAdded===true)return origin+posterBase+'/poster/'+m.type+'/'+m.id+'.jpg?badge=just-added&v=4';
  const imdb=ratingId(m);
  return imdb?ratedPoster(posterTemplate,imdb,origin+posterBase+'/poster/'+m.type+'/'+m.id+'.jpg'):origin+posterBase+'/poster/'+m.type+'/'+m.id+'.jpg';
 }
@@ -42,7 +42,7 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
   }
  }
  const fallbackId=id.startsWith('tt')?id:type+'~'+id;
- const badgeVersion=encodeURIComponent(requestParams.get('v')||'3');
+ const badgeVersion=encodeURIComponent(requestParams.get('v')||'4');
  const fallbackUrl=origin+'/art/poster/'+fallbackId+(badgeRequested?'?badge=just-added&v='+badgeVersion:'');
  const fallback=await worker.fetch(new Request(fallbackUrl,{method:req.method}));
  res.statusCode=fallback.status;
