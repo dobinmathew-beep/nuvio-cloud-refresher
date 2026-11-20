@@ -62,7 +62,8 @@ jobs:
           CATALOGS_PATH: ${{ github.workspace }}/catalog-data/dobins-indian-catalog/data/catalogs.json
           ADDED_PATH: ${{ github.workspace }}/catalog-data/dobins-indian-catalog/data/catalog-added.json
           STATUS_PATH: ${{ github.workspace }}/catalog-data/dobins-indian-catalog/data/status.json
-          PUBLIC_ADDON_BASE: https://the-great-indian-addon-dobinmathew-3454.vercel.app
+          PUBLIC_ADDON_BASE: https://the-great-indian-addon.vercel.app
+          POSTER_TEMPLATE: 'https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM'
           OUTPUT_DIR: ${{ github.workspace }}/audit-output
           AUDIT_CONCURRENCY: '1'
         working-directory: poster-service/poster-date-service
