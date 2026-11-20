@@ -232,13 +232,14 @@ function setImageHeaders(res, type, status, releaseDate, releaseKind = 'none') {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Poster-Date-Status', status);
-  res.setHeader('X-Poster-Just-Added', status.includes('just-added-overlay') ? 'true' : 'false');
+  const justAddedRendered = status === 'just-added-overlay' || status === 'upcoming-date+just-added-overlay';
+  res.setHeader('X-Poster-Just-Added', justAddedRendered ? 'true' : 'false');
   res.setHeader('X-Poster-Date', releaseDate);
   res.setHeader('X-Poster-Date-Type', releaseKind);
-  if (status.includes('just-added-overlay')) res.setHeader('X-Poster-Badge', 'Just Added');
+  if (justAddedRendered) res.setHeader('X-Poster-Badge', 'Just Added');
   // Let Xperience/CDNs reuse the processed result; the in-process cache
   // remains a secondary optimisation, not the only cache.
-  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=3600');
+  res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
 }
 
 export default async function handler(req, res) {
