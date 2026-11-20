@@ -546,8 +546,52 @@ async function runManifestCatalogRefreshInternal(lease) {
   for (const [shard, shardItems] of itemsByShard) {
     const ledgerCache = new Map();
     const records = await loadLedgerShard(config, shard, ledgerCache);
+    // All writes for this shard are serialized so overlapping verification
+    // cannot overwrite a newer pending/verified record with an older snapshot.
+    let ledgerWriteChain = Promise.resolve();
+    const persistShard = () => {
+      ledgerWriteChain = ledgerWriteChain.then(async () => {
+        await lease?.assertOwned?.();
+        await persistLedgerShards(config, ledgerCache, [shard]);
+      });
+      return ledgerWriteChain;
+    };
+    const inFlightVerifications = [];
+
+    const verifyPendingBatch = async pendingItems => {
+      const verification = await runPool(pendingItems, async item => {
+        if (await waitForImageKit(item.id)) {
+          records[item.id] = ledgerRecord(item, 'verified', {
+            verifiedAt: new Date().toISOString(),
+            verification: 'imagekit-head-confirmed'
+          });
+          return { id: item.id, status: 'generated-and-cached' };
+        }
+        records[item.id] = ledgerRecord(item, 'failed', {
+          attempts: Number(records[item.id]?.attempts) || 0,
+          lastError: 'ImageKit upload did not become visible within 60 seconds'
+        });
+        throw new Error('ImageKit upload did not become visible within 60 seconds');
+      }, VERIFY_CONCURRENCY);
+
+      for (const [status, count] of Object.entries(verification.counts)) {
+        resultCounts[status] = (resultCounts[status] || 0) + count;
+      }
+      totalFailures += verification.failures;
+      verifiedUploads += verification.counts['generated-and-cached'] || 0;
+      uploadPending -= pendingItems.length;
+      resultCounts['upload-pending'] = Math.max(0, (resultCounts['upload-pending'] || 0) - pendingItems.length);
+      if (!resultCounts['upload-pending']) delete resultCounts['upload-pending'];
+      await persistShard();
+    };
 
     for (let offset = 0; offset < shardItems.length; offset += PREWARM_BATCH_SIZE) {
+      // Keep at most two verification batches in flight. The next prewarm
+      // overlaps ImageKit visibility checks, but memory and outbound requests
+      // remain bounded on Render's free instance.
+      if (inFlightVerifications.length >= 2) {
+        await inFlightVerifications.shift();
+      }
       await lease?.assertOwned?.();
       const batch = shardItems.slice(offset, offset + PREWARM_BATCH_SIZE);
       const reusable = await Promise.all(batch.map(async item => {
@@ -606,39 +650,12 @@ async function runManifestCatalogRefreshInternal(lease) {
         }
         totalFailures += prewarmReport.failures;
 
-        // Save the pending queue before verification. If Render restarts here,
-        // the next run retries only this small batch and recognizes completed
-        // uploads through the poster service's ImageKit cache-validation path.
-        await lease?.assertOwned?.();
-        await persistLedgerShards(config, ledgerCache, [shard]);
-
+        // Persist pending records before their asynchronous verification starts.
+        // A restart can safely HEAD-check or retry only this incomplete batch.
+        await persistShard();
         if (pendingItems.length) {
-          const verification = await runPool(pendingItems, async item => {
-            if (await waitForImageKit(item.id)) {
-              records[item.id] = ledgerRecord(item, 'verified', {
-                verifiedAt: new Date().toISOString(),
-                verification: 'imagekit-head-confirmed'
-              });
-              return { id: item.id, status: 'generated-and-cached' };
-            }
-            records[item.id] = ledgerRecord(item, 'failed', {
-              attempts: Number(records[item.id]?.attempts) || 0,
-              lastError: 'ImageKit upload did not become visible within 60 seconds'
-            });
-            throw new Error('ImageKit upload did not become visible within 60 seconds');
-          }, VERIFY_CONCURRENCY);
-
-          for (const [status, count] of Object.entries(verification.counts)) {
-            resultCounts[status] = (resultCounts[status] || 0) + count;
-          }
-          totalFailures += verification.failures;
-          verifiedUploads += verification.counts['generated-and-cached'] || 0;
-          uploadPending -= pendingItems.length;
-          resultCounts['upload-pending'] = Math.max(0, (resultCounts['upload-pending'] || 0) - pendingItems.length);
-          if (!resultCounts['upload-pending']) delete resultCounts['upload-pending'];
+          inFlightVerifications.push(verifyPendingBatch([...pendingItems]));
         }
-        await lease?.assertOwned?.();
-        await persistLedgerShards(config, ledgerCache, [shard]);
       }
 
       batchesProcessed++;
@@ -648,10 +665,15 @@ async function runManifestCatalogRefreshInternal(lease) {
         console.log('[catalog-ledger-progress]', JSON.stringify({
           visited: postersVisited, total: items.length, batch: batchesProcessed,
           batchSize: batch.length, ledgerHits, verifiedUploads, verifiedCacheHits,
-          uploadPending, failures: totalFailures, rssMiB: rss
+          uploadPending, failures: totalFailures, rssMiB: rss,
+          prewarmConcurrency: adaptivePrewarmConcurrency(),
+          verificationBatchesInFlight: inFlightVerifications.length
         }));
       }
     }
+
+    await Promise.all(inFlightVerifications);
+    await ledgerWriteChain;
     ledgerCache.clear();
   }
   const prewarmReport = { counts: resultCounts, failures: totalFailures };
