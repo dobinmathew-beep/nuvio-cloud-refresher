@@ -4,7 +4,9 @@ import { resolve } from 'node:path';
 import posterHandler from './api/poster.mjs';
 import healthHandler from './api/health.mjs';
 import { resolveTmdbExternalImdbId } from './lib/tmdb-external-ids.mjs';
-import { renderJustAddedBadge } from './lib/render-poster.mjs';
+import { renderJustAddedBadge, renderUpcomingBadge } from './lib/render-poster.mjs';
+import { hasExistingJustAddedTag } from './lib/coming-tag.mjs';
+import { upcomingReleaseByTmdbId } from './lib/release-dates.mjs';
 
 import { runImageKitMaintenance } from './lib/imagekit-storage.mjs';
 
@@ -21,11 +23,11 @@ function responseAdapter(res) {
 }
 
 async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
-  if (String(req.query?.badge || '').toLowerCase() !== 'just-added') {
-    res.statusCode = 404;
-    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    res.setHeader('Cache-Control', 'no-store');
-    return res.end('No IMDb external ID is available for this TMDB title.');
+  if (req.method === 'OPTIONS') {
+    res.statusCode = 204;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+    return res.end();
   }
 
   const sources = [];
@@ -77,18 +79,47 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
 
   if (!sources.length) throw new Error('No poster source available for TMDB ID ' + tmdbId);
   const original = sources[0];
-  // Always replace any provider-supplied uppercase chip with our title-case artwork.
-  const output = await renderJustAddedBadge(original.bytes);
+  const release = await upcomingReleaseByTmdbId(tmdbId, mediaType);
+  let output = original.bytes;
+  let dateRendered = false;
+  let justAdded = String(req.query?.badge || '').toLowerCase() === 'just-added';
+  if (!justAdded) {
+    try { justAdded = await hasExistingJustAddedTag(original.bytes); }
+    catch (error) {
+      console.warn('[poster-just-added-detection-failed]', JSON.stringify({ tmdbId, error: error?.message || 'unknown error' }));
+    }
+  }
+
+  if (release?.date) {
+    try {
+      output = await renderUpcomingBadge(output, release.date, release.kind, 0.105);
+      dateRendered = true;
+    } catch (error) {
+      console.warn('[poster-date-overlay-failed]', JSON.stringify({ tmdbId, date: release.date, error: error?.message || 'unknown error' }));
+    }
+  }
+  if (justAdded) {
+    try { output = await renderJustAddedBadge(output, dateRendered ? 0.255 : 0.105); }
+    catch (error) {
+      console.warn('[poster-just-added-overlay-failed]', JSON.stringify({ tmdbId, error: error?.message || 'unknown error' }));
+      justAdded = false;
+    }
+  }
+
+  const status = dateRendered && justAdded ? 'upcoming-date+just-added-overlay'
+    : dateRendered ? 'upcoming-date-overlay'
+    : justAdded ? 'just-added-overlay'
+    : 'no-upcoming-release';
   res.statusCode = 200;
   res.setHeader('Content-Type', original.type);
   res.setHeader('X-Poster-Source', original.source);
   res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=3600');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Poster-Date-Status', 'just-added-overlay');
-  res.setHeader('X-Poster-Just-Added', 'true');
-  res.setHeader('X-Poster-Date', 'none');
-  res.setHeader('X-Poster-Date-Type', 'none');
+  res.setHeader('X-Poster-Date-Status', status);
+  res.setHeader('X-Poster-Just-Added', justAdded ? 'true' : 'false');
+  res.setHeader('X-Poster-Date', dateRendered ? release.date : 'none');
+  res.setHeader('X-Poster-Date-Type', dateRendered ? (release.kind || 'none') : 'none');
   return res.end(req.method === 'HEAD' ? undefined : output);
 }
 
