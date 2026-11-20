@@ -29,5 +29,7 @@ jobs:
         run: npm install --ignore-scripts=false
       - name: Check JavaScript syntax
         run: node --check api/service.mjs && node --check lib/core.mjs
+      - name: Prepare verified catalog seed
+        run: npm run build
       - name: Run Greta site tests
         run: npm test
