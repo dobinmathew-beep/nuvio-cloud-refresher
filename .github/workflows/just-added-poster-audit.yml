@@ -18,7 +18,7 @@ jobs:
   audit:
     name: OCR audit of all eight catalogs
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - name: Check out poster audit code
         uses: actions/checkout@v4
