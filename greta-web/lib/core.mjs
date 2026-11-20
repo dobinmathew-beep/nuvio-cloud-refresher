@@ -106,11 +106,11 @@ async function art(kind,id,request){
   const imdbId=rawId.startsWith('tt')?rawId:
    (IMDB_BY_META[metaKey(type,rawId)]||m.imdb_id||m.imdbId||m.imdb||m.externals?.imdb||'');
   let rendererUrl=null;
-  if(/^tt\\d{7,10}$/.test(String(imdbId))){
+  if(/^tt\d{7,10}$/.test(String(imdbId))){
    rendererUrl=new URL('/poster/'+imdbId+'.jpg',JUST_ADDED_RENDERER_ORIGIN);
   }else{
-   const tmdb=rawId.match(/^tmdb:(\\d{1,12})$/);
-   const tvmaze=rawId.match(/^tvmaze:(\\d{1,12})$/);
+   const tmdb=rawId.match(/^tmdb:(\d{1,12})$/);
+   const tvmaze=rawId.match(/^tvmaze:(\d{1,12})$/);
    if(tmdb){
     rendererUrl=new URL('/poster/tmdb/'+tmdb[1]+'.jpg',JUST_ADDED_RENDERER_ORIGIN);
     rendererUrl.searchParams.set('type',type==='movie'?'movie':'tv');
@@ -129,7 +129,7 @@ async function art(kind,id,request){
     const u=new URL(value);
     return u.protocol==='https:'&&!u.username&&!u.password&&!u.port&&
      artHosts.includes(u.hostname)&&!['btttr.cc','api.ratingposterdb.com','live.metahub.space'].includes(u.hostname)&&
-     /\\.(?:jpe?g|png|webp|avif)$/i.test(u.pathname);
+     /\.(?:jpe?g|png|webp|avif)$/i.test(u.pathname);
    }catch{return false;}
   });
 
