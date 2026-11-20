@@ -534,9 +534,9 @@ def build():
   just_added=is_just_added_movie(e,added_time)
   tmdb_id=re.fullmatch(r'tmdb:(\d+)',str(mid))
   if just_added and is_imdb_id(mid):
-   poster_url="https://great-indian-upcoming-posters.onrender.com/poster/"+mid+".jpg?badge=just-added&v=2"
+   poster_url="https://great-indian-upcoming-posters.onrender.com/poster/"+mid+".jpg?badge=just-added&v=3"
   elif just_added and tmdb_id:
-   poster_url="https://great-indian-upcoming-posters.onrender.com/poster/tmdb/"+tmdb_id.group(1)+".jpg?badge=just-added&type=movie&v=2"
+   poster_url="https://great-indian-upcoming-posters.onrender.com/poster/tmdb/"+tmdb_id.group(1)+".jpg?badge=just-added&type=movie&v=3"
   else:
    poster_url=BASE+'/art/poster/'+aid
   catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':poster_url,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"{description_label} ({display_kind}): {display_date} · {', '.join(e['platforms'])}\n\n"+(m.get('description') or e.get('description') or ''),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'releaseStatus':'upcoming' if display_date>TODAY else 'available','releaseLabel':release_label,'releaseLabelDate':label_date,'originalReleaseDate':original_release_date,'availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'theatricalReleases':e.get('theatricalReleases',[]),'ottDate':digital_date,'platforms':e['platforms'],'sources':e['sources'],'language':e['language'],'releaseDateBasis':e.get('releaseDateBasis','source release'),'latestEpisodeReleasedAt':episode_at,'hasNewEpisodes':new_episodes,'nextEpisodeReleaseAt':episode_badges.upcoming(m.get('videos',[]),NOW,m.get('seasons',[])) if e['type']=='series' else None,'justAdded':just_added,'catalogAddedAt':added_at.get(added_key)})
