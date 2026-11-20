@@ -41,7 +41,7 @@ test('configured poster route forwards Just Added requests to the Render rendere
   const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=body}};
   await handler(req,res);
   assert.equal(res.statusCode,200);
-  assert.equal(requested,'https://great-indian-upcoming-posters.onrender.com/poster/tt1234567.jpg?badge=just-added&v=6');
+  assert.equal(requested,'https://great-indian-upcoming-posters.onrender.com/poster/tt1234567.jpg?badge=just-added&v=5');
   assert.equal(res.headers['X-Poster-Badge'],'Just Added');
  }finally{
   globalThis.fetch=oldFetch;
