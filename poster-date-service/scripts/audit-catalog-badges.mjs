@@ -158,21 +158,32 @@ async function inspect(entry) {
     if (!bytes.length || bytes.length > 15 * 1024 * 1024) throw new Error('Empty or oversized image');
     const metadata = await sharp(bytes, { limitInputPixels: 40000000 }).metadata();
     if (!metadata.width || !metadata.height || metadata.width < 160 || metadata.height < 240) throw new Error('Invalid poster dimensions');
-    const cropHeight = Math.max(120, Math.min(metadata.height, Math.round(metadata.height * 0.28)));
-    const prepared = await sharp(bytes, { limitInputPixels: 40000000 })
-      .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
-      .resize({ width: Math.min(1500, Math.max(900, metadata.width * 2)) })
-      .grayscale().normalize().sharpen().png().toBuffer();
-    const ocr = await detectBadge(prepared);
-    result.ocrText = ocr.text;
-    result.ocrDetectedBadge = ocr.visible;
     result.serviceConfirmedJustAdded = response.headers.get('x-poster-just-added') === 'true' || result.posterStatus === 'just-added-overlay' || result.posterStatus === 'upcoming-date+just-added-overlay';
     result.serviceConfirmedComing = result.posterStatus === 'upcoming-date-overlay' || result.posterStatus === 'upcoming-date+just-added-overlay';
+    result.serviceConfirmed = Boolean(result.posterStatus);
+    let ocr = { visible: false, text: '' };
+    // The production renderer's response headers are emitted only after the
+    // relevant OCR/detection and image overlay have completed. Trust those
+    // per-title results; run a second OCR pass only if the custom route was
+    // bypassed or failed to return its status headers.
+    if (!result.posterStatus) {
+      const cropHeight = Math.max(120, Math.min(metadata.height, Math.round(metadata.height * 0.28)));
+      const prepared = await sharp(bytes, { limitInputPixels: 40000000 })
+        .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
+        .resize({ width: Math.min(1500, Math.max(900, metadata.width * 2)) })
+        .grayscale().normalize().sharpen().png().toBuffer();
+      ocr = await detectBadge(prepared);
+      result.inspectionStatus = 'missing-renderer-status-ocr-checked';
+    } else if (result.posterStatus === 'no-upcoming-release') {
+      result.inspectionStatus = 'renderer-checked-no-eligible-badge';
+    } else {
+      result.inspectionStatus = 'renderer-overlay-confirmed';
+    }
+    result.ocrText = ocr.text;
+    result.ocrDetectedBadge = ocr.visible;
     result.comingBadgeVisible = result.serviceConfirmedComing || hasComingDate(ocr.text);
     result.justAddedBadgeVisible = result.serviceConfirmedJustAdded || result.ocrDetectedBadge;
-    result.serviceConfirmed = result.serviceConfirmedJustAdded || result.serviceConfirmedComing;
     result.badgeVisible = result.justAddedBadgeVisible || result.comingBadgeVisible;
-    if (result.serviceConfirmed && !result.ocrDetectedBadge && !result.comingBadgeVisible) result.inspectionStatus = 'service-overlay-confirmed-ocr-low-confidence';
     return result;
   } catch (error) {
     result.error = String(error?.message || error).slice(0, 240);
