@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-20T13:58:33.281055+00:00",
+  "checkedAt": "2026-11-20T14:56:59.318153+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,17 +14,17 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1182,
+      "metadataRecords": 1184,
       "warning": null,
       "error": null
     },
     {
       "path": "/meta/* (Malayalam catalog audit)",
       "state": "ok",
-      "checked": 162,
-      "passed": 162,
+      "checked": 164,
+      "passed": 164,
       "failed": 0,
-      "missingOriginalLanguageField": 116
+      "missingOriginalLanguageField": 117
     },
     {
       "path": "/manifest.json",
@@ -45,31 +45,31 @@
       "language": "ml",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
-      "localPublishedCount": 94,
-      "localUniqueIdCount": 94,
+      "localPublishedCount": 96,
+      "localUniqueIdCount": 96,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 94,
-      "endpointUniqueIdCount": 94,
+      "endpointRawCount": 96,
+      "endpointUniqueIdCount": 96,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        44
+        46
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt39239818",
-        "name": "Haiku",
-        "releaseDate": "2026-11-20"
+        "id": "tmdb:1628781",
+        "name": "Iniyum",
+        "releaseDate": "2026-11-22"
       },
       "localLatestEntry": {
-        "id": "tt39239818",
-        "name": "Haiku",
-        "releaseDate": "2026-11-20"
+        "id": "tmdb:1628781",
+        "name": "Iniyum",
+        "releaseDate": "2026-11-22"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -150,19 +150,19 @@
       "language": "ta",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ta_series.json",
-      "localPublishedCount": 116,
-      "localUniqueIdCount": 116,
+      "localPublishedCount": 115,
+      "localUniqueIdCount": 115,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 116,
-      "endpointUniqueIdCount": 116,
+      "endpointRawCount": 115,
+      "endpointUniqueIdCount": 115,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
-        16
+        15
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -294,13 +294,13 @@
       "language": "hi",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
-      "localPublishedCount": 355,
-      "localUniqueIdCount": 355,
+      "localPublishedCount": 354,
+      "localUniqueIdCount": 354,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 355,
-      "endpointUniqueIdCount": 355,
+      "endpointRawCount": 354,
+      "endpointUniqueIdCount": 354,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
@@ -311,20 +311,20 @@
         50,
         50,
         50,
-        5
+        4
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt37020592",
-        "name": "Teen Kauwe",
-        "releaseDate": "2026-12-25"
+        "id": "tt35933285",
+        "name": "O Saathi Re",
+        "releaseDate": "2026-12-04"
       },
       "localLatestEntry": {
-        "id": "tt37020592",
-        "name": "Teen Kauwe",
-        "releaseDate": "2026-12-25"
+        "id": "tt35933285",
+        "name": "O Saathi Re",
+        "releaseDate": "2026-12-04"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -333,10 +333,10 @@
   ],
   "malayalamMetadataAudit": {
     "state": "ok",
-    "checked": 162,
-    "passed": 162,
+    "checked": 164,
+    "passed": 164,
     "failed": 0,
-    "missingOriginalLanguageField": 116,
+    "missingOriginalLanguageField": 117,
     "failures": []
   },
   "catalogSummary": {
