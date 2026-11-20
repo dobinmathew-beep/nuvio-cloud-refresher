@@ -42,7 +42,7 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
  const rendererUrl=buildSharedRendererUrl(type,id,badgeRequested,requestParams.get('v')||'6');
  if(rendererUrl){
   try{
-   const rendered=await upstream(rendererUrl,15000,'GET');
+   const rendered=await fetch(rendererUrl,{cache:'no-store',signal:AbortSignal.timeout(15000)});\n   if(!rendered.ok)throw Error('Shared poster renderer HTTP '+rendered.status);
    const mime=(rendered.headers.get('Content-Type')||'').split(';')[0].trim().toLowerCase();
    if(!mime.startsWith('image/'))throw Error('Shared poster renderer returned '+(mime||'no image content type'));
    const bytes=await rendered.arrayBuffer();
