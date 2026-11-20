@@ -4,10 +4,10 @@ import {readFileSync} from 'node:fs';import {fileURLToPath} from 'node:url';impo
 const SHARED_POSTER_RENDERER='https://great-indian-upcoming-posters.onrender.com';
 export function buildSharedRendererUrl(type,id,justAdded=false,version='6'){
  const value=String(id||'');
- const v=/^\\d{1,8}$/.test(String(version))?String(version):'6';
+ const v=/^\d{1,8}$/.test(String(version))?String(version):'6';
  const badge=justAdded?'badge=just-added&':'';
- if(/^tt\\d{7,10}$/.test(value))return SHARED_POSTER_RENDERER+'/poster/'+value+'.jpg?'+badge+'v='+v;
- const tmdb=value.match(/^tmdb:(\\d{1,12})$/);
+ if(/^tt\d{7,10}$/.test(value))return SHARED_POSTER_RENDERER+'/poster/'+value+'.jpg?'+badge+'v='+v;
+ const tmdb=value.match(/^tmdb:(\d{1,12})$/);
  if(tmdb)return SHARED_POSTER_RENDERER+'/poster/tmdb/'+tmdb[1]+'.jpg?'+badge+'type='+(type==='movie'?'movie':'tv')+'&v='+v;
  return null;
 }
@@ -36,7 +36,7 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
  if(!['GET','HEAD'].includes(req.method))return send(405,{error:'Method not allowed.'});
  if(route==='/manifest.json'||route==='/standalone/manifest.json'){const m=buildManifest(origin,scopeMask,route==='/standalone/manifest.json',posterTemplate);return m?send(200,m,{'Cache-Control':posterTemplate?'private,no-store':'public,max-age=300'}):send(400,{error:'Select at least one catalog.'})}
  if(route==='/health.json')return send(200,await paymentHealth());if(route==='/data-health.json')return send(200,await dataHealth(),{'Cache-Control':'no-store'});
- const posterRoute=route.replace(/%3A/gi,':').match(/^\\/poster\\/(movie|series)\\/((?:tt\\d+)|(?:(?:tmdb|tvmaze):\\d+))\\.jpg$/);if(posterRoute&&posterTemplate){
+ const posterRoute=route.replace(/%3A/gi,':').match(/^\\/poster\\/(movie|series)\\/((?:tt\d+)|(?:(?:tmdb|tvmaze):\d+))\\.jpg$/);if(posterRoute&&posterTemplate){
  const [,type,id]=posterRoute;
  const badgeRequested=requestParams.get('badge')==='just-added';
  const rendererUrl=buildSharedRendererUrl(type,id,badgeRequested,requestParams.get('v')||'6');
