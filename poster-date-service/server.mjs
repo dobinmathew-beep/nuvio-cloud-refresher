@@ -119,7 +119,7 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
   res.statusCode = 200;
   res.setHeader('Content-Type', original.type);
   res.setHeader('X-Poster-Source', original.source);
-  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=3600');
+  res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Poster-Date-Status', status);
