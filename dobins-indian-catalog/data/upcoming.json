@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-20T19:17:11.487331+04:00",
+  "generatedAt": "2026-11-20T19:21:44.758643+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 14,
+  "count": 20,
   "items": [
     {
       "id": "tt1281973",
@@ -19,7 +19,9 @@
       "sources": [
         "https://www.dailyott.in/"
       ],
-      "catalog": "dobins_hi_series"
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tt30003786",
@@ -35,12 +37,14 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
-      "catalog": "dobins_hi_series"
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://api.tvmaze.com/schedule/web"
     },
     {
       "id": "tt45692999",
@@ -58,7 +62,49 @@
       "sources": [
         "https://www.keralatv.in/channel/ott/"
       ],
-      "catalog": "dobins_ml_movie"
+      "catalog": "dobins_ml_movie",
+      "region": "IN",
+      "source": "https://www.keralatv.in/channel/ott/"
+    },
+    {
+      "id": "tmdb:338740",
+      "aliases": [
+        "tmdb:338740"
+      ],
+      "name": "Supreme Solaris",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-22",
+      "kind": "premiere",
+      "platforms": [
+        "YouTube"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    },
+    {
+      "id": "tmdb:1628781",
+      "aliases": [
+        "tmdb:1628781"
+      ],
+      "name": "Iniyum",
+      "language": "malayalam",
+      "type": "movie",
+      "releaseDate": "2026-11-22",
+      "kind": "premiere",
+      "platforms": [
+        "ManoramaMAX"
+      ],
+      "sources": [
+        "https://www.keralatv.in/channel/ott/"
+      ],
+      "catalog": "dobins_ml_movie",
+      "region": "IN",
+      "source": "https://www.keralatv.in/channel/ott/"
     },
     {
       "id": "tt38195069",
@@ -76,7 +122,29 @@
       "sources": [
         "https://www.dailyott.in/"
       ],
-      "catalog": "dobins_hi_series"
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.dailyott.in/"
+    },
+    {
+      "id": "tmdb:339004",
+      "aliases": [
+        "tmdb:339004"
+      ],
+      "name": "Notebook 90s – Kadhal Flashback",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-11-23",
+      "kind": "premiere",
+      "platforms": [
+        "SonyLIV"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "catalog": "dobins_ta_series",
+      "region": "IN",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },
     {
       "id": "tt50135636",
@@ -95,7 +163,9 @@
         "https://www.dailyott.in/",
         "https://www.themoviedb.org/tv/338502"
       ],
-      "catalog": "dobins_ta_series"
+      "catalog": "dobins_ta_series",
+      "region": "IN",
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tt38676235",
@@ -111,7 +181,9 @@
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
-      "catalog": "dobins_te_movie"
+      "catalog": "dobins_te_movie",
+      "region": "IN",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },
     {
       "id": "tt41496092",
@@ -130,7 +202,9 @@
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
-      "catalog": "dobins_hi_series"
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },
     {
       "id": "tt27050858",
@@ -150,7 +224,9 @@
         "https://cinebuds.com/ott-releases-this-week/",
         "https://www.dailyott.in/"
       ],
-      "catalog": "dobins_hi_movie"
+      "catalog": "dobins_hi_movie",
+      "region": "IN",
+      "source": "https://cinebuds.com/ott-releases-this-week/"
     },
     {
       "id": "tt39390582",
@@ -168,7 +244,9 @@
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/"
       ],
-      "catalog": "dobins_hi_movie"
+      "catalog": "dobins_hi_movie",
+      "region": "IN",
+      "source": "https://cinebuds.com/ott-releases-this-week/"
     },
     {
       "id": "tt50508547",
@@ -186,7 +264,9 @@
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
-      "catalog": "dobins_ml_series"
+      "catalog": "dobins_ml_series",
+      "region": "IN",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },
     {
       "id": "tt44914967",
@@ -207,7 +287,9 @@
         "https://v3-cinemeta.strem.io/",
         "https://www.themoviedb.org/tv/331750"
       ],
-      "catalog": "dobins_ta_series"
+      "catalog": "dobins_ta_series",
+      "region": "IN",
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tt30768979",
@@ -225,7 +307,47 @@
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/"
       ],
-      "catalog": "dobins_te_movie"
+      "catalog": "dobins_te_movie",
+      "region": "IN",
+      "source": "https://cinebuds.com/ott-releases-this-week/"
+    },
+    {
+      "id": "tmdb:337904",
+      "aliases": [
+        "tmdb:337904"
+      ],
+      "name": "AndherPura Curse",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-28",
+      "kind": "premiere",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    },
+    {
+      "id": "tmdb:339001",
+      "aliases": [
+        "tmdb:339001"
+      ],
+      "name": "Madam Police",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-12-03",
+      "kind": "premiere",
+      "platforms": [
+        "SonyLIV"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "catalog": "dobins_ta_series",
+      "region": "IN",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },
     {
       "id": "tt35933285",
@@ -243,7 +365,27 @@
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
-      "catalog": "dobins_hi_series"
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    },
+    {
+      "id": "tmdb:1737773",
+      "aliases": [
+        "tmdb:1737773"
+      ],
+      "name": "Srimathi",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-12-04",
+      "kind": "premiere",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "catalog": "dobins_te_movie",
+      "region": "IN",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },
     {
       "id": "tt16997004",
@@ -264,7 +406,9 @@
         "https://v3-cinemeta.strem.io/",
         "https://www.themoviedb.org/tv/249765"
       ],
-      "catalog": "dobins_hi_series"
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.dailyott.in/"
     }
   ]
 }
