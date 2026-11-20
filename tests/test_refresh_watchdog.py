@@ -59,7 +59,9 @@ class WatchdogTests(unittest.TestCase):
         self.assertFalse(fresh(stale,'media',target))
         incomplete=dict(state,featured_ids={'hindi':'tt100'})
         self.assertFalse(fresh(incomplete,'media',target))
-        invalid=dict(state,featured_ids={**state['featured_ids'],'telugu':'tmdb:123'})
+        tmdb=dict(state,featured_ids={**state['featured_ids'],'tamil':'tmdb:1822586'})
+        self.assertTrue(fresh(tmdb,'media',target))
+        invalid=dict(state,featured_ids={**state['featured_ids'],'telugu':'tmdb:not-a-number'})
         self.assertFalse(fresh(invalid,'media',target))
 
     def test_media_partial_success_is_not_fresh(self):
