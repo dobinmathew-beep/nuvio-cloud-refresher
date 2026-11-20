@@ -13,7 +13,14 @@ export function buildConfiguredPosterUrl(m,origin,posterBase,posterTemplate){
  return imdb?ratedPoster(posterTemplate,imdb,origin+posterBase+'/poster/'+m.type+'/'+m.id+'.jpg'):origin+posterBase+'/poster/'+m.type+'/'+m.id+'.jpg';
 }
 export {buildManifest,replaceOrigin};
-export default async function handler(req,res){const send=(status,body,extra={})=>{res.statusCode=status;for(const [k,v] of Object.entries({'Content-Type':'application/json; charset=utf-8','Access-Control-Allow-Origin':'*','Access-Control-Allow-Methods':'GET, HEAD, OPTIONS, POST','Access-Control-Allow-Headers':'Content-Type','Cache-Control':'no-store',...extra}))res.setHeader(k,v);res.end(req.method==='HEAD'?undefined:JSON.stringify(body))};try{const origin=originFor(req);const incoming=new URL(req.url,origin);const candidate=req.query?.path||incoming.searchParams.get('path');let route=typeof candidate==='string'?candidate:incoming.pathname;let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA-F0-9]{1,2})(?:\/bttr\/([A-Za-z0-9_-]+))?(\/.*)$/);if(scoped){scopeMask=parseInt(scoped[1],16);if(!scopeMask)return send(400,{error:'Select at least one catalog.'});if(scoped[2]){try{posterTemplate=decodePosterConfig(scoped[2])}catch{return send(400,{error:'Invalid poster configuration.'})}}route=scoped[3]}else if(route.startsWith('/standalone/')&&route!=='/standalone/manifest.json')route=route.slice('/standalone'.length);
+export default async function handler(req,res){const send=(status,body,extra={})=>{res.statusCode=status;for(const [k,v] of Object.entries({'Content-Type':'application/json; charset=utf-8','Access-Control-Allow-Origin':'*','Access-Control-Allow-Methods':'GET, HEAD, OPTIONS, POST','Access-Control-Allow-Headers':'Content-Type','Cache-Control':'no-store',...extra}))res.setHeader(k,v);res.end(req.method==='HEAD'?undefined:JSON.stringify(body))};try{const origin=originFor(req);const incoming=new URL(req.url,origin);const candidate=req.query?.path||incoming.searchParams.get('path');
+const candidateUrl=new URL(typeof candidate==='string'?candidate:incoming.pathname,origin);
+if(candidateUrl.origin!==origin)return send(400,{error:'Invalid internal route.'});
+let route=candidateUrl.pathname;
+const requestParams=new URLSearchParams(incoming.search);
+requestParams.delete('path');
+for(const [key,value] of candidateUrl.searchParams)if(!requestParams.has(key))requestParams.append(key,value);
+let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA-F0-9]{1,2})(?:\/bttr\/([A-Za-z0-9_-]+))?(\/.*)$/);if(scoped){scopeMask=parseInt(scoped[1],16);if(!scopeMask)return send(400,{error:'Select at least one catalog.'});if(scoped[2]){try{posterTemplate=decodePosterConfig(scoped[2])}catch{return send(400,{error:'Invalid poster configuration.'})}}route=scoped[3]}else if(route.startsWith('/standalone/')&&route!=='/standalone/manifest.json')route=route.slice('/standalone'.length);
  if(req.method==='OPTIONS')return send(204,{});
  if(route==='/api/checkout'){if(req.method!=='POST')return send(405,{error:'Use POST.'});if(req.headers.origin&&req.headers.origin!==origin)return send(403,{error:'Request origin is not allowed.'});let body=req.body;if(typeof body==='string')try{body=JSON.parse(body)}catch{return send(400,{error:'Invalid JSON.'})}if(!body){let s='';for await(const chunk of req){s+=chunk;if(s.length>4096)return send(413,{error:'Request too large.'})}try{body=JSON.parse(s)}catch{return send(400,{error:'Invalid JSON.'})}}const result=checkout(body);if(result.status===200&&!(await paymentHealth()).checkout.ready)return send(503,{error:'The secure gateway is temporarily unavailable. No payment has been created.'});return send(result.status,result.body)}
  if(!['GET','HEAD'].includes(req.method))return send(405,{error:'Method not allowed.'});
@@ -21,7 +28,7 @@ export default async function handler(req,res){const send=(status,body,extra={})
  if(route==='/health.json')return send(200,await paymentHealth());if(route==='/data-health.json')return send(200,await dataHealth(),{'Cache-Control':'no-store'});
  const posterRoute=route.replace(/%3A/gi,':').match(/^\/poster\/(movie|series)\/((?:tt\d+)|(?:(?:tmdb|tvmaze):\d+))\.jpg$/);if(posterRoute&&posterTemplate){
  const [,type,id]=posterRoute;
- const badgeRequested=incoming.searchParams.get('badge')==='just-added';
+ const badgeRequested=requestParams.get('badge')==='just-added';
  if(!badgeRequested){
   const rated=ratedPoster(posterTemplate,id,'');
   if(rated){
@@ -35,11 +42,12 @@ export default async function handler(req,res){const send=(status,body,extra={})
   }
  }
  const fallbackId=id.startsWith('tt')?id:type+'~'+id;
- const fallbackUrl=origin+'/art/poster/'+fallbackId+(badgeRequested?'?badge=just-added&v=3':'');
+ const badgeVersion=encodeURIComponent(requestParams.get('v')||'3');
+ const fallbackUrl=origin+'/art/poster/'+fallbackId+(badgeRequested?'?badge=just-added&v='+badgeVersion:'');
  const fallback=await worker.fetch(new Request(fallbackUrl,{method:req.method}));
  res.statusCode=fallback.status;
  for(const [k,v] of fallback.headers)res.setHeader(k,v);
  return res.end(req.method==='HEAD'?undefined:Buffer.from(await fallback.arrayBuffer()));
 }
 const catalogRequest=route.match(/^\/catalog\/(movie|series)\/([^/]+?)(?:\.json|\/)/);if(catalogRequest&&!buildManifest(origin,scopeMask).catalogs.some(c=>c.type===catalogRequest[1]&&c.id===catalogRequest[2]))return send(200,{metas:[]});
- const query=new URLSearchParams(incoming.search);query.delete('path');const request=new Request(origin+route+(query.size?'?'+query.toString():''),{method:req.method});const result=await worker.fetch(request);const contentType=result.headers.get('content-type')||'';if(contentType.includes('application/json')){const value=replaceOrigin(await result.json(),origin);const posterBase=posterTemplate?'/install/'+scopeMask.toString(16).padStart(2,'0')+'/bttr/'+encodePosterConfig(posterTemplate):'';if(posterTemplate){const posterUrl=m=>buildConfiguredPosterUrl(m,origin,posterBase,posterTemplate);for(const m of value.metas||[])m.poster=posterUrl(m);if(value.meta)value.meta.poster=posterUrl(value.meta)}if(route==='/status.json')value.name='The Great Indian Addon';return send(result.status,value,{'Cache-Control':posterTemplate?'private,no-store':result.headers.get('cache-control')||'public,max-age=300'})}res.statusCode=result.status;for(const [k,v] of result.headers)res.setHeader(k,v);res.end(req.method==='HEAD'?undefined:Buffer.from(await result.arrayBuffer()));}catch{send(503,{error:'This service is temporarily unavailable. Please try again shortly.'})}}
+ const request=new Request(origin+route+(requestParams.size?'?'+requestParams.toString():''),{method:req.method});const result=await worker.fetch(request);const contentType=result.headers.get('content-type')||'';if(contentType.includes('application/json')){const value=replaceOrigin(await result.json(),origin);const posterBase=posterTemplate?'/install/'+scopeMask.toString(16).padStart(2,'0')+'/bttr/'+encodePosterConfig(posterTemplate):'';if(posterTemplate){const posterUrl=m=>buildConfiguredPosterUrl(m,origin,posterBase,posterTemplate);for(const m of value.metas||[])m.poster=posterUrl(m);if(value.meta)value.meta.poster=posterUrl(value.meta)}if(route==='/status.json')value.name='The Great Indian Addon';return send(result.status,value,{'Cache-Control':posterTemplate?'private,no-store':result.headers.get('cache-control')||'public,max-age=300'})}res.statusCode=result.status;for(const [k,v] of result.headers)res.setHeader(k,v);res.end(req.method==='HEAD'?undefined:Buffer.from(await result.arrayBuffer()));}catch{send(503,{error:'This service is temporarily unavailable. Please try again shortly.'})}}
