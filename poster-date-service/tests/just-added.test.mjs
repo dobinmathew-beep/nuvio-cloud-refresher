@@ -85,6 +85,7 @@ test('shared poster URL normalizes a BetterPosters Just Added tag without a quer
     assert.equal(res.statusCode, 200);
     assert.equal(res.headers['X-Poster-Date-Status'], 'just-added-overlay');
     assert.equal(res.headers['X-Poster-Just-Added'], 'true');
+    assert.equal(res.headers['X-Poster-Badge'], 'Just Added');
     const metadata = await sharp(res.body).metadata();
     assert.equal(metadata.width, 600);
     assert.equal(metadata.height, 900);
