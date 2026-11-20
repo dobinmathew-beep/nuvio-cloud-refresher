@@ -568,13 +568,13 @@ async function runManifestCatalogRefreshInternal(lease) {
     alreadyVerified: preflightVerifiedHits,
     strategy: 'retry-only-unresolved-or-missing-imagekit-assets'
   }));
-  const resultCounts = {};
+  const resultCounts = preflightVerifiedHits ? { 'ledger-hit': preflightVerifiedHits } : {};
   let totalFailures = 0;
   let ledgerHits = preflightVerifiedHits;
   let batchesProcessed = 0;
   let postersVisited = 0;
   let verifiedUploads = 0;
-  let verifiedCacheHits = 0;
+  let verifiedCacheHits = preflightVerifiedHits;
   let uploadPending = 0;
 
   // Process one deterministic ledger shard at a time. This keeps memory bounded
