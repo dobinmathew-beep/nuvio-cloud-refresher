@@ -1,1 +1,1 @@
-Trigger the corrected full OCR audit of all eight Great Indian Addon catalogs.
+Run the targeted full-catalog Just Added poster verification against versioned title-case poster URLs.
