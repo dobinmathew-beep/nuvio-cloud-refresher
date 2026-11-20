@@ -5,6 +5,7 @@ let cachedIndex = null;
 let cachedAt = 0;
 let pendingIndex = null;
 let cachedIds = null;
+let unavailableUntil = 0;
 
 function buildIdIndex(value) {
   const index = new Map();
@@ -19,6 +20,7 @@ function buildIdIndex(value) {
 
 async function loadIndex(fetcher) {
   if (cachedIndex && Date.now() - cachedAt < INDEX_TTL_MS) return cachedIndex;
+  if (Date.now() < unavailableUntil) return null;
   if (pendingIndex) return pendingIndex;
   pendingIndex = (async () => {
     try {
@@ -34,15 +36,17 @@ async function loadIndex(fetcher) {
       cachedIndex = value;
       cachedIds = buildIdIndex(value);
       cachedAt = Date.now();
+      unavailableUntil = 0;
       return cachedIndex;
     } catch (error) {
       console.warn('[catalog-just-added-index-failed]', JSON.stringify({
         error: error?.message || 'unknown error',
         action: 'fall back to BetterPosters tag detection'
       }));
-      cachedIndex = {};
-      cachedIds = new Map();
-      cachedAt = Date.now() - INDEX_TTL_MS + 60 * 1000;
+      cachedIndex = null;
+      cachedIds = null;
+      cachedAt = 0;
+      unavailableUntil = Date.now() + 60 * 1000;
       return null;
     } finally {
       pendingIndex = null;
@@ -77,5 +81,6 @@ export function resetCatalogAddedIndexForTest() {
   cachedIndex = null;
   cachedIds = null;
   cachedAt = 0;
+  unavailableUntil = 0;
   pendingIndex = null;
 }
