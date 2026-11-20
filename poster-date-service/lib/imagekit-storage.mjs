@@ -138,7 +138,7 @@ export function recordImageKitUpload(path, fileId, bytes) {
 }
 
 export async function readPosterValidationMetadata(imdbId) {
-  if (!/^tt\\d{7,10}$/.test(String(imdbId || ''))) return null;
+  if (!/^tt\d{7,10}$/.test(String(imdbId || ''))) return null;
   const config = imageKitConfig();
   if (!config) return null;
   const url = new URL(config.endpoint + '/catalog-state/poster-validation/' + encodeURIComponent(imdbId) + '.json');
@@ -155,7 +155,7 @@ export async function readPosterValidationMetadata(imdbId) {
 }
 
 export async function savePosterValidationMetadata(imdbId, metadata) {
-  if (!/^tt\\d{7,10}$/.test(String(imdbId || ''))) return false;
+  if (!/^tt\d{7,10}$/.test(String(imdbId || ''))) return false;
   const config = imageKitConfig();
   if (!config) return false;
   const value = {
@@ -214,7 +214,7 @@ export async function uploadPosterToImageKit(imdbId, poster) {
   const result = await response.json();
   if (!result.url || !result.fileId) throw new Error('ImageKit upload response did not include file identity');
   recordImageKitUpload('/posters/' + imdbId + '.jpg', result.fileId, poster.bytes.length);
-  if (/^tt\\d{7,10}$/.test(imdbId) && poster && typeof poster.status === 'string') {
+  if (/^tt\d{7,10}$/.test(imdbId) && poster && typeof poster.status === 'string') {
     try {
       await savePosterValidationMetadata(imdbId, {
         releaseDate: poster.releaseDate === 'none' ? null : poster.releaseDate,
