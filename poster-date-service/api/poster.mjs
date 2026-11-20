@@ -25,7 +25,7 @@ function validCatalogPosterFallback(value) {
     return false;
   }
 }
-const RESULT_CACHE_MS = 5 * 60 * 1000;
+const RESULT_CACHE_MS = 2 * 60 * 1000;
 const resultCache = new Map();
 const pendingResults = new Map();
 
@@ -265,7 +265,7 @@ async function getBuiltPoster(id, knownRelease = undefined, badge = '', version 
 
   const pending = buildPoster(id, knownRelease, badge, fallbackUrl).then(value => {
     resultCache.set(cacheKey, { value, expiresAt: Date.now() + RESULT_CACHE_MS });
-    while (resultCache.size > 500) resultCache.delete(resultCache.keys().next().value);
+    while (resultCache.size > 80) resultCache.delete(resultCache.keys().next().value);
     return value;
   }).finally(() => pendingResults.delete(cacheKey));
 
