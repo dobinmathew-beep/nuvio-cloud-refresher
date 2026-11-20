@@ -13,8 +13,8 @@ function artId(type,id){return id.startsWith('tt')?id:type+'~'+id;}
 const JUST_ADDED_RENDERER_ORIGIN='https://great-indian-upcoming-posters.onrender.com';
 export function buildJustAddedRendererUrl(type,id){
  const value=String(id||'');
- if(/^tt\\d{7,10}$/.test(value))return JUST_ADDED_RENDERER_ORIGIN+'/poster/'+value+'.jpg?badge=just-added&v=3';
- const tmdb=value.match(/^tmdb:(\\d{1,12})$/);
+ if(/^tt\d{7,10}$/.test(value))return JUST_ADDED_RENDERER_ORIGIN+'/poster/'+value+'.jpg?badge=just-added&v=3';
+ const tmdb=value.match(/^tmdb:(\d{1,12})$/);
  if(tmdb)return JUST_ADDED_RENDERER_ORIGIN+'/poster/tmdb/'+tmdb[1]+'.jpg?badge=just-added&type='+(type==='movie'?'movie':'tv')+'&v=3';
  return null;
 }
