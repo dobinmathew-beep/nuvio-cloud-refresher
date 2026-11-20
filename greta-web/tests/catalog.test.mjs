@@ -1,14 +1,14 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {buildManifest,replaceOrigin,buildConfiguredPosterUrl,buildSharedRendererUrl} from '../api/service.mjs';import {buildCatalogPosterUrl,buildJustAddedRendererUrl} from '../lib/core.mjs';
 
 test('only Just Added-eligible catalog entries receive a badge poster request',()=>{
- assert.equal(buildCatalogPosterUrl('https://addon.example','movie','tt1234567',true),'https://addon.example/art/poster/tt1234567?badge=just-added&v=5');
+ assert.equal(buildCatalogPosterUrl('https://addon.example','movie','tt1234567',true),'https://addon.example/art/poster/tt1234567?badge=just-added&v=6');
  assert.equal(buildCatalogPosterUrl('https://addon.example','movie','tt1234567',false),'https://addon.example/art/poster/tt1234567');
- assert.equal(buildCatalogPosterUrl('https://addon.example','movie','tmdb:1819380',true),'https://addon.example/art/poster/movie~tmdb:1819380?badge=just-added&v=5');
+ assert.equal(buildCatalogPosterUrl('https://addon.example','movie','tmdb:1819380',true),'https://addon.example/art/poster/movie~tmdb:1819380?badge=just-added&v=6');
 });
 test('Just Added renderer URL supports IMDb and TMDB movie/series IDs',()=>{
- assert.equal(buildJustAddedRendererUrl('movie','tt1234567'),'https://great-indian-upcoming-posters.onrender.com/poster/tt1234567.jpg?badge=just-added&v=5');
- assert.equal(buildJustAddedRendererUrl('movie','tmdb:1819380'),'https://great-indian-upcoming-posters.onrender.com/poster/tmdb/1819380.jpg?badge=just-added&type=movie&v=5');
- assert.equal(buildJustAddedRendererUrl('series','tmdb:1819380'),'https://great-indian-upcoming-posters.onrender.com/poster/tmdb/1819380.jpg?badge=just-added&type=tv&v=5');
+ assert.equal(buildJustAddedRendererUrl('movie','tt1234567'),'https://great-indian-upcoming-posters.onrender.com/poster/tt1234567.jpg?badge=just-added&v=6');
+ assert.equal(buildJustAddedRendererUrl('movie','tmdb:1819380'),'https://great-indian-upcoming-posters.onrender.com/poster/tmdb/1819380.jpg?badge=just-added&type=movie&v=6');
+ assert.equal(buildJustAddedRendererUrl('series','tmdb:1819380'),'https://great-indian-upcoming-posters.onrender.com/poster/tmdb/1819380.jpg?badge=just-added&type=tv&v=6');
  assert.equal(buildJustAddedRendererUrl('movie','tvmaze:123'),null);
 });
 test('shared renderer URL supports IMDb and TMDB movies and series',()=>{
