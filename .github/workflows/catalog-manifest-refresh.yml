@@ -49,13 +49,13 @@ jobs:
         run: |
           # Render free instances may restart during a long scan. Treat transient
           # 5xx/network errors as retryable; the service resumes from its durable ledger.
-          for attempt in $(seq 1 350); do
+          for attempt in $(seq 1 700); do
             if ! response=$(curl --silent --show-error --fail-with-body \
               --max-time 30 \
               "$POSTER_SERVICE_URL/catalog-refresh/status" \
               -H "Authorization: Bearer $SCAN_TOKEN" \
               -H "Accept: application/json"); then
-              echo "::warning::Render status endpoint temporarily unavailable; retrying ($attempt/350)."
+              echo "::warning::Render status endpoint temporarily unavailable; retrying ($attempt/700)."
               sleep 30
               continue
             fi
