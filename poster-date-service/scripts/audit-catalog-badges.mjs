@@ -13,7 +13,36 @@ const outputDir = resolve(process.env.OUTPUT_DIR || './audit-output');
 const concurrency = Math.max(1, Math.min(4, Number(process.env.AUDIT_CONCURRENCY || 1)));
 const timeoutMs = 60000;
 
-const catalogs = JSON.parse(await readFile(catalogsPath, 'utf8'));
+const snapshotCatalogs = JSON.parse(await readFile(catalogsPath, 'utf8'));
+const snapshotTitleCount = Object.values(snapshotCatalogs).reduce((sum, items) => sum + (Array.isArray(items) ? items.length : 0), 0);
+const publicAddonBase = process.env.PUBLIC_ADDON_BASE ? new URL(process.env.PUBLIC_ADDON_BASE).origin : '';
+let catalogs = snapshotCatalogs;
+if (publicAddonBase) {
+  const liveCatalogs = {};
+  for (const catalog of Object.keys(snapshotCatalogs)) {
+    const kind = catalog.endsWith('_series') ? 'series' : 'movie';
+    const rows = [];
+    let skip = 0;
+    for (let page = 0; page < 100; page++) {
+      const path = '/catalog/' + kind + '/' + catalog + (skip ? '/skip=' + skip : '') + '.json';
+      const endpoint = new URL(path, publicAddonBase).href;
+      const response = await fetch(endpoint, {
+        headers: { accept: 'application/json' },
+        signal: AbortSignal.timeout(20000)
+      });
+      if (!response.ok) throw new Error('Public catalog fetch failed for ' + catalog + ': HTTP ' + response.status);
+      const payload = await response.json();
+      const metas = Array.isArray(payload.metas) ? payload.metas : [];
+      if (!metas.length) break;
+      rows.push(...metas);
+      if (metas.length < 50) break;
+      skip += metas.length;
+    }
+    liveCatalogs[catalog] = rows;
+    console.log('PUBLIC_CATALOG ' + catalog + ' ' + rows.length);
+  }
+  catalogs = liveCatalogs;
+}
 const addedAt = JSON.parse(await readFile(addedPath, 'utf8'));
 let catalogStatus = {};
 try { catalogStatus = JSON.parse(await readFile(statusPath, 'utf8')); } catch {}
@@ -76,6 +105,7 @@ async function inspect(entry) {
     finalUrl: null,
     posterStatus: null,
     posterSource: null,
+    posterBadgeText: null,
     badgeVisible: false,
     ocrDetectedBadge: false,
     serviceConfirmed: false,
@@ -106,6 +136,7 @@ async function inspect(entry) {
     result.finalUrl = response.url;
     result.posterStatus = response.headers.get('x-poster-date-status');
     result.posterSource = response.headers.get('x-poster-source');
+    result.posterBadgeText = response.headers.get('x-poster-badge');
     if (!response.ok) throw new Error('HTTP ' + response.status);
     if (!result.contentType.startsWith('image/')) throw new Error('Non-image response: ' + result.contentType);
     const bytes = Buffer.from(await response.arrayBuffer());
@@ -120,7 +151,7 @@ async function inspect(entry) {
     const ocr = await detectBadge(prepared);
     result.ocrText = ocr.text;
     result.ocrDetectedBadge = ocr.visible;
-    result.serviceConfirmed = ['just-added-overlay', 'betterposters-just-added-tag'].includes(result.posterStatus);
+    result.serviceConfirmed = result.posterStatus === 'just-added-overlay' && (!publicAddonBase || result.posterBadgeText === 'Just Added');
     result.badgeVisible = result.serviceConfirmed || result.ocrDetectedBadge;
     if (result.serviceConfirmed && !result.ocrDetectedBadge) result.inspectionStatus = 'service-overlay-confirmed-ocr-low-confidence';
     return result;
@@ -169,6 +200,8 @@ const visibleTitles = results.filter(row => row.badgeVisible);
 const report = {
   generatedAt: new Date().toISOString(),
   catalogUpdatedAt: catalogStatus.updatedAt || null,
+  catalogSource: publicAddonBase || 'GitHub snapshot',
+  snapshotTitleCount,
   totalTitles: entries.length,
   scannedTitles: results.length,
   catalogFlaggedCount: results.filter(row => row.catalogFlag).length,
@@ -191,12 +224,14 @@ const lines = [
   '',
   'Generated: ' + report.generatedAt,
   'Catalog snapshot updated: ' + (report.catalogUpdatedAt || 'not recorded'),
+  'Catalog source: ' + report.catalogSource,
+  'GitHub snapshot title count: ' + report.snapshotTitleCount,
   '',
   '| Catalog | Titles | Catalog flagged | Images OCR-checked | Service confirmed | OCR confirmed | Visible badge | Unavailable |',
   '|---|---:|---:|---:|---:|---:|---:|---:|'
 ];
 for (const [catalog, value] of Object.entries(byCatalog)) {
-  lines.push('| ' + catalog + ' | ' + value.total + ' | ' + value.catalogFlagged + ' | ' + value.imagesInspected + ' | ' + value.visibleBadge + ' | ' + value.unavailable + ' |');
+  lines.push('| ' + catalog + ' | ' + value.total + ' | ' + value.catalogFlagged + ' | ' + value.imagesInspected + ' | ' + value.serviceConfirmed + ' | ' + value.ocrConfirmed + ' | ' + value.visibleBadge + ' | ' + value.unavailable + ' |');
 }
 lines.push('', '**Total titles:** ' + report.totalTitles, '**Catalog entries checked:** ' + report.scannedTitles, '**Flagged poster images inspected:** ' + report.posterImagesInspected, '**Service-confirmed overlays:** ' + report.serviceConfirmedCount, '**OCR-confirmed labels:** ' + report.ocrConfirmedCount, '**Unflagged entries not downloaded:** ' + report.unflaggedTitlesNotDownloaded, '**Catalog flagged:** ' + report.catalogFlaggedCount, '**Visible “Just Added” labels:** ' + report.visibleBadgeCount, '**Unavailable posters:** ' + report.unavailableCount, '', '## Titles with a visible Just Added label');
 for (const row of visibleTitles) lines.push('- **' + row.title + '** (' + row.catalog + ', ' + row.id + ')');
