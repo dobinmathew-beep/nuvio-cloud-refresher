@@ -112,6 +112,15 @@ export async function hasExistingComingDateTag(input, kind = 'premiere', isoDate
 
 export { hasExpectedDateBadgeText };
 
+export async function terminateOcrWorker() {
+  if (!workerPromise) return;
+  try {
+    const worker = await workerPromise;
+    await worker.terminate();
+  } finally {
+    workerPromise = null;
+  }
+}
 
 export function hasJustAddedBadgeText(text) {
   return /\bjust\s*added\b/i.test(normalizedText(text));
