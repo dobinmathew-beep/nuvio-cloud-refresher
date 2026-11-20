@@ -1,6 +1,6 @@
 import { upcomingRelease, validImdbId } from '../lib/release-dates.mjs';
 import { renderUpcomingBadge, renderJustAddedBadge } from '../lib/render-poster.mjs';
-import { hasExistingComingDateTag, hasExistingJustAddedTag } from '../lib/coming-tag.mjs';
+import { hasExistingComingDateTag } from '../lib/coming-tag.mjs';
 import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster } from '../lib/imagekit-storage.mjs';
 
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
@@ -110,21 +110,15 @@ async function getOriginal(imdbId) {
 
 async function buildPoster(id, knownRelease = undefined, badge = '') {
   const original = await getOriginal(id);
-  // Newly published catalogue movies request this explicit badge. BetterPosters
-  // remains the source image; OCR prevents duplicate "Just Added" chips.
+  // Always paint our own title-case chip over the provider's badge area.
+  // This replaces any uppercase BetterPosters tag instead of preserving it.
   if (badge === 'just-added') {
-    let alreadyTagged = false;
-    try {
-      alreadyTagged = await hasExistingJustAddedTag(original.bytes);
-    } catch (error) {
-      console.warn('[poster-just-added-ocr-unavailable]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error', action: 'apply-just-added-overlay' }));
-    }
-    if (alreadyTagged) {
-      return { bytes: original.bytes, type: original.type, source: original.source, status: 'betterposters-just-added-tag', releaseDate: 'none', releaseKind: 'none' };
-    }
     try {
       const output = await renderJustAddedBadge(original.bytes);
-      console.info('[poster-just-added-check]', JSON.stringify({ imdbId: id, betterPostersBadge: false, result: 'just-added-overlay' }));
+      console.info('[poster-just-added-check]', JSON.stringify({
+        imdbId: id,
+        result: 'just-added-overlay-replaced-provider-tag'
+      }));
       return { bytes: output, type: original.type, source: original.source, status: 'just-added-overlay', releaseDate: 'none', releaseKind: 'none' };
     } catch (error) {
       console.warn('[poster-just-added-overlay-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
