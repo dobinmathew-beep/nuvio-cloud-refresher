@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import sharp from 'sharp';
-import { renderUpcomingBadge } from '../lib/render-poster.mjs';
+import { renderUpcomingBadge, renderJustAddedBadge } from '../lib/render-poster.mjs';
 
 test('adds a readable Coming badge without changing poster dimensions or format', async () => {
   const source = await sharp({ create: { width: 400, height: 600, channels: 3, background: '#26354b' } }).jpeg().toBuffer();
@@ -21,4 +21,16 @@ test('renders all month abbreviations with the compact BetterPosters-style label
     const output = await renderUpcomingBadge(source, date);
     assert.ok(output.length > 0, `badge should render for month ${month}`);
   }
+});
+
+test('stacks Coming and Just Added badges without changing poster dimensions', async () => {
+  const source = await sharp({ create: { width: 600, height: 900, channels: 3, background: '#26354b' } }).jpeg().toBuffer();
+  const withComing = await renderUpcomingBadge(source, '2026-12-20', 'premiere', 0.105);
+  const withBoth = await renderJustAddedBadge(withComing, 0.255);
+  const before = await sharp(source).metadata();
+  const after = await sharp(withBoth).metadata();
+  assert.equal(after.width, before.width);
+  assert.equal(after.height, before.height);
+  assert.equal(after.format, 'jpeg');
+  assert.ok(withBoth.length > withComing.length);
 });
