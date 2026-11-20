@@ -1,1 +1,1 @@
-Trigger the full OCR audit of all eight Great Indian Addon catalogs.
+Trigger the corrected full OCR audit of all eight Great Indian Addon catalogs.
