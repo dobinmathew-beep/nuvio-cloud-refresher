@@ -1,6 +1,6 @@
 # Independent Nuvio output verification
 
-**Checked:** 2026-11-20T17:51:10.918326+04:00 (Oman time)
+**Checked:** 2026-11-20T18:50:57.841425+04:00 (Oman time)
 **Overall:** 4/4 outputs passed
 
 | Output | Result |
@@ -16,11 +16,11 @@
 - **PASS** public health endpoint: {"checkout": {"ready": false, "configured": false, "provider": "Bank Muscat", "amountMode": "provider-entered"}}
 
 ## Epg — PASS
-- **PASS** public status and freshness: {"revision": "7ac69a35-dec7-4111-a8ed-ce0a9f38e9bd", "checked_utc": "2026-11-20T08:05:23.175313+00:00", "matched_ids": 639, "playlist_channel_ids": 849, "unresolved_ids": 210, "programmes": 73720}
-- **PASS** published XMLTV: {"bytes": 2105100, "channels": 639, "programmes": 73720}
+- **PASS** public status and freshness: {"revision": "2c7df0f6-1291-453b-8b65-7766c019c084", "checked_utc": "2026-11-20T13:51:15.573852+00:00", "matched_ids": 641, "playlist_channel_ids": 849, "unresolved_ids": 208, "programmes": 70889}
+- **PASS** published XMLTV: {"bytes": 2049864, "channels": 641, "programmes": 70889}
 - **PASS** Channel_Matching_Report.csv: {"rows": 849}
-- **PASS** Unresolved_Channels.csv: {"rows": 210}
-- **PASS** Source_Crosscheck_Report.csv: {"rows": 3335}
+- **PASS** Unresolved_Channels.csv: {"rows": 208}
+- **PASS** Source_Crosscheck_Report.csv: {"rows": 3366}
 - **PASS** Validation_Summary.json: {"keys": ["checked_utc", "playlist_url", "playlist_sha256", "playlist_channel_ids", "matched_ids", "unresolved_ids", "programmes", "sources_with_parsed_guides", "selected_source_counts", "unresolved_reason_counts"]}
 - **PASS** Source_Health_Report.json: {"keys": ["airtel.xml", "ca.xml", "dishtv.xml", "free-epg.xml", "guide.xml", "jiotv.xml", "open-india.xml", "pw.xml", "samsung-in.xml", "sundirectgo.xml"]}
 
@@ -35,9 +35,9 @@
   },
   "errors": [],
   "catalogHeads": {
-    "malayalam": "tt41944351",
     "hindi": "tt37200939",
     "tamil": "tt18933846",
+    "malayalam": "tt41944351",
     "telugu": "tt36915004"
   }
 }

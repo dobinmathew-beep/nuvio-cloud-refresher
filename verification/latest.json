@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-20T17:51:10.918326+04:00",
+  "checked_at": "2026-11-20T18:50:57.841425+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
     "addon": {
       "status": "pass",
-      "checked_at": "2026-11-20T12:05:17.795435+04:00",
+      "checked_at": "2026-11-20T18:50:57.841425+04:00",
       "public_url": "https://the-great-indian-addon.vercel.app",
       "checks": [
         {
@@ -50,28 +50,28 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-20T12:59:16.673809+04:00",
+      "checked_at": "2026-11-20T18:50:57.841425+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
           "name": "public status and freshness",
           "status": "pass",
           "details": {
-            "revision": "7ac69a35-dec7-4111-a8ed-ce0a9f38e9bd",
-            "checked_utc": "2026-11-20T08:05:23.175313+00:00",
-            "matched_ids": 639,
+            "revision": "2c7df0f6-1291-453b-8b65-7766c019c084",
+            "checked_utc": "2026-11-20T13:51:15.573852+00:00",
+            "matched_ids": 641,
             "playlist_channel_ids": 849,
-            "unresolved_ids": 210,
-            "programmes": 73720
+            "unresolved_ids": 208,
+            "programmes": 70889
           }
         },
         {
           "name": "published XMLTV",
           "status": "pass",
           "details": {
-            "bytes": 2105100,
-            "channels": 639,
-            "programmes": 73720
+            "bytes": 2049864,
+            "channels": 641,
+            "programmes": 70889
           }
         },
         {
@@ -85,14 +85,14 @@
           "name": "Unresolved_Channels.csv",
           "status": "pass",
           "details": {
-            "rows": 210
+            "rows": 208
           }
         },
         {
           "name": "Source_Crosscheck_Report.csv",
           "status": "pass",
           "details": {
-            "rows": 3335
+            "rows": 3366
           }
         },
         {
@@ -135,7 +135,7 @@
     },
     "backdrops": {
       "status": "pass",
-      "checked_at": "2026-11-20T17:51:10.918326+04:00",
+      "checked_at": "2026-11-20T18:50:57.841425+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
       "details": {
         "day": "2026-11-20",
@@ -147,9 +147,9 @@
         },
         "errors": [],
         "catalogHeads": {
-          "malayalam": "tt41944351",
           "hindi": "tt37200939",
           "tamil": "tt18933846",
+          "malayalam": "tt41944351",
           "telugu": "tt36915004"
         }
       },
@@ -157,7 +157,7 @@
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-20T17:51:10.918326+04:00",
+      "checked_at": "2026-11-20T18:50:57.841425+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
