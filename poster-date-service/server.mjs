@@ -429,6 +429,26 @@ const server = createServer(async (req, res) => {
 
 server.listen(port, '0.0.0.0', () => {
   console.log(`Great Indian Upcoming Poster Service listening on port ${port}`);
+  // Resume the interrupted catalogue job automatically after a deploy/restart.
+  // The persistent ImageKit ledger skips completed titles and retries only pending/stale ones.
+  if (process.env.CATALOG_REFRESH_AUTOSTART !== 'false') {
+    const jobId = randomUUID();
+    catalogRefreshJob = jobId;
+    catalogRefreshError = null;
+    catalogRefreshReport = null;
+    setImmediate(() => {
+      void runManifestCatalogRefresh()
+        .then(report => {
+          catalogRefreshReport = report;
+          console.log('[catalog-refresh-autoresume-complete]', JSON.stringify({ jobId, status: 'completed' }));
+        })
+        .catch(error => {
+          catalogRefreshError = error?.message || 'Catalogue refresh autoresume failed';
+          console.error('[catalog-refresh-autoresume-failed]', JSON.stringify({ jobId, error: catalogRefreshError }));
+        })
+        .finally(() => { catalogRefreshJob = null; });
+    });
+  }
 });
 
 for (const signal of ['SIGTERM', 'SIGINT']) {
