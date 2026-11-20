@@ -59,6 +59,7 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
   }
   res.statusCode = 200;
   res.setHeader('Content-Type', type);
+  res.setHeader('X-Poster-Source', 'TMDB');
   res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=3600');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Content-Type-Options', 'nosniff');
