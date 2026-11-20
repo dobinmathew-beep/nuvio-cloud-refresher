@@ -10,8 +10,8 @@ const catalogsPath = resolve(process.env.CATALOGS_PATH || '../catalog-data/dobin
 const addedPath = resolve(process.env.ADDED_PATH || '../catalog-data/dobins-indian-catalog/data/catalog-added.json');
 const statusPath = resolve(process.env.STATUS_PATH || '../catalog-data/dobins-indian-catalog/data/status.json');
 const outputDir = resolve(process.env.OUTPUT_DIR || './audit-output');
-const concurrency = Math.max(1, Math.min(6, Number(process.env.AUDIT_CONCURRENCY || 4)));
-const timeoutMs = 25000;
+const concurrency = Math.max(1, Math.min(4, Number(process.env.AUDIT_CONCURRENCY || 1)));
+const timeoutMs = 60000;
 
 const catalogs = JSON.parse(await readFile(catalogsPath, 'utf8'));
 const addedAt = JSON.parse(await readFile(addedPath, 'utf8'));
@@ -74,6 +74,7 @@ async function inspect(entry) {
     contentType: null,
     finalUrl: null,
     posterStatus: null,
+    posterSource: null,
     badgeVisible: false,
     imageInspected: false,
     inspectionStatus: 'not-inspected',
@@ -101,6 +102,7 @@ async function inspect(entry) {
     result.contentType = (response.headers.get('content-type') || '').split(';')[0].toLowerCase();
     result.finalUrl = response.url;
     result.posterStatus = response.headers.get('x-poster-date-status');
+    result.posterSource = response.headers.get('x-poster-source');
     if (!response.ok) throw new Error('HTTP ' + response.status);
     if (!result.contentType.startsWith('image/')) throw new Error('Non-image response: ' + result.contentType);
     const bytes = Buffer.from(await response.arrayBuffer());
