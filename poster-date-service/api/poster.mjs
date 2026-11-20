@@ -212,6 +212,7 @@ function setImageHeaders(res, type, status, releaseDate, releaseKind = 'none') {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Poster-Date-Status', status);
+  res.setHeader('X-Poster-Just-Added', status === 'just-added-overlay' ? 'true' : 'false');
   res.setHeader('X-Poster-Date', releaseDate);
   res.setHeader('X-Poster-Date-Type', releaseKind);
   // Let Xperience/CDNs reuse the processed result; the in-process cache
