@@ -16,6 +16,10 @@ const timeoutMs = 60000;
 const snapshotCatalogs = JSON.parse(await readFile(catalogsPath, 'utf8'));
 const snapshotTitleCount = Object.values(snapshotCatalogs).reduce((sum, items) => sum + (Array.isArray(items) ? items.length : 0), 0);
 const publicAddonBase = process.env.PUBLIC_ADDON_BASE ? new URL(process.env.PUBLIC_ADDON_BASE).origin : '';
+const posterTemplate = String(process.env.POSTER_TEMPLATE || '').trim();
+const posterToken = posterTemplate ? Buffer.from(posterTemplate, 'utf8').toString('base64url') : '';
+const catalogBase = publicAddonBase && posterToken ? publicAddonBase + '/install/ff/bttr/' + posterToken : publicAddonBase;
+const catalogSource = publicAddonBase ? (posterToken ? publicAddonBase + ' (configured BetterPosters install route)' : publicAddonBase + ' (default install route)') : 'GitHub snapshot';
 let catalogs = snapshotCatalogs;
 if (publicAddonBase) {
   const liveCatalogs = {};
@@ -25,7 +29,7 @@ if (publicAddonBase) {
     let skip = 0;
     for (let page = 0; page < 100; page++) {
       const path = '/catalog/' + kind + '/' + catalog + (skip ? '/skip=' + skip : '') + '.json';
-      const endpoint = new URL(path, publicAddonBase).href;
+      const endpoint = new URL(path.replace(/^\\/+/, ''), catalogBase.replace(/\\/$/, '') + '/').href;
       const response = await fetch(endpoint, {
         headers: { accept: 'application/json' },
         signal: AbortSignal.timeout(20000)
@@ -200,7 +204,7 @@ const visibleTitles = results.filter(row => row.badgeVisible);
 const report = {
   generatedAt: new Date().toISOString(),
   catalogUpdatedAt: catalogStatus.updatedAt || null,
-  catalogSource: publicAddonBase || 'GitHub snapshot',
+  catalogSource,
   snapshotTitleCount,
   totalTitles: entries.length,
   scannedTitles: results.length,
@@ -224,7 +228,7 @@ const lines = [
   '',
   'Generated: ' + report.generatedAt,
   'Catalog snapshot updated: ' + (report.catalogUpdatedAt || 'not recorded'),
-  'Catalog source: ' + report.catalogSource,
+  'Catalog source: ' + report.catalogSource,\n  'Poster route tested: ' + (posterToken ? 'personalised BetterPosters install proxy' : 'default public proxy'),
   'GitHub snapshot title count: ' + report.snapshotTitleCount,
   '',
   '| Catalog | Titles | Catalog flagged | Images OCR-checked | Service confirmed | OCR confirmed | Visible badge | Unavailable |',
