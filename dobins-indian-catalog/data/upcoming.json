@@ -1,98 +1,36 @@
 {
-  "generatedAt": "2026-11-20T19:11:48.285209+04:00",
-  "policy": "confirmed-source-and-imdb-match-v1",
-  "count": 15,
+  "generatedAt": "2026-11-20T19:17:11.487331+04:00",
+  "policy": "confirmed-source-matched-id-v2",
+  "count": 14,
   "items": [
     {
-      "id": "tt38984184",
-      "name": "418",
+      "id": "tt1281973",
+      "aliases": [
+        "tt1281973"
+      ],
+      "name": "Bigg Boss",
       "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-20",
+      "type": "series",
+      "releaseDate": "2026-11-21",
+      "kind": "episode",
       "platforms": [
-        "Netflix"
+        "JioHotStar"
       ],
       "sources": [
-        "https://simplymollywood.com/ott"
+        "https://www.dailyott.in/"
       ],
-      "catalog": "dobins_hi_movie"
-    },
-    {
-      "id": "tt39239818",
-      "name": "Haiku",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-20",
-      "platforms": [
-        "Netflix"
-      ],
-      "sources": [
-        "https://simplymollywood.com/ott"
-      ],
-      "catalog": "dobins_hi_movie"
-    },
-    {
-      "id": "tt38984184",
-      "name": "418",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-20",
-      "platforms": [
-        "Netflix"
-      ],
-      "sources": [
-        "https://simplymollywood.com/ott"
-      ],
-      "catalog": "dobins_ml_movie"
-    },
-    {
-      "id": "tt39239818",
-      "name": "Haiku",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-20",
-      "platforms": [
-        "Netflix"
-      ],
-      "sources": [
-        "https://simplymollywood.com/ott"
-      ],
-      "catalog": "dobins_ml_movie"
-    },
-    {
-      "id": "tt38984184",
-      "name": "418",
-      "language": "tamil",
-      "type": "movie",
-      "releaseDate": "2026-11-20",
-      "platforms": [
-        "Netflix"
-      ],
-      "sources": [
-        "https://simplymollywood.com/ott"
-      ],
-      "catalog": "dobins_ta_movie"
-    },
-    {
-      "id": "tt39239818",
-      "name": "Haiku",
-      "language": "telugu",
-      "type": "movie",
-      "releaseDate": "2026-11-20",
-      "platforms": [
-        "Netflix"
-      ],
-      "sources": [
-        "https://simplymollywood.com/ott"
-      ],
-      "catalog": "dobins_te_movie"
+      "catalog": "dobins_hi_series"
     },
     {
       "id": "tt30003786",
+      "aliases": [
+        "tt30003786"
+      ],
       "name": "The Great Indian Kapil Show",
       "language": "hindi",
       "type": "series",
       "releaseDate": "2026-11-21",
+      "kind": "episode",
       "platforms": [
         "Netflix"
       ],
@@ -106,10 +44,14 @@
     },
     {
       "id": "tt45692999",
+      "aliases": [
+        "tt45692999"
+      ],
       "name": "Chiram",
       "language": "malayalam",
       "type": "movie",
       "releaseDate": "2026-11-21",
+      "kind": "premiere",
       "platforms": [
         "ManoramaMAX"
       ],
@@ -119,11 +61,52 @@
       "catalog": "dobins_ml_movie"
     },
     {
+      "id": "tt38195069",
+      "aliases": [
+        "tt38195069"
+      ],
+      "name": "Tumm Se Tumm Tak",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-23",
+      "kind": "episode",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "id": "tt50135636",
+      "aliases": [
+        "tt50135636"
+      ],
+      "name": "Mr & Mrs Office",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-11-25",
+      "kind": "episode",
+      "platforms": [
+        "JioHotStar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://www.themoviedb.org/tv/338502"
+      ],
+      "catalog": "dobins_ta_series"
+    },
+    {
       "id": "tt38676235",
+      "aliases": [
+        "tt38676235"
+      ],
       "name": "Takshakudu",
       "language": "telugu",
       "type": "movie",
       "releaseDate": "2026-11-26",
+      "kind": "premiere",
       "platforms": [],
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN"
@@ -132,10 +115,14 @@
     },
     {
       "id": "tt41496092",
+      "aliases": [
+        "tt41496092"
+      ],
       "name": "Dhai Chaal",
       "language": "hindi",
       "type": "series",
       "releaseDate": "2026-11-27",
+      "kind": "episode",
       "platforms": [
         "JioHotstar",
         "Hotstar"
@@ -147,10 +134,14 @@
     },
     {
       "id": "tt27050858",
+      "aliases": [
+        "tt27050858"
+      ],
       "name": "Drishyam: The Conclusion",
       "language": "hindi",
       "type": "movie",
       "releaseDate": "2026-11-27",
+      "kind": "premiere",
       "platforms": [
         "Netflix",
         "Prime Video"
@@ -163,10 +154,14 @@
     },
     {
       "id": "tt39390582",
+      "aliases": [
+        "tt39390582"
+      ],
       "name": "Hanuman Ansh",
       "language": "hindi",
       "type": "movie",
       "releaseDate": "2026-11-27",
+      "kind": "premiere",
       "platforms": [
         "SonyLIV"
       ],
@@ -177,10 +172,14 @@
     },
     {
       "id": "tt50508547",
+      "aliases": [
+        "tt50508547"
+      ],
       "name": "Sathyameva",
       "language": "malayalam",
       "type": "series",
       "releaseDate": "2026-11-27",
+      "kind": "episode",
       "platforms": [
         "ZEE5"
       ],
@@ -190,11 +189,36 @@
       "catalog": "dobins_ml_series"
     },
     {
+      "id": "tt44914967",
+      "aliases": [
+        "tt44914967"
+      ],
+      "name": "The Court",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "kind": "episode",
+      "platforms": [
+        "JioHotStar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/331750"
+      ],
+      "catalog": "dobins_ta_series"
+    },
+    {
       "id": "tt30768979",
+      "aliases": [
+        "tt30768979"
+      ],
       "name": "Aadarsha Kutumbam House No: 47 - AK47",
       "language": "telugu",
       "type": "movie",
       "releaseDate": "2026-11-27",
+      "kind": "premiere",
       "platforms": [
         "Netflix"
       ],
@@ -205,15 +229,40 @@
     },
     {
       "id": "tt35933285",
+      "aliases": [
+        "tt35933285"
+      ],
       "name": "O Saathi Re",
       "language": "hindi",
       "type": "series",
       "releaseDate": "2026-12-04",
+      "kind": "episode",
       "platforms": [
         "Netflix"
       ],
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "id": "tt16997004",
+      "aliases": [
+        "tt16997004"
+      ],
+      "name": "Matka King",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2027-01-01",
+      "kind": "episode",
+      "platforms": [
+        "Prime Video"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/249765"
       ],
       "catalog": "dobins_hi_series"
     }
