@@ -2,6 +2,25 @@ import unittest,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 import physical,update
+class UpcomingIndexTests(unittest.TestCase):
+ def test_upcoming_index_includes_movie_series_and_imdb_aliases(self):
+  catalogs={'dobins_ml_movie':[
+   {'id':'tmdb:123','imdbId':'tt1234567','name':'Future Movie','language':'malayalam','type':'movie','ottDate':'2026-11-26','releaseDate':'2026-11-20','releaseStatus':'upcoming','platforms':['Netflix'],'sources':['source-movie']},
+   {'id':'tt7654321','name':'Old Movie','language':'malayalam','type':'movie','ottDate':'2026-11-19','releaseDate':'2026-11-19','releaseStatus':'available','platforms':[],'sources':[]}
+  ],'dobins_ta_series':[
+   {'id':'tvmaze:42','imdbId':'tt7654322','name':'Future Series','language':'tamil','type':'series','nextEpisodeReleaseAt':'2026-11-25T00:00:00+00:00','releaseDate':'2026-11-19','releaseStatus':'available','platforms':['SonyLIV'],'sources':['source-series']}
+  ]}
+  rows=update.catalog_upcoming_index(catalogs,'2026-11-20')
+  self.assertEqual(len(rows),2)
+  movie=next(row for row in rows if row['name']=='Future Movie')
+  series=next(row for row in rows if row['name']=='Future Series')
+  self.assertEqual(movie['releaseDate'],'2026-11-26')
+  self.assertIn('tt1234567',movie['aliases'])
+  self.assertEqual(movie['kind'],'premiere')
+  self.assertEqual(series['releaseDate'],'2026-11-25')
+  self.assertIn('tt7654322',series['aliases'])
+  self.assertEqual(series['kind'],'episode')
+
 class PhysicalTests(unittest.TestCase):
  def test_only_released_physical_rows_qualify(self):
   html='<table class="releases"><h2 class="release" id="GB">United Kingdom</h2><tbody>'
