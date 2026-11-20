@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-20T17:51:06.849866+04:00",
+  "generatedAt": "2026-11-20T18:50:36.593874+04:00",
   "policy": "confirmed-source-and-imdb-match-v1",
-  "count": 16,
+  "count": 15,
   "items": [
     {
       "id": "tt38984184",
@@ -97,12 +97,26 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
       "catalog": "dobins_hi_series"
+    },
+    {
+      "id": "tt45692999",
+      "name": "Chiram",
+      "language": "malayalam",
+      "type": "movie",
+      "releaseDate": "2026-11-21",
+      "platforms": [
+        "ManoramaMAX"
+      ],
+      "sources": [
+        "https://www.keralatv.in/channel/ott/"
+      ],
+      "catalog": "dobins_ml_movie"
     },
     {
       "id": "tt38676235",
@@ -138,12 +152,12 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Prime Video",
-        "Netflix"
+        "Netflix",
+        "Prime Video"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "catalog": "dobins_hi_movie"
     },
@@ -202,32 +216,6 @@
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
       "catalog": "dobins_hi_series"
-    },
-    {
-      "id": "tt37020592",
-      "name": "Teen Kauwe",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-12-25",
-      "platforms": [],
-      "sources": [
-        "https://indianmoviereviews.com/ott-releases/"
-      ],
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "id": "tt35984846",
-      "name": "Octopus!",
-      "language": "tamil",
-      "type": "series",
-      "releaseDate": "2026-12-31",
-      "platforms": [
-        "ZEE5"
-      ],
-      "sources": [
-        "https://indianmoviereviews.com/ott-releases/"
-      ],
-      "catalog": "dobins_ta_series"
     }
   ]
 }

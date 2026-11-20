@@ -32,23 +32,23 @@
     }
   },
   {
-    "name": "Pendulum",
+    "name": "Sameer",
     "language": "malayalam",
     "type": "movie",
-    "ottDate": "2026-11-20",
+    "ottDate": "2026-11-21",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.keralatv.in/channel/ott/"
     ],
     "platforms": [
-      "Prime Video"
+      "ManoramaMAX"
     ],
-    "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
+    "detail": "https://www.keralatv.in/sameer-malayalam-movie-ott-release-date-manoramamax/",
     "sourceRecord": {
-      "title": "Pendulum",
-      "releaseDate": "2026-11-20",
+      "title": "Sameer",
+      "releaseDate": "2026-11-21",
       "source": "https://www.keralatv.in/channel/ott/",
-      "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
+      "headline": "Sameer Malayalam Movie OTT Release Date Confirmed – Streaming on ManoramaMAX From 21 November 2026"
     }
   },
   {
@@ -111,26 +111,6 @@
     }
   },
   {
-    "name": "D Coming Fri 11 Dec Dr. Hassan",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-12-11",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://indianmoviereviews.com/ott-releases/"
-    ],
-    "platforms": [
-      "JioHotstar",
-      "Hotstar"
-    ],
-    "detail": "https://indianmoviereviews.com/series/dr-hassan-2026/",
-    "sourceRecord": {
-      "title": "D Coming Fri 11 Dec Dr. Hassan",
-      "releaseDate": "2026-12-11",
-      "source": "https://indianmoviereviews.com/ott-releases/"
-    }
-  },
-  {
     "name": "New",
     "language": "tamil",
     "type": "movie",
@@ -151,20 +131,23 @@
     }
   },
   {
-    "name": "I Coming Mon 7 Dec Itihasa: Ramayana Beyond Borders with Shashi Tharoor",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-12-07",
+    "name": "Pendulum",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-11-20",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
-      "https://indianmoviereviews.com/ott-releases/"
+      "https://www.keralatv.in/channel/ott/"
     ],
-    "platforms": [],
-    "detail": "https://indianmoviereviews.com/series/itihasa-ramayana-beyond-borders-with-shashi-tharoor-2026/",
+    "platforms": [
+      "Prime Video"
+    ],
+    "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
     "sourceRecord": {
-      "title": "I Coming Mon 7 Dec Itihasa: Ramayana Beyond Borders with Shashi Tharoor",
-      "releaseDate": "2026-12-07",
-      "source": "https://indianmoviereviews.com/ott-releases/"
+      "title": "Pendulum",
+      "releaseDate": "2026-11-20",
+      "source": "https://www.keralatv.in/channel/ott/",
+      "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
     }
   },
   {
@@ -495,6 +478,37 @@
     }
   },
   {
+    "name": "Southern Shadows",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-05-23",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Prime Video"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a112342135bb8f4954fec65",
+      "title": "Southern Shadows",
+      "platform": "Prime Video",
+      "createdAt": "2026-05-23T03:47:14.634Z",
+      "genre": "Crime, Drama",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-05-23",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-05-23T03:47:25.416Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/kf0utrFWZfi1Is821zUMZnio2aF.jpg",
+      "verified": true
+    }
+  },
+  {
     "name": "Nindu Noorella Saavasam (Episode 885)",
     "language": "telugu",
     "type": "series",
@@ -553,37 +567,6 @@
       "type": "Movie",
       "updatedAt": "2026-10-14T02:18:51.600Z",
       "votes": 0,
-      "verified": true
-    }
-  },
-  {
-    "name": "Southern Shadows",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-05-23",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Prime Video"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a112342135bb8f4954fec65",
-      "title": "Southern Shadows",
-      "platform": "Prime Video",
-      "createdAt": "2026-05-23T03:47:14.634Z",
-      "genre": "Crime, Drama",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-05-23",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-05-23T03:47:25.416Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/kf0utrFWZfi1Is821zUMZnio2aF.jpg",
       "verified": true
     }
   },
@@ -711,6 +694,37 @@
     }
   },
   {
+    "name": "Roadies Rebirth",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6ad1898c3249ff69efda9cee",
+      "platform": "JioHotStar",
+      "title": "Roadies Rebirth",
+      "createdAt": "2026-10-16T02:18:52.613Z",
+      "genre": "Reality, Adventure",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-10-16",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-10-16T02:18:52.613Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Chamanthi",
     "language": "telugu",
     "type": "series",
@@ -772,10 +786,10 @@
     }
   },
   {
-    "name": "Roadies Rebirth",
-    "language": "hindi",
+    "name": "Jodi Are U Ready Season 3 (Grand Finale)",
+    "language": "tamil",
     "type": "series",
-    "ottDate": "2026-10-16",
+    "ottDate": "2026-05-03",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
@@ -785,20 +799,19 @@
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6ad1898c3249ff69efda9cee",
+      "_id": "69f6c52b36465ddb3f139825",
       "platform": "JioHotStar",
-      "title": "Roadies Rebirth",
-      "createdAt": "2026-10-16T02:18:52.613Z",
-      "genre": "Reality, Adventure",
+      "title": "Jodi Are U Ready Season 3 (Grand Finale)",
+      "createdAt": "2026-05-03T03:46:51.832Z",
+      "genre": "Reality, Dance",
       "imdbRating": null,
       "languages": [
-        "Hindi"
+        "Tamil"
       ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-10-16",
+      "releaseDate": "2026-05-03",
       "source_verified": true,
       "type": "Series",
-      "updatedAt": "2026-10-16T02:18:52.613Z",
+      "updatedAt": "2026-05-03T03:46:51.832Z",
       "verified": true
     }
   },
@@ -829,36 +842,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-04-23T03:43:25.822Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Jodi Are U Ready Season 3 (Grand Finale)",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-05-03",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f6c52b36465ddb3f139825",
-      "platform": "JioHotStar",
-      "title": "Jodi Are U Ready Season 3 (Grand Finale)",
-      "createdAt": "2026-05-03T03:46:51.832Z",
-      "genre": "Reality, Dance",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-05-03",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-05-03T03:46:51.832Z",
       "verified": true
     }
   },
@@ -955,6 +938,67 @@
     }
   },
   {
+    "name": "Chumbak Part 2",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-02",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6abf148aa856b7606726225e",
+      "platform": "Netflix",
+      "title": "Chumbak Part 2",
+      "createdAt": "2026-10-02T02:18:50.680Z",
+      "genre": "Comedy",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-10-02",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-10-02T02:18:50.680Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "WWE (Tamil Dub)",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-04-18",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69e2fc0930958fd1b908a124",
+      "title": "WWE (Tamil Dub)",
+      "platform": "Netflix",
+      "createdAt": "2026-04-18T03:35:37.425Z",
+      "genre": "Sports Entertainment, Action",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-04-18",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-18T03:35:37.425Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Katha Sudha",
     "language": "telugu",
     "type": "series",
@@ -1016,36 +1060,6 @@
     }
   },
   {
-    "name": "WWE (Tamil Dub)",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-04-18",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Netflix"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69e2fc0930958fd1b908a124",
-      "title": "WWE (Tamil Dub)",
-      "platform": "Netflix",
-      "createdAt": "2026-04-18T03:35:37.425Z",
-      "genre": "Sports Entertainment, Action",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-04-18",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-18T03:35:37.425Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Kaakkee Circus",
     "language": "tamil",
     "type": "series",
@@ -1072,37 +1086,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-04-10T03:41:59.603Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Chumbak Part 2",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-02",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Netflix"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6abf148aa856b7606726225e",
-      "platform": "Netflix",
-      "title": "Chumbak Part 2",
-      "createdAt": "2026-10-02T02:18:50.680Z",
-      "genre": "Comedy",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-10-02",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-10-02T02:18:50.680Z",
       "verified": true
     }
   },
@@ -1169,6 +1152,36 @@
     }
   },
   {
+    "name": "Vanakkam Thamizha",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-03-25",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "SunNXT"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69c4167f991033953144f107",
+      "platform": "SunNXT",
+      "title": "Vanakkam Thamizha",
+      "createdAt": "2026-03-25T17:08:15.700Z",
+      "genre": "Talk Show, Entertainment",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-03-25",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-03-25T17:08:15.700Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Clean Up Company",
     "language": "hindi",
     "type": "movie",
@@ -1198,36 +1211,6 @@
       "updatedAt": "2026-08-21T02:09:08.752Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/sVMcco0EdfDvFpyPlHU9n6RPrQj.jpg",
       "instagramPostedAt": "2026-08-21T02:09:49Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Vanakkam Thamizha",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-03-25",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "SunNXT"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69c4167f991033953144f107",
-      "platform": "SunNXT",
-      "title": "Vanakkam Thamizha",
-      "createdAt": "2026-03-25T17:08:15.700Z",
-      "genre": "Talk Show, Entertainment",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-03-25",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-03-25T17:08:15.700Z",
       "verified": true
     }
   },
@@ -1390,53 +1373,6 @@
     }
   },
   {
-    "name": "Iruniram",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-04-25",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ManoramaMAX"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69ec373630958fd1b959e408",
-      "platform": "ManoramaMAX",
-      "title": "Iruniram",
-      "createdAt": "2026-04-25T03:38:30.630Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Malayalam"
-      ],
-      "releaseDate": "2026-04-25",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-04-25T03:38:30.630Z",
-      "tmdbDetails": {
-        "tmdbId": 1686468,
-        "director": null,
-        "cast": [],
-        "overview": "Ambili, a young girl on a quest to find the \"best color in the world\". The film explores life through her unique, innocent perspective.",
-        "runtime": 82,
-        "genres": [],
-        "originalLanguage": "ml",
-        "spokenLanguages": [
-          "Malayalam"
-        ],
-        "releaseDate": null,
-        "voteAverage": null,
-        "trailerKey": null,
-        "fetchedAt": "2026-11-16T23:43:59.297Z"
-      },
-      "tmdbId": 1686468,
-      "verified": true
-    }
-  },
-  {
     "name": "Varumaiyil Thaal",
     "language": "tamil",
     "type": "movie",
@@ -1524,6 +1460,53 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-05-16T03:48:55.554Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Iruniram",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-04-25",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ManoramaMAX"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69ec373630958fd1b959e408",
+      "platform": "ManoramaMAX",
+      "title": "Iruniram",
+      "createdAt": "2026-04-25T03:38:30.630Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Malayalam"
+      ],
+      "releaseDate": "2026-04-25",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-04-25T03:38:30.630Z",
+      "tmdbDetails": {
+        "tmdbId": 1686468,
+        "director": null,
+        "cast": [],
+        "overview": "Ambili, a young girl on a quest to find the \"best color in the world\". The film explores life through her unique, innocent perspective.",
+        "runtime": 82,
+        "genres": [],
+        "originalLanguage": "ml",
+        "spokenLanguages": [
+          "Malayalam"
+        ],
+        "releaseDate": null,
+        "voteAverage": null,
+        "trailerKey": null,
+        "fetchedAt": "2026-11-16T23:43:59.297Z"
+      },
+      "tmdbId": 1686468,
       "verified": true
     }
   },
