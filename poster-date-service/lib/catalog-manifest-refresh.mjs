@@ -6,7 +6,7 @@ const MANIFEST_KEYS = [
   'CATALOG_MANIFEST_XPERIENCE_URL'
 ];
 const PAGE_SIZE = 100;
-const MAX_PAGES = Math.max(1, Math.min(500, Number(process.env.CATALOG_SCAN_MAX_PAGES || 100)));
+const MAX_PAGES = Math.max(1, Math.min(500, Number(process.env.CATALOG_SCAN_MAX_PAGES || 500)));
 const CONCURRENCY = Math.max(1, Math.min(4, Number(process.env.CATALOG_SCAN_CONCURRENCY || 2)));
 const STATE_PATH = '/catalog-state/manifest-scan-state.json';
 const INDEX_PATH = '/catalog-state/catalog-added.json';
@@ -99,14 +99,16 @@ function catalogUrl(base, catalog, skip) {
 async function collectCatalog(manifest, catalog) {
   const metas = [];
   let pages = 0;
+  let lastBatchSize = 0;
   for (let page = 0; page < MAX_PAGES; page++) {
     const data = await fetchJson(catalogUrl(manifest.base, catalog, page * PAGE_SIZE));
     const batch = Array.isArray(data.metas) ? data.metas : [];
     metas.push(...batch);
+    lastBatchSize = batch.length;
     pages++;
     if (batch.length < PAGE_SIZE) break;
   }
-  return { source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name, pages, metas };
+  return { source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name, pages, metas, truncated: pages === MAX_PAGES && lastBatchSize === PAGE_SIZE };
 }
 function canonicalId(meta) {
   const raw = String(meta?.id || '').trim();
@@ -197,7 +199,9 @@ export async function runManifestCatalogRefresh() {
         catalogues.push(result);
         console.log('[catalog-discovered]', JSON.stringify({ source: result.source, type: result.type, id: result.id, name: result.name, pages: result.pages, records: result.metas.length }));
       } catch (error) {
-        catalogues.push({ source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name, pages: 0, metas: [], error: error?.message || 'catalogue fetch failed' });
+        const failed = { source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name, pages: 0, metas: [], error: error?.message || 'catalogue fetch failed' };
+        catalogues.push(failed);
+        console.warn('[catalog-fetch-failed]', JSON.stringify({ source: failed.source, type: failed.type, id: failed.id, error: failed.error }));
       }
     }
   }
@@ -211,9 +215,10 @@ export async function runManifestCatalogRefresh() {
   if (!current.size) throw new Error('No supported IMDb, TMDB or TVmaze IDs were found; refusing to mark an empty scan successful');
   const now = Date.now();
   const seen = prior?.seen && typeof prior.seen === 'object' ? prior.seen : {};
-  const added = prior?.initialized ? (prior.added && typeof prior.added === 'object' ? prior.added : {}) : {};
+  const added = prior?.added && typeof prior.added === 'object' ? prior.added : {};
+  const baselineReady = prior?.complete === true;
   let newlyDiscovered = 0;
-  if (prior?.initialized) {
+  if (baselineReady) {
     for (const id of current.keys()) {
       if (!seen[id]) { added[id] = new Date(now).toISOString(); newlyDiscovered++; }
     }
@@ -230,7 +235,8 @@ export async function runManifestCatalogRefresh() {
     const legacy = await fetchJson('https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/catalog-added.json');
     for (const [key, timestamp] of Object.entries(legacy || {})) if (!index[key]) index[key] = timestamp;
   } catch {}
-  const nextState = { initialized: true, updatedAt: new Date(now).toISOString(), seen, added };
+  const scanComplete = catalogues.every(c => !c.error && !c.truncated);
+  const nextState = { initialized: true, complete: scanComplete, updatedAt: new Date(now).toISOString(), seen, added };
   await writeJson(config, STATE_PATH, nextState);
   await writeJson(config, INDEX_PATH, index);
   const items = [...current.values()];
@@ -238,8 +244,8 @@ export async function runManifestCatalogRefresh() {
   const failures = results.filter(r => r.status === 'failed');
   const report = {
     startedAt, finishedAt: new Date().toISOString(), manifests: manifests.map(m => ({ source: m.name || m.key, catalogs: m.catalogs.length })),
-    catalogues: catalogues.map(c => ({ source: c.source, type: c.type, id: c.id, name: c.name, pages: c.pages, records: c.metas.length, error: c.error || null })),
-    cataloguesDiscovered: catalogues.length, uniqueTitles: items.length, newlyDiscovered,
+    catalogues: catalogues.map(c => ({ source: c.source, type: c.type, id: c.id, name: c.name, pages: c.pages, records: c.metas.length, truncated: Boolean(c.truncated), error: c.error || null })),
+    cataloguesDiscovered: catalogues.length, uniqueTitles: items.length, newlyDiscovered, scanComplete,
     postersProcessed: results.length, failures: failures.length,
     results: results.reduce((counts, r) => { counts[r.status] = (counts[r.status] || 0) + 1; return counts; }, {})
   };
