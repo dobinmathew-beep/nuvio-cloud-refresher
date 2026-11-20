@@ -51,33 +51,10 @@ let scopeMask=255,posterTemplate='';const scoped=route.match(/^\/install\/([a-fA
  if(!['GET','HEAD'].includes(req.method))return send(405,{error:'Method not allowed.'});
  if(route==='/manifest.json'||route==='/standalone/manifest.json'){const m=buildManifest(origin,scopeMask,route==='/standalone/manifest.json',posterTemplate);return m?send(200,m,{'Cache-Control':posterTemplate?'private,no-store':'public,max-age=300'}):send(400,{error:'Select at least one catalog.'})}
  if(route==='/health.json')return send(200,await paymentHealth());if(route==='/data-health.json')return send(200,await dataHealth(),{'Cache-Control':'no-store'});
- const posterRoute=route.replace(/%3A/gi,':').match(/^\/poster\/(movie|series)\/((?:tt\d+)|(?:(?:tmdb|tvmaze):\d+))\.jpg$/);if(posterRoute&&posterTemplate){
+ const posterRoute=route.replace(/%3A/gi,':').match(/^\/poster\/(movie|series)\/((?:tt\\d+)|(?:(?:tmdb|tvmaze):\\d+))\\.jpg$/);if(posterRoute&&posterTemplate){
  const [,type,id]=posterRoute;
  const badgeRequested=requestParams.get('badge')==='just-added';
- const rendererId=await resolveRendererId(id);
- const rendererUrl=buildSharedRendererUrl(type,rendererId,badgeRequested,requestParams.get('v')||'8');
- if(rendererUrl){
-  try{
-   const rendered=await fetch(rendererUrl,{cache:'no-store',signal:AbortSignal.timeout(15000)});
-   if(!rendered.ok)throw Error('Shared poster renderer HTTP '+rendered.status);
-   const mime=(rendered.headers.get('Content-Type')||'').split(';')[0].trim().toLowerCase();
-   if(!mime.startsWith('image/'))throw Error('Shared poster renderer returned '+(mime||'no image content type'));
-   const bytes=await rendered.arrayBuffer();
-   if(bytes.byteLength<500||bytes.byteLength>15000000)throw Error('Shared poster renderer image size outside limits');
-   const headers={'Content-Type':mime,'Access-Control-Allow-Origin':'*','Cache-Control':'private,max-age=3600','X-Content-Type-Options':'nosniff'};
-   for(const name of ['X-Poster-Date-Status','X-Poster-Just-Added','X-Poster-Date','X-Poster-Date-Type','X-Poster-Source']){
-    const value=rendered.headers.get(name);
-    if(value)headers[name]=value;
-   }
-   if(rendered.headers.get('X-Poster-Just-Added')==='true')headers['X-Poster-Badge']='Just Added';
-   res.statusCode=200;
-   for(const [k,v] of Object.entries(headers))res.setHeader(k,v);
-   return res.end(req.method==='HEAD'?undefined:Buffer.from(bytes));
-  }catch(error){
-   console.warn('[shared-poster-renderer-proxy-failed]',JSON.stringify({id,type,error:String(error?.message||error).slice(0,180)}));
-  }
- }
- const fallbackId=rendererId.startsWith('tt')?rendererId:type+'~'+id;
+ const fallbackId=id.startsWith('tt')?id:type+'~'+id;
  const fallbackUrl=origin+'/art/poster/'+fallbackId+(badgeRequested?'?badge=just-added&v=8':'?v=8');
  const fallback=await worker.fetch(new Request(fallbackUrl,{method:req.method}));
  res.statusCode=fallback.status;
