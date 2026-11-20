@@ -37,6 +37,10 @@ async function recognizeWithModes(prepared, predicate) {
       await worker.terminate();
       workerPromise = null;
       workerRecognitionCount = 0;
+      // Release the terminated WASM worker's JS wrappers and prepared buffers
+      // before the next poster begins; enabled with --expose-gc in npm start.
+      await new Promise(resolve => setImmediate(resolve));
+      global.gc?.();
     }
     return found;
   });
@@ -101,7 +105,7 @@ export async function hasExistingComingDateTag(input, kind = 'premiere', isoDate
 
   const { default: sharp } = await import('sharp');
   if (!sharpConfigured) {
-    sharp.cache({ memory: 24, files: 0, items: 24 });
+    sharp.cache({ memory: 12, files: 0, items: 12 });
     sharp.concurrency(1);
     sharpConfigured = true;
   }
@@ -113,7 +117,7 @@ export async function hasExistingComingDateTag(input, kind = 'premiere', isoDate
   const cropHeight = Math.max(180, Math.min(metadata.height, Math.round(metadata.height * 0.65)));
   const prepared = await sharp(input, { limitInputPixels: 40000000 })
     .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
-    .resize({ width: Math.min(1200, metadata.width * 2) })
+    .resize({ width: Math.min(1000, metadata.width * 2) })
     .grayscale()
     .normalize()
     .sharpen()
@@ -141,6 +145,8 @@ export async function terminateOcrWorker() {
   } finally {
     workerPromise = null;
     workerRecognitionCount = 0;
+    await new Promise(resolve => setImmediate(resolve));
+    global.gc?.();
   }
 }
 
@@ -165,7 +171,7 @@ export async function hasExistingJustAddedTag(input) {
   const cropHeight = Math.max(120, Math.min(metadata.height, Math.round(metadata.height * 0.3)));
   const prepared = await sharp(input, { limitInputPixels: 40000000 })
     .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
-    .resize({ width: Math.min(900, metadata.width * 2) })
+    .resize({ width: Math.min(750, metadata.width * 2) })
     .grayscale()
     .normalize()
     .sharpen()
