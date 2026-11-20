@@ -478,6 +478,36 @@
     }
   },
   {
+    "name": "Nindu Noorella Saavasam (Episode 885)",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-05-12",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a02a2999dcddba08328d0ef",
+      "platform": "ZEE5",
+      "title": "Nindu Noorella Saavasam (Episode 885)",
+      "createdAt": "2026-05-12T03:46:33.291Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-12",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-05-12T03:46:33.291Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Southern Shadows",
     "language": "tamil",
     "type": "series",
@@ -509,7 +539,7 @@
     }
   },
   {
-    "name": "Nindu Noorella Saavasam (Episode 885)",
+    "name": "Auto Vijayashanthi (Episode 221)",
     "language": "telugu",
     "type": "series",
     "ottDate": "2026-05-12",
@@ -522,10 +552,10 @@
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6a02a2999dcddba08328d0ef",
+      "_id": "6a02a2999dcddba08328d0f0",
+      "title": "Auto Vijayashanthi (Episode 221)",
       "platform": "ZEE5",
-      "title": "Nindu Noorella Saavasam (Episode 885)",
-      "createdAt": "2026-05-12T03:46:33.291Z",
+      "createdAt": "2026-05-12T03:46:33.489Z",
       "genre": "Drama",
       "imdbRating": null,
       "languages": [
@@ -534,7 +564,7 @@
       "releaseDate": "2026-05-12",
       "source_verified": true,
       "type": "Series",
-      "updatedAt": "2026-05-12T03:46:33.291Z",
+      "updatedAt": "2026-05-12T03:46:33.489Z",
       "verified": true
     }
   },
@@ -571,32 +601,33 @@
     }
   },
   {
-    "name": "Auto Vijayashanthi (Episode 221)",
+    "name": "Soul Trip",
     "language": "telugu",
     "type": "series",
-    "ottDate": "2026-05-12",
+    "ottDate": "2026-04-30",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ZEE5"
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6a02a2999dcddba08328d0f0",
-      "title": "Auto Vijayashanthi (Episode 221)",
-      "platform": "ZEE5",
-      "createdAt": "2026-05-12T03:46:33.489Z",
-      "genre": "Drama",
+      "_id": "69e9955d30958fd1b959de4a",
+      "platform": "ETV Win",
+      "title": "Soul Trip",
+      "createdAt": "2026-04-23T03:43:25.627Z",
+      "genre": "Talk-Show, Reality-TV",
       "imdbRating": null,
       "languages": [
         "Telugu"
       ],
-      "releaseDate": "2026-05-12",
+      "releaseDate": "2026-04-30",
       "source_verified": true,
       "type": "Series",
-      "updatedAt": "2026-05-12T03:46:33.489Z",
+      "updatedAt": "2026-04-30T03:47:03.617Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/lMmVs6FC8pkc0n1BW3gemZRFhqb.jpg",
       "verified": true
     }
   },
@@ -632,37 +663,6 @@
     }
   },
   {
-    "name": "Soul Trip",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-04-30",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69e9955d30958fd1b959de4a",
-      "platform": "ETV Win",
-      "title": "Soul Trip",
-      "createdAt": "2026-04-23T03:43:25.627Z",
-      "genre": "Talk-Show, Reality-TV",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-04-30",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-30T03:47:03.617Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/lMmVs6FC8pkc0n1BW3gemZRFhqb.jpg",
-      "verified": true
-    }
-  },
-  {
     "name": "Shadow Play",
     "language": "malayalam",
     "type": "series",
@@ -690,6 +690,36 @@
       "type": "Series",
       "updatedAt": "2026-04-05T03:40:53.735Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/Aj8xNoAiDC2It0UVQFuv1ABhhgq.jpg",
+      "verified": true
+    }
+  },
+  {
+    "name": "Chamanthi",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-04-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69f02de830958fd1b959e7c1",
+      "title": "Chamanthi",
+      "platform": "ZEE5",
+      "createdAt": "2026-04-28T03:47:52.447Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-04-28",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-28T03:47:52.447Z",
       "verified": true
     }
   },
@@ -725,36 +755,6 @@
     }
   },
   {
-    "name": "Chamanthi",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-04-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f02de830958fd1b959e7c1",
-      "title": "Chamanthi",
-      "platform": "ZEE5",
-      "createdAt": "2026-04-28T03:47:52.447Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-04-28",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-28T03:47:52.447Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Meghasandesam",
     "language": "telugu",
     "type": "series",
@@ -786,36 +786,6 @@
     }
   },
   {
-    "name": "Jodi Are U Ready Season 3 (Grand Finale)",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-05-03",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f6c52b36465ddb3f139825",
-      "platform": "JioHotStar",
-      "title": "Jodi Are U Ready Season 3 (Grand Finale)",
-      "createdAt": "2026-05-03T03:46:51.832Z",
-      "genre": "Reality, Dance",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-05-03",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-05-03T03:46:51.832Z",
-      "verified": true
-    }
-  },
-  {
     "name": "The Eternal Love - Prologue",
     "language": "telugu",
     "type": "series",
@@ -842,6 +812,36 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-04-23T03:43:25.822Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Jodi Are U Ready Season 3 (Grand Finale)",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-05-03",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69f6c52b36465ddb3f139825",
+      "platform": "JioHotStar",
+      "title": "Jodi Are U Ready Season 3 (Grand Finale)",
+      "createdAt": "2026-05-03T03:46:51.832Z",
+      "genre": "Reality, Dance",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-05-03",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-05-03T03:46:51.832Z",
       "verified": true
     }
   },
@@ -903,6 +903,36 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-04-16T03:44:31.038Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Katha Sudha",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-03-22",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69bf625ee9d9be413445ad25",
+      "platform": "ETV Win",
+      "title": "Katha Sudha",
+      "createdAt": "2026-03-22T03:30:38.016Z",
+      "genre": "Drama, Anthology",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-03-22",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-03-22T03:30:38.016Z",
       "verified": true
     }
   },
@@ -995,36 +1025,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-04-18T03:35:37.425Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Katha Sudha",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-03-22",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69bf625ee9d9be413445ad25",
-      "platform": "ETV Win",
-      "title": "Katha Sudha",
-      "createdAt": "2026-03-22T03:30:38.016Z",
-      "genre": "Drama, Anthology",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-03-22",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-03-22T03:30:38.016Z",
       "verified": true
     }
   },

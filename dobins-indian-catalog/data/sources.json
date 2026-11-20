@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-20T20:53:58.757865+04:00",
+    "checkedAt": "2026-11-21T01:41:30.011715+04:00",
     "records": [
       {
         "_id": "6af6738fdea24088f261c3b1",
@@ -4210,15 +4210,19 @@
             },
             {
               "name": "Mukesh",
-              "character": ""
+              "character": "I.G Prem Kumar"
+            },
+            {
+              "name": "Nishad M A",
+              "character": "DySP Issac Maaman"
             },
             {
               "name": "Vani Viswanath",
-              "character": ""
+              "character": "Shivamalli"
             },
             {
               "name": "Samuthirakani",
-              "character": ""
+              "character": "Shiva Kumar"
             },
             {
               "name": "Ashokan",
@@ -4226,31 +4230,27 @@
             },
             {
               "name": "Sshivada",
-              "character": ""
+              "character": "Ruby"
             },
             {
               "name": "Durga Krishna",
               "character": "CI Soumya"
-            },
-            {
-              "name": "Swasika",
-              "character": "Shreya Mathew IPS"
             }
           ],
           "overview": "In Kerala, an investigating journalist disappears without notice. Media and public stunned. Investigation uncovers shocking, unexpected mysteries. Suspenseful plot follows the case's twists and revelations.",
-          "runtime": 181,
+          "runtime": 163,
           "genres": [
-            "Thriller",
-            "Crime"
+            "Crime",
+            "Thriller"
           ],
           "originalLanguage": "ml",
           "spokenLanguages": [
             "Malayalam"
           ],
           "releaseDate": "2024-11-08",
-          "voteAverage": null,
+          "voteAverage": 2,
           "trailerKey": "pGiHSN9Jqr4",
-          "fetchedAt": "2026-10-16T02:24:19.322Z"
+          "fetchedAt": "2026-11-20T19:46:07.739Z"
         },
         "tmdbId": 1274311,
         "votes": 0,
@@ -4594,12 +4594,12 @@
           "director": "Sajeev Pazhoor",
           "cast": [
             {
-              "name": "Nimisha Sajayan",
-              "character": "Kanchana"
+              "name": "Karunas",
+              "character": "Thavasimuthu"
             },
             {
-              "name": "Karunas",
-              "character": ""
+              "name": "Nimisha Sajayan",
+              "character": "Kanchana"
             },
             {
               "name": "Vijayalakshmi Veeramani",
@@ -4607,19 +4607,19 @@
             },
             {
               "name": "Kamalesh Jegan",
-              "character": ""
+              "character": "Bharathi"
             },
             {
-              "name": "Chethan Cheenu",
-              "character": ""
+              "name": "Shashaa Shivakumar",
+              "character": "Manimegalai"
             },
             {
               "name": "Mohan Raman",
-              "character": ""
+              "character": "Constable Varadharajan"
             },
             {
               "name": "Kavithalayaa Krishnan",
-              "character": ""
+              "character": "Public Prosecutor"
             },
             {
               "name": "Swaminathan",
@@ -4637,9 +4637,9 @@
             "Tamil"
           ],
           "releaseDate": "2026-09-17",
-          "voteAverage": null,
+          "voteAverage": 7,
           "trailerKey": "wl4mqPQCBnU",
-          "fetchedAt": "2026-10-16T08:18:57.495Z"
+          "fetchedAt": "2026-11-20T20:00:55.140Z"
         },
         "tmdbId": 1686999,
         "verified": true
@@ -8287,7 +8287,7 @@
           "releaseDate": null,
           "voteAverage": null,
           "trailerKey": "LSMfgvdgFFE",
-          "fetchedAt": "2026-10-19T16:07:24.246Z"
+          "fetchedAt": "2026-11-20T19:49:03.740Z"
         },
         "tmdbId": 1503567,
         "posterUrl": "https://image.tmdb.org/t/p/w300/8d9mNX8qlgo8itjhTkrOvykVMtX.jpg",
@@ -9305,21 +9305,21 @@
               "character": "Kishore"
             }
           ],
-          "overview": "Sanjay Vishwanath is an acclaimed professional handgunner in his 40s with a major stake in fame and wealth. When he comes across a woman named Maddy in her 20s, their dynamic poses many issues that they must come to terms with.",
+          "overview": "A celebrated Olympian shooter travels to America looking for a donor to help his sick child — but unexpected romance complicates his search.",
           "runtime": 161,
           "genres": [
             "Drama",
-            "Romance"
+            "Romance",
+            "Comedy"
           ],
           "originalLanguage": "ta",
           "spokenLanguages": [
-            "Tamil",
-            "Telugu"
+            "Tamil"
           ],
           "releaseDate": "2026-08-14",
-          "voteAverage": 7,
-          "trailerKey": "wjycKdvm8bE",
-          "fetchedAt": "2026-09-11T02:34:03.142Z"
+          "voteAverage": 6.967,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-20T20:02:21.033Z"
         },
         "tmdbId": 1408162,
         "votes": 6,
@@ -10692,9 +10692,9 @@
             "Tamil"
           ],
           "releaseDate": "2026-07-17",
-          "voteAverage": 6.1,
+          "voteAverage": 6.2,
           "trailerKey": "gcXw7BMSfIQ",
-          "fetchedAt": "2026-10-09T16:15:37.390Z"
+          "fetchedAt": "2026-11-20T20:04:49.718Z"
         },
         "tmdbId": 1607634,
         "verified": true
@@ -13699,9 +13699,9 @@
             "Malayalam"
           ],
           "releaseDate": "2026-06-19",
-          "voteAverage": 7.467,
+          "voteAverage": 7.762,
           "trailerKey": null,
-          "fetchedAt": "2026-09-26T09:16:33.055Z"
+          "fetchedAt": "2026-11-20T19:49:56.947Z"
         },
         "tmdbId": 1410937,
         "votes": 1,
@@ -16020,9 +16020,9 @@
             "Tamil"
           ],
           "releaseDate": "2026-06-05",
-          "voteAverage": 5.615,
+          "voteAverage": 6.1,
           "trailerKey": "7M0j1oh2lOg",
-          "fetchedAt": "2026-09-26T17:28:13.271Z"
+          "fetchedAt": "2026-11-20T20:05:18.385Z"
         },
         "tmdbId": 1602337,
         "instagramPostedAt": "2026-07-15T18:05:58Z",
@@ -16506,7 +16506,7 @@
           "releaseDate": "2026-05-28",
           "voteAverage": 7.4,
           "trailerKey": "Nl1zAJFkLRg",
-          "fetchedAt": "2026-10-10T08:50:56.824Z"
+          "fetchedAt": "2026-11-20T19:51:35.509Z"
         },
         "tmdbId": 1406543,
         "verified": true
@@ -17111,8 +17111,9 @@
             "Tamil"
           ],
           "releaseDate": "2026-05-28",
-          "voteAverage": 6.9,
-          "fetchedAt": "2026-07-15T15:15:31.853Z"
+          "voteAverage": 7.8,
+          "trailerKey": "aM5OLvxFBO4",
+          "fetchedAt": "2026-11-20T20:05:35.136Z"
         },
         "tmdbId": 1515729,
         "votes": 1,
@@ -17690,7 +17691,7 @@
           "releaseDate": "1985-03-16",
           "voteAverage": 4.6,
           "trailerKey": null,
-          "fetchedAt": "2026-10-01T18:09:39.979Z"
+          "fetchedAt": "2026-11-20T19:51:55.156Z"
         },
         "tmdbId": 442877,
         "verified": true
@@ -17797,10 +17798,10 @@
           "spokenLanguages": [
             "Malayalam"
           ],
-          "releaseDate": "2026-05-21",
-          "voteAverage": 6.6,
+          "releaseDate": "2026-05-20",
+          "voteAverage": 6.2,
           "trailerKey": "s-4KyEI1ZTA",
-          "fetchedAt": "2026-09-28T15:42:50.170Z"
+          "fetchedAt": "2026-11-20T19:52:10.230Z"
         },
         "tmdbId": 847742,
         "verified": true
@@ -19429,7 +19430,8 @@
           ],
           "releaseDate": "2013-02-01",
           "voteAverage": 4.7,
-          "fetchedAt": "2026-07-11T11:30:25.152Z"
+          "trailerKey": null,
+          "fetchedAt": "2026-11-20T19:54:04.492Z"
         },
         "tmdbId": 226074,
         "verified": true
@@ -20940,6 +20942,60 @@
         "updatedAt": "2026-06-06T07:23:56.768Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/wkiu7ez8oL1Yme4k5cBxFz0zN4U.jpg",
         "platform": "Prime Video",
+        "tmdbDetails": {
+          "tmdbId": 1533384,
+          "director": "East Coast Vijayan",
+          "cast": [
+            {
+              "name": "Dhyan Sreenivasan",
+              "character": "Murugan"
+            },
+            {
+              "name": "Vishnu Unnikrishnan",
+              "character": "Sulthan"
+            },
+            {
+              "name": "Indrans",
+              "character": "Valiya Haji"
+            },
+            {
+              "name": "Divya Pillai",
+              "character": "Gowri"
+            },
+            {
+              "name": "Unni Lalu",
+              "character": "Aravind"
+            },
+            {
+              "name": "Shaju Sreedhar",
+              "character": "Sharath"
+            },
+            {
+              "name": "Senthil Krishna Rajamani",
+              "character": "S.I. Guru"
+            },
+            {
+              "name": "Gibin Gopinath",
+              "character": "Shaikh"
+            }
+          ],
+          "overview": "Two men meet by chance, setting off a night of chaos with romance and action, as their paths cross and intertwine through various unexpected events.",
+          "runtime": 140,
+          "genres": [
+            "Comedy",
+            "Thriller"
+          ],
+          "originalLanguage": "ml",
+          "spokenLanguages": [
+            "Malayalam",
+            "Tamil"
+          ],
+          "releaseDate": "2026-03-20",
+          "voteAverage": 2.3,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-20T19:55:23.805Z"
+        },
+        "tmdbId": 1533384,
         "verified": true
       },
       {
@@ -21383,9 +21439,9 @@
             "Tamil"
           ],
           "releaseDate": "2024-05-16",
-          "voteAverage": 5,
+          "voteAverage": 4.333,
           "trailerKey": null,
-          "fetchedAt": "2026-10-02T17:29:30.384Z"
+          "fetchedAt": "2026-11-20T19:56:19.246Z"
         },
         "tmdbId": 1132943,
         "verified": false
@@ -22432,7 +22488,7 @@
           "releaseDate": "2026-04-15",
           "voteAverage": 5.6,
           "trailerKey": "Pss0rqdpySM",
-          "fetchedAt": "2026-10-14T18:21:58.145Z"
+          "fetchedAt": "2026-11-20T19:56:47.440Z"
         },
         "tmdbId": 1290703,
         "verified": true
@@ -31051,7 +31107,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-20T20:53:58.757865+04:00",
+    "checkedAt": "2026-11-21T01:41:30.011715+04:00",
     "records": [
       {
         "name": "Anbil Avan",

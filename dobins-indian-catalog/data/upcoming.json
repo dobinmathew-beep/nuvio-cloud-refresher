@@ -1,71 +1,8 @@
 {
-  "generatedAt": "2026-11-20T20:53:58.757865+04:00",
+  "generatedAt": "2026-11-21T01:41:30.011715+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 21,
+  "count": 19,
   "items": [
-    {
-      "id": "tt1281973",
-      "aliases": [
-        "tt1281973"
-      ],
-      "name": "Bigg Boss",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-21",
-      "kind": "episode",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
-    },
-    {
-      "id": "tt30003786",
-      "aliases": [
-        "tt30003786"
-      ],
-      "name": "The Great Indian Kapil Show",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-21",
-      "kind": "episode",
-      "platforms": [
-        "Netflix"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://api.tvmaze.com/schedule/web",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
-    },
-    {
-      "id": "tt45692999",
-      "aliases": [
-        "tt45692999"
-      ],
-      "name": "Chiram",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-21",
-      "kind": "premiere",
-      "platforms": [
-        "ManoramaMAX"
-      ],
-      "sources": [
-        "https://www.keralatv.in/channel/ott/"
-      ],
-      "catalog": "dobins_ml_movie",
-      "region": "IN",
-      "source": "https://www.keralatv.in/channel/ott/"
-    },
     {
       "id": "tmdb:338740",
       "aliases": [
@@ -221,12 +158,12 @@
         "Prime Video"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "catalog": "dobins_hi_movie",
       "region": "IN",
-      "source": "https://www.dailyott.in/"
+      "source": "https://cinebuds.com/ott-releases-this-week/"
     },
     {
       "id": "tt39632118",
@@ -350,6 +287,29 @@
       "catalog": "dobins_hi_series",
       "region": "IN",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    },
+    {
+      "id": "tt30003786",
+      "aliases": [
+        "tt30003786"
+      ],
+      "name": "The Great Indian Kapil Show",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-28",
+      "kind": "premiere",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tmdb:339001",
