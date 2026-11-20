@@ -15,6 +15,7 @@ const CATALOG_CHECKPOINT_DIR = '/catalog-state/catalogues';
 const INDEX_PATH = '/catalog-state/catalog-added.json';
 const INDEX_TTL_MS = 14 * 24 * 60 * 60 * 1000;
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const pendingUploadIds = new Set();
 
 function imageKitConfig() {
   const endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\/+$/, '');
@@ -205,11 +206,11 @@ function posterPath(id, type) {
   if (id.startsWith('tvmaze:')) return '/poster/tvmaze/' + id.slice(7) + '.jpg';
   return null;
 }
-async function runPool(items, worker) {
+async function runPool(items, worker, concurrency = CONCURRENCY) {
   const counts = {};
   let failures = 0;
   let cursor = 0;
-  await Promise.all(Array.from({ length: Math.min(CONCURRENCY, items.length) }, async () => {
+  await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, async () => {
     while (true) {
       const index = cursor++;
       if (index >= items.length) return;
@@ -273,8 +274,10 @@ async function prewarm(item) {
   const storage = response.headers.get('x-imagekit-storage') || 'not-stored';
   await response.arrayBuffer();
   if (storage === 'pending') {
-    if (await waitForImageKit(item.id)) return { id: item.id, status: 'generated-and-cached', posterStatus: status };
-    return { id: item.id, status: 'imagekit-upload-timeout', posterStatus: status };
+    // Do not occupy a scan worker while ImageKit finishes its asynchronous
+    // upload. Verification is performed in a separate bounded stage.
+    pendingUploadIds.add(item.id);
+    return { id: item.id, status: 'upload-pending', posterStatus: status };
   }
   if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit', posterStatus: status };
   return { id: item.id, status: 'rendered-not-cached', posterStatus: status };
@@ -431,7 +434,24 @@ export async function runManifestCatalogRefresh() {
   await writeJson(config, INDEX_PATH, index);
 
   const items = [...current.values()];
+  pendingUploadIds.clear();
   const prewarmReport = await runPool(items, prewarm);
+
+  // Verify uploads after the poster requests have drained. These checks are
+  // lightweight HEAD requests, so a slightly wider bounded pool is safe and
+  // avoids making each artwork worker wait for its own upload.
+  const pendingItems = [...pendingUploadIds].map(id => ({ id }));
+  const uploadVerification = await runPool(pendingItems, async item => {
+    if (await waitForImageKit(item.id)) return { id: item.id, status: 'generated-and-cached' };
+    throw new Error('ImageKit upload did not become visible within 60 seconds');
+  }, 6);
+  const resultCounts = { ...prewarmReport.counts };
+  delete resultCounts['upload-pending'];
+  for (const [status, count] of Object.entries(uploadVerification.counts)) {
+    resultCounts[status] = (resultCounts[status] || 0) + count;
+  }
+  const totalFailures = prewarmReport.failures + uploadVerification.failures;
+
   const report = {
     startedAt, finishedAt: new Date().toISOString(),
     manifests: manifests.map(m => ({ source: m.name || m.key, catalogs: m.catalogs.length })),
@@ -449,12 +469,12 @@ export async function runManifestCatalogRefresh() {
     cataloguesSkippedDynamic: catalogues.filter(c => c.skipped).length,
     cataloguesFailed: catalogues.filter(c => c.error).length,
     uniqueTitles: items.length, newlyDiscovered, scanComplete,
-    postersProcessed: items.length, failures: prewarmReport.failures,
-    results: prewarmReport.counts
+    postersProcessed: items.length, uploadsAwaitingVerification: pendingItems.length,
+    failures: totalFailures, results: resultCounts
   };
   // Mark the checkpoint reusable only when both discovery and poster prewarm
   // finish cleanly. A subsequent scheduled run will start a fresh scan.
-  if (scanComplete && prewarmReport.failures === 0) {
+  if (scanComplete && totalFailures === 0) {
     checkpoint = {
       version: 2, complete: true, updatedAt: new Date().toISOString(),
       completedCatalogues, titleFiles
