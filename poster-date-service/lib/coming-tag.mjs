@@ -6,6 +6,24 @@ const require = createRequire(import.meta.url);
 const CACHE_MS = 6 * 60 * 60 * 1000;
 const cache = new Map();
 let workerPromise;
+let ocrQueue = Promise.resolve();
+
+function withOcrQueue(task) {
+  const job = ocrQueue.then(task);
+  ocrQueue = job.then(() => undefined, () => undefined);
+  return job;
+}
+
+async function recognizeWithModes(worker, prepared, predicate) {
+  return withOcrQueue(async () => {
+    for (const mode of ['11', '6']) {
+      await worker.setParameters({ tessedit_pageseg_mode: mode });
+      const result = await worker.recognize(prepared);
+      if (predicate(result?.data?.text)) return true;
+    }
+    return false;
+  });
+}
 
 function normalizedText(text) {
   // OCR sometimes returns escaped line breaks ("\\n") instead of real ones.
@@ -82,15 +100,11 @@ export async function hasExistingComingDateTag(input, kind = 'premiere', isoDate
     .toBuffer();
 
   const worker = await getWorker();
-  for (const mode of ['11', '6']) {
-    await worker.setParameters({ tessedit_pageseg_mode: mode });
-    const result = await worker.recognize(prepared);
-    if (hasExpectedDateBadgeText(result?.data?.text, kind, isoDate)) {
-      cache.set(key, { value: true, at: Date.now() });
-      return true;
-    }
+  const found = await recognizeWithModes(worker, prepared, text => hasExpectedDateBadgeText(text, kind, isoDate));
+  if (found) {
+    cache.set(key, { value: true, at: Date.now() });
+    return true;
   }
-
   cache.set(key, { value: false, at: Date.now() });
   while (cache.size > 1200) cache.delete(cache.keys().next().value);
   return false;
@@ -110,24 +124,23 @@ export async function hasExistingJustAddedTag(input) {
   const { default: sharp } = await import('sharp');
   const metadata = await sharp(input, { limitInputPixels: 40000000 }).metadata();
   if (!metadata.width || !metadata.height) throw new Error('Cannot inspect poster dimensions');
-  const cropHeight = Math.max(180, Math.min(metadata.height, Math.round(metadata.height * 0.65)));
+  // The chip sits in the top strip; this compact crop is much faster on
+  // Render's free instance than OCR-ing most of the poster.
+  const cropHeight = Math.max(120, Math.min(metadata.height, Math.round(metadata.height * 0.3)));
   const prepared = await sharp(input, { limitInputPixels: 40000000 })
     .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
-    .resize({ width: Math.min(1800, metadata.width * 2) })
+    .resize({ width: Math.min(1200, metadata.width * 2) })
     .grayscale()
     .normalize()
     .sharpen()
-    .extend({ top: 16, bottom: 16, left: 16, right: 16, background: '#ffffff' })
+    .extend({ top: 12, bottom: 12, left: 12, right: 12, background: '#ffffff' })
     .png()
     .toBuffer();
   const worker = await getWorker();
-  for (const mode of ['11', '6']) {
-    await worker.setParameters({ tessedit_pageseg_mode: mode });
-    const result = await worker.recognize(prepared);
-    if (/\bjust\s+added\b/i.test(normalizedText(result?.data?.text))) {
-      cache.set(key, { value: true, at: Date.now() });
-      return true;
-    }
+  const found = await recognizeWithModes(worker, prepared, text => hasJustAddedBadgeText(text));
+  if (found) {
+    cache.set(key, { value: true, at: Date.now() });
+    return true;
   }
   cache.set(key, { value: false, at: Date.now() });
   while (cache.size > 1200) cache.delete(cache.keys().next().value);
