@@ -33,5 +33,6 @@ jobs:
           node --check api/poster.mjs
           node --check lib/imagekit-storage.mjs
           node --check scripts/prewarm.mjs
+          node --check lib/catalog-manifest-refresh.mjs
       - name: Run isolated service tests
         run: npm test
