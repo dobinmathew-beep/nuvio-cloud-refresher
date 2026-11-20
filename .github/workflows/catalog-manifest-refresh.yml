@@ -2,6 +2,9 @@ name: Manifest catalogue poster refresh
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/catalog-manifest-refresh.yml']
   schedule:
     # Oman is UTC+4: 06:00 and 18:00 local time.
     - cron: '0 2,14 * * *'
@@ -22,12 +25,17 @@ jobs:
         id: start
         env:
           POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
-          SCAN_TOKEN: \${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
+          SCAN_TOKEN: ${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
         run: |
           if [ -z "$SCAN_TOKEN" ]; then
             echo "::error::POSTER_CATALOG_SCAN_TOKEN repository secret is missing."
             exit 1
           fi
+          for attempt in $(seq 1 20); do
+            if curl --silent --fail --max-time 20 "$POSTER_SERVICE_URL/health" >/dev/null; then break; fi
+            if [ "$attempt" -eq 20 ]; then echo "::error::Poster service did not become healthy."; exit 1; fi
+            sleep 30
+          done
           response=$(curl --silent --show-error --fail-with-body --max-time 90 \
             -X POST "$POSTER_SERVICE_URL/catalog-refresh" \
             -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json")
@@ -39,7 +47,7 @@ jobs:
       - name: Wait for scan and poster generation
         env:
           POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
-          SCAN_TOKEN: \${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
+          SCAN_TOKEN: ${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
         run: |
           for attempt in $(seq 1 120); do
             response=$(curl --silent --show-error --fail-with-body --max-time 60 \
