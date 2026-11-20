@@ -1,4 +1,4 @@
-"""Select the first valid entry in each IndianRegional movie catalog's own order."""
+"""Select the first real, poster-backed movie in each IndianRegional catalog order."""
 from datetime import datetime, timezone
 from pathlib import Path
 import json,re,subprocess
@@ -10,9 +10,9 @@ def get(url):
  return json.loads(p.stdout)
 def valid(m,lang=None):
  mid=str(m.get('id','')).split('||',1)[0]
- return re.fullmatch(r'tt\d+',mid) and m.get('type')=='movie' and m.get('poster') and re.fullmatch(r'tt\d+|tmdb:\d+',mid) and not re.search(r'OTT\s*Releases|Hindi\s*Dubbed|promo|unlock',str(m.get('name','')),re.I)
+ return bool(re.fullmatch(r'tt\d+|tmdb:\d+',mid)) and m.get('type')=='movie' and bool(m.get('poster')) and not re.search(r'OTT\s*Releases|Hindi\s*Dubbed|promo|unlock',str(m.get('name','')),re.I)
 def first_valid(metas,lang=None):
- """Return the first eligible IMDb-linked movie without reordering the source catalog."""
+ """Return the first usable IMDb- or TMDB-linked movie without reordering the source catalog."""
  return next((m for m in metas if valid(m,lang)),None)
 
 def select_featured(state):
@@ -25,9 +25,9 @@ def select_featured(state):
   chosen=first_valid(metas,lang)
   if not chosen:raise RuntimeError(lang+': no valid catalog head; last-good selection retained')
   pages[url]={'checked_at':now,'metas':metas}
-  languages[lang]={'id':str(chosen['id']).split('||',1)[0],'name':chosen['name'],'poster':chosen['poster'],'catalog':cat,'type':'movie','catalog_source':url,'selection':'catalog-order','catalogRank':0,'eligibility':'IMDb-linked movie','verifiedAt':now}
+  languages[lang]={'id':str(chosen['id']).split('||',1)[0],'name':chosen['name'],'poster':chosen['poster'],'catalog':cat,'type':'movie','catalog_source':url,'selection':'catalog-order','catalogRank':0,'eligibility':'IMDb- or TMDB-linked movie','verifiedAt':now}
   print('FEATURED',lang,chosen['name'],'catalog head',flush=True)
- result={'version':2,'checkedAt':now,'selection':'first IMDb-linked movie in the matching IndianRegional catalog order; no external release-date filtering','languages':languages,'warnings':[]}
+ result={'version':2,'checkedAt':now,'selection':'first usable IMDb- or TMDB-linked movie in the matching IndianRegional catalog order; no external release-date filtering','languages':languages,'warnings':[]}
  pages_file.write_text(json.dumps(pages));(state/'featured-movies.json').write_text(json.dumps(result,indent=2))
  return result
 if __name__=='__main__':
