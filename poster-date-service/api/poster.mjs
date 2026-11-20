@@ -235,6 +235,7 @@ function setImageHeaders(res, type, status, releaseDate, releaseKind = 'none') {
   res.setHeader('X-Poster-Just-Added', status.includes('just-added-overlay') ? 'true' : 'false');
   res.setHeader('X-Poster-Date', releaseDate);
   res.setHeader('X-Poster-Date-Type', releaseKind);
+  if (status.includes('just-added-overlay')) res.setHeader('X-Poster-Badge', 'Just Added');
   // Let Xperience/CDNs reuse the processed result; the in-process cache
   // remains a secondary optimisation, not the only cache.
   res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=3600');
