@@ -157,9 +157,9 @@ async function buildPoster(id, knownRelease = undefined, badge = '') {
   return { bytes: output, type: original.type, source: original.source, status, releaseDate: release.date, releaseKind: release.kind || 'premiere' };
 }
 
-async function getBuiltPoster(id, knownRelease = undefined, badge = '') {
+async function getBuiltPoster(id, knownRelease = undefined, badge = '', version = '') {
   const today = new Date().toISOString().slice(0, 10);
-  const cacheKey = id + '|' + today + '|' + badge;
+  const cacheKey = id + '|' + today + '|' + badge + '|' + version;
   const cached = resultCache.get(cacheKey);
   if (cached && cached.expiresAt > Date.now()) return cached.value;
   if (pendingResults.has(cacheKey)) return pendingResults.get(cacheKey);
@@ -222,9 +222,10 @@ export default async function handler(req, res) {
     const imageKitAsset = releaseInfo?.date ? await findFreshImageKitAsset(id, releaseInfo) : null;
     if (imageKitAsset && releaseInfo?.date) return redirectToImageKit(res, imageKitAsset);
 
-    const poster = await getBuiltPoster(id, releaseInfo, badge);
-    // Only genuine upcoming-date overlays are stored. Ordinary, released,
-    // unknown-date and BetterPosters-already-tagged posters stay out of DAM.
+    const version = String(req.query?.v || '');
+    const poster = await getBuiltPoster(id, releaseInfo, badge, version);
+    // Only genuine upcoming-date overlays are stored. Just Added posters are
+    // rendered on demand so the exact title-case label is always current.
     const canStore = poster.status === 'upcoming-date-overlay' &&
       canStoreImageKitPoster(id, poster.bytes.length);
     if (canStore) scheduleImageKitUpload(id, poster);
