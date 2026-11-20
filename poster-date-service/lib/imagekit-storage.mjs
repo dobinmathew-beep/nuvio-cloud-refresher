@@ -311,7 +311,7 @@ export async function uploadPosterToImageKit(imdbId, poster) {
   form.set('isPrivateFile', 'false');
 
   let response;
-  const retryableStatuses = new Set([408, 425, 429, 500, 502, 503, 504]);
+  
   for (let attempt = 1; attempt <= 4; attempt++) {
     try {
       response = await fetch(UPLOAD_API, {
@@ -330,7 +330,7 @@ export async function uploadPosterToImageKit(imdbId, poster) {
     if (response.ok) break;
     const status = response.status;
     const detail = (await response.text()).slice(0, 300);
-    if (!retryableStatuses.has(status) || attempt === 4) {
+    if (!isRetryableImageKitUploadStatus(status) || attempt === 4) {
       throw new Error('ImageKit upload failed (' + status + '): ' + detail);
     }
     const delay = Math.min(12000, 1500 * (2 ** (attempt - 1)));
