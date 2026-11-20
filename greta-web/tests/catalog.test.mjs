@@ -32,7 +32,7 @@ test('configured poster route forwards Just Added requests to the Render rendere
  let requested='';
  globalThis.fetch=async url=>{
   requested=String(url);
-  return new Response(new Uint8Array(512).fill(7),{status:200,headers:{'content-type':'image/jpeg','x-poster-date-status':'just-added-overlay','x-poster-source':'BetterPosters'}});
+  return new Response(new Uint8Array(512).fill(7),{status:200,headers:{'content-type':'image/jpeg','x-poster-date-status':'just-added-overlay','x-poster-just-added':'true','x-poster-source':'BetterPosters'}});
  };
  try{
   const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');
@@ -55,7 +55,7 @@ test('configured poster proxy preserves badge query embedded inside Vercel path 
  let requested='';
  globalThis.fetch=async url=>{
   requested=String(url);
-  return new Response(new Uint8Array(512).fill(7),{status:200,headers:{'content-type':'image/jpeg','x-poster-date-status':'just-added-overlay','x-poster-source':'BetterPosters'}});
+  return new Response(new Uint8Array(512).fill(7),{status:200,headers:{'content-type':'image/jpeg','x-poster-date-status':'just-added-overlay','x-poster-just-added':'true','x-poster-source':'BetterPosters'}});
  };
  try{
   const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');
