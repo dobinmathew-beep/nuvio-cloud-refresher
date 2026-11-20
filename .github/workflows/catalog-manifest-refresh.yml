@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: manifest-catalogue-poster-refresh
+  group: manifest-catalogue-poster-refresh-v2
   cancel-in-progress: true
 
 jobs:
