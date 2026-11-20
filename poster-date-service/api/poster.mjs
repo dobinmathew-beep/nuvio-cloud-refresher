@@ -3,7 +3,7 @@ import { renderUpcomingBadge, renderJustAddedBadge } from '../lib/render-poster.
 import { hasExistingComingDateTag, hasExistingJustAddedTag } from '../lib/coming-tag.mjs';
 import { isCatalogRecentlyAdded } from '../lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from '../lib/catalog-upcoming.mjs';
-import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster, getImageKitStorageSnapshot, runImageKitMaintenance } from '../lib/imagekit-storage.mjs';
+import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster, getImageKitStorageSnapshot, runImageKitMaintenance, readPosterValidationMetadata, savePosterValidationMetadata } from '../lib/imagekit-storage.mjs';
 
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
 const BETTERPOSTERS_RATING_SOURCE = 'IM';
@@ -56,33 +56,63 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
     const lastModified = Date.parse(response.headers.get('last-modified') || '');
     if (!Number.isFinite(lastModified) || Date.now() - lastModified > IMAGEKIT_REFRESH_MS) return null;
 
-    const imageResponse = await fetch(assetUrl, { cache: 'no-store', signal: AbortSignal.timeout(5000) });
+    const expectedDate = releaseInfo?.date || null;
+    const expectedKind = releaseInfo?.kind || 'premiere';
+
+    // Our own ImageKit uploads now carry a tiny, durable validation sidecar.
+    // When it matches the exact poster version and current badge state, skip
+    // downloading the full image and running Tesseract OCR on every refresh.
+    const metadata = await readPosterValidationMetadata(imdbId);
+    const metadataTime = Date.parse(metadata?.uploadedAt || '');
+    const metadataBelongsToAsset = metadata?.version === 1 &&
+      metadata?.imdbId === imdbId &&
+      Number.isFinite(metadataTime) &&
+      Math.abs(metadataTime - lastModified) <= 5 * 60 * 1000;
+    const metadataMatches = metadataBelongsToAsset &&
+      (metadata.releaseDate || null) === expectedDate &&
+      (!expectedDate || metadata.releaseKind === expectedKind) &&
+      (!expectedJustAdded || metadata.justAdded === true);
+    if (metadataMatches) return assetUrl;
+
+    // Legacy assets have no sidecar yet. Verify them once using the existing
+    // OCR checks, then persist the result so later refreshes take the fast path.
+    const imageResponse = await fetch(assetUrl, {
+      cache: 'no-store',
+      signal: AbortSignal.timeout(5000)
+    });
     if (!imageResponse.ok) return null;
     const imageBytes = Buffer.from(await imageResponse.arrayBuffer());
 
-    // A cached image is reusable only if its visible release-date label still
-    // agrees with current metadata. When there is no upcoming release, reject
-    // cached images that still contain an old date badge.
     const hasDateBadge = await hasExistingComingDateTag(
       imageBytes,
-      releaseInfo?.kind || 'premiere',
-      releaseInfo?.date || null
+      expectedKind,
+      expectedDate
     );
-    const dateMatches = releaseInfo?.date ? hasDateBadge : !hasDateBadge;
+    const dateMatches = expectedDate ? hasDateBadge : !hasDateBadge;
     if (!dateMatches) {
       console.info('[poster-date-cache-mismatch]', JSON.stringify({
-        imdbId, tmdbDate: releaseInfo?.date || null, cachedPoster: 'ImageKit',
+        imdbId, tmdbDate: expectedDate, cachedPoster: 'ImageKit',
         action: 'rebuild-from-BetterPosters'
       }));
       return null;
     }
 
-    // If the current catalogue index requires Just Added, never serve an
-    // unbadged cached file. A non-required native BetterPosters badge is kept.
-    if (expectedJustAdded && !(await hasExistingJustAddedTag(imageBytes))) {
+    const hasJustAddedBadge = await hasExistingJustAddedTag(imageBytes);
+    if (expectedJustAdded && !hasJustAddedBadge) {
       console.info('[poster-just-added-cache-mismatch]', JSON.stringify({ imdbId, action: 'rebuild-from-BetterPosters' }));
       return null;
     }
+
+    await savePosterValidationMetadata(imdbId, {
+      version: 1,
+      imdbId,
+      releaseDate: expectedDate,
+      releaseKind: expectedDate ? expectedKind : null,
+      justAdded: hasJustAddedBadge,
+      uploadedAt: new Date(lastModified).toISOString()
+    }).catch(error => console.warn('[poster-validation-sidecar-save-failed]', JSON.stringify({
+      imdbId, error: error?.message || 'unknown error'
+    })));
     return assetUrl;
   } catch {
     return null;
