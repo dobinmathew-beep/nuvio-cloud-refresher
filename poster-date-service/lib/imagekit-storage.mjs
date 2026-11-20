@@ -129,6 +129,7 @@ async function persistStorageSnapshot() {
   const dirtyAtStart = snapshotDirtyUploads;
   const config = imageKitConfig();
   if (!config) return false;
+  let persisted = false;
   snapshotPersistPromise = (async () => {
     const value = {
       version: 1,
@@ -151,11 +152,14 @@ async function persistStorageSnapshot() {
     });
     if (!response.ok) throw new Error('ImageKit storage snapshot upload failed (' + response.status + ')');
     snapshotDirtyUploads = Math.max(0, snapshotDirtyUploads - dirtyAtStart);
+    persisted = true;
     return true;
   })().finally(() => {
     snapshotPersistPromise = null;
-    if (snapshotDirtyUploads >= 25) {
-      void persistStorageSnapshot().catch(error => console.warn('[imagekit-storage-snapshot-persist-failed]', error?.message || 'unknown error'));
+    // Retry once only when this write succeeded and newer uploads accumulated
+    // while it was in flight. A failed network write must not create a hot loop.
+    if (persisted && snapshotDirtyUploads >= 25) {
+      setImmediate(() => void persistStorageSnapshot().catch(error => console.warn('[imagekit-storage-snapshot-persist-failed]', error?.message || 'unknown error')));
     }
   });
   return snapshotPersistPromise;
