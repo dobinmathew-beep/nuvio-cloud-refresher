@@ -221,6 +221,7 @@ for (const [catalog, items] of Object.entries(catalogs)) {
     catalogFlagged: rows.filter(row => row.catalogFlag).length,
     visibleBadge: rows.filter(row => row.badgeVisible).length,
     justAddedVisible: rows.filter(row => row.justAddedBadgeVisible).length,
+    justAddedLabelMismatchCount: rows.filter(row => row.justAddedLabelMismatch).length,
     comingDateVisible: rows.filter(row => row.comingBadgeVisible).length,
     comingDateEligible: rows.filter(row => row.serviceConfirmedComing).length,
     serviceConfirmed: rows.filter(row => row.serviceConfirmed).length,
@@ -246,12 +247,14 @@ const report = {
   unavailableCount: results.filter(row => row.error).length,
   posterImagesInspected: results.filter(row => row.imageInspected).length,
   serviceConfirmedCount: results.filter(row => row.serviceConfirmed).length,
+  justAddedLabelMismatchCount: results.filter(row => row.justAddedLabelMismatch).length,
+  justAddedLabelMismatch: results.filter(row => row.justAddedLabelMismatch).map(row => ({ catalog: row.catalog, title: row.title, id: row.id, badgeText: row.posterBadgeText })),
   ocrConfirmedCount: results.filter(row => row.ocrDetectedBadge).length,
   unflaggedTitlesNotDownloaded: 0,
   byCatalog,
   visibleTitles,
-  flaggedButNotVisible: results.filter(row => row.catalogFlag && !row.badgeVisible),
-  auditPolicy: 'Every poster in all eight catalogs is downloaded and inspected through the public custom poster route. Coming-date eligibility is taken from the shared Render response; Just Added eligibility comes from the catalog flag or a detected BetterPosters tag.',
+  flaggedButNotVisible: results.filter(row => row.catalogFlag && !row.justAddedBadgeVisible),
+  auditPolicy: 'Every poster in all eight catalogs is downloaded and inspected through the public custom poster route. Coming-date eligibility is taken from the central upcoming index or TMDB/TVmaze response. Just Added eligibility comes from the central 14-day catalog index, explicit catalog flag or BetterPosters tag; the exact response label must be title-case Just Added.',
   results
 };
 await mkdir(outputDir, { recursive: true });
