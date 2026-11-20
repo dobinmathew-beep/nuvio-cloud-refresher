@@ -367,10 +367,12 @@ def release_classification(event,meta):
 def catalog_sort_date(item):
  return physical.catalog_release_date(item)
 
-def is_just_added_movie(event, added_time, now=NOW):
- # Badge a movie for 14 days after either its first catalog addition OR its
- # confirmed digital/OTT release. This catches a fresh OTT arrival even when
- # the title was already known to the catalog or its theatrical date is older.
+def is_just_added_title(event, added_time, now=NOW):
+ # Newly added series and movies receive the label for 14 days after their
+ # first catalog appearance. Movies also qualify for 14 days after a confirmed
+ # digital/OTT release, even if they were already known to the catalog.
+ recently_added=bool(added_time and timedelta(0) <= now-added_time <= timedelta(days=14))
+ if recently_added:return True
  if event.get('type') != 'movie':return False
  availability=event.get('availability') or []
  has_digital=(event.get('releaseKind') == 'digital' or
@@ -382,7 +384,7 @@ def is_just_added_movie(event, added_time, now=NOW):
    age=(now.date()-date.fromisoformat(digital)).days
    if 0 <= age <= 14:return True
   except ValueError:pass
- return bool(added_time and timedelta(0) <= now-added_time <= timedelta(days=14))
+ return False
 
 def title_logo(name):
  im=Image.new('RGBA',(1200,300));d=ImageDraw.Draw(im)
@@ -525,20 +527,14 @@ def build():
   m['ott']={'date':digital_date or e['ottDate'],'kind':display_kind,'platforms':e['platforms'],'sources':e['sources']}
   description_label=release_label or ('Upcoming OTT release' if e['ottDate']>TODAY else 'Home release')
   added_key=cid+'|'+str(mid)
-  if e['type']=='movie' and e['ottDate']<=TODAY and str(mid) not in previous_ids.get(cid,set()) and added_key not in added_at:
+  if str(mid) not in previous_ids.get(cid,set()) and added_key not in added_at:
    added_at[added_key]=NOW.isoformat()
   added_time=None
   if added_key in added_at:
    try:added_time=datetime.fromisoformat(added_at[added_key])
    except (TypeError,ValueError):added_time=None
-  just_added=is_just_added_movie(e,added_time)
-  tmdb_id=re.fullmatch(r'tmdb:(\d+)',str(mid))
-  if just_added and is_imdb_id(mid):
-   poster_url="https://great-indian-upcoming-posters.onrender.com/poster/"+mid+".jpg?badge=just-added&v=5"
-  elif just_added and tmdb_id:
-   poster_url="https://great-indian-upcoming-posters.onrender.com/poster/tmdb/"+tmdb_id.group(1)+".jpg?badge=just-added&type=movie&v=5"
-  else:
-   poster_url=BASE+'/art/poster/'+aid
+  just_added=is_just_added_title(e,added_time)
+  poster_url=BASE+'/art/poster/'+aid+('?badge=just-added&v=7' if just_added else '?v=7')
   catalogs[cid].append({'id':mid,'type':e['type'],'name':m['name'],'poster':poster_url,'posterShape':'poster','background':BASE+'/art/background/'+aid,'logo':BASE+'/art/logo/'+aid,'releaseInfo':str(m.get('releaseInfo','')),'metadataSource':m.get('metadataSource','https://v3-cinemeta.strem.io/'),'imdbRating':m.get('imdbRating'),'genres':m.get('genres',[]),'description':f"{description_label} ({display_kind}): {display_date} · {', '.join(e['platforms'])}\n\n"+(m.get('description') or e.get('description') or ''),'releaseDate':e['ottDate'],'releaseKind':e.get('releaseKind','digital'),'releaseStatus':'upcoming' if display_date>TODAY else 'available','releaseLabel':release_label,'releaseLabelDate':label_date,'originalReleaseDate':original_release_date,'availability':e.get('availability',[]),'physicalReleases':e.get('physicalReleases',[]),'theatricalReleases':e.get('theatricalReleases',[]),'ottDate':digital_date,'platforms':e['platforms'],'sources':e['sources'],'language':e['language'],'releaseDateBasis':e.get('releaseDateBasis','source release'),'latestEpisodeReleasedAt':episode_at,'hasNewEpisodes':new_episodes,'nextEpisodeReleaseAt':episode_badges.upcoming(m.get('videos',[]),NOW,m.get('seasons',[])) if e['type']=='series' else None,'justAdded':just_added,'catalogAddedAt':added_at.get(added_key)})
  for cid,ms in catalogs.items():
   append_legacy_series(ms,old_catalogs.get(cid,[]),TODAY,metas,require_metadata=cid.startswith('dobins_ml_'))
