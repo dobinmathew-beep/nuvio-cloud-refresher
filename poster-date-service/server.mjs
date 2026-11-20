@@ -1,4 +1,5 @@
 import { createServer } from 'node:http';
+import { timingSafeEqual, randomUUID } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import posterHandler from './api/poster.mjs';
@@ -10,6 +11,20 @@ import { isCatalogRecentlyAdded } from './lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
 
 import { runImageKitMaintenance } from './lib/imagekit-storage.mjs';
+import { runManifestCatalogRefresh } from './lib/catalog-manifest-refresh.mjs';
+
+let catalogRefreshJob = null;
+let catalogRefreshReport = null;
+let catalogRefreshError = null;
+
+function authorizedCatalogRequest(req) {
+  const expected = String(process.env.POSTER_CATALOG_SCAN_TOKEN || '');
+  const supplied = String(req.headers.authorization || '').replace(/^Bearer\s+/i, '');
+  if (!expected || !supplied) return false;
+  const a = Buffer.from(expected);
+  const b = Buffer.from(supplied);
+  return a.length === b.length && timingSafeEqual(a, b);
+}
 
 const port = Number(process.env.PORT || 10000);
 const publicIndex = resolve(process.cwd(), 'public/index.html');
@@ -220,6 +235,52 @@ const server = createServer(async (req, res) => {
   }
 
   if (url.pathname === '/health') return healthHandler(adaptedReq, adaptedRes);
+
+  // Authenticated manifest refresh. The request starts a background job so
+  // large catalogues do not exceed the web request timeout.
+  if (url.pathname === '/catalog-refresh' || url.pathname === '/catalog-refresh/status') {
+    if (!authorizedCatalogRequest(req)) {
+      res.writeHead(401, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+      return res.end(JSON.stringify({ error: 'Unauthorized' }));
+    }
+    if (url.pathname === '/catalog-refresh/status') {
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+      return res.end(JSON.stringify(catalogRefreshJob
+        ? { status: 'running', jobId: catalogRefreshJob }
+        : catalogRefreshError
+          ? { status: 'failed', error: catalogRefreshError }
+          : catalogRefreshReport
+            ? { status: 'completed', report: catalogRefreshReport }
+            : { status: 'idle' }));
+    }
+    if (req.method !== 'POST') {
+      res.writeHead(405, { 'Allow': 'POST', 'Cache-Control': 'no-store' });
+      return res.end('Method not allowed');
+    }
+    if (catalogRefreshJob) {
+      res.writeHead(409, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+      return res.end(JSON.stringify({ status: 'already-running', jobId: catalogRefreshJob }));
+    }
+    const jobId = randomUUID();
+    catalogRefreshJob = jobId;
+    catalogRefreshError = null;
+    catalogRefreshReport = null;
+    res.writeHead(202, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+    res.end(JSON.stringify({ status: 'accepted', jobId }));
+    void (async () => {
+      try {
+        await runImageKitMaintenance();
+        catalogRefreshReport = await runManifestCatalogRefresh();
+        console.log('[catalog-refresh-job-complete]', JSON.stringify({ jobId, status: 'completed' }));
+      } catch (error) {
+        catalogRefreshError = error?.message || 'Catalogue refresh failed';
+        console.error('[catalog-refresh-job-failed]', JSON.stringify({ jobId, error: catalogRefreshError }));
+      } finally {
+        catalogRefreshJob = null;
+      }
+    })();
+    return;
+  }
 
   // Safe, fixed maintenance action: no user-supplied IDs or paths are accepted.
   // A six-hour in-process cooldown prevents repeated public triggering.
