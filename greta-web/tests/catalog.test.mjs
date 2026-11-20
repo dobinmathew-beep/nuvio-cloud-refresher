@@ -38,7 +38,7 @@ test('configured poster route forwards Just Added requests through the shared co
   const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');
   const route='/install/01/bttr/'+token+'/poster/movie/tt1234567.jpg?badge=just-added&v=5';
   const req={url:route,method:'GET',headers:{host:'addon.example'},query:{path:route.split('?')[0]}};
-  const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=body}};
+  const res={headers:{},setHeader(k,v){this.headers[k]=v;this.headers[k.replace(/(^|-)([a-z])/g,(_,p,ch)=>p+ch.toUpperCase())]=v},end(body){this.body=body}};
   await handler(req,res);
   assert.equal(res.statusCode,200);
   assert.equal(requested,'https://addon.example/art/poster/tt1234567?badge=just-added&v=8');
@@ -61,7 +61,7 @@ test('TVmaze-only configured poster IDs use the shared renderer without a separa
   const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');
   const route='/install/01/bttr/'+token+'/poster/series/tvmaze:123.jpg?v=8';
   const req={url:route,method:'GET',headers:{host:'addon.example'}};
-  const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=body}};
+  const res={headers:{},setHeader(k,v){this.headers[k]=v;this.headers[k.replace(/(^|-)([a-z])/g,(_,p,ch)=>p+ch.toUpperCase())]=v},end(body){this.body=body}};
   await handler(req,res);
   assert.equal(res.statusCode,200);
   assert.equal(requested,'https://addon.example/art/poster/series~tvmaze:123?v=8');
@@ -84,7 +84,7 @@ test('configured poster proxy delegates once to the shared core renderer and pre
   const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');
   const route='/install/ff/bttr/'+token+'/poster/movie/tt45692999.jpg?badge=just-added&v=5';
   const req={url:'/api/service?path='+encodeURIComponent(route),method:'GET',headers:{host:'addon.example'},query:{path:route}};
-  const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=body}};
+  const res={headers:{},setHeader(k,v){this.headers[k]=v;this.headers[k.replace(/(^|-)([a-z])/g,(_,p,ch)=>p+ch.toUpperCase())]=v},end(body){this.body=body}};
   await handler(req,res);
   assert.equal(res.statusCode,200);
   assert.equal(requested,'https://addon.example/art/poster/tt45692999?badge=just-added&v=8');
@@ -101,7 +101,7 @@ test('all 255 catalog selections contain exactly the requested language/type bit
 test('catalog endpoints expose 50-item pages and continue with skip pagination',async()=>{
  const originalFetch=globalThis.fetch;globalThis.fetch=async()=>{throw Error('offline fixture')};
  try{
-  async function request(route){const req={url:route,method:'GET',headers:{host:'addon.example'},query:{path:route}};const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=JSON.parse(body)}};await handler(req,res);return res}
+  async function request(route){const req={url:route,method:'GET',headers:{host:'addon.example'},query:{path:route}};const res={headers:{},setHeader(k,v){this.headers[k]=v;this.headers[k.replace(/(^|-)([a-z])/g,(_,p,ch)=>p+ch.toUpperCase())]=v},end(body){this.body=JSON.parse(body)}};await handler(req,res);return res}
   const first=await request('/catalog/movie/dobins_ml_movie.json');
   const second=await request('/catalog/movie/dobins_ml_movie/skip=50.json');
   assert.equal(first.body.metas.length,50);
@@ -113,10 +113,10 @@ test('catalog endpoints expose 50-item pages and continue with skip pagination',
 
 test('origins are rewritten throughout nested artwork and metadata',()=>{const x=replaceOrigin({a:['https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt1']},'https://greta.example');assert.equal(x.a[0],'https://greta.example/art/poster/tt1')});
 import handler from '../api/service.mjs';import {readFileSync} from 'node:fs';
-test('personalised and standalone install bases serve catalogs, extras and selected languages',async()=>{const originalFetch=globalThis.fetch;globalThis.fetch=async()=>{throw Error('offline fixture')};try{async function request(route){const req={url:route,method:'GET',headers:{host:'addon.example'},query:{path:route.split('?')[0]}};const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=JSON.parse(body)}};await handler(req,res);return res}const root=await request('/catalog/movie/dobins_ml_movie.json');assert(root.body.metas.length>1);const selected=await request('/install/01/catalog/movie/dobins_ml_movie.json');assert.equal(selected.statusCode,200);assert.deepEqual(selected.body,root.body);const paged=await request('/install/01/catalog/movie/dobins_ml_movie/skip=1.json');assert.equal(paged.body.metas[0].id,root.body.metas[1].id);const query=await request('/install/01/catalog/movie/dobins_ml_movie.json?skip=1');assert.equal(query.body.metas[0].id,root.body.metas[1].id);const searched=await request('/install/01/catalog/movie/dobins_ml_movie/search='+encodeURIComponent(root.body.metas[0].name)+'.json');assert.equal(searched.body.metas[0].id,root.body.metas[0].id);assert.deepEqual((await request('/install/01/catalog/series/dobins_ml_series.json')).body,{metas:[]});assert.equal((await request('/install/00/catalog/movie/dobins_ml_movie.json')).statusCode,400);assert.deepEqual((await request('/standalone/catalog/movie/dobins_ml_movie.json')).body,root.body);const config=JSON.parse(readFileSync(new URL('../vercel.json',import.meta.url)));for(const source of ['/install/:mask/:rest*','/standalone/:rest*'])assert(config.rewrites.some(r=>r.source===source));}finally{globalThis.fetch=originalFetch}});
+test('personalised and standalone install bases serve catalogs, extras and selected languages',async()=>{const originalFetch=globalThis.fetch;globalThis.fetch=async()=>{throw Error('offline fixture')};try{async function request(route){const req={url:route,method:'GET',headers:{host:'addon.example'},query:{path:route.split('?')[0]}};const res={headers:{},setHeader(k,v){this.headers[k]=v;this.headers[k.replace(/(^|-)([a-z])/g,(_,p,ch)=>p+ch.toUpperCase())]=v},end(body){this.body=JSON.parse(body)}};await handler(req,res);return res}const root=await request('/catalog/movie/dobins_ml_movie.json');assert(root.body.metas.length>1);const selected=await request('/install/01/catalog/movie/dobins_ml_movie.json');assert.equal(selected.statusCode,200);assert.deepEqual(selected.body,root.body);const paged=await request('/install/01/catalog/movie/dobins_ml_movie/skip=1.json');assert.equal(paged.body.metas[0].id,root.body.metas[1].id);const query=await request('/install/01/catalog/movie/dobins_ml_movie.json?skip=1');assert.equal(query.body.metas[0].id,root.body.metas[1].id);const searched=await request('/install/01/catalog/movie/dobins_ml_movie/search='+encodeURIComponent(root.body.metas[0].name)+'.json');assert.equal(searched.body.metas[0].id,root.body.metas[0].id);assert.deepEqual((await request('/install/01/catalog/series/dobins_ml_series.json')).body,{metas:[]});assert.equal((await request('/install/00/catalog/movie/dobins_ml_movie.json')).statusCode,400);assert.deepEqual((await request('/standalone/catalog/movie/dobins_ml_movie.json')).body,root.body);const config=JSON.parse(readFileSync(new URL('../vercel.json',import.meta.url)));for(const source of ['/install/:mask/:rest*','/standalone/:rest*'])assert(config.rewrites.some(r=>r.source===source));}finally{globalThis.fetch=originalFetch}});
 import {normalizePosterTemplate,encodePosterConfig,decodePosterConfig,ratedPoster} from '../public/poster-config.js';
 test('poster URL settings preserve provider options and substitute only matching IMDb titles',()=>{const t=normalizePosterTemplate('https://posters.example/key/poster/tt0133093.jpg?ratings=imdb,rt');assert.equal(t,'https://posters.example/key/poster/{imdbId}.jpg?ratings=imdb,rt');assert.equal(decodePosterConfig(encodePosterConfig(t)),t);assert.equal(ratedPoster(t,'tt34792531','fallback'), 'https://posters.example/key/poster/tt34792531.jpg?ratings=imdb,rt');assert.equal(ratedPoster(t,'tmdb:123','fallback'),'fallback');assert.equal(encodePosterConfig(''),'');for(const invalid of ['http://posters.example/{id}','https://localhost/{id}','https://user:pass@posters.example/{id}','https://posters.example/no-id','https://posters.example/{unknown}'])assert.throws(()=>normalizePosterTemplate(invalid));});
-test('configured installation serves rated posters through catalog pagination and keeps selection',async()=>{const oldFetch=globalThis.fetch,oldOrigin=process.env.PUBLIC_ORIGIN;process.env.PUBLIC_ORIGIN='https://addon.example';globalThis.fetch=async()=>{throw Error('offline fixture')};try{const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');async function request(tail){const req={url:'/install/01/bttr/'+token+tail,method:'GET',headers:{host:'addon.example'}};const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=JSON.parse(body)}};await handler(req,res);return res}const manifest=await request('/manifest.json');assert.equal(manifest.statusCode,200);assert.equal(manifest.body.catalogs.length,1);assert(manifest.body.configurationURL.includes('#bttr='+token));const page=await request('/catalog/movie/dobins_ml_movie/skip=1.json');assert.equal(page.statusCode,200);assert(page.body.metas.length>0);for(const m of page.body.metas){
+test('configured installation serves rated posters through catalog pagination and keeps selection',async()=>{const oldFetch=globalThis.fetch,oldOrigin=process.env.PUBLIC_ORIGIN;process.env.PUBLIC_ORIGIN='https://addon.example';globalThis.fetch=async()=>{throw Error('offline fixture')};try{const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');async function request(tail){const req={url:'/install/01/bttr/'+token+tail,method:'GET',headers:{host:'addon.example'}};const res={headers:{},setHeader(k,v){this.headers[k]=v;this.headers[k.replace(/(^|-)([a-z])/g,(_,p,ch)=>p+ch.toUpperCase())]=v},end(body){this.body=JSON.parse(body)}};await handler(req,res);return res}const manifest=await request('/manifest.json');assert.equal(manifest.statusCode,200);assert.equal(manifest.body.catalogs.length,1);assert(manifest.body.configurationURL.includes('#bttr='+token));const page=await request('/catalog/movie/dobins_ml_movie/skip=1.json');assert.equal(page.statusCode,200);assert(page.body.metas.length>0);for(const m of page.body.metas){
  const imdb=[m.id,m.imdb_id,m.imdbId,m.imdb,m.externals?.imdb,m.externalIds?.imdb,m.ids?.imdb].find(v=>typeof v==='string'&&v.startsWith('tt')&&v.slice(2).length>0&&[...v.slice(2)].every(ch=>ch>='0'&&ch<='9'));
  const local='https://addon.example/install/01/bttr/'+token+'/poster/'+m.type+'/'+(imdb||m.id)+'.jpg';
  if(m.justAdded===true)assert.equal(m.poster,local+'?badge=just-added&v=8');
@@ -138,7 +138,7 @@ test('configured poster route sends normal titles through the shared core render
   const token=encodePosterConfig('https://btttr.cc/poster/imdb/poster-default/{imdb_id}.jpg?rs=IM');
   const route='/install/01/bttr/'+token+'/poster/movie/tt1234567.jpg?v=8';
   const req={url:route,method:'GET',headers:{host:'addon.example'}};
-  const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=body}};
+  const res={headers:{},setHeader(k,v){this.headers[k]=v;this.headers[k.replace(/(^|-)([a-z])/g,(_,p,ch)=>p+ch.toUpperCase())]=v},end(body){this.body=body}};
   await handler(req,res);
   assert.equal(res.statusCode,200);
   assert.equal(requested,'https://addon.example/art/poster/tt1234567?v=8');
@@ -155,6 +155,6 @@ test('configured poster route sends normal titles through the shared core render
 
 test('public data-health route exposes GitHub snapshot provenance and catalog counts',async()=>{
  const oldFetch=globalThis.fetch;globalThis.fetch=async()=>{throw Error('offline fixture')};
- try{const req={url:'/data-health.json',method:'GET',headers:{host:'addon.example'},query:{path:'/data-health.json'}};const res={headers:{},setHeader(k,v){this.headers[k]=v},end(body){this.body=JSON.parse(body)}};await handler(req,res);assert.equal(res.statusCode,200);assert(res.body.snapshots['catalogs.json']);assert(res.body.snapshots['status.json']);assert(res.body.snapshots['metadata.json']);assert.equal(typeof res.body.catalogCounts.dobins_ml_movie,'number');assert(Array.isArray(res.body.catalogIdSets.dobins_ml_movie));assert.equal(typeof res.body.metadataRecords,'number');}
+ try{const req={url:'/data-health.json',method:'GET',headers:{host:'addon.example'},query:{path:'/data-health.json'}};const res={headers:{},setHeader(k,v){this.headers[k]=v;this.headers[k.replace(/(^|-)([a-z])/g,(_,p,ch)=>p+ch.toUpperCase())]=v},end(body){this.body=JSON.parse(body)}};await handler(req,res);assert.equal(res.statusCode,200);assert(res.body.snapshots['catalogs.json']);assert(res.body.snapshots['status.json']);assert(res.body.snapshots['metadata.json']);assert.equal(typeof res.body.catalogCounts.dobins_ml_movie,'number');assert(Array.isArray(res.body.catalogIdSets.dobins_ml_movie));assert.equal(typeof res.body.metadataRecords,'number');}
  finally{globalThis.fetch=oldFetch}
 });
