@@ -1,1 +1,1 @@
-Rerun the full catalog badge audit after poster OCR optimization and RPDB/Metahub fallbacks.
+Rerun full title-by-title Just Added audit after fixing poster SVG label rendering.
