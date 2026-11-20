@@ -2,9 +2,15 @@ import unittest
 from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from featured import first_valid
+from featured import first_valid, valid_id
 
 class FeaturedSelectionTests(unittest.TestCase):
+    def test_featured_id_validation_accepts_imdb_and_tmdb_ids(self):
+        self.assertTrue(valid_id('tt1234567'))
+        self.assertTrue(valid_id('tmdb:1822586'))
+        self.assertFalse(valid_id('ir:promo-unlock'))
+        self.assertFalse(valid_id('tmdb:'))
+
     def test_first_eligible_movie_keeps_catalog_order(self):
         metas=[
             {'id':'tt900','type':'series','poster':'series.jpg','name':'Series'},

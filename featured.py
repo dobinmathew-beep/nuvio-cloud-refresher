@@ -8,9 +8,12 @@ def get(url):
  p=subprocess.run(['curl','-fsSL','--retry','1','--connect-timeout','10','--max-time','40',url],capture_output=True)
  if p.returncode:raise RuntimeError('Catalog download failed; retaining last-good selection')
  return json.loads(p.stdout)
+def valid_id(value):
+ return bool(re.fullmatch(r'tt\d+|tmdb:\d+',str(value or '')))
+
 def valid(m,lang=None):
  mid=str(m.get('id','')).split('||',1)[0]
- return bool(re.fullmatch(r'tt\d+|tmdb:\d+',mid)) and m.get('type')=='movie' and bool(m.get('poster')) and not re.search(r'OTT\s*Releases|Hindi\s*Dubbed|promo|unlock',str(m.get('name','')),re.I)
+ return valid_id(mid) and m.get('type')=='movie' and bool(m.get('poster')) and not re.search(r'OTT\s*Releases|Hindi\s*Dubbed|promo|unlock',str(m.get('name','')),re.I)
 def first_valid(metas,lang=None):
  """Return the first usable IMDb- or TMDB-linked movie without reordering the source catalog."""
  return next((m for m in metas if valid(m,lang)),None)

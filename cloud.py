@@ -4,6 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from refresh_watchdog import due
+from featured import valid_id
 import re, hashlib, json, html, mimetypes, os, shutil, subprocess, sys, tarfile, time, urllib.request, urllib.error, urllib.parse
 
 ROOT=Path(__file__).resolve().parent
@@ -222,8 +223,8 @@ def main():
     try:
         selected=featured_movies()
         selected_ids={lang:str(item.get('id','')) for lang,item in selected.get('languages',{}).items()}
-        if set(selected_ids)!=set(LANGS) or not all(re.fullmatch(r'tt\d+',value) for value in selected_ids.values()):
-            raise RuntimeError('Current IndianRegional head selection did not verify all four IMDb movie IDs')
+        if set(selected_ids)!=set(LANGS) or not all(valid_id(value) for value in selected_ids.values()):
+            raise RuntimeError('Current IndianRegional head selection did not verify all four supported movie IDs')
         if selected_ids!=progress.get('featured_ids'):
             progress.pop('backdrops',None);progress.pop('heroes',None)
         progress['featuredVersion']=2
