@@ -55,10 +55,10 @@ jobs:
 
       - name: Inspect every poster in all eight catalogs
         env:
-          CATALOGS_PATH: catalog-data/dobins-indian-catalog/data/catalogs.json
-          ADDED_PATH: catalog-data/dobins-indian-catalog/data/catalog-added.json
-          STATUS_PATH: catalog-data/dobins-indian-catalog/data/status.json
-          OUTPUT_DIR: audit-output
+          CATALOGS_PATH: ${{ github.workspace }}/catalog-data/dobins-indian-catalog/data/catalogs.json
+          ADDED_PATH: ${{ github.workspace }}/catalog-data/dobins-indian-catalog/data/catalog-added.json
+          STATUS_PATH: ${{ github.workspace }}/catalog-data/dobins-indian-catalog/data/status.json
+          OUTPUT_DIR: ${{ github.workspace }}/audit-output
           AUDIT_CONCURRENCY: '4'
         working-directory: poster-service/poster-date-service
         run: node scripts/audit-catalog-badges.mjs
@@ -67,8 +67,8 @@ jobs:
         if: always()
         working-directory: poster-service/poster-date-service
         run: |
-          if [ -f audit-output/just-added-audit.md ]; then
-            cat audit-output/just-added-audit.md >> "$GITHUB_STEP_SUMMARY"
+          if [ -f "$GITHUB_WORKSPACE/audit-output/just-added-audit.md" ]; then
+            cat "$GITHUB_WORKSPACE/audit-output/just-added-audit.md" >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Upload complete title-by-title audit
@@ -76,6 +76,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: just-added-poster-audit
-          path: poster-service/poster-date-service/audit-output/
+          path: audit-output/
           if-no-files-found: warn
           retention-days: 30
