@@ -93,39 +93,63 @@ function redirectToImageKit(res, assetUrl) {
   return res.end();
 }
 
-async function getOriginal(imdbId, fallbackUrl = '') {
-  const candidates = [
-    { source: 'BetterPosters', url: sourceUrl(imdbId), timeout: 10000 },
-    { source: 'RPDB', url: RPDB + encodeURIComponent(imdbId) + '.jpg', timeout: 8000 },
-    { source: 'Metahub', url: METAHUB + encodeURIComponent(imdbId) + '/img', timeout: 8000 }
-  ];
-  if (validCatalogPosterFallback(fallbackUrl)) {
-    candidates.push({ source: 'CatalogArtwork', url: fallbackUrl, timeout: 8000 });
+async function fetchPosterCandidate(imdbId, candidate) {
+  const response = await fetch(candidate.url, {
+    headers: { accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' },
+    redirect: 'follow',
+    signal: AbortSignal.timeout(candidate.timeout)
+  });
+  const type = (response.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
+  if (!response.ok || !['image/jpeg', 'image/png', 'image/webp', 'image/avif'].includes(type)) {
+    throw new Error('HTTP ' + response.status + ' (' + type + ')');
   }
+  if (Number(response.headers.get('content-length') || 0) > MAX_BYTES) throw new Error('Poster exceeds size limit');
+  const bytes = Buffer.from(await response.arrayBuffer());
+  if (!bytes.length || bytes.length > MAX_BYTES) throw new Error('Poster exceeds size limit');
+  if (candidate.source !== 'BetterPosters') {
+    console.warn('[poster-source-fallback]', JSON.stringify({ imdbId, source: candidate.source, primary: 'BetterPosters' }));
+  }
+  return { bytes, type, source: candidate.source };
+}
+
+async function getOriginal(imdbId, fallbackUrl = '') {
   const failures = [];
-  for (const candidate of candidates) {
+  const primary = { source: 'BetterPosters', url: sourceUrl(imdbId), timeout: 8000 };
+  try {
+    return await fetchPosterCandidate(imdbId, primary);
+  } catch (error) {
+    failures.push(primary.source + ': ' + (error?.message || 'request failed'));
+  }
+
+  // Prefer the catalog's own poster as the first fallback. It is already
+  // known to be associated with this title and avoids slow provider chains.
+  if (validCatalogPosterFallback(fallbackUrl)) {
+    const catalog = { source: 'CatalogArtwork', url: fallbackUrl, timeout: 5000 };
     try {
-      const response = await fetch(candidate.url, {
-        headers: { accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' },
-        redirect: 'follow',
-        signal: AbortSignal.timeout(candidate.timeout)
-      });
-      const type = (response.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
-      if (!response.ok || !['image/jpeg', 'image/png', 'image/webp', 'image/avif'].includes(type)) {
-        throw new Error('HTTP ' + response.status + ' (' + type + ')');
-      }
-      if (Number(response.headers.get('content-length') || 0) > MAX_BYTES) throw new Error('Poster exceeds size limit');
-      const bytes = Buffer.from(await response.arrayBuffer());
-      if (!bytes.length || bytes.length > MAX_BYTES) throw new Error('Poster exceeds size limit');
-      if (candidate.source !== 'BetterPosters') {
-        console.warn('[poster-source-fallback]', JSON.stringify({ imdbId, source: candidate.source, primary: 'BetterPosters' }));
-      }
-      return { bytes, type, source: candidate.source };
+      return await fetchPosterCandidate(imdbId, catalog);
     } catch (error) {
-      failures.push(candidate.source + ': ' + (error?.message || 'request failed'));
+      failures.push(catalog.source + ': ' + (error?.message || 'request failed'));
     }
   }
-  throw new Error('No poster provider returned a usable image for ' + imdbId + ' (' + failures.join('; ') + ')');
+
+  // RPDB and Metahub are independent fallbacks. Try them concurrently so a
+  // slow/unavailable provider cannot add another full timeout to the request.
+  const fallbacks = [
+    { source: 'RPDB', url: RPDB + encodeURIComponent(imdbId) + '.jpg', timeout: 6000 },
+    { source: 'Metahub', url: METAHUB + encodeURIComponent(imdbId) + '/img', timeout: 6000 }
+  ];
+  try {
+    return await Promise.any(fallbacks.map(async candidate => {
+      try {
+        return await fetchPosterCandidate(imdbId, candidate);
+      } catch (error) {
+        failures.push(candidate.source + ': ' + (error?.message || 'request failed'));
+        throw error;
+      }
+    }));
+  } catch {
+    throw new Error('No poster provider returned a usable image for ' + imdbId + ' (' + failures.join('; ') + ')');
+  }
 }
 
 async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl = '') {
@@ -135,16 +159,21 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
   // for every client using this shared URL. Catalogs can additionally force
   // the badge for titles they know were newly added.
   let shouldRenderJustAdded = badge === 'just-added';
+  let justAddedSource = shouldRenderJustAdded ? 'catalog-flag' : null;
   if (!shouldRenderJustAdded) {
     try {
       shouldRenderJustAdded = await isCatalogRecentlyAdded([id]);
+      if (shouldRenderJustAdded) justAddedSource = 'catalog-index';
     } catch (error) {
       console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
     }
   }
-  if (!shouldRenderJustAdded) {
+  // Only BetterPosters artwork can contain a BetterPosters badge. Avoid
+  // running OCR on RPDB, Metahub or catalog fallback artwork.
+  if (!shouldRenderJustAdded && /betterposters/i.test(original.source || '')) {
     try {
       shouldRenderJustAdded = await hasExistingJustAddedTag(original.bytes);
+      if (shouldRenderJustAdded) justAddedSource = 'betterposters-tag';
     } catch (error) {
       console.warn('[poster-just-added-detection-failed]', JSON.stringify({
         imdbId: id,
@@ -195,7 +224,7 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
     releaseSource: release?.source || null,
     releaseKind: release?.kind || null,
     justAdded: justAddedStatus,
-    justAddedSource: badge === 'just-added' ? 'catalog-flag' : justAddedStatus ? 'betterposters-tag' : null,
+    justAddedSource: justAddedStatus ? justAddedSource : null,
     result: status
   }));
 
