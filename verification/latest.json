@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-20T03:55:03.892232+04:00",
+  "checked_at": "2026-11-20T03:59:49.630988+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
     "addon": {
       "status": "pass",
-      "checked_at": "2026-11-20T03:55:03.892232+04:00",
+      "checked_at": "2026-11-20T03:59:49.630988+04:00",
       "public_url": "https://the-great-indian-addon.vercel.app",
       "checks": [
         {
@@ -50,7 +50,7 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-20T03:55:03.892232+04:00",
+      "checked_at": "2026-11-20T03:59:49.630988+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
@@ -134,14 +134,30 @@
       ]
     },
     "backdrops": {
-      "status": "fail",
-      "checked_at": "2026-11-20T03:55:03.892232+04:00",
+      "status": "pass",
+      "checked_at": "2026-11-20T03:59:49.630988+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
-      "error": "[{\"status\": \"hindi/movies/cascade\", \"error\": \"saved featured selection is stale: tt50107649 != current catalog head tt37200939\"}, {\"status\": \"hindi/movies/wall\", \"error\": \"saved featured selection is stale: tt50107649 != current catalog head tt37200939\"}, {\"status\": \"hindi/movies/filmstrip\", \"error\": \"saved featured selection is stale: tt50107649 != current catalog head tt37200939\"}, {\"status\": \"hindi/movies/spotlight\", \"error\": \"saved featured selection is stale: tt50107649 != current catalog head tt37200939\"}, {\"status\": \"hindi/movies/duo\", \"error\": \"saved featured selection is stale: tt50107649 != current catalog head tt37200939\"}]"
+      "details": {
+        "day": "2026-11-20",
+        "statuses": 160,
+        "images": 16,
+        "states": {
+          "live": 160,
+          "cached": 0
+        },
+        "errors": [],
+        "catalogHeads": {
+          "hindi": "tt37200939",
+          "tamil": "tt18933846",
+          "malayalam": "tt41944351",
+          "telugu": "tt36915004"
+        }
+      },
+      "method": "160 public layout/status checks and 16 JPEG checks"
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-20T03:55:03.892232+04:00",
+      "checked_at": "2026-11-20T03:59:49.630988+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
@@ -233,8 +249,8 @@
     }
   },
   "summary": {
-    "passed": 3,
+    "passed": 4,
     "total": 4,
-    "status": "fail"
+    "status": "pass"
   }
 }
