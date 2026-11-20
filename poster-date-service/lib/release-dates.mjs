@@ -243,6 +243,50 @@ export async function upcomingRelease(imdbId, options = {}) {
   pending.set(cacheKey, job);
   return job;
 }
+export async function upcomingReleaseByTmdbId(tmdbId, mediaType = 'tv', options = {}) {
+  const id = String(tmdbId || '');
+  if (!/^\\d{1,12}$/.test(id) || !['movie', 'tv'].includes(mediaType)) return null;
+  const today = options.today || getTodayInTimeZone(options.now || new Date());
+  const credential = { apiKey: options.apiKey || process.env.TMDB_API_KEY || '', readToken: process.env.TMDB_API_READ_ACCESS_TOKEN || '' };
+  if (!credential.apiKey && !credential.readToken) return null;
+  const cacheKey = 'tmdb:' + mediaType + ':' + id + '|' + today;
+  const cached = memory.get(cacheKey);
+  if (cached && Date.now() - cached.at < (cached.value ? CACHE_MS : NEGATIVE_CACHE_MS)) return cached.value;
+  if (pending.has(cacheKey)) return pending.get(cacheKey);
+  const job = (async () => {
+    try {
+      let selected = null;
+      if (mediaType === 'movie') {
+        const releaseData = await tmdbJson('/movie/' + id + '/release_dates', credential);
+        selected = chooseMovieDate(releaseData.results || [], today);
+      } else {
+        const details = await tmdbJson('/tv/' + id, credential);
+        selected = chooseTvDate(details, today);
+      }
+      console.info('[release-date-resolution]', JSON.stringify({
+        tmdbId: id,
+        mediaType,
+        selectedDate: selected?.date || null,
+        selectedSource: selected?.source || null,
+        region: selected?.region || null,
+        dateInterpretation: 'TMDB calendar date; no timezone shift',
+        comparisonTimeZone: RELEASE_DATE_TIME_ZONE,
+        evaluationDate: today
+      }));
+      memory.set(cacheKey, { value: selected, at: Date.now() });
+      while (memory.size > 1200) memory.delete(memory.keys().next().value);
+      return selected;
+    } catch (error) {
+      console.warn('[release-date-lookup-failed]', JSON.stringify({ tmdbId: id, mediaType, error: error?.message || 'unknown error' }));
+      return null;
+    } finally {
+      pending.delete(cacheKey);
+    }
+  })();
+  pending.set(cacheKey, job);
+  return job;
+}
+
 export function chooseMovieDateForTest(rows, today) {
   return chooseMovieDate(rows, today);
 }
