@@ -70,6 +70,15 @@ test('foreign digital date is a fallback only when India has no digital listing'
   });
 });
 
+test('uses another territory digital date when TMDB has no India, US or GB listing', () => {
+  const rows = [{ iso_3166_1: 'AU', release_dates: [
+    { type: 4, release_date: '2026-11-25T00:00:00.000Z' }
+  ] }];
+  assert.deepEqual(chooseMovieDateForTest(rows, today), {
+    date: '2026-11-25', region: 'AU', source: 'tmdb-digital-release', kind: 'premiere'
+  });
+});
+
 test('ongoing series gets a separate upcoming episode badge', () => {
   assert.deepEqual(chooseTvDateForTest({
     first_air_date: '2026-09-04',
