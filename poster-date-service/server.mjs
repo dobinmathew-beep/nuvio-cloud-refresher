@@ -126,6 +126,7 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
   res.setHeader('X-Poster-Just-Added', justAdded ? 'true' : 'false');
   res.setHeader('X-Poster-Date', dateRendered ? release.date : 'none');
   res.setHeader('X-Poster-Date-Type', dateRendered ? (release.kind || 'none') : 'none');
+  if (justAdded) res.setHeader('X-Poster-Badge', 'Just Added');
   return res.end(req.method === 'HEAD' ? undefined : output);
 }
 
@@ -206,6 +207,7 @@ async function sendTvmazePosterFallback(tvmazeId, req, res) {
   res.setHeader('X-Poster-Just-Added', justAdded ? 'true' : 'false');
   res.setHeader('X-Poster-Date', dateRendered ? release.date : 'none');
   res.setHeader('X-Poster-Date-Type', dateRendered ? release.kind : 'none');
+  if (justAdded) res.setHeader('X-Poster-Badge', 'Just Added');
   return res.end(req.method === 'HEAD' ? undefined : output);
 }
 
