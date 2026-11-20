@@ -337,6 +337,15 @@ async function prewarm(item) {
 }
 let activeRefreshPromise = null;
 
+export async function resumeIncompleteManifestCatalogRefresh() {
+  const config = imageKitConfig();
+  const checkpoint = await readState(config, CHECKPOINT_PATH);
+  if (!checkpoint || checkpoint.complete === true) {
+    return { status: 'no-incomplete-checkpoint', skipped: true };
+  }
+  return runManifestCatalogRefresh();
+}
+
 export function runManifestCatalogRefresh() {
   if (activeRefreshPromise) return activeRefreshPromise;
   activeRefreshPromise = runManifestCatalogRefreshInternal().finally(() => { activeRefreshPromise = null; });
@@ -595,6 +604,8 @@ async function runManifestCatalogRefreshInternal() {
         totalFailures += verification.failures;
         verifiedUploads += verification.counts['generated-and-cached'] || 0;
         uploadPending -= pendingItems.length;
+        resultCounts['upload-pending'] = Math.max(0, (resultCounts['upload-pending'] || 0) - pendingItems.length);
+        if (!resultCounts['upload-pending']) delete resultCounts['upload-pending'];
       }
       await persistLedgerShards(config, ledgerCache, batchShards);
     }
