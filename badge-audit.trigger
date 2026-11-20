@@ -1,1 +1,1 @@
-Re-run full configured-route Just Added audit after v5 cache bust and allowlisted catalog-artwork fallback deployment. Verify every flagged title across all eight catalogs.
+Run full end-to-end poster audit for all eight catalogs and every title through shared Render renderer v7. Inspect Coming/New Episode dates and Just Added overlays, including unflagged posters and TMDB/TVmaze IDs.
