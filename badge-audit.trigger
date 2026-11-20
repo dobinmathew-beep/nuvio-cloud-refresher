@@ -1,1 +1,1 @@
-Run the targeted full-catalog Just Added poster verification against versioned title-case poster URLs.
+Rerun the full catalog badge audit after poster OCR optimization and RPDB/Metahub fallbacks.
