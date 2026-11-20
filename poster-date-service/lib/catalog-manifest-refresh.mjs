@@ -9,6 +9,7 @@ const PAGE_SIZE = 100;
 const MAX_PAGES = Math.max(1, Math.min(500, Number(process.env.CATALOG_SCAN_MAX_PAGES || 500)));
 const CONCURRENCY = Math.max(1, Math.min(4, Number(process.env.CATALOG_SCAN_CONCURRENCY || 2)));
 const STATE_PATH = '/catalog-state/manifest-scan-state.json';
+const CHECKPOINT_PATH = '/catalog-state/manifest-scan-checkpoint.json';
 const INDEX_PATH = '/catalog-state/catalog-added.json';
 const INDEX_TTL_MS = 14 * 24 * 60 * 60 * 1000;
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -22,8 +23,8 @@ function imageKitConfig() {
 function auth(config) {
   return 'Basic ' + Buffer.from(config.privateKey + ':').toString('base64');
 }
-async function readState(config) {
-  const url = config.endpoint + STATE_PATH;
+async function readState(config, path = STATE_PATH) {
+  const url = config.endpoint + path;
   try {
     const response = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(8000) });
     if (response.status === 404) return null;
@@ -113,9 +114,10 @@ function unresolvedRequiredExtras(catalog) {
 }
 
 async function collectCatalog(manifest, catalog) {
-  const metas = [];
+  const titles = new Map();
   const seenPageIds = new Set();
   let pages = 0;
+  let uniqueRecords = 0;
   let lastBatchSize = 0;
   let lastPageNewIds = 0;
   for (let page = 0; page < MAX_PAGES; page++) {
@@ -126,17 +128,36 @@ async function collectCatalog(manifest, catalog) {
       const identity = String(meta?.id || (String(meta?.name || meta?.title || '') + '|' + String(meta?.releaseInfo?.year || meta?.year || '')));
       if (!identity || seenPageIds.has(identity)) continue;
       seenPageIds.add(identity);
-      metas.push(meta);
+      uniqueRecords++;
       newIds++;
+      const id = canonicalId(meta);
+      if (id && !titles.has(id)) {
+        titles.set(id, {
+          id,
+          type: catalog.type,
+          title: String(meta.name || meta.title || ''),
+          poster: String(meta.poster || '')
+        });
+      }
     }
     lastBatchSize = batch.length;
     lastPageNewIds = newIds;
     pages++;
-    if (pages % 25 === 0) console.log('[catalog-page-progress]', JSON.stringify({ source: manifest.name, id: catalog.id, pages, uniqueRecords: metas.length }));
+    if (pages % 25 === 0) console.log('[catalog-page-progress]', JSON.stringify({ source: manifest.name, id: catalog.id, pages, uniqueRecords, supportedTitles: titles.size }));
     if (batch.length < PAGE_SIZE || (page > 0 && newIds === 0)) break;
   }
-  return { source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name, pages, metas, truncated: pages === MAX_PAGES && lastBatchSize === PAGE_SIZE && lastPageNewIds > 0 };
+  return {
+    source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
+    pages, records: uniqueRecords, titles: [...titles.values()],
+    truncated: pages === MAX_PAGES && lastBatchSize === PAGE_SIZE && lastPageNewIds > 0
+  };
 }
+function catalogueFingerprint(catalog) {
+  // Stremio catalogue IDs are the stable identity shared by cloned metadata
+  // instances. Keep media type in the key because movie/series IDs can overlap.
+  return String(catalog.type || '').trim().toLowerCase() + '|' + String(catalog.id || '').trim().toLowerCase();
+}
+
 function canonicalId(meta) {
   const raw = String(meta?.id || '').trim();
   if (/^tt\d{7,10}$/i.test(raw)) return raw.toLowerCase();
@@ -155,19 +176,30 @@ function posterPath(id, type) {
   return null;
 }
 async function runPool(items, worker) {
-  const output = new Array(items.length);
+  const counts = {};
+  let failures = 0;
   let cursor = 0;
   await Promise.all(Array.from({ length: Math.min(CONCURRENCY, items.length) }, async () => {
     while (true) {
       const index = cursor++;
       if (index >= items.length) return;
-      try { output[index] = await worker(items[index]); }
-      catch (error) { output[index] = { id: items[index].id, status: 'failed', error: error?.message || 'unknown error' }; }
-      if ((index + 1) % 50 === 0 || index + 1 === items.length) console.log('[catalog-scan-progress]', index + 1, '/', items.length);
+      let result;
+      try { result = await worker(items[index]); }
+      catch (error) {
+        failures++;
+        result = { status: 'failed', error: error?.message || 'unknown error' };
+        if (failures <= 20) console.warn('[catalog-prewarm-failed]', JSON.stringify({ id: items[index].id, error: result.error }));
+      }
+      const status = result?.status || 'unknown';
+      counts[status] = (counts[status] || 0) + 1;
+      if ((index + 1) % 50 === 0 || index + 1 === items.length) {
+        console.log('[catalog-scan-progress]', index + 1, '/', items.length, JSON.stringify({ counts, failures }));
+      }
     }
   }));
-  return output;
+  return { counts, failures };
 }
+
 function imageKitStorageId(id) {
   if (id.startsWith('tmdb:')) return 'tmdb-' + id.slice(5);
   if (id.startsWith('tvmaze:')) return 'tvmaze-' + id.slice(7);
@@ -223,15 +255,69 @@ export async function runManifestCatalogRefresh() {
   if (!configured.length) throw new Error('No catalogue manifest URLs are configured');
   const config = imageKitConfig();
   const prior = await readState(config);
+  let checkpoint = await readState(config, CHECKPOINT_PATH);
+  // A completed checkpoint belongs to the previous run. Start a clean scan;
+  // an incomplete checkpoint is a crash-safe resume point after an OOM/restart.
+  if (!checkpoint || checkpoint.complete === true || checkpoint.version !== 1) {
+    checkpoint = { version: 1, complete: false, updatedAt: startedAt, completedCatalogues: {}, titles: {} };
+    await writeJson(config, CHECKPOINT_PATH, checkpoint);
+  }
+  const completedCatalogues = checkpoint.completedCatalogues && typeof checkpoint.completedCatalogues === 'object'
+    ? { ...checkpoint.completedCatalogues } : {};
+  const current = new Map();
+  if (checkpoint.titles && typeof checkpoint.titles === 'object') {
+    for (const [id, item] of Object.entries(checkpoint.titles)) {
+      if (item && item.id === id) current.set(id, item);
+    }
+  }
   const manifests = await Promise.all(configured.map(readManifest));
   const catalogues = [];
+  const handledFingerprints = new Map();
+  let cataloguesScannedThisRun = 0;
+  let cataloguesResumed = 0;
+  let cataloguesSkippedDuplicate = 0;
+
   for (const manifest of manifests) {
     for (const catalog of manifest.catalogs) {
+      const fingerprint = catalogueFingerprint(catalog);
+      const duplicateOf = handledFingerprints.get(fingerprint);
+      if (duplicateOf) {
+        cataloguesSkippedDuplicate++;
+        const skipped = {
+          source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
+          pages: 0, records: 0, skippedDuplicate: true,
+          duplicateOf: { source: duplicateOf.source, type: duplicateOf.type, id: duplicateOf.id, name: duplicateOf.name }
+        };
+        catalogues.push(skipped);
+        console.info('[catalog-skipped-duplicate]', JSON.stringify({
+          source: skipped.source, type: skipped.type, id: skipped.id,
+          duplicateOf: skipped.duplicateOf
+        }));
+        continue;
+      }
+
+      const saved = completedCatalogues[fingerprint];
+      if (saved) {
+        handledFingerprints.set(fingerprint, {
+          source: saved.source, type: catalog.type, id: catalog.id, name: catalog.name
+        });
+        cataloguesResumed++;
+        catalogues.push({
+          source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
+          pages: saved.pages || 0, records: saved.records || 0, resumed: true
+        });
+        console.info('[catalog-resumed-from-checkpoint]', JSON.stringify({
+          source: manifest.name, type: catalog.type, id: catalog.id,
+          fingerprint, titlesRestored: current.size
+        }));
+        continue;
+      }
+
       const unresolvedExtras = unresolvedRequiredExtras(catalog);
       if (unresolvedExtras.length) {
         const skipped = {
           source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
-          pages: 0, metas: [], skipped: true,
+          pages: 0, records: 0, metas: [], skipped: true,
           skipReason: 'Requires user-supplied catalogue extras: ' + unresolvedExtras.join(', ')
         };
         catalogues.push(skipped);
@@ -241,24 +327,44 @@ export async function runManifestCatalogRefresh() {
         }));
         continue;
       }
+
       try {
         const result = await collectCatalog(manifest, catalog);
+        for (const item of result.titles) if (!current.has(item.id)) current.set(item.id, item);
+        delete result.titles;
+        completedCatalogues[fingerprint] = {
+          source: result.source, type: result.type, id: result.id, name: result.name,
+          pages: result.pages, records: result.records
+        };
+        handledFingerprints.set(fingerprint, {
+          source: result.source, type: result.type, id: result.id, name: result.name
+        });
+        cataloguesScannedThisRun++;
         catalogues.push(result);
-        console.log('[catalog-discovered]', JSON.stringify({ source: result.source, type: result.type, id: result.id, name: result.name, pages: result.pages, records: result.metas.length }));
+        console.log('[catalog-discovered]', JSON.stringify({
+          source: result.source, type: result.type, id: result.id, name: result.name,
+          pages: result.pages, records: result.records, uniqueTitles: current.size
+        }));
+        // Persist after every completed catalogue. If Render restarts, only the
+        // unfinished catalogues need fetching again.
+        checkpoint = {
+          version: 1, complete: false, updatedAt: new Date().toISOString(),
+          completedCatalogues, titles: Object.fromEntries(current)
+        };
+        await writeJson(config, CHECKPOINT_PATH, checkpoint);
       } catch (error) {
-        const failed = { source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name, pages: 0, metas: [], error: error?.message || 'catalogue fetch failed' };
+        const failed = {
+          source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
+          pages: 0, records: 0, titles: [], error: error?.message || 'catalogue fetch failed'
+        };
         catalogues.push(failed);
-        console.warn('[catalog-fetch-failed]', JSON.stringify({ source: failed.source, type: failed.type, id: failed.id, error: failed.error }));
+        console.warn('[catalog-fetch-failed]', JSON.stringify({
+          source: failed.source, type: failed.type, id: failed.id, error: failed.error
+        }));
       }
     }
   }
-  const current = new Map();
-  for (const catalog of catalogues) {
-    for (const meta of catalog.metas) {
-      const id = canonicalId(meta);
-      if (id && !current.has(id)) current.set(id, { id, type: catalog.type, title: String(meta.name || meta.title || ''), poster: String(meta.poster || '') });
-    }
-  }
+
   if (!current.size) throw new Error('No supported IMDb, TMDB or TVmaze IDs were found; refusing to mark an empty scan successful');
   const now = Date.now();
   const seen = prior?.seen && typeof prior.seen === 'object' ? prior.seen : {};
@@ -286,23 +392,38 @@ export async function runManifestCatalogRefresh() {
   const nextState = { initialized: true, complete: scanComplete, updatedAt: new Date(now).toISOString(), seen, added };
   await writeJson(config, STATE_PATH, nextState);
   await writeJson(config, INDEX_PATH, index);
+
   const items = [...current.values()];
-  const results = await runPool(items, prewarm);
-  const failures = results.filter(r => r.status === 'failed');
+  const prewarmReport = await runPool(items, prewarm);
   const report = {
-    startedAt, finishedAt: new Date().toISOString(), manifests: manifests.map(m => ({ source: m.name || m.key, catalogs: m.catalogs.length })),
+    startedAt, finishedAt: new Date().toISOString(),
+    manifests: manifests.map(m => ({ source: m.name || m.key, catalogs: m.catalogs.length })),
     catalogues: catalogues.map(c => ({
       source: c.source, type: c.type, id: c.id, name: c.name, pages: c.pages,
-      records: c.metas.length, truncated: Boolean(c.truncated),
-      skipped: Boolean(c.skipped), skipReason: c.skipReason || null, error: c.error || null
+      records: c.records || 0, truncated: Boolean(c.truncated),
+      skipped: Boolean(c.skipped), skippedDuplicate: Boolean(c.skippedDuplicate),
+      duplicateOf: c.duplicateOf || null, resumed: Boolean(c.resumed),
+      skipReason: c.skipReason || null, error: c.error || null
     })),
     cataloguesDiscovered: catalogues.length,
+    cataloguesScannedThisRun,
+    cataloguesResumed,
+    cataloguesSkippedDuplicate,
     cataloguesSkippedDynamic: catalogues.filter(c => c.skipped).length,
     cataloguesFailed: catalogues.filter(c => c.error).length,
     uniqueTitles: items.length, newlyDiscovered, scanComplete,
-    postersProcessed: results.length, failures: failures.length,
-    results: results.reduce((counts, r) => { counts[r.status] = (counts[r.status] || 0) + 1; return counts; }, {})
+    postersProcessed: items.length, failures: prewarmReport.failures,
+    results: prewarmReport.counts
   };
+  // Mark the checkpoint reusable only when both discovery and poster prewarm
+  // finish cleanly. A subsequent scheduled run will start a fresh scan.
+  if (scanComplete && prewarmReport.failures === 0) {
+    checkpoint = {
+      version: 1, complete: true, updatedAt: new Date().toISOString(),
+      completedCatalogues, titles: Object.fromEntries(current)
+    };
+    await writeJson(config, CHECKPOINT_PATH, checkpoint);
+  }
   console.log('[catalog-refresh-complete]', JSON.stringify(report));
   return report;
 }
