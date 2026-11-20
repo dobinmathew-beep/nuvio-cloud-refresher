@@ -171,13 +171,14 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
     }
   }
 
-  const status = justAddedStatus && release?.date
+  const dateRendered = dateStatus === 'upcoming-date-overlay';
+  const status = justAddedStatus && dateRendered
     ? 'upcoming-date+just-added-overlay'
     : justAddedStatus
       ? 'just-added-overlay'
-      : release?.date
-        ? dateStatus
-        : 'no-upcoming-release';
+      : dateRendered
+        ? 'upcoming-date-overlay'
+        : dateStatus;
 
   console.info('[poster-render-result]', JSON.stringify({
     imdbId: id,
@@ -194,8 +195,8 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
     type: original.type,
     source: original.source,
     status,
-    releaseDate: release?.date || 'none',
-    releaseKind: release?.kind || 'none'
+    releaseDate: dateRendered ? release.date : 'none',
+    releaseKind: dateRendered ? (release.kind || 'none') : 'none'
   };
 }
 
