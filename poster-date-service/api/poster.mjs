@@ -5,6 +5,8 @@ import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster } from '
 
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
 const BETTERPOSTERS_RATING_SOURCE = 'IM';
+const RPDB = 'https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/';
+const METAHUB = 'https://live.metahub.space/poster/small/';
 const MAX_BYTES = 15 * 1024 * 1024;
 const RESULT_CACHE_MS = 15 * 60 * 1000;
 const resultCache = new Map();
@@ -75,19 +77,35 @@ function redirectToImageKit(res, assetUrl) {
 }
 
 async function getOriginal(imdbId) {
-  const response = await fetch(sourceUrl(imdbId), {
-    headers: { accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' },
-    redirect: 'follow',
-    signal: AbortSignal.timeout(10000)
-  });
-  const type = (response.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
-  if (!response.ok || !['image/jpeg', 'image/png', 'image/webp', 'image/avif'].includes(type)) {
-    throw new Error('BetterPosters did not return a supported image');
+  const candidates = [
+    { source: 'BetterPosters', url: sourceUrl(imdbId), timeout: 10000 },
+    { source: 'RPDB', url: RPDB + encodeURIComponent(imdbId) + '.jpg', timeout: 8000 },
+    { source: 'Metahub', url: METAHUB + encodeURIComponent(imdbId) + '/img', timeout: 8000 }
+  ];
+  const failures = [];
+  for (const candidate of candidates) {
+    try {
+      const response = await fetch(candidate.url, {
+        headers: { accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8' },
+        redirect: 'follow',
+        signal: AbortSignal.timeout(candidate.timeout)
+      });
+      const type = (response.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
+      if (!response.ok || !['image/jpeg', 'image/png', 'image/webp', 'image/avif'].includes(type)) {
+        throw new Error('HTTP ' + response.status + ' (' + type + ')');
+      }
+      if (Number(response.headers.get('content-length') || 0) > MAX_BYTES) throw new Error('Poster exceeds size limit');
+      const bytes = Buffer.from(await response.arrayBuffer());
+      if (!bytes.length || bytes.length > MAX_BYTES) throw new Error('Poster exceeds size limit');
+      if (candidate.source !== 'BetterPosters') {
+        console.warn('[poster-source-fallback]', JSON.stringify({ imdbId, source: candidate.source, primary: 'BetterPosters' }));
+      }
+      return { bytes, type, source: candidate.source };
+    } catch (error) {
+      failures.push(candidate.source + ': ' + (error?.message || 'request failed'));
+    }
   }
-  if (Number(response.headers.get('content-length') || 0) > MAX_BYTES) throw new Error('Poster exceeds size limit');
-  const bytes = Buffer.from(await response.arrayBuffer());
-  if (!bytes.length || bytes.length > MAX_BYTES) throw new Error('Poster exceeds size limit');
-  return { bytes, type };
+  throw new Error('No poster provider returned a usable image for ' + imdbId + ' (' + failures.join('; ') + ')');
 }
 
 async function buildPoster(id, knownRelease = undefined, badge = '') {
@@ -102,22 +120,22 @@ async function buildPoster(id, knownRelease = undefined, badge = '') {
       console.warn('[poster-just-added-ocr-unavailable]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error', action: 'apply-just-added-overlay' }));
     }
     if (alreadyTagged) {
-      return { bytes: original.bytes, type: original.type, status: 'betterposters-just-added-tag', releaseDate: 'none', releaseKind: 'none' };
+      return { bytes: original.bytes, type: original.type, source: original.source, status: 'betterposters-just-added-tag', releaseDate: 'none', releaseKind: 'none' };
     }
     try {
       const output = await renderJustAddedBadge(original.bytes);
       console.info('[poster-just-added-check]', JSON.stringify({ imdbId: id, betterPostersBadge: false, result: 'just-added-overlay' }));
-      return { bytes: output, type: original.type, status: 'just-added-overlay', releaseDate: 'none', releaseKind: 'none' };
+      return { bytes: output, type: original.type, source: original.source, status: 'just-added-overlay', releaseDate: 'none', releaseKind: 'none' };
     } catch (error) {
       console.warn('[poster-just-added-overlay-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
-      return { bytes: original.bytes, type: original.type, status: 'just-added-overlay-failed-original-preserved', releaseDate: 'none', releaseKind: 'none' };
+      return { bytes: original.bytes, type: original.type, source: original.source, status: 'just-added-overlay-failed-original-preserved', releaseDate: 'none', releaseKind: 'none' };
     }
   }
   // Resolve TMDB first. Most catalogue titles have no future release date,
   // so there is no reason to run OCR for them.
   const release = knownRelease === undefined ? await upcomingRelease(id) : knownRelease;
   if (!release?.date) {
-    return { bytes: original.bytes, type: original.type, status: 'no-upcoming-release', releaseDate: 'none', releaseKind: 'none' };
+    return { bytes: original.bytes, type: original.type, source: original.source, status: 'no-upcoming-release', releaseDate: 'none', releaseKind: 'none' };
   }
 
   let output = original.bytes;
@@ -142,7 +160,7 @@ async function buildPoster(id, knownRelease = undefined, badge = '') {
     }
   }
   console.info('[poster-date-check]', JSON.stringify({ imdbId: id, tmdbDate: release.date, releaseSource: release.source || null, releaseKind: release.kind || 'premiere', betterPostersBadgeMatchesTmdb: hasComingTag, result: status }));
-  return { bytes: output, type: original.type, status, releaseDate: release.date, releaseKind: release.kind || 'premiere' };
+  return { bytes: output, type: original.type, source: original.source, status, releaseDate: release.date, releaseKind: release.kind || 'premiere' };
 }
 
 async function getBuiltPoster(id, knownRelease = undefined, badge = '') {
@@ -198,6 +216,7 @@ export default async function handler(req, res) {
     if (req.probe || req.method === 'HEAD') {
       const original = await getOriginal(id);
       setImageHeaders(res, original.type, req.probe ? 'template-probe' : 'head-check', 'none');
+      res.setHeader('X-Poster-Source', original.source || 'BetterPosters');
       res.setHeader('Cache-Control', 'public, max-age=3600');
       return res.end(req.method === 'HEAD' ? undefined : original.bytes);
     }
@@ -216,6 +235,7 @@ export default async function handler(req, res) {
       canStoreImageKitPoster(id, poster.bytes.length);
     if (canStore) scheduleImageKitUpload(id, poster);
     setImageHeaders(res, poster.type, poster.status, poster.releaseDate, poster.releaseKind);
+    res.setHeader('X-Poster-Source', poster.source || 'BetterPosters');
     res.setHeader('X-ImageKit-Storage', canStore ? 'pending' : 'not-stored');
     return res.end(poster.bytes);
   } catch {
