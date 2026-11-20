@@ -66,11 +66,14 @@ class PhysicalTests(unittest.TestCase):
   now=datetime(2026,11,20,tzinfo=timezone.utc)
   self.assertTrue(update.is_just_added_movie(event,None,now))
 
- def test_series_does_not_receive_movie_just_added_badge(self):
-  from datetime import datetime,timezone
+ def test_new_series_gets_just_added_for_14_days_but_old_series_does_not(self):
+  from datetime import datetime,timezone,timedelta
   event={'type':'series','releaseKind':'digital','ottDate':'2026-11-19','availability':[{'kind':'digital','date':'2026-11-19'}]}
   now=datetime(2026,11,20,tzinfo=timezone.utc)
-  self.assertFalse(update.is_just_added_movie(event,None,now))
+  self.assertTrue(update.is_just_added_title(event,now-timedelta(days=1),now))
+  self.assertTrue(update.is_just_added_title(event,now-timedelta(days=14),now))
+  self.assertFalse(update.is_just_added_title(event,now-timedelta(days=15),now))
+  self.assertFalse(update.is_just_added_movie(event,now-timedelta(days=1),now))
 
  def test_legacy_law_and_order_is_not_retained_in_malayalam_series(self):
   old={'id':'tt0098844','type':'series','name':'Law & Order','releaseDate':'1990-09-13'}
