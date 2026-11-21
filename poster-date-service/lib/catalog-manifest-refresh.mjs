@@ -425,11 +425,24 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   // A badge-rule-version checkpoint without an explicit completion marker is
   // an interrupted full scan from the previous implementation. Continue its
   // forced catalogue rediscovery rather than trusting old page snapshots.
-  const scanGeneration = String(checkpoint.scanGeneration || startedAt);
-  const forceRescanCatalogs = checkpoint.forceRescanCatalogs === true ||
-    (checkpoint.badgeRulesVersion === BADGE_RULES_VERSION && checkpoint.forceRescanCatalogs !== false);
   const completedCatalogues = checkpoint.completedCatalogues && typeof checkpoint.completedCatalogues === 'object'
     ? { ...checkpoint.completedCatalogues } : {};
+  const hasUnversionedCatalogueCompletion = Object.values(completedCatalogues)
+    .some(entry => entry?.scanGeneration !== checkpoint.scanGeneration);
+  const scanGeneration = String(
+    checkpoint.scanGeneration && !hasUnversionedCatalogueCompletion
+      ? checkpoint.scanGeneration
+      : startedAt
+  );
+  const forceRescanCatalogs = checkpoint.forceRescanCatalogs === true ||
+    (checkpoint.badgeRulesVersion === BADGE_RULES_VERSION && checkpoint.forceRescanCatalogs !== false);
+  // Persist a fresh generation when an older run wrote completion records
+  // without generation IDs. Its page snapshots must be re-fetched once.
+  if (checkpoint.scanGeneration !== scanGeneration || checkpoint.forceRescanCatalogs !== forceRescanCatalogs) {
+    checkpoint = { ...checkpoint, scanGeneration, forceRescanCatalogs, updatedAt: new Date().toISOString() };
+    await lease?.assertOwned?.();
+    await writeJson(config, CHECKPOINT_PATH, checkpoint);
+  }
   const titleFiles = checkpoint.titleFiles && typeof checkpoint.titleFiles === 'object' ? { ...checkpoint.titleFiles } : {};
   const current = new Map();
   if (checkpoint.titles && typeof checkpoint.titles === 'object') {
