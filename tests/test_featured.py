@@ -5,6 +5,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from featured import first_valid, valid_id
 
 class FeaturedSelectionTests(unittest.TestCase):
+    # Generic catalogue IDs may be IMDb or TMDB; backdrop centres deliberately require IMDb IDs.
     def test_featured_id_validation_accepts_imdb_and_tmdb_ids(self):
         self.assertTrue(valid_id('tt1234567'))
         self.assertTrue(valid_id('tmdb:1822586'))
