@@ -9,7 +9,7 @@ const MANIFEST_KEYS = [
 ];
 const PAGE_SIZE = 100;
 const MAX_PAGES = Math.max(1, Math.min(500, Number(process.env.CATALOG_SCAN_MAX_PAGES || 500)));
-const CONCURRENCY = Math.max(1, Math.min(4, Number(process.env.CATALOG_SCAN_CONCURRENCY || 2)));
+const CONCURRENCY = 1;
 const STATE_PATH = '/catalog-state/manifest-scan-state.json';
 const CHECKPOINT_PATH = '/catalog-state/manifest-scan-checkpoint.json';
 const CATALOG_CHECKPOINT_DIR = '/catalog-state/catalogues';
@@ -20,9 +20,9 @@ const LEDGER_DIR = '/catalog-state/poster-processing';
 const LEDGER_VERSION = 1;
 const BADGE_RULES_VERSION = 3;
 const LEDGER_SHARDS = '0123456789abcdef';
-const PREWARM_BATCH_SIZE = Math.max(5, Math.min(10, Number(process.env.CATALOG_PREWARM_BATCH_SIZE || 10)));
-const PREWARM_CONCURRENCY = Math.max(1, Math.min(2, Number(process.env.CATALOG_PREWARM_CONCURRENCY || 2)));
-const VERIFY_CONCURRENCY = Math.max(1, Math.min(4, Number(process.env.CATALOG_VERIFY_CONCURRENCY || 4)));
+const PREWARM_BATCH_SIZE = 5;
+const PREWARM_CONCURRENCY = 1;
+const VERIFY_CONCURRENCY = 1;
 
 function ledgerShard(id) {
   return createHash('sha256').update(String(id)).digest('hex')[0];
@@ -265,12 +265,9 @@ function posterPath(id, type) {
   return null;
 }
 function adaptivePrewarmConcurrency() {
-  // Render's free instance has a tight memory budget. Increase network
-  // throughput by default, but back off automatically if native/image work
-  // pushes resident memory toward the safety ceiling.
-  const rssMiB = process.memoryUsage().rss / (1024 * 1024);
-  if (rssMiB >= 300) return 1;
-  return Math.min(2, PREWARM_CONCURRENCY);
+  // Render has repeatedly hit its 512 MiB hard limit even after adaptive
+  // throttling. Keep image/OCR work strictly serial on the free plan.
+  return 1;
 }
 
 async function runPool(items, worker, concurrency = CONCURRENCY) {

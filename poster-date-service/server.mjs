@@ -82,7 +82,13 @@ async function redirectCachedFallback(storageId, req, res, releaseInfo, justAdde
 
 async function cacheFallbackPoster(storageId, bytes, type) {
   try {
-    if (!getImageKitStorageSnapshot().known) await initializeImageKitStorageSnapshot();
+    if (!getImageKitStorageSnapshot().known) {
+      // Do not delay fallback artwork while ImageKit is unavailable.
+      void initializeImageKitStorageSnapshot().catch(error =>
+        console.warn('[imagekit-fallback-storage-unavailable]', error?.message || 'unknown error')
+      );
+      return false;
+    }
     if (!canStoreImageKitPoster(storageId, bytes.length)) return false;
     void uploadPosterToImageKit(storageId, { bytes, type })
       .catch(error => console.warn('[imagekit-fallback-upload-failed]', JSON.stringify({ storageId, error: error?.message || 'unknown error' })));
@@ -363,7 +369,11 @@ const server = createServer(async (req, res) => {
     res.end(JSON.stringify({ status: 'accepted', jobId }));
     void (async () => {
       try {
-        await initializeImageKitStorageSnapshot();
+        // Storage accounting is best-effort. Never prevent the catalogue job
+        // from starting because ImageKit's snapshot endpoint is temporarily slow.
+        void initializeImageKitStorageSnapshot().catch(error =>
+          console.warn('[imagekit-refresh-snapshot-unavailable]', error?.message || 'unknown error')
+        );
         catalogRefreshReport = await runManifestCatalogRefresh({
           forceReprocess: url.searchParams.get('force') === '1'
         });

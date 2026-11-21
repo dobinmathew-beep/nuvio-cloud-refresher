@@ -12,6 +12,7 @@ let maintenancePromise;
 let lastMaintenanceAt = 0;
 let lastMaintenanceReport = null;
 let snapshotInitializationPromise = null;
+let snapshotRetryAfter = 0;
 let snapshotPersistPromise = null;
 let snapshotDirtyUploads = 0;
 
@@ -168,6 +169,7 @@ async function persistStorageSnapshot() {
 export async function initializeImageKitStorageSnapshot() {
   if (storageSnapshot.known) return getImageKitStorageSnapshot();
   if (snapshotInitializationPromise) return snapshotInitializationPromise;
+  if (Date.now() < snapshotRetryAfter) throw new Error('ImageKit storage snapshot retry is cooling down');
   snapshotInitializationPromise = (async () => {
     const config = imageKitConfig();
     if (!config) throw new Error('ImageKit credentials are not configured');
@@ -198,24 +200,15 @@ export async function initializeImageKitStorageSnapshot() {
       console.warn('[imagekit-storage-snapshot-restore-failed]', error?.message || 'unknown error');
     }
 
-    // Capacity checks need only the file inventory. Avoid the much slower
-    // duplicate/version/TMDB maintenance audit on the poster request path.
-    const files = await listImageKitFiles();
-    const filesByPath = {};
-    let bytes = 0;
-    for (const file of files) {
-      const size = Math.max(0, Number(file.size) || 0);
-      bytes += size;
-      if (file.filePath && file.fileId) filesByPath[file.filePath] = { fileId: file.fileId, size };
-    }
-    storageSnapshot = { known: true, bytes, checkedAt: Date.now(), filesByPath };
-    console.log('[imagekit-storage-snapshot-ready]', JSON.stringify({
-      accountBytes: bytes,
-      indexedFiles: Object.keys(filesByPath).length
-    }));
-    await persistStorageSnapshot().catch(error => console.warn('[imagekit-storage-snapshot-persist-failed]', error?.message || 'unknown error'));
-    return getImageKitStorageSnapshot();
-  })().finally(() => { snapshotInitializationPromise = null; });
+    // A missing/stale/unreachable snapshot must fail closed. Listing the whole
+    // ImageKit account here can consume hundreds of MiB and used to block poster
+    // requests during provider timeouts. Full inventory belongs to explicit
+    // maintenance, not the live poster-serving or refresh hot path.
+    throw new Error('ImageKit storage snapshot unavailable; full account inventory deferred to maintenance');
+  })().catch(error => {
+    snapshotRetryAfter = Date.now() + 60 * 1000;
+    throw error;
+  }).finally(() => { snapshotInitializationPromise = null; });
   return snapshotInitializationPromise;
 }
 

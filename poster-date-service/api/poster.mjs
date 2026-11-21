@@ -422,11 +422,13 @@ export default async function handler(req, res) {
     if (cachedAsset) return redirectToImageKit(res, cachedAsset, releaseInfo, expectedJustAdded);
 
     const poster = await getBuiltPoster(id, releaseInfo, badge, version, fallbackUrl, digitalAlreadyReleased === true);
-    // Initialise the ImageKit storage safety snapshot on first live Nuvio use.
-    // This is a no-op after the snapshot has been populated by maintenance.
+    // Never make a user's poster response wait for an ImageKit account-wide
+    // inventory scan. Restore the storage snapshot in the background; if it is
+    // unavailable, serve the rendered poster and simply skip caching this hit.
     if (!getImageKitStorageSnapshot().known) {
-      try { await initializeImageKitStorageSnapshot(); }
-      catch (error) { console.warn('[imagekit-initial-snapshot-failed]', error?.message || 'unknown error'); }
+      void initializeImageKitStorageSnapshot().catch(error =>
+        console.warn('[imagekit-initial-snapshot-failed]', error?.message || 'unknown error')
+      );
     }
     // Cache every successfully rendered poster, including Just Added and
     // unbadged BetterPosters originals, so a newly requested title is warmed.
