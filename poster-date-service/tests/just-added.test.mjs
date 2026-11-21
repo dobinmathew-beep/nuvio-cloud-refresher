@@ -59,7 +59,10 @@ test('badge renderer rejects untrusted catalog fallback hosts', async () => {
     const req = { method: 'GET', url: '/poster/tt39195686.jpg?badge=just-added&v=5', query: { id: 'tt39195686', badge: 'just-added', v: '5', fallback: 'https://evil.example/poster.jpg' } };
     const res = { headers: {}, setHeader(name, value) { this.headers[name] = value; }, end(body) { this.body = body; } };
     await handler(req, res);
-    assert.equal(res.statusCode, 302);
+    // When no trusted provider or existing ImageKit asset is available,
+    // fail closed instead of redirecting clients to an upstream source.
+    assert.equal(res.statusCode, 503);
+    assert.equal(res.headers.Location, undefined);
     assert.equal(requested.some(url => url.startsWith('https://evil.example/')), false);
   } finally {
     globalThis.fetch = originalFetch;
