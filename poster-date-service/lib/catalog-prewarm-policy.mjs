@@ -22,7 +22,11 @@ export function isFreshVerifiedRecord(record, fingerprint, now = Date.now()) {
 export function classifyPrewarmResponse({ status, contentType = '', location = '', imageKitBase = '', storage = '', fallbackReason = '' }) {
   if (status >= 300 && status < 400) {
     return imageKitBase.length > 9 && location.startsWith(imageKitBase)
-      ? { status: 'upload-pending', verificationTimeoutMs: 20000, reason: 'imagekit-redirect' }
+      ? {
+          status: 'upload-pending',
+          verificationTimeoutMs: storage === 'pending' ? 150000 : 20000,
+          reason: storage === 'pending' ? 'imagekit-upload-pending' : 'imagekit-redirect'
+        }
       : { status: 'source-redirect', reason: 'source-provider-redirect' };
   }
   if ([500, 502, 503, 504].includes(status)) {
