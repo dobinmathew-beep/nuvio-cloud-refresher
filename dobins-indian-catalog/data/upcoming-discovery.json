@@ -1,28 +1,29 @@
 {
-  "generatedAt": "2026-11-21T14:29:50.861409+04:00",
+  "generatedAt": "2026-11-21T16:00:20.849976+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 23,
+    "total": 24,
     "byLanguage": {
-      "hindi": 14,
+      "hindi": 15,
       "malayalam": 4,
       "tamil": 2,
       "telugu": 3
     },
     "byType": {
-      "movie": 12,
+      "movie": 13,
       "series": 11
     },
     "byMatchState": {
       "published": 18,
-      "unmatched": 5
+      "unmatched": 5,
+      "metadata_incomplete": 1
     },
     "bySource": {
       "https://www.ottchecker.com/ott-releases/hindi": 2,
       "https://www.dailyott.in/": 4,
       "https://www.tvmaze.com/shows/70529/dhindora": 1,
       "https://www.keralatv.in/channel/ott/": 2,
-      "https://ottasia.com/ott-releases-this-week?country=IN": 13,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 14,
       "https://cinebuds.com/ott-releases-this-week/": 4,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
@@ -221,6 +222,31 @@
         "releaseInfo": true
       },
       "catalog": "dobins_ta_series"
+    },
+    {
+      "title": "Delhi 2021",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-25",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/movie/1755816/delhi-2021?country=IN",
+      "matchId": "tt51547104",
+      "matchState": "metadata_incomplete",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": false,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": false,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": null
     },
     {
       "title": "Takshakudu",
@@ -527,8 +553,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -957,7 +983,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 14
+      "records": 16
     },
     {
       "source": "Vi weekly OTT calendar",
@@ -1062,7 +1088,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 110,
+      "records": 113,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1564,7 +1590,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 37,
+          "detectedRecords": 40,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1581,8 +1607,8 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 9,
-              "movieRecords": 5,
+              "records": 12,
+              "movieRecords": 8,
               "seriesRecords": 4
             },
             {
@@ -2294,7 +2320,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 37,
+      "detectedRecords": 40,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2311,8 +2337,8 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 9,
-          "movieRecords": 5,
+          "records": 12,
+          "movieRecords": 8,
           "seriesRecords": 4
         },
         {

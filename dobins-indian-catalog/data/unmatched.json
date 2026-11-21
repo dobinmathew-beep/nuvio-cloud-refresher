@@ -1008,6 +1008,36 @@
     }
   },
   {
+    "name": "Kaakkee Circus",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-04-10",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69d87187eb1fc7a84cc6fe81",
+      "platform": "ZEE5",
+      "title": "Kaakkee Circus",
+      "createdAt": "2026-04-10T03:41:59.603Z",
+      "genre": "Crime Comedy Drama",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-04-10",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-10T03:41:59.603Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Chikoo Vs Bunty: Kushti Ki Jung",
     "language": "hindi",
     "type": "movie",
@@ -1035,36 +1065,6 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-09-13T02:18:42.361Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Kaakkee Circus",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-04-10",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69d87187eb1fc7a84cc6fe81",
-      "platform": "ZEE5",
-      "title": "Kaakkee Circus",
-      "createdAt": "2026-04-10T03:41:59.603Z",
-      "genre": "Crime Comedy Drama",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-04-10",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-10T03:41:59.603Z",
       "verified": true
     }
   },
@@ -1321,6 +1321,36 @@
     }
   },
   {
+    "name": "Uthutha Herolu",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-05-21",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a0e807fffe2674e7ae98250",
+      "title": "Uthutha Herolu",
+      "platform": "ETV Win",
+      "createdAt": "2026-05-21T03:48:15.770Z",
+      "genre": "Crime Comedy",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-21",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-05-21T03:48:15.770Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Musafir Café",
     "language": "hindi",
     "type": "movie",
@@ -1353,36 +1383,6 @@
     }
   },
   {
-    "name": "Uthutha Herolu",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-21",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a0e807fffe2674e7ae98250",
-      "title": "Uthutha Herolu",
-      "platform": "ETV Win",
-      "createdAt": "2026-05-21T03:48:15.770Z",
-      "genre": "Crime Comedy",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-21",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-21T03:48:15.770Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Varumaiyil Thaal",
     "language": "tamil",
     "type": "movie",
@@ -1409,37 +1409,6 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-05-03T03:46:51.209Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Manipur Files",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-07-11",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "YouTube"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a51d36fcf19d56322acc442",
-      "platform": "YouTube",
-      "title": "Manipur Files",
-      "createdAt": "2026-07-11T05:23:58.919Z",
-      "genre": "Documentary",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-07-11",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-07-11T05:23:58.919Z",
       "verified": true
     }
   },
@@ -1517,6 +1486,37 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-05-16T03:48:55.554Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Manipur Files",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-07-11",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "YouTube"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a51d36fcf19d56322acc442",
+      "platform": "YouTube",
+      "title": "Manipur Files",
+      "createdAt": "2026-07-11T05:23:58.919Z",
+      "genre": "Documentary",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-07-11",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-07-11T05:23:58.919Z",
       "verified": true
     }
   },
