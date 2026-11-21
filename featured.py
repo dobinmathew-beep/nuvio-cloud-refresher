@@ -1,4 +1,4 @@
-"""Select the first real, poster-backed movie in each IndianRegional catalog order."""
+"""Select the first real, poster-backed IMDb-linked movie in each IndianRegional catalog order."""
 from datetime import datetime, timezone
 from pathlib import Path
 import json,re,subprocess
@@ -9,13 +9,15 @@ def get(url):
  if p.returncode:raise RuntimeError('Catalog download failed; retaining last-good selection')
  return json.loads(p.stdout)
 def valid_id(value):
- return bool(re.fullmatch(r'tt\d+|tmdb:\d+',str(value or '')))
+ return bool(re.fullmatch(r'tt\\d+|tmdb:\\d+',str(value or '')))
 
 def valid(m,lang=None):
  mid=str(m.get('id','')).split('||',1)[0]
- return valid_id(mid) and m.get('type')=='movie' and bool(m.get('poster')) and not re.search(r'OTT\s*Releases|Hindi\s*Dubbed|promo|unlock',str(m.get('name','')),re.I)
+ # The published backdrop service's centre contract is IMDb-linked only.
+ # TMDB-only composite entries remain eligible for surrounding artwork.
+ return bool(re.fullmatch(r'tt\\d+',mid)) and m.get('type')=='movie' and bool(m.get('poster')) and not re.search(r'OTT\\s*Releases|Hindi\\s*Dubbed|promo|unlock',str(m.get('name','')),re.I)
 def first_valid(metas,lang=None):
- """Return the first usable IMDb- or TMDB-linked movie without reordering the source catalog."""
+ """Return the first usable IMDb-linked movie in source order for the backdrop centre."""
  return next((m for m in metas if valid(m,lang)),None)
 
 def select_featured(state):
@@ -28,9 +30,9 @@ def select_featured(state):
   chosen=first_valid(metas,lang)
   if not chosen:raise RuntimeError(lang+': no valid catalog head; last-good selection retained')
   pages[url]={'checked_at':now,'metas':metas}
-  languages[lang]={'id':str(chosen['id']).split('||',1)[0],'name':chosen['name'],'poster':chosen['poster'],'catalog':cat,'type':'movie','catalog_source':url,'selection':'catalog-order','catalogRank':0,'eligibility':'IMDb- or TMDB-linked movie','verifiedAt':now}
+  languages[lang]={'id':str(chosen['id']).split('||',1)[0],'name':chosen['name'],'poster':chosen['poster'],'catalog':cat,'type':'movie','catalog_source':url,'selection':'catalog-order','catalogRank':0,'eligibility':'IMDb-linked movie','verifiedAt':now}
   print('FEATURED',lang,chosen['name'],'catalog head',flush=True)
- result={'version':2,'checkedAt':now,'selection':'first usable IMDb- or TMDB-linked movie in the matching IndianRegional catalog order; no external release-date filtering','languages':languages,'warnings':[]}
+ result={'version':2,'checkedAt':now,'selection':'first usable IMDb-linked movie in the matching IndianRegional catalog order; no external release-date filtering','languages':languages,'warnings':[]}
  pages_file.write_text(json.dumps(pages));(state/'featured-movies.json').write_text(json.dumps(result,indent=2))
  return result
 if __name__=='__main__':

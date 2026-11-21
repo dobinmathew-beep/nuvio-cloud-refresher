@@ -21,13 +21,21 @@ class FeaturedSelectionTests(unittest.TestCase):
         ]
         self.assertEqual(first_valid(metas,'tamil')['id'],'tt123')
 
-    def test_first_tmdb_linked_movie_is_not_skipped_for_a_later_imdb_movie(self):
+    def test_first_tmdb_only_movie_does_not_displace_first_imdb_center(self):
         metas=[
             {'id':'ir:promo-unlock','type':'movie','poster':'promo.jpg','name':'New Hindi Dubbed Catalog!'},
             {'id':'tmdb:1822586||Mazhalai||2026||movie','type':'movie','poster':'https://image.tmdb.org/t/p/original/mazhalai.jpg','name':'Mazhalai'},
             {'id':'tt18933846','type':'movie','poster':'imdb.jpg','name':'Nooru Kodi Vaanavil'},
+            {'id':'tmdb:1806311||THEDAL||2026||movie','type':'movie','poster':'thedal.jpg','name':'THEDAL'},
+            {'id':'tt39239818','type':'movie','poster':'haiku.jpg','name':'Haiku'},
         ]
-        self.assertEqual(first_valid(metas,'tamil')['id'].split('||',1)[0],'tmdb:1822586')
+        self.assertEqual(first_valid(metas,'tamil')['id'],'tt18933846')
+
+    def test_tmdb_only_catalog_does_not_guess_center(self):
+        self.assertIsNone(first_valid([
+            {'id':'tmdb:1822586','type':'movie','poster':'mazhalai.jpg','name':'Mazhalai'},
+            {'id':'tmdb:1806311','type':'movie','poster':'thedal.jpg','name':'THEDAL'},
+        ],'tamil'))
 
     def test_promotional_and_non_movie_entries_are_skipped(self):
         self.assertIsNone(first_valid([
