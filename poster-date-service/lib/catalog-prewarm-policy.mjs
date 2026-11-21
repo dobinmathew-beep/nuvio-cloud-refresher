@@ -64,3 +64,18 @@ export function needsResumeVerification(record, fingerprint, now = Date.now()) {
   const retryAt = Date.parse(record.retryAfter || '');
   return Number.isFinite(retryAt) && retryAt > now;
 }
+
+export function classifyImageKitVerificationResponse({ status, contentType = '', method = 'HEAD' }) {
+  const code = Number(status);
+  const type = String(contentType || '').toLowerCase();
+  if (code >= 200 && code < 300 && type.startsWith('image/')) {
+    return { verified: true, status: 'verified' };
+  }
+  if (code === 404 || code === 410) return { verified: false, status: 'not-yet-visible', httpStatus: code };
+  if (code === 403) return { verified: false, status: 'forbidden', httpStatus: code };
+  if (code === 429) return { verified: false, status: 'rate-limited', httpStatus: code };
+  if (code >= 500) return { verified: false, status: 'edge-server-error', httpStatus: code };
+  if (code === 405 || code === 501) return { verified: false, status: 'method-unsupported', httpStatus: code, retryWithGet: method === 'HEAD' };
+  if (code >= 200 && code < 300) return { verified: false, status: 'unexpected-content-type', httpStatus: code };
+  return { verified: false, status: 'http-error', httpStatus: Number.isFinite(code) ? code : null };
+}
