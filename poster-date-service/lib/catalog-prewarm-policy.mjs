@@ -1,5 +1,12 @@
 export const VERIFIED_ASSET_RECHECK_TTL_MS = 6 * 60 * 60 * 1000;
 export const SOURCE_UNAVAILABLE_COOLDOWN_MS = 24 * 60 * 60 * 1000;
+export const SOURCE_PROBE_RETRY_COOLDOWN_MS = 5 * 60 * 1000;
+
+export function isSourceProbeCoolingDown(record, fingerprint, now = Date.now()) {
+  if (!record || record.status !== 'source-probe-failed' || record.fingerprint !== fingerprint) return false;
+  const retryAt = Date.parse(record.retryAfter || '');
+  return Number.isFinite(retryAt) && retryAt > now;
+}
 
 export function imageKitVerificationUrl(endpoint, storageId, now = Date.now()) {
   const rawBase = String(endpoint || '');
@@ -33,7 +40,11 @@ export function classifyPrewarmResponse({ status, contentType = '', location = '
     if (status === 503 && /no poster provider returned a usable image|no poster source available|tmdb title has no poster image/i.test(String(fallbackReason))) {
       return { status: 'source-unavailable', cooldownMs: SOURCE_UNAVAILABLE_COOLDOWN_MS, reason: 'definitive-no-poster-source' };
     }
-    return { status: 'upload-pending', verificationTimeoutMs: 20000, reason: 'uncertain-server-error' };
+    return {
+      status: 'source-probe-failed',
+      cooldownMs: SOURCE_PROBE_RETRY_COOLDOWN_MS,
+      reason: 'poster-service-transient-error'
+    };
   }
   if ([408, 425, 429].includes(status)) {
     return { status: 'retry', reason: 'transient-request-rejected' };
