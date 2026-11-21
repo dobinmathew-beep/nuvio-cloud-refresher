@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { classifyPrewarmResponse, imageKitVerificationUrl, isFreshVerifiedRecord, isSourceUnavailableCoolingDown, SOURCE_UNAVAILABLE_COOLDOWN_MS, VERIFIED_ASSET_RECHECK_TTL_MS, needsResumeVerification } from '../lib/catalog-prewarm-policy.mjs';
+import { classifyPrewarmResponse, imageKitVerificationUrl, isFreshVerifiedRecord, isSourceProbeCoolingDown, isSourceUnavailableCoolingDown, SOURCE_PROBE_RETRY_COOLDOWN_MS, SOURCE_UNAVAILABLE_COOLDOWN_MS, VERIFIED_ASSET_RECHECK_TTL_MS, needsResumeVerification } from '../lib/catalog-prewarm-policy.mjs';
 
 test('ImageKit redirects are deferred to asynchronous verification instead of repeating generation', () => {
   assert.deepEqual(classifyPrewarmResponse({
@@ -98,4 +98,31 @@ test('ImageKit verification URLs bypass stale edge 404 cache entries', () => {
     imageKitVerificationUrl('https://ik.imagekit.io/demo', 'tt1234567', 67890),
     'https://ik.imagekit.io/demo/posters/tt1234567.jpg?__poster_verify=67890'
   );
+});
+
+
+test('transient poster-service 5xx responses defer source probing, not ImageKit verification', () => {
+  assert.deepEqual(classifyPrewarmResponse({
+    status: 503,
+    fallbackReason: 'TMDB request failed: upstream timeout'
+  }), {
+    status: 'source-probe-failed',
+    cooldownMs: SOURCE_PROBE_RETRY_COOLDOWN_MS,
+    reason: 'poster-service-transient-error'
+  });
+  assert.equal(classifyPrewarmResponse({ status: 502 }).status, 'source-probe-failed');
+});
+
+test('source-probe failures are skipped only while their short cooldown is active', () => {
+  const now = Date.now();
+  const record = {
+    status: 'source-probe-failed',
+    fingerprint: 'poster-v1',
+    retryAfter: new Date(now + 60_000).toISOString()
+  };
+  assert.equal(isSourceProbeCoolingDown(record, 'poster-v1', now), true);
+  assert.equal(isSourceProbeCoolingDown(record, 'other', now), false);
+  assert.equal(isSourceProbeCoolingDown({
+    ...record, retryAfter: new Date(now - 1).toISOString()
+  }, 'poster-v1', now), false);
 });
