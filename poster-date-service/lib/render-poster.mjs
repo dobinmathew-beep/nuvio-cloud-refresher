@@ -1,7 +1,19 @@
 export const JUST_ADDED_BADGE_TEXT = 'Just Added';
 
-export async function removeExistingDateBadge(input, topRatio = 0.105) {
+// Keep libvips' native working set bounded on Render's 512 MiB free instance.
+let sharpConfigured = false;
+async function getSharp() {
   const { default: sharp } = await import('sharp');
+  if (!sharpConfigured) {
+    sharp.cache({ memory: 24, files: 0, items: 10 });
+    sharp.concurrency(1);
+    sharpConfigured = true;
+  }
+  return sharp;
+}
+
+export async function removeExistingDateBadge(input, topRatio = 0.105) {
+  const sharp = await getSharp();
   const metadata = await sharp(input, { limitInputPixels: 40000000 }).metadata();
   if (!metadata.width || !metadata.height || metadata.width < 160 || metadata.height < 240) {
     throw new Error('Unsupported poster dimensions');
@@ -35,7 +47,7 @@ export async function renderUpcomingBadge(input, isoDate, kind = 'premiere', top
   const month = new Intl.DateTimeFormat('en', { month: 'short', timeZone: 'UTC' }).format(date);
   const day = String(date.getUTCDate());
   const label = (kind === 'episode' ? 'New Episode ' : 'Coming ') + day + ' ' + month;
-  const { default: sharp } = await import('sharp');
+  const sharp = await getSharp();
   const metadata = await sharp(input, { limitInputPixels: 40000000 }).metadata();
   if (!metadata.width || !metadata.height || metadata.width < 160 || metadata.height < 240) {
     throw new Error('Unsupported poster dimensions');
@@ -101,7 +113,7 @@ export function buildJustAddedBadgeSvg(badgeWidth, badgeHeight, radius, fontSize
 }
 
 export async function renderJustAddedBadge(input, topRatio = 0.105) {
-  const { default: sharp } = await import('sharp');
+  const sharp = await getSharp();
   const metadata = await sharp(input, { limitInputPixels: 40000000 }).metadata();
   if (!metadata.width || !metadata.height || metadata.width < 160 || metadata.height < 240) {
     throw new Error('Unsupported poster dimensions');

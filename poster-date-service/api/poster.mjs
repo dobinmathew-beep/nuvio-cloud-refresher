@@ -425,7 +425,7 @@ async function getBuiltPoster(id, knownRelease = undefined, badge = '', version 
     resultCache.set(cacheKey, { value, expiresAt: Date.now() + RESULT_CACHE_MS });
     // Poster buffers are comparatively large; retain only a small hot set so
     // concurrent Nuvio traffic cannot turn the in-process cache into an RSS spike.
-    while (resultCache.size > 12) resultCache.delete(resultCache.keys().next().value);
+    while (resultCache.size > 3) resultCache.delete(resultCache.keys().next().value);
     const rssBytes = process.memoryUsage().rss;
     if (rssBytes > 400 * 1024 * 1024) {
       resultCache.clear();

@@ -20,7 +20,7 @@ const LEDGER_DIR = '/catalog-state/poster-processing';
 const LEDGER_VERSION = 1;
 const BADGE_RULES_VERSION = 3;
 const LEDGER_SHARDS = '0123456789abcdef';
-const PREWARM_BATCH_SIZE = 5;
+const PREWARM_BATCH_SIZE = 2;
 const PREWARM_CONCURRENCY = 1;
 const VERIFY_CONCURRENCY = 1;
 const CATALOGUE_CHECKPOINT_REUSE_TTL_MS = 72 * 60 * 60 * 1000;
@@ -949,7 +949,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
       // Keep at most two verification batches in flight. The next prewarm
       // overlaps ImageKit visibility checks, but memory and outbound requests
       // remain bounded on Render's free instance.
-      if (inFlightVerifications.length >= 2) {
+      if (inFlightVerifications.length >= 1) {
         await inFlightVerifications.shift();
       }
       await lease?.assertOwned?.();
@@ -1025,6 +1025,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
 
       batchesProcessed++;
       postersVisited += batch.length;
+      if (global.gc) global.gc();
       if (batchesProcessed % 2 === 0 || postersVisited === items.length) {
         const elapsedMinutes = Math.max((Date.now() - progressStartedMs) / 60000, 1 / 60);
         updateRefreshProgress({
