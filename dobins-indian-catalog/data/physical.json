@@ -15585,11 +15585,17 @@
           }
         }
       ]
+    },
+    "hindi|1836066": {
+      "checkedAt": "2026-11-22T00:51:43.207154+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
     }
   },
   "discovery": {
     "malayalam": {
-      "checkedAt": "2026-11-21T23:36:56.996423+04:00",
+      "checkedAt": "2026-11-22T00:51:43.207154+04:00",
       "titles": {
         "1533928": "Bachelor Party D'eux",
         "1828678": "Grahanam",
@@ -16156,7 +16162,7 @@
       }
     },
     "tamil": {
-      "checkedAt": "2026-11-21T23:36:56.996423+04:00",
+      "checkedAt": "2026-11-22T00:51:43.207154+04:00",
       "titles": {
         "1680033": "Appa Kutty",
         "1618539": "Pulse",
@@ -16807,7 +16813,7 @@
       }
     },
     "telugu": {
-      "checkedAt": "2026-11-21T23:36:56.996423+04:00",
+      "checkedAt": "2026-11-22T00:51:43.207154+04:00",
       "titles": {
         "1322273": "Aakasamlo Oka Tara",
         "1505644": "ENE Repeat",
@@ -17542,8 +17548,9 @@
       }
     },
     "hindi": {
-      "checkedAt": "2026-11-21T23:36:56.996423+04:00",
+      "checkedAt": "2026-11-22T00:51:43.207154+04:00",
       "titles": {
+        "1836066": "Nanhey Dil",
         "1808244": "Pratap",
         "1783280": "Party Animals",
         "1698932": "Kaali Kheti",
@@ -17643,7 +17650,6 @@
         "1129325": "Poos Ki Ek Raat",
         "1764394": "Second Chances",
         "1763591": "The Transition",
-        "1810830": "Shoonya",
         "1709391": "Hanuman Ansh",
         "1378537": "Mirzapur: The Movie",
         "1444466": "Awarapan 2",
@@ -17753,6 +17759,9 @@
         "12259": "Sholay"
       },
       "kinds": {
+        "1836066": [
+          "theatrical"
+        ],
         "1808244": [
           "theatrical"
         ],
@@ -18048,9 +18057,6 @@
           "theatrical"
         ],
         "1763591": [
-          "theatrical"
-        ],
-        "1810830": [
           "theatrical"
         ],
         "1709391": [

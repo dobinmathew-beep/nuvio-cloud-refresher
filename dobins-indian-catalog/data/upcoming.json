@@ -1,68 +1,8 @@
 {
-  "generatedAt": "2026-11-21T23:36:56.996423+04:00",
+  "generatedAt": "2026-11-22T00:51:43.207154+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 20,
+  "count": 16,
   "items": [
-    {
-      "id": "tt1281973",
-      "aliases": [
-        "tt1281973"
-      ],
-      "name": "Bigg Boss",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-22",
-      "kind": "episode",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
-    },
-    {
-      "id": "tmdb:338740",
-      "aliases": [
-        "tmdb:338740"
-      ],
-      "name": "Supreme Solaris",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-22",
-      "kind": "premiere",
-      "platforms": [
-        "YouTube"
-      ],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    },
-    {
-      "id": "tmdb:1628781",
-      "aliases": [
-        "tmdb:1628781"
-      ],
-      "name": "Iniyum",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-22",
-      "kind": "premiere",
-      "platforms": [
-        "ManoramaMAX"
-      ],
-      "sources": [
-        "https://www.keralatv.in/channel/ott/"
-      ],
-      "catalog": "dobins_ml_movie",
-      "region": "IN",
-      "source": "https://www.keralatv.in/channel/ott/"
-    },
     {
       "id": "tt38195069",
       "aliases": [
@@ -123,24 +63,6 @@
       "catalog": "dobins_ta_series",
       "region": "IN",
       "source": "https://www.dailyott.in/"
-    },
-    {
-      "id": "tt38676235",
-      "aliases": [
-        "tt38676235"
-      ],
-      "name": "Takshakudu",
-      "language": "telugu",
-      "type": "movie",
-      "releaseDate": "2026-11-26",
-      "kind": "premiere",
-      "platforms": [],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "catalog": "dobins_te_movie",
-      "region": "IN",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },
     {
       "id": "tt41496092",

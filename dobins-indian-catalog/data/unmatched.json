@@ -1291,6 +1291,36 @@
     }
   },
   {
+    "name": "Uthutha Herolu",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-05-21",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a0e807fffe2674e7ae98250",
+      "title": "Uthutha Herolu",
+      "platform": "ETV Win",
+      "createdAt": "2026-05-21T03:48:15.770Z",
+      "genre": "Crime Comedy",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-21",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-05-21T03:48:15.770Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Musafir Café",
     "language": "hindi",
     "type": "movie",
@@ -1323,36 +1353,6 @@
     }
   },
   {
-    "name": "Uthutha Herolu",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-21",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a0e807fffe2674e7ae98250",
-      "title": "Uthutha Herolu",
-      "platform": "ETV Win",
-      "createdAt": "2026-05-21T03:48:15.770Z",
-      "genre": "Crime Comedy",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-21",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-21T03:48:15.770Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Varumaiyil Thaal",
     "language": "tamil",
     "type": "movie",
@@ -1379,6 +1379,36 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-05-03T03:46:51.209Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Vani Na Rani",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-05-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a07e9279dcddba08328ec63",
+      "platform": "ETV Win",
+      "title": "Vani Na Rani",
+      "createdAt": "2026-05-16T03:48:55.554Z",
+      "genre": "Family Drama",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-16",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-05-16T03:48:55.554Z",
       "verified": true
     }
   },
@@ -1457,36 +1487,6 @@
         "fetchedAt": "2026-11-16T23:43:59.297Z"
       },
       "tmdbId": 1686468,
-      "verified": true
-    }
-  },
-  {
-    "name": "Vani Na Rani",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a07e9279dcddba08328ec63",
-      "platform": "ETV Win",
-      "title": "Vani Na Rani",
-      "createdAt": "2026-05-16T03:48:55.554Z",
-      "genre": "Family Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-16",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-16T03:48:55.554Z",
       "verified": true
     }
   },
@@ -1590,8 +1590,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win",
-      "Netflix"
+      "Netflix",
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {

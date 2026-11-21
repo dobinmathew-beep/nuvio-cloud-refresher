@@ -1,31 +1,27 @@
 {
-  "generatedAt": "2026-11-21T23:36:56.996423+04:00",
+  "generatedAt": "2026-11-22T00:51:43.207154+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 26,
+    "total": 19,
     "byLanguage": {
-      "hindi": 15,
-      "malayalam": 5,
-      "telugu": 4,
-      "tamil": 2
+      "hindi": 12,
+      "malayalam": 3,
+      "tamil": 2,
+      "telugu": 2
     },
     "byType": {
-      "movie": 15,
-      "series": 11
+      "series": 9,
+      "movie": 10
     },
     "byMatchState": {
-      "published": 20,
-      "unmatched": 5,
-      "metadata_incomplete": 1
+      "published": 14,
+      "metadata_incomplete": 1,
+      "unmatched": 4
     },
     "bySource": {
-      "https://www.ottchecker.com/ott-releases/hindi": 2,
-      "https://www.dailyott.in/": 4,
-      "https://www.tvmaze.com/shows/70529/dhindora": 1,
-      "https://www.ottchecker.com/ott-releases/malayalam": 1,
-      "https://www.keralatv.in/channel/ott/": 2,
-      "https://www.ottchecker.com/ott-releases/telugu": 1,
-      "https://ottasia.com/ott-releases-this-week?country=IN": 14,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 13,
+      "https://www.keralatv.in/channel/ott/": 1,
+      "https://www.dailyott.in/": 2,
       "https://cinebuds.com/ott-releases-this-week/": 4,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
@@ -33,171 +29,6 @@
     }
   },
   "items": [
-    {
-      "title": "Dulhaniya Le Aaeegi",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-21",
-      "platforms": [
-        "JioHotstar"
-      ],
-      "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "OTTChecker explicit streaming-since date",
-      "detail": "https://www.ottchecker.com/movie/dulhaniya-le-aaeegi-2026",
-      "matchId": "tt37809949",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_movie"
-    },
-    {
-      "title": "Bigg Boss Season 20",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-21",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": null,
-      "matchId": "tt1281973",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Dhindora Season 1",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-21",
-      "platforms": [
-        "Netflix",
-        "YouTube"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.tvmaze.com/shows/70529/dhindora"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": null,
-      "matchId": "tt14650074",
-      "matchState": "published",
-      "matchReason": "https://www.tvmaze.com/shows/70529/dhindora",
-      "metadataComplete": true,
-      "metadataSource": "https://www.tvmaze.com/shows/70529/dhindora",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": false,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Oru Vadakkan Velicham - A Northern Light",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-21",
-      "platforms": [
-        "Manorama Max"
-      ],
-      "sources": [
-        "https://www.ottchecker.com/ott-releases/malayalam"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "OTTChecker explicit streaming-since date",
-      "detail": "https://www.ottchecker.com/movie/oru-vadakkan-velicham-a-northern-light-2026",
-      "matchId": "tt43082675",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_ml_movie"
-    },
-    {
-      "title": "Sameer",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-21",
-      "platforms": [
-        "ManoramaMAX"
-      ],
-      "sources": [
-        "https://www.keralatv.in/channel/ott/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "Kerala TV dated OTT announcement",
-      "detail": "https://www.keralatv.in/sameer-malayalam-movie-ott-release-date-manoramamax/",
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
-    {
-      "title": "Garividi Lakshmi",
-      "language": "telugu",
-      "type": "movie",
-      "releaseDate": "2026-11-21",
-      "platforms": [
-        "YouTube"
-      ],
-      "sources": [
-        "https://www.ottchecker.com/ott-releases/telugu"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "OTTChecker explicit streaming-since date",
-      "detail": "https://www.ottchecker.com/movie/garividi-lakshmi-2026",
-      "matchId": "tt37645628",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_te_movie"
-    },
     {
       "title": "Supreme Solaris",
       "language": "hindi",
@@ -303,31 +134,6 @@
         "releaseInfo": true
       },
       "catalog": null
-    },
-    {
-      "title": "Takshakudu",
-      "language": "telugu",
-      "type": "movie",
-      "releaseDate": "2026-11-26",
-      "platforms": [],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
-      "detail": "https://ottasia.com/title/movie/1442399/takshakudu?country=IN",
-      "matchId": "tt38676235",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_te_movie"
     },
     {
       "title": "Drishyam: The Conclusion",
@@ -1011,7 +817,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 16
+      "records": 15
     },
     {
       "source": "Vi weekly OTT calendar",
@@ -1116,7 +922,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 115,
+      "records": 114,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1466,7 +1272,7 @@
           "sourceDomainsWithSeriesRecords": [
             "ottchecker.com"
           ],
-          "detectedRecords": 27,
+          "detectedRecords": 26,
           "coverageStatus": "partial",
           "sources": [
             {
@@ -1483,8 +1289,8 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 2,
-              "movieRecords": 2,
+              "records": 1,
+              "movieRecords": 1,
               "seriesRecords": 0
             },
             {
@@ -2196,7 +2002,7 @@
       "sourceDomainsWithSeriesRecords": [
         "ottchecker.com"
       ],
-      "detectedRecords": 27,
+      "detectedRecords": 26,
       "coverageStatus": "partial",
       "sources": [
         {
@@ -2213,8 +2019,8 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 2,
-          "movieRecords": 2,
+          "records": 1,
+          "movieRecords": 1,
           "seriesRecords": 0
         },
         {
