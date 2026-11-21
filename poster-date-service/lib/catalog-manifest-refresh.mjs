@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { withRefreshLease, publishRefreshProgress } from './refresh-coordination.mjs';
 import { initializeImageKitStorageSnapshot } from './imagekit-storage.mjs';
 import { createBoundedTaskQueue, refreshResourcePolicy } from './refresh-backpressure.mjs';
-import { classifyPrewarmResponse, imageKitVerificationUrl, isFreshVerifiedRecord, isSourceUnavailableCoolingDown, needsResumeVerification, SOURCE_UNAVAILABLE_COOLDOWN_MS } from './catalog-prewarm-policy.mjs';
+import { classifyPrewarmResponse, imageKitVerificationUrl, isFreshVerifiedRecord, isSourceProbeCoolingDown, isSourceUnavailableCoolingDown, needsResumeVerification, SOURCE_PROBE_RETRY_COOLDOWN_MS, SOURCE_UNAVAILABLE_COOLDOWN_MS } from './catalog-prewarm-policy.mjs';
 
 const MANIFEST_KEYS = [
   'CATALOG_MANIFEST_ELFHOSTED_URL',
@@ -420,6 +420,18 @@ async function prewarm(item, knownImageKitCheck = null) {
         id: item.id, status: 'source-unavailable',
         retryAfterMs: decision.cooldownMs || SOURCE_UNAVAILABLE_COOLDOWN_MS,
         error: fallbackReason || 'Poster service confirmed that no usable poster source is currently available'
+      };
+    }
+    if (decision.status === 'source-probe-failed') {
+      const error = fallbackReason || 'Poster service returned HTTP ' + response.status;
+      console.warn('[catalog-source-probe-deferred]', JSON.stringify({
+        id: item.id, httpStatus: response.status, storage,
+        fallbackReason: error.slice(0, 240), retryAfterMs: decision.cooldownMs || SOURCE_PROBE_RETRY_COOLDOWN_MS
+      }));
+      return {
+        id: item.id, status: 'source-probe-failed',
+        retryAfterMs: decision.cooldownMs || SOURCE_PROBE_RETRY_COOLDOWN_MS,
+        error
       };
     }
     if (decision.status === 'failed') {
@@ -880,6 +892,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   let preflightVerifiedHits = 0;
   let deferredPending = 0;
   let deferredSourceUnavailable = 0;
+  let deferredSourceProbe = 0;
   // Read each ledger shard once, then verify existing assets with a small,
   // bounded network-only fan-out. OCR/image generation stays serial on Free.
   const refreshedLedgerShards = new Set();
@@ -889,6 +902,8 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     const record = records[item.id];
     if (!forceReprocess && isSourceUnavailableCoolingDown(record, itemFingerprint(item))) {
       deferredSourceUnavailable++;
+    } else if (!forceReprocess && isSourceProbeCoolingDown(record, itemFingerprint(item))) {
+      deferredSourceProbe++;
     } else if (!forceReprocess && needsResumeVerification(record, itemFingerprint(item))) {
       pendingResumeItems.push({ item, record });
     } else if (!forceReprocess && reusableLedgerRecord(record, item)) {
@@ -964,7 +979,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   // ReferenceError and breaks automatic recovery after a Render restart.
   updateRefreshProgress({
     stage: 'poster-processing', titlesDiscovered: allItems.length,
-    postersTargeted: items.length, postersCacheHits: preflightVerifiedHits, postersDeferred: deferredPending + deferredSourceUnavailable,
+    postersTargeted: items.length, postersCacheHits: preflightVerifiedHits, postersDeferred: deferredPending + deferredSourceUnavailable + deferredSourceProbe,
     cataloguesDiscovered: catalogues.length,
     cataloguesScanned: cataloguesScannedThisRun,
     cataloguesFailed: catalogues.filter(c => c.error).length
@@ -975,6 +990,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     alreadyVerified: preflightVerifiedHits,
     deferredPending,
     deferredSourceUnavailable,
+    deferredSourceProbe,
     strategy: forceReprocess ? 'force-revalidate-all-catalogue-titles' : 'retry-only-unresolved-or-missing-imagekit-assets'
   }));
   // Establish a verified storage budget before the first poster request.
@@ -1112,6 +1128,12 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
                 attempts: (Number(records[item.id]?.attempts) || 0) + 1,
                 retryAfter: new Date(Date.now() + (result.retryAfterMs || SOURCE_UNAVAILABLE_COOLDOWN_MS)).toISOString(),
                 lastError: result.error || 'No usable poster source currently available'
+              });
+            } else if (result.status === 'source-probe-failed') {
+              records[item.id] = ledgerRecord(item, 'source-probe-failed', {
+                attempts: (Number(records[item.id]?.attempts) || 0) + 1,
+                retryAfter: new Date(Date.now() + (result.retryAfterMs || SOURCE_PROBE_RETRY_COOLDOWN_MS)).toISOString(),
+                lastError: result.error || 'Poster source probe temporarily failed'
               });
             } else if (result.status === 'imagekit-hit') {
               records[item.id] = ledgerRecord(item, 'verified', {
