@@ -22,7 +22,7 @@ test('bounded queue never exceeds its configured pending task count', async () =
   assert.equal(thirdStarted, false);
   a.resolve('a');
   await first;
-  const { completion: thirdCompletion } = await thirdCompletion;
+  const { completion: thirdCompletion } = await third;
   assert.equal(thirdStarted, true);
   assert.equal(queue.pendingCount, 2);
   b.resolve('b');
