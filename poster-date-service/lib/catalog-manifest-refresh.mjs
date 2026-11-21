@@ -376,6 +376,16 @@ async function prewarm(item) {
   throw new Error(lastError || 'Poster prewarm failed after two attempts');
 }
 let activeRefreshPromise = null;
+let activeRefreshProgress = null;
+
+export function getManifestCatalogRefreshProgress() {
+  return activeRefreshProgress ? structuredClone(activeRefreshProgress) : null;
+}
+
+function updateRefreshProgress(patch) {
+  if (!activeRefreshProgress) return;
+  Object.assign(activeRefreshProgress, patch, { updatedAt: new Date().toISOString() });
+}
 
 export async function resumeIncompleteManifestCatalogRefresh(options = {}) {
   const config = imageKitConfig();
@@ -395,7 +405,24 @@ export async function resumeIncompleteManifestCatalogRefresh(options = {}) {
 
 export function runManifestCatalogRefresh(options = {}) {
   if (activeRefreshPromise) return activeRefreshPromise;
-  activeRefreshPromise = withRefreshLease(lease => runManifestCatalogRefreshInternal(lease, options)).finally(() => { activeRefreshPromise = null; });
+  activeRefreshProgress = {
+    status: 'starting', stage: 'initializing', startedAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(), cataloguesDiscovered: 0, cataloguesScanned: 0,
+    cataloguesTotal: 0, cataloguesFailed: 0, cataloguesSkipped: 0,
+    titlesDiscovered: 0, postersTargeted: 0, postersVisited: 0,
+    postersCorrected: 0, postersCacheHits: 0, postersPending: 0,
+    failures: 0, failureDetails: [], elapsedSeconds: 0, titlesPerMinute: 0,
+    postersPerMinute: 0, lastCheckpointAt: null
+  };
+  activeRefreshPromise = withRefreshLease(lease => runManifestCatalogRefreshInternal(lease, options)).finally(() => {
+    if (activeRefreshProgress) {
+      activeRefreshProgress.status = 'finished';
+      activeRefreshProgress.stage = 'finished';
+      activeRefreshProgress.finishedAt = new Date().toISOString();
+      activeRefreshProgress.updatedAt = activeRefreshProgress.finishedAt;
+    }
+    activeRefreshPromise = null;
+  });
   return activeRefreshPromise;
 }
 
@@ -468,6 +495,14 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   }
   const manifests = await Promise.all(configured.map(readManifest));
   const catalogues = [];
+  const cataloguesTotal = manifests.reduce((sum, manifest) => sum + manifest.catalogs.length, 0);
+  const progressStartedMs = Date.now();
+  updateRefreshProgress({
+    status: 'running', stage: 'catalogue-discovery', scanGeneration,
+    manifests: manifests.map(m => ({ source: m.name || m.key, catalogues: m.catalogs.length })),
+    cataloguesTotal, titlesDiscovered: current.size,
+    lastCheckpointAt: checkpoint.updatedAt || startedAt
+  });
   const handledFingerprints = new Map();
   let cataloguesScannedThisRun = 0;
   let cataloguesResumed = 0;
@@ -485,6 +520,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
           duplicateOf: { source: duplicateOf.source, type: duplicateOf.type, id: duplicateOf.id, name: duplicateOf.name }
         };
         catalogues.push(skipped);
+        updateRefreshProgress({ cataloguesDiscovered: catalogues.length, cataloguesSkipped: cataloguesSkippedDuplicate });
         console.info('[catalog-skipped-duplicate]', JSON.stringify({
           source: skipped.source, type: skipped.type, id: skipped.id,
           duplicateOf: skipped.duplicateOf
@@ -523,6 +559,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
           skipReason: 'Requires user-supplied catalogue extras: ' + unresolvedExtras.join(', ')
         };
         catalogues.push(skipped);
+        updateRefreshProgress({ cataloguesDiscovered: catalogues.length, cataloguesSkipped: catalogues.filter(c => c.skipped || c.skippedDuplicate).length });
         console.info('[catalog-skipped-dynamic]', JSON.stringify({
           source: skipped.source, type: skipped.type, id: skipped.id,
           name: skipped.name, requiredExtras: unresolvedExtras
@@ -560,6 +597,13 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
         };
         await lease?.assertOwned?.();
         await writeJson(config, CHECKPOINT_PATH, checkpoint);
+        const elapsedMinutes = Math.max((Date.now() - progressStartedMs) / 60000, 1 / 60);
+        updateRefreshProgress({
+          cataloguesDiscovered: catalogues.length, cataloguesScanned: cataloguesScannedThisRun,
+          cataloguesResumed, cataloguesSkipped: cataloguesSkippedDuplicate,
+          titlesDiscovered: current.size, titlesPerMinute: Math.round(current.size / elapsedMinutes),
+          lastCheckpointAt: checkpoint.updatedAt
+        });
       } catch (error) {
         if (/coordination lease/.test(error?.message || '')) throw error;
         const failed = {
@@ -567,6 +611,13 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
           pages: 0, records: 0, titles: [], error: error?.message || 'catalogue fetch failed'
         };
         catalogues.push(failed);
+        const failureDetails = activeRefreshProgress?.failureDetails || [];
+        failureDetails.push({ stage: 'catalogue-discovery', source: failed.source, catalogue: failed.name, error: failed.error });
+        updateRefreshProgress({
+          cataloguesDiscovered: catalogues.length, cataloguesFailed: catalogues.filter(c => c.error).length,
+          failures: (activeRefreshProgress?.failures || 0) + 1,
+          failureDetails: failureDetails.slice(-20)
+        });
         console.warn('[catalog-fetch-failed]', JSON.stringify({
           source: failed.source, type: failed.type, id: failed.id, error: failed.error
         }));
@@ -608,6 +659,13 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   // through poster generation. Verified ledger entries are retained when the
   // fingerprint still matches and ImageKit confirms the asset is available.
   const allItems = [...current.values()];
+  updateRefreshProgress({
+    stage: 'poster-processing', titlesDiscovered: allItems.length,
+    postersTargeted: items.length, postersCacheHits: preflightVerifiedHits,
+    cataloguesDiscovered: catalogues.length,
+    cataloguesScanned: cataloguesScannedThisRun,
+    cataloguesFailed: catalogues.filter(c => c.error).length
+  });
   const preflightLedgerCache = new Map();
   const items = [];
   let preflightVerifiedHits = 0;
@@ -689,6 +747,13 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
       resultCounts['upload-pending'] = Math.max(0, (resultCounts['upload-pending'] || 0) - pendingItems.length);
       if (!resultCounts['upload-pending']) delete resultCounts['upload-pending'];
       await persistShard();
+      const elapsedMinutes = Math.max((Date.now() - progressStartedMs) / 60000, 1 / 60);
+      updateRefreshProgress({
+        postersCorrected: verifiedUploads, postersCacheHits: verifiedCacheHits,
+        postersPending: uploadPending, failures: totalFailures + catalogues.filter(c => c.error).length,
+        postersPerMinute: Math.round(postersVisited / elapsedMinutes),
+        lastCheckpointAt: new Date().toISOString()
+      });
     };
 
     for (let offset = 0; offset < shardItems.length; offset += PREWARM_BATCH_SIZE) {
@@ -768,6 +833,14 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
       batchesProcessed++;
       postersVisited += batch.length;
       if (batchesProcessed % 2 === 0 || postersVisited === items.length) {
+        const elapsedMinutes = Math.max((Date.now() - progressStartedMs) / 60000, 1 / 60);
+        updateRefreshProgress({
+          postersVisited, postersTargeted: items.length, postersCorrected: verifiedUploads,
+          postersCacheHits: verifiedCacheHits, postersPending: uploadPending,
+          failures: totalFailures + catalogues.filter(c => c.error).length,
+          postersPerMinute: Math.round(postersVisited / elapsedMinutes),
+          lastCheckpointAt: new Date().toISOString()
+        });
         const rss = Math.round(process.memoryUsage().rss / (1024 * 1024));
         console.log('[catalog-ledger-progress]', JSON.stringify({
           visited: postersVisited, total: items.length, batch: batchesProcessed,
@@ -818,6 +891,17 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     await lease?.assertOwned?.();
     await writeJson(config, CHECKPOINT_PATH, checkpoint);
   }
+  updateRefreshProgress({
+    status: 'completed', stage: 'completed', cataloguesDiscovered: catalogues.length,
+    cataloguesScanned: cataloguesScannedThisRun, cataloguesResumed,
+    cataloguesFailed: catalogues.filter(c => c.error).length,
+    titlesDiscovered: allItems.length, postersTargeted: items.length,
+    postersVisited, postersCorrected: verifiedUploads, postersCacheHits: verifiedCacheHits,
+    postersPending: uploadPending, failures: totalFailures + catalogues.filter(c => c.error).length,
+    report, finishedAt: new Date().toISOString(),
+    elapsedSeconds: Math.round((Date.now() - progressStartedMs) / 1000),
+    lastCheckpointAt: checkpoint.updatedAt || new Date().toISOString()
+  });
   console.log('[catalog-refresh-complete]', JSON.stringify(report));
   return report;
 }
