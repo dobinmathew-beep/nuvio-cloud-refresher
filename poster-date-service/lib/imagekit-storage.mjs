@@ -253,7 +253,7 @@ export async function readPosterValidationMetadata(imdbId) {
     if (response.status === 404) return null;
     if (!response.ok) return null;
     const value = await response.json();
-    return value && value.version === 1 && value.imdbId === imdbId ? value : null;
+    return value && [1, 2].includes(value.version) && value.imdbId === imdbId ? value : null;
   } catch {
     return null;
   }
@@ -264,7 +264,7 @@ export async function savePosterValidationMetadata(imdbId, metadata) {
   const config = imageKitConfig();
   if (!config) return false;
   const value = {
-    version: 1,
+    version: 2,
     imdbId,
     releaseDate: metadata?.releaseDate || null,
     releaseKind: metadata?.releaseKind || null,
