@@ -151,16 +151,17 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
   if (!sources.length) throw new Error('No poster source available for TMDB ID ' + tmdbId);
   const original = sources[0];
   const catalogRelease = await upcomingReleaseFromCatalog(['tmdb:' + tmdbId]);
-  const digitalAlreadyReleased = mediaType === 'movie' && catalogRelease
+  const digitalAlreadyReleased = mediaType === 'movie'
     ? await hasPastDigitalReleaseByTmdbId(tmdbId)
     : false;
+  const tmdbRelease = await upcomingReleaseByTmdbId(tmdbId, mediaType);
   const release = digitalAlreadyReleased === true
     ? null
-    : catalogRelease || await upcomingReleaseByTmdbId(tmdbId, mediaType);
+    : mediaType === 'movie' ? tmdbRelease || catalogRelease : catalogRelease || tmdbRelease;
   let output = original.bytes;
   let dateRendered = false;
-  let justAdded = String(req.query?.badge || '').toLowerCase() === 'just-added';
-  if (!justAdded) {
+  let justAdded = !release?.date && String(req.query?.badge || '').toLowerCase() === 'just-added';
+  if (!release?.date && !justAdded) {
     try { justAdded = await isCatalogRecentlyAdded(['tmdb:' + tmdbId]); }
     catch (error) { console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ tmdbId, error: error?.message || 'unknown error' })); }
   }
@@ -176,8 +177,8 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
       console.warn('[poster-date-overlay-failed]', JSON.stringify({ tmdbId, date: release.date, error: error?.message || 'unknown error' }));
     }
   }
-  if (justAdded) {
-    try { output = await renderJustAddedBadge(output, dateRendered ? 0.255 : 0.105); }
+  if (justAdded && !release?.date) {
+    try { output = await renderJustAddedBadge(output, 0.105); }
     catch (error) {
       console.warn('[poster-just-added-overlay-failed]', JSON.stringify({ tmdbId, error: error?.message || 'unknown error' }));
       justAdded = false;
@@ -243,8 +244,8 @@ async function sendTvmazePosterFallback(tvmazeId, req, res) {
 
   let output = original;
   let dateRendered = false;
-  let justAdded = String(req.query?.badge || '').toLowerCase() === 'just-added';
-  if (!justAdded) {
+  let justAdded = !release?.date && String(req.query?.badge || '').toLowerCase() === 'just-added';
+  if (!release?.date && !justAdded) {
     try { justAdded = await isCatalogRecentlyAdded(['tvmaze:' + tvmazeId]); }
     catch (error) { console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ tvmazeId, error: error?.message || 'unknown error' })); }
   }
@@ -259,8 +260,8 @@ async function sendTvmazePosterFallback(tvmazeId, req, res) {
       console.warn('[poster-date-overlay-failed]', JSON.stringify({ tvmazeId, date: release.date, error: error?.message || 'unknown error' }));
     }
   }
-  if (justAdded) {
-    try { output = await renderJustAddedBadge(output, dateRendered ? 0.255 : 0.105); }
+  if (justAdded && !release?.date) {
+    try { output = await renderJustAddedBadge(output, 0.105); }
     catch (error) {
       console.warn('[poster-just-added-overlay-failed]', JSON.stringify({ tvmazeId, error: error?.message || 'unknown error' }));
       justAdded = false;
