@@ -389,7 +389,7 @@ async function prewarm(item, knownImageKitCheck = null) {
   const requestPath = item.poster
     ? path + (path.includes('?') ? '&' : '?') + 'fallback=' + encodeURIComponent(item.poster)
     : path;
-  const endpoint = (process.env.POSTER_SERVICE_URL || 'https://great-indian-upcoming-posters.onrender.com').replace(/\\/$/, '');
+  const endpoint = (process.env.POSTER_SERVICE_URL || 'https://great-indian-upcoming-posters.onrender.com').replace(/\/$/, '');
 
   // A prior request may have completed its upload even when its HTTP response
   // was lost. Never issue another generation request until the canonical asset
@@ -405,7 +405,7 @@ async function prewarm(item, knownImageKitCheck = null) {
     const location = response.headers.get('location') || '';
     const storage = response.headers.get('x-imagekit-storage') || 'not-stored';
     const posterStatus = response.headers.get('x-poster-date-status') || 'rendered';
-    const imageKitBase = (process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\\/$/, '') + '/posters/';
+    const imageKitBase = (process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\/$/, '') + '/posters/';
     const decision = classifyPrewarmResponse({
       status: response.status, contentType, location, imageKitBase, storage
     });
