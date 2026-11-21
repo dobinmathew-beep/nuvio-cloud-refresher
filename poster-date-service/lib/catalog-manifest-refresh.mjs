@@ -464,7 +464,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
       }
 
       const saved = completedCatalogues[fingerprint];
-      if (saved) {
+      if (saved && saved.scanGeneration === scanGeneration) {
         const perCatalog = await readState(config, titleFiles[fingerprint] || catalogueCheckpointPath(fingerprint));
         if (perCatalog?.titles && typeof perCatalog.titles === 'object') {
           for (const [id, item] of Object.entries(perCatalog.titles)) if (item?.id === id && !current.has(id)) current.set(id, item);
@@ -483,6 +483,8 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
         }));
         continue;
       }
+
+      if (saved) delete completedCatalogues[fingerprint];
 
       const unresolvedExtras = unresolvedRequiredExtras(catalog);
       if (unresolvedExtras.length) {
@@ -505,7 +507,8 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
         delete result.titles;
         completedCatalogues[fingerprint] = {
           source: result.source, type: result.type, id: result.id, name: result.name,
-          pages: result.pages, records: result.records, truncated: Boolean(result.truncated)
+          pages: result.pages, records: result.records, truncated: Boolean(result.truncated),
+          scanGeneration
         };
         handledFingerprints.set(fingerprint, {
           source: result.source, type: result.type, id: result.id, name: result.name
