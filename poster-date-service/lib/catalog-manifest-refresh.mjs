@@ -452,6 +452,16 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     await lease?.assertOwned?.();
     await writeJson(config, CHECKPOINT_PATH, checkpoint);
   }
+  if (checkpoint.titleInventoryGeneration !== scanGeneration) {
+    checkpoint = {
+      ...checkpoint,
+      titleInventoryGeneration: scanGeneration,
+      titleFiles: {},
+      updatedAt: new Date().toISOString()
+    };
+    await lease?.assertOwned?.();
+    await writeJson(config, CHECKPOINT_PATH, checkpoint);
+  }
   const titleFiles = checkpoint.titleFiles && typeof checkpoint.titleFiles === 'object' ? { ...checkpoint.titleFiles } : {};
   const current = new Map();
   if (checkpoint.titles && typeof checkpoint.titles === 'object') {
@@ -547,7 +557,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
         // stays compact and records only which catalogues are complete.
         checkpoint = {
           version: 2, badgeRulesVersion: BADGE_RULES_VERSION,
-          scanGeneration, forceRescanCatalogs,
+          scanGeneration, forceRescanCatalogs, titleInventoryGeneration: scanGeneration,
           complete: false, updatedAt: new Date().toISOString(),
           completedCatalogues, titleFiles
         };
@@ -804,7 +814,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   if (scanComplete && totalFailures === 0 && !resultCounts.failed && !resultCounts.retry && !resultCounts['rendered-not-cached'] && !resultCounts['source-redirect']) {
     checkpoint = {
       version: 2, badgeRulesVersion: BADGE_RULES_VERSION,
-      scanGeneration, forceRescanCatalogs: false,
+      scanGeneration, forceRescanCatalogs: false, titleInventoryGeneration: scanGeneration,
       complete: true, updatedAt: new Date().toISOString(),
       completedCatalogues, titleFiles
     };
