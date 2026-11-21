@@ -197,3 +197,27 @@ test('digital release on the current Oman date is treated as released, not upcom
   assert.equal(hasPastDigitalReleaseForTest(rows, '2026-11-21'), true);
   assert.equal(chooseMovieDateForTest(rows, '2026-11-21'), null);
 });
+
+test('wider November 2026 release sample suppresses released titles and preserves genuinely future dates', () => {
+  const releasedSample = [
+    ['Spider-Man: Brand New Day', 'US', '2026-10-06'],
+    ['Insidious: Out of the Further', 'US', '2026-10-06'],
+    ['Heart of the Beast', 'US', '2026-11-10'],
+    ['The Odyssey', 'US', '2026-11-17'],
+    ['The Beast', 'US', '2026-11-17'],
+    ['A Talent for Murder', 'US', '2026-11-17']
+  ];
+  for (const [title, region, date] of releasedSample) {
+    const rows = [{ iso_3166_1: region, release_dates: [{ type: 4, release_date: date + 'T00:00:00.000Z' }] }];
+    assert.equal(chooseMovieDateForTest(rows, '2026-11-21'), null, title + ' must not show a Coming badge');
+  }
+
+  const futureSample = [
+    ['Clayface', 'US', '2026-12-08'],
+    ['The Social Reckoning', 'US', '2026-11-24']
+  ];
+  for (const [title, region, date] of futureSample) {
+    const rows = [{ iso_3166_1: region, release_dates: [{ type: 4, release_date: date + 'T00:00:00.000Z' }] }];
+    assert.equal(chooseMovieDateForTest(rows, '2026-11-21')?.date, date, title + ' should retain its future date');
+  }
+});
