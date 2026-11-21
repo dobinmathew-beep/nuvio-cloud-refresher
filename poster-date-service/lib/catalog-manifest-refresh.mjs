@@ -2,6 +2,7 @@ import { Buffer } from 'node:buffer';
 import { createHash } from 'node:crypto';
 import { withRefreshLease, publishRefreshProgress } from './refresh-coordination.mjs';
 import { initializeImageKitStorageSnapshot } from './imagekit-storage.mjs';
+import { createBoundedTaskQueue, refreshResourcePolicy } from './refresh-backpressure.mjs';
 
 const MANIFEST_KEYS = [
   'CATALOG_MANIFEST_ELFHOSTED_URL',
@@ -306,9 +307,29 @@ function posterPath(id, type) {
   return null;
 }
 function adaptivePrewarmConcurrency() {
-  // Render has repeatedly hit its 512 MiB hard limit even after adaptive
-  // throttling. Keep image/OCR work strictly serial on the free plan.
+  // Image/OCR generation remains serial on the 512 MiB Render Free instance.
   return 1;
+}
+
+async function waitForImageWorkHeadroom() {
+  let rssMiB = process.memoryUsage().rss / (1024 * 1024);
+  let policy = refreshResourcePolicy(rssMiB);
+  if (policy.runGc && global.gc) global.gc();
+  if (policy.pauseImageWork) {
+    console.warn('[catalog-memory-backpressure]', JSON.stringify({ rssMiB: Math.round(rssMiB), action: 'pause-image-work' }));
+    // Do not start another image/OCR request close to Render's hard limit.
+    for (let attempt = 0; attempt < 15; attempt++) {
+      await sleep(2000);
+      rssMiB = process.memoryUsage().rss / (1024 * 1024);
+      policy = refreshResourcePolicy(rssMiB);
+      if (!policy.pauseImageWork) break;
+      if (global.gc) global.gc();
+    }
+    if (policy.pauseImageWork) {
+      throw new Error('Refresh paused safely: RSS remained at or above 450 MiB; checkpoint is preserved for resume');
+    }
+  }
+  return policy;
 }
 
 async function runPool(items, worker, concurrency = CONCURRENCY, onFailure = null) {
@@ -385,6 +406,7 @@ async function prewarm(item) {
         headers: { accept: 'image/*' }, redirect: 'manual', signal: AbortSignal.timeout(30000)
       });
       if (response.status >= 300 && response.status < 400) {
+        await response.body?.cancel().catch(() => {});
         const location = response.headers.get('location') || '';
         const imageKitBase = (process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\/$/, '') + '/posters/';
         if (imageKitBase.length > 9 && location.startsWith(imageKitBase)) {
@@ -396,6 +418,7 @@ async function prewarm(item) {
         }
       } else {
         if (!response.ok || !(response.headers.get('content-type') || '').toLowerCase().startsWith('image/')) {
+          await response.body?.cancel().catch(() => {});
           lastError = 'Poster service returned HTTP ' + response.status;
           // A 503 means every trusted source and the ImageKit cache failed.
           // Repeating the same provider chain three times only stalls the scan.
@@ -831,6 +854,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   // fingerprint still matches and ImageKit confirms the asset is available.
   const allItems = [...current.values()];
   const preflightLedgerCache = new Map();
+  const preflightImageKitChecks = new Map();
   const items = [];
   const candidatesForHeadCheck = [];
   let preflightVerifiedHits = 0;
@@ -851,6 +875,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     const batch = candidatesForHeadCheck.slice(offset, offset + PREFLIGHT_HEAD_CONCURRENCY);
     const checks = await Promise.all(batch.map(item => checkImageKit(item.id)));
     for (let index = 0; index < batch.length; index++) {
+      preflightImageKitChecks.set(batch[index].id, checks[index]);
       if (checks[index]) preflightVerifiedHits++;
       else items.push(batch[index]);
     }
@@ -911,9 +936,11 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
       });
       return ledgerWriteChain;
     };
-    const inFlightVerifications = [];
+    // Verification is a bounded, ID-only queue. It never retains image bodies.
+    const verificationQueue = createBoundedTaskQueue(4);
 
     const verifyPendingBatch = async pendingItems => {
+      const verificationPolicy = refreshResourcePolicy(process.memoryUsage().rss / (1024 * 1024));
       const verification = await runPool(pendingItems, async item => {
         if (await waitForImageKit(item.id)) {
           records[item.id] = ledgerRecord(item, 'verified', {
@@ -927,7 +954,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
           lastError: 'ImageKit upload did not become visible within 180 seconds'
         });
         throw new Error('ImageKit upload did not become visible within 180 seconds');
-      }, VERIFY_CONCURRENCY, (item, error) => {
+      }, verificationPolicy.verificationConcurrency, (item, error) => {
         const failureDetails = activeRefreshProgress?.failureDetails || [];
         failureDetails.push({ stage: 'imagekit-verification', titleId: item.id, error });
         updateRefreshProgress({ failureDetails: failureDetails.slice(-20) });
@@ -952,18 +979,21 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     };
 
     for (let offset = 0; offset < shardItems.length; offset += PREWARM_BATCH_SIZE) {
-      // Keep at most two verification batches in flight. The next prewarm
-      // overlaps ImageKit visibility checks, but memory and outbound requests
-      // remain bounded on Render's free instance.
-      if (inFlightVerifications.length >= 1) {
-        await inFlightVerifications.shift();
+      // Let CDN visibility checks overlap poster generation, but apply RSS-based
+      // backpressure and a strict cap so the queue cannot grow without bound.
+      const resourcePolicy = await waitForImageWorkHeadroom();
+      if (verificationQueue.pendingCount >= resourcePolicy.maxPendingBatches) {
+        await verificationQueue.drain();
       }
       await lease?.assertOwned?.();
       const batch = shardItems.slice(offset, offset + PREWARM_BATCH_SIZE);
       const reusable = await Promise.all(batch.map(async item => {
         if (forceReprocess) return false;
         const record = records[item.id];
-        return reusableLedgerRecord(record, item) && await checkImageKit(item.id);
+        if (!reusableLedgerRecord(record, item)) return false;
+        const preflightResult = preflightImageKitChecks.get(item.id);
+        if (preflightResult === false) return false;
+        return preflightResult === true || await checkImageKit(item.id);
       }));
       const pendingItems = [];
       const toProcess = [];
@@ -1025,7 +1055,16 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
         // A restart can safely HEAD-check or retry only this incomplete batch.
         await persistShard();
         if (pendingItems.length) {
-          inFlightVerifications.push(verifyPendingBatch([...pendingItems]));
+          const queued = await verificationQueue.enqueue(() => verifyPendingBatch([...pendingItems]));
+          queued.completion.then(outcome => {
+            if (outcome.status === 'rejected') {
+              totalFailures++;
+              const failureDetails = activeRefreshProgress?.failureDetails || [];
+              failureDetails.push({ stage: 'imagekit-verification-persistence', error: outcome.error?.message || 'verification task failed' });
+              updateRefreshProgress({ failureDetails: failureDetails.slice(-20) });
+              console.error('[catalog-verification-task-failed]', outcome.error?.message || 'unknown error');
+            }
+          });
         }
       }
 
@@ -1047,12 +1086,15 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
           batchSize: batch.length, ledgerHits, verifiedUploads, verifiedCacheHits,
           uploadPending, failures: totalFailures, rssMiB: rss,
           prewarmConcurrency: adaptivePrewarmConcurrency(),
-          verificationBatchesInFlight: inFlightVerifications.length
+          verificationBatchesInFlight: verificationQueue.pendingCount,
+          verificationConcurrency: resourcePolicy.verificationConcurrency,
+          memoryPolicy: resourcePolicy
         }));
       }
     }
 
-    await Promise.all(inFlightVerifications);
+    await verificationQueue.drain();
+    preflightImageKitChecks.clear();
     await ledgerWriteChain;
     ledgerCache.clear();
   }
