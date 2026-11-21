@@ -9,7 +9,7 @@ let sharpConfigured = false;
 let workerPromise;
 let ocrQueue = Promise.resolve();
 let workerRecognitionCount = 0;
-const MAX_WORKER_RECOGNITIONS = 2;
+const MAX_WORKER_RECOGNITIONS = 1;
 
 function withOcrQueue(task) {
   const job = ocrQueue.then(task);
@@ -107,17 +107,17 @@ export async function hasExistingComingDateTag(input, kind = 'premiere', isoDate
 
   const { default: sharp } = await import('sharp');
   if (!sharpConfigured) {
-    sharp.cache({ memory: 12, files: 0, items: 12 });
+    sharp.cache({ memory: 8, files: 0, items: 2 });
     sharp.concurrency(1);
     sharpConfigured = true;
   }
-  const metadata = await sharp(input, { limitInputPixels: 40000000 }).metadata();
+  const metadata = await sharp(input, { limitInputPixels: 20000000 }).metadata();
   if (!metadata.width || !metadata.height) throw new Error('Cannot inspect poster dimensions');
 
   // One compact crop and two OCR layouts: far less work than the former
   // six-pass/two-image pipeline, while retaining a conservative duplicate check.
   const cropHeight = Math.max(180, Math.min(metadata.height, Math.round(metadata.height * 0.65)));
-  const prepared = await sharp(input, { limitInputPixels: 40000000 })
+  const prepared = await sharp(input, { limitInputPixels: 20000000 })
     .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
     .resize({ width: Math.min(1000, metadata.width * 2) })
     .grayscale()
@@ -133,7 +133,7 @@ export async function hasExistingComingDateTag(input, kind = 'premiere', isoDate
     return true;
   }
   cache.set(key, { value: false, at: Date.now() });
-  while (cache.size > 1200) cache.delete(cache.keys().next().value);
+  while (cache.size > 256) cache.delete(cache.keys().next().value);
   return false;
 }
 
@@ -162,16 +162,16 @@ export async function hasExistingJustAddedTag(input) {
   if (cached && Date.now() - cached.at < CACHE_MS) return cached.value;
   const { default: sharp } = await import('sharp');
   if (!sharpConfigured) {
-    sharp.cache({ memory: 24, files: 0, items: 24 });
+    sharp.cache({ memory: 8, files: 0, items: 2 });
     sharp.concurrency(1);
     sharpConfigured = true;
   }
-  const metadata = await sharp(input, { limitInputPixels: 40000000 }).metadata();
+  const metadata = await sharp(input, { limitInputPixels: 20000000 }).metadata();
   if (!metadata.width || !metadata.height) throw new Error('Cannot inspect poster dimensions');
   // The chip sits in the top strip; this compact crop is much faster on
   // Render's free instance than OCR-ing most of the poster.
   const cropHeight = Math.max(120, Math.min(metadata.height, Math.round(metadata.height * 0.3)));
-  const prepared = await sharp(input, { limitInputPixels: 40000000 })
+  const prepared = await sharp(input, { limitInputPixels: 20000000 })
     .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
     .resize({ width: Math.min(750, metadata.width * 2) })
     .grayscale()
@@ -186,6 +186,6 @@ export async function hasExistingJustAddedTag(input) {
     return true;
   }
   cache.set(key, { value: false, at: Date.now() });
-  while (cache.size > 1200) cache.delete(cache.keys().next().value);
+  while (cache.size > 256) cache.delete(cache.keys().next().value);
   return false;
 }
