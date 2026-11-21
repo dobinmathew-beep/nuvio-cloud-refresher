@@ -114,6 +114,36 @@ jobs:
             echo
           } >> "$GITHUB_STEP_SUMMARY"
 
+
+          node - <<'NODE' >> "$GITHUB_STEP_SUMMARY"
+          const fs = require('fs');
+          const s = JSON.parse(fs.readFileSync('status.json', 'utf8'));
+          const p = s.progress || {};
+          const n = v => Number.isFinite(Number(v)) ? Number(v).toLocaleString() : '—';
+          const elapsed = n(p.elapsedSeconds);
+          console.log('### Live refresh progress');
+          console.log('| Metric | Current value |');
+          console.log('|---|---:|');
+          console.log('| Stage | ' + (p.stage || '—') + ' |');
+          console.log('| Catalogues scanned / discovered | ' + n(p.cataloguesScanned) + ' / ' + n(p.cataloguesDiscovered) + ' (of ' + n(p.cataloguesTotal) + ') |');
+          console.log('| Catalogues failed / skipped | ' + n(p.cataloguesFailed) + ' / ' + n(p.cataloguesSkipped) + ' |');
+          console.log('| Unique titles discovered | ' + n(p.titlesDiscovered) + ' |');
+          console.log('| Poster targets / visited | ' + n(p.postersTargeted) + ' / ' + n(p.postersVisited) + ' |');
+          console.log('| Posters corrected and verified | ' + n(p.postersCorrected) + ' |');
+          console.log('| Existing verified cache hits | ' + n(p.postersCacheHits) + ' |');
+          console.log('| Uploads awaiting verification | ' + n(p.postersPending) + ' |');
+          console.log('| Failures | ' + n(p.failures) + ' |');
+          console.log('| Scan speed | ' + n(p.titlesPerMinute) + ' titles/min |');
+          console.log('| Poster processing speed | ' + n(p.postersPerMinute) + ' posters/min |');
+          console.log('| Elapsed seconds | ' + elapsed + ' |');
+          console.log('| Last durable checkpoint | ' + (p.lastCheckpointAt || '—') + ' |');
+          if (Array.isArray(p.failureDetails) && p.failureDetails.length) {
+            console.log('');
+            console.log('#### Recent failures');
+            for (const f of p.failureDetails.slice(-10)) console.log('- ' + [f.stage, f.source, f.catalogue, f.error].filter(Boolean).join(' — '));
+          }
+          NODE
+
           if [ "$health_code" -lt 200 ] || [ "$health_code" -ge 300 ]; then
             echo "::error::Render health check failed with HTTP $health_code."
             exit 1
