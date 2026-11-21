@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { classifyPrewarmResponse, isFreshVerifiedRecord, isSourceUnavailableCoolingDown, SOURCE_UNAVAILABLE_COOLDOWN_MS, VERIFIED_ASSET_RECHECK_TTL_MS, needsResumeVerification } from '../lib/catalog-prewarm-policy.mjs';
+import { classifyPrewarmResponse, imageKitVerificationUrl, isFreshVerifiedRecord, isSourceUnavailableCoolingDown, SOURCE_UNAVAILABLE_COOLDOWN_MS, VERIFIED_ASSET_RECHECK_TTL_MS, needsResumeVerification } from '../lib/catalog-prewarm-policy.mjs';
 
 test('ImageKit redirects are deferred to asynchronous verification instead of repeating generation', () => {
   assert.deepEqual(classifyPrewarmResponse({
@@ -82,4 +82,16 @@ test('source-unavailable records are skipped until their cooldown expires', () =
   assert.equal(isSourceUnavailableCoolingDown({
     ...record, status: 'failed'
   }, 'poster-v1', now), false);
+});
+
+
+test('ImageKit verification URLs bypass stale edge 404 cache entries', () => {
+  assert.equal(
+    imageKitVerificationUrl('https://ik.imagekit.io/demo/', 'tmdb-129', 12345),
+    'https://ik.imagekit.io/demo/posters/tmdb-129.jpg?__poster_verify=12345'
+  );
+  assert.equal(
+    imageKitVerificationUrl('https://ik.imagekit.io/demo', 'tt1234567', 67890),
+    'https://ik.imagekit.io/demo/posters/tt1234567.jpg?__poster_verify=67890'
+  );
 });
