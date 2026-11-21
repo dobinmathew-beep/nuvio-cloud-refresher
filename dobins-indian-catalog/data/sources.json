@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-21T02:56:05.146522+04:00",
+    "checkedAt": "2026-11-21T06:58:58.017607+04:00",
     "records": [
       {
         "_id": "6af6738fdea24088f261c3b1",
@@ -68,9 +68,9 @@
           "fetchedAt": "2026-11-13T12:41:01.465Z"
         },
         "tmdbId": 1431738,
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-11-20T02:19:25.523Z",
-        "trendingRankedDateIST": "2026-11-20",
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-21T02:19:16.233Z",
+        "trendingRankedDateIST": "2026-11-21",
         "verified": true
       },
       {
@@ -112,6 +112,9 @@
         "tmdbRating": 87,
         "tmdbVotes": 20,
         "instagramPostedAt": "2026-11-20T02:20:59Z",
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-11-21T02:19:16.233Z",
+        "trendingRankedDateIST": "2026-11-21",
         "verified": true
       },
       {
@@ -291,6 +294,9 @@
           "fetchedAt": "2026-11-20T11:53:08.767Z"
         },
         "tmdbId": 1593350,
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-21T02:19:16.233Z",
+        "trendingRankedDateIST": "2026-11-21",
         "verified": true
       },
       {
@@ -363,6 +369,9 @@
           "fetchedAt": "2026-11-20T16:49:23.234Z"
         },
         "tmdbId": 1542674,
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-11-21T02:19:16.233Z",
+        "trendingRankedDateIST": "2026-11-21",
         "verified": true
       },
       {
@@ -423,6 +432,9 @@
           "fetchedAt": "2026-11-20T10:30:47.065Z"
         },
         "tmdbId": 1610188,
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-21T02:19:16.233Z",
+        "trendingRankedDateIST": "2026-11-21",
         "verified": true
       },
       {
@@ -498,8 +510,8 @@
         },
         "tmdbId": 1551025,
         "trendingRank": 1,
-        "trendingRankedAt": "2026-11-20T02:19:25.523Z",
-        "trendingRankedDateIST": "2026-11-20",
+        "trendingRankedAt": "2026-11-21T02:19:16.233Z",
+        "trendingRankedDateIST": "2026-11-21",
         "verified": true
       },
       {
@@ -554,9 +566,9 @@
         "updatedAt": "2026-11-17T02:19:35.547Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/oB9Pcb5grM5Gk0TDWZeBZ3vHhDZ.jpg",
         "instagramPostedAt": "2026-11-17T02:20:05Z",
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-20T02:19:25.523Z",
-        "trendingRankedDateIST": "2026-11-20",
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-11-21T02:19:16.233Z",
+        "trendingRankedDateIST": "2026-11-21",
         "verified": true
       },
       {
@@ -31107,7 +31119,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-21T02:56:05.146522+04:00",
+    "checkedAt": "2026-11-21T06:58:58.017607+04:00",
     "records": [
       {
         "name": "Anbil Avan",

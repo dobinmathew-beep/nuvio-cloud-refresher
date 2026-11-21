@@ -831,6 +831,13 @@
       "type": "movie"
     },
     {
+      "id": "tt39239818",
+      "name": "Haiku",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39239818.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tmdb:1802710||Obstacle||2026||movie||https://image.tmdb.org/t/p/original/6ZBKPRACiT1SfvNfmca87A91HSO.jpg||A%20young%20miserable%20man%20trapped%20in%20an%20unsettling%20life.",
       "name": "Obstacle",
       "poster": "https://image.tmdb.org/t/p/original/6ZBKPRACiT1SfvNfmca87A91HSO.jpg",
@@ -12561,5 +12568,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-21T01:41:30.011715+04:00"
+  "_updatedAt": "2026-11-21T06:58:58.017607+04:00"
 }

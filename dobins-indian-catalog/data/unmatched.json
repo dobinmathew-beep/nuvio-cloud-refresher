@@ -32,26 +32,6 @@
     }
   },
   {
-    "name": "Sameer",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-11-21",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.keralatv.in/channel/ott/"
-    ],
-    "platforms": [
-      "ManoramaMAX"
-    ],
-    "detail": "https://www.keralatv.in/sameer-malayalam-movie-ott-release-date-manoramamax/",
-    "sourceRecord": {
-      "title": "Sameer",
-      "releaseDate": "2026-11-21",
-      "source": "https://www.keralatv.in/channel/ott/",
-      "headline": "Sameer Malayalam Movie OTT Release Date Confirmed – Streaming on ManoramaMAX From 21 November 2026"
-    }
-  },
-  {
     "name": "Satyameva",
     "language": "malayalam",
     "type": "series",
@@ -108,6 +88,26 @@
       "title": "Hatela Gang",
       "releaseDate": "2026-11-28",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
+    "name": "Sameer",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-11-21",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.keralatv.in/channel/ott/"
+    ],
+    "platforms": [
+      "ManoramaMAX"
+    ],
+    "detail": "https://www.keralatv.in/sameer-malayalam-movie-ott-release-date-manoramamax/",
+    "sourceRecord": {
+      "title": "Sameer",
+      "releaseDate": "2026-11-21",
+      "source": "https://www.keralatv.in/channel/ott/",
+      "headline": "Sameer Malayalam Movie OTT Release Date Confirmed – Streaming on ManoramaMAX From 21 November 2026"
     }
   },
   {
@@ -937,37 +937,6 @@
     }
   },
   {
-    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-09-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6aa608021ead141338245394",
-      "platform": "JioHotStar",
-      "title": "Chikoo Vs Bunty: Kushti Ki Jung",
-      "createdAt": "2026-09-13T02:18:42.361Z",
-      "genre": "Animation",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-09-13",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-09-13T02:18:42.361Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Chumbak Part 2",
     "language": "hindi",
     "type": "series",
@@ -1029,10 +998,10 @@
     }
   },
   {
-    "name": "Jungle Tales With Mowgli",
+    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
     "language": "hindi",
     "type": "movie",
-    "ottDate": "2026-09-12",
+    "ottDate": "2026-09-13",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
@@ -1042,20 +1011,20 @@
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6aa4b6881ead1413382425a4",
-      "title": "Jungle Tales With Mowgli",
+      "_id": "6aa608021ead141338245394",
       "platform": "JioHotStar",
-      "createdAt": "2026-09-12T02:18:48.886Z",
-      "genre": "Animation, Adventure",
+      "title": "Chikoo Vs Bunty: Kushti Ki Jung",
+      "createdAt": "2026-09-13T02:18:42.361Z",
+      "genre": "Animation",
       "imdbRating": null,
       "languages": [
         "Hindi"
       ],
       "original_language": "Hindi",
-      "releaseDate": "2026-09-12",
+      "releaseDate": "2026-09-13",
       "source_verified": true,
       "type": "Movie",
-      "updatedAt": "2026-09-12T02:18:48.886Z",
+      "updatedAt": "2026-09-13T02:18:42.361Z",
       "verified": true
     }
   },
@@ -1086,6 +1055,37 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-04-10T03:41:59.603Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Jungle Tales With Mowgli",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-09-12",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6aa4b6881ead1413382425a4",
+      "title": "Jungle Tales With Mowgli",
+      "platform": "JioHotStar",
+      "createdAt": "2026-09-12T02:18:48.886Z",
+      "genre": "Animation, Adventure",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-09-12",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-09-12T02:18:48.886Z",
       "verified": true
     }
   },
@@ -1610,8 +1610,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix",
-      "ETV Win"
+      "ETV Win",
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {

@@ -1,27 +1,30 @@
 {
-  "generatedAt": "2026-11-21T02:56:05.146522+04:00",
+  "generatedAt": "2026-11-21T06:58:58.017607+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 20,
+    "total": 23,
     "byLanguage": {
+      "hindi": 13,
       "malayalam": 5,
-      "hindi": 10,
       "tamil": 2,
       "telugu": 3
     },
     "byType": {
-      "movie": 11,
-      "series": 9
+      "movie": 12,
+      "series": 11
     },
     "byMatchState": {
-      "published": 15,
+      "published": 18,
       "unmatched": 5
     },
     "bySource": {
-      "https://www.keralatv.in/channel/ott/": 3,
+      "https://www.ottchecker.com/ott-releases/hindi": 2,
+      "https://www.dailyott.in/": 4,
+      "https://www.tvmaze.com/shows/70529/dhindora": 1,
+      "https://www.ottchecker.com/ott-releases/malayalam": 1,
+      "https://www.keralatv.in/channel/ott/": 2,
       "https://ottasia.com/ott-releases-this-week?country=IN": 13,
       "https://cinebuds.com/ott-releases-this-week/": 3,
-      "https://www.dailyott.in/": 2,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
       "https://v3-cinemeta.strem.io/": 1
@@ -29,19 +32,104 @@
   },
   "items": [
     {
+      "title": "Dulhaniya Le Aaeegi",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-21",
+      "platforms": [
+        "JioHotstar"
+      ],
+      "sources": [
+        "https://www.ottchecker.com/ott-releases/hindi"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTChecker explicit streaming-since date",
+      "detail": "https://www.ottchecker.com/movie/dulhaniya-le-aaeegi-2026",
+      "matchId": "tt37809949",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_movie"
+    },
+    {
+      "title": "Bigg Boss Season 20",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-21",
+      "platforms": [
+        "JioHotStar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": null,
+      "detail": null,
+      "matchId": "tt1281973",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "Dhindora Season 1",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-21",
+      "platforms": [
+        "Netflix",
+        "YouTube"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi",
+        "https://www.tvmaze.com/shows/70529/dhindora"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": null,
+      "detail": null,
+      "matchId": "tt14650074",
+      "matchState": "published",
+      "matchReason": "https://www.tvmaze.com/shows/70529/dhindora",
+      "metadataComplete": true,
+      "metadataSource": "https://www.tvmaze.com/shows/70529/dhindora",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": false,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
       "title": "Chiram",
       "language": "malayalam",
       "type": "movie",
       "releaseDate": "2026-11-21",
       "platforms": [
+        "Sun NXT",
         "ManoramaMAX"
       ],
       "sources": [
-        "https://www.keralatv.in/channel/ott/"
+        "https://www.ottchecker.com/ott-releases/malayalam"
       ],
       "confirmed": true,
-      "releaseDateBasis": "Kerala TV dated OTT announcement",
-      "detail": "https://www.keralatv.in/chiram-malayalam-movie-ott-release-date-sun-nxt/",
+      "releaseDateBasis": "OTTChecker explicit streaming-since date",
+      "detail": "https://www.ottchecker.com/movie/chiram-2026",
       "matchId": "tt45692999",
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
@@ -194,12 +282,12 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -572,11 +660,30 @@
     "counts": {
       "total": 9,
       "byType": {
-        "movie": 4,
-        "series": 5
+        "series": 5,
+        "movie": 4
       }
     },
     "items": [
+      {
+        "name": "Satyameva",
+        "language": "malayalam",
+        "type": "series",
+        "ottDate": "2026-11-27",
+        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+        "sources": [
+          "https://ottasia.com/ott-releases-this-week?country=IN"
+        ],
+        "platforms": [
+          "ZEE5"
+        ],
+        "detail": "https://ottasia.com/title/tv/342403/satyameva?country=IN",
+        "sourceRecord": {
+          "title": "Satyameva",
+          "releaseDate": "2026-11-27",
+          "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+        }
+      },
       {
         "name": "Sameer",
         "language": "malayalam",
@@ -595,25 +702,6 @@
           "releaseDate": "2026-11-21",
           "source": "https://www.keralatv.in/channel/ott/",
           "headline": "Sameer Malayalam Movie OTT Release Date Confirmed – Streaming on ManoramaMAX From 21 November 2026"
-        }
-      },
-      {
-        "name": "Satyameva",
-        "language": "malayalam",
-        "type": "series",
-        "ottDate": "2026-11-27",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://ottasia.com/ott-releases-this-week?country=IN"
-        ],
-        "platforms": [
-          "ZEE5"
-        ],
-        "detail": "https://ottasia.com/title/tv/342403/satyameva?country=IN",
-        "sourceRecord": {
-          "title": "Satyameva",
-          "releaseDate": "2026-11-27",
-          "source": "https://ottasia.com/ott-releases-this-week?country=IN"
         }
       },
       {
@@ -916,7 +1004,7 @@
       "source": "OTTChecker Malayalam recent releases",
       "url": "https://www.ottchecker.com/ott-releases/malayalam",
       "state": "live",
-      "records": 13
+      "records": 14
     },
     {
       "source": "OTTChecker Tamil recent releases",
@@ -928,13 +1016,13 @@
       "source": "OTTChecker Telugu recent releases",
       "url": "https://www.ottchecker.com/ott-releases/telugu",
       "state": "live",
-      "records": 19
+      "records": 18
     },
     {
       "source": "OTTChecker Hindi recent releases",
       "url": "https://www.ottchecker.com/ott-releases/hindi",
       "state": "live",
-      "records": 20
+      "records": 22
     },
     {
       "source": "Kerala TV multi-language OTT releases",
@@ -966,7 +1054,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 111,
+      "records": 114,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1002,7 +1090,7 @@
           "sourceDomainsWithSeriesRecords": [
             "ottasia.com"
           ],
-          "detectedRecords": 23,
+          "detectedRecords": 25,
           "coverageStatus": "partial",
           "sources": [
             {
@@ -1091,8 +1179,8 @@
               "url": "https://www.ottchecker.com/ott-releases/malayalam",
               "state": "live",
               "languageState": "records_found",
-              "records": 13,
-              "movieRecords": 13,
+              "records": 14,
+              "movieRecords": 14,
               "seriesRecords": 0
             },
             {
@@ -1100,8 +1188,8 @@
               "url": "https://www.keralatv.in/channel/ott/",
               "state": "live",
               "languageState": "records_found",
-              "records": 8,
-              "movieRecords": 8,
+              "records": 9,
+              "movieRecords": 9,
               "seriesRecords": 0
             },
             {
@@ -1316,7 +1404,7 @@
           "sourceDomainsWithSeriesRecords": [
             "ottchecker.com"
           ],
-          "detectedRecords": 29,
+          "detectedRecords": 28,
           "coverageStatus": "partial",
           "sources": [
             {
@@ -1387,8 +1475,8 @@
               "url": "https://www.ottchecker.com/ott-releases/telugu",
               "state": "live",
               "languageState": "records_found",
-              "records": 19,
-              "movieRecords": 16,
+              "records": 18,
+              "movieRecords": 15,
               "seriesRecords": 3
             },
             {
@@ -1468,7 +1556,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 34,
+          "detectedRecords": 36,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1539,9 +1627,9 @@
               "url": "https://www.ottchecker.com/ott-releases/hindi",
               "state": "live",
               "languageState": "records_found",
-              "records": 20,
-              "movieRecords": 16,
-              "seriesRecords": 4
+              "records": 22,
+              "movieRecords": 17,
+              "seriesRecords": 5
             },
             {
               "source": "Kerala TV multi-language OTT releases",
@@ -1732,7 +1820,7 @@
       "sourceDomainsWithSeriesRecords": [
         "ottasia.com"
       ],
-      "detectedRecords": 23,
+      "detectedRecords": 25,
       "coverageStatus": "partial",
       "sources": [
         {
@@ -1821,8 +1909,8 @@
           "url": "https://www.ottchecker.com/ott-releases/malayalam",
           "state": "live",
           "languageState": "records_found",
-          "records": 13,
-          "movieRecords": 13,
+          "records": 14,
+          "movieRecords": 14,
           "seriesRecords": 0
         },
         {
@@ -1830,8 +1918,8 @@
           "url": "https://www.keralatv.in/channel/ott/",
           "state": "live",
           "languageState": "records_found",
-          "records": 8,
-          "movieRecords": 8,
+          "records": 9,
+          "movieRecords": 9,
           "seriesRecords": 0
         },
         {
@@ -2046,7 +2134,7 @@
       "sourceDomainsWithSeriesRecords": [
         "ottchecker.com"
       ],
-      "detectedRecords": 29,
+      "detectedRecords": 28,
       "coverageStatus": "partial",
       "sources": [
         {
@@ -2117,8 +2205,8 @@
           "url": "https://www.ottchecker.com/ott-releases/telugu",
           "state": "live",
           "languageState": "records_found",
-          "records": 19,
-          "movieRecords": 16,
+          "records": 18,
+          "movieRecords": 15,
           "seriesRecords": 3
         },
         {
@@ -2198,7 +2286,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 34,
+      "detectedRecords": 36,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2269,9 +2357,9 @@
           "url": "https://www.ottchecker.com/ott-releases/hindi",
           "state": "live",
           "languageState": "records_found",
-          "records": 20,
-          "movieRecords": 16,
-          "seriesRecords": 4
+          "records": 22,
+          "movieRecords": 17,
+          "seriesRecords": 5
         },
         {
           "source": "Kerala TV multi-language OTT releases",
