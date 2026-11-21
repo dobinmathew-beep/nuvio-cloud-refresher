@@ -1,6 +1,6 @@
 # Independent Nuvio output verification
 
-**Checked:** 2026-11-22T00:51:54.360507+04:00 (Oman time)
+**Checked:** 2026-11-22T02:43:56.860708+04:00 (Oman time)
 **Overall:** 4/4 outputs passed
 
 | Output | Result |
@@ -26,7 +26,7 @@
 
 ## Backdrops — PASS
 {
-  "day": "2026-11-21",
+  "day": "2026-11-22",
   "statuses": 160,
   "images": 16,
   "states": {
@@ -35,8 +35,8 @@
   },
   "errors": [],
   "catalogHeads": {
-    "tamil": "tt18933846",
     "hindi": "tt37200939",
+    "tamil": "tt18933846",
     "malayalam": "tt41944351",
     "telugu": "tt36915004"
   }
