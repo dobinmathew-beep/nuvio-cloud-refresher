@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { withRefreshLease, publishRefreshProgress } from './refresh-coordination.mjs';
 import { initializeImageKitStorageSnapshot } from './imagekit-storage.mjs';
 import { createBoundedTaskQueue, refreshResourcePolicy } from './refresh-backpressure.mjs';
-import { classifyPrewarmResponse, isFreshVerifiedRecord, needsResumeVerification } from './catalog-prewarm-policy.mjs';
+import { classifyPrewarmResponse, isFreshVerifiedRecord, isSourceUnavailableCoolingDown, needsResumeVerification, SOURCE_UNAVAILABLE_COOLDOWN_MS } from './catalog-prewarm-policy.mjs';
 
 const MANIFEST_KEYS = [
   'CATALOG_MANIFEST_ELFHOSTED_URL',
@@ -404,13 +404,21 @@ async function prewarm(item, knownImageKitCheck = null) {
     const contentType = (response.headers.get('content-type') || '').toLowerCase();
     const location = response.headers.get('location') || '';
     const storage = response.headers.get('x-imagekit-storage') || 'not-stored';
+    const fallbackReason = response.headers.get('x-poster-fallback-reason') || '';
     const posterStatus = response.headers.get('x-poster-date-status') || 'rendered';
     const imageKitBase = (process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\/$/, '') + '/posters/';
     const decision = classifyPrewarmResponse({
-      status: response.status, contentType, location, imageKitBase, storage
+      status: response.status, contentType, location, imageKitBase, storage, fallbackReason
     });
     await response.body?.cancel().catch(() => {});
 
+    if (decision.status === 'source-unavailable') {
+      return {
+        id: item.id, status: 'source-unavailable',
+        retryAfterMs: decision.cooldownMs || SOURCE_UNAVAILABLE_COOLDOWN_MS,
+        error: fallbackReason || 'Poster service confirmed that no usable poster source is currently available'
+      };
+    }
     if (decision.status === 'failed') {
       throw new Error('Poster service returned HTTP ' + response.status + (contentType ? ' (' + contentType + ')' : ''));
     }
@@ -868,6 +876,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   const pendingResumeItems = [];
   let preflightVerifiedHits = 0;
   let deferredPending = 0;
+  let deferredSourceUnavailable = 0;
   // Read each ledger shard once, then verify existing assets with a small,
   // bounded network-only fan-out. OCR/image generation stays serial on Free.
   const refreshedLedgerShards = new Set();
@@ -875,7 +884,9 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     const shard = ledgerShard(item.id);
     const records = await loadLedgerShard(config, shard, preflightLedgerCache);
     const record = records[item.id];
-    if (!forceReprocess && needsResumeVerification(record, itemFingerprint(item))) {
+    if (!forceReprocess && isSourceUnavailableCoolingDown(record, itemFingerprint(item))) {
+      deferredSourceUnavailable++;
+    } else if (!forceReprocess && needsResumeVerification(record, itemFingerprint(item))) {
       pendingResumeItems.push({ item, record });
     } else if (!forceReprocess && reusableLedgerRecord(record, item)) {
       if (isFreshVerifiedRecord(record, itemFingerprint(item))) {
@@ -950,7 +961,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   // ReferenceError and breaks automatic recovery after a Render restart.
   updateRefreshProgress({
     stage: 'poster-processing', titlesDiscovered: allItems.length,
-    postersTargeted: items.length, postersCacheHits: preflightVerifiedHits, postersDeferred: deferredPending,
+    postersTargeted: items.length, postersCacheHits: preflightVerifiedHits, postersDeferred: deferredPending + deferredSourceUnavailable,
     cataloguesDiscovered: catalogues.length,
     cataloguesScanned: cataloguesScannedThisRun,
     cataloguesFailed: catalogues.filter(c => c.error).length
@@ -960,6 +971,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     retryCandidates: items.length,
     alreadyVerified: preflightVerifiedHits,
     deferredPending,
+    deferredSourceUnavailable,
     strategy: forceReprocess ? 'force-revalidate-all-catalogue-titles' : 'retry-only-unresolved-or-missing-imagekit-assets'
   }));
   // Establish a verified storage budget before the first poster request.
@@ -1092,6 +1104,12 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
               });
               pendingItems.push({ ...item, verificationTimeoutMs: result.verificationTimeoutMs || 90000, uploadAccepted: result.uploadAccepted === true });
               uploadPending++;
+            } else if (result.status === 'source-unavailable') {
+              records[item.id] = ledgerRecord(item, 'source-unavailable', {
+                attempts: (Number(records[item.id]?.attempts) || 0) + 1,
+                retryAfter: new Date(Date.now() + (result.retryAfterMs || SOURCE_UNAVAILABLE_COOLDOWN_MS)).toISOString(),
+                lastError: result.error || 'No usable poster source currently available'
+              });
             } else if (result.status === 'imagekit-hit') {
               records[item.id] = ledgerRecord(item, 'verified', {
                 verifiedAt: new Date().toISOString(),

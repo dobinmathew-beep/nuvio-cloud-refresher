@@ -1,4 +1,11 @@
 export const VERIFIED_ASSET_RECHECK_TTL_MS = 6 * 60 * 60 * 1000;
+export const SOURCE_UNAVAILABLE_COOLDOWN_MS = 24 * 60 * 60 * 1000;
+
+export function isSourceUnavailableCoolingDown(record, fingerprint, now = Date.now()) {
+  if (!record || record.status !== 'source-unavailable' || record.fingerprint !== fingerprint) return false;
+  const retryAt = Date.parse(record.retryAfter || '');
+  return Number.isFinite(retryAt) && retryAt > now;
+}
 
 export function isFreshVerifiedRecord(record, fingerprint, now = Date.now()) {
   if (!record || !['verified', 'cache-hit'].includes(record.status) || record.fingerprint !== fingerprint) return false;
@@ -6,13 +13,16 @@ export function isFreshVerifiedRecord(record, fingerprint, now = Date.now()) {
   return Number.isFinite(verifiedAt) && verifiedAt <= now && now - verifiedAt < VERIFIED_ASSET_RECHECK_TTL_MS;
 }
 
-export function classifyPrewarmResponse({ status, contentType = '', location = '', imageKitBase = '', storage = '' }) {
+export function classifyPrewarmResponse({ status, contentType = '', location = '', imageKitBase = '', storage = '', fallbackReason = '' }) {
   if (status >= 300 && status < 400) {
     return imageKitBase.length > 9 && location.startsWith(imageKitBase)
       ? { status: 'upload-pending', verificationTimeoutMs: 20000, reason: 'imagekit-redirect' }
       : { status: 'source-redirect', reason: 'source-provider-redirect' };
   }
   if ([500, 502, 503, 504].includes(status)) {
+    if (status === 503 && /no poster provider returned a usable image|no poster source available|tmdb title has no poster image/i.test(String(fallbackReason))) {
+      return { status: 'source-unavailable', cooldownMs: SOURCE_UNAVAILABLE_COOLDOWN_MS, reason: 'definitive-no-poster-source' };
+    }
     return { status: 'upload-pending', verificationTimeoutMs: 20000, reason: 'uncertain-server-error' };
   }
   if ([408, 425, 429].includes(status)) {
