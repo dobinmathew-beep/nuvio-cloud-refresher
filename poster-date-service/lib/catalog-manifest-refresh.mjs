@@ -445,6 +445,23 @@ async function prewarm(item, knownImageKitCheck = null) {
       // One quick confirmation prevents duplicate uploads; CDN propagation is
       // then handled by the bounded asynchronous verifier, not this serial lane.
       if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit', posterStatus };
+      let locationDetails = null;
+      try {
+        const parsedLocation = new URL(location);
+        locationDetails = { host: parsedLocation.host, path: parsedLocation.pathname };
+      } catch {}
+      console.info('[catalog-prewarm-upload-pending]', JSON.stringify({
+        id: item.id,
+        posterServiceHost: new URL(endpoint).host,
+        httpStatus: response.status,
+        storage,
+        contentType,
+        fallbackReason: fallbackReason.slice(0, 240),
+        location: locationDetails,
+        decisionReason: decision.reason,
+        verificationTimeoutMs: decision.verificationTimeoutMs,
+        uploadAccepted: decision.reason === 'imagekit-upload-pending'
+      }));
       return {
         id: item.id, status: 'upload-pending', posterStatus,
         verificationTimeoutMs: decision.verificationTimeoutMs,
