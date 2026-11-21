@@ -1,5 +1,6 @@
 name: Hourly catalogue refresh monitor
 # Reads lease-owner progress snapshots shared through Render Redis.
+# This report includes unique-title growth and catalogue throughput, not checkpoint totals as new work.
 
 on:
   workflow_dispatch:
