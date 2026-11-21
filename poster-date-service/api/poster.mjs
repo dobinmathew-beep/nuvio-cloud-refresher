@@ -359,7 +359,18 @@ async function getBuiltPoster(id, knownRelease = undefined, badge = '', version 
 
   const pending = buildPoster(id, knownRelease, badge, fallbackUrl, digitalReleasedWorldwide).then(value => {
     resultCache.set(cacheKey, { value, expiresAt: Date.now() + RESULT_CACHE_MS });
-    while (resultCache.size > 80) resultCache.delete(resultCache.keys().next().value);
+    // Poster buffers are comparatively large; retain only a small hot set so
+    // concurrent Nuvio traffic cannot turn the in-process cache into an RSS spike.
+    while (resultCache.size > 12) resultCache.delete(resultCache.keys().next().value);
+    const rssBytes = process.memoryUsage().rss;
+    if (rssBytes > 400 * 1024 * 1024) {
+      resultCache.clear();
+      global.gc?.();
+      console.warn('[poster-memory-cache-cleared]', JSON.stringify({
+        rssMiB: Math.round(rssBytes / (1024 * 1024)),
+        thresholdMiB: 400
+      }));
+    }
     return value;
   }).finally(() => pendingResults.delete(cacheKey));
 
