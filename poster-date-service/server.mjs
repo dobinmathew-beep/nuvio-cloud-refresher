@@ -11,13 +11,15 @@ import { isCatalogRecentlyAdded } from './lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
 
 import { imageKitConfig, canStoreImageKitPoster, getImageKitStorageSnapshot, uploadPosterToImageKit, runImageKitMaintenance, initializeImageKitStorageSnapshot } from './lib/imagekit-storage.mjs';
-import { runManifestCatalogRefresh, resumeIncompleteManifestCatalogRefresh, getManifestCatalogRefreshProgress } from './lib/catalog-manifest-refresh.mjs';
+import { runManifestCatalogRefresh, resumeIncompleteManifestCatalogRefresh, getManifestCatalogRefreshProgress, getManifestCatalogRefreshDiagnostics } from './lib/catalog-manifest-refresh.mjs';
 import { getRefreshLease, getRefreshProgress } from './lib/refresh-coordination.mjs';
 import { hasExistingComingDateTag, hasExistingJustAddedTag } from './lib/coming-tag.mjs';
 
 let catalogRefreshJob = null;
 let catalogRefreshReport = null;
 let catalogRefreshError = null;
+let catalogRefreshTask = null;
+let shuttingDown = false;
 
 function authorizedCatalogRequest(req) {
   const expected = String(process.env.POSTER_CATALOG_SCAN_TOKEN || '');
@@ -321,10 +323,29 @@ const server = createServer(async (req, res) => {
 
   // Authenticated manifest refresh. The request starts a background job so
   // large catalogues do not exceed the web request timeout.
-  if (url.pathname === '/catalog-refresh' || url.pathname === '/catalog-refresh/status') {
+  if (url.pathname === '/catalog-refresh' || url.pathname === '/catalog-refresh/status' || url.pathname === '/catalog-refresh/diagnostics') {
     if (!authorizedCatalogRequest(req)) {
       res.writeHead(401, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
       return res.end(JSON.stringify({ error: 'Unauthorized' }));
+    }
+    if (url.pathname === '/catalog-refresh/diagnostics') {
+      if (req.method !== 'GET') {
+        res.writeHead(405, { 'Allow': 'GET', 'Cache-Control': 'no-store' });
+        return res.end('Method not allowed');
+      }
+      try {
+        const [diagnostics, lease] = await Promise.all([getManifestCatalogRefreshDiagnostics(), getRefreshLease()]);
+        const progress = lease ? await getRefreshProgress(lease.jobId) : getManifestCatalogRefreshProgress();
+        res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+        return res.end(JSON.stringify({
+          ...diagnostics,
+          lease: lease ? { active: true, jobId: lease.jobId, startedAt: lease.startedAt || null } : { active: false },
+          progress
+        }));
+      } catch (error) {
+        res.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+        return res.end(JSON.stringify({ error: error?.message || 'Could not read catalogue diagnostics' }));
+      }
     }
     if (url.pathname === '/catalog-refresh/status') {
       // Operator pause is authoritative: report a terminal state so the
@@ -361,6 +382,10 @@ const server = createServer(async (req, res) => {
       res.writeHead(405, { 'Allow': 'POST', 'Cache-Control': 'no-store' });
       return res.end('Method not allowed');
     }
+    if (shuttingDown) {
+      res.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+      return res.end(JSON.stringify({ status: 'shutting-down', error: 'Service is draining; retry after restart.' }));
+    }
     // Do not allow scheduled GitHub waiters to restart a refresh while the
     // operator pause flag is active.
     if (process.env.CATALOG_REFRESH_AUTOSTART === 'false') {
@@ -384,7 +409,7 @@ const server = createServer(async (req, res) => {
     catalogRefreshReport = null;
     res.writeHead(202, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
     res.end(JSON.stringify({ status: 'accepted', jobId }));
-    void (async () => {
+    const manualTask = (async () => {
       try {
         // Storage accounting is best-effort. Never prevent the catalogue job
         // from starting because ImageKit's snapshot endpoint is temporarily slow.
@@ -402,6 +427,10 @@ const server = createServer(async (req, res) => {
         catalogRefreshJob = null;
       }
     })();
+    catalogRefreshTask = manualTask;
+    void manualTask.finally(() => {
+      if (catalogRefreshTask === manualTask) catalogRefreshTask = null;
+    });
     return;
   }
 
@@ -498,6 +527,7 @@ server.listen(port, '0.0.0.0', () => {
     catalogRefreshError = null;
     catalogRefreshReport = null;
     setImmediate(() => {
+      if (shuttingDown) return;
       const startupRefresh = (async () => {
         let report;
         // A rolling deploy can start the new process before the previous
@@ -512,6 +542,7 @@ server.listen(port, '0.0.0.0', () => {
         }
         return report;
       })();
+      catalogRefreshTask = startupRefresh;
       void startupRefresh
         .then(report => {
           catalogRefreshReport = report;
@@ -521,11 +552,36 @@ server.listen(port, '0.0.0.0', () => {
           catalogRefreshError = error?.message || 'Catalogue refresh autoresume failed';
           console.error('[catalog-refresh-autoresume-failed]', JSON.stringify({ jobId, error: catalogRefreshError }));
         })
-        .finally(() => { catalogRefreshJob = null; });
+        .finally(() => {
+          catalogRefreshJob = null;
+          if (catalogRefreshTask === startupRefresh) catalogRefreshTask = null;
+        });
     });
   }
 });
 
+let shutdownPromise = null;
+async function gracefulShutdown(signal) {
+  if (shutdownPromise) return shutdownPromise;
+  shuttingDown = true;
+  console.warn('[graceful-shutdown-started]', JSON.stringify({ signal, refreshActive: Boolean(catalogRefreshTask) }));
+  const serverClosed = new Promise(resolve => server.close(resolve));
+  shutdownPromise = (async () => {
+    const task = catalogRefreshTask
+      ? catalogRefreshTask.catch(error => console.warn('[graceful-shutdown-refresh-ended]', error?.message || 'refresh task failed'))
+      : Promise.resolve();
+    let timer;
+    await Promise.race([
+      Promise.all([serverClosed, task]),
+      new Promise(resolve => { timer = setTimeout(resolve, 25000); })
+    ]);
+    if (timer) clearTimeout(timer);
+    console.warn('[graceful-shutdown-finished]', JSON.stringify({ signal, refreshStillRunning: Boolean(catalogRefreshTask) }));
+    process.exit(0);
+  })();
+  return shutdownPromise;
+}
+
 for (const signal of ['SIGTERM', 'SIGINT']) {
-  process.on(signal, () => server.close(() => process.exit(0)));
+  process.on(signal, () => { void gracefulShutdown(signal); });
 }

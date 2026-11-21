@@ -7,9 +7,10 @@ on:
     paths:
       - '.github/workflows/hourly-catalogue-monitor.yml'
   schedule:
-    # GitHub Actions schedules use UTC. Run hourly at minute 17 to avoid
-    # colliding with the existing 06:00/18:00 Oman refresh schedule.
-    - cron: '17 * * * *'
+    # Keep the Render Free web service receiving inbound traffic so its
+    # 15-minute idle suspension cannot interrupt the long-running refresh.
+    # This monitor is read-only unless status explicitly reports failed.
+    - cron: '*/5 * * * *'
 
 permissions:
   contents: read
@@ -51,6 +52,15 @@ jobs:
           echo
           echo "Refresh status HTTP: $status_code"
           cat status.json
+          echo
+
+          diagnostics_code=$(curl --silent --show-error --max-time 90 -o diagnostics.json -w '%{http_code}' "$POSTER_SERVICE_URL/catalog-refresh/diagnostics" \
+            -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json") || {
+            echo "::warning::Checkpoint diagnostics endpoint could not be reached."
+            diagnostics_code=000
+          }
+          echo "Checkpoint diagnostics HTTP: $diagnostics_code"
+          if [ "$diagnostics_code" = "200" ]; then cat diagnostics.json; else echo "Diagnostics unavailable"; fi
           echo
 
           if [ "$status_code" != "200" ]; then
@@ -111,6 +121,10 @@ jobs:
             echo "### Refresh response"
             echo '--- JSON ---'
             cat status.json
+            echo
+            echo "### Durable checkpoint diagnostics"
+            echo '--- JSON ---'
+            if [ "$diagnostics_code" = "200" ]; then cat diagnostics.json; else echo "Diagnostics unavailable (HTTP $diagnostics_code)"; fi
             echo
           } >> "$GITHUB_STEP_SUMMARY"
 
