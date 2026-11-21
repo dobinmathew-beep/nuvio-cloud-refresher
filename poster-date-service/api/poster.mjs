@@ -28,6 +28,41 @@ function validCatalogPosterFallback(value) {
 const RESULT_CACHE_MS = 2 * 60 * 1000;
 const resultCache = new Map();
 const pendingResults = new Map();
+const tmdbPosterLookupCache = new Map();
+const TMDB_POSTER_CACHE_MS = 30 * 60 * 1000;
+
+function tmdbPosterImageUrl(posterPath) {
+  if (typeof posterPath !== 'string' || !/^\/[^/][^?#]*\.(?:jpe?g|png|webp)$/i.test(posterPath)) return null;
+  return 'https://image.tmdb.org/t/p/w500' + posterPath;
+}
+
+async function getTmdbPosterCandidate(imdbId) {
+  const cached = tmdbPosterLookupCache.get(imdbId);
+  if (cached && cached.expiresAt > Date.now()) return cached.candidate;
+  const readToken = process.env.TMDB_API_READ_ACCESS_TOKEN || '';
+  const apiKey = process.env.TMDB_API_KEY || '';
+  if (!readToken && !apiKey) return null;
+  const url = new URL('https://api.themoviedb.org/3/find/' + encodeURIComponent(imdbId));
+  url.searchParams.set('external_source', 'imdb_id');
+  const headers = { accept: 'application/json' };
+  if (readToken) headers.authorization = 'Bearer ' + readToken;
+  else url.searchParams.set('api_key', apiKey);
+  try {
+    const response = await fetch(url, { headers, signal: AbortSignal.timeout(4500) });
+    if (!response.ok) throw new Error('TMDB poster lookup failed: ' + response.status);
+    const found = await response.json();
+    const item = found.movie_results?.[0] || found.tv_results?.[0];
+    const imageUrl = tmdbPosterImageUrl(item?.poster_path);
+    const candidate = imageUrl ? { source: 'TMDB', url: imageUrl, timeout: 5000 } : null;
+    tmdbPosterLookupCache.set(imdbId, { candidate, expiresAt: Date.now() + TMDB_POSTER_CACHE_MS });
+    while (tmdbPosterLookupCache.size > 1500) tmdbPosterLookupCache.delete(tmdbPosterLookupCache.keys().next().value);
+    return candidate;
+  } catch (error) {
+    console.warn('[tmdb-poster-fallback-lookup-failed]', JSON.stringify({ imdbId, error: error?.message || 'unknown error' }));
+    tmdbPosterLookupCache.set(imdbId, { candidate: null, expiresAt: Date.now() + 60 * 1000 });
+    return null;
+  }
+}
 
 export function sourceUrl(imdbId) {
   return BETTERPOSTERS + encodeURIComponent(imdbId) + '.jpg?rs=' + BETTERPOSTERS_RATING_SOURCE;
@@ -245,14 +280,26 @@ async function getOriginal(imdbId, fallbackUrl = '') {
     { source: 'Metahub', url: METAHUB + encodeURIComponent(imdbId) + '/img', timeout: 6000 }
   ];
   try {
-    return await Promise.any(fallbacks.map(async candidate => {
-      try {
-        return await fetchPosterCandidate(imdbId, candidate);
-      } catch (error) {
-        failures.push(candidate.source + ': ' + (error?.message || 'request failed'));
-        throw error;
-      }
-    }));
+    return await Promise.any([
+      ...fallbacks.map(async candidate => {
+        try {
+          return await fetchPosterCandidate(imdbId, candidate);
+        } catch (error) {
+          failures.push(candidate.source + ': ' + (error?.message || 'request failed'));
+          throw error;
+        }
+      }),
+      (async () => {
+        const candidate = await getTmdbPosterCandidate(imdbId);
+        if (!candidate) throw new Error('TMDB has no poster path for this IMDb ID');
+        try {
+          return await fetchPosterCandidate(imdbId, candidate);
+        } catch (error) {
+          failures.push(candidate.source + ': ' + (error?.message || 'request failed'));
+          throw error;
+        }
+      })()
+    ]);
   } catch {
     throw new Error('No poster provider returned a usable image for ' + imdbId + ' (' + failures.join('; ') + ')');
   }
