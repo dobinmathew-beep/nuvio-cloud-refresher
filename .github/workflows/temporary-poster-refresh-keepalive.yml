@@ -1,0 +1,24 @@
+name: Temporary Poster Refresh Keepalive
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: temporary-poster-refresh-keepalive
+  cancel-in-progress: false
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Keep the free Render poster service awake during full refresh
+        run: |
+          curl --fail --silent --show-error \
+            --retry 3 --retry-delay 5 --retry-connrefused --max-time 25 \
+            https://great-indian-upcoming-posters.onrender.com/health
