@@ -1,3 +1,4 @@
+# Recovery run requested 2026-11-21: preserve durable checkpoints and run full manifest discovery.
 name: Manifest catalogue poster refresh
 
 on:
