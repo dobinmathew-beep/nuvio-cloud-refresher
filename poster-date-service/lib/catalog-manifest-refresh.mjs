@@ -270,7 +270,7 @@ function adaptivePrewarmConcurrency() {
   return 1;
 }
 
-async function runPool(items, worker, concurrency = CONCURRENCY) {
+async function runPool(items, worker, concurrency = CONCURRENCY, onFailure = null) {
   const counts = {};
   let failures = 0;
   let cursor = 0;
@@ -283,6 +283,7 @@ async function runPool(items, worker, concurrency = CONCURRENCY) {
       catch (error) {
         failures++;
         result = { status: 'failed', error: error?.message || 'unknown error' };
+        if (typeof onFailure === 'function') onFailure(items[index], result.error);
         if (failures <= 20) console.warn('[catalog-prewarm-failed]', JSON.stringify({ id: items[index].id, error: result.error }));
       }
       const status = result?.status || 'unknown';
@@ -379,12 +380,21 @@ let activeRefreshPromise = null;
 let activeRefreshProgress = null;
 
 export function getManifestCatalogRefreshProgress() {
-  return activeRefreshProgress ? structuredClone(activeRefreshProgress) : null;
+  if (!activeRefreshProgress) return null;
+  const snapshot = structuredClone(activeRefreshProgress);
+  const started = Date.parse(snapshot.startedAt || '');
+  if (Number.isFinite(started)) snapshot.elapsedSeconds = Math.max(0, Math.round((Date.now() - started) / 1000));
+  const total = Number(snapshot.titlesDiscovered) || 0;
+  const done = Math.min(total, (Number(snapshot.postersVisited) || 0) + (Number(snapshot.postersCacheHits) || 0));
+  snapshot.completionPercent = total ? Math.round(done / total * 1000) / 10 : 0;
+  return snapshot;
 }
 
 function updateRefreshProgress(patch) {
   if (!activeRefreshProgress) return;
   Object.assign(activeRefreshProgress, patch, { updatedAt: new Date().toISOString() });
+  const started = Date.parse(activeRefreshProgress.startedAt || '');
+  if (Number.isFinite(started)) activeRefreshProgress.elapsedSeconds = Math.max(0, Math.round((Date.now() - started) / 1000));
 }
 
 export async function resumeIncompleteManifestCatalogRefresh(options = {}) {
@@ -736,7 +746,11 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
           lastError: 'ImageKit upload did not become visible within 180 seconds'
         });
         throw new Error('ImageKit upload did not become visible within 180 seconds');
-      }, VERIFY_CONCURRENCY);
+      }, VERIFY_CONCURRENCY, (item, error) => {
+        const failureDetails = activeRefreshProgress?.failureDetails || [];
+        failureDetails.push({ stage: 'imagekit-verification', titleId: item.id, error });
+        updateRefreshProgress({ failureDetails: failureDetails.slice(-20) });
+      });
 
       for (const [status, count] of Object.entries(verification.counts)) {
         resultCounts[status] = (resultCounts[status] || 0) + count;
@@ -815,7 +829,11 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
             });
             throw error;
           }
-        }, adaptivePrewarmConcurrency());
+        }, adaptivePrewarmConcurrency(), (item, error) => {
+          const failureDetails = activeRefreshProgress?.failureDetails || [];
+          failureDetails.push({ stage: 'poster-processing', titleId: item.id, error });
+          updateRefreshProgress({ failureDetails: failureDetails.slice(-20) });
+        });
 
         for (const [status, count] of Object.entries(prewarmReport.counts)) {
           resultCounts[status] = (resultCounts[status] || 0) + count;
