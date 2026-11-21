@@ -174,9 +174,9 @@ function catalogueCheckpointPath(fingerprint) {
   return CATALOG_CHECKPOINT_DIR + '/' + key + '.json';
 }
 
-async function collectCatalog(manifest, catalog, config, fingerprint, lease) {
+async function collectCatalog(manifest, catalog, config, fingerprint, lease, forceRescan = false) {
   const path = catalogueCheckpointPath(fingerprint);
-  const saved = await readState(config, path);
+  const saved = forceRescan ? null : await readState(config, path);
   const titles = new Map();
   if (saved?.titles && typeof saved.titles === 'object') {
     for (const [id, item] of Object.entries(saved.titles)) {
@@ -325,10 +325,13 @@ async function waitForImageKit(id) {
 async function prewarm(item) {
   const path = posterPath(item.id, item.type);
   if (!path) return { id: item.id, status: 'unsupported-id-format' };
-  const forceVersion = process.env.CATALOG_REFRESH_FORCE_REPROCESS_ON_START === 'true' ? '&v=global-badge-rules-v2' : '';
-  const requestPath = (item.poster
+  const requestBase = item.poster
     ? path + (path.includes('?') ? '&' : '?') + 'fallback=' + encodeURIComponent(item.poster)
-    : path) + forceVersion;
+    : path;
+  const forceVersion = process.env.CATALOG_REFRESH_FORCE_REPROCESS_ON_START === 'true'
+    ? (requestBase.includes('?') ? '&' : '?') + 'v=global-badge-rules-v2'
+    : '';
+  const requestPath = requestBase + forceVersion;
   const endpoint = (process.env.POSTER_SERVICE_URL || 'https://great-indian-upcoming-posters.onrender.com').replace(/\/$/, '');
   let lastError = null;
   let sourceRedirect = false;
@@ -399,7 +402,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   let checkpoint = await readState(config, CHECKPOINT_PATH);
   // A completed checkpoint belongs to the previous run. Start a clean scan;
   // an incomplete checkpoint is a crash-safe resume point after an OOM/restart.
-  if (!checkpoint || checkpoint.complete === true || ![1, 2].includes(checkpoint.version)) {
+  if (forceReprocess || !checkpoint || checkpoint.complete === true || ![1, 2].includes(checkpoint.version)) {
     checkpoint = { version: 2, complete: false, updatedAt: startedAt, completedCatalogues: {}, titleFiles: {} };
     await lease?.assertOwned?.();
     await writeJson(config, CHECKPOINT_PATH, checkpoint);
@@ -476,7 +479,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
       }
 
       try {
-        const result = await collectCatalog(manifest, catalog, config, fingerprint, lease);
+        const result = await collectCatalog(manifest, catalog, config, fingerprint, lease, forceReprocess);
         for (const item of result.titles) if (!current.has(item.id)) current.set(item.id, item);
         delete result.titles;
         completedCatalogues[fingerprint] = {
