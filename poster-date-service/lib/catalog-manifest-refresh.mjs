@@ -269,9 +269,9 @@ function adaptivePrewarmConcurrency() {
   // throughput by default, but back off automatically if native/image work
   // pushes resident memory toward the safety ceiling.
   const rssMiB = process.memoryUsage().rss / (1024 * 1024);
-  if (rssMiB >= 360) return Math.min(2, PREWARM_CONCURRENCY);
-  if (rssMiB >= 300) return Math.min(3, PREWARM_CONCURRENCY);
-  return PREWARM_CONCURRENCY;
+  if (rssMiB >= 360) return 1;
+  if (rssMiB >= 300) return Math.min(2, PREWARM_CONCURRENCY);
+  return Math.min(3, PREWARM_CONCURRENCY);
 }
 
 async function runPool(items, worker, concurrency = CONCURRENCY) {
