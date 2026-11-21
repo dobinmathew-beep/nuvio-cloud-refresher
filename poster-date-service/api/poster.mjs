@@ -388,7 +388,7 @@ export default async function handler(req, res) {
         releaseKind: validationMetadata?.releaseKind || null,
         justAdded: validationMetadata?.justAdded === true,
         digitalReleasedWorldwide: true,
-        uploadedAt: validationMetadata?.uploadedAt || new Date().toISOString()
+        uploadedAt: new Date().toISOString()
       }).catch(error => console.warn('[worldwide-digital-release-marker-save-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' })));
     }
     // The earliest confirmed digital date in any territory wins. Once one
