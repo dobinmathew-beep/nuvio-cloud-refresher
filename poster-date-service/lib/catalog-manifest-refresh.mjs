@@ -372,17 +372,18 @@ async function checkImageKit(id) {
     return response.ok && (response.headers.get('content-type') || '').toLowerCase().startsWith('image/');
   } catch { return false; }
 }
-async function waitForImageKit(id) {
-  // ImageKit can accept an upload before its CDN edge exposes the new file.
-  // Give the asynchronous upload a longer bounded propagation window and
-  // back off HEAD checks to avoid hammering the free Render instance.
-  const deadline = Date.now() + 90000;
-  let delay = 2000;
-  while (Date.now() < deadline) {
+async function waitForImageKit(id, timeoutMs = 90000) {
+  // Upload acceptance and CDN visibility are separate events. Poll the stable
+  // asset URL with bounded exponential backoff; never re-upload just because
+  // the first edge check is early.
+  const deadline = Date.now() + Math.max(0, timeoutMs);
+  let delay = 1500;
+  do {
     if (await checkImageKit(id)) return true;
-    await sleep(delay);
+    if (Date.now() >= deadline) break;
+    await sleep(Math.min(delay, Math.max(0, deadline - Date.now())));
     delay = Math.min(8000, Math.round(delay * 1.5));
-  }
+  } while (Date.now() < deadline);
   return false;
 }
 async function prewarm(item) {
@@ -391,16 +392,17 @@ async function prewarm(item) {
   const requestBase = item.poster
     ? path + (path.includes('?') ? '&' : '?') + 'fallback=' + encodeURIComponent(item.poster)
     : path;
-  const forceVersion = '';
-  const requestPath = requestBase + forceVersion;
+  const requestPath = requestBase;
   const endpoint = (process.env.POSTER_SERVICE_URL || 'https://great-indian-upcoming-posters.onrender.com').replace(/\/$/, '');
   let lastError = null;
   let sourceRedirect = false;
+  const transientStatuses = new Set([408, 425, 429, 500, 502, 503, 504]);
 
-  // Retry transient Render/provider responses and source fallbacks before
-  // recording an unresolved title. A redirect is never accepted as a cached
-  // poster unless ImageKit itself confirms the target with a successful HEAD.
-  for (let attempt = 1; attempt <= 2; attempt++) {
+  // A prior attempt may have stored the poster even if its HTTP response was
+  // lost. Check the stable asset first so retries and resumes remain idempotent.
+  if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit' };
+
+  for (let attempt = 1; attempt <= 4; attempt++) {
     try {
       const response = await fetch(endpoint + requestPath, {
         headers: { accept: 'image/*' }, redirect: 'manual', signal: AbortSignal.timeout(30000)
@@ -410,35 +412,57 @@ async function prewarm(item) {
         const location = response.headers.get('location') || '';
         const imageKitBase = (process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\/$/, '') + '/posters/';
         if (imageKitBase.length > 9 && location.startsWith(imageKitBase)) {
-          if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit' };
-          lastError = 'ImageKit redirect target is not yet visible';
+          if (await waitForImageKit(item.id, 90000)) return { id: item.id, status: 'imagekit-hit' };
+          lastError = 'ImageKit redirect target remained unavailable after bounded CDN propagation wait';
         } else {
           sourceRedirect = true;
           lastError = 'Poster service fell back to its source provider';
         }
-      } else {
-        if (!response.ok || !(response.headers.get('content-type') || '').toLowerCase().startsWith('image/')) {
-          await response.body?.cancel().catch(() => {});
-          lastError = 'Poster service returned HTTP ' + response.status;
-          // A 503 means every trusted source and the ImageKit cache failed.
-          // Repeating the same provider chain three times only stalls the scan.
-          if (response.status === 503) return { id: item.id, status: 'retry', error: lastError };
+      } else if (!response.ok || !(response.headers.get('content-type') || '').toLowerCase().startsWith('image/')) {
+        const statusCode = response.status;
+        await response.body?.cancel().catch(() => {});
+        lastError = 'Poster service returned HTTP ' + statusCode;
+        if (transientStatuses.has(statusCode)) {
+          // A 502 can occur after the origin completed its upload. Confirm the
+          // canonical ImageKit URL before retrying the poster-generation route.
+          if ([500, 502, 503, 504].includes(statusCode) &&
+              await waitForImageKit(item.id, 20000)) {
+            return { id: item.id, status: 'imagekit-hit', recoveredAfterHttp: statusCode };
+          }
         } else {
-          const status = response.headers.get('x-poster-date-status') || 'rendered';
-          const storage = response.headers.get('x-imagekit-storage') || 'not-stored';
-          await response.body?.cancel().catch(() => {});
-          if (storage === 'pending') return { id: item.id, status: 'upload-pending', posterStatus: status };
-          if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit', posterStatus: status };
-          lastError = 'Poster rendered but no verified ImageKit asset was found';
+          throw new Error(lastError);
         }
+      } else {
+        const status = response.headers.get('x-poster-date-status') || 'rendered';
+        const storage = response.headers.get('x-imagekit-storage') || 'not-stored';
+        await response.body?.cancel().catch(() => {});
+        if (storage === 'pending') {
+          if (await waitForImageKit(item.id, 90000)) {
+            return { id: item.id, status: 'imagekit-hit', posterStatus: status };
+          }
+          return { id: item.id, status: 'upload-pending', posterStatus: status,
+            error: 'ImageKit upload was pending but CDN visibility was not confirmed' };
+        }
+        if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit', posterStatus: status };
+        lastError = 'Poster rendered but no verified ImageKit asset was found';
       }
     } catch (error) {
       lastError = error?.message || 'unknown poster request error';
+      if (!/HTTP (408|425|429|500|502|503|504)$/.test(lastError)) throw error;
     }
-    if (attempt < 2) await sleep(attempt * (sourceRedirect ? 2000 : 1500));
+
+    if (attempt < 4) {
+      const delay = Math.min(12000, attempt * (sourceRedirect ? 2500 : 2000));
+      console.warn('[catalog-prewarm-retry]', JSON.stringify({
+        id: item.id, attempt, nextAttempt: attempt + 1, delayMs: delay,
+        reason: lastError
+      }));
+      await sleep(delay);
+      if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit' };
+    }
   }
   if (sourceRedirect) return { id: item.id, status: 'source-redirect', error: lastError };
-  throw new Error(lastError || 'Poster prewarm failed after two attempts');
+  throw new Error(lastError || 'Poster prewarm failed after four attempts');
 }
 let activeRefreshPromise = null;
 let activeRefreshProgress = null;
