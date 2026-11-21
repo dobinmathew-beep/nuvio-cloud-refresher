@@ -166,6 +166,60 @@ async function persistStorageSnapshot() {
   return snapshotPersistPromise;
 }
 
+async function buildStorageSnapshotFromInventory() {
+  // Stream the account inventory in small pages. Do not retain every ImageKit
+  // file object in memory: only poster metadata is needed for overwrite safety.
+  const filesByPath = {};
+  const pendingFolders = ['/'];
+  const visited = new Set();
+  let accountBytes = 0;
+  let posterFiles = 0;
+  while (pendingFolders.length) {
+    const path = pendingFolders.pop();
+    if (visited.has(path)) continue;
+    if (visited.size >= 2000) throw new Error('ImageKit inventory exceeded the 2,000-folder safety bound');
+    visited.add(path);
+    const subfolders = await listFolderEntries(path, 'folder');
+    for (const folder of subfolders) {
+      const name = String(folder.name || '');
+      if (!name || name === '.' || name === '..') continue;
+      const childPath = (path === '/' ? '' : path) + '/' + name;
+      if (!visited.has(childPath)) pendingFolders.push(childPath);
+    }
+    for (let skip = 0; skip < 100000; skip += 250) {
+      const url = new URL(API + '/files');
+      url.searchParams.set('type', 'file');
+      url.searchParams.set('path', path);
+      url.searchParams.set('limit', '250');
+      url.searchParams.set('skip', String(skip));
+      const response = await apiRequest(url, {}, 12000);
+      const page = await response.json();
+      if (!Array.isArray(page)) throw new Error('Unexpected ImageKit file-list response');
+      for (const file of page) {
+        accountBytes += Math.max(0, Number(file.size) || 0);
+        if (path === '/posters' && isPosterFolderFile(file)) {
+          const id = imdbIdFromName(file.name);
+          if (id && file.fileId) {
+            filesByPath['/posters/' + id + '.jpg'] = { fileId: file.fileId, size: Math.max(0, Number(file.size) || 0) };
+            posterFiles++;
+          }
+        }
+      }
+      if (page.length < 250) break;
+    }
+  }
+  storageSnapshot = { known: true, bytes: accountBytes, checkedAt: Date.now(), filesByPath };
+  console.log('[imagekit-storage-inventory-built]', JSON.stringify({
+    accountBytes, posterFiles, foldersVisited: visited.size, strategy: 'paged-incremental'
+  }));
+  try {
+    await persistStorageSnapshot();
+  } catch (error) {
+    console.warn('[imagekit-storage-snapshot-persist-failed]', error?.message || 'unknown error');
+  }
+  return getImageKitStorageSnapshot();
+}
+
 export async function initializeImageKitStorageSnapshot() {
   if (storageSnapshot.known) return getImageKitStorageSnapshot();
   if (snapshotInitializationPromise) return snapshotInitializationPromise;
@@ -199,12 +253,8 @@ export async function initializeImageKitStorageSnapshot() {
     } catch (error) {
       console.warn('[imagekit-storage-snapshot-restore-failed]', error?.message || 'unknown error');
     }
-
-    // A missing/stale/unreachable snapshot must fail closed. Listing the whole
-    // ImageKit account here can consume hundreds of MiB and used to block poster
-    // requests during provider timeouts. Full inventory belongs to explicit
-    // maintenance, not the live poster-serving or refresh hot path.
-    throw new Error('ImageKit storage snapshot unavailable; full account inventory deferred to maintenance');
+    console.warn('[imagekit-storage-snapshot-rebuilding]', 'Saved snapshot unavailable; building bounded paged inventory');
+    return buildStorageSnapshotFromInventory();
   })().catch(error => {
     snapshotRetryAfter = Date.now() + 60 * 1000;
     throw error;
