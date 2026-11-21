@@ -18,7 +18,7 @@ const INDEX_TTL_MS = 14 * 24 * 60 * 60 * 1000;
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const LEDGER_DIR = '/catalog-state/poster-processing';
 const LEDGER_VERSION = 1;
-const BADGE_RULES_VERSION = 2;
+const BADGE_RULES_VERSION = 3;
 const LEDGER_SHARDS = '0123456789abcdef';
 const PREWARM_BATCH_SIZE = Math.max(10, Math.min(50, Number(process.env.CATALOG_PREWARM_BATCH_SIZE || 50)));
 const PREWARM_CONCURRENCY = Math.max(1, Math.min(6, Number(process.env.CATALOG_PREWARM_CONCURRENCY || 4)));
