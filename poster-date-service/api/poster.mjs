@@ -1,5 +1,5 @@
 import { upcomingRelease, hasPastDigitalRelease, validImdbId } from '../lib/release-dates.mjs';
-import { renderUpcomingBadge, renderJustAddedBadge } from '../lib/render-poster.mjs';
+import { renderUpcomingBadge, renderJustAddedBadge, removeExistingDateBadge } from '../lib/render-poster.mjs';
 import { hasExistingComingDateTag, hasExistingJustAddedTag } from '../lib/coming-tag.mjs';
 import { isCatalogRecentlyAdded } from '../lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from '../lib/catalog-upcoming.mjs';
@@ -64,7 +64,7 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
     // downloading the full image and running Tesseract OCR on every refresh.
     const metadata = await readPosterValidationMetadata(imdbId);
     const metadataTime = Date.parse(metadata?.uploadedAt || '');
-    const metadataBelongsToAsset = metadata?.version === 1 &&
+    const metadataBelongsToAsset = metadata?.version === 2 &&
       metadata?.imdbId === imdbId &&
       Number.isFinite(metadataTime) &&
       Math.abs(metadataTime - lastModified) <= 5 * 60 * 1000;
@@ -83,11 +83,9 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
     if (!imageResponse.ok) return null;
     const imageBytes = Buffer.from(await imageResponse.arrayBuffer());
 
-    const hasDateBadge = await hasExistingComingDateTag(
-      imageBytes,
-      expectedKind,
-      expectedDate
-    );
+    const hasDateBadge = expectedDate
+      ? await hasExistingComingDateTag(imageBytes, expectedKind, expectedDate)
+      : await hasExistingComingDateTag(imageBytes, 'any', null);
     const dateMatches = expectedDate ? hasDateBadge : !hasDateBadge;
     if (!dateMatches) {
       console.info('[poster-date-cache-mismatch]', JSON.stringify({
@@ -256,6 +254,20 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
     } catch (error) {
       dateStatus = 'overlay-failed-original-preserved';
       console.warn('[poster-date-overlay-failed]', JSON.stringify({ imdbId: id, date: release.date, error: error?.message || 'unknown error' }));
+    }
+  } else {
+    // If no confirmed future date remains, remove an obsolete Coming/New
+    // Episode chip baked into provider artwork instead of preserving it.
+    const staleDateBadge = await hasExistingComingDateTag(original.bytes, 'any', null);
+    if (staleDateBadge) {
+      const sourceJustAdded = await hasExistingJustAddedTag(original.bytes);
+      output = await removeExistingDateBadge(output, 0.105);
+      if (sourceJustAdded && !shouldRenderJustAdded) {
+        shouldRenderJustAdded = true;
+        justAddedSource = 'source-tag-preserved-after-stale-date-removal';
+      }
+      dateStatus = 'stale-source-date-removed';
+      console.info('[poster-stale-date-badge-removed]', JSON.stringify({ imdbId: id, justAddedPreserved: shouldRenderJustAdded }));
     }
   }
 
