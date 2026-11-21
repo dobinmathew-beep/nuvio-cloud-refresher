@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T07:44:57.188892+04:00",
+  "generatedAt": "2026-11-21T10:23:41.404716+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 23,
@@ -95,8 +95,8 @@
         "YouTube"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.tvmaze.com/shows/70529/dhindora"
       ],
       "confirmed": true,
@@ -529,8 +529,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
