@@ -123,6 +123,7 @@ jobs:
           const p = s.progress || {};
           const n = v => Number.isFinite(Number(v)) ? Number(v).toLocaleString() : '—';
           const elapsed = n(p.elapsedSeconds);
+          const correctedRates = p.titlesNewThisRun !== undefined && p.cataloguesPerMinute !== undefined;
           console.log('### Live refresh progress');
           console.log('| Metric | Current value |');
           console.log('|---|---:|');
@@ -140,8 +141,8 @@ jobs:
           console.log('| Existing verified cache hits | ' + n(p.postersCacheHits) + ' |');
           console.log('| Uploads awaiting verification | ' + n(p.postersPending) + ' |');
           console.log('| Failures | ' + n(p.failures) + ' |');
-          console.log('| Scan speed | ' + n(p.titlesPerMinute) + ' titles/min |');
-          console.log('| Catalogue scan speed | ' + n(p.cataloguesPerMinute) + ' catalogues/min |');
+          console.log('| Scan speed | ' + (correctedRates ? n(p.titlesPerMinute) + ' new unique titles/min' : 'awaiting updated lease owner; old rate suppressed') + ' |');
+          console.log('| Catalogue scan speed | ' + (correctedRates ? n(p.cataloguesPerMinute) + ' catalogues/min' : 'awaiting updated lease owner') + ' |');
           console.log('| Poster processing speed | ' + n(p.postersPerMinute) + ' posters/min |');
           console.log('| Elapsed seconds | ' + elapsed + ' |');
           console.log('| Last durable checkpoint | ' + (p.lastCheckpointAt || '—') + ' |');
