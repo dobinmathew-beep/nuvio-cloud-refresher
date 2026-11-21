@@ -9,7 +9,7 @@ let sharpConfigured = false;
 let workerPromise;
 let ocrQueue = Promise.resolve();
 let workerRecognitionCount = 0;
-const MAX_WORKER_RECOGNITIONS = 4;
+const MAX_WORKER_RECOGNITIONS = 2;
 
 function withOcrQueue(task) {
   const job = ocrQueue.then(task);
