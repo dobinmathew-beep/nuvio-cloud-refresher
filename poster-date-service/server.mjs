@@ -151,16 +151,17 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
   if (!sources.length) throw new Error('No poster source available for TMDB ID ' + tmdbId);
   const original = sources[0];
   const catalogRelease = await upcomingReleaseFromCatalog(['tmdb:' + tmdbId]);
-  const digitalAlreadyReleased = mediaType === 'movie' && catalogRelease
+  const digitalAlreadyReleased = mediaType === 'movie'
     ? await hasPastDigitalReleaseByTmdbId(tmdbId)
     : false;
+  const tmdbRelease = await upcomingReleaseByTmdbId(tmdbId, mediaType);
   const release = digitalAlreadyReleased === true
     ? null
-    : catalogRelease || await upcomingReleaseByTmdbId(tmdbId, mediaType);
+    : mediaType === 'movie' ? tmdbRelease || catalogRelease : catalogRelease || tmdbRelease;
   let output = original.bytes;
   let dateRendered = false;
-  let justAdded = String(req.query?.badge || '').toLowerCase() === 'just-added';
-  if (!justAdded) {
+  let justAdded = !release?.date && String(req.query?.badge || '').toLowerCase() === 'just-added';
+  if (!release?.date && !justAdded) {
     try { justAdded = await isCatalogRecentlyAdded(['tmdb:' + tmdbId]); }
     catch (error) { console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ tmdbId, error: error?.message || 'unknown error' })); }
   }
@@ -176,8 +177,8 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
       console.warn('[poster-date-overlay-failed]', JSON.stringify({ tmdbId, date: release.date, error: error?.message || 'unknown error' }));
     }
   }
-  if (justAdded) {
-    try { output = await renderJustAddedBadge(output, dateRendered ? 0.255 : 0.105); }
+  if (justAdded && !release?.date) {
+    try { output = await renderJustAddedBadge(output, 0.105); }
     catch (error) {
       console.warn('[poster-just-added-overlay-failed]', JSON.stringify({ tmdbId, error: error?.message || 'unknown error' }));
       justAdded = false;
@@ -243,14 +244,14 @@ async function sendTvmazePosterFallback(tvmazeId, req, res) {
 
   let output = original;
   let dateRendered = false;
-  let justAdded = String(req.query?.badge || '').toLowerCase() === 'just-added';
-  if (!justAdded) {
+  let justAdded = !release?.date && String(req.query?.badge || '').toLowerCase() === 'just-added';
+  if (!release?.date && !justAdded) {
     try { justAdded = await isCatalogRecentlyAdded(['tvmaze:' + tvmazeId]); }
     catch (error) { console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ tvmazeId, error: error?.message || 'unknown error' })); }
   }
   // TVmaze artwork cannot carry a BetterPosters tag; use catalog eligibility only.
   const storageId = fallbackImageKitId('tvmaze', tvmazeId);
-  if (await redirectCachedFallback(storageId, req, res, justAdded)) return;
+  if (await redirectCachedFallback(storageId, req, res, release, justAdded)) return;
   if (release?.date) {
     try {
       output = await renderUpcomingBadge(output, release.date, release.kind, 0.105);
@@ -259,8 +260,8 @@ async function sendTvmazePosterFallback(tvmazeId, req, res) {
       console.warn('[poster-date-overlay-failed]', JSON.stringify({ tvmazeId, date: release.date, error: error?.message || 'unknown error' }));
     }
   }
-  if (justAdded) {
-    try { output = await renderJustAddedBadge(output, dateRendered ? 0.255 : 0.105); }
+  if (justAdded && !release?.date) {
+    try { output = await renderJustAddedBadge(output, 0.105); }
     catch (error) {
       console.warn('[poster-just-added-overlay-failed]', JSON.stringify({ tvmazeId, error: error?.message || 'unknown error' }));
       justAdded = false;
@@ -356,7 +357,10 @@ const server = createServer(async (req, res) => {
     void (async () => {
       try {
         await initializeImageKitStorageSnapshot();
-        catalogRefreshReport = await runManifestCatalogRefresh();
+        catalogRefreshReport = await runManifestCatalogRefresh({
+          forceReprocess: url.searchParams.get('force') === '1' ||
+            process.env.CATALOG_REFRESH_FORCE_REPROCESS_ON_START === 'true'
+        });
         console.log('[catalog-refresh-job-complete]', JSON.stringify({ jobId, status: 'completed' }));
       } catch (error) {
         catalogRefreshError = error?.message || 'Catalogue refresh failed';
@@ -461,7 +465,11 @@ server.listen(port, '0.0.0.0', () => {
     catalogRefreshError = null;
     catalogRefreshReport = null;
     setImmediate(() => {
-      void resumeIncompleteManifestCatalogRefresh()
+      const forceReprocess = process.env.CATALOG_REFRESH_FORCE_REPROCESS_ON_START === 'true';
+      const startupRefresh = forceReprocess
+        ? runManifestCatalogRefresh({ forceReprocess: true })
+        : resumeIncompleteManifestCatalogRefresh();
+      void startupRefresh
         .then(report => {
           catalogRefreshReport = report;
           console.log('[catalog-refresh-autoresume-complete]', JSON.stringify({ jobId, status: 'completed' }));

@@ -53,20 +53,23 @@ test('movie digital release date creates a premiere badge', () => {
   });
 });
 
-test('an already-passed Indian digital date does not fall through to a later foreign date', () => {
+test('the earliest worldwide future digital date wins regardless of territory', () => {
   const rows = [
-    { iso_3166_1: 'IN', release_dates: [{ type: 4, release_date: '2026-11-10T00:00:00.000Z' }] },
-    { iso_3166_1: 'GB', release_dates: [{ type: 4, release_date: '2026-11-20T00:00:00.000Z' }] }
+    { iso_3166_1: 'IN', release_dates: [{ type: 4, release_date: '2026-11-28T00:00:00.000Z' }] },
+    { iso_3166_1: 'GB', release_dates: [{ type: 4, release_date: '2026-11-20T00:00:00.000Z' }] },
+    { iso_3166_1: 'AU', release_dates: [{ type: 4, release_date: '2026-11-24T00:00:00.000Z' }] }
   ];
-  assert.equal(chooseMovieDateForTest(rows, today), null);
+  assert.deepEqual(chooseMovieDateForTest(rows, today), {
+    date: '2026-11-20', region: 'GB', source: 'tmdb-digital-release', kind: 'premiere'
+  });
 });
 
-test('foreign digital date is a fallback only when India has no digital listing', () => {
-  const rows = [{ iso_3166_1: 'GB', release_dates: [
+test('a digital date in any territory is eligible', () => {
+  const rows = [{ iso_3166_1: 'JP', release_dates: [
     { type: 4, release_date: '2026-11-20T00:00:00.000Z' }
   ] }];
   assert.deepEqual(chooseMovieDateForTest(rows, today), {
-    date: '2026-11-20', region: 'GB', source: 'tmdb-digital-release', kind: 'premiere'
+    date: '2026-11-20', region: 'JP', source: 'tmdb-digital-release', kind: 'premiere'
   });
 });
 
@@ -176,7 +179,7 @@ test('a future digital date remains eligible when no territory has released digi
     { iso_3166_1: 'IN', release_dates: [{ type: 4, release_date: '2026-12-12T00:00:00.000Z' }] }
   ];
   assert.equal(hasPastDigitalReleaseForTest(rows, '2026-11-21'), false);
-  assert.equal(chooseMovieDateForTest(rows, '2026-11-21')?.date, '2026-12-12');
+  assert.equal(chooseMovieDateForTest(rows, '2026-11-21')?.date, '2026-12-08');
 });
 
 test('theatrical, premiere and physical releases do not count as digital availability', () => {

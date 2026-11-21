@@ -63,26 +63,16 @@ export function hasPastDigitalReleaseForTest(rows, today) {
 }
 function chooseMovieDate(rows, today) {
   const all = digitalDates(rows);
+  // Shared artwork has one worldwide badge: the first confirmed digital
+  // release in any territory wins. Once it arrives, later regional releases
+  // must never resurrect a Coming badge.
   if (hasPastDigitalReleaseForTest(rows, today)) return null;
-  // Prefer India's digital date. If TMDB has no Indian digital listing at
-  // all, a confirmed US/GB digital date may be used as a fallback.
-  const byDate = values => values.sort((a, b) => a.date.localeCompare(b.date));
-  const india = byDate(all.filter(item => item.region === 'IN'));
-  const futureIndia = india.find(item => isFuture(item.date, today));
-  if (futureIndia) return { ...futureIndia, source: 'tmdb-digital-release', kind: 'premiere' };
-  // If TMDB has an Indian digital listing, its passed date is authoritative;
-  // do not resurrect the title with a later foreign release date.
-  if (india.length) return null;
-
-  const preferredForeign = byDate(all.filter(item => ['US', 'GB'].includes(item.region)));
-  const futurePreferred = preferredForeign.find(item => isFuture(item.date, today));
-  if (futurePreferred) return { ...futurePreferred, source: 'tmdb-digital-release', kind: 'premiere' };
-
-  // Broaden coverage when TMDB has no IN/US/GB listing at all: use the
-  // earliest confirmed future digital date from another territory.
-  const otherTerritories = byDate(all.filter(item => item.region && !['IN', 'US', 'GB'].includes(item.region)));
-  const futureOther = otherTerritories.find(item => isFuture(item.date, today));
-  return futureOther ? { ...futureOther, source: 'tmdb-digital-release', kind: 'premiere' } : null;
+  const earliestFuture = all
+    .filter(item => item.region && isFuture(item.date, today))
+    .sort((a, b) => a.date.localeCompare(b.date) || a.region.localeCompare(b.region))[0];
+  return earliestFuture
+    ? { ...earliestFuture, source: 'tmdb-digital-release', kind: 'premiere' }
+    : null;
 }
 function chooseTvDate(details, today) {
   // A next episode is a separate event from the series premiere.
