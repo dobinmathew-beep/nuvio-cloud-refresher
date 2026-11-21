@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { classifyPrewarmResponse, imageKitVerificationUrl, isFreshVerifiedRecord, isSourceProbeCoolingDown, isSourceUnavailableCoolingDown, SOURCE_PROBE_RETRY_COOLDOWN_MS, SOURCE_UNAVAILABLE_COOLDOWN_MS, VERIFIED_ASSET_RECHECK_TTL_MS, needsResumeVerification } from '../lib/catalog-prewarm-policy.mjs';
+import { classifyPrewarmResponse, classifyImageKitVerificationResponse, imageKitVerificationUrl, isFreshVerifiedRecord, isSourceProbeCoolingDown, isSourceUnavailableCoolingDown, SOURCE_PROBE_RETRY_COOLDOWN_MS, SOURCE_UNAVAILABLE_COOLDOWN_MS, VERIFIED_ASSET_RECHECK_TTL_MS, needsResumeVerification } from '../lib/catalog-prewarm-policy.mjs';
 
 test('ImageKit redirects are deferred to asynchronous verification instead of repeating generation', () => {
   assert.deepEqual(classifyPrewarmResponse({
@@ -125,4 +125,14 @@ test('source-probe failures are skipped only while their short cooldown is activ
   assert.equal(isSourceProbeCoolingDown({
     ...record, retryAfter: new Date(now - 1).toISOString()
   }, 'poster-v1', now), false);
+});
+
+test('ImageKit verification preserves actionable HTTP and content-type failure classes', () => {
+  assert.deepEqual(classifyImageKitVerificationResponse({ status: 200, contentType: 'image/jpeg' }), { verified: true, status: 'verified' });
+  assert.equal(classifyImageKitVerificationResponse({ status: 404 }).status, 'not-yet-visible');
+  assert.equal(classifyImageKitVerificationResponse({ status: 403 }).status, 'forbidden');
+  assert.equal(classifyImageKitVerificationResponse({ status: 429 }).status, 'rate-limited');
+  assert.equal(classifyImageKitVerificationResponse({ status: 503 }).status, 'edge-server-error');
+  assert.equal(classifyImageKitVerificationResponse({ status: 200, contentType: 'text/html' }).status, 'unexpected-content-type');
+  assert.equal(classifyImageKitVerificationResponse({ status: 405, method: 'HEAD' }).retryWithGet, true);
 });
