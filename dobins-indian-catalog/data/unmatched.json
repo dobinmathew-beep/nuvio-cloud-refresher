@@ -240,37 +240,6 @@
     }
   },
   {
-    "name": "Chef Mantra Project USA",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-08-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Aha"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a7d25953fab9691478ae9ca",
-      "platform": "Aha",
-      "title": "Chef Mantra Project USA",
-      "createdAt": "2026-08-13T02:01:57.122Z",
-      "genre": "Reality Show",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "original_language": "Telugu",
-      "releaseDate": "2026-08-13",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-08-13T02:01:57.122Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Bal Barbarik",
     "language": "hindi",
     "type": "series",
@@ -298,6 +267,37 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-11-14T02:18:50.337Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Chef Mantra Project USA",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-08-13",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Aha"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a7d25953fab9691478ae9ca",
+      "platform": "Aha",
+      "title": "Chef Mantra Project USA",
+      "createdAt": "2026-08-13T02:01:57.122Z",
+      "genre": "Reality Show",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "original_language": "Telugu",
+      "releaseDate": "2026-08-13",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-08-13T02:01:57.122Z",
       "verified": true
     }
   },
@@ -643,6 +643,37 @@
     }
   },
   {
+    "name": "Roadies Rebirth",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6ad1898c3249ff69efda9cee",
+      "platform": "JioHotStar",
+      "title": "Roadies Rebirth",
+      "createdAt": "2026-10-16T02:18:52.613Z",
+      "genre": "Reality, Adventure",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-10-16",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-10-16T02:18:52.613Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Shadow Play",
     "language": "malayalam",
     "type": "series",
@@ -700,37 +731,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-04-28T03:47:52.447Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Roadies Rebirth",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6ad1898c3249ff69efda9cee",
-      "platform": "JioHotStar",
-      "title": "Roadies Rebirth",
-      "createdAt": "2026-10-16T02:18:52.613Z",
-      "genre": "Reality, Adventure",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-10-16",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-10-16T02:18:52.613Z",
       "verified": true
     }
   },
@@ -887,36 +887,6 @@
     }
   },
   {
-    "name": "Katha Sudha",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-03-22",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69bf625ee9d9be413445ad25",
-      "platform": "ETV Win",
-      "title": "Katha Sudha",
-      "createdAt": "2026-03-22T03:30:38.016Z",
-      "genre": "Drama, Anthology",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-03-22",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-03-22T03:30:38.016Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Chumbak Part 2",
     "language": "hindi",
     "type": "series",
@@ -944,6 +914,36 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-10-02T02:18:50.680Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Katha Sudha",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-03-22",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69bf625ee9d9be413445ad25",
+      "platform": "ETV Win",
+      "title": "Katha Sudha",
+      "createdAt": "2026-03-22T03:30:38.016Z",
+      "genre": "Drama, Anthology",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-03-22",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-03-22T03:30:38.016Z",
       "verified": true
     }
   },
@@ -1590,8 +1590,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix",
-      "ETV Win"
+      "ETV Win",
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {

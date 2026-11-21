@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T00:51:43.207154+04:00",
+  "generatedAt": "2026-11-22T02:44:01.702782+04:00",
   "policy": "confirmed-source-matched-id-v2",
   "count": 16,
   "items": [
@@ -42,6 +42,26 @@
       "catalog": "dobins_ta_series",
       "region": "IN",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    },
+    {
+      "id": "tt0445883",
+      "aliases": [
+        "tt0445883"
+      ],
+      "name": "Koffee with Karan",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-25",
+      "kind": "episode",
+      "platforms": [
+        "JioHotStar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tt50135636",
@@ -96,16 +116,16 @@
       "releaseDate": "2026-11-27",
       "kind": "premiere",
       "platforms": [
-        "Prime Video",
-        "Netflix"
+        "Netflix",
+        "Prime Video"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "catalog": "dobins_hi_movie",
       "region": "IN",
-      "source": "https://www.dailyott.in/"
+      "source": "https://cinebuds.com/ott-releases-this-week/"
     },
     {
       "id": "tt39390582",
@@ -156,7 +176,7 @@
       "language": "malayalam",
       "type": "series",
       "releaseDate": "2026-11-27",
-      "kind": "premiere",
+      "kind": "episode",
       "platforms": [
         "ZEE5"
       ],
@@ -242,14 +262,14 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
       "catalog": "dobins_hi_series",
       "region": "IN",
-      "source": "https://www.dailyott.in/"
+      "source": "https://api.tvmaze.com/schedule/web"
     },
     {
       "id": "tmdb:339001",
@@ -280,7 +300,7 @@
       "language": "hindi",
       "type": "series",
       "releaseDate": "2026-12-04",
-      "kind": "premiere",
+      "kind": "episode",
       "platforms": [
         "Netflix"
       ],
@@ -310,29 +330,6 @@
       "catalog": "dobins_te_movie",
       "region": "IN",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    },
-    {
-      "id": "tt16997004",
-      "aliases": [
-        "tt16997004"
-      ],
-      "name": "Matka King",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2027-01-01",
-      "kind": "episode",
-      "platforms": [
-        "Prime Video"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/",
-        "https://www.themoviedb.org/tv/249765"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
     }
   ]
 }
