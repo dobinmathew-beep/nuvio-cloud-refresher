@@ -261,7 +261,7 @@ export async function hasPastDigitalRelease(imdbId, options = {}) {
 
 export async function hasPastDigitalReleaseByTmdbId(tmdbId, options = {}) {
   const id = String(tmdbId || '');
-  if (!/^\\d{1,12}$/.test(id)) return null;
+  if (!/^\d{1,12}$/.test(id)) return null;
   const today = options.today || getTodayInTimeZone(options.now || new Date());
   const credential = { apiKey: options.apiKey || process.env.TMDB_API_KEY || '', readToken: process.env.TMDB_API_READ_ACCESS_TOKEN || '' };
   if (!credential.apiKey && !credential.readToken) return null;
@@ -311,7 +311,7 @@ export async function upcomingRelease(imdbId, options = {}) {
 }
 export async function upcomingReleaseByTmdbId(tmdbId, mediaType = 'tv', options = {}) {
   const id = String(tmdbId || '');
-  if (!/^\\d{1,12}$/.test(id) || !['movie', 'tv'].includes(mediaType)) return null;
+  if (!/^\d{1,12}$/.test(id) || !['movie', 'tv'].includes(mediaType)) return null;
   const today = options.today || getTodayInTimeZone(options.now || new Date());
   const credential = { apiKey: options.apiKey || process.env.TMDB_API_KEY || '', readToken: process.env.TMDB_API_READ_ACCESS_TOKEN || '' };
   if (!credential.apiKey && !credential.readToken) return null;
