@@ -38,7 +38,7 @@ export function classifyPrewarmResponse({ status, contentType = '', location = '
     return { status: 'failed', reason: 'non-image-response' };
   }
   if (storage === 'pending') {
-    return { status: 'upload-pending', verificationTimeoutMs: 90000, reason: 'imagekit-upload-pending' };
+    return { status: 'upload-pending', verificationTimeoutMs: 150000, reason: 'imagekit-upload-pending' };
   }
   return { status: 'rendered', reason: 'image-response' };
 }
