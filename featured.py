@@ -9,13 +9,13 @@ def get(url):
  if p.returncode:raise RuntimeError('Catalog download failed; retaining last-good selection')
  return json.loads(p.stdout)
 def valid_id(value):
- return bool(re.fullmatch(r'tt\\d+|tmdb:\\d+',str(value or '')))
+ return bool(re.fullmatch(r'tt\d+|tmdb:\d+',str(value or '')))
 
 def valid(m,lang=None):
  mid=str(m.get('id','')).split('||',1)[0]
  # The published backdrop service's centre contract is IMDb-linked only.
  # TMDB-only composite entries remain eligible for surrounding artwork.
- return bool(re.fullmatch(r'tt\\d+',mid)) and m.get('type')=='movie' and bool(m.get('poster')) and not re.search(r'OTT\\s*Releases|Hindi\\s*Dubbed|promo|unlock',str(m.get('name','')),re.I)
+ return bool(re.fullmatch(r'tt\d+',mid)) and m.get('type')=='movie' and bool(m.get('poster')) and not re.search(r'OTT\s*Releases|Hindi\s*Dubbed|promo|unlock',str(m.get('name','')),re.I)
 def first_valid(metas,lang=None):
  """Return the first usable IMDb-linked movie in source order for the backdrop centre."""
  return next((m for m in metas if valid(m,lang)),None)
