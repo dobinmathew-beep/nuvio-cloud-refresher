@@ -421,7 +421,7 @@ async function getBuiltPoster(id, knownRelease = undefined, badge = '', version 
   if (cached && cached.expiresAt > Date.now()) return cached.value;
   if (pendingResults.has(cacheKey)) return pendingResults.get(cacheKey);
 
-  const pending = buildPoster(id, knownRelease, badge, fallbackUrl, digitalReleasedWorldwide).then(value => {
+  const pending = buildPoster(id, knownRelease, badge, fallbackUrl, digitalReleasedWorldwide).then(async value => {
     resultCache.set(cacheKey, { value, expiresAt: Date.now() + RESULT_CACHE_MS });
     // Poster buffers are comparatively large; retain only a small hot set so
     // concurrent Nuvio traffic cannot turn the in-process cache into an RSS spike.
