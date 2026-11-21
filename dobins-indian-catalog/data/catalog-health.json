@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-21T06:30:46.534117+00:00",
+  "checkedAt": "2026-11-21T10:37:48.165113+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -24,7 +24,7 @@
       "checked": 164,
       "passed": 164,
       "failed": 0,
-      "missingOriginalLanguageField": 117
+      "missingOriginalLanguageField": 118
     },
     {
       "path": "/manifest.json",
@@ -276,13 +276,13 @@
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt39390582",
-        "name": "Hanuman Ansh",
+        "id": "tt40855841",
+        "name": "Nayyi Navelli",
         "releaseDate": "2026-11-27"
       },
       "localLatestEntry": {
-        "id": "tt39390582",
-        "name": "Hanuman Ansh",
+        "id": "tt40855841",
+        "name": "Nayyi Navelli",
         "releaseDate": "2026-11-27"
       },
       "latestEntryMatches": true,
@@ -336,7 +336,7 @@
     "checked": 164,
     "passed": 164,
     "failed": 0,
-    "missingOriginalLanguageField": 117,
+    "missingOriginalLanguageField": 118,
     "failures": []
   },
   "catalogSummary": {
