@@ -325,9 +325,10 @@ async function waitForImageKit(id) {
 async function prewarm(item) {
   const path = posterPath(item.id, item.type);
   if (!path) return { id: item.id, status: 'unsupported-id-format' };
-  const requestPath = item.poster
+  const forceVersion = process.env.CATALOG_REFRESH_FORCE_REPROCESS_ON_START === 'true' ? '&v=global-badge-rules-v2' : '';
+  const requestPath = (item.poster
     ? path + (path.includes('?') ? '&' : '?') + 'fallback=' + encodeURIComponent(item.poster)
-    : path;
+    : path) + forceVersion;
   const endpoint = (process.env.POSTER_SERVICE_URL || 'https://great-indian-upcoming-posters.onrender.com').replace(/\/$/, '');
   let lastError = null;
   let sourceRedirect = false;
@@ -372,22 +373,23 @@ async function prewarm(item) {
 }
 let activeRefreshPromise = null;
 
-export async function resumeIncompleteManifestCatalogRefresh() {
+export async function resumeIncompleteManifestCatalogRefresh(options = {}) {
   const config = imageKitConfig();
   const checkpoint = await readState(config, CHECKPOINT_PATH);
   if (!checkpoint || checkpoint.complete === true) {
     return { status: 'no-incomplete-checkpoint', skipped: true };
   }
-  return runManifestCatalogRefresh();
+  return runManifestCatalogRefresh(options);
 }
 
-export function runManifestCatalogRefresh() {
+export function runManifestCatalogRefresh(options = {}) {
   if (activeRefreshPromise) return activeRefreshPromise;
-  activeRefreshPromise = withRefreshLease(lease => runManifestCatalogRefreshInternal(lease)).finally(() => { activeRefreshPromise = null; });
+  activeRefreshPromise = withRefreshLease(lease => runManifestCatalogRefreshInternal(lease, options)).finally(() => { activeRefreshPromise = null; });
   return activeRefreshPromise;
 }
 
-async function runManifestCatalogRefreshInternal(lease) {
+async function runManifestCatalogRefreshInternal(lease, options = {}) {
+  const forceReprocess = options.forceReprocess === true;
   await lease?.assertOwned?.();
   const startedAt = new Date().toISOString();
   const configured = MANIFEST_KEYS.filter(key => process.env[key]);
@@ -555,7 +557,7 @@ async function runManifestCatalogRefreshInternal(lease) {
     const shard = ledgerShard(item.id);
     const records = await loadLedgerShard(config, shard, preflightLedgerCache);
     const record = records[item.id];
-    if (reusableLedgerRecord(record, item) && await checkImageKit(item.id)) {
+    if (!forceReprocess && reusableLedgerRecord(record, item) && await checkImageKit(item.id)) {
       preflightVerifiedHits++;
     } else {
       items.push(item);
@@ -566,7 +568,7 @@ async function runManifestCatalogRefreshInternal(lease) {
     catalogueTitles: allItems.length,
     retryCandidates: items.length,
     alreadyVerified: preflightVerifiedHits,
-    strategy: 'retry-only-unresolved-or-missing-imagekit-assets'
+    strategy: forceReprocess ? 'force-revalidate-all-catalogue-titles' : 'retry-only-unresolved-or-missing-imagekit-assets'
   }));
   const resultCounts = preflightVerifiedHits ? { 'ledger-hit': preflightVerifiedHits } : {};
   let totalFailures = 0;
@@ -641,6 +643,7 @@ async function runManifestCatalogRefreshInternal(lease) {
       await lease?.assertOwned?.();
       const batch = shardItems.slice(offset, offset + PREWARM_BATCH_SIZE);
       const reusable = await Promise.all(batch.map(async item => {
+        if (forceReprocess) return false;
         const record = records[item.id];
         return reusableLedgerRecord(record, item) && await checkImageKit(item.id);
       }));
