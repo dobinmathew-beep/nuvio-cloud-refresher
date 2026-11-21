@@ -1,4 +1,4 @@
-name: Hourly catalogue refresh monitor
+name: Catalogue refresh keepalive and monitor
 # Reads lease-owner progress snapshots shared through Render Redis.
 # This report includes unique-title growth and catalogue throughput, not checkpoint totals as new work.
 # Report test after the replacement worker acquired the shared refresh lease.
@@ -110,7 +110,7 @@ jobs:
           fi
 
           {
-            echo "## Hourly catalogue refresh monitor"
+            echo "## Catalogue refresh keepalive and monitor"
             echo "- Checked at (UTC): $(date -u +'%Y-%m-%d %H:%M:%S')"
             echo "- Render health HTTP: $health_code"
             echo "- Catalogue status HTTP: $status_code"
@@ -167,32 +167,16 @@ jobs:
           }
           NODE
 
-          if [ "$diagnostics_code" = "200" ]; then
-            node - <<'NODE' >> "$GITHUB_STEP_SUMMARY"
-            const fs = require('fs');
-            const d = JSON.parse(fs.readFileSync('diagnostics.json', 'utf8'));
-            const n = v => Number.isFinite(Number(v)) ? Number(v).toLocaleString() : '—';
-            console.log('');
-            console.log('### Durable catalogue checkpoint');
-            console.log('| Metric | Value |');
-            console.log('|---|---:|');
-            console.log('| Checkpoint exists / complete | ' + d.checkpointExists + ' / ' + d.checkpointComplete + ' |');
-            console.log('| Manifest sources configured | ' + n(d.configuredManifestCount) + ' |');
-            console.log('| Raw / unique catalogue definitions | ' + n(d.rawCatalogueDefinitions) + ' / ' + n(d.uniqueCatalogueCount) + ' |');
-            console.log('| Completed catalogues in current generation | ' + n(d.completedCatalogueCount) + ' |');
-            console.log('| Pending / dynamic catalogues | ' + n(d.pendingCatalogueCount) + ' / ' + n(d.dynamicCatalogueCount) + ' |');
-            console.log('| Stale completion records | ' + n(d.staleCompletionCount) + ' |');
-            console.log('| Page/title checkpoint files indexed | ' + n(d.titleFileCount) + ' |');
-            console.log('| Active lease | ' + (d.lease?.active ? 'yes (' + (d.lease.jobId || 'job') + ')' : 'no') + ' |');
-            console.log('| Checkpoint updated | ' + (d.checkpointUpdatedAt || '—') + ' |');
-            if (d.firstIncompleteCatalogue) {
-              const c = d.firstIncompleteCatalogue, p = c.pageCheckpoint || {};
-              console.log('');
-              console.log('First incomplete catalogue: **' + [c.source, c.type, c.name, c.id].filter(Boolean).join(' / ') + '**');
-              console.log('- Page checkpoint: ' + (p.exists ? 'present' : 'missing') + '; complete=' + Boolean(p.complete) + '; nextPage=' + n(p.nextPage) + '; pages=' + n(p.pages) + '; records=' + n(p.records) + '; generationMatch=' + Boolean(p.generationMatches));
-            }
-            NODE
-          fi
+          {
+            echo "### Durable catalogue checkpoint"
+            if [ "$diagnostics_code" = "200" ]; then
+              echo '--- JSON ---'
+              cat diagnostics.json
+            else
+              echo "Diagnostics unavailable (HTTP $diagnostics_code)"
+            fi
+            echo
+          } >> "$GITHUB_STEP_SUMMARY"
 
           if [ "$health_code" -lt 200 ] || [ "$health_code" -ge 300 ]; then
             echo "::error::Render health check failed with HTTP $health_code."
