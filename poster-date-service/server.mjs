@@ -14,7 +14,6 @@ import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
 import { imageKitConfig, canStoreImageKitPoster, getImageKitStorageSnapshot, uploadPosterToImageKit, runImageKitMaintenance, initializeImageKitStorageSnapshot } from './lib/imagekit-storage.mjs';
 import { runManifestCatalogRefresh, resumeIncompleteManifestCatalogRefresh, getManifestCatalogRefreshProgress, getManifestCatalogRefreshDiagnostics } from './lib/catalog-manifest-refresh.mjs';
 import { getRefreshLease, getRefreshProgress } from './lib/refresh-coordination.mjs';
-import { imageKitVerificationUrl } from './lib/catalog-prewarm-policy.mjs';
 import { hasExistingComingDateTag, hasExistingJustAddedTag } from './lib/coming-tag.mjs';
 
 let catalogRefreshJob = null;
@@ -51,9 +50,9 @@ function fallbackImageKitId(prefix, id) {
 async function redirectCachedFallback(storageId, req, res, releaseInfo, justAdded) {
   const config = imageKitConfig();
   if (!config) return false;
-  // Use the same cache-busted URL as the recovery worker. A stale edge
-  // response must not make this route redirect to an asset the ledger cannot verify.
-  const assetUrl = imageKitVerificationUrl(config.endpoint, storageId);
+  // Use the canonical asset URL so the server and recovery worker validate
+  // the exact same CDN cache key that Nuvio clients request.
+  const assetUrl = config.endpoint + '/posters/' + encodeURIComponent(storageId) + '.jpg';
   try {
     const response = await fetch(assetUrl, { method: 'HEAD', cache: 'no-store', signal: AbortSignal.timeout(3000) });
     if (!response.ok) return false;

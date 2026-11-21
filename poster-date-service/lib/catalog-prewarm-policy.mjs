@@ -8,12 +8,6 @@ export function isSourceProbeCoolingDown(record, fingerprint, now = Date.now()) 
   return Number.isFinite(retryAt) && retryAt > now;
 }
 
-export function imageKitVerificationUrl(endpoint, storageId, now = Date.now()) {
-  const rawBase = String(endpoint || '');
-  const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
-  return base + '/posters/' + encodeURIComponent(storageId) + '.jpg?__poster_verify=' + encodeURIComponent(String(now));
-}
-
 export function isSourceUnavailableCoolingDown(record, fingerprint, now = Date.now()) {
   if (!record || record.status !== 'source-unavailable' || record.fingerprint !== fingerprint) return false;
   const retryAt = Date.parse(record.retryAfter || '');

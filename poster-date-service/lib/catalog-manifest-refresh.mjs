@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { withRefreshLease, publishRefreshProgress } from './refresh-coordination.mjs';
 import { initializeImageKitStorageSnapshot } from './imagekit-storage.mjs';
 import { createBoundedTaskQueue, refreshResourcePolicy } from './refresh-backpressure.mjs';
-import { classifyPrewarmResponse, imageKitVerificationUrl, isFreshVerifiedRecord, isSourceProbeCoolingDown, isSourceUnavailableCoolingDown, needsResumeVerification, SOURCE_PROBE_RETRY_COOLDOWN_MS, SOURCE_UNAVAILABLE_COOLDOWN_MS } from './catalog-prewarm-policy.mjs';
+import { classifyPrewarmResponse, isFreshVerifiedRecord, isSourceProbeCoolingDown, isSourceUnavailableCoolingDown, needsResumeVerification, SOURCE_PROBE_RETRY_COOLDOWN_MS, SOURCE_UNAVAILABLE_COOLDOWN_MS } from './catalog-prewarm-policy.mjs';
 
 const MANIFEST_KEYS = [
   'CATALOG_MANIFEST_ELFHOSTED_URL',
@@ -365,9 +365,7 @@ async function checkImageKit(id) {
   if (!endpoint) return false;
   try {
     const storageId = imageKitStorageId(id);
-    // cache:'no-store' bypasses the local fetch cache, not necessarily a CDN's
-    // negative 404 cache. A unique query forces a fresh edge lookup after upload.
-    const verificationUrl = imageKitVerificationUrl(endpoint, storageId);
+    const verificationUrl = endpoint + '/posters/' + encodeURIComponent(storageId) + '.jpg';
     const response = await fetch(verificationUrl, { method: 'HEAD', cache: 'no-store', signal: AbortSignal.timeout(6000) });
     return response.ok && (response.headers.get('content-type') || '').toLowerCase().startsWith('image/');
   } catch { return false; }
