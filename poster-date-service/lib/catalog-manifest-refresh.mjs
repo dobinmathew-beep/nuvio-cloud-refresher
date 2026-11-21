@@ -360,30 +360,72 @@ function imageKitStorageId(id) {
   if (id.startsWith('tvmaze:')) return 'tvmaze-' + id.slice(7);
   return id;
 }
-async function checkImageKit(id) {
+async function checkImageKitDetailed(id) {
   const endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\/$/, '');
-  if (!endpoint) return false;
+  if (!endpoint) return { verified: false, status: 'not-configured', method: 'HEAD' };
+  const storageId = imageKitStorageId(id);
+  const verificationUrl = imageKitVerificationUrl(endpoint, storageId);
+  let head;
   try {
-    const storageId = imageKitStorageId(id);
-    // cache:'no-store' bypasses the local fetch cache, not necessarily a CDN's
-    // negative 404 cache. A unique query forces a fresh edge lookup after upload.
-    const verificationUrl = imageKitVerificationUrl(endpoint, storageId);
-    const response = await fetch(verificationUrl, { method: 'HEAD', cache: 'no-store', signal: AbortSignal.timeout(6000) });
-    return response.ok && (response.headers.get('content-type') || '').toLowerCase().startsWith('image/');
-  } catch { return false; }
+    head = await fetch(verificationUrl, {
+      method: 'HEAD', cache: 'no-store', headers: { accept: 'image/*' },
+      signal: AbortSignal.timeout(6000)
+    });
+  } catch (error) {
+    return { verified: false, status: 'network-error', method: 'HEAD', error: error?.name || error?.message || 'fetch-failed' };
+  }
+  const headType = (head.headers.get('content-type') || '').toLowerCase();
+  const headResult = classifyImageKitVerificationResponse({ status: head.status, contentType: headType, method: 'HEAD' });
+  if (headResult.verified) return { ...headResult, method: 'HEAD' };
+  // Some edge configurations reject HEAD while serving GET normally. Confirm
+  // with a bounded GET for method-not-allowed/not-implemented or ambiguous
+  // successful HEAD responses; never download or retain the full poster.
+  if (head.status === 405 || head.status === 501 || (head.ok && !headType.startsWith('image/'))) {
+    try {
+      const get = await fetch(verificationUrl, {
+        method: 'GET', cache: 'no-store', headers: { accept: 'image/*', range: 'bytes=0-0' },
+        signal: AbortSignal.timeout(6000)
+      });
+      const contentType = (get.headers.get('content-type') || '').toLowerCase();
+      const result = classifyImageKitVerificationResponse({ status: get.status, contentType, method: 'GET' });
+      await get.body?.cancel().catch(() => {});
+      return { ...result, method: 'GET', headStatus: head.status, headContentType: headType };
+    } catch (error) {
+      return { verified: false, status: 'get-network-error', method: 'GET', headStatus: head.status, error: error?.name || error?.message || 'fetch-failed' };
+    }
+  }
+  return { ...headResult, method: 'HEAD', contentType: headType };
+}
+async function checkImageKit(id) {
+  return (await checkImageKitDetailed(id)).verified;
 }
 async function waitForImageKit(id, timeoutMs = 90000) {
-  // Upload acceptance and CDN visibility are separate events. Poll the stable
-  // asset URL with bounded exponential backoff; never re-upload just because
-  // the first edge check is early.
-  const deadline = Date.now() + Math.max(0, timeoutMs);
+  // Keep polling bounded, but retain the actual edge response category so a
+  // timeout can be diagnosed rather than flattened into a generic false.
+  const startedAt = Date.now();
+  const deadline = startedAt + Math.max(0, timeoutMs);
+  const observations = {};
+  let last = { verified: false, status: 'not-checked', method: 'HEAD' };
   let delay = 1500;
   do {
-    if (await checkImageKit(id)) return true;
+    last = await checkImageKitDetailed(id);
+    observations[last.status] = (observations[last.status] || 0) + 1;
+    if (last.verified) {
+      console.info('[imagekit-visibility-confirmed]', JSON.stringify({
+        id, method: last.method, attempts: Object.values(observations).reduce((a, b) => a + b, 0),
+        elapsedMs: Date.now() - startedAt
+      }));
+      return true;
+    }
     if (Date.now() >= deadline) break;
     await sleep(Math.min(delay, Math.max(0, deadline - Date.now())));
     delay = Math.min(8000, Math.round(delay * 1.5));
   } while (Date.now() < deadline);
+  console.warn('[imagekit-visibility-diagnostic]', JSON.stringify({
+    id, lastStatus: last.status, method: last.method, httpStatus: last.httpStatus || last.headStatus || null,
+    contentType: last.contentType || last.headContentType || null, error: last.error || null,
+    observations, elapsedMs: Date.now() - startedAt
+  }));
   return false;
 }
 async function prewarm(item, knownImageKitCheck = null) {
