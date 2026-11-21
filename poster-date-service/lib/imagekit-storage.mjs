@@ -175,7 +175,7 @@ export async function initializeImageKitStorageSnapshot() {
     if (!config) throw new Error('ImageKit credentials are not configured');
     const snapshotUrl = config.endpoint + STORAGE_SNAPSHOT_PATH;
     try {
-      const response = await fetch(snapshotUrl, { cache: 'no-store', signal: AbortSignal.timeout(5000) });
+      const response = await fetch(snapshotUrl, { cache: 'no-store', signal: AbortSignal.timeout(12000) });
       if (response.ok) {
         const saved = await response.json();
         const savedAt = Date.parse(saved?.updatedAt || '');

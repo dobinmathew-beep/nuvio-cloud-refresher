@@ -313,7 +313,7 @@ async function waitForImageKit(id) {
   // ImageKit can accept an upload before its CDN edge exposes the new file.
   // Give the asynchronous upload a longer bounded propagation window and
   // back off HEAD checks to avoid hammering the free Render instance.
-  const deadline = Date.now() + 180000;
+  const deadline = Date.now() + 90000;
   let delay = 2000;
   while (Date.now() < deadline) {
     if (await checkImageKit(id)) return true;
@@ -337,10 +337,10 @@ async function prewarm(item) {
   // Retry transient Render/provider responses and source fallbacks before
   // recording an unresolved title. A redirect is never accepted as a cached
   // poster unless ImageKit itself confirms the target with a successful HEAD.
-  for (let attempt = 1; attempt <= 3; attempt++) {
+  for (let attempt = 1; attempt <= 2; attempt++) {
     try {
       const response = await fetch(endpoint + requestPath, {
-        headers: { accept: 'image/*' }, redirect: 'manual', signal: AbortSignal.timeout(60000)
+        headers: { accept: 'image/*' }, redirect: 'manual', signal: AbortSignal.timeout(30000)
       });
       if (response.status >= 300 && response.status < 400) {
         const location = response.headers.get('location') || '';
@@ -355,6 +355,9 @@ async function prewarm(item) {
       } else {
         if (!response.ok || !(response.headers.get('content-type') || '').toLowerCase().startsWith('image/')) {
           lastError = 'Poster service returned HTTP ' + response.status;
+          // A 503 means every trusted source and the ImageKit cache failed.
+          // Repeating the same provider chain three times only stalls the scan.
+          if (response.status === 503) return { id: item.id, status: 'retry', error: lastError };
         } else {
           const status = response.headers.get('x-poster-date-status') || 'rendered';
           const storage = response.headers.get('x-imagekit-storage') || 'not-stored';
@@ -367,10 +370,10 @@ async function prewarm(item) {
     } catch (error) {
       lastError = error?.message || 'unknown poster request error';
     }
-    if (attempt < 3) await sleep(attempt * (sourceRedirect ? 3000 : 2000));
+    if (attempt < 2) await sleep(attempt * (sourceRedirect ? 2000 : 1500));
   }
   if (sourceRedirect) return { id: item.id, status: 'source-redirect', error: lastError };
-  throw new Error(lastError || 'Poster prewarm failed after three attempts');
+  throw new Error(lastError || 'Poster prewarm failed after two attempts');
 }
 let activeRefreshPromise = null;
 
