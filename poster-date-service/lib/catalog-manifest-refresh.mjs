@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { withRefreshLease, publishRefreshProgress } from './refresh-coordination.mjs';
 import { initializeImageKitStorageSnapshot } from './imagekit-storage.mjs';
 import { createBoundedTaskQueue, refreshResourcePolicy } from './refresh-backpressure.mjs';
+import { classifyPrewarmResponse, isFreshVerifiedRecord } from './catalog-prewarm-policy.mjs';
 
 const MANIFEST_KEYS = [
   'CATALOG_MANIFEST_ELFHOSTED_URL',
@@ -67,10 +68,6 @@ function ledgerRecord(item, status, extra = {}) {
   };
 }
 function reusableLedgerRecord(record, item) {
-  // A verified poster is reusable for as long as the catalogue identity and
-  // poster fingerprint are unchanged and ImageKit still serves the asset.
-  // Do not expire completed work after six hours: long refreshes and Render
-  // restarts must not force already-verified titles through the pipeline again.
   if (!record || !['verified', 'cache-hit'].includes(record.status)) return false;
   return record.fingerprint === itemFingerprint(item);
 }
@@ -389,80 +386,65 @@ async function waitForImageKit(id, timeoutMs = 90000) {
 async function prewarm(item) {
   const path = posterPath(item.id, item.type);
   if (!path) return { id: item.id, status: 'unsupported-id-format' };
-  const requestBase = item.poster
+  const requestPath = item.poster
     ? path + (path.includes('?') ? '&' : '?') + 'fallback=' + encodeURIComponent(item.poster)
     : path;
-  const requestPath = requestBase;
-  const endpoint = (process.env.POSTER_SERVICE_URL || 'https://great-indian-upcoming-posters.onrender.com').replace(/\/$/, '');
-  let lastError = null;
-  let sourceRedirect = false;
-  const transientStatuses = new Set([408, 425, 429, 500, 502, 503, 504]);
+  const endpoint = (process.env.POSTER_SERVICE_URL || 'https://great-indian-upcoming-posters.onrender.com').replace(/\\/$/, '');
 
-  // A prior attempt may have stored the poster even if its HTTP response was
-  // lost. Check the stable asset first so retries and resumes remain idempotent.
+  // A prior request may have completed its upload even when its HTTP response
+  // was lost. Never issue another generation request until the canonical asset
+  // has been checked.
   if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit' };
 
-  for (let attempt = 1; attempt <= 4; attempt++) {
-    try {
-      const response = await fetch(endpoint + requestPath, {
-        headers: { accept: 'image/*' }, redirect: 'manual', signal: AbortSignal.timeout(30000)
-      });
-      if (response.status >= 300 && response.status < 400) {
-        await response.body?.cancel().catch(() => {});
-        const location = response.headers.get('location') || '';
-        const imageKitBase = (process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\/$/, '') + '/posters/';
-        if (imageKitBase.length > 9 && location.startsWith(imageKitBase)) {
-          if (await waitForImageKit(item.id, 90000)) return { id: item.id, status: 'imagekit-hit' };
-          lastError = 'ImageKit redirect target remained unavailable after bounded CDN propagation wait';
-        } else {
-          sourceRedirect = true;
-          lastError = 'Poster service fell back to its source provider';
-        }
-      } else if (!response.ok || !(response.headers.get('content-type') || '').toLowerCase().startsWith('image/')) {
-        const statusCode = response.status;
-        await response.body?.cancel().catch(() => {});
-        lastError = 'Poster service returned HTTP ' + statusCode;
-        if (transientStatuses.has(statusCode)) {
-          // A 502 can occur after the origin completed its upload. Confirm the
-          // canonical ImageKit URL before retrying the poster-generation route.
-          if ([500, 502, 503, 504].includes(statusCode) &&
-              await waitForImageKit(item.id, 20000)) {
-            return { id: item.id, status: 'imagekit-hit', recoveredAfterHttp: statusCode };
-          }
-        } else {
-          throw new Error(lastError);
-        }
-      } else {
-        const status = response.headers.get('x-poster-date-status') || 'rendered';
-        const storage = response.headers.get('x-imagekit-storage') || 'not-stored';
-        await response.body?.cancel().catch(() => {});
-        if (storage === 'pending') {
-          if (await waitForImageKit(item.id, 90000)) {
-            return { id: item.id, status: 'imagekit-hit', posterStatus: status };
-          }
-          return { id: item.id, status: 'upload-pending', posterStatus: status,
-            error: 'ImageKit upload was pending but CDN visibility was not confirmed' };
-        }
-        if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit', posterStatus: status };
-        lastError = 'Poster rendered but no verified ImageKit asset was found';
-      }
-    } catch (error) {
-      lastError = error?.message || 'unknown poster request error';
-      if (!/HTTP (408|425|429|500|502|503|504)$/.test(lastError)) throw error;
+  try {
+    const response = await fetch(endpoint + requestPath, {
+      headers: { accept: 'image/*' }, redirect: 'manual', signal: AbortSignal.timeout(30000)
+    });
+    const contentType = (response.headers.get('content-type') || '').toLowerCase();
+    const location = response.headers.get('location') || '';
+    const storage = response.headers.get('x-imagekit-storage') || 'not-stored';
+    const posterStatus = response.headers.get('x-poster-date-status') || 'rendered';
+    const imageKitBase = (process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\\/$/, '') + '/posters/';
+    const decision = classifyPrewarmResponse({
+      status: response.status, contentType, location, imageKitBase, storage
+    });
+    await response.body?.cancel().catch(() => {});
+
+    if (decision.status === 'failed') {
+      throw new Error('Poster service returned HTTP ' + response.status + (contentType ? ' (' + contentType + ')' : ''));
+    }
+    if (decision.status === 'retry') {
+      return { id: item.id, status: 'retry', error: 'Poster service returned HTTP ' + response.status };
+    }
+    if (decision.status === 'source-redirect') {
+      return { id: item.id, status: 'source-redirect', error: 'Poster service redirected to its source provider' };
+    }
+    if (decision.status === 'upload-pending') {
+      // One quick confirmation prevents duplicate uploads; CDN propagation is
+      // then handled by the bounded asynchronous verifier, not this serial lane.
+      if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit', posterStatus };
+      return {
+        id: item.id, status: 'upload-pending', posterStatus,
+        verificationTimeoutMs: decision.verificationTimeoutMs,
+        error: 'Upload outcome requires asynchronous ImageKit visibility verification'
+      };
     }
 
-    if (attempt < 4) {
-      const delay = Math.min(12000, attempt * (sourceRedirect ? 2500 : 2000));
-      console.warn('[catalog-prewarm-retry]', JSON.stringify({
-        id: item.id, attempt, nextAttempt: attempt + 1, delayMs: delay,
-        reason: lastError
-      }));
-      await sleep(delay);
-      if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit' };
-    }
+    if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit', posterStatus };
+    // The service returned a valid image but did not confirm ImageKit storage.
+    // Do not repeat OCR/render work in this run; leave it for a later retry.
+    return { id: item.id, status: 'rendered-not-cached', posterStatus,
+      error: 'Poster rendered without a confirmed ImageKit cache asset' };
+  } catch (error) {
+    if (/Poster service returned HTTP /.test(error?.message || '')) throw error;
+    // A transport timeout/reset is an uncertain outcome: the origin may have
+    // completed its upload. Check once, then defer to the asynchronous verifier.
+    if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit' };
+    return {
+      id: item.id, status: 'upload-pending', verificationTimeoutMs: 20000,
+      error: 'Poster request ended with an uncertain transport outcome: ' + (error?.message || 'unknown error')
+    };
   }
-  if (sourceRedirect) return { id: item.id, status: 'source-redirect', error: lastError };
-  throw new Error(lastError || 'Poster prewarm failed after four attempts');
 }
 let activeRefreshPromise = null;
 let activeRefreshProgress = null;
@@ -884,12 +866,19 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   let preflightVerifiedHits = 0;
   // Read each ledger shard once, then verify existing assets with a small,
   // bounded network-only fan-out. OCR/image generation stays serial on Free.
+  const refreshedLedgerShards = new Set();
   for (const item of allItems) {
     const shard = ledgerShard(item.id);
     const records = await loadLedgerShard(config, shard, preflightLedgerCache);
     const record = records[item.id];
     if (!forceReprocess && reusableLedgerRecord(record, item)) {
-      candidatesForHeadCheck.push(item);
+      if (isFreshVerifiedRecord(record, itemFingerprint(item))) {
+        // A recent successful HEAD confirmation remains valid across a restart.
+        preflightImageKitChecks.set(item.id, true);
+        preflightVerifiedHits++;
+      } else {
+        candidatesForHeadCheck.push(item);
+      }
     } else {
       items.push(item);
     }
@@ -899,10 +888,26 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     const batch = candidatesForHeadCheck.slice(offset, offset + PREFLIGHT_HEAD_CONCURRENCY);
     const checks = await Promise.all(batch.map(item => checkImageKit(item.id)));
     for (let index = 0; index < batch.length; index++) {
-      preflightImageKitChecks.set(batch[index].id, checks[index]);
-      if (checks[index]) preflightVerifiedHits++;
-      else items.push(batch[index]);
+      const item = batch[index];
+      preflightImageKitChecks.set(item.id, checks[index]);
+      if (checks[index]) {
+        preflightVerifiedHits++;
+        const shard = ledgerShard(item.id);
+        const records = await loadLedgerShard(config, shard, preflightLedgerCache);
+        if (records[item.id]) {
+          const verifiedAt = new Date().toISOString();
+          records[item.id].verifiedAt = verifiedAt;
+          records[item.id].updatedAt = verifiedAt;
+          refreshedLedgerShards.add(shard);
+        }
+      } else {
+        items.push(item);
+      }
     }
+  }
+  if (refreshedLedgerShards.size) {
+    await lease?.assertOwned?.();
+    await persistLedgerShards(config, preflightLedgerCache, [...refreshedLedgerShards]);
   }
   preflightLedgerCache.clear();
   // Publish poster-stage totals only after the target list and cache-hit count
@@ -966,7 +971,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     const verifyPendingBatch = async pendingItems => {
       const verificationPolicy = refreshResourcePolicy(process.memoryUsage().rss / (1024 * 1024));
       const verification = await runPool(pendingItems, async item => {
-        if (await waitForImageKit(item.id)) {
+        if (await waitForImageKit(item.id, item.verificationTimeoutMs || 90000)) {
           records[item.id] = ledgerRecord(item, 'verified', {
             verifiedAt: new Date().toISOString(),
             verification: 'imagekit-head-confirmed'
@@ -975,9 +980,9 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
         }
         records[item.id] = ledgerRecord(item, 'failed', {
           attempts: (Number(records[item.id]?.attempts) || 0) + 1,
-          lastError: 'ImageKit upload did not become visible within 180 seconds'
+          lastError: 'ImageKit upload did not become visible within the bounded verification window'
         });
-        throw new Error('ImageKit upload did not become visible within 180 seconds');
+        throw new Error('ImageKit upload did not become visible within the bounded verification window');
       }, verificationPolicy.verificationConcurrency, (item, error) => {
         const failureDetails = activeRefreshProgress?.failureDetails || [];
         failureDetails.push({ stage: 'imagekit-verification', titleId: item.id, error });
@@ -1041,7 +1046,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
                 attempts: (Number(records[item.id]?.attempts) || 0) + 1,
                 posterStatus: result.posterStatus || null
               });
-              pendingItems.push(item);
+              pendingItems.push({ ...item, verificationTimeoutMs: result.verificationTimeoutMs || 90000 });
               uploadPending++;
             } else if (result.status === 'imagekit-hit') {
               records[item.id] = ledgerRecord(item, 'verified', {
