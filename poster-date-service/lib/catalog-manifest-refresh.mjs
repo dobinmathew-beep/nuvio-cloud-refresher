@@ -83,7 +83,7 @@ function auth(config) {
 async function readState(config, path = STATE_PATH) {
   const url = config.endpoint + path;
   try {
-    const response = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(8000) });
+    const response = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(12000) });
     if (response.status === 404) return null;
     if (!response.ok) throw new Error('ImageKit state read HTTP ' + response.status);
     const value = await response.json();
