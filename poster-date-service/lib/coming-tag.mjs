@@ -69,6 +69,7 @@ function hasExpectedDateBadgeText(text, kind = 'premiere', isoDate = null) {
   const hasComingLabel = /coming/.test(normalized);
   const hasEpisodeLabel = /new episode/.test(normalized);
   if (hasComingLabel || hasEpisodeLabel) {
+    if (kind === 'any') return true;
     return kind === 'episode' ? hasEpisodeLabel : hasComingLabel;
   }
   // OCR can miss the small chip while still reading the exact date. Since a
