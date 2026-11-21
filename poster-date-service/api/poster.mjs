@@ -40,6 +40,36 @@ function imageKitAssetUrl(config, imdbId) {
   return config.endpoint + '/posters/' + encodeURIComponent(imdbId) + '.jpg';
 }
 
+// Fast availability-only check used when providers fail or clients probe with
+// HEAD. It deliberately does not OCR or fetch the image body.
+async function findExistingImageKitAsset(imdbId) {
+  const config = imageKitConfig();
+  if (!config) return null;
+  const assetUrl = imageKitAssetUrl(config, imdbId);
+  try {
+    const response = await fetch(assetUrl, {
+      method: 'HEAD',
+      cache: 'no-store',
+      signal: AbortSignal.timeout(2500)
+    });
+    const type = (response.headers.get('content-type') || '').toLowerCase();
+    return response.ok && type.startsWith('image/') ? assetUrl : null;
+  } catch {
+    return null;
+  }
+}
+
+function redirectToExistingImageKit(res, assetUrl, reason = 'provider-unavailable') {
+  res.statusCode = 302;
+  res.setHeader('Location', assetUrl);
+  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('X-Poster-Date-Status', 'stale-imagekit-fallback');
+  res.setHeader('X-Poster-Stale', 'true');
+  res.setHeader('X-Poster-Fallback-Reason', String(reason).slice(0, 180));
+  return res.end();
+}
+
 async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
   const config = imageKitConfig();
   if (!config) return null;
@@ -374,6 +404,8 @@ export default async function handler(req, res) {
 
   try {
     if (req.probe || req.method === 'HEAD') {
+      const existingAsset = await findExistingImageKitAsset(id);
+      if (existingAsset) return redirectToExistingImageKit(res, existingAsset, 'head-probe-imagekit-hit');
       const original = await getOriginal(id);
       setImageHeaders(res, original.type, req.probe ? 'template-probe' : 'head-check', 'none');
       res.setHeader('X-Poster-Source', original.source || 'BetterPosters');
@@ -444,11 +476,16 @@ export default async function handler(req, res) {
     // distinguish provider outages from missing artwork during recovery.
     const reason = String(error?.message || 'poster processing failed').slice(0, 240);
     console.warn('[poster-source-fallback]', JSON.stringify({ imdbId: id, reason }));
-    res.statusCode = 302;
-    res.setHeader('Location', sourceUrl(id));
+    // Never redirect back to BetterPosters after BetterPosters has already
+    // failed. Prefer a known, reachable ImageKit poster (even if its badge
+    // metadata is stale) over returning a broken poster to Nuvio.
+    const existingAsset = await findExistingImageKitAsset(id);
+    if (existingAsset) return redirectToExistingImageKit(res, existingAsset, reason);
+    res.statusCode = 503;
+    res.setHeader('Retry-After', '60');
     res.setHeader('X-Poster-Fallback-Reason', reason);
-    res.setHeader('Cache-Control', 'public, max-age=300');
+    res.setHeader('Cache-Control', 'no-store');
     res.setHeader('Access-Control-Allow-Origin', '*');
-    return res.end();
+    return res.end('Poster temporarily unavailable');
   }
 }
