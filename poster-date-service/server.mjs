@@ -179,10 +179,6 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
   } else if (await hasExistingComingDateTag(original.bytes, 'any', null)) {
     output = await removeExistingDateBadge(output, 0.105);
     console.info('[poster-stale-date-badge-removed]', JSON.stringify({ tmdbId, source: 'fallback-artwork' }));
-  } else if (await hasExistingComingDateTag(original, 'any', null)) {
-    output = await removeExistingDateBadge(output, 0.105);
-    console.info('[poster-stale-date-badge-removed]', JSON.stringify({ tvmazeId, source: 'fallback-artwork' }));
-  }
   if (justAdded && !release?.date) {
     try { output = await renderJustAddedBadge(output, 0.105); }
     catch (error) {
@@ -265,6 +261,10 @@ async function sendTvmazePosterFallback(tvmazeId, req, res) {
     } catch (error) {
       console.warn('[poster-date-overlay-failed]', JSON.stringify({ tvmazeId, date: release.date, error: error?.message || 'unknown error' }));
     }
+  }
+  else if (await hasExistingComingDateTag(original, 'any', null)) {
+    output = await removeExistingDateBadge(output, 0.105);
+    console.info('[poster-stale-date-badge-removed]', JSON.stringify({ tvmazeId, source: 'fallback-artwork' }));
   }
   if (justAdded && !release?.date) {
     try { output = await renderJustAddedBadge(output, 0.105); }
