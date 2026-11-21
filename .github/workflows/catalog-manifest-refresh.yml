@@ -2,6 +2,10 @@ name: Manifest catalogue poster refresh
 
 on:
   workflow_dispatch:
+  push:
+    branches: [poster-date-service]
+    paths:
+      - '.github/workflows/catalog-manifest-refresh.yml'
   schedule:
     # Oman is UTC+4: 06:00 and 18:00 local time.
     - cron: '0 2,14 * * *'
