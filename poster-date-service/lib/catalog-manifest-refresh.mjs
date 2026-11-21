@@ -175,9 +175,12 @@ function catalogueCheckpointPath(fingerprint) {
   return CATALOG_CHECKPOINT_DIR + '/' + key + '.json';
 }
 
-async function collectCatalog(manifest, catalog, config, fingerprint, lease, forceRescan = false) {
+async function collectCatalog(manifest, catalog, config, fingerprint, lease, scanGeneration, forceRescan = false) {
   const path = catalogueCheckpointPath(fingerprint);
-  const saved = forceRescan ? null : await readState(config, path);
+  const existing = await readState(config, path);
+  // Only reuse page state written by this refresh generation. Old completed
+  // snapshots must not short-circuit a forced full rediscovery.
+  const saved = existing?.scanGeneration === scanGeneration ? existing : null;
   const titles = new Map();
   if (saved?.titles && typeof saved.titles === 'object') {
     for (const [id, item] of Object.entries(saved.titles)) {
@@ -225,7 +228,7 @@ async function collectCatalog(manifest, catalog, config, fingerprint, lease, for
     // rewriting the entire multi-source title index after every catalogue.
     await lease?.assertOwned?.();
     await writeJson(config, path, {
-      version: 1, complete: done, nextPage: page + 1, pages, records: uniqueRecords,
+      version: 1, scanGeneration, complete: done, nextPage: page + 1, pages, records: uniqueRecords,
       seenPageIds: [...seenPageIds], titles: Object.fromEntries(titles)
     });
     if (pages % 25 === 0) console.log('[catalog-page-progress]', JSON.stringify({ source: manifest.name, id: catalog.id, pages, uniqueRecords, supportedTitles: titles.size }));
@@ -413,11 +416,18 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   if (forceReprocess || !checkpoint || checkpoint.complete === true || ![1, 2].includes(checkpoint.version)) {
     checkpoint = {
       version: 2, badgeRulesVersion: BADGE_RULES_VERSION,
+      scanGeneration: startedAt, forceRescanCatalogs: Boolean(forceReprocess),
       complete: false, updatedAt: startedAt, completedCatalogues: {}, titleFiles: {}
     };
     await lease?.assertOwned?.();
     await writeJson(config, CHECKPOINT_PATH, checkpoint);
   }
+  // A badge-rule-version checkpoint without an explicit completion marker is
+  // an interrupted full scan from the previous implementation. Continue its
+  // forced catalogue rediscovery rather than trusting old page snapshots.
+  const scanGeneration = String(checkpoint.scanGeneration || startedAt);
+  const forceRescanCatalogs = checkpoint.forceRescanCatalogs === true ||
+    (checkpoint.badgeRulesVersion === BADGE_RULES_VERSION && checkpoint.forceRescanCatalogs !== false);
   const completedCatalogues = checkpoint.completedCatalogues && typeof checkpoint.completedCatalogues === 'object'
     ? { ...checkpoint.completedCatalogues } : {};
   const titleFiles = checkpoint.titleFiles && typeof checkpoint.titleFiles === 'object' ? { ...checkpoint.titleFiles } : {};
@@ -490,7 +500,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
       }
 
       try {
-        const result = await collectCatalog(manifest, catalog, config, fingerprint, lease, forceReprocess);
+        const result = await collectCatalog(manifest, catalog, config, fingerprint, lease, scanGeneration, forceRescanCatalogs);
         for (const item of result.titles) if (!current.has(item.id)) current.set(item.id, item);
         delete result.titles;
         completedCatalogues[fingerprint] = {
@@ -512,6 +522,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
         // stays compact and records only which catalogues are complete.
         checkpoint = {
           version: 2, badgeRulesVersion: BADGE_RULES_VERSION,
+          scanGeneration, forceRescanCatalogs,
           complete: false, updatedAt: new Date().toISOString(),
           completedCatalogues, titleFiles
         };
@@ -768,6 +779,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   if (scanComplete && totalFailures === 0 && !resultCounts.failed && !resultCounts.retry && !resultCounts['rendered-not-cached'] && !resultCounts['source-redirect']) {
     checkpoint = {
       version: 2, badgeRulesVersion: BADGE_RULES_VERSION,
+      scanGeneration, forceRescanCatalogs: false,
       complete: true, updatedAt: new Date().toISOString(),
       completedCatalogues, titleFiles
     };
