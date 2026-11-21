@@ -327,6 +327,12 @@ const server = createServer(async (req, res) => {
       return res.end(JSON.stringify({ error: 'Unauthorized' }));
     }
     if (url.pathname === '/catalog-refresh/status') {
+      // Operator pause is authoritative: report a terminal state so the
+      // external GitHub waiter exits instead of re-POSTing and restarting work.
+      if (process.env.CATALOG_REFRESH_AUTOSTART === 'false') {
+        res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+        return res.end(JSON.stringify({ status: 'failed', error: 'Catalogue refresh paused by operator; saved checkpoints are preserved.' }));
+      }
       let sharedLease;
       try {
         sharedLease = await getRefreshLease();
@@ -349,6 +355,12 @@ const server = createServer(async (req, res) => {
     if (req.method !== 'POST') {
       res.writeHead(405, { 'Allow': 'POST', 'Cache-Control': 'no-store' });
       return res.end('Method not allowed');
+    }
+    // Do not allow scheduled GitHub waiters to restart a refresh while the
+    // operator pause flag is active.
+    if (process.env.CATALOG_REFRESH_AUTOSTART === 'false') {
+      res.writeHead(423, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+      return res.end(JSON.stringify({ status: 'paused', error: 'Catalogue refresh is paused; checkpoints are preserved.' }));
     }
     let sharedLease;
     try {
