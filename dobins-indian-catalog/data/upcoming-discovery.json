@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T21:51:53.427521+04:00",
+  "generatedAt": "2026-11-21T23:36:56.996423+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 26,
@@ -335,8 +335,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
         "https://www.dailyott.in/",

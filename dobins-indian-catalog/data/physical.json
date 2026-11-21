@@ -15521,11 +15521,75 @@
       "editions": [],
       "theatrical": [],
       "events": []
+    },
+    "telugu|325699": {
+      "checkedAt": "2026-11-21T23:36:56.996423+04:00",
+      "editions": [],
+      "theatrical": [
+        {
+          "date": "2015-12-02",
+          "country": "United States",
+          "region": "US",
+          "note": ""
+        }
+      ],
+      "events": [
+        {
+          "name": "Temper",
+          "type": "movie",
+          "language": "telugu",
+          "ottDate": "2015-12-02",
+          "sourceRecord": {
+            "tmdbId": 325699
+          },
+          "poster": "https://image.tmdb.org/t/p/w780/vRfSEFM9waphZKoa3ALTZCUYb2F.jpg",
+          "year": "2015",
+          "platforms": [
+            "Theatrical · United States"
+          ],
+          "source": "https://www.themoviedb.org/movie/325699/releases",
+          "sources": [
+            "https://www.themoviedb.org/movie/325699/releases"
+          ],
+          "confirmed": true,
+          "releaseKind": "theatrical",
+          "releaseDateBasis": "TMDB first theatrical release date",
+          "theatricalReleases": [
+            {
+              "date": "2015-12-02",
+              "country": "United States",
+              "region": "US",
+              "note": ""
+            }
+          ],
+          "_verifiedMetadata": {
+            "id": "tmdb:325699",
+            "type": "movie",
+            "name": "Temper",
+            "poster": "https://image.tmdb.org/t/p/w780/vRfSEFM9waphZKoa3ALTZCUYb2F.jpg",
+            "background": "https://image.tmdb.org/t/p/w780/hFybK0MfGhHkkavMLV5AdDr7umO.jpg",
+            "description": "Daya is a corrupt cop who joins hands with the local don. When Daya's girlfriend gets kidnapped, it triggers Daya to go against Vasu and his empire, leading him to uncover a bigger motive behind the kidnapping.",
+            "genres": [
+              "Action",
+              "Drama",
+              "Crime"
+            ],
+            "releaseInfo": "2015",
+            "cast": [],
+            "director": [],
+            "runtime": null,
+            "tmdb_id": 325699,
+            "imdb_id": null,
+            "original_language": "te",
+            "metadataSource": "https://www.themoviedb.org/movie/325699"
+          }
+        }
+      ]
     }
   },
   "discovery": {
     "malayalam": {
-      "checkedAt": "2026-11-21T21:51:53.427521+04:00",
+      "checkedAt": "2026-11-21T23:36:56.996423+04:00",
       "titles": {
         "1533928": "Bachelor Party D'eux",
         "1828678": "Grahanam",
@@ -16092,7 +16156,7 @@
       }
     },
     "tamil": {
-      "checkedAt": "2026-11-21T21:51:53.427521+04:00",
+      "checkedAt": "2026-11-21T23:36:56.996423+04:00",
       "titles": {
         "1680033": "Appa Kutty",
         "1618539": "Pulse",
@@ -16743,7 +16807,7 @@
       }
     },
     "telugu": {
-      "checkedAt": "2026-11-21T21:51:53.427521+04:00",
+      "checkedAt": "2026-11-21T23:36:56.996423+04:00",
       "titles": {
         "1322273": "Aakasamlo Oka Tara",
         "1505644": "ENE Repeat",
@@ -16920,13 +16984,13 @@
         "419245": "Hyper",
         "369925": "Oopiri",
         "256040": "Bāhubali: The Beginning",
+        "325699": "Temper",
         "308525": "Vundile Manchi Kalam Mundu Munduna",
         "308237": "Ottesi Cheputunna",
         "307751": "Brother of Bommali",
         "307736": "Alasyam Amrutham",
         "307614": "Rabhasa",
-        "300751": "Nuvvala Nenila",
-        "307370": "Green Signal"
+        "300751": "Nuvvala Nenila"
       },
       "kinds": {
         "1322273": [
@@ -17454,6 +17518,9 @@
         "256040": [
           "theatrical"
         ],
+        "325699": [
+          "theatrical"
+        ],
         "308525": [
           "theatrical"
         ],
@@ -17471,14 +17538,11 @@
         ],
         "300751": [
           "theatrical"
-        ],
-        "307370": [
-          "theatrical"
         ]
       }
     },
     "hindi": {
-      "checkedAt": "2026-11-21T21:51:53.427521+04:00",
+      "checkedAt": "2026-11-21T23:36:56.996423+04:00",
       "titles": {
         "1808244": "Pratap",
         "1783280": "Party Animals",
