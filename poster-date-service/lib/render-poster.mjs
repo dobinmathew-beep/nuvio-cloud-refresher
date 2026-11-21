@@ -1,5 +1,35 @@
 export const JUST_ADDED_BADGE_TEXT = 'Just Added';
 
+export async function removeExistingDateBadge(input, topRatio = 0.105) {
+  const { default: sharp } = await import('sharp');
+  const metadata = await sharp(input, { limitInputPixels: 40000000 }).metadata();
+  if (!metadata.width || !metadata.height || metadata.width < 160 || metadata.height < 240) {
+    throw new Error('Unsupported poster dimensions');
+  }
+  const width = metadata.width, height = metadata.height;
+  const badgeWidth = Math.round(width * 0.78);
+  const badgeHeight = Math.max(40, Math.round(width * 0.135));
+  const left = Math.round((width - badgeWidth) / 2);
+  const top = Math.round(height * topRatio);
+  const radius = Math.round(badgeHeight * 0.18);
+  const blurRadius = Math.max(4, Math.round(width * 0.012));
+  const roundedMask = Buffer.from(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${badgeWidth}" height="${badgeHeight}"><rect width="${badgeWidth}" height="${badgeHeight}" rx="${radius}" fill="white"/></svg>`
+  );
+  const blurred = await sharp(input)
+    .extract({ left, top, width: badgeWidth, height: badgeHeight })
+    .blur(blurRadius)
+    .composite([{ input: roundedMask, blend: 'dest-in' }])
+    .png()
+    .toBuffer();
+  let image = sharp(input).composite([{ input: blurred, left, top }]);
+  if (metadata.format === 'webp') image = image.webp({ quality: 94, effort: 4 });
+  else if (metadata.format === 'png') image = image.png({ compressionLevel: 8 });
+  else if (metadata.format === 'avif') image = image.avif({ quality: 90, effort: 4 });
+  else image = image.jpeg({ quality: 94, mozjpeg: true });
+  return image.toBuffer();
+}
+
 export async function renderUpcomingBadge(input, isoDate, kind = 'premiere', topRatio = 0.105) {
   const date = new Date(isoDate + 'T00:00:00Z');
   const month = new Intl.DateTimeFormat('en', { month: 'short', timeZone: 'UTC' }).format(date);
