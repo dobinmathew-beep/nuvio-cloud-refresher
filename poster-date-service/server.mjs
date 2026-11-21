@@ -179,6 +179,7 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
   } else if (await hasExistingComingDateTag(original.bytes, 'any', null)) {
     output = await removeExistingDateBadge(output, 0.105);
     console.info('[poster-stale-date-badge-removed]', JSON.stringify({ tmdbId, source: 'fallback-artwork' }));
+  }
   if (justAdded && !release?.date) {
     try { output = await renderJustAddedBadge(output, 0.105); }
     catch (error) {
