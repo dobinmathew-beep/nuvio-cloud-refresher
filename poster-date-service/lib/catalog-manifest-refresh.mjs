@@ -1,6 +1,7 @@
 import { Buffer } from 'node:buffer';
 import { createHash } from 'node:crypto';
 import { withRefreshLease, publishRefreshProgress } from './refresh-coordination.mjs';
+import { initializeImageKitStorageSnapshot } from './imagekit-storage.mjs';
 
 const MANIFEST_KEYS = [
   'CATALOG_MANIFEST_ELFHOSTED_URL',
@@ -871,6 +872,11 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     alreadyVerified: preflightVerifiedHits,
     strategy: forceReprocess ? 'force-revalidate-all-catalogue-titles' : 'retry-only-unresolved-or-missing-imagekit-assets'
   }));
+  // Establish a verified storage budget before the first poster request.
+  // The HTTP handler deliberately initializes this in the background so
+  // ordinary Nuvio requests never wait on an account inventory scan; the
+  // recovery worker must await it or every first upload would be skipped.
+  await initializeImageKitStorageSnapshot();
   const resultCounts = preflightVerifiedHits ? { 'ledger-hit': preflightVerifiedHits } : {};
   let totalFailures = 0;
   let ledgerHits = preflightVerifiedHits;
