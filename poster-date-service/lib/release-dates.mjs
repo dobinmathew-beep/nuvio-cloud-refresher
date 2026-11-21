@@ -68,8 +68,8 @@ function chooseMovieDate(rows, today) {
   // must never resurrect a Coming badge.
   if (hasPastDigitalReleaseForTest(rows, today)) return null;
   const earliestFuture = all
-    .filter(item => item.region && isFuture(item.date, today))
-    .sort((a, b) => a.date.localeCompare(b.date) || a.region.localeCompare(b.region))[0];
+    .filter(item => isFuture(item.date, today))
+    .sort((a, b) => a.date.localeCompare(b.date) || String(a.region || '').localeCompare(String(b.region || '')))[0];
   return earliestFuture
     ? { ...earliestFuture, source: 'tmdb-digital-release', kind: 'premiere' }
     : null;
