@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { classifyPrewarmResponse, isFreshVerifiedRecord, VERIFIED_ASSET_RECHECK_TTL_MS } from '../lib/catalog-prewarm-policy.mjs';
+import { classifyPrewarmResponse, isFreshVerifiedRecord, VERIFIED_ASSET_RECHECK_TTL_MS, needsResumeVerification } from '../lib/catalog-prewarm-policy.mjs';
 
 test('ImageKit redirects are deferred to asynchronous verification instead of repeating generation', () => {
   assert.deepEqual(classifyPrewarmResponse({
@@ -46,4 +46,9 @@ test('recent verified ledger records avoid redundant HEAD checks but expire for 
     ...record, verifiedAt: new Date(now - VERIFIED_ASSET_RECHECK_TTL_MS - 1000).toISOString()
   }, fingerprint, now), false);
   assert.equal(isFreshVerifiedRecord({ ...record, status: 'failed' }, fingerprint, now), false);
+});
+
+test('interrupted upload-pending records require a HEAD check before regeneration', () => {
+  assert.equal(needsResumeVerification({ status: 'upload-pending', fingerprint: 'f' }, 'f'), true);
+  assert.equal(needsResumeVerification({ status: 'upload-pending', fingerprint: 'other' }, 'f'), false);
 });

@@ -3,6 +3,7 @@ import { timingSafeEqual, randomUUID } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import posterHandler from './api/poster.mjs';
+import { validCatalogPosterFallback } from './lib/catalog-poster-fallback.mjs';
 import healthHandler from './api/health.mjs';
 import { resolveTmdbExternalImdbId } from './lib/tmdb-external-ids.mjs';
 import { renderJustAddedBadge, renderUpcomingBadge, removeExistingDateBadge } from './lib/render-poster.mjs';
@@ -110,9 +111,36 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
   }
 
   const sources = [];
+  // TMDB-only catalogues often already provide a title-specific poster URL.
+  // The IMDb handler honours this fallback, so the TMDB-ID handler must too.
+  const catalogFallbackUrl = String(req.query?.fallback || '');
+  if (validCatalogPosterFallback(catalogFallbackUrl)) {
+    try {
+      const imageResponse = await fetch(catalogFallbackUrl, {
+        headers: { accept: 'image/avif,image/webp,image/jpeg,image/png,*/*' },
+        redirect: 'follow',
+        signal: AbortSignal.timeout(5000)
+      });
+      const type = (imageResponse.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
+      const contentLength = Number(imageResponse.headers.get('content-length') || 0);
+      if (!imageResponse.ok || !['image/jpeg', 'image/png', 'image/webp', 'image/avif'].includes(type) ||
+          contentLength > 15 * 1024 * 1024) {
+        await imageResponse.body?.cancel().catch(() => {});
+        throw new Error('Catalog artwork HTTP ' + imageResponse.status + ' (' + type + ')');
+      }
+      const bytes = Buffer.from(await imageResponse.arrayBuffer());
+      if (!bytes.length || bytes.length > 15 * 1024 * 1024) throw new Error('Catalog artwork exceeds size limit');
+      sources.push({ source: 'CatalogArtwork', bytes, type });
+    } catch (error) {
+      console.warn('[tmdb-poster-source-fallback]', JSON.stringify({
+        tmdbId, failedSource: 'CatalogArtwork', error: error?.message || 'unknown error'
+      }));
+    }
+  }
+
   const apiKey = process.env.TMDB_API_KEY || '';
   const readToken = process.env.TMDB_API_READ_ACCESS_TOKEN || '';
-  if (apiKey || readToken) {
+  if (!sources.length && (apiKey || readToken)) {
     try {
       const detailsUrl = new URL('https://api.themoviedb.org/3/' + mediaType + '/' + encodeURIComponent(tmdbId));
       const headers = { accept: 'application/json' };

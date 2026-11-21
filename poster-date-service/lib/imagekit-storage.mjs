@@ -5,6 +5,13 @@ const UPLOAD_API = 'https://upload.imagekit.io/api/v1/files/upload';
 export const IMAGEKIT_STORAGE_LIMIT_BYTES = Math.floor(2.25 * 1000 * 1000 * 1000);
 const MAINTENANCE_COOLDOWN_MS = 6 * 60 * 60 * 1000;
 const STORAGE_SNAPSHOT_PATH = '/catalog-state/imagekit-storage-snapshot.json';
+export function imageKitStorageSnapshotUrl(endpoint, cacheBuster = Date.now()) {
+  let base = String(endpoint);
+  while (base.endsWith('/')) base = base.slice(0, -1);
+  const url = new URL(base + STORAGE_SNAPSHOT_PATH);
+  url.searchParams.set('v', String(cacheBuster));
+  return url.toString();
+}
 const STORAGE_SNAPSHOT_TTL_MS = 6 * 60 * 60 * 1000;
 let storageSnapshot = { known: false, bytes: 0, checkedAt: 0, filesByPath: {} };
 const UPLOAD_HEADROOM_BYTES = 32 * 1024 * 1024;
@@ -152,6 +159,11 @@ async function persistStorageSnapshot() {
       signal: AbortSignal.timeout(20000)
     });
     if (!response.ok) throw new Error('ImageKit storage snapshot upload failed (' + response.status + ')');
+    const uploadMetadata = await response.json().catch(() => null);
+    console.info('[imagekit-storage-snapshot-persisted]', JSON.stringify({
+      filePath: uploadMetadata?.filePath || STORAGE_SNAPSHOT_PATH,
+      bytes: Buffer.byteLength(JSON.stringify(value))
+    }));
     snapshotDirtyUploads = Math.max(0, snapshotDirtyUploads - dirtyAtStart);
     persisted = true;
     return true;
@@ -227,7 +239,7 @@ export async function initializeImageKitStorageSnapshot() {
   snapshotInitializationPromise = (async () => {
     const config = imageKitConfig();
     if (!config) throw new Error('ImageKit credentials are not configured');
-    const snapshotUrl = config.endpoint + STORAGE_SNAPSHOT_PATH;
+    const snapshotUrl = imageKitStorageSnapshotUrl(config.endpoint);
     try {
       const response = await fetch(snapshotUrl, { cache: 'no-store', signal: AbortSignal.timeout(12000) });
       if (response.ok) {
@@ -249,6 +261,8 @@ export async function initializeImageKitStorageSnapshot() {
           }));
           return getImageKitStorageSnapshot();
         }
+      } else {
+        console.warn('[imagekit-storage-snapshot-not-found]', JSON.stringify({ status: response.status }));
       }
     } catch (error) {
       console.warn('[imagekit-storage-snapshot-restore-failed]', error?.message || 'unknown error');

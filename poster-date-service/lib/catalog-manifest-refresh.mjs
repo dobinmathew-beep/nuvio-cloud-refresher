@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { withRefreshLease, publishRefreshProgress } from './refresh-coordination.mjs';
 import { initializeImageKitStorageSnapshot } from './imagekit-storage.mjs';
 import { createBoundedTaskQueue, refreshResourcePolicy } from './refresh-backpressure.mjs';
-import { classifyPrewarmResponse, isFreshVerifiedRecord } from './catalog-prewarm-policy.mjs';
+import { classifyPrewarmResponse, isFreshVerifiedRecord, needsResumeVerification } from './catalog-prewarm-policy.mjs';
 
 const MANIFEST_KEYS = [
   'CATALOG_MANIFEST_ELFHOSTED_URL',
@@ -865,7 +865,9 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   const preflightImageKitChecks = new Map();
   const items = [];
   const candidatesForHeadCheck = [];
+  const pendingResumeItems = [];
   let preflightVerifiedHits = 0;
+  let deferredPending = 0;
   // Read each ledger shard once, then verify existing assets with a small,
   // bounded network-only fan-out. OCR/image generation stays serial on Free.
   const refreshedLedgerShards = new Set();
@@ -873,7 +875,9 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     const shard = ledgerShard(item.id);
     const records = await loadLedgerShard(config, shard, preflightLedgerCache);
     const record = records[item.id];
-    if (!forceReprocess && reusableLedgerRecord(record, item)) {
+    if (!forceReprocess && needsResumeVerification(record, itemFingerprint(item))) {
+      pendingResumeItems.push({ item, record });
+    } else if (!forceReprocess && reusableLedgerRecord(record, item)) {
       if (isFreshVerifiedRecord(record, itemFingerprint(item))) {
         // A recent successful HEAD confirmation remains valid across a restart.
         preflightImageKitChecks.set(item.id, true);
@@ -886,6 +890,35 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     }
   }
   const PREFLIGHT_HEAD_CONCURRENCY = 8;
+  // A persisted upload-pending record means the previous process may have
+  // stopped after the origin accepted the upload but before CDN verification.
+  // Confirm the canonical asset once; if still absent, defer regeneration for
+  // two minutes so propagation can finish without risking a duplicate.
+  for (let offset = 0; offset < pendingResumeItems.length; offset += PREFLIGHT_HEAD_CONCURRENCY) {
+    const batch = pendingResumeItems.slice(offset, offset + PREFLIGHT_HEAD_CONCURRENCY);
+    const checks = await Promise.all(batch.map(({ item }) => checkImageKit(item.id)));
+    for (let index = 0; index < batch.length; index++) {
+      const { item, record } = batch[index];
+      const shard = ledgerShard(item.id);
+      const records = await loadLedgerShard(config, shard, preflightLedgerCache);
+      preflightImageKitChecks.set(item.id, checks[index]);
+      if (checks[index]) {
+        records[item.id] = ledgerRecord(item, 'verified', {
+          verifiedAt: new Date().toISOString(),
+          verification: 'restart-pending-upload-head-confirmed'
+        });
+        preflightVerifiedHits++;
+      } else {
+        records[item.id] = ledgerRecord(item, 'retry', {
+          attempts: (Number(record.attempts) || 0) + 1,
+          retryAfter: new Date(Date.now() + 2 * 60 * 1000).toISOString(),
+          lastError: 'Previous upload outcome was uncertain; deferred after restart to avoid duplicate generation'
+        });
+        deferredPending++;
+      }
+      refreshedLedgerShards.add(shard);
+    }
+  }
   for (let offset = 0; offset < candidatesForHeadCheck.length; offset += PREFLIGHT_HEAD_CONCURRENCY) {
     const batch = candidatesForHeadCheck.slice(offset, offset + PREFLIGHT_HEAD_CONCURRENCY);
     const checks = await Promise.all(batch.map(item => checkImageKit(item.id)));
@@ -917,7 +950,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   // ReferenceError and breaks automatic recovery after a Render restart.
   updateRefreshProgress({
     stage: 'poster-processing', titlesDiscovered: allItems.length,
-    postersTargeted: items.length, postersCacheHits: preflightVerifiedHits,
+    postersTargeted: items.length, postersCacheHits: preflightVerifiedHits, postersDeferred: deferredPending,
     cataloguesDiscovered: catalogues.length,
     cataloguesScanned: cataloguesScannedThisRun,
     cataloguesFailed: catalogues.filter(c => c.error).length
@@ -926,6 +959,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     catalogueTitles: allItems.length,
     retryCandidates: items.length,
     alreadyVerified: preflightVerifiedHits,
+    deferredPending,
     strategy: forceReprocess ? 'force-revalidate-all-catalogue-titles' : 'retry-only-unresolved-or-missing-imagekit-assets'
   }));
   // Establish a verified storage budget before the first poster request.
@@ -985,6 +1019,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
         }
         records[item.id] = ledgerRecord(item, 'failed', {
           attempts: (Number(records[item.id]?.attempts) || 0) + 1,
+          retryAfter: new Date(Date.now() + 2 * 60 * 1000).toISOString(),
           lastError: 'ImageKit upload did not become visible within the bounded verification window'
         });
         throw new Error('ImageKit upload did not become visible within the bounded verification window');
@@ -1050,7 +1085,10 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
             if (result.status === 'upload-pending') {
               records[item.id] = ledgerRecord(item, 'upload-pending', {
                 attempts: (Number(records[item.id]?.attempts) || 0) + 1,
-                posterStatus: result.posterStatus || null
+                posterStatus: result.posterStatus || null,
+                verificationTimeoutMs: result.verificationTimeoutMs || 90000,
+                uploadAccepted: result.uploadAccepted === true,
+                pendingSince: new Date().toISOString()
               });
               pendingItems.push({ ...item, verificationTimeoutMs: result.verificationTimeoutMs || 90000, uploadAccepted: result.uploadAccepted === true });
               uploadPending++;

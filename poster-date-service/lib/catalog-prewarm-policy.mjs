@@ -26,3 +26,10 @@ export function classifyPrewarmResponse({ status, contentType = '', location = '
   }
   return { status: 'rendered', reason: 'image-response' };
 }
+
+export function needsResumeVerification(record, fingerprint, now = Date.now()) {
+  if (!record || record.fingerprint !== fingerprint) return false;
+  if (record.status === 'upload-pending') return true;
+  const retryAt = Date.parse(record.retryAfter || '');
+  return Number.isFinite(retryAt) && retryAt > now;
+}
