@@ -130,13 +130,17 @@ jobs:
           console.log('| Completion | ' + n(p.completionPercent) + '% |');
           console.log('| Catalogues scanned / discovered | ' + n(p.cataloguesScanned) + ' / ' + n(p.cataloguesDiscovered) + ' (of ' + n(p.cataloguesTotal) + ') |');
           console.log('| Catalogues failed / skipped | ' + n(p.cataloguesFailed) + ' / ' + n(p.cataloguesSkipped) + ' |');
+          console.log('| Catalogues resumed from checkpoint | ' + n(p.cataloguesResumed) + ' |');
+          console.log('| Catalogue records scanned / resumed | ' + n(p.catalogueRecordsScanned) + ' / ' + n(p.catalogueRecordsResumed) + ' |');
           console.log('| Unique titles discovered | ' + n(p.titlesDiscovered) + ' |');
+          console.log('| New unique titles found this run | ' + n(p.titlesNewThisRun) + ' |');
           console.log('| Poster targets / visited | ' + n(p.postersTargeted) + ' / ' + n(p.postersVisited) + ' |');
           console.log('| Posters corrected and verified | ' + n(p.postersCorrected) + ' |');
           console.log('| Existing verified cache hits | ' + n(p.postersCacheHits) + ' |');
           console.log('| Uploads awaiting verification | ' + n(p.postersPending) + ' |');
           console.log('| Failures | ' + n(p.failures) + ' |');
           console.log('| Scan speed | ' + n(p.titlesPerMinute) + ' titles/min |');
+          console.log('| Catalogue scan speed | ' + n(p.cataloguesPerMinute) + ' catalogues/min |');
           console.log('| Poster processing speed | ' + n(p.postersPerMinute) + ' posters/min |');
           console.log('| Elapsed seconds | ' + elapsed + ' |');
           console.log('| Last durable checkpoint | ' + (p.lastCheckpointAt || '—') + ' |');
