@@ -1,20 +1,19 @@
 import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
 import { dirname } from 'node:path';
+import { createSerialQueue } from './serial-queue.mjs';
 
 const require = createRequire(import.meta.url);
 const CACHE_MS = 6 * 60 * 60 * 1000;
 const cache = new Map();
 let sharpConfigured = false;
 let workerPromise;
-let ocrQueue = Promise.resolve();
+const ocrQueue = createSerialQueue();
 let workerRecognitionCount = 0;
 
 
 function withOcrQueue(task) {
-  const job = ocrQueue.then(task);
-  ocrQueue = job.then(() => undefined, () => undefined);
-  return job;
+  return ocrQueue.run(task);
 }
 
 async function recognizeText(prepared) {
@@ -158,16 +157,21 @@ export { hasExpectedDateBadgeText };
 
 
 export async function terminateOcrWorker() {
-  if (!workerPromise) return;
-  try {
-    const worker = await workerPromise;
-    await worker.terminate();
-  } finally {
-    workerPromise = null;
-    workerRecognitionCount = 0;
-    await new Promise(resolve => setImmediate(resolve));
-    global.gc?.();
-  }
+  // Memory-pressure cleanup must join the same FIFO as recognition. Without
+  // this, cleanup can terminate Tesseract between setParameters() and
+  // recognize(), leaving Tesseract's internal worker handle null.
+  return withOcrQueue(async () => {
+    if (!workerPromise) return;
+    try {
+      const worker = await workerPromise;
+      await worker.terminate();
+    } finally {
+      workerPromise = null;
+      workerRecognitionCount = 0;
+      await new Promise(resolve => setImmediate(resolve));
+      global.gc?.();
+    }
+  });
 }
 
 export function hasJustAddedBadgeText(text) {
