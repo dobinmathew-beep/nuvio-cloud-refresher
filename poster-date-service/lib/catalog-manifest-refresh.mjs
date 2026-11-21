@@ -20,9 +20,9 @@ const LEDGER_DIR = '/catalog-state/poster-processing';
 const LEDGER_VERSION = 1;
 const BADGE_RULES_VERSION = 3;
 const LEDGER_SHARDS = '0123456789abcdef';
-const PREWARM_BATCH_SIZE = Math.max(10, Math.min(50, Number(process.env.CATALOG_PREWARM_BATCH_SIZE || 50)));
-const PREWARM_CONCURRENCY = Math.max(1, Math.min(6, Number(process.env.CATALOG_PREWARM_CONCURRENCY || 4)));
-const VERIFY_CONCURRENCY = Math.max(1, Math.min(8, Number(process.env.CATALOG_VERIFY_CONCURRENCY || 6)));
+const PREWARM_BATCH_SIZE = Math.max(5, Math.min(10, Number(process.env.CATALOG_PREWARM_BATCH_SIZE || 10)));
+const PREWARM_CONCURRENCY = Math.max(1, Math.min(2, Number(process.env.CATALOG_PREWARM_CONCURRENCY || 2)));
+const VERIFY_CONCURRENCY = Math.max(1, Math.min(4, Number(process.env.CATALOG_VERIFY_CONCURRENCY || 4)));
 
 function ledgerShard(id) {
   return createHash('sha256').update(String(id)).digest('hex')[0];
@@ -269,9 +269,8 @@ function adaptivePrewarmConcurrency() {
   // throughput by default, but back off automatically if native/image work
   // pushes resident memory toward the safety ceiling.
   const rssMiB = process.memoryUsage().rss / (1024 * 1024);
-  if (rssMiB >= 360) return 1;
-  if (rssMiB >= 300) return Math.min(2, PREWARM_CONCURRENCY);
-  return Math.min(3, PREWARM_CONCURRENCY);
+  if (rssMiB >= 300) return 1;
+  return Math.min(2, PREWARM_CONCURRENCY);
 }
 
 async function runPool(items, worker, concurrency = CONCURRENCY) {
@@ -332,9 +331,7 @@ async function prewarm(item) {
   const requestBase = item.poster
     ? path + (path.includes('?') ? '&' : '?') + 'fallback=' + encodeURIComponent(item.poster)
     : path;
-  const forceVersion = process.env.CATALOG_REFRESH_FORCE_REPROCESS_ON_START === 'true'
-    ? (requestBase.includes('?') ? '&' : '?') + 'v=global-badge-rules-v2'
-    : '';
+  const forceVersion = '';
   const requestPath = requestBase + forceVersion;
   const endpoint = (process.env.POSTER_SERVICE_URL || 'https://great-indian-upcoming-posters.onrender.com').replace(/\/$/, '');
   let lastError = null;
@@ -770,7 +767,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
 
       batchesProcessed++;
       postersVisited += batch.length;
-      if (batchesProcessed % 4 === 0 || postersVisited === items.length) {
+      if (batchesProcessed % 2 === 0 || postersVisited === items.length) {
         const rss = Math.round(process.memoryUsage().rss / (1024 * 1024));
         console.log('[catalog-ledger-progress]', JSON.stringify({
           visited: postersVisited, total: items.length, batch: batchesProcessed,
@@ -804,7 +801,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     cataloguesSkippedDuplicate,
     cataloguesSkippedDynamic: catalogues.filter(c => c.skipped).length,
     cataloguesFailed: catalogues.filter(c => c.error).length,
-    uniqueTitles: items.length, newlyDiscovered, scanComplete,
+    uniqueTitles: allItems.length, newlyDiscovered, scanComplete,
     postersProcessed: postersVisited, postersSkippedFromLedger: ledgerHits, batchesProcessed,
     verifiedUploads, verifiedCacheHits, uploadsAwaitingVerification: uploadPending,
     failures: totalFailures, results: resultCounts
