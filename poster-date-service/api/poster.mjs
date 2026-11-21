@@ -1,4 +1,5 @@
 import { upcomingRelease, hasPastDigitalRelease, validImdbId } from '../lib/release-dates.mjs';
+import { validCatalogPosterFallback } from '../lib/catalog-poster-fallback.mjs';
 import { renderUpcomingBadge, renderJustAddedBadge, removeExistingDateBadge } from '../lib/render-poster.mjs';
 import { inspectExistingPosterBadges, terminateOcrWorker } from '../lib/coming-tag.mjs';
 import { isCatalogRecentlyAdded } from '../lib/catalog-just-added.mjs';
@@ -10,21 +11,7 @@ const BETTERPOSTERS_RATING_SOURCE = 'IM';
 const RPDB = 'https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/';
 const METAHUB = 'https://live.metahub.space/poster/small/';
 const MAX_BYTES = 15 * 1024 * 1024;
-const CATALOG_POSTER_FALLBACK_HOSTS = new Set([
-  'cinebuds.com', 'www.cinebuds.com', 'image.tmdb.org',
-  'images.metahub.space', 'live.metahub.space', 'm.media-amazon.com',
-  'assets.fanart.tv', 'static.tvmaze.com'
-]);
-function validCatalogPosterFallback(value) {
-  try {
-    const url = new URL(String(value || ''));
-    return url.protocol === 'https:' && !url.username && !url.password && !url.port &&
-      CATALOG_POSTER_FALLBACK_HOSTS.has(url.hostname) &&
-      /\.(?:jpe?g|png|webp|avif)$/i.test(url.pathname);
-  } catch {
-    return false;
-  }
-}
+
 const RESULT_CACHE_MS = 2 * 60 * 1000;
 const resultCache = new Map();
 const pendingResults = new Map();
