@@ -170,7 +170,7 @@ export async function terminateOcrWorker() {
   }
 }
 
-export export function hasJustAddedBadgeText(text) {
+export function hasJustAddedBadgeText(text) {
   return /\bjust\s*added\b/i.test(normalizedText(text));
 }
 
