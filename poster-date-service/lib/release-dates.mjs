@@ -55,8 +55,15 @@ function digitalDates(rows) {
     .map(item => ({ date: (item.release_date || '').slice(0, 10), region: row.iso_3166_1 })))
     .filter(item => /^\d{4}-\d{2}-\d{2}$/.test(item.date));
 }
+export function hasPastDigitalReleaseForTest(rows, today) {
+  // The artwork is shared across regions. Once any territory has a confirmed
+  // digital (buy/rent) release, a later territory date must not keep a global
+  // "Coming" badge alive. Physical, theatrical and premiere dates are excluded.
+  return digitalDates(rows).some(item => item.date <= today);
+}
 function chooseMovieDate(rows, today) {
   const all = digitalDates(rows);
+  if (hasPastDigitalReleaseForTest(rows, today)) return null;
   // Prefer India's digital date. If TMDB has no Indian digital listing at
   // all, a confirmed US/GB digital date may be used as a fallback.
   const byDate = values => values.sort((a, b) => a.date.localeCompare(b.date));
@@ -227,6 +234,31 @@ async function resolveDate(imdbId, credential, today) {
   }
   return null;
 }
+const pastDigitalReleaseCache = new Map();
+export async function hasPastDigitalRelease(imdbId, options = {}) {
+  if (!validImdbId(imdbId)) return null;
+  const today = options.today || getTodayInTimeZone(options.now || new Date());
+  const credential = { apiKey: options.apiKey || process.env.TMDB_API_KEY || '', readToken: process.env.TMDB_API_READ_ACCESS_TOKEN || '' };
+  if (!credential.apiKey && !credential.readToken) return null;
+  const key = imdbId + '|digital-released|' + today;
+  const cached = pastDigitalReleaseCache.get(key);
+  if (cached && Date.now() - cached.at < CACHE_MS) return cached.value;
+  try {
+    const found = await tmdbJson('/find/' + encodeURIComponent(imdbId), credential);
+    const movie = found.movie_results?.[0];
+    if (!movie?.id) return false;
+    const releaseData = await tmdbJson('/movie/' + movie.id + '/release_dates', credential);
+    const released = hasPastDigitalReleaseForTest(releaseData.results || [], today);
+    pastDigitalReleaseCache.set(key, { value: released, at: Date.now() });
+    while (pastDigitalReleaseCache.size > 1200) pastDigitalReleaseCache.delete(pastDigitalReleaseCache.keys().next().value);
+    console.info('[digital-release-status]', JSON.stringify({ imdbId, tmdbId: movie.id, digitalReleased: released, evaluationDate: today, policy: 'any-confirmed-territory-vetoes-global-coming-badge' }));
+    return released;
+  } catch (error) {
+    console.warn('[digital-release-status-lookup-failed]', JSON.stringify({ imdbId, error: error?.message || 'unknown error' }));
+    return null;
+  }
+}
+
 export async function upcomingRelease(imdbId, options = {}) {
   if (!validImdbId(imdbId)) return null;
   const today = options.today || getTodayInTimeZone(options.now || new Date());
