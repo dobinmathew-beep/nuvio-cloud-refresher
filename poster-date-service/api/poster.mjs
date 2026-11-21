@@ -112,6 +112,7 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
       releaseDate: expectedDate,
       releaseKind: expectedDate ? expectedKind : null,
       justAdded: hasJustAddedBadge,
+      digitalReleasedWorldwide: metadata?.digitalReleasedWorldwide === true,
       uploadedAt: new Date(lastModified).toISOString()
     }).catch(error => console.warn('[poster-validation-sidecar-save-failed]', JSON.stringify({
       imdbId, error: error?.message || 'unknown error'
@@ -203,7 +204,7 @@ async function getOriginal(imdbId, fallbackUrl = '') {
   }
 }
 
-async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl = '') {
+async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl = '', digitalReleasedWorldwide = false) {
   const original = await getOriginal(id, fallbackUrl);
 
   // BetterPosters may already mark a title as Just Added. Normalize that tag
@@ -234,12 +235,20 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
   // visible, while this avoids a costly Tesseract pass for nearly every title.
 
   const release = knownRelease === undefined ? await upcomingRelease(id) : knownRelease;
+  // A Coming/New Episode date owns the badge slot. Any source or catalog
+  // Just Added label is suppressed; renderUpcomingBadge replaces that same
+  // top-tag area rather than stacking a second badge beneath it.
+  if (release?.date) {
+    if (shouldRenderJustAdded) console.info('[poster-badge-precedence]', JSON.stringify({ imdbId: id, source: justAddedSource, selected: 'coming-date' }));
+    shouldRenderJustAdded = false;
+    justAddedSource = null;
+  }
   let output = original.bytes;
   let dateStatus = 'no-upcoming-release';
   let justAddedStatus = false;
 
-  // Both labels can apply to one title. Stack them vertically so neither
-  // overwrites the other: release date first, Just Added immediately below.
+  // Coming/New Episode takes precedence over Just Added. The date chip
+  // replaces the source tag area, and no Just Added overlay is rendered.
   if (release?.date) {
     try {
       output = await renderUpcomingBadge(output, release.date, release.kind, 0.105);
@@ -285,18 +294,19 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
     source: original.source,
     status,
     releaseDate: dateRendered ? release.date : 'none',
-    releaseKind: dateRendered ? (release.kind || 'none') : 'none'
+    releaseKind: dateRendered ? (release.kind || 'none') : 'none',
+    digitalReleasedWorldwide: digitalReleasedWorldwide === true
   };
 }
 
-async function getBuiltPoster(id, knownRelease = undefined, badge = '', version = '', fallbackUrl = '') {
+async function getBuiltPoster(id, knownRelease = undefined, badge = '', version = '', fallbackUrl = '', digitalReleasedWorldwide = false) {
   const today = new Date().toISOString().slice(0, 10);
-  const cacheKey = id + '|' + today + '|' + badge + '|' + version + '|' + fallbackUrl;
+  const cacheKey = id + '|' + today + '|' + badge + '|' + version + '|' + fallbackUrl + '|released=' + (digitalReleasedWorldwide ? '1' : '0');
   const cached = resultCache.get(cacheKey);
   if (cached && cached.expiresAt > Date.now()) return cached.value;
   if (pendingResults.has(cacheKey)) return pendingResults.get(cacheKey);
 
-  const pending = buildPoster(id, knownRelease, badge, fallbackUrl).then(value => {
+  const pending = buildPoster(id, knownRelease, badge, fallbackUrl, digitalReleasedWorldwide).then(value => {
     resultCache.set(cacheKey, { value, expiresAt: Date.now() + RESULT_CACHE_MS });
     while (resultCache.size > 80) resultCache.delete(resultCache.keys().next().value);
     return value;
@@ -354,10 +364,24 @@ export default async function handler(req, res) {
     // This prevents a cached date badge from surviving its release day.
     const badge = String(req.query?.badge || '').toLowerCase() === 'just-added' ? 'just-added' : '';
     const catalogRelease = await upcomingReleaseFromCatalog([id]);
-    // Resolve the worldwide TMDB digital calendar first. A confirmed digital
-    // release in any territory vetoes later regional/catalogue estimates.
-    const digitalAlreadyReleased = await hasPastDigitalRelease(id);
-    const tmdbRelease = await upcomingRelease(id);
+    // A durable per-title marker prevents later regional dates from reviving
+    // Coming after a confirmed worldwide digital release, even if a provider
+    // later removes or revises its historical release-date record.
+    const validationMetadata = await readPosterValidationMetadata(id);
+    const digitalAlreadyReleased = validationMetadata?.digitalReleasedWorldwide === true
+      ? true : await hasPastDigitalRelease(id);
+    if (digitalAlreadyReleased === true && validationMetadata?.digitalReleasedWorldwide !== true) {
+      await savePosterValidationMetadata(id, {
+        releaseDate: validationMetadata?.releaseDate || null,
+        releaseKind: validationMetadata?.releaseKind || null,
+        justAdded: validationMetadata?.justAdded === true,
+        digitalReleasedWorldwide: true,
+        uploadedAt: validationMetadata?.uploadedAt || new Date().toISOString()
+      }).catch(error => console.warn('[worldwide-digital-release-marker-save-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' })));
+    }
+    // The earliest confirmed digital date in any territory wins. Once one
+    // territory has released it, skip all later TMDB/catalogue dates.
+    const tmdbRelease = digitalAlreadyReleased === true ? null : await upcomingRelease(id);
     const releaseInfo = digitalAlreadyReleased === true ? null : tmdbRelease || catalogRelease;
     const version = String(req.query?.v || '');
     const fallbackUrl = String(req.query?.fallback || '');
@@ -376,7 +400,7 @@ export default async function handler(req, res) {
     const cachedAsset = await findFreshImageKitAsset(id, releaseInfo, expectedJustAdded);
     if (cachedAsset) return redirectToImageKit(res, cachedAsset, releaseInfo, expectedJustAdded);
 
-    const poster = await getBuiltPoster(id, releaseInfo, badge, version, fallbackUrl);
+    const poster = await getBuiltPoster(id, releaseInfo, badge, version, fallbackUrl, digitalAlreadyReleased === true);
     // Initialise the ImageKit storage safety snapshot on first live Nuvio use.
     // This is a no-op after the snapshot has been populated by maintenance.
     if (!getImageKitStorageSnapshot().known) {
