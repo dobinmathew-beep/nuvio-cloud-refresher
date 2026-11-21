@@ -1,6 +1,6 @@
 import { upcomingRelease, hasPastDigitalRelease, validImdbId } from '../lib/release-dates.mjs';
 import { renderUpcomingBadge, renderJustAddedBadge, removeExistingDateBadge } from '../lib/render-poster.mjs';
-import { hasExistingComingDateTag, hasExistingJustAddedTag } from '../lib/coming-tag.mjs';
+import { hasExistingComingDateTag, hasExistingJustAddedTag, terminateOcrWorker } from '../lib/coming-tag.mjs';
 import { isCatalogRecentlyAdded } from '../lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from '../lib/catalog-upcoming.mjs';
 import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster, getImageKitStorageSnapshot, initializeImageKitStorageSnapshot, readPosterValidationMetadata, savePosterValidationMetadata } from '../lib/imagekit-storage.mjs';
@@ -55,7 +55,7 @@ async function getTmdbPosterCandidate(imdbId) {
     const imageUrl = tmdbPosterImageUrl(item?.poster_path);
     const candidate = imageUrl ? { source: 'TMDB', url: imageUrl, timeout: 5000 } : null;
     tmdbPosterLookupCache.set(imdbId, { candidate, expiresAt: Date.now() + TMDB_POSTER_CACHE_MS });
-    while (tmdbPosterLookupCache.size > 1500) tmdbPosterLookupCache.delete(tmdbPosterLookupCache.keys().next().value);
+    while (tmdbPosterLookupCache.size > 512) tmdbPosterLookupCache.delete(tmdbPosterLookupCache.keys().next().value);
     return candidate;
   } catch (error) {
     console.warn('[tmdb-poster-fallback-lookup-failed]', JSON.stringify({ imdbId, error: error?.message || 'unknown error' }));
@@ -98,7 +98,7 @@ async function findExistingImageKitAsset(imdbId) {
       url,
       expiresAt: Date.now() + (url ? IMAGEKIT_AVAILABILITY_TTL_MS : IMAGEKIT_MISS_TTL_MS)
     });
-    while (imageKitAvailabilityCache.size > 3000) {
+    while (imageKitAvailabilityCache.size > 512) {
       imageKitAvailabilityCache.delete(imageKitAvailabilityCache.keys().next().value);
     }
     return url;
@@ -425,14 +425,17 @@ async function getBuiltPoster(id, knownRelease = undefined, badge = '', version 
     resultCache.set(cacheKey, { value, expiresAt: Date.now() + RESULT_CACHE_MS });
     // Poster buffers are comparatively large; retain only a small hot set so
     // concurrent Nuvio traffic cannot turn the in-process cache into an RSS spike.
-    while (resultCache.size > 3) resultCache.delete(resultCache.keys().next().value);
+    while (resultCache.size > 1) resultCache.delete(resultCache.keys().next().value);
     const rssBytes = process.memoryUsage().rss;
-    if (rssBytes > 400 * 1024 * 1024) {
+    if (rssBytes > 300 * 1024 * 1024) {
       resultCache.clear();
+      tmdbPosterLookupCache.clear();
+      imageKitAvailabilityCache.clear();
+      await terminateOcrWorker().catch(() => {});
       global.gc?.();
       console.warn('[poster-memory-cache-cleared]', JSON.stringify({
         rssMiB: Math.round(rssBytes / (1024 * 1024)),
-        thresholdMiB: 400
+        thresholdMiB: 300
       }));
     }
     return value;
