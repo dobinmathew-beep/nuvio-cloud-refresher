@@ -1,4 +1,5 @@
 name: Hourly catalogue refresh monitor
+# Reads lease-owner progress snapshots shared through Render Redis.
 
 on:
   workflow_dispatch:
