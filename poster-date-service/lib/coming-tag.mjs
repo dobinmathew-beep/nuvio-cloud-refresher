@@ -170,12 +170,8 @@ export async function terminateOcrWorker() {
   }
 }
 
-export function hasJustAddedBadgeText(text) {
+export export function hasJustAddedBadgeText(text) {
   return /\bjust\s*added\b/i.test(normalizedText(text));
-}
-
-export function hasJustAddedBadgeText(text) {
-  return /\\bjust\\s*added\\b/i.test(normalizedText(text));
 }
 
 export async function hasExistingJustAddedTag(input) {
