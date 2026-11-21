@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-21T18:40:39.997929+04:00",
+  "checked_at": "2026-11-21T18:51:16.948879+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -134,21 +134,37 @@
       ]
     },
     "backdrops": {
-      "status": "fail",
-      "checked_at": "2026-11-21T18:40:39.997929+04:00",
+      "status": "pass",
+      "checked_at": "2026-11-21T18:51:16.948879+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
-      "error": "[{\"source\": \"hi\", \"error\": \"hi: no valid first/current IndianRegional movie\"}, {\"source\": \"ta\", \"error\": \"ta: no valid first/current IndianRegional movie\"}, {\"source\": \"ml\", \"error\": \"ml: no valid first/current IndianRegional movie\"}, {\"source\": \"te\", \"error\": \"te: no valid first/current IndianRegional movie\"}, {\"status\": \"hindi/movies/spotlight\", \"error\": \"live IndianRegional catalog head was not independently checked\"}]"
+      "details": {
+        "day": "2026-11-21",
+        "statuses": 160,
+        "images": 16,
+        "states": {
+          "live": 160,
+          "cached": 0
+        },
+        "errors": [],
+        "catalogHeads": {
+          "tamil": "tt18933846",
+          "hindi": "tt37200939",
+          "malayalam": "tt41944351",
+          "telugu": "tt36915004"
+        }
+      },
+      "method": "160 public layout/status checks and 16 JPEG checks"
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-21T18:40:39.997929+04:00",
+      "checked_at": "2026-11-21T18:51:16.948879+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
           "language": "hindi",
           "status": "pass",
-          "bytes": 6903538,
-          "sha256": "94133a354d52f2b12581cbf2aeeb1fda7407da6069020669e13f321cff31ae0e",
+          "bytes": 6903500,
+          "sha256": "1819b15123c5ca9dad6b05561e2b0c2fc952871f28a8553946265a7e91f71bc7",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -168,8 +184,8 @@
         {
           "language": "tamil",
           "status": "pass",
-          "bytes": 6907811,
-          "sha256": "0c38e01f622072f2b37cc5829ea53edb819598652daa712f1914847a52cf9741",
+          "bytes": 6909457,
+          "sha256": "e79968d23ae5ad616a0259e727dc0ca5ac2394147bc58d75e2f2863b21870d07",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -189,8 +205,8 @@
         {
           "language": "malayalam",
           "status": "pass",
-          "bytes": 6901928,
-          "sha256": "8c4c29b0affc7ebce8b45d2ee71aceaaa84fab851cf4f988059f9b0ae49f5be4",
+          "bytes": 6901833,
+          "sha256": "5e3b6873f36a5cfbc532737595d71b15d742cbc957b27d017612c9e9d542f148",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -210,8 +226,8 @@
         {
           "language": "telugu",
           "status": "pass",
-          "bytes": 6893940,
-          "sha256": "d00e490c831c0f0a4f657d5124bbdf39d6ff940dd8a392f358dbe4e6d6bfa893",
+          "bytes": 6894270,
+          "sha256": "87c5fec2dcffa0e5b1efc905a0a2b37cef8ca857a732e5e518ff3d15d3dc6505",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -233,8 +249,8 @@
     }
   },
   "summary": {
-    "passed": 3,
+    "passed": 4,
     "total": 4,
-    "status": "fail"
+    "status": "pass"
   }
 }
