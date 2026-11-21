@@ -174,6 +174,10 @@ export function hasJustAddedBadgeText(text) {
   return /\bjust\s*added\b/i.test(normalizedText(text));
 }
 
+export function hasJustAddedBadgeText(text) {
+  return /\\bjust\\s*added\\b/i.test(normalizedText(text));
+}
+
 export async function hasExistingJustAddedTag(input) {
   const result = await inspectExistingPosterBadges(input, 'any', null);
   return result.hasJustAddedBadge;
