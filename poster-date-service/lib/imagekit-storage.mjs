@@ -269,6 +269,7 @@ export async function savePosterValidationMetadata(imdbId, metadata) {
     releaseDate: metadata?.releaseDate || null,
     releaseKind: metadata?.releaseKind || null,
     justAdded: metadata?.justAdded === true,
+    digitalReleasedWorldwide: metadata?.digitalReleasedWorldwide === true,
     uploadedAt: metadata?.uploadedAt || new Date().toISOString()
   };
   const form = new FormData();
@@ -347,6 +348,7 @@ export async function uploadPosterToImageKit(imdbId, poster) {
         releaseDate: poster.releaseDate === 'none' ? null : poster.releaseDate,
         releaseKind: poster.releaseKind === 'none' ? null : poster.releaseKind,
         justAdded: poster.status.includes('just-added'),
+        digitalReleasedWorldwide: poster.digitalReleasedWorldwide === true,
         uploadedAt: new Date().toISOString()
       });
     } catch (error) {
