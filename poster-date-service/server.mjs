@@ -465,11 +465,24 @@ server.listen(port, '0.0.0.0', () => {
     catalogRefreshError = null;
     catalogRefreshReport = null;
     setImmediate(() => {
-      const startupRefresh = resumeIncompleteManifestCatalogRefresh({ forceReprocess: true });
+      const startupRefresh = (async () => {
+        let report;
+        // A rolling deploy can start the new process before the previous
+        // process's Redis lease expires. Do not mistake "already-running" for
+        // a completed refresh: wait for the stale lease TTL, then resume from
+        // the durable ImageKit checkpoint.
+        for (let attempt = 1; attempt <= 4; attempt++) {
+          report = await resumeIncompleteManifestCatalogRefresh({ forceReprocess: true });
+          if (report?.status !== 'already-running') return report;
+          console.warn('[catalog-refresh-autoresume-waiting-for-lease]', JSON.stringify({ jobId, attempt, retryAfterMs: 130000 }));
+          if (attempt < 4) await new Promise(resolve => setTimeout(resolve, 130000));
+        }
+        return report;
+      })();
       void startupRefresh
         .then(report => {
           catalogRefreshReport = report;
-          console.log('[catalog-refresh-autoresume-complete]', JSON.stringify({ jobId, status: 'completed' }));
+          console.log('[catalog-refresh-autoresume-complete]', JSON.stringify({ jobId, status: report?.status || 'completed' }));
         })
         .catch(error => {
           catalogRefreshError = error?.message || 'Catalogue refresh autoresume failed';
