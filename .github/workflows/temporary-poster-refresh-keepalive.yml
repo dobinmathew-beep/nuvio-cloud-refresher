@@ -1,6 +1,10 @@
 name: Temporary Poster Refresh Keepalive
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/temporary-poster-refresh-keepalive.yml"
   schedule:
     - cron: "*/10 * * * *"
   workflow_dispatch:
