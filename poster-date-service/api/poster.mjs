@@ -54,14 +54,15 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
     });
     if (!response.ok) return null;
     const lastModified = Date.parse(response.headers.get('last-modified') || '');
-    if (!Number.isFinite(lastModified) || Date.now() - lastModified > IMAGEKIT_REFRESH_MS) return null;
+    if (!Number.isFinite(lastModified)) return null;
 
     const expectedDate = releaseInfo?.date || null;
     const expectedKind = releaseInfo?.kind || 'premiere';
 
-    // Our own ImageKit uploads now carry a tiny, durable validation sidecar.
-    // When it matches the exact poster version and current badge state, skip
-    // downloading the full image and running Tesseract OCR on every refresh.
+    // Treat a matching sidecar as durable validation, not a six-hour cache.
+    // The sidecar is tied to this exact ImageKit asset by its upload timestamp
+    // and current badge state. This is what prevents every daily refresh from
+    // re-downloading and OCR-scanning thousands of already-correct posters.
     const metadata = await readPosterValidationMetadata(imdbId);
     const metadataTime = Date.parse(metadata?.uploadedAt || '');
     const metadataBelongsToAsset = metadata?.version === 2 &&
@@ -73,9 +74,17 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
       (!expectedDate || metadata.releaseKind === expectedKind) &&
       metadata.justAdded === Boolean(expectedJustAdded);
     if (metadataMatches) return assetUrl;
+    if (metadataBelongsToAsset) {
+      console.info('[poster-validation-sidecar-mismatch]', JSON.stringify({
+        imdbId, expectedDate, cachedDate: metadata.releaseDate || null,
+        expectedJustAdded: Boolean(expectedJustAdded), cachedJustAdded: metadata.justAdded,
+        action: 'rebuild-poster'
+      }));
+      return null;
+    }
 
-    // Legacy assets have no sidecar yet. Verify them once using the existing
-    // OCR checks, then persist the result so later refreshes take the fast path.
+    // Legacy assets without a sidecar are verified once using OCR regardless
+    // of age, then receive a durable sidecar for future fast-path reuse.
     const imageResponse = await fetch(assetUrl, {
       cache: 'no-store',
       signal: AbortSignal.timeout(5000)
