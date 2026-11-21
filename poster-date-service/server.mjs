@@ -6,7 +6,7 @@ import posterHandler from './api/poster.mjs';
 import healthHandler from './api/health.mjs';
 import { resolveTmdbExternalImdbId } from './lib/tmdb-external-ids.mjs';
 import { renderJustAddedBadge, renderUpcomingBadge } from './lib/render-poster.mjs';
-import { upcomingReleaseByTmdbId, getTodayInTimeZone } from './lib/release-dates.mjs';
+import { upcomingReleaseByTmdbId, hasPastDigitalReleaseByTmdbId, getTodayInTimeZone } from './lib/release-dates.mjs';
 import { isCatalogRecentlyAdded } from './lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
 
@@ -150,7 +150,13 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
 
   if (!sources.length) throw new Error('No poster source available for TMDB ID ' + tmdbId);
   const original = sources[0];
-  const release = await upcomingReleaseFromCatalog(['tmdb:' + tmdbId]) || await upcomingReleaseByTmdbId(tmdbId, mediaType);
+  const catalogRelease = await upcomingReleaseFromCatalog(['tmdb:' + tmdbId]);
+  const digitalAlreadyReleased = mediaType === 'movie' && catalogRelease
+    ? await hasPastDigitalReleaseByTmdbId(tmdbId)
+    : false;
+  const release = digitalAlreadyReleased === true
+    ? null
+    : catalogRelease || await upcomingReleaseByTmdbId(tmdbId, mediaType);
   let output = original.bytes;
   let dateRendered = false;
   let justAdded = String(req.query?.badge || '').toLowerCase() === 'just-added';

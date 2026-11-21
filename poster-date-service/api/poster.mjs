@@ -1,4 +1,4 @@
-import { upcomingRelease, validImdbId } from '../lib/release-dates.mjs';
+import { upcomingRelease, hasPastDigitalRelease, validImdbId } from '../lib/release-dates.mjs';
 import { renderUpcomingBadge, renderJustAddedBadge } from '../lib/render-poster.mjs';
 import { hasExistingComingDateTag, hasExistingJustAddedTag } from '../lib/coming-tag.mjs';
 import { isCatalogRecentlyAdded } from '../lib/catalog-just-added.mjs';
@@ -352,7 +352,14 @@ export default async function handler(req, res) {
     // An ImageKit copy is valid only while TMDB still confirms a future release.
     // This prevents a cached date badge from surviving its release day.
     const badge = String(req.query?.badge || '').toLowerCase() === 'just-added' ? 'just-added' : '';
-    const releaseInfo = await upcomingReleaseFromCatalog([id]) || await upcomingRelease(id);
+    const catalogRelease = await upcomingReleaseFromCatalog([id]);
+    // The shared poster URL is not region-specific: a confirmed past digital
+    // release in any TMDB territory vetoes a later catalogue estimate. This
+    // prevents stale Cinebuds/catalog dates from resurrecting a released title.
+    const digitalAlreadyReleased = catalogRelease ? await hasPastDigitalRelease(id) : false;
+    const releaseInfo = digitalAlreadyReleased === true
+      ? null
+      : catalogRelease || await upcomingRelease(id);
     const version = String(req.query?.v || '');
     const fallbackUrl = String(req.query?.fallback || '');
     let expectedJustAdded = badge === 'just-added';

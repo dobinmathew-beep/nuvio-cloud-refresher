@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { validImdbId, formatBadgeDate, chooseMovieDateForTest, chooseTvDateForTest, chooseTvScheduleDateForTest, verifiedTvScheduleOverride, getTodayInTimeZone, RELEASE_DATE_TIME_ZONE } from '../lib/release-dates.mjs';
+import { validImdbId, formatBadgeDate, chooseMovieDateForTest, chooseTvDateForTest, chooseTvScheduleDateForTest, verifiedTvScheduleOverride, getTodayInTimeZone, RELEASE_DATE_TIME_ZONE, hasPastDigitalReleaseForTest } from '../lib/release-dates.mjs';
 import { hasExpectedDateBadgeText } from '../lib/coming-tag.mjs';
 
 const today = '2026-11-12';
@@ -150,4 +150,74 @@ test('verified Paramount+ schedule correction overrides conflicting metadata onl
   });
   assert.equal(verifiedTvScheduleOverride('tt33043892', 2, 3, '2026-11-13'), null);
   assert.equal(verifiedTvScheduleOverride('tt33043892', 2, 4, '2026-11-12'), null);
+});
+
+test('a past digital release in any territory vetoes a later Indian catalogue date', () => {
+  const rows = [
+    { iso_3166_1: 'US', release_dates: [{ type: 4, release_date: '2026-10-06T00:00:00.000Z' }] },
+    { iso_3166_1: 'IN', release_dates: [{ type: 4, release_date: '2026-12-04T00:00:00.000Z' }] }
+  ];
+  assert.equal(hasPastDigitalReleaseForTest(rows, '2026-11-21'), true);
+  assert.equal(chooseMovieDateForTest(rows, '2026-11-21'), null);
+});
+
+test('a passed UK digital release also vetoes a future US or Indian date', () => {
+  const rows = [
+    { iso_3166_1: 'GB', release_dates: [{ type: 4, release_date: '2026-11-01T00:00:00.000Z' }] },
+    { iso_3166_1: 'US', release_dates: [{ type: 4, release_date: '2026-12-08T00:00:00.000Z' }] }
+  ];
+  assert.equal(hasPastDigitalReleaseForTest(rows, '2026-11-21'), true);
+  assert.equal(chooseMovieDateForTest(rows, '2026-11-21'), null);
+});
+
+test('a future digital date remains eligible when no territory has released digitally', () => {
+  const rows = [
+    { iso_3166_1: 'US', release_dates: [{ type: 4, release_date: '2026-12-08T00:00:00.000Z' }] },
+    { iso_3166_1: 'IN', release_dates: [{ type: 4, release_date: '2026-12-12T00:00:00.000Z' }] }
+  ];
+  assert.equal(hasPastDigitalReleaseForTest(rows, '2026-11-21'), false);
+  assert.equal(chooseMovieDateForTest(rows, '2026-11-21')?.date, '2026-12-12');
+});
+
+test('theatrical, premiere and physical releases do not count as digital availability', () => {
+  const rows = [{ iso_3166_1: 'US', release_dates: [
+    { type: 1, release_date: '2026-10-23T00:00:00.000Z' },
+    { type: 2, release_date: '2026-10-23T00:00:00.000Z' },
+    { type: 3, release_date: '2026-10-23T00:00:00.000Z' },
+    { type: 5, release_date: '2026-10-23T00:00:00.000Z' }
+  ] }];
+  assert.equal(hasPastDigitalReleaseForTest(rows, '2026-11-21'), false);
+  assert.equal(chooseMovieDateForTest(rows, '2026-11-21'), null);
+});
+
+test('digital release on the current Oman date is treated as released, not upcoming', () => {
+  const rows = [{ iso_3166_1: 'US', release_dates: [
+    { type: 4, release_date: '2026-11-21T00:00:00.000Z' }
+  ] }];
+  assert.equal(hasPastDigitalReleaseForTest(rows, '2026-11-21'), true);
+  assert.equal(chooseMovieDateForTest(rows, '2026-11-21'), null);
+});
+
+test('wider November 2026 release sample suppresses released titles and preserves genuinely future dates', () => {
+  const releasedSample = [
+    ['Spider-Man: Brand New Day', 'US', '2026-10-06'],
+    ['Insidious: Out of the Further', 'US', '2026-10-06'],
+    ['Heart of the Beast', 'US', '2026-11-10'],
+    ['The Odyssey', 'US', '2026-11-17'],
+    ['The Beast', 'US', '2026-11-17'],
+    ['A Talent for Murder', 'US', '2026-11-17']
+  ];
+  for (const [title, region, date] of releasedSample) {
+    const rows = [{ iso_3166_1: region, release_dates: [{ type: 4, release_date: date + 'T00:00:00.000Z' }] }];
+    assert.equal(chooseMovieDateForTest(rows, '2026-11-21'), null, title + ' must not show a Coming badge');
+  }
+
+  const futureSample = [
+    ['Clayface', 'US', '2026-12-08'],
+    ['The Social Reckoning', 'US', '2026-11-24']
+  ];
+  for (const [title, region, date] of futureSample) {
+    const rows = [{ iso_3166_1: region, release_dates: [{ type: 4, release_date: date + 'T00:00:00.000Z' }] }];
+    assert.equal(chooseMovieDateForTest(rows, '2026-11-21')?.date, date, title + ' should retain its future date');
+  }
 });
