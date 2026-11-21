@@ -723,13 +723,6 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   // through poster generation. Verified ledger entries are retained when the
   // fingerprint still matches and ImageKit confirms the asset is available.
   const allItems = [...current.values()];
-  updateRefreshProgress({
-    stage: 'poster-processing', titlesDiscovered: allItems.length,
-    postersTargeted: items.length, postersCacheHits: preflightVerifiedHits,
-    cataloguesDiscovered: catalogues.length,
-    cataloguesScanned: cataloguesScannedThisRun,
-    cataloguesFailed: catalogues.filter(c => c.error).length
-  });
   const preflightLedgerCache = new Map();
   const items = [];
   let preflightVerifiedHits = 0;
@@ -744,6 +737,16 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     }
   }
   preflightLedgerCache.clear();
+  // Publish poster-stage totals only after the target list and cache-hit count
+  // have been initialized. Referencing items above this point triggers a TDZ
+  // ReferenceError and breaks automatic recovery after a Render restart.
+  updateRefreshProgress({
+    stage: 'poster-processing', titlesDiscovered: allItems.length,
+    postersTargeted: items.length, postersCacheHits: preflightVerifiedHits,
+    cataloguesDiscovered: catalogues.length,
+    cataloguesScanned: cataloguesScannedThisRun,
+    cataloguesFailed: catalogues.filter(c => c.error).length
+  });
   console.info('[catalog-recovery-targeted]', JSON.stringify({
     catalogueTitles: allItems.length,
     retryCandidates: items.length,
