@@ -1053,7 +1053,16 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
         // A restart can safely HEAD-check or retry only this incomplete batch.
         await persistShard();
         if (pendingItems.length) {
-          await verificationQueue.enqueue(() => verifyPendingBatch([...pendingItems]));
+          const queued = await verificationQueue.enqueue(() => verifyPendingBatch([...pendingItems]));
+          queued.completion.then(outcome => {
+            if (outcome.status === 'rejected') {
+              totalFailures++;
+              const failureDetails = activeRefreshProgress?.failureDetails || [];
+              failureDetails.push({ stage: 'imagekit-verification-persistence', error: outcome.error?.message || 'verification task failed' });
+              updateRefreshProgress({ failureDetails: failureDetails.slice(-20) });
+              console.error('[catalog-verification-task-failed]', outcome.error?.message || 'unknown error');
+            }
+          });
         }
       }
 
