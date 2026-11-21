@@ -1,6 +1,6 @@
 # Independent Nuvio output verification
 
-**Checked:** 2026-11-21T16:06:33.683084+04:00 (Oman time)
+**Checked:** 2026-11-21T18:40:39.997929+04:00 (Oman time)
 **Overall:** 3/4 outputs passed
 
 | Output | Result |
@@ -25,7 +25,7 @@
 - **PASS** Source_Health_Report.json: {"keys": ["airtel.xml", "ca.xml", "dishtv.xml", "free-epg.xml", "guide.xml", "jiotv.xml", "open-india.xml", "pw.xml", "samsung-in.xml", "sundirectgo.xml"]}
 
 ## Backdrops — FAIL
-"[{\"status\": \"tamil/movies/wall\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/filmstrip\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/gallery\", \"error\": \"incorrect current catalog-head centre movie\"}]"
+"[{\"source\": \"hi\", \"error\": \"hi: no valid first/current IndianRegional movie\"}, {\"source\": \"ta\", \"error\": \"ta: no valid first/current IndianRegional movie\"}, {\"source\": \"ml\", \"error\": \"ml: no valid first/current IndianRegional movie\"}, {\"source\": \"te\", \"error\": \"te: no valid first/current IndianRegional movie\"}, {\"status\": \"hindi/movies/spotlight\", \"error\": \"live IndianRegional catalog head was not independently checked\"}]"
 
 ## Reels — PASS
 - **PASS** hindi: 50.0
