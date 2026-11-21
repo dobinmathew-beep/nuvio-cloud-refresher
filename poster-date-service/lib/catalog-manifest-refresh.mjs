@@ -25,7 +25,6 @@ const PREWARM_CONCURRENCY = 1;
 const VERIFY_CONCURRENCY = 1;
 const CATALOGUE_CHECKPOINT_REUSE_TTL_MS = 72 * 60 * 60 * 1000;
 let stateReadNonce = 0;
-let stateReadNonce = 0;
 
 function ledgerShard(id) {
   return createHash('sha256').update(String(id)).digest('hex')[0];
