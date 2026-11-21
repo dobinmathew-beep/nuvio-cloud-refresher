@@ -3,7 +3,7 @@ name: Hourly catalogue refresh monitor
 on:
   workflow_dispatch:
   push:
-    branches: [poster-date-service]
+    branches: [main]
     paths:
       - '.github/workflows/hourly-catalogue-monitor.yml'
   schedule:
