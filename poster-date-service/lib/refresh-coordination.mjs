@@ -2,8 +2,8 @@ import { randomUUID } from 'node:crypto';
 import { createClient } from 'redis';
 
 const LEASE_KEY = 'great-indian:catalog-refresh:lease';
-const LEASE_TTL_MS = 120_000;
-const HEARTBEAT_MS = 30_000;
+const LEASE_TTL_MS = 45_000;
+const HEARTBEAT_MS = 10_000;
 let clientPromise;
 
 async function redisClient() {

@@ -534,12 +534,25 @@ server.listen(port, '0.0.0.0', () => {
         // process's Redis lease expires. Do not mistake "already-running" for
         // a completed refresh: wait for the stale lease TTL, then resume from
         // the durable ImageKit checkpoint.
-        for (let attempt = 1; attempt <= 4; attempt++) {
+        const maxAttempts = 50;
+        for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+          // Poll Redis first: do not repeatedly download the ImageKit checkpoint
+          // while the previous instance still owns the refresh lease.
+          const existingLease = await getRefreshLease();
+          if (existingLease) {
+            if (attempt === 1 || attempt % 5 === 0) {
+              console.warn('[catalog-refresh-autoresume-waiting-for-lease]', JSON.stringify({
+                jobId, attempt, retryAfterMs: 3000, existingJobId: existingLease.jobId || null
+              }));
+            }
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            continue;
+          }
           report = await resumeIncompleteManifestCatalogRefresh();
           if (report?.status !== 'already-running') return report;
-          console.warn('[catalog-refresh-autoresume-waiting-for-lease]', JSON.stringify({ jobId, attempt, retryAfterMs: 130000 }));
-          if (attempt < 4) await new Promise(resolve => setTimeout(resolve, 130000));
+          await new Promise(resolve => setTimeout(resolve, 3000));
         }
+        console.error('[catalog-refresh-autoresume-lease-timeout]', JSON.stringify({ jobId, maxAttempts }));
         return report;
       })();
       catalogRefreshTask = startupRefresh;
