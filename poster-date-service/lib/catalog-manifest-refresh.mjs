@@ -23,6 +23,7 @@ const LEDGER_SHARDS = '0123456789abcdef';
 const PREWARM_BATCH_SIZE = 5;
 const PREWARM_CONCURRENCY = 1;
 const VERIFY_CONCURRENCY = 1;
+const CATALOGUE_CHECKPOINT_REUSE_TTL_MS = 72 * 60 * 60 * 1000;
 let stateReadNonce = 0;
 
 function ledgerShard(id) {
@@ -92,6 +93,8 @@ async function readState(config, path = STATE_PATH) {
     if (!response.ok) throw new Error('ImageKit state read HTTP ' + response.status);
     const value = await response.json();
     if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('Invalid persisted catalogue state');
+    const lastModified = response.headers.get('last-modified');
+    if (lastModified) Object.defineProperty(value, '__stateFileLastModified', { value: lastModified, enumerable: false });
     return value;
   } catch (error) {
     if (/HTTP 404/.test(error.message)) return null;
@@ -179,12 +182,32 @@ function catalogueCheckpointPath(fingerprint) {
   return CATALOG_CHECKPOINT_DIR + '/' + key + '.json';
 }
 
+export function canReuseCatalogueCheckpoint(existing, scanGeneration, forceRescan = false, now = Date.now()) {
+  if (forceRescan || !existing || existing.version !== 1 ||
+      !Number.isInteger(existing.nextPage) || !Number.isInteger(existing.pages) ||
+      !Number.isInteger(existing.records) || !Array.isArray(existing.seenPageIds) ||
+      !existing.titles || typeof existing.titles !== 'object' || Array.isArray(existing.titles)) return false;
+  if (existing.scanGeneration === scanGeneration) return true;
+  const timestamp = Date.parse(existing.updatedAt || existing.__stateFileLastModified || '');
+  if (Number.isFinite(timestamp)) {
+    const age = now - timestamp;
+    return age >= 0 && age <= CATALOGUE_CHECKPOINT_REUSE_TTL_MS;
+  }
+  // Older complete snapshots predate updatedAt metadata. Reuse those rather
+  // than rediscovering every catalogue; never adopt an undated partial scan.
+  return existing.complete === true;
+}
+
 async function collectCatalog(manifest, catalog, config, fingerprint, lease, scanGeneration, forceRescan = false) {
   const path = catalogueCheckpointPath(fingerprint);
   const existing = await readState(config, path);
-  // Only reuse page state written by this refresh generation. Old completed
-  // snapshots must not short-circuit a forced full rediscovery.
-  const saved = existing?.scanGeneration === scanGeneration ? existing : null;
+  // Reuse same-generation page state, and adopt validated recent snapshots
+  // from an earlier generation. This preserves completed catalogues and
+  // partial page cursors when a top-level checkpoint is recreated.
+  const canReuse = canReuseCatalogueCheckpoint(existing, scanGeneration, forceRescan);
+  const saved = canReuse ? { ...existing, scanGeneration } : null;
+  const adoptedFromGeneration = canReuse && existing?.scanGeneration !== scanGeneration
+    ? (existing?.scanGeneration || 'legacy') : null;
   const titles = new Map();
   if (saved?.titles && typeof saved.titles === 'object') {
     for (const [id, item] of Object.entries(saved.titles)) {
@@ -196,6 +219,18 @@ async function collectCatalog(manifest, catalog, config, fingerprint, lease, sca
   let uniqueRecords = Number.isInteger(saved?.records) ? saved.records : 0;
   let lastBatchSize = 0;
   let lastPageNewIds = 0;
+  if (saved && adoptedFromGeneration) {
+    await lease?.assertOwned?.();
+    await writeJson(config, path, {
+      ...saved, scanGeneration, updatedAt: new Date().toISOString(),
+      adoptedFromScanGeneration: adoptedFromGeneration
+    });
+    console.info('[catalog-page-checkpoint-adopted]', JSON.stringify({
+      source: manifest.name, type: catalog.type, id: catalog.id,
+      fromGeneration: adoptedFromGeneration, nextPage: saved.nextPage,
+      complete: saved.complete === true, records: saved.records
+    }));
+  }
   if (saved?.complete === true) {
     return {
       source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
@@ -233,6 +268,7 @@ async function collectCatalog(manifest, catalog, config, fingerprint, lease, sca
     await lease?.assertOwned?.();
     await writeJson(config, path, {
       version: 1, scanGeneration, complete: done, nextPage: page + 1, pages, records: uniqueRecords,
+      updatedAt: new Date().toISOString(),
       seenPageIds: [...seenPageIds], titles: Object.fromEntries(titles)
     });
     if (pages % 25 === 0) console.log('[catalog-page-progress]', JSON.stringify({ source: manifest.name, id: catalog.id, pages, uniqueRecords, supportedTitles: titles.size }));
