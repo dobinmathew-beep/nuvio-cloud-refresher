@@ -1,8 +1,26 @@
 {
-  "generatedAt": "2026-11-21T16:00:20.849976+04:00",
+  "generatedAt": "2026-11-21T18:41:15.541616+04:00",
   "policy": "confirmed-source-matched-id-v2",
   "count": 21,
   "items": [
+    {
+      "id": "tt50063835",
+      "aliases": [
+        "tt50063835"
+      ],
+      "name": "Apsara",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-22",
+      "kind": "episode",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/338390"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.themoviedb.org/tv/338390"
+    },
     {
       "id": "tt1281973",
       "aliases": [
@@ -174,38 +192,16 @@
       "releaseDate": "2026-11-27",
       "kind": "premiere",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "catalog": "dobins_hi_movie",
       "region": "IN",
-      "source": "https://www.dailyott.in/"
-    },
-    {
-      "id": "tt39632118",
-      "aliases": [
-        "tt39632118"
-      ],
-      "name": "Family Kirana Store",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "episode",
-      "platforms": [
-        "YouTube (TVF)"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
+      "source": "https://cinebuds.com/ott-releases-this-week/"
     },
     {
       "id": "tt39390582",
@@ -256,7 +252,7 @@
       "language": "malayalam",
       "type": "series",
       "releaseDate": "2026-11-27",
-      "kind": "episode",
+      "kind": "premiere",
       "platforms": [
         "ZEE5"
       ],
