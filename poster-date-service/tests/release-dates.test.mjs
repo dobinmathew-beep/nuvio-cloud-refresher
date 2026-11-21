@@ -64,7 +64,7 @@ test('the earliest worldwide future digital date wins regardless of territory', 
   });
 });
 
-test('a digital date in any territory is eligible', () => {
+test('a confirmed worldwide digital date is eligible even when the provider omits a territory code', () => {\n  const rows = [{ release_dates: [\n    { type: 4, release_date: '2026-11-20T00:00:00.000Z' }\n  ] }];\n  assert.equal(chooseMovieDateForTest(rows, today)?.date, '2026-11-20');\n});\n\ntest('a digital date in any territory is eligible', () => {
   const rows = [{ iso_3166_1: 'JP', release_dates: [
     { type: 4, release_date: '2026-11-20T00:00:00.000Z' }
   ] }];
