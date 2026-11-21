@@ -5,7 +5,7 @@ import { resolve } from 'node:path';
 import posterHandler from './api/poster.mjs';
 import healthHandler from './api/health.mjs';
 import { resolveTmdbExternalImdbId } from './lib/tmdb-external-ids.mjs';
-import { renderJustAddedBadge, renderUpcomingBadge } from './lib/render-poster.mjs';
+import { renderJustAddedBadge, renderUpcomingBadge, removeExistingDateBadge } from './lib/render-poster.mjs';
 import { upcomingReleaseByTmdbId, hasPastDigitalReleaseByTmdbId, getTodayInTimeZone } from './lib/release-dates.mjs';
 import { isCatalogRecentlyAdded } from './lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
@@ -57,9 +57,9 @@ async function redirectCachedFallback(storageId, req, res, releaseInfo, justAdde
     const imageResponse = await fetch(assetUrl, { cache: 'no-store', signal: AbortSignal.timeout(5000) });
     if (!imageResponse.ok) return false;
     const bytes = Buffer.from(await imageResponse.arrayBuffer());
-    const hasDateBadge = await hasExistingComingDateTag(
-      bytes, releaseInfo?.kind || 'premiere', releaseInfo?.date || null
-    );
+    const hasDateBadge = releaseInfo?.date
+      ? await hasExistingComingDateTag(bytes, releaseInfo.kind || 'premiere', releaseInfo.date)
+      : await hasExistingComingDateTag(bytes, 'any', null);
     const dateMatches = releaseInfo?.date ? hasDateBadge : !hasDateBadge;
     const justAddedMatches = (await hasExistingJustAddedTag(bytes)) === Boolean(justAdded);
     if (!dateMatches || !justAddedMatches) return false;
@@ -176,6 +176,12 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
     } catch (error) {
       console.warn('[poster-date-overlay-failed]', JSON.stringify({ tmdbId, date: release.date, error: error?.message || 'unknown error' }));
     }
+  } else if (await hasExistingComingDateTag(original.bytes, 'any', null)) {
+    output = await removeExistingDateBadge(output, 0.105);
+    console.info('[poster-stale-date-badge-removed]', JSON.stringify({ tmdbId, source: 'fallback-artwork' }));
+  } else if (await hasExistingComingDateTag(original, 'any', null)) {
+    output = await removeExistingDateBadge(output, 0.105);
+    console.info('[poster-stale-date-badge-removed]', JSON.stringify({ tvmazeId, source: 'fallback-artwork' }));
   }
   if (justAdded && !release?.date) {
     try { output = await renderJustAddedBadge(output, 0.105); }
