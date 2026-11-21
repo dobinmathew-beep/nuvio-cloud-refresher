@@ -383,7 +383,7 @@ async function waitForImageKit(id, timeoutMs = 90000) {
   } while (Date.now() < deadline);
   return false;
 }
-async function prewarm(item) {
+async function prewarm(item, knownImageKitCheck = null) {
   const path = posterPath(item.id, item.type);
   if (!path) return { id: item.id, status: 'unsupported-id-format' };
   const requestPath = item.poster
@@ -394,7 +394,8 @@ async function prewarm(item) {
   // A prior request may have completed its upload even when its HTTP response
   // was lost. Never issue another generation request until the canonical asset
   // has been checked.
-  if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit' };
+  if (knownImageKitCheck === true) return { id: item.id, status: 'imagekit-hit' };
+  if (knownImageKitCheck !== false && await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit' };
 
   try {
     const response = await fetch(endpoint + requestPath, {
@@ -426,6 +427,7 @@ async function prewarm(item) {
       return {
         id: item.id, status: 'upload-pending', posterStatus,
         verificationTimeoutMs: decision.verificationTimeoutMs,
+        uploadAccepted: decision.reason === 'imagekit-upload-pending',
         error: 'Upload outcome requires asynchronous ImageKit visibility verification'
       };
     }
@@ -976,7 +978,10 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
             verifiedAt: new Date().toISOString(),
             verification: 'imagekit-head-confirmed'
           });
-          return { id: item.id, status: 'generated-and-cached' };
+          return {
+            id: item.id,
+            status: item.uploadAccepted ? 'generated-and-cached' : 'imagekit-confirmed-after-uncertain-request'
+          };
         }
         records[item.id] = ledgerRecord(item, 'failed', {
           attempts: (Number(records[item.id]?.attempts) || 0) + 1,
@@ -994,6 +999,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
       }
       totalFailures += verification.failures;
       verifiedUploads += verification.counts['generated-and-cached'] || 0;
+      verifiedCacheHits += verification.counts['imagekit-confirmed-after-uncertain-request'] || 0;
       uploadPending -= pendingItems.length;
       resultCounts['upload-pending'] = Math.max(0, (resultCounts['upload-pending'] || 0) - pendingItems.length);
       if (!resultCounts['upload-pending']) delete resultCounts['upload-pending'];
@@ -1040,13 +1046,13 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
       if (toProcess.length) {
         const prewarmReport = await runPool(toProcess, async item => {
           try {
-            const result = await prewarm(item);
+            const result = await prewarm(item, preflightImageKitChecks.get(item.id));
             if (result.status === 'upload-pending') {
               records[item.id] = ledgerRecord(item, 'upload-pending', {
                 attempts: (Number(records[item.id]?.attempts) || 0) + 1,
                 posterStatus: result.posterStatus || null
               });
-              pendingItems.push({ ...item, verificationTimeoutMs: result.verificationTimeoutMs || 90000 });
+              pendingItems.push({ ...item, verificationTimeoutMs: result.verificationTimeoutMs || 90000, uploadAccepted: result.uploadAccepted === true });
               uploadPending++;
             } else if (result.status === 'imagekit-hit') {
               records[item.id] = ledgerRecord(item, 'verified', {
