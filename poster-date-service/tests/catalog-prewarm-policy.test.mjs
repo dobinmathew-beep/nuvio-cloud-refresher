@@ -20,11 +20,11 @@ test('source-provider redirects are classified without another poster request', 
   }).status, 'source-redirect');
 });
 
-test('ambiguous 5xx outcomes are verified asynchronously, not regenerated immediately', () => {
+test('transient 5xx outcomes are deferred without pointless ImageKit polling', () => {
   for (const status of [500, 502, 503, 504]) {
     const result = classifyPrewarmResponse({ status });
-    assert.equal(result.status, 'upload-pending');
-    assert.equal(result.verificationTimeoutMs, 20000);
+    assert.equal(result.status, 'source-probe-failed');
+    assert.equal(result.cooldownMs, SOURCE_PROBE_RETRY_COOLDOWN_MS);
   }
 });
 
@@ -68,7 +68,7 @@ test('explicit no-poster-source 503 responses are terminal for this pass, not up
     cooldownMs: SOURCE_UNAVAILABLE_COOLDOWN_MS,
     reason: 'definitive-no-poster-source'
   });
-  assert.equal(classifyPrewarmResponse({ status: 503 }).status, 'upload-pending');
+  assert.equal(classifyPrewarmResponse({ status: 503 }).status, 'source-probe-failed');
 });
 
 test('source-unavailable records are skipped until their cooldown expires', () => {
