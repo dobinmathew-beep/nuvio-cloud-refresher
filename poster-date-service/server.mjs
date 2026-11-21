@@ -251,7 +251,7 @@ async function sendTvmazePosterFallback(tvmazeId, req, res) {
   }
   // TVmaze artwork cannot carry a BetterPosters tag; use catalog eligibility only.
   const storageId = fallbackImageKitId('tvmaze', tvmazeId);
-  if (await redirectCachedFallback(storageId, req, res, justAdded)) return;
+  if (await redirectCachedFallback(storageId, req, res, release, justAdded)) return;
   if (release?.date) {
     try {
       output = await renderUpcomingBadge(output, release.date, release.kind, 0.105);
@@ -357,7 +357,10 @@ const server = createServer(async (req, res) => {
     void (async () => {
       try {
         await initializeImageKitStorageSnapshot();
-        catalogRefreshReport = await runManifestCatalogRefresh();
+        catalogRefreshReport = await runManifestCatalogRefresh({
+          forceReprocess: url.searchParams.get('force') === '1' ||
+            process.env.CATALOG_REFRESH_FORCE_REPROCESS_ON_START === 'true'
+        });
         console.log('[catalog-refresh-job-complete]', JSON.stringify({ jobId, status: 'completed' }));
       } catch (error) {
         catalogRefreshError = error?.message || 'Catalogue refresh failed';
@@ -462,7 +465,11 @@ server.listen(port, '0.0.0.0', () => {
     catalogRefreshError = null;
     catalogRefreshReport = null;
     setImmediate(() => {
-      void resumeIncompleteManifestCatalogRefresh()
+      const forceReprocess = process.env.CATALOG_REFRESH_FORCE_REPROCESS_ON_START === 'true';
+      const startupRefresh = forceReprocess
+        ? runManifestCatalogRefresh({ forceReprocess: true })
+        : resumeIncompleteManifestCatalogRefresh();
+      void startupRefresh
         .then(report => {
           catalogRefreshReport = report;
           console.log('[catalog-refresh-autoresume-complete]', JSON.stringify({ jobId, status: 'completed' }));
