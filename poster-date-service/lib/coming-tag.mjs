@@ -9,7 +9,7 @@ let sharpConfigured = false;
 let workerPromise;
 let ocrQueue = Promise.resolve();
 let workerRecognitionCount = 0;
-const MAX_WORKER_RECOGNITIONS = 1;
+
 
 function withOcrQueue(task) {
   const job = ocrQueue.then(task);
@@ -17,33 +17,31 @@ function withOcrQueue(task) {
   return job;
 }
 
-async function recognizeWithModes(prepared, predicate) {
+async function recognizeText(prepared) {
   return withOcrQueue(async () => {
-    // Keep a single OCR task queue, but recycle the WASM worker periodically.
-    // The Render free instance has a 512 MiB memory ceiling; long catalogue
-    // prewarms otherwise retain the Tesseract heap until the process is killed.
-    let worker = await getWorker();
-    let found = false;
-    for (const mode of ['11', '6']) {
-      await worker.setParameters({ tessedit_pageseg_mode: mode });
+    const worker = await getWorker();
+    const startedAt = Date.now();
+    const before = process.memoryUsage();
+    try {
+      // A single sparse-text pass is sufficient for the shared top-strip crop.
+      // Do not run a second PSM mode: it doubles WASM recognition allocations.
+      await worker.setParameters({ tessedit_pageseg_mode: '11' });
       const result = await worker.recognize(prepared);
-      workerRecognitionCount++;
-      if (predicate(result?.data?.text)) {
-        found = true;
-        break;
-      }
-    }
-    if (workerRecognitionCount >= MAX_WORKER_RECOGNITIONS) {
-      await worker.terminate();
-      worker = null;
+      return String(result?.data?.text || '');
+    } finally {
+      await worker.terminate().catch(() => {});
       workerPromise = null;
       workerRecognitionCount = 0;
-      // Drop the final local reference before forcing GC; otherwise the
-      // terminated WASM heap can remain reachable through this stack frame.
       await new Promise(resolve => setImmediate(resolve));
       global.gc?.();
+      const after = process.memoryUsage();
+      console.info('[poster-ocr-memory]', JSON.stringify({
+        durationMs: Date.now() - startedAt,
+        before: { rss: before.rss, heapUsed: before.heapUsed, external: before.external, arrayBuffers: before.arrayBuffers },
+        after: { rss: after.rss, heapUsed: after.heapUsed, external: after.external, arrayBuffers: after.arrayBuffers },
+        workerRecycled: true
+      }));
     }
-    return found;
   });
 }
 
@@ -100,8 +98,13 @@ async function getWorker() {
   return workerPromise;
 }
 
-export async function hasExistingComingDateTag(input, kind = 'premiere', isoDate = null) {
-  const key = createHash('sha256').update(input).digest('hex') + ':' + kind + ':' + (isoDate || 'any-date');
+function storeOcrCache(key, text) {
+  cache.set(key, { value: text, at: Date.now() });
+  while (cache.size > 256) cache.delete(cache.keys().next().value);
+}
+
+async function recognizePosterTopStrip(input) {
+  const key = createHash('sha256').update(input).digest('hex') + ':top-strip-ocr';
   const cached = cache.get(key);
   if (cached && Date.now() - cached.at < CACHE_MS) return cached.value;
 
@@ -111,33 +114,48 @@ export async function hasExistingComingDateTag(input, kind = 'premiere', isoDate
     sharp.concurrency(1);
     sharpConfigured = true;
   }
-  const metadata = await sharp(input, { limitInputPixels: 20000000 }).metadata();
-  if (!metadata.width || !metadata.height) throw new Error('Cannot inspect poster dimensions');
-
-  // One compact crop and two OCR layouts: far less work than the former
-  // six-pass/two-image pipeline, while retaining a conservative duplicate check.
-  const cropHeight = Math.max(180, Math.min(metadata.height, Math.round(metadata.height * 0.65)));
-  const prepared = await sharp(input, { limitInputPixels: 20000000 })
+  // Read dimensions first (header-only), then reject oversized artwork before
+  // decoding. Both supported badge types occupy this same narrow top strip.
+  const metadata = await sharp(input, { limitInputPixels: 8000000 }).metadata();
+  if (!metadata.width || !metadata.height || metadata.width * metadata.height > 8000000) {
+    throw new Error('Poster dimensions exceed OCR safety limit');
+  }
+  const cropHeight = Math.max(120, Math.min(metadata.height, Math.round(metadata.height * 0.28)));
+  let prepared = await sharp(input, { limitInputPixels: 8000000 })
     .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
-    .resize({ width: Math.min(1000, metadata.width * 2) })
+    .resize({ width: Math.min(720, metadata.width), withoutEnlargement: true })
     .grayscale()
     .normalize()
     .sharpen()
-    .extend({ top: 16, bottom: 16, left: 16, right: 16, background: '#ffffff' })
+    .extend({ top: 10, bottom: 10, left: 10, right: 10, background: '#ffffff' })
     .png()
     .toBuffer();
-
-  const found = await recognizeWithModes(prepared, text => hasExpectedDateBadgeText(text, kind, isoDate));
-  if (found) {
-    cache.set(key, { value: true, at: Date.now() });
-    return true;
+  try {
+    const text = await recognizeText(prepared);
+    storeOcrCache(key, text);
+    return text;
+  } finally {
+    prepared = null;
+    global.gc?.();
   }
-  cache.set(key, { value: false, at: Date.now() });
-  while (cache.size > 256) cache.delete(cache.keys().next().value);
-  return false;
+}
+
+export async function inspectExistingPosterBadges(input, kind = 'premiere', isoDate = null) {
+  const text = await recognizePosterTopStrip(input);
+  return {
+    hasDateBadge: hasExpectedDateBadgeText(text, kind, isoDate),
+    hasJustAddedBadge: hasJustAddedBadgeText(text)
+  };
+}
+
+export async function hasExistingComingDateTag(input, kind = 'premiere', isoDate = null) {
+  const result = await inspectExistingPosterBadges(input, kind, isoDate);
+  return result.hasDateBadge;
 }
 
 export { hasExpectedDateBadgeText };
+
+
 
 export async function terminateOcrWorker() {
   if (!workerPromise) return;
@@ -157,35 +175,6 @@ export function hasJustAddedBadgeText(text) {
 }
 
 export async function hasExistingJustAddedTag(input) {
-  const key = createHash('sha256').update(input).digest('hex') + ':just-added';
-  const cached = cache.get(key);
-  if (cached && Date.now() - cached.at < CACHE_MS) return cached.value;
-  const { default: sharp } = await import('sharp');
-  if (!sharpConfigured) {
-    sharp.cache({ memory: 8, files: 0, items: 2 });
-    sharp.concurrency(1);
-    sharpConfigured = true;
-  }
-  const metadata = await sharp(input, { limitInputPixels: 20000000 }).metadata();
-  if (!metadata.width || !metadata.height) throw new Error('Cannot inspect poster dimensions');
-  // The chip sits in the top strip; this compact crop is much faster on
-  // Render's free instance than OCR-ing most of the poster.
-  const cropHeight = Math.max(120, Math.min(metadata.height, Math.round(metadata.height * 0.3)));
-  const prepared = await sharp(input, { limitInputPixels: 20000000 })
-    .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
-    .resize({ width: Math.min(750, metadata.width * 2) })
-    .grayscale()
-    .normalize()
-    .sharpen()
-    .extend({ top: 12, bottom: 12, left: 12, right: 12, background: '#ffffff' })
-    .png()
-    .toBuffer();
-  const found = await recognizeWithModes(prepared, text => hasJustAddedBadgeText(text));
-  if (found) {
-    cache.set(key, { value: true, at: Date.now() });
-    return true;
-  }
-  cache.set(key, { value: false, at: Date.now() });
-  while (cache.size > 256) cache.delete(cache.keys().next().value);
-  return false;
+  const result = await inspectExistingPosterBadges(input, 'any', null);
+  return result.hasJustAddedBadge;
 }

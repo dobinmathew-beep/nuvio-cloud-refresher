@@ -1,6 +1,6 @@
 import { upcomingRelease, hasPastDigitalRelease, validImdbId } from '../lib/release-dates.mjs';
 import { renderUpcomingBadge, renderJustAddedBadge, removeExistingDateBadge } from '../lib/render-poster.mjs';
-import { hasExistingComingDateTag, hasExistingJustAddedTag, terminateOcrWorker } from '../lib/coming-tag.mjs';
+import { inspectExistingPosterBadges, hasExistingComingDateTag, hasExistingJustAddedTag, terminateOcrWorker } from '../lib/coming-tag.mjs';
 import { isCatalogRecentlyAdded } from '../lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from '../lib/catalog-upcoming.mjs';
 import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster, getImageKitStorageSnapshot, initializeImageKitStorageSnapshot, readPosterValidationMetadata, savePosterValidationMetadata } from '../lib/imagekit-storage.mjs';
@@ -172,11 +172,14 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
       signal: AbortSignal.timeout(5000)
     });
     if (!imageResponse.ok) return null;
-    const imageBytes = Buffer.from(await imageResponse.arrayBuffer());
+    let imageBytes = Buffer.from(await imageResponse.arrayBuffer());
 
-    const hasDateBadge = expectedDate
-      ? await hasExistingComingDateTag(imageBytes, expectedKind, expectedDate)
-      : await hasExistingComingDateTag(imageBytes, 'any', null);
+    // One top-strip decode and one OCR pass determine both badge states.
+    const badgeInspection = await inspectExistingPosterBadges(imageBytes, expectedKind, expectedDate);
+    const hasDateBadge = badgeInspection.hasDateBadge;
+    const hasJustAddedBadge = badgeInspection.hasJustAddedBadge;
+    imageBytes = null;
+    global.gc?.();
     const dateMatches = expectedDate ? hasDateBadge : !hasDateBadge;
     if (!dateMatches) {
       console.info('[poster-date-cache-mismatch]', JSON.stringify({
@@ -186,7 +189,6 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
       return null;
     }
 
-    const hasJustAddedBadge = await hasExistingJustAddedTag(imageBytes);
     if (hasJustAddedBadge !== Boolean(expectedJustAdded)) {
       console.info('[poster-just-added-cache-mismatch]', JSON.stringify({
         imdbId, expectedJustAdded: Boolean(expectedJustAdded), cachedJustAdded: hasJustAddedBadge,
@@ -426,7 +428,9 @@ async function getBuiltPoster(id, knownRelease = undefined, badge = '', version 
     // Poster buffers are comparatively large; retain only a small hot set so
     // concurrent Nuvio traffic cannot turn the in-process cache into an RSS spike.
     while (resultCache.size > 1) resultCache.delete(resultCache.keys().next().value);
-    const rssBytes = process.memoryUsage().rss;
+    const memory = process.memoryUsage();
+    const rssBytes = memory.rss;
+    console.info('[poster-memory-sample]', JSON.stringify({ rss: memory.rss, heapUsed: memory.heapUsed, external: memory.external, arrayBuffers: memory.arrayBuffers }));
     if (rssBytes > 300 * 1024 * 1024) {
       resultCache.clear();
       tmdbPosterLookupCache.clear();

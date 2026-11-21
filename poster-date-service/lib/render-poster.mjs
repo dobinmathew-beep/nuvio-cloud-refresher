@@ -14,7 +14,7 @@ async function getSharp() {
 
 export async function removeExistingDateBadge(input, topRatio = 0.105) {
   const sharp = await getSharp();
-  const metadata = await sharp(input, { limitInputPixels: 20000000 }).metadata();
+  const metadata = await sharp(input, { limitInputPixels: 8000000 }).metadata();
   if (!metadata.width || !metadata.height || metadata.width < 160 || metadata.height < 240) {
     throw new Error('Unsupported poster dimensions');
   }
@@ -28,13 +28,13 @@ export async function removeExistingDateBadge(input, topRatio = 0.105) {
   const roundedMask = Buffer.from(
     `<svg xmlns="http://www.w3.org/2000/svg" width="${badgeWidth}" height="${badgeHeight}"><rect width="${badgeWidth}" height="${badgeHeight}" rx="${radius}" fill="white"/></svg>`
   );
-  const blurred = await sharp(input)
+  const blurred = await sharp(input, { limitInputPixels: 8000000 })
     .extract({ left, top, width: badgeWidth, height: badgeHeight })
     .blur(blurRadius)
     .composite([{ input: roundedMask, blend: 'dest-in' }])
     .png()
     .toBuffer();
-  let image = sharp(input).composite([{ input: blurred, left, top }]);
+  let image = sharp(input, { limitInputPixels: 8000000 }).composite([{ input: blurred, left, top }]);
   if (metadata.format === 'webp') image = image.webp({ quality: 94, effort: 4 });
   else if (metadata.format === 'png') image = image.png({ compressionLevel: 8 });
   else if (metadata.format === 'avif') image = image.avif({ quality: 90, effort: 4 });
@@ -48,7 +48,7 @@ export async function renderUpcomingBadge(input, isoDate, kind = 'premiere', top
   const day = String(date.getUTCDate());
   const label = (kind === 'episode' ? 'New Episode ' : 'Coming ') + day + ' ' + month;
   const sharp = await getSharp();
-  const metadata = await sharp(input, { limitInputPixels: 20000000 }).metadata();
+  const metadata = await sharp(input, { limitInputPixels: 8000000 }).metadata();
   if (!metadata.width || !metadata.height || metadata.width < 160 || metadata.height < 240) {
     throw new Error('Unsupported poster dimensions');
   }
@@ -65,7 +65,7 @@ export async function renderUpcomingBadge(input, isoDate, kind = 'premiere', top
   const roundedMask = Buffer.from(
     `<svg xmlns="http://www.w3.org/2000/svg" width="${badgeWidth}" height="${badgeHeight}"><rect width="${badgeWidth}" height="${badgeHeight}" rx="${radius}" fill="white"/></svg>`
   );
-  const blurred = await sharp(input)
+  const blurred = await sharp(input, { limitInputPixels: 8000000 })
     .extract({ left, top, width: badgeWidth, height: badgeHeight })
     .blur(blurRadius)
     .composite([{ input: roundedMask, blend: 'dest-in' }])
@@ -91,7 +91,7 @@ export async function renderUpcomingBadge(input, isoDate, kind = 'premiere', top
       font-weight="700" letter-spacing="0" fill="#FFFFFF">${label}</text>
   </svg>`);
 
-  let image = sharp(input).composite([
+  let image = sharp(input, { limitInputPixels: 8000000 }).composite([
     { input: blurred, left, top },
     { input: svg, left, top }
   ]);
@@ -114,7 +114,7 @@ export function buildJustAddedBadgeSvg(badgeWidth, badgeHeight, radius, fontSize
 
 export async function renderJustAddedBadge(input, topRatio = 0.105) {
   const sharp = await getSharp();
-  const metadata = await sharp(input, { limitInputPixels: 20000000 }).metadata();
+  const metadata = await sharp(input, { limitInputPixels: 8000000 }).metadata();
   if (!metadata.width || !metadata.height || metadata.width < 160 || metadata.height < 240) {
     throw new Error('Unsupported poster dimensions');
   }
@@ -128,7 +128,7 @@ export async function renderJustAddedBadge(input, topRatio = 0.105) {
   const mask = Buffer.from(
     '<svg xmlns="http://www.w3.org/2000/svg" width="' + badgeWidth + '" height="' + badgeHeight + '"><rect width="' + badgeWidth + '" height="' + badgeHeight + '" rx="' + radius + '" fill="white"/></svg>'
   );
-  const blurred = await sharp(input)
+  const blurred = await sharp(input, { limitInputPixels: 8000000 })
     .extract({ left, top, width: badgeWidth, height: badgeHeight })
     .blur(blurRadius)
     .composite([{ input: mask, blend: 'dest-in' }])
@@ -136,7 +136,7 @@ export async function renderJustAddedBadge(input, topRatio = 0.105) {
     .toBuffer();
   const fontSize = Math.round(badgeHeight * 0.56);
   const svg = buildJustAddedBadgeSvg(badgeWidth, badgeHeight, radius, fontSize);
-  let image = sharp(input).composite([{ input: blurred, left, top }, { input: svg, left, top }]);
+  let image = sharp(input, { limitInputPixels: 8000000 }).composite([{ input: blurred, left, top }, { input: svg, left, top }]);
   if (metadata.format === 'webp') image = image.webp({ quality: 94, effort: 4 });
   else if (metadata.format === 'png') image = image.png({ compressionLevel: 8 });
   else if (metadata.format === 'avif') image = image.avif({ quality: 90, effort: 4 });
