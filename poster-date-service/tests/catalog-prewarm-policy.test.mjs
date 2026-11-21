@@ -33,7 +33,7 @@ test('rate-limit and request-rejection responses are deferred to a later run', (
 test('accepted uploads get a longer CDN visibility window', () => {
   assert.deepEqual(classifyPrewarmResponse({
     status: 200, contentType: 'image/jpeg', storage: 'pending'
-  }), { status: 'upload-pending', verificationTimeoutMs: 90000, reason: 'imagekit-upload-pending' });
+  }), { status: 'upload-pending', verificationTimeoutMs: 150000, reason: 'imagekit-upload-pending' });
 });
 
 test('recent verified ledger records avoid redundant HEAD checks but expire for revalidation', () => {
