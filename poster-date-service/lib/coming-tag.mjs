@@ -22,7 +22,7 @@ async function recognizeWithModes(prepared, predicate) {
     // Keep a single OCR task queue, but recycle the WASM worker periodically.
     // The Render free instance has a 512 MiB memory ceiling; long catalogue
     // prewarms otherwise retain the Tesseract heap until the process is killed.
-    const worker = await getWorker();
+    let worker = await getWorker();
     let found = false;
     for (const mode of ['11', '6']) {
       await worker.setParameters({ tessedit_pageseg_mode: mode });
@@ -35,10 +35,11 @@ async function recognizeWithModes(prepared, predicate) {
     }
     if (workerRecognitionCount >= MAX_WORKER_RECOGNITIONS) {
       await worker.terminate();
+      worker = null;
       workerPromise = null;
       workerRecognitionCount = 0;
-      // Release the terminated WASM worker's JS wrappers and prepared buffers
-      // before the next poster begins; enabled with --expose-gc in npm start.
+      // Drop the final local reference before forcing GC; otherwise the
+      // terminated WASM heap can remain reachable through this stack frame.
       await new Promise(resolve => setImmediate(resolve));
       global.gc?.();
     }
