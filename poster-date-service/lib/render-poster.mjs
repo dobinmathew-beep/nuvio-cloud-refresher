@@ -3,7 +3,7 @@ export const JUST_ADDED_BADGE_TEXT = 'Just Added';
 // Keep libvips' native working set bounded on Render's 512 MiB free instance.
 let sharpConfigured = false;
 async function getSharp() {
-  const sharp = await getSharp();
+  const { default: sharp } = await import('sharp');
   if (!sharpConfigured) {
     sharp.cache({ memory: 24, files: 0, items: 10 });
     sharp.concurrency(1);
