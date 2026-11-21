@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-21T10:23:41.404716+04:00",
+  "generatedAt": "2026-11-21T14:29:50.861409+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 23,
     "byLanguage": {
-      "hindi": 13,
-      "malayalam": 5,
+      "hindi": 14,
+      "malayalam": 4,
       "tamil": 2,
       "telugu": 3
     },
@@ -21,10 +21,9 @@
       "https://www.ottchecker.com/ott-releases/hindi": 2,
       "https://www.dailyott.in/": 4,
       "https://www.tvmaze.com/shows/70529/dhindora": 1,
-      "https://www.ottchecker.com/ott-releases/malayalam": 1,
       "https://www.keralatv.in/channel/ott/": 2,
       "https://ottasia.com/ott-releases-this-week?country=IN": 13,
-      "https://cinebuds.com/ott-releases-this-week/": 3,
+      "https://cinebuds.com/ott-releases-this-week/": 4,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
       "https://v3-cinemeta.strem.io/": 1
@@ -114,34 +113,6 @@
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Chiram",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-21",
-      "platforms": [
-        "Sun NXT",
-        "ManoramaMAX"
-      ],
-      "sources": [
-        "https://www.ottchecker.com/ott-releases/malayalam"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "OTTChecker explicit streaming-since date",
-      "detail": "https://www.ottchecker.com/movie/chiram-2026",
-      "matchId": "tt45692999",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_ml_movie"
     },
     {
       "title": "Sameer",
@@ -286,8 +257,8 @@
         "Prime Video"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -360,6 +331,33 @@
         "releaseInfo": false
       },
       "catalog": null
+    },
+    {
+      "title": "Nayyi Navelli",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "platforms": [
+        "Prime Video"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-releases-this-week/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "confirmed announcement",
+      "detail": "https://cinebuds.com/movies/nayyi-navelli/",
+      "matchId": "tt40855841",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_movie"
     },
     {
       "title": "Dhai Chaal",
@@ -660,30 +658,11 @@
     "counts": {
       "total": 9,
       "byType": {
-        "series": 5,
-        "movie": 4
+        "movie": 3,
+        "series": 6
       }
     },
     "items": [
-      {
-        "name": "Satyameva",
-        "language": "malayalam",
-        "type": "series",
-        "ottDate": "2026-11-27",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://ottasia.com/ott-releases-this-week?country=IN"
-        ],
-        "platforms": [
-          "ZEE5"
-        ],
-        "detail": "https://ottasia.com/title/tv/342403/satyameva?country=IN",
-        "sourceRecord": {
-          "title": "Satyameva",
-          "releaseDate": "2026-11-27",
-          "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-        }
-      },
       {
         "name": "Sameer",
         "language": "malayalam",
@@ -705,23 +684,22 @@
         }
       },
       {
-        "name": "Pendulum",
+        "name": "Satyameva",
         "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-11-20",
+        "type": "series",
+        "ottDate": "2026-11-27",
         "reason": "No unambiguous IMDb, TMDB or TVmaze match",
         "sources": [
-          "https://www.keralatv.in/channel/ott/"
+          "https://ottasia.com/ott-releases-this-week?country=IN"
         ],
         "platforms": [
-          "Prime Video"
+          "ZEE5"
         ],
-        "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
+        "detail": "https://ottasia.com/title/tv/342403/satyameva?country=IN",
         "sourceRecord": {
-          "title": "Pendulum",
-          "releaseDate": "2026-11-20",
-          "source": "https://www.keralatv.in/channel/ott/",
-          "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
+          "title": "Satyameva",
+          "releaseDate": "2026-11-27",
+          "source": "https://ottasia.com/ott-releases-this-week?country=IN"
         }
       },
       {
@@ -813,6 +791,36 @@
           "type": "Series",
           "updatedAt": "2026-04-28T03:48:06.951Z",
           "posterUrl": "https://image.tmdb.org/t/p/w300/o930uPaXiIdn6K0Ja8iYnrHrYTr.jpg",
+          "verified": true
+        }
+      },
+      {
+        "name": "Oru Chiri Iru Chiri Bumper Chiri 3",
+        "language": "malayalam",
+        "type": "series",
+        "ottDate": "2026-04-28",
+        "reason": "Temporary resolver error; queued for retry",
+        "sources": [
+          "https://www.dailyott.in/"
+        ],
+        "platforms": [
+          "ManoramaMAX"
+        ],
+        "detail": null,
+        "sourceRecord": {
+          "_id": "69f02de830958fd1b959e7bf",
+          "title": "Oru Chiri Iru Chiri Bumper Chiri 3",
+          "platform": "ManoramaMAX",
+          "createdAt": "2026-04-28T03:47:52.066Z",
+          "genre": "Comedy, Reality",
+          "imdbRating": null,
+          "languages": [
+            "Malayalam"
+          ],
+          "releaseDate": "2026-04-28",
+          "source_verified": true,
+          "type": "Series",
+          "updatedAt": "2026-04-28T03:47:52.066Z",
           "verified": true
         }
       },
@@ -943,7 +951,7 @@
       "source": "Cinebuds upcoming calendar",
       "url": "https://cinebuds.com/ott-releases-this-week/",
       "state": "live",
-      "records": 3
+      "records": 4
     },
     {
       "source": "OTTASIA confirmed calendar",
@@ -1028,7 +1036,7 @@
       "source": "Kerala TV multi-language OTT releases",
       "url": "https://www.keralatv.in/channel/ott/",
       "state": "live",
-      "records": 13
+      "records": 10
     },
     {
       "source": "DailyOTT upcoming dates",
@@ -1054,7 +1062,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 114,
+      "records": 110,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1090,7 +1098,7 @@
           "sourceDomainsWithSeriesRecords": [
             "ottasia.com"
           ],
-          "detectedRecords": 25,
+          "detectedRecords": 24,
           "coverageStatus": "partial",
           "sources": [
             {
@@ -1188,8 +1196,8 @@
               "url": "https://www.keralatv.in/channel/ott/",
               "state": "live",
               "languageState": "records_found",
-              "records": 9,
-              "movieRecords": 9,
+              "records": 8,
+              "movieRecords": 8,
               "seriesRecords": 0
             },
             {
@@ -1255,7 +1263,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 25,
+          "detectedRecords": 23,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1335,8 +1343,8 @@
               "url": "https://www.keralatv.in/channel/ott/",
               "state": "live",
               "languageState": "records_found",
-              "records": 3,
-              "movieRecords": 3,
+              "records": 1,
+              "movieRecords": 1,
               "seriesRecords": 0
             },
             {
@@ -1404,7 +1412,7 @@
           "sourceDomainsWithSeriesRecords": [
             "ottchecker.com"
           ],
-          "detectedRecords": 28,
+          "detectedRecords": 26,
           "coverageStatus": "partial",
           "sources": [
             {
@@ -1484,8 +1492,8 @@
               "url": "https://www.keralatv.in/channel/ott/",
               "state": "live",
               "languageState": "records_found",
-              "records": 7,
-              "movieRecords": 7,
+              "records": 5,
+              "movieRecords": 5,
               "seriesRecords": 0
             },
             {
@@ -1556,7 +1564,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 36,
+          "detectedRecords": 37,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1564,8 +1572,8 @@
               "url": "https://cinebuds.com/ott-releases-this-week/",
               "state": "live",
               "languageState": "records_found",
-              "records": 2,
-              "movieRecords": 2,
+              "records": 3,
+              "movieRecords": 3,
               "seriesRecords": 0
             },
             {
@@ -1820,7 +1828,7 @@
       "sourceDomainsWithSeriesRecords": [
         "ottasia.com"
       ],
-      "detectedRecords": 25,
+      "detectedRecords": 24,
       "coverageStatus": "partial",
       "sources": [
         {
@@ -1918,8 +1926,8 @@
           "url": "https://www.keralatv.in/channel/ott/",
           "state": "live",
           "languageState": "records_found",
-          "records": 9,
-          "movieRecords": 9,
+          "records": 8,
+          "movieRecords": 8,
           "seriesRecords": 0
         },
         {
@@ -1985,7 +1993,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 25,
+      "detectedRecords": 23,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2065,8 +2073,8 @@
           "url": "https://www.keralatv.in/channel/ott/",
           "state": "live",
           "languageState": "records_found",
-          "records": 3,
-          "movieRecords": 3,
+          "records": 1,
+          "movieRecords": 1,
           "seriesRecords": 0
         },
         {
@@ -2134,7 +2142,7 @@
       "sourceDomainsWithSeriesRecords": [
         "ottchecker.com"
       ],
-      "detectedRecords": 28,
+      "detectedRecords": 26,
       "coverageStatus": "partial",
       "sources": [
         {
@@ -2214,8 +2222,8 @@
           "url": "https://www.keralatv.in/channel/ott/",
           "state": "live",
           "languageState": "records_found",
-          "records": 7,
-          "movieRecords": 7,
+          "records": 5,
+          "movieRecords": 5,
           "seriesRecords": 0
         },
         {
@@ -2286,7 +2294,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 36,
+      "detectedRecords": 37,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2294,8 +2302,8 @@
           "url": "https://cinebuds.com/ott-releases-this-week/",
           "state": "live",
           "languageState": "records_found",
-          "records": 2,
-          "movieRecords": 2,
+          "records": 3,
+          "movieRecords": 3,
           "seriesRecords": 0
         },
         {

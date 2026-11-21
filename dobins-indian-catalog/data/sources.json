@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-21T10:23:41.404716+04:00",
+    "checkedAt": "2026-11-21T14:29:50.861409+04:00",
     "records": [
       {
         "_id": "6af6738fdea24088f261c3b1",
@@ -115,6 +115,62 @@
         "trendingRank": 2,
         "trendingRankedAt": "2026-11-21T02:19:16.233Z",
         "trendingRankedDateIST": "2026-11-21",
+        "tmdbDetails": {
+          "tmdbId": 1595124,
+          "director": "Alyce Tzue",
+          "cast": [
+            {
+              "name": "Ali Wong",
+              "character": "Lilith (voice)"
+            },
+            {
+              "name": "Amanda Seyfried",
+              "character": "Cinderella (voice)"
+            },
+            {
+              "name": "Stephanie Hsu",
+              "character": "Margot (voice)"
+            },
+            {
+              "name": "Bette Midler",
+              "character": "Fairy Godmother (voice)"
+            },
+            {
+              "name": "Nikki Glaser",
+              "character": "Priscilla (voice)"
+            },
+            {
+              "name": "Peter Dinklage",
+              "character": "Roderick (voice)"
+            },
+            {
+              "name": "Daniel Radcliffe",
+              "character": "The Prince (voice)"
+            },
+            {
+              "name": "Young Mazino",
+              "character": "Gef (voice)"
+            }
+          ],
+          "overview": "After being blamed for disrupting the Royal Ball with a stolen magic wand, a misunderstood stepsister accidentally turns her sister into a frog and must team up with Cinderella and an unlikely ally to save the kingdom and rewrite their fairytale ending.",
+          "runtime": 107,
+          "genres": [
+            "Animation",
+            "Fantasy",
+            "Comedy",
+            "Family",
+            "Adventure"
+          ],
+          "originalLanguage": "en",
+          "spokenLanguages": [
+            "English"
+          ],
+          "releaseDate": "2026-11-20",
+          "voteAverage": 7.889,
+          "trailerKey": "tNV4i3BqUGY",
+          "fetchedAt": "2026-11-21T09:02:03.510Z"
+        },
+        "tmdbId": 1595124,
         "verified": true
       },
       {
@@ -31119,7 +31175,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-21T10:23:41.404716+04:00",
+    "checkedAt": "2026-11-21T14:29:50.861409+04:00",
     "records": [
       {
         "name": "Anbil Avan",
@@ -31133,6 +31189,20 @@
         "year": null,
         "source": "https://cinebuds.com/ott-release-dates/",
         "detail": "https://cinebuds.com/movies/anbil-avan/",
+        "confirmed": true
+      },
+      {
+        "name": "Chiram",
+        "language": "malayalam",
+        "type": "movie",
+        "ottDate": "2026-11-20",
+        "platforms": [
+          "Sun NXT"
+        ],
+        "poster": null,
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/malayalam-movies-ott-release-dates/",
         "confirmed": true
       },
       {
@@ -31175,20 +31245,6 @@
         "year": null,
         "source": "https://cinebuds.com/ott-release-dates/",
         "detail": "https://cinebuds.com/movies/haiku/",
-        "confirmed": true
-      },
-      {
-        "name": "Nayyi Navelli",
-        "language": "hindi",
-        "type": "movie",
-        "ottDate": "2026-11-20",
-        "platforms": [
-          "Prime Video"
-        ],
-        "poster": "https://cinebuds.com/wp-content/uploads/2026/11/nayyi-navelli-poster-200x300.jpg",
-        "year": null,
-        "source": "https://cinebuds.com/ott-release-dates/",
-        "detail": "https://cinebuds.com/movies/nayyi-navelli/",
         "confirmed": true
       },
       {

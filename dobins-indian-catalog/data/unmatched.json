@@ -32,6 +32,26 @@
     }
   },
   {
+    "name": "Sameer",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-11-21",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.keralatv.in/channel/ott/"
+    ],
+    "platforms": [
+      "ManoramaMAX"
+    ],
+    "detail": "https://www.keralatv.in/sameer-malayalam-movie-ott-release-date-manoramamax/",
+    "sourceRecord": {
+      "title": "Sameer",
+      "releaseDate": "2026-11-21",
+      "source": "https://www.keralatv.in/channel/ott/",
+      "headline": "Sameer Malayalam Movie OTT Release Date Confirmed – Streaming on ManoramaMAX From 21 November 2026"
+    }
+  },
+  {
     "name": "Satyameva",
     "language": "malayalam",
     "type": "series",
@@ -91,26 +111,6 @@
     }
   },
   {
-    "name": "Sameer",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-11-21",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.keralatv.in/channel/ott/"
-    ],
-    "platforms": [
-      "ManoramaMAX"
-    ],
-    "detail": "https://www.keralatv.in/sameer-malayalam-movie-ott-release-date-manoramamax/",
-    "sourceRecord": {
-      "title": "Sameer",
-      "releaseDate": "2026-11-21",
-      "source": "https://www.keralatv.in/channel/ott/",
-      "headline": "Sameer Malayalam Movie OTT Release Date Confirmed – Streaming on ManoramaMAX From 21 November 2026"
-    }
-  },
-  {
     "name": "New",
     "language": "tamil",
     "type": "movie",
@@ -128,26 +128,6 @@
       "releaseDate": "2026-11-20",
       "source": "https://www.keralatv.in/channel/ott/",
       "headline": "New Tamil Movie OTT Releases This Week – Drones Streaming on Prime Video From 20 November 2026"
-    }
-  },
-  {
-    "name": "Pendulum",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-11-20",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.keralatv.in/channel/ott/"
-    ],
-    "platforms": [
-      "Prime Video"
-    ],
-    "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
-    "sourceRecord": {
-      "title": "Pendulum",
-      "releaseDate": "2026-11-20",
-      "source": "https://www.keralatv.in/channel/ott/",
-      "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
     }
   },
   {
@@ -565,6 +545,36 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-05-12T03:46:33.489Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Oru Chiri Iru Chiri Bumper Chiri 3",
+    "language": "malayalam",
+    "type": "series",
+    "ottDate": "2026-04-28",
+    "reason": "Temporary resolver error; queued for retry",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ManoramaMAX"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69f02de830958fd1b959e7bf",
+      "title": "Oru Chiri Iru Chiri Bumper Chiri 3",
+      "platform": "ManoramaMAX",
+      "createdAt": "2026-04-28T03:47:52.066Z",
+      "genre": "Comedy, Reality",
+      "imdbRating": null,
+      "languages": [
+        "Malayalam"
+      ],
+      "releaseDate": "2026-04-28",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-28T03:47:52.066Z",
       "verified": true
     }
   },
@@ -1434,36 +1444,6 @@
     }
   },
   {
-    "name": "Vani Na Rani",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a07e9279dcddba08328ec63",
-      "platform": "ETV Win",
-      "title": "Vani Na Rani",
-      "createdAt": "2026-05-16T03:48:55.554Z",
-      "genre": "Family Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-16",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-16T03:48:55.554Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Iruniram",
     "language": "malayalam",
     "type": "movie",
@@ -1507,6 +1487,36 @@
         "fetchedAt": "2026-11-16T23:43:59.297Z"
       },
       "tmdbId": 1686468,
+      "verified": true
+    }
+  },
+  {
+    "name": "Vani Na Rani",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-05-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a07e9279dcddba08328ec63",
+      "platform": "ETV Win",
+      "title": "Vani Na Rani",
+      "createdAt": "2026-05-16T03:48:55.554Z",
+      "genre": "Family Drama",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-16",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-05-16T03:48:55.554Z",
       "verified": true
     }
   },

@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-21T10:23:41.404716+04:00",
+  "generatedAt": "2026-11-21T14:29:50.861409+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 19,
+  "count": 21,
   "items": [
     {
       "id": "tt1281973",
@@ -178,12 +178,34 @@
         "Prime Video"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "catalog": "dobins_hi_movie",
       "region": "IN",
-      "source": "https://cinebuds.com/ott-releases-this-week/"
+      "source": "https://www.dailyott.in/"
+    },
+    {
+      "id": "tt39632118",
+      "aliases": [
+        "tt39632118"
+      ],
+      "name": "Family Kirana Store",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "kind": "episode",
+      "platforms": [
+        "YouTube (TVF)"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tt39390582",
@@ -197,6 +219,26 @@
       "kind": "premiere",
       "platforms": [
         "SonyLIV"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-releases-this-week/"
+      ],
+      "catalog": "dobins_hi_movie",
+      "region": "IN",
+      "source": "https://cinebuds.com/ott-releases-this-week/"
+    },
+    {
+      "id": "tt40855841",
+      "aliases": [
+        "tt40855841"
+      ],
+      "name": "Nayyi Navelli",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "kind": "premiere",
+      "platforms": [
+        "Prime Video"
       ],
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/"
