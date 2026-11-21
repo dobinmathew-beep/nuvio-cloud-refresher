@@ -101,3 +101,30 @@ export async function withRefreshLease(task) {
     }
   }
 }
+
+
+const PROGRESS_KEY = 'great-indian:catalog-refresh:progress';
+const PROGRESS_TTL_MS = 30 * 60 * 1000;
+
+export async function publishRefreshProgress(jobId, progress) {
+  const client = await redisClient();
+  if (!client) return false;
+  const lease = await getRefreshLease();
+  if (!lease || lease.jobId !== jobId) return false;
+  await client.set(PROGRESS_KEY, JSON.stringify({ jobId, progress }), { PX: PROGRESS_TTL_MS });
+  return true;
+}
+
+export async function getRefreshProgress(jobId) {
+  const client = await redisClient();
+  if (!client) return null;
+  const raw = await client.get(PROGRESS_KEY);
+  if (!raw) return null;
+  try {
+    const saved = JSON.parse(raw);
+    return saved?.jobId === jobId && saved.progress && typeof saved.progress === 'object'
+      ? saved.progress : null;
+  } catch {
+    return null;
+  }
+}

@@ -1,6 +1,6 @@
 import { Buffer } from 'node:buffer';
 import { createHash } from 'node:crypto';
-import { withRefreshLease } from './refresh-coordination.mjs';
+import { withRefreshLease, publishRefreshProgress } from './refresh-coordination.mjs';
 
 const MANIFEST_KEYS = [
   'CATALOG_MANIFEST_ELFHOSTED_URL',
@@ -378,6 +378,8 @@ async function prewarm(item) {
 }
 let activeRefreshPromise = null;
 let activeRefreshProgress = null;
+let activeRefreshJobId = null;
+let progressWriteChain = Promise.resolve();
 
 export function getManifestCatalogRefreshProgress() {
   if (!activeRefreshProgress) return null;
@@ -390,11 +392,25 @@ export function getManifestCatalogRefreshProgress() {
   return snapshot;
 }
 
+function queueRefreshProgressWrite() {
+  if (!activeRefreshJobId || !activeRefreshProgress) return;
+  const jobId = activeRefreshJobId;
+  const snapshot = getManifestCatalogRefreshProgress();
+  progressWriteChain = progressWriteChain
+    .then(() => publishRefreshProgress(jobId, snapshot))
+    .catch(error => console.warn('[catalog-progress-publish-failed]', error?.message || 'unknown error'));
+}
+
+async function flushRefreshProgress() {
+  await progressWriteChain;
+}
+
 function updateRefreshProgress(patch) {
   if (!activeRefreshProgress) return;
   Object.assign(activeRefreshProgress, patch, { updatedAt: new Date().toISOString() });
   const started = Date.parse(activeRefreshProgress.startedAt || '');
   if (Number.isFinite(started)) activeRefreshProgress.elapsedSeconds = Math.max(0, Math.round((Date.now() - started) / 1000));
+  queueRefreshProgressWrite();
 }
 
 export async function resumeIncompleteManifestCatalogRefresh(options = {}) {
@@ -415,22 +431,41 @@ export async function resumeIncompleteManifestCatalogRefresh(options = {}) {
 
 export function runManifestCatalogRefresh(options = {}) {
   if (activeRefreshPromise) return activeRefreshPromise;
-  activeRefreshProgress = {
-    status: 'starting', stage: 'initializing', startedAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(), cataloguesDiscovered: 0, cataloguesScanned: 0,
-    cataloguesTotal: 0, cataloguesFailed: 0, cataloguesSkipped: 0,
-    titlesDiscovered: 0, postersTargeted: 0, postersVisited: 0,
-    postersCorrected: 0, postersCacheHits: 0, postersPending: 0,
-    failures: 0, failureDetails: [], elapsedSeconds: 0, titlesPerMinute: 0,
-    postersPerMinute: 0, lastCheckpointAt: null
-  };
-  activeRefreshPromise = withRefreshLease(lease => runManifestCatalogRefreshInternal(lease, options)).finally(() => {
-    if (activeRefreshProgress) {
-      activeRefreshProgress.status = 'finished';
-      activeRefreshProgress.stage = 'finished';
-      activeRefreshProgress.finishedAt = new Date().toISOString();
-      activeRefreshProgress.updatedAt = activeRefreshProgress.finishedAt;
+  // Progress belongs to the lease owner only. A contender must not publish a
+  // fake zero/finished snapshot while another process is doing the real work.
+  activeRefreshProgress = null;
+  activeRefreshJobId = null;
+  activeRefreshPromise = withRefreshLease(async lease => {
+    activeRefreshJobId = lease.jobId;
+    activeRefreshProgress = {
+      jobId: lease.jobId, status: 'starting', stage: 'initializing',
+      startedAt: new Date().toISOString(), updatedAt: new Date().toISOString(),
+      cataloguesDiscovered: 0, cataloguesScanned: 0, cataloguesTotal: 0,
+      cataloguesFailed: 0, cataloguesSkipped: 0, titlesDiscovered: 0,
+      postersTargeted: 0, postersVisited: 0, postersCorrected: 0,
+      postersCacheHits: 0, postersPending: 0, failures: 0,
+      failureDetails: [], elapsedSeconds: 0, titlesPerMinute: 0,
+      postersPerMinute: 0, lastCheckpointAt: null
+    };
+    queueRefreshProgressWrite();
+    try {
+      return await runManifestCatalogRefreshInternal(lease, options);
+    } catch (error) {
+      updateRefreshProgress({
+        status: 'failed', stage: 'failed', error: error?.message || 'Catalogue refresh failed',
+        finishedAt: new Date().toISOString()
+      });
+      throw error;
+    } finally {
+      if (activeRefreshProgress) {
+        activeRefreshProgress.finishedAt = activeRefreshProgress.finishedAt || new Date().toISOString();
+        activeRefreshProgress.updatedAt = activeRefreshProgress.finishedAt;
+        queueRefreshProgressWrite();
+        await flushRefreshProgress();
+      }
+      activeRefreshJobId = null;
     }
+  }).finally(() => {
     activeRefreshPromise = null;
   });
   return activeRefreshPromise;

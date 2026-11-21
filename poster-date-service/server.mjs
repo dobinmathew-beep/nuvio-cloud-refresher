@@ -12,7 +12,7 @@ import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
 
 import { imageKitConfig, canStoreImageKitPoster, getImageKitStorageSnapshot, uploadPosterToImageKit, runImageKitMaintenance, initializeImageKitStorageSnapshot } from './lib/imagekit-storage.mjs';
 import { runManifestCatalogRefresh, resumeIncompleteManifestCatalogRefresh, getManifestCatalogRefreshProgress } from './lib/catalog-manifest-refresh.mjs';
-import { getRefreshLease } from './lib/refresh-coordination.mjs';
+import { getRefreshLease, getRefreshProgress } from './lib/refresh-coordination.mjs';
 import { hasExistingComingDateTag, hasExistingJustAddedTag } from './lib/coming-tag.mjs';
 
 let catalogRefreshJob = null;
@@ -340,9 +340,13 @@ const server = createServer(async (req, res) => {
         res.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
         return res.end(JSON.stringify({ status: 'coordination-unavailable', error: error?.message || 'Redis unavailable' }));
       }
-      const progress = getManifestCatalogRefreshProgress();
+      const localProgress = getManifestCatalogRefreshProgress();
+      const progress = sharedLease
+        ? await getRefreshProgress(sharedLease.jobId) ||
+          (localProgress?.jobId === sharedLease.jobId ? localProgress : null)
+        : localProgress;
       const response = sharedLease
-        ? { status: 'running', jobId: sharedLease.jobId, coordinated: true, progress }
+        ? { status: 'running', jobId: sharedLease.jobId, coordinated: true, progress, progressState: progress ? 'available' : 'waiting-for-owner-progress' }
         : catalogRefreshJob && catalogRefreshReport?.status !== 'already-running'
           ? { status: 'running', jobId: catalogRefreshJob, progress }
           : catalogRefreshError
