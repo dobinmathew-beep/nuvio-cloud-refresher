@@ -23,6 +23,7 @@ const LEDGER_SHARDS = '0123456789abcdef';
 const PREWARM_BATCH_SIZE = 5;
 const PREWARM_CONCURRENCY = 1;
 const VERIFY_CONCURRENCY = 1;
+let stateReadNonce = 0;
 
 function ledgerShard(id) {
   return createHash('sha256').update(String(id)).digest('hex')[0];
@@ -81,7 +82,10 @@ function auth(config) {
   return 'Basic ' + Buffer.from(config.privateKey + ':').toString('base64');
 }
 async function readState(config, path = STATE_PATH) {
-  const url = config.endpoint + path;
+  // State files are overwritten in ImageKit. A unique query string bypasses
+  // stale CDN edge entries so a resumed worker reads the newest checkpoint.
+  const url = new URL(config.endpoint + path);
+  url.searchParams.set('_state_read', String(Date.now()) + '-' + (++stateReadNonce));
   try {
     const response = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(12000) });
     if (response.status === 404) return null;
@@ -427,6 +431,74 @@ export async function resumeIncompleteManifestCatalogRefresh() {
   // Resume the exact saved scan generation, catalogue page checkpoints and
   // verified poster ledger. Completed assets remain out of the retry queue.
   return runManifestCatalogRefresh();
+}
+
+export async function getManifestCatalogRefreshDiagnostics() {
+  const config = imageKitConfig();
+  const checkpoint = await readState(config, CHECKPOINT_PATH);
+  const configured = MANIFEST_KEYS.filter(key => process.env[key]);
+  const manifests = await Promise.all(configured.map(readManifest));
+  const inventory = new Map();
+  let rawCatalogueDefinitions = 0;
+  for (const manifest of manifests) {
+    for (const catalog of manifest.catalogs) {
+      rawCatalogueDefinitions++;
+      const fingerprint = catalogueFingerprint(catalog);
+      if (!inventory.has(fingerprint)) inventory.set(fingerprint, { manifest, catalog });
+    }
+  }
+
+  const completed = checkpoint?.completedCatalogues && typeof checkpoint.completedCatalogues === 'object'
+    ? checkpoint.completedCatalogues : {};
+  const generation = checkpoint?.scanGeneration || null;
+  const completedCurrent = new Set(Object.entries(completed)
+    .filter(([fingerprint, entry]) => inventory.has(fingerprint) && generation && entry?.scanGeneration === generation)
+    .map(([fingerprint]) => fingerprint));
+  const dynamic = new Set();
+  const pending = [];
+  for (const [fingerprint, item] of inventory) {
+    if (completedCurrent.has(fingerprint)) continue;
+    if (unresolvedRequiredExtras(item.catalog).length) dynamic.add(fingerprint);
+    else pending.push({ fingerprint, ...item });
+  }
+
+  let firstIncompleteCatalogue = null;
+  if (pending.length) {
+    const first = pending[0];
+    const path = checkpoint?.titleFiles?.[first.fingerprint] || catalogueCheckpointPath(first.fingerprint);
+    const pageCheckpoint = await readState(config, path);
+    firstIncompleteCatalogue = {
+      source: first.manifest.name, type: first.catalog.type, id: first.catalog.id, name: first.catalog.name,
+      pageCheckpoint: {
+        exists: Boolean(pageCheckpoint),
+        complete: pageCheckpoint?.complete === true,
+        nextPage: Number(pageCheckpoint?.nextPage) || 0,
+        pages: Number(pageCheckpoint?.pages) || 0,
+        records: Number(pageCheckpoint?.records) || 0,
+        generationMatches: Boolean(generation && pageCheckpoint?.scanGeneration === generation)
+      }
+    };
+  }
+
+  const staleCompletions = Object.entries(completed)
+    .filter(([fingerprint, entry]) => !inventory.has(fingerprint) || !generation || entry?.scanGeneration !== generation).length;
+  return {
+    checkpointExists: Boolean(checkpoint),
+    checkpointComplete: checkpoint?.complete === true,
+    scanGeneration: generation,
+    checkpointUpdatedAt: checkpoint?.updatedAt || null,
+    configuredManifestCount: manifests.length,
+    manifests: manifests.map(manifest => ({ source: manifest.name || manifest.key, catalogueDefinitions: manifest.catalogs.length })),
+    rawCatalogueDefinitions,
+    uniqueCatalogueCount: inventory.size,
+    duplicateDefinitions: rawCatalogueDefinitions - inventory.size,
+    completedCatalogueCount: completedCurrent.size,
+    pendingCatalogueCount: pending.length,
+    dynamicCatalogueCount: dynamic.size,
+    staleCompletionCount: staleCompletions,
+    titleFileCount: Object.keys(checkpoint?.titleFiles || {}).length,
+    firstIncompleteCatalogue
+  };
 }
 
 export function runManifestCatalogRefresh(options = {}) {
