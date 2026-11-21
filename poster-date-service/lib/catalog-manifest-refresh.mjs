@@ -406,6 +406,7 @@ async function prewarm(item) {
         headers: { accept: 'image/*' }, redirect: 'manual', signal: AbortSignal.timeout(30000)
       });
       if (response.status >= 300 && response.status < 400) {
+        await response.body?.cancel().catch(() => {});
         const location = response.headers.get('location') || '';
         const imageKitBase = (process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\/$/, '') + '/posters/';
         if (imageKitBase.length > 9 && location.startsWith(imageKitBase)) {
@@ -417,6 +418,7 @@ async function prewarm(item) {
         }
       } else {
         if (!response.ok || !(response.headers.get('content-type') || '').toLowerCase().startsWith('image/')) {
+          await response.body?.cancel().catch(() => {});
           lastError = 'Poster service returned HTTP ' + response.status;
           // A 503 means every trusted source and the ImageKit cache failed.
           // Repeating the same provider chain three times only stalls the scan.
