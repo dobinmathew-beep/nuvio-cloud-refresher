@@ -18,6 +18,7 @@ const INDEX_TTL_MS = 14 * 24 * 60 * 60 * 1000;
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const LEDGER_DIR = '/catalog-state/poster-processing';
 const LEDGER_VERSION = 1;
+const BADGE_RULES_VERSION = 2;
 const LEDGER_SHARDS = '0123456789abcdef';
 const PREWARM_BATCH_SIZE = Math.max(10, Math.min(50, Number(process.env.CATALOG_PREWARM_BATCH_SIZE || 50)));
 const PREWARM_CONCURRENCY = Math.max(1, Math.min(6, Number(process.env.CATALOG_PREWARM_CONCURRENCY || 4)));
@@ -31,7 +32,7 @@ function ledgerPath(shard) {
 }
 function itemFingerprint(item) {
   return createHash('sha256')
-    .update([item.id, item.type || '', item.poster || ''].join('|'))
+    .update([item.id, item.type || '', item.poster || '', 'badge-rules-' + BADGE_RULES_VERSION].join('|'))
     .digest('hex');
 }
 async function loadLedgerShard(config, shard, cache) {
@@ -380,9 +381,16 @@ export async function resumeIncompleteManifestCatalogRefresh(options = {}) {
   const config = imageKitConfig();
   const checkpoint = await readState(config, CHECKPOINT_PATH);
   if (!checkpoint || checkpoint.complete === true) {
+    // Launch the one-time full revalidation only when the durable checkpoint
+    // does not already prove that this badge-rule version completed.
+    if (options.forceReprocess === true && checkpoint?.badgeRulesVersion !== BADGE_RULES_VERSION) {
+      return runManifestCatalogRefresh({ forceReprocess: true });
+    }
     return { status: 'no-incomplete-checkpoint', skipped: true };
   }
-  return runManifestCatalogRefresh(options);
+  // A restarted forced run resumes its page checkpoints and the versioned
+  // ledger instead of resetting discovery or reprocessing completed batches.
+  return runManifestCatalogRefresh();
 }
 
 export function runManifestCatalogRefresh(options = {}) {
@@ -403,7 +411,10 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   // A completed checkpoint belongs to the previous run. Start a clean scan;
   // an incomplete checkpoint is a crash-safe resume point after an OOM/restart.
   if (forceReprocess || !checkpoint || checkpoint.complete === true || ![1, 2].includes(checkpoint.version)) {
-    checkpoint = { version: 2, complete: false, updatedAt: startedAt, completedCatalogues: {}, titleFiles: {} };
+    checkpoint = {
+      version: 2, badgeRulesVersion: BADGE_RULES_VERSION,
+      complete: false, updatedAt: startedAt, completedCatalogues: {}, titleFiles: {}
+    };
     await lease?.assertOwned?.();
     await writeJson(config, CHECKPOINT_PATH, checkpoint);
   }
@@ -500,7 +511,8 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
         // The per-catalogue page file holds title data. The top-level checkpoint
         // stays compact and records only which catalogues are complete.
         checkpoint = {
-          version: 2, complete: false, updatedAt: new Date().toISOString(),
+          version: 2, badgeRulesVersion: BADGE_RULES_VERSION,
+          complete: false, updatedAt: new Date().toISOString(),
           completedCatalogues, titleFiles
         };
         await lease?.assertOwned?.();
@@ -755,7 +767,8 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   // finish cleanly. A subsequent scheduled run will start a fresh scan.
   if (scanComplete && totalFailures === 0 && !resultCounts.failed && !resultCounts.retry && !resultCounts['rendered-not-cached'] && !resultCounts['source-redirect']) {
     checkpoint = {
-      version: 2, complete: true, updatedAt: new Date().toISOString(),
+      version: 2, badgeRulesVersion: BADGE_RULES_VERSION,
+      complete: true, updatedAt: new Date().toISOString(),
       completedCatalogues, titleFiles
     };
     await lease?.assertOwned?.();
