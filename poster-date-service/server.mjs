@@ -465,10 +465,7 @@ server.listen(port, '0.0.0.0', () => {
     catalogRefreshError = null;
     catalogRefreshReport = null;
     setImmediate(() => {
-      const forceReprocess = process.env.CATALOG_REFRESH_FORCE_REPROCESS_ON_START === 'true';
-      const startupRefresh = forceReprocess
-        ? runManifestCatalogRefresh({ forceReprocess: true })
-        : resumeIncompleteManifestCatalogRefresh();
+      const startupRefresh = resumeIncompleteManifestCatalogRefresh({ forceReprocess: true });
       void startupRefresh
         .then(report => {
           catalogRefreshReport = report;
