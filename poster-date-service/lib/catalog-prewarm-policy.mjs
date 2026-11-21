@@ -2,7 +2,8 @@ export const VERIFIED_ASSET_RECHECK_TTL_MS = 6 * 60 * 60 * 1000;
 export const SOURCE_UNAVAILABLE_COOLDOWN_MS = 24 * 60 * 60 * 1000;
 
 export function imageKitVerificationUrl(endpoint, storageId, now = Date.now()) {
-  const base = String(endpoint || '').replace(/\\/$/, '');
+  const rawBase = String(endpoint || '');
+  const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
   return base + '/posters/' + encodeURIComponent(storageId) + '.jpg?__poster_verify=' + encodeURIComponent(String(now));
 }
 
