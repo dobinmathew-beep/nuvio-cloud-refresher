@@ -259,6 +259,26 @@ export async function hasPastDigitalRelease(imdbId, options = {}) {
   }
 }
 
+export async function hasPastDigitalReleaseByTmdbId(tmdbId, options = {}) {
+  const id = String(tmdbId || '');
+  if (!/^\\d{1,12}$/.test(id)) return null;
+  const today = options.today || getTodayInTimeZone(options.now || new Date());
+  const credential = { apiKey: options.apiKey || process.env.TMDB_API_KEY || '', readToken: process.env.TMDB_API_READ_ACCESS_TOKEN || '' };
+  if (!credential.apiKey && !credential.readToken) return null;
+  const key = 'tmdb:' + id + '|digital-released|' + today;
+  const cached = pastDigitalReleaseCache.get(key);
+  if (cached && Date.now() - cached.at < CACHE_MS) return cached.value;
+  try {
+    const releaseData = await tmdbJson('/movie/' + id + '/release_dates', credential);
+    const released = hasPastDigitalReleaseForTest(releaseData.results || [], today);
+    pastDigitalReleaseCache.set(key, { value: released, at: Date.now() });
+    return released;
+  } catch (error) {
+    console.warn('[digital-release-status-lookup-failed]', JSON.stringify({ tmdbId: id, error: error?.message || 'unknown error' }));
+    return null;
+  }
+}
+
 export async function upcomingRelease(imdbId, options = {}) {
   if (!validImdbId(imdbId)) return null;
   const today = options.today || getTodayInTimeZone(options.now || new Date());
