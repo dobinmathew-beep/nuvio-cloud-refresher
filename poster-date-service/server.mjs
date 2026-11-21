@@ -11,7 +11,7 @@ import { isCatalogRecentlyAdded } from './lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
 
 import { imageKitConfig, canStoreImageKitPoster, getImageKitStorageSnapshot, uploadPosterToImageKit, runImageKitMaintenance, initializeImageKitStorageSnapshot } from './lib/imagekit-storage.mjs';
-import { runManifestCatalogRefresh, resumeIncompleteManifestCatalogRefresh } from './lib/catalog-manifest-refresh.mjs';
+import { runManifestCatalogRefresh, resumeIncompleteManifestCatalogRefresh, getManifestCatalogRefreshProgress } from './lib/catalog-manifest-refresh.mjs';
 import { getRefreshLease } from './lib/refresh-coordination.mjs';
 import { hasExistingComingDateTag, hasExistingJustAddedTag } from './lib/coming-tag.mjs';
 
@@ -340,15 +340,16 @@ const server = createServer(async (req, res) => {
         res.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
         return res.end(JSON.stringify({ status: 'coordination-unavailable', error: error?.message || 'Redis unavailable' }));
       }
+      const progress = getManifestCatalogRefreshProgress();
       const response = sharedLease
-        ? { status: 'running', jobId: sharedLease.jobId, coordinated: true }
+        ? { status: 'running', jobId: sharedLease.jobId, coordinated: true, progress }
         : catalogRefreshJob && catalogRefreshReport?.status !== 'already-running'
-          ? { status: 'running', jobId: catalogRefreshJob }
+          ? { status: 'running', jobId: catalogRefreshJob, progress }
           : catalogRefreshError
-            ? { status: 'failed', error: catalogRefreshError }
+            ? { status: 'failed', error: catalogRefreshError, progress }
             : catalogRefreshReport && catalogRefreshReport.status !== 'already-running'
-              ? { status: 'completed', report: catalogRefreshReport }
-              : { status: 'idle' };
+              ? { status: 'completed', report: catalogRefreshReport, progress }
+              : { status: 'idle', progress };
       res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
       return res.end(JSON.stringify(response));
     }
