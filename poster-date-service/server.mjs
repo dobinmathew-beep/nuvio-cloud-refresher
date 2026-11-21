@@ -507,9 +507,18 @@ const server = createServer(async (req, res) => {
       adaptedReq.query.id = imdbId;
       return await posterHandler(adaptedReq, adaptedRes);
     } catch (error) {
-      console.warn('[tmdb-poster-id-resolution-failed]', JSON.stringify({ tmdbId: tmdbPosterMatch[1], mediaType: String(url.searchParams.get('type') || 'tv'), error: error?.message || 'unknown error' }));
-      res.writeHead(502, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
-      return res.end('Could not resolve the TMDB series to an IMDb ID.');
+      const reason = String(error?.message || 'No poster source available for TMDB ID ' + tmdbPosterMatch[1]).slice(0, 240);
+      console.warn('[tmdb-poster-id-resolution-failed]', JSON.stringify({ tmdbId: tmdbPosterMatch[1], mediaType: String(url.searchParams.get('type') || 'tv'), error: reason }));
+      // A missing TMDB/RPDB artwork source is definitive, not an uncertain
+      // upload. Expose the same machine-readable reason as the IMDb route so
+      // the recovery ledger can cool it down without waiting for ImageKit.
+      res.writeHead(503, {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'Cache-Control': 'no-store',
+        'Retry-After': '60',
+        'X-Poster-Fallback-Reason': reason
+      });
+      return res.end('Poster temporarily unavailable');
     }
   }
 
