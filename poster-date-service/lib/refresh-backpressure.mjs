@@ -16,7 +16,7 @@ export function createBoundedTaskQueue(maxPending = 2) {
       .then(value => ({ status: 'fulfilled', value }), error => ({ status: 'rejected', error }))
       .finally(() => pending.delete(tracked));
     pending.add(tracked);
-    return tracked;
+    return { completion: tracked };
   }
 
   async function drain() {
