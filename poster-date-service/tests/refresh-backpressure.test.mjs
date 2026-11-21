@@ -13,8 +13,8 @@ test('bounded queue never exceeds its configured pending task count', async () =
   const a = deferred();
   const b = deferred();
   const c = deferred();
-  const first = await queue.enqueue(() => a.promise);
-  const second = await queue.enqueue(() => b.promise);
+  const { completion: first } = await queue.enqueue(() => a.promise);
+  const { completion: second } = await queue.enqueue(() => b.promise);
   assert.equal(queue.pendingCount, 2);
   let thirdStarted = false;
   const third = queue.enqueue(() => { thirdStarted = true; return c.promise; });
@@ -22,7 +22,7 @@ test('bounded queue never exceeds its configured pending task count', async () =
   assert.equal(thirdStarted, false);
   a.resolve('a');
   await first;
-  await third;
+  const { completion: thirdCompletion } = await thirdCompletion;
   assert.equal(thirdStarted, true);
   assert.equal(queue.pendingCount, 2);
   b.resolve('b');
@@ -34,7 +34,8 @@ test('bounded queue never exceeds its configured pending task count', async () =
 
 test('queue captures task failures and continues draining', async () => {
   const queue = createBoundedTaskQueue(1);
-  const result = await queue.enqueue(() => { throw new Error('verify failed'); });
+  const { completion } = await queue.enqueue(() => { throw new Error('verify failed'); });
+  const result = await completion;
   assert.equal(result.status, 'rejected');
   assert.match(result.error.message, /verify failed/);
   assert.equal(queue.pendingCount, 0);
