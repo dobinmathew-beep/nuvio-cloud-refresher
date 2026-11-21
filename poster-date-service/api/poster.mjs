@@ -250,7 +250,8 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
     }
   }
 
-  if (shouldRenderJustAdded) {
+  // Never stack a Just Added chip on a Coming/New Episode chip.
+  if (shouldRenderJustAdded && !release?.date) {
     try {
       output = await renderJustAddedBadge(output, release?.date ? 0.255 : 0.105);
       justAddedStatus = true;
@@ -353,17 +354,16 @@ export default async function handler(req, res) {
     // This prevents a cached date badge from surviving its release day.
     const badge = String(req.query?.badge || '').toLowerCase() === 'just-added' ? 'just-added' : '';
     const catalogRelease = await upcomingReleaseFromCatalog([id]);
-    // The shared poster URL is not region-specific: a confirmed past digital
-    // release in any TMDB territory vetoes a later catalogue estimate. This
-    // prevents stale Cinebuds/catalog dates from resurrecting a released title.
-    const digitalAlreadyReleased = catalogRelease ? await hasPastDigitalRelease(id) : false;
-    const releaseInfo = digitalAlreadyReleased === true
-      ? null
-      : catalogRelease || await upcomingRelease(id);
+    // Resolve the worldwide TMDB digital calendar first. A confirmed digital
+    // release in any territory vetoes later regional/catalogue estimates.
+    const digitalAlreadyReleased = await hasPastDigitalRelease(id);
+    const tmdbRelease = await upcomingRelease(id);
+    const releaseInfo = digitalAlreadyReleased === true ? null : tmdbRelease || catalogRelease;
     const version = String(req.query?.v || '');
     const fallbackUrl = String(req.query?.fallback || '');
-    let expectedJustAdded = badge === 'just-added';
-    if (!expectedJustAdded) {
+    // Coming/New Episode always takes precedence over Just Added.
+    let expectedJustAdded = !releaseInfo?.date && badge === 'just-added';
+    if (!releaseInfo?.date && !expectedJustAdded) {
       try { expectedJustAdded = await isCatalogRecentlyAdded([id]); }
       catch (error) {
         console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
