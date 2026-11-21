@@ -309,6 +309,13 @@ async function getOriginal(imdbId, fallbackUrl = '') {
 
 async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl = '', digitalReleasedWorldwide = false) {
   const original = await getOriginal(id, fallbackUrl);
+  let sourceBadgeInspectionPromise;
+  const inspectSourceBadges = () => {
+    if (!sourceBadgeInspectionPromise) {
+      sourceBadgeInspectionPromise = inspectExistingPosterBadges(original.bytes, 'any', null);
+    }
+    return sourceBadgeInspectionPromise;
+  };
 
   // BetterPosters may already mark a title as Just Added. Normalize that tag
   // for every client using this shared URL. Catalogs can additionally force
@@ -322,7 +329,8 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
         // Only run OCR when the authoritative catalogue index is unavailable.
         // This preserves BetterPosters' baked-in Just Added tag without adding
         // an OCR pass to the normal, indexed bulk-refresh path.
-        shouldRenderJustAdded = await hasExistingJustAddedTag(original.bytes);
+        const sourceBadges = await inspectSourceBadges();
+        shouldRenderJustAdded = sourceBadges.hasJustAddedBadge;
         if (shouldRenderJustAdded) justAddedSource = 'betterposters-tag-fallback';
       } else {
         shouldRenderJustAdded = catalogResult;
@@ -363,10 +371,10 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
   } else {
     // If no confirmed future date remains, remove an obsolete Coming/New
     // Episode chip baked into provider artwork instead of preserving it.
-    const sourceBadgeInspection = await inspectExistingPosterBadges(original.bytes, 'any', null);
-    const staleDateBadge = sourceBadgeInspection.hasDateBadge;
+    const sourceBadges = await inspectSourceBadges();
+    const staleDateBadge = sourceBadges.hasDateBadge;
     if (staleDateBadge) {
-      const sourceJustAdded = sourceBadgeInspection.hasJustAddedBadge;
+      const sourceJustAdded = sourceBadges.hasJustAddedBadge;
       output = await removeExistingDateBadge(output, 0.105);
       if (sourceJustAdded && !shouldRenderJustAdded) {
         shouldRenderJustAdded = true;
