@@ -490,8 +490,8 @@ const server = createServer(async (req, res) => {
 
 server.listen(port, '0.0.0.0', () => {
   console.log(`Great Indian Upcoming Poster Service listening on port ${port}`);
-  // Resume the interrupted catalogue job automatically after a deploy/restart.
-  // The persistent ImageKit ledger skips completed titles and retries only pending/stale ones.
+  // Resume only an interrupted checkpoint after a deploy/restart.
+  // Never force a full revalidation from startup: it defeats the durable ledger fast path.
   if (process.env.CATALOG_REFRESH_AUTOSTART !== 'false') {
     const jobId = randomUUID();
     catalogRefreshJob = jobId;
@@ -505,7 +505,7 @@ server.listen(port, '0.0.0.0', () => {
         // a completed refresh: wait for the stale lease TTL, then resume from
         // the durable ImageKit checkpoint.
         for (let attempt = 1; attempt <= 4; attempt++) {
-          report = await resumeIncompleteManifestCatalogRefresh({ forceReprocess: true });
+          report = await resumeIncompleteManifestCatalogRefresh();
           if (report?.status !== 'already-running') return report;
           console.warn('[catalog-refresh-autoresume-waiting-for-lease]', JSON.stringify({ jobId, attempt, retryAfterMs: 130000 }));
           if (attempt < 4) await new Promise(resolve => setTimeout(resolve, 130000));
