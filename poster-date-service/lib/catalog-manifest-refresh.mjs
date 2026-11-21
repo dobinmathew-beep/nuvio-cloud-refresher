@@ -386,9 +386,11 @@ export function getManifestCatalogRefreshProgress() {
   const snapshot = structuredClone(activeRefreshProgress);
   const started = Date.parse(snapshot.startedAt || '');
   if (Number.isFinite(started)) snapshot.elapsedSeconds = Math.max(0, Math.round((Date.now() - started) / 1000));
-  const total = Number(snapshot.titlesDiscovered) || 0;
-  const done = Math.min(total, (Number(snapshot.postersVisited) || 0) + (Number(snapshot.postersCacheHits) || 0));
-  snapshot.completionPercent = total ? Math.round(done / total * 1000) / 10 : 0;
+  const total = Number(snapshot.postersTargeted) || 0;
+  const done = Math.min(total, Number(snapshot.postersVisited) || 0);
+  snapshot.completionPercent = total
+    ? Math.round(done / total * 1000) / 10
+    : snapshot.stage === 'completed' ? 100 : 0;
   return snapshot;
 }
 
@@ -445,7 +447,8 @@ export function runManifestCatalogRefresh(options = {}) {
       postersTargeted: 0, postersVisited: 0, postersCorrected: 0,
       postersCacheHits: 0, postersPending: 0, failures: 0,
       failureDetails: [], elapsedSeconds: 0, titlesPerMinute: 0,
-      postersPerMinute: 0, lastCheckpointAt: null
+      cataloguesPerMinute: 0, titlesNewThisRun: 0, catalogueRecordsScanned: 0,
+      catalogueRecordsResumed: 0, postersPerMinute: 0, lastCheckpointAt: null
     };
     queueRefreshProgressWrite();
     try {
@@ -538,6 +541,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
       if (item && item.id === id) current.set(id, item);
     }
   }
+  const initialUniqueTitleCount = current.size;
   const manifests = await Promise.all(configured.map(readManifest));
   const catalogues = [];
   const cataloguesTotal = manifests.reduce((sum, manifest) => sum + manifest.catalogs.length, 0);
@@ -551,6 +555,8 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   const handledFingerprints = new Map();
   let cataloguesScannedThisRun = 0;
   let cataloguesResumed = 0;
+  let catalogueRecordsScanned = 0;
+  let catalogueRecordsResumed = 0;
   let cataloguesSkippedDuplicate = 0;
 
   for (const manifest of manifests) {
@@ -583,9 +589,17 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
           source: saved.source, type: catalog.type, id: catalog.id, name: catalog.name
         });
         cataloguesResumed++;
+        catalogueRecordsResumed += Number(saved.records) || 0;
         catalogues.push({
           source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
           pages: saved.pages || 0, records: saved.records || 0, truncated: Boolean(saved.truncated), resumed: true
+        });
+        const resumeElapsedMinutes = Math.max((Date.now() - progressStartedMs) / 60000, 1 / 60);
+        updateRefreshProgress({
+          cataloguesDiscovered: catalogues.length, cataloguesResumed,
+          catalogueRecordsResumed, titlesDiscovered: current.size,
+          titlesNewThisRun: Math.max(0, current.size - initialUniqueTitleCount),
+          titlesPerMinute: Math.round(Math.max(0, current.size - initialUniqueTitleCount) / resumeElapsedMinutes)
         });
         console.info('[catalog-resumed-from-checkpoint]', JSON.stringify({
           source: manifest.name, type: catalog.type, id: catalog.id,
@@ -625,6 +639,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
           source: result.source, type: result.type, id: result.id, name: result.name
         });
         cataloguesScannedThisRun++;
+        catalogueRecordsScanned += Number(result.records) || 0;
         if (result.resumedFromPageCheckpoint) cataloguesResumed++;
         titleFiles[fingerprint] = catalogueCheckpointPath(fingerprint);
         catalogues.push(result);
@@ -646,7 +661,11 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
         updateRefreshProgress({
           cataloguesDiscovered: catalogues.length, cataloguesScanned: cataloguesScannedThisRun,
           cataloguesResumed, cataloguesSkipped: cataloguesSkippedDuplicate,
-          titlesDiscovered: current.size, titlesPerMinute: Math.round(current.size / elapsedMinutes),
+          catalogueRecordsScanned, catalogueRecordsResumed,
+          titlesDiscovered: current.size,
+          titlesNewThisRun: Math.max(0, current.size - initialUniqueTitleCount),
+          titlesPerMinute: Math.round(Math.max(0, current.size - initialUniqueTitleCount) / elapsedMinutes),
+          cataloguesPerMinute: Math.round(cataloguesScannedThisRun / elapsedMinutes * 10) / 10,
           lastCheckpointAt: checkpoint.updatedAt
         });
       } catch (error) {
@@ -947,8 +966,11 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   updateRefreshProgress({
     status: 'completed', stage: 'completed', cataloguesDiscovered: catalogues.length,
     cataloguesScanned: cataloguesScannedThisRun, cataloguesResumed,
+    catalogueRecordsScanned, catalogueRecordsResumed,
+    cataloguesPerMinute: Math.round(cataloguesScannedThisRun / Math.max((Date.now() - progressStartedMs) / 60000, 1 / 60) * 10) / 10,
     cataloguesFailed: catalogues.filter(c => c.error).length,
-    titlesDiscovered: allItems.length, postersTargeted: items.length,
+    titlesDiscovered: allItems.length, titlesNewThisRun: Math.max(0, allItems.length - initialUniqueTitleCount),
+    postersTargeted: items.length,
     postersVisited, postersCorrected: verifiedUploads, postersCacheHits: verifiedCacheHits,
     postersPending: uploadPending, failures: totalFailures + catalogues.filter(c => c.error).length,
     report, finishedAt: new Date().toISOString(),
