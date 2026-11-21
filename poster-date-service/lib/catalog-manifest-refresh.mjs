@@ -439,7 +439,16 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   // Persist a fresh generation when an older run wrote completion records
   // without generation IDs. Its page snapshots must be re-fetched once.
   if (checkpoint.scanGeneration !== scanGeneration || checkpoint.forceRescanCatalogs !== forceRescanCatalogs) {
-    checkpoint = { ...checkpoint, scanGeneration, forceRescanCatalogs, updatedAt: new Date().toISOString() };
+    checkpoint = {
+      ...checkpoint,
+      scanGeneration,
+      forceRescanCatalogs,
+      // Start the new generation from a clean catalogue inventory; each
+      // current manifest/catalogue will repopulate its own title file.
+      completedCatalogues: {},
+      titleFiles: {},
+      updatedAt: new Date().toISOString()
+    };
     await lease?.assertOwned?.();
     await writeJson(config, CHECKPOINT_PATH, checkpoint);
   }
