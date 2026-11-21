@@ -2,6 +2,10 @@ name: Hourly catalogue refresh monitor
 
 on:
   workflow_dispatch:
+  push:
+    branches: [poster-date-service]
+    paths:
+      - '.github/workflows/hourly-catalogue-monitor.yml'
   schedule:
     # GitHub Actions schedules use UTC. Run hourly at minute 17 to avoid
     # colliding with the existing 06:00/18:00 Oman refresh schedule.
