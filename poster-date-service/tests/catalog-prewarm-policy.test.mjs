@@ -5,7 +5,11 @@ import { classifyPrewarmResponse, imageKitVerificationUrl, isFreshVerifiedRecord
 test('ImageKit redirects are deferred to asynchronous verification instead of repeating generation', () => {
   assert.deepEqual(classifyPrewarmResponse({
     status: 302, location: 'https://ik.imagekit.io/demo/posters/tt1234567.jpg',
-    imageKitBase: 'https://ik.imagekit.io/demo/posters/'
+    imageKitBase: 'https://ik.imagekit.io/demo/posters/', storage: 'pending'
+  }), { status: 'upload-pending', verificationTimeoutMs: 150000, reason: 'imagekit-upload-pending' });
+  assert.deepEqual(classifyPrewarmResponse({
+    status: 302, location: 'https://ik.imagekit.io/demo/posters/tt1234567.jpg',
+    imageKitBase: 'https://ik.imagekit.io/demo/posters/', storage: 'stored'
   }), { status: 'upload-pending', verificationTimeoutMs: 20000, reason: 'imagekit-redirect' });
 });
 
