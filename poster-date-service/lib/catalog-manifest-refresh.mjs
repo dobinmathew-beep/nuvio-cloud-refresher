@@ -415,19 +415,17 @@ function updateRefreshProgress(patch) {
   queueRefreshProgressWrite();
 }
 
-export async function resumeIncompleteManifestCatalogRefresh(options = {}) {
+export async function resumeIncompleteManifestCatalogRefresh() {
   const config = imageKitConfig();
   const checkpoint = await readState(config, CHECKPOINT_PATH);
+  // Startup recovery is deliberately non-destructive: a missing or completed
+  // checkpoint is not permission to launch a full catalogue revalidation.
+  // Full reprocessing remains an explicit/manual runManifestCatalogRefresh option.
   if (!checkpoint || checkpoint.complete === true) {
-    // Launch the one-time full revalidation only when the durable checkpoint
-    // does not already prove that this badge-rule version completed.
-    if (options.forceReprocess === true && checkpoint?.badgeRulesVersion !== BADGE_RULES_VERSION) {
-      return runManifestCatalogRefresh({ forceReprocess: true });
-    }
     return { status: 'no-incomplete-checkpoint', skipped: true };
   }
-  // A restarted forced run resumes its page checkpoints and the versioned
-  // ledger instead of resetting discovery or reprocessing completed batches.
+  // Resume the exact saved scan generation, catalogue page checkpoints and
+  // verified poster ledger. Completed assets remain out of the retry queue.
   return runManifestCatalogRefresh();
 }
 
@@ -725,15 +723,27 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   const allItems = [...current.values()];
   const preflightLedgerCache = new Map();
   const items = [];
+  const candidatesForHeadCheck = [];
   let preflightVerifiedHits = 0;
+  // Read each ledger shard once, then verify existing assets with a small,
+  // bounded network-only fan-out. OCR/image generation stays serial on Free.
   for (const item of allItems) {
     const shard = ledgerShard(item.id);
     const records = await loadLedgerShard(config, shard, preflightLedgerCache);
     const record = records[item.id];
-    if (!forceReprocess && reusableLedgerRecord(record, item) && await checkImageKit(item.id)) {
-      preflightVerifiedHits++;
+    if (!forceReprocess && reusableLedgerRecord(record, item)) {
+      candidatesForHeadCheck.push(item);
     } else {
       items.push(item);
+    }
+  }
+  const PREFLIGHT_HEAD_CONCURRENCY = 8;
+  for (let offset = 0; offset < candidatesForHeadCheck.length; offset += PREFLIGHT_HEAD_CONCURRENCY) {
+    const batch = candidatesForHeadCheck.slice(offset, offset + PREFLIGHT_HEAD_CONCURRENCY);
+    const checks = await Promise.all(batch.map(item => checkImageKit(item.id)));
+    for (let index = 0; index < batch.length; index++) {
+      if (checks[index]) preflightVerifiedHits++;
+      else items.push(batch[index]);
     }
   }
   preflightLedgerCache.clear();
