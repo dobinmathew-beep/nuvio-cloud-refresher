@@ -35,6 +35,9 @@ export function sourceUrl(imdbId) {
 
 const IMAGEKIT_REFRESH_MS = 6 * 60 * 60 * 1000;
 const pendingImageKitUploads = new Map();
+const imageKitAvailabilityCache = new Map();
+const IMAGEKIT_AVAILABILITY_TTL_MS = 2 * 60 * 1000;
+const IMAGEKIT_MISS_TTL_MS = 15 * 1000;
 
 function imageKitAssetUrl(config, imdbId) {
   return config.endpoint + '/posters/' + encodeURIComponent(imdbId) + '.jpg';
@@ -43,6 +46,8 @@ function imageKitAssetUrl(config, imdbId) {
 // Fast availability-only check used when providers fail or clients probe with
 // HEAD. It deliberately does not OCR or fetch the image body.
 async function findExistingImageKitAsset(imdbId) {
+  const cached = imageKitAvailabilityCache.get(imdbId);
+  if (cached && cached.expiresAt > Date.now()) return cached.url;
   const config = imageKitConfig();
   if (!config) return null;
   const assetUrl = imageKitAssetUrl(config, imdbId);
@@ -50,11 +55,23 @@ async function findExistingImageKitAsset(imdbId) {
     const response = await fetch(assetUrl, {
       method: 'HEAD',
       cache: 'no-store',
-      signal: AbortSignal.timeout(2500)
+      signal: AbortSignal.timeout(1800)
     });
     const type = (response.headers.get('content-type') || '').toLowerCase();
-    return response.ok && type.startsWith('image/') ? assetUrl : null;
+    const url = response.ok && type.startsWith('image/') ? assetUrl : null;
+    imageKitAvailabilityCache.set(imdbId, {
+      url,
+      expiresAt: Date.now() + (url ? IMAGEKIT_AVAILABILITY_TTL_MS : IMAGEKIT_MISS_TTL_MS)
+    });
+    while (imageKitAvailabilityCache.size > 3000) {
+      imageKitAvailabilityCache.delete(imageKitAvailabilityCache.keys().next().value);
+    }
+    return url;
   } catch {
+    imageKitAvailabilityCache.set(imdbId, {
+      url: null,
+      expiresAt: Date.now() + IMAGEKIT_MISS_TTL_MS
+    });
     return null;
   }
 }
@@ -422,6 +439,15 @@ export default async function handler(req, res) {
       res.setHeader('X-Poster-Source', original.source || 'BetterPosters');
       res.setHeader('Cache-Control', 'public, max-age=3600');
       return res.end(req.method === 'HEAD' ? undefined : original.bytes);
+    }
+
+    // Artwork delivery takes priority over slow badge metadata. If this title
+    // already has a reachable canonical ImageKit poster, return it immediately
+    // instead of making Nuvio wait on TMDB/release-date lookups that often time out.
+    // The short availability cache also coalesces repeated catalogue requests.
+    const fastCachedAsset = await findExistingImageKitAsset(id);
+    if (fastCachedAsset) {
+      return redirectToExistingImageKit(res, fastCachedAsset, 'imagekit-first-fast-path');
     }
 
     // An ImageKit copy is valid only while TMDB still confirms a future release.
