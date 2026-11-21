@@ -125,6 +125,7 @@ jobs:
           console.log('| Metric | Current value |');
           console.log('|---|---:|');
           console.log('| Stage | ' + (p.stage || '—') + ' |');
+          console.log('| Progress source | ' + (s.progressState || (s.progress ? 'local' : 'not-available')) + ' |');
           console.log('| Completion | ' + n(p.completionPercent) + '% |');
           console.log('| Catalogues scanned / discovered | ' + n(p.cataloguesScanned) + ' / ' + n(p.cataloguesDiscovered) + ' (of ' + n(p.cataloguesTotal) + ') |');
           console.log('| Catalogues failed / skipped | ' + n(p.cataloguesFailed) + ' / ' + n(p.cataloguesSkipped) + ' |');
