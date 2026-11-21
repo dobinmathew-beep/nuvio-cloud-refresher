@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-11-21T18:41:15.541616+04:00",
+  "generatedAt": "2026-11-21T21:51:53.427521+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 26,
     "byLanguage": {
-      "hindi": 16,
-      "malayalam": 4,
+      "hindi": 15,
+      "malayalam": 5,
       "telugu": 4,
       "tamil": 2
     },
     "byType": {
-      "movie": 14,
-      "series": 12
+      "movie": 15,
+      "series": 11
     },
     "byMatchState": {
       "published": 20,
@@ -20,9 +20,9 @@
     },
     "bySource": {
       "https://www.ottchecker.com/ott-releases/hindi": 2,
-      "https://www.themoviedb.org/tv/338390": 1,
       "https://www.dailyott.in/": 4,
       "https://www.tvmaze.com/shows/70529/dhindora": 1,
+      "https://www.ottchecker.com/ott-releases/malayalam": 1,
       "https://www.keralatv.in/channel/ott/": 2,
       "https://www.ottchecker.com/ott-releases/telugu": 1,
       "https://ottasia.com/ott-releases-this-week?country=IN": 14,
@@ -61,31 +61,6 @@
       "catalog": "dobins_hi_movie"
     },
     {
-      "title": "Apsara",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-21",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/338390"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "premiere",
-      "detail": null,
-      "matchId": "tt50063835",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
       "title": "Bigg Boss Season 20",
       "language": "hindi",
       "type": "series",
@@ -122,8 +97,8 @@
         "YouTube"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.tvmaze.com/shows/70529/dhindora"
       ],
       "confirmed": true,
@@ -141,6 +116,33 @@
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "Oru Vadakkan Velicham - A Northern Light",
+      "language": "malayalam",
+      "type": "movie",
+      "releaseDate": "2026-11-21",
+      "platforms": [
+        "Manorama Max"
+      ],
+      "sources": [
+        "https://www.ottchecker.com/ott-releases/malayalam"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTChecker explicit streaming-since date",
+      "detail": "https://www.ottchecker.com/movie/oru-vadakkan-velicham-a-northern-light-2026",
+      "matchId": "tt43082675",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_ml_movie"
     },
     {
       "title": "Sameer",
@@ -333,12 +335,12 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Prime Video",
-        "Netflix"
+        "Netflix",
+        "Prime Video"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -490,7 +492,7 @@
         "poster": true,
         "description": true,
         "genres": true,
-        "releaseInfo": true
+        "releaseInfo": false
       },
       "catalog": "dobins_ml_series"
     },
@@ -607,8 +609,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -712,7 +714,9 @@
       "language": "telugu",
       "type": "movie",
       "releaseDate": "2026-12-04",
-      "platforms": [],
+      "platforms": [
+        "ZEE5"
+      ],
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
@@ -738,11 +742,30 @@
     "counts": {
       "total": 8,
       "byType": {
-        "movie": 3,
-        "series": 5
+        "series": 5,
+        "movie": 3
       }
     },
     "items": [
+      {
+        "name": "Satyameva",
+        "language": "malayalam",
+        "type": "series",
+        "ottDate": "2026-11-27",
+        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+        "sources": [
+          "https://ottasia.com/ott-releases-this-week?country=IN"
+        ],
+        "platforms": [
+          "ZEE5"
+        ],
+        "detail": "https://ottasia.com/title/tv/342403/satyameva?country=IN",
+        "sourceRecord": {
+          "title": "Satyameva",
+          "releaseDate": "2026-11-27",
+          "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+        }
+      },
       {
         "name": "Sameer",
         "language": "malayalam",
@@ -761,25 +784,6 @@
           "releaseDate": "2026-11-21",
           "source": "https://www.keralatv.in/channel/ott/",
           "headline": "Sameer Malayalam Movie OTT Release Date Confirmed – Streaming on ManoramaMAX From 21 November 2026"
-        }
-      },
-      {
-        "name": "Satyameva",
-        "language": "malayalam",
-        "type": "series",
-        "ottDate": "2026-11-27",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://ottasia.com/ott-releases-this-week?country=IN"
-        ],
-        "platforms": [
-          "ZEE5"
-        ],
-        "detail": "https://ottasia.com/title/tv/342403/satyameva?country=IN",
-        "sourceRecord": {
-          "title": "Satyameva",
-          "releaseDate": "2026-11-27",
-          "source": "https://ottasia.com/ott-releases-this-week?country=IN"
         }
       },
       {
@@ -1062,7 +1066,7 @@
       "source": "OTTChecker Malayalam recent releases",
       "url": "https://www.ottchecker.com/ott-releases/malayalam",
       "state": "live",
-      "records": 14
+      "records": 15
     },
     {
       "source": "OTTChecker Tamil recent releases",
@@ -1112,7 +1116,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 114,
+      "records": 115,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1148,7 +1152,7 @@
           "sourceDomainsWithSeriesRecords": [
             "ottasia.com"
           ],
-          "detectedRecords": 24,
+          "detectedRecords": 25,
           "coverageStatus": "partial",
           "sources": [
             {
@@ -1237,8 +1241,8 @@
               "url": "https://www.ottchecker.com/ott-releases/malayalam",
               "state": "live",
               "languageState": "records_found",
-              "records": 14,
-              "movieRecords": 14,
+              "records": 15,
+              "movieRecords": 15,
               "seriesRecords": 0
             },
             {
@@ -1878,7 +1882,7 @@
       "sourceDomainsWithSeriesRecords": [
         "ottasia.com"
       ],
-      "detectedRecords": 24,
+      "detectedRecords": 25,
       "coverageStatus": "partial",
       "sources": [
         {
@@ -1967,8 +1971,8 @@
           "url": "https://www.ottchecker.com/ott-releases/malayalam",
           "state": "live",
           "languageState": "records_found",
-          "records": 14,
-          "movieRecords": 14,
+          "records": 15,
+          "movieRecords": 15,
           "seriesRecords": 0
         },
         {

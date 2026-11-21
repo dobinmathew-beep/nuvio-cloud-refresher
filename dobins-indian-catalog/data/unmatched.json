@@ -32,26 +32,6 @@
     }
   },
   {
-    "name": "Sameer",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-11-21",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.keralatv.in/channel/ott/"
-    ],
-    "platforms": [
-      "ManoramaMAX"
-    ],
-    "detail": "https://www.keralatv.in/sameer-malayalam-movie-ott-release-date-manoramamax/",
-    "sourceRecord": {
-      "title": "Sameer",
-      "releaseDate": "2026-11-21",
-      "source": "https://www.keralatv.in/channel/ott/",
-      "headline": "Sameer Malayalam Movie OTT Release Date Confirmed – Streaming on ManoramaMAX From 21 November 2026"
-    }
-  },
-  {
     "name": "Satyameva",
     "language": "malayalam",
     "type": "series",
@@ -108,6 +88,26 @@
       "title": "Hatela Gang",
       "releaseDate": "2026-11-28",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
+    "name": "Sameer",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-11-21",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.keralatv.in/channel/ott/"
+    ],
+    "platforms": [
+      "ManoramaMAX"
+    ],
+    "detail": "https://www.keralatv.in/sameer-malayalam-movie-ott-release-date-manoramamax/",
+    "sourceRecord": {
+      "title": "Sameer",
+      "releaseDate": "2026-11-21",
+      "source": "https://www.keralatv.in/channel/ott/",
+      "headline": "Sameer Malayalam Movie OTT Release Date Confirmed – Streaming on ManoramaMAX From 21 November 2026"
     }
   },
   {
@@ -1383,6 +1383,37 @@
     }
   },
   {
+    "name": "Manipur Files",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-07-11",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "YouTube"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a51d36fcf19d56322acc442",
+      "platform": "YouTube",
+      "title": "Manipur Files",
+      "createdAt": "2026-07-11T05:23:58.919Z",
+      "genre": "Documentary",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-07-11",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-07-11T05:23:58.919Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Iruniram",
     "language": "malayalam",
     "type": "movie",
@@ -1426,37 +1457,6 @@
         "fetchedAt": "2026-11-16T23:43:59.297Z"
       },
       "tmdbId": 1686468,
-      "verified": true
-    }
-  },
-  {
-    "name": "Manipur Files",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-07-11",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "YouTube"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a51d36fcf19d56322acc442",
-      "platform": "YouTube",
-      "title": "Manipur Files",
-      "createdAt": "2026-07-11T05:23:58.919Z",
-      "genre": "Documentary",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-07-11",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-07-11T05:23:58.919Z",
       "verified": true
     }
   },

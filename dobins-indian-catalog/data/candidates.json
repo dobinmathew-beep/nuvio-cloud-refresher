@@ -1503,13 +1503,6 @@
       "type": "movie"
     },
     {
-      "id": "tt30590474",
-      "name": "Nilavuku En Mel Ennadi Kobam",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt30590474.jpg",
-      "releaseInfo": "2025",
-      "type": "movie"
-    },
-    {
       "id": "tt18926098",
       "name": "Vidaamuyarchi",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt18926098.jpg",
@@ -7078,6 +7071,13 @@
       "type": "movie"
     },
     {
+      "id": "tt39378361",
+      "name": "Mayookha",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39378361.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tt32089596",
       "name": "Comrade Kalyan",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32089596.jpg",
@@ -7256,6 +7256,13 @@
       "id": "tt40572470",
       "name": "Deewana",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt40572470.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
+      "id": "tt42932774",
+      "name": "Transfer Trimurthulu",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt42932774.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     },
@@ -7600,20 +7607,6 @@
       "name": "Andhra King Taluka",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32553651.jpg",
       "releaseInfo": "2025",
-      "type": "movie"
-    },
-    {
-      "id": "tt38854659",
-      "name": "Raju Weds Rambai",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt38854659.jpg",
-      "releaseInfo": "2025",
-      "type": "movie"
-    },
-    {
-      "id": "tmdb:1577447||Children of WONDERS : Vidar's Little Adventure||||movie||https://image.tmdb.org/t/p/original/uWzOmCIE36qVDwSJxpDf0zqDaRc.jpg||Prince%20Vidar%20Ragnar%20is%20sad.%20He's%20sad%20because%20his%20friends%20are%20leaving%20him.%20How%20could%20they!%3F%20He%20couldn't%20comprehend%20how%20they%20could%20just%20move%20on%20without%20any%20tears%2C%20how%20they%20could%20leave%20him.%20His%20heart%20is%20full%20of%20this%20inexplicable%20sorrow%2C%20which%20is%20pathetic%20for%20a%20Pyped%20like%20him.%20He%20needs%20to%20take%20his%20mind%20off%20of%20this%20whole%20business%2C%20so%20he%20does%20what%20he%20always%20wanted%20to....he%20goes%20on%20a%20little%20adventure!",
-      "name": "Children of WONDERS : Vidar's Little Adventure",
-      "poster": "https://image.tmdb.org/t/p/original/uWzOmCIE36qVDwSJxpDf0zqDaRc.jpg",
-      "releaseInfo": "",
       "type": "movie"
     },
     {
@@ -8859,20 +8852,6 @@
       "id": "tmdb:830890||I Have A Cinema||2020||movie||https://image.tmdb.org/t/p/original/vtxM1rUhQrHllILsErOapOYGaWF.jpg||An%20amateur%20and%20frustrated%20filmmaker%20is%20trying%20to%20pitch%20his%20idea%20of%20making%20a%20documentary%20to%20his%20friends%2C%20paying%20tribute%20to%20his%20favorite%20filmmaker.",
       "name": "I Have A Cinema",
       "poster": "https://image.tmdb.org/t/p/original/vtxM1rUhQrHllILsErOapOYGaWF.jpg",
-      "releaseInfo": "2020",
-      "type": "movie"
-    },
-    {
-      "id": "tt8080982",
-      "name": "Guvva Gorinka",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8080982.jpg",
-      "releaseInfo": "2020",
-      "type": "movie"
-    },
-    {
-      "id": "tt10801230",
-      "name": "IIT Krishnamurthy",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10801230.jpg",
       "releaseInfo": "2020",
       "type": "movie"
     },
@@ -12568,5 +12547,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-21T18:41:15.541616+04:00"
+  "_updatedAt": "2026-11-21T21:51:53.427521+04:00"
 }

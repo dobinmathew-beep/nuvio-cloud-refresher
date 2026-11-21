@@ -50,6 +50,59 @@
       "catalogAddedAt": null
     },
     {
+      "id": "tt43082675",
+      "imdbId": "tt43082675",
+      "type": "movie",
+      "name": "Oru Vadakkan Velicham - A Northern Light",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt43082675?badge=just-added&v=7",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt43082675",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt43082675",
+      "releaseInfo": "2026",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "7.5",
+      "genres": [
+        "Mystery",
+        "Thriller",
+        "Drama"
+      ],
+      "description": "New OTT arrival (digital): 2026-11-21 · Manorama Max\n\nWhen a young man is taken in for questioning about the disappearance of a woman, a seemingly routine interrogation slowly unravels into something far more personal. As hidden relationships, buried secrets, and long-suppressed truths begin to surface, the lines between justice, guilt, and revenge become increasingly blurred. Set against the backdrop of Canada, Oru Vadakkan Velicham is a Malayalam investigative thriller that explores deception, trauma, and the consequences of the past.",
+      "releaseDate": "2026-11-21",
+      "releaseKind": "digital",
+      "releaseStatus": "available",
+      "releaseLabel": "New OTT arrival",
+      "releaseLabelDate": "2026-11-21",
+      "originalReleaseDate": "2026",
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-11-21",
+          "platforms": [
+            "Manorama Max"
+          ],
+          "sources": [
+            "https://www.ottchecker.com/ott-releases/malayalam"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [],
+      "ottDate": "2026-11-21",
+      "platforms": [
+        "Manorama Max"
+      ],
+      "sources": [
+        "https://www.ottchecker.com/ott-releases/malayalam"
+      ],
+      "language": "malayalam",
+      "releaseDateBasis": "OTTChecker explicit streaming-since date",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-21T21:51:53.427521+04:00"
+    },
+    {
       "id": "tt37547793",
       "imdbId": "tt37547793",
       "type": "movie",
@@ -60,7 +113,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt37547793",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.0",
+      "imdbRating": "5.9",
       "genres": [
         "Fantasy",
         "Comedy",
@@ -186,8 +239,8 @@
             "ManoramaMAX"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/malayalam",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/malayalam"
           ]
         }
       ],
@@ -199,8 +252,8 @@
         "ManoramaMAX"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/malayalam",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/malayalam"
       ],
       "language": "malayalam",
       "releaseDateBasis": "source release",
@@ -326,7 +379,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt27470699",
       "releaseInfo": "2024",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "4.8",
+      "imdbRating": "5.3",
       "genres": [
         "Crime",
         "Drama"
@@ -378,7 +431,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt21990434",
       "releaseInfo": "2023",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "4.3",
+      "imdbRating": "3.9",
       "genres": [
         "Action",
         "Drama",
@@ -400,8 +453,8 @@
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/malayalam",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/malayalam"
           ]
         }
       ],
@@ -413,8 +466,8 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/malayalam",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/malayalam"
       ],
       "language": "malayalam",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -508,8 +561,8 @@
             "SimplySouth"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/malayalam",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/malayalam"
           ]
         }
       ],
@@ -521,8 +574,8 @@
         "SimplySouth"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/malayalam",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/malayalam"
       ],
       "language": "malayalam",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -740,7 +793,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt36821438",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "4.9",
+      "imdbRating": "5.1",
       "genres": [
         "Comedy",
         "Drama",
@@ -816,8 +869,8 @@
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/malayalam",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/malayalam"
           ]
         }
       ],
@@ -830,8 +883,8 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/malayalam",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/malayalam"
       ],
       "language": "malayalam",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -872,8 +925,8 @@
             "Manorama Max"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/malayalam",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/malayalam"
           ]
         }
       ],
@@ -884,8 +937,8 @@
         "Manorama Max"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/malayalam",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/malayalam"
       ],
       "language": "malayalam",
       "releaseDateBasis": "source release",
@@ -926,8 +979,8 @@
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/malayalam",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/malayalam"
           ]
         }
       ],
@@ -939,8 +992,8 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/malayalam",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/malayalam"
       ],
       "language": "malayalam",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -961,7 +1014,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt41935268",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.6",
+      "imdbRating": "6.3",
       "genres": [],
       "description": "New OTT arrival (digital): 2026-10-23 · Manorama Max\n\nThe story traces six stages in a man's life, from childhood to old age, revealing the roles, struggles, and responsibilities he carries through each phase of his journey.",
       "releaseDate": "2026-10-23",
@@ -1028,8 +1081,8 @@
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/malayalam",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/malayalam"
           ]
         }
       ],
@@ -1041,8 +1094,8 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/malayalam",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/malayalam"
       ],
       "language": "malayalam",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -1224,7 +1277,7 @@
         "Crime",
         "Thriller"
       ],
-      "description": "New OTT arrival (digital): 2026-10-09 · Prime Video, Aha, Simply South, ManoramaMAX\n\nAamir Ali, a notorious gold smuggling kingpin who inherited his multi-million dollar criminal enterprise from a lineage of gangsters, is drawn into a web of vengeance, legacy and power.",
+      "description": "New OTT arrival (digital): 2026-10-09 · Prime Video, ManoramaMAX, Simply South, Aha\n\nAamir Ali, a notorious gold smuggling kingpin who inherited his multi-million dollar criminal enterprise from a lineage of gangsters, is drawn into a web of vengeance, legacy and power.",
       "releaseDate": "2026-10-09",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -1237,9 +1290,9 @@
           "date": "2026-10-09",
           "platforms": [
             "Prime Video",
-            "Aha",
+            "ManoramaMAX",
             "Simply South",
-            "ManoramaMAX"
+            "Aha"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -1251,9 +1304,9 @@
       "ottDate": "2026-10-09",
       "platforms": [
         "Prime Video",
-        "Aha",
+        "ManoramaMAX",
         "Simply South",
-        "ManoramaMAX"
+        "Aha"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -1855,7 +1908,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt35076988",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.5",
+      "imdbRating": "6.4",
       "genres": [
         "Drama",
         "Romance"
@@ -3947,7 +4000,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt11322908",
       "releaseInfo": "2025",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "2.4",
+      "imdbRating": "2.5",
       "genres": [
         "Adventure",
         "Drama"
@@ -5504,13 +5557,13 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt44686897",
       "releaseInfo": "2026–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "4.2",
+      "imdbRating": "4.0",
       "genres": [
         "Comedy",
         "Drama"
       ],
-      "description": "Home release (digital): 2026-11-06 · \n\nFiroz has one dream: become a Pan-Indian superstar. But everyone around him has other plans. His friends are experts at ruining things. Vappa Mammali turns producer hoping one flop will send him straight back to the family business. Umma is busy finding him a bride on matrimony sites. And then there's his girlfriend.",
-      "releaseDate": "2026-11-06",
+      "description": "Home release (digital): 2026-11-13 · \n\nFiroz has one dream: become a Pan-Indian superstar. But everyone around him has other plans. His friends are experts at ruining things. Vappa Mammali turns producer hoping one flop will send him straight back to the family business. Umma is busy finding him a bride on matrimony sites. And then there's his girlfriend.",
+      "releaseDate": "2026-11-13",
       "releaseKind": "digital",
       "releaseStatus": "available",
       "releaseLabel": null,
@@ -5519,7 +5572,7 @@
       "availability": [
         {
           "kind": "digital",
-          "date": "2026-11-06",
+          "date": "2026-11-13",
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
@@ -5530,7 +5583,7 @@
       ],
       "physicalReleases": [],
       "theatricalReleases": [],
-      "ottDate": "2026-11-06",
+      "ottDate": "2026-11-13",
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
@@ -5539,7 +5592,7 @@
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
-      "latestEpisodeReleasedAt": "2026-11-06T00:00:03+00:00",
+      "latestEpisodeReleasedAt": "2026-11-13T00:00:03+00:00",
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null,
       "justAdded": false,
@@ -5702,7 +5755,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt47657304",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.2",
+      "imdbRating": null,
       "genres": [
         "Documentary",
         "Talk"
@@ -5978,7 +6031,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt43639419",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.2",
+      "imdbRating": "6.3",
       "genres": [
         "Documentary"
       ],
@@ -6721,8 +6774,8 @@
         "Drama",
         "Family"
       ],
-      "description": "Home release (digital): 2025-07-31 · \n\nAbandoned as a child, Aleena grows up longing for love. Will life ever lead her back to her lost parents and the happiness she dreams of?",
-      "releaseDate": "2025-07-31",
+      "description": "Home release (digital): 2025-07-07 · \n\nAbandoned as a child, Aleena grows up longing for love. Will life ever lead her back to her lost parents and the happiness she dreams of?",
+      "releaseDate": "2025-07-07",
       "releaseKind": "digital",
       "releaseStatus": "available",
       "releaseLabel": null,
@@ -6731,7 +6784,7 @@
       "availability": [
         {
           "kind": "digital",
-          "date": "2025-07-31",
+          "date": "2025-07-07",
           "platforms": [],
           "sources": [
             "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
@@ -6741,7 +6794,7 @@
       ],
       "physicalReleases": [],
       "theatricalReleases": [],
-      "ottDate": "2025-07-31",
+      "ottDate": "2025-07-07",
       "platforms": [],
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
@@ -6749,7 +6802,7 @@
       ],
       "language": "malayalam",
       "releaseDateBasis": "episode",
-      "latestEpisodeReleasedAt": "2025-07-31T00:00:00+00:00",
+      "latestEpisodeReleasedAt": "2025-07-07T00:00:00+00:00",
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null,
       "justAdded": false,
@@ -8834,7 +8887,7 @@
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt50508547",
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt50508547",
-      "releaseInfo": "2026–",
+      "releaseInfo": "",
       "metadataSource": "https://v3-cinemeta.strem.io/",
       "imdbRating": null,
       "genres": [
@@ -9017,8 +9070,8 @@
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -9030,8 +9083,8 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -9073,8 +9126,8 @@
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -9086,8 +9139,8 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -9160,7 +9213,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39195686",
       "releaseInfo": "2025",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.7",
+      "imdbRating": "7.3",
       "genres": [
         "Thriller",
         "Drama"
@@ -9180,8 +9233,8 @@
             "Aha"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -9192,8 +9245,8 @@
         "Aha"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "source release",
@@ -9342,8 +9395,8 @@
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -9356,8 +9409,8 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -9451,8 +9504,8 @@
             "ZEE5"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -9463,8 +9516,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "source release",
@@ -9485,7 +9538,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39089210",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.3",
+      "imdbRating": "8.7",
       "genres": [
         "Family",
         "Drama"
@@ -9537,7 +9590,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt44917900",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.3",
+      "imdbRating": "6.0",
       "genres": [
         "Drama"
       ],
@@ -9590,7 +9643,7 @@
       "metadataSource": "https://v3-cinemeta.strem.io/",
       "imdbRating": "10",
       "genres": [],
-      "description": "New OTT arrival (digital): 2026-11-05 · Sun NXT\n\n",
+      "description": "New OTT arrival (digital): 2026-11-05 · Sun NXT\n\nThe Grand Master follows Vellaiyamma, a sanitation worker who stands by her son Nandhan's dream of becoming a chess champion. As they face caste discrimination, financial hardship, and rejection, their journey tests their persever...",
       "releaseDate": "2026-11-05",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -9605,8 +9658,8 @@
             "Sun NXT"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -9617,8 +9670,8 @@
         "Sun NXT"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -9639,7 +9692,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt38097205",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.0",
+      "imdbRating": "5.9",
       "genres": [
         "Comedy",
         "Romance",
@@ -9661,8 +9714,8 @@
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -9674,8 +9727,8 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -9696,12 +9749,12 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt45370533",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.9",
+      "imdbRating": "6.2",
       "genres": [
         "Crime",
         "Thriller"
       ],
-      "description": "New OTT arrival (digital): 2026-10-29 · Prime Video, Aha, Amazon Prime Video, SimplySouth\n\nIn the Hill Village of Mekkarai, Where It is Customary for Men to Die Every Seven Years During the Month of June, a Newly Appointed Police Inspector Arrives to Investigate a Series of Mysterious Murders. As He Digs Deeper Into the Village's Dark Secrets and Long-standing Beliefs, He Finds Himself Trapped in a Web of Crime, Fear, and Hidden Truths.",
+      "description": "New OTT arrival (digital): 2026-10-29 · Amazon Prime Video, Prime Video, Aha, SimplySouth\n\nIn the Hill Village of Mekkarai, Where It is Customary for Men to Die Every Seven Years During the Month of June, a Newly Appointed Police Inspector Arrives to Investigate a Series of Mysterious Murders. As He Digs Deeper Into the Village's Dark Secrets and Long-standing Beliefs, He Finds Himself Trapped in a Web of Crime, Fear, and Hidden Truths.",
       "releaseDate": "2026-10-29",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -9713,15 +9766,15 @@
           "kind": "digital",
           "date": "2026-10-29",
           "platforms": [
+            "Amazon Prime Video",
             "Prime Video",
             "Aha",
-            "Amazon Prime Video",
             "SimplySouth"
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -9729,15 +9782,15 @@
       "theatricalReleases": [],
       "ottDate": "2026-10-29",
       "platforms": [
+        "Amazon Prime Video",
         "Prime Video",
         "Aha",
-        "Amazon Prime Video",
         "SimplySouth"
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -9758,7 +9811,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39239754",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "4.3",
+      "imdbRating": "4.5",
       "genres": [
         "Action",
         "Crime",
@@ -9780,8 +9833,8 @@
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -9793,8 +9846,8 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -9815,7 +9868,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt36931126",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.9",
+      "imdbRating": "7.0",
       "genres": [
         "Romance",
         "Thriller",
@@ -9837,8 +9890,8 @@
             "SonyLIV"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -9849,8 +9902,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -9893,8 +9946,8 @@
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -9906,8 +9959,8 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -10002,8 +10055,8 @@
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -10015,8 +10068,8 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -10376,7 +10429,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt41101621",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.4",
+      "imdbRating": "7.5",
       "genres": [
         "Drama"
       ],
@@ -11544,7 +11597,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt22754948",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.5",
+      "imdbRating": "8.7",
       "genres": [
         "Drama",
         "Romance",
@@ -11653,7 +11706,7 @@
         "Action",
         "Thriller"
       ],
-      "description": "New OTT arrival (digital): 2026-05-14 · JioHotStar, Simply South\n\nCenters on secret intelligence agency cases involving five major national threats that were thwarted through covert operations.",
+      "description": "New OTT arrival (digital): 2026-05-14 · Simply South, JioHotStar\n\nCenters on secret intelligence agency cases involving five major national threats that were thwarted through covert operations.",
       "releaseDate": "2026-05-14",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -11665,8 +11718,8 @@
           "kind": "digital",
           "date": "2026-05-14",
           "platforms": [
-            "JioHotStar",
-            "Simply South"
+            "Simply South",
+            "JioHotStar"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -11677,8 +11730,8 @@
       "theatricalReleases": [],
       "ottDate": "2026-05-14",
       "platforms": [
-        "JioHotStar",
-        "Simply South"
+        "Simply South",
+        "JioHotStar"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -14574,7 +14627,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt41962673",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.8",
+      "imdbRating": "7.1",
       "genres": [
         "Family",
         "Drama",
@@ -14660,8 +14713,8 @@
             "JioHotstar"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/tamil",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/tamil"
           ]
         }
       ],
@@ -14672,8 +14725,8 @@
         "JioHotstar"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/tamil"
       ],
       "language": "tamil",
       "releaseDateBasis": "source release",
@@ -17062,53 +17115,6 @@
       "catalogAddedAt": null
     },
     {
-      "id": "tt21446444",
-      "imdbId": "tt21446444",
-      "type": "series",
-      "name": "Meenakshi Ponnunga",
-      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt21446444?badge=just-added&v=7",
-      "posterShape": "poster",
-      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt21446444",
-      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt21446444",
-      "releaseInfo": "2022–",
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": null,
-      "genres": [
-        "Drama"
-      ],
-      "description": "Home release (digital): 2024-08-04 · \n\nMeenakshi, abandoned by her husband, braves all stigma and hardships to bring up her three children. One of her daughters, Sakthi, vows to become an IAS officer and restore her mother's lost pride.",
-      "releaseDate": "2024-08-04",
-      "releaseKind": "digital",
-      "releaseStatus": "available",
-      "releaseLabel": null,
-      "releaseLabelDate": null,
-      "originalReleaseDate": null,
-      "availability": [
-        {
-          "kind": "digital",
-          "date": "2022-08-01",
-          "platforms": [],
-          "sources": [
-            "https://www.themoviedb.org/tv/276583"
-          ]
-        }
-      ],
-      "physicalReleases": [],
-      "theatricalReleases": [],
-      "ottDate": "2024-08-04",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/276583"
-      ],
-      "language": "tamil",
-      "releaseDateBasis": "premiere",
-      "latestEpisodeReleasedAt": "2024-08-04T00:00:03+00:00",
-      "hasNewEpisodes": false,
-      "nextEpisodeReleaseAt": null,
-      "justAdded": true,
-      "catalogAddedAt": "2026-11-21T02:56:05.146522+04:00"
-    },
-    {
       "id": "tt28434030",
       "imdbId": "tt28434030",
       "type": "series",
@@ -17533,7 +17539,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt30150229",
       "releaseInfo": "2023–2023",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "9.0",
+      "imdbRating": "8.9",
       "genres": [
         "Documentary"
       ],
@@ -19009,6 +19015,118 @@
       "catalogAddedAt": null
     },
     {
+      "id": "tmdb:206268",
+      "imdbId": null,
+      "type": "series",
+      "name": "Victim",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/series~tmdb:206268?badge=just-added&v=7",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/series~tmdb:206268",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/series~tmdb:206268",
+      "releaseInfo": "2022",
+      "metadataSource": "https://www.themoviedb.org/tv/206268",
+      "imdbRating": null,
+      "genres": [
+        "Mystery",
+        "Comedy",
+        "Drama"
+      ],
+      "description": "Home release (digital): 2022-08-05 · SonyLIV\n\nFour different people fall victim to their situations and must face the consequences of their actions. The choices they now make will define their outcomes.",
+      "releaseDate": "2022-08-05",
+      "releaseKind": "digital",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2022-08-05",
+          "platforms": [
+            "SonyLIV"
+          ],
+          "sources": [
+            "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/206268"
+          ]
+        },
+        {
+          "kind": "digital",
+          "date": "2022-08-05",
+          "platforms": [],
+          "sources": [
+            "https://www.themoviedb.org/tv/206268"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [],
+      "ottDate": "2022-08-05",
+      "platforms": [
+        "SonyLIV"
+      ],
+      "sources": [
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/206268"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "episode",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-21T01:41:30.011715+04:00"
+    },
+    {
+      "id": "tmdb:276583",
+      "imdbId": null,
+      "type": "series",
+      "name": "Meenakshi Ponnunga",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/series~tmdb:276583?badge=just-added&v=7",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/series~tmdb:276583",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/series~tmdb:276583",
+      "releaseInfo": "2022",
+      "metadataSource": "https://www.themoviedb.org/tv/276583",
+      "imdbRating": null,
+      "genres": [
+        "Drama"
+      ],
+      "description": "Home release (digital): 2022-08-01 · \n\nMeenakshi, abandoned by her husband, braves all stigma and hardships to bring up her three children. One of her daughters, Sakthi, vows to become an IAS officer and restore her mother's lost pride.",
+      "releaseDate": "2022-08-01",
+      "releaseKind": "digital",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2022-08-01",
+          "platforms": [],
+          "sources": [
+            "https://www.themoviedb.org/tv/276583"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [],
+      "ottDate": "2022-08-01",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/276583"
+      ],
+      "language": "tamil",
+      "releaseDateBasis": "premiere",
+      "latestEpisodeReleasedAt": null,
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": true,
+      "catalogAddedAt": "2026-11-21T01:41:30.011715+04:00"
+    },
+    {
       "id": "tmdb:206390",
       "imdbId": null,
       "type": "series",
@@ -20162,71 +20280,6 @@
       "catalogAddedAt": null
     },
     {
-      "id": "tt8178650",
-      "imdbId": "tt8178650",
-      "type": "series",
-      "name": "The Victim",
-      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt8178650?badge=just-added&v=7",
-      "posterShape": "poster",
-      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt8178650",
-      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt8178650",
-      "releaseInfo": "2019",
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.6",
-      "genres": [
-        "Crime",
-        "Drama",
-        "Mystery"
-      ],
-      "description": "Home release (digital): 2022-08-05 · SonyLIV\n\nA mother seeks the whereabouts of her son's killer after he is released from prison, unleashing a series of events that surface tragic memories and unexpected consequences.",
-      "releaseDate": "2022-08-05",
-      "releaseKind": "digital",
-      "releaseStatus": "available",
-      "releaseLabel": null,
-      "releaseLabelDate": null,
-      "originalReleaseDate": null,
-      "availability": [
-        {
-          "kind": "digital",
-          "date": "2022-08-05",
-          "platforms": [
-            "SonyLIV"
-          ],
-          "sources": [
-            "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-            "https://v3-cinemeta.strem.io/",
-            "https://www.themoviedb.org/tv/206268"
-          ]
-        },
-        {
-          "kind": "digital",
-          "date": "2022-08-05",
-          "platforms": [],
-          "sources": [
-            "https://www.themoviedb.org/tv/206268"
-          ]
-        }
-      ],
-      "physicalReleases": [],
-      "theatricalReleases": [],
-      "ottDate": "2022-08-05",
-      "platforms": [
-        "SonyLIV"
-      ],
-      "sources": [
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/",
-        "https://www.themoviedb.org/tv/206268"
-      ],
-      "language": "tamil",
-      "releaseDateBasis": "episode",
-      "latestEpisodeReleasedAt": "2019-04-11T21:00:00+00:00",
-      "hasNewEpisodes": false,
-      "nextEpisodeReleaseAt": null,
-      "justAdded": true,
-      "catalogAddedAt": "2026-11-21T02:56:05.146522+04:00"
-    },
-    {
       "id": "tt2294189",
       "imdbId": "tt2294189",
       "type": "series",
@@ -20356,7 +20409,7 @@
         "Family",
         "Drama"
       ],
-      "description": "New OTT arrival (digital): 2026-12-04 · \n\nA newlywed woman defies patriarchal traditions when marriage reduces her dreams to endless chores.",
+      "description": "New OTT arrival (digital): 2026-12-04 · ZEE5\n\nA newlywed woman defies patriarchal traditions when marriage reduces her dreams to endless chores.",
       "releaseDate": "2026-12-04",
       "releaseKind": "digital",
       "releaseStatus": "upcoming",
@@ -20367,7 +20420,9 @@
         {
           "kind": "digital",
           "date": "2026-12-04",
-          "platforms": [],
+          "platforms": [
+            "ZEE5"
+          ],
           "sources": [
             "https://ottasia.com/ott-releases-this-week?country=IN"
           ]
@@ -20376,7 +20431,9 @@
       "physicalReleases": [],
       "theatricalReleases": [],
       "ottDate": "2026-12-04",
-      "platforms": [],
+      "platforms": [
+        "ZEE5"
+      ],
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
@@ -20626,8 +20683,8 @@
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/telugu",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/telugu"
           ]
         }
       ],
@@ -20639,8 +20696,8 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/telugu",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/telugu"
       ],
       "language": "telugu",
       "releaseDateBasis": "source release",
@@ -20683,8 +20740,8 @@
             "SunNXT"
           ],
           "sources": [
-            "https://www.keralatv.in/channel/ott/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.keralatv.in/channel/ott/"
           ]
         }
       ],
@@ -20696,8 +20753,8 @@
         "SunNXT"
       ],
       "sources": [
-        "https://www.keralatv.in/channel/ott/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.keralatv.in/channel/ott/"
       ],
       "language": "telugu",
       "releaseDateBasis": "source release",
@@ -20718,12 +20775,12 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt38984184",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.7",
+      "imdbRating": "",
       "genres": [
         "Horror",
         "Thriller"
       ],
-      "description": "New OTT arrival (digital): 2026-11-20 · Netflix\n\nSet in a medical college in a dread-stricken village, the film confronts the science behind superstitions, the superstitions in science, and an anomaly that neither can explain.",
+      "description": "New OTT arrival (digital): 2026-11-20 · Netflix\n\nSome doors should never be opened.",
       "releaseDate": "2026-11-20",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -20877,13 +20934,13 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt42655940",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.6",
+      "imdbRating": "9.7",
       "genres": [
         "Family",
         "Comedy",
         "Adventure"
       ],
-      "description": "New OTT arrival (digital): 2026-11-13 · Amazon Prime Video, Sun NXT\n\nSeven women from different generations leave their daily routines behind for a spontaneous getaway that sparks a journey of friendship and self-discovery.",
+      "description": "New OTT arrival (digital): 2026-11-13 · Amazon Prime Video, Sun NXT\n\nA group of seven women across generations set off on a spontaneous European getaway, leaving their everyday lives behind. Amid the chaos, laughter and picturesque landscapes, the journey becomes an unexpected celebration of freedom and friendship.",
       "releaseDate": "2026-11-13",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -20932,7 +20989,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39440956",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.5",
+      "imdbRating": "8.3",
       "genres": [
         "Action",
         "Thriller"
@@ -21058,8 +21115,8 @@
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/telugu",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/telugu"
           ]
         }
       ],
@@ -21071,8 +21128,8 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/telugu",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/telugu"
       ],
       "language": "telugu",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -21207,7 +21264,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt41221277",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.6",
+      "imdbRating": "6.1",
       "genres": [
         "Action",
         "Drama",
@@ -21369,7 +21426,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt43407940",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.8",
+      "imdbRating": "5.9",
       "genres": [
         "Drama"
       ],
@@ -21389,8 +21446,8 @@
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/telugu",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/telugu"
           ]
         }
       ],
@@ -21402,8 +21459,8 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/telugu",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/telugu"
       ],
       "language": "telugu",
       "releaseDateBasis": "source release",
@@ -21446,8 +21503,8 @@
             "Amazon Prime Video"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/telugu",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/telugu"
           ]
         }
       ],
@@ -21459,8 +21516,8 @@
         "Amazon Prime Video"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/telugu",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/telugu"
       ],
       "language": "telugu",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -21481,7 +21538,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt31841170",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.7",
+      "imdbRating": "5.8",
       "genres": [
         "Fantasy",
         "Drama",
@@ -21502,8 +21559,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/telugu",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/telugu"
           ]
         }
       ],
@@ -21514,8 +21571,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/telugu",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/telugu"
       ],
       "language": "telugu",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -21608,8 +21665,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://cinebuds.com/ott-release-dates/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-release-dates/"
           ]
         }
       ],
@@ -21620,8 +21677,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "language": "telugu",
       "releaseDateBasis": "source release",
@@ -21662,8 +21719,8 @@
             "Aha"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/telugu",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/telugu"
           ]
         }
       ],
@@ -21674,8 +21731,8 @@
         "Aha"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/telugu",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/telugu"
       ],
       "language": "telugu",
       "releaseDateBasis": "source release",
@@ -21696,7 +21753,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt45382318",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.7",
+      "imdbRating": "5.6",
       "genres": [
         "Drama",
         "Romance"
@@ -22356,7 +22413,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt32474264",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.9",
+      "imdbRating": "5.8",
       "genres": [
         "Comedy",
         "Horror",
@@ -23582,7 +23639,7 @@
         "Romance",
         "Drama"
       ],
-      "description": "New OTT arrival (digital): 2026-05-18 · Zeeplex, Shreyas ET, BookMyShow Stream\n\n",
+      "description": "New OTT arrival (digital): 2026-05-18 · BookMyShow Stream, Zeeplex, Shreyas ET\n\n",
       "releaseDate": "2026-05-18",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -23594,9 +23651,9 @@
           "kind": "digital",
           "date": "2026-05-18",
           "platforms": [
+            "BookMyShow Stream",
             "Zeeplex",
-            "Shreyas ET",
-            "BookMyShow Stream"
+            "Shreyas ET"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -23607,9 +23664,9 @@
       "theatricalReleases": [],
       "ottDate": "2026-05-18",
       "platforms": [
+        "BookMyShow Stream",
         "Zeeplex",
-        "Shreyas ET",
-        "BookMyShow Stream"
+        "Shreyas ET"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -24880,7 +24937,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39954649",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.6",
+      "imdbRating": "5.7",
       "genres": [
         "Horror",
         "Thriller"
@@ -26914,7 +26971,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39216437",
       "releaseInfo": "2026–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "4.2",
+      "imdbRating": "4.5",
       "genres": [
         "Drama",
         "Crime",
@@ -27034,14 +27091,11 @@
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt49873734",
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt49873734",
-      "releaseInfo": "2026–",
+      "releaseInfo": "",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.8",
-      "genres": [
-        "Crime",
-        "Mystery"
-      ],
-      "description": "Home release (digital): 2026-10-30 · ZEE5\n\nAn honest police officer, SI Siva kumar, investigates a mysterious disappearance and a gruesome headless corpse in a small town.",
+      "imdbRating": null,
+      "genres": [],
+      "description": "Home release (digital): 2026-10-30 · ZEE5\n\n",
       "releaseDate": "2026-10-30",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -27080,7 +27134,7 @@
       ],
       "language": "telugu",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
-      "latestEpisodeReleasedAt": "2026-10-30T00:00:06+00:00",
+      "latestEpisodeReleasedAt": null,
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null,
       "justAdded": false,
@@ -27097,7 +27151,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt39216452",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.9",
+      "imdbRating": "7.0",
       "genres": [
         "Drama"
       ],
@@ -27200,7 +27254,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt45381529",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.0",
+      "imdbRating": "6.1",
       "genres": [
         "Crime",
         "Mystery"
@@ -27714,7 +27768,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt43620256",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "8.1",
+      "imdbRating": "8.2",
       "genres": [
         "Documentary"
       ],
@@ -32744,7 +32798,7 @@
         "Drama",
         "Mystery"
       ],
-      "description": "New OTT arrival (digital): 2026-11-27 · Prime Video, Netflix\n\nFollows the Salgaonkar family as they try to cover up a murder.",
+      "description": "New OTT arrival (digital): 2026-11-27 · Netflix, Prime Video\n\nFollows the Salgaonkar family as they try to cover up a murder.",
       "releaseDate": "2026-11-27",
       "releaseKind": "digital",
       "releaseStatus": "upcoming",
@@ -32756,12 +32810,12 @@
           "kind": "digital",
           "date": "2026-11-27",
           "platforms": [
-            "Prime Video",
-            "Netflix"
+            "Netflix",
+            "Prime Video"
           ],
           "sources": [
-            "https://cinebuds.com/ott-releases-this-week/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://cinebuds.com/ott-releases-this-week/"
           ]
         }
       ],
@@ -32769,12 +32823,12 @@
       "theatricalReleases": [],
       "ottDate": "2026-11-27",
       "platforms": [
-        "Prime Video",
-        "Netflix"
+        "Netflix",
+        "Prime Video"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "language": "hindi",
       "releaseDateBasis": "confirmed announcement",
@@ -33125,8 +33179,8 @@
             "SonyLIV"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         }
       ],
@@ -33137,8 +33191,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "language": "hindi",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -33178,8 +33232,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         }
       ],
@@ -33190,8 +33244,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "language": "hindi",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -33212,7 +33266,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt26242352",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.9",
+      "imdbRating": "6.1",
       "genres": [
         "Crime",
         "Thriller"
@@ -33232,8 +33286,8 @@
             "ZEE5"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         }
       ],
@@ -33244,8 +33298,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -33651,8 +33705,8 @@
           ],
           "sources": [
             "https://www.dailyott.in/",
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         }
       ],
@@ -33664,8 +33718,8 @@
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -33931,7 +33985,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt24226306",
       "releaseInfo": "2023",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.6",
+      "imdbRating": "7.4",
       "genres": [
         "Drama"
       ],
@@ -33950,8 +34004,8 @@
             "ZEE5"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         }
       ],
@@ -33962,8 +34016,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "language": "hindi",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -34003,8 +34057,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         }
       ],
@@ -34015,8 +34069,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "language": "hindi",
       "releaseDateBasis": "OTTChecker explicit streaming-since date",
@@ -34975,8 +35029,8 @@
             "Lionsgate Play"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         }
       ],
@@ -34987,8 +35041,8 @@
         "Lionsgate Play"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -35441,7 +35495,7 @@
         "Drama",
         "Romance"
       ],
-      "description": "New OTT arrival (digital): 2026-07-10 · JioHotStar, Netflix\n\nA seemingly perfect marriage in Prayagraj takes an unexpected turn when one decision leads to a chain of misunderstandings, suspicion, and comedic chaos.",
+      "description": "New OTT arrival (digital): 2026-07-10 · Netflix, JioHotStar\n\nA seemingly perfect marriage in Prayagraj takes an unexpected turn when one decision leads to a chain of misunderstandings, suspicion, and comedic chaos.",
       "releaseDate": "2026-07-10",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -35453,8 +35507,8 @@
           "kind": "digital",
           "date": "2026-07-10",
           "platforms": [
-            "JioHotStar",
-            "Netflix"
+            "Netflix",
+            "JioHotStar"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -35465,8 +35519,8 @@
       "theatricalReleases": [],
       "ottDate": "2026-07-10",
       "platforms": [
-        "JioHotStar",
-        "Netflix"
+        "Netflix",
+        "JioHotStar"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -35543,7 +35597,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt41804839",
       "releaseInfo": "2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.6",
+      "imdbRating": "7.5",
       "genres": [
         "Adventure",
         "Romance",
@@ -36177,7 +36231,7 @@
         "Crime",
         "Thriller"
       ],
-      "description": "New OTT arrival (digital): 2026-05-22 · JioHotstar, Netflix\n\nA mysterious traveler slips into the heart of Karachi's underbelly and rises through its ranks with lethal precision, only to tear the notorious ISI-Underworld nexus apart from within.",
+      "description": "New OTT arrival (digital): 2026-05-22 · Netflix, JioHotstar\n\nA mysterious traveler slips into the heart of Karachi's underbelly and rises through its ranks with lethal precision, only to tear the notorious ISI-Underworld nexus apart from within.",
       "releaseDate": "2026-05-22",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -36189,8 +36243,8 @@
           "kind": "digital",
           "date": "2026-05-22",
           "platforms": [
-            "JioHotstar",
-            "Netflix"
+            "Netflix",
+            "JioHotstar"
           ],
           "sources": [
             "https://www.dailyott.in/"
@@ -36201,8 +36255,8 @@
       "theatricalReleases": [],
       "ottDate": "2026-05-22",
       "platforms": [
-        "JioHotstar",
-        "Netflix"
+        "Netflix",
+        "JioHotstar"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -37073,7 +37127,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt28023902",
       "releaseInfo": "2024",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.5",
+      "imdbRating": "6.6",
       "genres": [
         "Comedy",
         "Drama",
@@ -40419,57 +40473,6 @@
   ],
   "dobins_hi_series": [
     {
-      "id": "tt35933285",
-      "imdbId": "tt35933285",
-      "type": "series",
-      "name": "O Saathi Re",
-      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt35933285?v=8",
-      "posterShape": "poster",
-      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt35933285",
-      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt35933285",
-      "releaseInfo": "2026–",
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": null,
-      "genres": [
-        "Drama"
-      ],
-      "description": "Upcoming OTT release (digital): 2026-12-04 · Netflix\n\nPlot details of the project have been kept under wraps, but it will be an emotionally charged narrative centered around an extramarital affair.",
-      "releaseDate": "2026-12-04",
-      "releaseKind": "digital",
-      "releaseStatus": "upcoming",
-      "releaseLabel": null,
-      "releaseLabelDate": null,
-      "originalReleaseDate": null,
-      "availability": [
-        {
-          "kind": "digital",
-          "date": "2026-12-04",
-          "platforms": [
-            "Netflix"
-          ],
-          "sources": [
-            "https://ottasia.com/ott-releases-this-week?country=IN"
-          ]
-        }
-      ],
-      "physicalReleases": [],
-      "theatricalReleases": [],
-      "ottDate": "2026-12-04",
-      "platforms": [
-        "Netflix"
-      ],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "language": "hindi",
-      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
-      "latestEpisodeReleasedAt": null,
-      "hasNewEpisodes": false,
-      "nextEpisodeReleaseAt": "2026-12-04T00:00:00+00:00",
-      "justAdded": false,
-      "catalogAddedAt": null
-    },
-    {
       "id": "tmdb:337904",
       "imdbId": null,
       "type": "series",
@@ -40651,8 +40654,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://api.tvmaze.com/schedule/web",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://api.tvmaze.com/schedule/web"
           ]
         },
         {
@@ -40674,8 +40677,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -40740,54 +40743,6 @@
       "catalogAddedAt": null
     },
     {
-      "id": "tt50063835",
-      "imdbId": "tt50063835",
-      "type": "series",
-      "name": "Apsara",
-      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt50063835?v=8",
-      "posterShape": "poster",
-      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt50063835",
-      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt50063835",
-      "releaseInfo": "2026–",
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": null,
-      "genres": [
-        "Sci-Fi & Fantasy",
-        "Drama"
-      ],
-      "description": "Home release (digital): 2026-11-21 · \n\nBraving modern-day evils, power-blessed Sunheri is the sole protector of her celestial clan! But her blood sister Dhara stands in her way! Can she fight her?",
-      "releaseDate": "2026-11-21",
-      "releaseKind": "digital",
-      "releaseStatus": "available",
-      "releaseLabel": null,
-      "releaseLabelDate": null,
-      "originalReleaseDate": null,
-      "availability": [
-        {
-          "kind": "digital",
-          "date": "2026-10-21",
-          "platforms": [],
-          "sources": [
-            "https://www.themoviedb.org/tv/338390"
-          ]
-        }
-      ],
-      "physicalReleases": [],
-      "theatricalReleases": [],
-      "ottDate": "2026-11-21",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/338390"
-      ],
-      "language": "hindi",
-      "releaseDateBasis": "premiere",
-      "latestEpisodeReleasedAt": "2026-11-21T00:00:00+00:00",
-      "hasNewEpisodes": true,
-      "nextEpisodeReleaseAt": "2026-11-22T00:00:00+00:00",
-      "justAdded": false,
-      "catalogAddedAt": null
-    },
-    {
       "id": "tt50943841",
       "imdbId": "tt50943841",
       "type": "series",
@@ -40815,8 +40770,8 @@
             "ZEE5"
           ],
           "sources": [
-            "https://www.keralatv.in/channel/ott/",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.keralatv.in/channel/ott/"
           ]
         }
       ],
@@ -40827,8 +40782,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://www.keralatv.in/channel/ott/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.keralatv.in/channel/ott/"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -40930,8 +40885,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         },
         {
@@ -40953,8 +40908,8 @@
         "YouTube"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.tvmaze.com/shows/70529/dhindora"
       ],
       "language": "hindi",
@@ -41132,6 +41087,54 @@
       "catalogAddedAt": null
     },
     {
+      "id": "tt50063835",
+      "imdbId": "tt50063835",
+      "type": "series",
+      "name": "Apsara",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt50063835?v=8",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt50063835",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt50063835",
+      "releaseInfo": "2026–",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": null,
+      "genres": [
+        "Sci-Fi & Fantasy",
+        "Drama"
+      ],
+      "description": "Home release (digital): 2026-11-17 · \n\nBraving modern-day evils, power-blessed Sunheri is the sole protector of her celestial clan! But her blood sister Dhara stands in her way! Can she fight her?",
+      "releaseDate": "2026-11-17",
+      "releaseKind": "digital",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-10-21",
+          "platforms": [],
+          "sources": [
+            "https://www.themoviedb.org/tv/338390"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [],
+      "ottDate": "2026-11-17",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/338390"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "premiere",
+      "latestEpisodeReleasedAt": "2026-11-17T00:00:00+00:00",
+      "hasNewEpisodes": true,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": false,
+      "catalogAddedAt": null
+    },
+    {
       "id": "tt38195069",
       "imdbId": "tt38195069",
       "type": "series",
@@ -41184,70 +41187,6 @@
       "catalogAddedAt": null
     },
     {
-      "id": "tt46182660",
-      "imdbId": "tt46182660",
-      "type": "series",
-      "name": "Family Full House with Rohit Sharma",
-      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt46182660?v=8",
-      "posterShape": "poster",
-      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt46182660",
-      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt46182660",
-      "releaseInfo": "2026–",
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.8",
-      "genres": [
-        "Comedy"
-      ],
-      "description": "Home release (digital): 2026-11-15 · SonyLIV\n\nFamily Full House with Rohit Sharma features Indian cricketer Rohit Sharma making his television hosting debut on Sony TV. The family-focused game show brings competing families together for fun, survey-based trivia infused with Rohit's signature laid-back wit and humor.",
-      "releaseDate": "2026-11-15",
-      "releaseKind": "digital",
-      "releaseStatus": "available",
-      "releaseLabel": null,
-      "releaseLabelDate": null,
-      "originalReleaseDate": null,
-      "availability": [
-        {
-          "kind": "digital",
-          "date": "2026-09-19",
-          "platforms": [
-            "SonyLIV"
-          ],
-          "sources": [
-            "https://www.dailyott.in/"
-          ]
-        },
-        {
-          "kind": "digital",
-          "date": "2026-11-15",
-          "platforms": [],
-          "sources": [
-            "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-            "https://v3-cinemeta.strem.io/",
-            "https://www.themoviedb.org/tv/335787"
-          ]
-        }
-      ],
-      "physicalReleases": [],
-      "theatricalReleases": [],
-      "ottDate": "2026-11-15",
-      "platforms": [
-        "SonyLIV"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/",
-        "https://www.themoviedb.org/tv/335787"
-      ],
-      "language": "hindi",
-      "releaseDateBasis": "episode",
-      "latestEpisodeReleasedAt": "2026-11-15T00:00:00+00:00",
-      "hasNewEpisodes": true,
-      "nextEpisodeReleaseAt": null,
-      "justAdded": false,
-      "catalogAddedAt": null
-    },
-    {
       "id": "tt28450216",
       "imdbId": "tt28450216",
       "type": "series",
@@ -41256,14 +41195,14 @@
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt28450216",
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt28450216",
-      "releaseInfo": "2026–2026",
+      "releaseInfo": "2026–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "4.5",
+      "imdbRating": "6.8",
       "genres": [
         "Mystery",
         "Drama"
       ],
-      "description": "Home release (digital): 2026-11-13 · JioHotstar, JioHotStar\n\nStudent of the Year: After Dark reimagines the St. Teresa's campus as the setting of a murder mystery after the school's queen bee, Aayesha Malik, is found dead in a frozen lake. Refusing to believe it was an accident, her introverted twin sister Aditi goes undercover at the elite institution to investigate her death.",
+      "description": "Home release (digital): 2026-11-13 · JioHotStar, JioHotstar\n\nStudent of the Year: After Dark reimagines the St. Teresa's campus as the setting of a murder mystery after the school's queen bee, Aayesha Malik, is found dead in a frozen lake. Refusing to believe it was an accident, her introverted twin sister Aditi goes undercover at the elite institution to investigate her death.",
       "releaseDate": "2026-11-13",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -41275,12 +41214,12 @@
           "kind": "digital",
           "date": "2026-11-13",
           "platforms": [
-            "JioHotstar",
-            "JioHotStar"
+            "JioHotStar",
+            "JioHotstar"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         },
         {
@@ -41306,12 +41245,12 @@
       "theatricalReleases": [],
       "ottDate": "2026-11-13",
       "platforms": [
-        "JioHotstar",
-        "JioHotStar"
+        "JioHotStar",
+        "JioHotstar"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.themoviedb.org/tv/334412",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
@@ -41435,6 +41374,70 @@
       "catalogAddedAt": null
     },
     {
+      "id": "tt46182660",
+      "imdbId": "tt46182660",
+      "type": "series",
+      "name": "Family Full House with Rohit Sharma",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt46182660?v=8",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt46182660",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt46182660",
+      "releaseInfo": "2026–",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": "7.8",
+      "genres": [
+        "Comedy"
+      ],
+      "description": "Home release (digital): 2026-11-01 · SonyLIV\n\nFamily Full House with Rohit Sharma features Indian cricketer Rohit Sharma making his television hosting debut on Sony TV. The family-focused game show brings competing families together for fun, survey-based trivia infused with Rohit's signature laid-back wit and humor.",
+      "releaseDate": "2026-11-01",
+      "releaseKind": "digital",
+      "releaseStatus": "available",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-09-19",
+          "platforms": [
+            "SonyLIV"
+          ],
+          "sources": [
+            "https://www.dailyott.in/"
+          ]
+        },
+        {
+          "kind": "digital",
+          "date": "2026-11-01",
+          "platforms": [],
+          "sources": [
+            "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+            "https://v3-cinemeta.strem.io/",
+            "https://www.themoviedb.org/tv/335787"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [],
+      "ottDate": "2026-11-01",
+      "platforms": [
+        "SonyLIV"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/335787"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "episode",
+      "latestEpisodeReleasedAt": "2026-11-01T00:00:00+00:00",
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": false,
+      "catalogAddedAt": null
+    },
+    {
       "id": "tt0250875",
       "imdbId": "tt0250875",
       "type": "series",
@@ -41517,8 +41520,8 @@
             "Netflix"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://cinebuds.com/ott-release-dates/"
+            "https://cinebuds.com/ott-release-dates/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         },
         {
@@ -41539,8 +41542,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
         "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.tvmaze.com/shows/95295/akka"
       ],
       "language": "hindi",
@@ -41785,7 +41788,7 @@
         "Action",
         "Adventure"
       ],
-      "description": "Home release (digital): 2026-10-23 · JioHotstar, JioHotStar\n\nWhen the power-hungry Ravan tore through the world to unleash evil, in his way stood a humble vaanar awoken to his divinity to become an immortal legend.",
+      "description": "Home release (digital): 2026-10-23 · JioHotStar, JioHotstar\n\nWhen the power-hungry Ravan tore through the world to unleash evil, in his way stood a humble vaanar awoken to his divinity to become an immortal legend.",
       "releaseDate": "2026-10-23",
       "releaseKind": "digital",
       "releaseStatus": "available",
@@ -41797,12 +41800,12 @@
           "kind": "digital",
           "date": "2026-10-23",
           "platforms": [
-            "JioHotstar",
-            "JioHotStar"
+            "JioHotStar",
+            "JioHotstar"
           ],
           "sources": [
-            "https://www.ottchecker.com/ott-releases/hindi",
-            "https://www.dailyott.in/"
+            "https://www.dailyott.in/",
+            "https://www.ottchecker.com/ott-releases/hindi"
           ]
         }
       ],
@@ -41810,12 +41813,12 @@
       "theatricalReleases": [],
       "ottDate": "2026-10-23",
       "platforms": [
-        "JioHotstar",
-        "JioHotStar"
+        "JioHotStar",
+        "JioHotstar"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "language": "hindi",
       "releaseDateBasis": "source release",
@@ -42276,7 +42279,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt44934375",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "6.7",
+      "imdbRating": "6.6",
       "genres": [
         "Crime",
         "Drama"
@@ -42408,7 +42411,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt35929525",
       "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "5.3",
+      "imdbRating": "5.2",
       "genres": [
         "Crime",
         "Mystery",
@@ -42941,7 +42944,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt21186282",
       "releaseInfo": "2022–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "4.1",
+      "imdbRating": "4.0",
       "genres": [
         "Reality"
       ],
@@ -43411,7 +43414,7 @@
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt40914930",
       "releaseInfo": "2026–",
       "metadataSource": "https://v3-cinemeta.strem.io/",
-      "imdbRating": "7.2",
+      "imdbRating": "7.1",
       "genres": [
         "Reality"
       ],
@@ -43715,7 +43718,7 @@
       "posterShape": "poster",
       "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt40856520",
       "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt40856520",
-      "releaseInfo": "2026–",
+      "releaseInfo": "2026–2026",
       "metadataSource": "https://v3-cinemeta.strem.io/",
       "imdbRating": "8.1",
       "genres": [
@@ -59089,6 +59092,57 @@
       "language": "hindi",
       "releaseDateBasis": "source release",
       "latestEpisodeReleasedAt": "2016-10-09T21:00:00+00:00",
+      "hasNewEpisodes": false,
+      "nextEpisodeReleaseAt": null,
+      "justAdded": false,
+      "catalogAddedAt": null
+    },
+    {
+      "id": "tt35933285",
+      "imdbId": "tt35933285",
+      "type": "series",
+      "name": "O Saathi Re",
+      "poster": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/poster/tt35933285?v=8",
+      "posterShape": "poster",
+      "background": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/background/tt35933285",
+      "logo": "https://dobins-indian-catalog.quickfield138.chatgpt.site/art/logo/tt35933285",
+      "releaseInfo": "2026–",
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "imdbRating": null,
+      "genres": [
+        "Drama"
+      ],
+      "description": "Upcoming OTT release (digital): 2026-12-04 · Netflix\n\nPlot details of the project have been kept under wraps, but it will be an emotionally charged narrative centered around an extramarital affair.",
+      "releaseDate": "2026-12-04",
+      "releaseKind": "digital",
+      "releaseStatus": "upcoming",
+      "releaseLabel": null,
+      "releaseLabelDate": null,
+      "originalReleaseDate": null,
+      "availability": [
+        {
+          "kind": "digital",
+          "date": "2026-12-04",
+          "platforms": [
+            "Netflix"
+          ],
+          "sources": [
+            "https://ottasia.com/ott-releases-this-week?country=IN"
+          ]
+        }
+      ],
+      "physicalReleases": [],
+      "theatricalReleases": [],
+      "ottDate": "2026-12-04",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "language": "hindi",
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "latestEpisodeReleasedAt": "1970-01-01T00:00:00+00:00",
       "hasNewEpisodes": false,
       "nextEpisodeReleaseAt": null,
       "justAdded": false,
