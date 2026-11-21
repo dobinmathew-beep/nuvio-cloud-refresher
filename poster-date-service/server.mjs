@@ -365,8 +365,7 @@ const server = createServer(async (req, res) => {
       try {
         await initializeImageKitStorageSnapshot();
         catalogRefreshReport = await runManifestCatalogRefresh({
-          forceReprocess: url.searchParams.get('force') === '1' ||
-            process.env.CATALOG_REFRESH_FORCE_REPROCESS_ON_START === 'true'
+          forceReprocess: url.searchParams.get('force') === '1'
         });
         console.log('[catalog-refresh-job-complete]', JSON.stringify({ jobId, status: 'completed' }));
       } catch (error) {
