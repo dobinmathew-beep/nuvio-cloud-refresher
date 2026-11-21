@@ -124,11 +124,14 @@ jobs:
           const n = v => Number.isFinite(Number(v)) ? Number(v).toLocaleString() : '—';
           const elapsed = n(p.elapsedSeconds);
           const correctedRates = p.titlesNewThisRun !== undefined && p.cataloguesPerMinute !== undefined;
+          const progressAge = p.updatedAt ? Math.max(0, Math.round((Date.now() - Date.parse(p.updatedAt)) / 1000)) : null;
           console.log('### Live refresh progress');
           console.log('| Metric | Current value |');
           console.log('|---|---:|');
           console.log('| Stage | ' + (p.stage || '—') + ' |');
           console.log('| Progress source | ' + (s.progressState || (s.progress ? 'local' : 'not-available')) + ' |');
+          console.log('| Progress snapshot age | ' + (progressAge === null ? '—' : progressAge + ' seconds') + ' |');
+          console.log('| Progress freshness | ' + (progressAge === null ? 'unavailable' : progressAge > 90 ? 'stale; waiting for lease handoff/restart' : 'fresh') + ' |');
           console.log('| Completion | ' + n(p.completionPercent) + '% |');
           console.log('| Catalogues scanned / discovered | ' + n(p.cataloguesScanned) + ' / ' + n(p.cataloguesDiscovered) + ' (of ' + n(p.cataloguesTotal) + ') |');
           console.log('| Catalogues failed / skipped | ' + n(p.cataloguesFailed) + ' / ' + n(p.cataloguesSkipped) + ' |');
