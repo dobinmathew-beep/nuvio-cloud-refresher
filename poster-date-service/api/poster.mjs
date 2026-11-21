@@ -1,6 +1,6 @@
 import { upcomingRelease, hasPastDigitalRelease, validImdbId } from '../lib/release-dates.mjs';
 import { renderUpcomingBadge, renderJustAddedBadge, removeExistingDateBadge } from '../lib/render-poster.mjs';
-import { inspectExistingPosterBadges, hasExistingComingDateTag, hasExistingJustAddedTag, terminateOcrWorker } from '../lib/coming-tag.mjs';
+import { inspectExistingPosterBadges, terminateOcrWorker } from '../lib/coming-tag.mjs';
 import { isCatalogRecentlyAdded } from '../lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from '../lib/catalog-upcoming.mjs';
 import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster, getImageKitStorageSnapshot, initializeImageKitStorageSnapshot, readPosterValidationMetadata, savePosterValidationMetadata } from '../lib/imagekit-storage.mjs';
@@ -363,9 +363,10 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
   } else {
     // If no confirmed future date remains, remove an obsolete Coming/New
     // Episode chip baked into provider artwork instead of preserving it.
-    const staleDateBadge = await hasExistingComingDateTag(original.bytes, 'any', null);
+    const sourceBadgeInspection = await inspectExistingPosterBadges(original.bytes, 'any', null);
+    const staleDateBadge = sourceBadgeInspection.hasDateBadge;
     if (staleDateBadge) {
-      const sourceJustAdded = await hasExistingJustAddedTag(original.bytes);
+      const sourceJustAdded = sourceBadgeInspection.hasJustAddedBadge;
       output = await removeExistingDateBadge(output, 0.105);
       if (sourceJustAdded && !shouldRenderJustAdded) {
         shouldRenderJustAdded = true;
