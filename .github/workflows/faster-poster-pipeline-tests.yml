@@ -1,6 +1,11 @@
 name: Faster poster pipeline tests
 
 on:
+  pull_request:
+    branches: [poster-date-service]
+    paths:
+      - 'poster-date-service/**'
+      - '.github/workflows/faster-poster-pipeline-tests.yml'
   push:
     branches: [faster-poster-pipeline]
     paths:
