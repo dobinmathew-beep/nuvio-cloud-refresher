@@ -1,0 +1,217 @@
+import { mkdir, writeFile } from 'node:fs/promises';
+
+const SOURCES = [
+  ['CATALOG_MANIFEST_MIDNIGHTIGNITE_URL', 'AIOMetadata MidnightIgnite'],
+  ['CATALOG_MANIFEST_ELFHOSTED_URL', 'AIOMetadata ElfHosted'],
+  ['CATALOG_MANIFEST_XPERIENCE_URL', 'Xperience']
+];
+const PAGE_SIZE = 100;
+const MAX_PAGES_PER_CATALOG = 200;
+const DAY_MS = 24 * 60 * 60 * 1000;
+const now = new Date();
+const today = now.toISOString().slice(0, 10);
+
+async function fetchJson(url) {
+  const response = await fetch(url, {
+    headers: { accept: 'application/json', 'user-agent': 'GreatIndianReadOnlyBadgeAudit/1.0' },
+    signal: AbortSignal.timeout(20000)
+  });
+  if (!response.ok) throw new Error('HTTP ' + response.status + ' reading ' + new URL(url).host);
+  return response.json();
+}
+function manifestBase(value) {
+  const url = new URL(value);
+  url.pathname = url.pathname.replace(/\\/manifest\\.json$/i, '');
+  url.search = '';
+  url.hash = '';
+  return url.origin + url.pathname.replace(/\\/$/, '');
+}
+function requiredExtrasUnavailable(catalog) {
+  return (Array.isArray(catalog.extraRequired) ? catalog.extraRequired : []).some(required => {
+    const name = typeof required === 'string' ? required : String(required?.name || '');
+    if (!name || name === 'skip') return false;
+    const descriptor = (catalog.extra || []).find(item => item && typeof item === 'object' && item.name === name);
+    const options = Array.isArray(descriptor?.options) ? descriptor.options
+      : Array.isArray(required?.options) ? required.options : [];
+    return options.length === 0;
+  });
+}
+function catalogueUrl(base, catalog, skip) {
+  const url = new URL(base + '/catalog/' + encodeURIComponent(catalog.type) + '/' +
+    encodeURIComponent(catalog.id) + '.json');
+  if (skip) url.searchParams.set('skip', String(skip));
+  for (const required of (Array.isArray(catalog.extraRequired) ? catalog.extraRequired : [])) {
+    const name = typeof required === 'string' ? required : String(required?.name || '');
+    if (!name || name === 'skip') continue;
+    const descriptor = (catalog.extra || []).find(item => item && typeof item === 'object' && item.name === name);
+    const options = Array.isArray(descriptor?.options) ? descriptor.options
+      : Array.isArray(required?.options) ? required.options : [];
+    if (options.length) url.searchParams.set(name, String(options[0]));
+  }
+  return url;
+}
+function canonicalId(meta) {
+  const raw = String(meta?.id || '').trim();
+  if (/^tt\\d{7,10}$/i.test(raw)) return raw.toLowerCase();
+  const tmdb = raw.match(/^(?:tmdb:|tmdb\\/)(\\d{1,12})$/i);
+  if (tmdb) return 'tmdb:' + tmdb[1];
+  const imdb = String(meta?.imdb_id || meta?.imdbId || '').trim();
+  return /^tt\\d{7,10}$/i.test(imdb) ? imdb.toLowerCase() : raw;
+}
+function releaseYear(meta) {
+  const values = [meta?.year, meta?.releaseInfo, meta?.releaseInfo?.year, meta?.released];
+  for (const value of values) {
+    const match = String(value || '').match(/\\b(?:19|20)\\d{2}\\b/);
+    if (match) return Number(match[0]);
+  }
+  return null;
+}
+function digitalDates(meta) {
+  const dates = [];
+  for (const value of [meta?.digitalReleaseDate, meta?.ott?.date]) {
+    if (/^\\d{4}-\\d{2}-\\d{2}$/.test(String(value || '').slice(0, 10))) dates.push(String(value).slice(0, 10));
+  }
+  if (meta?.releaseKind === 'digital' && /^\\d{4}-\\d{2}-\\d{2}$/.test(String(meta?.releaseDate || ''))) {
+    dates.push(String(meta.releaseDate));
+  }
+  for (const item of (Array.isArray(meta?.availability) ? meta.availability : [])) {
+    if (item?.kind === 'digital' && /^\\d{4}-\\d{2}-\\d{2}$/.test(String(item.date || '').slice(0, 10))) dates.push(String(item.date).slice(0, 10));
+  }
+  return [...new Set(dates)].sort();
+}
+function posterHasJustAdded(meta) {
+  const poster = String(meta?.poster || '');
+  try {
+    const url = new URL(poster);
+    return url.searchParams.get('badge') === 'just-added';
+  } catch {
+    return /(?:[?&]|%3F)badge(?:=|%3D)just-added/i.test(poster);
+  }
+}
+function inspect(meta, source, catalog) {
+  const id = canonicalId(meta);
+  if (!id || !posterHasJustAdded(meta)) return null;
+  const type = String(meta?.type || catalog.type || '').toLowerCase();
+  if (!type.includes('movie')) return null;
+  const year = releaseYear(meta);
+  const dates = digitalDates(meta);
+  const latestDigital = dates.length ? dates[dates.length - 1] : null;
+  const ageDays = latestDigital ? Math.floor((Date.parse(today + 'T00:00:00Z') - Date.parse(latestDigital + 'T00:00:00Z')) / DAY_MS) : null;
+  let finding = 'needs-review';
+  if (latestDigital && ageDays >= 0 && ageDays <= 14) finding = 'recent-digital-release-eligible';
+  else if (latestDigital && ageDays > 14) finding = 'stale-just-added';
+  else if (year && year < now.getUTCFullYear()) finding = 'old-movie-without-digital-date';
+  return {
+    source, catalogId: catalog.id, catalogName: catalog.name || catalog.id,
+    id, title: String(meta?.name || meta?.title || ''), year,
+    releaseInfo: String(meta?.releaseInfo || ''), digitalReleaseDates: dates,
+    latestDigitalReleaseDate: latestDigital, digitalAgeDays: ageDays,
+    poster: String(meta?.poster || ''), finding
+  };
+}
+
+const missing = SOURCES.filter(([key]) => !String(process.env[key] || '').trim()).map(([key]) => key);
+if (missing.length) throw new Error('Missing manifest secrets: ' + missing.join(', '));
+
+const report = {
+  generatedAt: now.toISOString(),
+  mode: 'read-only; no catalogue writes, no ImageKit writes, no poster-service requests',
+  sources: [],
+  totals: { catalogueDefinitions: 0, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, pagesFetched: 0, recordsFetched: 0, uniqueMovieTitles: 0, justAddedMovieTitles: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0 },
+  findings: [],
+  referenceTitles: {
+    tt1375789: 'Race 2',
+    tt0073707: 'Sholay',
+    tt5959980: 'Vada Chennai'
+  },
+  referenceMatches: []
+};
+
+for (const [key, fallbackName] of SOURCES) {
+  const manifestUrl = String(process.env[key]).trim();
+  const manifest = await fetchJson(manifestUrl);
+  if (!Array.isArray(manifest.catalogs) || !manifest.catalogs.length) throw new Error(key + ' has no catalogue definitions');
+  const source = String(manifest.name || fallbackName);
+  const base = manifestBase(manifestUrl);
+  const sourceResult = { source, catalogueDefinitions: manifest.catalogs.length, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, pagesFetched: 0, recordsFetched: 0, justAddedMovieTitles: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0 };
+  report.totals.catalogueDefinitions += manifest.catalogs.length;
+
+  for (const catalog of manifest.catalogs) {
+    if (!catalog?.type || !catalog?.id) continue;
+    if (requiredExtrasUnavailable(catalog)) {
+      sourceResult.dynamicCataloguesSkipped++;
+      continue;
+    }
+    sourceResult.cataloguesScanned++;
+    report.totals.cataloguesScanned++;
+    const seen = new Set();
+    for (let page = 0; page < MAX_PAGES_PER_CATALOG; page++) {
+      const data = await fetchJson(catalogueUrl(base, catalog, page * PAGE_SIZE));
+      const metas = Array.isArray(data.metas) ? data.metas : [];
+      sourceResult.pagesFetched++;
+      report.totals.pagesFetched++;
+      sourceResult.recordsFetched += metas.length;
+      report.totals.recordsFetched += metas.length;
+      let newIds = 0;
+      for (const meta of metas) {
+        const id = canonicalId(meta);
+        if (id && !seen.has(id)) { seen.add(id); newIds++; }
+        if (String(meta?.type || catalog.type).toLowerCase().includes('movie')) {
+          report.totals.uniqueMovieTitles++;
+        }
+        const finding = inspect(meta, source, catalog);
+        if (!finding) continue;
+        report.findings.push(finding);
+        sourceResult.justAddedMovieTitles++;
+        report.totals.justAddedMovieTitles++;
+        if (finding.finding === 'stale-just-added') {
+          sourceResult.staleJustAdded++;
+          report.totals.staleJustAdded++;
+        }
+        if (finding.finding === 'old-movie-without-digital-date') {
+          sourceResult.oldMovieWithoutDigitalDate++;
+          report.totals.oldMovieWithoutDigitalDate++;
+        }
+        if (Object.hasOwn(report.referenceTitles, finding.id)) {
+          report.referenceMatches.push({ ...finding, referenceTitle: report.referenceTitles[finding.id] });
+        }
+      }
+      if (metas.length < PAGE_SIZE || newIds === 0) break;
+      if (page + 1 === MAX_PAGES_PER_CATALOG) {
+        throw new Error('Page safety limit reached for ' + source + ' / ' + catalog.id + '; audit is incomplete');
+      }
+    }
+  }
+  report.sources.push(sourceResult);
+}
+
+report.findings.sort((a, b) => a.source.localeCompare(b.source) || a.title.localeCompare(b.title));
+report.referenceMatches.sort((a, b) => a.referenceTitle.localeCompare(b.referenceTitle));
+await mkdir('artifacts', { recursive: true });
+await writeFile('artifacts/just-added-badge-audit.json', JSON.stringify(report, null, 2) + '\\n');
+const summary = [
+  '# Just Added badge audit',
+  '',
+  'Read-only audit. No catalogue data, ImageKit assets, or poster endpoints were changed or requested.',
+  '',
+  '| Source | Catalogues scanned | Pages | Records | Just Added movies | Stale (>14d) | Old year, no digital date |',
+  '|---|---:|---:|---:|---:|---:|---:|',
+  ...report.sources.map(item => '| ' + [item.source, item.cataloguesScanned, item.pagesFetched, item.recordsFetched, item.justAddedMovieTitles, item.staleJustAdded, item.oldMovieWithoutDigitalDate].join(' | ') + ' |'),
+  '',
+  '## Reference titles',
+  '',
+  ...Object.entries(report.referenceTitles).map(([id, title]) => {
+    const matches = report.referenceMatches.filter(item => item.id === id);
+    return '- **' + title + '** (' + id + '): ' + (matches.length ? matches.map(item => item.source + ' — ' + item.finding + ', year ' + (item.year ?? 'unknown') + ', digital date ' + (item.latestDigitalReleaseDate || 'unknown')).join('; ') : 'not found with a Just Added poster flag in scanned catalogue pages');
+  }),
+  '',
+  '## Totals',
+  '',
+  '- Unique movie records observed: ' + report.totals.uniqueMovieTitles,
+  '- Just Added movie posters: ' + report.totals.justAddedMovieTitles,
+  '- Stale Just Added (>14 days since digital release): ' + report.totals.staleJustAdded,
+  '- Old movie with no digital date (requires review): ' + report.totals.oldMovieWithoutDigitalDate,
+  ''
+].join('\\n');
+await writeFile('artifacts/just-added-badge-audit.md', summary);
+console.log(JSON.stringify({ status: 'passed', ...report.totals, sources: report.sources, referenceMatches: report.referenceMatches, artifact: 'artifacts/just-added-badge-audit.json' }));
