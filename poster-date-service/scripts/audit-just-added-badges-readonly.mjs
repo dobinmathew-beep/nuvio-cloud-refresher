@@ -314,7 +314,7 @@ const summary = [
   '- Legacy movie index entries (ignored by the poster service): ' + report.totals.legacyMovieIndexEntries,
   '- Poster query badges without digital-release evidence: ' + report.totals.badgeWithoutDigitalDate,
   '- Unique candidate movie IDs: ' + report.totals.uniqueCandidateMovieIds,
-  '- Unique old-movie IDs with recent index timestamps: ' + report.totals.uniqueOldMovieIds,
+  '- Unique legacy movie-index IDs ignored by poster eligibility: ' + report.totals.uniqueLegacyMovieIndexIds,
   '- Dynamic catalogues skipped (required extra values unavailable): ' + report.totals.dynamicCataloguesSkipped,
   '- Stale Just Added (>14 days since digital release): ' + report.totals.staleJustAdded,
   '- Old movie with no digital date (requires review): ' + report.totals.oldMovieWithoutDigitalDate,
