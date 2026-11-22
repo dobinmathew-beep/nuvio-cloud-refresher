@@ -652,7 +652,7 @@ def build():
   recent_release_items.append({'title':e['name'],'language':e['language'],'type':e['type'],'releaseDate':day,'releaseDateBasis':'first-verified-digital-arrival' if e.get('type')=='movie' else 'series-release-event','id':mid or None,'matchState':state,'matchReason':reason,'platforms':e.get('platforms') or [],'sources':list(dict.fromkeys(sources)),'detail':e.get('detail')})
  recent_counts={}
  for row in recent_release_items:recent_counts[row['matchState']]=recent_counts.get(row['matchState'],0)+1
- recent_release_audit={'windowDays':35,'source':'all active discovery sources (rolling 35-day window)','detected':len(recent_release_items),'byMatchState':recent_counts,'items':recent_release_items}
+ recent_release_audit={'generatedAt':NOW.isoformat(),'badgePolicy':'first-verified-digital-arrival-v1','windowDays':35,'source':'all active discovery sources (rolling 35-day window)','detected':len(recent_release_items),'byMatchState':recent_counts,'items':recent_release_items}
  save('recent-release-audit.json',recent_release_audit)
  blocked=[row for row in recent_release_items if row['matchState']=='matched_not_published']
  if blocked:
