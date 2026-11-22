@@ -33,6 +33,10 @@ function validDate(value) {
 
 export function earliestDigitalDate(item) {
   const dates = [];
+  for (const value of [item?.digitalReleaseDate, item?.ott?.date]) {
+    const date = validDate(value);
+    if (date) dates.push(date);
+  }
   for (const row of Array.isArray(item?.availability) ? item.availability : []) {
     if (row && typeof row === 'object' && String(row.kind || '').toLowerCase() === 'digital') {
       const date = validDate(row.date);
