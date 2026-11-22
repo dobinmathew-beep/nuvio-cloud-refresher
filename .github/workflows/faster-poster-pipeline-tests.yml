@@ -43,3 +43,20 @@ jobs:
           CATALOG_MANIFEST_MIDNIGHTIGNITE_URL: ${{ secrets.CATALOG_MANIFEST_MIDNIGHTIGNITE_URL }}
           CATALOG_MANIFEST_XPERIENCE_URL: ${{ secrets.CATALOG_MANIFEST_XPERIENCE_URL }}
         run: node scripts/validate-three-manifest-scan.mjs
+
+      - name: Full read-only Just Added badge audit across all manifest catalogue pages
+        env:
+          CATALOG_MANIFEST_ELFHOSTED_URL: ${{ secrets.CATALOG_MANIFEST_ELFHOSTED_URL }}
+          CATALOG_MANIFEST_MIDNIGHTIGNITE_URL: ${{ secrets.CATALOG_MANIFEST_MIDNIGHTIGNITE_URL }}
+          CATALOG_MANIFEST_XPERIENCE_URL: ${{ secrets.CATALOG_MANIFEST_XPERIENCE_URL }}
+        run: node scripts/audit-just-added-badges-readonly.mjs
+
+      - name: Upload read-only badge audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: just-added-badge-audit
+          path: |
+            poster-date-service/artifacts/just-added-badge-audit.json
+            poster-date-service/artifacts/just-added-badge-audit.md
+          if-no-files-found: warn

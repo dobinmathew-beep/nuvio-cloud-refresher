@@ -123,7 +123,8 @@ function redirectToExistingImageKit(res, assetUrl, reason = 'provider-unavailabl
   return res.end();
 }
 
-async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
+async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded, options = {}) {
+  const validateDate = options.validateDate !== false;
   const config = imageKitConfig();
   if (!config) return null;
   const assetUrl = imageKitAssetUrl(config, imdbId);
@@ -153,8 +154,8 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
       Number.isFinite(metadataTime) &&
       Math.abs(metadataTime - lastModified) <= 5 * 60 * 1000;
     const metadataMatches = metadataBelongsToAsset &&
-      (metadata.releaseDate || null) === expectedDate &&
-      (!expectedDate || metadata.releaseKind === expectedKind) &&
+      (!validateDate || ((metadata.releaseDate || null) === expectedDate &&
+        (!expectedDate || metadata.releaseKind === expectedKind))) &&
       metadata.justAdded === Boolean(expectedJustAdded);
     if (metadataMatches) return assetUrl;
     if (metadataBelongsToAsset) {
@@ -181,7 +182,7 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
     const hasJustAddedBadge = badgeInspection.hasJustAddedBadge;
     imageBytes = null;
     global.gc?.();
-    const dateMatches = expectedDate ? hasDateBadge : !hasDateBadge;
+    const dateMatches = !validateDate || (expectedDate ? hasDateBadge : !hasDateBadge);
     if (!dateMatches) {
       console.info('[poster-date-cache-mismatch]', JSON.stringify({
         imdbId, tmdbDate: expectedDate, cachedPoster: 'ImageKit',
@@ -201,8 +202,8 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
     await savePosterValidationMetadata(imdbId, {
       version: 1,
       imdbId,
-      releaseDate: expectedDate,
-      releaseKind: expectedDate ? expectedKind : null,
+      releaseDate: validateDate ? expectedDate : (metadata?.releaseDate || expectedDate),
+      releaseKind: validateDate ? (expectedDate ? expectedKind : null) : (metadata?.releaseKind || (expectedDate ? expectedKind : null)),
       justAdded: hasJustAddedBadge,
       digitalReleasedWorldwide: metadata?.digitalReleasedWorldwide === true,
       uploadedAt: new Date(lastModified).toISOString()
@@ -539,23 +540,38 @@ export default async function handler(req, res) {
       return res.end(req.method === 'HEAD' ? undefined : original.bytes);
     }
 
-    // Artwork delivery takes priority over slow badge metadata. If this title
-    // already has a reachable canonical ImageKit poster, return it immediately
-    // instead of making Nuvio wait on TMDB/release-date lookups that often time out.
-    // The short availability cache also coalesces repeated catalogue requests.
-    const fastCachedAsset = await findExistingImageKitAsset(id);
-    if (fastCachedAsset) {
-      return redirectToExistingImageKit(res, fastCachedAsset, 'imagekit-first-fast-path');
-    }
+    // HEAD probes above remain availability-only. GET cache hits below require
+    // badge-state validation before any ImageKit artwork is reused.
 
-    // Cache miss: serve BetterPosters directly now and build the permanent,
-    // date-aware ImageKit version asynchronously. This removes catalogue,
-    // TMDB and OCR work from the Nuvio request path. A single per-ID promise
-    // prevents duplicate background generation when several catalogues request
-    // the same title at once.
     const immediateBadge = String(req.query?.badge || '').toLowerCase() === 'just-added' ? 'just-added' : '';
     const immediateVersion = String(req.query?.v || '');
     const immediateFallback = String(req.query?.fallback || '');
+
+    // The no-fallback route can stay fast, but it must not trust mere
+    // ImageKit availability. Compare the stored badge state with the current
+    // catalogue decision before reusing the cached bytes.
+    if (!immediateFallback) {
+      let expectedCachedJustAdded = immediateBadge === 'just-added';
+      if (!expectedCachedJustAdded) {
+        try { expectedCachedJustAdded = (await isCatalogRecentlyAdded([id])) === true; }
+        catch (error) {
+          console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
+        }
+      }
+      const cachedValidation = await readPosterValidationMetadata(id);
+      const cachedReleaseInfo = cachedValidation?.releaseDate
+        ? { date: cachedValidation.releaseDate, kind: cachedValidation.releaseKind || 'premiere' }
+        : null;
+      const validatedCachedAsset = await findFreshImageKitAsset(id, cachedReleaseInfo, expectedCachedJustAdded, { validateDate: false });
+      if (validatedCachedAsset) {
+        return redirectToImageKit(res, validatedCachedAsset, cachedReleaseInfo, expectedCachedJustAdded);
+      }
+    }
+
+    // Only after badge state has been checked may a no-fallback request use
+    // the immediate BetterPosters response/background-build path. This keeps
+    // the normal low-latency fallback while preventing stale ImageKit artwork
+    // from bypassing validation.
     if (!immediateFallback) {
       scheduleBackgroundPosterBuild(id, immediateBadge, immediateVersion, immediateFallback);
       res.statusCode = 302;
