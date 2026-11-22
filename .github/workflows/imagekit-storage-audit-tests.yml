@@ -1,6 +1,12 @@
 name: ImageKit storage audit regression tests
 
 on:
+  pull_request:
+    branches:
+      - poster-date-service
+    paths:
+      - "poster-date-service/**"
+      - ".github/workflows/imagekit-storage-audit-tests.yml"
   push:
     branches:
       - imagekit-storage-audit-dedup
