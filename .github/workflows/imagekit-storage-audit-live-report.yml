@@ -1,0 +1,36 @@
+name: ImageKit live storage deletion report
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - imagekit-storage-audit-dedup
+    paths:
+      - "poster-date-service/scripts/imagekit-storage-audit-report.mjs"
+      - ".github/workflows/imagekit-storage-audit-live-report.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run read-only ImageKit storage inventory and deletion analysis
+        working-directory: poster-date-service
+        env:
+          IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
+          IMAGEKIT_PRIVATE_KEY: ${{ secrets.IMAGEKIT_PRIVATE_KEY }}
+          IMAGEKIT_AUDIT_REPORT_PATH: ../reports/imagekit-storage-deletion-report-live.json
+        run: node scripts/imagekit-storage-audit-report.mjs
+      - name: Upload read-only deletion report
+        uses: actions/upload-artifact@v4
+        with:
+          name: imagekit-storage-deletion-report
+          path: reports/imagekit-storage-deletion-report-live.json
+          if-no-files-found: error
+          retention-days: 14
