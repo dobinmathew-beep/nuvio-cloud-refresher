@@ -483,6 +483,56 @@ function incrementalMetadataItem(meta, manifest, catalog) {
   return item;
 }
 
+export async function collectIncrementalCatalogues(manifests, {
+  fetchPage, baselineIds = new Set(), pageLimit = 1, maxCatalogues = 500, lease
+} = {}) {
+  if (typeof fetchPage !== 'function') throw new Error('Incremental scanner requires a page fetch function');
+  const safePageLimit = Math.max(1, Math.min(3, Number(pageLimit) || 1));
+  const safeCatalogueLimit = Math.max(1, Math.min(1000, Number(maxCatalogues) || 500));
+  const totalCatalogues = manifests.reduce((sum, manifest) => sum + manifest.catalogs.length, 0);
+  if (totalCatalogues > safeCatalogueLimit) {
+    throw new Error('Incremental scan catalogue limit exceeded (' + totalCatalogues + ' > ' + safeCatalogueLimit + '); refusing partial index publication');
+  }
+  const observed = new Map();
+  const sourceStats = [];
+  let pagesFetched = 0;
+  let recordsFetched = 0;
+  for (const manifest of manifests) {
+    let sourceCatalogues = 0;
+    let skippedDynamic = 0;
+    for (const catalog of manifest.catalogs) {
+      if (unresolvedRequiredExtras(catalog).length) {
+        skippedDynamic++;
+        continue;
+      }
+      let sourcePages = 0;
+      for (let page = 0; page < safePageLimit; page++) {
+        await lease?.assertOwned?.();
+        const data = await fetchPage(manifest, catalog, page * PAGE_SIZE);
+        const batch = Array.isArray(data.metas) ? data.metas : [];
+        pagesFetched++;
+        sourcePages++;
+        recordsFetched += batch.length;
+        for (const meta of batch) {
+          const item = incrementalMetadataItem(meta, manifest, catalog);
+          if (!item) continue;
+          observed.set(item.id, observed.has(item.id)
+            ? mergeIncrementalMetadataItem(observed.get(item.id), item)
+            : item);
+        }
+        const hasUnknown = batch.some(meta => {
+          const id = canonicalId(meta);
+          return id && !baselineIds.has(id);
+        });
+        if (batch.length < PAGE_SIZE || (page > 0 && !hasUnknown)) break;
+      }
+      sourceCatalogues++;
+    }
+    sourceStats.push({ source: manifest.name, catalogues: sourceCatalogues, skippedDynamic });
+  }
+  return { observed: [...observed.values()], sourceStats, pagesFetched, recordsFetched, totalCatalogues };
+}
+
 async function runIncrementalMetadataScan(lease) {
   const configured = MANIFEST_KEYS.filter(key => process.env[key]);
   if (configured.length !== MANIFEST_KEYS.length) {
@@ -496,48 +546,13 @@ async function runIncrementalMetadataScan(lease) {
   }
   const maxCatalogues = Math.max(1, Math.min(1000, Number(process.env.CATALOG_INCREMENTAL_MAX_CATALOGUES || 500)));
   const pageLimit = Math.max(1, Math.min(3, Number(process.env.CATALOG_INCREMENTAL_PAGES_PER_CATALOG || 1)));
-  const totalCatalogues = manifests.reduce((sum, manifest) => sum + manifest.catalogs.length, 0);
-  if (totalCatalogues > maxCatalogues) {
-    throw new Error('Incremental scan catalogue limit exceeded (' + totalCatalogues + ' > ' + maxCatalogues + '); refusing partial index publication');
-  }
-  const observed = new Map();
   const baselineIds = new Set(baseline.items.map(item => item.id));
-  const sourceStats = [];
-  let pagesFetched = 0;
-  let recordsFetched = 0;
-  for (const manifest of manifests) {
-    let sourceCatalogues = 0;
-    for (const catalog of manifest.catalogs) {
-      if (unresolvedRequiredExtras(catalog).length) {
-        sourceStats.push({ source: manifest.name, catalogue: catalog.id, skipped: 'required-dynamic-extras' });
-        continue;
-      }
-      let sourcePages = 0;
-      for (let page = 0; page < pageLimit; page++) {
-        await lease?.assertOwned?.();
-        const data = await fetchJson(catalogUrl(manifest.base, catalog, page * PAGE_SIZE));
-        const batch = Array.isArray(data.metas) ? data.metas : [];
-        pagesFetched++;
-        sourcePages++;
-        recordsFetched += batch.length;
-        for (const meta of batch) {
-          const item = incrementalMetadataItem(meta, manifest, catalog);
-          if (!item) continue;
-          observed.set(item.id, observed.has(item.id)
-            ? mergeIncrementalMetadataItem(observed.get(item.id), item)
-            : item);
-        }
-        // Newest-first catalogues let a fully-known page terminate early.
-        const hasUnknown = batch.some(meta => {
-          const id = canonicalId(meta);
-          return id && !baselineIds.has(id);
-        });
-        if (batch.length < PAGE_SIZE || (page > 0 && !hasUnknown)) break;
-      }
-      sourceCatalogues++;
-    }
-    sourceStats.push({ source: manifest.name, catalogues: sourceCatalogues });
-  }
+  const scan = await collectIncrementalCatalogues(manifests, {
+    baselineIds, pageLimit, maxCatalogues, lease,
+    fetchPage: (manifest, catalog, skip) => fetchJson(catalogUrl(manifest.base, catalog, skip))
+  });
+  const observed = new Map(scan.observed.map(item => [item.id, item]));
+  const { sourceStats, pagesFetched, recordsFetched } = scan;
   if (!observed.size) throw new Error('Incremental scan found no supported catalogue IDs; baseline left unchanged');
   const baselineItemsById = new Map(baseline.items.map(item => [item.id, item]));
   const result = mergeIncrementalMetadata(baseline.items, [...observed.values()]);

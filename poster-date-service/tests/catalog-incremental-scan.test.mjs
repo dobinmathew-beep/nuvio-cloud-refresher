@@ -47,3 +47,53 @@ test('metadata index chunk validator rejects count, generation and checksum mism
   assert.equal(validateMetadataIndexChunk({ ...chunk, count: 2 }, { scanGeneration: 'g1', index: 0, count: 1, sha256 }), false);
   assert.equal(validateMetadataIndexChunk({ ...chunk, sha256: '0'.repeat(64) }, { scanGeneration: 'g1', index: 0, count: 1, sha256 }), false);
 });
+
+test('incremental scanner samples all three manifests with a strict per-catalogue page bound', async () => {
+  const { collectIncrementalCatalogues } = await import('../lib/catalog-manifest-refresh.mjs');
+  const manifests = ['MidnightIgnite', 'ElfHosted', 'Xperience'].map(name => ({
+    name, catalogs: [{ type: 'movie', id: 'popular', extra: [], required: [] }]
+  }));
+  const calls = [];
+  const result = await collectIncrementalCatalogues(manifests, {
+    pageLimit: 1,
+    baselineIds: new Set(),
+    fetchPage: async (manifest, catalog, skip) => {
+      calls.push({ source: manifest.name, catalog: catalog.id, skip });
+      return { metas: [{ id: 'tt1234567', name: 'Shared title', poster: 'https://image.example/poster.jpg' }] };
+    }
+  });
+  assert.equal(calls.length, 3);
+  assert.deepEqual(calls.map(call => call.source), ['MidnightIgnite', 'ElfHosted', 'Xperience']);
+  assert.ok(calls.every(call => call.skip === 0));
+  assert.equal(result.pagesFetched, 3);
+  assert.equal(result.observed.length, 1);
+  assert.deepEqual(result.observed[0].catalogSources, [
+    { source: 'ElfHosted', id: 'popular' },
+    { source: 'MidnightIgnite', id: 'popular' },
+    { source: 'Xperience', id: 'popular' }
+  ]);
+});
+
+test('incremental scanner fails closed when catalogue inventory exceeds its bound', async () => {
+  const { collectIncrementalCatalogues } = await import('../lib/catalog-manifest-refresh.mjs');
+  const manifests = [{ name: 'MidnightIgnite', catalogs: Array.from({ length: 3 }, (_, i) => ({
+    type: 'movie', id: 'catalog-' + i, extra: [], required: []
+  })) }];
+  await assert.rejects(
+    collectIncrementalCatalogues(manifests, { maxCatalogues: 2, fetchPage: async () => ({ metas: [] }) }),
+    /catalogue limit exceeded/
+  );
+});
+
+test('incremental metadata merge is idempotent after source identities are learned', () => {
+  const first = mergeIncrementalMetadata(
+    [{ id: 'tt1234567', title: 'Existing', catalogSource: 'A', catalogId: 'one', catalogSources: [{ source: 'A', id: 'one' }] }],
+    [{ id: 'tt1234567', title: 'Existing', catalogSource: 'B', catalogId: 'two' }]
+  );
+  const second = mergeIncrementalMetadata(first.items, [
+    { id: 'tt1234567', title: 'Existing', catalogSource: 'B', catalogId: 'two' }
+  ]);
+  assert.equal(second.added, 0);
+  assert.equal(second.changed, 0);
+  assert.equal(second.delta.length, 0);
+});
