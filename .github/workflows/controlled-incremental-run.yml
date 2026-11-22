@@ -94,3 +94,5 @@ jobs:
             | tee -a "$GITHUB_STEP_SUMMARY"
 
 # trigger the one-off incremental validation
+
+# retry after bounded parallel metadata-index baseline read fix
