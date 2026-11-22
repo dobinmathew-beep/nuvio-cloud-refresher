@@ -68,6 +68,20 @@ class JustAddedPolicyTests(unittest.TestCase):
         self.assertIsNone(update.event_digital_date(event, "2026-11-23"))
         self.assertFalse(update.is_just_added_title(event, NOW, NOW))
 
+    def test_first_seen_index_keeps_series_history_and_prunes_legacy_movie_keys(self):
+        index = {
+            "dobins_hi_movie|tt0073707": "2026-11-19T19:06:30+04:00",
+            "dobins_ta_movie|tt5959980": "2026-11-19T19:06:30+04:00",
+            "dobins_hi_series|tt1111111": "2025-01-01T00:00:00+04:00",
+            "dobins_ta_series|tmdb:123": "2024-01-01T00:00:00+04:00",
+            "dobins_ml_series|tvmaze:456": "2023-01-01T00:00:00+04:00",
+        }
+        self.assertEqual(update.filter_series_added_index(index), {
+            "dobins_hi_series|tt1111111": "2025-01-01T00:00:00+04:00",
+            "dobins_ta_series|tmdb:123": "2024-01-01T00:00:00+04:00",
+            "dobins_ml_series|tvmaze:456": "2023-01-01T00:00:00+04:00",
+        })
+
     def test_first_seen_index_is_series_only_and_requires_a_prior_catalog_snapshot(self):
         prior = {"dobins_hi_series": {"tt1111111"}}
         added = {}
