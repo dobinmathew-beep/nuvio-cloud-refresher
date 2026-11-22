@@ -397,8 +397,9 @@ def catalog_upcoming_index(catalogs, today=TODAY):
 
 
 def is_just_added_title(event, added_time, now=NOW):
- # Newly added series receive the label for 14 days after first catalog
- # appearance. Movies retain the stricter digital/OTT-arrival eligibility.
+ # Series may use first catalog appearance for the 14-day label.
+ # Movies must have a verified digital/OTT arrival within the same 14-day
+ # window. A catalog rebuild or re-discovery must never make an old film new.
  recently_added=bool(added_time and timedelta(0) <= now-added_time <= timedelta(days=14))
  if event.get('type') == 'series':return recently_added
  if event.get('type') != 'movie':return False
@@ -406,13 +407,13 @@ def is_just_added_title(event, added_time, now=NOW):
  has_digital=(event.get('releaseKind') == 'digital' or
               any(x.get('kind') == 'digital' for x in availability if isinstance(x,dict)))
  if not has_digital:return False
- if recently_added:return True
  digital=event_digital_date(event)
  if digital:
   try:
    age=(now.date()-date.fromisoformat(digital)).days
-   if 0 <= age <= 14:return True
-  except ValueError:pass
+   return 0 <= age <= 14
+  except ValueError:
+   return False
  return False
 
 def is_just_added_movie(event, added_time, now=NOW):
