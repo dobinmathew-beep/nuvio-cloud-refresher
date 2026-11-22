@@ -12,10 +12,12 @@ const digest = value => createHash('sha256').update(JSON.stringify(value)).diges
 
 function mockImageKit(t) {
   const files = new Map();
+  files.uploadCount = 0;
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async (input, init = {}) => {
     const url = new URL(typeof input === 'string' || input instanceof URL ? input : input.url);
     if (url.hostname === 'upload.imagekit.io') {
+      files.uploadCount++;
       const form = init.body;
       const path = form.get('folder') + '/' + form.get('fileName');
       const file = form.get('file');
@@ -84,4 +86,34 @@ test('claims are exclusive, acknowledged jobs stay completed, and expired claims
   assert.equal(summary.total, 2);
   assert.equal(summary.counts.recorded, 1);
   assert.equal(summary.counts.claimed, 1);
+});
+
+
+test('batched claims and acknowledgements recover after a worker interruption with one write per batch', async t => {
+  const files = mockImageKit(t);
+  const config = { endpoint: 'https://ik.example.test', privateKey: 'test' };
+  const generation = 'generation-batched-recovery';
+  const ids = Array.from({ length: 10 }, (_, index) => 'tt' + String(1000000 + index));
+  await initializeDurableQueueState(generation, ids, { config });
+  assert.equal(files.uploadCount, 1, 'initial queue state is one durable write');
+
+  assert.deepEqual(await claimDurableQueueBatch(generation, ids, 'worker-a', { config }), ids);
+  assert.equal(files.uploadCount, 2, 'ten claims are persisted in one batch write');
+
+  // Simulate a worker dying before it can persist its ledger/acknowledgements.
+  const statePath = [...files.keys()].find(path => path.endsWith('/queue-state.json'));
+  const interrupted = JSON.parse(files.get(statePath));
+  for (const id of ids) interrupted.items[id].claimExpiresAt = new Date(Date.now() - 1000).toISOString();
+  files.set(statePath, JSON.stringify(interrupted));
+
+  assert.deepEqual(await claimDurableQueueBatch(generation, ids, 'worker-b', { config }), ids);
+  assert.equal(files.uploadCount, 3, 'recovered claims are persisted in one batch write');
+  await settleDurableQueueBatch(generation, ids, 'worker-b', 'recorded', { config });
+  assert.equal(files.uploadCount, 4, 'all acknowledgements are persisted in one batch write');
+
+  const summary = await getDurableQueueState(generation, { config });
+  assert.equal(summary.total, 10);
+  assert.equal(summary.counts.recorded, 10);
+  assert.equal(summary.counts.queued, 0);
+  assert.equal(summary.counts.claimed, 0);
 });
