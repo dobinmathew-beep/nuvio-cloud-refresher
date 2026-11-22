@@ -27,10 +27,11 @@ class JustAddedPolicyTests(unittest.TestCase):
         self.assertFalse(update.is_just_added_title(event, NOW, NOW))
 
     def test_race_2_sholay_and_vada_chennai_do_not_requalify_on_later_platform_additions(self):
+        # Synthetic date fixtures: these are not claims about each film's exact OTT debut.
         examples = {
-            "tt1375789": ("2013-01-01", "2026-11-20"),
-            "tt0073707": ("1975-08-15", "2026-11-19"),
-            "tt5959980": ("2018-10-17", "2026-11-18"),
+            "tt1375789": ("2019-01-01", "2026-11-20"),
+            "tt0073707": ("2020-01-01", "2026-11-19"),
+            "tt5959980": ("2018-01-01", "2026-11-18"),
         }
         for imdb_id, (first_arrival, later_platform_arrival) in examples.items():
             with self.subTest(imdb_id=imdb_id):
