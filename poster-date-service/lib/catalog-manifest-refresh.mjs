@@ -209,6 +209,12 @@ export function isCatalogueScanComplete(catalogues) {
   );
 }
 
+export function excludeDeferredQueueItems(queueItems, deferredIds) {
+  const excluded = deferredIds instanceof Set ? deferredIds : new Set(deferredIds || []);
+  return (Array.isArray(queueItems) ? queueItems : [])
+    .filter(item => item && !excluded.has(String(item.id)));
+}
+
 function catalogueCheckpointPath(fingerprint) {
   const key = createHash('sha256').update(fingerprint).digest('hex').slice(0, 24);
   return CATALOG_CHECKPOINT_DIR + '/' + key + '.json';
@@ -1468,6 +1474,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   const items = [];
   const candidatesForHeadCheck = [];
   const pendingResumeItems = [];
+  const deferredQueueIds = new Set();
   let preflightVerifiedHits = 0;
   let deferredPending = 0;
   let deferredSourceUnavailable = 0;
@@ -1488,10 +1495,13 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     if (!forceReprocess && record && ['failed', 'retry', 'upload-pending'].includes(record.status)) {
       // Historical unresolved records are preserved for an explicit, source-aware
       // recovery pass. A normal discovery/queue cycle must never auto-retry them.
+      deferredQueueIds.add(String(item.id));
       deferredHistoricalUnresolved++;
     } else if (!forceReprocess && isSourceUnavailableCoolingDown(record, itemFingerprint(item))) {
+      deferredQueueIds.add(String(item.id));
       deferredSourceUnavailable++;
     } else if (!forceReprocess && isSourceProbeCoolingDown(record, itemFingerprint(item))) {
+      deferredQueueIds.add(String(item.id));
       deferredSourceProbe++;
     } else if (!forceReprocess && needsResumeVerification(record, itemFingerprint(item))) {
       pendingResumeItems.push({ item, record });
@@ -1532,6 +1542,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
           retryAfter: new Date(Date.now() + 2 * 60 * 1000).toISOString(),
           lastError: 'Previous upload outcome was uncertain; deferred after restart to avoid duplicate generation'
         });
+        deferredQueueIds.add(String(item.id));
         deferredPending++;
       }
       refreshedLedgerShards.add(shard);
@@ -1582,10 +1593,12 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     throw new Error('Durable poster queue fingerprint validation failed; refusing to process stale queue data');
   }
   items.length = 0;
-  for (const item of durableQueue.items) items.push(item);
+  const eligibleQueueItems = excludeDeferredQueueItems(durableQueue.items, deferredQueueIds);
+  for (const item of eligibleQueueItems) items.push(item);
   console.info('[durable-poster-queue-loaded]', JSON.stringify({
-    scanGeneration, itemCount: durableQueue.items.length,
-    chunkCount: durableQueueManifest.chunkCount, storage: 'imagekit', mode
+    scanGeneration, itemCount: durableQueue.items.length, eligibleItemCount: eligibleQueueItems.length,
+    deferredHistoricalUnresolved, chunkCount: durableQueueManifest.chunkCount,
+    storage: 'imagekit', mode
   }));
   if (discoveryOnly) {
     const report = {
@@ -1881,6 +1894,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     cataloguesFailed: catalogues.filter(c => c.error).length,
     uniqueTitles: allItems.length, newlyDiscovered, scanComplete,
     postersProcessed: postersVisited, postersSkippedFromLedger: ledgerHits, batchesProcessed,
+    postersDeferredHistorical: deferredHistoricalUnresolved,
     verifiedUploads, verifiedCacheHits, uploadsAwaitingVerification: uploadPending,
     failures: totalFailures, results: resultCounts
   };
@@ -1890,7 +1904,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     checkpoint = {
       version: 2, badgeRulesVersion: BADGE_RULES_VERSION,
       scanGeneration, forceRescanCatalogs: false, titleInventoryGeneration: scanGeneration,
-      complete: true, updatedAt: new Date().toISOString(),
+      complete: true, discoveryComplete: true, updatedAt: new Date().toISOString(),
       completedCatalogues, titleFiles
     };
     await lease?.assertOwned?.();
