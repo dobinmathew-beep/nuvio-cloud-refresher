@@ -4,7 +4,8 @@ import { renderUpcomingBadge, renderJustAddedBadge, removeExistingDateBadge } fr
 import { inspectExistingPosterBadges, terminateOcrWorker } from '../lib/coming-tag.mjs';
 import { isCatalogRecentlyAdded } from '../lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from '../lib/catalog-upcoming.mjs';
-import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster, getImageKitStorageSnapshot, initializeImageKitStorageSnapshot, readPosterValidationMetadata, savePosterValidationMetadata } from '../lib/imagekit-storage.mjs';
+import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster, canStoreImmutableImageKitPoster, recordImageKitUpload, getImageKitStorageSnapshot, initializeImageKitStorageSnapshot, readPosterValidationMetadata, savePosterValidationMetadata } from '../lib/imagekit-storage.mjs';
+import { publishImageKitVersionedPoster, resolveImageKitPoster } from '../lib/imagekit-versioned-storage.mjs';
 
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
 const BETTERPOSTERS_RATING_SOURCE = 'IM';
