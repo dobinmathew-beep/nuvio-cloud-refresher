@@ -37,15 +37,19 @@ test('immutable upload uses a content-addressed path and disables overwrite', as
 });
 
 test('immutable upload fails closed when quota headroom is unavailable', async () => {
-  let requests = 0;
+  let uploads = 0;
   const adapter = createImageKitPosterAdapter({
     config, canStore: () => false,
-    fetchImpl: async () => { requests++; throw new Error('must not request'); }
+    fetchImpl: async url => {
+      if (String(url).startsWith('https://api.imagekit.io/v1/files?')) return Response.json([]);
+      if (String(url) === 'https://upload.imagekit.io/api/v1/files/upload') uploads++;
+      throw new Error('unexpected request: ' + url);
+    }
   });
   await assert.rejects(adapter.uploadImmutable({
     imdbId: 'tt1234567', fingerprint, assetPath, bytes, contentType: 'image/jpeg'
   }), /storage safety ceiling/);
-  assert.equal(requests, 0);
+  assert.equal(uploads, 0);
 });
 
 test('CDN verification rejects non-ImageKit origins before making a request', async () => {
