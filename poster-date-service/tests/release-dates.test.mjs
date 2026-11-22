@@ -236,3 +236,21 @@ test('wider November 2026 release sample suppresses released titles and preserve
     assert.equal(chooseMovieDateForTest(rows, '2026-11-21')?.date, date, title + ' should retain its future date');
   }
 });
+
+test('first confirmed digital/OTT release worldwide always outranks later Indian and other territory dates', () => {
+  const rows = [
+    { iso_3166_1: 'IN', release_dates: [
+      { type: 4, release_date: '2026-12-18T00:00:00.000Z' }
+    ] },
+    { iso_3166_1: 'US', release_dates: [
+      { type: 4, release_date: '2026-12-12T00:00:00.000Z' }
+    ] },
+    { iso_3166_1: 'NZ', release_dates: [
+      { type: 4, release_date: '2026-12-05T00:00:00.000Z' },
+      { type: 5, release_date: '2026-11-30T00:00:00.000Z' }
+    ] }
+  ];
+  assert.deepEqual(chooseMovieDateForTest(rows, today), {
+    date: '2026-12-05', region: 'NZ', source: 'tmdb-digital-release', kind: 'premiere'
+  });
+});

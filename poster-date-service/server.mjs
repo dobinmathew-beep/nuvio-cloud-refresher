@@ -388,10 +388,9 @@ const server = createServer(async (req, res) => {
         res.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
         return res.end(JSON.stringify({ status: 'coordination-unavailable', error: error?.message || 'Redis unavailable' }));
       }
-      if (process.env.CATALOG_REFRESH_AUTOSTART === 'false' && !sharedLease && !catalogRefreshJob) {
-        res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
-        return res.end(JSON.stringify({ status: 'failed', error: 'Combined refresh is paused by operator; no active pipeline job.' }));
-      }
+      // The operator pause blocks implicit combined refreshes, not explicit staged
+      // jobs. Do not mask a completed staged job after its lease is released:
+      // waiters must be able to observe its durable terminal progress/report.
       const localProgress = getManifestCatalogRefreshProgress();
       const progress = sharedLease
         ? await getRefreshProgress(sharedLease.jobId) ||

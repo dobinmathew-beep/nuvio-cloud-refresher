@@ -1,112 +1,17 @@
-name: Targeted unresolved poster recovery
+name: Retired legacy poster recovery (disabled)
 
 on:
-  push:
-    branches: [poster-date-service]
-    paths:
-      - '.github/workflows/targeted-poster-recovery.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
-concurrency:
-  group: targeted-unresolved-poster-recovery
-  cancel-in-progress: false
-
 jobs:
-  recover:
+  retired:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
     steps:
-      - name: Check current checkpoint and refresh ownership
-        env:
-          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
-          SCAN_TOKEN: ${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
+      - name: Confirm legacy recovery is retired
         run: |
-          set -euo pipefail
-          if [ -z "$SCAN_TOKEN" ]; then
-            echo "::error::POSTER_CATALOG_SCAN_TOKEN repository secret is missing."
-            exit 1
-          fi
-          code=$(curl --silent --show-error --max-time 90 -o diagnostics.json -w '%{http_code}' \
-            "$POSTER_SERVICE_URL/catalog-refresh/diagnostics" \
-            -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json")
-          if [ "$code" != "200" ]; then
-            cat diagnostics.json || true
-            echo "::error::Could not read durable catalogue checkpoint diagnostics (HTTP $code)."
-            exit 1
-          fi
-          cat diagnostics.json
-          cat diagnostics.json >> "$GITHUB_STEP_SUMMARY"
-          echo >> "$GITHUB_STEP_SUMMARY"
-
-          # The refresher's durable ledger is authoritative: matching verified
-          # assets are retained, pending uploads are HEAD-checked first, and
-          # only unresolved records reach the poster-source pipeline.
-          # Catalogue page snapshots are reused; no force/full rescan is requested.
-      - name: Start or attach to checkpoint-preserving unresolved recovery
-        id: start
-        env:
-          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
-          SCAN_TOKEN: ${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
-        run: |
-          set -euo pipefail
-          response=$(curl --silent --show-error --max-time 90 -w '\n%{http_code}' \
-            -X POST "$POSTER_SERVICE_URL/catalog-refresh" \
-            -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json")
-          http_code=$(printf '%s\n' "$response" | tail -n1)
-          body=$(printf '%s\n' "$response" | sed '$d')
-          echo "$body"
-          if [ "$http_code" != "202" ] && [ "$http_code" != "409" ]; then
-            echo "::error::Recovery start rejected (HTTP $http_code)."
-            exit 1
-          fi
-          job_id=$(printf '%s' "$body" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).jobId||'')}catch{console.log('')}})")
-          if [ -z "$job_id" ]; then
-            echo "::error::Render did not return a job ID."
-            exit 1
-          fi
-          echo "job_id=$job_id" >> "$GITHUB_OUTPUT"
-          echo "- Render recovery job: $job_id" >> "$GITHUB_STEP_SUMMARY"
-      - name: Monitor recovery through Render restarts
-        env:
-          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
-          SCAN_TOKEN: ${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
-        run: |
-          set -euo pipefail
-          for attempt in $(seq 1 700); do
-            if ! response=$(curl --silent --show-error --fail-with-body --max-time 30 \
-              "$POSTER_SERVICE_URL/catalog-refresh/status" \
-              -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json"); then
-              echo "::warning::Temporary Render status failure ($attempt/700); retrying."
-              sleep 30
-              continue
-            fi
-            echo "$response"
-            status=$(printf '%s' "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).status||'unknown')}catch{console.log('unknown')}})")
-            if [ "$status" = "completed" ]; then
-              printf '%s\n' "$response" >> "$GITHUB_STEP_SUMMARY"
-              exit 0
-            fi
-            if [ "$status" = "failed" ]; then
-              printf '%s\n' "$response" >> "$GITHUB_STEP_SUMMARY"
-              echo "::error::Targeted unresolved recovery failed."
-              exit 1
-            fi
-            if [ "$status" = "idle" ]; then
-              # A rolling restart can clear process-local job state. Reattach
-              # using the same checkpoint-preserving endpoint; 409 means an
-              # existing worker owns the lease and should be observed.
-              start=$(curl --silent --show-error --max-time 90 -w '\n%{http_code}' \
-                -X POST "$POSTER_SERVICE_URL/catalog-refresh" \
-                -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json") || true
-              start_code=$(printf '%s\n' "$start" | tail -n1)
-              if [ "$start_code" != "202" ] && [ "$start_code" != "409" ]; then
-                echo "::warning::Resume request returned HTTP $start_code."
-              fi
-            fi
-            sleep 30
-          done
-          echo "::error::Timed out after six hours while monitoring recovery."
-          exit 1
+          echo "This legacy poster recovery workflow is retired."
+          echo "No scan, retry, queue drain, or poster generation is started."
+          echo "Use the explicitly staged metadata workflow only when manually authorized."

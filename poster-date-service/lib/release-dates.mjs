@@ -47,8 +47,10 @@ function isFuture(date, today) {
   return /^\d{4}-\d{2}-\d{2}$/.test(date || '') && date > today;
 }
 
-// TMDB release_type 4 is Digital. Theatrical, premiere, physical and TV
-// broadcast dates must never be used as a movie's upcoming digital date.
+// TMDB release_type 4 is Digital (including digital/OTT availability records).
+// Treat the shared poster's date as a worldwide first-release date: every
+// territory participates, and the earliest confirmed digital date wins.
+// Theatrical, premiere, physical and TV broadcast dates are not digital dates.
 function digitalDates(rows) {
   return rows.flatMap(row => (row.release_dates || [])
     .filter(item => item.type === 4)

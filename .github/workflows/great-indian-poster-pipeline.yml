@@ -1,10 +1,6 @@
 name: Great Indian poster pipeline
 on:
-  schedule:
-    - cron: '0 1 * * *'
-    - cron: '0 2 * * *'
-    - cron: '0 14 * * *'
-    - cron: '15 * * * *'
+  # Routine schedules intentionally disabled at operator request.
   workflow_dispatch:
     inputs:
       mode:
