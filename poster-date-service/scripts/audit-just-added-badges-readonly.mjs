@@ -37,7 +37,7 @@ function requiredExtrasUnavailable(catalog) {
     return options.length === 0;
   });
 }
-function catalogueUrl(base, catalog, skip) {
+function catalogueUrl(base, catalog, skip, extraValues = {}) {
   const url = new URL(base + '/catalog/' + encodeURIComponent(catalog.type) + '/' +
     encodeURIComponent(catalog.id) + '.json');
   if (skip) url.searchParams.set('skip', String(skip));
@@ -48,6 +48,9 @@ function catalogueUrl(base, catalog, skip) {
     const options = Array.isArray(descriptor?.options) ? descriptor.options
       : Array.isArray(required?.options) ? required.options : [];
     if (options.length) url.searchParams.set(name, String(options[0]));
+  }
+  for (const [name, value] of Object.entries(extraValues || {})) {
+    if (name && value !== undefined && value !== null) url.searchParams.set(name, String(value));
   }
   return url;
 }
@@ -172,6 +175,31 @@ for (const [key, fallbackName] of SOURCES) {
         name: catalog.name || catalog.id,
         requiredExtras: catalog.extraRequired || []
       });
+      const requiredNames = (Array.isArray(catalog.extraRequired) ? catalog.extraRequired : [])
+        .map(item => typeof item === 'string' ? item : String(item?.name || ''))
+        .filter(Boolean);
+      if (requiredNames.length === 1 && requiredNames[0] === 'search') {
+        for (const [referenceId, referenceTitle] of Object.entries(report.referenceTitles)) {
+          const data = await fetchJson(catalogueUrl(base, catalog, 0, { search: referenceTitle }));
+          const matches = (Array.isArray(data.metas) ? data.metas : []).filter(meta => {
+            const id = canonicalId(meta);
+            const title = String(meta?.name || meta?.title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+            const expectedTitle = referenceTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
+            return id === referenceId || title === expectedTitle;
+          });
+          report.dynamicReferenceSearches.push({
+            source, catalogId: catalog.id, query: referenceTitle,
+            resultCount: (Array.isArray(data.metas) ? data.metas : []).length,
+            matchingTitles: matches.map(meta => ({
+              id: canonicalId(meta), title: String(meta?.name || meta?.title || '')
+            }))
+          });
+          for (const meta of matches) {
+            const finding = inspect(meta, source, catalog, recentMovieIndex, report);
+            if (finding) report.dynamicReferenceMatches.push({ ...finding, referenceTitle, query: referenceTitle });
+          }
+        }
+      }
       continue;
     }
     sourceResult.cataloguesScanned++;
