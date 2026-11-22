@@ -128,7 +128,20 @@ function inspect(meta, source, catalog, recentMovieIndex, recentDigitalIndex, re
 
 const missing = SOURCES.filter(([key]) => !String(process.env[key] || '').trim()).map(([key]) => key);
 if (missing.length) throw new Error('Missing manifest secrets: ' + missing.join(', '));
-const addedIndex = await fetchJson('https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/catalog-added.json');
+const addedIndex = await fetchJson(ADDED_INDEX_URL);
+const digitalAudit = await fetchJson(DIGITAL_AUDIT_URL);
+const recentDigitalIndex = new Map();
+for (const item of (Array.isArray(digitalAudit?.items) ? digitalAudit.items : [])) {
+  if (String(item?.type || '').toLowerCase() !== 'movie' || String(item?.matchState || '').toLowerCase() !== 'published') continue;
+  const id = String(item?.id || '').trim();
+  const date = String(item?.releaseDate || '').slice(0, 10);
+  if (id && /^\\d{4}-\\d{2}-\\d{2}$/.test(date)) {
+    if (!recentDigitalIndex.has(id)) recentDigitalIndex.set(id, []);
+    recentDigitalIndex.get(id).push(date);
+  }
+}
+report.digitalAuditWindowDays = Number(digitalAudit?.windowDays || 0);
+report.publishedDigitalMovieEvents = recentDigitalIndex.size;
 const recentMovieIndex = new Map();
 for (const [key, timestamp] of Object.entries(addedIndex || {})) {
   const split = key.lastIndexOf('|');
@@ -229,7 +242,7 @@ for (const [key, fallbackName] of SOURCES) {
         if (String(meta?.type || catalog.type).toLowerCase().includes('movie')) {
           report.totals.movieRecordAppearances++;
         }
-        const finding = inspect(meta, source, catalog, recentMovieIndex, report);
+        const finding = inspect(meta, source, catalog, recentMovieIndex, recentDigitalIndex, report);
         if (!finding) continue;
         report.findings.push(finding);
         sourceResult.candidateMovieTitles++;
