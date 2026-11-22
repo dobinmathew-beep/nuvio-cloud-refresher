@@ -421,6 +421,42 @@ async function readMetadataStateWithRetry(config, path, attempts = 5) {
   throw new Error('Metadata index readback failed for ' + path + ': ' + (lastError?.message || 'not visible'));
 }
 
+export async function loadMetadataIndexChunks(chunks, {
+  scanGeneration, generationKey, readChunk, concurrency = 4
+} = {}) {
+  if (!Array.isArray(chunks) || typeof readChunk !== 'function') {
+    throw new Error('Metadata index chunk loader requires descriptors and a read function');
+  }
+  const width = Math.max(1, Math.min(8, Number(concurrency) || 4));
+  const records = [];
+  for (let offset = 0; offset < chunks.length; offset += width) {
+    const batch = chunks.slice(offset, offset + width);
+    const loaded = await Promise.all(batch.map(async (descriptor, localIndex) => {
+      const index = offset + localIndex;
+      const expectedPath = '/catalog-state/metadata-index/v1/' + generationKey +
+        '/chunk-' + String(index).padStart(5, '0') + '.json';
+      if (!descriptor || descriptor.path !== expectedPath ||
+          !Number.isInteger(descriptor.count) || descriptor.count < 0 ||
+          !/^[a-f0-9]{64}$/.test(String(descriptor.sha256 || ''))) {
+        throw new Error('Metadata index chunk descriptor is invalid at index ' + index);
+      }
+      let chunk;
+      try {
+        chunk = await readChunk(descriptor, index);
+      } catch (error) {
+        throw new Error('Metadata index chunk read failed at index ' + index + ': ' +
+          (error?.message || 'unknown read error'));
+      }
+      if (!validateMetadataIndexChunk(chunk, {
+        scanGeneration, index, count: descriptor.count, sha256: descriptor.sha256
+      })) throw new Error('Published metadata-index chunk checksum failed at index ' + index);
+      return chunk.records;
+    }));
+    records.push(...loaded.flat());
+  }
+  return records;
+}
+
 async function loadPublishedMetadataIndex(config) {
   const latest = await readMetadataStateWithRetry(config, '/catalog-state/metadata-index/latest.json');
   if (!latest || latest.version !== 1 ||
@@ -438,21 +474,12 @@ async function loadPublishedMetadataIndex(config) {
       !Array.isArray(manifest.chunks)) {
     throw new Error('Published metadata-index manifest is invalid; incremental scan refused');
   }
-  const items = [];
-  for (let index = 0; index < manifest.chunks.length; index++) {
-    const descriptor = manifest.chunks[index];
-    if (!descriptor || typeof descriptor.path !== 'string' ||
-        descriptor.path !== '/catalog-state/metadata-index/v1/' + manifest.generationKey + '/chunk-' + String(index).padStart(5, '0') + '.json' ||
-        descriptor.count < 0 || !/^[a-f0-9]{64}$/.test(String(descriptor.sha256 || ''))) {
-      throw new Error('Published metadata-index chunk descriptor is invalid');
-    }
-    const chunk = await readMetadataStateWithRetry(config, descriptor.path);
-    if (!validateMetadataIndexChunk(chunk, {
-      scanGeneration: manifest.scanGeneration, index,
-      count: descriptor.count, sha256: descriptor.sha256
-    })) throw new Error('Published metadata-index chunk checksum failed at index ' + index);
-    items.push(...chunk.records);
-  }
+  const items = await loadMetadataIndexChunks(manifest.chunks, {
+    scanGeneration: manifest.scanGeneration,
+    generationKey: manifest.generationKey,
+    concurrency: 4,
+    readChunk: descriptor => readMetadataStateWithRetry(config, descriptor.path)
+  });
   if (items.length !== manifest.itemCount ||
       manifest.chunks.length !== manifest.chunkCount ||
       latest.itemCount !== manifest.itemCount || latest.chunkCount !== manifest.chunkCount) {

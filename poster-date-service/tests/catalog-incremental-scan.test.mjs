@@ -97,3 +97,49 @@ test('incremental metadata merge is idempotent after source identities are learn
   assert.equal(second.changed, 0);
   assert.equal(second.delta.length, 0);
 });
+
+test('metadata baseline chunks are read with bounded concurrency and preserved index order', async () => {
+  const { createHash } = await import('node:crypto');
+  const { loadMetadataIndexChunks } = await import('../lib/catalog-manifest-refresh.mjs');
+  const generationKey = 'a'.repeat(24);
+  const scanGeneration = 'baseline-generation';
+  const chunks = Array.from({ length: 9 }, (_, index) => {
+    const records = [{ id: 'tt' + String(1234567 + index).padStart(7, '0'), index }];
+    const sha256 = createHash('sha256').update(JSON.stringify(records)).digest('hex');
+    return {
+      path: '/catalog-state/metadata-index/v1/' + generationKey + '/chunk-' + String(index).padStart(5, '0') + '.json',
+      count: records.length, sha256,
+      payload: { version: 1, scanGeneration, index, count: records.length, sha256, records }
+    };
+  });
+  let active = 0;
+  let maxActive = 0;
+  const records = await loadMetadataIndexChunks(chunks, {
+    scanGeneration, generationKey, concurrency: 3,
+    readChunk: async descriptor => {
+      active++;
+      maxActive = Math.max(maxActive, active);
+      await new Promise(resolve => setTimeout(resolve, 5));
+      active--;
+      return descriptor.payload;
+    }
+  });
+  assert.equal(maxActive, 3);
+  assert.deepEqual(records.map(record => record.index), chunks.map((_, index) => index));
+});
+
+test('metadata baseline chunk loader fails closed on a bad chunk without returning partial records', async () => {
+  const { loadMetadataIndexChunks } = await import('../lib/catalog-manifest-refresh.mjs');
+  const generationKey = 'b'.repeat(24);
+  const chunks = [{
+    path: '/catalog-state/metadata-index/v1/' + generationKey + '/chunk-00000.json',
+    count: 1, sha256: '0'.repeat(64)
+  }];
+  await assert.rejects(
+    loadMetadataIndexChunks(chunks, {
+      scanGeneration: 'g', generationKey,
+      readChunk: async () => ({ version: 1, scanGeneration: 'g', index: 0, count: 1, sha256: '0'.repeat(64), records: [{ id: 'tt1234567' }] })
+    }),
+    /checksum failed at index 0/
+  );
+});
