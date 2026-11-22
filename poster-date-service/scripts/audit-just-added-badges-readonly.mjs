@@ -247,6 +247,7 @@ for (const [key, fallbackName] of SOURCES) {
   report.sources.push(sourceResult);
 }
 
+report.referenceMatches.push(...report.dynamicReferenceMatches);
 report.findings.sort((a, b) => a.source.localeCompare(b.source) || a.title.localeCompare(b.title));
 report.totals.uniqueCandidateMovieIds = new Set(report.findings.map(item => item.id)).size;
 report.totals.uniqueOldMovieIds = new Set(
@@ -270,6 +271,10 @@ const summary = [
     const matches = report.referenceMatches.filter(item => item.id === id);
     return '- **' + title + '** (' + id + '): ' + (matches.length ? matches.map(item => item.source + ' — ' + item.finding + ', year ' + (item.year ?? 'unknown') + ', digital date ' + (item.latestDigitalReleaseDate || 'unknown')).join('; ') : 'not found in the scanned catalogue pages');
   }),
+  '',
+  '## Dynamic search probes',
+  '',
+  ...report.dynamicReferenceSearches.map(item => '- ' + item.source + ' / ' + item.catalogId + ' — query "' + item.query + '": ' + item.resultCount + ' results; matches: ' + (item.matchingTitles.length ? item.matchingTitles.map(match => match.title + ' (' + match.id + ')').join(', ') : 'none')),
   '',
   '## Totals',
   '',
