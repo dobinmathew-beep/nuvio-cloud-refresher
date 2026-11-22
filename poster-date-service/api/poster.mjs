@@ -528,16 +528,19 @@ export default async function handler(req, res) {
     const immediateBadge = String(req.query?.badge || '').toLowerCase() === 'just-added' ? 'just-added' : '';
     const immediateVersion = String(req.query?.v || '');
     const immediateFallback = String(req.query?.fallback || '');
-    scheduleBackgroundPosterBuild(id, immediateBadge, immediateVersion, immediateFallback);
-    res.statusCode = 302;
-    res.setHeader('Location', sourceUrl(id));
-    res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('X-Poster-Source', 'BetterPosters');
-    res.setHeader('X-Poster-Date-Status', 'background-generation-pending');
-    res.setHeader('X-ImageKit-Storage', 'pending');
-    return res.end();
+    if (!immediateFallback) {
+      scheduleBackgroundPosterBuild(id, immediateBadge, immediateVersion, immediateFallback);
+      res.statusCode = 302;
+      res.setHeader('Location', sourceUrl(id));
+      res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('X-Poster-Source', 'BetterPosters');
+      res.setHeader('X-Poster-Date-Status', 'background-generation-pending');
+      res.setHeader('X-ImageKit-Storage', 'pending');
+      return res.end();
+    }
 
+    // Explicit catalogue fallbacks still use the validated renderer path.
     // An ImageKit copy is valid only while TMDB still confirms a future release.
     // This prevents a cached date badge from surviving its release day.
     const badge = String(req.query?.badge || '').toLowerCase() === 'just-added' ? 'just-added' : '';
