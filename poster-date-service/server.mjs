@@ -469,9 +469,9 @@ const server = createServer(async (req, res) => {
     return;
   }
 
-  // Safe, fixed maintenance action: no user-supplied IDs or paths are accepted.
-  // A six-hour in-process cooldown prevents repeated public triggering.
-  if (url.pathname === '/maintenance') {
+  // Read-only ImageKit inventory and deletion-candidate report. This endpoint
+  // never invokes a delete API; candidate removal requires separate approval.
+  if (url.pathname === '/maintenance' || url.pathname === '/maintenance/report') {
     if (req.method !== 'POST') {
       res.writeHead(405, { 'Allow': 'POST', 'Cache-Control': 'no-store' });
       return res.end('Method not allowed');
