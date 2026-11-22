@@ -97,32 +97,31 @@ function posterHost(meta) {
   try { return new URL(String(meta?.poster || '')).host; }
   catch { return ''; }
 }
-function inspect(meta, source, catalog, recentMovieIndex, recentDigitalIndex, report) {
+function inspect(meta, source, catalog, legacyMovieIndex, recentDigitalIndex, report) {
   const id = canonicalId(meta);
   if (!id) return null;
   const type = String(meta?.type || catalog.type || '').toLowerCase();
   if (!type.includes('movie')) return null;
   const posterBadge = posterHasJustAdded(meta);
-  const indexTimestamp = recentMovieIndex.get(id) || null;
+  const legacyIndexTimestamp = legacyMovieIndex.get(id) || null;
   const isReference = Object.hasOwn(report.referenceTitles, id);
-  if (!posterBadge && !indexTimestamp && !isReference) return null;
+  if (!posterBadge && !legacyIndexTimestamp && !isReference) return null;
   const year = releaseYear(meta);
   const dates = [...new Set([...digitalDates(meta), ...(recentDigitalIndex.get(id) || [])])].sort();
-  const latestDigital = dates.length ? dates[dates.length - 1] : null;
-  const ageDays = latestDigital ? Math.floor((Date.parse(today + 'T00:00:00Z') - Date.parse(latestDigital + 'T00:00:00Z')) / DAY_MS) : null;
+  const firstDigital = dates.length ? dates[0] : null;
+  const ageDays = firstDigital ? Math.floor((Date.parse(today + 'T00:00:00Z') - Date.parse(firstDigital + 'T00:00:00Z')) / DAY_MS) : null;
   let finding = 'not-in-recent-index-no-poster-query-flag';
-  if (latestDigital && ageDays >= 0 && ageDays <= 14) finding = 'recent-digital-release-eligible';
-  else if (latestDigital && ageDays > 14) finding = 'stale-just-added';
-  else if (indexTimestamp && year && year < now.getUTCFullYear()) finding = 'old-movie-recent-index-entry';
-  else if (posterBadge && !indexTimestamp) finding = 'poster-query-badge-without-recent-index-entry';
-  else if (indexTimestamp) finding = 'recent-index-entry-needs-release-date-check';
+  if (firstDigital && ageDays >= 0 && ageDays <= 14) finding = 'recent-digital-release-eligible';
+  else if (firstDigital && ageDays > 14) finding = 'stale-just-added';
+  else if (posterBadge && !firstDigital) finding = 'poster-query-badge-without-digital-date';
+  else if (legacyIndexTimestamp) finding = 'legacy-movie-index-entry-ignored';
   else if (year && year < now.getUTCFullYear()) finding = 'old-movie-without-digital-date';
   return {
     source, catalogId: catalog.id, catalogName: catalog.name || catalog.id,
     id, title: String(meta?.name || meta?.title || report.referenceTitles[id] || ''), year,
     releaseInfo: String(meta?.releaseInfo || ''), digitalReleaseDates: dates,
-    latestDigitalReleaseDate: latestDigital, digitalAgeDays: ageDays,
-    recentMovieIndexTimestamp: indexTimestamp, posterQueryBadge: posterBadge,
+    firstDigitalReleaseDate: firstDigital, digitalAgeDays: ageDays,
+    recentMovieIndexTimestamp: null, legacyMovieIndexTimestamp: legacyIndexTimestamp, posterQueryBadge: posterBadge,
     posterHost: posterHost(meta), finding
   };
 }
@@ -141,7 +140,7 @@ for (const item of (Array.isArray(digitalAudit?.items) ? digitalAudit.items : []
     recentDigitalIndex.get(id).push(date);
   }
 }
-const recentMovieIndex = new Map();
+const legacyMovieIndex = new Map();
 for (const [key, timestamp] of Object.entries(addedIndex || {})) {
   const split = key.lastIndexOf('|');
   const catalogKey = split >= 0 ? key.slice(0, split) : '';
@@ -150,7 +149,7 @@ for (const [key, timestamp] of Object.entries(addedIndex || {})) {
   const addedAt = Date.parse(timestamp);
   const age = now.getTime() - addedAt;
   if (id && Number.isFinite(addedAt) && age >= 0 && age <= 14 * DAY_MS) {
-    recentMovieIndex.set(id, String(timestamp));
+    legacyMovieIndex.set(id, String(timestamp));
   }
 }
 
@@ -160,7 +159,7 @@ const report = {
   digitalAuditWindowDays: Number(digitalAudit?.windowDays || 0),
   publishedDigitalMovieEvents: recentDigitalIndex.size,
   sources: [],
-  totals: { catalogueDefinitions: 0, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, pagesFetched: 0, recordsFetched: 0, movieRecordAppearances: 0, candidateMovieAppearances: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0 },
+  totals: { catalogueDefinitions: 0, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, pagesFetched: 0, recordsFetched: 0, movieRecordAppearances: 0, candidateMovieAppearances: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0, legacyMovieIndexEntries: legacyMovieIndex.size },
   findings: [],
   referenceTitles: {
     tt1375789: 'Race 2',
@@ -178,7 +177,7 @@ for (const [key, fallbackName] of SOURCES) {
   if (!Array.isArray(manifest.catalogs) || !manifest.catalogs.length) throw new Error(key + ' has no catalogue definitions');
   const source = String(manifest.name || fallbackName).replace(/\s*\|\s*/g, ' ').replace(/\s+/g, ' ').trim();
   const base = manifestBase(manifestUrl);
-  const sourceResult = { source, catalogueDefinitions: manifest.catalogs.length, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, dynamicCatalogues: [], pagesFetched: 0, recordsFetched: 0, candidateMovieTitles: 0, recentIndexMovieTitles: 0, posterQueryBadgeTitles: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0 };
+  const sourceResult = { source, catalogueDefinitions: manifest.catalogs.length, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, dynamicCatalogues: [], pagesFetched: 0, recordsFetched: 0, candidateMovieTitles: 0, legacyMovieIndexMovieTitles: 0, posterQueryBadgeTitles: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0 };
   report.totals.catalogueDefinitions += manifest.catalogs.length;
 
   for (const catalog of manifest.catalogs) {
@@ -221,7 +220,7 @@ for (const [key, fallbackName] of SOURCES) {
             }))
           });
           for (const meta of matches) {
-            const finding = inspect(meta, source, catalog, recentMovieIndex, recentDigitalIndex, report);
+            const finding = inspect(meta, source, catalog, legacyMovieIndex, recentDigitalIndex, report);
             if (finding) report.dynamicReferenceMatches.push({ ...finding, referenceTitle, query: referenceTitle });
           }
         }
@@ -250,13 +249,13 @@ for (const [key, fallbackName] of SOURCES) {
         report.findings.push(finding);
         sourceResult.candidateMovieTitles++;
         report.totals.candidateMovieAppearances++;
-        if (finding.recentMovieIndexTimestamp) sourceResult.recentIndexMovieTitles++;
+        if (finding.legacyMovieIndexTimestamp) sourceResult.legacyMovieIndexMovieTitles++;
         if (finding.posterQueryBadge) sourceResult.posterQueryBadgeTitles++;
         if (finding.finding === 'stale-just-added') {
           sourceResult.staleJustAdded++;
           report.totals.staleJustAdded++;
         }
-        if (finding.finding === 'old-movie-without-digital-date' || finding.finding === 'old-movie-recent-index-entry') {
+        if (finding.finding === 'old-movie-without-digital-date' || finding.finding === 'legacy-movie-index-entry-ignored' || finding.finding === 'poster-query-badge-without-digital-date') {
           sourceResult.oldMovieWithoutDigitalDate++;
           report.totals.oldMovieWithoutDigitalDate++;
         }
@@ -277,7 +276,7 @@ report.referenceMatches.push(...report.dynamicReferenceMatches);
 report.findings.sort((a, b) => a.source.localeCompare(b.source) || a.title.localeCompare(b.title));
 report.totals.uniqueCandidateMovieIds = new Set(report.findings.map(item => item.id)).size;
 report.totals.uniqueOldMovieIds = new Set(
-  report.findings.filter(item => item.finding === 'old-movie-recent-index-entry').map(item => item.id)
+  report.findings.filter(item => item.finding === 'legacy-movie-index-entry-ignored').map(item => item.id)
 ).size;
 report.referenceMatches.sort((a, b) => a.referenceTitle.localeCompare(b.referenceTitle));
 await mkdir('artifacts', { recursive: true });
@@ -287,15 +286,15 @@ const summary = [
   '',
   'Read-only audit. No catalogue data, ImageKit assets, or poster endpoints were changed or requested.',
   '',
-  '| Source | Catalogues scanned | Pages | Records | Candidate appearances | Recent index | Poster query badge | Stale (>14d) | Old year, no digital date |',
+  '| Source | Catalogues scanned | Pages | Records | Candidate appearances | Legacy movie index (ignored) | Poster query badge | Stale (>14d) | Old year, no digital date |',
   '|---|---:|---:|---:|---:|---:|---:|---:|---:|',
-  ...report.sources.map(item => '| ' + [item.source, item.cataloguesScanned, item.pagesFetched, item.recordsFetched, item.candidateMovieTitles, item.recentIndexMovieTitles, item.posterQueryBadgeTitles, item.staleJustAdded, item.oldMovieWithoutDigitalDate].join(' | ') + ' |'),
+  ...report.sources.map(item => '| ' + [item.source, item.cataloguesScanned, item.pagesFetched, item.recordsFetched, item.candidateMovieTitles, item.legacyMovieIndexMovieTitles, item.posterQueryBadgeTitles, item.staleJustAdded, item.oldMovieWithoutDigitalDate].join(' | ') + ' |'),
   '',
   '## Reference titles',
   '',
   ...Object.entries(report.referenceTitles).map(([id, title]) => {
     const matches = report.referenceMatches.filter(item => item.id === id);
-    return '- **' + title + '** (' + id + '): ' + (matches.length ? matches.map(item => item.source + ' — ' + item.finding + ', year ' + (item.year ?? 'unknown') + ', digital date ' + (item.latestDigitalReleaseDate || 'unknown')).join('; ') : 'not found in the scanned catalogue pages');
+    return '- **' + title + '** (' + id + '): ' + (matches.length ? matches.map(item => item.source + ' — ' + item.finding + ', year ' + (item.year ?? 'unknown') + ', first digital date ' + (item.firstDigitalReleaseDate || 'unknown')).join('; ') : 'not found in the scanned catalogue pages');
   }),
   '',
   '## Dynamic search probes',
@@ -307,7 +306,8 @@ const summary = [
   '- Published digital movie events in the 35-day audit: ' + report.publishedDigitalMovieEvents,
   '- Digital release audit window (days): ' + report.digitalAuditWindowDays,
   '- Movie record appearances (catalogue/page rows): ' + report.totals.movieRecordAppearances,
-  '- Candidate movie appearances (recent index or poster flag, plus references): ' + report.totals.candidateMovieAppearances,
+  '- Candidate movie appearances (legacy index or poster flag, plus references): ' + report.totals.candidateMovieAppearances,
+  '- Legacy movie index entries (ignored by the poster service): ' + report.totals.legacyMovieIndexEntries,
   '- Unique candidate movie IDs: ' + report.totals.uniqueCandidateMovieIds,
   '- Unique old-movie IDs with recent index timestamps: ' + report.totals.uniqueOldMovieIds,
   '- Dynamic catalogues skipped (required extra values unavailable): ' + report.totals.dynamicCataloguesSkipped,
