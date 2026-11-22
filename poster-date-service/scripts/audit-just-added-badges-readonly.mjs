@@ -139,7 +139,7 @@ const report = {
   generatedAt: now.toISOString(),
   mode: 'read-only; no catalogue writes, no ImageKit writes, no poster-service requests',
   sources: [],
-  totals: { catalogueDefinitions: 0, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, pagesFetched: 0, recordsFetched: 0, uniqueMovieTitles: 0, justAddedMovieTitles: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0 },
+  totals: { catalogueDefinitions: 0, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, pagesFetched: 0, recordsFetched: 0, movieRecordAppearances: 0, candidateMovieAppearances: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0 },
   findings: [],
   referenceTitles: {
     tt1375789: 'Race 2',
@@ -179,13 +179,13 @@ for (const [key, fallbackName] of SOURCES) {
         const id = canonicalId(meta);
         if (id && !seen.has(id)) { seen.add(id); newIds++; }
         if (String(meta?.type || catalog.type).toLowerCase().includes('movie')) {
-          report.totals.uniqueMovieTitles++;
+          report.totals.movieRecordAppearances++;
         }
         const finding = inspect(meta, source, catalog, recentMovieIndex, report);
         if (!finding) continue;
         report.findings.push(finding);
         sourceResult.candidateMovieTitles++;
-        report.totals.justAddedMovieTitles++;
+        report.totals.candidateMovieAppearances++;
         if (finding.recentMovieIndexTimestamp) sourceResult.recentIndexMovieTitles++;
         if (finding.posterQueryBadge) sourceResult.posterQueryBadgeTitles++;
         if (finding.finding === 'stale-just-added') {
@@ -218,7 +218,7 @@ const summary = [
   '',
   'Read-only audit. No catalogue data, ImageKit assets, or poster endpoints were changed or requested.',
   '',
-  '| Source | Catalogues scanned | Pages | Records | Candidate movies | Recent index | Poster query badge | Stale (>14d) | Old year, no digital date |',
+  '| Source | Catalogues scanned | Pages | Records | Candidate appearances | Recent index | Poster query badge | Stale (>14d) | Old year, no digital date |',
   '|---|---:|---:|---:|---:|---:|---:|---:|---:|',
   ...report.sources.map(item => '| ' + [item.source, item.cataloguesScanned, item.pagesFetched, item.recordsFetched, item.candidateMovieTitles, item.recentIndexMovieTitles, item.posterQueryBadgeTitles, item.staleJustAdded, item.oldMovieWithoutDigitalDate].join(' | ') + ' |'),
   '',
@@ -231,8 +231,8 @@ const summary = [
   '',
   '## Totals',
   '',
-  '- Movie records observed (catalogue/page rows): ' + report.totals.uniqueMovieTitles,
-  '- Just Added movie posters: ' + report.totals.justAddedMovieTitles,
+  '- Movie record appearances (catalogue/page rows): ' + report.totals.movieRecordAppearances,
+  '- Just Added movie posters: ' + report.totals.candidateMovieAppearances,
   '- Stale Just Added (>14 days since digital release): ' + report.totals.staleJustAdded,
   '- Old movie with no digital date (requires review): ' + report.totals.oldMovieWithoutDigitalDate,
   ''
