@@ -35,3 +35,5 @@ jobs:
 # check incremental baseline loader heartbeat
 
 # final status check for incremental scan
+
+# final read-only check before handing back status
