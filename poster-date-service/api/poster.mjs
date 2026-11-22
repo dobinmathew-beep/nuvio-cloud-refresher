@@ -550,20 +550,22 @@ export default async function handler(req, res) {
     // The no-fallback route can stay fast, but it must not trust mere
     // ImageKit availability. Compare the stored badge state with the current
     // catalogue decision before reusing the cached bytes.
-    let expectedCachedJustAdded = immediateBadge === 'just-added';
-    if (!expectedCachedJustAdded) {
-      try { expectedCachedJustAdded = (await isCatalogRecentlyAdded([id])) === true; }
-      catch (error) {
-        console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
+    if (!immediateFallback) {
+      let expectedCachedJustAdded = immediateBadge === 'just-added';
+      if (!expectedCachedJustAdded) {
+        try { expectedCachedJustAdded = (await isCatalogRecentlyAdded([id])) === true; }
+        catch (error) {
+          console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
+        }
       }
-    }
-    const cachedValidation = await readPosterValidationMetadata(id);
-    const cachedReleaseInfo = cachedValidation?.releaseDate
-      ? { date: cachedValidation.releaseDate, kind: cachedValidation.releaseKind || 'premiere' }
-      : null;
-    const validatedCachedAsset = await findFreshImageKitAsset(id, cachedReleaseInfo, expectedCachedJustAdded, { validateDate: false });
-    if (validatedCachedAsset) {
-      return redirectToImageKit(res, validatedCachedAsset, cachedReleaseInfo, expectedCachedJustAdded);
+      const cachedValidation = await readPosterValidationMetadata(id);
+      const cachedReleaseInfo = cachedValidation?.releaseDate
+        ? { date: cachedValidation.releaseDate, kind: cachedValidation.releaseKind || 'premiere' }
+        : null;
+      const validatedCachedAsset = await findFreshImageKitAsset(id, cachedReleaseInfo, expectedCachedJustAdded, { validateDate: false });
+      if (validatedCachedAsset) {
+        return redirectToImageKit(res, validatedCachedAsset, cachedReleaseInfo, expectedCachedJustAdded);
+      }
     }
 
     // Only after badge state has been checked may a no-fallback request use
