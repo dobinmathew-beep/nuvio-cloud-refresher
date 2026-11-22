@@ -534,6 +534,7 @@ export async function collectIncrementalCatalogues(manifests, {
 }
 
 async function runIncrementalMetadataScan(lease) {
+  updateRefreshProgress({ status: 'running', stage: 'incremental-metadata-scan', mode: 'incremental-discovery' });
   const configured = MANIFEST_KEYS.filter(key => process.env[key]);
   if (configured.length !== MANIFEST_KEYS.length) {
     throw new Error('Incremental scan requires all three configured manifests; refusing partial coverage');
@@ -554,7 +555,6 @@ async function runIncrementalMetadataScan(lease) {
   const observed = new Map(scan.observed.map(item => [item.id, item]));
   const { sourceStats, pagesFetched, recordsFetched } = scan;
   if (!observed.size) throw new Error('Incremental scan found no supported catalogue IDs; baseline left unchanged');
-  const baselineItemsById = new Map(baseline.items.map(item => [item.id, item]));
   const result = mergeIncrementalMetadata(baseline.items, [...observed.values()]);
   const scanGeneration = 'incremental-' + new Date().toISOString().replace(/[:.]/g, '-');
   const deltaPath = '/catalog-state/metadata-index/deltas/' + scanGeneration + '.json';
@@ -580,7 +580,7 @@ async function runIncrementalMetadataScan(lease) {
     sourceStats, pagesFetched, recordsFetched, itemCount: result.items.length,
     added: result.added, changed: result.changed, deltaCount: deltaRecords.length
   }));
-  return {
+  const report = {
     status: 'incremental-metadata-complete',
     mode: 'incremental-discovery',
     scanGeneration,
@@ -594,6 +594,13 @@ async function runIncrementalMetadataScan(lease) {
     metadataManifestPath: '/catalog-state/metadata-index/v1/' + manifest.generationKey + '/manifest.json',
     deltaPath
   };
+  updateRefreshProgress({
+    status: 'completed', stage: 'incremental-metadata-complete',
+    cataloguesDiscovered: scan.totalCatalogues, cataloguesScanned: scan.totalCatalogues,
+    titlesDiscovered: result.items.length, titlesNewThisRun: result.added,
+    report, finishedAt: new Date().toISOString()
+  });
+  return report;
 }
 
 async function publishSharedMetadataIndex(items, scanGeneration, config, lease) {

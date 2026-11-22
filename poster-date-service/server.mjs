@@ -444,11 +444,13 @@ const server = createServer(async (req, res) => {
     res.end(JSON.stringify({ status: 'accepted', jobId }));
     const manualTask = (async () => {
       try {
-        // Storage accounting is best-effort. Never prevent the catalogue job
-        // from starting because ImageKit's snapshot endpoint is temporarily slow.
-        void initializeImageKitStorageSnapshot().catch(error =>
-          console.warn('[imagekit-refresh-snapshot-unavailable]', error?.message || 'unknown error')
-        );
+        // Metadata-only incremental scans do not touch poster storage or quota,
+        // so avoid an unnecessary full ImageKit inventory request for that mode.
+        if (requestedMode !== 'incremental-discovery') {
+          void initializeImageKitStorageSnapshot().catch(error =>
+            console.warn('[imagekit-refresh-snapshot-unavailable]', error?.message || 'unknown error')
+          );
+        }
         catalogRefreshReport = await runManifestCatalogRefresh({
           forceReprocess: url.searchParams.get('force') === '1',
           mode: requestedMode
