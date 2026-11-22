@@ -3,6 +3,8 @@ import { createHash, randomUUID } from 'node:crypto';
 
 const ROOT = '/catalog-state/durable-queue';
 const CHUNK_SIZE = 100;
+const STATE_FILE = 'queue-state.json';
+const DEFAULT_CLAIM_MS = 5 * 60 * 1000;
 
 function sha256(value) {
   return createHash('sha256').update(value).digest('hex');
@@ -87,6 +89,13 @@ export async function persistDurableQueueSnapshot(items, scanGeneration, options
   const chunks = chunkDurableQueue(items, options.chunkSize || CHUNK_SIZE);
   const generationKey = safeGeneration(scanGeneration);
   const folder = ROOT + '/' + generationKey;
+  // A published generation is immutable. On restart, reuse its exact candidate
+  // set rather than replacing it with a partially rebuilt in-memory list.
+  const existing = await readJson(config, folder + '/manifest.json');
+  if (existing) {
+    const validated = await loadDurableQueueSnapshot(scanGeneration, { config });
+    return validated.manifest;
+  }
   const chunkEntries = [];
 
   for (let index = 0; index < chunks.length; index++) {
@@ -119,6 +128,7 @@ export async function persistDurableQueueSnapshot(items, scanGeneration, options
   };
   await options.assertOwned?.();
   await writeJson(config, folder + '/manifest.json', manifest);
+  await initializeDurableQueueState(scanGeneration, items.map(item => item.id), { config });
   console.info('[durable-poster-queue-persisted]', JSON.stringify({
     scanGeneration,
     itemCount: items.length,
@@ -162,4 +172,112 @@ export async function loadDurableQueueSnapshot(scanGeneration, options = {}) {
     throw new Error('Durable poster queue item count mismatch: expected ' + manifest.itemCount + ', loaded ' + items.length);
   }
   return { manifest, items };
+}
+
+
+function queueStatePath(scanGeneration) {
+  return ROOT + '/' + safeGeneration(scanGeneration) + '/' + STATE_FILE;
+}
+
+async function readQueueState(config, scanGeneration) {
+  const state = await readJson(config, queueStatePath(scanGeneration));
+  if (!state || state.version !== 1 || state.scanGeneration !== String(scanGeneration) ||
+      !state.items || typeof state.items !== 'object' || Array.isArray(state.items)) {
+    throw new Error('Durable poster queue state is missing or invalid for generation ' + scanGeneration);
+  }
+  return state;
+}
+
+/** Initialize once; never erase existing claims or completed acknowledgements. */
+export async function initializeDurableQueueState(scanGeneration, itemIds, options = {}) {
+  const config = options.config || imageKitConfig();
+  const path = queueStatePath(scanGeneration);
+  const existing = await readJson(config, path);
+  const uniqueIds = [...new Set(itemIds.map(id => String(id)))];
+  if (existing) {
+    if (existing.version !== 1 || existing.scanGeneration !== String(scanGeneration) ||
+        !existing.items || typeof existing.items !== 'object') {
+      throw new Error('Existing durable queue state is malformed; refusing to overwrite it');
+    }
+    const savedIds = Object.keys(existing.items).sort();
+    if (savedIds.length !== uniqueIds.length || savedIds.some((id, index) => id !== uniqueIds.sort()[index])) {
+      throw new Error('Existing durable queue membership differs from immutable manifest; refusing destructive rewrite');
+    }
+    return existing;
+  }
+  const items = Object.fromEntries(uniqueIds.map(id => [id, {
+    status: 'queued', attempts: 0, updatedAt: new Date().toISOString()
+  }]));
+  const state = { version: 1, scanGeneration: String(scanGeneration), createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), items };
+  await options.assertOwned?.();
+  await writeJson(config, path, state);
+  return state;
+}
+
+/** Expired claims are returned to queued; the caller must hold the global refresh lease. */
+export async function claimDurableQueueBatch(scanGeneration, itemIds, owner, options = {}) {
+  const config = options.config || imageKitConfig();
+  const state = await readQueueState(config, scanGeneration);
+  const now = Date.now();
+  const claimMs = Math.max(30_000, Number(options.claimMs) || DEFAULT_CLAIM_MS);
+  const claimed = [];
+  for (const rawId of itemIds) {
+    const id = String(rawId);
+    const entry = state.items[id];
+    if (!entry) throw new Error('Queue item is absent from durable manifest: ' + id);
+    if (entry.status === 'recorded') continue;
+    if (entry.status === 'claimed' && Date.parse(entry.claimExpiresAt || '') > now) continue;
+    entry.status = 'claimed';
+    entry.owner = String(owner);
+    entry.claimedAt = new Date(now).toISOString();
+    entry.claimExpiresAt = new Date(now + claimMs).toISOString();
+    entry.attempts = (Number(entry.attempts) || 0) + 1;
+    entry.updatedAt = new Date(now).toISOString();
+    claimed.push(id);
+  }
+  if (claimed.length) {
+    state.updatedAt = new Date(now).toISOString();
+    await options.assertOwned?.();
+    await writeJson(config, queueStatePath(scanGeneration), state);
+  }
+  return claimed;
+}
+
+/** Acknowledge only jobs claimed by this owner, after their ledger writes are durable. */
+export async function settleDurableQueueBatch(scanGeneration, itemIds, owner, outcome = 'recorded', options = {}) {
+  const config = options.config || imageKitConfig();
+  const state = await readQueueState(config, scanGeneration);
+  const now = new Date().toISOString();
+  for (const rawId of itemIds) {
+    const id = String(rawId);
+    const entry = state.items[id];
+    if (!entry) throw new Error('Queue item is absent from durable manifest: ' + id);
+    if (entry.status === 'recorded') continue;
+    if (entry.status !== 'claimed' || entry.owner !== String(owner)) {
+      throw new Error('Queue claim ownership lost for ' + id + '; refusing acknowledgement');
+    }
+    entry.status = outcome === 'recorded' ? 'recorded' : 'queued';
+    entry.lastOutcome = String(outcome);
+    entry.recordedAt = outcome === 'recorded' ? now : null;
+    entry.owner = null;
+    entry.claimedAt = null;
+    entry.claimExpiresAt = null;
+    entry.updatedAt = now;
+  }
+  state.updatedAt = now;
+  await options.assertOwned?.();
+  await writeJson(config, queueStatePath(scanGeneration), state);
+  return state;
+}
+
+export async function getDurableQueueState(scanGeneration, options = {}) {
+  const config = options.config || imageKitConfig();
+  const state = await readQueueState(config, scanGeneration);
+  const counts = { queued: 0, claimed: 0, recorded: 0, expiredClaims: 0 };
+  const now = Date.now();
+  for (const entry of Object.values(state.items)) {
+    if (entry.status === 'claimed' && Date.parse(entry.claimExpiresAt || '') <= now) counts.expiredClaims++;
+    if (counts[entry.status] !== undefined) counts[entry.status]++;
+  }
+  return { scanGeneration: state.scanGeneration, total: Object.keys(state.items).length, counts, updatedAt: state.updatedAt };
 }
