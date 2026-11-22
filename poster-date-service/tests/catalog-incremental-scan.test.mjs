@@ -3,7 +3,9 @@ import assert from 'node:assert/strict';
 import {
   mergeIncrementalMetadata,
   mergeIncrementalMetadataItem,
-  validateMetadataIndexChunk
+  validateMetadataIndexChunk,
+  shouldPersistCataloguePageCheckpoint,
+  shouldPersistCatalogueInventoryCheckpoint
 } from '../lib/catalog-manifest-refresh.mjs';
 
 test('incremental merge preserves the complete baseline and adds new titles', () => {
@@ -96,4 +98,23 @@ test('incremental metadata merge is idempotent after source identities are learn
   assert.equal(second.added, 0);
   assert.equal(second.changed, 0);
   assert.equal(second.delta.length, 0);
+});
+
+
+test('catalogue page checkpoints coalesce five pages but always flush completion', () => {
+  for (let page = 1; page < 5; page++) {
+    assert.equal(shouldPersistCataloguePageCheckpoint(page, false), false);
+  }
+  assert.equal(shouldPersistCataloguePageCheckpoint(5, false), true);
+  assert.equal(shouldPersistCataloguePageCheckpoint(6, true), true);
+  assert.equal(shouldPersistCataloguePageCheckpoint(10, false), true);
+});
+
+test('top-level catalogue inventory checkpoints coalesce completed catalogues in groups of five', () => {
+  for (let count = 1; count < 5; count++) {
+    assert.equal(shouldPersistCatalogueInventoryCheckpoint(count), false);
+  }
+  assert.equal(shouldPersistCatalogueInventoryCheckpoint(5), true);
+  assert.equal(shouldPersistCatalogueInventoryCheckpoint(10), true);
+  assert.equal(shouldPersistCatalogueInventoryCheckpoint(11), false);
 });
