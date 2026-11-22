@@ -76,6 +76,7 @@ jobs:
           echo "Accepted job: $job_id" >> "$GITHUB_STEP_SUMMARY"
 
           deadline=$((SECONDS + 21000))
+          status="not-started"
           while [ "$SECONDS" -lt "$deadline" ]; do
             code="$(curl --silent --show-error --max-time 45 -o "$status_file" -w '%{http_code}' \
               "$POSTER_SERVICE_URL/catalog-refresh/status" \
