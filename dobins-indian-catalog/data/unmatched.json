@@ -32,6 +32,26 @@
     }
   },
   {
+    "name": "Pendulum",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-11-22",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.keralatv.in/channel/ott/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
+    "sourceRecord": {
+      "title": "Pendulum",
+      "releaseDate": "2026-11-22",
+      "source": "https://www.keralatv.in/channel/ott/",
+      "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
+    }
+  },
+  {
     "name": "Satyameva",
     "language": "malayalam",
     "type": "series",
@@ -91,23 +111,23 @@
     }
   },
   {
-    "name": "Sameer",
+    "name": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
     "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-11-21",
+    "type": "series",
+    "ottDate": "2026-11-27",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.keralatv.in/channel/ott/"
     ],
     "platforms": [
-      "ManoramaMAX"
+      "ZEE5"
     ],
-    "detail": "https://www.keralatv.in/sameer-malayalam-movie-ott-release-date-manoramamax/",
+    "detail": "https://www.keralatv.in/sathyameva-zee5-malayalam-series-cast-characters/",
     "sourceRecord": {
-      "title": "Sameer",
-      "releaseDate": "2026-11-21",
+      "title": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
+      "releaseDate": "2026-11-27",
       "source": "https://www.keralatv.in/channel/ott/",
-      "headline": "Sameer Malayalam Movie OTT Release Date Confirmed – Streaming on ManoramaMAX From 21 November 2026"
+      "headline": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram, Streaming from 27 November"
     }
   },
   {
@@ -128,6 +148,26 @@
       "releaseDate": "2026-11-20",
       "source": "https://www.keralatv.in/channel/ott/",
       "headline": "New Tamil Movie OTT Releases This Week – Drones Streaming on Prime Video From 20 November 2026"
+    }
+  },
+  {
+    "name": "Sameer",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-11-21",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.keralatv.in/channel/ott/"
+    ],
+    "platforms": [
+      "ManoramaMAX"
+    ],
+    "detail": "https://www.keralatv.in/sameer-malayalam-movie-ott-release-date-manoramamax/",
+    "sourceRecord": {
+      "title": "Sameer",
+      "releaseDate": "2026-11-21",
+      "source": "https://www.keralatv.in/channel/ott/",
+      "headline": "Sameer Malayalam Movie OTT Release Date Confirmed – Streaming on ManoramaMAX From 21 November 2026"
     }
   },
   {
@@ -549,36 +589,6 @@
     }
   },
   {
-    "name": "Oru Chiri Iru Chiri Bumper Chiri 3",
-    "language": "malayalam",
-    "type": "series",
-    "ottDate": "2026-04-28",
-    "reason": "Temporary resolver error; queued for retry",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ManoramaMAX"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f02de830958fd1b959e7bf",
-      "title": "Oru Chiri Iru Chiri Bumper Chiri 3",
-      "platform": "ManoramaMAX",
-      "createdAt": "2026-04-28T03:47:52.066Z",
-      "genre": "Comedy, Reality",
-      "imdbRating": null,
-      "languages": [
-        "Malayalam"
-      ],
-      "releaseDate": "2026-04-28",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-28T03:47:52.066Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Avalaga Irunthal",
     "language": "tamil",
     "type": "movie",
@@ -673,37 +683,6 @@
     }
   },
   {
-    "name": "Shadow Play",
-    "language": "malayalam",
-    "type": "series",
-    "ottDate": "2026-04-05",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ManoramaMAX"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69d1d9b7274f38a6ea4c4c03",
-      "platform": "ManoramaMAX",
-      "title": "Shadow Play",
-      "createdAt": "2026-04-05T03:40:39.055Z",
-      "genre": "Mystery, Thriller, Investigative",
-      "imdbRating": null,
-      "languages": [
-        "Malayalam"
-      ],
-      "releaseDate": "2026-04-05",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-05T03:40:53.735Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/Aj8xNoAiDC2It0UVQFuv1ABhhgq.jpg",
-      "verified": true
-    }
-  },
-  {
     "name": "Chamanthi",
     "language": "telugu",
     "type": "series",
@@ -761,6 +740,37 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-10-16T02:18:52.613Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Shadow Play",
+    "language": "malayalam",
+    "type": "series",
+    "ottDate": "2026-04-05",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ManoramaMAX"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69d1d9b7274f38a6ea4c4c03",
+      "platform": "ManoramaMAX",
+      "title": "Shadow Play",
+      "createdAt": "2026-04-05T03:40:39.055Z",
+      "genre": "Mystery, Thriller, Investigative",
+      "imdbRating": null,
+      "languages": [
+        "Malayalam"
+      ],
+      "releaseDate": "2026-04-05",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-05T03:40:53.735Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/Aj8xNoAiDC2It0UVQFuv1ABhhgq.jpg",
       "verified": true
     }
   },
@@ -1620,8 +1630,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix",
-      "ETV Win"
+      "ETV Win",
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {

@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-11-22T06:53:44.959008+04:00",
+  "generatedAt": "2026-11-22T11:13:41.519134+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 20,
+    "total": 22,
     "byLanguage": {
       "hindi": 13,
-      "malayalam": 3,
+      "malayalam": 5,
       "tamil": 2,
       "telugu": 2
     },
     "byType": {
-      "series": 10,
-      "movie": 10
+      "series": 11,
+      "movie": 11
     },
     "byMatchState": {
       "published": 15,
-      "metadata_incomplete": 1,
-      "unmatched": 4
+      "unmatched": 6,
+      "metadata_incomplete": 1
     },
     "bySource": {
       "https://www.dailyott.in/": 3,
       "https://ottasia.com/ott-releases-this-week?country=IN": 13,
-      "https://www.keralatv.in/channel/ott/": 1,
+      "https://www.keralatv.in/channel/ott/": 3,
       "https://cinebuds.com/ott-releases-this-week/": 4,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
@@ -111,6 +111,33 @@
       "catalog": "dobins_ml_movie"
     },
     {
+      "title": "Pendulum",
+      "language": "malayalam",
+      "type": "movie",
+      "releaseDate": "2026-11-22",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://www.keralatv.in/channel/ott/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "Kerala TV dated OTT announcement",
+      "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
+      "matchId": null,
+      "matchState": "unmatched",
+      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
       "title": "Notebook 90s – Kadhal Flashback",
       "language": "tamil",
       "type": "series",
@@ -168,12 +195,12 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -330,6 +357,33 @@
       "catalog": "dobins_ml_series"
     },
     {
+      "title": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
+      "language": "malayalam",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://www.keralatv.in/channel/ott/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "Kerala TV dated OTT announcement",
+      "detail": "https://www.keralatv.in/sathyameva-zee5-malayalam-series-cast-characters/",
+      "matchId": null,
+      "matchState": "unmatched",
+      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
       "title": "Satyameva",
       "language": "malayalam",
       "type": "series",
@@ -442,8 +496,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -538,7 +592,7 @@
         "poster": true,
         "description": true,
         "genres": true,
-        "releaseInfo": true
+        "releaseInfo": false
       },
       "catalog": "dobins_hi_series"
     },
@@ -573,13 +627,33 @@
   "malayalamReview": {
     "policy": "Unmatched Malayalam source detections are held out until an unambiguous IMDb or TMDB identity and complete metadata are verified.",
     "counts": {
-      "total": 9,
+      "total": 10,
       "byType": {
-        "series": 6,
-        "movie": 3
+        "movie": 4,
+        "series": 6
       }
     },
     "items": [
+      {
+        "name": "Pendulum",
+        "language": "malayalam",
+        "type": "movie",
+        "ottDate": "2026-11-22",
+        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+        "sources": [
+          "https://www.keralatv.in/channel/ott/"
+        ],
+        "platforms": [
+          "Netflix"
+        ],
+        "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
+        "sourceRecord": {
+          "title": "Pendulum",
+          "releaseDate": "2026-11-22",
+          "source": "https://www.keralatv.in/channel/ott/",
+          "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
+        }
+      },
       {
         "name": "Satyameva",
         "language": "malayalam",
@@ -597,6 +671,26 @@
           "title": "Satyameva",
           "releaseDate": "2026-11-27",
           "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+        }
+      },
+      {
+        "name": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
+        "language": "malayalam",
+        "type": "series",
+        "ottDate": "2026-11-27",
+        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+        "sources": [
+          "https://www.keralatv.in/channel/ott/"
+        ],
+        "platforms": [
+          "ZEE5"
+        ],
+        "detail": "https://www.keralatv.in/sathyameva-zee5-malayalam-series-cast-characters/",
+        "sourceRecord": {
+          "title": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
+          "releaseDate": "2026-11-27",
+          "source": "https://www.keralatv.in/channel/ott/",
+          "headline": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram, Streaming from 27 November"
         }
       },
       {
@@ -708,36 +802,6 @@
           "type": "Series",
           "updatedAt": "2026-04-28T03:48:06.951Z",
           "posterUrl": "https://image.tmdb.org/t/p/w300/o930uPaXiIdn6K0Ja8iYnrHrYTr.jpg",
-          "verified": true
-        }
-      },
-      {
-        "name": "Oru Chiri Iru Chiri Bumper Chiri 3",
-        "language": "malayalam",
-        "type": "series",
-        "ottDate": "2026-04-28",
-        "reason": "Temporary resolver error; queued for retry",
-        "sources": [
-          "https://www.dailyott.in/"
-        ],
-        "platforms": [
-          "ManoramaMAX"
-        ],
-        "detail": null,
-        "sourceRecord": {
-          "_id": "69f02de830958fd1b959e7bf",
-          "title": "Oru Chiri Iru Chiri Bumper Chiri 3",
-          "platform": "ManoramaMAX",
-          "createdAt": "2026-04-28T03:47:52.066Z",
-          "genre": "Comedy, Reality",
-          "imdbRating": null,
-          "languages": [
-            "Malayalam"
-          ],
-          "releaseDate": "2026-04-28",
-          "source_verified": true,
-          "type": "Series",
-          "updatedAt": "2026-04-28T03:47:52.066Z",
           "verified": true
         }
       },
@@ -953,7 +1017,7 @@
       "source": "Kerala TV multi-language OTT releases",
       "url": "https://www.keralatv.in/channel/ott/",
       "state": "live",
-      "records": 10
+      "records": 12
     },
     {
       "source": "DailyOTT upcoming dates",
@@ -979,7 +1043,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 114,
+      "records": 116,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1011,12 +1075,13 @@
             "keralatv.in",
             "ottchecker.com"
           ],
-          "sourcesWithSeriesRecords": 1,
+          "sourcesWithSeriesRecords": 2,
           "sourceDomainsWithSeriesRecords": [
+            "keralatv.in",
             "ottasia.com"
           ],
-          "detectedRecords": 25,
-          "coverageStatus": "partial",
+          "detectedRecords": 27,
+          "coverageStatus": "ok",
           "sources": [
             {
               "source": "Cinebuds upcoming calendar",
@@ -1113,9 +1178,9 @@
               "url": "https://www.keralatv.in/channel/ott/",
               "state": "live",
               "languageState": "records_found",
-              "records": 8,
-              "movieRecords": 8,
-              "seriesRecords": 0
+              "records": 10,
+              "movieRecords": 9,
+              "seriesRecords": 1
             },
             {
               "source": "DailyOTT upcoming dates",
@@ -1707,7 +1772,7 @@
       "url": "internal://source-coverage-gate",
       "state": "partial",
       "records": 0,
-      "error": "Fewer than two healthy independent publisher domains with actual title detections for: malayalam, telugu"
+      "error": "Fewer than two healthy independent publisher domains with actual title detections for: telugu"
     }
   ],
   "sourceCoverage": {
@@ -1741,12 +1806,13 @@
         "keralatv.in",
         "ottchecker.com"
       ],
-      "sourcesWithSeriesRecords": 1,
+      "sourcesWithSeriesRecords": 2,
       "sourceDomainsWithSeriesRecords": [
+        "keralatv.in",
         "ottasia.com"
       ],
-      "detectedRecords": 25,
-      "coverageStatus": "partial",
+      "detectedRecords": 27,
+      "coverageStatus": "ok",
       "sources": [
         {
           "source": "Cinebuds upcoming calendar",
@@ -1843,9 +1909,9 @@
           "url": "https://www.keralatv.in/channel/ott/",
           "state": "live",
           "languageState": "records_found",
-          "records": 8,
-          "movieRecords": 8,
-          "seriesRecords": 0
+          "records": 10,
+          "movieRecords": 9,
+          "seriesRecords": 1
         },
         {
           "source": "DailyOTT upcoming dates",

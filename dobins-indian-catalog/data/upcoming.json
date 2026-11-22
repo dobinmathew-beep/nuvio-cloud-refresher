@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-22T06:53:44.959008+04:00",
+  "generatedAt": "2026-11-22T11:13:41.519134+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 19,
+  "count": 18,
   "items": [
     {
       "id": "tt1281973",
@@ -136,36 +136,14 @@
       "releaseDate": "2026-11-27",
       "kind": "premiere",
       "platforms": [
-        "Netflix",
-        "Prime Video"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
-      ],
-      "catalog": "dobins_hi_movie",
-      "region": "IN",
-      "source": "https://cinebuds.com/ott-releases-this-week/"
-    },
-    {
-      "id": "tt39632118",
-      "aliases": [
-        "tt39632118"
-      ],
-      "name": "Family Kirana Store",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "episode",
-      "platforms": [
-        "YouTube (TVF)"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
         "https://www.dailyott.in/",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
+        "https://cinebuds.com/ott-releases-this-week/"
       ],
-      "catalog": "dobins_hi_series",
+      "catalog": "dobins_hi_movie",
       "region": "IN",
       "source": "https://www.dailyott.in/"
     },
@@ -304,14 +282,14 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
       "catalog": "dobins_hi_series",
       "region": "IN",
-      "source": "https://api.tvmaze.com/schedule/web"
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tmdb:339001",
@@ -342,7 +320,7 @@
       "language": "hindi",
       "type": "series",
       "releaseDate": "2026-12-04",
-      "kind": "episode",
+      "kind": "premiere",
       "platforms": [
         "Netflix"
       ],
