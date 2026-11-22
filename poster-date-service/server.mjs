@@ -354,6 +354,7 @@ const server = createServer(async (req, res) => {
   // Authenticated manifest refresh. The request starts a background job so
   // large catalogues do not exceed the web request timeout.
   if (url.pathname === '/catalog-refresh' || url.pathname === '/catalog-refresh/status' || url.pathname === '/catalog-refresh/diagnostics') {
+    const requestedMode = String(url.searchParams.get('mode') || 'combined');
     if (!authorizedCatalogRequest(req)) {
       res.writeHead(401, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
       return res.end(JSON.stringify({ error: 'Unauthorized' }));
@@ -380,16 +381,16 @@ const server = createServer(async (req, res) => {
     if (url.pathname === '/catalog-refresh/status') {
       // Operator pause is authoritative: report a terminal state so the
       // external GitHub waiter exits instead of re-POSTing and restarting work.
-      if (process.env.CATALOG_REFRESH_AUTOSTART === 'false') {
-        res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
-        return res.end(JSON.stringify({ status: 'failed', error: 'Catalogue refresh paused by operator; saved checkpoints are preserved.' }));
-      }
       let sharedLease;
       try {
         sharedLease = await getRefreshLease();
       } catch (error) {
         res.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
         return res.end(JSON.stringify({ status: 'coordination-unavailable', error: error?.message || 'Redis unavailable' }));
+      }
+      if (process.env.CATALOG_REFRESH_AUTOSTART === 'false' && !sharedLease && !catalogRefreshJob) {
+        res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+        return res.end(JSON.stringify({ status: 'failed', error: 'Combined refresh is paused by operator; no active pipeline job.' }));
       }
       const localProgress = getManifestCatalogRefreshProgress();
       const progress = sharedLease
@@ -418,9 +419,12 @@ const server = createServer(async (req, res) => {
     }
     // Do not allow scheduled GitHub waiters to restart a refresh while the
     // operator pause flag is active.
-    if (process.env.CATALOG_REFRESH_AUTOSTART === 'false') {
+    // Legacy combined refresh remains paused. Only the explicitly separated
+    // discovery and queue-drain modes may be triggered while the operator pause
+    // is active; this prevents old cron jobs from silently restarting full scans.
+    if (process.env.CATALOG_REFRESH_AUTOSTART === 'false' && !['discovery-only', 'queue-drain'].includes(requestedMode)) {
       res.writeHead(423, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
-      return res.end(JSON.stringify({ status: 'paused', error: 'Catalogue refresh is paused; checkpoints are preserved.' }));
+      return res.end(JSON.stringify({ status: 'paused', error: 'Combined catalogue refresh is paused; use an explicit pipeline mode.' }));
     }
     let sharedLease;
     try {
@@ -447,7 +451,8 @@ const server = createServer(async (req, res) => {
           console.warn('[imagekit-refresh-snapshot-unavailable]', error?.message || 'unknown error')
         );
         catalogRefreshReport = await runManifestCatalogRefresh({
-          forceReprocess: url.searchParams.get('force') === '1'
+          forceReprocess: url.searchParams.get('force') === '1',
+          mode: requestedMode
         });
         console.log('[catalog-refresh-job-complete]', JSON.stringify({ jobId, status: 'completed' }));
       } catch (error) {
