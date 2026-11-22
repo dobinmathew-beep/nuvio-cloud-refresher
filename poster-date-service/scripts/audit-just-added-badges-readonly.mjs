@@ -189,7 +189,7 @@ for (const [key, fallbackName] of SOURCES) {
           sourceResult.staleJustAdded++;
           report.totals.staleJustAdded++;
         }
-        if (finding.finding === 'old-movie-without-digital-date') {
+        if (finding.finding === 'old-movie-without-digital-date' || finding.finding === 'old-movie-recent-index-entry') {
           sourceResult.oldMovieWithoutDigitalDate++;
           report.totals.oldMovieWithoutDigitalDate++;
         }
@@ -216,7 +216,7 @@ const summary = [
   'Read-only audit. No catalogue data, ImageKit assets, or poster endpoints were changed or requested.',
   '',
   '| Source | Catalogues scanned | Pages | Records | Candidate movies | Recent index | Poster query badge | Stale (>14d) | Old year, no digital date |',
-  '|---|---:|---:|---:|---:|---:|---:|',
+  '|---|---:|---:|---:|---:|---:|---:|---:|---:|',
   ...report.sources.map(item => '| ' + [item.source, item.cataloguesScanned, item.pagesFetched, item.recordsFetched, item.candidateMovieTitles, item.recentIndexMovieTitles, item.posterQueryBadgeTitles, item.staleJustAdded, item.oldMovieWithoutDigitalDate].join(' | ') + ' |'),
   '',
   '## Reference titles',
