@@ -406,15 +406,30 @@ export function mergeIncrementalMetadata(baselineItems, observedItems) {
   };
 }
 
+async function readMetadataStateWithRetry(config, path, attempts = 5) {
+  let lastError = null;
+  for (let attempt = 0; attempt < attempts; attempt++) {
+    try {
+      const value = await readState(config, path);
+      if (value) return value;
+      lastError = new Error('metadata state file is not visible on CDN yet');
+    } catch (error) {
+      lastError = error;
+    }
+    if (attempt + 1 < attempts) await sleep(Math.min(4000, 500 * (2 ** attempt)));
+  }
+  throw new Error('Metadata index readback failed for ' + path + ': ' + (lastError?.message || 'not visible'));
+}
+
 async function loadPublishedMetadataIndex(config) {
-  const latest = await readState(config, '/catalog-state/metadata-index/latest.json');
+  const latest = await readMetadataStateWithRetry(config, '/catalog-state/metadata-index/latest.json');
   if (!latest || latest.version !== 1 ||
       typeof latest.scanGeneration !== 'string' ||
       typeof latest.manifestPath !== 'string' ||
       !/^[/]catalog-state[/]metadata-index[/]v1[/][a-f0-9]{24}[/]manifest[.]json$/.test(latest.manifestPath)) {
     throw new Error('Incremental scan requires a valid published metadata-index baseline; run a full discovery first');
   }
-  const manifest = await readState(config, latest.manifestPath);
+  const manifest = await readMetadataStateWithRetry(config, latest.manifestPath);
   if (!manifest || manifest.version !== 1 ||
       manifest.schema !== 'great-indian-normalized-metadata-index' ||
       manifest.scanGeneration !== latest.scanGeneration ||
@@ -431,7 +446,7 @@ async function loadPublishedMetadataIndex(config) {
         descriptor.count < 0 || !/^[a-f0-9]{64}$/.test(String(descriptor.sha256 || ''))) {
       throw new Error('Published metadata-index chunk descriptor is invalid');
     }
-    const chunk = await readState(config, descriptor.path);
+    const chunk = await readMetadataStateWithRetry(config, descriptor.path);
     if (!validateMetadataIndexChunk(chunk, {
       scanGeneration: manifest.scanGeneration, index,
       count: descriptor.count, sha256: descriptor.sha256
@@ -619,6 +634,10 @@ async function publishSharedMetadataIndex(items, scanGeneration, config, lease) 
       generationKey, manifestPath, itemCount: existing.itemCount,
       chunkCount: existing.chunkCount, updatedAt: new Date().toISOString()
     });
+    const verified = await loadPublishedMetadataIndex(config);
+    if (verified.manifest.scanGeneration !== String(scanGeneration)) {
+      throw new Error('Published metadata index readback resolved the wrong generation');
+    }
     return existing;
   }
   const normalized = items
@@ -677,6 +696,11 @@ async function publishSharedMetadataIndex(items, scanGeneration, config, lease) 
     manifestPath, itemCount: normalized.length, chunkCount: chunks.length,
     updatedAt: new Date().toISOString()
   });
+  const verified = await loadPublishedMetadataIndex(config);
+  if (verified.manifest.scanGeneration !== String(scanGeneration) ||
+      verified.items.length !== normalized.length) {
+    throw new Error('Published metadata index failed full chunk readback validation');
+  }
   console.info('[shared-metadata-index-published]', JSON.stringify({
     scanGeneration, itemCount: normalized.length, chunkCount: chunks.length, storage: 'imagekit'
   }));
