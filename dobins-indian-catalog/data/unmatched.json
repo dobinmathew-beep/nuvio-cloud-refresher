@@ -192,6 +192,54 @@
     }
   },
   {
+    "name": "Acedia",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-11-25",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://ottasia.com/ott-releases-this-week?country=IN"
+    ],
+    "platforms": [],
+    "detail": "https://ottasia.com/title/movie/1838960/acedia?country=IN",
+    "sourceRecord": {
+      "title": "Acedia",
+      "releaseDate": "2026-11-25",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
+    "name": "Chef Mantra Project USA",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-08-13",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Aha"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a7d25953fab9691478ae9ca",
+      "platform": "Aha",
+      "title": "Chef Mantra Project USA",
+      "createdAt": "2026-08-13T02:01:57.122Z",
+      "genre": "Reality Show",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "original_language": "Telugu",
+      "releaseDate": "2026-08-13",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-08-13T02:01:57.122Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Pyaar",
     "language": "hindi",
     "type": "movie",
@@ -276,37 +324,6 @@
         "fetchedAt": "2026-11-14T18:26:15.691Z"
       },
       "tmdbId": 590401,
-      "verified": true
-    }
-  },
-  {
-    "name": "Chef Mantra Project USA",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-08-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Aha"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a7d25953fab9691478ae9ca",
-      "platform": "Aha",
-      "title": "Chef Mantra Project USA",
-      "createdAt": "2026-08-13T02:01:57.122Z",
-      "genre": "Reality Show",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "original_language": "Telugu",
-      "releaseDate": "2026-08-13",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-08-13T02:01:57.122Z",
       "verified": true
     }
   },
@@ -648,36 +665,6 @@
       "type": "Series",
       "updatedAt": "2026-04-30T03:47:03.617Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/lMmVs6FC8pkc0n1BW3gemZRFhqb.jpg",
-      "verified": true
-    }
-  },
-  {
-    "name": "Oru Chiri Iru Chiri Bumper Chiri 3",
-    "language": "malayalam",
-    "type": "series",
-    "ottDate": "2026-04-28",
-    "reason": "Temporary resolver error; queued for retry",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ManoramaMAX"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f02de830958fd1b959e7bf",
-      "title": "Oru Chiri Iru Chiri Bumper Chiri 3",
-      "platform": "ManoramaMAX",
-      "createdAt": "2026-04-28T03:47:52.066Z",
-      "genre": "Comedy, Reality",
-      "imdbRating": null,
-      "languages": [
-        "Malayalam"
-      ],
-      "releaseDate": "2026-04-28",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-28T03:47:52.066Z",
       "verified": true
     }
   },
@@ -1078,37 +1065,6 @@
     }
   },
   {
-    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-09-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6aa608021ead141338245394",
-      "platform": "JioHotStar",
-      "title": "Chikoo Vs Bunty: Kushti Ki Jung",
-      "createdAt": "2026-09-13T02:18:42.361Z",
-      "genre": "Animation",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-09-13",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-09-13T02:18:42.361Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Love Beyond Wicket",
     "language": "tamil",
     "type": "series",
@@ -1136,6 +1092,37 @@
       "type": "Series",
       "updatedAt": "2026-04-09T03:37:09.017Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/tC5K8MkLipwV9bIdJV9SQcCzgUF.jpg",
+      "verified": true
+    }
+  },
+  {
+    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-09-13",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6aa608021ead141338245394",
+      "platform": "JioHotStar",
+      "title": "Chikoo Vs Bunty: Kushti Ki Jung",
+      "createdAt": "2026-09-13T02:18:42.361Z",
+      "genre": "Animation",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-09-13",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-09-13T02:18:42.361Z",
       "verified": true
     }
   },
@@ -1328,6 +1315,36 @@
     }
   },
   {
+    "name": "Uthutha Herolu",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-05-21",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a0e807fffe2674e7ae98250",
+      "title": "Uthutha Herolu",
+      "platform": "ETV Win",
+      "createdAt": "2026-05-21T03:48:15.770Z",
+      "genre": "Crime Comedy",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-21",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-05-21T03:48:15.770Z",
+      "verified": true
+    }
+  },
+  {
     "name": "The Legend of Karna",
     "language": "hindi",
     "type": "movie",
@@ -1361,32 +1378,32 @@
     }
   },
   {
-    "name": "Uthutha Herolu",
-    "language": "telugu",
+    "name": "Varumaiyil Thaal",
+    "language": "tamil",
     "type": "movie",
-    "ottDate": "2026-05-21",
+    "ottDate": "2026-05-03",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win"
+      "Shortfundly"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6a0e807fffe2674e7ae98250",
-      "title": "Uthutha Herolu",
-      "platform": "ETV Win",
-      "createdAt": "2026-05-21T03:48:15.770Z",
-      "genre": "Crime Comedy",
+      "_id": "69f6c52b36465ddb3f139822",
+      "title": "Varumaiyil Thaal",
+      "platform": "Shortfundly",
+      "createdAt": "2026-05-03T03:46:51.209Z",
+      "genre": "Drama",
       "imdbRating": null,
       "languages": [
-        "Telugu"
+        "Tamil"
       ],
-      "releaseDate": "2026-05-21",
+      "releaseDate": "2026-05-03",
       "source_verified": true,
       "type": "Movie",
-      "updatedAt": "2026-05-21T03:48:15.770Z",
+      "updatedAt": "2026-05-03T03:46:51.209Z",
       "verified": true
     }
   },
@@ -1419,36 +1436,6 @@
       "type": "Movie",
       "updatedAt": "2026-07-24T06:03:23.967Z",
       "votes": 3,
-      "verified": true
-    }
-  },
-  {
-    "name": "Varumaiyil Thaal",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-05-03",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Shortfundly"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f6c52b36465ddb3f139822",
-      "title": "Varumaiyil Thaal",
-      "platform": "Shortfundly",
-      "createdAt": "2026-05-03T03:46:51.209Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-05-03",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-03T03:46:51.209Z",
       "verified": true
     }
   },

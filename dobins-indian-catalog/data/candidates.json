@@ -4720,6 +4720,13 @@
       "type": "movie"
     },
     {
+      "id": "tt17425020",
+      "name": "One Friday Night",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt17425020.jpg",
+      "releaseInfo": "2023",
+      "type": "movie"
+    },
+    {
       "id": "tt28282716",
       "name": "Trial Period",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28282716.jpg",
@@ -5966,6 +5973,13 @@
       "type": "movie"
     },
     {
+      "id": "tt7094488",
+      "name": "Sandeep Aur Pinky Faraar",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7094488.jpg",
+      "releaseInfo": "2021",
+      "type": "movie"
+    },
+    {
       "id": "tt10098288",
       "name": "Roohi",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10098288.jpg",
@@ -6508,13 +6522,6 @@
       "id": "tt10230436",
       "name": "Yeh Ballet",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10230436.jpg",
-      "releaseInfo": "2020",
-      "type": "movie"
-    },
-    {
-      "id": "tt11691696",
-      "name": "Shukranu",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11691696.jpg",
       "releaseInfo": "2020",
       "type": "movie"
     }
@@ -12561,5 +12568,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-23T01:11:24.858936+04:00"
+  "_updatedAt": "2026-11-23T01:45:40.902654+04:00"
 }

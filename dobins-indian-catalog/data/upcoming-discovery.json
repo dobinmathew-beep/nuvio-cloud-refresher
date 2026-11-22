@@ -1,24 +1,24 @@
 {
-  "generatedAt": "2026-11-23T01:11:24.858936+04:00",
+  "generatedAt": "2026-11-23T01:45:40.902654+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 19,
+    "total": 20,
     "byLanguage": {
       "tamil": 2,
-      "hindi": 12,
+      "hindi": 13,
       "malayalam": 3,
       "telugu": 2
     },
     "byType": {
       "series": 9,
-      "movie": 10
+      "movie": 11
     },
     "byMatchState": {
       "published": 14,
-      "unmatched": 5
+      "unmatched": 6
     },
     "bySource": {
-      "https://ottasia.com/ott-releases-this-week?country=IN": 13,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 14,
       "https://www.dailyott.in/": 2,
       "https://cinebuds.com/ott-releases-this-week/": 4,
       "https://www.keralatv.in/channel/ott/": 1,
@@ -79,6 +79,31 @@
         "releaseInfo": true
       },
       "catalog": "dobins_hi_movie"
+    },
+    {
+      "title": "Acedia",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-25",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/movie/1838960/acedia?country=IN",
+      "matchId": null,
+      "matchState": "unmatched",
+      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
     },
     {
       "title": "Delhi 2021",
@@ -268,7 +293,7 @@
         "poster": true,
         "description": true,
         "genres": true,
-        "releaseInfo": true
+        "releaseInfo": false
       },
       "catalog": "dobins_ml_series"
     },
@@ -543,9 +568,9 @@
   "malayalamReview": {
     "policy": "Unmatched Malayalam source detections are held out until an unambiguous IMDb or TMDB identity and complete metadata are verified.",
     "counts": {
-      "total": 11,
+      "total": 10,
       "byType": {
-        "series": 7,
+        "series": 6,
         "movie": 4
       }
     },
@@ -722,36 +747,6 @@
         }
       },
       {
-        "name": "Oru Chiri Iru Chiri Bumper Chiri 3",
-        "language": "malayalam",
-        "type": "series",
-        "ottDate": "2026-04-28",
-        "reason": "Temporary resolver error; queued for retry",
-        "sources": [
-          "https://www.dailyott.in/"
-        ],
-        "platforms": [
-          "ManoramaMAX"
-        ],
-        "detail": null,
-        "sourceRecord": {
-          "_id": "69f02de830958fd1b959e7bf",
-          "title": "Oru Chiri Iru Chiri Bumper Chiri 3",
-          "platform": "ManoramaMAX",
-          "createdAt": "2026-04-28T03:47:52.066Z",
-          "genre": "Comedy, Reality",
-          "imdbRating": null,
-          "languages": [
-            "Malayalam"
-          ],
-          "releaseDate": "2026-04-28",
-          "source_verified": true,
-          "type": "Series",
-          "updatedAt": "2026-04-28T03:47:52.066Z",
-          "verified": true
-        }
-      },
-      {
         "name": "Shadow Play",
         "language": "malayalam",
         "type": "series",
@@ -884,7 +879,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 15
+      "records": 16
     },
     {
       "source": "Vi weekly OTT calendar",
@@ -989,7 +984,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 117,
+      "records": 118,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1492,7 +1487,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 40,
+          "detectedRecords": 41,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1509,8 +1504,8 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 12,
-              "movieRecords": 9,
+              "records": 13,
+              "movieRecords": 10,
               "seriesRecords": 3
             },
             {
@@ -2223,7 +2218,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 40,
+      "detectedRecords": 41,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2240,8 +2235,8 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 12,
-          "movieRecords": 9,
+          "records": 13,
+          "movieRecords": 10,
           "seriesRecords": 3
         },
         {
