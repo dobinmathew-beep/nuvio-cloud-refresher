@@ -1,5 +1,11 @@
 name: ImageKit live integration test
 on:
+  push:
+    branches:
+      - faster-poster-pipeline
+    paths:
+      - 'poster-date-service/scripts/imagekit-live-integration.mjs'
+      - '.github/workflows/imagekit-live-integration.yml'
   workflow_dispatch:
 permissions:
   contents: read
