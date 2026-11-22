@@ -1,86 +1,16 @@
-# Legacy full-refresh runner retained for manual recovery only.
-# The scheduled full-scan trigger is intentionally disabled until the
-# discover / queue-process pipeline is deployed and its dedicated workflows
-# are enabled. Do not restore the old 06:00 / 18:00 full-refresh cron.
-name: Manifest catalogue poster refresh
-
+name: Legacy catalogue refresh (disabled; manual diagnostics only)
 on:
   workflow_dispatch:
 
 permissions:
   contents: read
 
-concurrency:
-  group: manifest-catalogue-poster-refresh
-  cancel-in-progress: false
-
 jobs:
-  refresh:
+  explain:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
     steps:
-      - name: Start authenticated full catalogue refresh
-        id: start
-        env:
-          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
-          SCAN_TOKEN: ${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
+      - name: Explain legacy refresh pause
         run: |
-          if [ -z "$SCAN_TOKEN" ]; then
-            echo "::error::POSTER_CATALOG_SCAN_TOKEN repository secret is missing."
-            exit 1
-          fi
-          http_response=$(curl --silent --show-error --max-time 90 \
-            -w '%{http_code}' \
-            -X POST "$POSTER_SERVICE_URL/catalog-refresh" \
-            -H "Authorization: Bearer $SCAN_TOKEN" \
-            -H "Accept: application/json") || {
-              echo "::error::Could not reach the Render catalogue refresh endpoint."
-              exit 1
-            }
-          http_code="${http_response: -3}"
-          response="${http_response:0:${#http_response}-3}"
-          echo "$response"
-          if [ "$http_code" != "202" ] && [ "$http_code" != "409" ]; then
-            echo "::error::Unexpected Render response: HTTP $http_code"
-            exit 1
-          fi
-          job_id=$(echo "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).jobId||'')}catch{console.log('')}})")
-          if [ -z "$job_id" ]; then
-            echo "::error::Render did not return a catalogue refresh job ID."
-            exit 1
-          fi
-          echo "job_id=$job_id" >> "$GITHUB_OUTPUT"
-      - name: Wait for scan and poster generation
-        env:
-          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
-          SCAN_TOKEN: ${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
-          JOB_ID: ${{ steps.start.outputs.job_id }}
-        run: |
-          for attempt in $(seq 1 700); do
-            if ! response=$(curl --silent --show-error --fail-with-body \
-              --max-time 30 \
-              "$POSTER_SERVICE_URL/catalog-refresh/status" \
-              -H "Authorization: Bearer $SCAN_TOKEN" \
-              -H "Accept: application/json"); then
-              echo "::warning::Render status endpoint temporarily unavailable; retrying ($attempt/700)."
-              sleep 30
-              continue
-            fi
-            echo "$response"
-            status=$(echo "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).status||'')}catch{console.log('')}})")
-            if [ "$status" = "completed" ]; then
-              echo "$response" >> "$GITHUB_STEP_SUMMARY"
-              exit 0
-            fi
-            if [ "$status" = "failed" ] || [ "$status" = "paused" ]; then
-              echo "::error::Legacy catalogue refresh is paused or failed."
-              exit 1
-            fi
-            if [ "$status" = "idle" ]; then
-              echo "::error::No active legacy refresh is running; refusing to restart it automatically."
-              exit 1
-            fi
-            sleep 30
-          done
-          echo "::error::Timed out waiting for Render catalogue refresh after six hours."
-          exit 1
+          echo "The legacy full-catalogue refresh is intentionally disabled."
+          echo "No catalogue scan, retry, or poster-generation job is started."
+          echo "Use the read-only Legacy catalogue diagnostics workflow to inspect saved state."
