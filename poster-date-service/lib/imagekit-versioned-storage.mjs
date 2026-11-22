@@ -26,7 +26,7 @@ export function createImageKitPosterAdapter({
     try { parsed = new URL(url); } catch { return false; }
     const base = new URL(config.endpoint);
     if (parsed.protocol !== 'https:' || parsed.origin !== base.origin ||
-        !parsed.pathname.startsWith(base.pathname.replace(/\\/$/, '') + '/poster-versions/') ||
+        !parsed.pathname.startsWith(base.pathname + '/poster-versions/') ||
         !parsed.pathname.endsWith('/' + fingerprint + '.jpg')) return false;
     const response = await fetchImpl(url + (url.includes('?') ? '&' : '?') + 'poster-verify=' + Date.now(), {
       cache: 'no-store', signal: AbortSignal.timeout(12000)
