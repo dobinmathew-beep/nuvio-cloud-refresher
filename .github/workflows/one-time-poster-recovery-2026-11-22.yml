@@ -7,7 +7,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: great-indian-poster-pipeline
+  group: great-indian-poster-pipeline-recovery
   cancel-in-progress: false
 jobs:
   recover:
@@ -52,6 +52,19 @@ jobs:
           test "$code" = "200"
           cat "$diag" | tee -a "$GITHUB_STEP_SUMMARY"
           node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));if(j.configuredManifestCount!==3||j.discoveryComplete!==true||j.pendingCatalogueCount!==0||j.completedCatalogueCount+j.deferredCatalogueCount!==j.uniqueCatalogueCount) {console.error('Discovery gate failed',j);process.exit(2)};console.log('Three-manifest discovery gate passed:',JSON.stringify({manifests:j.configuredManifestCount,generation:j.scanGeneration,completed:j.completedCatalogueCount,deferred:j.deferredCatalogueCount,unique:j.uniqueCatalogueCount,queue:j.durableQueue}))" "$diag"
+          claimed="$(node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));process.stdout.write(String(j.durableQueue?.counts?.claimed||0))" "$diag")"
+          claim_deadline=$((SECONDS+420))
+          while [ "$claimed" -gt 0 ] && [ "$SECONDS" -lt "$claim_deadline" ]; do
+            echo "Waiting for $claimed pre-existing queue claims to expire before starting the new drain."
+            sleep 30
+            code="$(curl --silent --show-error --max-time 45 -o "$diag" -w '%{http_code}' "$SERVICE/catalog-refresh/diagnostics" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
+            test "$code" = "200"
+            claimed="$(node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));process.stdout.write(String(j.durableQueue?.counts?.claimed||0))" "$diag")"
+          done
+          if [ "$claimed" -gt 0 ]; then
+            echo "Queue claims are still active; refusing to start a competing drain." >&2
+            exit 1
+          fi
       - name: Drain the preserved durable poster queue and wait for ImageKit verification
         shell: bash
         env:
