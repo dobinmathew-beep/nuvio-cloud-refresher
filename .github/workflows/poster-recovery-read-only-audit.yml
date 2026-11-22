@@ -1,0 +1,138 @@
+name: Read-only poster recovery and ImageKit reconciliation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/poster-recovery-read-only-audit.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: poster-recovery-read-only-audit
+  cancel-in-progress: false
+
+jobs:
+  live-diagnostics-and-storage-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Read live poster service status, three-manifest inventory and durable queue
+        shell: bash
+        env:
+          SERVICE: https://great-indian-upcoming-posters.onrender.com
+          TOKEN: ${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
+        run: |
+          set -euo pipefail
+          test -n "$TOKEN"
+          mkdir -p reports
+          status_file="$(mktemp)"
+          diag_file="$(mktemp)"
+          health_file="$(mktemp)"
+          trap 'rm -f "$status_file" "$diag_file" "$health_file"' EXIT
+
+          health_code="$(curl --silent --show-error --max-time 30 -o "$health_file" -w '%{http_code}' "$SERVICE/health")"
+          status_code="$(curl --silent --show-error --max-time 45 -o "$status_file" -w '%{http_code}' "$SERVICE/catalog-refresh/status" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
+          diag_code="$(curl --silent --show-error --max-time 90 -o "$diag_file" -w '%{http_code}' "$SERVICE/catalog-refresh/diagnostics" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
+
+          test "$health_code" = "200"
+          test "$status_code" = "200"
+          test "$diag_code" = "200"
+
+          node --input-type=module - "$health_file" "$status_file" "$diag_file" <<'NODE'
+          import { readFile, writeFile } from 'node:fs/promises';
+          const [healthPath, statusPath, diagPath] = process.argv.slice(2);
+          const health = JSON.parse(await readFile(healthPath, 'utf8'));
+          const status = JSON.parse(await readFile(statusPath, 'utf8'));
+          const diagnostics = JSON.parse(await readFile(diagPath, 'utf8'));
+          const queue = diagnostics.durableQueue ?? null;
+          const report = {
+            generatedAt: new Date().toISOString(),
+            mode: 'read-only-live-diagnostics',
+            mutationRequestsIssued: 0,
+            health,
+            refreshStatus: status,
+            diagnostics
+          };
+          await writeFile('reports/poster-live-diagnostics.json', JSON.stringify(report, null, 2) + '\n');
+          console.log(JSON.stringify({
+            health,
+            refreshStatus: status.status,
+            configuredManifestCount: diagnostics.configuredManifestCount,
+            manifestSources: diagnostics.manifests,
+            scanGeneration: diagnostics.scanGeneration,
+            discoveryComplete: diagnostics.discoveryComplete,
+            pendingCatalogueCount: diagnostics.pendingCatalogueCount,
+            completedCatalogueCount: diagnostics.completedCatalogueCount,
+            deferredCatalogueCount: diagnostics.deferredCatalogueCount,
+            durableQueue: queue,
+            mutationRequestsIssued: 0
+          }, null, 2));
+          if (diagnostics.configuredManifestCount !== 3) {
+            throw new Error('Expected exactly three configured manifests; refusing to continue with an incomplete manifest inventory.');
+          }
+          if (!queue || queue.status === 'unavailable') {
+            throw new Error('Durable queue state is unavailable; stopping before any recovery action.');
+          }
+          NODE
+
+      - name: Check out read-only ImageKit audit implementation
+        uses: actions/checkout@v4
+        with:
+          ref: imagekit-storage-audit-dedup
+          path: audit-source
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install audit dependencies and run regression suite
+        working-directory: audit-source/poster-date-service
+        run: |
+          npm install --no-audit --no-fund
+          npm test
+
+      - name: Run expanded read-only ImageKit inventory and version audit
+        working-directory: audit-source/poster-date-service
+        env:
+          IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
+          IMAGEKIT_PRIVATE_KEY: ${{ secrets.IMAGEKIT_PRIVATE_KEY }}
+          IMAGEKIT_AUDIT_REPORT_PATH: ../../reports/imagekit-storage-expanded-audit-live.json
+          IMAGEKIT_AUDIT_VERSION_CONCURRENCY: "2"
+        run: node scripts/imagekit-storage-expanded-audit.mjs
+
+      - name: Run read-only ImageKit state reconciliation
+        working-directory: audit-source/poster-date-service
+        env:
+          IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
+          IMAGEKIT_PRIVATE_KEY: ${{ secrets.IMAGEKIT_PRIVATE_KEY }}
+          IMAGEKIT_RECONCILIATION_REPORT_PATH: ../../reports/imagekit-storage-reconciliation-live.json
+          IMAGEKIT_RECONCILIATION_CONCURRENCY: "2"
+          IMAGEKIT_RECONCILIATION_DETAIL_LIMIT: "100"
+        run: node scripts/imagekit-storage-reconciliation.mjs
+
+      - name: Deep-read current queue and checkpoint JSON; prepare separate deletion proposal
+        working-directory: audit-source/poster-date-service
+        env:
+          IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
+          IMAGEKIT_PRIVATE_KEY: ${{ secrets.IMAGEKIT_PRIVATE_KEY }}
+          IMAGEKIT_RECONCILIATION_INPUT: ../../reports/imagekit-storage-reconciliation-live.json
+          IMAGEKIT_TARGETED_AUDIT_REPORT_PATH: ../../reports/imagekit-targeted-state-deep-audit.json
+          IMAGEKIT_TARGETED_PROPOSAL_PATH: ../../reports/imagekit-targeted-storage-recovery-proposal.json
+        run: node scripts/imagekit-targeted-state-deep-audit.mjs
+
+      - name: Upload read-only recovery reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: poster-recovery-read-only-audit
+          path: |
+            reports/poster-live-diagnostics.json
+            reports/imagekit-storage-expanded-audit-live.json
+            reports/imagekit-storage-reconciliation-live.json
+            reports/imagekit-targeted-state-deep-audit.json
+            reports/imagekit-targeted-storage-recovery-proposal.json
+          if-no-files-found: error
+          retention-days: 14
