@@ -641,30 +641,45 @@ export async function buildImageKitDeletionReport({
   const candidates = [...duplicateResult.candidates, ...versionedResult.candidates];
 
   // Previous ImageKit file versions are report-only; current versions are protected.
+  // When an entire byte-identical duplicate file is nominated, include its old
+  // versions in that same candidate's reclaimable-byte estimate.
   let versionChecksFailed = 0;
-  for (const copies of byId.values()) {
-    const canonical = copies
-      .filter(file => file.name.toLowerCase() === posterIdentityFromName(file.name) + '.jpg')
-      .sort((a, b) => Date.parse(b.updatedAt || b.createdAt || 0) - Date.parse(a.updatedAt || a.createdAt || 0))[0];
-    if (!canonical?.fileId || !canonical.versionInfo?.id) continue;
+  const duplicateCandidateByFileId = new Map(
+    duplicateResult.candidates.map(candidate => [candidate.fileId, candidate])
+  );
+  for (const file of posterFiles) {
+    if (!file.fileId || !file.versionInfo?.id) continue;
+    const id = posterIdentityFromName(file.name);
+    const isCanonical = Boolean(id && file.name.toLowerCase() === id + '.jpg');
+    const duplicateCandidate = duplicateCandidateByFileId.get(file.fileId);
+    if (!isCanonical && !duplicateCandidate) continue;
     try {
-      const response = await apiRequest(API + '/files/' + encodeURIComponent(canonical.fileId) + '/versions');
+      const response = await apiRequest(API + '/files/' + encodeURIComponent(file.fileId) + '/versions');
       const versions = await response.json();
       if (!Array.isArray(versions)) throw new Error('Unexpected ImageKit version-list response');
       for (const version of versions) {
         const versionId = version.versionInfo?.id;
-        if (!versionId || versionId === canonical.versionInfo.id) continue;
+        if (!versionId || versionId === file.versionInfo.id) continue;
         const createdAt = Date.parse(version.createdAt || version.updatedAt || '');
         if (!Number.isFinite(createdAt) || now - createdAt < retentionMs) continue;
-        candidates.push({
-          kind: 'historical-file-version',
-          id: posterIdentityFromName(canonical.name),
-          parentFileId: canonical.fileId,
-          versionId,
-          bytes: Math.max(0, Number(version.size) || 0),
-          createdAt: version.createdAt || version.updatedAt || null,
-          reason: 'non-current-ImageKit-file-version-older-than-retention'
-        });
+        const versionBytes = Math.max(0, Number(version.size) || 0);
+        if (duplicateCandidate) {
+          duplicateCandidate.bytes += versionBytes;
+          duplicateCandidate.historicalVersions = [
+            ...(duplicateCandidate.historicalVersions || []),
+            { versionId, bytes: versionBytes, createdAt: version.createdAt || version.updatedAt || null }
+          ];
+        } else {
+          candidates.push({
+            kind: 'historical-file-version',
+            id,
+            parentFileId: file.fileId,
+            versionId,
+            bytes: versionBytes,
+            createdAt: version.createdAt || version.updatedAt || null,
+            reason: 'non-current-ImageKit-file-version-older-than-retention'
+          });
+        }
       }
     } catch {
       versionChecksFailed++;
