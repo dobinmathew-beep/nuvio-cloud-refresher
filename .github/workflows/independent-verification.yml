@@ -3,6 +3,9 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '17 */6 * * *'
+  # Catch-up producers use repository_dispatch so verification is not lost at workflow_run depth 4.
+  repository_dispatch:
+    types: [nuvio-output-updated]
   # Producer changes are verified after their refresh workflow completes.
   # Avoid racing a media publish by running the full check on the producer's
   # workflow_run completion rather than immediately on its source-code push.
@@ -40,7 +43,7 @@ jobs:
         continue-on-error: true
         env:
           ADDON_BASE_URL: https://the-great-indian-addon.vercel.app
-          VERIFY_ONLY: ${{ github.event.workflow_run.name == 'Dobins Indian Catalog' && 'addon' || github.event.workflow_run.name == 'India EPG daily refresh' && 'epg' || github.event.workflow_run.name == 'Nuvio cloud refresh' && 'backdrops,reels' || '' }}
+          VERIFY_ONLY: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.verify_only || (github.event_name == 'workflow_run' && github.event.workflow_run.name == 'Dobins Indian Catalog' && 'addon') || (github.event_name == 'workflow_run' && github.event.workflow_run.name == 'India EPG daily refresh' && 'epg') || (github.event_name == 'workflow_run' && github.event.workflow_run.name == 'Nuvio cloud refresh' && 'backdrops,reels') || '' }}
         run: python -u verify_independent.py
       - name: Publish latest report
         if: always()
