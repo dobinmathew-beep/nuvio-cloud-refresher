@@ -280,7 +280,7 @@ export function getImageKitStorageSnapshot() {
   return { ...storageSnapshot };
 }
 
-export function canStoreImageKitPoster(imdbId, newSize) {
+export function canStoreImmutableImageKitPoster(newSize) {\n  if (!storageSnapshot.known || !Number.isFinite(newSize) || newSize <= 0) return false;\n  // Immutable versions add bytes; never subtract the previous poster size.\n  return storageSnapshot.bytes + newSize + UPLOAD_HEADROOM_BYTES <= IMAGEKIT_STORAGE_LIMIT_BYTES;\n}\n\nexport function canStoreImageKitPoster(imdbId, newSize) {
   if (!storageSnapshot.known || !Number.isFinite(newSize) || newSize <= 0) return false;
   const path = '/posters/' + imdbId + '.jpg';
   const existingSize = Number(storageSnapshot.filesByPath[path]?.size) || 0;
