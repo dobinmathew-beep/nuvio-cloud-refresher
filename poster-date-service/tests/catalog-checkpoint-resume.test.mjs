@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   canReuseCatalogueCheckpoint, isExplicitlyDeferredCatalogueCheckpoint,
-  isCatalogueScanComplete, excludeHistoricalUnresolvedQueueItems
+  isCatalogueScanComplete, excludeDeferredQueueItems
 } from '../lib/catalog-manifest-refresh.mjs';
 
 const now = Date.parse('2026-11-21T15:30:00.000Z');
@@ -80,7 +80,7 @@ test('normal queue drains exclude historical failed, retry and upload-pending re
     { id: 'tt1000004' }
   ];
   const original = structuredClone(snapshot);
-  const eligible = excludeHistoricalUnresolvedQueueItems(snapshot, new Set(['tt1000002', 'tt1000004']));
+  const eligible = excludeDeferredQueueItems(snapshot, new Set(['tt1000002', 'tt1000004']));
   assert.deepEqual(eligible.map(item => item.id), ['tt1000001', 'tt1000003']);
   assert.deepEqual(snapshot, original);
   assert.equal(snapshot.length, 4);
