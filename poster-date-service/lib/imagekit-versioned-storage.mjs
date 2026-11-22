@@ -3,7 +3,7 @@ import { publishVersionedPoster, resolvePosterAsset } from './poster-versioning.
 
 const UPLOAD_API = 'https://upload.imagekit.io/api/v1/files/upload';
 const API = 'https://api.imagekit.io/v1';
-const validId = value => /^tt\\d{7,10}$/.test(String(value || ''));
+const validId = value => /^tt\d{7,10}$/.test(String(value || ''));
 
 function auth(config) {
   return 'Basic ' + Buffer.from(config.privateKey + ':').toString('base64');
@@ -12,7 +12,7 @@ function digest(bytes) {
   return createHash('sha256').update(bytes).digest('hex');
 }
 function publicAssetUrl(endpoint, path) {
-  return endpoint.replace(/\\/$/, '') + path;
+  return endpoint.replace(/\/$/, '') + path;
 }
 
 export function createImageKitPosterAdapter({
@@ -22,6 +22,12 @@ export function createImageKitPosterAdapter({
   const legacyUrl = imdbId => publicAssetUrl(config.endpoint, '/posters/' + encodeURIComponent(imdbId) + '.jpg');
 
   async function verifyAsset({ url, expectedBytes, expectedContentType, fingerprint }) {
+    let parsed;
+    try { parsed = new URL(url); } catch { return false; }
+    const base = new URL(config.endpoint);
+    if (parsed.protocol !== 'https:' || parsed.origin !== base.origin ||
+        !parsed.pathname.startsWith(base.pathname.replace(/\\/$/, '') + '/poster-versions/') ||
+        !parsed.pathname.endsWith('/' + fingerprint + '.jpg')) return false;
     const response = await fetchImpl(url + (url.includes('?') ? '&' : '?') + 'poster-verify=' + Date.now(), {
       cache: 'no-store', signal: AbortSignal.timeout(12000)
     });
