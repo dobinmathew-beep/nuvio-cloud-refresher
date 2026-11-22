@@ -4,6 +4,11 @@ import { pathToFileURL } from 'node:url';
 const PAGE_SIZE = 100;
 const MAX_PAGES = 500;
 const TARGET_IDS = ['tt1375789', 'tt0073707', 'tt5959980'];
+const TARGET_NAMES = [
+  { id: 'tt1375789', name: 'Race 2', key: 'race2' },
+  { id: 'tt0073707', name: 'Sholay', key: 'sholay' },
+  { id: 'tt5959980', name: 'Vada Chennai', key: 'vadachennai' }
+];
 const SOURCES = [
   ['CATALOG_MANIFEST_MIDNIGHTIGNITE_URL', 'AIOMetadata MidnightIgnite'],
   ['CATALOG_MANIFEST_ELFHOSTED_URL', 'AIOMetadata ElfHosted'],
@@ -155,7 +160,7 @@ function unresolvedRequired(catalog) {
     });
 }
 
-function imdbId(item) {
+function normalizedTitle(value) {\n  return String(value || '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]+/g, '');\n}\n\nfunction targetByName(value) {\n  const key = normalizedTitle(value);\n  return TARGET_NAMES.find(target => key === target.key || key.startsWith(target.key)) || null;\n}\n\nfunction imdbId(item) {
   for (const value of [item?.imdbId, item?.imdb_id, item?.externalIds?.imdb, item?.externals?.imdb, item?.id]) {
     if (typeof value === 'string' && /^tt\d{7,10}$/.test(value)) return value;
   }
@@ -189,8 +194,16 @@ async function scanCatalog(base, catalog, sourceName, now) {
       records++;
       const resolvedImdb = imdbId(item);
       const classified = classifyTitle({ ...item, type: item?.type || catalog.type }, now);
-      const target = resolvedImdb && TARGET_IDS.includes(resolvedImdb);
-      if (target) targets.push({ ...classified, imdbId: resolvedImdb, source: sourceName, catalog: catalog.id, catalogName: catalog.name });
+      const nameMatch = targetByName(classified.title);
+      const target = (resolvedImdb && TARGET_IDS.includes(resolvedImdb)) || nameMatch;
+      if (target) targets.push({
+        ...classified,
+        imdbId: resolvedImdb || nameMatch?.id || '',
+        targetName: nameMatch?.name || classified.title,
+        source: sourceName,
+        catalog: catalog.id,
+        catalogName: catalog.name
+      });
       if (classified.status === 'stale-badge' || classified.status === 'unverifiable-badge' || classified.status === 'missing-badge') {
         findings.push({ ...classified, source: sourceName, catalog: catalog.id, catalogName: catalog.name, resolvedImdbId: resolvedImdb });
       }
@@ -227,10 +240,10 @@ function markdownReport(report) {
   for (const source of report.sources) {
     lines.push('## ' + source.name);
     lines.push('');
-    lines.push('- Catalogues: ' + source.catalogues);
+    lines.push('- Catalogues: ' + source.catalogs);
     lines.push('- Records scanned: ' + source.records);
     lines.push('- Pages scanned: ' + source.pages);
-    lines.push('- Scan errors/skips: ' + source.errors);
+    lines.push('- Scan errors: ' + source.errors + ' · Expected dynamic skips: ' + source.skipped);
     lines.push('- Badge findings: ' + source.findings);
     lines.push('');
   }
@@ -271,7 +284,8 @@ export async function runAudit(env = process.env, now = new Date()) {
           extra: Array.isArray(catalog.extra) ? catalog.extra : [],
           required: Array.isArray(catalog.extraRequired) ? catalog.extraRequired : []
         }, source.name, now));
-      const failures = catalogueResults.filter(x => x.error || x.skipped || x.truncated);
+      const failures = catalogueResults.filter(x => x.error || x.truncated);
+      const skipped = catalogueResults.filter(x => x.skipped);
       const findings = catalogueResults.flatMap(x => x.findings || []);
       const targets = catalogueResults.flatMap(x => x.targets || []);
       all.push({
@@ -281,6 +295,7 @@ export async function runAudit(env = process.env, now = new Date()) {
         records: catalogueResults.reduce((sum, x) => sum + (x.records || 0), 0),
         pages: catalogueResults.reduce((sum, x) => sum + (x.pages || 0), 0),
         errors: failures.length,
+        skipped: skipped.length,
         findings: findings.length,
         targets,
         catalogueResults,
@@ -297,9 +312,13 @@ export async function runAudit(env = process.env, now = new Date()) {
     scope: 'read-only manifest and catalogue GET requests; no poster fetches or storage writes',
     sources: all.map(source => ({
       name: source.name, catalogs: source.catalogs, records: source.records, pages: source.pages,
-      errors: source.errors, findings: source.findings, error: source.error || null
+      errors: source.errors, skipped: source.skipped || 0, findings: source.findings, error: source.error || null
     })),
     targets: all.flatMap(source => source.targets),
+    targetCoverage: all.map(source => {
+      const found = new Set((source.targets || []).map(target => target.targetName));
+      return { source: source.name, found: [...found], missing: TARGET_NAMES.filter(target => !found.has(target.name)).map(target => target.name) };
+    }),
     findings: all.flatMap(source => source.findingRows),
     catalogues: all.map(source => ({ name: source.name, error: source.error || null, results: source.catalogueResults }))
   };
@@ -312,6 +331,7 @@ export async function runAudit(env = process.env, now = new Date()) {
     evaluationDate: report.evaluationDate,
     sources: report.sources,
     targetMatches: report.targets.length,
+    targetCoverage: report.targetCoverage,
     flaggedRecords: report.findings.length,
     outputDir
   }, null, 2));
