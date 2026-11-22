@@ -4047,5 +4047,8 @@
     }
   },
   "coveragePolicy": "Each language requires at least two healthy independent publisher domains with actual movie and series detections; failed feeds remain visible and trigger retry.",
-  "errors": []
+  "errors": [
+    "expected string or bytes-like object, got 'NoneType'"
+  ],
+  "lastAttemptAt": "2026-11-23T02:50:01.518970+04:00"
 }
