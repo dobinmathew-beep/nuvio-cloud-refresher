@@ -1,4 +1,4 @@
-name: Run read-only ImageKit storage audit
+name: Run read-only ImageKit storage audit (report trigger)
 
 on:
   workflow_dispatch:
