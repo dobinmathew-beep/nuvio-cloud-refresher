@@ -1,0 +1,27 @@
+name: Untrusted source badge removal tests
+
+on:
+  push:
+    branches: [fix/remove-untrusted-source-just-added-20261123]
+    paths:
+      - 'poster-date-service/api/poster.mjs'
+      - 'poster-date-service/lib/render-poster.mjs'
+      - 'poster-date-service/tests/just-added.test.mjs'
+      - '.github/workflows/untrusted-source-badge-tests.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  poster-service-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install poster service dependencies
+        run: npm install --no-package-lock --prefix poster-date-service
+      - name: Run poster service regression suite
+        run: npm test --prefix poster-date-service
