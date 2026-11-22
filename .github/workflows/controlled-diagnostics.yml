@@ -1,0 +1,25 @@
+name: Read-only poster pipeline diagnostics
+on:
+  push:
+    branches:
+      - controlled-diagnostics
+    paths:
+      - .github/workflows/controlled-diagnostics.yml
+permissions:
+  contents: read
+jobs:
+  diagnostics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read current catalogue diagnostics
+        shell: bash
+        env:
+          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
+          SCAN_TOKEN: ${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
+        run: |
+          set -euo pipefail
+          test -n "$SCAN_TOKEN"
+          curl --silent --show-error --fail-with-body --max-time 45 \
+            "$POSTER_SERVICE_URL/catalog-refresh/diagnostics" \
+            -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json" \
+            | tee -a "$GITHUB_STEP_SUMMARY"
