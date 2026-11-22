@@ -9,6 +9,9 @@ on:
       - "poster-date-service/scripts/imagekit-storage-reconciliation.mjs"
       - "poster-date-service/lib/imagekit-storage-reconciliation-utils.mjs"
       - "poster-date-service/tests/imagekit-storage-reconciliation.test.mjs"
+      - "poster-date-service/scripts/imagekit-targeted-state-deep-audit.mjs"
+      - "poster-date-service/lib/imagekit-targeted-state-audit-utils.mjs"
+      - "poster-date-service/tests/imagekit-targeted-state-deep-audit.test.mjs"
       - ".github/workflows/imagekit-storage-reconciliation.yml"
 
 permissions:
@@ -21,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: imagekit-storage-audit-dedup
+          ref: ${{ github.event.pull_request.head.sha || 'imagekit-storage-audit-dedup' }}
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
@@ -41,11 +44,31 @@ jobs:
           IMAGEKIT_RECONCILIATION_CONCURRENCY: "2"
           IMAGEKIT_RECONCILIATION_DETAIL_LIMIT: "100"
         run: node scripts/imagekit-storage-reconciliation.mjs
+      - name: Run targeted read-only state investigation and proposal
+        if: github.event_name == 'workflow_dispatch'
+        working-directory: poster-date-service
+        env:
+          IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
+          IMAGEKIT_PRIVATE_KEY: ${{ secrets.IMAGEKIT_PRIVATE_KEY }}
+          IMAGEKIT_RECONCILIATION_INPUT: ../reports/imagekit-storage-reconciliation-live.json
+          IMAGEKIT_TARGETED_AUDIT_REPORT_PATH: ../reports/imagekit-targeted-state-deep-audit.json
+          IMAGEKIT_TARGETED_PROPOSAL_PATH: ../reports/imagekit-targeted-storage-recovery-proposal.json
+        run: node scripts/imagekit-targeted-state-deep-audit.mjs
       - name: Upload reconciliation report
         if: github.event_name == 'workflow_dispatch'
         uses: actions/upload-artifact@v4
         with:
           name: imagekit-storage-reconciliation
           path: reports/imagekit-storage-reconciliation-live.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload targeted investigation and separate recovery proposal
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: imagekit-targeted-state-deep-audit
+          path: |
+            reports/imagekit-targeted-state-deep-audit.json
+            reports/imagekit-targeted-storage-recovery-proposal.json
           if-no-files-found: error
           retention-days: 14
