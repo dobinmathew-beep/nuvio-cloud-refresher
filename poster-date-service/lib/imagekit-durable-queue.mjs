@@ -201,7 +201,8 @@ export async function initializeDurableQueueState(scanGeneration, itemIds, optio
       throw new Error('Existing durable queue state is malformed; refusing to overwrite it');
     }
     const savedIds = Object.keys(existing.items).sort();
-    if (savedIds.length !== uniqueIds.length || savedIds.some((id, index) => id !== uniqueIds.sort()[index])) {
+    const expectedIds = [...uniqueIds].sort();
+    if (savedIds.length !== expectedIds.length || savedIds.some((id, index) => id !== expectedIds[index])) {
       throw new Error('Existing durable queue membership differs from immutable manifest; refusing destructive rewrite');
     }
     return existing;
