@@ -31,3 +31,9 @@ jobs:
       - name: Run regression tests
         working-directory: poster-date-service
         run: npm test
+
+      - name: Read-only production durable queue recovery gate
+        working-directory: poster-date-service
+        env:
+          IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
+        run: node scripts/check-live-durable-queue-readonly.mjs
