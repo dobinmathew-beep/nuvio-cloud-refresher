@@ -108,7 +108,7 @@ for (const item of perFile) {
     currentVersionMismatches.push({ fileId: item.file.fileId, path: item.file.filePath || null, issue: 'current-version-size-differs-from-file-list', versionBytes: current.bytes, currentFileBytes: bytes(item.file.size), differenceBytes: current.bytes - bytes(item.file.size) });
   }
 }
-const versionBytesComplete = failures.length === 0 && flat.every(v => v.bytes !== null) && perFile.every(v => !v.missingCurrentVersionMatch && v.duplicateVersionIds.length === 0 && v.missingVersionIdCount === 0);
+const versionBytesComplete = failures.length === 0 && flat.every(v => v.bytes !== null) && currentVersionMismatches.length === 0 && perFile.every(v => !v.missingCurrentVersionMatch && v.duplicateVersionIds.length === 0 && v.missingVersionIdCount === 0);
 const versionInventoryBytes = versionBytesComplete ? flat.reduce((sum, v) => sum + v.bytes, 0) : null;
 const versionInventoryBytesPartial = flat.reduce((sum, v) => sum + (v.bytes ?? 0), 0);
 const categoryStats = {};
@@ -176,7 +176,8 @@ const report = {
     invalidSizeCount: perFile.reduce((s,v) => s + v.invalidSizeVersionIds.length, 0),
     dateStats: historicalDateStats,
     retentionDays: 30,
-    categoryStats
+    categoryStats,
+    historicalVersionRecords: historical.map(v => ({ fileId: v.fileId, path: v.path, category: v.category, versionId: v.versionId, bytes: v.bytes, timestamp: v.timestamp, timestampSource: v.timestampSource, timestampRaw: v.timestampRaw, ageClass: v.ageClass, createdAt: v.createdAt, updatedAt: v.updatedAt }))
   },
   comparison: compareByteMeasurements({
     accountUsageBytes: account.bytes, currentFileBytes,
