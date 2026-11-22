@@ -11,6 +11,11 @@ function buildIdIndex(value) {
   const index = new Map();
   for (const [key, timestamp] of Object.entries(value || {})) {
     const separator = key.lastIndexOf('|');
+    const catalogKey = separator >= 0 ? key.slice(0, separator) : '';
+    // Movie eligibility is driven by the catalogue's confirmed digital
+    // release date and explicit generated badge flag, never first-seen time.
+    // The shared first-added index is authoritative only for series.
+    if (catalogKey.endsWith('_movie')) continue;
     const id = separator >= 0 ? key.slice(separator + 1) : key;
     if (!index.has(id)) index.set(id, []);
     index.get(id).push(timestamp);
