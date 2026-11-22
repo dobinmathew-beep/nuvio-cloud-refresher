@@ -37,18 +37,22 @@ function ledgerPath(shard) {
   return LEDGER_DIR + '/' + shard + '.json';
 }
 function itemFingerprint(item) {
-  // Date/episode metadata participates only when the provider supplies it.
-  // This preserves legacy fingerprints for ordinary titles while ensuring a
-  // digital-release or next-episode transition requeues the affected title.
+  // Every provider/catalogue identity and badge-driving field participates.
+  // Artwork URL changes, metadata corrections and new episode/release dates
+  // therefore invalidate only the affected title's reusable ledger record.
+  const identity = [
+    item.id || '', item.providerId || '', item.catalogSource || '', item.catalogId || '',
+    item.type || '', item.title || '', item.year || '',
+    ...(Array.isArray(item.catalogSources) ? item.catalogSources.map(source => String(source.source || '') + ':' + String(source.id || '')).sort() : []),
+    item.imdbId || '', item.tmdbId || '', item.tvdbId || '', item.tvmazeId || ''
+  ];
+  const artwork = [item.poster || '', item.artworkSource || ''];
   const dateMetadata = [
-    item.digitalReleaseDate || item.releaseInfo || '',
-    item.nextEpisodeDate || '',
-    item.season ?? '',
-    item.episode ?? '',
-    item.premiereDate || ''
+    item.digitalReleaseDate || item.releaseDate || item.releaseInfo || '',
+    item.nextEpisodeDate || '', item.season ?? '', item.episode ?? '', item.premiereDate || ''
   ];
   return createHash('sha256')
-    .update([item.id, item.type || '', item.poster || '', ...dateMetadata, 'badge-rules-' + BADGE_RULES_VERSION].join('|'))
+    .update([...identity, ...artwork, ...dateMetadata, 'badge-rules-' + BADGE_RULES_VERSION].join('|'))
     .digest('hex');
 }
 async function loadLedgerShard(config, shard, cache) {
@@ -273,6 +277,9 @@ async function collectCatalog(manifest, catalog, config, fingerprint, lease, sca
         titles.set(id, {
           id,
           type: catalog.type,
+          catalogSource: String(manifest.name || manifest.key || ''),
+          catalogId: String(catalog.id || ''),
+          providerId: String(meta.id || ''),
           title: String(meta.name || meta.title || ''),
           poster: String(meta.poster || ''),
           year: meta.year || meta.releaseInfo?.year || '',
@@ -283,7 +290,9 @@ async function collectCatalog(manifest, catalog, config, fingerprint, lease, sca
           season: nextEpisode?.season ?? '',
           episode: nextEpisode?.episode ?? '',
           tmdbId: meta.tmdb_id || meta.tmdbId || '',
-          tvdbId: meta.tvdb_id || meta.tvdbId || ''
+          tvdbId: meta.tvdb_id || meta.tvdbId || '',
+          tvmazeId: meta.tvmaze_id || meta.tvmazeId || '',
+          artworkSource: String(meta.poster || '').split('/').slice(0, 3).join('/')
         });
       }
     }
@@ -849,7 +858,18 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
 
       try {
         const result = await collectCatalog(manifest, catalog, config, fingerprint, lease, scanGeneration, forceRescanCatalogs);
-        for (const item of result.titles) if (!current.has(item.id)) current.set(item.id, item);
+        for (const item of result.titles) {
+          if (!current.has(item.id)) {
+            current.set(item.id, { ...item, catalogSources: [{ source: item.catalogSource, id: item.catalogId }] });
+          } else {
+            const existing = current.get(item.id);
+            const sources = Array.isArray(existing.catalogSources) ? existing.catalogSources : [];
+            const sourceKey = String(item.catalogSource || '') + '|' + String(item.catalogId || '');
+            if (!sources.some(source => String(source.source || '') + '|' + String(source.id || '') === sourceKey)) {
+              existing.catalogSources = [...sources, { source: item.catalogSource, id: item.catalogId }];
+            }
+          }
+        }
         delete result.titles;
         completedCatalogues[fingerprint] = {
           source: result.source, type: result.type, id: result.id, name: result.name,
