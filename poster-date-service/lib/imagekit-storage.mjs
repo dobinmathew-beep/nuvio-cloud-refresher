@@ -629,6 +629,8 @@ export async function buildImageKitDeletionReport({
       for (const version of versions) {
         const versionId = version.versionInfo?.id;
         if (!versionId || versionId === canonical.versionInfo.id) continue;
+        const createdAt = Date.parse(version.createdAt || version.updatedAt || '');
+        if (!Number.isFinite(createdAt) || now - createdAt < retentionMs) continue;
         candidates.push({
           kind: 'historical-file-version',
           id: posterIdentityFromName(canonical.name),
@@ -636,7 +638,7 @@ export async function buildImageKitDeletionReport({
           versionId,
           bytes: Math.max(0, Number(version.size) || 0),
           createdAt: version.createdAt || version.updatedAt || null,
-          reason: 'non-current-ImageKit-file-version'
+          reason: 'non-current-ImageKit-file-version-older-than-retention'
         });
       }
     } catch {
