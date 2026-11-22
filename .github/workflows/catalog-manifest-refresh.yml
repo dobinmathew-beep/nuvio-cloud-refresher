@@ -1,120 +1,17 @@
-name: Manifest catalogue poster refresh
-# Runs at 06:00 and 18:00 Oman time (UTC+4), and supports manual dispatch.
+name: Retired legacy manifest poster refresh (disabled)
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths: ['.github/workflows/catalog-manifest-refresh.yml']
-  schedule:
-    - cron: '0 2,14 * * *'
 
 permissions:
   contents: read
 
-concurrency:
-  group: manifest-catalogue-poster-refresh-v4
-  cancel-in-progress: false
-
 jobs:
-  refresh:
+  retired:
     runs-on: ubuntu-latest
-    timeout-minutes: 350
     steps:
-      - name: Run and automatically resume the full catalogue refresh
-        env:
-          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
-          SCAN_TOKEN: ${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
-        shell: bash
+      - name: Confirm retirement
         run: |
-          set -euo pipefail
-          if [ -z "$SCAN_TOKEN" ]; then
-            echo "::error::POSTER_CATALOG_SCAN_TOKEN repository secret is missing."
-            exit 1
-          fi
-
-          start_refresh() {
-            for attempt in $(seq 1 20); do
-              if curl --silent --fail --max-time 20 "$POSTER_SERVICE_URL/catalog-refresh/status" \
-                -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json" >/dev/null; then
-                break
-              fi
-              if [ "$attempt" -eq 20 ]; then
-                echo "::error::Poster service did not become healthy after 10 minutes."
-                return 1
-              fi
-              sleep 30
-            done
-
-            local response job_id
-            response=$(curl --silent --show-error --max-time 90 \
-              -X POST "$POSTER_SERVICE_URL/catalog-refresh" \
-              -H "Authorization: Bearer $SCAN_TOKEN" \
-              -H "Accept: application/json")
-            echo "Refresh start response: $response" >&2
-            job_id=$(echo "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).jobId||''))")
-            if [ -z "$job_id" ]; then
-              response=$(curl --silent --show-error --fail-with-body --max-time 60 \
-                "$POSTER_SERVICE_URL/catalog-refresh/status" \
-                -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json")
-              job_id=$(echo "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).jobId||''))")
-            fi
-            if [ -z "$job_id" ]; then
-              echo "::error::Refresh endpoint did not return an active job ID."
-              return 1
-            fi
-            echo "$job_id"
-          }
-
-          job_id=$(start_refresh)
-          restart_count=0
-
-          # Poll for up to 5h50m. If Render recycles its free instance, the
-          # volatile job handle becomes idle; start the refresh again. The
-          # ImageKit cache now short-circuits already-completed poster work.
-          for attempt in $(seq 1 700); do
-            if ! response=$(curl --silent --show-error --fail-with-body --max-time 60 \
-              "$POSTER_SERVICE_URL/catalog-refresh/status" \
-              -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json"); then
-              echo "::warning::Could not read refresh status (attempt $attempt); retrying."
-              sleep 30
-              continue
-            fi
-
-            echo "$response"
-            status=$(echo "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).status||''))")
-
-            if [ "$status" = "completed" ]; then
-              echo "$response" >> "$GITHUB_STEP_SUMMARY"
-              complete=$(echo "$response" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{const r=JSON.parse(s).report||{}; const bad=['failed','imagekit-upload-timeout','rendered-not-cached','source-redirect'].reduce((n,k)=>n+(r.results?.[k]||0),0); console.log(r.scanComplete===true && bad===0?'true':'false')})")
-              if [ "$complete" != "true" ]; then
-                echo "::error::Catalogue enumeration or poster caching is incomplete. See the report above."
-                exit 1
-              fi
-              echo "All enumerable catalogues completed; every supported title poster was cached or verified in ImageKit." >> "$GITHUB_STEP_SUMMARY"
-              exit 0
-            fi
-
-            if [ "$status" = "failed" ]; then
-              echo "::error::Render reported a failed catalogue refresh."
-              exit 1
-            fi
-
-            if [ "$status" = "idle" ]; then
-              restart_count=$((restart_count + 1))
-              if [ "$restart_count" -gt 6 ]; then
-                echo "::error::Render restarted more than six times during this refresh."
-                exit 1
-              fi
-              echo "::warning::Render lost the in-memory job handle. Resuming refresh ($restart_count/6); existing ImageKit posters will be reused."
-              sleep 15
-              job_id=$(start_refresh)
-              echo "Resumed job: $job_id"
-              continue
-            fi
-
-            sleep 30
-          done
-
-          echo "::error::Timed out waiting for the full catalogue refresh after 350 minutes."
-          exit 1
+          echo "Legacy manifest poster refresh is retired."
+          echo "No catalogue scan, poster generation, queue drain, or retry is started."
+          echo "Use the explicitly staged poster-service workflow only when manually authorized."

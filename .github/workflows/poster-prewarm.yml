@@ -1,59 +1,17 @@
-name: Intelligent poster pre-generation and refresh
+name: Retired poster pre-generation workflow (disabled)
 
 on:
-  schedule:
-    # Exactly 06:00 and 18:00 Asia/Muscat (UTC+4).
-    - cron: '0 2,14 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: read
 
-concurrency:
-  group: intelligent-poster-prewarm
-  cancel-in-progress: false
-
 jobs:
-  pre-generate:
+  retired:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
     steps:
-      - name: Check out the isolated poster service branch
-        uses: actions/checkout@v4
-        with:
-          ref: poster-date-service
-          path: poster-source
-          persist-credentials: false
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-
-      - name: Verify the poster service is ready
-        env:
-          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
+      - name: Confirm retirement
         run: |
-          curl --fail --silent --show-error --retry 3 --retry-delay 5 --retry-connrefused "$POSTER_SERVICE_URL/health" -o health.json
-          node -e "const h=require('./health.json'); if (!h.tmdbConfigured || h.status !== 'ready') { console.error(h); process.exit(1); } console.log('Poster service health check passed.');"
-
-      - name: Expire released posters and enforce ImageKit storage reserve
-        env:
-          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
-        run: |
-          code=000
-          for attempt in $(seq 1 36); do
-            code=$(curl --silent --show-error -o maintenance.json -w '%{http_code}' -X POST "$POSTER_SERVICE_URL/maintenance" || true)
-            if [ "$code" = "200" ]; then break; fi
-            echo "Maintenance endpoint not ready yet (HTTP $code); waiting for the Render deployment."
-            sleep 10
-          done
-          if [ "$code" != "200" ]; then echo "ImageKit maintenance endpoint did not become ready."; cat maintenance.json || true; exit 1; fi
-          node -e "const m=require('./maintenance.json'); if (m.status === 'maintenance-failed' || !Number.isFinite(m.accountBytes)) { console.error(m); process.exit(1); } console.log(JSON.stringify(m, null, 2));"
-
-      - name: Scan the currently configured Great Indian catalogs and pre-generate posters
-        working-directory: poster-source/poster-date-service
-        env:
-          POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
-          IMAGEKIT_URL_ENDPOINT: https://ik.imagekit.io/dobin1994
-          PREWARM_CONCURRENCY: '2'
-        run: node scripts/prewarm.mjs
+          echo "Legacy poster pre-generation is retired."
+          echo "No poster pre-generation, refresh, maintenance, or ImageKit operation is started."
+          echo "All scheduled runs have been removed."

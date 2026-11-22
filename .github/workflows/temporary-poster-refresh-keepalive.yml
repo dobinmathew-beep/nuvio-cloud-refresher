@@ -1,28 +1,17 @@
-name: Temporary Poster Refresh Keepalive
+name: Retired temporary poster keepalive (disabled)
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/temporary-poster-refresh-keepalive.yml"
-  schedule:
-    - cron: "*/10 * * * *"
   workflow_dispatch:
 
 permissions:
   contents: read
 
-concurrency:
-  group: temporary-poster-refresh-keepalive
-  cancel-in-progress: false
-
 jobs:
-  keepalive:
+  retired:
     runs-on: ubuntu-latest
-    timeout-minutes: 2
     steps:
-      - name: Keep the free Render poster service awake during full refresh
+      - name: Confirm retirement
         run: |
-          curl --fail --silent --show-error \
-            --retry 3 --retry-delay 5 --retry-connrefused --max-time 25 \
-            https://great-indian-upcoming-posters.onrender.com/health
+          echo "Temporary poster-service keepalive is retired."
+          echo "No periodic Render health request is sent."
+          echo "All scheduled keepalive checks have been removed."
