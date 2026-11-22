@@ -160,7 +160,16 @@ function unresolvedRequired(catalog) {
     });
 }
 
-function normalizedTitle(value) {\n  return String(value || '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]+/g, '');\n}\n\nfunction targetByName(value) {\n  const key = normalizedTitle(value);\n  return TARGET_NAMES.find(target => key === target.key || key.startsWith(target.key)) || null;\n}\n\nfunction imdbId(item) {
+function normalizedTitle(value) {
+  return String(value || '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+
+function targetByName(value) {
+  const key = normalizedTitle(value);
+  return TARGET_NAMES.find(target => key === target.key || key.startsWith(target.key)) || null;
+}
+
+function imdbId(item) {
   for (const value of [item?.imdbId, item?.imdb_id, item?.externalIds?.imdb, item?.externals?.imdb, item?.id]) {
     if (typeof value === 'string' && /^tt\d{7,10}$/.test(value)) return value;
   }
