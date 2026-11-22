@@ -33,7 +33,7 @@ export function validateDurableQueueChunk(chunk, expected) {
 }
 
 function imageKitConfig() {
-  const endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\\/+$/, '');
+  const endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\/+$/, '');
   const privateKey = process.env.IMAGEKIT_PRIVATE_KEY || '';
   if (!endpoint || !privateKey) throw new Error('ImageKit credentials are required for durable queue storage');
   return { endpoint, privateKey };
