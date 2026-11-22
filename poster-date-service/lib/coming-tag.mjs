@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { Buffer } from 'node:buffer';
 import { createRequire } from 'node:module';
 import { dirname } from 'node:path';
 import { createSerialQueue } from './serial-queue.mjs';
