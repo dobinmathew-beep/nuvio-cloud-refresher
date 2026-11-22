@@ -10,7 +10,8 @@ const MAX_PAGES_PER_CATALOG = 200;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const now = new Date();
 const today = now.toISOString().slice(0, 10);
-const ADDED_INDEX_URL = 'https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/catalog-added.json';\nconst DIGITAL_AUDIT_URL = 'https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/recent-release-audit.json';
+const ADDED_INDEX_URL = 'https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/catalog-added.json';
+const DIGITAL_AUDIT_URL = 'https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/recent-release-audit.json';
 
 async function fetchJson(url) {
   const response = await fetch(url, {
@@ -140,8 +141,6 @@ for (const item of (Array.isArray(digitalAudit?.items) ? digitalAudit.items : []
     recentDigitalIndex.get(id).push(date);
   }
 }
-report.digitalAuditWindowDays = Number(digitalAudit?.windowDays || 0);
-report.publishedDigitalMovieEvents = recentDigitalIndex.size;
 const recentMovieIndex = new Map();
 for (const [key, timestamp] of Object.entries(addedIndex || {})) {
   const split = key.lastIndexOf('|');
@@ -158,6 +157,8 @@ for (const [key, timestamp] of Object.entries(addedIndex || {})) {
 const report = {
   generatedAt: now.toISOString(),
   mode: 'read-only; no catalogue writes, no ImageKit writes, no poster-service requests',
+  digitalAuditWindowDays: Number(digitalAudit?.windowDays || 0),
+  publishedDigitalMovieEvents: recentDigitalIndex.size,
   sources: [],
   totals: { catalogueDefinitions: 0, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, pagesFetched: 0, recordsFetched: 0, movieRecordAppearances: 0, candidateMovieAppearances: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0 },
   findings: [],
@@ -166,7 +167,9 @@ const report = {
     tt0073707: 'Sholay',
     tt5959980: 'Vada Chennai'
   },
-  referenceMatches: []
+  referenceMatches: [],
+  dynamicReferenceMatches: [],
+  dynamicReferenceSearches: []
 };
 
 for (const [key, fallbackName] of SOURCES) {
