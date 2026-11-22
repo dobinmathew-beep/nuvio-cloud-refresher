@@ -549,9 +549,9 @@ export default async function handler(req, res) {
     // The no-fallback route can stay fast, but it must not trust mere
     // ImageKit availability. Compare the stored badge state with the current
     // catalogue decision before reusing the cached bytes.
-    let expectedJustAdded = immediateBadge === 'just-added';
-    if (!expectedJustAdded) {
-      try { expectedJustAdded = (await isCatalogRecentlyAdded([id])) === true; }
+    let expectedCachedJustAdded = immediateBadge === 'just-added';
+    if (!expectedCachedJustAdded) {
+      try { expectedCachedJustAdded = (await isCatalogRecentlyAdded([id])) === true; }
       catch (error) {
         console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
       }
@@ -560,9 +560,9 @@ export default async function handler(req, res) {
     const cachedReleaseInfo = cachedValidation?.releaseDate
       ? { date: cachedValidation.releaseDate, kind: cachedValidation.releaseKind || 'premiere' }
       : null;
-    const validatedCachedAsset = await findFreshImageKitAsset(id, cachedReleaseInfo, expectedJustAdded);
+    const validatedCachedAsset = await findFreshImageKitAsset(id, cachedReleaseInfo, expectedCachedJustAdded);
     if (validatedCachedAsset) {
-      return redirectToImageKit(res, validatedCachedAsset, cachedReleaseInfo, expectedJustAdded);
+      return redirectToImageKit(res, validatedCachedAsset, cachedReleaseInfo, expectedCachedJustAdded);
     }
 
     // Explicit catalogue fallbacks still use the validated renderer path.
