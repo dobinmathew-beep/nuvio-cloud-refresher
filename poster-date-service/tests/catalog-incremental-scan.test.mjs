@@ -37,7 +37,7 @@ test('incremental metadata updates changed fields without erasing source identit
   assert.deepEqual(merged.catalogSources, [{ source: 'A', id: 'one' }, { source: 'B', id: 'two' }]);
 });
 
-test('metadata index chunk validator rejects count, generation and checksum mismatches', () => {
+test('metadata index chunk validator rejects count, generation and checksum mismatches', async () => {
   const records = [{ id: 'tt1234567' }];
   const { createHash } = await import('node:crypto');
   const sha256 = createHash('sha256').update(JSON.stringify(records)).digest('hex');

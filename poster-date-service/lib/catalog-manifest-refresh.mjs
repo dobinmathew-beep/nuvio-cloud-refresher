@@ -46,7 +46,7 @@ function itemFingerprint(item) {
     ...(Array.isArray(item.catalogSources) ? item.catalogSources.map(source => String(source.source || '') + ':' + String(source.id || '')).sort() : []),
     item.imdbId || '', item.tmdbId || '', item.tvdbId || '', item.tvmazeId || ''
   ];
-  const artwork = [item.poster || '', item.artworkSource || ''];
+  const artwork = [item.poster || '', item.artworkSource || String(item.poster || '').split('/').slice(0, 3).join('/')];
   const dateMetadata = [
     item.digitalReleaseDate || item.releaseDate || item.releaseInfo || '',
     item.nextEpisodeDate || '', item.season ?? '', item.episode ?? '', item.premiereDate || ''
@@ -499,6 +499,7 @@ async function runIncrementalMetadataScan(lease) {
     throw new Error('Incremental scan catalogue limit exceeded (' + totalCatalogues + ' > ' + maxCatalogues + '); refusing partial index publication');
   }
   const observed = new Map();
+  const baselineIds = new Set(baseline.items.map(item => item.id));
   const sourceStats = [];
   let pagesFetched = 0;
   let recordsFetched = 0;
@@ -506,7 +507,8 @@ async function runIncrementalMetadataScan(lease) {
     let sourceCatalogues = 0;
     for (const catalog of manifest.catalogs) {
       if (unresolvedRequiredExtras(catalog).length) {
-        throw new Error('Incremental scan cannot safely sample required dynamic catalogue ' + manifest.name + '/' + catalog.id);
+        sourceStats.push({ source: manifest.name, catalogue: catalog.id, skipped: 'required-dynamic-extras' });
+        continue;
       }
       let sourcePages = 0;
       for (let page = 0; page < pageLimit; page++) {
@@ -526,7 +528,7 @@ async function runIncrementalMetadataScan(lease) {
         // Newest-first catalogues let a fully-known page terminate early.
         const hasUnknown = batch.some(meta => {
           const id = canonicalId(meta);
-          return id && !baseline.itemsById.has(id);
+          return id && !baselineIds.has(id);
         });
         if (batch.length < PAGE_SIZE || (page > 0 && !hasUnknown)) break;
       }
