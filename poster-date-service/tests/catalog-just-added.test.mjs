@@ -78,11 +78,11 @@ test('earliest published digital date wins when a title has multiple platform ar
   };
   const audit = {
     items: [
-      { id: 'tt1375789', type: 'movie', releaseDate: '2013-01-01', matchState: 'published' },
+      { id: 'tt1375789', type: 'movie', releaseDate: '2019-01-01', matchState: 'published' },
       { id: 'tt1375789', type: 'movie', releaseDate: '2026-11-20', matchState: 'published' },
-      { id: 'tt0073707', type: 'movie', releaseDate: '1975-08-15', matchState: 'published' },
+      { id: 'tt0073707', type: 'movie', releaseDate: '2020-01-01', matchState: 'published' },
       { id: 'tt0073707', type: 'movie', releaseDate: '2026-11-19', matchState: 'published' },
-      { id: 'tt5959980', type: 'movie', releaseDate: '2018-10-17', matchState: 'published' },
+      { id: 'tt5959980', type: 'movie', releaseDate: '2018-01-01', matchState: 'published' },
       { id: 'tt5959980', type: 'movie', releaseDate: '2026-11-18', matchState: 'published' }
     ]
   };
