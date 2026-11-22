@@ -539,14 +539,10 @@ export default async function handler(req, res) {
       return res.end(req.method === 'HEAD' ? undefined : original.bytes);
     }
 
-    // Artwork delivery takes priority over slow badge metadata. If this title
-    // already has a reachable canonical ImageKit poster, return it immediately
-    // instead of making Nuvio wait on TMDB/release-date lookups that often time out.
-    // The short availability cache also coalesces repeated catalogue requests.
-    const fastCachedAsset = await findExistingImageKitAsset(id);
-    if (fastCachedAsset) {
-      return redirectToExistingImageKit(res, fastCachedAsset, 'imagekit-first-fast-path');
-    }
+    // Do not serve an ImageKit asset from an availability-only fast path.
+    // GET requests must pass badge-state validation before a cached poster is
+    // reused; otherwise a stale Just Added chip can remain visible indefinitely.
+    // HEAD probes above remain availability-only because they return no artwork.
 
     // Cache miss: serve BetterPosters directly now and build the permanent,
     // date-aware ImageKit version asynchronously. This removes catalogue,
