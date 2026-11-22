@@ -37,8 +37,10 @@ function buildDigitalReleaseIndex(value) {
     const id = String(item?.id || '').trim();
     const releaseDate = String(item?.releaseDate || '').slice(0, 10);
     if (!id || !/^\d{4}-\d{2}-\d{2}$/.test(releaseDate)) continue;
-    if (!index.has(id)) index.set(id, []);
-    index.get(id).push(releaseDate);
+    const previous = index.get(id);
+    // The earliest verified digital arrival is authoritative. A later
+    // platform/territory date must not resurrect Just Added for an old film.
+    if (!previous || releaseDate < previous) index.set(id, releaseDate);
   }
   return index;
 }
@@ -117,6 +119,14 @@ async function loadDigitalReleaseAudit(fetcher) {
   return pendingDigitalAudit;
 }
 
+// A URL query parameter is a hint from a catalogue, not proof of eligibility.
+// The authoritative release/first-seen indexes decide. null means the indexes
+// are unavailable, allowing the existing provider-artwork fallback to run.
+export function resolveJustAddedDecision(catalogResult, _requestedBadge = '') {
+  if (catalogResult === null || catalogResult === undefined) return null;
+  return catalogResult === true;
+}
+
 export async function isCatalogRecentlyAdded(ids, options = {}) {
   const values = new Set((Array.isArray(ids) ? ids : [ids])
     .map(value => String(value || '').trim())
@@ -142,11 +152,13 @@ export async function isCatalogRecentlyAdded(ids, options = {}) {
       const age = now - addedAt;
       if (age >= 0 && age <= ELIGIBILITY_MS) return true;
     }
-    for (const rawDate of movieIds?.get(id) || []) {
+    const rawDate = movieIds?.get(id);
+    if (rawDate) {
       const releasedAt = Date.parse(rawDate + 'T00:00:00Z');
-      if (!Number.isFinite(releasedAt)) continue;
-      const age = now - releasedAt;
-      if (age >= 0 && age <= ELIGIBILITY_MS) return true;
+      if (Number.isFinite(releasedAt)) {
+        const age = now - releasedAt;
+        if (age >= 0 && age <= ELIGIBILITY_MS) return true;
+      }
     }
   }
 
