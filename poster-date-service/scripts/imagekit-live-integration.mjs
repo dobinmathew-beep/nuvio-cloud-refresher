@@ -6,7 +6,7 @@ import {
   resolveImageKitPoster
 } from '../lib/imagekit-versioned-storage.mjs';
 
-const endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\\/+$/, '');
+const endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\/+$/, '');
 const privateKey = process.env.IMAGEKIT_PRIVATE_KEY || '';
 if (!endpoint || !privateKey) throw new Error('IMAGEKIT_URL_ENDPOINT and IMAGEKIT_PRIVATE_KEY are required');
 const parsed = new URL(endpoint);
