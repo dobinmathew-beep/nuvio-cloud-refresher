@@ -2,22 +2,13 @@ import { Buffer } from 'node:buffer';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { buildImageKitDeletionReport, imageKitConfig, listImageKitFiles } from '../lib/imagekit-storage.mjs';
+import { categoryFor, summarizeVersions } from '../lib/imagekit-expanded-audit-utils.mjs';
 
 const API = 'https://api.imagekit.io/v1';
 const CONCURRENCY = Math.max(1, Math.min(8, Number(process.env.IMAGEKIT_AUDIT_VERSION_CONCURRENCY) || 4));
 const RETENTION_MS = 30 * 24 * 60 * 60 * 1000;
 const now = Date.now();
 
-function categoryFor(path) {
-  const p = String(path || '/').toLowerCase();
-  if (p.startsWith('/posters/')) return 'posters';
-  if (p.startsWith('/poster-versions/')) return 'poster-versions';
-  if (p.startsWith('/catalog-state/')) return 'catalog-state';
-  if (p.startsWith('/backdrops/')) return 'backdrops';
-  if (p.startsWith('/hero/') || p.startsWith('/reels/')) return 'hero-reels';
-  if (p.startsWith('/epg/')) return 'epg';
-  return 'other';
-}
 function bytes(value) { return Math.max(0, Number(value) || 0); }
 function dateOf(value) {
   const n = Date.parse(value || '');
@@ -77,25 +68,13 @@ async function readVersions(config, file) {
   const result = await requestJson(config, url);
   if (!Array.isArray(result)) throw new Error('Unexpected versions response (expected array)');
   const currentId = file.versionInfo?.id || null;
-  const historical = result.filter(v => v.versionInfo?.id && v.versionInfo.id !== currentId);
-  const historicalBytes = historical.reduce((sum, v) => sum + bytes(v.size), 0);
-  const old = historical.filter(v => {
-    const created = dateOf(v.createdAt || v.updatedAt);
-    return created !== null && now - created >= RETENTION_MS;
-  });
   return {
     fileId: file.fileId,
     path: file.filePath || null,
     category: categoryFor(file.filePath),
     currentVersionId: currentId,
     versionsReturned: result.length,
-    historicalVersionCount: historical.length,
-    historicalVersionBytes: historicalBytes,
-    historicalVersionsOlderThan30Days: old.map(v => ({
-      versionId: v.versionInfo.id,
-      bytes: bytes(v.size),
-      createdAt: v.createdAt || v.updatedAt || null
-    }))
+    ...summarizeVersions(result, currentId, now, RETENTION_MS)
   };
 }
 
@@ -161,6 +140,7 @@ for (const [category, entry] of folderStats) {
   entry.versionsOlderThan30Days = versionsByCategory[category]?.versionsOlderThan30Days || 0;
   entry.bytesOlderThan30Days = versionsByCategory[category]?.bytesOlderThan30Days || 0;
 }
+const historicalVersionCount = versionResults.reduce((s, v) => s + v.historicalVersionCount, 0);
 const historicalVersionBytes = versionResults.reduce((s, v) => s + v.historicalVersionBytes, 0);
 const reconciledInventoryBytes = currentFileBytes + historicalVersionBytes;
 const expandedReport = {
