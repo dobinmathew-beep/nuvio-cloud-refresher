@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-22T14:36:20.409472+04:00",
+  "generatedAt": "2026-11-22T19:04:08.129973+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 19,
+  "count": 21,
   "items": [
     {
       "id": "tt1281973",
@@ -60,6 +60,24 @@
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
       "catalog": "dobins_ta_series",
+      "region": "IN",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    },
+    {
+      "id": "tmdb:1813874",
+      "aliases": [
+        "tmdb:1813874"
+      ],
+      "name": "Revenge of Her : Evil Prevails",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-24",
+      "kind": "premiere",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "catalog": "dobins_hi_movie",
       "region": "IN",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },
@@ -166,6 +184,28 @@
       "source": "https://www.dailyott.in/"
     },
     {
+      "id": "tt39632118",
+      "aliases": [
+        "tt39632118"
+      ],
+      "name": "Family Kirana Store",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "kind": "episode",
+      "platforms": [
+        "YouTube (TVF)"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.dailyott.in/"
+    },
+    {
       "id": "tt39390582",
       "aliases": [
         "tt39390582"
@@ -214,7 +254,7 @@
       "language": "malayalam",
       "type": "series",
       "releaseDate": "2026-11-27",
-      "kind": "premiere",
+      "kind": "episode",
       "platforms": [
         "ZEE5"
       ],

@@ -1079,37 +1079,6 @@
     }
   },
   {
-    "name": "Jungle Tales With Mowgli",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-09-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6aa4b6881ead1413382425a4",
-      "title": "Jungle Tales With Mowgli",
-      "platform": "JioHotStar",
-      "createdAt": "2026-09-12T02:18:48.886Z",
-      "genre": "Animation, Adventure",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-09-12",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-09-12T02:18:48.886Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Love Beyond Wicket",
     "language": "tamil",
     "type": "series",
@@ -1137,6 +1106,37 @@
       "type": "Series",
       "updatedAt": "2026-04-09T03:37:09.017Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/tC5K8MkLipwV9bIdJV9SQcCzgUF.jpg",
+      "verified": true
+    }
+  },
+  {
+    "name": "Jungle Tales With Mowgli",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-09-12",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6aa4b6881ead1413382425a4",
+      "title": "Jungle Tales With Mowgli",
+      "platform": "JioHotStar",
+      "createdAt": "2026-09-12T02:18:48.886Z",
+      "genre": "Animation, Adventure",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-09-12",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-09-12T02:18:48.886Z",
       "verified": true
     }
   },

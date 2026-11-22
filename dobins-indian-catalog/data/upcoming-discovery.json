@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T14:36:20.409472+04:00",
+  "generatedAt": "2026-11-22T19:04:08.129973+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 24,
@@ -10,17 +10,16 @@
       "telugu": 2
     },
     "byType": {
-      "series": 12,
-      "movie": 12
+      "series": 11,
+      "movie": 13
     },
     "byMatchState": {
       "published": 18,
       "unmatched": 6
     },
     "bySource": {
-      "https://www.themoviedb.org/tv/338390": 1,
       "https://www.dailyott.in/": 3,
-      "https://ottasia.com/ott-releases-this-week?country=IN": 13,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 14,
       "https://www.ottchecker.com/ott-releases/malayalam": 1,
       "https://www.keralatv.in/channel/ott/": 3,
       "https://cinebuds.com/ott-releases-this-week/": 4,
@@ -30,31 +29,6 @@
     }
   },
   "items": [
-    {
-      "title": "Apsara",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-22",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/338390"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "premiere",
-      "detail": null,
-      "matchId": "tt50063835",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
     {
       "title": "Bigg Boss Season 20",
       "language": "hindi",
@@ -219,6 +193,31 @@
       "catalog": "dobins_ta_series"
     },
     {
+      "title": "Revenge of Her : Evil Prevails",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-24",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/movie/1813874/revenge-of-her-evil-prevails?country=IN",
+      "matchId": "tmdb:1813874",
+      "matchState": "published",
+      "matchReason": "TMDB exact-title search + verified detail page",
+      "metadataComplete": true,
+      "metadataSource": "TMDB exact-title search + verified detail page",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_movie"
+    },
+    {
       "title": "Delhi 2021",
       "language": "hindi",
       "type": "movie",
@@ -378,7 +377,7 @@
       "metadataFields": {
         "poster": true,
         "description": true,
-        "genres": false,
+        "genres": true,
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
@@ -992,7 +991,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 15
+      "records": 16
     },
     {
       "source": "Vi weekly OTT calendar",
@@ -1097,7 +1096,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 117,
+      "records": 118,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1600,7 +1599,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 40,
+          "detectedRecords": 41,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1617,8 +1616,8 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 12,
-              "movieRecords": 8,
+              "records": 13,
+              "movieRecords": 9,
               "seriesRecords": 4
             },
             {
@@ -2331,7 +2330,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 40,
+      "detectedRecords": 41,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2348,8 +2347,8 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 12,
-          "movieRecords": 8,
+          "records": 13,
+          "movieRecords": 9,
           "seriesRecords": 4
         },
         {
