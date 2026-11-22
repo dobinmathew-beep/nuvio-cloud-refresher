@@ -7,7 +7,7 @@ on:
       - 'poster-date-service/**'
       - '.github/workflows/faster-poster-pipeline-tests.yml'
   push:
-    branches: [faster-poster-pipeline]
+    branches: [faster-poster-pipeline, 'fix/**']
     paths:
       - 'poster-date-service/**'
       - '.github/workflows/faster-poster-pipeline-tests.yml'
@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: faster-poster-pipeline
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
