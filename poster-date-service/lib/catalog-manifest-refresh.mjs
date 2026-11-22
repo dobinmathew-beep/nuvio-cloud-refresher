@@ -191,6 +191,24 @@ function unresolvedRequiredExtras(catalog) {
     });
 }
 
+export function isExplicitlyDeferredCatalogueCheckpoint(entry, catalog, scanGeneration) {
+  if (!entry || entry.status !== 'deferred' ||
+      entry.reason !== 'required-extra-options-unavailable' ||
+      entry.scanGeneration !== String(scanGeneration)) return false;
+  const expected = unresolvedRequiredExtras(catalog).sort();
+  const recorded = Array.isArray(entry.requiredExtras)
+    ? entry.requiredExtras.map(String).sort() : [];
+  return expected.length > 0 && expected.length === recorded.length &&
+    expected.every((name, index) => name === recorded[index]);
+}
+
+export function isCatalogueScanComplete(catalogues) {
+  return Array.isArray(catalogues) && catalogues.every(catalogue =>
+    !catalogue.error && !catalogue.truncated &&
+    (!catalogue.skipped || catalogue.skippedDuplicate === true || catalogue.deferred === true)
+  );
+}
+
 function catalogueCheckpointPath(fingerprint) {
   const key = createHash('sha256').update(fingerprint).digest('hex').slice(0, 24);
   return CATALOG_CHECKPOINT_DIR + '/' + key + '.json';
@@ -1008,13 +1026,20 @@ export async function getManifestCatalogRefreshDiagnostics() {
     ? checkpoint.completedCatalogues : {};
   const generation = checkpoint?.scanGeneration || null;
   const completedCurrent = new Set(Object.entries(completed)
-    .filter(([fingerprint, entry]) => inventory.has(fingerprint) && generation && entry?.scanGeneration === generation)
+    .filter(([fingerprint, entry]) => inventory.has(fingerprint) && generation &&
+      entry?.scanGeneration === generation && entry?.status !== 'deferred')
+    .map(([fingerprint]) => fingerprint));
+  const deferredCurrent = new Set(Object.entries(completed)
+    .filter(([fingerprint, entry]) => {
+      const item = inventory.get(fingerprint);
+      return Boolean(item && isExplicitlyDeferredCatalogueCheckpoint(entry, item.catalog, generation));
+    })
     .map(([fingerprint]) => fingerprint));
   const dynamic = new Set();
   const pending = [];
   for (const [fingerprint, item] of inventory) {
     if (completedCurrent.has(fingerprint)) continue;
-    if (unresolvedRequiredExtras(item.catalog).length) dynamic.add(fingerprint);
+    if (deferredCurrent.has(fingerprint) || unresolvedRequiredExtras(item.catalog).length) dynamic.add(fingerprint);
     else pending.push({ fingerprint, ...item });
   }
 
@@ -1055,8 +1080,10 @@ export async function getManifestCatalogRefreshDiagnostics() {
     uniqueCatalogueCount: inventory.size,
     duplicateDefinitions: rawCatalogueDefinitions - inventory.size,
     completedCatalogueCount: completedCurrent.size,
+    deferredCatalogueCount: deferredCurrent.size,
     pendingCatalogueCount: pending.length,
     dynamicCatalogueCount: dynamic.size,
+    discoveryComplete: checkpoint?.discoveryComplete === true,
     staleCompletionCount: staleCompletions,
     titleFileCount: Object.keys(checkpoint?.titleFiles || {}).length,
     durableQueue,
@@ -1225,11 +1252,52 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
         continue;
       }
 
+      const unresolvedExtras = unresolvedRequiredExtras(catalog);
       const saved = completedCatalogues[fingerprint];
-      if (queueOnly && (!saved || saved.scanGeneration !== scanGeneration)) {
+
+      if (unresolvedExtras.length) {
+        if (queueOnly && !isExplicitlyDeferredCatalogueCheckpoint(saved, catalog, scanGeneration)) {
+          throw new Error('Queue-drain refused: catalogue discovery checkpoint is incomplete for ' + fingerprint);
+        }
+        if (!queueOnly && !isExplicitlyDeferredCatalogueCheckpoint(saved, catalog, scanGeneration)) {
+          completedCatalogues[fingerprint] = {
+            source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
+            status: 'deferred', reason: 'required-extra-options-unavailable',
+            requiredExtras: [...unresolvedExtras].sort(), scanGeneration
+          };
+          checkpoint = {
+            ...checkpoint, version: 2, badgeRulesVersion: BADGE_RULES_VERSION,
+            scanGeneration, complete: false, completedCatalogues, titleFiles,
+            updatedAt: new Date().toISOString()
+          };
+          await lease?.assertOwned?.();
+          await writeJson(config, CHECKPOINT_PATH, checkpoint);
+        }
+        handledFingerprints.set(fingerprint, {
+          source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name
+        });
+        const skipped = {
+          source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
+          pages: 0, records: 0, metas: [], skipped: true, deferred: true,
+          skipReason: 'Requires user-supplied catalogue extras: ' + unresolvedExtras.join(', ')
+        };
+        catalogues.push(skipped);
+        updateRefreshProgress({
+          cataloguesDiscovered: catalogues.length,
+          cataloguesSkipped: catalogues.filter(c => c.skipped || c.skippedDuplicate).length
+        });
+        console.info('[catalog-skipped-dynamic]', JSON.stringify({
+          source: skipped.source, type: skipped.type, id: skipped.id,
+          name: skipped.name, requiredExtras: unresolvedExtras, checkpointed: true
+        }));
+        continue;
+      }
+
+      if (saved?.status === 'deferred') delete completedCatalogues[fingerprint];
+      if (queueOnly && (!saved || saved.status === 'deferred' || saved.scanGeneration !== scanGeneration)) {
         throw new Error('Queue-drain refused: catalogue discovery checkpoint is incomplete for ' + fingerprint);
       }
-      if (saved && saved.scanGeneration === scanGeneration) {
+      if (saved && saved.scanGeneration === scanGeneration && saved.status !== 'deferred') {
         const perCatalog = await readState(config, titleFiles[fingerprint] || catalogueCheckpointPath(fingerprint));
         if (perCatalog?.titles && typeof perCatalog.titles === 'object') {
           for (const [id, item] of Object.entries(perCatalog.titles)) {
@@ -1261,22 +1329,6 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
       }
 
       if (saved) delete completedCatalogues[fingerprint];
-
-      const unresolvedExtras = unresolvedRequiredExtras(catalog);
-      if (unresolvedExtras.length) {
-        const skipped = {
-          source: manifest.name, type: catalog.type, id: catalog.id, name: catalog.name,
-          pages: 0, records: 0, metas: [], skipped: true,
-          skipReason: 'Requires user-supplied catalogue extras: ' + unresolvedExtras.join(', ')
-        };
-        catalogues.push(skipped);
-        updateRefreshProgress({ cataloguesDiscovered: catalogues.length, cataloguesSkipped: catalogues.filter(c => c.skipped || c.skippedDuplicate).length });
-        console.info('[catalog-skipped-dynamic]', JSON.stringify({
-          source: skipped.source, type: skipped.type, id: skipped.id,
-          name: skipped.name, requiredExtras: unresolvedExtras
-        }));
-        continue;
-      }
 
       try {
         const result = await collectCatalog(manifest, catalog, config, fingerprint, lease, scanGeneration, forceRescanCatalogs);
@@ -1368,7 +1420,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     const legacy = await fetchJson('https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/catalog-added.json');
     for (const [key, timestamp] of Object.entries(legacy || {})) if (!index[key]) index[key] = timestamp;
   } catch {}
-  const scanComplete = catalogues.every(c => !c.error && !c.truncated);
+  const scanComplete = isCatalogueScanComplete(catalogues);
   if (queueOnly && !scanComplete) throw new Error('Queue-drain refused: saved discovery inventory is not complete');
   checkpoint = { ...checkpoint, discoveryComplete: scanComplete, updatedAt: new Date().toISOString() };
   await lease?.assertOwned?.();
