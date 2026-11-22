@@ -24,7 +24,9 @@ const LEDGER_DIR = '/catalog-state/poster-processing';
 const LEDGER_VERSION = 1;
 const BADGE_RULES_VERSION = 3;
 const LEDGER_SHARDS = '0123456789abcdef';
-const PREWARM_BATCH_SIZE = 2;
+const PREWARM_BATCH_SIZE = Math.max(2, Math.min(10, Number(process.env.CATALOG_PREWARM_BATCH_SIZE) || 10));
+const PAGE_CHECKPOINT_INTERVAL = 5;
+const CATALOG_CHECKPOINT_INTERVAL = 5;
 const PREWARM_CONCURRENCY = 1;
 const VERIFY_CONCURRENCY = 1;
 const CATALOGUE_CHECKPOINT_REUSE_TTL_MS = 24 * 60 * 60 * 1000;
@@ -116,8 +118,12 @@ async function readState(config, path = STATE_PATH) {
   }
 }
 async function writeJson(config, path, value) {
+  const serialized = JSON.stringify(value);
+  // readState uses a nonce to bypass stale CDN responses; skip identical uploads.
+  const existing = await readState(config, path);
+  if (existing && JSON.stringify(existing) === serialized) return { filePath: path, unchanged: true };
   const form = new FormData();
-  const bytes = Buffer.from(JSON.stringify(value));
+  const bytes = Buffer.from(serialized);
   form.set('file', new Blob([bytes], { type: 'application/json' }), path.split('/').pop());
   form.set('fileName', path.split('/').pop());
   form.set('folder', path.slice(0, path.lastIndexOf('/')));
@@ -218,6 +224,16 @@ export function excludeDeferredQueueItems(queueItems, deferredIds) {
 function catalogueCheckpointPath(fingerprint) {
   const key = createHash('sha256').update(fingerprint).digest('hex').slice(0, 24);
   return CATALOG_CHECKPOINT_DIR + '/' + key + '.json';
+}
+
+export function shouldPersistCataloguePageCheckpoint(pages, done, interval = PAGE_CHECKPOINT_INTERVAL) {
+  const safeInterval = Math.max(1, Math.floor(Number(interval) || PAGE_CHECKPOINT_INTERVAL));
+  return done === true || (Number.isInteger(pages) && pages > 0 && pages % safeInterval === 0);
+}
+
+export function shouldPersistCatalogueInventoryCheckpoint(completedCount, interval = CATALOG_CHECKPOINT_INTERVAL) {
+  const safeInterval = Math.max(1, Math.floor(Number(interval) || CATALOG_CHECKPOINT_INTERVAL));
+  return Number.isInteger(completedCount) && completedCount > 0 && completedCount % safeInterval === 0;
 }
 
 export function canReuseCatalogueCheckpoint(existing, scanGeneration, forceRescan = false, now = Date.now()) {
@@ -324,14 +340,16 @@ async function collectCatalog(manifest, catalog, config, fingerprint, lease, sca
     lastPageNewIds = newIds;
     pages++;
     const done = batch.length < PAGE_SIZE || (page > 0 && newIds === 0) || page + 1 >= MAX_PAGES;
-    // Keep each catalogue's resumable page state separate. This avoids
-    // rewriting the entire multi-source title index after every catalogue.
-    await lease?.assertOwned?.();
-    await writeJson(config, path, {
-      version: 1, scanGeneration, complete: done, nextPage: page + 1, pages, records: uniqueRecords,
-      updatedAt: new Date().toISOString(),
-      seenPageIds: [...seenPageIds], titles: Object.fromEntries(titles)
-    });
+    // Persist every fifth page and always persist completion. If interrupted
+    // between checkpoints, at most four pages are safely re-fetched on resume.
+    if (shouldPersistCataloguePageCheckpoint(pages, done)) {
+      await lease?.assertOwned?.();
+      await writeJson(config, path, {
+        version: 1, scanGeneration, complete: done, nextPage: page + 1, pages, records: uniqueRecords,
+        updatedAt: new Date().toISOString(),
+        seenPageIds: [...seenPageIds], titles: Object.fromEntries(titles)
+      });
+    }
     if (pages % 25 === 0) console.log('[catalog-page-progress]', JSON.stringify({ source: manifest.name, id: catalog.id, pages, uniqueRecords, supportedTitles: titles.size }));
     if (done) break;
   }
@@ -1396,8 +1414,12 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
           complete: false, updatedAt: new Date().toISOString(),
           completedCatalogues, titleFiles
         };
-        await lease?.assertOwned?.();
-        await writeJson(config, CHECKPOINT_PATH, checkpoint);
+        // The per-catalogue file is durable immediately. Coalesce only the
+        // compact inventory pointer; an interrupted catalogue can be replayed.
+        if (shouldPersistCatalogueInventoryCheckpoint(Object.keys(completedCatalogues).length)) {
+          await lease?.assertOwned?.();
+          await writeJson(config, CHECKPOINT_PATH, checkpoint);
+        }
         const elapsedMinutes = Math.max((Date.now() - progressStartedMs) / 60000, 1 / 60);
         updateRefreshProgress({
           cataloguesDiscovered: catalogues.length, cataloguesScanned: cataloguesScannedThisRun,
