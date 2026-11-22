@@ -59,9 +59,13 @@ async function readJson(config, path) {
 }
 
 async function writeJson(config, path, value) {
+  const serialized = JSON.stringify(value);
+  // Cache-busted read prevents duplicate ImageKit versions on identical retries.
+  const existing = await readJson(config, path);
+  if (existing && JSON.stringify(existing) === serialized) return { filePath: path, unchanged: true };
   const fileName = path.split('/').pop();
   const form = new FormData();
-  form.set('file', new Blob([JSON.stringify(value)], { type: 'application/json' }), fileName);
+  form.set('file', new Blob([serialized], { type: 'application/json' }), fileName);
   form.set('fileName', fileName);
   form.set('folder', path.slice(0, path.lastIndexOf('/')));
   form.set('useUniqueFileName', 'false');
