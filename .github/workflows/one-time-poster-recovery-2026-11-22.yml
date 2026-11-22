@@ -14,8 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 350
     steps:
-      - name: Resume discovery from existing checkpoints and validate all three manifests
-        id: discovery
+      - name: Resume or observe discovery from existing checkpoints; validate all three manifests
         shell: bash
         env:
           SERVICE: https://great-indian-upcoming-posters.onrender.com
@@ -25,15 +24,24 @@ jobs:
           test -n "$TOKEN"
           start="$(mktemp)"; status="$(mktemp)"; diag="$(mktemp)"
           trap 'rm -f "$start" "$status" "$diag"' EXIT
-          code="$(curl --silent --show-error --max-time 60 -o "$start" -w '%{http_code}' -X POST "$SERVICE/catalog-refresh?mode=discovery-only" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
-          cat "$start" | tee -a "$GITHUB_STEP_SUMMARY"
-          test "$code" = "202"
-          node -e "const j=require(process.argv[1]);if(j.status!=='accepted'||!j.jobId)process.exit(2)" "$start"
-          deadline=$((SECONDS+21000)); terminal=""
+          code="$(curl --silent --show-error --max-time 45 -o "$status" -w '%{http_code}' "$SERVICE/catalog-refresh/status" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
+          test "$code" = "200"
+          terminal="$(node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));process.stdout.write(j.status||'unknown')" "$status")"
+          if [ "$terminal" = "idle" ]; then
+            code="$(curl --silent --show-error --max-time 60 -o "$start" -w '%{http_code}' -X POST "$SERVICE/catalog-refresh?mode=discovery-only" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
+            cat "$start" | tee -a "$GITHUB_STEP_SUMMARY"
+            test "$code" = "202"
+            node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));if(j.status!=='accepted'||!j.jobId)process.exit(2)" "$start"
+          elif [ "$terminal" != "running" ] && [ "$terminal" != "completed" ]; then
+            cat "$status" | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "Unexpected pre-existing discovery status: $terminal" >&2
+            exit 1
+          fi
+          deadline=$((SECONDS+21000))
           while [ "$SECONDS" -lt "$deadline" ]; do
             code="$(curl --silent --show-error --max-time 45 -o "$status" -w '%{http_code}' "$SERVICE/catalog-refresh/status" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
             if [ "$code" = "200" ]; then
-              terminal="$(node -e "const j=require(process.argv[1]);process.stdout.write(j.status||'unknown')" "$status")"
+              terminal="$(node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));process.stdout.write(j.status||'unknown')" "$status")"
               if [ "$terminal" = "completed" ]; then cat "$status" | tee -a "$GITHUB_STEP_SUMMARY"; break; fi
               if [ "$terminal" = "failed" ] || [ "$terminal" = "coordination-unavailable" ] || [ "$terminal" = "paused" ]; then cat "$status" | tee -a "$GITHUB_STEP_SUMMARY"; exit 1; fi
             fi
@@ -43,7 +51,7 @@ jobs:
           code="$(curl --silent --show-error --max-time 45 -o "$diag" -w '%{http_code}' "$SERVICE/catalog-refresh/diagnostics" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
           test "$code" = "200"
           cat "$diag" | tee -a "$GITHUB_STEP_SUMMARY"
-          node -e "const j=require(process.argv[1]);if(j.configuredManifestCount!==3||j.discoveryComplete!==true||j.pendingCatalogueCount!==0||j.completedCatalogueCount+j.deferredCatalogueCount!==j.uniqueCatalogueCount) {console.error('Discovery gate failed',j);process.exit(2)};console.log('Three-manifest discovery gate passed:',JSON.stringify({manifests:j.configuredManifestCount,generation:j.scanGeneration,completed:j.completedCatalogueCount,deferred:j.deferredCatalogueCount,unique:j.uniqueCatalogueCount,queue:j.durableQueue}))" "$diag"
+          node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));if(j.configuredManifestCount!==3||j.discoveryComplete!==true||j.pendingCatalogueCount!==0||j.completedCatalogueCount+j.deferredCatalogueCount!==j.uniqueCatalogueCount) {console.error('Discovery gate failed',j);process.exit(2)};console.log('Three-manifest discovery gate passed:',JSON.stringify({manifests:j.configuredManifestCount,generation:j.scanGeneration,completed:j.completedCatalogueCount,deferred:j.deferredCatalogueCount,unique:j.uniqueCatalogueCount,queue:j.durableQueue}))" "$diag"
       - name: Drain the preserved durable poster queue and wait for ImageKit verification
         shell: bash
         env:
@@ -53,15 +61,24 @@ jobs:
           set -euo pipefail
           start="$(mktemp)"; status="$(mktemp)"; diag="$(mktemp)"
           trap 'rm -f "$start" "$status" "$diag"' EXIT
-          code="$(curl --silent --show-error --max-time 60 -o "$start" -w '%{http_code}' -X POST "$SERVICE/catalog-refresh?mode=queue-drain" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
-          cat "$start" | tee -a "$GITHUB_STEP_SUMMARY"
-          test "$code" = "202"
-          node -e "const j=require(process.argv[1]);if(j.status!=='accepted'||!j.jobId)process.exit(2)" "$start"
-          deadline=$((SECONDS+21000)); terminal=""
+          code="$(curl --silent --show-error --max-time 45 -o "$status" -w '%{http_code}' "$SERVICE/catalog-refresh/status" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
+          test "$code" = "200"
+          terminal="$(node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));process.stdout.write(j.status||'unknown')" "$status")"
+          if [ "$terminal" = "idle" ]; then
+            code="$(curl --silent --show-error --max-time 60 -o "$start" -w '%{http_code}' -X POST "$SERVICE/catalog-refresh?mode=queue-drain" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
+            cat "$start" | tee -a "$GITHUB_STEP_SUMMARY"
+            test "$code" = "202"
+            node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));if(j.status!=='accepted'||!j.jobId)process.exit(2)" "$start"
+          elif [ "$terminal" != "running" ] && [ "$terminal" != "completed" ]; then
+            cat "$status" | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "Unexpected queue-drain status: $terminal" >&2
+            exit 1
+          fi
+          deadline=$((SECONDS+21000))
           while [ "$SECONDS" -lt "$deadline" ]; do
             code="$(curl --silent --show-error --max-time 45 -o "$status" -w '%{http_code}' "$SERVICE/catalog-refresh/status" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
             if [ "$code" = "200" ]; then
-              terminal="$(node -e "const j=require(process.argv[1]);process.stdout.write(j.status||'unknown')" "$status")"
+              terminal="$(node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));process.stdout.write(j.status||'unknown')" "$status")"
               if [ "$terminal" = "completed" ]; then cat "$status" | tee -a "$GITHUB_STEP_SUMMARY"; break; fi
               if [ "$terminal" = "failed" ] || [ "$terminal" = "coordination-unavailable" ] || [ "$terminal" = "paused" ]; then cat "$status" | tee -a "$GITHUB_STEP_SUMMARY"; exit 1; fi
             fi
@@ -71,4 +88,4 @@ jobs:
           code="$(curl --silent --show-error --max-time 45 -o "$diag" -w '%{http_code}' "$SERVICE/catalog-refresh/diagnostics" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
           test "$code" = "200"
           cat "$diag" | tee -a "$GITHUB_STEP_SUMMARY"
-          node -e "const j=require(process.argv[1]);const q=j.durableQueue||{};const c=q.counts||q;if(j.discoveryComplete!==true||q.status==='unavailable')process.exit(2);console.log('Final ImageKit durable queue readback:',JSON.stringify({generation:j.scanGeneration,queue:q,progress:j.progress}));" "$diag"
+          node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));const q=j.durableQueue||{};if(j.discoveryComplete!==true||q.status==='unavailable')process.exit(2);console.log('Final ImageKit durable queue readback:',JSON.stringify({generation:j.scanGeneration,queue:q,progress:j.progress}));" "$diag"
