@@ -10,8 +10,12 @@ test('storage report is read-only and reports empty inventory safely', async () 
   process.env.IMAGEKIT_URL_ENDPOINT = 'https://ik.imagekit.io/testaccount';
   process.env.IMAGEKIT_PRIVATE_KEY = 'test-private-key';
   globalThis.fetch = async (input, options = {}) => {
-    calls.push({ url: String(input), method: options.method || 'GET' });
-    return new Response('[]', {
+    const url = String(input);
+    calls.push({ url, method: options.method || 'GET' });
+    const body = url.includes('/accounts/usage')
+      ? JSON.stringify({ mediaLibraryStorageBytes: 1234 })
+      : '[]';
+    return new Response(body, {
       status: 200,
       headers: { 'content-type': 'application/json' }
     });
@@ -21,6 +25,8 @@ test('storage report is read-only and reports empty inventory safely', async () 
     assert.equal(report.mode, 'read-only-dry-run');
     assert.equal(report.deletionEnabled, false);
     assert.equal(report.accountFileCount, 0);
+    assert.equal(report.accountBytes, 1234);
+    assert.equal(report.accountBytesSource, 'imagekit-account-usage-api');
     assert.equal(report.candidateCount, 0);
     assert.equal(report.candidateBytes, 0);
     assert.ok(calls.length >= 2);
