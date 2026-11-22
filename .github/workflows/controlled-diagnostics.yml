@@ -29,3 +29,5 @@ jobs:
 # second diagnostic read
 
 # verify live incremental scan progress
+
+# capture bounded-read incremental scan diagnostics
