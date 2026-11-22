@@ -32,26 +32,6 @@
     }
   },
   {
-    "name": "Pendulum",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-11-22",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.keralatv.in/channel/ott/"
-    ],
-    "platforms": [
-      "Netflix"
-    ],
-    "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
-    "sourceRecord": {
-      "title": "Pendulum",
-      "releaseDate": "2026-11-22",
-      "source": "https://www.keralatv.in/channel/ott/",
-      "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
-    }
-  },
-  {
     "name": "Satyameva",
     "language": "malayalam",
     "type": "series",
@@ -108,6 +88,26 @@
       "title": "Hatela Gang",
       "releaseDate": "2026-11-28",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
+    "name": "Pendulum",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-11-22",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.keralatv.in/channel/ott/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
+    "sourceRecord": {
+      "title": "Pendulum",
+      "releaseDate": "2026-11-22",
+      "source": "https://www.keralatv.in/channel/ott/",
+      "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
     }
   },
   {
@@ -1630,8 +1630,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win",
-      "Netflix"
+      "Netflix",
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {

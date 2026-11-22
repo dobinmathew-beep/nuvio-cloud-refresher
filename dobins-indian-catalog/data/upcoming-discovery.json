@@ -1,26 +1,27 @@
 {
-  "generatedAt": "2026-11-22T11:13:41.519134+04:00",
+  "generatedAt": "2026-11-22T12:40:20.731808+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 22,
+    "total": 23,
     "byLanguage": {
       "hindi": 13,
-      "malayalam": 5,
+      "malayalam": 6,
       "tamil": 2,
       "telugu": 2
     },
     "byType": {
       "series": 11,
-      "movie": 11
+      "movie": 12
     },
     "byMatchState": {
-      "published": 15,
+      "published": 16,
       "unmatched": 6,
       "metadata_incomplete": 1
     },
     "bySource": {
       "https://www.dailyott.in/": 3,
       "https://ottasia.com/ott-releases-this-week?country=IN": 13,
+      "https://www.ottchecker.com/ott-releases/malayalam": 1,
       "https://www.keralatv.in/channel/ott/": 3,
       "https://cinebuds.com/ott-releases-this-week/": 4,
       "https://api.tvmaze.com/schedule/web": 1,
@@ -82,6 +83,34 @@
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "Bouma",
+      "language": "malayalam",
+      "type": "movie",
+      "releaseDate": "2026-11-22",
+      "platforms": [
+        "Amazon Prime Video",
+        "ZEE5"
+      ],
+      "sources": [
+        "https://www.ottchecker.com/ott-releases/malayalam"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTChecker explicit streaming-since date",
+      "detail": "https://www.ottchecker.com/movie/bouma-2026",
+      "matchId": "tt44878818",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_ml_movie"
     },
     {
       "title": "Iniyum",
@@ -629,11 +658,30 @@
     "counts": {
       "total": 10,
       "byType": {
-        "movie": 4,
-        "series": 6
+        "series": 6,
+        "movie": 4
       }
     },
     "items": [
+      {
+        "name": "Satyameva",
+        "language": "malayalam",
+        "type": "series",
+        "ottDate": "2026-11-27",
+        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+        "sources": [
+          "https://ottasia.com/ott-releases-this-week?country=IN"
+        ],
+        "platforms": [
+          "ZEE5"
+        ],
+        "detail": "https://ottasia.com/title/tv/342403/satyameva?country=IN",
+        "sourceRecord": {
+          "title": "Satyameva",
+          "releaseDate": "2026-11-27",
+          "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+        }
+      },
       {
         "name": "Pendulum",
         "language": "malayalam",
@@ -652,25 +700,6 @@
           "releaseDate": "2026-11-22",
           "source": "https://www.keralatv.in/channel/ott/",
           "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
-        }
-      },
-      {
-        "name": "Satyameva",
-        "language": "malayalam",
-        "type": "series",
-        "ottDate": "2026-11-27",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://ottasia.com/ott-releases-this-week?country=IN"
-        ],
-        "platforms": [
-          "ZEE5"
-        ],
-        "detail": "https://ottasia.com/title/tv/342403/satyameva?country=IN",
-        "sourceRecord": {
-          "title": "Satyameva",
-          "releaseDate": "2026-11-27",
-          "source": "https://ottasia.com/ott-releases-this-week?country=IN"
         }
       },
       {
@@ -993,7 +1022,7 @@
       "source": "OTTChecker Malayalam recent releases",
       "url": "https://www.ottchecker.com/ott-releases/malayalam",
       "state": "live",
-      "records": 15
+      "records": 16
     },
     {
       "source": "OTTChecker Tamil recent releases",
@@ -1043,7 +1072,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 116,
+      "records": 117,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1080,7 +1109,7 @@
             "keralatv.in",
             "ottasia.com"
           ],
-          "detectedRecords": 27,
+          "detectedRecords": 28,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1169,8 +1198,8 @@
               "url": "https://www.ottchecker.com/ott-releases/malayalam",
               "state": "live",
               "languageState": "records_found",
-              "records": 15,
-              "movieRecords": 15,
+              "records": 16,
+              "movieRecords": 16,
               "seriesRecords": 0
             },
             {
@@ -1811,7 +1840,7 @@
         "keralatv.in",
         "ottasia.com"
       ],
-      "detectedRecords": 27,
+      "detectedRecords": 28,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -1900,8 +1929,8 @@
           "url": "https://www.ottchecker.com/ott-releases/malayalam",
           "state": "live",
           "languageState": "records_found",
-          "records": 15,
-          "movieRecords": 15,
+          "records": 16,
+          "movieRecords": 16,
           "seriesRecords": 0
         },
         {
