@@ -719,6 +719,9 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   }
   const queueOnly = mode === 'queue-drain';
   const discoveryOnly = mode === 'discovery-only';
+  if (mode !== 'combined' && forceReprocess) {
+    throw new Error('Force reprocessing is not permitted in staged discovery or queue-drain modes');
+  }
   await lease?.assertOwned?.();
   const startedAt = new Date().toISOString();
   const configured = MANIFEST_KEYS.filter(key => process.env[key]);
@@ -1085,6 +1088,11 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   // Publish a durable, generation-scoped queue to ImageKit before any poster
   // work begins. The queue manifest is committed last; each chunk is checksummed.
   // A restart can reload this exact candidate set without losing discovered work.
+  if (queueOnly) {
+    // A drain is never allowed to manufacture a new queue from a partial or
+    // newly scanned inventory. It must consume the already published snapshot.
+    await loadDurableQueueSnapshot(scanGeneration);
+  }
   const queueItems = items.map(item => ({ ...item, queueFingerprint: itemFingerprint(item) }));
   const durableQueueManifest = await persistDurableQueueSnapshot(queueItems, scanGeneration, {
     assertOwned: () => lease?.assertOwned?.()
