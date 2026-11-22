@@ -539,14 +539,31 @@ export default async function handler(req, res) {
       return res.end(req.method === 'HEAD' ? undefined : original.bytes);
     }
 
-    // Do not serve an ImageKit asset from an availability-only fast path.
-    // GET requests must pass badge-state validation before a cached poster is
-    // reused; otherwise a stale Just Added chip can remain visible indefinitely.
-    // HEAD probes above remain availability-only because they return no artwork.
+    // HEAD probes above remain availability-only. GET cache hits below require
+    // badge-state validation before any ImageKit artwork is reused.
 
     const immediateBadge = String(req.query?.badge || '').toLowerCase() === 'just-added' ? 'just-added' : '';
     const immediateVersion = String(req.query?.v || '');
     const immediateFallback = String(req.query?.fallback || '');
+
+    // The no-fallback route can stay fast, but it must not trust mere
+    // ImageKit availability. Compare the stored badge state with the current
+    // catalogue decision before reusing the cached bytes.
+    let expectedJustAdded = immediateBadge === 'just-added';
+    if (!expectedJustAdded) {
+      try { expectedJustAdded = (await isCatalogRecentlyAdded([id])) === true; }
+      catch (error) {
+        console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
+      }
+    }
+    const cachedValidation = await readPosterValidationMetadata(id);
+    const cachedReleaseInfo = cachedValidation?.releaseDate
+      ? { date: cachedValidation.releaseDate, kind: cachedValidation.releaseKind || 'premiere' }
+      : null;
+    const validatedCachedAsset = await findFreshImageKitAsset(id, cachedReleaseInfo, expectedJustAdded);
+    if (validatedCachedAsset) {
+      return redirectToImageKit(res, validatedCachedAsset, cachedReleaseInfo, expectedJustAdded);
+    }
 
     // Explicit catalogue fallbacks still use the validated renderer path.
     // An ImageKit copy is valid only while TMDB still confirms a future release.
