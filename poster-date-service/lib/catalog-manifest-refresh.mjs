@@ -2,7 +2,7 @@ import { Buffer } from 'node:buffer';
 import { createHash } from 'node:crypto';
 import { withRefreshLease, publishRefreshProgress } from './refresh-coordination.mjs';
 import { initializeImageKitStorageSnapshot } from './imagekit-storage.mjs';
-import { persistDurableQueueSnapshot, loadDurableQueueSnapshot } from './imagekit-durable-queue.mjs';
+import { persistDurableQueueSnapshot, loadDurableQueueSnapshot, claimDurableQueueBatch, settleDurableQueueBatch } from './imagekit-durable-queue.mjs';
 import { createBoundedTaskQueue, refreshResourcePolicy } from './refresh-backpressure.mjs';
 import { classifyPrewarmResponse, isFreshVerifiedRecord, isSourceProbeCoolingDown, isSourceUnavailableCoolingDown, needsResumeVerification, SOURCE_PROBE_RETRY_COOLDOWN_MS, SOURCE_UNAVAILABLE_COOLDOWN_MS } from './catalog-prewarm-policy.mjs';
 
@@ -1171,7 +1171,20 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
         await verificationQueue.drain();
       }
       await lease?.assertOwned?.();
-      const batch = shardItems.slice(offset, offset + PREWARM_BATCH_SIZE);
+      const batchCandidates = shardItems.slice(offset, offset + PREWARM_BATCH_SIZE);
+      const queueOwner = String(lease?.jobId || 'catalog-refresh');
+      const claimedIds = await claimDurableQueueBatch(
+        scanGeneration, batchCandidates.map(item => item.id), queueOwner,
+        { assertOwned: () => lease?.assertOwned?.() }
+      );
+      const claimedSet = new Set(claimedIds);
+      const batch = batchCandidates.filter(item => claimedSet.has(item.id));
+      if (!batch.length) {
+        console.info('[durable-poster-queue-batch-skipped]', JSON.stringify({
+          scanGeneration, shard, offset, reason: 'already-recorded-or-actively-claimed'
+        }));
+        continue;
+      }
       const reusable = await Promise.all(batch.map(async item => {
         if (forceReprocess) return false;
         const record = records[item.id];
@@ -1269,6 +1282,12 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
         }
       }
 
+      // The poster ledger is the completion record. Acknowledge the queue only
+      // after any changed ledger shard has been durably written to ImageKit.
+      await settleDurableQueueBatch(
+        scanGeneration, batch.map(item => item.id), queueOwner, 'recorded',
+        { assertOwned: () => lease?.assertOwned?.() }
+      );
       batchesProcessed++;
       postersVisited += batch.length;
       if (global.gc) global.gc();
