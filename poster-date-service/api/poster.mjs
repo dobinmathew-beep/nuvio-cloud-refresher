@@ -1,6 +1,6 @@
 import { upcomingRelease, hasPastDigitalRelease, validImdbId } from '../lib/release-dates.mjs';
 import { validCatalogPosterFallback } from '../lib/catalog-poster-fallback.mjs';
-import { renderUpcomingBadge, renderJustAddedBadge, removeExistingDateBadge } from '../lib/render-poster.mjs';
+import { renderUpcomingBadge, renderJustAddedBadge, removeExistingDateBadge, removeExistingJustAddedBadge } from '../lib/render-poster.mjs';
 import { inspectExistingPosterBadges, terminateOcrWorker } from '../lib/coming-tag.mjs';
 import { isCatalogRecentlyAdded, resolveJustAddedDecision } from '../lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from '../lib/catalog-upcoming.mjs';
@@ -354,10 +354,9 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
   } catch (error) {
     console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
   }
-  // The catalogue's recent-add index is authoritative for whether to add
-  // our Just Added overlay. Do not OCR every BetterPosters source when the
-  // catalogue says false: any badge already baked into the source bytes remains
-  // visible, while this avoids a costly Tesseract pass for nearly every title.
+  // The catalogue's recent-add index is authoritative for whether a Just Added
+  // badge may remain visible. When it says false, remove an OCR-detected source
+  // chip from the returned artwork; never trust BetterPosters' embedded label.
 
   const release = knownRelease === undefined ? await upcomingRelease(id) : knownRelease;
   // A Coming/New Episode date owns the badge slot. Any source or catalog
@@ -387,15 +386,15 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
     // Episode chip baked into provider artwork instead of preserving it.
     const sourceBadges = await inspectSourceBadges();
     const staleDateBadge = sourceBadges.hasDateBadge;
+    const staleJustAddedBadge = sourceBadges.hasJustAddedBadge && !shouldRenderJustAdded;
     if (staleDateBadge) {
-      const sourceJustAdded = sourceBadges.hasJustAddedBadge;
       output = await removeExistingDateBadge(output, 0.105);
-      if (sourceJustAdded && !shouldRenderJustAdded) {
-        shouldRenderJustAdded = true;
-        justAddedSource = 'source-tag-preserved-after-stale-date-removal';
-      }
       dateStatus = 'stale-source-date-removed';
-      console.info('[poster-stale-date-badge-removed]', JSON.stringify({ imdbId: id, justAddedPreserved: shouldRenderJustAdded }));
+      console.info('[poster-stale-date-badge-removed]', JSON.stringify({ imdbId: id }));
+    } else if (staleJustAddedBadge) {
+      output = await removeExistingJustAddedBadge(output, 0.105);
+      dateStatus = 'stale-source-just-added-removed';
+      console.info('[poster-stale-just-added-badge-removed]', JSON.stringify({ imdbId: id, source: original.source }));
     }
   }
 
