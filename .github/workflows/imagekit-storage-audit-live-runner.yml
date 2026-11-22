@@ -1,0 +1,39 @@
+name: Run read-only ImageKit storage audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/imagekit-storage-audit-live-runner.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out storage audit implementation
+        uses: actions/checkout@v4
+        with:
+          ref: imagekit-storage-audit-dedup
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run read-only ImageKit inventory and deletion analysis
+        working-directory: poster-date-service
+        env:
+          IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
+          IMAGEKIT_PRIVATE_KEY: ${{ secrets.IMAGEKIT_PRIVATE_KEY }}
+          IMAGEKIT_AUDIT_REPORT_PATH: ../reports/imagekit-storage-deletion-report-live.json
+        run: node scripts/imagekit-storage-audit-report.mjs
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: imagekit-storage-deletion-report
+          path: reports/imagekit-storage-deletion-report-live.json
+          if-no-files-found: error
+          retention-days: 14
