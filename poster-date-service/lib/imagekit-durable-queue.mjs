@@ -94,6 +94,7 @@ export async function persistDurableQueueSnapshot(items, scanGeneration, options
   const existing = await readJson(config, folder + '/manifest.json');
   if (existing) {
     const validated = await loadDurableQueueSnapshot(scanGeneration, { config });
+    await initializeDurableQueueState(scanGeneration, validated.items.map(item => item.id), { config, assertOwned: options.assertOwned });
     return validated.manifest;
   }
   const chunkEntries = [];
