@@ -1,19 +1,19 @@
 {
-  "checked_at": "2026-11-22T19:34:36.704456+04:00",
+  "checked_at": "2026-11-22T20:59:52.500301+04:00",
   "results": [
     {
       "component": "media",
-      "due": "2026-11-22T18:00:00+04:00",
-      "state": "fresh"
+      "due": "2026-11-22T20:00:00+04:00",
+      "state": "catch-up-dispatched"
     },
     {
       "component": "addon",
-      "due": "2026-11-22T18:00:00+04:00",
-      "state": "fresh"
+      "due": "2026-11-22T20:00:00+04:00",
+      "state": "catch-up-dispatched"
     },
     {
       "component": "epg",
-      "due": "2026-11-22T18:00:00+04:00",
+      "due": "2026-11-22T20:00:00+04:00",
       "state": "fresh"
     }
   ],
