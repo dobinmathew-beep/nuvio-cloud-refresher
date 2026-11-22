@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 
 const SCHEMA_VERSION = 1;
-const validImdbId = value => /^tt\\d{7,10}$/.test(String(value || ''));
+const validImdbId = value => /^tt\d{7,10}$/.test(String(value || ''));
 
 export function posterFingerprint(bytes) {
   if (!Buffer.isBuffer(bytes) && !(bytes instanceof Uint8Array)) {
