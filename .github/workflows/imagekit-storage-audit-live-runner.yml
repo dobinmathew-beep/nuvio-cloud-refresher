@@ -2,6 +2,12 @@ name: Run read-only ImageKit storage audit
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "reports/imagekit-live-audit-trigger.md"
+      - ".github/workflows/imagekit-storage-audit-live-runner.yml"
   push:
     branches:
       - main
