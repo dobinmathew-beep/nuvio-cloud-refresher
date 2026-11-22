@@ -14,7 +14,7 @@ function mockImageKit(t) {
   const files = new Map();
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async (input, init = {}) => {
-    const url = new URL(typeof input === 'string' ? input : input.url);
+    const url = new URL(typeof input === 'string' || input instanceof URL ? input : input.url);
     if (url.hostname === 'upload.imagekit.io') {
       const form = init.body;
       const path = form.get('folder') + '/' + form.get('fileName');
