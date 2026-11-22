@@ -388,12 +388,22 @@ function imageKitStorageId(id) {
   if (id.startsWith('tvmaze:')) return 'tvmaze-' + id.slice(7);
   return id;
 }
-async function checkImageKit(id) {
+async function checkImageKit(idOrUrl) {
   const endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\/$/, '');
   if (!endpoint) return false;
   try {
-    const storageId = imageKitStorageId(id);
-    const verificationUrl = endpoint + '/posters/' + encodeURIComponent(storageId) + '.jpg';
+    let verificationUrl;
+    if (/^https:\/\//i.test(String(idOrUrl || ''))) {
+      const supplied = new URL(String(idOrUrl));
+      const expected = new URL(endpoint);
+      const posterPrefix = expected.pathname.replace(/\/$/, '') + '/posters/';
+      if (supplied.origin !== expected.origin || !supplied.pathname.startsWith(posterPrefix) ||
+          !/\.jpe?g$/i.test(supplied.pathname)) return false;
+      verificationUrl = supplied.toString();
+    } else {
+      const storageId = imageKitStorageId(String(idOrUrl));
+      verificationUrl = endpoint + '/posters/' + encodeURIComponent(storageId) + '.jpg';
+    }
     const response = await fetch(verificationUrl, { method: 'HEAD', cache: 'no-store', signal: AbortSignal.timeout(6000) });
     return response.ok && (response.headers.get('content-type') || '').toLowerCase().startsWith('image/');
   } catch { return false; }
@@ -470,14 +480,19 @@ async function prewarm(item, knownImageKitCheck = null) {
       return { id: item.id, status: 'source-redirect', error: 'Poster service redirected to its source provider' };
     }
     if (decision.status === 'upload-pending') {
-      // One quick confirmation prevents duplicate uploads; CDN propagation is
-      // then handled by the bounded asynchronous verifier, not this serial lane.
-      if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit', posterStatus };
+      // TMDB/TVmaze routes may resolve to an IMDb-keyed ImageKit asset. Verify
+      // the exact redirected CDN URL rather than a synthetic tmdb-/tvmaze- key.
+      let verificationUrl = null;
       let locationDetails = null;
       try {
         const parsedLocation = new URL(location);
         locationDetails = { host: parsedLocation.host, path: parsedLocation.pathname };
+        const configured = new URL(imageKitBase);
+        const prefix = configured.pathname.replace(/\/$/, '') + '/';
+        if (parsedLocation.origin === configured.origin && parsedLocation.pathname.startsWith(prefix) &&
+            /\.jpe?g$/i.test(parsedLocation.pathname)) verificationUrl = parsedLocation.toString();
       } catch {}
+      if (await checkImageKit(verificationUrl || item.id)) return { id: item.id, status: 'imagekit-hit', posterStatus };
       console.info('[catalog-prewarm-upload-pending]', JSON.stringify({
         id: item.id,
         posterServiceHost: new URL(endpoint).host,
@@ -492,6 +507,7 @@ async function prewarm(item, knownImageKitCheck = null) {
       }));
       return {
         id: item.id, status: 'upload-pending', posterStatus,
+        verificationUrl,
         verificationTimeoutMs: decision.verificationTimeoutMs,
         uploadAccepted: decision.reason === 'imagekit-upload-pending',
         error: 'Upload outcome requires asynchronous ImageKit visibility verification'
@@ -968,7 +984,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   // two minutes so propagation can finish without risking a duplicate.
   for (let offset = 0; offset < pendingResumeItems.length; offset += PREFLIGHT_HEAD_CONCURRENCY) {
     const batch = pendingResumeItems.slice(offset, offset + PREFLIGHT_HEAD_CONCURRENCY);
-    const checks = await Promise.all(batch.map(({ item }) => checkImageKit(item.id)));
+    const checks = await Promise.all(batch.map(({ item, record }) => checkImageKit(record?.verificationUrl || item.id)));
     for (let index = 0; index < batch.length; index++) {
       const { item, record } = batch[index];
       const shard = ledgerShard(item.id);
@@ -1081,7 +1097,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     const verifyPendingBatch = async pendingItems => {
       const verificationPolicy = refreshResourcePolicy(process.memoryUsage().rss / (1024 * 1024));
       const verification = await runPool(pendingItems, async item => {
-        if (await waitForImageKit(item.id, item.verificationTimeoutMs || 90000)) {
+        if (await waitForImageKit(item.verificationUrl || item.id, item.verificationTimeoutMs || 90000)) {
           records[item.id] = ledgerRecord(item, 'verified', {
             verifiedAt: new Date().toISOString(),
             verification: 'imagekit-head-confirmed'
@@ -1162,9 +1178,10 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
                 posterStatus: result.posterStatus || null,
                 verificationTimeoutMs: result.verificationTimeoutMs || 90000,
                 uploadAccepted: result.uploadAccepted === true,
+                verificationUrl: result.verificationUrl || null,
                 pendingSince: new Date().toISOString()
               });
-              pendingItems.push({ ...item, verificationTimeoutMs: result.verificationTimeoutMs || 90000, uploadAccepted: result.uploadAccepted === true });
+              pendingItems.push({ ...item, verificationUrl: result.verificationUrl || null, verificationTimeoutMs: result.verificationTimeoutMs || 90000, uploadAccepted: result.uploadAccepted === true });
               uploadPending++;
             } else if (result.status === 'source-unavailable') {
               records[item.id] = ledgerRecord(item, 'source-unavailable', {
