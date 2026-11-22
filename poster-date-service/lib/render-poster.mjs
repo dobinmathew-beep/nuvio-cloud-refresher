@@ -42,6 +42,12 @@ export async function removeExistingDateBadge(input, topRatio = 0.105) {
   return image.toBuffer();
 }
 
+export async function removeExistingJustAddedBadge(input, topRatio = 0.105) {
+  // BetterPosters artwork is not authoritative for Just Added eligibility.
+  // Reuse the same bounded top-chip cleanup used for stale date badges.
+  return removeExistingDateBadge(input, topRatio);
+}
+
 export async function renderUpcomingBadge(input, isoDate, kind = 'premiere', topRatio = 0.105) {
   const date = new Date(isoDate + 'T00:00:00Z');
   const month = new Intl.DateTimeFormat('en', { month: 'short', timeZone: 'UTC' }).format(date);
