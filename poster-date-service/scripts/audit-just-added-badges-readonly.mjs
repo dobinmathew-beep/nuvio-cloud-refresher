@@ -9,7 +9,8 @@ const PAGE_SIZE = 100;
 const MAX_PAGES_PER_CATALOG = 200;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const now = new Date();
-const today = now.toISOString().slice(0, 10);\nconst ADDED_INDEX_URL = 'https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/catalog-added.json';
+const today = now.toISOString().slice(0, 10);
+const ADDED_INDEX_URL = 'https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/catalog-added.json';
 
 async function fetchJson(url) {
   const response = await fetch(url, {
