@@ -34,6 +34,9 @@ function buildDigitalReleaseIndex(value) {
   for (const item of items) {
     if (String(item?.type || '').toLowerCase() !== 'movie') continue;
     if (String(item?.matchState || '').toLowerCase() !== 'published') continue;
+    // The release audit also contains theatrical/physical discovery events.
+    // Only its explicit first-digital-arrival evidence can grant a movie badge.
+    if (String(item?.releaseDateBasis || '') !== 'first-verified-digital-arrival') continue;
     const id = String(item?.id || '').trim();
     const releaseDate = String(item?.releaseDate || '').slice(0, 10);
     if (!id || !/^\d{4}-\d{2}-\d{2}$/.test(releaseDate)) continue;
