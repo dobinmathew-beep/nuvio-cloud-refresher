@@ -153,7 +153,7 @@ for (const [key, fallbackName] of SOURCES) {
   const manifestUrl = String(process.env[key]).trim();
   const manifest = await fetchJson(manifestUrl);
   if (!Array.isArray(manifest.catalogs) || !manifest.catalogs.length) throw new Error(key + ' has no catalogue definitions');
-  const source = String(manifest.name || fallbackName).replace(/\\s*\\|\\s*/g, ' ').replace(/\\s+/g, ' ').trim();
+  const source = String(manifest.name || fallbackName).replace(/\s*\|\s*/g, ' ').replace(/\s+/g, ' ').trim();
   const base = manifestBase(manifestUrl);
   const sourceResult = { source, catalogueDefinitions: manifest.catalogs.length, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, dynamicCatalogues: [], pagesFetched: 0, recordsFetched: 0, candidateMovieTitles: 0, recentIndexMovieTitles: 0, posterQueryBadgeTitles: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0 };
   report.totals.catalogueDefinitions += manifest.catalogs.length;
@@ -162,6 +162,12 @@ for (const [key, fallbackName] of SOURCES) {
     if (!catalog?.type || !catalog?.id) continue;
     if (requiredExtrasUnavailable(catalog)) {
       sourceResult.dynamicCataloguesSkipped++;
+      report.totals.dynamicCataloguesSkipped++;
+      sourceResult.dynamicCatalogues.push({
+        id: catalog.id,
+        name: catalog.name || catalog.id,
+        requiredExtras: catalog.extraRequired || []
+      });
       continue;
     }
     sourceResult.cataloguesScanned++;
@@ -209,7 +215,11 @@ for (const [key, fallbackName] of SOURCES) {
   report.sources.push(sourceResult);
 }
 
-report.findings.sort((a, b) => a.source.localeCompare(b.source) || a.title.localeCompare(b.title));\nreport.totals.uniqueCandidateMovieIds = new Set(report.findings.map(item => item.id)).size;\nreport.totals.uniqueOldMovieIds = new Set(report.findings.filter(item => item.finding === 'old-movie-recent-index-entry').map(item => item.id)).size;
+report.findings.sort((a, b) => a.source.localeCompare(b.source) || a.title.localeCompare(b.title));
+report.totals.uniqueCandidateMovieIds = new Set(report.findings.map(item => item.id)).size;
+report.totals.uniqueOldMovieIds = new Set(
+  report.findings.filter(item => item.finding === 'old-movie-recent-index-entry').map(item => item.id)
+).size;
 report.referenceMatches.sort((a, b) => a.referenceTitle.localeCompare(b.referenceTitle));
 await mkdir('artifacts', { recursive: true });
 await writeFile('artifacts/just-added-badge-audit.json', JSON.stringify(report, null, 2) + '\n');
