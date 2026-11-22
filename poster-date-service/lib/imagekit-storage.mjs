@@ -496,7 +496,7 @@ export function shouldDeleteUnpointedVersion(file, {
   now = Date.now(), retentionMs = VERSIONED_POSTER_RETENTION_MS
 } = {}) {
   const path = String(file?.filePath || '');
-  const match = path.match(/^\\/poster-versions\\/(tt\\d{7,10})\\/([a-f0-9]{64})\\.jpg$/);
+  const match = path.match(/^\/poster-versions\/(tt\d{7,10})\/([a-f0-9]{64})\.jpg$/);
   if (!match || unknownPointerIds.has(match[1]) || activePaths.has(path)) return false;
   const createdAt = Date.parse(file.createdAt || file.updatedAt || '');
   return Number.isFinite(createdAt) && now - createdAt >= retentionMs;
@@ -535,12 +535,12 @@ export async function runImageKitMaintenance({ force = false } = {}) {
     const versionedById = new Map();
     const pointerFilesById = new Map();
     for (const file of files) {
-      const versionMatch = String(file.filePath || '').match(/^\\/poster-versions\\/(tt\\d{7,10})\\/[a-f0-9]{64}\\.jpg$/);
+      const versionMatch = String(file.filePath || '').match(/^\/poster-versions\/(tt\d{7,10})\/[a-f0-9]{64}\.jpg$/);
       if (versionMatch) {
         if (!versionedById.has(versionMatch[1])) versionedById.set(versionMatch[1], []);
         versionedById.get(versionMatch[1]).push(file);
       }
-      const pointerMatch = String(file.filePath || '').match(/^\\/catalog-state\\/poster-pointers\\/(tt\\d{7,10})\\.json$/);
+      const pointerMatch = String(file.filePath || '').match(/^\/catalog-state\/poster-pointers\/(tt\d{7,10})\.json$/);
       if (pointerMatch) pointerFilesById.set(pointerMatch[1], file);
     }
     const activeVersionPaths = new Set();
