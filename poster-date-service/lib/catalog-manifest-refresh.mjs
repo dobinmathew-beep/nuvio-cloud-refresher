@@ -318,6 +318,33 @@ async function collectCatalog(manifest, catalog, config, fingerprint, lease, sca
     resumedFromPageCheckpoint: firstPage > 0
   };
 }
+function mergeCatalogSourceItem(existing, incoming) {
+  const base = existing && typeof existing === 'object' ? existing : {};
+  const next = incoming && typeof incoming === 'object' ? incoming : {};
+  const sources = [
+    ...(Array.isArray(base.catalogSources) ? base.catalogSources : []),
+    ...(Array.isArray(next.catalogSources) ? next.catalogSources : []),
+    { source: next.catalogSource, id: next.catalogId }
+  ];
+  const unique = new Map();
+  for (const source of sources) {
+    const normalized = {
+      source: String(source?.source || '').trim(),
+      id: String(source?.id || '').trim()
+    };
+    if (!normalized.source && !normalized.id) continue;
+    unique.set(normalized.source + '|' + normalized.id, normalized);
+  }
+  // Keep the first useful metadata values, but never discard source coverage.
+  return {
+    ...next,
+    ...base,
+    catalogSources: [...unique.values()].sort((a, b) =>
+      (a.source + '|' + a.id).localeCompare(b.source + '|' + b.id)
+    )
+  };
+}
+
 async function publishSharedMetadataIndex(items, scanGeneration, config, lease) {
   const root = '/catalog-state/metadata-index/v1';
   const generationKey = createHash('sha256').update(String(scanGeneration)).digest('hex').slice(0, 24);
@@ -341,6 +368,16 @@ async function publishSharedMetadataIndex(items, scanGeneration, config, lease) 
       providerId: String(item.providerId || ''),
       catalogSource: String(item.catalogSource || ''),
       catalogId: String(item.catalogId || ''),
+      catalogSources: (Array.isArray(item.catalogSources) ? item.catalogSources : [
+        { source: item.catalogSource, id: item.catalogId }
+      ]).map(source => ({
+        source: String(source?.source || '').trim(),
+        id: String(source?.id || '').trim()
+      })).filter(source => source.source || source.id)
+        .filter((source, index, all) => all.findIndex(candidate =>
+          candidate.source === source.source && candidate.id === source.id
+        ) === index)
+        .sort((a, b) => (a.source + '|' + a.id).localeCompare(b.source + '|' + b.id)),
       poster: String(item.poster || ''),
       releaseDate: String(item.digitalReleaseDate || item.releaseInfo || ''),
       premiereDate: String(item.premiereDate || ''),
@@ -892,7 +929,10 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
       if (saved && saved.scanGeneration === scanGeneration) {
         const perCatalog = await readState(config, titleFiles[fingerprint] || catalogueCheckpointPath(fingerprint));
         if (perCatalog?.titles && typeof perCatalog.titles === 'object') {
-          for (const [id, item] of Object.entries(perCatalog.titles)) if (item?.id === id && !current.has(id)) current.set(id, item);
+          for (const [id, item] of Object.entries(perCatalog.titles)) {
+            if (item?.id !== id) continue;
+            current.set(id, current.has(id) ? mergeCatalogSourceItem(current.get(id), item) : mergeCatalogSourceItem({}, item));
+          }
         }
         handledFingerprints.set(fingerprint, {
           source: saved.source, type: catalog.type, id: catalog.id, name: catalog.name
@@ -938,16 +978,9 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
       try {
         const result = await collectCatalog(manifest, catalog, config, fingerprint, lease, scanGeneration, forceRescanCatalogs);
         for (const item of result.titles) {
-          if (!current.has(item.id)) {
-            current.set(item.id, { ...item, catalogSources: [{ source: item.catalogSource, id: item.catalogId }] });
-          } else {
-            const existing = current.get(item.id);
-            const sources = Array.isArray(existing.catalogSources) ? existing.catalogSources : [];
-            const sourceKey = String(item.catalogSource || '') + '|' + String(item.catalogId || '');
-            if (!sources.some(source => String(source.source || '') + '|' + String(source.id || '') === sourceKey)) {
-              existing.catalogSources = [...sources, { source: item.catalogSource, id: item.catalogId }];
-            }
-          }
+          current.set(item.id, current.has(item.id)
+            ? mergeCatalogSourceItem(current.get(item.id), item)
+            : mergeCatalogSourceItem({}, item));
         }
         delete result.titles;
         completedCatalogues[fingerprint] = {
