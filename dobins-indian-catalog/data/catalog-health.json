@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-22T10:44:01.319129+00:00",
+  "checkedAt": "2026-11-22T15:10:44.618740+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,7 +14,7 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1190,
+      "metadataRecords": 1191,
       "warning": null,
       "error": null
     },
@@ -97,14 +97,14 @@
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt8537520",
-        "name": "Bigg Boss Malayalam",
-        "releaseDate": "2026-11-21T21:30:00+00:00"
+        "id": "tt50508547",
+        "name": "Sathyameva",
+        "releaseDate": "2026-11-27"
       },
       "localLatestEntry": {
-        "id": "tt8537520",
-        "name": "Bigg Boss Malayalam",
-        "releaseDate": "2026-11-21T21:30:00+00:00"
+        "id": "tt50508547",
+        "name": "Sathyameva",
+        "releaseDate": "2026-11-27"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -258,19 +258,19 @@
       "language": "hi",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
-      "localPublishedCount": 119,
-      "localUniqueIdCount": 119,
+      "localPublishedCount": 120,
+      "localUniqueIdCount": 120,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 119,
-      "endpointUniqueIdCount": 119,
+      "endpointRawCount": 120,
+      "endpointUniqueIdCount": 120,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
-        19
+        20
       ],
       "endpointPageSize": 50,
       "missingIds": [],
