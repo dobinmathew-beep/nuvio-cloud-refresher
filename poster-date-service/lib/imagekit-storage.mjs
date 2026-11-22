@@ -1,9 +1,11 @@
 import { Buffer } from 'node:buffer';
+import { isValidPosterPointer } from './poster-versioning.mjs';
 
 const API = 'https://api.imagekit.io/v1';
 const UPLOAD_API = 'https://upload.imagekit.io/api/v1/files/upload';
 export const IMAGEKIT_STORAGE_LIMIT_BYTES = Math.floor(2.25 * 1000 * 1000 * 1000);
 const MAINTENANCE_COOLDOWN_MS = 6 * 60 * 60 * 1000;
+export const VERSIONED_POSTER_RETENTION_MS = 30 * 24 * 60 * 60 * 1000;
 const STORAGE_SNAPSHOT_PATH = '/catalog-state/imagekit-storage-snapshot.json';
 export function imageKitStorageSnapshotUrl(endpoint, cacheBuster = Date.now()) {
   let base = String(endpoint);
@@ -215,6 +217,8 @@ async function buildStorageSnapshotFromInventory() {
             filesByPath['/posters/' + id + '.jpg'] = { fileId: file.fileId, size: Math.max(0, Number(file.size) || 0) };
             posterFiles++;
           }
+        } else if (file.filePath && (file.filePath.startsWith('/poster-versions/') || file.filePath.startsWith('/catalog-state/poster-pointers/')) && file.fileId) {
+          filesByPath[file.filePath] = { fileId: file.fileId, size: Math.max(0, Number(file.size) || 0) };
         }
       }
       if (page.length < 250) break;
@@ -487,6 +491,17 @@ function imdbIdFromName(name) {
   return match?.[1] || null;
 }
 
+export function shouldDeleteUnpointedVersion(file, {
+  activePaths = new Set(), unknownPointerIds = new Set(),
+  now = Date.now(), retentionMs = VERSIONED_POSTER_RETENTION_MS
+} = {}) {
+  const path = String(file?.filePath || '');
+  const match = path.match(/^\\/poster-versions\\/(tt\\d{7,10})\\/([a-f0-9]{64})\\.jpg$/);
+  if (!match || unknownPointerIds.has(match[1]) || activePaths.has(path)) return false;
+  const createdAt = Date.parse(file.createdAt || file.updatedAt || '');
+  return Number.isFinite(createdAt) && now - createdAt >= retentionMs;
+}
+
 export async function runImageKitMaintenance({ force = false } = {}) {
   if (maintenancePromise) return maintenancePromise;
   if (!force && lastMaintenanceReport && Date.now() - lastMaintenanceAt < MAINTENANCE_COOLDOWN_MS) {
@@ -513,6 +528,65 @@ export async function runImageKitMaintenance({ force = false } = {}) {
     let versionChecksFailed = 0;
     const active = [];
     const today = new Date().toISOString().slice(0, 10);
+
+    // Versioned assets are never pruned unless a valid pointer has been read
+    // back for that IMDb ID. A missing/unreadable pointer makes the whole ID
+    // ineligible for cleanup, preventing accidental deletion of a live target.
+    const versionedById = new Map();
+    const pointerFilesById = new Map();
+    for (const file of files) {
+      const versionMatch = String(file.filePath || '').match(/^\\/poster-versions\\/(tt\\d{7,10})\\/[a-f0-9]{64}\\.jpg$/);
+      if (versionMatch) {
+        if (!versionedById.has(versionMatch[1])) versionedById.set(versionMatch[1], []);
+        versionedById.get(versionMatch[1]).push(file);
+      }
+      const pointerMatch = String(file.filePath || '').match(/^\\/catalog-state\\/poster-pointers\\/(tt\\d{7,10})\\.json$/);
+      if (pointerMatch) pointerFilesById.set(pointerMatch[1], file);
+    }
+    const activeVersionPaths = new Set();
+    const unknownPointerIds = new Set();
+    const config = imageKitConfig();
+    for (const id of versionedById.keys()) {
+      const pointerFile = pointerFilesById.get(id);
+      if (!pointerFile || !config) {
+        unknownPointerIds.add(id);
+        continue;
+      }
+      try {
+        const pointerUrl = config.endpoint + pointerFile.filePath + '?maintenance=' + Date.now();
+        const response = await fetch(pointerUrl, { cache: 'no-store', signal: AbortSignal.timeout(5000) });
+        if (!response.ok) {
+          unknownPointerIds.add(id);
+          continue;
+        }
+        const pointer = await response.json();
+        const expectedUrl = new URL(config.endpoint + pointer?.assetPath);
+        const actualUrl = new URL(pointer?.assetUrl || 'https://invalid.invalid');
+        const urlMatches = actualUrl.protocol === 'https:' &&
+          actualUrl.origin === expectedUrl.origin && actualUrl.pathname === expectedUrl.pathname;
+        if (!isValidPosterPointer(pointer, id) || !urlMatches) {
+          unknownPointerIds.add(id);
+          continue;
+        }
+        activeVersionPaths.add(pointer.assetPath);
+      } catch {
+        unknownPointerIds.add(id);
+      }
+    }
+
+    let versionedFilesDeleted = 0;
+    let pointedVersionAssetsRetained = activeVersionPaths.size;
+    for (const [id, versions] of versionedById) {
+      if (unknownPointerIds.has(id)) continue;
+      for (const file of versions) {
+        if (!shouldDeleteUnpointedVersion(file, { activePaths: activeVersionPaths, unknownPointerIds })) continue;
+        if (!file.fileId) continue;
+        await deleteImageKitFile(file.fileId);
+        deletedFileIds.add(file.fileId);
+        accountBytes = Math.max(0, accountBytes - Math.max(0, Number(file.size) || 0));
+        versionedFilesDeleted++;
+      }
+    }
 
     // Remove only duplicate copies inside our dedicated /posters folder.
     for (const [id, copies] of byId) {
@@ -617,6 +691,9 @@ export async function runImageKitMaintenance({ force = false } = {}) {
       unknownRetained,
       versionsDeleted,
       versionChecksFailed,
+      versionedFilesDeleted,
+      pointedVersionAssetsRetained,
+      versionedIdsRetainedForPointerSafety: unknownPointerIds.size,
       removedForBudget,
       uploadsAllowed: accountBytes < IMAGEKIT_STORAGE_LIMIT_BYTES
     };
