@@ -36,18 +36,21 @@ test('upcoming catalogue index cache is reused across ID lookups', async () => {
   assert.equal(calls, 1);
 });
 
-test('just-added index uses its ID map and retains the 14-day eligibility window', async () => {
+test('series first-added index uses its ID map and retains the 14-day eligibility window', async () => {
   resetCatalogAddedIndexForTest();
   let calls = 0;
-  const fetch = async () => {
+  const fetch = async url => {
     calls++;
+    if (String(url).includes('recent-release-audit')) return jsonResponse({ items: [] });
     return jsonResponse({
-      'manifest|tt5555555': '2026-11-15T00:00:00.000Z',
-      'manifest|tt6666666': '2026-10-01T00:00:00.000Z'
+      'dobins_hi_series|tt5555555': '2026-11-15T00:00:00.000Z',
+      'dobins_hi_series|tt6666666': '2026-10-01T00:00:00.000Z'
     });
   };
   const now = Date.parse('2026-11-21T00:00:00.000Z');
   assert.equal(await isCatalogRecentlyAdded('tt5555555', { fetch, now }), true);
   assert.equal(await isCatalogRecentlyAdded('tt6666666', { fetch, now }), false);
-  assert.equal(calls, 1);
+  assert.equal(calls, 2);
+  assert.equal(await isCatalogRecentlyAdded('tt5555555', { fetch, now }), true);
+  assert.equal(calls, 2, 'both authoritative indexes should be cached');
 });
