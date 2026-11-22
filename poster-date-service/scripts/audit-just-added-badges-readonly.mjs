@@ -244,7 +244,7 @@ for (const [key, fallbackName] of SOURCES) {
         if (String(meta?.type || catalog.type).toLowerCase().includes('movie')) {
           report.totals.movieRecordAppearances++;
         }
-        const finding = inspect(meta, source, catalog, recentMovieIndex, recentDigitalIndex, report);
+        const finding = inspect(meta, source, catalog, legacyMovieIndex, recentDigitalIndex, report);
         if (!finding) continue;
         report.findings.push(finding);
         sourceResult.candidateMovieTitles++;
