@@ -340,12 +340,41 @@ def metadata(mid,typ,fallback):
  except Exception:return {'_metadataCheckedAt':NOW.isoformat(),'_partial':True,'id':mid,'type':typ,'name':fallback['name'],'poster':fallback.get('poster'),'releaseInfo':str(fallback.get('releaseInfo',''))}
 
 def event_digital_date(event,today=TODAY):
- # Use the newest verified digital/OTT arrival when multiple dates are known.
- # The theatrical/physical history remains separately available for provenance.
- dates=[str(x.get('date'))[:10] for x in (event.get('availability') or []) if x.get('kind')=='digital' and x.get('date')]
- if event.get('releaseKind')=='digital' and event.get('ottDate'):dates.append(str(event['ottDate'])[:10])
- valid=[x for x in dates if re.fullmatch(r'\d{4}-\d{2}-\d{2}',x)]
- return max(valid) if valid else None
+ # A shared poster represents the title's first verified digital arrival worldwide.
+ # A later platform addition must not make an already-streaming film "Just Added".
+ dates=[]
+ for row in event.get('availability') or []:
+  if isinstance(row,dict) and row.get('kind')=='digital' and row.get('date'):
+   dates.append(str(row['date'])[:10])
+ if event.get('releaseKind')=='digital' and event.get('ottDate'):
+  dates.append(str(event['ottDate'])[:10])
+ valid=sorted(x for x in dates if re.fullmatch(r'\d{4}-\d{2}-\d{2}',x) and x<=today)
+ return valid[0] if valid else None
+
+
+def recent_release_audit_date(event):
+ # The movie audit consumed by the poster service must use the same first-arrival
+ # date as the catalogue badge policy, not the latest provider/platform date.
+ if event.get('type')=='movie':return event_digital_date(event)
+ return str(event.get('ottDate') or '')[:10]
+
+
+def filter_series_added_index(value):
+ # The first-seen index is a series-only source of truth. Drop legacy movie
+ # timestamps so downstream consumers cannot mistake catalogue re-discovery
+ # for a new movie release. Preserve every existing series timestamp unchanged.
+ if not isinstance(value,dict):return {}
+ return {str(key):timestamp for key,timestamp in value.items()
+         if re.match(r'^dobins_(?:ml|ta|te|hi)_series\|',str(key))}
+
+
+def should_stamp_catalog_first_seen(catalog_id, media_type, media_id, previous_ids, added_at):
+ # Only series use first-catalogue-seen history. Do not stamp every title as new
+ # when a catalogue has no prior snapshot (bootstrap/temporary empty baseline).
+ if media_type!='series':return False
+ baseline=previous_ids.get(catalog_id) or set()
+ key=catalog_id+'|'+str(media_id)
+ return bool(baseline) and str(media_id) not in baseline and key not in added_at
 def release_classification(event,meta):
  # Classify movie entries by the home-release event being advertised, not the theatrical title's age.
  if event.get('type')!='movie':return None,None,None
@@ -532,7 +561,7 @@ def build():
  save('matches.json',matches)
  catalogs={f'dobins_{LANGS[l]}_{t}':[] for l in LANGS for t in ('movie','series')};seen={k:set() for k in catalogs}
  previous_ids={cid:{str(x.get('id')) for x in items} for cid,items in old_catalogs.items()}
- added_at=load('catalog-added.json',{})
+ added_at=filter_series_added_index(load('catalog-added.json',{}))
  for e in ordered:
   if e.get('_languageMismatch'):continue
   key=e['language']+'|'+e['type']+'|'+norm(e['name']);match=matches.get(key,{});mid=match.get('id');cid=f'dobins_{LANGS[e["language"]]}_{e["type"]}'
@@ -562,13 +591,13 @@ def build():
   m['ott']={'date':digital_date or e['ottDate'],'kind':display_kind,'platforms':e['platforms'],'sources':e['sources']}
   description_label=release_label or ('Upcoming OTT release' if e['ottDate']>TODAY else 'Home release')
   added_key=cid+'|'+str(mid)
-  if str(mid) not in previous_ids.get(cid,set()) and added_key not in added_at:
+  if should_stamp_catalog_first_seen(cid,e['type'],mid,previous_ids,added_at):
    added_at[added_key]=NOW.isoformat()
   imdb_alias=next((str(value) for value in [m.get('imdb_id'),m.get('imdbId'),m.get('imdb'),(m.get('externals') or {}).get('imdb'),(m.get('externalIds') or {}).get('imdb')] if isinstance(value,str) and is_imdb_id(value)),None)
   if is_imdb_id(mid):imdb_alias=mid
-  if imdb_alias and added_key in added_at:added_at[cid+'|'+imdb_alias]=added_at[added_key]
+  if e['type']=='series' and imdb_alias and added_key in added_at:added_at[cid+'|'+imdb_alias]=added_at[added_key]
   added_time=None
-  if added_key in added_at:
+  if e['type']=='series' and added_key in added_at:
    try:added_time=datetime.fromisoformat(added_at[added_key])
    except (TypeError,ValueError):added_time=None
   just_added=is_just_added_title(e,added_time)
@@ -608,7 +637,7 @@ def build():
  recent_release_items=[]
  for e in events:
   sources=e.get('sources') or ([e.get('source')] if e.get('source') else [])
-  day=str(e.get('ottDate') or '')[:10]
+  day=recent_release_audit_date(e)
   if not re.fullmatch(r'\d{4}-\d{2}-\d{2}',day) or day<recent_start or day>TODAY:continue
   key=e['language']+'|'+e['type']+'|'+norm(e['name'])
   match=matches.get(key,{})
@@ -620,7 +649,7 @@ def build():
   published=bool(mid and mid in catalog_ids.get(f"dobins_{expected}_{e['type']}",set()))
   state='language_mismatch' if original and original not in (expected,e['language']) else 'published' if published else 'matched_not_published' if complete else 'metadata_incomplete' if mid else 'unmatched'
   reason=('Original metadata language does not match the detected catalogue language' if state=='language_mismatch' else match.get('reason') or match.get('method') or ('Title identity is not yet resolved' if not mid else 'Matched identity is not yet metadata-complete' if not complete else 'Matched metadata is not yet present in the target catalog'))
-  recent_release_items.append({'title':e['name'],'language':e['language'],'type':e['type'],'releaseDate':day,'id':mid or None,'matchState':state,'matchReason':reason,'platforms':e.get('platforms') or [],'sources':list(dict.fromkeys(sources)),'detail':e.get('detail')})
+  recent_release_items.append({'title':e['name'],'language':e['language'],'type':e['type'],'releaseDate':day,'releaseDateBasis':'first-verified-digital-arrival' if e.get('type')=='movie' else 'series-release-event','id':mid or None,'matchState':state,'matchReason':reason,'platforms':e.get('platforms') or [],'sources':list(dict.fromkeys(sources)),'detail':e.get('detail')})
  recent_counts={}
  for row in recent_release_items:recent_counts[row['matchState']]=recent_counts.get(row['matchState'],0)+1
  recent_release_audit={'windowDays':35,'source':'all active discovery sources (rolling 35-day window)','detected':len(recent_release_items),'byMatchState':recent_counts,'items':recent_release_items}
