@@ -215,8 +215,9 @@ async function buildStorageSnapshotFromInventory() {
         accountBytes += Math.max(0, Number(file.size) || 0);
         if (path === '/posters' && isPosterFolderFile(file)) {
           const id = imdbIdFromName(file.name);
-          if (id && file.fileId) {
-            filesByPath['/posters/' + id + '.jpg'] = { fileId: file.fileId, size: Math.max(0, Number(file.size) || 0) };
+          if (id && file.fileId && String(file.name).toLowerCase() === id + '.jpg' &&
+              file.filePath === '/posters/' + id + '.jpg') {
+            filesByPath[file.filePath] = { fileId: file.fileId, size: Math.max(0, Number(file.size) || 0) };
             posterFiles++;
           }
         } else if (file.filePath && (file.filePath.startsWith('/poster-versions/') || file.filePath.startsWith('/catalog-state/poster-pointers/')) && file.fileId) {
