@@ -1,134 +1,42 @@
-name: Hourly catalogue refresh monitor
-
+name: Legacy catalogue diagnostics (manual only)
 on:
   workflow_dispatch:
-  push:
-    branches: [poster-date-service]
-    paths:
-      - '.github/workflows/hourly-catalogue-monitor.yml'
-  schedule:
-    # Keep the Render Free web service receiving inbound traffic so its
-    # 15-minute idle suspension cannot interrupt the long-running refresh.
-    # This monitor is read-only unless status explicitly reports failed.
-    - cron: '*/5 * * * *'
 
 permissions:
   contents: read
 
 concurrency:
-  group: hourly-catalogue-refresh-monitor
+  group: legacy-catalogue-diagnostics
   cancel-in-progress: false
 
 jobs:
-  monitor:
+  diagnostics:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
-      - name: Check Render health and catalogue refresh
-        id: monitor
+      - name: Read-only Render health and checkpoint status
         env:
           POSTER_SERVICE_URL: https://great-indian-upcoming-posters.onrender.com
           SCAN_TOKEN: ${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
-        shell: bash
         run: |
           set -euo pipefail
           if [ -z "$SCAN_TOKEN" ]; then
             echo "::error::POSTER_CATALOG_SCAN_TOKEN repository secret is missing."
             exit 1
           fi
-
-          health_code=$(curl --silent --show-error --max-time 30 -o health.json -w '%{http_code}' "$POSTER_SERVICE_URL/health") || {
-            echo "::error::Render health endpoint could not be reached."
-            exit 1
-          }
-          status_code=$(curl --silent --show-error --max-time 30 -o status.json -w '%{http_code}' "$POSTER_SERVICE_URL/catalog-refresh/status" \
-            -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json") || {
-            echo "::error::Authenticated catalogue status endpoint could not be reached."
-            exit 1
-          }
-
-          echo "Health HTTP: $health_code"
-          cat health.json
-          echo
-          echo "Refresh status HTTP: $status_code"
-          cat status.json
-          echo
-
-          diagnostics_code=$(curl --silent --show-error --max-time 90 -o diagnostics.json -w '%{http_code}' "$POSTER_SERVICE_URL/catalog-refresh/diagnostics" \
-            -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json") || {
-            echo "::warning::Checkpoint diagnostics endpoint could not be reached."
-            diagnostics_code=000
-          }
-          echo "Checkpoint diagnostics HTTP: $diagnostics_code"
-          if [ "$diagnostics_code" = "200" ]; then cat diagnostics.json; else echo "Diagnostics unavailable"; fi
-          echo
-
-          if [ "$status_code" != "200" ]; then
-            echo "::error::Catalogue status endpoint returned HTTP $status_code."
-            exit 1
-          fi
-
-          state=$(node -e "const s=require('./status.json'); console.log(s.status || 'unknown')")
-          echo "state=$state" >> "$GITHUB_OUTPUT"
-
-          recovery="not-needed"
-          if [ "$state" = "failed" ]; then
-            echo "::warning::Refresh is failed; attempting one safe checkpoint-preserving resume."
-            retry_code=$(curl --silent --show-error --max-time 90 -X POST \
-              -o retry.json -w '%{http_code}' "$POSTER_SERVICE_URL/catalog-refresh" \
-              -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json") || {
-                echo "::error::Automatic recovery request could not reach Render."
-                exit 1
-              }
-            cat retry.json
-            echo
-            if [ "$retry_code" = "202" ] || [ "$retry_code" = "409" ]; then
-              recovery="resume-accepted-or-existing-run"
-              echo "::notice::Checkpoint-preserving resume accepted or another worker already owns the run."
-            elif [ "$retry_code" = "423" ]; then
-              recovery="paused-by-operator"
-              echo "::warning::Service is paused by operator; no override attempted."
+          for endpoint in health catalog-refresh/status catalog-refresh/diagnostics; do
+            if [ "$endpoint" = "health" ]; then
+              url="$POSTER_SERVICE_URL/health"
             else
-              recovery="retry-rejected-http-$retry_code"
-              echo "::error::Automatic recovery was rejected with HTTP $retry_code."
-              exit 1
+              url="$POSTER_SERVICE_URL/$endpoint"
             fi
-          elif [ "$state" = "coordination-unavailable" ]; then
-            echo "::error::Refresh coordination is unavailable; no competing refresh was started."
-            exit 1
-          elif [ "$state" = "running" ]; then
-            echo "::notice::Refresh is active; monitor did not start a competing job."
-          elif [ "$state" = "completed" ]; then
-            echo "::notice::Latest refresh reports completed."
-          elif [ "$state" = "idle" ]; then
-            echo "::notice::No refresh is active. Monitor leaves idle state untouched."
-          else
-            echo "::warning::Unrecognized refresh state: $state"
-          fi
-
-          {
-            echo "## Hourly catalogue refresh monitor"
-            echo "- Checked at (UTC): $(date -u +'%Y-%m-%d %H:%M:%S')"
-            echo "- Render health HTTP: $health_code"
-            echo "- Catalogue status HTTP: $status_code"
-            echo "- Refresh state: **$state**"
-            echo "- Automatic recovery: **$recovery**"
-            echo
-            echo "### Health response"
-            echo '--- JSON ---'
-            cat health.json
-            echo
-            echo "### Refresh response"
-            echo '--- JSON ---'
-            cat status.json
-            echo
-            echo "### Durable checkpoint diagnostics"
-            echo '--- JSON ---'
-            if [ "$diagnostics_code" = "200" ]; then cat diagnostics.json; else echo "Diagnostics unavailable (HTTP $diagnostics_code)"; fi
-            echo
-          } >> "$GITHUB_STEP_SUMMARY"
-
-          if [ "$health_code" -lt 200 ] || [ "$health_code" -ge 300 ]; then
-            echo "::error::Render health check failed with HTTP $health_code."
-            exit 1
-          fi
+            echo "### $endpoint" >> "$GITHUB_STEP_SUMMARY"
+            if [ "$endpoint" = "health" ]; then
+              curl --silent --show-error --fail-with-body --max-time 30 "$url" | tee -a "$GITHUB_STEP_SUMMARY"
+            else
+              curl --silent --show-error --fail-with-body --max-time 30 "$url" \
+                -H "Authorization: Bearer $SCAN_TOKEN" \
+                -H "Accept: application/json" | tee -a "$GITHUB_STEP_SUMMARY"
+            fi
+            echo >> "$GITHUB_STEP_SUMMARY"
+          done
