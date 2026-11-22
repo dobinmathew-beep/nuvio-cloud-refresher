@@ -544,25 +544,9 @@ export default async function handler(req, res) {
     // reused; otherwise a stale Just Added chip can remain visible indefinitely.
     // HEAD probes above remain availability-only because they return no artwork.
 
-    // Cache miss: serve BetterPosters directly now and build the permanent,
-    // date-aware ImageKit version asynchronously. This removes catalogue,
-    // TMDB and OCR work from the Nuvio request path. A single per-ID promise
-    // prevents duplicate background generation when several catalogues request
-    // the same title at once.
     const immediateBadge = String(req.query?.badge || '').toLowerCase() === 'just-added' ? 'just-added' : '';
     const immediateVersion = String(req.query?.v || '');
     const immediateFallback = String(req.query?.fallback || '');
-    if (!immediateFallback) {
-      scheduleBackgroundPosterBuild(id, immediateBadge, immediateVersion, immediateFallback);
-      res.statusCode = 302;
-      res.setHeader('Location', sourceUrl(id));
-      res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.setHeader('X-Poster-Source', 'BetterPosters');
-      res.setHeader('X-Poster-Date-Status', 'background-generation-pending');
-      res.setHeader('X-ImageKit-Storage', 'pending');
-      return res.end();
-    }
 
     // Explicit catalogue fallbacks still use the validated renderer path.
     // An ImageKit copy is valid only while TMDB still confirms a future release.
@@ -604,6 +588,22 @@ export default async function handler(req, res) {
     // every catalogue poster on each scheduled refresh or after a restart.
     const cachedAsset = await findFreshImageKitAsset(id, releaseInfo, expectedJustAdded);
     if (cachedAsset) return redirectToImageKit(res, cachedAsset, releaseInfo, expectedJustAdded);
+
+    // Only after badge state has been checked may a no-fallback request use
+    // the immediate BetterPosters response/background-build path. This keeps
+    // the normal low-latency fallback while preventing stale ImageKit artwork
+    // from bypassing validation.
+    if (!immediateFallback) {
+      scheduleBackgroundPosterBuild(id, immediateBadge, immediateVersion, immediateFallback);
+      res.statusCode = 302;
+      res.setHeader('Location', sourceUrl(id));
+      res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('X-Poster-Source', 'BetterPosters');
+      res.setHeader('X-Poster-Date-Status', 'background-generation-pending');
+      res.setHeader('X-ImageKit-Storage', 'pending');
+      return res.end();
+    }
 
     const poster = await getBuiltPoster(id, releaseInfo, badge, version, fallbackUrl, digitalAlreadyReleased === true);
     // Never make a user's poster response wait for an ImageKit account-wide
