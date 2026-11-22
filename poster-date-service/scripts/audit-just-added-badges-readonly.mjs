@@ -159,7 +159,7 @@ const report = {
   digitalAuditWindowDays: Number(digitalAudit?.windowDays || 0),
   publishedDigitalMovieEvents: recentDigitalIndex.size,
   sources: [],
-  totals: { catalogueDefinitions: 0, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, pagesFetched: 0, recordsFetched: 0, movieRecordAppearances: 0, candidateMovieAppearances: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0, legacyMovieIndexEntries: legacyMovieIndex.size },
+  totals: { catalogueDefinitions: 0, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, pagesFetched: 0, recordsFetched: 0, movieRecordAppearances: 0, candidateMovieAppearances: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0, badgeWithoutDigitalDate: 0, legacyMovieIndexEntries: legacyMovieIndex.size },
   findings: [],
   referenceTitles: {
     tt1375789: 'Race 2',
@@ -177,7 +177,7 @@ for (const [key, fallbackName] of SOURCES) {
   if (!Array.isArray(manifest.catalogs) || !manifest.catalogs.length) throw new Error(key + ' has no catalogue definitions');
   const source = String(manifest.name || fallbackName).replace(/\s*\|\s*/g, ' ').replace(/\s+/g, ' ').trim();
   const base = manifestBase(manifestUrl);
-  const sourceResult = { source, catalogueDefinitions: manifest.catalogs.length, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, dynamicCatalogues: [], pagesFetched: 0, recordsFetched: 0, candidateMovieTitles: 0, legacyMovieIndexMovieTitles: 0, posterQueryBadgeTitles: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0 };
+  const sourceResult = { source, catalogueDefinitions: manifest.catalogs.length, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, dynamicCatalogues: [], pagesFetched: 0, recordsFetched: 0, candidateMovieTitles: 0, legacyMovieIndexMovieTitles: 0, posterQueryBadgeTitles: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0, badgeWithoutDigitalDate: 0 };
   report.totals.catalogueDefinitions += manifest.catalogs.length;
 
   for (const catalog of manifest.catalogs) {
@@ -255,9 +255,13 @@ for (const [key, fallbackName] of SOURCES) {
           sourceResult.staleJustAdded++;
           report.totals.staleJustAdded++;
         }
-        if (finding.finding === 'old-movie-without-digital-date' || finding.finding === 'legacy-movie-index-entry-ignored' || finding.finding === 'poster-query-badge-without-digital-date') {
+        if (finding.finding === 'old-movie-without-digital-date') {
           sourceResult.oldMovieWithoutDigitalDate++;
           report.totals.oldMovieWithoutDigitalDate++;
+        }
+        if (finding.finding === 'poster-query-badge-without-digital-date') {
+          sourceResult.badgeWithoutDigitalDate++;
+          report.totals.badgeWithoutDigitalDate++;
         }
         if (Object.hasOwn(report.referenceTitles, finding.id)) {
           report.referenceMatches.push({ ...finding, referenceTitle: report.referenceTitles[finding.id] });
@@ -275,7 +279,7 @@ for (const [key, fallbackName] of SOURCES) {
 report.referenceMatches.push(...report.dynamicReferenceMatches);
 report.findings.sort((a, b) => a.source.localeCompare(b.source) || a.title.localeCompare(b.title));
 report.totals.uniqueCandidateMovieIds = new Set(report.findings.map(item => item.id)).size;
-report.totals.uniqueOldMovieIds = new Set(
+report.totals.uniqueLegacyMovieIndexIds = new Set(
   report.findings.filter(item => item.finding === 'legacy-movie-index-entry-ignored').map(item => item.id)
 ).size;
 report.referenceMatches.sort((a, b) => a.referenceTitle.localeCompare(b.referenceTitle));
@@ -286,9 +290,9 @@ const summary = [
   '',
   'Read-only audit. No catalogue data, ImageKit assets, or poster endpoints were changed or requested.',
   '',
-  '| Source | Catalogues scanned | Pages | Records | Candidate appearances | Legacy movie index (ignored) | Poster query badge | Stale (>14d) | Old year, no digital date |',
-  '|---|---:|---:|---:|---:|---:|---:|---:|---:|',
-  ...report.sources.map(item => '| ' + [item.source, item.cataloguesScanned, item.pagesFetched, item.recordsFetched, item.candidateMovieTitles, item.legacyMovieIndexMovieTitles, item.posterQueryBadgeTitles, item.staleJustAdded, item.oldMovieWithoutDigitalDate].join(' | ') + ' |'),
+  '| Source | Catalogues scanned | Pages | Records | Candidate appearances | Legacy movie index (ignored) | Poster query badge | Badge missing digital date | Stale (>14d) | Old year, no digital date |',
+  '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|',
+  ...report.sources.map(item => '| ' + [item.source, item.cataloguesScanned, item.pagesFetched, item.recordsFetched, item.candidateMovieTitles, item.legacyMovieIndexMovieTitles, item.posterQueryBadgeTitles, item.badgeWithoutDigitalDate, item.staleJustAdded, item.oldMovieWithoutDigitalDate].join(' | ') + ' |'),
   '',
   '## Reference titles',
   '',
@@ -308,6 +312,7 @@ const summary = [
   '- Movie record appearances (catalogue/page rows): ' + report.totals.movieRecordAppearances,
   '- Candidate movie appearances (legacy index or poster flag, plus references): ' + report.totals.candidateMovieAppearances,
   '- Legacy movie index entries (ignored by the poster service): ' + report.totals.legacyMovieIndexEntries,
+  '- Poster query badges without digital-release evidence: ' + report.totals.badgeWithoutDigitalDate,
   '- Unique candidate movie IDs: ' + report.totals.uniqueCandidateMovieIds,
   '- Unique old-movie IDs with recent index timestamps: ' + report.totals.uniqueOldMovieIds,
   '- Dynamic catalogues skipped (required extra values unavailable): ' + report.totals.dynamicCataloguesSkipped,
