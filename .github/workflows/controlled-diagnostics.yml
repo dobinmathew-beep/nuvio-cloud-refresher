@@ -23,3 +23,5 @@ jobs:
             "$POSTER_SERVICE_URL/catalog-refresh/diagnostics" \
             -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json" \
             | tee -a "$GITHUB_STEP_SUMMARY"
+
+# trigger diagnostics
