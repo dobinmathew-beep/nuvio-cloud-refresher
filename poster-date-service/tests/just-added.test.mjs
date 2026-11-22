@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import sharp from 'sharp';
 import { renderJustAddedBadge, JUST_ADDED_BADGE_TEXT, buildJustAddedBadgeSvg } from '../lib/render-poster.mjs';
 import { hasJustAddedBadgeText, terminateOcrWorker } from '../lib/coming-tag.mjs';
+import { resetCatalogAddedIndexForTest } from '../lib/catalog-just-added.mjs';
 
 test('badge SVG embeds the exact title-case Just Added label', () => {
   const svg = buildJustAddedBadgeSvg(400, 70, 12, 38).toString('utf8');
@@ -24,9 +25,15 @@ test('badge renderer uses an allowlisted catalog poster when standard providers 
   const input = await sharp({ create: { width: 600, height: 900, channels: 3, background: '#456789' } }).jpeg().toBuffer();
   const originalFetch = globalThis.fetch;
   const requested = [];
+  resetCatalogAddedIndexForTest();
   globalThis.fetch = async url => {
     const value = String(url);
     requested.push(value);
+    if (value.includes('catalog-added.json')) return new Response('{}', { status: 200, headers: { 'content-type': 'application/json' } });
+    if (value.includes('recent-release-audit.json')) {
+      const today = new Date().toISOString().slice(0, 10);
+      return new Response(JSON.stringify({ items: [{ id: 'tt39195686', type: 'movie', releaseDate: today, matchState: 'published' }] }), { status: 200, headers: { 'content-type': 'application/json' } });
+    }
     if (value === fallbackUrl) return new Response(input, { status: 200, headers: { 'content-type': 'image/jpeg', 'content-length': String(input.length) } });
     return new Response('not found', { status: 404, headers: { 'content-type': 'text/plain' } });
   };
@@ -44,6 +51,7 @@ test('badge renderer uses an allowlisted catalog poster when standard providers 
     assert.equal(metadata.height, 900);
   } finally {
     globalThis.fetch = originalFetch;
+    resetCatalogAddedIndexForTest();
   }
 });
 

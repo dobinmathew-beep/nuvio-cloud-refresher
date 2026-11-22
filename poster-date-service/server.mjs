@@ -8,7 +8,7 @@ import healthHandler from './api/health.mjs';
 import { resolveTmdbExternalImdbId } from './lib/tmdb-external-ids.mjs';
 import { renderJustAddedBadge, renderUpcomingBadge, removeExistingDateBadge } from './lib/render-poster.mjs';
 import { upcomingReleaseByTmdbId, hasPastDigitalReleaseByTmdbId, getTodayInTimeZone } from './lib/release-dates.mjs';
-import { isCatalogRecentlyAdded } from './lib/catalog-just-added.mjs';
+import { isCatalogRecentlyAdded, resolveJustAddedDecision } from './lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from './lib/catalog-upcoming.mjs';
 
 import { imageKitConfig, canStoreImageKitPoster, getImageKitStorageSnapshot, uploadPosterToImageKit, runImageKitMaintenance, initializeImageKitStorageSnapshot } from './lib/imagekit-storage.mjs';
@@ -198,10 +198,12 @@ async function sendTmdbPosterFallback(tmdbId, mediaType, req, res) {
     : mediaType === 'movie' ? tmdbRelease || catalogRelease : catalogRelease || tmdbRelease;
   let output = original.bytes;
   let dateRendered = false;
-  let justAdded = !release?.date && String(req.query?.badge || '').toLowerCase() === 'just-added';
-  if (!release?.date && !justAdded) {
-    try { justAdded = await isCatalogRecentlyAdded(['tmdb:' + tmdbId]); }
-    catch (error) { console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ tmdbId, error: error?.message || 'unknown error' })); }
+  let justAdded = false;
+  if (!release?.date) {
+    try {
+      const catalogResult = await isCatalogRecentlyAdded(['tmdb:' + tmdbId]);
+      justAdded = resolveJustAddedDecision(catalogResult, req.query?.badge) === true;
+    } catch (error) { console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ tmdbId, error: error?.message || 'unknown error' })); }
   }
   // TMDB/RPDB artwork cannot carry a BetterPosters tag; use catalog eligibility only.
   const storageId = fallbackImageKitId('tmdb', tmdbId);
@@ -285,10 +287,12 @@ async function sendTvmazePosterFallback(tvmazeId, req, res) {
 
   let output = original;
   let dateRendered = false;
-  let justAdded = !release?.date && String(req.query?.badge || '').toLowerCase() === 'just-added';
-  if (!release?.date && !justAdded) {
-    try { justAdded = await isCatalogRecentlyAdded(['tvmaze:' + tvmazeId]); }
-    catch (error) { console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ tvmazeId, error: error?.message || 'unknown error' })); }
+  let justAdded = false;
+  if (!release?.date) {
+    try {
+      const catalogResult = await isCatalogRecentlyAdded(['tvmaze:' + tvmazeId]);
+      justAdded = resolveJustAddedDecision(catalogResult, req.query?.badge) === true;
+    } catch (error) { console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ tvmazeId, error: error?.message || 'unknown error' })); }
   }
   // TVmaze artwork cannot carry a BetterPosters tag; use catalog eligibility only.
   const storageId = fallbackImageKitId('tvmaze', tvmazeId);
