@@ -36,7 +36,7 @@ function buildDigitalReleaseIndex(value) {
     if (String(item?.matchState || '').toLowerCase() !== 'published') continue;
     const id = String(item?.id || '').trim();
     const releaseDate = String(item?.releaseDate || '').slice(0, 10);
-    if (!id || !/^\\d{4}-\\d{2}-\\d{2}$/.test(releaseDate)) continue;
+    if (!id || !/^\d{4}-\d{2}-\d{2}$/.test(releaseDate)) continue;
     if (!index.has(id)) index.set(id, []);
     index.get(id).push(releaseDate);
   }
