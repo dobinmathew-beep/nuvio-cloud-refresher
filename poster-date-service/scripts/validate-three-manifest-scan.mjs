@@ -18,14 +18,23 @@ async function fetchJson(url) {
 
 function baseFromManifestUrl(value) {
   const url = new URL(value);
-  url.pathname = url.pathname.replace(/\\/manifest\\.json$/i, '');
+  url.pathname = url.pathname.replace(/\/manifest\.json$/i, '');
   return url.toString().replace(/\\/$/, '');
+}
+
+const missing = keys.filter(key => !String(process.env[key] || '').trim());
+if (missing.length) {
+  console.log(JSON.stringify({
+    status: 'skipped',
+    reason: 'Add the three manifest URL values as GitHub Actions secrets to enable the live read-only scan',
+    missingSecrets: missing
+  }));
+  process.exit(0);
 }
 
 const manifests = [];
 for (const key of keys) {
   const url = String(process.env[key] || '').trim();
-  if (!url) throw new Error('Missing required GitHub Actions secret: ' + key);
   const document = await fetchJson(url);
   if (!Array.isArray(document.catalogs) || document.catalogs.length === 0) {
     throw new Error(key + ' returned no catalogue definitions');
