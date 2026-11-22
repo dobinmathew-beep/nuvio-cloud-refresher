@@ -26,7 +26,7 @@ const LEDGER_SHARDS = '0123456789abcdef';
 const PREWARM_BATCH_SIZE = 2;
 const PREWARM_CONCURRENCY = 1;
 const VERIFY_CONCURRENCY = 1;
-const CATALOGUE_CHECKPOINT_REUSE_TTL_MS = 72 * 60 * 60 * 1000;
+const CATALOGUE_CHECKPOINT_REUSE_TTL_MS = 24 * 60 * 60 * 1000;
 let stateReadNonce = 0;
 
 function ledgerShard(id) {
@@ -36,8 +36,18 @@ function ledgerPath(shard) {
   return LEDGER_DIR + '/' + shard + '.json';
 }
 function itemFingerprint(item) {
+  // Date/episode metadata participates only when the provider supplies it.
+  // This preserves legacy fingerprints for ordinary titles while ensuring a
+  // digital-release or next-episode transition requeues the affected title.
+  const dateMetadata = [
+    item.digitalReleaseDate || item.releaseInfo || '',
+    item.nextEpisodeDate || '',
+    item.season ?? '',
+    item.episode ?? '',
+    item.premiereDate || ''
+  ];
   return createHash('sha256')
-    .update([item.id, item.type || '', item.poster || '', 'badge-rules-' + BADGE_RULES_VERSION].join('|'))
+    .update([item.id, item.type || '', item.poster || '', ...dateMetadata, 'badge-rules-' + BADGE_RULES_VERSION].join('|'))
     .digest('hex');
 }
 async function loadLedgerShard(config, shard, cache) {
@@ -187,14 +197,14 @@ export function canReuseCatalogueCheckpoint(existing, scanGeneration, forceResca
       !Number.isInteger(existing.records) || !Array.isArray(existing.seenPageIds) ||
       !existing.titles || typeof existing.titles !== 'object' || Array.isArray(existing.titles)) return false;
   if (existing.scanGeneration === scanGeneration) return true;
+  // A completed catalogue snapshot must never stand in for today's provider
+  // fetch. Only an interrupted/incomplete page checkpoint is resumable across
+  // scan generations; it is bounded to 24 hours and retains its page cursor.
+  if (existing.complete === true) return false;
   const timestamp = Date.parse(existing.updatedAt || existing.__stateFileLastModified || '');
-  if (Number.isFinite(timestamp)) {
-    const age = now - timestamp;
-    return age >= 0 && age <= CATALOGUE_CHECKPOINT_REUSE_TTL_MS;
-  }
-  // Older complete snapshots predate updatedAt metadata. Reuse those rather
-  // than rediscovering every catalogue; never adopt an undated partial scan.
-  return existing.complete === true;
+  if (!Number.isFinite(timestamp)) return false;
+  const age = now - timestamp;
+  return age >= 0 && age <= CATALOGUE_CHECKPOINT_REUSE_TTL_MS;
 }
 
 async function collectCatalog(manifest, catalog, config, fingerprint, lease, scanGeneration, forceRescan = false) {
@@ -250,11 +260,29 @@ async function collectCatalog(manifest, catalog, config, fingerprint, lease, sca
       newIds++;
       const id = canonicalId(meta);
       if (id && !titles.has(id)) {
+        const videos = Array.isArray(meta.videos) ? meta.videos : [];
+        const nextEpisode = videos
+          .filter(video => /^\\d{4}-\\d{2}-\\d{2}$/.test(String(video?.released || video?.airdate || '')))
+          .map(video => ({
+            date: String(video.released || video.airdate),
+            season: Number.isFinite(Number(video.season)) ? Number(video.season) : null,
+            episode: Number.isFinite(Number(video.episode)) ? Number(video.episode) : null
+          }))
+          .sort((a, b) => a.date.localeCompare(b.date))[0] || null;
         titles.set(id, {
           id,
           type: catalog.type,
           title: String(meta.name || meta.title || ''),
-          poster: String(meta.poster || '')
+          poster: String(meta.poster || ''),
+          year: meta.year || meta.releaseInfo?.year || '',
+          releaseInfo: typeof meta.releaseInfo === 'string' ? meta.releaseInfo : '',
+          digitalReleaseDate: meta.digitalReleaseDate || meta.releaseDate || '',
+          premiereDate: meta.premiered || '',
+          nextEpisodeDate: nextEpisode?.date || '',
+          season: nextEpisode?.season ?? '',
+          episode: nextEpisode?.episode ?? '',
+          tmdbId: meta.tmdb_id || meta.tmdbId || '',
+          tvdbId: meta.tvdb_id || meta.tvdbId || ''
         });
       }
     }
