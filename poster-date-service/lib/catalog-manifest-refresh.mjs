@@ -411,13 +411,15 @@ async function loadPublishedMetadataIndex(config) {
   if (!latest || latest.version !== 1 ||
       typeof latest.scanGeneration !== 'string' ||
       typeof latest.manifestPath !== 'string' ||
-      !latest.manifestPath.startsWith('/catalog-state/metadata-index/v1/')) {
+      !/^\\/catalog-state\\/metadata-index\\/v1\\/[a-f0-9]{24}\\/manifest\\.json$/.test(latest.manifestPath)) {
     throw new Error('Incremental scan requires a valid published metadata-index baseline; run a full discovery first');
   }
   const manifest = await readState(config, latest.manifestPath);
   if (!manifest || manifest.version !== 1 ||
       manifest.schema !== 'great-indian-normalized-metadata-index' ||
       manifest.scanGeneration !== latest.scanGeneration ||
+      manifest.generationKey !== latest.generationKey ||
+      latest.manifestPath !== '/catalog-state/metadata-index/v1/' + manifest.generationKey + '/manifest.json' ||
       !Array.isArray(manifest.chunks)) {
     throw new Error('Published metadata-index manifest is invalid; incremental scan refused');
   }
@@ -425,7 +427,7 @@ async function loadPublishedMetadataIndex(config) {
   for (let index = 0; index < manifest.chunks.length; index++) {
     const descriptor = manifest.chunks[index];
     if (!descriptor || typeof descriptor.path !== 'string' ||
-        !descriptor.path.startsWith('/catalog-state/metadata-index/v1/') ||
+        descriptor.path !== '/catalog-state/metadata-index/v1/' + manifest.generationKey + '/chunk-' + String(index).padStart(5, '0') + '.json' ||
         descriptor.count < 0 || !/^[a-f0-9]{64}$/.test(String(descriptor.sha256 || ''))) {
       throw new Error('Published metadata-index chunk descriptor is invalid');
     }
@@ -438,7 +440,7 @@ async function loadPublishedMetadataIndex(config) {
   }
   if (items.length !== manifest.itemCount ||
       manifest.chunks.length !== manifest.chunkCount ||
-      latest.itemCount !== manifest.itemCount) {
+      latest.itemCount !== manifest.itemCount || latest.chunkCount !== manifest.chunkCount) {
     throw new Error('Published metadata-index item or chunk totals do not match');
   }
   return { items, manifest };
@@ -540,7 +542,6 @@ async function runIncrementalMetadataScan(lease) {
   const baselineItemsById = new Map(baseline.items.map(item => [item.id, item]));
   const result = mergeIncrementalMetadata(baseline.items, [...observed.values()]);
   const scanGeneration = 'incremental-' + new Date().toISOString().replace(/[:.]/g, '-');
-  const manifest = await publishSharedMetadataIndex(result.items, scanGeneration, config, lease);
   const deltaPath = '/catalog-state/metadata-index/deltas/' + scanGeneration + '.json';
   const deltaRecords = result.delta;
   const deltaSerialized = JSON.stringify(deltaRecords);
@@ -557,6 +558,8 @@ async function runIncrementalMetadataScan(lease) {
   };
   await lease?.assertOwned?.();
   await writeJson(config, deltaPath, delta);
+  // Publish the new index and switch its latest pointer only after the delta is durable.
+  const manifest = await publishSharedMetadataIndex(result.items, scanGeneration, config, lease);
   console.info('[incremental-metadata-index-published]', JSON.stringify({
     scanGeneration, baselineGeneration: baseline.manifest.scanGeneration,
     sourceStats, pagesFetched, recordsFetched, itemCount: result.items.length,

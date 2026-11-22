@@ -4,6 +4,7 @@ on:
     - cron: '0 1 * * *'
     - cron: '0 2 * * *'
     - cron: '0 14 * * *'
+    - cron: '15 * * * *'
   workflow_dispatch:
     inputs:
       mode:
@@ -14,6 +15,7 @@ on:
         options:
           - discovery-only
           - queue-drain
+          - incremental-discovery
 
 permissions:
   contents: read
@@ -40,6 +42,8 @@ jobs:
             mode="$INPUT_MODE"
           elif [ "$SCHEDULE" = "0 1 * * *" ]; then
             mode="discovery-only"
+          elif [ "$SCHEDULE" = "15 * * * *" ]; then
+            mode="incremental-discovery"
           else
             mode="queue-drain"
           fi
