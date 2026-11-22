@@ -185,7 +185,9 @@ for (const [key, fallbackName] of SOURCES) {
         if (!finding) continue;
         report.findings.push(finding);
         sourceResult.candidateMovieTitles++;
-        report.totals.justAddedMovieTitles++;\n        if (finding.recentMovieIndexTimestamp) sourceResult.recentIndexMovieTitles++;\n        if (finding.posterQueryBadge) sourceResult.posterQueryBadgeTitles++;
+        report.totals.justAddedMovieTitles++;
+        if (finding.recentMovieIndexTimestamp) sourceResult.recentIndexMovieTitles++;
+        if (finding.posterQueryBadge) sourceResult.posterQueryBadgeTitles++;
         if (finding.finding === 'stale-just-added') {
           sourceResult.staleJustAdded++;
           report.totals.staleJustAdded++;
@@ -224,7 +226,7 @@ const summary = [
   '',
   ...Object.entries(report.referenceTitles).map(([id, title]) => {
     const matches = report.referenceMatches.filter(item => item.id === id);
-    return '- **' + title + '** (' + id + '): ' + (matches.length ? matches.map(item => item.source + ' — ' + item.finding + ', year ' + (item.year ?? 'unknown') + ', digital date ' + (item.latestDigitalReleaseDate || 'unknown')).join('; ') : 'not found with a Just Added poster flag in scanned catalogue pages');
+    return '- **' + title + '** (' + id + '): ' + (matches.length ? matches.map(item => item.source + ' — ' + item.finding + ', year ' + (item.year ?? 'unknown') + ', digital date ' + (item.latestDigitalReleaseDate || 'unknown')).join('; ') : 'not found in the scanned catalogue pages');
   }),
   '',
   '## Totals',
