@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T04:02:19.779651+04:00",
+  "generatedAt": "2026-11-22T06:53:44.959008+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 20,
@@ -168,8 +168,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Prime Video",
-        "Netflix"
+        "Netflix",
+        "Prime Video"
       ],
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/",
@@ -573,9 +573,9 @@
   "malayalamReview": {
     "policy": "Unmatched Malayalam source detections are held out until an unambiguous IMDb or TMDB identity and complete metadata are verified.",
     "counts": {
-      "total": 8,
+      "total": 9,
       "byType": {
-        "series": 5,
+        "series": 6,
         "movie": 3
       }
     },
@@ -708,6 +708,36 @@
           "type": "Series",
           "updatedAt": "2026-04-28T03:48:06.951Z",
           "posterUrl": "https://image.tmdb.org/t/p/w300/o930uPaXiIdn6K0Ja8iYnrHrYTr.jpg",
+          "verified": true
+        }
+      },
+      {
+        "name": "Oru Chiri Iru Chiri Bumper Chiri 3",
+        "language": "malayalam",
+        "type": "series",
+        "ottDate": "2026-04-28",
+        "reason": "Temporary resolver error; queued for retry",
+        "sources": [
+          "https://www.dailyott.in/"
+        ],
+        "platforms": [
+          "ManoramaMAX"
+        ],
+        "detail": null,
+        "sourceRecord": {
+          "_id": "69f02de830958fd1b959e7bf",
+          "title": "Oru Chiri Iru Chiri Bumper Chiri 3",
+          "platform": "ManoramaMAX",
+          "createdAt": "2026-04-28T03:47:52.066Z",
+          "genre": "Comedy, Reality",
+          "imdbRating": null,
+          "languages": [
+            "Malayalam"
+          ],
+          "releaseDate": "2026-04-28",
+          "source_verified": true,
+          "type": "Series",
+          "updatedAt": "2026-04-28T03:47:52.066Z",
           "verified": true
         }
       },
