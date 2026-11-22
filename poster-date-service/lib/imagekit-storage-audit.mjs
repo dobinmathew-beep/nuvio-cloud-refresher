@@ -2,7 +2,7 @@
 export const DEFAULT_POSTER_VERSION_RETENTION_MS = 30 * 24 * 60 * 60 * 1000;
 
 export function posterIdentityFromName(name) {
-  const match = String(name || '').match(/^(tt\\d{7,10}|tmdb-\\d{1,12}|tvmaze-\\d{1,12})(?:_[^.]+)?\\.jpg$/i);
+  const match = String(name || '').match(/^(tt\d{7,10}|tmdb-\d{1,12}|tvmaze-\d{1,12})(?:_[^.]+)?\.jpg$/i);
   return match?.[1]?.toLowerCase() || null;
 }
 
@@ -71,7 +71,7 @@ export function classifyUnpointedVersionCandidates(files, {
   const retained = [];
   for (const file of files || []) {
     const path = String(file.filePath || '');
-    const match = path.match(/^\\/poster-versions\\/(tt\\d{7,10})\\/([a-f0-9]{64})\\.jpg$/i);
+    const match = path.match(/^\/poster-versions\/(tt\d{7,10})\/([a-f0-9]{64})\.jpg$/i);
     if (!match || !file.fileId) continue;
     const id = match[1].toLowerCase();
     if (unknownPointerIds.has(id)) {
