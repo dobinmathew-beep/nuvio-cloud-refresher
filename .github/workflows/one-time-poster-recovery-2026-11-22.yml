@@ -64,27 +64,33 @@ jobs:
           code="$(curl --silent --show-error --max-time 45 -o "$status" -w '%{http_code}' "$SERVICE/catalog-refresh/status" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
           test "$code" = "200"
           terminal="$(node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));process.stdout.write(j.status||'unknown')" "$status")"
-          if [ "$terminal" = "idle" ]; then
+          while [ "$terminal" = "running" ]; do
+            sleep 30
+            code="$(curl --silent --show-error --max-time 45 -o "$status" -w '%{http_code}' "$SERVICE/catalog-refresh/status" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
+            test "$code" = "200"
+            terminal="$(node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));process.stdout.write(j.status||'unknown')" "$status")"
+          done
+          report_mode="$(node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));process.stdout.write(j.report?.mode||'')" "$status")"
+          if [ "$terminal" != "completed" ] || [ "$report_mode" != "queue-drain" ]; then
+            if [ "$terminal" != "idle" ] && [ "$terminal" != "completed" ]; then cat "$status" | tee -a "$GITHUB_STEP_SUMMARY"; exit 1; fi
             code="$(curl --silent --show-error --max-time 60 -o "$start" -w '%{http_code}' -X POST "$SERVICE/catalog-refresh?mode=queue-drain" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
             cat "$start" | tee -a "$GITHUB_STEP_SUMMARY"
             test "$code" = "202"
             node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));if(j.status!=='accepted'||!j.jobId)process.exit(2)" "$start"
-          elif [ "$terminal" != "running" ] && [ "$terminal" != "completed" ]; then
-            cat "$status" | tee -a "$GITHUB_STEP_SUMMARY"
-            echo "Unexpected queue-drain status: $terminal" >&2
-            exit 1
           fi
           deadline=$((SECONDS+21000))
           while [ "$SECONDS" -lt "$deadline" ]; do
             code="$(curl --silent --show-error --max-time 45 -o "$status" -w '%{http_code}' "$SERVICE/catalog-refresh/status" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
             if [ "$code" = "200" ]; then
               terminal="$(node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));process.stdout.write(j.status||'unknown')" "$status")"
-              if [ "$terminal" = "completed" ]; then cat "$status" | tee -a "$GITHUB_STEP_SUMMARY"; break; fi
+              report_mode="$(node -e "const j=JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'));process.stdout.write(j.report?.mode||'')" "$status")"
+              if [ "$terminal" = "completed" ] && [ "$report_mode" = "queue-drain" ]; then cat "$status" | tee -a "$GITHUB_STEP_SUMMARY"; break; fi
               if [ "$terminal" = "failed" ] || [ "$terminal" = "coordination-unavailable" ] || [ "$terminal" = "paused" ]; then cat "$status" | tee -a "$GITHUB_STEP_SUMMARY"; exit 1; fi
             fi
             sleep 30
           done
           test "$terminal" = "completed"
+          test "$report_mode" = "queue-drain"
           code="$(curl --silent --show-error --max-time 45 -o "$diag" -w '%{http_code}' "$SERVICE/catalog-refresh/diagnostics" -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json')"
           test "$code" = "200"
           cat "$diag" | tee -a "$GITHUB_STEP_SUMMARY"
