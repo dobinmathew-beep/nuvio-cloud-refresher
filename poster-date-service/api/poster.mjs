@@ -57,6 +57,7 @@ export function sourceUrl(imdbId) {
 
 const IMAGEKIT_REFRESH_MS = 6 * 60 * 60 * 1000;
 const pendingImageKitUploads = new Map();
+const pendingBackgroundPosterBuilds = new Map();
 const imageKitAvailabilityCache = new Map();
 const IMAGEKIT_AVAILABILITY_TTL_MS = 2 * 60 * 1000;
 const IMAGEKIT_MISS_TTL_MS = 15 * 1000;
@@ -445,6 +446,25 @@ async function getBuiltPoster(id, knownRelease = undefined, badge = '', version 
   return pending;
 }
 
+function scheduleBackgroundPosterBuild(id, badge, version, fallbackUrl) {
+  if (pendingBackgroundPosterBuilds.has(id)) return;
+  const job = (async () => {
+    // This work is deliberately detached from the Nuvio request. The client
+    // receives BetterPosters immediately; badge metadata, OCR and ImageKit
+    // upload happen only in the background.
+    if (!getImageKitStorageSnapshot().known) {
+      await initializeImageKitStorageSnapshot().catch(error =>
+        console.warn('[imagekit-background-snapshot-unavailable]', error?.message || 'unknown error')
+      );
+    }
+    const poster = await getBuiltPoster(id, undefined, badge, version, fallbackUrl);
+    if (canStoreImageKitPoster(id, poster.bytes.length)) scheduleImageKitUpload(id, poster);
+  })().catch(error => {
+    console.warn('[background-poster-build-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
+  }).finally(() => pendingBackgroundPosterBuilds.delete(id));
+  pendingBackgroundPosterBuilds.set(id, job);
+}
+
 function setImageHeaders(res, type, status, releaseDate, releaseKind = 'none') {
   res.statusCode = 200;
   res.setHeader('Content-Type', type);
@@ -499,6 +519,24 @@ export default async function handler(req, res) {
     if (fastCachedAsset) {
       return redirectToExistingImageKit(res, fastCachedAsset, 'imagekit-first-fast-path');
     }
+
+    // Cache miss: serve BetterPosters directly now and build the permanent,
+    // date-aware ImageKit version asynchronously. This removes catalogue,
+    // TMDB and OCR work from the Nuvio request path. A single per-ID promise
+    // prevents duplicate background generation when several catalogues request
+    // the same title at once.
+    const immediateBadge = String(req.query?.badge || '').toLowerCase() === 'just-added' ? 'just-added' : '';
+    const immediateVersion = String(req.query?.v || '');
+    const immediateFallback = String(req.query?.fallback || '');
+    scheduleBackgroundPosterBuild(id, immediateBadge, immediateVersion, immediateFallback);
+    res.statusCode = 302;
+    res.setHeader('Location', sourceUrl(id));
+    res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('X-Poster-Source', 'BetterPosters');
+    res.setHeader('X-Poster-Date-Status', 'background-generation-pending');
+    res.setHeader('X-ImageKit-Storage', 'pending');
+    return res.end();
 
     // An ImageKit copy is valid only while TMDB still confirms a future release.
     // This prevents a cached date badge from surviving its release day.
