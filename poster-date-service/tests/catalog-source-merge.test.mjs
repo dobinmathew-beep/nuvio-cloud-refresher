@@ -33,3 +33,17 @@ test('catalogue merge is idempotent and removes duplicate/empty source identitie
   const twice = mergeCatalogSourceItem(once, item);
   assert.deepEqual(twice.catalogSources, [{ source: 'Xperience', id: 'series' }]);
 });
+
+
+test('metadata index preserves a canonical IMDb ID from the catalogue item ID', async () => {
+  const { metadataIndexImdbId } = await import('../lib/catalog-manifest-refresh.mjs');
+  assert.equal(metadataIndexImdbId({ id: 'tt1234567' }), 'tt1234567');
+  assert.equal(metadataIndexImdbId({ id: 'TT12345678' }), 'tt12345678');
+  assert.equal(metadataIndexImdbId({ id: 'tmdb:12345' }), '');
+});
+
+test('metadata index prefers a valid explicit IMDb ID and rejects malformed values', async () => {
+  const { metadataIndexImdbId } = await import('../lib/catalog-manifest-refresh.mjs');
+  assert.equal(metadataIndexImdbId({ id: 'tmdb:12345', imdbId: 'tt7654321' }), 'tt7654321');
+  assert.equal(metadataIndexImdbId({ id: 'tt1234567', imdbId: 'not-an-imdb-id' }), 'tt1234567');
+});

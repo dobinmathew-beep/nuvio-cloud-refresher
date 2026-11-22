@@ -362,7 +362,7 @@ async function publishSharedMetadataIndex(items, scanGeneration, config, lease) 
     .map(item => ({
       id: item.id, type: String(item.type || ''),
       title: String(item.title || ''), year: String(item.year || ''),
-      imdbId: String(item.imdbId || (/^tt\\d{7,10}$/.test(item.id) ? item.id : '')),
+      imdbId: metadataIndexImdbId(item),
       tmdbId: String(item.tmdbId || ''), tvdbId: String(item.tvdbId || ''),
       tvmazeId: String(item.tvmazeId || ''),
       providerId: String(item.providerId || ''),
@@ -416,6 +416,13 @@ function catalogueFingerprint(catalog) {
   // Stremio catalogue IDs are the stable identity shared by cloned metadata
   // instances. Keep media type in the key because movie/series IDs can overlap.
   return String(catalog.type || '').trim().toLowerCase() + '|' + String(catalog.id || '').trim().toLowerCase();
+}
+
+export function metadataIndexImdbId(item) {
+  const explicit = String(item?.imdbId || item?.imdb_id || '').trim();
+  if (/^tt\d{7,10}$/i.test(explicit)) return explicit.toLowerCase();
+  const id = String(item?.id || '').trim();
+  return /^tt\d{7,10}$/i.test(id) ? id.toLowerCase() : '';
 }
 
 function canonicalId(meta) {
