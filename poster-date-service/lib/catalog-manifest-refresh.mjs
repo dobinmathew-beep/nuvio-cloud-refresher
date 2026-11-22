@@ -26,7 +26,7 @@ const LEDGER_SHARDS = '0123456789abcdef';
 const PREWARM_BATCH_SIZE = 2;
 const PREWARM_CONCURRENCY = 1;
 const VERIFY_CONCURRENCY = 1;
-const CATALOGUE_CHECKPOINT_REUSE_TTL_MS = 72 * 60 * 60 * 1000;
+const CATALOGUE_CHECKPOINT_REUSE_TTL_MS = 24 * 60 * 60 * 1000;
 let stateReadNonce = 0;
 
 function ledgerShard(id) {
@@ -36,8 +36,18 @@ function ledgerPath(shard) {
   return LEDGER_DIR + '/' + shard + '.json';
 }
 function itemFingerprint(item) {
+  // Date/episode metadata participates only when the provider supplies it.
+  // This preserves legacy fingerprints for ordinary titles while ensuring a
+  // digital-release or next-episode transition requeues the affected title.
+  const dateMetadata = [
+    item.digitalReleaseDate || item.releaseInfo || '',
+    item.nextEpisodeDate || '',
+    item.season ?? '',
+    item.episode ?? '',
+    item.premiereDate || ''
+  ];
   return createHash('sha256')
-    .update([item.id, item.type || '', item.poster || '', 'badge-rules-' + BADGE_RULES_VERSION].join('|'))
+    .update([item.id, item.type || '', item.poster || '', ...dateMetadata, 'badge-rules-' + BADGE_RULES_VERSION].join('|'))
     .digest('hex');
 }
 async function loadLedgerShard(config, shard, cache) {
@@ -187,14 +197,14 @@ export function canReuseCatalogueCheckpoint(existing, scanGeneration, forceResca
       !Number.isInteger(existing.records) || !Array.isArray(existing.seenPageIds) ||
       !existing.titles || typeof existing.titles !== 'object' || Array.isArray(existing.titles)) return false;
   if (existing.scanGeneration === scanGeneration) return true;
+  // A completed catalogue snapshot must never stand in for today's provider
+  // fetch. Only an interrupted/incomplete page checkpoint is resumable across
+  // scan generations; it is bounded to 24 hours and retains its page cursor.
+  if (existing.complete === true) return false;
   const timestamp = Date.parse(existing.updatedAt || existing.__stateFileLastModified || '');
-  if (Number.isFinite(timestamp)) {
-    const age = now - timestamp;
-    return age >= 0 && age <= CATALOGUE_CHECKPOINT_REUSE_TTL_MS;
-  }
-  // Older complete snapshots predate updatedAt metadata. Reuse those rather
-  // than rediscovering every catalogue; never adopt an undated partial scan.
-  return existing.complete === true;
+  if (!Number.isFinite(timestamp)) return false;
+  const age = now - timestamp;
+  return age >= 0 && age <= CATALOGUE_CHECKPOINT_REUSE_TTL_MS;
 }
 
 async function collectCatalog(manifest, catalog, config, fingerprint, lease, scanGeneration, forceRescan = false) {
@@ -250,11 +260,29 @@ async function collectCatalog(manifest, catalog, config, fingerprint, lease, sca
       newIds++;
       const id = canonicalId(meta);
       if (id && !titles.has(id)) {
+        const videos = Array.isArray(meta.videos) ? meta.videos : [];
+        const nextEpisode = videos
+          .filter(video => /^\d{4}-\d{2}-\d{2}$/.test(String(video?.released || video?.airdate || '')))
+          .map(video => ({
+            date: String(video.released || video.airdate),
+            season: Number.isFinite(Number(video.season)) ? Number(video.season) : null,
+            episode: Number.isFinite(Number(video.episode)) ? Number(video.episode) : null
+          }))
+          .sort((a, b) => a.date.localeCompare(b.date))[0] || null;
         titles.set(id, {
           id,
           type: catalog.type,
           title: String(meta.name || meta.title || ''),
-          poster: String(meta.poster || '')
+          poster: String(meta.poster || ''),
+          year: meta.year || meta.releaseInfo?.year || '',
+          releaseInfo: typeof meta.releaseInfo === 'string' ? meta.releaseInfo : '',
+          digitalReleaseDate: meta.digitalReleaseDate || meta.releaseDate || '',
+          premiereDate: meta.premiered || '',
+          nextEpisodeDate: nextEpisode?.date || '',
+          season: nextEpisode?.season ?? '',
+          episode: nextEpisode?.episode ?? '',
+          tmdbId: meta.tmdb_id || meta.tmdbId || '',
+          tvdbId: meta.tvdb_id || meta.tvdbId || ''
         });
       }
     }
@@ -360,12 +388,22 @@ function imageKitStorageId(id) {
   if (id.startsWith('tvmaze:')) return 'tvmaze-' + id.slice(7);
   return id;
 }
-async function checkImageKit(id) {
+async function checkImageKit(idOrUrl) {
   const endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\/$/, '');
   if (!endpoint) return false;
   try {
-    const storageId = imageKitStorageId(id);
-    const verificationUrl = endpoint + '/posters/' + encodeURIComponent(storageId) + '.jpg';
+    let verificationUrl;
+    if (/^https:\/\//i.test(String(idOrUrl || ''))) {
+      const supplied = new URL(String(idOrUrl));
+      const expected = new URL(endpoint);
+      const posterPrefix = expected.pathname.replace(/\/$/, '') + '/posters/';
+      if (supplied.origin !== expected.origin || !supplied.pathname.startsWith(posterPrefix) ||
+          !/\.jpe?g$/i.test(supplied.pathname)) return false;
+      verificationUrl = supplied.toString();
+    } else {
+      const storageId = imageKitStorageId(String(idOrUrl));
+      verificationUrl = endpoint + '/posters/' + encodeURIComponent(storageId) + '.jpg';
+    }
     const response = await fetch(verificationUrl, { method: 'HEAD', cache: 'no-store', signal: AbortSignal.timeout(6000) });
     return response.ok && (response.headers.get('content-type') || '').toLowerCase().startsWith('image/');
   } catch { return false; }
@@ -442,14 +480,19 @@ async function prewarm(item, knownImageKitCheck = null) {
       return { id: item.id, status: 'source-redirect', error: 'Poster service redirected to its source provider' };
     }
     if (decision.status === 'upload-pending') {
-      // One quick confirmation prevents duplicate uploads; CDN propagation is
-      // then handled by the bounded asynchronous verifier, not this serial lane.
-      if (await checkImageKit(item.id)) return { id: item.id, status: 'imagekit-hit', posterStatus };
+      // TMDB/TVmaze routes may resolve to an IMDb-keyed ImageKit asset. Verify
+      // the exact redirected CDN URL rather than a synthetic tmdb-/tvmaze- key.
+      let verificationUrl = null;
       let locationDetails = null;
       try {
         const parsedLocation = new URL(location);
         locationDetails = { host: parsedLocation.host, path: parsedLocation.pathname };
+        const configured = new URL(imageKitBase);
+        const prefix = configured.pathname.replace(/\/$/, '') + '/';
+        if (parsedLocation.origin === configured.origin && parsedLocation.pathname.startsWith(prefix) &&
+            /\.jpe?g$/i.test(parsedLocation.pathname)) verificationUrl = parsedLocation.toString();
       } catch {}
+      if (await checkImageKit(verificationUrl || item.id)) return { id: item.id, status: 'imagekit-hit', posterStatus };
       console.info('[catalog-prewarm-upload-pending]', JSON.stringify({
         id: item.id,
         posterServiceHost: new URL(endpoint).host,
@@ -464,6 +507,7 @@ async function prewarm(item, knownImageKitCheck = null) {
       }));
       return {
         id: item.id, status: 'upload-pending', posterStatus,
+        verificationUrl,
         verificationTimeoutMs: decision.verificationTimeoutMs,
         uploadAccepted: decision.reason === 'imagekit-upload-pending',
         error: 'Upload outcome requires asynchronous ImageKit visibility verification'
@@ -940,7 +984,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   // two minutes so propagation can finish without risking a duplicate.
   for (let offset = 0; offset < pendingResumeItems.length; offset += PREFLIGHT_HEAD_CONCURRENCY) {
     const batch = pendingResumeItems.slice(offset, offset + PREFLIGHT_HEAD_CONCURRENCY);
-    const checks = await Promise.all(batch.map(({ item }) => checkImageKit(item.id)));
+    const checks = await Promise.all(batch.map(({ item, record }) => checkImageKit(record?.verificationUrl || item.id)));
     for (let index = 0; index < batch.length; index++) {
       const { item, record } = batch[index];
       const shard = ledgerShard(item.id);
@@ -1053,7 +1097,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     const verifyPendingBatch = async pendingItems => {
       const verificationPolicy = refreshResourcePolicy(process.memoryUsage().rss / (1024 * 1024));
       const verification = await runPool(pendingItems, async item => {
-        if (await waitForImageKit(item.id, item.verificationTimeoutMs || 90000)) {
+        if (await waitForImageKit(item.verificationUrl || item.id, item.verificationTimeoutMs || 90000)) {
           records[item.id] = ledgerRecord(item, 'verified', {
             verifiedAt: new Date().toISOString(),
             verification: 'imagekit-head-confirmed'
@@ -1134,9 +1178,10 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
                 posterStatus: result.posterStatus || null,
                 verificationTimeoutMs: result.verificationTimeoutMs || 90000,
                 uploadAccepted: result.uploadAccepted === true,
+                verificationUrl: result.verificationUrl || null,
                 pendingSince: new Date().toISOString()
               });
-              pendingItems.push({ ...item, verificationTimeoutMs: result.verificationTimeoutMs || 90000, uploadAccepted: result.uploadAccepted === true });
+              pendingItems.push({ ...item, verificationUrl: result.verificationUrl || null, verificationTimeoutMs: result.verificationTimeoutMs || 90000, uploadAccepted: result.uploadAccepted === true });
               uploadPending++;
             } else if (result.status === 'source-unavailable') {
               records[item.id] = ledgerRecord(item, 'source-unavailable', {

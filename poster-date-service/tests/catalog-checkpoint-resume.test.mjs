@@ -16,8 +16,8 @@ const snapshot = overrides => ({
   ...overrides
 });
 
-test('adopts a recent completed catalogue checkpoint from an earlier generation', () => {
-  assert.equal(canReuseCatalogueCheckpoint(snapshot(), 'new-generation', false, now), true);
+test('refetches completed catalogue snapshots in a new daily generation', () => {
+  assert.equal(canReuseCatalogueCheckpoint(snapshot(), 'new-generation', false, now), false);
 });
 
 test('adopts a recent partial page checkpoint from an earlier generation', () => {
