@@ -76,3 +76,5 @@ jobs:
           curl --silent --show-error --max-time 45 "$POSTER_SERVICE_URL/catalog-refresh/diagnostics" \
             -H "Authorization: Bearer $SCAN_TOKEN" -H "Accept: application/json" \
             | tee "$RUNNER_TEMP/after.json" | tee -a "$GITHUB_STEP_SUMMARY"
+
+# one-off run trigger
