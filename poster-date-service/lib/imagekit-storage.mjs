@@ -538,8 +538,32 @@ export async function buildImageKitDeletionReport({
   retentionMs = VERSIONED_POSTER_RETENTION_MS
 } = {}) {
   const files = await listImageKitFiles();
-  const accountBytes = files.reduce((sum, file) => sum + Math.max(0, Number(file.size) || 0), 0);
+  const currentFileBytes = files.reduce((sum, file) => sum + Math.max(0, Number(file.size) || 0), 0);
+  let accountBytes = currentFileBytes;
+  let accountBytesSource = 'current-file-inventory-lower-bound';
+  let accountUsageUnavailableReason = null;
   const config = imageKitConfig();
+  // ImageKit's account-usage API is the authoritative media-library storage
+  // meter. File inventory is retained as a transparent fallback only.
+  try {
+    const startDate = new Date(now - 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    const endDate = new Date(now + 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    const usageUrl = new URL(API + '/accounts/usage');
+    usageUrl.searchParams.set('startDate', startDate);
+    usageUrl.searchParams.set('endDate', endDate);
+    const usageResponse = await apiRequest(usageUrl);
+    const usagePayload = await usageResponse.json();
+    const usage = Array.isArray(usagePayload) ? usagePayload[0] : (usagePayload?.data?.[0] || usagePayload);
+    const reportedBytes = Number(usage?.mediaLibraryStorageBytes);
+    if (Number.isFinite(reportedBytes) && reportedBytes >= 0) {
+      accountBytes = reportedBytes;
+      accountBytesSource = 'imagekit-account-usage-api';
+    } else {
+      accountUsageUnavailableReason = 'mediaLibraryStorageBytes missing from usage response';
+    }
+  } catch (error) {
+    accountUsageUnavailableReason = error?.message || 'account usage API unavailable';
+  }
   const versionedById = new Map();
   const pointerFilesById = new Map();
   for (const file of files) {
@@ -655,6 +679,9 @@ export async function buildImageKitDeletionReport({
     accountFileCount: files.length,
     accountBytes,
     accountGiB: Number((accountBytes / (1024 ** 3)).toFixed(3)),
+    accountBytesSource,
+    currentFileBytes,
+    accountUsageUnavailableReason,
     posterFileCount: posterFiles.length,
     candidateCount: candidates.length,
     candidateBytes,
