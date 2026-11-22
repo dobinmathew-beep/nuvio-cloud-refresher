@@ -8,8 +8,9 @@ on:
     paths:
       - '.github/workflows/catalog-manifest-refresh.yml'
   schedule:
-    # Oman is UTC+4: 06:00 and 18:00 local time.
-    - cron: '0 2,14 * * *'
+    # Temporary safety: skip the legacy 06:00 Oman refresh while the faster pipeline is built.
+    # Keep the 18:00 recovery run until the replacement queue is tested.
+    - cron: '0 14 * * *'
 
 permissions:
   contents: read
