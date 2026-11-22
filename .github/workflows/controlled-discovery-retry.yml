@@ -78,3 +78,5 @@ jobs:
             | tee "$RUNNER_TEMP/after.json" | tee -a "$GITHUB_STEP_SUMMARY"
 
 # one-off run trigger
+
+# trigger checkpoint resume
