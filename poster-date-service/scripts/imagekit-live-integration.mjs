@@ -1,4 +1,4 @@
-import { randomInt, randomUUID } from 'node:crypto';
+import { randomInt } from 'node:crypto';
 import { Buffer } from 'node:buffer';
 import {
   createImageKitPosterAdapter,
