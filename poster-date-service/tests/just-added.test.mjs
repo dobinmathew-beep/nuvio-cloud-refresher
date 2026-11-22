@@ -1,8 +1,8 @@
 import test, { after } from 'node:test';
 import assert from 'node:assert/strict';
 import sharp from 'sharp';
-import { renderJustAddedBadge, JUST_ADDED_BADGE_TEXT, buildJustAddedBadgeSvg } from '../lib/render-poster.mjs';
-import { hasJustAddedBadgeText, terminateOcrWorker } from '../lib/coming-tag.mjs';
+import { renderJustAddedBadge, removeExistingJustAddedBadge, JUST_ADDED_BADGE_TEXT, buildJustAddedBadgeSvg } from '../lib/render-poster.mjs';
+import { hasJustAddedBadgeText, inspectExistingPosterBadges, terminateOcrWorker } from '../lib/coming-tag.mjs';
 import { resetCatalogAddedIndexForTest } from '../lib/catalog-just-added.mjs';
 
 test('badge SVG embeds the exact title-case Just Added label', () => {
@@ -101,6 +101,19 @@ test('shared poster URL normalizes a BetterPosters Just Added tag without a quer
   } finally {
     globalThis.fetch = originalFetch;
   }
+});
+
+test('removes an embedded BetterPosters Just Added chip when it is not authoritative', async () => {
+  const base = await sharp({ create: { width: 600, height: 900, channels: 3, background: '#456789' } }).jpeg().toBuffer();
+  const source = await renderJustAddedBadge(base, 0.105);
+  const before = await inspectExistingPosterBadges(source, 'any', null);
+  assert.equal(before.hasJustAddedBadge, true, 'fixture must contain a detectable source badge');
+  const cleaned = await removeExistingJustAddedBadge(source, 0.105);
+  const after = await inspectExistingPosterBadges(cleaned, 'any', null);
+  assert.equal(after.hasJustAddedBadge, false, 'untrusted source badge must no longer be visible');
+  const dimensions = await sharp(cleaned).metadata();
+  assert.equal(dimensions.width, 600);
+  assert.equal(dimensions.height, 900);
 });
 
 test('overlay preserves poster dimensions', async () => {
