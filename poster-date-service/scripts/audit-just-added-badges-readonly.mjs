@@ -242,7 +242,10 @@ const summary = [
   '## Totals',
   '',
   '- Movie record appearances (catalogue/page rows): ' + report.totals.movieRecordAppearances,
-  '- Just Added movie posters: ' + report.totals.candidateMovieAppearances,
+  '- Candidate movie appearances (recent index or poster flag, plus references): ' + report.totals.candidateMovieAppearances,
+  '- Unique candidate movie IDs: ' + report.totals.uniqueCandidateMovieIds,
+  '- Unique old-movie IDs with recent index timestamps: ' + report.totals.uniqueOldMovieIds,
+  '- Dynamic catalogues skipped (required extra values unavailable): ' + report.totals.dynamicCataloguesSkipped,
   '- Stale Just Added (>14 days since digital release): ' + report.totals.staleJustAdded,
   '- Old movie with no digital date (requires review): ' + report.totals.oldMovieWithoutDigitalDate,
   ''
