@@ -652,6 +652,36 @@
     }
   },
   {
+    "name": "Oru Chiri Iru Chiri Bumper Chiri 3",
+    "language": "malayalam",
+    "type": "series",
+    "ottDate": "2026-04-28",
+    "reason": "Temporary resolver error; queued for retry",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ManoramaMAX"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69f02de830958fd1b959e7bf",
+      "title": "Oru Chiri Iru Chiri Bumper Chiri 3",
+      "platform": "ManoramaMAX",
+      "createdAt": "2026-04-28T03:47:52.066Z",
+      "genre": "Comedy, Reality",
+      "imdbRating": null,
+      "languages": [
+        "Malayalam"
+      ],
+      "releaseDate": "2026-04-28",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-28T03:47:52.066Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Marpu - Not For You, But For The Future",
     "language": "telugu",
     "type": "movie",
@@ -683,36 +713,6 @@
     }
   },
   {
-    "name": "Chamanthi",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-04-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f02de830958fd1b959e7c1",
-      "title": "Chamanthi",
-      "platform": "ZEE5",
-      "createdAt": "2026-04-28T03:47:52.447Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-04-28",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-28T03:47:52.447Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Roadies Rebirth",
     "language": "hindi",
     "type": "series",
@@ -740,6 +740,36 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-10-16T02:18:52.613Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Chamanthi",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-04-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69f02de830958fd1b959e7c1",
+      "title": "Chamanthi",
+      "platform": "ZEE5",
+      "createdAt": "2026-04-28T03:47:52.447Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-04-28",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-28T03:47:52.447Z",
       "verified": true
     }
   },
@@ -927,36 +957,6 @@
     }
   },
   {
-    "name": "Katha Sudha",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-03-22",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69bf625ee9d9be413445ad25",
-      "platform": "ETV Win",
-      "title": "Katha Sudha",
-      "createdAt": "2026-03-22T03:30:38.016Z",
-      "genre": "Drama, Anthology",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-03-22",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-03-22T03:30:38.016Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Chumbak Part 2",
     "language": "hindi",
     "type": "series",
@@ -984,6 +984,36 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-10-02T02:18:50.680Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Katha Sudha",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-03-22",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69bf625ee9d9be413445ad25",
+      "platform": "ETV Win",
+      "title": "Katha Sudha",
+      "createdAt": "2026-03-22T03:30:38.016Z",
+      "genre": "Drama, Anthology",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-03-22",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-03-22T03:30:38.016Z",
       "verified": true
     }
   },

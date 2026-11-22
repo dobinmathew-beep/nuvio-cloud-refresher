@@ -4720,13 +4720,6 @@
       "type": "movie"
     },
     {
-      "id": "tt17425020",
-      "name": "One Friday Night",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt17425020.jpg",
-      "releaseInfo": "2023",
-      "type": "movie"
-    },
-    {
       "id": "tt28282716",
       "name": "Trial Period",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28282716.jpg",
@@ -4996,13 +4989,6 @@
       "id": "tt26763997",
       "name": "Abhishek Upmanyu: Jealous of Sabziwala",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26763997.jpg",
-      "releaseInfo": "2023",
-      "type": "movie"
-    },
-    {
-      "id": "tt13130948",
-      "name": "Shehzada",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13130948.jpg",
       "releaseInfo": "2023",
       "type": "movie"
     },
@@ -5700,9 +5686,9 @@
       "type": "movie"
     },
     {
-      "id": "tt16747572",
-      "name": "The Silence of Swastika",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt16747572.jpg",
+      "id": "tt13912632",
+      "name": "Sanak",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13912632.jpg",
       "releaseInfo": "2021",
       "type": "movie"
     },
@@ -5980,13 +5966,6 @@
       "type": "movie"
     },
     {
-      "id": "tt7094488",
-      "name": "Sandeep Aur Pinky Faraar",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7094488.jpg",
-      "releaseInfo": "2021",
-      "type": "movie"
-    },
-    {
       "id": "tt10098288",
       "name": "Roohi",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10098288.jpg",
@@ -6256,13 +6235,6 @@
       "id": "tt12779208",
       "name": "Milestone",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt12779208.jpg",
-      "releaseInfo": "2020",
-      "type": "movie"
-    },
-    {
-      "id": "tt12642180",
-      "name": "Ram Singh Charlie",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt12642180.jpg",
       "releaseInfo": "2020",
       "type": "movie"
     },
@@ -12589,5 +12561,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-22T19:04:08.129973+04:00"
+  "_updatedAt": "2026-11-23T01:11:24.858936+04:00"
 }

@@ -1,170 +1,33 @@
 {
-  "generatedAt": "2026-11-22T21:00:10.397992+04:00",
+  "generatedAt": "2026-11-23T01:11:24.858936+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 24,
+    "total": 19,
     "byLanguage": {
-      "hindi": 14,
-      "malayalam": 6,
       "tamil": 2,
+      "hindi": 12,
+      "malayalam": 3,
       "telugu": 2
     },
     "byType": {
-      "series": 11,
-      "movie": 13
+      "series": 9,
+      "movie": 10
     },
     "byMatchState": {
-      "published": 18,
-      "unmatched": 6
+      "published": 14,
+      "unmatched": 5
     },
     "bySource": {
-      "https://www.dailyott.in/": 3,
-      "https://ottasia.com/ott-releases-this-week?country=IN": 14,
-      "https://www.ottchecker.com/ott-releases/malayalam": 1,
-      "https://www.keralatv.in/channel/ott/": 3,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 13,
+      "https://www.dailyott.in/": 2,
       "https://cinebuds.com/ott-releases-this-week/": 4,
+      "https://www.keralatv.in/channel/ott/": 1,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
       "https://v3-cinemeta.strem.io/": 1
     }
   },
   "items": [
-    {
-      "title": "Bigg Boss Season 20",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-22",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": null,
-      "matchId": "tt1281973",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Supreme Solaris",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-22",
-      "platforms": [
-        "YouTube"
-      ],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
-      "detail": "https://ottasia.com/title/tv/338740/supreme-solaris?country=IN",
-      "matchId": "tmdb:338740",
-      "matchState": "published",
-      "matchReason": "TMDB exact-title search + verified detail page",
-      "metadataComplete": true,
-      "metadataSource": "TMDB exact-title search + verified detail page",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Bouma",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-22",
-      "platforms": [
-        "Amazon Prime Video",
-        "ZEE5"
-      ],
-      "sources": [
-        "https://www.ottchecker.com/ott-releases/malayalam"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "OTTChecker explicit streaming-since date",
-      "detail": "https://www.ottchecker.com/movie/bouma-2026",
-      "matchId": "tt44878818",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_ml_movie"
-    },
-    {
-      "title": "Iniyum",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-22",
-      "platforms": [
-        "ManoramaMAX"
-      ],
-      "sources": [
-        "https://www.keralatv.in/channel/ott/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "Kerala TV dated OTT announcement",
-      "detail": "https://www.keralatv.in/iniyum-movie-ott-release-date-manoramamax/",
-      "matchId": "tmdb:1628781",
-      "matchState": "published",
-      "matchReason": "TMDB exact-title search + verified detail page",
-      "metadataComplete": true,
-      "metadataSource": "TMDB exact-title search + verified detail page",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": false,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_ml_movie"
-    },
-    {
-      "title": "Pendulum",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-22",
-      "platforms": [
-        "Netflix"
-      ],
-      "sources": [
-        "https://www.keralatv.in/channel/ott/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "Kerala TV dated OTT announcement",
-      "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
     {
       "title": "Notebook 90s – Kadhal Flashback",
       "language": "tamil",
@@ -248,8 +111,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Prime Video",
-        "Netflix"
+        "Netflix",
+        "Prime Video"
       ],
       "sources": [
         "https://www.dailyott.in/",
@@ -680,9 +543,9 @@
   "malayalamReview": {
     "policy": "Unmatched Malayalam source detections are held out until an unambiguous IMDb or TMDB identity and complete metadata are verified.",
     "counts": {
-      "total": 10,
+      "total": 11,
       "byType": {
-        "series": 6,
+        "series": 7,
         "movie": 4
       }
     },
@@ -859,6 +722,36 @@
         }
       },
       {
+        "name": "Oru Chiri Iru Chiri Bumper Chiri 3",
+        "language": "malayalam",
+        "type": "series",
+        "ottDate": "2026-04-28",
+        "reason": "Temporary resolver error; queued for retry",
+        "sources": [
+          "https://www.dailyott.in/"
+        ],
+        "platforms": [
+          "ManoramaMAX"
+        ],
+        "detail": null,
+        "sourceRecord": {
+          "_id": "69f02de830958fd1b959e7bf",
+          "title": "Oru Chiri Iru Chiri Bumper Chiri 3",
+          "platform": "ManoramaMAX",
+          "createdAt": "2026-04-28T03:47:52.066Z",
+          "genre": "Comedy, Reality",
+          "imdbRating": null,
+          "languages": [
+            "Malayalam"
+          ],
+          "releaseDate": "2026-04-28",
+          "source_verified": true,
+          "type": "Series",
+          "updatedAt": "2026-04-28T03:47:52.066Z",
+          "verified": true
+        }
+      },
+      {
         "name": "Shadow Play",
         "language": "malayalam",
         "type": "series",
@@ -991,7 +884,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 16
+      "records": 15
     },
     {
       "source": "Vi weekly OTT calendar",
@@ -1096,7 +989,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 118,
+      "records": 117,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1599,7 +1492,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 41,
+          "detectedRecords": 40,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1616,9 +1509,9 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 13,
+              "records": 12,
               "movieRecords": 9,
-              "seriesRecords": 4
+              "seriesRecords": 3
             },
             {
               "source": "Vi weekly OTT calendar",
@@ -2330,7 +2223,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 41,
+      "detectedRecords": 40,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2347,9 +2240,9 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 13,
+          "records": 12,
           "movieRecords": 9,
-          "seriesRecords": 4
+          "seriesRecords": 3
         },
         {
           "source": "Vi weekly OTT calendar",

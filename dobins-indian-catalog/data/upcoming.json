@@ -1,68 +1,8 @@
 {
-  "generatedAt": "2026-11-22T21:00:10.397992+04:00",
+  "generatedAt": "2026-11-23T01:11:24.858936+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 21,
+  "count": 18,
   "items": [
-    {
-      "id": "tt1281973",
-      "aliases": [
-        "tt1281973"
-      ],
-      "name": "Bigg Boss",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-23",
-      "kind": "episode",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
-    },
-    {
-      "id": "tt38195069",
-      "aliases": [
-        "tt38195069"
-      ],
-      "name": "Tumm Se Tumm Tak",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-23",
-      "kind": "episode",
-      "platforms": [
-        "ZEE5"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
-    },
-    {
-      "id": "tmdb:339004",
-      "aliases": [
-        "tmdb:339004"
-      ],
-      "name": "Notebook 90s – Kadhal Flashback",
-      "language": "tamil",
-      "type": "series",
-      "releaseDate": "2026-11-23",
-      "kind": "premiere",
-      "platforms": [
-        "SonyLIV"
-      ],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "catalog": "dobins_ta_series",
-      "region": "IN",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    },
     {
       "id": "tmdb:1813874",
       "aliases": [
@@ -172,8 +112,8 @@
       "releaseDate": "2026-11-27",
       "kind": "premiere",
       "platforms": [
-        "Prime Video",
-        "Netflix"
+        "Netflix",
+        "Prime Video"
       ],
       "sources": [
         "https://www.dailyott.in/",
