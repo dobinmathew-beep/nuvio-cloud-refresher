@@ -1397,6 +1397,11 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   // Read each ledger shard once, then verify existing assets with a small,
   // bounded network-only fan-out. OCR/image generation stays serial on Free.
   const refreshedLedgerShards = new Set();
+  if (discoveryOnly) {
+    // A discovery-only baseline must not read, verify, or mutate poster ledgers.
+    // Historical failed/retry/upload-pending records remain untouched.
+    items.push(...allItems);
+  } else {
   for (const item of allItems) {
     const shard = ledgerShard(item.id);
     const records = await loadLedgerShard(config, shard, preflightLedgerCache);
@@ -1479,6 +1484,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     await persistLedgerShards(config, preflightLedgerCache, [...refreshedLedgerShards]);
   }
   preflightLedgerCache.clear();
+  }
   // Publish a durable, generation-scoped queue to ImageKit before any poster
   // work begins. The queue manifest is committed last; each chunk is checksummed.
   // A restart can reload this exact candidate set without losing discovered work.

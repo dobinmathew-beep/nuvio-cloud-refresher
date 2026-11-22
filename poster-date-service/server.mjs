@@ -444,9 +444,9 @@ const server = createServer(async (req, res) => {
     res.end(JSON.stringify({ status: 'accepted', jobId }));
     const manualTask = (async () => {
       try {
-        // Metadata-only incremental scans do not touch poster storage or quota,
-        // so avoid an unnecessary full ImageKit inventory request for that mode.
-        if (requestedMode !== 'incremental-discovery') {
+        // Discovery and incremental metadata scans do not touch poster storage or quota.
+        // Avoid ImageKit inventory initialization outside actual poster-processing stages.
+        if (requestedMode === 'combined' || requestedMode === 'queue-drain') {
           void initializeImageKitStorageSnapshot().catch(error =>
             console.warn('[imagekit-refresh-snapshot-unavailable]', error?.message || 'unknown error')
           );
