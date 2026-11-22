@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-22T07:20:15.018725+00:00",
+  "checkedAt": "2026-11-22T08:44:19.884184+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,17 +14,17 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1189,
+      "metadataRecords": 1190,
       "warning": null,
       "error": null
     },
     {
       "path": "/meta/* (Malayalam catalog audit)",
       "state": "ok",
-      "checked": 165,
-      "passed": 165,
+      "checked": 166,
+      "passed": 166,
       "failed": 0,
-      "missingOriginalLanguageField": 118
+      "missingOriginalLanguageField": 119
     },
     {
       "path": "/manifest.json",
@@ -45,18 +45,18 @@
       "language": "ml",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
-      "localPublishedCount": 97,
-      "localUniqueIdCount": 97,
+      "localPublishedCount": 98,
+      "localUniqueIdCount": 98,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 97,
-      "endpointUniqueIdCount": 97,
+      "endpointRawCount": 98,
+      "endpointUniqueIdCount": 98,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        47
+        48
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -333,10 +333,10 @@
   ],
   "malayalamMetadataAudit": {
     "state": "ok",
-    "checked": 165,
-    "passed": 165,
+    "checked": 166,
+    "passed": 166,
     "failed": 0,
-    "missingOriginalLanguageField": 118,
+    "missingOriginalLanguageField": 119,
     "failures": []
   },
   "catalogSummary": {
