@@ -34,7 +34,9 @@ test('Race 2, Sholay and Vada Chennai cannot qualify from recent movie-index tim
     'dobins_ta_movie|tt5959980': '2026-11-22T08:00:00.000Z',
     'dobins_ta_series|tmdb:1819380': '2026-11-22T08:00:00.000Z'
   };
-  const fetch = async () => new Response(JSON.stringify(index), {
+  const fetch = async url => new Response(JSON.stringify(String(url).includes('recent-release-audit')
+    ? { items: [] }
+    : index), {
     status: 200, headers: { 'content-type': 'application/json' }
   });
   assert.equal(await isCatalogRecentlyAdded(['tt1375789'], { fetch, now }), false);
