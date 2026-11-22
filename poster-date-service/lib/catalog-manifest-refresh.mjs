@@ -209,7 +209,7 @@ export function isCatalogueScanComplete(catalogues) {
   );
 }
 
-export function excludeHistoricalUnresolvedQueueItems(queueItems, deferredIds) {
+export function excludeDeferredQueueItems(queueItems, deferredIds) {
   const excluded = deferredIds instanceof Set ? deferredIds : new Set(deferredIds || []);
   return (Array.isArray(queueItems) ? queueItems : [])
     .filter(item => item && !excluded.has(String(item.id)));
@@ -1474,7 +1474,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   const items = [];
   const candidatesForHeadCheck = [];
   const pendingResumeItems = [];
-  const deferredHistoricalIds = new Set();
+  const deferredQueueIds = new Set();
   let preflightVerifiedHits = 0;
   let deferredPending = 0;
   let deferredSourceUnavailable = 0;
@@ -1495,11 +1495,13 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     if (!forceReprocess && record && ['failed', 'retry', 'upload-pending'].includes(record.status)) {
       // Historical unresolved records are preserved for an explicit, source-aware
       // recovery pass. A normal discovery/queue cycle must never auto-retry them.
-      deferredHistoricalIds.add(String(item.id));
+      deferredQueueIds.add(String(item.id));
       deferredHistoricalUnresolved++;
     } else if (!forceReprocess && isSourceUnavailableCoolingDown(record, itemFingerprint(item))) {
+      deferredQueueIds.add(String(item.id));
       deferredSourceUnavailable++;
     } else if (!forceReprocess && isSourceProbeCoolingDown(record, itemFingerprint(item))) {
+      deferredQueueIds.add(String(item.id));
       deferredSourceProbe++;
     } else if (!forceReprocess && needsResumeVerification(record, itemFingerprint(item))) {
       pendingResumeItems.push({ item, record });
@@ -1540,6 +1542,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
           retryAfter: new Date(Date.now() + 2 * 60 * 1000).toISOString(),
           lastError: 'Previous upload outcome was uncertain; deferred after restart to avoid duplicate generation'
         });
+        deferredQueueIds.add(String(item.id));
         deferredPending++;
       }
       refreshedLedgerShards.add(shard);
@@ -1590,7 +1593,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     throw new Error('Durable poster queue fingerprint validation failed; refusing to process stale queue data');
   }
   items.length = 0;
-  const eligibleQueueItems = excludeHistoricalUnresolvedQueueItems(durableQueue.items, deferredHistoricalIds);
+  const eligibleQueueItems = excludeDeferredQueueItems(durableQueue.items, deferredQueueIds);
   for (const item of eligibleQueueItems) items.push(item);
   console.info('[durable-poster-queue-loaded]', JSON.stringify({
     scanGeneration, itemCount: durableQueue.items.length, eligibleItemCount: eligibleQueueItems.length,
