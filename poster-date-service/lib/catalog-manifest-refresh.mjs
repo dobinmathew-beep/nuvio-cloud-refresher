@@ -2,7 +2,7 @@ import { Buffer } from 'node:buffer';
 import { createHash } from 'node:crypto';
 import { withRefreshLease, publishRefreshProgress } from './refresh-coordination.mjs';
 import { initializeImageKitStorageSnapshot } from './imagekit-storage.mjs';
-import { persistDurableQueueSnapshot, loadDurableQueueSnapshot, claimDurableQueueBatch, settleDurableQueueBatch } from './imagekit-durable-queue.mjs';
+import { persistDurableQueueSnapshot, loadDurableQueueSnapshot, claimDurableQueueBatch, settleDurableQueueBatch, getDurableQueueState } from './imagekit-durable-queue.mjs';
 import { createBoundedTaskQueue, refreshResourcePolicy } from './refresh-backpressure.mjs';
 import { classifyPrewarmResponse, isFreshVerifiedRecord, isSourceProbeCoolingDown, isSourceUnavailableCoolingDown, needsResumeVerification, SOURCE_PROBE_RETRY_COOLDOWN_MS, SOURCE_UNAVAILABLE_COOLDOWN_MS } from './catalog-prewarm-policy.mjs';
 
@@ -640,6 +640,12 @@ export async function getManifestCatalogRefreshDiagnostics() {
     };
   }
 
+  let durableQueue = null;
+  if (generation) {
+    try { durableQueue = await getDurableQueueState(generation); }
+    catch (error) { durableQueue = { status: 'unavailable', error: error?.message || 'queue state unavailable' }; }
+  }
+
   const staleCompletions = Object.entries(completed)
     .filter(([fingerprint, entry]) => !inventory.has(fingerprint) || !generation || entry?.scanGeneration !== generation).length;
   return {
@@ -657,6 +663,7 @@ export async function getManifestCatalogRefreshDiagnostics() {
     dynamicCatalogueCount: dynamic.size,
     staleCompletionCount: staleCompletions,
     titleFileCount: Object.keys(checkpoint?.titleFiles || {}).length,
+    durableQueue,
     firstIncompleteCatalogue
   };
 }
