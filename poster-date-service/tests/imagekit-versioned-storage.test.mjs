@@ -75,3 +75,31 @@ test('CDN verification checks content type, byte count and SHA-256 readback', as
   });
   assert.equal(ok, true);
 });
+
+test('existing verified immutable asset is reused even when quota is full', async () => {
+  let uploads = 0;
+  const adapter = createImageKitPosterAdapter({
+    config, canStore: () => false,
+    fetchImpl: async (url, options = {}) => {
+      if (String(url).startsWith('https://api.imagekit.io/v1/files?')) {
+        return Response.json([{
+          name: fingerprint + '.jpg',
+          filePath: assetPath,
+          fileId: 'existing-immutable-file',
+          size: bytes.length,
+          mime: 'image/jpeg'
+        }]);
+      }
+      if (String(url).startsWith(config.endpoint + assetPath)) {
+        return new Response(bytes, { status: 200, headers: { 'content-type': 'image/jpeg' } });
+      }
+      if (String(url) === 'https://upload.imagekit.io/api/v1/files/upload') uploads++;
+      throw new Error('Unexpected request: ' + url);
+    }
+  });
+  const result = await adapter.uploadImmutable({
+    imdbId: 'tt1234567', fingerprint, assetPath, bytes, contentType: 'image/jpeg'
+  });
+  assert.equal(result.fileId, 'existing-immutable-file');
+  assert.equal(uploads, 0);
+});

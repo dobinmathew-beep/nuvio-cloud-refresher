@@ -99,9 +99,11 @@ export function createImageKitPosterAdapter({
       if (!validId(imdbId) || assetPath.split('/')[2] !== imdbId || digest(bytes) !== fingerprint) {
         throw new Error('Invalid immutable poster identity or fingerprint');
       }
-      if (!canStore(bytes.length)) throw new Error('ImageKit storage safety ceiling reached');
+      // Reuse a verified content-addressed object without charging quota
+      // again; only a genuinely new immutable upload consumes additional bytes.
       const existing = await findExistingImmutable(assetPath, fingerprint);
       if (existing) return existing;
+      if (!canStore(bytes.length)) throw new Error('ImageKit storage safety ceiling reached');
       const fileName = assetPath.slice(assetPath.lastIndexOf('/') + 1);
       const folder = assetPath.slice(0, assetPath.lastIndexOf('/'));
       const form = new FormData();
