@@ -21,10 +21,10 @@ async function fetchJson(url) {
 }
 function manifestBase(value) {
   const url = new URL(value);
-  url.pathname = url.pathname.replace(/\\/manifest\\.json$/i, '');
+  url.pathname = url.pathname.replace(/\/manifest\.json$/i, '');
   url.search = '';
   url.hash = '';
-  return url.origin + url.pathname.replace(/\\/$/, '');
+  return url.origin + url.pathname.replace(/\/$/, '');
 }
 function requiredExtrasUnavailable(catalog) {
   return (Array.isArray(catalog.extraRequired) ? catalog.extraRequired : []).some(required => {
@@ -52,16 +52,16 @@ function catalogueUrl(base, catalog, skip) {
 }
 function canonicalId(meta) {
   const raw = String(meta?.id || '').trim();
-  if (/^tt\\d{7,10}$/i.test(raw)) return raw.toLowerCase();
-  const tmdb = raw.match(/^(?:tmdb:|tmdb\\/)(\\d{1,12})$/i);
+  if (/^tt\d{7,10}$/i.test(raw)) return raw.toLowerCase();
+  const tmdb = raw.match(/^(?:tmdb:|tmdb\/)(\d{1,12})$/i);
   if (tmdb) return 'tmdb:' + tmdb[1];
   const imdb = String(meta?.imdb_id || meta?.imdbId || '').trim();
-  return /^tt\\d{7,10}$/i.test(imdb) ? imdb.toLowerCase() : raw;
+  return /^tt\d{7,10}$/i.test(imdb) ? imdb.toLowerCase() : raw;
 }
 function releaseYear(meta) {
   const values = [meta?.year, meta?.releaseInfo, meta?.releaseInfo?.year, meta?.released];
   for (const value of values) {
-    const match = String(value || '').match(/\\b(?:19|20)\\d{2}\\b/);
+    const match = String(value || '').match(/\b(?:19|20)\d{2}\b/);
     if (match) return Number(match[0]);
   }
   return null;
@@ -69,13 +69,13 @@ function releaseYear(meta) {
 function digitalDates(meta) {
   const dates = [];
   for (const value of [meta?.digitalReleaseDate, meta?.ott?.date]) {
-    if (/^\\d{4}-\\d{2}-\\d{2}$/.test(String(value || '').slice(0, 10))) dates.push(String(value).slice(0, 10));
+    if (/^\d{4}-\d{2}-\d{2}$/.test(String(value || '').slice(0, 10))) dates.push(String(value).slice(0, 10));
   }
-  if (meta?.releaseKind === 'digital' && /^\\d{4}-\\d{2}-\\d{2}$/.test(String(meta?.releaseDate || ''))) {
+  if (meta?.releaseKind === 'digital' && /^\d{4}-\d{2}-\d{2}$/.test(String(meta?.releaseDate || ''))) {
     dates.push(String(meta.releaseDate));
   }
   for (const item of (Array.isArray(meta?.availability) ? meta.availability : [])) {
-    if (item?.kind === 'digital' && /^\\d{4}-\\d{2}-\\d{2}$/.test(String(item.date || '').slice(0, 10))) dates.push(String(item.date).slice(0, 10));
+    if (item?.kind === 'digital' && /^\d{4}-\d{2}-\d{2}$/.test(String(item.date || '').slice(0, 10))) dates.push(String(item.date).slice(0, 10));
   }
   return [...new Set(dates)].sort();
 }
@@ -188,7 +188,7 @@ for (const [key, fallbackName] of SOURCES) {
 report.findings.sort((a, b) => a.source.localeCompare(b.source) || a.title.localeCompare(b.title));
 report.referenceMatches.sort((a, b) => a.referenceTitle.localeCompare(b.referenceTitle));
 await mkdir('artifacts', { recursive: true });
-await writeFile('artifacts/just-added-badge-audit.json', JSON.stringify(report, null, 2) + '\\n');
+await writeFile('artifacts/just-added-badge-audit.json', JSON.stringify(report, null, 2) + '\n');
 const summary = [
   '# Just Added badge audit',
   '',
@@ -212,6 +212,6 @@ const summary = [
   '- Stale Just Added (>14 days since digital release): ' + report.totals.staleJustAdded,
   '- Old movie with no digital date (requires review): ' + report.totals.oldMovieWithoutDigitalDate,
   ''
-].join('\\n');
+].join('\n');
 await writeFile('artifacts/just-added-badge-audit.md', summary);
 console.log(JSON.stringify({ status: 'passed', ...report.totals, sources: report.sources, referenceMatches: report.referenceMatches, artifact: 'artifacts/just-added-badge-audit.json' }));
