@@ -1,24 +1,24 @@
 {
-  "generatedAt": "2026-11-22T12:40:20.731808+04:00",
+  "generatedAt": "2026-11-22T14:36:20.409472+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 23,
+    "total": 24,
     "byLanguage": {
-      "hindi": 13,
+      "hindi": 14,
       "malayalam": 6,
       "tamil": 2,
       "telugu": 2
     },
     "byType": {
-      "series": 11,
+      "series": 12,
       "movie": 12
     },
     "byMatchState": {
-      "published": 16,
-      "unmatched": 6,
-      "metadata_incomplete": 1
+      "published": 18,
+      "unmatched": 6
     },
     "bySource": {
+      "https://www.themoviedb.org/tv/338390": 1,
       "https://www.dailyott.in/": 3,
       "https://ottasia.com/ott-releases-this-week?country=IN": 13,
       "https://www.ottchecker.com/ott-releases/malayalam": 1,
@@ -30,6 +30,31 @@
     }
   },
   "items": [
+    {
+      "title": "Apsara",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-22",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/338390"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "premiere",
+      "detail": null,
+      "matchId": "tt50063835",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
     {
       "title": "Bigg Boss Season 20",
       "language": "hindi",
@@ -206,17 +231,17 @@
       "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
       "detail": "https://ottasia.com/title/movie/1755816/delhi-2021?country=IN",
       "matchId": "tt51547104",
-      "matchState": "metadata_incomplete",
+      "matchState": "published",
       "matchReason": "IMDb-matched metadata",
-      "metadataComplete": false,
+      "metadataComplete": true,
       "metadataSource": "IMDb-matched metadata",
       "metadataFields": {
-        "poster": false,
+        "poster": true,
         "description": true,
         "genres": true,
         "releaseInfo": true
       },
-      "catalog": null
+      "catalog": "dobins_hi_movie"
     },
     {
       "title": "Drishyam: The Conclusion",
@@ -224,8 +249,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Prime Video",
-        "Netflix"
+        "Netflix",
+        "Prime Video"
       ],
       "sources": [
         "https://www.dailyott.in/",
@@ -353,7 +378,7 @@
       "metadataFields": {
         "poster": true,
         "description": true,
-        "genres": true,
+        "genres": false,
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
@@ -621,7 +646,7 @@
         "poster": true,
         "description": true,
         "genres": true,
-        "releaseInfo": false
+        "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
     },

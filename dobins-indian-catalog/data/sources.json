@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-22T12:40:20.731808+04:00",
+    "checkedAt": "2026-11-22T14:36:20.409472+04:00",
     "records": [
       {
         "_id": "6af6738fdea24088f261c3b1",
@@ -8928,12 +8928,14 @@
           ],
           "originalLanguage": "en",
           "spokenLanguages": [
-            "English"
+            "English",
+            "Portuguese",
+            "Spanish"
           ],
           "releaseDate": "2026-08-12",
-          "voteAverage": 6.3,
+          "voteAverage": 7.005,
           "trailerKey": "u4tgctWuHc0",
-          "fetchedAt": "2026-09-15T04:29:37.839Z"
+          "fetchedAt": "2026-11-22T10:10:06.152Z"
         },
         "tmdbId": 1101383,
         "verified": true
@@ -31176,7 +31178,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-22T12:40:20.731808+04:00",
+    "checkedAt": "2026-11-22T14:36:20.409472+04:00",
     "records": [
       {
         "name": "Anbil Avan",
