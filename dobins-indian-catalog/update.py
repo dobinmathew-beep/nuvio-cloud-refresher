@@ -359,6 +359,15 @@ def recent_release_audit_date(event):
  return str(event.get('ottDate') or '')[:10]
 
 
+def filter_series_added_index(value):
+ # The first-seen index is a series-only source of truth. Drop legacy movie
+ # timestamps so downstream consumers cannot mistake catalogue re-discovery
+ # for a new movie release. Preserve every existing series timestamp unchanged.
+ if not isinstance(value,dict):return {}
+ return {str(key):timestamp for key,timestamp in value.items()
+         if re.match(r'^dobins_(?:ml|ta|te|hi)_series\\|',str(key))}
+
+
 def should_stamp_catalog_first_seen(catalog_id, media_type, media_id, previous_ids, added_at):
  # Only series use first-catalogue-seen history. Do not stamp every title as new
  # when a catalogue has no prior snapshot (bootstrap/temporary empty baseline).
@@ -552,7 +561,7 @@ def build():
  save('matches.json',matches)
  catalogs={f'dobins_{LANGS[l]}_{t}':[] for l in LANGS for t in ('movie','series')};seen={k:set() for k in catalogs}
  previous_ids={cid:{str(x.get('id')) for x in items} for cid,items in old_catalogs.items()}
- added_at=load('catalog-added.json',{})
+ added_at=filter_series_added_index(load('catalog-added.json',{}))
  for e in ordered:
   if e.get('_languageMismatch'):continue
   key=e['language']+'|'+e['type']+'|'+norm(e['name']);match=matches.get(key,{});mid=match.get('id');cid=f'dobins_{LANGS[e["language"]]}_{e["type"]}'
