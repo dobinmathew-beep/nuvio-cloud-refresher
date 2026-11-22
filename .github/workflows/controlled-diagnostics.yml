@@ -33,3 +33,5 @@ jobs:
 # capture bounded-read incremental scan diagnostics
 
 # check incremental baseline loader heartbeat
+
+# final status check for incremental scan
