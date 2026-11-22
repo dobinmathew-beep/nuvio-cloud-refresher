@@ -10,7 +10,7 @@ const MAX_PAGES_PER_CATALOG = 200;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const now = new Date();
 const today = now.toISOString().slice(0, 10);
-const ADDED_INDEX_URL = 'https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/catalog-added.json';
+const ADDED_INDEX_URL = 'https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/catalog-added.json';\nconst DIGITAL_AUDIT_URL = 'https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/recent-release-audit.json';
 
 async function fetchJson(url) {
   const response = await fetch(url, {
@@ -96,7 +96,7 @@ function posterHost(meta) {
   try { return new URL(String(meta?.poster || '')).host; }
   catch { return ''; }
 }
-function inspect(meta, source, catalog, recentMovieIndex, report) {
+function inspect(meta, source, catalog, recentMovieIndex, recentDigitalIndex, report) {
   const id = canonicalId(meta);
   if (!id) return null;
   const type = String(meta?.type || catalog.type || '').toLowerCase();
@@ -106,7 +106,7 @@ function inspect(meta, source, catalog, recentMovieIndex, report) {
   const isReference = Object.hasOwn(report.referenceTitles, id);
   if (!posterBadge && !indexTimestamp && !isReference) return null;
   const year = releaseYear(meta);
-  const dates = digitalDates(meta);
+  const dates = [...new Set([...digitalDates(meta), ...(recentDigitalIndex.get(id) || [])])].sort();
   const latestDigital = dates.length ? dates[dates.length - 1] : null;
   const ageDays = latestDigital ? Math.floor((Date.parse(today + 'T00:00:00Z') - Date.parse(latestDigital + 'T00:00:00Z')) / DAY_MS) : null;
   let finding = 'not-in-recent-index-no-poster-query-flag';
@@ -205,7 +205,7 @@ for (const [key, fallbackName] of SOURCES) {
             }))
           });
           for (const meta of matches) {
-            const finding = inspect(meta, source, catalog, recentMovieIndex, report);
+            const finding = inspect(meta, source, catalog, recentMovieIndex, recentDigitalIndex, report);
             if (finding) report.dynamicReferenceMatches.push({ ...finding, referenceTitle, query: referenceTitle });
           }
         }
