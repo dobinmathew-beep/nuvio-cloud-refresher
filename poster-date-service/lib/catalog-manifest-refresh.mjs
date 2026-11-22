@@ -262,7 +262,7 @@ async function collectCatalog(manifest, catalog, config, fingerprint, lease, sca
       if (id && !titles.has(id)) {
         const videos = Array.isArray(meta.videos) ? meta.videos : [];
         const nextEpisode = videos
-          .filter(video => /^\\d{4}-\\d{2}-\\d{2}$/.test(String(video?.released || video?.airdate || '')))
+          .filter(video => /^\d{4}-\d{2}-\d{2}$/.test(String(video?.released || video?.airdate || '')))
           .map(video => ({
             date: String(video.released || video.airdate),
             season: Number.isFinite(Number(video.season)) ? Number(video.season) : null,
