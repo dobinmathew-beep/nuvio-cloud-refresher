@@ -34,5 +34,6 @@ jobs:
           node --check lib/imagekit-storage.mjs
           node --check scripts/prewarm.mjs
           node --check lib/catalog-manifest-refresh.mjs
+          node --check lib/imagekit-durable-queue.mjs
       - name: Run isolated service tests
         run: npm test
