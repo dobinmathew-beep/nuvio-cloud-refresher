@@ -1,0 +1,26 @@
+name: Strict digital evidence regression
+
+on:
+  push:
+    branches: [fix/strict-digital-release-evidence-20261123]
+    paths:
+      - 'poster-date-service/lib/catalog-just-added.mjs'
+      - 'poster-date-service/tests/catalog-just-added.test.mjs'
+      - '.github/workflows/strict-digital-evidence-checks.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  poster-service-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install poster service dependencies
+        run: npm install --no-package-lock --prefix poster-date-service
+      - name: Run poster service regression suite
+        run: npm test --prefix poster-date-service
