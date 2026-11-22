@@ -2,7 +2,7 @@ import { upcomingRelease, hasPastDigitalRelease, validImdbId } from '../lib/rele
 import { validCatalogPosterFallback } from '../lib/catalog-poster-fallback.mjs';
 import { renderUpcomingBadge, renderJustAddedBadge, removeExistingDateBadge } from '../lib/render-poster.mjs';
 import { inspectExistingPosterBadges, terminateOcrWorker } from '../lib/coming-tag.mjs';
-import { isCatalogRecentlyAdded } from '../lib/catalog-just-added.mjs';
+import { isCatalogRecentlyAdded, resolveJustAddedDecision } from '../lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from '../lib/catalog-upcoming.mjs';
 import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster, canStoreImmutableImageKitPoster, recordImageKitUpload, getImageKitStorageSnapshot, initializeImageKitStorageSnapshot, readPosterValidationMetadata, savePosterValidationMetadata } from '../lib/imagekit-storage.mjs';
 import { publishImageKitVersionedPoster, resolveImageKitPoster } from '../lib/imagekit-versioned-storage.mjs';
@@ -334,28 +334,25 @@ async function buildPoster(id, knownRelease = undefined, badge = '', fallbackUrl
     return sourceBadgeInspectionPromise;
   };
 
-  // BetterPosters may already mark a title as Just Added. Normalize that tag
-  // for every client using this shared URL. Catalogs can additionally force
-  // the badge for titles they know were newly added.
-  let shouldRenderJustAdded = badge === 'just-added';
-  let justAddedSource = shouldRenderJustAdded ? 'catalog-flag' : null;
-  if (!shouldRenderJustAdded) {
-    try {
-      const catalogResult = await isCatalogRecentlyAdded([id]);
-      if (catalogResult === null) {
-        // Only run OCR when the authoritative catalogue index is unavailable.
-        // This preserves BetterPosters' baked-in Just Added tag without adding
-        // an OCR pass to the normal, indexed bulk-refresh path.
-        const sourceBadges = await inspectSourceBadges();
-        shouldRenderJustAdded = sourceBadges.hasJustAddedBadge;
-        if (shouldRenderJustAdded) justAddedSource = 'betterposters-tag-fallback';
-      } else {
-        shouldRenderJustAdded = catalogResult;
-        if (shouldRenderJustAdded) justAddedSource = 'catalog-index';
-      }
-    } catch (error) {
-      console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
+  // The catalog index is authoritative. A caller-supplied badge query cannot
+  // force Just Added. Preserve the existing BetterPosters OCR fallback only
+  // when the authoritative indexes are unavailable (not when they say false).
+  let shouldRenderJustAdded = false;
+  let justAddedSource = null;
+  try {
+    const catalogResult = await isCatalogRecentlyAdded([id]);
+    const decision = resolveJustAddedDecision(catalogResult, badge);
+    if (decision === null) {
+      // Keep the existing provider-tag fallback on index outage, per policy.
+      const sourceBadges = await inspectSourceBadges();
+      shouldRenderJustAdded = sourceBadges.hasJustAddedBadge;
+      if (shouldRenderJustAdded) justAddedSource = 'betterposters-tag-fallback';
+    } else {
+      shouldRenderJustAdded = decision;
+      if (shouldRenderJustAdded) justAddedSource = 'catalog-index';
     }
+  } catch (error) {
+    console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
   }
   // The catalogue's recent-add index is authoritative for whether to add
   // our Just Added overlay. Do not OCR every BetterPosters source when the
@@ -551,12 +548,12 @@ export default async function handler(req, res) {
     // ImageKit availability. Compare the stored badge state with the current
     // catalogue decision before reusing the cached bytes.
     if (!immediateFallback) {
-      let expectedCachedJustAdded = immediateBadge === 'just-added';
-      if (!expectedCachedJustAdded) {
-        try { expectedCachedJustAdded = (await isCatalogRecentlyAdded([id])) === true; }
-        catch (error) {
-          console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
-        }
+      let expectedCachedJustAdded = false;
+      try {
+        const catalogResult = await isCatalogRecentlyAdded([id]);
+        expectedCachedJustAdded = resolveJustAddedDecision(catalogResult, immediateBadge) === true;
+      } catch (error) {
+        console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
       }
       const cachedValidation = await readPosterValidationMetadata(id);
       const cachedReleaseInfo = cachedValidation?.releaseDate
@@ -611,10 +608,12 @@ export default async function handler(req, res) {
     const version = String(req.query?.v || '');
     const fallbackUrl = String(req.query?.fallback || '');
     // Coming/New Episode always takes precedence over Just Added.
-    let expectedJustAdded = !releaseInfo?.date && badge === 'just-added';
-    if (!releaseInfo?.date && !expectedJustAdded) {
-      try { expectedJustAdded = await isCatalogRecentlyAdded([id]); }
-      catch (error) {
+    let expectedJustAdded = false;
+    if (!releaseInfo?.date) {
+      try {
+        const catalogResult = await isCatalogRecentlyAdded([id]);
+        expectedJustAdded = resolveJustAddedDecision(catalogResult, badge) === true;
+      } catch (error) {
         console.warn('[catalog-just-added-lookup-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
       }
     }
