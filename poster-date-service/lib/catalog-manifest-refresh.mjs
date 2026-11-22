@@ -2,6 +2,7 @@ import { Buffer } from 'node:buffer';
 import { createHash } from 'node:crypto';
 import { withRefreshLease, publishRefreshProgress } from './refresh-coordination.mjs';
 import { initializeImageKitStorageSnapshot } from './imagekit-storage.mjs';
+import { persistDurableQueueSnapshot, loadDurableQueueSnapshot } from './imagekit-durable-queue.mjs';
 import { createBoundedTaskQueue, refreshResourcePolicy } from './refresh-backpressure.mjs';
 import { classifyPrewarmResponse, isFreshVerifiedRecord, isSourceProbeCoolingDown, isSourceUnavailableCoolingDown, needsResumeVerification, SOURCE_PROBE_RETRY_COOLDOWN_MS, SOURCE_UNAVAILABLE_COOLDOWN_MS } from './catalog-prewarm-policy.mjs';
 
@@ -952,6 +953,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   let deferredPending = 0;
   let deferredSourceUnavailable = 0;
   let deferredSourceProbe = 0;
+  let deferredHistoricalUnresolved = 0;
   // Read each ledger shard once, then verify existing assets with a small,
   // bounded network-only fan-out. OCR/image generation stays serial on Free.
   const refreshedLedgerShards = new Set();
@@ -959,7 +961,11 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     const shard = ledgerShard(item.id);
     const records = await loadLedgerShard(config, shard, preflightLedgerCache);
     const record = records[item.id];
-    if (!forceReprocess && isSourceUnavailableCoolingDown(record, itemFingerprint(item))) {
+    if (!forceReprocess && record && ['failed', 'retry', 'upload-pending'].includes(record.status)) {
+      // Historical unresolved records are preserved for an explicit, source-aware
+      // recovery pass. A normal discovery/queue cycle must never auto-retry them.
+      deferredHistoricalUnresolved++;
+    } else if (!forceReprocess && isSourceUnavailableCoolingDown(record, itemFingerprint(item))) {
       deferredSourceUnavailable++;
     } else if (!forceReprocess && isSourceProbeCoolingDown(record, itemFingerprint(item))) {
       deferredSourceProbe++;
@@ -1033,12 +1039,29 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     await persistLedgerShards(config, preflightLedgerCache, [...refreshedLedgerShards]);
   }
   preflightLedgerCache.clear();
+  // Publish a durable, generation-scoped queue to ImageKit before any poster
+  // work begins. The queue manifest is committed last; each chunk is checksummed.
+  // A restart can reload this exact candidate set without losing discovered work.
+  const queueItems = items.map(item => ({ ...item, queueFingerprint: itemFingerprint(item) }));
+  const durableQueueManifest = await persistDurableQueueSnapshot(queueItems, scanGeneration, {
+    assertOwned: () => lease?.assertOwned?.()
+  });
+  await lease?.assertOwned?.();
+  const durableQueue = await loadDurableQueueSnapshot(scanGeneration);
+  if (durableQueue.items.some(item => item.queueFingerprint !== itemFingerprint(item))) {
+    throw new Error('Durable poster queue fingerprint validation failed; refusing to process stale queue data');
+  }
+  items.splice(0, items.length, ...durableQueue.items);
+  console.info('[durable-poster-queue-loaded]', JSON.stringify({
+    scanGeneration, itemCount: durableQueue.items.length,
+    chunkCount: durableQueueManifest.chunkCount, storage: 'imagekit'
+  }));
   // Publish poster-stage totals only after the target list and cache-hit count
   // have been initialized. Referencing items above this point triggers a TDZ
   // ReferenceError and breaks automatic recovery after a Render restart.
   updateRefreshProgress({
     stage: 'poster-processing', titlesDiscovered: allItems.length,
-    postersTargeted: items.length, postersCacheHits: preflightVerifiedHits, postersDeferred: deferredPending + deferredSourceUnavailable + deferredSourceProbe,
+    postersTargeted: items.length, postersCacheHits: preflightVerifiedHits, postersDeferred: deferredPending + deferredSourceUnavailable + deferredSourceProbe + deferredHistoricalUnresolved,
     cataloguesDiscovered: catalogues.length,
     cataloguesScanned: cataloguesScannedThisRun,
     cataloguesFailed: catalogues.filter(c => c.error).length
@@ -1050,6 +1073,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     deferredPending,
     deferredSourceUnavailable,
     deferredSourceProbe,
+    deferredHistoricalUnresolved,
     strategy: forceReprocess ? 'force-revalidate-all-catalogue-titles' : 'retry-only-unresolved-or-missing-imagekit-assets'
   }));
   // Establish a verified storage budget before the first poster request.
