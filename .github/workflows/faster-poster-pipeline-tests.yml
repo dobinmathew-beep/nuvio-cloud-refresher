@@ -32,6 +32,11 @@ jobs:
       - run: npm install --no-audit --no-fund
       - run: npm test
 
+      - name: Read-only production durable queue recovery gate
+        env:
+          IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
+        run: node scripts/check-live-durable-queue-readonly.mjs
+
       - name: Read-only live scan of the three configured manifests
         env:
           CATALOG_MANIFEST_ELFHOSTED_URL: ${{ secrets.CATALOG_MANIFEST_ELFHOSTED_URL }}
