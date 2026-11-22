@@ -88,30 +88,51 @@ function posterHasJustAdded(meta) {
     return /(?:[?&]|%3F)badge(?:=|%3D)just-added/i.test(poster);
   }
 }
-function inspect(meta, source, catalog) {
+function inspect(meta, source, catalog, recentMovieIndex, report) {
   const id = canonicalId(meta);
-  if (!id || !posterHasJustAdded(meta)) return null;
+  if (!id) return null;
   const type = String(meta?.type || catalog.type || '').toLowerCase();
   if (!type.includes('movie')) return null;
+  const posterBadge = posterHasJustAdded(meta);
+  const indexTimestamp = recentMovieIndex.get(id) || null;
+  const isReference = Object.hasOwn(report.referenceTitles, id);
+  if (!posterBadge && !indexTimestamp && !isReference) return null;
   const year = releaseYear(meta);
   const dates = digitalDates(meta);
   const latestDigital = dates.length ? dates[dates.length - 1] : null;
   const ageDays = latestDigital ? Math.floor((Date.parse(today + 'T00:00:00Z') - Date.parse(latestDigital + 'T00:00:00Z')) / DAY_MS) : null;
-  let finding = 'needs-review';
+  let finding = 'not-in-recent-index-no-poster-query-flag';
   if (latestDigital && ageDays >= 0 && ageDays <= 14) finding = 'recent-digital-release-eligible';
   else if (latestDigital && ageDays > 14) finding = 'stale-just-added';
+  else if (indexTimestamp && year && year < now.getUTCFullYear()) finding = 'old-movie-recent-index-entry';
+  else if (posterBadge && !indexTimestamp) finding = 'poster-query-badge-without-recent-index-entry';
+  else if (indexTimestamp) finding = 'recent-index-entry-needs-release-date-check';
   else if (year && year < now.getUTCFullYear()) finding = 'old-movie-without-digital-date';
   return {
     source, catalogId: catalog.id, catalogName: catalog.name || catalog.id,
-    id, title: String(meta?.name || meta?.title || ''), year,
+    id, title: String(meta?.name || meta?.title || report.referenceTitles[id] || ''), year,
     releaseInfo: String(meta?.releaseInfo || ''), digitalReleaseDates: dates,
     latestDigitalReleaseDate: latestDigital, digitalAgeDays: ageDays,
+    recentMovieIndexTimestamp: indexTimestamp, posterQueryBadge: posterBadge,
     poster: String(meta?.poster || ''), finding
   };
 }
 
 const missing = SOURCES.filter(([key]) => !String(process.env[key] || '').trim()).map(([key]) => key);
 if (missing.length) throw new Error('Missing manifest secrets: ' + missing.join(', '));
+const addedIndex = await fetchJson('https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/catalog-added.json');
+const recentMovieIndex = new Map();
+for (const [key, timestamp] of Object.entries(addedIndex || {})) {
+  const split = key.lastIndexOf('|');
+  const catalogKey = split >= 0 ? key.slice(0, split) : '';
+  if (!catalogKey.endsWith('_movie')) continue;
+  const id = split >= 0 ? key.slice(split + 1) : '';
+  const addedAt = Date.parse(timestamp);
+  const age = now.getTime() - addedAt;
+  if (id && Number.isFinite(addedAt) && age >= 0 && age <= 14 * DAY_MS) {
+    recentMovieIndex.set(id, String(timestamp));
+  }
+}
 
 const report = {
   generatedAt: now.toISOString(),
@@ -159,11 +180,11 @@ for (const [key, fallbackName] of SOURCES) {
         if (String(meta?.type || catalog.type).toLowerCase().includes('movie')) {
           report.totals.uniqueMovieTitles++;
         }
-        const finding = inspect(meta, source, catalog, recentMovieIndex);
+        const finding = inspect(meta, source, catalog, recentMovieIndex, report);
         if (!finding) continue;
         report.findings.push(finding);
-        sourceResult.justAddedMovieTitles++;
-        report.totals.justAddedMovieTitles++;
+        sourceResult.candidateMovieTitles++;
+        report.totals.justAddedMovieTitles++;\n        if (finding.recentMovieIndexTimestamp) sourceResult.recentIndexMovieTitles++;\n        if (finding.posterQueryBadge) sourceResult.posterQueryBadgeTitles++;
         if (finding.finding === 'stale-just-added') {
           sourceResult.staleJustAdded++;
           report.totals.staleJustAdded++;
