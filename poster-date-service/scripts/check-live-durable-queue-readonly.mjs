@@ -25,9 +25,11 @@ for (const item of Object.values(state.items)) {
     else counts.expiredClaims++;
   } else counts.unknown++;
 }
-const safe = counts.activeClaims === 0 && counts.expiredClaims === 0 && counts.unknown === 0;
+const safe = counts.activeClaims === 0 && counts.unknown === 0;
 const result = {
   status: safe ? 'safe-to-release' : 'blocked',
+  recoveryRequired: counts.expiredClaims > 0,
+  recoveryMethod: 'normal startup resume reclaims expired claims through claimDurableQueueBatch',
   mode: 'read-only',
   scanGeneration: state.scanGeneration,
   total: Object.keys(state.items).length,
