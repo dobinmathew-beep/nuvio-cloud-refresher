@@ -85,3 +85,29 @@ test('claims are exclusive, acknowledged jobs stay completed, and expired claims
   assert.equal(summary.counts.recorded, 1);
   assert.equal(summary.counts.claimed, 1);
 });
+
+
+test('reinitializing a durable queue preserves recorded and claimed work and rejects membership changes', async t => {
+  mockImageKit(t);
+  const config = { endpoint: 'https://ik.example.test', privateKey: 'test' };
+  const generation = 'generation-preservation';
+  const ids = ['tt1234567', 'tt7654321'];
+  await initializeDurableQueueState(generation, ids, { config });
+  await claimDurableQueueBatch(generation, ['tt1234567'], 'worker-a', { config });
+  await settleDurableQueueBatch(generation, ['tt1234567'], 'worker-a', 'recorded', { config });
+  await claimDurableQueueBatch(generation, ['tt7654321'], 'worker-b', { config });
+
+  const before = await getDurableQueueState(generation, { config });
+  await initializeDurableQueueState(generation, ids, { config });
+  const after = await getDurableQueueState(generation, { config });
+  assert.deepEqual(after.counts, before.counts);
+  assert.equal(after.counts.recorded, 1);
+  assert.equal(after.counts.claimed, 1);
+  assert.equal(after.counts.queued, 0);
+  await assert.rejects(
+    initializeDurableQueueState(generation, ['tt1234567'], { config }),
+    /membership differs from immutable manifest/
+  );
+  const finalState = await getDurableQueueState(generation, { config });
+  assert.deepEqual(finalState.counts, after.counts);
+});
