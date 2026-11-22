@@ -52,9 +52,9 @@ test('movies qualify only from a published digital release date within 14 days',
   const index = {};
   const audit = {
     items: [
-      { id: 'tt1234567', type: 'movie', releaseDate: '2026-11-20', matchState: 'published' },
-      { id: 'tt7654321', type: 'movie', releaseDate: '2026-11-01', matchState: 'published' },
-      { id: 'tt9999999', type: 'movie', releaseDate: '2026-11-22', matchState: 'unmatched' },
+      { id: 'tt1234567', type: 'movie', releaseDate: '2026-11-20', releaseDateBasis: 'first-verified-digital-arrival', matchState: 'published' },
+      { id: 'tt7654321', type: 'movie', releaseDate: '2026-11-01', releaseDateBasis: 'first-verified-digital-arrival', matchState: 'published' },
+      { id: 'tt9999999', type: 'movie', releaseDate: '2026-11-22', releaseDateBasis: 'first-verified-digital-arrival', matchState: 'unmatched' },
       { id: 'tt8888888', type: 'series', releaseDate: '2026-11-22', matchState: 'published' }
     ]
   };
@@ -78,12 +78,12 @@ test('earliest published digital date wins when a title has multiple platform ar
   };
   const audit = {
     items: [
-      { id: 'tt1375789', type: 'movie', releaseDate: '2019-01-01', matchState: 'published' },
-      { id: 'tt1375789', type: 'movie', releaseDate: '2026-11-20', matchState: 'published' },
-      { id: 'tt0073707', type: 'movie', releaseDate: '2020-01-01', matchState: 'published' },
-      { id: 'tt0073707', type: 'movie', releaseDate: '2026-11-19', matchState: 'published' },
-      { id: 'tt5959980', type: 'movie', releaseDate: '2018-01-01', matchState: 'published' },
-      { id: 'tt5959980', type: 'movie', releaseDate: '2026-11-18', matchState: 'published' }
+      { id: 'tt1375789', type: 'movie', releaseDate: '2019-01-01', releaseDateBasis: 'first-verified-digital-arrival', matchState: 'published' },
+      { id: 'tt1375789', type: 'movie', releaseDate: '2026-11-20', releaseDateBasis: 'first-verified-digital-arrival', matchState: 'published' },
+      { id: 'tt0073707', type: 'movie', releaseDate: '2020-01-01', releaseDateBasis: 'first-verified-digital-arrival', matchState: 'published' },
+      { id: 'tt0073707', type: 'movie', releaseDate: '2026-11-19', releaseDateBasis: 'first-verified-digital-arrival', matchState: 'published' },
+      { id: 'tt5959980', type: 'movie', releaseDate: '2018-01-01', releaseDateBasis: 'first-verified-digital-arrival', matchState: 'published' },
+      { id: 'tt5959980', type: 'movie', releaseDate: '2026-11-18', releaseDateBasis: 'first-verified-digital-arrival', matchState: 'published' }
     ]
   };
   const fetch = async url => new Response(JSON.stringify(String(url).includes('recent-release-audit') ? audit : index), {
@@ -100,4 +100,26 @@ test('catalog badge query cannot override an authoritative negative decision', a
   assert.equal(resolveJustAddedDecision(false, 'just-added'), false);
   assert.equal(resolveJustAddedDecision(true, ''), true);
   assert.equal(resolveJustAddedDecision(null, 'just-added'), null, 'index outage preserves the existing source-artwork fallback path');
+});
+
+test('theatrical-only published movie entries cannot grant a Just Added badge', async () => {
+  resetCatalogAddedIndexForTest();
+  const now = new Date('2026-11-23T08:00:00.000Z');
+  const index = {};
+  const audit = {
+    items: [
+      { id: 'tt1111111', type: 'movie', releaseDate: '2026-11-22', releaseDateBasis: 'theatrical-release', matchState: 'published' },
+      { id: 'tt2222222', type: 'movie', releaseDate: '2026-11-22', matchState: 'published' },
+      { id: 'tt3333333', type: 'movie', releaseDate: '2026-11-22', releaseDateBasis: 'first-verified-digital-arrival', matchState: 'published' }
+    ]
+  };
+  const fetch = async url => new Response(JSON.stringify(String(url).includes('recent-release-audit') ? audit : index), {
+    status: 200, headers: { 'content-type': 'application/json' }
+  });
+  assert.equal(await isCatalogRecentlyAdded(['tt1111111'], { fetch, now }), false, 'theatrical date is not a digital arrival');
+  resetCatalogAddedIndexForTest();
+  assert.equal(await isCatalogRecentlyAdded(['tt2222222'], { fetch, now }), false, 'missing date basis must fail closed');
+  resetCatalogAddedIndexForTest();
+  assert.equal(await isCatalogRecentlyAdded(['tt3333333'], { fetch, now }), true, 'explicit digital evidence qualifies');
+  resetCatalogAddedIndexForTest();
 });
