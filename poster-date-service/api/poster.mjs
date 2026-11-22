@@ -565,6 +565,22 @@ export default async function handler(req, res) {
       return redirectToImageKit(res, validatedCachedAsset, cachedReleaseInfo, expectedCachedJustAdded);
     }
 
+    // Only after badge state has been checked may a no-fallback request use
+    // the immediate BetterPosters response/background-build path. This keeps
+    // the normal low-latency fallback while preventing stale ImageKit artwork
+    // from bypassing validation.
+    if (!immediateFallback) {
+      scheduleBackgroundPosterBuild(id, immediateBadge, immediateVersion, immediateFallback);
+      res.statusCode = 302;
+      res.setHeader('Location', sourceUrl(id));
+      res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('X-Poster-Source', 'BetterPosters');
+      res.setHeader('X-Poster-Date-Status', 'background-generation-pending');
+      res.setHeader('X-ImageKit-Storage', 'pending');
+      return res.end();
+    }
+
     // Explicit catalogue fallbacks still use the validated renderer path.
     // An ImageKit copy is valid only while TMDB still confirms a future release.
     // This prevents a cached date badge from surviving its release day.
@@ -605,22 +621,6 @@ export default async function handler(req, res) {
     // every catalogue poster on each scheduled refresh or after a restart.
     const cachedAsset = await findFreshImageKitAsset(id, releaseInfo, expectedJustAdded);
     if (cachedAsset) return redirectToImageKit(res, cachedAsset, releaseInfo, expectedJustAdded);
-
-    // Only after badge state has been checked may a no-fallback request use
-    // the immediate BetterPosters response/background-build path. This keeps
-    // the normal low-latency fallback while preventing stale ImageKit artwork
-    // from bypassing validation.
-    if (!immediateFallback) {
-      scheduleBackgroundPosterBuild(id, immediateBadge, immediateVersion, immediateFallback);
-      res.statusCode = 302;
-      res.setHeader('Location', sourceUrl(id));
-      res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.setHeader('X-Poster-Source', 'BetterPosters');
-      res.setHeader('X-Poster-Date-Status', 'background-generation-pending');
-      res.setHeader('X-ImageKit-Storage', 'pending');
-      return res.end();
-    }
 
     const poster = await getBuiltPoster(id, releaseInfo, badge, version, fallbackUrl, digitalAlreadyReleased === true);
     // Never make a user's poster response wait for an ImageKit account-wide
