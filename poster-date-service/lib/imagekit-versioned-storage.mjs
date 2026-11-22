@@ -31,12 +31,26 @@ export function createImageKitPosterAdapter({
     const response = await fetchImpl(url + (url.includes('?') ? '&' : '?') + 'poster-verify=' + Date.now(), {
       cache: 'no-store', signal: AbortSignal.timeout(12000)
     });
-    if (!response.ok) return false;
+    if (!response.ok) {
+      console.warn('[imagekit-versioned-cdn-readback-http]', JSON.stringify({ status: response.status }));
+      return false;
+    }
     const type = (response.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
-    if (expectedContentType && type !== expectedContentType) return false;
+    if (expectedContentType && type !== expectedContentType) {
+      console.warn('[imagekit-versioned-cdn-readback-type-mismatch]', JSON.stringify({ expectedContentType, actualContentType: type }));
+      return false;
+    }
     const bytes = Buffer.from(await response.arrayBuffer());
-    if (!bytes.length || (expectedBytes > 0 && bytes.length !== expectedBytes)) return false;
-    return digest(bytes) === fingerprint;
+    if (!bytes.length || (expectedBytes > 0 && bytes.length !== expectedBytes)) {
+      console.warn('[imagekit-versioned-cdn-readback-size-mismatch]', JSON.stringify({ expectedBytes, actualBytes: bytes.length }));
+      return false;
+    }
+    const actualFingerprint = digest(bytes);
+    if (actualFingerprint !== fingerprint) {
+      console.warn('[imagekit-versioned-cdn-readback-checksum-mismatch]', JSON.stringify({ expectedFingerprint: fingerprint, actualFingerprint }));
+      return false;
+    }
+    return true;
   }
 
   async function findExistingImmutable(assetPath, fingerprint) {
