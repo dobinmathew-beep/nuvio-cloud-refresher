@@ -6,6 +6,7 @@ All times are Asia/Muscat (Oman). Records begin when this dashboard was installe
 
 | Check time | Backdrops + reels | Addon | EPG | Check run |
 |---|---|---|---|---|
+| 22 Nov 2026, 11:20 | 🔄 Retry requested | ✅ Updated | 🔄 Retry requested | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/44997778015) |
 | 22 Nov 2026, 06:53 | ✅ Updated | 🔄 Retry requested | 🔄 Retry requested | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/44978127743) |
 | 22 Nov 2026, 05:32 | ✅ Updated | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/44971902763) |
 | 22 Nov 2026, 05:03 | ✅ Updated | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/44969651993) |
@@ -16,6 +17,22 @@ All times are Asia/Muscat (Oman). Records begin when this dashboard was installe
 
 ## Details for each check
 
+### 22 Nov 2026, 11:20
+
+Trigger: workflow_run. Due cycle: 22 Nov 2026, 10:00.
+
+| Output | Result | Last verified cycle / check | Details | Logs |
+|---|---|---|---|---|
+| Backdrops | 🔄 Retry requested | 22 Nov 2026, 06:00 | 160 layouts; 16 image checks; this part verified, combined media cycle still pending | queued · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/44997793472) |
+| Reels | 🔄 Retry requested | 22 Nov 2026, 06:00 | 4 languages; 20 films per reel; this part verified, combined media cycle still pending | queued · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/44997793472) |
+| Addon | ✅ Updated | 22 Nov 2026, 10:00 | 1070 catalog entries; 62 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/44997246994) |
+| EPG | 🔄 Retry requested | 22 Nov 2026, 06:53 | 660 / 873 channel IDs with listings; 213 unresolved; 68197 programmes. | queued · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/44997796592) |
+
+Media attempt: **queued**; started 22 Nov 2026, 11:20. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/44997793472).
+
+Epg attempt: **queued**; started 22 Nov 2026, 11:20. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/44997796592).
+
+Addon attempt: **success**; started 22 Nov 2026, 11:13. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/44997246994).
 ### 22 Nov 2026, 06:53
 
 Trigger: workflow_run. Due cycle: 22 Nov 2026, 06:00.
