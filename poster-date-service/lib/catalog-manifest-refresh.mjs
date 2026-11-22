@@ -318,6 +318,63 @@ async function collectCatalog(manifest, catalog, config, fingerprint, lease, sca
     resumedFromPageCheckpoint: firstPage > 0
   };
 }
+async function publishSharedMetadataIndex(items, scanGeneration, config, lease) {
+  const root = '/catalog-state/metadata-index/v1';
+  const generationKey = createHash('sha256').update(String(scanGeneration)).digest('hex').slice(0, 24);
+  const generationRoot = root + '/' + generationKey;
+  const manifestPath = generationRoot + '/manifest.json';
+  const existing = await readState(config, manifestPath);
+  if (existing) {
+    if (existing.version !== 1 || existing.scanGeneration !== String(scanGeneration)) {
+      throw new Error('Shared metadata index generation is malformed; refusing overwrite');
+    }
+    return existing;
+  }
+  const normalized = items
+    .filter(item => item && typeof item.id === 'string' && item.id)
+    .map(item => ({
+      id: item.id, type: String(item.type || ''),
+      title: String(item.title || ''), year: String(item.year || ''),
+      imdbId: String(item.imdbId || (/^tt\\d{7,10}$/.test(item.id) ? item.id : '')),
+      tmdbId: String(item.tmdbId || ''), tvdbId: String(item.tvdbId || ''),
+      tvmazeId: String(item.tvmazeId || ''),
+      providerId: String(item.providerId || ''),
+      catalogSource: String(item.catalogSource || ''),
+      catalogId: String(item.catalogId || ''),
+      poster: String(item.poster || ''),
+      releaseDate: String(item.digitalReleaseDate || item.releaseInfo || ''),
+      premiereDate: String(item.premiereDate || ''),
+      nextEpisodeDate: String(item.nextEpisodeDate || ''),
+      season: item.season ?? null, episode: item.episode ?? null,
+      fingerprint: itemFingerprint(item)
+    }))
+    .sort((a, b) => a.id.localeCompare(b.id));
+  const chunkSize = 250;
+  const chunks = [];
+  for (let offset = 0; offset < normalized.length; offset += chunkSize) {
+    const records = normalized.slice(offset, offset + chunkSize);
+    const index = chunks.length;
+    const path = generationRoot + '/chunk-' + String(index).padStart(5, '0') + '.json';
+    const serialized = JSON.stringify(records);
+    const sha256 = createHash('sha256').update(serialized).digest('hex');
+    await lease?.assertOwned?.();
+    await writeJson(config, path, { version: 1, scanGeneration: String(scanGeneration), index, count: records.length, sha256, records });
+    chunks.push({ path, count: records.length, sha256 });
+  }
+  const manifest = {
+    version: 1, schema: 'great-indian-normalized-metadata-index',
+    scanGeneration: String(scanGeneration), generationKey,
+    createdAt: new Date().toISOString(), itemCount: normalized.length,
+    chunkCount: chunks.length, chunks
+  };
+  await lease?.assertOwned?.();
+  await writeJson(config, manifestPath, manifest);
+  console.info('[shared-metadata-index-published]', JSON.stringify({
+    scanGeneration, itemCount: normalized.length, chunkCount: chunks.length, storage: 'imagekit'
+  }));
+  return manifest;
+}
+
 function catalogueFingerprint(catalog) {
   // Stremio catalogue IDs are the stable identity shared by cloned metadata
   // instances. Keep media type in the key because movie/series IDs can overlap.
@@ -990,6 +1047,7 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   // through poster generation. Verified ledger entries are retained when the
   // fingerprint still matches and ImageKit confirms the asset is available.
   const allItems = [...current.values()];
+  if (scanComplete) await publishSharedMetadataIndex(allItems, scanGeneration, config, lease);
   const preflightLedgerCache = new Map();
   const preflightImageKitChecks = new Map();
   const items = [];
