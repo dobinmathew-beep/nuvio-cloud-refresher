@@ -419,10 +419,9 @@ const server = createServer(async (req, res) => {
     }
     // Do not allow scheduled GitHub waiters to restart a refresh while the
     // operator pause flag is active.
-    // Legacy combined refresh remains paused. Only the explicitly separated
-    // discovery and queue-drain modes may be triggered while the operator pause
-    // is active; this prevents old cron jobs from silently restarting full scans.
-    if (process.env.CATALOG_REFRESH_AUTOSTART === 'false' && !['discovery-only', 'queue-drain'].includes(requestedMode)) {
+    // Legacy combined refresh remains paused. Only explicit staged discovery,
+    // queue-drain and bounded metadata-only incremental discovery may run while paused.
+    if (process.env.CATALOG_REFRESH_AUTOSTART === 'false' && !['discovery-only', 'queue-drain', 'incremental-discovery'].includes(requestedMode)) {
       res.writeHead(423, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
       return res.end(JSON.stringify({ status: 'paused', error: 'Combined catalogue refresh is paused; use an explicit pipeline mode.' }));
     }

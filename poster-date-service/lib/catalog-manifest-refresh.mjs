@@ -345,6 +345,237 @@ export function mergeCatalogSourceItem(existing, incoming) {
   };
 }
 
+
+export function validateMetadataIndexChunk(chunk, expected) {
+  if (!chunk || chunk.version !== 1 || chunk.scanGeneration !== expected.scanGeneration ||
+      chunk.index !== expected.index || !Array.isArray(chunk.records) ||
+      chunk.count !== chunk.records.length) return false;
+  const actual = createHash('sha256').update(JSON.stringify(chunk.records)).digest('hex');
+  return actual === chunk.sha256 && actual === expected.sha256 &&
+    chunk.count === expected.count;
+}
+
+export function mergeIncrementalMetadataItem(existing, incoming) {
+  const base = existing && typeof existing === 'object' ? existing : {};
+  const next = incoming && typeof incoming === 'object' ? incoming : {};
+  const merged = { ...base };
+  for (const [key, value] of Object.entries(next)) {
+    if (key === 'catalogSources' || key === 'fingerprint') continue;
+    if (value !== undefined && value !== null && value !== '') merged[key] = value;
+  }
+  const sources = [
+    ...(Array.isArray(base.catalogSources) ? base.catalogSources : []),
+    ...(Array.isArray(next.catalogSources) ? next.catalogSources : []),
+    { source: next.catalogSource, id: next.catalogId }
+  ];
+  const unique = new Map();
+  for (const source of sources) {
+    const normalized = { source: String(source?.source || '').trim(), id: String(source?.id || '').trim() };
+    if (normalized.source || normalized.id) unique.set(normalized.source + '|' + normalized.id, normalized);
+  }
+  merged.catalogSources = [...unique.values()].sort((a, b) =>
+    (a.source + '|' + a.id).localeCompare(b.source + '|' + b.id));
+  merged.fingerprint = itemFingerprint(merged);
+  return merged;
+}
+
+export function mergeIncrementalMetadata(baselineItems, observedItems) {
+  const merged = new Map((baselineItems || []).filter(item => item?.id).map(item => [item.id, { ...item }]));
+  const delta = new Map();
+  let added = 0;
+  let changed = 0;
+  for (const incoming of observedItems || []) {
+    if (!incoming?.id) continue;
+    const existing = merged.get(incoming.id);
+    const next = mergeIncrementalMetadataItem(existing, incoming);
+    const nextFingerprint = itemFingerprint(next);
+    if (!existing) {
+      added++;
+      delta.set(next.id, { ...next, fingerprint: nextFingerprint, deltaStatus: 'new' });
+    } else if (String(existing.fingerprint || itemFingerprint(existing)) !== nextFingerprint) {
+      changed++;
+      delta.set(next.id, { ...next, fingerprint: nextFingerprint, deltaStatus: 'changed' });
+    }
+    next.fingerprint = nextFingerprint;
+    merged.set(next.id, next);
+  }
+  return {
+    items: [...merged.values()].sort((a, b) => a.id.localeCompare(b.id)),
+    delta: [...delta.values()].sort((a, b) => a.id.localeCompare(b.id)),
+    added, changed
+  };
+}
+
+async function loadPublishedMetadataIndex(config) {
+  const latest = await readState(config, '/catalog-state/metadata-index/latest.json');
+  if (!latest || latest.version !== 1 ||
+      typeof latest.scanGeneration !== 'string' ||
+      typeof latest.manifestPath !== 'string' ||
+      !latest.manifestPath.startsWith('/catalog-state/metadata-index/v1/')) {
+    throw new Error('Incremental scan requires a valid published metadata-index baseline; run a full discovery first');
+  }
+  const manifest = await readState(config, latest.manifestPath);
+  if (!manifest || manifest.version !== 1 ||
+      manifest.schema !== 'great-indian-normalized-metadata-index' ||
+      manifest.scanGeneration !== latest.scanGeneration ||
+      !Array.isArray(manifest.chunks)) {
+    throw new Error('Published metadata-index manifest is invalid; incremental scan refused');
+  }
+  const items = [];
+  for (let index = 0; index < manifest.chunks.length; index++) {
+    const descriptor = manifest.chunks[index];
+    if (!descriptor || typeof descriptor.path !== 'string' ||
+        !descriptor.path.startsWith('/catalog-state/metadata-index/v1/') ||
+        descriptor.count < 0 || !/^[a-f0-9]{64}$/.test(String(descriptor.sha256 || ''))) {
+      throw new Error('Published metadata-index chunk descriptor is invalid');
+    }
+    const chunk = await readState(config, descriptor.path);
+    if (!validateMetadataIndexChunk(chunk, {
+      scanGeneration: manifest.scanGeneration, index,
+      count: descriptor.count, sha256: descriptor.sha256
+    })) throw new Error('Published metadata-index chunk checksum failed at index ' + index);
+    items.push(...chunk.records);
+  }
+  if (items.length !== manifest.itemCount ||
+      manifest.chunks.length !== manifest.chunkCount ||
+      latest.itemCount !== manifest.itemCount) {
+    throw new Error('Published metadata-index item or chunk totals do not match');
+  }
+  return { items, manifest };
+}
+
+function incrementalMetadataItem(meta, manifest, catalog) {
+  const id = canonicalId(meta);
+  if (!id) return null;
+  const videos = Array.isArray(meta.videos) ? meta.videos : [];
+  const nextEpisode = videos
+    .filter(video => /^\\d{4}-\\d{2}-\\d{2}$/.test(String(video?.released || video?.airdate || '')))
+    .map(video => ({
+      date: String(video.released || video.airdate),
+      season: Number.isFinite(Number(video.season)) ? Number(video.season) : null,
+      episode: Number.isFinite(Number(video.episode)) ? Number(video.episode) : null
+    }))
+    .sort((a, b) => a.date.localeCompare(b.date))[0] || null;
+  const item = {
+    id, type: catalog.type,
+    catalogSource: String(manifest.name || manifest.key || ''),
+    catalogId: String(catalog.id || ''),
+    providerId: String(meta.id || ''),
+    title: String(meta.name || meta.title || ''),
+    poster: String(meta.poster || ''),
+    year: meta.year || meta.releaseInfo?.year || '',
+    releaseInfo: typeof meta.releaseInfo === 'string' ? meta.releaseInfo : '',
+    digitalReleaseDate: meta.digitalReleaseDate || meta.releaseDate || '',
+    premiereDate: meta.premiered || '',
+    nextEpisodeDate: nextEpisode?.date || '',
+    season: nextEpisode?.season ?? '',
+    episode: nextEpisode?.episode ?? '',
+    imdbId: meta.imdb_id || meta.imdbId || (/^tt\\d{7,10}$/i.test(String(meta.id || '')) ? String(meta.id).toLowerCase() : ''),
+    tmdbId: meta.tmdb_id || meta.tmdbId || '',
+    tvdbId: meta.tvdb_id || meta.tvdbId || '',
+    tvmazeId: meta.tvmaze_id || meta.tvmazeId || '',
+    artworkSource: String(meta.poster || '').split('/').slice(0, 3).join('/'),
+    catalogSources: [{ source: String(manifest.name || manifest.key || ''), id: String(catalog.id || '') }]
+  };
+  item.fingerprint = itemFingerprint(item);
+  return item;
+}
+
+async function runIncrementalMetadataScan(lease) {
+  const configured = MANIFEST_KEYS.filter(key => process.env[key]);
+  if (configured.length !== MANIFEST_KEYS.length) {
+    throw new Error('Incremental scan requires all three configured manifests; refusing partial coverage');
+  }
+  const config = imageKitConfig();
+  const baseline = await loadPublishedMetadataIndex(config);
+  const manifests = await Promise.all(MANIFEST_KEYS.map(readManifest));
+  if (manifests.some(manifest => !manifest.configured || !manifest.catalogs.length)) {
+    throw new Error('One or more configured manifests returned no catalogues; incremental scan refused');
+  }
+  const maxCatalogues = Math.max(1, Math.min(1000, Number(process.env.CATALOG_INCREMENTAL_MAX_CATALOGUES || 500)));
+  const pageLimit = Math.max(1, Math.min(3, Number(process.env.CATALOG_INCREMENTAL_PAGES_PER_CATALOG || 1)));
+  const totalCatalogues = manifests.reduce((sum, manifest) => sum + manifest.catalogs.length, 0);
+  if (totalCatalogues > maxCatalogues) {
+    throw new Error('Incremental scan catalogue limit exceeded (' + totalCatalogues + ' > ' + maxCatalogues + '); refusing partial index publication');
+  }
+  const observed = new Map();
+  const sourceStats = [];
+  let pagesFetched = 0;
+  let recordsFetched = 0;
+  for (const manifest of manifests) {
+    let sourceCatalogues = 0;
+    for (const catalog of manifest.catalogs) {
+      if (unresolvedRequiredExtras(catalog).length) {
+        throw new Error('Incremental scan cannot safely sample required dynamic catalogue ' + manifest.name + '/' + catalog.id);
+      }
+      let sourcePages = 0;
+      for (let page = 0; page < pageLimit; page++) {
+        await lease?.assertOwned?.();
+        const data = await fetchJson(catalogUrl(manifest.base, catalog, page * PAGE_SIZE));
+        const batch = Array.isArray(data.metas) ? data.metas : [];
+        pagesFetched++;
+        sourcePages++;
+        recordsFetched += batch.length;
+        for (const meta of batch) {
+          const item = incrementalMetadataItem(meta, manifest, catalog);
+          if (!item) continue;
+          observed.set(item.id, observed.has(item.id)
+            ? mergeIncrementalMetadataItem(observed.get(item.id), item)
+            : item);
+        }
+        // Newest-first catalogues let a fully-known page terminate early.
+        const hasUnknown = batch.some(meta => {
+          const id = canonicalId(meta);
+          return id && !baseline.itemsById.has(id);
+        });
+        if (batch.length < PAGE_SIZE || (page > 0 && !hasUnknown)) break;
+      }
+      sourceCatalogues++;
+    }
+    sourceStats.push({ source: manifest.name, catalogues: sourceCatalogues });
+  }
+  if (!observed.size) throw new Error('Incremental scan found no supported catalogue IDs; baseline left unchanged');
+  const baselineItemsById = new Map(baseline.items.map(item => [item.id, item]));
+  const result = mergeIncrementalMetadata(baseline.items, [...observed.values()]);
+  const scanGeneration = 'incremental-' + new Date().toISOString().replace(/[:.]/g, '-');
+  const manifest = await publishSharedMetadataIndex(result.items, scanGeneration, config, lease);
+  const deltaPath = '/catalog-state/metadata-index/deltas/' + scanGeneration + '.json';
+  const deltaRecords = result.delta;
+  const deltaSerialized = JSON.stringify(deltaRecords);
+  const delta = {
+    version: 1, schema: 'great-indian-metadata-index-delta',
+    scanGeneration, baselineGeneration: baseline.manifest.scanGeneration,
+    createdAt: new Date().toISOString(),
+    sourceStats, pagesFetched, recordsFetched,
+    baselineItemCount: baseline.items.length,
+    itemCount: result.items.length, added: result.added, changed: result.changed,
+    deltaCount: deltaRecords.length,
+    sha256: createHash('sha256').update(deltaSerialized).digest('hex'),
+    records: deltaRecords
+  };
+  await lease?.assertOwned?.();
+  await writeJson(config, deltaPath, delta);
+  console.info('[incremental-metadata-index-published]', JSON.stringify({
+    scanGeneration, baselineGeneration: baseline.manifest.scanGeneration,
+    sourceStats, pagesFetched, recordsFetched, itemCount: result.items.length,
+    added: result.added, changed: result.changed, deltaCount: deltaRecords.length
+  }));
+  return {
+    status: 'incremental-metadata-complete',
+    mode: 'incremental-discovery',
+    scanGeneration,
+    baselineGeneration: baseline.manifest.scanGeneration,
+    manifestsScanned: manifests.length,
+    sourceStats, pagesFetched, recordsFetched,
+    baselineItemCount: baseline.items.length,
+    itemCount: result.items.length,
+    added: result.added, changed: result.changed,
+    deltaCount: deltaRecords.length,
+    metadataManifestPath: '/catalog-state/metadata-index/v1/' + manifest.generationKey + '/manifest.json',
+    deltaPath
+  };
+}
+
 async function publishSharedMetadataIndex(items, scanGeneration, config, lease) {
   const root = '/catalog-state/metadata-index/v1';
   const generationKey = createHash('sha256').update(String(scanGeneration)).digest('hex').slice(0, 24);
@@ -355,6 +586,12 @@ async function publishSharedMetadataIndex(items, scanGeneration, config, lease) 
     if (existing.version !== 1 || existing.scanGeneration !== String(scanGeneration)) {
       throw new Error('Shared metadata index generation is malformed; refusing overwrite');
     }
+    await lease?.assertOwned?.();
+    await writeJson(config, '/catalog-state/metadata-index/latest.json', {
+      version: 1, scanGeneration: String(scanGeneration),
+      generationKey, manifestPath, itemCount: existing.itemCount,
+      chunkCount: existing.chunkCount, updatedAt: new Date().toISOString()
+    });
     return existing;
   }
   const normalized = items
@@ -406,6 +643,13 @@ async function publishSharedMetadataIndex(items, scanGeneration, config, lease) 
   };
   await lease?.assertOwned?.();
   await writeJson(config, manifestPath, manifest);
+  // The latest pointer is committed last, after every immutable chunk and manifest is durable.
+  await lease?.assertOwned?.();
+  await writeJson(config, '/catalog-state/metadata-index/latest.json', {
+    version: 1, scanGeneration: String(scanGeneration), generationKey,
+    manifestPath, itemCount: normalized.length, chunkCount: chunks.length,
+    updatedAt: new Date().toISOString()
+  });
   console.info('[shared-metadata-index-published]', JSON.stringify({
     scanGeneration, itemCount: normalized.length, chunkCount: chunks.length, storage: 'imagekit'
   }));
@@ -815,9 +1059,10 @@ export function runManifestCatalogRefresh(options = {}) {
 async function runManifestCatalogRefreshInternal(lease, options = {}) {
   const forceReprocess = options.forceReprocess === true;
   const mode = options.mode || 'combined';
-  if (!['combined', 'discovery-only', 'queue-drain'].includes(mode)) {
+  if (!['combined', 'discovery-only', 'queue-drain', 'incremental-discovery'].includes(mode)) {
     throw new Error('Unsupported catalogue pipeline mode: ' + mode);
   }
+  if (mode === 'incremental-discovery') return runIncrementalMetadataScan(lease);
   const queueOnly = mode === 'queue-drain';
   const discoveryOnly = mode === 'discovery-only';
   if (mode !== 'combined' && forceReprocess) {
