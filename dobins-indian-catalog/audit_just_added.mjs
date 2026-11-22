@@ -131,6 +131,18 @@ function manifestBase(manifestUrl) {
 function catalogueUrl(base, catalog, skip) {
   const url = new URL(base.toString());
   url.pathname = url.pathname.replace(/\/$/, '') + '/catalog/' + encodeURIComponent(catalog.type) + '/' + encodeURIComponent(catalog.id) + '.json';
+  if (skip) url.searchParams.set('skip', String(skip));
+  for (const requirement of catalog.required || []) {
+    const name = typeof requirement === 'string' ? requirement : String(requirement?.name || '');
+    if (!name || name === 'skip') continue;
+    const descriptor = (catalog.extra || []).find(item => item && typeof item === 'object' && item.name === name);
+    const options = Array.isArray(descriptor?.options) ? descriptor.options
+      : Array.isArray(requirement?.options) ? requirement.options : [];
+    if (options.length) url.searchParams.set(name, String(options[0]));
+  }
+  return url;
+}
+
 function unresolvedRequired(catalog) {
   return (catalog.required || []).map(item => typeof item === 'string' ? item : String(item?.name || ''))
     .filter(name => name && name !== 'skip')
