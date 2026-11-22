@@ -180,7 +180,17 @@ for (const [key, fallbackName] of SOURCES) {
         .filter(Boolean);
       if (requiredNames.length === 1 && requiredNames[0] === 'search') {
         for (const [referenceId, referenceTitle] of Object.entries(report.referenceTitles)) {
-          const data = await fetchJson(catalogueUrl(base, catalog, 0, { search: referenceTitle }));
+          let data;
+          try {
+            data = await fetchJson(catalogueUrl(base, catalog, 0, { search: referenceTitle }));
+          } catch (error) {
+            report.dynamicReferenceSearches.push({
+              source, catalogId: catalog.id, query: referenceTitle,
+              resultCount: 0, matchingTitles: [],
+              error: String(error?.message || 'search request failed').slice(0, 180)
+            });
+            continue;
+          }
           const matches = (Array.isArray(data.metas) ? data.metas : []).filter(meta => {
             const id = canonicalId(meta);
             const title = String(meta?.name || meta?.title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
