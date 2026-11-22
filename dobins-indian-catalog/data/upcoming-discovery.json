@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-23T01:45:40.902654+04:00",
+  "generatedAt": "2026-11-23T02:25:28.673251+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 20,
@@ -19,8 +19,8 @@
     },
     "bySource": {
       "https://ottasia.com/ott-releases-this-week?country=IN": 14,
-      "https://www.dailyott.in/": 2,
       "https://cinebuds.com/ott-releases-this-week/": 4,
+      "https://www.dailyott.in/": 2,
       "https://www.keralatv.in/channel/ott/": 1,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
@@ -140,8 +140,8 @@
         "Prime Video"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -437,8 +437,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
