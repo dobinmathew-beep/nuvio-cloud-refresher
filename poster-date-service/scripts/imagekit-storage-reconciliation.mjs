@@ -2,7 +2,8 @@ import { Buffer } from 'node:buffer';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { imageKitConfig, listImageKitFiles } from '../lib/imagekit-storage.mjs';
-import { categoryFor, reconcileVersionRecords, compareByteMeasurements } from '../lib/imagekit-storage-reconciliation-utils.mjs';
+import { reconcileVersionRecords, compareByteMeasurements } from '../lib/imagekit-storage-reconciliation-utils.mjs';
+import { categoryFor } from '../lib/imagekit-expanded-audit-utils.mjs';
 
 const API = 'https://api.imagekit.io/v1';
 const CONCURRENCY = Math.max(1, Math.min(4, Number(process.env.IMAGEKIT_RECONCILIATION_CONCURRENCY) || 2));
