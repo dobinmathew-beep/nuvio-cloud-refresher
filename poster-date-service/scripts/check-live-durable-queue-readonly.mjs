@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 
-const endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\\/+$/, '');
+const endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').replace(/\/+$/, '');
 if (!endpoint) throw new Error('Missing IMAGEKIT_URL_ENDPOINT secret');
 
 const path = '/catalog-state/durable-queue/741382b785709edc43efd65a4ce0b14b/queue-state.json';
