@@ -124,24 +124,13 @@ async function fetchJson(url, label) {
 
 function manifestBase(manifestUrl) {
   const url = new URL(manifestUrl);
-  url.pathname = url.pathname.replace(/\/manifest\.json$/i, '').replace(/\/manifest\.json$/i, '');
-  return url.toString().replace(/\/$/, '');
-}
-
-function catalogueUrl(base, catalog, skip) {
-  const url = new URL(base + '/catalog/' + encodeURIComponent(catalog.type) + '/' + encodeURIComponent(catalog.id) + '.json');
-  if (skip) url.searchParams.set('skip', String(skip));
-  for (const requirement of catalog.required || []) {
-    const name = typeof requirement === 'string' ? requirement : String(requirement?.name || '');
-    if (!name || name === 'skip') continue;
-    const descriptor = (catalog.extra || []).find(item => item && typeof item === 'object' && item.name === name);
-    const options = Array.isArray(descriptor?.options) ? descriptor.options
-      : Array.isArray(requirement?.options) ? requirement.options : [];
-    if (options.length) url.searchParams.set(name, String(options[0]));
-  }
+  url.pathname = url.pathname.replace(/\/manifest\.json$/i, '').replace(/\/$/, '');
   return url;
 }
 
+function catalogueUrl(base, catalog, skip) {
+  const url = new URL(base.toString());
+  url.pathname = url.pathname.replace(/\/$/, '') + '/catalog/' + encodeURIComponent(catalog.type) + '/' + encodeURIComponent(catalog.id) + '.json';
 function unresolvedRequired(catalog) {
   return (catalog.required || []).map(item => typeof item === 'string' ? item : String(item?.name || ''))
     .filter(name => name && name !== 'skip')
@@ -318,7 +307,9 @@ export async function runAudit(env = process.env, now = new Date()) {
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  runAudit().catch(error => {
+  runAudit().then(report => {
+    if (report.sources.some(source => source.errors > 0)) process.exitCode = 1;
+  }).catch(error => {
     console.error('[just-added-audit-failed]', error?.message || String(error));
     process.exitCode = 1;
   });
