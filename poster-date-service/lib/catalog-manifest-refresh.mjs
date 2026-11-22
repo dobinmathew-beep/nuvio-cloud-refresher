@@ -225,7 +225,7 @@ async function collectCatalog(manifest, catalog, config, fingerprint, lease, sca
   const titles = new Map();
   if (saved?.titles && typeof saved.titles === 'object') {
     for (const [id, item] of Object.entries(saved.titles)) {
-      if (item && item.id === id) titles.set(id, item);
+      if (item && item.id === id) titles.set(id, { ...item, catalogSource: item.catalogSource || String(manifest.name || manifest.key || ''), catalogId: item.catalogId || String(catalog.id || '') });
     }
   }
   const seenPageIds = new Set(Array.isArray(saved?.seenPageIds) ? saved.seenPageIds : []);
