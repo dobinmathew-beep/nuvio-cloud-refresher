@@ -284,10 +284,14 @@ export function getImageKitStorageSnapshot() {
   return { ...storageSnapshot };
 }
 
-export function canStoreImmutableImageKitPoster(newSize) {
-  if (!storageSnapshot.known || !Number.isFinite(newSize) || newSize <= 0) return false;
+export function hasImmutablePosterStorageCapacity(accountBytes, newSize) {
+  if (!Number.isFinite(accountBytes) || accountBytes < 0 || !Number.isFinite(newSize) || newSize <= 0) return false;
   // Immutable versions add bytes; never subtract the previous poster size.
-  return storageSnapshot.bytes + newSize + UPLOAD_HEADROOM_BYTES <= IMAGEKIT_STORAGE_LIMIT_BYTES;
+  return accountBytes + newSize + UPLOAD_HEADROOM_BYTES <= IMAGEKIT_STORAGE_LIMIT_BYTES;
+}
+
+export function canStoreImmutableImageKitPoster(newSize) {
+  return storageSnapshot.known && hasImmutablePosterStorageCapacity(storageSnapshot.bytes, newSize);
 }
 
 export function canStoreImageKitPoster(imdbId, newSize) {
@@ -565,6 +569,11 @@ export async function runImageKitMaintenance({ force = false } = {}) {
         const urlMatches = actualUrl.protocol === 'https:' &&
           actualUrl.origin === expectedUrl.origin && actualUrl.pathname === expectedUrl.pathname;
         if (!isValidPosterPointer(pointer, id) || !urlMatches) {
+          unknownPointerIds.add(id);
+          continue;
+        }
+        const targetExists = versionedById.get(id).some(file => file.filePath === pointer.assetPath);
+        if (!targetExists) {
           unknownPointerIds.add(id);
           continue;
         }

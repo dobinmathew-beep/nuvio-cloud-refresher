@@ -6,6 +6,7 @@ import {
   getImageKitStorageSnapshot,
   canStoreImageKitPoster,
   canStoreImmutableImageKitPoster,
+  hasImmutablePosterStorageCapacity,
   shouldDeleteUnpointedVersion,
   VERSIONED_POSTER_RETENTION_MS
 } from '../lib/imagekit-storage.mjs';
@@ -51,6 +52,9 @@ test('retryable ImageKit upload responses are limited to transient HTTP statuses
 });
 
 test('immutable poster quota counts the new version without subtracting the legacy asset', () => {
+  const headroom = 32 * 1024 * 1024;
+  const accountBytes = IMAGEKIT_STORAGE_LIMIT_BYTES - headroom - 512;
+  assert.equal(hasImmutablePosterStorageCapacity(accountBytes, 1024), false);
   assert.equal(canStoreImmutableImageKitPoster(1024), false);
 });
 
