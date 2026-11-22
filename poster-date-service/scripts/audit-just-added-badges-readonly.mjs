@@ -136,7 +136,7 @@ for (const item of (Array.isArray(digitalAudit?.items) ? digitalAudit.items : []
   if (String(item?.type || '').toLowerCase() !== 'movie' || String(item?.matchState || '').toLowerCase() !== 'published') continue;
   const id = String(item?.id || '').trim();
   const date = String(item?.releaseDate || '').slice(0, 10);
-  if (id && /^\\d{4}-\\d{2}-\\d{2}$/.test(date)) {
+  if (id && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
     if (!recentDigitalIndex.has(id)) recentDigitalIndex.set(id, []);
     recentDigitalIndex.get(id).push(date);
   }
@@ -304,6 +304,8 @@ const summary = [
   '',
   '## Totals',
   '',
+  '- Published digital movie events in the 35-day audit: ' + report.publishedDigitalMovieEvents,
+  '- Digital release audit window (days): ' + report.digitalAuditWindowDays,
   '- Movie record appearances (catalogue/page rows): ' + report.totals.movieRecordAppearances,
   '- Candidate movie appearances (recent index or poster flag, plus references): ' + report.totals.candidateMovieAppearances,
   '- Unique candidate movie IDs: ' + report.totals.uniqueCandidateMovieIds,
