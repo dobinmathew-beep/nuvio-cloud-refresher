@@ -21,7 +21,7 @@ function omanDate(now = new Date()) {
 
 function validDate(value) {
   const date = String(value || '').slice(0, 10);
-  if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(date)) return null;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
   const stamp = Date.parse(date + 'T00:00:00Z');
   return Number.isFinite(stamp) && new Date(stamp).toISOString().slice(0, 10) === date ? date : null;
 }
@@ -124,8 +124,8 @@ async function fetchJson(url, label) {
 
 function manifestBase(manifestUrl) {
   const url = new URL(manifestUrl);
-  url.pathname = url.pathname.replace(/\\/manifest\\.json$/i, '').replace(/\\/manifest\\.json$/i, '');
-  return url.toString().replace(/\\/$/, '');
+  url.pathname = url.pathname.replace(/\/manifest\.json$/i, '').replace(/\/manifest\.json$/i, '');
+  return url.toString().replace(/\/$/, '');
 }
 
 function catalogueUrl(base, catalog, skip) {
@@ -156,7 +156,7 @@ function unresolvedRequired(catalog) {
 
 function imdbId(item) {
   for (const value of [item?.imdbId, item?.imdb_id, item?.externalIds?.imdb, item?.externals?.imdb, item?.id]) {
-    if (typeof value === 'string' && /^tt\\d{7,10}$/.test(value)) return value;
+    if (typeof value === 'string' && /^tt\d{7,10}$/.test(value)) return value;
   }
   return null;
 }
@@ -238,7 +238,7 @@ function markdownReport(report) {
   lines.push('| Title | IMDb ID | Source | Catalogue | Badge | Expected | Evidence |');
   lines.push('|---|---|---|---|---:|---:|---|');
   for (const target of report.targets) {
-    lines.push('| ' + [target.title, target.imdbId, target.source, target.catalogName, target.badge, target.expected, target.evidenceDate || 'unknown'].map(x => String(x ?? '').replace(/\\|/g, '/')).join(' | ') + ' |');
+    lines.push('| ' + [target.title, target.imdbId, target.source, target.catalogName, target.badge, target.expected, target.evidenceDate || 'unknown'].map(x => String(x ?? '').replace(/\|/g, '/')).join(' | ') + ' |');
   }
   if (!report.targets.length) lines.push('| No reference titles found | | | | | | |');
   lines.push('');
@@ -247,11 +247,11 @@ function markdownReport(report) {
   lines.push('| Title | IMDb ID | Source | Catalogue | Status | First digital/first seen | Release info |');
   lines.push('|---|---|---|---|---|---|---|');
   for (const row of report.findings.slice(0, 500)) {
-    lines.push('| ' + [row.title, row.resolvedImdbId || row.imdbId || row.id, row.source, row.catalogName, row.status, row.evidenceDate || 'unknown', row.releaseInfo].map(x => String(x ?? '').replace(/\\|/g, '/')).join(' | ') + ' |');
+    lines.push('| ' + [row.title, row.resolvedImdbId || row.imdbId || row.id, row.source, row.catalogName, row.status, row.evidenceDate || 'unknown', row.releaseInfo].map(x => String(x ?? '').replace(/\|/g, '/')).join(' | ') + ' |');
   }
   if (!report.findings.length) lines.push('| No badge inconsistencies detected | | | | | | |');
   lines.push('');
-  return lines.join('\\n');
+  return lines.join('\n');
 }
 
 export async function runAudit(env = process.env, now = new Date()) {
