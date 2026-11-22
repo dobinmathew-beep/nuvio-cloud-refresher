@@ -5,6 +5,8 @@ on:
     branches: [fix/remove-untrusted-source-just-added-20261123]
     paths:
       - 'poster-date-service/api/poster.mjs'
+      - 'poster-date-service/lib/catalog-just-added.mjs'
+      - 'poster-date-service/tests/catalog-just-added.test.mjs'
       - 'poster-date-service/lib/render-poster.mjs'
       - 'poster-date-service/tests/just-added.test.mjs'
       - '.github/workflows/untrusted-source-badge-tests.yml'
