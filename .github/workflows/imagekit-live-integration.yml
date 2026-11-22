@@ -5,6 +5,7 @@ on:
       - faster-poster-pipeline
     paths:
       - 'poster-date-service/scripts/imagekit-live-integration.mjs'
+      - 'poster-date-service/lib/imagekit-versioned-storage.mjs'
       - '.github/workflows/imagekit-live-integration.yml'
   workflow_dispatch:
 permissions:
