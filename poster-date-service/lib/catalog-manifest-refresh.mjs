@@ -411,7 +411,7 @@ async function loadPublishedMetadataIndex(config) {
   if (!latest || latest.version !== 1 ||
       typeof latest.scanGeneration !== 'string' ||
       typeof latest.manifestPath !== 'string' ||
-      !/^\\/catalog-state\\/metadata-index\\/v1\\/[a-f0-9]{24}\\/manifest\\.json$/.test(latest.manifestPath)) {
+      !/^[/]catalog-state[/]metadata-index[/]v1[/][a-f0-9]{24}[/]manifest[.]json$/.test(latest.manifestPath)) {
     throw new Error('Incremental scan requires a valid published metadata-index baseline; run a full discovery first');
   }
   const manifest = await readState(config, latest.manifestPath);
@@ -451,7 +451,7 @@ function incrementalMetadataItem(meta, manifest, catalog) {
   if (!id) return null;
   const videos = Array.isArray(meta.videos) ? meta.videos : [];
   const nextEpisode = videos
-    .filter(video => /^\\d{4}-\\d{2}-\\d{2}$/.test(String(video?.released || video?.airdate || '')))
+    .filter(video => /^\d{4}-\d{2}-\d{2}$/.test(String(video?.released || video?.airdate || '')))
     .map(video => ({
       date: String(video.released || video.airdate),
       season: Number.isFinite(Number(video.season)) ? Number(video.season) : null,
@@ -472,7 +472,7 @@ function incrementalMetadataItem(meta, manifest, catalog) {
     nextEpisodeDate: nextEpisode?.date || '',
     season: nextEpisode?.season ?? '',
     episode: nextEpisode?.episode ?? '',
-    imdbId: meta.imdb_id || meta.imdbId || (/^tt\\d{7,10}$/i.test(String(meta.id || '')) ? String(meta.id).toLowerCase() : ''),
+    imdbId: meta.imdb_id || meta.imdbId || (/^tt\d{7,10}$/i.test(String(meta.id || '')) ? String(meta.id).toLowerCase() : ''),
     tmdbId: meta.tmdb_id || meta.tmdbId || '',
     tvdbId: meta.tvdb_id || meta.tvdbId || '',
     tvmazeId: meta.tvmaze_id || meta.tvmazeId || '',
