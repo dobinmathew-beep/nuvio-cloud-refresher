@@ -472,6 +472,10 @@ const server = createServer(async (req, res) => {
   // Read-only ImageKit inventory and deletion-candidate report. This endpoint
   // never invokes a delete API; candidate removal requires separate approval.
   if (url.pathname === '/maintenance' || url.pathname === '/maintenance/report') {
+    if (!authorizedCatalogRequest(req)) {
+      res.writeHead(401, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+      return res.end(JSON.stringify({ status: 'unauthorized' }));
+    }
     if (req.method !== 'POST') {
       res.writeHead(405, { 'Allow': 'POST', 'Cache-Control': 'no-store' });
       return res.end('Method not allowed');
