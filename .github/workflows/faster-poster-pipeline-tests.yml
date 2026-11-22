@@ -7,7 +7,7 @@ on:
       - 'poster-date-service/**'
       - '.github/workflows/faster-poster-pipeline-tests.yml'
   push:
-    branches: [faster-poster-pipeline]
+    branches: [faster-poster-pipeline, imagekit-write-churn-reduction]
     paths:
       - 'poster-date-service/**'
       - '.github/workflows/faster-poster-pipeline-tests.yml'
@@ -24,10 +24,14 @@ jobs:
         working-directory: poster-date-service
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: faster-poster-pipeline
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       - run: npm install --no-audit --no-fund
       - run: npm test
+      - name: Read-only live scan of the three configured manifests
+        env:
+          CATALOG_MANIFEST_ELFHOSTED_URL: ${{ secrets.CATALOG_MANIFEST_ELFHOSTED_URL }}
+          CATALOG_MANIFEST_MIDNIGHTIGNITE_URL: ${{ secrets.CATALOG_MANIFEST_MIDNIGHTIGNITE_URL }}
+          CATALOG_MANIFEST_XPERIENCE_URL: ${{ secrets.CATALOG_MANIFEST_XPERIENCE_URL }}
+        run: node scripts/validate-three-manifest-scan.mjs
