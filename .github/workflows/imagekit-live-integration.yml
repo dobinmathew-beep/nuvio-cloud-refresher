@@ -1,0 +1,24 @@
+name: ImageKit live integration test
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: imagekit-live-integration
+  cancel-in-progress: false
+jobs:
+  imagekit-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: faster-poster-pipeline
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify authenticated ImageKit persistence, CDN visibility and recovery read
+        env:
+          IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
+          IMAGEKIT_PRIVATE_KEY: ${{ secrets.IMAGEKIT_PRIVATE_KEY }}
+        run: node poster-date-service/scripts/imagekit-live-integration.mjs
