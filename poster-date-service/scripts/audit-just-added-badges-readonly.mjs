@@ -89,6 +89,10 @@ function posterHasJustAdded(meta) {
     return /(?:[?&]|%3F)badge(?:=|%3D)just-added/i.test(poster);
   }
 }
+function posterHost(meta) {
+  try { return new URL(String(meta?.poster || '')).host; }
+  catch { return ''; }
+}
 function inspect(meta, source, catalog, recentMovieIndex, report) {
   const id = canonicalId(meta);
   if (!id) return null;
@@ -115,7 +119,7 @@ function inspect(meta, source, catalog, recentMovieIndex, report) {
     releaseInfo: String(meta?.releaseInfo || ''), digitalReleaseDates: dates,
     latestDigitalReleaseDate: latestDigital, digitalAgeDays: ageDays,
     recentMovieIndexTimestamp: indexTimestamp, posterQueryBadge: posterBadge,
-    poster: String(meta?.poster || ''), finding
+    posterHost: posterHost(meta), finding
   };
 }
 
