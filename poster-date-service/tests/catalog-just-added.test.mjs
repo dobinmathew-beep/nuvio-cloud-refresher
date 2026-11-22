@@ -67,3 +67,37 @@ test('movies qualify only from a published digital release date within 14 days',
   assert.equal(await isCatalogRecentlyAdded(['tt8888888'], { fetch, now }), false);
   resetCatalogAddedIndexForTest();
 });
+
+test('earliest published digital date wins when a title has multiple platform arrivals', async () => {
+  resetCatalogAddedIndexForTest();
+  const now = new Date('2026-11-23T08:00:00.000Z');
+  const index = {
+    'dobins_hi_movie|tt1375789': '2026-11-22T08:00:00.000Z',
+    'dobins_hi_movie|tt0073707': '2026-11-22T08:00:00.000Z',
+    'dobins_ta_movie|tt5959980': '2026-11-22T08:00:00.000Z'
+  };
+  const audit = {
+    items: [
+      { id: 'tt1375789', type: 'movie', releaseDate: '2013-01-01', matchState: 'published' },
+      { id: 'tt1375789', type: 'movie', releaseDate: '2026-11-20', matchState: 'published' },
+      { id: 'tt0073707', type: 'movie', releaseDate: '1975-08-15', matchState: 'published' },
+      { id: 'tt0073707', type: 'movie', releaseDate: '2026-11-19', matchState: 'published' },
+      { id: 'tt5959980', type: 'movie', releaseDate: '2018-10-17', matchState: 'published' },
+      { id: 'tt5959980', type: 'movie', releaseDate: '2026-11-18', matchState: 'published' }
+    ]
+  };
+  const fetch = async url => new Response(JSON.stringify(String(url).includes('recent-release-audit') ? audit : index), {
+    status: 200, headers: { 'content-type': 'application/json' }
+  });
+  for (const id of ['tt1375789', 'tt0073707', 'tt5959980']) {
+    assert.equal(await isCatalogRecentlyAdded([id], { fetch, now }), false, id + ' must use its earliest digital arrival');
+    resetCatalogAddedIndexForTest();
+  }
+});
+
+test('catalog badge query cannot override an authoritative negative decision', async () => {
+  const { resolveJustAddedDecision } = await import('../lib/catalog-just-added.mjs');
+  assert.equal(resolveJustAddedDecision(false, 'just-added'), false);
+  assert.equal(resolveJustAddedDecision(true, ''), true);
+  assert.equal(resolveJustAddedDecision(null, 'just-added'), null, 'index outage preserves the existing source-artwork fallback path');
+});
