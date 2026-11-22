@@ -75,30 +75,42 @@ async function findExistingImageKitAsset(imdbId) {
   if (!config) return null;
   const assetUrl = imageKitAssetUrl(config, imdbId);
   try {
+    // Resolve a verified immutable version first. If no valid pointer exists,
+    // retain the established canonical ImageKit asset as the compatibility path.
+    const versioned = await resolveImageKitPoster(imdbId, {
+      config, recordUpload: recordImageKitUpload,
+      canStore: canStoreImmutableImageKitPoster
+    });
+    if (versioned.source === 'versioned' && versioned.url) {
+      imageKitAvailabilityCache.set(imdbId, {
+        url: versioned.url, expiresAt: Date.now() + IMAGEKIT_AVAILABILITY_TTL_MS
+      });
+      return versioned.url;
+    }
     const response = await fetch(assetUrl, {
-      method: 'HEAD',
-      cache: 'no-store',
-      signal: AbortSignal.timeout(1800)
+      method: 'HEAD', cache: 'no-store', signal: AbortSignal.timeout(1800)
     });
     const type = (response.headers.get('content-type') || '').toLowerCase();
     const url = response.ok && type.startsWith('image/') ? assetUrl : null;
     imageKitAvailabilityCache.set(imdbId, {
-      url,
-      expiresAt: Date.now() + (url ? IMAGEKIT_AVAILABILITY_TTL_MS : IMAGEKIT_MISS_TTL_MS)
+      url, expiresAt: Date.now() + (url ? IMAGEKIT_AVAILABILITY_TTL_MS : IMAGEKIT_MISS_TTL_MS)
     });
-    while (imageKitAvailabilityCache.size > 512) {
-      imageKitAvailabilityCache.delete(imageKitAvailabilityCache.keys().next().value);
-    }
+    while (imageKitAvailabilityCache.size > 512) imageKitAvailabilityCache.delete(imageKitAvailabilityCache.keys().next().value);
     return url;
-  } catch {
-    imageKitAvailabilityCache.set(imdbId, {
-      url: null,
-      expiresAt: Date.now() + IMAGEKIT_MISS_TTL_MS
-    });
-    return null;
+  } catch (error) {
+    console.warn('[imagekit-versioned-pointer-resolution-failed]', JSON.stringify({ imdbId, error: error?.message || 'unknown error' }));
+    try {
+      const response = await fetch(assetUrl, { method: 'HEAD', cache: 'no-store', signal: AbortSignal.timeout(1800) });
+      const type = (response.headers.get('content-type') || '').toLowerCase();
+      const url = response.ok && type.startsWith('image/') ? assetUrl : null;
+      imageKitAvailabilityCache.set(imdbId, { url, expiresAt: Date.now() + (url ? IMAGEKIT_AVAILABILITY_TTL_MS : IMAGEKIT_MISS_TTL_MS) });
+      return url;
+    } catch {
+      imageKitAvailabilityCache.set(imdbId, { url: null, expiresAt: Date.now() + IMAGEKIT_MISS_TTL_MS });
+      return null;
+    }
   }
 }
-
 function redirectToExistingImageKit(res, assetUrl, reason = 'provider-unavailable') {
   res.statusCode = 302;
   res.setHeader('Location', assetUrl);
@@ -205,8 +217,23 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
 function scheduleImageKitUpload(imdbId, poster) {
   if (!imageKitConfig()) return;
   if (pendingImageKitUploads.has(imdbId)) return;
-  const job = uploadPosterToImageKit(imdbId, poster)
-    .catch(error => console.warn('ImageKit poster upload skipped for', imdbId, error.message))
+  const job = publishImageKitVersionedPoster(imdbId, poster, {
+    config: imageKitConfig(), recordUpload: recordImageKitUpload,
+    canStore: canStoreImmutableImageKitPoster
+  }).then(pointer => {
+    console.info('[imagekit-versioned-poster-published]', JSON.stringify({
+      imdbId, fingerprint: pointer.fingerprint, assetPath: pointer.assetPath
+    }));
+    imageKitAvailabilityCache.set(imdbId, {
+      url: pointer.assetUrl, expiresAt: Date.now() + IMAGEKIT_AVAILABILITY_TTL_MS
+    });
+    return pointer;
+  }).catch(async error => {
+    console.warn('[imagekit-versioned-poster-failed-legacy-fallback]', JSON.stringify({
+      imdbId, error: error?.message || 'unknown error'
+    }));
+    return uploadPosterToImageKit(imdbId, poster);
+  }).catch(error => console.warn('ImageKit poster upload skipped for', imdbId, error.message))
     .finally(() => pendingImageKitUploads.delete(imdbId));
   pendingImageKitUploads.set(imdbId, job);
 }
