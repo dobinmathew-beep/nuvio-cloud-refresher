@@ -194,4 +194,25 @@ class CatalogTests(unittest.TestCase):
   self.assertIn("or not status.get('releasePolicy'):",bootstrap_source)
   self.assertNotIn("status.get('releasePolicy')!='ott-or-confirmed-physical-v1'",bootstrap_source)
 
+ def test_legacy_movies_do_not_get_just_added_from_recent_catalog_reappearance(self):
+  now=datetime(2026,11,23,12,0,tzinfo=ZoneInfo('Asia/Muscat'))
+  cases=[
+   ('Race 2','tt1375789','hindi','2013-01-25'),
+   ('Sholay','tt0073707','hindi','1975-08-15'),
+   ('Vada Chennai','tt5959980','tamil','2018-10-17')
+  ]
+  for name,mid,language,release_day in cases:
+   event={'name':name,'id':mid,'language':language,'type':'movie',
+          'releaseKind':'digital','ottDate':release_day,
+          'availability':[{'kind':'digital','date':release_day}]}
+   recently_reinserted=now-timedelta(hours=1)
+   self.assertFalse(update.is_just_added_title(event,recently_reinserted,now),name)
+  recent={'type':'movie','releaseKind':'digital','ottDate':'2026-11-20',
+          'availability':[{'kind':'digital','date':'2026-11-20'}]}
+  self.assertTrue(update.is_just_added_title(recent,now-timedelta(days=30),now))
+  self.assertFalse(update.is_just_added_title(
+   {'type':'movie','releaseKind':'digital','ottDate':'2026-11-01',
+    'availability':[{'kind':'digital','date':'2026-11-01'}]},now-timedelta(hours=1),now))
+  self.assertTrue(update.is_just_added_title({'type':'series'},now-timedelta(days=2),now))
+
 if __name__=='__main__':unittest.main()
