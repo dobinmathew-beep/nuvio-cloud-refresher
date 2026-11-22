@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
 import { dirname } from 'node:path';
 import { createSerialQueue } from './serial-queue.mjs';
+import { imageKitConfig } from './imagekit-storage.mjs';
 
 const require = createRequire(import.meta.url);
 const CACHE_MS = 6 * 60 * 60 * 1000;
@@ -102,10 +103,50 @@ function storeOcrCache(key, text) {
   while (cache.size > 256) cache.delete(cache.keys().next().value);
 }
 
+async function readPersistentOcrCache(hash) {
+  const config = imageKitConfig();
+  if (!config) return null;
+  const url = config.endpoint + '/catalog-state/ocr-cache/' + hash + '.json?v=' + Math.floor(Date.now() / 300000);
+  try {
+    const response = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(1800) });
+    if (!response.ok) return null;
+    const value = await response.json();
+    const at = Date.parse(value?.createdAt || '');
+    if (value?.version !== 1 || value?.sha256 !== hash || typeof value?.text !== 'string' ||
+        !Number.isFinite(at) || Date.now() - at > 30 * 24 * 60 * 60 * 1000) return null;
+    storeOcrCache(hash + ':top-strip-ocr', value.text);
+    return value.text;
+  } catch { return null; }
+}
+
+async function writePersistentOcrCache(hash, text) {
+  const config = imageKitConfig();
+  if (!config) return;
+  const form = new FormData();
+  const filename = hash + '.json';
+  const value = { version: 1, sha256: hash, text, createdAt: new Date().toISOString() };
+  form.set('file', new Blob([JSON.stringify(value)], { type: 'application/json' }), filename);
+  form.set('fileName', filename);
+  form.set('folder', '/catalog-state/ocr-cache');
+  form.set('useUniqueFileName', 'false');
+  form.set('overwriteFile', 'true');
+  form.set('isPrivateFile', 'false');
+  const response = await fetch('https://upload.imagekit.io/api/v1/files/upload', {
+    method: 'POST',
+    headers: { Authorization: 'Basic ' + Buffer.from(config.privateKey + ':').toString('base64') },
+    body: form,
+    signal: AbortSignal.timeout(5000)
+  });
+  if (!response.ok) throw new Error('Persistent OCR cache upload HTTP ' + response.status);
+}
+
 async function recognizePosterTopStrip(input) {
-  const key = createHash('sha256').update(input).digest('hex') + ':top-strip-ocr';
+  const hash = createHash('sha256').update(input).digest('hex');
+  const key = hash + ':top-strip-ocr';
   const cached = cache.get(key);
   if (cached && Date.now() - cached.at < CACHE_MS) return cached.value;
+  const persistent = await readPersistentOcrCache(hash);
+  if (persistent !== null) return persistent;
 
   const { default: sharp } = await import('sharp');
   if (!sharpConfigured) {
@@ -132,6 +173,12 @@ async function recognizePosterTopStrip(input) {
   try {
     const text = await recognizeText(prepared);
     storeOcrCache(key, text);
+    // Persist only the tiny OCR result, keyed by the source image SHA-256.
+    // A changed source naturally receives a new key; unchanged artwork never
+    // consumes another Tesseract pass after a successful cache write.
+    void writePersistentOcrCache(hash, text).catch(error =>
+      console.warn('[poster-ocr-persistent-cache-write-failed]', error?.message || 'unknown error')
+    );
     return text;
   } finally {
     prepared = null;
