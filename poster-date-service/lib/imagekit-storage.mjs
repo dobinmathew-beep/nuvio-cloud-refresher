@@ -542,13 +542,13 @@ export async function buildImageKitDeletionReport({
   const versionedById = new Map();
   const pointerFilesById = new Map();
   for (const file of files) {
-    const versionMatch = String(file.filePath || '').match(/^\\/poster-versions\\/(tt\\d{7,10})\\/[a-f0-9]{64}\\.jpg$/i);
+    const versionMatch = String(file.filePath || '').match(/^\/poster-versions\/(tt\d{7,10})\/[a-f0-9]{64}\.jpg$/i);
     if (versionMatch) {
       const id = versionMatch[1].toLowerCase();
       if (!versionedById.has(id)) versionedById.set(id, []);
       versionedById.get(id).push(file);
     }
-    const pointerMatch = String(file.filePath || '').match(/^\\/catalog-state\\/poster-pointers\\/(tt\\d{7,10})\\.json$/i);
+    const pointerMatch = String(file.filePath || '').match(/^\/catalog-state\/poster-pointers\/(tt\d{7,10})\.json$/i);
     if (pointerMatch) pointerFilesById.set(pointerMatch[1].toLowerCase(), file);
   }
 
