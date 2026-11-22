@@ -19,7 +19,9 @@ async function fetchJson(url) {
 function baseFromManifestUrl(value) {
   const url = new URL(value);
   url.pathname = url.pathname.replace(/\/manifest\.json$/i, '');
-  return url.toString().replace(/\\/$/, '');
+  url.search = '';
+  url.hash = '';
+  return url.origin + url.pathname.replace(/\/$/, '');
 }
 
 const missing = keys.filter(key => !String(process.env[key] || '').trim());
