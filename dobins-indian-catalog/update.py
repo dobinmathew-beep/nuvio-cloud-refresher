@@ -365,7 +365,7 @@ def filter_series_added_index(value):
  # for a new movie release. Preserve every existing series timestamp unchanged.
  if not isinstance(value,dict):return {}
  return {str(key):timestamp for key,timestamp in value.items()
-         if re.match(r'^dobins_(?:ml|ta|te|hi)_series\\|',str(key))}
+         if re.match(r'^dobins_(?:ml|ta|te|hi)_series\|',str(key))}
 
 
 def should_stamp_catalog_first_seen(catalog_id, media_type, media_id, previous_ids, added_at):
