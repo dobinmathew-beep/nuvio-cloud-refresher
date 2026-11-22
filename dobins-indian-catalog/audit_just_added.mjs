@@ -40,10 +40,15 @@ export function earliestDigitalDate(item) {
     }
   }
   if (String(item?.releaseKind || '').toLowerCase() === 'digital') {
-    const date = validDate(item?.ottDate);
+    const date = validDate(item?.ottDate || item?.releaseDate);
     if (date) dates.push(date);
   }
   return dates.length ? dates.sort()[0] : null;
+}
+
+function posterHost(item) {
+  try { return new URL(String(item?.poster || '')).host; }
+  catch { return ''; }
 }
 
 export function hasJustAddedBadge(item) {
@@ -97,7 +102,8 @@ export function classifyTitle(item, now = new Date()) {
     type,
     id: String(item?.id || ''),
     imdbId: String(item?.imdbId || item?.imdb_id || item?.externalIds?.imdb || ''),
-    catalogAddedAt: item?.catalogAddedAt || null
+    catalogAddedAt: item?.catalogAddedAt || null,
+    posterHost: posterHost(item)
   };
 }
 
@@ -258,19 +264,19 @@ function markdownReport(report) {
   }
   lines.push('## Reference titles');
   lines.push('');
-  lines.push('| Title | IMDb ID | Source | Catalogue | Badge | Expected | Evidence |');
-  lines.push('|---|---|---|---|---:|---:|---|');
+  lines.push('| Title | IMDb ID | Source | Catalogue | Badge | Expected | Evidence | Poster host |');
+  lines.push('|---|---|---|---|---:|---:|---|---|');
   for (const target of report.targets) {
-    lines.push('| ' + [target.title, target.imdbId, target.source, target.catalogName, target.badge, target.expected, target.evidenceDate || 'unknown'].map(x => String(x ?? '').replace(/\|/g, '/')).join(' | ') + ' |');
+    lines.push('| ' + [target.title, target.imdbId, target.source, target.catalogName, target.badge, target.expected, target.evidenceDate || 'unknown', target.posterHost].map(x => String(x ?? '').replace(/\|/g, '/')).join(' | ') + ' |');
   }
   if (!report.targets.length) lines.push('| No reference titles found | | | | | | |');
   lines.push('');
   lines.push('## Flagged records');
   lines.push('');
-  lines.push('| Title | IMDb ID | Source | Catalogue | Status | First digital/first seen | Release info |');
-  lines.push('|---|---|---|---|---|---|---|');
+  lines.push('| Title | IMDb ID | Source | Catalogue | Status | First digital/first seen | Release info | Poster host |');
+  lines.push('|---|---|---|---|---|---|---|---|');
   for (const row of report.findings.slice(0, 500)) {
-    lines.push('| ' + [row.title, row.resolvedImdbId || row.imdbId || row.id, row.source, row.catalogName, row.status, row.evidenceDate || 'unknown', row.releaseInfo].map(x => String(x ?? '').replace(/\|/g, '/')).join(' | ') + ' |');
+    lines.push('| ' + [row.title, row.resolvedImdbId || row.imdbId || row.id, row.source, row.catalogName, row.status, row.evidenceDate || 'unknown', row.releaseInfo, row.posterHost].map(x => String(x ?? '').replace(/\|/g, '/')).join(' | ') + ' |');
   }
   if (!report.findings.length) lines.push('| No badge inconsistencies detected | | | | | | |');
   lines.push('');
