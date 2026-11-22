@@ -1,15 +1,11 @@
-# Recovery run requested 2026-11-21: preserve durable checkpoints and run full manifest discovery.
+# Legacy full-refresh runner retained for manual recovery only.
+# The scheduled full-scan trigger is intentionally disabled until the
+# discover / queue-process pipeline is deployed and its dedicated workflows
+# are enabled. Do not restore the old 06:00 / 18:00 full-refresh cron.
 name: Manifest catalogue poster refresh
 
 on:
   workflow_dispatch:
-  push:
-    branches: [poster-date-service]
-    paths:
-      - '.github/workflows/catalog-manifest-refresh.yml'
-  schedule:
-    # Oman is UTC+4: 06:00 and 18:00 local time.
-    - cron: '0 2,14 * * *'
 
 permissions:
   contents: read
@@ -33,7 +29,6 @@ jobs:
             echo "::error::POSTER_CATALOG_SCAN_TOKEN repository secret is missing."
             exit 1
           fi
-          # Attach to an existing refresh after Render restarts instead of failing on HTTP 409.
           http_response=$(curl --silent --show-error --max-time 90 \
             -w '%{http_code}' \
             -X POST "$POSTER_SERVICE_URL/catalog-refresh" \
@@ -61,7 +56,6 @@ jobs:
           SCAN_TOKEN: ${{ secrets.POSTER_CATALOG_SCAN_TOKEN }}
           JOB_ID: ${{ steps.start.outputs.job_id }}
         run: |
-          # Render free instances may restart; transient endpoint errors are retryable.
           for attempt in $(seq 1 700); do
             if ! response=$(curl --silent --show-error --fail-with-body \
               --max-time 30 \
@@ -78,31 +72,13 @@ jobs:
               echo "$response" >> "$GITHUB_STEP_SUMMARY"
               exit 0
             fi
-            if [ "$status" = "failed" ]; then
-              echo "::error::Catalogue refresh failed."
+            if [ "$status" = "failed" ] || [ "$status" = "paused" ]; then
+              echo "::error::Legacy catalogue refresh is paused or failed."
               exit 1
             fi
-            # A Render rolling deploy can briefly leave the replacement
-            # instance idle before its boot-resume hook has claimed the job.
-            # Re-POST on idle: HTTP 202 starts/resumes it, HTTP 409 attaches
-            # to the instance that already owns it. Workflow concurrency keeps
-            # scheduled/manual GitHub runs serialized.
             if [ "$status" = "idle" ]; then
-              start_response=$(curl --silent --show-error --max-time 90 \
-                -w '%{http_code}' \
-                -X POST "$POSTER_SERVICE_URL/catalog-refresh" \
-                -H "Authorization: Bearer $SCAN_TOKEN" \
-                -H "Accept: application/json") || {
-                  echo "::warning::Could not re-attach after Render restart; retrying."
-                  sleep 30
-                  continue
-                }
-              start_code="${start_response: -3}"
-              start_body="${start_response:0:${#start_response}-3}"
-              echo "$start_body"
-              if [ "$start_code" != "202" ] && [ "$start_code" != "409" ]; then
-                echo "::warning::Refresh re-attach returned HTTP $start_code; retrying."
-              fi
+              echo "::error::No active legacy refresh is running; refusing to restart it automatically."
+              exit 1
             fi
             sleep 30
           done
