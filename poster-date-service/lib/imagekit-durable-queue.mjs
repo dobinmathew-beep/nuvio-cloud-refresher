@@ -1,5 +1,5 @@
 import { Buffer } from 'node:buffer';
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 
 const ROOT = '/catalog-state/durable-queue';
 const CHUNK_SIZE = 100;
@@ -45,7 +45,7 @@ function auth(config) {
 
 async function readJson(config, path) {
   const url = new URL(config.endpoint + path);
-  url.searchParams.set('_queue_read', String(Date.now()) + '-' + Math.random().toString(36).slice(2));
+  url.searchParams.set('_queue_read', String(Date.now()) + '-' + randomUUID());
   const response = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(12000) });
   if (response.status === 404) return null;
   if (!response.ok) throw new Error('ImageKit durable queue read HTTP ' + response.status);
@@ -92,6 +92,7 @@ export async function persistDurableQueueSnapshot(items, scanGeneration, options
   for (let index = 0; index < chunks.length; index++) {
     const path = folder + '/chunk-' + String(index).padStart(5, '0') + '.json';
     const serialized = JSON.stringify(chunks[index]);
+    await options.assertOwned?.();
     await writeJson(config, path, {
       version: 1,
       scanGeneration: String(scanGeneration),
@@ -116,6 +117,7 @@ export async function persistDurableQueueSnapshot(items, scanGeneration, options
     chunkCount: chunkEntries.length,
     chunks: chunkEntries
   };
+  await options.assertOwned?.();
   await writeJson(config, folder + '/manifest.json', manifest);
   console.info('[durable-poster-queue-persisted]', JSON.stringify({
     scanGeneration,
