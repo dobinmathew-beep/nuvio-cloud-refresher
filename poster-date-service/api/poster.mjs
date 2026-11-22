@@ -123,7 +123,8 @@ function redirectToExistingImageKit(res, assetUrl, reason = 'provider-unavailabl
   return res.end();
 }
 
-async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
+async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded, options = {}) {
+  const validateDate = options.validateDate !== false;
   const config = imageKitConfig();
   if (!config) return null;
   const assetUrl = imageKitAssetUrl(config, imdbId);
@@ -153,8 +154,8 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
       Number.isFinite(metadataTime) &&
       Math.abs(metadataTime - lastModified) <= 5 * 60 * 1000;
     const metadataMatches = metadataBelongsToAsset &&
-      (metadata.releaseDate || null) === expectedDate &&
-      (!expectedDate || metadata.releaseKind === expectedKind) &&
+      (!validateDate || ((metadata.releaseDate || null) === expectedDate &&
+        (!expectedDate || metadata.releaseKind === expectedKind))) &&
       metadata.justAdded === Boolean(expectedJustAdded);
     if (metadataMatches) return assetUrl;
     if (metadataBelongsToAsset) {
@@ -181,7 +182,7 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
     const hasJustAddedBadge = badgeInspection.hasJustAddedBadge;
     imageBytes = null;
     global.gc?.();
-    const dateMatches = expectedDate ? hasDateBadge : !hasDateBadge;
+    const dateMatches = !validateDate || (expectedDate ? hasDateBadge : !hasDateBadge);
     if (!dateMatches) {
       console.info('[poster-date-cache-mismatch]', JSON.stringify({
         imdbId, tmdbDate: expectedDate, cachedPoster: 'ImageKit',
@@ -201,8 +202,8 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded) {
     await savePosterValidationMetadata(imdbId, {
       version: 1,
       imdbId,
-      releaseDate: expectedDate,
-      releaseKind: expectedDate ? expectedKind : null,
+      releaseDate: validateDate ? expectedDate : (metadata?.releaseDate || expectedDate),
+      releaseKind: validateDate ? (expectedDate ? expectedKind : null) : (metadata?.releaseKind || (expectedDate ? expectedKind : null)),
       justAdded: hasJustAddedBadge,
       digitalReleasedWorldwide: metadata?.digitalReleasedWorldwide === true,
       uploadedAt: new Date(lastModified).toISOString()
@@ -560,7 +561,7 @@ export default async function handler(req, res) {
     const cachedReleaseInfo = cachedValidation?.releaseDate
       ? { date: cachedValidation.releaseDate, kind: cachedValidation.releaseKind || 'premiere' }
       : null;
-    const validatedCachedAsset = await findFreshImageKitAsset(id, cachedReleaseInfo, expectedCachedJustAdded);
+    const validatedCachedAsset = await findFreshImageKitAsset(id, cachedReleaseInfo, expectedCachedJustAdded, { validateDate: false });
     if (validatedCachedAsset) {
       return redirectToImageKit(res, validatedCachedAsset, cachedReleaseInfo, expectedCachedJustAdded);
     }
