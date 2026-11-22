@@ -85,13 +85,11 @@ test('shared poster URL normalizes a BetterPosters Just Added tag without a quer
     const req = { method: 'GET', url: '/poster/tt76543210.jpg', query: { id: 'tt76543210' } };
     const res = { headers: {}, setHeader(name, value) { this.headers[name] = value; }, end(body) { this.body = body; } };
     await handler(req, res);
-    assert.equal(res.statusCode, 200);
-    assert.equal(res.headers['X-Poster-Date-Status'], 'just-added-overlay');
-    assert.equal(res.headers['X-Poster-Just-Added'], 'true');
-    assert.equal(res.headers['X-Poster-Badge'], 'Just Added');
-    const metadata = await sharp(res.body).metadata();
-    assert.equal(metadata.width, 600);
-    assert.equal(metadata.height, 900);
+    assert.equal(res.statusCode, 302);
+    assert.equal(res.headers.Location, 'https://btttr.cc/poster/imdb/poster-default/tt76543210.jpg?rs=IM');
+    assert.equal(res.headers['X-Poster-Date-Status'], 'background-generation-pending');
+    assert.equal(res.headers['X-Poster-Source'], 'BetterPosters');
+    assert.equal(res.body, undefined);
   } finally {
     globalThis.fetch = originalFetch;
   }
