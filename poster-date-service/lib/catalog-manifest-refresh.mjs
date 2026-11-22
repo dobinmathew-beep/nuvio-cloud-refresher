@@ -713,6 +713,12 @@ export function runManifestCatalogRefresh(options = {}) {
 
 async function runManifestCatalogRefreshInternal(lease, options = {}) {
   const forceReprocess = options.forceReprocess === true;
+  const mode = options.mode || 'combined';
+  if (!['combined', 'discovery-only', 'queue-drain'].includes(mode)) {
+    throw new Error('Unsupported catalogue pipeline mode: ' + mode);
+  }
+  const queueOnly = mode === 'queue-drain';
+  const discoveryOnly = mode === 'discovery-only';
   await lease?.assertOwned?.();
   const startedAt = new Date().toISOString();
   const configured = MANIFEST_KEYS.filter(key => process.env[key]);
@@ -722,7 +728,10 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   let checkpoint = await readState(config, CHECKPOINT_PATH);
   // A completed checkpoint belongs to the previous run. Start a clean scan;
   // an incomplete checkpoint is a crash-safe resume point after an OOM/restart.
-  if (forceReprocess || !checkpoint || checkpoint.complete === true || ![1, 2].includes(checkpoint.version)) {
+  if (queueOnly && checkpoint?.discoveryComplete !== true) {
+    throw new Error('Queue-drain refused: no fully completed discovery checkpoint is available');
+  }
+  if ((!queueOnly && (forceReprocess || !checkpoint || checkpoint.complete === true || ![1, 2].includes(checkpoint.version)))) {
     checkpoint = {
       version: 2, badgeRulesVersion: BADGE_RULES_VERSION,
       scanGeneration: startedAt, forceRescanCatalogs: Boolean(forceReprocess),
@@ -817,6 +826,9 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
       }
 
       const saved = completedCatalogues[fingerprint];
+      if (queueOnly && (!saved || saved.scanGeneration !== scanGeneration)) {
+        throw new Error('Queue-drain refused: catalogue discovery checkpoint is incomplete for ' + fingerprint);
+      }
       if (saved && saved.scanGeneration === scanGeneration) {
         const perCatalog = await readState(config, titleFiles[fingerprint] || catalogueCheckpointPath(fingerprint));
         if (perCatalog?.titles && typeof perCatalog.titles === 'object') {
@@ -961,6 +973,10 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
     for (const [key, timestamp] of Object.entries(legacy || {})) if (!index[key]) index[key] = timestamp;
   } catch {}
   const scanComplete = catalogues.every(c => !c.error && !c.truncated);
+  if (queueOnly && !scanComplete) throw new Error('Queue-drain refused: saved discovery inventory is not complete');
+  checkpoint = { ...checkpoint, discoveryComplete: scanComplete, updatedAt: new Date().toISOString() };
+  await lease?.assertOwned?.();
+  await writeJson(config, CHECKPOINT_PATH, checkpoint);
   const nextState = { initialized: true, complete: scanComplete, updatedAt: new Date(now).toISOString(), seen, added };
   await lease?.assertOwned?.();
   await writeJson(config, STATE_PATH, nextState);
@@ -1082,8 +1098,21 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   for (const item of durableQueue.items) items.push(item);
   console.info('[durable-poster-queue-loaded]', JSON.stringify({
     scanGeneration, itemCount: durableQueue.items.length,
-    chunkCount: durableQueueManifest.chunkCount, storage: 'imagekit'
+    chunkCount: durableQueueManifest.chunkCount, storage: 'imagekit', mode
   }));
+  if (discoveryOnly) {
+    const report = {
+      status: scanComplete ? 'discovery-complete-queue-ready' : 'discovery-incomplete',
+      mode, scanGeneration, scanComplete, cataloguesDiscovered: catalogues.length,
+      cataloguesScannedThisRun, uniqueTitles: allItems.length,
+      queueItems: durableQueue.items.length, queueChunks: durableQueueManifest.chunkCount,
+      storage: 'imagekit', finishedAt: new Date().toISOString()
+    };
+    updateRefreshProgress({ status: scanComplete ? 'completed' : 'failed', stage: 'discovery-complete',
+      report, finishedAt: report.finishedAt, titlesDiscovered: allItems.length,
+      postersTargeted: durableQueue.items.length, lastCheckpointAt: checkpoint.updatedAt });
+    return report;
+  }
   // Publish poster-stage totals only after the target list and cache-hit count
   // have been initialized. Referencing items above this point triggers a TDZ
   // ReferenceError and breaks automatic recovery after a Render restart.
