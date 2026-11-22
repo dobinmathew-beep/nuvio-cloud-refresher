@@ -318,7 +318,7 @@ async function collectCatalog(manifest, catalog, config, fingerprint, lease, sca
     resumedFromPageCheckpoint: firstPage > 0
   };
 }
-function mergeCatalogSourceItem(existing, incoming) {
+export function mergeCatalogSourceItem(existing, incoming) {
   const base = existing && typeof existing === 'object' ? existing : {};
   const next = incoming && typeof incoming === 'object' ? incoming : {};
   const sources = [
