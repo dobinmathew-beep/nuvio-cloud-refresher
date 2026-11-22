@@ -9,7 +9,7 @@ const PAGE_SIZE = 100;
 const MAX_PAGES_PER_CATALOG = 200;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const now = new Date();
-const today = now.toISOString().slice(0, 10);
+const today = now.toISOString().slice(0, 10);\nconst ADDED_INDEX_URL = 'https://raw.githubusercontent.com/dobinmathew-beep/nuvio-cloud-refresher/dobins-catalog/dobins-indian-catalog/data/catalog-added.json';
 
 async function fetchJson(url) {
   const response = await fetch(url, {
@@ -133,7 +133,7 @@ for (const [key, fallbackName] of SOURCES) {
   if (!Array.isArray(manifest.catalogs) || !manifest.catalogs.length) throw new Error(key + ' has no catalogue definitions');
   const source = String(manifest.name || fallbackName);
   const base = manifestBase(manifestUrl);
-  const sourceResult = { source, catalogueDefinitions: manifest.catalogs.length, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, pagesFetched: 0, recordsFetched: 0, justAddedMovieTitles: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0 };
+  const sourceResult = { source, catalogueDefinitions: manifest.catalogs.length, cataloguesScanned: 0, dynamicCataloguesSkipped: 0, pagesFetched: 0, recordsFetched: 0, candidateMovieTitles: 0, recentIndexMovieTitles: 0, posterQueryBadgeTitles: 0, staleJustAdded: 0, oldMovieWithoutDigitalDate: 0 };
   report.totals.catalogueDefinitions += manifest.catalogs.length;
 
   for (const catalog of manifest.catalogs) {
@@ -159,7 +159,7 @@ for (const [key, fallbackName] of SOURCES) {
         if (String(meta?.type || catalog.type).toLowerCase().includes('movie')) {
           report.totals.uniqueMovieTitles++;
         }
-        const finding = inspect(meta, source, catalog);
+        const finding = inspect(meta, source, catalog, recentMovieIndex);
         if (!finding) continue;
         report.findings.push(finding);
         sourceResult.justAddedMovieTitles++;
@@ -194,9 +194,9 @@ const summary = [
   '',
   'Read-only audit. No catalogue data, ImageKit assets, or poster endpoints were changed or requested.',
   '',
-  '| Source | Catalogues scanned | Pages | Records | Just Added movies | Stale (>14d) | Old year, no digital date |',
+  '| Source | Catalogues scanned | Pages | Records | Candidate movies | Recent index | Poster query badge | Stale (>14d) | Old year, no digital date |',
   '|---|---:|---:|---:|---:|---:|---:|',
-  ...report.sources.map(item => '| ' + [item.source, item.cataloguesScanned, item.pagesFetched, item.recordsFetched, item.justAddedMovieTitles, item.staleJustAdded, item.oldMovieWithoutDigitalDate].join(' | ') + ' |'),
+  ...report.sources.map(item => '| ' + [item.source, item.cataloguesScanned, item.pagesFetched, item.recordsFetched, item.candidateMovieTitles, item.recentIndexMovieTitles, item.posterQueryBadgeTitles, item.staleJustAdded, item.oldMovieWithoutDigitalDate].join(' | ') + ' |'),
   '',
   '## Reference titles',
   '',
@@ -207,7 +207,7 @@ const summary = [
   '',
   '## Totals',
   '',
-  '- Unique movie records observed: ' + report.totals.uniqueMovieTitles,
+  '- Movie records observed (catalogue/page rows): ' + report.totals.uniqueMovieTitles,
   '- Just Added movie posters: ' + report.totals.justAddedMovieTitles,
   '- Stale Just Added (>14 days since digital release): ' + report.totals.staleJustAdded,
   '- Old movie with no digital date (requires review): ' + report.totals.oldMovieWithoutDigitalDate,
