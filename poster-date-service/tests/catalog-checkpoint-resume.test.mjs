@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { canReuseCatalogueCheckpoint } from '../lib/catalog-manifest-refresh.mjs';
+import {
+  canReuseCatalogueCheckpoint, isExplicitlyDeferredCatalogueCheckpoint,
+  isCatalogueScanComplete
+} from '../lib/catalog-manifest-refresh.mjs';
 
 const now = Date.parse('2026-11-21T15:30:00.000Z');
 const snapshot = overrides => ({
@@ -38,4 +41,34 @@ test('continues a matching-generation checkpoint even when incomplete', () => {
 
 test('rejects malformed checkpoint snapshots', () => {
   assert.equal(canReuseCatalogueCheckpoint({ version: 1, complete: true }, 'new-generation', false, now), false);
+});
+
+
+test('explicitly deferred catalogues are complete only for the same generation and required extras', () => {
+  const catalogue = {
+    type: 'series', id: 'calendar-videos',
+    required: ['genre'], extra: []
+  };
+  const saved = {
+    status: 'deferred',
+    reason: 'required-extra-options-unavailable',
+    requiredExtras: ['genre'],
+    scanGeneration: 'generation-a'
+  };
+  assert.equal(isExplicitlyDeferredCatalogueCheckpoint(saved, catalogue, 'generation-a'), true);
+  assert.equal(isExplicitlyDeferredCatalogueCheckpoint({ ...saved, scanGeneration: 'generation-b' }, catalogue, 'generation-a'), false);
+  assert.equal(isExplicitlyDeferredCatalogueCheckpoint({ ...saved, requiredExtras: ['search'] }, catalogue, 'generation-a'), false);
+  assert.equal(isExplicitlyDeferredCatalogueCheckpoint({ ...saved, reason: 'fetch-failed' }, catalogue, 'generation-a'), false);
+  assert.equal(isExplicitlyDeferredCatalogueCheckpoint(null, catalogue, 'generation-a'), false);
+});
+
+test('catalogue discovery completion accepts explicit deferrals but rejects incomplete scanned catalogues', () => {
+  assert.equal(isCatalogueScanComplete([
+    { source: 'A', pages: 3, records: 20 },
+    { source: 'B', skipped: true, deferred: true },
+    { source: 'C', skipped: true, skippedDuplicate: true }
+  ]), true);
+  assert.equal(isCatalogueScanComplete([{ source: 'A', error: 'provider unavailable' }]), false);
+  assert.equal(isCatalogueScanComplete([{ source: 'A', truncated: true }]), false);
+  assert.equal(isCatalogueScanComplete([{ source: 'A', skipped: true }]), false);
 });
