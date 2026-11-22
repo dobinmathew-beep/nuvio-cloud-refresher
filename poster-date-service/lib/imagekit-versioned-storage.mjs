@@ -28,7 +28,10 @@ export function createImageKitPosterAdapter({
     if (parsed.protocol !== 'https:' || parsed.origin !== base.origin ||
         !parsed.pathname.startsWith(base.pathname + '/poster-versions/') ||
         !parsed.pathname.endsWith('/' + fingerprint + '.jpg')) return false;
-    // ImageKit optimizes images by default. Request the original bytes so the\n    // content-addressed SHA-256 is verified against the stored object, not a\n    // recompressed delivery variant.\n    const response = await fetchImpl(url + (url.includes('?') ? '&' : '?') + 'tr=orig-true&poster-verify=' + Date.now(), {
+    // ImageKit optimizes images by default. Request the original bytes so the
+    // content-addressed SHA-256 is verified against the stored object, not a
+    // recompressed delivery variant.
+    const response = await fetchImpl(url + (url.includes('?') ? '&' : '?') + 'tr=orig-true&poster-verify=' + Date.now(), {
       cache: 'no-store', signal: AbortSignal.timeout(12000)
     });
     if (!response.ok) {
