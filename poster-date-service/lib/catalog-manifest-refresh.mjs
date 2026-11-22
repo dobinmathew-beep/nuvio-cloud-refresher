@@ -1051,7 +1051,8 @@ async function runManifestCatalogRefreshInternal(lease, options = {}) {
   if (durableQueue.items.some(item => item.queueFingerprint !== itemFingerprint(item))) {
     throw new Error('Durable poster queue fingerprint validation failed; refusing to process stale queue data');
   }
-  items.splice(0, items.length, ...durableQueue.items);
+  items.length = 0;
+  for (const item of durableQueue.items) items.push(item);
   console.info('[durable-poster-queue-loaded]', JSON.stringify({
     scanGeneration, itemCount: durableQueue.items.length,
     chunkCount: durableQueueManifest.chunkCount, storage: 'imagekit'
