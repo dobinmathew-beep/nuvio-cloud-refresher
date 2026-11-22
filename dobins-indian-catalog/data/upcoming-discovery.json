@@ -1,34 +1,61 @@
 {
-  "generatedAt": "2026-11-22T02:44:01.702782+04:00",
+  "generatedAt": "2026-11-22T04:02:19.779651+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 19,
+    "total": 20,
     "byLanguage": {
-      "hindi": 12,
+      "hindi": 13,
       "malayalam": 3,
       "tamil": 2,
       "telugu": 2
     },
     "byType": {
-      "series": 9,
+      "series": 10,
       "movie": 10
     },
     "byMatchState": {
-      "published": 14,
+      "published": 15,
       "metadata_incomplete": 1,
       "unmatched": 4
     },
     "bySource": {
+      "https://www.dailyott.in/": 3,
       "https://ottasia.com/ott-releases-this-week?country=IN": 13,
       "https://www.keralatv.in/channel/ott/": 1,
       "https://cinebuds.com/ott-releases-this-week/": 4,
-      "https://www.dailyott.in/": 2,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
       "https://v3-cinemeta.strem.io/": 1
     }
   },
   "items": [
+    {
+      "title": "Bigg Boss Season 20",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-22",
+      "platforms": [
+        "JioHotStar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": null,
+      "detail": null,
+      "matchId": "tt1281973",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
     {
       "title": "Supreme Solaris",
       "language": "hindi",
@@ -141,8 +168,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/",

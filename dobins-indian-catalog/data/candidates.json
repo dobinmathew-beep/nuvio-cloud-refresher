@@ -852,6 +852,13 @@
       "type": "movie"
     },
     {
+      "id": "tt35682855",
+      "name": "Anbil Avan",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35682855.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tt39239754",
       "name": "Sigma",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39239754.jpg",
@@ -939,13 +946,6 @@
       "id": "tt42262473",
       "name": "Modha Rathri",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt42262473.jpg",
-      "releaseInfo": "2026",
-      "type": "movie"
-    },
-    {
-      "id": "tt39073377",
-      "name": "Ram and Leela",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39073377.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     },
@@ -1639,6 +1639,13 @@
       "id": "tt23018924",
       "name": "Thangalaan",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt23018924.jpg",
+      "releaseInfo": "2024",
+      "type": "movie"
+    },
+    {
+      "id": "tt32864342",
+      "name": "Jama",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32864342.jpg",
       "releaseInfo": "2024",
       "type": "movie"
     },
@@ -8856,6 +8863,20 @@
       "type": "movie"
     },
     {
+      "id": "tt8080982",
+      "name": "Guvva Gorinka",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8080982.jpg",
+      "releaseInfo": "2020",
+      "type": "movie"
+    },
+    {
+      "id": "tt10801230",
+      "name": "IIT Krishnamurthy",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10801230.jpg",
+      "releaseInfo": "2020",
+      "type": "movie"
+    },
+    {
       "id": "tt12723616",
       "name": "Bombhaat",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt12723616.jpg",
@@ -12547,5 +12568,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-22T00:51:43.207154+04:00"
+  "_updatedAt": "2026-11-22T04:02:19.779651+04:00"
 }

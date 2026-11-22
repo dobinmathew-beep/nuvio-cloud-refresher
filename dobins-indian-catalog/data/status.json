@@ -4,9 +4,9 @@
   "releasePolicy": "theatrical-first-multipage-v3",
   "metadataPolicy": "tmdb-tvmaze-v2",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-22T02:44:01.702782+04:00",
-  "lastMatchRetryAt": "2026-11-22T02:44:01.702782+04:00",
-  "lastSuccessCycle": "2026-11-22T02:00:00+04:00",
+  "updatedAt": "2026-11-22T04:02:19.779651+04:00",
+  "lastMatchRetryAt": "2026-11-22T04:02:19.779651+04:00",
+  "lastSuccessCycle": "2026-11-22T04:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
   "sources": [
@@ -881,7 +881,7 @@
   "catalogFreshness": {
     "dobins_ml_movie": {
       "count": 97,
-      "generatedAt": "2026-11-22T02:44:01.702782+04:00",
+      "generatedAt": "2026-11-22T04:02:19.779651+04:00",
       "latestEntry": {
         "id": "tmdb:1628781",
         "name": "Iniyum",
@@ -891,7 +891,7 @@
     },
     "dobins_ml_series": {
       "count": 68,
-      "generatedAt": "2026-11-22T02:44:01.702782+04:00",
+      "generatedAt": "2026-11-22T04:02:19.779651+04:00",
       "latestEntry": {
         "id": "tt50508547",
         "name": "Sathyameva",
@@ -901,7 +901,7 @@
     },
     "dobins_ta_movie": {
       "count": 92,
-      "generatedAt": "2026-11-22T02:44:01.702782+04:00",
+      "generatedAt": "2026-11-22T04:02:19.779651+04:00",
       "latestEntry": {
         "id": "tmdb:1728763",
         "name": "Drones1",
@@ -911,7 +911,7 @@
     },
     "dobins_ta_series": {
       "count": 115,
-      "generatedAt": "2026-11-22T02:44:01.702782+04:00",
+      "generatedAt": "2026-11-22T04:02:19.779651+04:00",
       "latestEntry": {
         "id": "tmdb:339001",
         "name": "Madam Police",
@@ -921,7 +921,7 @@
     },
     "dobins_te_movie": {
       "count": 111,
-      "generatedAt": "2026-11-22T02:44:01.702782+04:00",
+      "generatedAt": "2026-11-22T04:02:19.779651+04:00",
       "latestEntry": {
         "id": "tmdb:1737773",
         "name": "Srimathi",
@@ -931,7 +931,7 @@
     },
     "dobins_te_series": {
       "count": 115,
-      "generatedAt": "2026-11-22T02:44:01.702782+04:00",
+      "generatedAt": "2026-11-22T04:02:19.779651+04:00",
       "latestEntry": {
         "id": "tt7805494",
         "name": "Bigg Boss Telugu",
@@ -941,7 +941,7 @@
     },
     "dobins_hi_movie": {
       "count": 118,
-      "generatedAt": "2026-11-22T02:44:01.702782+04:00",
+      "generatedAt": "2026-11-22T04:02:19.779651+04:00",
       "latestEntry": {
         "id": "tt40855841",
         "name": "Nayyi Navelli",
@@ -951,7 +951,7 @@
     },
     "dobins_hi_series": {
       "count": 354,
-      "generatedAt": "2026-11-22T02:44:01.702782+04:00",
+      "generatedAt": "2026-11-22T04:02:19.779651+04:00",
       "latestEntry": {
         "id": "tt35933285",
         "name": "O Saathi Re",
@@ -1080,17 +1080,19 @@
     "policy": "IMDb-or-TMDB identity; exact ID/type; title and metadata integrity"
   },
   "upcoming": {
-    "matchedTitles": 16,
+    "matchedTitles": 18,
     "bySource": {
       "https://www.dailyott.in/": {
-        "matchedTitles": 6,
+        "matchedTitles": 8,
         "imdbIds": [
+          "tt1281973",
           "tt38195069",
           "tt0445883",
           "tt50135636",
           "tt27050858",
           "tt44914967",
-          "tt30003786"
+          "tt30003786",
+          "tt16997004"
         ]
       },
       "https://ottasia.com/ott-releases-this-week?country=IN": {
@@ -1127,10 +1129,11 @@
         ]
       },
       "https://v3-cinemeta.strem.io/": {
-        "matchedTitles": 2,
+        "matchedTitles": 3,
         "imdbIds": [
           "tt44914967",
-          "tt30003786"
+          "tt30003786",
+          "tt16997004"
         ]
       },
       "https://www.themoviedb.org/tv/331750": {
@@ -1146,36 +1149,43 @@
         ]
       },
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": {
+        "matchedTitles": 2,
+        "imdbIds": [
+          "tt30003786",
+          "tt16997004"
+        ]
+      },
+      "https://www.themoviedb.org/tv/249765": {
         "matchedTitles": 1,
         "imdbIds": [
-          "tt30003786"
+          "tt16997004"
         ]
       }
     },
     "policy": "Only confirmed future dates with validated IMDb, TMDB or TVmaze catalog IDs are published; IMDb aliases are included when verified."
   },
   "upcomingDiscovery": {
-    "total": 19,
+    "total": 20,
     "byLanguage": {
-      "hindi": 12,
+      "hindi": 13,
       "malayalam": 3,
       "tamil": 2,
       "telugu": 2
     },
     "byType": {
-      "series": 9,
+      "series": 10,
       "movie": 10
     },
     "byMatchState": {
-      "published": 14,
+      "published": 15,
       "metadata_incomplete": 1,
       "unmatched": 4
     },
     "bySource": {
+      "https://www.dailyott.in/": 3,
       "https://ottasia.com/ott-releases-this-week?country=IN": 13,
       "https://www.keralatv.in/channel/ott/": 1,
       "https://cinebuds.com/ott-releases-this-week/": 4,
-      "https://www.dailyott.in/": 2,
       "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
       "https://v3-cinemeta.strem.io/": 1
@@ -1306,9 +1316,9 @@
           "Aha"
         ],
         "sources": [
+          "https://www.ottchecker.com/ott-releases/telugu",
           "https://cinebuds.com/ott-release-dates/",
-          "https://www.dailyott.in/",
-          "https://www.ottchecker.com/ott-releases/telugu"
+          "https://www.dailyott.in/"
         ],
         "detail": null
       },
@@ -1431,9 +1441,9 @@
           "Netflix"
         ],
         "sources": [
+          "https://www.ottchecker.com/ott-releases/telugu",
           "https://cinebuds.com/ott-release-dates/",
-          "https://www.dailyott.in/",
-          "https://www.ottchecker.com/ott-releases/telugu"
+          "https://www.dailyott.in/"
         ],
         "detail": null
       },
@@ -1674,9 +1684,9 @@
         "matchReason": "IMDb-matched metadata",
         "platforms": [
           "Amazon Prime Video",
-          "Aha",
+          "Prime Video",
           "SimplySouth",
-          "Prime Video"
+          "Aha"
         ],
         "sources": [
           "https://www.ottchecker.com/ott-releases/tamil",
@@ -1731,9 +1741,9 @@
           "ETV Win"
         ],
         "sources": [
+          "https://www.ottchecker.com/ott-releases/telugu",
           "https://cinebuds.com/ott-release-dates/",
-          "https://www.dailyott.in/",
-          "https://www.ottchecker.com/ott-releases/telugu"
+          "https://www.dailyott.in/"
         ],
         "detail": null
       },
@@ -1930,7 +1940,7 @@
         "title": "Bigg Boss Season 20",
         "language": "hindi",
         "type": "series",
-        "releaseDate": "2026-11-21",
+        "releaseDate": "2026-11-22",
         "id": "tt1281973",
         "matchState": "published",
         "matchReason": "IMDb-matched metadata",
@@ -2229,8 +2239,8 @@
         "matchState": "published",
         "matchReason": "IMDb-matched metadata",
         "platforms": [
-          "SimplySouth",
-          "Manorama Max"
+          "Manorama Max",
+          "SimplySouth"
         ],
         "sources": [
           "https://www.ottchecker.com/ott-releases/malayalam",
@@ -2370,8 +2380,8 @@
           "Prime Video"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/telugu"
+          "https://www.ottchecker.com/ott-releases/telugu",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/movies/comrade-kalyan/"
       },
@@ -2387,8 +2397,8 @@
           "Netflix"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/telugu"
+          "https://www.ottchecker.com/ott-releases/telugu",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/movies/dont-trouble-the-trouble/"
       },
@@ -2471,8 +2481,8 @@
           "Netflix"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/telugu"
+          "https://www.ottchecker.com/ott-releases/telugu",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/movies/sub-inspector-yugandhar/"
       },
@@ -2488,8 +2498,8 @@
           "Aha"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/telugu"
+          "https://www.ottchecker.com/ott-releases/telugu",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/movies/naa-wife-missing/"
       },
