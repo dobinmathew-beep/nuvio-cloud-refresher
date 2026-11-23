@@ -24,4 +24,4 @@ export function createImageKitQuotaCircuit({ cooldownMs = 6 * 60 * 60 * 1000, no
 
 // Shared by poster generation and OCR-cache persistence so the first quota
 // rejection stops subsequent image uploads and expensive background builds.
-export const imageKitUploadQuotaCircuit = createImageKitQuotaCircuit({ cooldownMs: 6 * 60 * 60 * 1000 });
+export const imageKitUploadQuotaCircuit = createImageKitQuotaCircuit({ cooldownMs: 60 * 60 * 1000 });
