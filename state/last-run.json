@@ -1,5 +1,7 @@
 {
-  "attempted_at": "2026-11-23T02:25:48.573619+04:00",
+  "attempted_at": "2026-11-23T06:01:05.713227+04:00",
   "cycle": "2026-11-23",
-  "errors": []
+  "errors": [
+    "backdrops: [{'status': 'malayalam/movies/towers', 'error': \"day: '2026-10-23', expected Oman date at request start/end (2026-11-23 / 2026-11-23)\"}]"
+  ]
 }
