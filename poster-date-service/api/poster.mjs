@@ -66,7 +66,7 @@ const IMAGEKIT_REFRESH_MS = 6 * 60 * 60 * 1000;
 const pendingImageKitUploads = new Map();
 const backgroundPosterQueue = createBoundedTaskQueue({
   concurrency: 2,
-  maxQueued: 4096,
+  maxQueued: 8192,
   onError: (error, imdbId) => console.warn('[background-poster-build-failed]', JSON.stringify({ imdbId, error: error?.message || 'unknown error' }))
 });
 const imageKitAvailabilityCache = new Map();
