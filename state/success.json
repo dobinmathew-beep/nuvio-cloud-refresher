@@ -20,5 +20,21 @@
     "films_per_language": 20,
     "opening_version": 1,
     "selection_policy": "imdb-catalog-order-v1"
+  },
+  "backdrops": {
+    "day": "2026-11-23",
+    "statuses": 160,
+    "images": 16,
+    "states": {
+      "live": 160,
+      "cached": 0
+    },
+    "errors": [],
+    "catalogHeads": {
+      "hindi": "tt37200939",
+      "tamil": "tt18933846",
+      "malayalam": "tt45692999",
+      "telugu": "tt36915004"
+    }
   }
 }
