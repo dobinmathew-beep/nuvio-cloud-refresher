@@ -355,7 +355,9 @@ def event_digital_date(event,today=TODAY):
 def recent_release_audit_date(event):
  # The movie audit consumed by the poster service must use the same first-arrival
  # date as the catalogue badge policy, not the latest provider/platform date.
- if event.get('type')=='movie':return event_digital_date(event)
+ # Physical-only / undated movies have no digital-arrival date; return an empty
+ # string so the rolling-window audit skips them instead of passing None to regex.
+ if event.get('type')=='movie':return event_digital_date(event) or ''
  return str(event.get('ottDate') or '')[:10]
 
 
