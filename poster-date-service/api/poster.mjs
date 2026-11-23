@@ -20,9 +20,6 @@ const RESULT_CACHE_MS = 2 * 60 * 1000;
 // A failed or quota-blocked ImageKit upload must not cause every client hit to
 // download and rebuild the same source poster again. Keep one per-title cooldown.
 const allowBackgroundBuild = createBackgroundBuildGate({ ttlMs: 30 * 60 * 1000, maxEntries: 8192 });
-// Stop repeatedly downloading/OCR-processing titles when ImageKit rejects uploads
-// for quota/auth reasons. Client requests still receive the BetterPosters redirect.
-
 const resultCache = new Map();
 const pendingResults = new Map();
 const tmdbPosterLookupCache = new Map();
