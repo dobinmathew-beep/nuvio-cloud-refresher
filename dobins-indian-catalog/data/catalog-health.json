@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-23T14:30:01.090212+00:00",
+  "checkedAt": "2026-11-23T14:42:06.661203+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -21,10 +21,10 @@
     {
       "path": "/meta/* (Malayalam catalog audit)",
       "state": "ok",
-      "checked": 166,
-      "passed": 166,
+      "checked": 167,
+      "passed": 167,
       "failed": 0,
-      "missingOriginalLanguageField": 119
+      "missingOriginalLanguageField": 120
     },
     {
       "path": "/manifest.json",
@@ -45,18 +45,18 @@
       "language": "ml",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
-      "localPublishedCount": 98,
-      "localUniqueIdCount": 98,
+      "localPublishedCount": 99,
+      "localUniqueIdCount": 99,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 98,
-      "endpointUniqueIdCount": 98,
+      "endpointRawCount": 99,
+      "endpointUniqueIdCount": 99,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        48
+        49
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -97,14 +97,14 @@
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt8537520",
-        "name": "Bigg Boss Malayalam",
-        "releaseDate": "2026-11-22T21:30:00+00:00"
+        "id": "tt50508547",
+        "name": "Sathyameva",
+        "releaseDate": "2026-11-27"
       },
       "localLatestEntry": {
-        "id": "tt8537520",
-        "name": "Bigg Boss Malayalam",
-        "releaseDate": "2026-11-22T21:30:00+00:00"
+        "id": "tt50508547",
+        "name": "Sathyameva",
+        "releaseDate": "2026-11-27"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -204,12 +204,12 @@
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tmdb:1737773",
+        "id": "tt51297349",
         "name": "Srimathi",
         "releaseDate": "2026-12-04"
       },
       "localLatestEntry": {
-        "id": "tmdb:1737773",
+        "id": "tt51297349",
         "name": "Srimathi",
         "releaseDate": "2026-12-04"
       },
@@ -258,19 +258,19 @@
       "language": "hi",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
-      "localPublishedCount": 120,
-      "localUniqueIdCount": 120,
+      "localPublishedCount": 121,
+      "localUniqueIdCount": 121,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 120,
-      "endpointUniqueIdCount": 120,
+      "endpointRawCount": 121,
+      "endpointUniqueIdCount": 121,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
-        20
+        21
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -294,13 +294,13 @@
       "language": "hi",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
-      "localPublishedCount": 354,
-      "localUniqueIdCount": 354,
+      "localPublishedCount": 355,
+      "localUniqueIdCount": 355,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 354,
-      "endpointUniqueIdCount": 354,
+      "endpointRawCount": 355,
+      "endpointUniqueIdCount": 355,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
@@ -311,20 +311,20 @@
         50,
         50,
         50,
-        4
+        5
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt35933285",
-        "name": "O Saathi Re",
-        "releaseDate": "2026-12-04"
+        "id": "tt51588232",
+        "name": "Itihasa: Ramayana Beyond Borders with Shashi Tharoor",
+        "releaseDate": "2026-12-07"
       },
       "localLatestEntry": {
-        "id": "tt35933285",
-        "name": "O Saathi Re",
-        "releaseDate": "2026-12-04"
+        "id": "tt51588232",
+        "name": "Itihasa: Ramayana Beyond Borders with Shashi Tharoor",
+        "releaseDate": "2026-12-07"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -333,10 +333,10 @@
   ],
   "malayalamMetadataAudit": {
     "state": "ok",
-    "checked": 166,
-    "passed": 166,
+    "checked": 167,
+    "passed": 167,
     "failed": 0,
-    "missingOriginalLanguageField": 119,
+    "missingOriginalLanguageField": 120,
     "failures": []
   },
   "catalogSummary": {
