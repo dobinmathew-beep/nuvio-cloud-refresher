@@ -4,6 +4,7 @@ import { createRequire } from 'node:module';
 import { dirname } from 'node:path';
 import { createSerialQueue } from './serial-queue.mjs';
 import { imageKitConfig } from './imagekit-storage.mjs';
+import { imageKitUploadQuotaCircuit } from './imagekit-quota-circuit.mjs';
 
 const require = createRequire(import.meta.url);
 const CACHE_MS = 6 * 60 * 60 * 1000;
@@ -121,6 +122,7 @@ async function readPersistentOcrCache(hash) {
 }
 
 async function writePersistentOcrCache(hash, text) {
+  if (imageKitUploadQuotaCircuit.isOpen()) return;
   const config = imageKitConfig();
   if (!config) return;
   const form = new FormData();
@@ -138,7 +140,15 @@ async function writePersistentOcrCache(hash, text) {
     body: form,
     signal: AbortSignal.timeout(5000)
   });
-  if (!response.ok) throw new Error('Persistent OCR cache upload HTTP ' + response.status);
+  if (!response.ok) {
+    const error = new Error('Persistent OCR cache upload HTTP ' + response.status);
+    if (imageKitUploadQuotaCircuit.recordFailure(error)) {
+      console.warn('[imagekit-upload-quota-circuit-open]', JSON.stringify({
+        stage: 'ocr-cache-upload', cooldownMs: imageKitUploadQuotaCircuit.cooldownMs, status: response.status
+      }));
+    }
+    throw error;
+  }
 }
 
 async function recognizePosterTopStrip(input) {
