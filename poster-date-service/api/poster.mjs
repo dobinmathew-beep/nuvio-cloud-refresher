@@ -125,7 +125,7 @@ async function findExistingImageKitAsset(imdbId) {
 function redirectToExistingImageKit(res, assetUrl, reason = 'provider-unavailable') {
   res.statusCode = 302;
   res.setHeader('Location', assetUrl);
-  res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
+  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Poster-Date-Status', 'stale-imagekit-fallback');
   res.setHeader('X-Poster-Stale', 'true');
@@ -564,7 +564,7 @@ export default async function handler(req, res) {
       if (req.method === 'HEAD') {
         res.statusCode = 302;
         res.setHeader('Location', sourceUrl(id));
-        res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
+        res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('X-Poster-Source', 'BetterPosters');
         res.setHeader('X-Poster-Date-Status', 'head-source-fallback');
@@ -613,7 +613,7 @@ export default async function handler(req, res) {
       scheduleBackgroundPosterBuild(id, immediateBadge, immediateVersion, immediateFallback);
       res.statusCode = 302;
       res.setHeader('Location', sourceUrl(id));
-      res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
+      res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('X-Poster-Source', 'BetterPosters');
       res.setHeader('X-Poster-Date-Status', 'background-generation-pending');
