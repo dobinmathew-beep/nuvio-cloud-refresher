@@ -613,9 +613,7 @@ export default async function handler(req, res) {
     // the normal low-latency fallback while preventing stale ImageKit artwork
     // from bypassing validation.
     if (!immediateFallback) {
-      if (allowBackgroundBuild(id)) {
-        scheduleBackgroundPosterBuild(id, immediateBadge, immediateVersion, immediateFallback);
-      }
+      scheduleBackgroundPosterBuild(id, immediateBadge, immediateVersion, immediateFallback);
       res.statusCode = 302;
       res.setHeader('Location', sourceUrl(id));
       res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
