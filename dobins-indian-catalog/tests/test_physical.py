@@ -107,4 +107,9 @@ class PhysicalTests(unittest.TestCase):
   metadata={'series|tt1234567':{'id':'tt1234567','type':'series','original_language':'en'}}
   self.assertEqual(update.append_legacy_series([], [old], '2026-11-20', metadata, require_metadata=True), [])
 
+
+ def test_recent_release_audit_skips_movie_without_verified_digital_date(self):
+  event={'type':'movie','releaseKind':'physical','ottDate':'2026-11-23','availability':[{'kind':'physical','date':'2026-11-23'}]}
+  self.assertEqual(update.recent_release_audit_date(event),'')
+
 if __name__=='__main__':unittest.main()
