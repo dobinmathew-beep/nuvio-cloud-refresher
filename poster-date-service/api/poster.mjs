@@ -119,7 +119,7 @@ async function findExistingImageKitAsset(imdbId) {
 function redirectToExistingImageKit(res, assetUrl, reason = 'provider-unavailable') {
   res.statusCode = 302;
   res.setHeader('Location', assetUrl);
-  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=3600');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Poster-Date-Status', 'stale-imagekit-fallback');
   res.setHeader('X-Poster-Stale', 'true');
@@ -247,7 +247,7 @@ function scheduleImageKitUpload(imdbId, poster) {
 function redirectToImageKit(res, assetUrl, releaseInfo, justAdded) {
   res.statusCode = 302;
   res.setHeader('Location', assetUrl);
-  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=3600');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Poster-Date-Status', 'imagekit-cache-hit');
   res.setHeader('X-Poster-Just-Added', justAdded ? 'true' : 'false');
