@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "checkedAt": "2026-11-23T10:20:01.536789+00:00",
+  "checkedAt": "2026-11-23T12:16:29.787534+00:00",
   "selection": "first usable IMDb-linked movie in the matching IndianRegional catalog order; no external release-date filtering",
   "languages": {
     "hindi": {
@@ -13,7 +13,7 @@
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-11-23T10:20:01.536789+00:00"
+      "verifiedAt": "2026-11-23T12:16:29.787534+00:00"
     },
     "tamil": {
       "id": "tt18933846",
@@ -25,19 +25,19 @@
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-11-23T10:20:01.536789+00:00"
+      "verifiedAt": "2026-11-23T12:16:29.787534+00:00"
     },
     "malayalam": {
-      "id": "tt45692999",
-      "name": "Chiram",
-      "poster": "https://live.metahub.space/poster/small/tt45692999/img",
+      "id": "tt41944351",
+      "name": "Madhuramee Jeevitham",
+      "poster": "https://live.metahub.space/poster/small/tt41944351/img",
       "catalog": "ml",
       "type": "movie",
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/ml.json",
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-11-23T10:20:01.536789+00:00"
+      "verifiedAt": "2026-11-23T12:16:29.787534+00:00"
     },
     "telugu": {
       "id": "tt36915004",
@@ -49,7 +49,7 @@
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-11-23T10:20:01.536789+00:00"
+      "verifiedAt": "2026-11-23T12:16:29.787534+00:00"
     }
   },
   "warnings": []
