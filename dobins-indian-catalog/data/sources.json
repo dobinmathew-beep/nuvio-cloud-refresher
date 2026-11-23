@@ -1,7 +1,27 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-23T05:53:30.741105+04:00",
+    "checkedAt": "2026-11-23T07:00:20.250492+04:00",
     "records": [
+      {
+        "_id": "6b03a28eccead6edc4cf0067",
+        "platform": "HBO Max",
+        "title": "The Substitute",
+        "createdAt": "2026-11-23T02:18:54.356Z",
+        "genre": "Youth, Crime, Thriller",
+        "imdbRating": null,
+        "languages": [
+          "Korean"
+        ],
+        "original_language": "Korean",
+        "releaseDate": "2026-11-23",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-23T02:19:49.347Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/gySXt3oUJwsdgmg6qIvINIxWG1t.jpg",
+        "tmdbRating": 76,
+        "tmdbVotes": 16,
+        "verified": true
+      },
       {
         "_id": "6af6738fdea24088f261c3b1",
         "platform": "SonyLIV",
@@ -69,8 +89,8 @@
         },
         "tmdbId": 1431738,
         "trendingRank": 2,
-        "trendingRankedAt": "2026-11-22T02:19:24.267Z",
-        "trendingRankedDateIST": "2026-11-22",
+        "trendingRankedAt": "2026-11-23T02:19:25.750Z",
+        "trendingRankedDateIST": "2026-11-23",
         "verified": true
       },
       {
@@ -170,8 +190,8 @@
         "tmdbId": 1595124,
         "votes": 0,
         "trendingRank": 1,
-        "trendingRankedAt": "2026-11-22T02:19:24.267Z",
-        "trendingRankedDateIST": "2026-11-22",
+        "trendingRankedAt": "2026-11-23T02:19:25.750Z",
+        "trendingRankedDateIST": "2026-11-23",
         "verified": true
       },
       {
@@ -223,7 +243,7 @@
         "releaseDate": "2026-11-20",
         "source_verified": true,
         "type": "Movie",
-        "updatedAt": "2026-11-20T02:18:50.973Z",
+        "updatedAt": "2026-11-23T02:19:48.178Z",
         "tmdbDetails": {
           "tmdbId": 1384514,
           "director": "Deepak Kumar Mishra",
@@ -278,6 +298,9 @@
           "fetchedAt": "2026-11-20T07:09:54.618Z"
         },
         "tmdbId": 1384514,
+        "posterUrl": "https://image.tmdb.org/t/p/w300/fygsmzrKBGV3O4ky6l26wKF8QBA.jpg",
+        "tmdbRating": 75,
+        "tmdbVotes": 25,
         "verified": true
       },
       {
@@ -351,9 +374,9 @@
           "fetchedAt": "2026-11-20T11:53:08.767Z"
         },
         "tmdbId": 1593350,
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-22T02:19:24.267Z",
-        "trendingRankedDateIST": "2026-11-22",
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-23T02:19:25.750Z",
+        "trendingRankedDateIST": "2026-11-23",
         "verified": true
       },
       {
@@ -427,8 +450,8 @@
         },
         "tmdbId": 1542674,
         "trendingRank": 6,
-        "trendingRankedAt": "2026-11-22T02:19:24.267Z",
-        "trendingRankedDateIST": "2026-11-22",
+        "trendingRankedAt": "2026-11-23T02:19:25.750Z",
+        "trendingRankedDateIST": "2026-11-23",
         "verified": true
       },
       {
@@ -489,9 +512,9 @@
           "fetchedAt": "2026-11-20T10:30:47.065Z"
         },
         "tmdbId": 1610188,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-22T02:19:24.267Z",
-        "trendingRankedDateIST": "2026-11-22",
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-23T02:19:25.750Z",
+        "trendingRankedDateIST": "2026-11-23",
         "verified": true
       },
       {
@@ -567,8 +590,8 @@
         },
         "tmdbId": 1551025,
         "trendingRank": 3,
-        "trendingRankedAt": "2026-11-22T02:19:24.267Z",
-        "trendingRankedDateIST": "2026-11-22",
+        "trendingRankedAt": "2026-11-23T02:19:25.750Z",
+        "trendingRankedDateIST": "2026-11-23",
         "verified": true
       },
       {
@@ -624,8 +647,8 @@
         "posterUrl": "https://image.tmdb.org/t/p/w300/oB9Pcb5grM5Gk0TDWZeBZ3vHhDZ.jpg",
         "instagramPostedAt": "2026-11-17T02:20:05Z",
         "trendingRank": 7,
-        "trendingRankedAt": "2026-11-22T02:19:24.267Z",
-        "trendingRankedDateIST": "2026-11-22",
+        "trendingRankedAt": "2026-11-23T02:19:25.750Z",
+        "trendingRankedDateIST": "2026-11-23",
         "verified": true
       },
       {
@@ -31232,7 +31255,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-23T05:53:30.741105+04:00",
+    "checkedAt": "2026-11-23T07:00:20.250492+04:00",
     "records": [
       {
         "name": "Anbil Avan",
