@@ -151,7 +151,7 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded, op
     // The sidecar is tied to this exact ImageKit asset by its upload timestamp
     // and current badge state. This is what prevents every daily refresh from
     // re-downloading and OCR-scanning thousands of already-correct posters.
-    const metadata = await readPosterValidationMetadata(imdbId);
+    const metadata = options.metadata !== undefined ? options.metadata : await readPosterValidationMetadata(imdbId);
     const metadataTime = Date.parse(metadata?.uploadedAt || '');
     const metadataBelongsToAsset = metadata?.version === 2 &&
       metadata?.imdbId === imdbId &&
@@ -574,7 +574,7 @@ export default async function handler(req, res) {
       const cachedReleaseInfo = cachedValidation?.releaseDate
         ? { date: cachedValidation.releaseDate, kind: cachedValidation.releaseKind || 'premiere' }
         : null;
-      const validatedCachedAsset = await findFreshImageKitAsset(id, cachedReleaseInfo, expectedCachedJustAdded, { validateDate: false });
+      const validatedCachedAsset = await findFreshImageKitAsset(id, cachedReleaseInfo, expectedCachedJustAdded, { validateDate: false, metadata: cachedValidation });
       if (validatedCachedAsset) {
         return redirectToImageKit(res, validatedCachedAsset, cachedReleaseInfo, expectedCachedJustAdded);
       }
