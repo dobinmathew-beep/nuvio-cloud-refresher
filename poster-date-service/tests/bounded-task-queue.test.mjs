@@ -42,3 +42,20 @@ test('background queue reports task errors and continues draining', async () => 
   assert.deepEqual(errors, ['bad:failed']);
   assert.equal(queue.stats().pending, 0);
 });
+
+test('queue rejection does not consume the per-title cooldown', async () => {
+  const queue = createBoundedTaskQueue({ concurrency: 1, maxQueued: 0 });
+  let release;
+  const blocker = new Promise(resolve => { release = resolve; });
+  assert.equal(queue.enqueue('running', async () => blocker), true);
+
+  const { createBackgroundBuildGate } = await import('../lib/background-build-gate.mjs');
+  const allow = createBackgroundBuildGate({ ttlMs: 1000 });
+  const accepted = queue.enqueue('overflow', async () => {
+    assert.equal(allow('overflow'), true);
+  });
+  assert.equal(accepted, false);
+  // The application records the cooldown inside accepted work, not before enqueue.
+  assert.equal(allow('overflow'), true);
+  release();
+});
