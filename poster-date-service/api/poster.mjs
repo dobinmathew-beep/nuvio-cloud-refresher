@@ -7,6 +7,7 @@ import { upcomingReleaseFromCatalog } from '../lib/catalog-upcoming.mjs';
 import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster, canStoreImmutableImageKitPoster, recordImageKitUpload, getImageKitStorageSnapshot, initializeImageKitStorageSnapshot, readPosterValidationMetadata, savePosterValidationMetadata } from '../lib/imagekit-storage.mjs';
 import { createBackgroundBuildGate } from '../lib/background-build-gate.mjs';
 import { imageKitUploadQuotaCircuit } from '../lib/imagekit-quota-circuit.mjs';
+import { createBoundedTaskQueue } from '../lib/bounded-task-queue.mjs';
 import { publishImageKitVersionedPoster, resolveImageKitPoster } from '../lib/imagekit-versioned-storage.mjs';
 
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
@@ -18,7 +19,7 @@ const MAX_BYTES = 15 * 1024 * 1024;
 const RESULT_CACHE_MS = 2 * 60 * 1000;
 // A failed or quota-blocked ImageKit upload must not cause every client hit to
 // download and rebuild the same source poster again. Keep one per-title cooldown.
-const allowBackgroundBuild = createBackgroundBuildGate({ ttlMs: 30 * 60 * 1000, maxEntries: 2048 });
+const allowBackgroundBuild = createBackgroundBuildGate({ ttlMs: 30 * 60 * 1000, maxEntries: 8192 });
 // Stop repeatedly downloading/OCR-processing titles when ImageKit rejects uploads
 // for quota/auth reasons. Client requests still receive the BetterPosters redirect.
 
@@ -66,7 +67,11 @@ export function sourceUrl(imdbId) {
 
 const IMAGEKIT_REFRESH_MS = 6 * 60 * 60 * 1000;
 const pendingImageKitUploads = new Map();
-const pendingBackgroundPosterBuilds = new Map();
+const backgroundPosterQueue = createBoundedTaskQueue({
+  concurrency: 2,
+  maxQueued: 4096,
+  onError: (error, imdbId) => console.warn('[background-poster-build-failed]', JSON.stringify({ imdbId, error: error?.message || 'unknown error' }))
+});
 const imageKitAvailabilityCache = new Map();
 const IMAGEKIT_AVAILABILITY_TTL_MS = 10 * 60 * 1000;
 const IMAGEKIT_MISS_TTL_MS = 2 * 60 * 1000;
@@ -225,8 +230,8 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded, op
 }
 
 function scheduleImageKitUpload(imdbId, poster) {
-  if (!imageKitConfig() || imageKitUploadQuotaCircuit.isOpen()) return;
-  if (pendingImageKitUploads.has(imdbId)) return;
+  if (!imageKitConfig() || imageKitUploadQuotaCircuit.isOpen()) return null;
+  if (pendingImageKitUploads.has(imdbId)) return pendingImageKitUploads.get(imdbId);
   const job = publishImageKitVersionedPoster(imdbId, poster, {
     config: imageKitConfig(), recordUpload: recordImageKitUpload,
     canStore: canStoreImmutableImageKitPoster
@@ -259,6 +264,7 @@ function scheduleImageKitUpload(imdbId, poster) {
   })
     .finally(() => pendingImageKitUploads.delete(imdbId));
   pendingImageKitUploads.set(imdbId, job);
+  return job;
 }
 
 function redirectToImageKit(res, assetUrl, releaseInfo, justAdded) {
@@ -494,22 +500,27 @@ async function getBuiltPoster(id, knownRelease = undefined, badge = '', version 
 }
 
 function scheduleBackgroundPosterBuild(id, badge, version, fallbackUrl) {
-  if (imageKitUploadQuotaCircuit.isOpen() || pendingBackgroundPosterBuilds.has(id)) return;
-  const job = (async () => {
-    // This work is deliberately detached from the Nuvio request. The client
-    // receives BetterPosters immediately; badge metadata, OCR and ImageKit
-    // upload happen only in the background.
+  if (imageKitUploadQuotaCircuit.isOpen() || !allowBackgroundBuild(id)) return;
+  const accepted = backgroundPosterQueue.enqueue(id, async () => {
+    // Keep the user-facing request fast: BetterPosters is returned immediately,
+    // while at most two background jobs download, OCR and publish at once.
+    if (imageKitUploadQuotaCircuit.isOpen()) return;
     if (!getImageKitStorageSnapshot().known) {
       await initializeImageKitStorageSnapshot().catch(error =>
         console.warn('[imagekit-background-snapshot-unavailable]', error?.message || 'unknown error')
       );
     }
+    if (imageKitUploadQuotaCircuit.isOpen()) return;
     const poster = await getBuiltPoster(id, undefined, badge, version, fallbackUrl);
-    if (canStoreImageKitPoster(id, poster.bytes.length)) scheduleImageKitUpload(id, poster);
-  })().catch(error => {
-    console.warn('[background-poster-build-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
-  }).finally(() => pendingBackgroundPosterBuilds.delete(id));
-  pendingBackgroundPosterBuilds.set(id, job);
+    if (canStoreImageKitPoster(id, poster.bytes.length)) {
+      // Hold the queue slot through the upload result so a quota rejection
+      // opens the circuit before another batch of titles can start.
+      await scheduleImageKitUpload(id, poster);
+    }
+  });
+  if (!accepted) {
+    console.warn('[background-poster-build-queue-full]', JSON.stringify({ imdbId: id, ...backgroundPosterQueue.stats() }));
+  }
 }
 
 function setImageHeaders(res, type, status, releaseDate, releaseKind = 'none') {
