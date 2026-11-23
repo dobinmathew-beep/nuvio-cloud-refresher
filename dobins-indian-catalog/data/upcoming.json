@@ -1,43 +1,27 @@
 {
-  "generatedAt": "2026-11-23T02:25:28.673251+04:00",
+  "generatedAt": "2026-11-23T18:37:55.918279+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 18,
+  "count": 14,
   "items": [
     {
-      "id": "tmdb:1813874",
+      "id": "tt1281973",
       "aliases": [
-        "tmdb:1813874"
+        "tt1281973"
       ],
-      "name": "Revenge of Her : Evil Prevails",
+      "name": "Bigg Boss",
       "language": "hindi",
-      "type": "movie",
+      "type": "series",
       "releaseDate": "2026-11-24",
-      "kind": "premiere",
-      "platforms": [],
+      "kind": "episode",
+      "platforms": [
+        "JioHotStar"
+      ],
       "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
+        "https://www.dailyott.in/"
       ],
-      "catalog": "dobins_hi_movie",
+      "catalog": "dobins_hi_series",
       "region": "IN",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    },
-    {
-      "id": "tt51547104",
-      "aliases": [
-        "tt51547104"
-      ],
-      "name": "Delhi 2021",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-25",
-      "kind": "premiere",
-      "platforms": [],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "catalog": "dobins_hi_movie",
-      "region": "IN",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tt0445883",
@@ -102,28 +86,6 @@
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },
     {
-      "id": "tt27050858",
-      "aliases": [
-        "tt27050858"
-      ],
-      "name": "Drishyam: The Conclusion",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "kind": "premiere",
-      "platforms": [
-        "Netflix",
-        "Prime Video"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-releases-this-week/",
-        "https://www.dailyott.in/"
-      ],
-      "catalog": "dobins_hi_movie",
-      "region": "IN",
-      "source": "https://cinebuds.com/ott-releases-this-week/"
-    },
-    {
       "id": "tt39632118",
       "aliases": [
         "tt39632118"
@@ -146,46 +108,6 @@
       "source": "https://www.dailyott.in/"
     },
     {
-      "id": "tt39390582",
-      "aliases": [
-        "tt39390582"
-      ],
-      "name": "Hanuman Ansh",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "kind": "premiere",
-      "platforms": [
-        "SonyLIV"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-releases-this-week/"
-      ],
-      "catalog": "dobins_hi_movie",
-      "region": "IN",
-      "source": "https://cinebuds.com/ott-releases-this-week/"
-    },
-    {
-      "id": "tt40855841",
-      "aliases": [
-        "tt40855841"
-      ],
-      "name": "Nayyi Navelli",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "kind": "premiere",
-      "platforms": [
-        "Prime Video"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-releases-this-week/"
-      ],
-      "catalog": "dobins_hi_movie",
-      "region": "IN",
-      "source": "https://cinebuds.com/ott-releases-this-week/"
-    },
-    {
       "id": "tt50508547",
       "aliases": [
         "tt50508547"
@@ -194,7 +116,7 @@
       "language": "malayalam",
       "type": "series",
       "releaseDate": "2026-11-27",
-      "kind": "premiere",
+      "kind": "episode",
       "platforms": [
         "ZEE5"
       ],
@@ -227,26 +149,6 @@
       "catalog": "dobins_ta_series",
       "region": "IN",
       "source": "https://www.dailyott.in/"
-    },
-    {
-      "id": "tt30768979",
-      "aliases": [
-        "tt30768979"
-      ],
-      "name": "Aadarsha Kutumbam House No: 47 - AK47",
-      "language": "telugu",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "kind": "premiere",
-      "platforms": [
-        "Netflix"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-releases-this-week/"
-      ],
-      "catalog": "dobins_te_movie",
-      "region": "IN",
-      "source": "https://cinebuds.com/ott-releases-this-week/"
     },
     {
       "id": "tmdb:337904",
@@ -290,6 +192,26 @@
       "source": "https://api.tvmaze.com/schedule/web"
     },
     {
+      "id": "tt38195069",
+      "aliases": [
+        "tt38195069"
+      ],
+      "name": "Tumm Se Tumm Tak",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-30",
+      "kind": "episode",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.dailyott.in/"
+    },
+    {
       "id": "tmdb:339001",
       "aliases": [
         "tmdb:339001"
@@ -330,22 +252,20 @@
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },
     {
-      "id": "tmdb:1737773",
+      "id": "tt51588232",
       "aliases": [
-        "tmdb:1737773"
+        "tt51588232"
       ],
-      "name": "Srimathi",
-      "language": "telugu",
-      "type": "movie",
-      "releaseDate": "2026-12-04",
-      "kind": "premiere",
-      "platforms": [
-        "ZEE5"
-      ],
+      "name": "Itihasa: Ramayana Beyond Borders with Shashi Tharoor",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-12-07",
+      "kind": "episode",
+      "platforms": [],
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
-      "catalog": "dobins_te_movie",
+      "catalog": "dobins_hi_series",
       "region": "IN",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },
