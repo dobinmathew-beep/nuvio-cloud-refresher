@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-23T14:27:03.651969+04:00",
+  "checked_at": "2026-11-23T16:20:14.233705+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -50,28 +50,28 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-23T14:25:39.302874+04:00",
+      "checked_at": "2026-11-23T16:20:14.233705+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
           "name": "public status and freshness",
           "status": "pass",
           "details": {
-            "revision": "39731c64-ebd3-4659-a08d-c8ba39a18642",
-            "checked_utc": "2026-11-23T10:19:53.586123+00:00",
-            "matched_ids": 622,
+            "revision": "82cfdefb-82d2-4f5d-a089-597a0d4ded82",
+            "checked_utc": "2026-11-23T12:15:05.729355+00:00",
+            "matched_ids": 617,
             "playlist_channel_ids": 832,
-            "unresolved_ids": 210,
-            "programmes": 67681
+            "unresolved_ids": 215,
+            "programmes": 55564
           }
         },
         {
           "name": "published XMLTV",
           "status": "pass",
           "details": {
-            "bytes": 1997332,
-            "channels": 622,
-            "programmes": 67681
+            "bytes": 1939940,
+            "channels": 617,
+            "programmes": 55564
           }
         },
         {
@@ -85,14 +85,14 @@
           "name": "Unresolved_Channels.csv",
           "status": "pass",
           "details": {
-            "rows": 210
+            "rows": 215
           }
         },
         {
           "name": "Source_Crosscheck_Report.csv",
           "status": "pass",
           "details": {
-            "rows": 3226
+            "rows": 3029
           }
         },
         {
@@ -119,15 +119,15 @@
           "details": {
             "keys": [
               "airtel.xml",
-              "ca.xml",
               "dishtv.xml",
               "free-epg.xml",
-              "guide.xml",
               "jiotv.xml",
               "open-india.xml",
               "pw.xml",
               "samsung-in.xml",
-              "sundirectgo.xml"
+              "sundirectgo.xml",
+              "tvepg-jio.xml",
+              "yupptv.xml"
             ]
           }
         }
