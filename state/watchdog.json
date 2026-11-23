@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-11-24T02:17:30.044812+04:00",
+  "checked_at": "2026-11-24T02:17:44.542085+04:00",
   "results": [
     {
       "component": "media",
       "due": "2026-11-24T02:00:00+04:00",
-      "state": "catch-up-dispatched"
+      "state": "refresh-in-progress"
     },
     {
       "component": "addon",
@@ -14,7 +14,7 @@
     {
       "component": "epg",
       "due": "2026-11-24T02:00:00+04:00",
-      "state": "catch-up-dispatched"
+      "state": "refresh-in-progress"
     }
   ],
   "errors": []
