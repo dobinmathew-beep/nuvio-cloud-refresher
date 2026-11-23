@@ -2912,13 +2912,6 @@
   ],
   "malayalam-movie": [
     {
-      "id": "tt45692999",
-      "name": "Chiram",
-      "poster": "https://live.metahub.space/poster/small/tt45692999/img",
-      "releaseInfo": 2026,
-      "type": "movie"
-    },
-    {
       "id": "tt41944351",
       "name": "Madhuramee Jeevitham",
       "poster": "https://live.metahub.space/poster/small/tt41944351/img",
@@ -3042,6 +3035,13 @@
       "name": "Angam Attahasam",
       "poster": "https://live.metahub.space/poster/small/tt35815094/img",
       "releaseInfo": 2026,
+      "type": "movie"
+    },
+    {
+      "id": "tt26445387",
+      "name": "i, Nobody",
+      "poster": "https://images.metahub.space/poster/small/tt26445387/img",
+      "releaseInfo": "2026",
       "type": "movie"
     }
   ],
@@ -12589,5 +12589,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-23T14:12:19.436054+04:00"
+  "_updatedAt": "2026-11-23T16:16:18.894796+04:00"
 }
