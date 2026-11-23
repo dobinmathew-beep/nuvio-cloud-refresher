@@ -8,12 +8,42 @@ const keys = [
 const timeout = 20000;
 
 async function fetchJson(url) {
-  const response = await fetch(url, {
-    headers: { accept: 'application/json', 'user-agent': 'GreatIndianReadOnlyManifestAudit/1.0' },
-    signal: AbortSignal.timeout(timeout)
-  });
-  if (!response.ok) throw new Error('HTTP ' + response.status + ' while reading ' + new URL(url).host);
-  return response.json();
+  const maxAttempts = 3;
+  let lastError;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      const response = await fetch(url, {
+        headers: { accept: 'application/json', 'user-agent': 'GreatIndianReadOnlyManifestAudit/1.0' },
+        signal: AbortSignal.timeout(timeout)
+      });
+      if (!response.ok) {
+        const error = new Error('HTTP ' + response.status + ' while reading ' + new URL(url).host);
+        // Retry only transient throttling/server responses; permanent 4xx errors
+        // should fail quickly and remain visible to the workflow.
+        if (response.status !== 429 && response.status < 500) throw error;
+        const retryAfter = Number(response.headers.get('retry-after'));
+        const delay = Number.isFinite(retryAfter) && retryAfter > 0
+          ? Math.min(retryAfter * 1000, 10000)
+          : 500 * (2 ** (attempt - 1));
+        throw Object.assign(error, { retryable: true, delay });
+      }
+      return await response.json();
+    } catch (error) {
+      lastError = error;
+      const retryable = error?.retryable === true ||
+        error?.name === 'TimeoutError' || error?.name === 'AbortError' ||
+        error?.cause?.code === 'ECONNRESET' || error?.cause?.code === 'ETIMEDOUT' ||
+        error?.cause?.code === 'EAI_AGAIN' || error?.cause?.code === 'ECONNREFUSED';
+      if (!retryable || attempt === maxAttempts) break;
+      const delay = error.delay || 500 * (2 ** (attempt - 1));
+      console.warn('[manifest-read-retry]', JSON.stringify({
+        host: new URL(url).host, attempt, nextAttempt: attempt + 1, delayMs: delay,
+        reason: error?.message || 'transient fetch failure'
+      }));
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+  }
+  throw lastError;
 }
 
 function baseFromManifestUrl(value) {
