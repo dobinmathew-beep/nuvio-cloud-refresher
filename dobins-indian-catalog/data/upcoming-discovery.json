@@ -1,27 +1,26 @@
 {
-  "generatedAt": "2026-11-23T18:42:25.027108+04:00",
+  "generatedAt": "2026-11-24T02:08:31.779017+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 27,
+    "total": 21,
     "byLanguage": {
-      "hindi": 18,
-      "tamil": 2,
-      "malayalam": 4,
-      "telugu": 3
+      "hindi": 14,
+      "malayalam": 3,
+      "telugu": 3,
+      "tamil": 1
     },
     "byType": {
-      "movie": 15,
-      "series": 12
+      "movie": 12,
+      "series": 9
     },
     "byMatchState": {
-      "published": 18,
-      "unmatched": 9
+      "unmatched": 7,
+      "published": 14
     },
     "bySource": {
-      "https://ottasia.com/ott-releases-this-week?country=IN": 15,
-      "https://www.dailyott.in/": 4,
-      "https://www.myvi.in/blog/ott-releases-this-week": 2,
-      "https://www.myvi.in/blog/malayalam-ott-releases-this-week": 1,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 13,
+      "https://www.myvi.in/blog/ott-releases-this-week": 1,
+      "https://www.dailyott.in/": 2,
       "https://cinebuds.com/ott-releases-this-week/": 4,
       "https://www.keralatv.in/channel/ott/": 2,
       "https://api.tvmaze.com/schedule/web": 1,
@@ -30,168 +29,6 @@
     }
   },
   "items": [
-    {
-      "title": "Revenge of Her : Evil Prevails",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-23",
-      "platforms": [],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
-      "detail": "https://ottasia.com/title/movie/1813874/revenge-of-her-evil-prevails?country=IN",
-      "matchId": "tmdb:1813874",
-      "matchState": "published",
-      "matchReason": "TMDB exact-title search + verified detail page",
-      "metadataComplete": true,
-      "metadataSource": "TMDB exact-title search + verified detail page",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_movie"
-    },
-    {
-      "title": "Bigg Boss Season 20",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-23",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": null,
-      "matchId": "tt1281973",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Tumm Se Tumm Tak",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-23",
-      "platforms": [
-        "ZEE5"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": null,
-      "matchId": "tt38195069",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Notebook 90s – Kadhal Flashback",
-      "language": "tamil",
-      "type": "series",
-      "releaseDate": "2026-11-23",
-      "platforms": [
-        "SonyLIV"
-      ],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
-      "detail": "https://ottasia.com/title/tv/339004/notebook-90s-kadhal-flashback?country=IN",
-      "matchId": "tmdb:339004",
-      "matchState": "published",
-      "matchReason": "TMDB exact-title search + verified detail page",
-      "metadataComplete": false,
-      "metadataSource": "TMDB exact-title search + verified detail page",
-      "metadataFields": {
-        "poster": true,
-        "description": false,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_ta_series"
-    },
-    {
-      "title": "Mahabharat: Ek Dharmayudh S2",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-24",
-      "platforms": [
-        "JioHotstar",
-        "Hotstar"
-      ],
-      "sources": [
-        "https://www.myvi.in/blog/ott-releases-this-week"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "Vi dated OTT release calendar",
-      "detail": "https://www.myvi.in/blog/ott-releases-this-week",
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
-    {
-      "title": "Mahabharat: Ek Dharmayudh S2",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-24",
-      "platforms": [
-        "JioHotstar",
-        "Hotstar"
-      ],
-      "sources": [
-        "https://www.myvi.in/blog/malayalam-ott-releases-this-week"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "Vi dated OTT release calendar",
-      "detail": "https://www.myvi.in/blog/malayalam-ott-releases-this-week",
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
     {
       "title": "Acedia",
       "language": "hindi",
@@ -276,8 +113,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
         "https://www.dailyott.in/",
@@ -604,8 +441,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -762,33 +599,11 @@
     "counts": {
       "total": 9,
       "byType": {
-        "movie": 3,
-        "series": 6
+        "series": 6,
+        "movie": 3
       }
     },
     "items": [
-      {
-        "name": "Mahabharat: Ek Dharmayudh S2",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-11-24",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://www.myvi.in/blog/malayalam-ott-releases-this-week"
-        ],
-        "platforms": [
-          "JioHotstar",
-          "Hotstar"
-        ],
-        "detail": "https://www.myvi.in/blog/malayalam-ott-releases-this-week",
-        "sourceRecord": {
-          "title": "Mahabharat: Ek Dharmayudh S2",
-          "releaseDate": "2026-11-24",
-          "source": "https://www.myvi.in/blog/malayalam-ott-releases-this-week",
-          "languageText": "Malayalam Dub",
-          "dateText": "Nov 24, 2026"
-        }
-      },
       {
         "name": "Satyameva",
         "language": "malayalam",
@@ -806,6 +621,31 @@
           "title": "Satyameva",
           "releaseDate": "2026-11-27",
           "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+        }
+      },
+      {
+        "name": "Pendulum",
+        "language": "malayalam",
+        "type": "movie",
+        "ottDate": "2026-11-22",
+        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+        "sources": [
+          "https://www.keralatv.in/channel/ott/"
+        ],
+        "platforms": [
+          "Prime Video",
+          "ManoramaMAX",
+          "JioHotstar",
+          "Netflix",
+          "SonyLIV",
+          "ZEE5"
+        ],
+        "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
+        "sourceRecord": {
+          "title": "Pendulum",
+          "releaseDate": "2026-11-22",
+          "source": "https://www.keralatv.in/channel/ott/",
+          "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
         }
       },
       {
@@ -1053,19 +893,20 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 17
+      "records": 15
     },
     {
       "source": "Vi weekly OTT calendar",
       "url": "https://www.myvi.in/blog/ott-releases-this-week",
       "state": "live",
-      "records": 3
+      "records": 2
     },
     {
       "source": "Vi Malayalam weekly OTT calendar",
       "url": "https://www.myvi.in/blog/malayalam-ott-releases-this-week",
-      "state": "live",
-      "records": 1
+      "state": "no_confirmed_upcoming",
+      "records": 0,
+      "note": "Calendar section is present; no eligible future releases for the four tracked languages were found."
     },
     {
       "source": "Vi monthly OTT calendar",
@@ -1130,7 +971,7 @@
       "source": "Kerala TV multi-language OTT releases",
       "url": "https://www.keralatv.in/channel/ott/",
       "state": "live",
-      "records": 12
+      "records": 13
     },
     {
       "source": "DailyOTT upcoming dates",
@@ -1156,7 +997,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 118,
+      "records": 115,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1177,17 +1018,15 @@
             "simplymollywood.com"
           ],
           "failedSourceDomains": [],
-          "sourcesWithRecords": 4,
+          "sourcesWithRecords": 3,
           "sourceDomainsWithRecords": [
             "keralatv.in",
-            "myvi.in",
             "ottasia.com",
             "ottchecker.com"
           ],
-          "sourcesWithMovieRecords": 3,
+          "sourcesWithMovieRecords": 2,
           "sourceDomainsWithMovieRecords": [
             "keralatv.in",
-            "myvi.in",
             "ottchecker.com"
           ],
           "sourcesWithSeriesRecords": 2,
@@ -1228,10 +1067,10 @@
             {
               "source": "Vi Malayalam weekly OTT calendar",
               "url": "https://www.myvi.in/blog/malayalam-ott-releases-this-week",
-              "state": "live",
-              "languageState": "records_found",
-              "records": 1,
-              "movieRecords": 1,
+              "state": "no_confirmed_upcoming",
+              "languageState": "checked_no_records",
+              "records": 0,
+              "movieRecords": 0,
               "seriesRecords": 0
             },
             {
@@ -1293,8 +1132,8 @@
               "url": "https://www.keralatv.in/channel/ott/",
               "state": "live",
               "languageState": "records_found",
-              "records": 9,
-              "movieRecords": 8,
+              "records": 10,
+              "movieRecords": 9,
               "seriesRecords": 1
             },
             {
@@ -1360,7 +1199,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 22,
+          "detectedRecords": 21,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1377,9 +1216,9 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 2,
+              "records": 1,
               "movieRecords": 0,
-              "seriesRecords": 2
+              "seriesRecords": 1
             },
             {
               "source": "Vi weekly OTT calendar",
@@ -1663,7 +1502,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 44,
+          "detectedRecords": 42,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1680,8 +1519,8 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 14,
-              "movieRecords": 10,
+              "records": 13,
+              "movieRecords": 9,
               "seriesRecords": 4
             },
             {
@@ -1689,8 +1528,8 @@
               "url": "https://www.myvi.in/blog/ott-releases-this-week",
               "state": "live",
               "languageState": "records_found",
-              "records": 4,
-              "movieRecords": 4,
+              "records": 3,
+              "movieRecords": 3,
               "seriesRecords": 0
             },
             {
@@ -1825,7 +1664,7 @@
       "language": "hindi",
       "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
       "state": "live",
-      "records": 298
+      "records": 299
     },
     {
       "source": "TMDB streaming-series discovery",
@@ -1912,17 +1751,15 @@
         "simplymollywood.com"
       ],
       "failedSourceDomains": [],
-      "sourcesWithRecords": 4,
+      "sourcesWithRecords": 3,
       "sourceDomainsWithRecords": [
         "keralatv.in",
-        "myvi.in",
         "ottasia.com",
         "ottchecker.com"
       ],
-      "sourcesWithMovieRecords": 3,
+      "sourcesWithMovieRecords": 2,
       "sourceDomainsWithMovieRecords": [
         "keralatv.in",
-        "myvi.in",
         "ottchecker.com"
       ],
       "sourcesWithSeriesRecords": 2,
@@ -1963,10 +1800,10 @@
         {
           "source": "Vi Malayalam weekly OTT calendar",
           "url": "https://www.myvi.in/blog/malayalam-ott-releases-this-week",
-          "state": "live",
-          "languageState": "records_found",
-          "records": 1,
-          "movieRecords": 1,
+          "state": "no_confirmed_upcoming",
+          "languageState": "checked_no_records",
+          "records": 0,
+          "movieRecords": 0,
           "seriesRecords": 0
         },
         {
@@ -2028,8 +1865,8 @@
           "url": "https://www.keralatv.in/channel/ott/",
           "state": "live",
           "languageState": "records_found",
-          "records": 9,
-          "movieRecords": 8,
+          "records": 10,
+          "movieRecords": 9,
           "seriesRecords": 1
         },
         {
@@ -2095,7 +1932,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 22,
+      "detectedRecords": 21,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2112,9 +1949,9 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 2,
+          "records": 1,
           "movieRecords": 0,
-          "seriesRecords": 2
+          "seriesRecords": 1
         },
         {
           "source": "Vi weekly OTT calendar",
@@ -2398,7 +2235,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 44,
+      "detectedRecords": 42,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2415,8 +2252,8 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 14,
-          "movieRecords": 10,
+          "records": 13,
+          "movieRecords": 9,
           "seriesRecords": 4
         },
         {
@@ -2424,8 +2261,8 @@
           "url": "https://www.myvi.in/blog/ott-releases-this-week",
           "state": "live",
           "languageState": "records_found",
-          "records": 4,
-          "movieRecords": 4,
+          "records": 3,
+          "movieRecords": 3,
           "seriesRecords": 0
         },
         {

@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-23T18:42:25.027108+04:00",
+    "checkedAt": "2026-11-24T02:08:31.779017+04:00",
     "records": [
       {
         "_id": "6b03a28eccead6edc4cf0067",
@@ -301,6 +301,7 @@
         "posterUrl": "https://image.tmdb.org/t/p/w300/fygsmzrKBGV3O4ky6l26wKF8QBA.jpg",
         "tmdbRating": 75,
         "tmdbVotes": 25,
+        "votes": 1,
         "verified": true
       },
       {
@@ -11778,9 +11779,9 @@
             "Tamil"
           ],
           "releaseDate": "2026-08-21",
-          "voteAverage": 6.857,
+          "voteAverage": 6.9,
           "trailerKey": null,
-          "fetchedAt": "2026-09-25T04:17:17.475Z"
+          "fetchedAt": "2026-11-23T19:08:07.176Z"
         },
         "tmdbId": 1538273,
         "verified": true
@@ -14364,7 +14365,7 @@
               "character": "Rangan"
             }
           ],
-          "overview": "Follows a struggling family whose lives change when a receipt printer starts generating money after a lightning strike, leading to public chaos when society discovers the money-making machine.",
+          "overview": "Saravana, Mithra, Jacky, and Janaki, are skilled con artists hiding out as an ordinary family in Mulki, Karnataka. Their quiet life shatters when a young boy in their care is kidnapped, forcing them to use their old hustles one last time.",
           "runtime": 150,
           "genres": [
             "Comedy",
@@ -14376,9 +14377,9 @@
             "Tamil"
           ],
           "releaseDate": "2026-06-26",
-          "voteAverage": 5.4,
+          "voteAverage": 5.5,
           "trailerKey": "TuN_dKpxCgk",
-          "fetchedAt": "2026-10-07T17:14:33.378Z"
+          "fetchedAt": "2026-11-23T19:08:24.879Z"
         },
         "tmdbId": 1596008,
         "votes": 3,
@@ -14430,7 +14431,7 @@
           "releaseDate": "2026-05-29",
           "voteAverage": null,
           "trailerKey": "tJsO-SKhVZY",
-          "fetchedAt": "2026-10-02T12:26:59.316Z"
+          "fetchedAt": "2026-11-23T19:08:17.141Z"
         },
         "tmdbId": 1737178,
         "posterUrl": "https://image.tmdb.org/t/p/w300/xHfrl3LNJBWho5Thsofdy8VBfHh.jpg",
@@ -18979,9 +18980,9 @@
             "Tamil"
           ],
           "releaseDate": "2026-05-08",
-          "voteAverage": 6.9,
+          "voteAverage": 6.7,
           "trailerKey": "1CTq0JH3d-M",
-          "fetchedAt": "2026-10-02T12:27:36.038Z"
+          "fetchedAt": "2026-11-23T19:08:40.271Z"
         },
         "tmdbId": 1510769,
         "verified": true
@@ -22361,7 +22362,7 @@
           "releaseDate": "2026-03-13",
           "voteAverage": null,
           "trailerKey": null,
-          "fetchedAt": "2026-07-30T12:27:45.002Z"
+          "fetchedAt": "2026-11-23T19:08:52.244Z"
         },
         "tmdbId": 1649176,
         "verified": true
@@ -25049,9 +25050,9 @@
             "Tamil"
           ],
           "releaseDate": "2026-03-27",
-          "voteAverage": 4.5,
+          "voteAverage": 5.7,
           "trailerKey": null,
-          "fetchedAt": "2026-07-30T16:24:46.209Z"
+          "fetchedAt": "2026-11-23T19:09:45.552Z"
         },
         "tmdbId": 1518247,
         "verified": true
@@ -26087,7 +26088,7 @@
           "releaseDate": "2026-02-13",
           "voteAverage": null,
           "trailerKey": null,
-          "fetchedAt": "2026-10-02T12:29:56.405Z"
+          "fetchedAt": "2026-11-23T19:09:52.131Z"
         },
         "tmdbId": 587196,
         "verified": true
@@ -26409,6 +26410,59 @@
         "type": "Movie",
         "updatedAt": "2026-04-14T03:44:03.100Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/qbqRzqitfwAReJ3q2v9iMmpoh7k.jpg",
+        "tmdbDetails": {
+          "tmdbId": 1602783,
+          "director": "Sivakumar Murugesan",
+          "cast": [
+            {
+              "name": "Radhika Sarathkumar",
+              "character": "Pavunuthaayi"
+            },
+            {
+              "name": "Singampuli",
+              "character": "Uppuliyaan"
+            },
+            {
+              "name": "Aruldoss",
+              "character": "Vijayan"
+            },
+            {
+              "name": "Balasaravanan",
+              "character": "Selvam"
+            },
+            {
+              "name": "Munishkanth",
+              "character": "Pennycuick"
+            },
+            {
+              "name": "Muthukumar",
+              "character": "Rendu Idly"
+            },
+            {
+              "name": "Raichal Rabecca Philip",
+              "character": "Suruli"
+            },
+            {
+              "name": "Ilavarasu",
+              "character": "Gold Kumar"
+            }
+          ],
+          "overview": "An elderly and feared moneylender from a village near Madurai falls seriously ill, prompting her estranged sons and extended family to reunite after years of separation. As tensions rise inside the household, hidden motives, family conflicts, and expectations over her wealth turn her uncertain condition into the center of a chaotic family drama.",
+          "runtime": 144,
+          "genres": [
+            "Comedy",
+            "Drama"
+          ],
+          "originalLanguage": "ta",
+          "spokenLanguages": [
+            "Tamil"
+          ],
+          "releaseDate": "2026-02-27",
+          "voteAverage": 7.088,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-23T19:10:01.004Z"
+        },
+        "tmdbId": 1602783,
         "verified": true
       },
       {
@@ -27600,6 +27654,58 @@
         "type": "Movie",
         "updatedAt": "2026-04-03T03:34:39.207Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/yXLHQ2lhwFXsNyoaZh5OjOUfWaM.jpg",
+        "tmdbDetails": {
+          "tmdbId": 1524468,
+          "director": "V. Kenthiran",
+          "cast": [
+            {
+              "name": "Vimal",
+              "character": "Vetrivel"
+            },
+            {
+              "name": "Natarajan Subramaniam",
+              "character": "Rathnavel"
+            },
+            {
+              "name": "Sanashka Sri",
+              "character": "Devaki"
+            },
+            {
+              "name": "Balasaravanan",
+              "character": ""
+            },
+            {
+              "name": "Munishkanth",
+              "character": ""
+            },
+            {
+              "name": "Aadukalam Naren",
+              "character": "Santhanavel"
+            },
+            {
+              "name": "Madhusudhan Rao",
+              "character": ""
+            },
+            {
+              "name": "Deepa Shankar",
+              "character": ""
+            }
+          ],
+          "overview": "A action packed Village Family Drama. Hero’s Extraordinary Bond with his Bull. Story based on “Vada Manju Virattu”.  Family relationship highlighted emotionally",
+          "runtime": 136,
+          "genres": [
+            "Action"
+          ],
+          "originalLanguage": "ta",
+          "spokenLanguages": [
+            "Tamil"
+          ],
+          "releaseDate": "2026-03-06",
+          "voteAverage": null,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-23T19:10:09.375Z"
+        },
+        "tmdbId": 1524468,
         "verified": true
       },
       {
@@ -28409,6 +28515,60 @@
         "type": "Movie",
         "updatedAt": "2026-03-27T03:37:01.607Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/8TUdDDC26HQWNS7SdrYHSzyfYgZ.jpg",
+        "tmdbDetails": {
+          "tmdbId": 1629469,
+          "director": "Rajasekar G",
+          "cast": [
+            {
+              "name": "Thrigun",
+              "character": ""
+            },
+            {
+              "name": "Iniya",
+              "character": ""
+            },
+            {
+              "name": "Srijitha Ghosh",
+              "character": ""
+            },
+            {
+              "name": "Radha",
+              "character": ""
+            },
+            {
+              "name": "Thambi Ramaiah",
+              "character": ""
+            },
+            {
+              "name": "Ravi Mariya",
+              "character": ""
+            },
+            {
+              "name": "Ali",
+              "character": ""
+            },
+            {
+              "name": "Sathyan",
+              "character": ""
+            }
+          ],
+          "overview": "Shiva, a charming college student juggling three different relationships. As he tries to keep them secret, love, lust, and chaos collide in a playful mix of adult humor, romance, and comedy.",
+          "runtime": 142,
+          "genres": [
+            "Romance",
+            "Comedy",
+            "Drama"
+          ],
+          "originalLanguage": "ta",
+          "spokenLanguages": [
+            "Tamil"
+          ],
+          "releaseDate": "2026-02-13",
+          "voteAverage": 5,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-23T19:10:18.587Z"
+        },
+        "tmdbId": 1629469,
         "verified": true
       },
       {
@@ -29367,6 +29527,51 @@
         "type": "Movie",
         "updatedAt": "2026-03-24T14:28:19.735Z",
         "posterUrl": "https://www.themoviedb.org/t/p/w1280/zWvALKGFD4X8LXVvLIvwIeUfXvC.jpg",
+        "tmdbDetails": {
+          "tmdbId": 1641315,
+          "director": "L.R. Sundarapandi",
+          "cast": [
+            {
+              "name": "Aari Arjuna",
+              "character": "Dheeran"
+            },
+            {
+              "name": "Deepshika Umapathy",
+              "character": "Swetha"
+            },
+            {
+              "name": "Pavithra Aravind",
+              "character": ""
+            },
+            {
+              "name": "Subramaniam Siva",
+              "character": "Viswam"
+            },
+            {
+              "name": "Adithya Kathir",
+              "character": ""
+            },
+            {
+              "name": "Thalaivasal Vijay",
+              "character": ""
+            }
+          ],
+          "overview": "Drawn Back to Chennai by an Unexpected Call From His Former Lover, Dheeren Travels From Mumbai and Checks Into a Secluded Office Guest House. Soon After His Arrival, Disturbing and Inexplicable Events Begin to Unfold Within Its Walls. Night After Night, Dheeren is Plagued by Vivid Dreams—fragments of Memories That Eerily Mirror His Own Past and Unresolved Relationship.  As the Line Between Dreams and Reality Begins to Blur, Dheeren Realizes These Visions Are Not Random. Each Dream is a Clue, Slowly Pulling Him Toward a Buried Truth Connected to His Ex-lover’s Fate. Trapped Between Guilt, Fear, and the Supernatural, Dheeren Must Confront His Past to Uncover What Truly Happened to Her—before the Guest House Claims Him as Its Next Secret.",
+          "runtime": 134,
+          "genres": [
+            "Thriller",
+            "Horror"
+          ],
+          "originalLanguage": "ta",
+          "spokenLanguages": [
+            "Tamil"
+          ],
+          "releaseDate": "2026-02-27",
+          "voteAverage": 6,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-23T19:13:29.292Z"
+        },
+        "tmdbId": 1641315,
         "verified": true
       },
       {
@@ -30011,6 +30216,47 @@
         "type": "Movie",
         "updatedAt": "2026-03-19T03:58:35.157Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/ccfprLLGJfkwcVkrie3PYdyCd2v.jpg",
+        "tmdbDetails": {
+          "tmdbId": 1591222,
+          "director": "Pim de la Parra",
+          "cast": [
+            {
+              "name": "Kamaran Abdulla",
+              "character": "Derek van Romondt"
+            },
+            {
+              "name": "Manouk van der Meulen",
+              "character": "Audrey van Romondt"
+            },
+            {
+              "name": "Dela Maria Vaags",
+              "character": "Loes van Moorsel"
+            },
+            {
+              "name": "Robert C. Smith",
+              "character": "Robert Menzel"
+            },
+            {
+              "name": "Marcel Faber",
+              "character": "Diederik van Zwieten"
+            }
+          ],
+          "overview": "Two couples face mounting petty grievances, jealousy, and suppressed mid-life frustrations that steadily degrade their relationships into harsh psychological conflicts.",
+          "runtime": 82,
+          "genres": [
+            "Comedy",
+            "Drama"
+          ],
+          "originalLanguage": "nl",
+          "spokenLanguages": [
+            "Dutch"
+          ],
+          "releaseDate": "2026-09-03",
+          "voteAverage": 1,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-23T19:13:46.870Z"
+        },
+        "tmdbId": 1591222,
         "verified": true
       },
       {
@@ -30112,6 +30358,60 @@
         "type": "Movie",
         "updatedAt": "2026-03-19T03:55:38.200Z",
         "posterUrl": "https://www.themoviedb.org/t/p/w1280/foEObhyAMM3dxYeBEr242EdQDB7.jpg",
+        "tmdbDetails": {
+          "tmdbId": 1561687,
+          "director": "Ra. Karthik",
+          "cast": [
+            {
+              "name": "Priyanka Arul Mohan",
+              "character": "Shenba"
+            },
+            {
+              "name": "Rishikanth",
+              "character": "Mani"
+            },
+            {
+              "name": "Park Hye-jin",
+              "character": "Yeon-Ok"
+            },
+            {
+              "name": "Baek Si-hun",
+              "character": "Heo Jun-jae"
+            },
+            {
+              "name": "Jang Jae-hyeon",
+              "character": "Min-seok"
+            },
+            {
+              "name": "Kim So-ri",
+              "character": "Han-sol"
+            },
+            {
+              "name": "Jo Ha-ram",
+              "character": "Sung-hun"
+            },
+            {
+              "name": "Kim Rok",
+              "character": "Woo-jin"
+            }
+          ],
+          "overview": "A woman from a small town in Tamil Nadu moves to South Korea — a place she always dreamed of — but struggles to find her footing in a foreign land.",
+          "runtime": 113,
+          "genres": [
+            "Drama"
+          ],
+          "originalLanguage": "ta",
+          "spokenLanguages": [
+            "English",
+            "Korean",
+            "Tamil"
+          ],
+          "releaseDate": "2026-03-12",
+          "voteAverage": 7.1,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-23T19:16:15.132Z"
+        },
+        "tmdbId": 1561687,
         "verified": true
       },
       {
@@ -30434,6 +30734,58 @@
         "updatedAt": "2026-03-19T05:44:30.784Z",
         "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/43/Jockey_%282026_film%29.jpg",
         "imdbRating": null,
+        "tmdbDetails": {
+          "tmdbId": 776511,
+          "director": "Clint Bentley",
+          "cast": [
+            {
+              "name": "Clifton Collins Jr.",
+              "character": "Jackson Silva"
+            },
+            {
+              "name": "Moisés Arias",
+              "character": "Gabriel Boullait"
+            },
+            {
+              "name": "Molly Parker",
+              "character": "Ruth Wilkes"
+            },
+            {
+              "name": "Logan Cormier",
+              "character": "Leo Brock"
+            },
+            {
+              "name": "Vincent Francia",
+              "character": "Ronnie Langford"
+            },
+            {
+              "name": "Danny Garcia",
+              "character": "Benny Hernandez IV"
+            },
+            {
+              "name": "Marlon St. Julien",
+              "character": "Marlon St. Julien"
+            },
+            {
+              "name": "Ryan Barber",
+              "character": "Jockey"
+            }
+          ],
+          "overview": "An aging jockey is determined to win one last championship, but his dream is complicated when a young rookie shows up claiming to be his son.",
+          "runtime": 94,
+          "genres": [
+            "Drama"
+          ],
+          "originalLanguage": "en",
+          "spokenLanguages": [
+            "English"
+          ],
+          "releaseDate": "2021-12-29",
+          "voteAverage": 5.8,
+          "trailerKey": "YWI6Q-yKFbc",
+          "fetchedAt": "2026-11-23T19:16:25.481Z"
+        },
+        "tmdbId": 776511,
         "verified": true
       },
       {
@@ -31255,7 +31607,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-23T18:42:25.027108+04:00",
+    "checkedAt": "2026-11-24T02:08:31.779017+04:00",
     "records": [
       {
         "name": "Anbil Avan",

@@ -1,28 +1,8 @@
 {
-  "generatedAt": "2026-11-23T18:42:25.027108+04:00",
+  "generatedAt": "2026-11-24T02:08:31.779017+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 14,
+  "count": 13,
   "items": [
-    {
-      "id": "tt1281973",
-      "aliases": [
-        "tt1281973"
-      ],
-      "name": "Bigg Boss",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-24",
-      "kind": "episode",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
-    },
     {
       "id": "tt0445883",
       "aliases": [
@@ -182,14 +162,14 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
       "catalog": "dobins_hi_series",
       "region": "IN",
-      "source": "https://www.dailyott.in/"
+      "source": "https://api.tvmaze.com/schedule/web"
     },
     {
       "id": "tt38195069",

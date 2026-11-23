@@ -1,27 +1,5 @@
 [
   {
-    "name": "Mahabharat: Ek Dharmayudh S2",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-11-24",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.myvi.in/blog/malayalam-ott-releases-this-week"
-    ],
-    "platforms": [
-      "JioHotstar",
-      "Hotstar"
-    ],
-    "detail": "https://www.myvi.in/blog/malayalam-ott-releases-this-week",
-    "sourceRecord": {
-      "title": "Mahabharat: Ek Dharmayudh S2",
-      "releaseDate": "2026-11-24",
-      "source": "https://www.myvi.in/blog/malayalam-ott-releases-this-week",
-      "languageText": "Malayalam Dub",
-      "dateText": "Nov 24, 2026"
-    }
-  },
-  {
     "name": "Drones",
     "language": "tamil",
     "type": "movie",
@@ -110,6 +88,31 @@
       "title": "Hatela Gang",
       "releaseDate": "2026-11-28",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
+    "name": "Pendulum",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-11-22",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.keralatv.in/channel/ott/"
+    ],
+    "platforms": [
+      "Prime Video",
+      "ManoramaMAX",
+      "JioHotstar",
+      "Netflix",
+      "SonyLIV",
+      "ZEE5"
+    ],
+    "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
+    "sourceRecord": {
+      "title": "Pendulum",
+      "releaseDate": "2026-11-22",
+      "source": "https://www.keralatv.in/channel/ott/",
+      "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
     }
   },
   {
@@ -211,28 +214,6 @@
     }
   },
   {
-    "name": "Mahabharat: Ek Dharmayudh S2",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-11-24",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.myvi.in/blog/ott-releases-this-week"
-    ],
-    "platforms": [
-      "JioHotstar",
-      "Hotstar"
-    ],
-    "detail": "https://www.myvi.in/blog/ott-releases-this-week",
-    "sourceRecord": {
-      "title": "Mahabharat: Ek Dharmayudh S2",
-      "releaseDate": "2026-11-24",
-      "source": "https://www.myvi.in/blog/ott-releases-this-week",
-      "languageText": "Hindi",
-      "dateText": "Nov 24, 2026"
-    }
-  },
-  {
     "name": "Chef Mantra Project USA",
     "language": "telugu",
     "type": "series",
@@ -260,37 +241,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-08-13T02:01:57.122Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Bal Barbarik",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-11-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6af7c50adea24088f2622fb9",
-      "platform": "ZEE5",
-      "title": "Bal Barbarik",
-      "createdAt": "2026-11-14T02:18:50.337Z",
-      "genre": "Animation",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-11-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-11-14T02:18:50.337Z",
       "verified": true
     }
   },
@@ -383,6 +333,37 @@
     }
   },
   {
+    "name": "Bal Barbarik",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-11-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6af7c50adea24088f2622fb9",
+      "platform": "ZEE5",
+      "title": "Bal Barbarik",
+      "createdAt": "2026-11-14T02:18:50.337Z",
+      "genre": "Animation",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-11-14",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-11-14T02:18:50.337Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Cyber",
     "language": "malayalam",
     "type": "series",
@@ -444,37 +425,6 @@
     }
   },
   {
-    "name": "Durga",
-    "language": "malayalam",
-    "type": "series",
-    "ottDate": "2026-04-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f02de730958fd1b959e7b9",
-      "title": "Durga",
-      "platform": "ZEE5",
-      "createdAt": "2026-04-28T03:47:50.929Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Malayalam"
-      ],
-      "releaseDate": "2026-04-28",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-28T03:48:06.951Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/o930uPaXiIdn6K0Ja8iYnrHrYTr.jpg",
-      "verified": true
-    }
-  },
-  {
     "name": "Second Love",
     "language": "tamil",
     "type": "series",
@@ -504,6 +454,37 @@
       "updatedAt": "2026-07-13T05:50:20.074Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/uyPIZNfoBndX1Dltaaql4v5TXwC.jpg",
       "votes": 1,
+      "verified": true
+    }
+  },
+  {
+    "name": "Durga",
+    "language": "malayalam",
+    "type": "series",
+    "ottDate": "2026-04-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69f02de730958fd1b959e7b9",
+      "title": "Durga",
+      "platform": "ZEE5",
+      "createdAt": "2026-04-28T03:47:50.929Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Malayalam"
+      ],
+      "releaseDate": "2026-04-28",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-28T03:48:06.951Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/o930uPaXiIdn6K0Ja8iYnrHrYTr.jpg",
       "verified": true
     }
   },
@@ -539,36 +520,6 @@
     }
   },
   {
-    "name": "Nindu Noorella Saavasam (Episode 885)",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-05-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a02a2999dcddba08328d0ef",
-      "platform": "ZEE5",
-      "title": "Nindu Noorella Saavasam (Episode 885)",
-      "createdAt": "2026-05-12T03:46:33.291Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-12",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-05-12T03:46:33.291Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Southern Shadows",
     "language": "tamil",
     "type": "series",
@@ -596,6 +547,36 @@
       "type": "Series",
       "updatedAt": "2026-05-23T03:47:25.416Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/kf0utrFWZfi1Is821zUMZnio2aF.jpg",
+      "verified": true
+    }
+  },
+  {
+    "name": "Nindu Noorella Saavasam (Episode 885)",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-05-12",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a02a2999dcddba08328d0ef",
+      "platform": "ZEE5",
+      "title": "Nindu Noorella Saavasam (Episode 885)",
+      "createdAt": "2026-05-12T03:46:33.291Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-12",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-05-12T03:46:33.291Z",
       "verified": true
     }
   },
@@ -847,36 +828,6 @@
     }
   },
   {
-    "name": "The Eternal Love - Prologue",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-04-23",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69e9955d30958fd1b959de4b",
-      "platform": "ETV Win",
-      "title": "The Eternal Love - Prologue",
-      "createdAt": "2026-04-23T03:43:25.822Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-04-23",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-23T03:43:25.822Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Jodi Are U Ready Season 3 (Grand Finale)",
     "language": "tamil",
     "type": "series",
@@ -903,6 +854,36 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-05-03T03:46:51.832Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "The Eternal Love - Prologue",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-04-23",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69e9955d30958fd1b959de4b",
+      "platform": "ETV Win",
+      "title": "The Eternal Love - Prologue",
+      "createdAt": "2026-04-23T03:43:25.822Z",
+      "genre": "Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-04-23",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-23T03:43:25.822Z",
       "verified": true
     }
   },
@@ -968,6 +949,36 @@
     }
   },
   {
+    "name": "WWE (Tamil Dub)",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-04-18",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69e2fc0930958fd1b908a124",
+      "title": "WWE (Tamil Dub)",
+      "platform": "Netflix",
+      "createdAt": "2026-04-18T03:35:37.425Z",
+      "genre": "Sports Entertainment, Action",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-04-18",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-18T03:35:37.425Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Katha Sudha",
     "language": "telugu",
     "type": "series",
@@ -1025,36 +1036,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-10-02T02:18:50.680Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "WWE (Tamil Dub)",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-04-18",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Netflix"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69e2fc0930958fd1b908a124",
-      "title": "WWE (Tamil Dub)",
-      "platform": "Netflix",
-      "createdAt": "2026-04-18T03:35:37.425Z",
-      "genre": "Sports Entertainment, Action",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-04-18",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-18T03:35:37.425Z",
       "verified": true
     }
   },
@@ -1151,37 +1132,6 @@
     }
   },
   {
-    "name": "Nijame Rujuvainadhi",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-08-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a7e75993fab9691478b3be2",
-      "platform": "ETV Win",
-      "title": "Nijame Rujuvainadhi",
-      "createdAt": "2026-08-14T01:55:36.933Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "original_language": "Telugu",
-      "releaseDate": "2026-08-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-08-14T01:55:36.933Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Jungle Tales With Mowgli",
     "language": "hindi",
     "type": "movie",
@@ -1243,6 +1193,37 @@
     }
   },
   {
+    "name": "Nijame Rujuvainadhi",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-08-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a7e75993fab9691478b3be2",
+      "platform": "ETV Win",
+      "title": "Nijame Rujuvainadhi",
+      "createdAt": "2026-08-14T01:55:36.933Z",
+      "genre": "Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "original_language": "Telugu",
+      "releaseDate": "2026-08-14",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-08-14T01:55:36.933Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Clean Up Company",
     "language": "hindi",
     "type": "movie",
@@ -1272,6 +1253,39 @@
       "updatedAt": "2026-08-21T02:09:08.752Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/sVMcco0EdfDvFpyPlHU9n6RPrQj.jpg",
       "instagramPostedAt": "2026-08-21T02:09:49Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "108 Base Hospital Uri",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-08-15",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a7fcf2d3fab9691478b6fa2",
+      "title": "108 Base Hospital Uri",
+      "platform": "JioHotStar",
+      "createdAt": "2026-08-15T02:30:05.632Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-08-15",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-08-17T01:43:50.495Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/s2zF4NDPU0xTPKb5wrOhsFdYARR.jpg",
+      "instagramPostedAt": "2026-08-17T01:44:13Z",
       "verified": true
     }
   },
@@ -1306,35 +1320,35 @@
     }
   },
   {
-    "name": "108 Base Hospital Uri",
+    "name": "The Legend of Karna",
     "language": "hindi",
     "type": "movie",
-    "ottDate": "2026-08-15",
+    "ottDate": "2026-07-31",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "JioHotStar"
+      "SonyLIV"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6a7fcf2d3fab9691478b6fa2",
-      "title": "108 Base Hospital Uri",
-      "platform": "JioHotStar",
-      "createdAt": "2026-08-15T02:30:05.632Z",
-      "genre": "Drama",
+      "_id": "6a6c25cc1638e3b61f1d6767",
+      "platform": "SonyLIV",
+      "title": "The Legend of Karna",
+      "createdAt": "2026-07-31T04:34:20.405Z",
+      "genre": "Mythology",
       "imdbRating": null,
       "languages": [
         "Hindi"
       ],
       "original_language": "Hindi",
-      "releaseDate": "2026-08-15",
+      "releaseDate": "2026-07-31",
       "source_verified": true,
       "type": "Movie",
-      "updatedAt": "2026-08-17T01:43:50.495Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/s2zF4NDPU0xTPKb5wrOhsFdYARR.jpg",
-      "instagramPostedAt": "2026-08-17T01:44:13Z",
+      "updatedAt": "2026-07-31T04:34:44.156Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/jzVP9rqT2YH2nTx3l3csmmU9B1q.jpg",
+      "instagramPostedAt": "2026-07-31T04:35:54Z",
       "verified": true
     }
   },
@@ -1395,39 +1409,6 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-05-03T03:46:51.209Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "The Legend of Karna",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-07-31",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "SonyLIV"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a6c25cc1638e3b61f1d6767",
-      "platform": "SonyLIV",
-      "title": "The Legend of Karna",
-      "createdAt": "2026-07-31T04:34:20.405Z",
-      "genre": "Mythology",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-07-31",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-07-31T04:34:44.156Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/jzVP9rqT2YH2nTx3l3csmmU9B1q.jpg",
-      "instagramPostedAt": "2026-07-31T04:35:54Z",
       "verified": true
     }
   },
@@ -1494,6 +1475,37 @@
     }
   },
   {
+    "name": "Manipur Files",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-07-11",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "YouTube"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a51d36fcf19d56322acc442",
+      "platform": "YouTube",
+      "title": "Manipur Files",
+      "createdAt": "2026-07-11T05:23:58.919Z",
+      "genre": "Documentary",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-07-11",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-07-11T05:23:58.919Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Iruniram",
     "language": "malayalam",
     "type": "movie",
@@ -1541,37 +1553,6 @@
     }
   },
   {
-    "name": "Manipur Files",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-07-11",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "YouTube"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a51d36fcf19d56322acc442",
-      "platform": "YouTube",
-      "title": "Manipur Files",
-      "createdAt": "2026-07-11T05:23:58.919Z",
-      "genre": "Documentary",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-07-11",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-07-11T05:23:58.919Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Maya Bimbum",
     "language": "tamil",
     "type": "movie",
@@ -1598,37 +1579,6 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-03-27T03:36:48.165Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "The Eternal Love",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-04-24",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69eae74130958fd1b959e169",
-      "platform": "ETV Win",
-      "title": "The Eternal Love",
-      "createdAt": "2026-04-24T03:45:05.325Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-04-24",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-04-24T03:45:23.137Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/yZBBcP8QZFALkfkbW8Yjp6ylJ0v.jpg",
       "verified": true
     }
   },
@@ -1702,8 +1652,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix",
-      "ETV Win"
+      "ETV Win",
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {
