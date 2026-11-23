@@ -565,7 +565,7 @@ export default async function handler(req, res) {
       const original = await getOriginal(id);
       setImageHeaders(res, original.type, req.probe ? 'template-probe' : 'head-check', 'none');
       res.setHeader('X-Poster-Source', original.source || 'BetterPosters');
-      res.setHeader('Cache-Control', 'public, max-age=3600');
+      res.setHeader('Cache-Control', 'public, max-age=300');
       return res.end(req.method === 'HEAD' ? undefined : original.bytes);
     }
 
@@ -607,7 +607,7 @@ export default async function handler(req, res) {
       }
       res.statusCode = 302;
       res.setHeader('Location', sourceUrl(id));
-      res.setHeader('Cache-Control', 'public, max-age=900, stale-while-revalidate=3600');
+      res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('X-Poster-Source', 'BetterPosters');
       res.setHeader('X-Poster-Date-Status', 'background-generation-pending');
