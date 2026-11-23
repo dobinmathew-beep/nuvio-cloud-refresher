@@ -6,6 +6,7 @@ import { isCatalogRecentlyAdded, resolveJustAddedDecision } from '../lib/catalog
 import { upcomingReleaseFromCatalog } from '../lib/catalog-upcoming.mjs';
 import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster, canStoreImmutableImageKitPoster, recordImageKitUpload, getImageKitStorageSnapshot, initializeImageKitStorageSnapshot, readPosterValidationMetadata, savePosterValidationMetadata } from '../lib/imagekit-storage.mjs';
 import { createBackgroundBuildGate } from '../lib/background-build-gate.mjs';
+import { createImageKitQuotaCircuit } from '../lib/imagekit-quota-circuit.mjs';
 import { publishImageKitVersionedPoster, resolveImageKitPoster } from '../lib/imagekit-versioned-storage.mjs';
 
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
@@ -18,6 +19,9 @@ const RESULT_CACHE_MS = 2 * 60 * 1000;
 // A failed or quota-blocked ImageKit upload must not cause every client hit to
 // download and rebuild the same source poster again. Keep one per-title cooldown.
 const allowBackgroundBuild = createBackgroundBuildGate({ ttlMs: 30 * 60 * 1000, maxEntries: 2048 });
+// Stop repeatedly downloading/OCR-processing titles when ImageKit rejects uploads
+// for quota/auth reasons. Client requests still receive the BetterPosters redirect.
+const imageKitQuotaCircuit = createImageKitQuotaCircuit({ cooldownMs: 6 * 60 * 60 * 1000 });
 const resultCache = new Map();
 const pendingResults = new Map();
 const tmdbPosterLookupCache = new Map();
@@ -119,7 +123,7 @@ async function findExistingImageKitAsset(imdbId) {
 function redirectToExistingImageKit(res, assetUrl, reason = 'provider-unavailable') {
   res.statusCode = 302;
   res.setHeader('Location', assetUrl);
-  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=3600');
+  res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Poster-Date-Status', 'stale-imagekit-fallback');
   res.setHeader('X-Poster-Stale', 'true');
@@ -221,7 +225,7 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded, op
 }
 
 function scheduleImageKitUpload(imdbId, poster) {
-  if (!imageKitConfig()) return;
+  if (!imageKitConfig() || imageKitQuotaCircuit.isOpen()) return;
   if (pendingImageKitUploads.has(imdbId)) return;
   const job = publishImageKitVersionedPoster(imdbId, poster, {
     config: imageKitConfig(), recordUpload: recordImageKitUpload,
@@ -235,11 +239,24 @@ function scheduleImageKitUpload(imdbId, poster) {
     });
     return pointer;
   }).catch(async error => {
+    if (imageKitQuotaCircuit.recordFailure(error)) {
+      console.warn('[imagekit-upload-quota-circuit-open]', JSON.stringify({
+        imdbId, cooldownMs: imageKitQuotaCircuit.cooldownMs, stage: 'versioned-upload', error: error?.message || 'unknown error'
+      }));
+      return null;
+    }
     console.warn('[imagekit-versioned-poster-failed-legacy-fallback]', JSON.stringify({
       imdbId, error: error?.message || 'unknown error'
     }));
     return uploadPosterToImageKit(imdbId, poster);
-  }).catch(error => console.warn('ImageKit poster upload skipped for', imdbId, error.message))
+  }).catch(error => {
+    if (imageKitQuotaCircuit.recordFailure(error)) {
+      console.warn('[imagekit-upload-quota-circuit-open]', JSON.stringify({
+        imdbId, cooldownMs: imageKitQuotaCircuit.cooldownMs, stage: 'legacy-upload', error: error?.message || 'unknown error'
+      }));
+    }
+    console.warn('ImageKit poster upload skipped for', imdbId, error.message);
+  })
     .finally(() => pendingImageKitUploads.delete(imdbId));
   pendingImageKitUploads.set(imdbId, job);
 }
@@ -247,7 +264,7 @@ function scheduleImageKitUpload(imdbId, poster) {
 function redirectToImageKit(res, assetUrl, releaseInfo, justAdded) {
   res.statusCode = 302;
   res.setHeader('Location', assetUrl);
-  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=3600');
+  res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Poster-Date-Status', 'imagekit-cache-hit');
   res.setHeader('X-Poster-Just-Added', justAdded ? 'true' : 'false');
@@ -477,7 +494,7 @@ async function getBuiltPoster(id, knownRelease = undefined, badge = '', version 
 }
 
 function scheduleBackgroundPosterBuild(id, badge, version, fallbackUrl) {
-  if (pendingBackgroundPosterBuilds.has(id)) return;
+  if (imageKitQuotaCircuit.isOpen() || pendingBackgroundPosterBuilds.has(id)) return;
   const job = (async () => {
     // This work is deliberately detached from the Nuvio request. The client
     // receives BetterPosters immediately; badge metadata, OCR and ImageKit
@@ -539,7 +556,7 @@ export default async function handler(req, res) {
       if (req.method === 'HEAD') {
         res.statusCode = 302;
         res.setHeader('Location', sourceUrl(id));
-        res.setHeader('Cache-Control', 'public, max-age=900, stale-while-revalidate=3600');
+        res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('X-Poster-Source', 'BetterPosters');
         res.setHeader('X-Poster-Date-Status', 'head-source-fallback');
