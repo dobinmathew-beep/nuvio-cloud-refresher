@@ -497,11 +497,13 @@ async function getBuiltPoster(id, knownRelease = undefined, badge = '', version 
 }
 
 function scheduleBackgroundPosterBuild(id, badge, version, fallbackUrl) {
-  if (imageKitUploadQuotaCircuit.isOpen() || !allowBackgroundBuild(id)) return;
+  if (imageKitUploadQuotaCircuit.isOpen()) return;
   const accepted = backgroundPosterQueue.enqueue(id, async () => {
+    // Start the cooldown only after the queue accepts and actually starts this
+    // title. A full queue must not suppress a later retry for work never run.
+    if (imageKitUploadQuotaCircuit.isOpen() || !allowBackgroundBuild(id)) return;
     // Keep the user-facing request fast: BetterPosters is returned immediately,
     // while at most two background jobs download, OCR and publish at once.
-    if (imageKitUploadQuotaCircuit.isOpen()) return;
     if (!getImageKitStorageSnapshot().known) {
       await initializeImageKitStorageSnapshot().catch(error =>
         console.warn('[imagekit-background-snapshot-unavailable]', error?.message || 'unknown error')
