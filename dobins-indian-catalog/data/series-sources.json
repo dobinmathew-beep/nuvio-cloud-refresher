@@ -1331,6 +1331,13 @@
         "type": "series"
       },
       {
+        "id": "tt40856820",
+        "name": "Chaar Yaar",
+        "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt40856820.jpg",
+        "releaseInfo": "2026",
+        "type": "series"
+      },
+      {
         "id": "tt49702110",
         "name": "Matargashti",
         "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt49702110.jpg",
@@ -1446,13 +1453,6 @@
         "id": "tmdb:341306||Moshi Moshi Mumbai||2026||series||https://image.tmdb.org/t/p/original/hiNjqPKD5RhwQZaiFqATSeelXwM.jpg||Driven%20by%20the%20memories%20of%20her%20late%20father%20who%20once%20lived%20in%20India%2C%20Moshi%20Moshi%20Mumbai%20follows%20Mayo%2C%20a%20young%20Japanese%20woman%2C%20as%20she%20navigates%20the%20humorous%20culture%20shock%2C%20chaotic%20apartment%20hunting%2C%20and%20vibrant%20daily%20life%20of%20Mumbai%2C%20while%20building%20deep%20bonds%20with%20a%20quirky%20group%20of%20locals%20who%20help%20her%20bridge%20the%20cultural%20gap%20between%20Japan%20and%20India",
         "name": "Moshi Moshi Mumbai",
         "poster": "https://image.tmdb.org/t/p/original/hiNjqPKD5RhwQZaiFqATSeelXwM.jpg",
-        "releaseInfo": "2026",
-        "type": "series"
-      },
-      {
-        "id": "tt39643967",
-        "name": "Desi Bling",
-        "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39643967.jpg",
         "releaseInfo": "2026",
         "type": "series"
       },
@@ -2699,13 +2699,6 @@
         "id": "tmdb:312966||Aditya Kakkar||2024||series||https://image.tmdb.org/t/p/original/uj6Vz8oYAudveIWXZWzilYbHEaK.jpg||This%20contains%20videos%20of%20Aditya%20Kakkar%20...",
         "name": "Aditya Kakkar",
         "poster": "https://image.tmdb.org/t/p/original/uj6Vz8oYAudveIWXZWzilYbHEaK.jpg",
-        "releaseInfo": "2024",
-        "type": "series"
-      },
-      {
-        "id": "tmdb:304152||Rajesh Kumar||2024||series||https://image.tmdb.org/t/p/original/560My8480YYk2K5znK1wi9tZhJL.jpg||This%20contains%20videos%20of%20FactTechz%20......",
-        "name": "Rajesh Kumar",
-        "poster": "https://image.tmdb.org/t/p/original/560My8480YYk2K5znK1wi9tZhJL.jpg",
         "releaseInfo": "2024",
         "type": "series"
       },
@@ -7822,7 +7815,7 @@
           "metadataSource": "https://v3-cinemeta.strem.io/"
         }
       },
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "Original language mismatch"
     },
     "hindi|tmdb:339010": {
@@ -14603,7 +14596,7 @@
       }
     },
     "malayalam|tmdb:317121": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tt38856253": {
@@ -30347,11 +30340,11 @@
       }
     },
     "hindi|tmdb:317189": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "malayalam|tmdb:271476": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tt31914166": {
@@ -32966,7 +32959,7 @@
       }
     },
     "telugu|tt32263319": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "Original language mismatch"
     },
     "hindi|tt39657434": {
@@ -35646,7 +35639,7 @@
       }
     },
     "malayalam|tmdb:323106": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tt32270661": {
@@ -37334,7 +37327,7 @@
       }
     },
     "tamil|tmdb:43043": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tt29961423": {
@@ -39109,7 +39102,7 @@
       }
     },
     "hindi|tmdb:313128": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "malayalam|tt26997633": {
@@ -41686,7 +41679,7 @@
       }
     },
     "malayalam|tmdb:155959": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tt28744259": {
@@ -46761,7 +46754,7 @@
       }
     },
     "telugu|tt27412560": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "Original language mismatch"
     },
     "hindi|tt39227709": {
@@ -46919,7 +46912,7 @@
       }
     },
     "malayalam|tmdb:137810": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "Not an episodic streaming series"
     },
     "tamil|tt21908802": {
@@ -48485,7 +48478,7 @@
       }
     },
     "telugu|tmdb:225614": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt38990492": {
@@ -52959,7 +52952,7 @@
       }
     },
     "telugu|tmdb:225420": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt35674970": {
@@ -71646,11 +71639,11 @@
       }
     },
     "tamil|tmdb:277888": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:278749": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt35077054": {
@@ -73172,7 +73165,7 @@
           "_metadataCheckedAt": "2026-11-19T02:44:36.953915+04:00"
         }
       },
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tt15198122": {
@@ -74427,7 +74420,7 @@
       }
     },
     "telugu|tmdb:132437": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt26626214": {
@@ -77187,7 +77180,7 @@
       }
     },
     "telugu|tmdb:132288": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt37283288": {
@@ -79609,7 +79602,7 @@
       }
     },
     "tamil|tmdb:274700": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt37048418": {
@@ -79785,7 +79778,7 @@
       }
     },
     "hindi|tmdb:288905": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt37195865": {
@@ -80340,7 +80333,7 @@
       }
     },
     "tamil|tmdb:338852": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "Not an episodic streaming series"
     },
     "telugu|tmdb:336831": {
@@ -80886,7 +80879,7 @@
       }
     },
     "malayalam|tmdb:279335": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:315927": {
@@ -82160,7 +82153,7 @@
       }
     },
     "telugu|tmdb:322484": {
-      "checkedAt": "2026-11-23T05:53:30.741105+04:00",
+      "checkedAt": "2026-11-23T18:25:33.547976+04:00",
       "policy": "multi-source-series-v1",
       "event": {
         "name": "Podarillu",
@@ -82202,11 +82195,9 @@
           "original_language": "te",
           "metadataSource": "https://www.themoviedb.org/tv/322484",
           "_partial": false,
-          "_metadataCheckedAt": "2026-11-23T05:53:30.741105+04:00"
+          "_metadataCheckedAt": "2026-11-23T18:25:33.547976+04:00"
         }
-      },
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
-      "lastError": "Source unavailable: https://www.themoviedb.org/tv/322484"
+      }
     },
     "hindi|tmdb:334611": {
       "checkedAt": "2026-11-17T23:41:42.849407+04:00",
@@ -82249,7 +82240,7 @@
           "_metadataCheckedAt": "2026-11-17T23:41:42.849407+04:00"
         }
       },
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "malayalam|tmdb:236891": {
@@ -82507,7 +82498,7 @@
       }
     },
     "malayalam|tmdb:282066": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:270760": {
@@ -82645,11 +82636,11 @@
       }
     },
     "malayalam|tmdb:235168": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:327060": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "Not an episodic streaming series"
     },
     "hindi|tmdb:332022": {
@@ -82697,7 +82688,7 @@
       }
     },
     "malayalam|tmdb:278977": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:263299": {
@@ -82833,7 +82824,7 @@
       }
     },
     "malayalam|tmdb:278976": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:254896": {
@@ -83148,7 +83139,7 @@
       }
     },
     "malayalam|tmdb:277814": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:278802": {
@@ -83286,7 +83277,7 @@
       }
     },
     "malayalam|tmdb:278979": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:276612": {
@@ -83420,7 +83411,7 @@
       }
     },
     "malayalam|tmdb:278978": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:337265": {
@@ -83469,7 +83460,7 @@
       }
     },
     "telugu|tmdb:257842": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:324059": {
@@ -83701,7 +83692,7 @@
       }
     },
     "malayalam|tmdb:277808": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:278795": {
@@ -83970,7 +83961,7 @@
       }
     },
     "malayalam|tmdb:281584": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:235342": {
@@ -84106,11 +84097,11 @@
       }
     },
     "malayalam|tmdb:235155": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:221361": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:278823": {
@@ -84203,7 +84194,7 @@
       }
     },
     "malayalam|tmdb:235332": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:278797": {
@@ -84338,7 +84329,7 @@
       }
     },
     "malayalam|tmdb:235214": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:278825": {
@@ -84431,7 +84422,7 @@
       }
     },
     "malayalam|tmdb:277806": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:235331": {
@@ -84523,7 +84514,7 @@
       }
     },
     "malayalam|tmdb:281596": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:209334": {
@@ -84967,7 +84958,7 @@
       }
     },
     "malayalam|tmdb:277813": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:229710": {
@@ -85059,7 +85050,7 @@
       }
     },
     "malayalam|tmdb:281582": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:312505": {
@@ -85108,7 +85099,7 @@
       }
     },
     "malayalam|tmdb:282889": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:235434": {
@@ -85200,7 +85191,7 @@
       }
     },
     "malayalam|tmdb:282686": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:232637": {
@@ -85292,7 +85283,7 @@
       }
     },
     "malayalam|tmdb:281579": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:235313": {
@@ -85433,11 +85424,11 @@
       }
     },
     "telugu|tmdb:282177": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "malayalam|tmdb:281328": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:232636": {
@@ -85529,11 +85520,11 @@
       }
     },
     "malayalam|tmdb:235210": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "malayalam|tmdb:235288": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt36813889": {
@@ -85779,7 +85770,7 @@
       }
     },
     "malayalam|tmdb:281320": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt37049584": {
@@ -86405,7 +86396,7 @@
       }
     },
     "hindi|tmdb:289429": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "malayalam|tmdb:224729": {
@@ -86907,7 +86898,7 @@
       }
     },
     "malayalam|tmdb:281327": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt35671711": {
@@ -87936,7 +87927,7 @@
       }
     },
     "hindi|tt36238306": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "Original language mismatch"
     },
     "hindi|tt35671670": {
@@ -92112,7 +92103,7 @@
       }
     },
     "hindi|tmdb:304582": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt35267191": {
@@ -97070,27 +97061,27 @@
       }
     },
     "hindi|tmdb:304610": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:304598": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:304042": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:304029": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:304027": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:304026": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt35049431": {
@@ -101801,7 +101792,7 @@
       }
     },
     "hindi|tmdb:279922": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt35352743": {
@@ -107426,7 +107417,7 @@
       }
     },
     "hindi|tmdb:262335": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt32809315": {
@@ -110223,7 +110214,7 @@
       }
     },
     "hindi|tmdb:304032": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt32590226": {
@@ -116523,11 +116514,11 @@
       }
     },
     "hindi|tmdb:249066": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:249065": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt31183656": {
@@ -116790,7 +116781,7 @@
       }
     },
     "hindi|tmdb:304047": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt28614045": {
@@ -120485,7 +120476,7 @@
       }
     },
     "hindi|tmdb:304034": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt28114929": {
@@ -120922,7 +120913,7 @@
       }
     },
     "hindi|tmdb:312966": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:304152": {
@@ -121086,15 +121077,15 @@
       }
     },
     "hindi|tmdb:313009": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:304022": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:242854": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt30145246": {
@@ -125148,7 +125139,7 @@
       }
     },
     "hindi|tmdb:242838": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt29959616": {
@@ -149220,11 +149211,11 @@
       }
     },
     "hindi|tmdb:242528": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:286958": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "Not an episodic streaming series"
     },
     "hindi|tt29719363": {
@@ -153826,7 +153817,7 @@
       }
     },
     "hindi|tmdb:242384": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt28336217": {
@@ -154261,7 +154252,7 @@
       }
     },
     "hindi|tmdb:242145": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt28500661": {
@@ -156440,7 +156431,7 @@
       }
     },
     "hindi|tmdb:233861": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt28489281": {
@@ -160534,7 +160525,7 @@
       }
     },
     "hindi|tmdb:292421": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt17524566": {
@@ -170406,11 +170397,11 @@
       }
     },
     "hindi|tmdb:304092": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:228627": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt27910159": {
@@ -171320,7 +171311,7 @@
       }
     },
     "hindi|tmdb:304567": {
-      "lastAttemptAt": "2026-11-23T16:16:18.894796+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tt27930291": {
@@ -181874,7 +181865,7 @@
       }
     },
     "tamil|tt29625288": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "Original language mismatch"
     },
     "hindi|tt44101690": {
@@ -183846,7 +183837,7 @@
       "lastError": "Series identity mismatch"
     },
     "hindi|tmdb:341306": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:335782": {
@@ -183981,7 +183972,7 @@
       }
     },
     "hindi|tmdb:332403": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:325170": {
@@ -185137,7 +185128,7 @@
       }
     },
     "tamil|tmdb:287517": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:218637": {
@@ -186796,7 +186787,7 @@
       }
     },
     "tamil|tmdb:287516": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:276256": {
@@ -187021,11 +187012,11 @@
       }
     },
     "telugu|tmdb:235209": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:285361": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:279239": {
@@ -187117,7 +187108,7 @@
       }
     },
     "tamil|tmdb:285359": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:236841": {
@@ -187209,11 +187200,11 @@
       }
     },
     "tamil|tmdb:282257": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:235152": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:302622": {
@@ -187395,11 +187386,11 @@
       }
     },
     "tamil|tmdb:279177": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:235180": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:300081": {
@@ -187447,11 +187438,11 @@
       }
     },
     "tamil|tmdb:279170": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:279237": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:298052": {
@@ -187500,11 +187491,11 @@
       }
     },
     "tamil|tmdb:278049": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:279234": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:309621": {
@@ -187554,7 +187545,7 @@
       }
     },
     "tamil|tmdb:285358": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:235424": {
@@ -187646,7 +187637,7 @@
       }
     },
     "tamil|tmdb:277892": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:236892": {
@@ -187738,11 +187729,11 @@
       }
     },
     "tamil|tmdb:285360": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:279235": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "hindi|tmdb:297050": {
@@ -187790,27 +187781,27 @@
       }
     },
     "tamil|tmdb:287436": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:279241": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:281570": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:235337": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:285364": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:281489": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:278051": {
@@ -187858,23 +187849,23 @@
       }
     },
     "telugu|tmdb:278112": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:277891": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:278109": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:235422": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:279236": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:277890": {
@@ -187922,7 +187913,7 @@
       }
     },
     "telugu|tmdb:235379": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:277879": {
@@ -187930,11 +187921,11 @@
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:235276": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "malayalam|tmdb:281317": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "tamil|tmdb:281786": {
@@ -187942,7 +187933,7 @@
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:278114": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "malayalam|tmdb:277340": {
@@ -187988,11 +187979,11 @@
       }
     },
     "telugu|tmdb:278108": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "malayalam|tmdb:277492": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:235230": {
@@ -188040,15 +188031,15 @@
       }
     },
     "malayalam|tmdb:281324": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:278724": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "malayalam|tmdb:281325": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "telugu|tmdb:204373": {
@@ -188141,7 +188132,7 @@
       }
     },
     "malayalam|tmdb:277493": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "malayalam|tmdb:277322": {
@@ -188187,7 +188178,7 @@
       }
     },
     "malayalam|tmdb:281329": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "No confirmed released series with artwork"
     },
     "malayalam|tmdb:80372": {
@@ -190229,8 +190220,320 @@
       }
     },
     "hindi|tt43636966": {
-      "lastAttemptAt": "2026-11-23T17:51:55.839776+04:00",
+      "lastAttemptAt": "2026-11-23T18:25:33.547976+04:00",
       "lastError": "Series identity mismatch"
+    },
+    "hindi|tt40856820": {
+      "checkedAt": "2026-11-23T18:25:33.547976+04:00",
+      "policy": "multi-source-series-v1",
+      "event": {
+        "name": "Chaar Yaar",
+        "language": "hindi",
+        "type": "series",
+        "ottDate": "2026-10-22",
+        "platforms": [
+          "Prime Video"
+        ],
+        "sourceRecord": {},
+        "year": null,
+        "poster": "https://live.metahub.space/poster/small/tt40856820/img",
+        "source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "sources": [
+          "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+          "https://v3-cinemeta.strem.io/",
+          "https://www.themoviedb.org/tv/338918"
+        ],
+        "confirmed": true,
+        "releaseKind": "digital",
+        "releaseDateBasis": "episode",
+        "_verifiedMetadata": {
+          "id": "tt40856820",
+          "imdb_id": "tt40856820",
+          "type": "series",
+          "poster": "https://live.metahub.space/poster/small/tt40856820/img",
+          "logo": "https://live.metahub.space/logo/medium/tt40856820/img",
+          "background": "https://live.metahub.space/background/medium/tt40856820/img",
+          "moviedb_id": 338918,
+          "name": "Chaar Yaar",
+          "description": "A story of four middle-class boys, their dreams, setbacks and friendship being their armour. A fateful decision leads them to take a step that changes the course of their lives trapping them between gangsters and cops. What once held them together slowly tears their bond. With their armour shattered, their enemies close in and fate serves up a bill for their crimes.",
+          "genres": [
+            "Drama"
+          ],
+          "releaseInfo": "2026–",
+          "status": "Continuing",
+          "trailers": [],
+          "cast": [
+            "Prayrak Mehta",
+            "Saqib Ayub",
+            "Purav Jha"
+          ],
+          "credits_cast": [
+            {
+              "character": "Jay Gala",
+              "name": "Prayrak Mehta",
+              "profile_path": null,
+              "id": 4784116
+            },
+            {
+              "character": "Tony Gomes",
+              "name": "Saqib Ayub",
+              "profile_path": "/10CL3jaY1new9k4LQ556mIOmFB2.jpg",
+              "id": 2908994
+            },
+            {
+              "character": "Saahil Shaikh",
+              "name": "Purav Jha",
+              "profile_path": null,
+              "id": 4294221
+            },
+            {
+              "character": "Sameer Khilji",
+              "name": "Naman Jain",
+              "profile_path": "/2Ne998Og068lMcnAo3taWD0Pfig.jpg",
+              "id": 2051603
+            },
+            {
+              "character": "Sumati Bhalerao",
+              "name": "Sai Tamhankar",
+              "profile_path": "/k4fDez6V350WGWk6VOhy2oACQZp.jpg",
+              "id": 1192050
+            },
+            {
+              "character": "Imtiyaz Engineer",
+              "name": "Sikandar Kher",
+              "profile_path": "/sULXachczStfQLegNVmxcvuUTWZ.jpg",
+              "id": 229123
+            },
+            {
+              "character": "Babu Chauhan",
+              "name": "Dibyendu Bhattacharya",
+              "profile_path": "/uLlGKCL9y5CFBwcAafTDQhupz5h.jpg",
+              "id": 101823
+            },
+            {
+              "character": "Dilip Wankhede",
+              "name": "Rajesh Tailang",
+              "profile_path": "/ou1zcrNfhXBKcpnPgtKs64SRGXm.jpg",
+              "id": 1197124
+            },
+            {
+              "character": "Sharad Nagre",
+              "name": "Chunky Panday",
+              "profile_path": "/2dG7abdDNs3MVmrAa6HEBFKhch4.jpg",
+              "id": 81983
+            },
+            {
+              "character": "Cocaine Kareem",
+              "name": "Nassar",
+              "profile_path": "/p3I0tSQY3C5qZW3NzFfbpjKPNL6.jpg",
+              "id": 130111
+            }
+          ],
+          "credits_crew": [
+            {
+              "department": "Production",
+              "job": "Producer",
+              "name": "Niraj Nagarsheth",
+              "profile_path": null,
+              "id": 4269709
+            },
+            {
+              "department": "Production",
+              "job": "Producer",
+              "name": "Pranati Nagarsheth",
+              "profile_path": null,
+              "id": 2926885
+            },
+            {
+              "department": "Production",
+              "job": "Producer",
+              "name": "P S Shyam",
+              "profile_path": null,
+              "id": 2175888
+            }
+          ],
+          "director": [],
+          "videos": [
+            {
+              "id": "tt40856820:1:1",
+              "title": "A friend in need…",
+              "season": 1,
+              "episode": 1,
+              "released": "2026-10-22T00:00:00.000Z",
+              "thumbnail": "https://static.tvmaze.com/uploads/images/original_untouched/647/1618383.jpg"
+            },
+            {
+              "id": "tt40856820:1:2",
+              "title": "Badla Gear!",
+              "season": 1,
+              "episode": 2,
+              "released": "2026-10-22T00:00:00.000Z",
+              "thumbnail": "https://static.tvmaze.com/uploads/images/original_untouched/647/1618384.jpg"
+            },
+            {
+              "id": "tt40856820:1:3",
+              "title": "Research. Strategy. Execution.",
+              "season": 1,
+              "episode": 3,
+              "released": "2026-10-22T00:00:00.000Z",
+              "thumbnail": "https://static.tvmaze.com/uploads/images/original_untouched/647/1618385.jpg"
+            },
+            {
+              "id": "tt40856820:1:4",
+              "title": "Aafat hain yeh launde.",
+              "season": 1,
+              "episode": 4,
+              "released": "2026-10-22T00:00:00.000Z",
+              "thumbnail": "https://static.tvmaze.com/uploads/images/original_untouched/647/1618386.jpg"
+            },
+            {
+              "id": "tt40856820:1:5",
+              "title": "Jaan bachi par lakhon gaye!",
+              "season": 1,
+              "episode": 5,
+              "released": "2026-10-22T00:00:00.000Z",
+              "thumbnail": "https://static.tvmaze.com/uploads/images/original_untouched/647/1618387.jpg"
+            },
+            {
+              "id": "tt40856820:1:6",
+              "title": "Mumbai ka king kaun!",
+              "season": 1,
+              "episode": 6,
+              "released": "2026-10-22T00:00:00.000Z",
+              "thumbnail": "https://static.tvmaze.com/uploads/images/original_untouched/647/1618388.jpg"
+            },
+            {
+              "id": "tt40856820:1:7",
+              "title": "Palti Kismat!",
+              "season": 1,
+              "episode": 7,
+              "released": "2026-10-22T00:00:00.000Z",
+              "thumbnail": "https://static.tvmaze.com/uploads/images/original_untouched/647/1618389.jpg"
+            },
+            {
+              "id": "tt40856820:1:8",
+              "title": "Bang! Bang! Climax!",
+              "season": 1,
+              "episode": 8,
+              "released": "2026-10-22T00:00:00.000Z",
+              "thumbnail": "https://static.tvmaze.com/uploads/images/original_untouched/647/1618390.jpg"
+            }
+          ],
+          "imdbRating": "7.3",
+          "language": "Hindi",
+          "country": "India",
+          "slug": "series/chaar-yaar-40856820",
+          "behaviorHints": {
+            "defaultVideoId": null,
+            "hasScheduledVideos": true
+          },
+          "_partial": false,
+          "_metadataCheckedAt": "2026-11-23T18:25:33.547976+04:00",
+          "metadataSource": "https://v3-cinemeta.strem.io/"
+        }
+      }
+    },
+    "hindi|tmdb:319919": {
+      "checkedAt": "2026-11-23T18:25:33.547976+04:00",
+      "policy": "multi-source-series-v1",
+      "event": {
+        "name": "Desi Bling",
+        "language": "hindi",
+        "type": "series",
+        "ottDate": "2026-05-20",
+        "platforms": [],
+        "sourceRecord": {
+          "tmdbId": "319919"
+        },
+        "year": null,
+        "poster": "https://static.tvmaze.com/uploads/images/original_untouched/625/1564761.jpg",
+        "source": "https://www.themoviedb.org/tv/319919",
+        "sources": [
+          "https://www.themoviedb.org/tv/319919",
+          "https://www.tvmaze.com/shows/91990/desi-bling"
+        ],
+        "confirmed": true,
+        "releaseKind": "digital",
+        "releaseDateBasis": "premiere",
+        "_verifiedMetadata": {
+          "id": "tt39643967",
+          "type": "series",
+          "name": "Desi Bling",
+          "poster": "https://static.tvmaze.com/uploads/images/original_untouched/625/1564761.jpg",
+          "background": "https://image.tmdb.org/t/p/w780/5JS7SPGTNMqwmymlaTsZpm0Ti54.jpg",
+          "description": "Glitzy parties and delicious secrets rule the lives of ultra-wealthy Indian expats as they spare no expense — or drama — in this reality series.",
+          "genres": [],
+          "releaseInfo": "2026",
+          "cast": [],
+          "director": [],
+          "runtime": null,
+          "tmdb_id": 319919,
+          "imdb_id": "tt39643967",
+          "original_language": "hi",
+          "metadataSource": "https://www.tvmaze.com/shows/91990/desi-bling",
+          "videos": [
+            {
+              "id": "tt39643967:1:1",
+              "title": "A Dazzling New World",
+              "season": 1,
+              "episode": 1,
+              "released": "2026-05-20T00:00:00.000Z",
+              "thumbnail": "https://static.tvmaze.com/uploads/images/original_untouched/626/1565287.jpg"
+            },
+            {
+              "id": "tt39643967:1:2",
+              "title": "Hearts on the Rocks",
+              "season": 1,
+              "episode": 2,
+              "released": "2026-05-20T00:00:00.000Z",
+              "thumbnail": "https://static.tvmaze.com/uploads/images/original_untouched/626/1565288.jpg"
+            },
+            {
+              "id": "tt39643967:1:3",
+              "title": "The End of Us?",
+              "season": 1,
+              "episode": 3,
+              "released": "2026-05-20T00:00:00.000Z",
+              "thumbnail": "https://static.tvmaze.com/uploads/images/original_untouched/626/1565289.jpg"
+            },
+            {
+              "id": "tt39643967:1:4",
+              "title": "When the Glitter Fades",
+              "season": 1,
+              "episode": 4,
+              "released": "2026-05-20T00:00:00.000Z",
+              "thumbnail": "https://static.tvmaze.com/uploads/images/original_untouched/626/1565290.jpg"
+            },
+            {
+              "id": "tt39643967:1:5",
+              "title": "This Circle is on… FIRE",
+              "season": 1,
+              "episode": 5,
+              "released": "2026-05-20T00:00:00.000Z",
+              "thumbnail": "https://static.tvmaze.com/uploads/images/original_untouched/626/1565291.jpg"
+            },
+            {
+              "id": "tt39643967:1:6",
+              "title": "Eeny, Meeny, Miny, Moe",
+              "season": 1,
+              "episode": 6,
+              "released": "2026-05-20T00:00:00.000Z",
+              "thumbnail": "https://static.tvmaze.com/uploads/images/original_untouched/626/1565292.jpg"
+            },
+            {
+              "id": "tt39643967:1:7",
+              "title": "The Future is Ours",
+              "season": 1,
+              "episode": 7,
+              "released": "2026-05-20T00:00:00.000Z",
+              "thumbnail": "https://static.tvmaze.com/uploads/images/original_untouched/626/1565293.jpg"
+            }
+          ],
+          "tvmaze_id": 91990,
+          "_partial": false,
+          "_metadataCheckedAt": "2026-11-23T18:25:33.547976+04:00"
+        }
+      }
     }
   }
 }
