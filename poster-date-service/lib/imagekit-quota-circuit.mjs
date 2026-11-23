@@ -1,6 +1,6 @@
 // Suppress repeated poster downloads and OCR when ImageKit rejects uploads.
 // The circuit is process-local and automatically closes after the cooldown.
-export function createImageKitQuotaCircuit({ cooldownMs = 6 * 60 * 60 * 1000, now = () => Date.now() } = {}) {
+export function createImageKitQuotaCircuit({ cooldownMs = 60 * 60 * 1000, now = () => Date.now() } = {}) {
   if (!Number.isFinite(cooldownMs) || cooldownMs < 0) throw new TypeError('cooldownMs must be a non-negative number');
   let openUntil = 0;
   return {
