@@ -5,6 +5,7 @@ import { inspectExistingPosterBadges, terminateOcrWorker } from '../lib/coming-t
 import { isCatalogRecentlyAdded, resolveJustAddedDecision } from '../lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from '../lib/catalog-upcoming.mjs';
 import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster, canStoreImmutableImageKitPoster, recordImageKitUpload, getImageKitStorageSnapshot, initializeImageKitStorageSnapshot, readPosterValidationMetadata, savePosterValidationMetadata } from '../lib/imagekit-storage.mjs';
+import { createBackgroundBuildGate } from '../lib/background-build-gate.mjs';
 import { publishImageKitVersionedPoster, resolveImageKitPoster } from '../lib/imagekit-versioned-storage.mjs';
 
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
@@ -14,6 +15,9 @@ const METAHUB = 'https://live.metahub.space/poster/small/';
 const MAX_BYTES = 15 * 1024 * 1024;
 
 const RESULT_CACHE_MS = 2 * 60 * 1000;
+// A failed or quota-blocked ImageKit upload must not cause every client hit to
+// download and rebuild the same source poster again. Keep one per-title cooldown.
+const allowBackgroundBuild = createBackgroundBuildGate({ ttlMs: 30 * 60 * 1000, maxEntries: 2048 });
 const resultCache = new Map();
 const pendingResults = new Map();
 const tmdbPosterLookupCache = new Map();
@@ -60,8 +64,8 @@ const IMAGEKIT_REFRESH_MS = 6 * 60 * 60 * 1000;
 const pendingImageKitUploads = new Map();
 const pendingBackgroundPosterBuilds = new Map();
 const imageKitAvailabilityCache = new Map();
-const IMAGEKIT_AVAILABILITY_TTL_MS = 2 * 60 * 1000;
-const IMAGEKIT_MISS_TTL_MS = 15 * 1000;
+const IMAGEKIT_AVAILABILITY_TTL_MS = 10 * 60 * 1000;
+const IMAGEKIT_MISS_TTL_MS = 2 * 60 * 1000;
 
 function imageKitAssetUrl(config, imdbId) {
   return config.endpoint + '/posters/' + encodeURIComponent(imdbId) + '.jpg';
@@ -115,7 +119,7 @@ async function findExistingImageKitAsset(imdbId) {
 function redirectToExistingImageKit(res, assetUrl, reason = 'provider-unavailable') {
   res.statusCode = 302;
   res.setHeader('Location', assetUrl);
-  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Poster-Date-Status', 'stale-imagekit-fallback');
   res.setHeader('X-Poster-Stale', 'true');
@@ -243,7 +247,7 @@ function scheduleImageKitUpload(imdbId, poster) {
 function redirectToImageKit(res, assetUrl, releaseInfo, justAdded) {
   res.statusCode = 302;
   res.setHeader('Location', assetUrl);
-  res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=300');
+  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('X-Poster-Date-Status', 'imagekit-cache-hit');
   res.setHeader('X-Poster-Just-Added', justAdded ? 'true' : 'false');
@@ -530,6 +534,17 @@ export default async function handler(req, res) {
     if (req.probe || req.method === 'HEAD') {
       const existingAsset = await findExistingImageKitAsset(id);
       if (existingAsset) return redirectToExistingImageKit(res, existingAsset, 'head-probe-imagekit-hit');
+      // A HEAD request must never download an entire upstream poster just to
+      // answer an availability check. Redirect the caller to the source URL.
+      if (req.method === 'HEAD') {
+        res.statusCode = 302;
+        res.setHeader('Location', sourceUrl(id));
+        res.setHeader('Cache-Control', 'public, max-age=900, stale-while-revalidate=3600');
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('X-Poster-Source', 'BetterPosters');
+        res.setHeader('X-Poster-Date-Status', 'head-source-fallback');
+        return res.end();
+      }
       const original = await getOriginal(id);
       setImageHeaders(res, original.type, req.probe ? 'template-probe' : 'head-check', 'none');
       res.setHeader('X-Poster-Source', original.source || 'BetterPosters');
@@ -570,10 +585,12 @@ export default async function handler(req, res) {
     // the normal low-latency fallback while preventing stale ImageKit artwork
     // from bypassing validation.
     if (!immediateFallback) {
-      scheduleBackgroundPosterBuild(id, immediateBadge, immediateVersion, immediateFallback);
+      if (allowBackgroundBuild(id)) {
+        scheduleBackgroundPosterBuild(id, immediateBadge, immediateVersion, immediateFallback);
+      }
       res.statusCode = 302;
       res.setHeader('Location', sourceUrl(id));
-      res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+      res.setHeader('Cache-Control', 'public, max-age=900, stale-while-revalidate=3600');
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('X-Poster-Source', 'BetterPosters');
       res.setHeader('X-Poster-Date-Status', 'background-generation-pending');
