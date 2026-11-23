@@ -21,6 +21,12 @@ test('opens for immutable upload 403 without treating unrelated failures as quot
   assert.equal(circuit.isOpen(), true);
 });
 
+test('opens on persistent OCR cache HTTP 403 responses', () => {
+  const circuit = createImageKitQuotaCircuit();
+  assert.equal(circuit.recordFailure(new Error('Persistent OCR cache upload HTTP 403')), true);
+  assert.equal(circuit.isOpen(), true);
+});
+
 test('reset closes the circuit', () => {
   const circuit = createImageKitQuotaCircuit();
   circuit.recordFailure(new Error('ImageKit upload failed (403)'));
