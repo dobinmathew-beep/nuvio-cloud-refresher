@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-24T06:21:11.932051+00:00",
+  "checkedAt": "2026-11-24T10:28:08.417144+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,15 +14,15 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1199,
+      "metadataRecords": 1200,
       "warning": null,
       "error": null
     },
     {
       "path": "/meta/* (Malayalam catalog audit)",
       "state": "ok",
-      "checked": 167,
-      "passed": 167,
+      "checked": 168,
+      "passed": 168,
       "failed": 0,
       "missingOriginalLanguageField": 120
     },
@@ -80,30 +80,30 @@
       "language": "ml",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ml_series.json",
-      "localPublishedCount": 68,
-      "localUniqueIdCount": 68,
+      "localPublishedCount": 69,
+      "localUniqueIdCount": 69,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 68,
-      "endpointUniqueIdCount": 68,
+      "endpointRawCount": 69,
+      "endpointUniqueIdCount": 69,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        18
+        19
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt50508547",
-        "name": "Sathyameva",
+        "id": "tmdb:342403",
+        "name": "Satyameva",
         "releaseDate": "2026-11-27"
       },
       "localLatestEntry": {
-        "id": "tt50508547",
-        "name": "Sathyameva",
+        "id": "tmdb:342403",
+        "name": "Satyameva",
         "releaseDate": "2026-11-27"
       },
       "latestEntryMatches": true,
@@ -333,8 +333,8 @@
   ],
   "malayalamMetadataAudit": {
     "state": "ok",
-    "checked": 167,
-    "passed": 167,
+    "checked": 168,
+    "passed": 168,
     "failed": 0,
     "missingOriginalLanguageField": 120,
     "failures": []
