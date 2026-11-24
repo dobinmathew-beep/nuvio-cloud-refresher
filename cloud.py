@@ -85,6 +85,26 @@ def entries(rel):
         page+=1
     return {a['name']:a for a in assets}
 
+def hero_release(dist,needed,day):
+    """Choose a daily hero-asset release with room under GitHub's 1,000-asset cap.
+
+    Older releases are immutable fallbacks. A numbered bucket is used only when
+    the day's current bucket cannot hold every new content-addressed asset.
+    """
+    required=set()
+    for path in needed:
+        p=dist/path.lstrip('/')
+        required.add(sha(p.read_bytes())[:24]+'-'+p.name)
+    base='live-heroes-'+day
+    for bucket in range(1,101):
+        tag=base if bucket==1 else base+'-'+str(bucket)
+        rel=release(tag);known=entries(rel)
+        missing=required.difference(known)
+        if len(known)+len(missing)<=1000:
+            print('Using hero asset release',tag,'with',len(known),'existing and',len(missing),'new assets',flush=True)
+            return rel,known
+    raise RuntimeError('No daily hero release bucket has room below GitHub\'s 1,000-asset limit')
+
 def atomic(path,obj):
     path.parent.mkdir(parents=True,exist_ok=True);tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(obj,indent=2));tmp.replace(path)
 
@@ -222,7 +242,7 @@ def heroes():
         assert {x['id'] for x in pinned if x['language']==lang}<={x['id'] for x in m['movies']}
         assert m['audio']==music[lang] and m['duration_seconds']==50 and m['checked_at'].startswith(day)
         assert len(b)==m['bytes'] and sha(b)==m['sha256']
-    rel=release('live-heroes');known=entries(rel);updated=dict(manifest)
+    rel,known=hero_release(dist,needed,day);updated=dict(manifest)
     for path in needed:
         p=dist/path.lstrip('/');raw=p.read_bytes();digest=sha(raw);name=digest[:24]+'-'+p.name
         url=upload(rel,name,p,known)
