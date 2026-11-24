@@ -25,4 +25,42 @@ class MediaScheduleTests(unittest.TestCase):
                 self.assertEqual(cloud.main(),0)
                 self.assertEqual(featured.call_count,2);backdrop.assert_called_once();hero.assert_called_once()
 
+
+    def test_hero_release_rotates_before_github_asset_limit(self):
+        with tempfile.TemporaryDirectory() as folder:
+            dist=Path(folder)
+            needed=['/hero/index.html','/hero/hindi.mp4']
+            for path in needed:
+                target=dist/path.lstrip('/')
+                target.parent.mkdir(parents=True,exist_ok=True)
+                target.write_bytes(path.encode())
+            def fake_release(tag):
+                return {'tag_name':tag}
+            def fake_entries(rel):
+                if rel['tag_name']=='live-heroes-2026-11-24':
+                    return {f'old-{i}':{} for i in range(999)}
+                return {}
+            with patch.object(cloud,'release',side_effect=fake_release), patch.object(cloud,'entries',side_effect=fake_entries):
+                rel,known=cloud.hero_release(dist,needed,'2026-11-24')
+            self.assertEqual(rel['tag_name'],'live-heroes-2026-11-24-2')
+            self.assertEqual(known,{})
+
+    def test_hero_release_reuses_content_addressed_assets_at_cap(self):
+        with tempfile.TemporaryDirectory() as folder:
+            dist=Path(folder)
+            needed=['/hero/index.html','/hero/hindi.mp4']
+            for path in needed:
+                target=dist/path.lstrip('/')
+                target.parent.mkdir(parents=True,exist_ok=True)
+                target.write_bytes(path.encode())
+            names={cloud.sha((dist/path.lstrip('/')).read_bytes())[:24]+'-'+Path(path).name for path in needed}
+            def fake_release(tag):
+                return {'tag_name':tag}
+            def fake_entries(rel):
+                return {**{name:{'name':name} for name in names},**{f'old-{i}':{} for i in range(1000-len(names))}}
+            with patch.object(cloud,'release',side_effect=fake_release), patch.object(cloud,'entries',side_effect=fake_entries):
+                rel,known=cloud.hero_release(dist,needed,'2026-11-24')
+            self.assertEqual(rel['tag_name'],'live-heroes-2026-11-24')
+            self.assertEqual(len(known),1000)
+
 if __name__=='__main__':unittest.main()
