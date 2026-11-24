@@ -2,7 +2,7 @@
 
 **Backdrops · Reels · Addon · India EPG**
 
-Last checked: **24 Nov 2026, 18:38 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45416274434)
+Last checked: **24 Nov 2026, 18:41 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45416911209)
 
 **Refresh checks:** every 30 minutes. Outputs refresh when their two-hour cycle is due. **Watchdog and retry checks:** every 30 minutes; no per-workflow or external 10-minute trigger.
 
@@ -10,8 +10,8 @@ Last checked: **24 Nov 2026, 18:38 Oman time**. [This check’s logs](https://gi
 
 | Output | Status at last check | Last verified cycle / check (Oman) | Details | Latest attempt |
 |---|---|---|---|---|
-| Backdrops | 🔄 Refresh running / queued | 24 Nov 2026, 16:00 | 160 layouts; 16 image checks; this part verified, combined media cycle still pending | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45414881303) |
-| Reels | 🔄 Refresh running / queued | Not recorded | 0 languages; ? films per reel | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45414881303) |
+| Backdrops | ⚠️ Waiting for retry | 24 Nov 2026, 18:00 | 160 layouts; 16 image checks; this part verified, combined media cycle still pending | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45414881303) |
+| Reels | ⚠️ Waiting for retry | Not recorded | 0 languages; ? films per reel | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45414881303) |
 | Addon | ✅ Updated | 24 Nov 2026, 18:00 | 1079 catalog entries; 64 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45414889526) |
 | EPG | ✅ Updated | 24 Nov 2026, 18:30 | 603 / 808 channel IDs with listings; 205 unresolved; 64563 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45414900570) |
 
@@ -27,7 +27,7 @@ A successful check can keep the same movies or listings when the source has not 
 
 ## Issues at this check
 
-No watchdog errors reported. Source coverage and unresolved items are shown separately above.
+- media: overdue; recent attempt has not produced a valid current cycle
 
 ## Useful links
 
