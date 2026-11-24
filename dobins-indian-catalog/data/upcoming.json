@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T00:49:07.226321+04:00",
+  "generatedAt": "2026-11-25T02:43:28.419863+04:00",
   "policy": "confirmed-source-matched-id-v2",
   "count": 11,
   "items": [
@@ -99,14 +99,14 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
       "catalog": "dobins_hi_series",
       "region": "IN",
-      "source": "https://www.dailyott.in/"
+      "source": "https://api.tvmaze.com/schedule/web"
     },
     {
       "id": "tt38195069",
