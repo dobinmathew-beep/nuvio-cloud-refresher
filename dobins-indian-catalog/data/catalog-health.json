@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-24T02:20:54.941984+00:00",
+  "checkedAt": "2026-11-24T06:21:11.932051+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,7 +14,7 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1196,
+      "metadataRecords": 1199,
       "warning": null,
       "error": null
     },
@@ -258,32 +258,32 @@
       "language": "hi",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
-      "localPublishedCount": 121,
-      "localUniqueIdCount": 121,
+      "localPublishedCount": 123,
+      "localUniqueIdCount": 123,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 121,
-      "endpointUniqueIdCount": 121,
+      "endpointRawCount": 123,
+      "endpointUniqueIdCount": 123,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
-        21
+        23
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt40855841",
-        "name": "Nayyi Navelli",
-        "releaseDate": "2026-11-27"
+        "id": "tt44175143",
+        "name": "Siddha",
+        "releaseDate": "2026-12-08"
       },
       "localLatestEntry": {
-        "id": "tt40855841",
-        "name": "Nayyi Navelli",
-        "releaseDate": "2026-11-27"
+        "id": "tt44175143",
+        "name": "Siddha",
+        "releaseDate": "2026-12-08"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -294,13 +294,13 @@
       "language": "hi",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
-      "localPublishedCount": 355,
-      "localUniqueIdCount": 355,
+      "localPublishedCount": 356,
+      "localUniqueIdCount": 356,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 355,
-      "endpointUniqueIdCount": 355,
+      "endpointRawCount": 356,
+      "endpointUniqueIdCount": 356,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
@@ -311,7 +311,7 @@
         50,
         50,
         50,
-        5
+        6
       ],
       "endpointPageSize": 50,
       "missingIds": [],
