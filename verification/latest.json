@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-24T19:09:32.052407+04:00",
+  "checked_at": "2026-11-24T19:36:38.959357+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -134,30 +134,14 @@
       ]
     },
     "backdrops": {
-      "status": "pass",
-      "checked_at": "2026-11-24T19:09:32.052407+04:00",
+      "status": "fail",
+      "checked_at": "2026-11-24T19:36:38.959357+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
-      "details": {
-        "day": "2026-11-24",
-        "statuses": 160,
-        "images": 16,
-        "states": {
-          "live": 160,
-          "cached": 0
-        },
-        "errors": [],
-        "catalogHeads": {
-          "tamil": "tt18933846",
-          "hindi": "tt37200939",
-          "telugu": "tt36915004",
-          "malayalam": "tt41944351"
-        }
-      },
-      "method": "160 public layout/status checks and 16 JPEG checks"
+      "error": "[{\"status\": \"tamil/movies/wall\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/gallery\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/filmstrip\", \"error\": \"incorrect current catalog-head centre movie\"}]"
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-24T19:09:32.052407+04:00",
+      "checked_at": "2026-11-24T19:36:38.959357+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
@@ -249,8 +233,8 @@
     }
   },
   "summary": {
-    "passed": 4,
+    "passed": 3,
     "total": 4,
-    "status": "pass"
+    "status": "fail"
   }
 }
