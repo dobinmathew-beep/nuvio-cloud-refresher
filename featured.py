@@ -13,11 +13,10 @@ def valid_id(value):
 
 def valid(m,lang=None):
  mid=str(m.get('id','')).split('||',1)[0]
- # The published backdrop service's centre contract is IMDb-linked only.
- # TMDB-only composite entries remain eligible for surrounding artwork.
- return bool(re.fullmatch(r'tt\d+',mid)) and m.get('type')=='movie' and bool(m.get('poster')) and not re.search(r'OTT\s*Releases|Hindi\s*Dubbed|promo|unlock',str(m.get('name','')),re.I)
+ # Backdrop centres follow the first real poster-backed movie, including TMDB-only IDs.
+ return valid_id(mid) and m.get('type')=='movie' and bool(m.get('poster')) and not re.search(r'OTT\s*Releases|Hindi\s*Dubbed|promo|unlock',str(m.get('name','')),re.I)
 def first_valid(metas,lang=None):
- """Return the first usable IMDb-linked movie in source order for the backdrop centre."""
+ """Return the first usable IMDb- or TMDB-linked movie in source order for the backdrop centre."""
  return next((m for m in metas if valid(m,lang)),None)
 
 def select_featured(state):
