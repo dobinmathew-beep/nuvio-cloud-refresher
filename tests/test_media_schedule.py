@@ -63,4 +63,19 @@ class MediaScheduleTests(unittest.TestCase):
             self.assertEqual(rel['tag_name'],'live-heroes-2026-11-24')
             self.assertEqual(len(known),1000)
 
+
+    def test_refresh_workflow_publishes_media_manifest_before_public_verification(self):
+        workflow=Path(__file__).resolve().parents[1]/'.github'/'workflows'/'refresh.yml'
+        source=workflow.read_text()
+        persist=source.index('name: Persist verified media pointers and partial progress')
+        verify=source.index('name: Verify exact published reel fingerprints on the public URL')
+        invalidate=source.index('name: Invalidate reel progress if public freshness verification failed')
+        persist_invalidated=source.index('name: Persist invalidated hero state after failed public verification')
+        incomplete=source.index('name: Mark incomplete refresh for the ten-minute watchdog')
+        self.assertLess(persist,verify)
+        self.assertLess(invalidate,persist_invalidated)
+        self.assertLess(persist_invalidated,incomplete)
+        self.assertIn('time.sleep(delay)',source)
+        self.assertIn('fetch(origin+path+\'?freshness=\'+expected[:16],expected)',source)
+
 if __name__=='__main__':unittest.main()
