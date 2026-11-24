@@ -1,7 +1,7 @@
 {
-  "attempted_at": "2026-11-24T05:35:56.138236+04:00",
+  "attempted_at": "2026-11-24T06:04:17.557974+04:00",
   "cycle": "2026-11-24",
   "errors": [
-    "heroes: HTTP Error 422: Unprocessable Entity"
+    "heroes: GitHub rejected 3917327ff7c8e0286d16e198-index.html with HTTP 422, but no matching release asset exists: {\"message\":\"Validation Failed\",\"request_id\":\"1FFE:3601DF:A3B8E:115B63:6B04F299\",\"documentation_url\":\"https://docs.github.com/rest\",\"errors\":[{\"resource\":\"ReleaseAsset\",\"code\":\"custom\",\"field\":\"file_count\",\"message\":\"file_count limited to 1000 assets per release\"}]}"
   ]
 }
