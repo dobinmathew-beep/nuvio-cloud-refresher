@@ -1,6 +1,6 @@
 # Independent Nuvio output verification
 
-**Checked:** 2026-11-24T19:06:17.576292+04:00 (Oman time)
+**Checked:** 2026-11-24T19:09:32.052407+04:00 (Oman time)
 **Overall:** 4/4 outputs passed
 
 | Output | Result |
@@ -35,10 +35,10 @@
   },
   "errors": [],
   "catalogHeads": {
-    "hindi": "tt37200939",
     "tamil": "tt18933846",
-    "malayalam": "tt41944351",
-    "telugu": "tt36915004"
+    "hindi": "tt37200939",
+    "telugu": "tt36915004",
+    "malayalam": "tt41944351"
   }
 }
 
