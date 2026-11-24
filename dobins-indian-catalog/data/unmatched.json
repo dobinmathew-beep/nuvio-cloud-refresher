@@ -440,6 +440,37 @@
     }
   },
   {
+    "name": "Durga",
+    "language": "malayalam",
+    "type": "series",
+    "ottDate": "2026-04-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69f02de730958fd1b959e7b9",
+      "title": "Durga",
+      "platform": "ZEE5",
+      "createdAt": "2026-04-28T03:47:50.929Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Malayalam"
+      ],
+      "releaseDate": "2026-04-28",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-28T03:48:06.951Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/o930uPaXiIdn6K0Ja8iYnrHrYTr.jpg",
+      "verified": true
+    }
+  },
+  {
     "name": "Second Love",
     "language": "tamil",
     "type": "series",
@@ -469,37 +500,6 @@
       "updatedAt": "2026-07-13T05:50:20.074Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/uyPIZNfoBndX1Dltaaql4v5TXwC.jpg",
       "votes": 1,
-      "verified": true
-    }
-  },
-  {
-    "name": "Durga",
-    "language": "malayalam",
-    "type": "series",
-    "ottDate": "2026-04-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f02de730958fd1b959e7b9",
-      "title": "Durga",
-      "platform": "ZEE5",
-      "createdAt": "2026-04-28T03:47:50.929Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Malayalam"
-      ],
-      "releaseDate": "2026-04-28",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-28T03:48:06.951Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/o930uPaXiIdn6K0Ja8iYnrHrYTr.jpg",
       "verified": true
     }
   },
@@ -812,6 +812,37 @@
     }
   },
   {
+    "name": "Roadies Rebirth",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6ad1898c3249ff69efda9cee",
+      "platform": "JioHotStar",
+      "title": "Roadies Rebirth",
+      "createdAt": "2026-10-16T02:18:52.613Z",
+      "genre": "Reality, Adventure",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-10-16",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-10-16T02:18:52.613Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Jodi Are U Ready Season 3 (Grand Finale)",
     "language": "tamil",
     "type": "series",
@@ -842,33 +873,32 @@
     }
   },
   {
-    "name": "Roadies Rebirth",
-    "language": "hindi",
+    "name": "The Eternal Love - Prologue",
+    "language": "telugu",
     "type": "series",
-    "ottDate": "2026-10-16",
+    "ottDate": "2026-04-23",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "JioHotStar"
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6ad1898c3249ff69efda9cee",
-      "platform": "JioHotStar",
-      "title": "Roadies Rebirth",
-      "createdAt": "2026-10-16T02:18:52.613Z",
-      "genre": "Reality, Adventure",
+      "_id": "69e9955d30958fd1b959de4b",
+      "platform": "ETV Win",
+      "title": "The Eternal Love - Prologue",
+      "createdAt": "2026-04-23T03:43:25.822Z",
+      "genre": "Drama, Romance",
       "imdbRating": null,
       "languages": [
-        "Hindi"
+        "Telugu"
       ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-10-16",
+      "releaseDate": "2026-04-23",
       "source_verified": true,
       "type": "Series",
-      "updatedAt": "2026-10-16T02:18:52.613Z",
+      "updatedAt": "2026-04-23T03:43:25.822Z",
       "verified": true
     }
   },
@@ -904,32 +934,32 @@
     }
   },
   {
-    "name": "The Eternal Love - Prologue",
+    "name": "Aa Gang Repu 3",
     "language": "telugu",
     "type": "series",
-    "ottDate": "2026-04-23",
+    "ottDate": "2026-04-16",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win"
+      "Aha"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "69e9955d30958fd1b959de4b",
-      "platform": "ETV Win",
-      "title": "The Eternal Love - Prologue",
-      "createdAt": "2026-04-23T03:43:25.822Z",
-      "genre": "Drama, Romance",
+      "_id": "69e05b1feb1fc7a84c30a5ca",
+      "title": "Aa Gang Repu 3",
+      "platform": "Aha",
+      "createdAt": "2026-04-16T03:44:31.038Z",
+      "genre": "Crime, Drama, Thriller",
       "imdbRating": null,
       "languages": [
         "Telugu"
       ],
-      "releaseDate": "2026-04-23",
+      "releaseDate": "2026-04-16",
       "source_verified": true,
       "type": "Series",
-      "updatedAt": "2026-04-23T03:43:25.822Z",
+      "updatedAt": "2026-04-16T03:44:31.038Z",
       "verified": true
     }
   },
@@ -964,66 +994,6 @@
     }
   },
   {
-    "name": "Aa Gang Repu 3",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-04-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Aha"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69e05b1feb1fc7a84c30a5ca",
-      "title": "Aa Gang Repu 3",
-      "platform": "Aha",
-      "createdAt": "2026-04-16T03:44:31.038Z",
-      "genre": "Crime, Drama, Thriller",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-04-16",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-16T03:44:31.038Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Kaakkee Circus",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-04-10",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69d87187eb1fc7a84cc6fe81",
-      "platform": "ZEE5",
-      "title": "Kaakkee Circus",
-      "createdAt": "2026-04-10T03:41:59.603Z",
-      "genre": "Crime Comedy Drama",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-04-10",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-10T03:41:59.603Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Katha Sudha",
     "language": "telugu",
     "type": "series",
@@ -1054,33 +1024,32 @@
     }
   },
   {
-    "name": "Love Beyond Wicket",
+    "name": "Kaakkee Circus",
     "language": "tamil",
     "type": "series",
-    "ottDate": "2026-04-09",
+    "ottDate": "2026-04-10",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "JioHotStar"
+      "ZEE5"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "69d71ed1eb1fc7a84cb42f98",
-      "platform": "JioHotStar",
-      "title": "Love Beyond Wicket",
-      "createdAt": "2026-04-09T03:36:49.253Z",
-      "genre": "Sports, Drama, Romance",
+      "_id": "69d87187eb1fc7a84cc6fe81",
+      "platform": "ZEE5",
+      "title": "Kaakkee Circus",
+      "createdAt": "2026-04-10T03:41:59.603Z",
+      "genre": "Crime Comedy Drama",
       "imdbRating": null,
       "languages": [
         "Tamil"
       ],
-      "releaseDate": "2026-04-09",
+      "releaseDate": "2026-04-10",
       "source_verified": true,
       "type": "Series",
-      "updatedAt": "2026-04-09T03:37:09.017Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/tC5K8MkLipwV9bIdJV9SQcCzgUF.jpg",
+      "updatedAt": "2026-04-10T03:41:59.603Z",
       "verified": true
     }
   },
@@ -1116,6 +1085,37 @@
     }
   },
   {
+    "name": "Love Beyond Wicket",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-04-09",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69d71ed1eb1fc7a84cb42f98",
+      "platform": "JioHotStar",
+      "title": "Love Beyond Wicket",
+      "createdAt": "2026-04-09T03:36:49.253Z",
+      "genre": "Sports, Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-04-09",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-09T03:37:09.017Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/tC5K8MkLipwV9bIdJV9SQcCzgUF.jpg",
+      "verified": true
+    }
+  },
+  {
     "name": "Chikoo Vs Bunty: Kushti Ki Jung",
     "language": "hindi",
     "type": "movie",
@@ -1147,36 +1147,6 @@
     }
   },
   {
-    "name": "Vanakkam Thamizha",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-03-25",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "SunNXT"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69c4167f991033953144f107",
-      "platform": "SunNXT",
-      "title": "Vanakkam Thamizha",
-      "createdAt": "2026-03-25T17:08:15.700Z",
-      "genre": "Talk Show, Entertainment",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-03-25",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-03-25T17:08:15.700Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Jungle Tales With Mowgli",
     "language": "hindi",
     "type": "movie",
@@ -1204,6 +1174,36 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-09-12T02:18:48.886Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Vanakkam Thamizha",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-03-25",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "SunNXT"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69c4167f991033953144f107",
+      "platform": "SunNXT",
+      "title": "Vanakkam Thamizha",
+      "createdAt": "2026-03-25T17:08:15.700Z",
+      "genre": "Talk Show, Entertainment",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-03-25",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-03-25T17:08:15.700Z",
       "verified": true
     }
   },

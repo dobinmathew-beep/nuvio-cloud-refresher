@@ -1,24 +1,25 @@
 {
-  "generatedAt": "2026-11-24T16:21:46.780483+04:00",
+  "generatedAt": "2026-11-24T18:30:56.118834+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 27,
+    "total": 28,
     "byLanguage": {
-      "hindi": 20,
+      "hindi": 21,
       "malayalam": 2,
       "telugu": 4,
       "tamil": 1
     },
     "byType": {
       "movie": 15,
-      "series": 12
+      "series": 13
     },
     "byMatchState": {
-      "published": 19,
+      "published": 20,
       "unmatched": 8
     },
     "bySource": {
       "https://www.dailyott.in/": 5,
+      "https://www.themoviedb.org/tv/338390": 1,
       "https://www.themoviedb.org/tv/338656": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
       "https://v3-cinemeta.strem.io/": 2,
@@ -56,6 +57,31 @@
         "releaseInfo": true
       },
       "catalog": "dobins_hi_movie"
+    },
+    {
+      "title": "Apsara",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-24",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/338390"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "premiere",
+      "detail": null,
+      "matchId": "tt50063835",
+      "matchState": "published",
+      "matchReason": "https://www.themoviedb.org/tv/338390",
+      "metadataComplete": true,
+      "metadataSource": "https://www.themoviedb.org/tv/338390",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
     },
     {
       "title": "Bigg Boss Season 20",
@@ -222,8 +248,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/",
@@ -523,8 +549,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -1109,7 +1135,7 @@
       "source": "Kerala TV multi-language OTT releases",
       "url": "https://www.keralatv.in/channel/ott/",
       "state": "live",
-      "records": 13
+      "records": 12
     },
     {
       "source": "DailyOTT upcoming dates",
@@ -1134,7 +1160,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 113,
+      "records": 111,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1171,7 +1197,7 @@
             "keralatv.in",
             "ottasia.com"
           ],
-          "detectedRecords": 25,
+          "detectedRecords": 23,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1269,8 +1295,8 @@
               "url": "https://www.keralatv.in/channel/ott/",
               "state": "live",
               "languageState": "records_found",
-              "records": 10,
-              "movieRecords": 9,
+              "records": 8,
+              "movieRecords": 7,
               "seriesRecords": 1
             },
             {
@@ -1819,10 +1845,10 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 623,
+      "records": 624,
       "counts": {
         "malayalam": 60,
-        "tamil": 120,
+        "tamil": 121,
         "telugu": 108,
         "hindi": 335
       },
@@ -1904,7 +1930,7 @@
         "keralatv.in",
         "ottasia.com"
       ],
-      "detectedRecords": 25,
+      "detectedRecords": 23,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2002,8 +2028,8 @@
           "url": "https://www.keralatv.in/channel/ott/",
           "state": "live",
           "languageState": "records_found",
-          "records": 10,
-          "movieRecords": 9,
+          "records": 8,
+          "movieRecords": 7,
           "seriesRecords": 1
         },
         {
