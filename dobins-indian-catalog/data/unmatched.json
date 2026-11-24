@@ -395,36 +395,6 @@
     }
   },
   {
-    "name": "KrishnaGadha",
-    "language": "malayalam",
-    "type": "series",
-    "ottDate": "2026-04-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f02de630958fd1b959e7b8",
-      "title": "KrishnaGadha",
-      "platform": "ZEE5",
-      "createdAt": "2026-04-28T03:47:50.738Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Malayalam"
-      ],
-      "releaseDate": "2026-04-28",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-28T03:47:50.738Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Second Love",
     "language": "tamil",
     "type": "series",
@@ -454,6 +424,36 @@
       "updatedAt": "2026-07-13T05:50:20.074Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/uyPIZNfoBndX1Dltaaql4v5TXwC.jpg",
       "votes": 1,
+      "verified": true
+    }
+  },
+  {
+    "name": "KrishnaGadha",
+    "language": "malayalam",
+    "type": "series",
+    "ottDate": "2026-04-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69f02de630958fd1b959e7b8",
+      "title": "KrishnaGadha",
+      "platform": "ZEE5",
+      "createdAt": "2026-04-28T03:47:50.738Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Malayalam"
+      ],
+      "releaseDate": "2026-04-28",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-28T03:47:50.738Z",
       "verified": true
     }
   },
@@ -581,36 +581,6 @@
     }
   },
   {
-    "name": "Auto Vijayashanthi (Episode 221)",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-05-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a02a2999dcddba08328d0f0",
-      "title": "Auto Vijayashanthi (Episode 221)",
-      "platform": "ZEE5",
-      "createdAt": "2026-05-12T03:46:33.489Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-12",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-05-12T03:46:33.489Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Avalaga Irunthal",
     "language": "tamil",
     "type": "movie",
@@ -639,6 +609,36 @@
       "type": "Movie",
       "updatedAt": "2026-10-14T02:18:51.600Z",
       "votes": 0,
+      "verified": true
+    }
+  },
+  {
+    "name": "Auto Vijayashanthi (Episode 221)",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-05-12",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a02a2999dcddba08328d0f0",
+      "title": "Auto Vijayashanthi (Episode 221)",
+      "platform": "ZEE5",
+      "createdAt": "2026-05-12T03:46:33.489Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-12",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-05-12T03:46:33.489Z",
       "verified": true
     }
   },
@@ -858,6 +858,37 @@
     }
   },
   {
+    "name": "Thai Maaman",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-04-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69f02de630958fd1b959e7b7",
+      "title": "Thai Maaman",
+      "platform": "JioHotStar",
+      "createdAt": "2026-04-28T03:47:50.537Z",
+      "genre": "Family Drama",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-04-28",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-28T03:48:08.007Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/8GGzM0vq3xttbYA0GNOHDI6iVlT.jpg",
+      "verified": true
+    }
+  },
+  {
     "name": "The Eternal Love - Prologue",
     "language": "telugu",
     "type": "series",
@@ -888,33 +919,32 @@
     }
   },
   {
-    "name": "Thai Maaman",
+    "name": "WWE (Tamil Dub)",
     "language": "tamil",
     "type": "series",
-    "ottDate": "2026-04-28",
+    "ottDate": "2026-04-18",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "JioHotStar"
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "69f02de630958fd1b959e7b7",
-      "title": "Thai Maaman",
-      "platform": "JioHotStar",
-      "createdAt": "2026-04-28T03:47:50.537Z",
-      "genre": "Family Drama",
+      "_id": "69e2fc0930958fd1b908a124",
+      "title": "WWE (Tamil Dub)",
+      "platform": "Netflix",
+      "createdAt": "2026-04-18T03:35:37.425Z",
+      "genre": "Sports Entertainment, Action",
       "imdbRating": null,
       "languages": [
         "Tamil"
       ],
-      "releaseDate": "2026-04-28",
+      "releaseDate": "2026-04-18",
       "source_verified": true,
       "type": "Series",
-      "updatedAt": "2026-04-28T03:48:08.007Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/8GGzM0vq3xttbYA0GNOHDI6iVlT.jpg",
+      "updatedAt": "2026-04-18T03:35:37.425Z",
       "verified": true
     }
   },
@@ -949,32 +979,32 @@
     }
   },
   {
-    "name": "WWE (Tamil Dub)",
+    "name": "Kaakkee Circus",
     "language": "tamil",
     "type": "series",
-    "ottDate": "2026-04-18",
+    "ottDate": "2026-04-10",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix"
+      "ZEE5"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "69e2fc0930958fd1b908a124",
-      "title": "WWE (Tamil Dub)",
-      "platform": "Netflix",
-      "createdAt": "2026-04-18T03:35:37.425Z",
-      "genre": "Sports Entertainment, Action",
+      "_id": "69d87187eb1fc7a84cc6fe81",
+      "platform": "ZEE5",
+      "title": "Kaakkee Circus",
+      "createdAt": "2026-04-10T03:41:59.603Z",
+      "genre": "Crime Comedy Drama",
       "imdbRating": null,
       "languages": [
         "Tamil"
       ],
-      "releaseDate": "2026-04-18",
+      "releaseDate": "2026-04-10",
       "source_verified": true,
       "type": "Series",
-      "updatedAt": "2026-04-18T03:35:37.425Z",
+      "updatedAt": "2026-04-10T03:41:59.603Z",
       "verified": true
     }
   },
@@ -1036,36 +1066,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-10-02T02:18:50.680Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Kaakkee Circus",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-04-10",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69d87187eb1fc7a84cc6fe81",
-      "platform": "ZEE5",
-      "title": "Kaakkee Circus",
-      "createdAt": "2026-04-10T03:41:59.603Z",
-      "genre": "Crime Comedy Drama",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-04-10",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-10T03:41:59.603Z",
       "verified": true
     }
   },
@@ -1652,8 +1652,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win",
-      "Netflix"
+      "Netflix",
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {

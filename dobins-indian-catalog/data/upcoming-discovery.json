@@ -1,34 +1,89 @@
 {
-  "generatedAt": "2026-11-24T02:08:31.779017+04:00",
+  "generatedAt": "2026-11-24T04:15:31.772560+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 21,
+    "total": 23,
     "byLanguage": {
-      "hindi": 14,
+      "hindi": 16,
       "malayalam": 3,
       "telugu": 3,
       "tamil": 1
     },
     "byType": {
-      "movie": 12,
-      "series": 9
+      "series": 11,
+      "movie": 12
     },
     "byMatchState": {
-      "unmatched": 7,
-      "published": 14
+      "published": 16,
+      "unmatched": 7
     },
     "bySource": {
+      "https://www.dailyott.in/": 3,
+      "https://www.themoviedb.org/tv/338656": 1,
+      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
+      "https://v3-cinemeta.strem.io/": 2,
       "https://ottasia.com/ott-releases-this-week?country=IN": 13,
       "https://www.myvi.in/blog/ott-releases-this-week": 1,
-      "https://www.dailyott.in/": 2,
       "https://cinebuds.com/ott-releases-this-week/": 4,
       "https://www.keralatv.in/channel/ott/": 2,
-      "https://api.tvmaze.com/schedule/web": 1,
-      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
-      "https://v3-cinemeta.strem.io/": 1
+      "https://api.tvmaze.com/schedule/web": 1
     }
   },
   "items": [
+    {
+      "title": "Bigg Boss Season 20",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-24",
+      "platforms": [
+        "JioHotStar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": null,
+      "detail": null,
+      "matchId": "tt1281973",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "Lo Chudail Chali Sasural",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-24",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/338656",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "episode",
+      "detail": null,
+      "matchId": "tt43636966",
+      "matchState": "published",
+      "matchReason": "https://v3-cinemeta.strem.io/",
+      "metadataComplete": true,
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
     {
       "title": "Acedia",
       "language": "hindi",
@@ -113,12 +168,12 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Prime Video",
-        "Netflix"
+        "Netflix",
+        "Prime Video"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -441,8 +496,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -947,25 +1002,25 @@
       "source": "OTTChecker Malayalam recent releases",
       "url": "https://www.ottchecker.com/ott-releases/malayalam",
       "state": "live",
-      "records": 15
+      "records": 14
     },
     {
       "source": "OTTChecker Tamil recent releases",
       "url": "https://www.ottchecker.com/ott-releases/tamil",
       "state": "live",
-      "records": 19
+      "records": 17
     },
     {
       "source": "OTTChecker Telugu recent releases",
       "url": "https://www.ottchecker.com/ott-releases/telugu",
       "state": "live",
-      "records": 17
+      "records": 16
     },
     {
       "source": "OTTChecker Hindi recent releases",
       "url": "https://www.ottchecker.com/ott-releases/hindi",
       "state": "live",
-      "records": 20
+      "records": 17
     },
     {
       "source": "Kerala TV multi-language OTT releases",
@@ -997,7 +1052,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 115,
+      "records": 108,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1034,7 +1089,7 @@
             "keralatv.in",
             "ottasia.com"
           ],
-          "detectedRecords": 27,
+          "detectedRecords": 26,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1123,8 +1178,8 @@
               "url": "https://www.ottchecker.com/ott-releases/malayalam",
               "state": "live",
               "languageState": "records_found",
-              "records": 15,
-              "movieRecords": 15,
+              "records": 14,
+              "movieRecords": 14,
               "seriesRecords": 0
             },
             {
@@ -1199,7 +1254,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 21,
+          "detectedRecords": 19,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1270,9 +1325,9 @@
               "url": "https://www.ottchecker.com/ott-releases/tamil",
               "state": "live",
               "languageState": "records_found",
-              "records": 19,
-              "movieRecords": 16,
-              "seriesRecords": 3
+              "records": 17,
+              "movieRecords": 15,
+              "seriesRecords": 2
             },
             {
               "source": "Kerala TV multi-language OTT releases",
@@ -1348,7 +1403,7 @@
           "sourceDomainsWithSeriesRecords": [
             "ottchecker.com"
           ],
-          "detectedRecords": 25,
+          "detectedRecords": 24,
           "coverageStatus": "partial",
           "sources": [
             {
@@ -1419,8 +1474,8 @@
               "url": "https://www.ottchecker.com/ott-releases/telugu",
               "state": "live",
               "languageState": "records_found",
-              "records": 17,
-              "movieRecords": 15,
+              "records": 16,
+              "movieRecords": 14,
               "seriesRecords": 2
             },
             {
@@ -1502,7 +1557,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 42,
+          "detectedRecords": 39,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1573,9 +1628,9 @@
               "url": "https://www.ottchecker.com/ott-releases/hindi",
               "state": "live",
               "languageState": "records_found",
-              "records": 20,
-              "movieRecords": 15,
-              "seriesRecords": 5
+              "records": 17,
+              "movieRecords": 14,
+              "seriesRecords": 3
             },
             {
               "source": "Kerala TV multi-language OTT releases",
@@ -1664,7 +1719,7 @@
       "language": "hindi",
       "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
       "state": "live",
-      "records": 299
+      "records": 300
     },
     {
       "source": "TMDB streaming-series discovery",
@@ -1682,12 +1737,12 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 621,
+      "records": 622,
       "counts": {
         "malayalam": 60,
         "tamil": 120,
         "telugu": 108,
-        "hindi": 333
+        "hindi": 334
       },
       "state": "live"
     },
@@ -1767,7 +1822,7 @@
         "keralatv.in",
         "ottasia.com"
       ],
-      "detectedRecords": 27,
+      "detectedRecords": 26,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -1856,8 +1911,8 @@
           "url": "https://www.ottchecker.com/ott-releases/malayalam",
           "state": "live",
           "languageState": "records_found",
-          "records": 15,
-          "movieRecords": 15,
+          "records": 14,
+          "movieRecords": 14,
           "seriesRecords": 0
         },
         {
@@ -1932,7 +1987,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 21,
+      "detectedRecords": 19,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2003,9 +2058,9 @@
           "url": "https://www.ottchecker.com/ott-releases/tamil",
           "state": "live",
           "languageState": "records_found",
-          "records": 19,
-          "movieRecords": 16,
-          "seriesRecords": 3
+          "records": 17,
+          "movieRecords": 15,
+          "seriesRecords": 2
         },
         {
           "source": "Kerala TV multi-language OTT releases",
@@ -2081,7 +2136,7 @@
       "sourceDomainsWithSeriesRecords": [
         "ottchecker.com"
       ],
-      "detectedRecords": 25,
+      "detectedRecords": 24,
       "coverageStatus": "partial",
       "sources": [
         {
@@ -2152,8 +2207,8 @@
           "url": "https://www.ottchecker.com/ott-releases/telugu",
           "state": "live",
           "languageState": "records_found",
-          "records": 17,
-          "movieRecords": 15,
+          "records": 16,
+          "movieRecords": 14,
           "seriesRecords": 2
         },
         {
@@ -2235,7 +2290,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 42,
+      "detectedRecords": 39,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2306,9 +2361,9 @@
           "url": "https://www.ottchecker.com/ott-releases/hindi",
           "state": "live",
           "languageState": "records_found",
-          "records": 20,
-          "movieRecords": 15,
-          "seriesRecords": 5
+          "records": 17,
+          "movieRecords": 14,
+          "seriesRecords": 3
         },
         {
           "source": "Kerala TV multi-language OTT releases",
