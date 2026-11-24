@@ -2,7 +2,7 @@ import unittest
 from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from featured import first_valid, valid_id
+from featured import first_valid, valid, valid_id
 
 class FeaturedSelectionTests(unittest.TestCase):
     # Backdrop centres accept real IMDb- and TMDB-linked movies in source order.
@@ -31,6 +31,14 @@ class FeaturedSelectionTests(unittest.TestCase):
             {'id':'tt39239818','type':'movie','poster':'haiku.jpg','name':'Haiku'},
         ]
         self.assertEqual(first_valid(metas,'tamil')['id'].split('||',1)[0],'tmdb:1822586')
+
+    def test_tmdb_composite_movie_is_valid_for_backdrop_centre(self):
+        self.assertTrue(valid({
+            'id':'tmdb:1822586||Mazhalai||2026||movie',
+            'type':'movie',
+            'poster':'https://image.tmdb.org/t/p/original/mazhalai.jpg',
+            'name':'Mazhalai'
+        },'tamil'))
 
     def test_tmdb_only_catalog_can_supply_first_center(self):
         self.assertEqual(first_valid([
