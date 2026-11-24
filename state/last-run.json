@@ -1,7 +1,7 @@
 {
-  "attempted_at": "2026-11-24T10:37:44.997919+04:00",
+  "attempted_at": "2026-11-24T14:20:43.364922+04:00",
   "cycle": "2026-11-24",
   "errors": [
-    "heroes: GitHub rejected 23c3ee2be1110a67bce9fd76-index.html with HTTP 422, but no matching release asset exists: {\"message\":\"Validation Failed\",\"request_id\":\"1ECD:3406F1:168CC:681C2:6B05325F\",\"documentation_url\":\"https://docs.github.com/rest\",\"errors\":[{\"resource\":\"ReleaseAsset\",\"code\":\"custom\",\"field\":\"file_count\",\"message\":\"file_count limited to 1000 assets per release\"}]}"
+    "Current IndianRegional catalog-head selection: New confirmed centre selections are not yet visible; retained last-good images"
   ]
 }
