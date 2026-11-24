@@ -1,25 +1,24 @@
 {
-  "generatedAt": "2026-11-24T10:14:26.334781+04:00",
+  "generatedAt": "2026-11-24T14:20:01.913596+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 28,
+    "total": 27,
     "byLanguage": {
-      "hindi": 21,
+      "hindi": 20,
       "malayalam": 3,
       "telugu": 3,
       "tamil": 1
     },
     "byType": {
       "movie": 15,
-      "series": 13
+      "series": 12
     },
     "byMatchState": {
       "published": 20,
-      "unmatched": 8
+      "unmatched": 7
     },
     "bySource": {
       "https://www.dailyott.in/": 5,
-      "https://www.themoviedb.org/tv/338390": 1,
       "https://www.themoviedb.org/tv/338656": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
       "https://v3-cinemeta.strem.io/": 2,
@@ -57,31 +56,6 @@
         "releaseInfo": true
       },
       "catalog": "dobins_hi_movie"
-    },
-    {
-      "title": "Apsara",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-24",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/338390"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "premiere",
-      "detail": null,
-      "matchId": "tt50063835",
-      "matchState": "published",
-      "matchReason": "https://www.themoviedb.org/tv/338390",
-      "metadataComplete": true,
-      "metadataSource": "https://www.themoviedb.org/tv/338390",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
     },
     {
       "title": "Bigg Boss Season 20",
@@ -248,12 +222,12 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-releases-this-week/"
+        "https://cinebuds.com/ott-releases-this-week/",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
       "releaseDateBasis": "confirmed announcement",
@@ -450,18 +424,18 @@
       "confirmed": true,
       "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
       "detail": "https://ottasia.com/title/tv/342403/satyameva?country=IN",
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
+      "matchId": "tmdb:342403",
+      "matchState": "published",
+      "matchReason": "TMDB exact-title search + verified detail page",
       "metadataComplete": false,
-      "metadataSource": null,
+      "metadataSource": "TMDB exact-title search + verified detail page",
       "metadataFields": {
-        "poster": false,
+        "poster": true,
         "description": false,
-        "genres": false,
-        "releaseInfo": false
+        "genres": true,
+        "releaseInfo": true
       },
-      "catalog": null
+      "catalog": "dobins_ml_series"
     },
     {
       "title": "Aadarsha Kutumbam House No: 47 – AK47",
@@ -576,8 +550,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -782,32 +756,13 @@
   "malayalamReview": {
     "policy": "Unmatched Malayalam source detections are held out until an unambiguous IMDb or TMDB identity and complete metadata are verified.",
     "counts": {
-      "total": 9,
+      "total": 8,
       "byType": {
-        "series": 6,
-        "movie": 3
+        "movie": 3,
+        "series": 5
       }
     },
     "items": [
-      {
-        "name": "Satyameva",
-        "language": "malayalam",
-        "type": "series",
-        "ottDate": "2026-11-27",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://ottasia.com/ott-releases-this-week?country=IN"
-        ],
-        "platforms": [
-          "ZEE5"
-        ],
-        "detail": "https://ottasia.com/title/tv/342403/satyameva?country=IN",
-        "sourceRecord": {
-          "title": "Satyameva",
-          "releaseDate": "2026-11-27",
-          "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-        }
-      },
       {
         "name": "Pendulum",
         "language": "malayalam",
@@ -1866,12 +1821,12 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 622,
+      "records": 623,
       "counts": {
         "malayalam": 60,
         "tamil": 120,
         "telugu": 108,
-        "hindi": 334
+        "hindi": 335
       },
       "state": "live"
     },

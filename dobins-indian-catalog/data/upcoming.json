@@ -1,26 +1,8 @@
 {
-  "generatedAt": "2026-11-24T10:14:26.334781+04:00",
+  "generatedAt": "2026-11-24T14:20:01.913596+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 15,
+  "count": 16,
   "items": [
-    {
-      "id": "tt50063835",
-      "aliases": [
-        "tt50063835"
-      ],
-      "name": "Apsara",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-25",
-      "kind": "episode",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/338390"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.themoviedb.org/tv/338390"
-    },
     {
       "id": "tt1281973",
       "aliases": [
@@ -146,6 +128,26 @@
       "source": "https://www.dailyott.in/"
     },
     {
+      "id": "tt44686897",
+      "aliases": [
+        "tt44686897"
+      ],
+      "name": "Prince of Mollywood",
+      "language": "malayalam",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "kind": "episode",
+      "platforms": [],
+      "sources": [
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/332061"
+      ],
+      "catalog": "dobins_ml_series",
+      "region": "IN",
+      "source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json"
+    },
+    {
       "id": "tt50508547",
       "aliases": [
         "tt50508547"
@@ -155,6 +157,26 @@
       "type": "series",
       "releaseDate": "2026-11-27",
       "kind": "episode",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "catalog": "dobins_ml_series",
+      "region": "IN",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    },
+    {
+      "id": "tmdb:342403",
+      "aliases": [
+        "tmdb:342403"
+      ],
+      "name": "Satyameva",
+      "language": "malayalam",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "kind": "premiere",
       "platforms": [
         "ZEE5"
       ],
@@ -220,14 +242,14 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
       "catalog": "dobins_hi_series",
       "region": "IN",
-      "source": "https://www.dailyott.in/"
+      "source": "https://api.tvmaze.com/schedule/web"
     },
     {
       "id": "tt38195069",
