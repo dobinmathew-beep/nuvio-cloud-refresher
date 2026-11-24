@@ -46,13 +46,36 @@ def release(tag):
     return api('/releases','POST',{'tag_name':tag,'name':'Nuvio generated website artifacts','body':'Generated media and rendering assets for this personal website. No AI is used.','draft':False,'prerelease':False})
 
 def upload(rel,name,path,known):
+    """Upload content-addressed assets safely, including concurrent 422 races."""
     raw=path.read_bytes();digest=sha(raw)
     if name in known:
         return known[name]['browser_download_url']
     url=rel['upload_url'].split('{')[0]+'?name='+urllib.parse.quote(name)
-    result=api(url,'POST',raw=raw,mime=mimetypes.guess_type(path.name)[0] or 'application/octet-stream')
-    known[name]=result
-    return result['browser_download_url']
+    try:
+        result=api(url,'POST',raw=raw,mime=mimetypes.guess_type(path.name)[0] or 'application/octet-stream')
+        known[name]=result
+        return result['browser_download_url']
+    except urllib.error.HTTPError as exc:
+        detail=exc.read().decode(errors='replace')[-2000:]
+        if exc.code!=422:
+            raise RuntimeError(f'GitHub release upload failed ({exc.code}) for {name}: {detail}') from exc
+        # Another publisher may have uploaded this same content-addressed name
+        # after our asset listing. Refresh the release index before deciding.
+        refreshed=entries(rel)
+        existing=refreshed.get(name)
+        if existing is None:
+            raise RuntimeError(f'GitHub rejected {name} with HTTP 422, but no matching release asset exists: {detail}') from exc
+        remote_url=existing['browser_download_url']
+        remote_digest=existing.get('digest','')
+        if remote_digest.startswith('sha256:'):
+            matches=remote_digest.split(':',1)[1].lower()==digest
+        else:
+            matches=sha(get(remote_url))==digest
+        if not matches:
+            raise RuntimeError(f'HTTP 422 asset-name collision for {name}: existing release asset does not match local SHA-256 {digest}; refusing to replace it. API response: {detail}') from exc
+        known.update(refreshed)
+        print('Reused concurrently published identical release asset:',name,flush=True)
+        return remote_url
 
 def entries(rel):
     assets=[];page=1
@@ -211,7 +234,30 @@ def heroes():
     # Pruning here is unsafe: a later git rebase/push failure would leave the
     # committed manifest pointing at assets that this run has already deleted.
     # A separate post-commit cleanup can be added once it is transaction-safe.
-    return {'languages':list(LANGS),'checked_at':datetime.now(ZoneInfo('Asia/Muscat')).isoformat(),'films_per_language':20,'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}
+    # Persist content and catalog fingerprints with the successful cycle. The
+    # independent verifier/dashboard can now distinguish a playable old reel
+    # from the exact render that this refresh intended to publish.
+    language_fingerprints={}
+    for lang in LANGS:
+        meta=json.loads((dist/'hero'/(lang+'-daily.json')).read_text())
+        video_path='/hero/'+lang+'.mp4'
+        language_fingerprints[lang]={
+            'video_sha256':sha((dist/'hero'/(lang+'.mp4')).read_bytes()),
+            'metadata_sha256':sha((dist/'hero'/(lang+'-daily.json')).read_bytes()),
+            'checked_at':meta['checked_at'],
+            'movie_ids':[str(x['id']) for x in meta['movies']],
+            'catalog':meta['catalog'],
+            'film_count':len(meta['movies'])
+        }
+    return {
+        'languages':list(LANGS),
+        'checked_at':datetime.now(ZoneInfo('Asia/Muscat')).isoformat(),
+        'films_per_language':20,
+        'opening_version':1,
+        'selection_policy':'imdb-catalog-order-v1',
+        'language_fingerprints':language_fingerprints,
+        'published_asset_sha256':{path:updated[path]['sha256'] for path in needed}
+    }
 
 def main():
     now=datetime.now(ZoneInfo('Asia/Muscat'));target=due(now,'media');cycle=target.date().isoformat();refresh_cycle=target.isoformat()
