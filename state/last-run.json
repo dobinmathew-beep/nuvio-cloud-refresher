@@ -1,7 +1,7 @@
 {
-  "attempted_at": "2026-11-24T15:14:42.978669+04:00",
+  "attempted_at": "2026-11-24T16:22:08.682401+04:00",
   "cycle": "2026-11-24",
   "errors": [
-    "heroes: GitHub rejected 69e7dee75124af5a4a21e8b0-index.html with HTTP 422, but no matching release asset exists: {\"message\":\"Validation Failed\",\"request_id\":\"A808:E8391:CF162:194A38:6B057359\",\"documentation_url\":\"https://docs.github.com/rest\",\"errors\":[{\"resource\":\"ReleaseAsset\",\"code\":\"custom\",\"field\":\"file_count\",\"message\":\"file_count limited to 1000 assets per release\"}]}"
+    "heroes: GitHub rejected 4af3b984643d5c34e0c9c39c-index.html with HTTP 422, but no matching release asset exists: {\"message\":\"Validation Failed\",\"request_id\":\"A808:334FFE:18656B:247045:6B058388\",\"documentation_url\":\"https://docs.github.com/rest\",\"errors\":[{\"resource\":\"ReleaseAsset\",\"code\":\"custom\",\"field\":\"file_count\",\"message\":\"file_count limited to 1000 assets per release\"}]}"
   ]
 }
