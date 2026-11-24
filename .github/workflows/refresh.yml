@@ -78,6 +78,41 @@ jobs:
         id: refresh
         continue-on-error: true
         run: python -u cloud.py
+      - name: Verify exact published reel fingerprints on the public URL
+        id: reelcheck
+        if: steps.refresh.outcome == 'success'
+        continue-on-error: true
+        run: |
+          python - <<'PY'
+          import hashlib, json, urllib.request
+          from pathlib import Path
+          origin='https://dobin-nuvio-star-cards.quickfield138.chatgpt.site'
+          state=json.loads(Path('state/success.json').read_text())
+          media=json.loads(Path('state/media.json').read_text())
+          heroes=state.get('heroes',{})
+          fingerprints=heroes.get('language_fingerprints',{})
+          assert set(fingerprints)=={'hindi','tamil','malayalam','telugu'}, 'Missing four-language render fingerprints'
+          def fetch(url):
+              req=urllib.request.Request(url,headers={'Cache-Control':'no-cache','User-Agent':'Nuvio-reel-freshness-check/1'})
+              with urllib.request.urlopen(req,timeout=180) as r:
+                  return r.read()
+          for lang,fp in fingerprints.items():
+              video_path=f'/hero/{lang}.mp4'
+              json_path=f'/hero/{lang}-daily.json'
+              for path,expected in ((video_path,fp['video_sha256']),(json_path,fp['metadata_sha256'])):
+                  asset=media[path]
+                  assert asset['sha256']==expected, f'{path}: state/media.json does not point at this render'
+                  public=fetch(origin+path+'?freshness='+expected[:16])
+                  actual=hashlib.sha256(public).hexdigest()
+                  assert actual==expected, f'{path}: public URL is stale or mismatched (expected {expected}, got {actual})'
+              metadata=json.loads(fetch(origin+json_path+'?freshness='+fp['metadata_sha256'][:16]))
+              assert metadata.get('checked_at')==fp['checked_at'], f'{lang}: public metadata timestamp mismatch'
+              ids=[str(x['id']) for x in metadata.get('movies',[])]
+              assert ids==fp['movie_ids'], f'{lang}: public movie list differs from the render'
+              assert len(ids)==20, f'{lang}: expected 20 films, found {len(ids)}'
+              print(f'PUBLIC FRESHNESS VERIFIED {lang}: {len(ids)} films, SHA-256 {fp["video_sha256"]}')
+          print('All four public reels exactly match the newly rendered MP4 and daily metadata fingerprints.')
+          PY
       - name: Persist verified media pointers and partial progress
         if: always()
         run: |
@@ -95,7 +130,7 @@ jobs:
             exit 1
           fi
       - name: Mark incomplete refresh for the ten-minute watchdog
-        if: steps.refresh.outcome == 'failure'
+        if: steps.refresh.outcome == 'failure' || steps.reelcheck.outcome == 'failure'
         run: |
           echo 'Refresh incomplete. Last-good media retained. The next scheduled check retries pending work.'
           exit 1
