@@ -2,7 +2,7 @@
 
 **Backdrops · Reels · Addon · India EPG**
 
-Last checked: **24 Nov 2026, 06:13 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45310715759)
+Last checked: **24 Nov 2026, 06:14 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45310882981)
 
 **Refresh checks:** every 30 minutes. Outputs refresh when their two-hour cycle is due. **Watchdog and retry checks:** every 30 minutes; no per-workflow or external 10-minute trigger.
 
@@ -13,7 +13,7 @@ Last checked: **24 Nov 2026, 06:13 Oman time**. [This check’s logs](https://gi
 | Backdrops | 🔄 Refresh running / queued | 24 Nov 2026, 06:00 | 160 layouts; 16 image checks; this part verified, combined media cycle still pending | cancelled · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45308102187) |
 | Reels | 🔄 Refresh running / queued | Not recorded | 0 languages; ? films per reel | cancelled · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45308102187) |
 | Addon | 🔄 Refresh running / queued | 24 Nov 2026, 04:00 | 1076 catalog entries; 63 pending matches | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45310727297) |
-| EPG | 🔄 Refresh running / queued | 24 Nov 2026, 04:14 | 622 / 832 channel IDs with listings; 210 unresolved; 66701 programmes. | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45310733072) |
+| EPG | ✅ Updated | 24 Nov 2026, 06:13 | 617 / 832 channel IDs with listings; 215 unresolved; 64688 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45310733072) |
 
 ✅ Updated = verified for the current two-hour cycle. 🔄 Running / retry requested = work is pending. ⚠️ / ❌ = attention or retry needed. The two media outputs share one workflow and both must pass before the combined cycle is complete.
 
