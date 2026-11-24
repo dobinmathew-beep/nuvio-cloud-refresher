@@ -97,7 +97,7 @@ jobs:
         continue-on-error: true
         run: |
           python - <<'PY'
-          import hashlib, json, urllib.request
+          import hashlib, json, time, urllib.request
           from pathlib import Path
           origin='https://dobin-nuvio-star-cards.quickfield138.chatgpt.site'
           state=json.loads(Path('state/success.json').read_text())
@@ -129,10 +129,8 @@ jobs:
               for path,expected in ((video_path,fp['video_sha256']),(json_path,fp['metadata_sha256'])):
                   asset=media[path]
                   assert asset['sha256']==expected, f'{path}: state/media.json does not point at this render'
-                  public=fetch(origin+path+'?freshness='+expected[:16])
-                  actual=hashlib.sha256(public).hexdigest()
-                  assert actual==expected, f'{path}: public URL is stale or mismatched (expected {expected}, got {actual})'
-              metadata=json.loads(fetch(origin+json_path+'?freshness='+fp['metadata_sha256'][:16]))
+                  public=fetch(origin+path+'?freshness='+expected[:16],expected)
+                                metadata=json.loads(fetch(origin+json_path+'?freshness='+fp['metadata_sha256'][:16],fp['metadata_sha256']))
               assert metadata.get('checked_at')==fp['checked_at'], f'{lang}: public metadata timestamp mismatch'
               ids=[str(x['id']) for x in metadata.get('movies',[])]
               assert ids==fp['movie_ids'], f'{lang}: public movie list differs from the render'
