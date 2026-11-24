@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T14:20:01.913596+04:00",
+  "generatedAt": "2026-11-24T16:21:46.780483+04:00",
   "policy": "confirmed-source-matched-id-v2",
   "count": 16,
   "items": [
@@ -148,26 +148,6 @@
       "source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json"
     },
     {
-      "id": "tt50508547",
-      "aliases": [
-        "tt50508547"
-      ],
-      "name": "Sathyameva",
-      "language": "malayalam",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "episode",
-      "platforms": [
-        "ZEE5"
-      ],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "catalog": "dobins_ml_series",
-      "region": "IN",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    },
-    {
       "id": "tmdb:342403",
       "aliases": [
         "tmdb:342403"
@@ -242,14 +222,14 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
       "catalog": "dobins_hi_series",
       "region": "IN",
-      "source": "https://api.tvmaze.com/schedule/web"
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tt38195069",
@@ -328,6 +308,29 @@
       "catalog": "dobins_hi_series",
       "region": "IN",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    },
+    {
+      "id": "tt16997004",
+      "aliases": [
+        "tt16997004"
+      ],
+      "name": "Matka King",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2027-01-01",
+      "kind": "episode",
+      "platforms": [
+        "Prime Video"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/249765"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.dailyott.in/"
     }
   ]
 }

@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-24T14:20:01.913596+04:00",
+  "generatedAt": "2026-11-24T16:21:46.780483+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 27,
     "byLanguage": {
       "hindi": 20,
-      "malayalam": 3,
-      "telugu": 3,
+      "malayalam": 2,
+      "telugu": 4,
       "tamil": 1
     },
     "byType": {
@@ -14,8 +14,8 @@
       "series": 12
     },
     "byMatchState": {
-      "published": 20,
-      "unmatched": 7
+      "published": 19,
+      "unmatched": 8
     },
     "bySource": {
       "https://www.dailyott.in/": 5,
@@ -222,8 +222,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Prime Video",
-        "Netflix"
+        "Netflix",
+        "Prime Video"
       ],
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/",
@@ -271,35 +271,6 @@
         "releaseInfo": true
       },
       "catalog": "dobins_hi_movie"
-    },
-    {
-      "title": "Jindey",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "JioHotstar",
-        "Hotstar",
-        "ZEE5"
-      ],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
-      "detail": "https://ottasia.com/title/movie/1765369/jindey?country=IN",
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
     },
     {
       "title": "Nayyi Navelli",
@@ -355,33 +326,6 @@
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Sathyameva",
-      "language": "malayalam",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "ZEE5"
-      ],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
-      "detail": "https://ottasia.com/title/tv/342466/sathyameva?country=IN",
-      "matchId": "tt50508547",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_ml_series"
     },
     {
       "title": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
@@ -492,6 +436,35 @@
       "catalog": null
     },
     {
+      "title": "Jindey",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "platforms": [
+        "JioHotstar",
+        "Hotstar",
+        "ZEE5"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/movie/1765369/jindey?country=IN",
+      "matchId": null,
+      "matchState": "unmatched",
+      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
+    },
+    {
       "title": "Hatela Gang",
       "language": "hindi",
       "type": "movie",
@@ -550,8 +523,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -622,6 +595,31 @@
         "releaseInfo": true
       },
       "catalog": "dobins_ta_series"
+    },
+    {
+      "title": "Dalimp",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-12-04",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/tv/343304/dalimp?country=IN",
+      "matchId": null,
+      "matchState": "unmatched",
+      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
+      "metadataComplete": false,
+      "metadataSource": null,
+      "metadataFields": {
+        "poster": false,
+        "description": false,
+        "genres": false,
+        "releaseInfo": false
+      },
+      "catalog": null
     },
     {
       "title": "O Saathi Re",
@@ -758,11 +756,31 @@
     "counts": {
       "total": 8,
       "byType": {
-        "movie": 3,
-        "series": 5
+        "series": 5,
+        "movie": 3
       }
     },
     "items": [
+      {
+        "name": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
+        "language": "malayalam",
+        "type": "series",
+        "ottDate": "2026-11-27",
+        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+        "sources": [
+          "https://www.keralatv.in/channel/ott/"
+        ],
+        "platforms": [
+          "ZEE5"
+        ],
+        "detail": "https://www.keralatv.in/sathyameva-zee5-malayalam-series-cast-characters/",
+        "sourceRecord": {
+          "title": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
+          "releaseDate": "2026-11-27",
+          "source": "https://www.keralatv.in/channel/ott/",
+          "headline": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram, Streaming from 27 November"
+        }
+      },
       {
         "name": "Pendulum",
         "language": "malayalam",
@@ -786,26 +804,6 @@
           "releaseDate": "2026-11-22",
           "source": "https://www.keralatv.in/channel/ott/",
           "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
-        }
-      },
-      {
-        "name": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
-        "language": "malayalam",
-        "type": "series",
-        "ottDate": "2026-11-27",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://www.keralatv.in/channel/ott/"
-        ],
-        "platforms": [
-          "ZEE5"
-        ],
-        "detail": "https://www.keralatv.in/sathyameva-zee5-malayalam-series-cast-characters/",
-        "sourceRecord": {
-          "title": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
-          "releaseDate": "2026-11-27",
-          "source": "https://www.keralatv.in/channel/ott/",
-          "headline": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram, Streaming from 27 November"
         }
       },
       {
@@ -1033,7 +1031,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 17
+      "records": 18
     },
     {
       "source": "Vi weekly OTT calendar",
@@ -1136,7 +1134,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 111,
+      "records": 113,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1173,7 +1171,7 @@
             "keralatv.in",
             "ottasia.com"
           ],
-          "detectedRecords": 26,
+          "detectedRecords": 25,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1190,9 +1188,9 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 2,
+              "records": 1,
               "movieRecords": 0,
-              "seriesRecords": 2
+              "seriesRecords": 1
             },
             {
               "source": "Vi weekly OTT calendar",
@@ -1487,7 +1485,7 @@
           "sourceDomainsWithSeriesRecords": [
             "ottchecker.com"
           ],
-          "detectedRecords": 25,
+          "detectedRecords": 28,
           "coverageStatus": "partial",
           "sources": [
             {
@@ -1504,8 +1502,8 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 1,
-              "movieRecords": 1,
+              "records": 4,
+              "movieRecords": 4,
               "seriesRecords": 0
             },
             {
@@ -1659,8 +1657,8 @@
               "state": "live",
               "languageState": "records_found",
               "records": 15,
-              "movieRecords": 11,
-              "seriesRecords": 4
+              "movieRecords": 10,
+              "seriesRecords": 5
             },
             {
               "source": "Vi weekly OTT calendar",
@@ -1906,7 +1904,7 @@
         "keralatv.in",
         "ottasia.com"
       ],
-      "detectedRecords": 26,
+      "detectedRecords": 25,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -1923,9 +1921,9 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 2,
+          "records": 1,
           "movieRecords": 0,
-          "seriesRecords": 2
+          "seriesRecords": 1
         },
         {
           "source": "Vi weekly OTT calendar",
@@ -2220,7 +2218,7 @@
       "sourceDomainsWithSeriesRecords": [
         "ottchecker.com"
       ],
-      "detectedRecords": 25,
+      "detectedRecords": 28,
       "coverageStatus": "partial",
       "sources": [
         {
@@ -2237,8 +2235,8 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 1,
-          "movieRecords": 1,
+          "records": 4,
+          "movieRecords": 4,
           "seriesRecords": 0
         },
         {
@@ -2392,8 +2390,8 @@
           "state": "live",
           "languageState": "records_found",
           "records": 15,
-          "movieRecords": 11,
-          "seriesRecords": 4
+          "movieRecords": 10,
+          "seriesRecords": 5
         },
         {
           "source": "Vi weekly OTT calendar",

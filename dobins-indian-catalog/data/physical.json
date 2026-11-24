@@ -15633,11 +15633,17 @@
       "editions": [],
       "theatrical": [],
       "events": []
+    },
+    "hindi|1842226": {
+      "checkedAt": "2026-11-24T16:21:46.780483+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
     }
   },
   "discovery": {
     "malayalam": {
-      "checkedAt": "2026-11-24T14:20:01.913596+04:00",
+      "checkedAt": "2026-11-24T16:21:46.780483+04:00",
       "titles": {
         "1841290": "Thankachante Sherikal",
         "1837744": "Kaadhangal Dhoore - Miles Apart",
@@ -16204,7 +16210,7 @@
       }
     },
     "tamil": {
-      "checkedAt": "2026-11-24T14:20:01.913596+04:00",
+      "checkedAt": "2026-11-24T16:21:46.780483+04:00",
       "titles": {
         "1680033": "Appa Kutty",
         "1618539": "Pulse",
@@ -16855,7 +16861,7 @@
       }
     },
     "telugu": {
-      "checkedAt": "2026-11-24T14:20:01.913596+04:00",
+      "checkedAt": "2026-11-24T16:21:46.780483+04:00",
       "titles": {
         "1322273": "Aakasamlo Oka Tara",
         "1505644": "ENE Repeat",
@@ -17590,9 +17596,10 @@
       }
     },
     "hindi": {
-      "checkedAt": "2026-11-24T14:20:01.913596+04:00",
+      "checkedAt": "2026-11-24T16:21:46.780483+04:00",
       "titles": {
         "1813874": "Revenge of Her : Evil Prevails",
+        "1842226": "Banaras",
         "1836066": "Nanhey Dil",
         "1808244": "Pratap",
         "1783280": "Party Animals",
@@ -17691,7 +17698,6 @@
         "1475799": "Haiwaan",
         "1747646": "Herland",
         "1769098": "Parched",
-        "1129325": "Poos Ki Ek Raat",
         "1709391": "Hanuman Ansh",
         "1378537": "Mirzapur: The Movie",
         "1444466": "Awarapan 2",
@@ -17803,6 +17809,9 @@
       },
       "kinds": {
         "1813874": [
+          "theatrical"
+        ],
+        "1842226": [
           "theatrical"
         ],
         "1836066": [
@@ -18097,9 +18106,6 @@
           "theatrical"
         ],
         "1769098": [
-          "theatrical"
-        ],
-        "1129325": [
           "theatrical"
         ],
         "1709391": [
