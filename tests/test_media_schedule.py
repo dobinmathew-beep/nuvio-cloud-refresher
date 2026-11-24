@@ -26,6 +26,35 @@ class MediaScheduleTests(unittest.TestCase):
                 self.assertEqual(featured.call_count,2);backdrop.assert_called_once();hero.assert_called_once()
 
 
+    def test_uploaded_asset_readback_retries_transient_404(self):
+        payload=b'hero asset'
+        failures=[
+            RuntimeError('Download failed: curl: (22) HTTP 404'),
+            RuntimeError('Download failed: curl: (22) HTTP 404')
+        ]
+        def fake_get(url):
+            if failures:
+                raise failures.pop(0)
+            return payload
+        with patch.object(cloud,'get',side_effect=fake_get), patch.object(cloud.time,'sleep') as sleep:
+            result=cloud.verify_uploaded_asset('https://example.invalid/hero.mp4',cloud.sha(payload),attempts=3)
+        self.assertEqual(result,payload)
+        self.assertEqual(sleep.call_count,2)
+        self.assertEqual([x.args[0] for x in sleep.call_args_list],[5,10])
+
+    def test_uploaded_asset_readback_fails_closed_after_repeated_404(self):
+        with patch.object(cloud,'get',side_effect=RuntimeError('Download failed: curl: (22) HTTP 404')), patch.object(cloud.time,'sleep') as sleep:
+            with self.assertRaisesRegex(RuntimeError,'remained unavailable'):
+                cloud.verify_uploaded_asset('https://example.invalid/hero.mp4','0'*64,attempts=3)
+        self.assertEqual(sleep.call_count,2)
+
+    def test_uploaded_asset_readback_rejects_wrong_hash_without_retry(self):
+        with patch.object(cloud,'get',return_value=b'wrong') as get, patch.object(cloud.time,'sleep') as sleep:
+            with self.assertRaisesRegex(RuntimeError,'Published asset hash mismatch'):
+                cloud.verify_uploaded_asset('https://example.invalid/hero.mp4',cloud.sha(b'right'),attempts=3)
+        get.assert_called_once()
+        sleep.assert_not_called()
+
     def test_hero_release_rotates_before_github_asset_limit(self):
         with tempfile.TemporaryDirectory() as folder:
             dist=Path(folder)
