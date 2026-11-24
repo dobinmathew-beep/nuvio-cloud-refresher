@@ -15,19 +15,19 @@
     "sourceRecord": {}
   },
   {
-    "name": "The Conjunction",
+    "name": "Narayan Pustika 2 - Endless",
     "language": "hindi",
     "type": "movie",
-    "ottDate": "2026-12-03",
+    "ottDate": "2026-12-08",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://ottasia.com/ott-releases-this-week?country=IN"
     ],
     "platforms": [],
-    "detail": "https://ottasia.com/title/movie/1789518/the-conjunction?country=IN",
+    "detail": "https://ottasia.com/title/movie/951687/narayan-pustika-2-endless?country=IN",
     "sourceRecord": {
-      "title": "The Conjunction",
-      "releaseDate": "2026-12-03",
+      "title": "Narayan Pustika 2 - Endless",
+      "releaseDate": "2026-12-08",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     }
   },
@@ -71,23 +71,6 @@
         "Amazon Prime Video"
       ],
       "source": "https://www.ottchecker.com/ott-releases/tamil"
-    }
-  },
-  {
-    "name": "Hatela Gang",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-11-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
-    ],
-    "platforms": [],
-    "detail": "https://ottasia.com/title/movie/1787832/hatela-gang?country=IN",
-    "sourceRecord": {
-      "title": "Hatela Gang",
-      "releaseDate": "2026-11-28",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     }
   },
   {
@@ -176,6 +159,40 @@
     }
   },
   {
+    "name": "The Conjunction",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-12-03",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://ottasia.com/ott-releases-this-week?country=IN"
+    ],
+    "platforms": [],
+    "detail": "https://ottasia.com/title/movie/1789518/the-conjunction?country=IN",
+    "sourceRecord": {
+      "title": "The Conjunction",
+      "releaseDate": "2026-12-03",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
+    "name": "Hatela Gang",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-11-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://ottasia.com/ott-releases-this-week?country=IN"
+    ],
+    "platforms": [],
+    "detail": "https://ottasia.com/title/movie/1787832/hatela-gang?country=IN",
+    "sourceRecord": {
+      "title": "Hatela Gang",
+      "releaseDate": "2026-11-28",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
     "name": "Jindey",
     "language": "hindi",
     "type": "movie",
@@ -241,6 +258,37 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-08-13T02:01:57.122Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Bal Barbarik",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-11-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6af7c50adea24088f2622fb9",
+      "platform": "ZEE5",
+      "title": "Bal Barbarik",
+      "createdAt": "2026-11-14T02:18:50.337Z",
+      "genre": "Animation",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-11-14",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-11-14T02:18:50.337Z",
       "verified": true
     }
   },
@@ -329,37 +377,6 @@
         "fetchedAt": "2026-11-14T18:26:15.691Z"
       },
       "tmdbId": 590401,
-      "verified": true
-    }
-  },
-  {
-    "name": "Bal Barbarik",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-11-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6af7c50adea24088f2622fb9",
-      "platform": "ZEE5",
-      "title": "Bal Barbarik",
-      "createdAt": "2026-11-14T02:18:50.337Z",
-      "genre": "Animation",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-11-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-11-14T02:18:50.337Z",
       "verified": true
     }
   },
@@ -735,37 +752,6 @@
     }
   },
   {
-    "name": "Roadies Rebirth",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6ad1898c3249ff69efda9cee",
-      "platform": "JioHotStar",
-      "title": "Roadies Rebirth",
-      "createdAt": "2026-10-16T02:18:52.613Z",
-      "genre": "Reality, Adventure",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-10-16",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-10-16T02:18:52.613Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Shadow Play",
     "language": "malayalam",
     "type": "series",
@@ -824,6 +810,37 @@
       "type": "Series",
       "updatedAt": "2026-04-28T03:48:09.012Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/eQSJas8emasLl5sMpmooUJ0GWiT.jpg",
+      "verified": true
+    }
+  },
+  {
+    "name": "Roadies Rebirth",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6ad1898c3249ff69efda9cee",
+      "platform": "JioHotStar",
+      "title": "Roadies Rebirth",
+      "createdAt": "2026-10-16T02:18:52.613Z",
+      "genre": "Reality, Adventure",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-10-16",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-10-16T02:18:52.613Z",
       "verified": true
     }
   },
@@ -1101,6 +1118,67 @@
     }
   },
   {
+    "name": "Vanakkam Thamizha",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-03-25",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "SunNXT"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69c4167f991033953144f107",
+      "platform": "SunNXT",
+      "title": "Vanakkam Thamizha",
+      "createdAt": "2026-03-25T17:08:15.700Z",
+      "genre": "Talk Show, Entertainment",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-03-25",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-03-25T17:08:15.700Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Nijame Rujuvainadhi",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-08-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a7e75993fab9691478b3be2",
+      "platform": "ETV Win",
+      "title": "Nijame Rujuvainadhi",
+      "createdAt": "2026-08-14T01:55:36.933Z",
+      "genre": "Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "original_language": "Telugu",
+      "releaseDate": "2026-08-14",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-08-14T01:55:36.933Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Chikoo Vs Bunty: Kushti Ki Jung",
     "language": "hindi",
     "type": "movie",
@@ -1163,67 +1241,6 @@
     }
   },
   {
-    "name": "Vanakkam Thamizha",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-03-25",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "SunNXT"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69c4167f991033953144f107",
-      "platform": "SunNXT",
-      "title": "Vanakkam Thamizha",
-      "createdAt": "2026-03-25T17:08:15.700Z",
-      "genre": "Talk Show, Entertainment",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-03-25",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-03-25T17:08:15.700Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Nijame Rujuvainadhi",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-08-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a7e75993fab9691478b3be2",
-      "platform": "ETV Win",
-      "title": "Nijame Rujuvainadhi",
-      "createdAt": "2026-08-14T01:55:36.933Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "original_language": "Telugu",
-      "releaseDate": "2026-08-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-08-14T01:55:36.933Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Clean Up Company",
     "language": "hindi",
     "type": "movie",
@@ -1253,39 +1270,6 @@
       "updatedAt": "2026-08-21T02:09:08.752Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/sVMcco0EdfDvFpyPlHU9n6RPrQj.jpg",
       "instagramPostedAt": "2026-08-21T02:09:49Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "108 Base Hospital Uri",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-08-15",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a7fcf2d3fab9691478b6fa2",
-      "title": "108 Base Hospital Uri",
-      "platform": "JioHotStar",
-      "createdAt": "2026-08-15T02:30:05.632Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-08-15",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-08-17T01:43:50.495Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/s2zF4NDPU0xTPKb5wrOhsFdYARR.jpg",
-      "instagramPostedAt": "2026-08-17T01:44:13Z",
       "verified": true
     }
   },
@@ -1320,35 +1304,35 @@
     }
   },
   {
-    "name": "The Legend of Karna",
+    "name": "108 Base Hospital Uri",
     "language": "hindi",
     "type": "movie",
-    "ottDate": "2026-07-31",
+    "ottDate": "2026-08-15",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "SonyLIV"
+      "JioHotStar"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6a6c25cc1638e3b61f1d6767",
-      "platform": "SonyLIV",
-      "title": "The Legend of Karna",
-      "createdAt": "2026-07-31T04:34:20.405Z",
-      "genre": "Mythology",
+      "_id": "6a7fcf2d3fab9691478b6fa2",
+      "title": "108 Base Hospital Uri",
+      "platform": "JioHotStar",
+      "createdAt": "2026-08-15T02:30:05.632Z",
+      "genre": "Drama",
       "imdbRating": null,
       "languages": [
         "Hindi"
       ],
       "original_language": "Hindi",
-      "releaseDate": "2026-07-31",
+      "releaseDate": "2026-08-15",
       "source_verified": true,
       "type": "Movie",
-      "updatedAt": "2026-07-31T04:34:44.156Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/jzVP9rqT2YH2nTx3l3csmmU9B1q.jpg",
-      "instagramPostedAt": "2026-07-31T04:35:54Z",
+      "updatedAt": "2026-08-17T01:43:50.495Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/s2zF4NDPU0xTPKb5wrOhsFdYARR.jpg",
+      "instagramPostedAt": "2026-08-17T01:44:13Z",
       "verified": true
     }
   },
@@ -1413,34 +1397,35 @@
     }
   },
   {
-    "name": "Musafir Café",
+    "name": "The Legend of Karna",
     "language": "hindi",
     "type": "movie",
-    "ottDate": "2026-07-24",
+    "ottDate": "2026-07-31",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix"
+      "SonyLIV"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6a63002ca701b5c71023fb3d",
-      "platform": "Netflix",
-      "title": "Musafir Café",
-      "createdAt": "2026-07-24T06:03:23.967Z",
-      "genre": "Romance, Drama",
+      "_id": "6a6c25cc1638e3b61f1d6767",
+      "platform": "SonyLIV",
+      "title": "The Legend of Karna",
+      "createdAt": "2026-07-31T04:34:20.405Z",
+      "genre": "Mythology",
       "imdbRating": null,
       "languages": [
         "Hindi"
       ],
       "original_language": "Hindi",
-      "releaseDate": "2026-07-24",
+      "releaseDate": "2026-07-31",
       "source_verified": true,
       "type": "Movie",
-      "updatedAt": "2026-07-24T06:03:23.967Z",
-      "votes": 3,
+      "updatedAt": "2026-07-31T04:34:44.156Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/jzVP9rqT2YH2nTx3l3csmmU9B1q.jpg",
+      "instagramPostedAt": "2026-07-31T04:35:54Z",
       "verified": true
     }
   },
@@ -1475,33 +1460,34 @@
     }
   },
   {
-    "name": "Manipur Files",
+    "name": "Musafir Café",
     "language": "hindi",
     "type": "movie",
-    "ottDate": "2026-07-11",
+    "ottDate": "2026-07-24",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "YouTube"
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6a51d36fcf19d56322acc442",
-      "platform": "YouTube",
-      "title": "Manipur Files",
-      "createdAt": "2026-07-11T05:23:58.919Z",
-      "genre": "Documentary",
+      "_id": "6a63002ca701b5c71023fb3d",
+      "platform": "Netflix",
+      "title": "Musafir Café",
+      "createdAt": "2026-07-24T06:03:23.967Z",
+      "genre": "Romance, Drama",
       "imdbRating": null,
       "languages": [
         "Hindi"
       ],
       "original_language": "Hindi",
-      "releaseDate": "2026-07-11",
+      "releaseDate": "2026-07-24",
       "source_verified": true,
       "type": "Movie",
-      "updatedAt": "2026-07-11T05:23:58.919Z",
+      "updatedAt": "2026-07-24T06:03:23.967Z",
+      "votes": 3,
       "verified": true
     }
   },
@@ -1549,6 +1535,37 @@
         "fetchedAt": "2026-11-16T23:43:59.297Z"
       },
       "tmdbId": 1686468,
+      "verified": true
+    }
+  },
+  {
+    "name": "Manipur Files",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-07-11",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "YouTube"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a51d36fcf19d56322acc442",
+      "platform": "YouTube",
+      "title": "Manipur Files",
+      "createdAt": "2026-07-11T05:23:58.919Z",
+      "genre": "Documentary",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-07-11",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-07-11T05:23:58.919Z",
       "verified": true
     }
   },
@@ -1652,8 +1669,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win",
-      "Netflix"
+      "Netflix",
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {

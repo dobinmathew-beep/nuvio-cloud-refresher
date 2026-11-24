@@ -1,7 +1,116 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-24T06:13:25.915127+04:00",
+    "checkedAt": "2026-11-24T10:14:26.334781+04:00",
     "records": [
+      {
+        "_id": "6b04f409699a8884e160193c",
+        "title": "Dig",
+        "platform": "JioHotStar",
+        "createdAt": "2026-11-24T02:18:49.436Z",
+        "genre": "Comedy",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-24",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-24T02:19:38.234Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/c5zO3rEJVkxDTPudMMZNh1tief3.jpg",
+        "verified": true
+      },
+      {
+        "_id": "6b04f409699a8884e160193d",
+        "platform": "Prime Video",
+        "title": "The Social Reckoning",
+        "createdAt": "2026-11-24T02:18:49.657Z",
+        "genre": "Thriller",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-24",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-24T02:19:39.013Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/vWbEuI3LuFOGYZIxESLAmwFwtvr.jpg",
+        "tmdbRating": 70,
+        "tmdbVotes": 150,
+        "instagramPostedAt": "2026-11-24T02:20:04Z",
+        "tmdbDetails": {
+          "tmdbId": 1281331,
+          "director": "Aaron Sorkin",
+          "cast": [
+            {
+              "name": "Mikey Madison",
+              "character": "Frances"
+            },
+            {
+              "name": "Jeremy Allen White",
+              "character": "Jeff"
+            },
+            {
+              "name": "Jeremy Strong",
+              "character": "Mark"
+            },
+            {
+              "name": "Wunmi Mosaku",
+              "character": "Raya"
+            },
+            {
+              "name": "Betty Gilpin",
+              "character": "Christina"
+            },
+            {
+              "name": "Billy Magnussen",
+              "character": "Teddy"
+            },
+            {
+              "name": "Bill Burr",
+              "character": "Charlie"
+            },
+            {
+              "name": "Gbenga Akinnagbe",
+              "character": "Andy"
+            }
+          ],
+          "overview": "Frances Haugen, a young Facebook engineer, enlists the help of Jeff Horwitz, a Wall Street Journal reporter, to go on a dangerous journey that ends up blowing the whistle on the social network's most guarded secrets.",
+          "runtime": 113,
+          "genres": [
+            "Drama",
+            "Thriller"
+          ],
+          "originalLanguage": "en",
+          "spokenLanguages": [
+            "English"
+          ],
+          "releaseDate": "2026-10-07",
+          "voteAverage": 7,
+          "trailerKey": "R8ANzYpaZaY",
+          "fetchedAt": "2026-11-24T05:27:34.336Z"
+        },
+        "tmdbId": 1281331,
+        "verified": true
+      },
+      {
+        "_id": "6b04f409699a8884e160193e",
+        "platform": "JioHotStar",
+        "title": "Dil Ki Bewafaiyaan",
+        "createdAt": "2026-11-24T02:18:49.876Z",
+        "genre": "Drama",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-24",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-24T02:18:49.876Z",
+        "verified": true
+      },
       {
         "_id": "6b03a28eccead6edc4cf0067",
         "platform": "HBO Max",
@@ -88,9 +197,9 @@
           "fetchedAt": "2026-11-13T12:41:01.465Z"
         },
         "tmdbId": 1431738,
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-11-23T02:19:25.750Z",
-        "trendingRankedDateIST": "2026-11-23",
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-24T02:19:19.128Z",
+        "trendingRankedDateIST": "2026-11-24",
         "verified": true
       },
       {
@@ -190,8 +299,8 @@
         "tmdbId": 1595124,
         "votes": 0,
         "trendingRank": 1,
-        "trendingRankedAt": "2026-11-23T02:19:25.750Z",
-        "trendingRankedDateIST": "2026-11-23",
+        "trendingRankedAt": "2026-11-24T02:19:19.128Z",
+        "trendingRankedDateIST": "2026-11-24",
         "verified": true
       },
       {
@@ -302,6 +411,9 @@
         "tmdbRating": 75,
         "tmdbVotes": 25,
         "votes": 1,
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-11-24T02:19:19.128Z",
+        "trendingRankedDateIST": "2026-11-24",
         "verified": true
       },
       {
@@ -375,9 +487,9 @@
           "fetchedAt": "2026-11-20T11:53:08.767Z"
         },
         "tmdbId": 1593350,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-23T02:19:25.750Z",
-        "trendingRankedDateIST": "2026-11-23",
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-24T02:19:19.128Z",
+        "trendingRankedDateIST": "2026-11-24",
         "verified": true
       },
       {
@@ -450,9 +562,9 @@
           "fetchedAt": "2026-11-20T16:49:23.234Z"
         },
         "tmdbId": 1542674,
-        "trendingRank": 6,
-        "trendingRankedAt": "2026-11-23T02:19:25.750Z",
-        "trendingRankedDateIST": "2026-11-23",
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-11-24T02:19:19.128Z",
+        "trendingRankedDateIST": "2026-11-24",
         "verified": true
       },
       {
@@ -513,9 +625,9 @@
           "fetchedAt": "2026-11-20T10:30:47.065Z"
         },
         "tmdbId": 1610188,
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-23T02:19:25.750Z",
-        "trendingRankedDateIST": "2026-11-23",
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-11-24T02:19:19.128Z",
+        "trendingRankedDateIST": "2026-11-24",
         "verified": true
       },
       {
@@ -591,8 +703,8 @@
         },
         "tmdbId": 1551025,
         "trendingRank": 3,
-        "trendingRankedAt": "2026-11-23T02:19:25.750Z",
-        "trendingRankedDateIST": "2026-11-23",
+        "trendingRankedAt": "2026-11-24T02:19:19.128Z",
+        "trendingRankedDateIST": "2026-11-24",
         "verified": true
       },
       {
@@ -647,9 +759,6 @@
         "updatedAt": "2026-11-17T02:19:35.547Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/oB9Pcb5grM5Gk0TDWZeBZ3vHhDZ.jpg",
         "instagramPostedAt": "2026-11-17T02:20:05Z",
-        "trendingRank": 7,
-        "trendingRankedAt": "2026-11-23T02:19:25.750Z",
-        "trendingRankedDateIST": "2026-11-23",
         "verified": true
       },
       {
@@ -31607,7 +31716,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-24T06:13:25.915127+04:00",
+    "checkedAt": "2026-11-24T10:14:26.334781+04:00",
     "records": [
       {
         "name": "Anbil Avan",
