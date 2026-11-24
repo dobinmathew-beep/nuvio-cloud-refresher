@@ -15639,12 +15639,25 @@
       "editions": [],
       "theatrical": [],
       "events": []
+    },
+    "malayalam|1825350": {
+      "checkedAt": "2026-11-25T00:49:07.226321+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "hindi|1755816": {
+      "checkedAt": "2026-11-25T00:49:07.226321+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
     }
   },
   "discovery": {
     "malayalam": {
-      "checkedAt": "2026-11-24T22:03:54.652394+04:00",
+      "checkedAt": "2026-11-25T00:49:07.226321+04:00",
       "titles": {
+        "1825350": "A Lone Jamun Tree",
         "1841290": "Thankachante Sherikal",
         "1837744": "Kaadhangal Dhoore - Miles Apart",
         "1533928": "Bachelor Party D'eux",
@@ -15744,7 +15757,6 @@
         "1406543": "Karakkam",
         "1700868": "Tolsaayam",
         "1718698": "Kolahalamedu",
-        "1700879": "Puttum Halwem",
         "1065834": "Kattalan",
         "847742": "Drishyam 3",
         "1300501": "Patriot",
@@ -15787,6 +15799,9 @@
         "32841": "Naadodikal"
       },
       "kinds": {
+        "1825350": [
+          "theatrical"
+        ],
         "1841290": [
           "theatrical"
         ],
@@ -16084,9 +16099,6 @@
         "1718698": [
           "theatrical"
         ],
-        "1700879": [
-          "theatrical"
-        ],
         "1065834": [
           "theatrical"
         ],
@@ -16210,7 +16222,7 @@
       }
     },
     "tamil": {
-      "checkedAt": "2026-11-24T22:03:54.652394+04:00",
+      "checkedAt": "2026-11-25T00:49:07.226321+04:00",
       "titles": {
         "1680033": "Appa Kutty",
         "1618539": "Pulse",
@@ -16861,7 +16873,7 @@
       }
     },
     "telugu": {
-      "checkedAt": "2026-11-24T22:03:54.652394+04:00",
+      "checkedAt": "2026-11-25T00:49:07.226321+04:00",
       "titles": {
         "1322273": "Aakasamlo Oka Tara",
         "1505644": "ENE Repeat",
@@ -17596,8 +17608,9 @@
       }
     },
     "hindi": {
-      "checkedAt": "2026-11-24T22:03:54.652394+04:00",
+      "checkedAt": "2026-11-25T00:49:07.226321+04:00",
       "titles": {
+        "1755816": "Delhi 2021",
         "1813874": "Revenge of Her : Evil Prevails",
         "1842226": "Banaras",
         "1836066": "Nanhey Dil",
@@ -17697,7 +17710,6 @@
         "1574560": "Last Man in Tower",
         "1475799": "Haiwaan",
         "1747646": "Herland",
-        "1769098": "Parched",
         "1709391": "Hanuman Ansh",
         "1378537": "Mirzapur: The Movie",
         "1444466": "Awarapan 2",
@@ -17808,6 +17820,9 @@
         "12259": "Sholay"
       },
       "kinds": {
+        "1755816": [
+          "theatrical"
+        ],
         "1813874": [
           "theatrical"
         ],
@@ -18103,9 +18118,6 @@
           "theatrical"
         ],
         "1747646": [
-          "theatrical"
-        ],
-        "1769098": [
           "theatrical"
         ],
         "1709391": [

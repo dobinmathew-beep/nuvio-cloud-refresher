@@ -1,89 +1,8 @@
 {
-  "generatedAt": "2026-11-24T22:03:54.652394+04:00",
+  "generatedAt": "2026-11-25T00:49:07.226321+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 14,
+  "count": 11,
   "items": [
-    {
-      "id": "tt1281973",
-      "aliases": [
-        "tt1281973"
-      ],
-      "name": "Bigg Boss",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-25",
-      "kind": "episode",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
-    },
-    {
-      "id": "tt0445883",
-      "aliases": [
-        "tt0445883"
-      ],
-      "name": "Koffee with Karan",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-25",
-      "kind": "episode",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
-    },
-    {
-      "id": "tt43636966",
-      "aliases": [
-        "tt43636966"
-      ],
-      "name": "Lo Chudail Chali Sasural",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-25",
-      "kind": "episode",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/338656",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.themoviedb.org/tv/338656"
-    },
-    {
-      "id": "tt50135636",
-      "aliases": [
-        "tt50135636"
-      ],
-      "name": "Mr & Mrs Office",
-      "language": "tamil",
-      "type": "series",
-      "releaseDate": "2026-11-25",
-      "kind": "episode",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://www.themoviedb.org/tv/338502"
-      ],
-      "catalog": "dobins_ta_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
-    },
     {
       "id": "tt41496092",
       "aliases": [
@@ -226,6 +145,27 @@
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
       "catalog": "dobins_ta_series",
+      "region": "IN",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    },
+    {
+      "id": "tt51129935",
+      "aliases": [
+        "tt51129935"
+      ],
+      "name": "Chaalchitro: The Ekchala Murders",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-12-04",
+      "kind": "premiere",
+      "platforms": [
+        "Netflix",
+        "ZEE5"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "catalog": "dobins_hi_series",
       "region": "IN",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },

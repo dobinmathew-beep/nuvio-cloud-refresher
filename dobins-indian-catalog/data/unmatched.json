@@ -75,23 +75,6 @@
     }
   },
   {
-    "name": "Dalimp",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-12-04",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
-    ],
-    "platforms": [],
-    "detail": "https://ottasia.com/title/tv/343304/dalimp?country=IN",
-    "sourceRecord": {
-      "title": "Dalimp",
-      "releaseDate": "2026-12-04",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    }
-  },
-  {
     "name": "Pendulum",
     "language": "malayalam",
     "type": "movie",
@@ -171,6 +154,25 @@
     "sourceRecord": {
       "title": "The Conjunction",
       "releaseDate": "2026-12-03",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
+    "name": "Dalimp",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-12-04",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://ottasia.com/ott-releases-this-week?country=IN"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": "https://ottasia.com/title/tv/343304/dalimp?country=IN",
+    "sourceRecord": {
+      "title": "Dalimp",
+      "releaseDate": "2026-12-04",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     }
   },
@@ -812,37 +814,6 @@
     }
   },
   {
-    "name": "Roadies Rebirth",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6ad1898c3249ff69efda9cee",
-      "platform": "JioHotStar",
-      "title": "Roadies Rebirth",
-      "createdAt": "2026-10-16T02:18:52.613Z",
-      "genre": "Reality, Adventure",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-10-16",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-10-16T02:18:52.613Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Jodi Are U Ready Season 3 (Grand Finale)",
     "language": "tamil",
     "type": "series",
@@ -899,6 +870,37 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-04-23T03:43:25.822Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Roadies Rebirth",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6ad1898c3249ff69efda9cee",
+      "platform": "JioHotStar",
+      "title": "Roadies Rebirth",
+      "createdAt": "2026-10-16T02:18:52.613Z",
+      "genre": "Reality, Adventure",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-10-16",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-10-16T02:18:52.613Z",
       "verified": true
     }
   },
@@ -1054,37 +1056,6 @@
     }
   },
   {
-    "name": "Chumbak Part 2",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-02",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Netflix"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6abf148aa856b7606726225e",
-      "platform": "Netflix",
-      "title": "Chumbak Part 2",
-      "createdAt": "2026-10-02T02:18:50.680Z",
-      "genre": "Comedy",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-10-02",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-10-02T02:18:50.680Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Love Beyond Wicket",
     "language": "tamil",
     "type": "series",
@@ -1112,6 +1083,37 @@
       "type": "Series",
       "updatedAt": "2026-04-09T03:37:09.017Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/tC5K8MkLipwV9bIdJV9SQcCzgUF.jpg",
+      "verified": true
+    }
+  },
+  {
+    "name": "Chumbak Part 2",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-02",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6abf148aa856b7606726225e",
+      "platform": "Netflix",
+      "title": "Chumbak Part 2",
+      "createdAt": "2026-10-02T02:18:50.680Z",
+      "genre": "Comedy",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-10-02",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-10-02T02:18:50.680Z",
       "verified": true
     }
   },
@@ -1272,6 +1274,39 @@
     }
   },
   {
+    "name": "108 Base Hospital Uri",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-08-15",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a7fcf2d3fab9691478b6fa2",
+      "title": "108 Base Hospital Uri",
+      "platform": "JioHotStar",
+      "createdAt": "2026-08-15T02:30:05.632Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-08-15",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-08-17T01:43:50.495Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/s2zF4NDPU0xTPKb5wrOhsFdYARR.jpg",
+      "instagramPostedAt": "2026-08-17T01:44:13Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Kakkippada-2",
     "language": "malayalam",
     "type": "movie",
@@ -1302,35 +1337,35 @@
     }
   },
   {
-    "name": "108 Base Hospital Uri",
+    "name": "The Legend of Karna",
     "language": "hindi",
     "type": "movie",
-    "ottDate": "2026-08-15",
+    "ottDate": "2026-07-31",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "JioHotStar"
+      "SonyLIV"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6a7fcf2d3fab9691478b6fa2",
-      "title": "108 Base Hospital Uri",
-      "platform": "JioHotStar",
-      "createdAt": "2026-08-15T02:30:05.632Z",
-      "genre": "Drama",
+      "_id": "6a6c25cc1638e3b61f1d6767",
+      "platform": "SonyLIV",
+      "title": "The Legend of Karna",
+      "createdAt": "2026-07-31T04:34:20.405Z",
+      "genre": "Mythology",
       "imdbRating": null,
       "languages": [
         "Hindi"
       ],
       "original_language": "Hindi",
-      "releaseDate": "2026-08-15",
+      "releaseDate": "2026-07-31",
       "source_verified": true,
       "type": "Movie",
-      "updatedAt": "2026-08-17T01:43:50.495Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/s2zF4NDPU0xTPKb5wrOhsFdYARR.jpg",
-      "instagramPostedAt": "2026-08-17T01:44:13Z",
+      "updatedAt": "2026-07-31T04:34:44.156Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/jzVP9rqT2YH2nTx3l3csmmU9B1q.jpg",
+      "instagramPostedAt": "2026-07-31T04:35:54Z",
       "verified": true
     }
   },
@@ -1391,39 +1426,6 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-05-21T03:48:15.770Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "The Legend of Karna",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-07-31",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "SonyLIV"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a6c25cc1638e3b61f1d6767",
-      "platform": "SonyLIV",
-      "title": "The Legend of Karna",
-      "createdAt": "2026-07-31T04:34:20.405Z",
-      "genre": "Mythology",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-07-31",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-07-31T04:34:44.156Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/jzVP9rqT2YH2nTx3l3csmmU9B1q.jpg",
-      "instagramPostedAt": "2026-07-31T04:35:54Z",
       "verified": true
     }
   },
