@@ -113,6 +113,18 @@ jobs:
               print(f'PUBLIC FRESHNESS VERIFIED {lang}: {len(ids)} films, SHA-256 {fp["video_sha256"]}')
           print('All four public reels exactly match the newly rendered MP4 and daily metadata fingerprints.')
           PY
+      - name: Invalidate reel progress if public freshness verification failed
+        if: steps.reelcheck.outcome == 'failure'
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path=Path('state/success.json')
+          state=json.loads(path.read_text()) if path.exists() else {}
+          state.pop('heroes',None)
+          path.write_text(json.dumps(state,indent=2)+'\\n')
+          print('Cleared hero success marker so the next scheduled check retries reel publishing.')
+          PY
       - name: Persist verified media pointers and partial progress
         if: always()
         run: |
