@@ -2,7 +2,7 @@
 
 **Backdrops · Reels · Addon · India EPG**
 
-Last checked: **24 Nov 2026, 05:51 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45308083590)
+Last checked: **24 Nov 2026, 05:51 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45308090183)
 
 **Refresh checks:** every 30 minutes. Outputs refresh when their two-hour cycle is due. **Watchdog and retry checks:** every 30 minutes; no per-workflow or external 10-minute trigger.
 
@@ -10,8 +10,8 @@ Last checked: **24 Nov 2026, 05:51 Oman time**. [This check’s logs](https://gi
 
 | Output | Status at last check | Last verified cycle / check (Oman) | Details | Latest attempt |
 |---|---|---|---|---|
-| Backdrops | 🔄 Refresh running / queued | 24 Nov 2026, 04:00 | 160 layouts; 16 image checks; this part verified, combined media cycle still pending | pending · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45308072447) |
-| Reels | 🔄 Refresh running / queued | Not recorded | 0 languages; ? films per reel | pending · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45308072447) |
+| Backdrops | 🔄 Refresh running / queued | 24 Nov 2026, 04:00 | 160 layouts; 16 image checks; this part verified, combined media cycle still pending | pending · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45308102187) |
+| Reels | 🔄 Refresh running / queued | Not recorded | 0 languages; ? films per reel | pending · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45308102187) |
 | Addon | ✅ Updated | 24 Nov 2026, 04:00 | 1076 catalog entries; 63 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45295632892) |
 | EPG | ✅ Updated | 24 Nov 2026, 04:14 | 622 / 832 channel IDs with listings; 210 unresolved; 66701 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45295428671) |
 
