@@ -39,6 +39,37 @@ def get(url):
         raise RuntimeError('Download failed after retry policy: '+url+' '+detail)
     return p.stdout
 
+
+def verify_uploaded_asset(url, expected, attempts=8):
+    """Wait briefly for a newly uploaded immutable release asset to reach GitHub's download CDN.
+
+    The Releases upload API can accept an asset before its browser_download_url is
+    downloadable. Only HTTP 404 is retried here; hash mismatches and other errors
+    remain fail-closed.
+    """
+    last_404 = None
+    if attempts < 1:
+        raise ValueError('attempts must be at least one')
+    for attempt in range(attempts):
+        try:
+            data = get(url)
+        except RuntimeError as exc:
+            message = str(exc)
+            if '404' not in message:
+                raise
+            last_404 = message
+            if attempt + 1 < attempts:
+                delay = min(5 * (attempt + 1), 30)
+                print(f'GitHub release asset is not downloadable yet; retrying in {delay}s: {url}', flush=True)
+                time.sleep(delay)
+                continue
+            break
+        actual = sha(data)
+        if actual != expected:
+            raise RuntimeError(f'Published asset hash mismatch for {url}: expected {expected}, got {actual}')
+        return data
+    raise RuntimeError(f'GitHub release asset remained unavailable after {attempts} readback attempts: {url}; {last_404}')
+
 def release(tag):
     try:return api('/releases/tags/'+tag)
     except urllib.error.HTTPError as e:
@@ -247,7 +278,7 @@ def heroes():
         p=dist/path.lstrip('/');raw=p.read_bytes();digest=sha(raw);name=digest[:24]+'-'+p.name
         url=upload(rel,name,p,known)
         # Verify remote bytes before moving any public pointer.
-        assert sha(get(url))==digest,'Published asset hash mismatch '+path
+        verify_uploaded_asset(url,digest)
         updated[path]={'url':url,'sha256':digest,'bytes':len(raw),'mime':mime(path)}
     atomic(STATE/'media.json',updated)
     # Keep prior release assets until the workflow has committed state/media.json.
