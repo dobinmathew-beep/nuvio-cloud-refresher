@@ -1,14 +1,14 @@
 # Independent Nuvio output verification
 
-**Checked:** 2026-11-24T18:41:50.621379+04:00 (Oman time)
-**Overall:** 2/4 outputs passed
+**Checked:** 2026-11-24T19:06:17.576292+04:00 (Oman time)
+**Overall:** 4/4 outputs passed
 
 | Output | Result |
 |---|---|
 | Addon | PASS |
 | Epg | PASS |
-| Backdrops | FAIL |
-| Reels | FAIL |
+| Backdrops | PASS |
+| Reels | PASS |
 
 ## Addon — PASS
 - **PASS** public manifest: {"name": "The Great Indian Addon", "catalogs": 8}
@@ -24,11 +24,26 @@
 - **PASS** Validation_Summary.json: {"keys": ["checked_utc", "playlist_url", "playlist_sha256", "playlist_channel_ids", "matched_ids", "unresolved_ids", "programmes", "sources_with_parsed_guides", "selected_source_counts", "unresolved_reason_counts"]}
 - **PASS** Source_Health_Report.json: {"keys": ["airtel.xml", "ca.xml", "dishtv.xml", "free-epg.xml", "guide.xml", "jiotv.xml", "open-india.xml", "pw.xml", "samsung-in.xml", "sundirectgo.xml"]}
 
-## Backdrops — FAIL
-"[{\"status\": \"hindi/series/towers\", \"error\": \"stale\"}]"
+## Backdrops — PASS
+{
+  "day": "2026-11-24",
+  "statuses": 160,
+  "images": 16,
+  "states": {
+    "live": 160,
+    "cached": 0
+  },
+  "errors": [],
+  "catalogHeads": {
+    "hindi": "tt37200939",
+    "tamil": "tt18933846",
+    "malayalam": "tt41944351",
+    "telugu": "tt36915004"
+  }
+}
 
-## Reels — FAIL
-- **FAIL** hindi: "public bytes/hash differ from media manifest"
-- **FAIL** tamil: "public bytes/hash differ from media manifest"
+## Reels — PASS
+- **PASS** hindi: 50.0
+- **PASS** tamil: 50.0
 - **PASS** malayalam: 50.0
-- **FAIL** telugu: "public bytes/hash differ from media manifest"
+- **PASS** telugu: 50.0

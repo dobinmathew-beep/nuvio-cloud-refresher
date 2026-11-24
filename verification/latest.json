@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-24T18:41:50.621379+04:00",
+  "checked_at": "2026-11-24T19:06:17.576292+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -134,25 +134,73 @@
       ]
     },
     "backdrops": {
-      "status": "fail",
-      "checked_at": "2026-11-24T18:41:50.621379+04:00",
+      "status": "pass",
+      "checked_at": "2026-11-24T19:06:17.576292+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
-      "error": "[{\"status\": \"hindi/series/towers\", \"error\": \"stale\"}]"
+      "details": {
+        "day": "2026-11-24",
+        "statuses": 160,
+        "images": 16,
+        "states": {
+          "live": 160,
+          "cached": 0
+        },
+        "errors": [],
+        "catalogHeads": {
+          "hindi": "tt37200939",
+          "tamil": "tt18933846",
+          "malayalam": "tt41944351",
+          "telugu": "tt36915004"
+        }
+      },
+      "method": "160 public layout/status checks and 16 JPEG checks"
     },
     "reels": {
-      "status": "fail",
-      "checked_at": "2026-11-24T18:41:50.621379+04:00",
+      "status": "pass",
+      "checked_at": "2026-11-24T19:06:17.576292+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
           "language": "hindi",
-          "status": "fail",
-          "error": "public bytes/hash differ from media manifest"
+          "status": "pass",
+          "bytes": 6903718,
+          "sha256": "ba483f68c73a871926a634cb41880247e1ff93113efb4e9568edbf339364391f",
+          "duration_seconds": 50.0,
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1280,
+              "height": 720
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ]
         },
         {
           "language": "tamil",
-          "status": "fail",
-          "error": "public bytes/hash differ from media manifest"
+          "status": "pass",
+          "bytes": 6909518,
+          "sha256": "8ad98fe3be0b4543a8cafa9af390c52b27b4e575cdb3a2eeb18641f344f76a83",
+          "duration_seconds": 50.0,
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1280,
+              "height": 720
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ]
         },
         {
           "language": "malayalam",
@@ -177,16 +225,32 @@
         },
         {
           "language": "telugu",
-          "status": "fail",
-          "error": "public bytes/hash differ from media manifest"
+          "status": "pass",
+          "bytes": 6894028,
+          "sha256": "dc2345e1c55dc328ca1c5a9403ec991c7652d07545ed9a6de9b1058e9ecfebc0",
+          "duration_seconds": 50.0,
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1280,
+              "height": 720
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ]
         }
       ],
       "method": "public MP4 download, manifest hash/size, ffprobe and full ffmpeg decode"
     }
   },
   "summary": {
-    "passed": 2,
+    "passed": 4,
     "total": 4,
-    "status": "fail"
+    "status": "pass"
   }
 }
