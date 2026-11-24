@@ -1,9 +1,6 @@
 name: Nuvio cloud refresh
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths: [.github/workflows/refresh.yml, cloud.py, featured.py, hero_prepare.py, hero_render.py, verify_backdrops.py, source-archive.json, legacy-files.json, legacy-html.json]
   schedule:
     - cron: '0,30 * * * *'
 
