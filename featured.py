@@ -1,4 +1,4 @@
-"""Select the first real, poster-backed IMDb-linked movie in each IndianRegional catalog order."""
+"""Select the first real, poster-backed IMDb- or TMDB-linked movie in each IndianRegional catalog order."""
 from datetime import datetime, timezone
 from pathlib import Path
 import json,re,subprocess
@@ -30,9 +30,9 @@ def select_featured(state):
   chosen=first_valid(metas,lang)
   if not chosen:raise RuntimeError(lang+': no valid catalog head; last-good selection retained')
   pages[url]={'checked_at':now,'metas':metas}
-  languages[lang]={'id':str(chosen['id']).split('||',1)[0],'name':chosen['name'],'poster':chosen['poster'],'catalog':cat,'type':'movie','catalog_source':url,'selection':'catalog-order','catalogRank':0,'eligibility':'IMDb-linked movie','verifiedAt':now}
+  languages[lang]={'id':str(chosen['id']).split('||',1)[0],'name':chosen['name'],'poster':chosen['poster'],'catalog':cat,'type':'movie','catalog_source':url,'selection':'catalog-order','catalogRank':0,'eligibility':'IMDb- or TMDB-linked movie','verifiedAt':now}
   print('FEATURED',lang,chosen['name'],'catalog head',flush=True)
- result={'version':2,'checkedAt':now,'selection':'first usable IMDb-linked movie in the matching IndianRegional catalog order; no external release-date filtering','languages':languages,'warnings':[]}
+ result={'version':2,'checkedAt':now,'selection':'first usable IMDb- or TMDB-linked movie in the matching IndianRegional catalog order; no external release-date filtering','languages':languages,'warnings':[]}
  pages_file.write_text(json.dumps(pages));(state/'featured-movies.json').write_text(json.dumps(result,indent=2))
  return result
 if __name__=='__main__':
