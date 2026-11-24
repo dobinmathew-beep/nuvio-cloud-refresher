@@ -75,6 +75,22 @@ jobs:
         id: refresh
         continue-on-error: true
         run: python -u cloud.py
+      - name: Persist verified media pointers and partial progress
+        if: always()
+        run: |
+          mkdir -p state
+          git config user.name 'Nuvio refresh'
+          git config user.email 'nuvio-refresh@users.noreply.github.com'
+          git add state
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record verified Nuvio refresh state'
+            for attempt in 1 2 3; do
+              git pull --rebase origin main
+              if git push origin HEAD:main; then exit 0; fi
+              sleep 5
+            done
+            exit 1
+          fi
       - name: Verify exact published reel fingerprints on the public URL
         id: reelcheck
         if: steps.refresh.outcome == 'success'
@@ -89,10 +105,24 @@ jobs:
           heroes=state.get('heroes',{})
           fingerprints=heroes.get('language_fingerprints',{})
           assert set(fingerprints)=={'hindi','tamil','malayalam','telugu'}, 'Missing four-language render fingerprints'
-          def fetch(url):
-              req=urllib.request.Request(url,headers={'Cache-Control':'no-cache','User-Agent':'Nuvio-reel-freshness-check/1'})
-              with urllib.request.urlopen(req,timeout=180) as r:
-                  return r.read()
+          def fetch(url,expected):
+              last='no response'
+              for attempt in range(6):
+                  try:
+                      req=urllib.request.Request(url,headers={'Cache-Control':'no-cache','Pragma':'no-cache','User-Agent':'Nuvio-reel-freshness-check/1'})
+                      with urllib.request.urlopen(req,timeout=180) as r:
+                          data=r.read()
+                      actual=hashlib.sha256(data).hexdigest()
+                      if actual==expected:
+                          return data
+                      last=f'public URL has not reached the committed manifest yet (expected {expected}, got {actual})'
+                  except Exception as exc:
+                      last=str(exc)
+                  if attempt<5:
+                      delay=5*(attempt+1)
+                      print(f'Waiting {delay}s for public manifest propagation: {last}',flush=True)
+                      time.sleep(delay)
+              raise AssertionError(last)
           for lang,fp in fingerprints.items():
               video_path=f'/hero/{lang}.mp4'
               json_path=f'/hero/{lang}-daily.json'
@@ -120,17 +150,23 @@ jobs:
           state=json.loads(path.read_text()) if path.exists() else {}
           state.pop('heroes',None)
           path.write_text(json.dumps(state,indent=2) + chr(10))
+          last_path=Path('state/last-run.json')
+          last=json.loads(last_path.read_text()) if last_path.exists() else {}
+          errors=last.get('errors',[])
+          message='Public hero freshness verification failed; current media cycle remains unverified.'
+          if message not in errors:errors.append(message)
+          last['errors']=errors
+          last_path.write_text(json.dumps(last,indent=2) + chr(10))
           print('Cleared hero success marker so the next scheduled check retries reel publishing.')
           PY
-      - name: Persist verified media pointers and partial progress
-        if: always()
+      - name: Persist invalidated hero state after failed public verification
+        if: steps.reelcheck.outcome == 'failure'
         run: |
-          mkdir -p state
           git config user.name 'Nuvio refresh'
           git config user.email 'nuvio-refresh@users.noreply.github.com'
-          git add state
+          git add state/success.json state/last-run.json
           if ! git diff --cached --quiet; then
-            git commit -m 'Record verified Nuvio refresh state'
+            git commit -m 'Invalidate unverified hero refresh state'
             for attempt in 1 2 3; do
               git pull --rebase origin main
               if git push origin HEAD:main; then exit 0; fi
@@ -138,6 +174,7 @@ jobs:
             done
             exit 1
           fi
+
       - name: Mark incomplete refresh for the ten-minute watchdog
         if: steps.refresh.outcome == 'failure' || steps.reelcheck.outcome == 'failure'
         run: |
