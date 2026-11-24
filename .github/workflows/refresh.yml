@@ -130,7 +130,7 @@ jobs:
                   asset=media[path]
                   assert asset['sha256']==expected, f'{path}: state/media.json does not point at this render'
                   public=fetch(origin+path+'?freshness='+expected[:16],expected)
-                                metadata=json.loads(fetch(origin+json_path+'?freshness='+fp['metadata_sha256'][:16],fp['metadata_sha256']))
+              metadata=json.loads(fetch(origin+json_path+'?freshness='+fp['metadata_sha256'][:16],fp['metadata_sha256']))
               assert metadata.get('checked_at')==fp['checked_at'], f'{lang}: public metadata timestamp mismatch'
               ids=[str(x['id']) for x in metadata.get('movies',[])]
               assert ids==fp['movie_ids'], f'{lang}: public movie list differs from the render'
