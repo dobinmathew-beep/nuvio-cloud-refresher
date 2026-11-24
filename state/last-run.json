@@ -1,5 +1,7 @@
 {
-  "attempted_at": "2026-11-24T19:06:44.774661+04:00",
+  "attempted_at": "2026-11-24T19:32:19.500609+04:00",
   "cycle": "2026-11-24",
-  "errors": []
+  "errors": [
+    "Current IndianRegional catalog-head selection: New confirmed centre selections are not yet visible; retained last-good images"
+  ]
 }
