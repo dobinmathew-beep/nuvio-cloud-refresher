@@ -78,7 +78,7 @@ def main():
             state=read();states[kind]=state
             if fresh(state,kind,target): row['state']='fresh'
             else:
-                runs=request(API+'/actions/workflows/'+workflow+'/runs?per_page=10')['workflow_runs'];run_cache[kind]=runs
+                runs=request(API+'/actions/workflows/'+workflow+'/runs?per_page=100')['workflow_runs'];run_cache[kind]=runs
                 if may_dispatch(runs,now,target):
                     request(API+'/actions/workflows/'+workflow+'/dispatches','POST',{'ref':'main'})
                     # Refresh the run list after dispatch so the dashboard links to
@@ -95,7 +95,7 @@ def main():
     # Audit lookups must never prevent the refresh/retry decisions above.
     for kind,workflow,_ in sources:
         if kind not in run_cache:
-            try:run_cache[kind]=request(API+'/actions/workflows/'+workflow+'/runs?per_page=5')['workflow_runs']
+            try:run_cache[kind]=request(API+'/actions/workflows/'+workflow+'/runs?per_page=100')['workflow_runs']
             except Exception as e:log_errors.append(kind+': latest run lookup failed: '+type(e).__name__)
     report={'checked_at':now.isoformat(),'results':results,'errors':errors,'warnings':warnings}
     try:
