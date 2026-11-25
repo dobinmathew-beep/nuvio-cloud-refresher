@@ -242,6 +242,7 @@ def heroes():
         m=manifest[path];b=get(m['url']);assert sha(b)==m['sha256'];p=dist/path.lstrip('/');p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b)
     with ThreadPoolExecutor(max_workers=4) as pool:list(pool.map(restore,needed))
     # Use the versioned catalog-order selector; preserve renderer and audio envelopes.
+    shutil.copy2(ROOT/'featured.py',render/'source/hero/daily/featured.py')
     shutil.copy2(ROOT/'hero_prepare.py',render/'source/hero/daily/prepare.py')
     shutil.copy2(ROOT/'hero_render.py',render/'source/hero/daily/render.py')
     # Historical Hosanna comparison URLs remain fixed legacy artifacts.
