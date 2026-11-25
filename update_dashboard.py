@@ -131,7 +131,7 @@ def write_report(report,states,runs,log_errors=None,root=Path('.')):
       '', '**Refresh checks:** every 30 minutes. Outputs refresh when their two-hour cycle is due. **Dashboard:** refreshed immediately when a media, addon, or EPG workflow completes, plus the 30-minute watchdog check.',
       '', '> This is the last saved check, not a live clock. If it is more than 45 minutes old, open Actions to investigate. GitHub and network delays remain possible.',
       '', '| Output | Status at last check | Last successful refresh run (Oman) | Last verified cycle / check (Oman) | Details | Latest attempt |','|---|---|---|---|---|---|']
-    lines+=['| '+' | '.join([safe(n),s,safe(success),v,safe(d),link])+' |' for n,s,success,v,d,link in rows_for(entry)]
+    lines+=['| '+' | '.join([safe(n),s,success,v,safe(d),link])+' |' for n,s,success,v,d,link in rows_for(entry)]
     lines+=['', '✅ Updated = verified for the current two-hour cycle. 🔄 Running / retry requested = work is pending. ⚠️ / ❌ = attention or retry needed. The two media outputs share one workflow and both must pass before the combined cycle is complete.',
       '', 'A successful check can keep the same movies or listings when the source has not changed. EPG unresolved channels remain explicit; schedules are never invented.',
       '', '## Today and past days', '', f'- [Today’s detailed timeline](logs/{day}/README.md)', '- [Daily history — all saved dates](logs/README.md)',
