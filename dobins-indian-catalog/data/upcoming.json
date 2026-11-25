@@ -1,26 +1,8 @@
 {
-  "generatedAt": "2026-11-25T16:01:44.327282+04:00",
+  "generatedAt": "2026-11-25T18:47:26.075074+04:00",
   "policy": "confirmed-source-matched-id-v2",
   "count": 14,
   "items": [
-    {
-      "id": "tt50063835",
-      "aliases": [
-        "tt50063835"
-      ],
-      "name": "Apsara",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-26",
-      "kind": "episode",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/338390"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.themoviedb.org/tv/338390"
-    },
     {
       "id": "tt1281973",
       "aliases": [
@@ -40,6 +22,24 @@
       "catalog": "dobins_hi_series",
       "region": "IN",
       "source": "https://www.dailyott.in/"
+    },
+    {
+      "id": "tt43720139",
+      "aliases": [
+        "tt43720139"
+      ],
+      "name": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-26",
+      "kind": "episode",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/319143"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.themoviedb.org/tv/319143"
     },
     {
       "id": "tt43636966",

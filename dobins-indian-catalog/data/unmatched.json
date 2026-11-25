@@ -52,31 +52,6 @@
     "sourceRecord": {}
   },
   {
-    "name": "Pendulum",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-11-22",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.keralatv.in/channel/ott/"
-    ],
-    "platforms": [
-      "Prime Video",
-      "ManoramaMAX",
-      "JioHotstar",
-      "Netflix",
-      "SonyLIV",
-      "ZEE5"
-    ],
-    "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
-    "sourceRecord": {
-      "title": "Pendulum",
-      "releaseDate": "2026-11-22",
-      "source": "https://www.keralatv.in/channel/ott/",
-      "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
-    }
-  },
-  {
     "name": "Drones1",
     "language": "tamil",
     "type": "movie",
@@ -1700,8 +1675,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix",
-      "ETV Win"
+      "ETV Win",
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {

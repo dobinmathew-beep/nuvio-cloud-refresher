@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T16:01:44.327282+04:00",
+  "generatedAt": "2026-11-25T18:47:26.075074+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 30,
@@ -20,7 +20,7 @@
     "bySource": {
       "https://ottasia.com/ott-releases-this-week?country=IN": 17,
       "https://www.dailyott.in/": 5,
-      "https://www.themoviedb.org/tv/338390": 1,
+      "https://www.themoviedb.org/tv/319143": 1,
       "https://www.themoviedb.org/tv/338656": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
       "https://v3-cinemeta.strem.io/": 2,
@@ -86,31 +86,6 @@
       "catalog": "dobins_hi_movie"
     },
     {
-      "title": "Apsara",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-25",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/338390"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "premiere",
-      "detail": null,
-      "matchId": "tt50063835",
-      "matchState": "published",
-      "matchReason": "https://www.themoviedb.org/tv/338390",
-      "metadataComplete": true,
-      "metadataSource": "https://www.themoviedb.org/tv/338390",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
       "title": "Bigg Boss Season 20",
       "language": "hindi",
       "type": "series",
@@ -125,6 +100,31 @@
       "releaseDateBasis": null,
       "detail": null,
       "matchId": "tt1281973",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-25",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/319143"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "premiere",
+      "detail": null,
+      "matchId": "tt43720139",
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "metadataComplete": true,
@@ -226,8 +226,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Prime Video",
-        "Netflix"
+        "Netflix",
+        "Prime Video"
       ],
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/",
@@ -844,10 +844,10 @@
   "malayalamReview": {
     "policy": "Unmatched Malayalam source detections are held out until an unambiguous IMDb or TMDB identity and complete metadata are verified.",
     "counts": {
-      "total": 8,
+      "total": 7,
       "byType": {
         "series": 5,
-        "movie": 3
+        "movie": 2
       }
     },
     "items": [
@@ -869,31 +869,6 @@
           "releaseDate": "2026-11-27",
           "source": "https://www.keralatv.in/channel/ott/",
           "headline": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram, Streaming from 27 November"
-        }
-      },
-      {
-        "name": "Pendulum",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-11-22",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://www.keralatv.in/channel/ott/"
-        ],
-        "platforms": [
-          "Prime Video",
-          "ManoramaMAX",
-          "JioHotstar",
-          "Netflix",
-          "SonyLIV",
-          "ZEE5"
-        ],
-        "detail": "https://www.keralatv.in/pendulum-malayalam-movie-ott-platform-youtube/",
-        "sourceRecord": {
-          "title": "Pendulum",
-          "releaseDate": "2026-11-22",
-          "source": "https://www.keralatv.in/channel/ott/",
-          "headline": "Pendulum Movie OTT Platform – Where to Watch Bouma Director Rejin S. Babu’s Debut Film Online for Free?"
         }
       },
       {
@@ -1199,7 +1174,7 @@
       "source": "Kerala TV multi-language OTT releases",
       "url": "https://www.keralatv.in/channel/ott/",
       "state": "live",
-      "records": 13
+      "records": 11
     },
     {
       "source": "DailyOTT upcoming dates",
@@ -1224,7 +1199,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 116,
+      "records": 114,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1261,7 +1236,7 @@
             "keralatv.in",
             "ottasia.com"
           ],
-          "detectedRecords": 23,
+          "detectedRecords": 22,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1359,8 +1334,8 @@
               "url": "https://www.keralatv.in/channel/ott/",
               "state": "live",
               "languageState": "records_found",
-              "records": 8,
-              "movieRecords": 7,
+              "records": 7,
+              "movieRecords": 6,
               "seriesRecords": 1
             },
             {
@@ -1577,7 +1552,7 @@
           "sourceDomainsWithSeriesRecords": [
             "ottchecker.com"
           ],
-          "detectedRecords": 28,
+          "detectedRecords": 27,
           "coverageStatus": "partial",
           "sources": [
             {
@@ -1657,8 +1632,8 @@
               "url": "https://www.keralatv.in/channel/ott/",
               "state": "live",
               "languageState": "records_found",
-              "records": 6,
-              "movieRecords": 6,
+              "records": 5,
+              "movieRecords": 5,
               "seriesRecords": 0
             },
             {
@@ -1996,7 +1971,7 @@
         "keralatv.in",
         "ottasia.com"
       ],
-      "detectedRecords": 23,
+      "detectedRecords": 22,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2094,8 +2069,8 @@
           "url": "https://www.keralatv.in/channel/ott/",
           "state": "live",
           "languageState": "records_found",
-          "records": 8,
-          "movieRecords": 7,
+          "records": 7,
+          "movieRecords": 6,
           "seriesRecords": 1
         },
         {
@@ -2312,7 +2287,7 @@
       "sourceDomainsWithSeriesRecords": [
         "ottchecker.com"
       ],
-      "detectedRecords": 28,
+      "detectedRecords": 27,
       "coverageStatus": "partial",
       "sources": [
         {
@@ -2392,8 +2367,8 @@
           "url": "https://www.keralatv.in/channel/ott/",
           "state": "live",
           "languageState": "records_found",
-          "records": 6,
-          "movieRecords": 6,
+          "records": 5,
+          "movieRecords": 5,
           "seriesRecords": 0
         },
         {
