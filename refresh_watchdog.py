@@ -28,7 +28,7 @@ def fresh(state, kind, target):
             and bool(state.get('heroes')) and state.get('featuredVersion')==2
             and state.get('featured_cycle')==target.isoformat() and valid_ids
             and state.get('heroes',{}).get('opening_version')==1
-            and state.get('heroes',{}).get('selection_policy')=='imdb-catalog-order-v1')
+            and state.get('heroes',{}).get('selection_policy')=='catalog-order-v2')
     field='lastSuccessCycle' if kind=='addon' else 'checked_utc'
     try: checked=datetime.fromisoformat(state.get(field,''))
     except (TypeError,ValueError): return False
@@ -61,7 +61,7 @@ def repository_json(path, ref='main'):
     return json.loads(base64.b64decode(d['content']))
 
 def main():
-    now=datetime.now(ZONE);results=[];errors=[];states={};run_cache={};log_errors=[]
+    now=datetime.now(ZONE);results=[];errors=[];warnings=[];states={};run_cache={};log_errors=[]
     def media_state():
         state=repository_json('state/success.json')
         featured=repository_json('state/featured-movies.json')
@@ -88,7 +88,7 @@ def main():
                 elif any(r['status']!='completed' for r in runs): row['state']='refresh-in-progress'
                 else:
                     row['state']='stale-retry-cooldown'
-                    errors.append(kind+': overdue; recent attempt has not produced a valid current cycle')
+                    warnings.append(kind+': overdue; recent attempt has not produced a valid current cycle')
         except Exception as e:
             row['state']='check-failed';row['error']=type(e).__name__+': '+str(e);errors.append(kind+': '+row['error'])
         results.append(row)
@@ -97,7 +97,7 @@ def main():
         if kind not in run_cache:
             try:run_cache[kind]=request(API+'/actions/workflows/'+workflow+'/runs?per_page=5')['workflow_runs']
             except Exception as e:log_errors.append(kind+': latest run lookup failed: '+type(e).__name__)
-    report={'checked_at':now.isoformat(),'results':results,'errors':errors}
+    report={'checked_at':now.isoformat(),'results':results,'errors':errors,'warnings':warnings}
     try:
         from update_dashboard import write_report
         write_report(report,states,run_cache,log_errors)
