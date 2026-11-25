@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T02:43:28.419863+04:00",
+  "generatedAt": "2026-11-25T06:41:48.993069+04:00",
   "badgePolicy": "first-verified-digital-arrival-v1",
   "windowDays": 35,
   "source": "all active discovery sources (rolling 35-day window)",
@@ -9,6 +9,24 @@
     "unmatched": 7
   },
   "items": [
+    {
+      "title": "Delhi 2021",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-25",
+      "releaseDateBasis": "first-verified-digital-arrival",
+      "id": "tt51547104",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN",
+        "https://www.dailyott.in/"
+      ],
+      "detail": null
+    },
     {
       "title": "Dil Ki Bewafaiyaan",
       "language": "hindi",
@@ -148,8 +166,8 @@
         "Aha"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
         "https://www.ottchecker.com/ott-releases/telugu",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.dailyott.in/"
       ],
       "detail": null
@@ -177,7 +195,7 @@
       "title": "Mr & Mrs Office",
       "language": "tamil",
       "type": "series",
-      "releaseDate": "2026-11-18",
+      "releaseDate": "2026-11-25",
       "releaseDateBasis": "series-release-event",
       "id": "tt50135636",
       "matchState": "published",
@@ -218,8 +236,8 @@
       "matchState": "published",
       "matchReason": "https://v3-cinemeta.strem.io/",
       "platforms": [
-        "JioHotstar",
-        "JioHotStar"
+        "JioHotStar",
+        "JioHotstar"
       ],
       "sources": [
         "https://www.ottchecker.com/ott-releases/hindi",
@@ -280,8 +298,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
         "https://www.ottchecker.com/ott-releases/telugu",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.dailyott.in/"
       ],
       "detail": null
@@ -387,8 +405,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "JioHotstar",
-        "JioHotStar"
+        "JioHotStar",
+        "JioHotstar"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
@@ -426,8 +444,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "SunNXT",
-        "Prime Video"
+        "Prime Video",
+        "SunNXT"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -447,8 +465,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
         "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.dailyott.in/"
       ],
       "detail": null
@@ -597,8 +615,8 @@
         "ETV Win"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
         "https://www.ottchecker.com/ott-releases/telugu",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.dailyott.in/"
       ],
       "detail": null
@@ -801,7 +819,7 @@
       "title": "Bigg Boss Season 20",
       "language": "hindi",
       "type": "series",
-      "releaseDate": "2026-11-24",
+      "releaseDate": "2026-11-25",
       "releaseDateBasis": "series-release-event",
       "id": "tt1281973",
       "matchState": "published",
@@ -1045,8 +1063,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Sun NXT",
-        "ManoramaMAX"
+        "ManoramaMAX",
+        "Sun NXT"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
@@ -1393,21 +1411,6 @@
       "detail": "https://ottasia.com/title/movie/1838960/acedia?country=IN"
     },
     {
-      "title": "Delhi 2021",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-25",
-      "releaseDateBasis": "first-verified-digital-arrival",
-      "id": "tt51547104",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "platforms": [],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "detail": "https://ottasia.com/title/movie/1755816/delhi-2021?country=IN"
-    },
-    {
       "title": "Bouma",
       "language": "malayalam",
       "type": "movie",
@@ -1741,11 +1744,11 @@
       "title": "Pushpaka Vimanam",
       "language": "telugu",
       "type": "series",
-      "releaseDate": "2026-11-12",
+      "releaseDate": "2026-11-19",
       "releaseDateBasis": "series-release-event",
       "id": "tt50089775",
       "matchState": "published",
-      "matchReason": "Verified IMDb title/year match",
+      "matchReason": "IMDb-matched metadata",
       "platforms": [
         "JioHotstar"
       ],
@@ -2024,7 +2027,7 @@
       "title": "Prince of Mollywood",
       "language": "malayalam",
       "type": "series",
-      "releaseDate": "2026-11-13",
+      "releaseDate": "2026-11-20",
       "releaseDateBasis": "series-release-event",
       "id": "tt44686897",
       "matchState": "published",
@@ -2125,7 +2128,7 @@
       "title": "Apsara",
       "language": "hindi",
       "type": "series",
-      "releaseDate": "2026-11-17",
+      "releaseDate": "2026-11-25",
       "releaseDateBasis": "series-release-event",
       "id": "tt50063835",
       "matchState": "published",

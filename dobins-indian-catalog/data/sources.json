@@ -1,7 +1,62 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-25T02:43:28.419863+04:00",
+    "checkedAt": "2026-11-25T06:41:48.993069+04:00",
     "records": [
+      {
+        "_id": "6b06458d699a8884e1604806",
+        "platform": "Prime Video",
+        "title": "Blade Runner 2099",
+        "createdAt": "2026-11-25T02:18:53.567Z",
+        "genre": "Sci-fi",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-25",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-25T02:19:48.746Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/qAcXaAoJiYry9nGEyxTirnJ82Jj.jpg",
+        "verified": true
+      },
+      {
+        "_id": "6b06458d699a8884e1604807",
+        "platform": "SBS",
+        "title": "Nine to Six",
+        "createdAt": "2026-11-25T02:18:53.790Z",
+        "genre": "Romance, Office, Comedy",
+        "imdbRating": null,
+        "languages": [
+          "Korean"
+        ],
+        "original_language": "Korean",
+        "releaseDate": "2026-11-25",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-25T02:19:50.935Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/1iVlL2Prt9Q5BWMfeZQ6d1ZAZBy.jpg",
+        "verified": true
+      },
+      {
+        "_id": "6b06458e699a8884e1604808",
+        "platform": "ZEE5",
+        "title": "Delhi 2021",
+        "createdAt": "2026-11-25T02:18:54.011Z",
+        "genre": "Drama",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-25",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-25T02:19:49.981Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/lSZs3yqsBqNacZaXVbv5CE6KVov.jpg",
+        "instagramPostedAt": "2026-11-25T02:20:19Z",
+        "verified": true
+      },
       {
         "_id": "6b04f409699a8884e160193c",
         "title": "Dig",
@@ -16,8 +71,10 @@
         "releaseDate": "2026-11-24",
         "source_verified": true,
         "type": "Series",
-        "updatedAt": "2026-11-24T02:19:38.234Z",
+        "updatedAt": "2026-11-25T02:19:49.365Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/c5zO3rEJVkxDTPudMMZNh1tief3.jpg",
+        "tmdbRating": 58,
+        "tmdbVotes": 14,
         "verified": true
       },
       {
@@ -92,6 +149,9 @@
           "fetchedAt": "2026-11-24T05:27:34.336Z"
         },
         "tmdbId": 1281331,
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-25T02:19:26.598Z",
+        "trendingRankedDateIST": "2026-11-25",
         "verified": true
       },
       {
@@ -197,9 +257,9 @@
           "fetchedAt": "2026-11-13T12:41:01.465Z"
         },
         "tmdbId": 1431738,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-24T02:19:19.128Z",
-        "trendingRankedDateIST": "2026-11-24",
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-25T02:19:26.598Z",
+        "trendingRankedDateIST": "2026-11-25",
         "verified": true
       },
       {
@@ -298,9 +358,9 @@
         },
         "tmdbId": 1595124,
         "votes": 0,
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-24T02:19:19.128Z",
-        "trendingRankedDateIST": "2026-11-24",
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-11-25T02:19:26.598Z",
+        "trendingRankedDateIST": "2026-11-25",
         "verified": true
       },
       {
@@ -411,9 +471,9 @@
         "tmdbRating": 75,
         "tmdbVotes": 25,
         "votes": 1,
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-11-24T02:19:19.128Z",
-        "trendingRankedDateIST": "2026-11-24",
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-25T02:19:26.598Z",
+        "trendingRankedDateIST": "2026-11-25",
         "verified": true
       },
       {
@@ -487,9 +547,9 @@
           "fetchedAt": "2026-11-20T11:53:08.767Z"
         },
         "tmdbId": 1593350,
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-24T02:19:19.128Z",
-        "trendingRankedDateIST": "2026-11-24",
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-25T02:19:26.598Z",
+        "trendingRankedDateIST": "2026-11-25",
         "verified": true
       },
       {
@@ -563,8 +623,8 @@
         },
         "tmdbId": 1542674,
         "trendingRank": 7,
-        "trendingRankedAt": "2026-11-24T02:19:19.128Z",
-        "trendingRankedDateIST": "2026-11-24",
+        "trendingRankedAt": "2026-11-25T02:19:26.598Z",
+        "trendingRankedDateIST": "2026-11-25",
         "verified": true
       },
       {
@@ -626,8 +686,8 @@
         },
         "tmdbId": 1610188,
         "trendingRank": 6,
-        "trendingRankedAt": "2026-11-24T02:19:19.128Z",
-        "trendingRankedDateIST": "2026-11-24",
+        "trendingRankedAt": "2026-11-25T02:19:26.598Z",
+        "trendingRankedDateIST": "2026-11-25",
         "verified": true
       },
       {
@@ -702,9 +762,6 @@
           "fetchedAt": "2026-11-19T09:28:24.718Z"
         },
         "tmdbId": 1551025,
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-24T02:19:19.128Z",
-        "trendingRankedDateIST": "2026-11-24",
         "verified": true
       },
       {
@@ -31717,7 +31774,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-25T02:43:28.419863+04:00",
+    "checkedAt": "2026-11-25T06:41:48.993069+04:00",
     "records": [
       {
         "name": "Anbil Avan",

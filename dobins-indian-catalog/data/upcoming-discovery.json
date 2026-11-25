@@ -1,30 +1,32 @@
 {
-  "generatedAt": "2026-11-25T02:43:28.419863+04:00",
+  "generatedAt": "2026-11-25T06:41:48.993069+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 25,
+    "total": 28,
     "byLanguage": {
-      "hindi": 18,
+      "hindi": 20,
+      "tamil": 2,
       "malayalam": 2,
-      "telugu": 4,
-      "tamil": 1
+      "telugu": 4
     },
     "byType": {
       "movie": 14,
-      "series": 11
+      "series": 14
     },
     "byMatchState": {
       "unmatched": 8,
-      "published": 17
+      "published": 20
     },
     "bySource": {
       "https://ottasia.com/ott-releases-this-week?country=IN": 16,
+      "https://www.dailyott.in/": 5,
+      "https://www.themoviedb.org/tv/338390": 1,
       "https://www.themoviedb.org/tv/338656": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
       "https://v3-cinemeta.strem.io/": 2,
+      "https://www.themoviedb.org/tv/338502": 1,
       "https://www.myvi.in/blog/ott-releases-this-week": 1,
       "https://cinebuds.com/ott-releases-this-week/": 4,
-      "https://www.dailyott.in/": 2,
       "https://www.keralatv.in/channel/ott/": 2,
       "https://api.tvmaze.com/schedule/web": 1
     }
@@ -60,13 +62,16 @@
       "language": "hindi",
       "type": "movie",
       "releaseDate": "2026-11-25",
-      "platforms": [],
+      "platforms": [
+        "ZEE5"
+      ],
       "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
+        "https://ottasia.com/ott-releases-this-week?country=IN",
+        "https://www.dailyott.in/"
       ],
       "confirmed": true,
-      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
-      "detail": "https://ottasia.com/title/movie/1755816/delhi-2021?country=IN",
+      "releaseDateBasis": null,
+      "detail": null,
       "matchId": "tt51547104",
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
@@ -79,6 +84,58 @@
         "releaseInfo": true
       },
       "catalog": "dobins_hi_movie"
+    },
+    {
+      "title": "Apsara",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-25",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/338390"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "premiere",
+      "detail": null,
+      "matchId": "tt50063835",
+      "matchState": "published",
+      "matchReason": "https://www.themoviedb.org/tv/338390",
+      "metadataComplete": true,
+      "metadataSource": "https://www.themoviedb.org/tv/338390",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "Bigg Boss Season 20",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-25",
+      "platforms": [
+        "JioHotStar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": null,
+      "detail": null,
+      "matchId": "tt1281973",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
     },
     {
       "title": "Lo Chudail Chali Sasural",
@@ -106,6 +163,34 @@
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "Mr & Mrs Office",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-11-25",
+      "platforms": [
+        "JioHotStar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://www.themoviedb.org/tv/338502"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": null,
+      "detail": null,
+      "matchId": "tt50135636",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_ta_series"
     },
     {
       "title": "Dhai Chaal",
@@ -141,8 +226,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/",
@@ -241,7 +326,7 @@
       "metadataFields": {
         "poster": true,
         "description": true,
-        "genres": false,
+        "genres": true,
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
@@ -962,7 +1047,7 @@
       "source": "DailyOTT",
       "url": "https://www.dailyott.in/",
       "state": "live",
-      "records": 967
+      "records": 970
     },
     {
       "source": "Cinebuds",
@@ -1063,9 +1148,8 @@
     {
       "source": "DailyOTT upcoming dates",
       "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-      "state": "no_confirmed_upcoming",
-      "records": 0,
-      "note": "DailyOTT is live; no verified future dates were present in the returned API pages."
+      "state": "live",
+      "records": 1
     },
     {
       "source": "Cinebuds recent OTT dates",
@@ -1226,7 +1310,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "no_confirmed_upcoming",
+              "state": "live",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -1373,7 +1457,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "no_confirmed_upcoming",
+              "state": "live",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -1522,7 +1606,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "no_confirmed_upcoming",
+              "state": "live",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -1676,7 +1760,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "no_confirmed_upcoming",
+              "state": "live",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -1959,7 +2043,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "no_confirmed_upcoming",
+          "state": "live",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,
@@ -2106,7 +2190,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "no_confirmed_upcoming",
+          "state": "live",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,
@@ -2255,7 +2339,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "no_confirmed_upcoming",
+          "state": "live",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,
@@ -2409,7 +2493,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "no_confirmed_upcoming",
+          "state": "live",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,
