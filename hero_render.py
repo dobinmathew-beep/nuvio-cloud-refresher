@@ -6,7 +6,7 @@ from PIL import Image,ImageDraw,ImageFilter
 HERE=Path(__file__).parent;HERO=HERE.parent;ROOT=HERO.parent.parent;OUT=ROOT/'dist/hero';WORK=ROOT/'work/daily-heroes';WORK.mkdir(parents=True,exist_ok=True)
 spec=importlib.util.spec_from_file_location('original',HERO/'projector/render_projector_v19.py');old=importlib.util.module_from_spec(spec);spec.loader.exec_module(old)
 W,H,FPS,DURATION=1280,720,30,50
-VERSION='catalog-head-opening-2'
+VERSION='catalog-head-opening-3'
 MUSIC=json.loads((HERE/'music.json').read_text())
 def mappings():
  us=np.linspace(0,1,401);tops=np.array([old.curve(float(u),0)[0] for u in us]);bots=np.array([old.curve(float(u),0)[1] for u in us]);centres=(tops+bots)/2;heights=np.linalg.norm(tops-bots,axis=1);coords=np.r_[0,np.cumsum(np.linalg.norm(np.diff(centres,axis=0),axis=1)/((heights[1:]+heights[:-1])/2)*344)]
