@@ -189,23 +189,6 @@
     }
   },
   {
-    "name": "Acedia",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-11-25",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
-    ],
-    "platforms": [],
-    "detail": "https://ottasia.com/title/movie/1838960/acedia?country=IN",
-    "sourceRecord": {
-      "title": "Acedia",
-      "releaseDate": "2026-11-25",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    }
-  },
-  {
     "name": "Chef Mantra Project USA",
     "language": "telugu",
     "type": "series",
@@ -1124,37 +1107,6 @@
     }
   },
   {
-    "name": "Nijame Rujuvainadhi",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-08-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a7e75993fab9691478b3be2",
-      "platform": "ETV Win",
-      "title": "Nijame Rujuvainadhi",
-      "createdAt": "2026-08-14T01:55:36.933Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "original_language": "Telugu",
-      "releaseDate": "2026-08-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-08-14T01:55:36.933Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Jungle Tales With Mowgli",
     "language": "hindi",
     "type": "movie",
@@ -1182,6 +1134,37 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-09-12T02:18:48.886Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Nijame Rujuvainadhi",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-08-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a7e75993fab9691478b3be2",
+      "platform": "ETV Win",
+      "title": "Nijame Rujuvainadhi",
+      "createdAt": "2026-08-14T01:55:36.933Z",
+      "genre": "Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "original_language": "Telugu",
+      "releaseDate": "2026-08-14",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-08-14T01:55:36.933Z",
       "verified": true
     }
   },
@@ -1675,8 +1658,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix",
-      "ETV Win"
+      "ETV Win",
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {

@@ -1,197 +1,34 @@
 {
-  "generatedAt": "2026-11-25T22:08:30.555965+04:00",
+  "generatedAt": "2026-11-26T01:53:29.124705+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 30,
+    "total": 24,
     "byLanguage": {
-      "hindi": 21,
-      "tamil": 3,
+      "hindi": 16,
       "malayalam": 2,
+      "tamil": 2,
       "telugu": 4
     },
     "byType": {
-      "movie": 16,
-      "series": 14
+      "movie": 14,
+      "series": 10
     },
     "byMatchState": {
-      "unmatched": 8,
-      "published": 22
+      "published": 17,
+      "unmatched": 7
     },
     "bySource": {
-      "https://ottasia.com/ott-releases-this-week?country=IN": 17,
-      "https://www.dailyott.in/": 5,
-      "https://www.themoviedb.org/tv/319143": 1,
-      "https://www.themoviedb.org/tv/338656": 1,
-      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
-      "https://v3-cinemeta.strem.io/": 2,
-      "https://www.themoviedb.org/tv/338502": 1,
       "https://www.myvi.in/blog/ott-releases-this-week": 1,
+      "https://www.dailyott.in/": 2,
       "https://cinebuds.com/ott-releases-this-week/": 5,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 15,
       "https://www.keralatv.in/channel/ott/": 2,
-      "https://api.tvmaze.com/schedule/web": 1
+      "https://api.tvmaze.com/schedule/web": 1,
+      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
+      "https://v3-cinemeta.strem.io/": 1
     }
   },
   "items": [
-    {
-      "title": "Acedia",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-25",
-      "platforms": [],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
-      "detail": "https://ottasia.com/title/movie/1838960/acedia?country=IN",
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
-    {
-      "title": "Delhi 2021",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-25",
-      "platforms": [
-        "ZEE5"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": null,
-      "matchId": "tt51547104",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_movie"
-    },
-    {
-      "title": "Bigg Boss Season 20",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-25",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": null,
-      "matchId": "tt1281973",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-25",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/319143"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "premiere",
-      "detail": null,
-      "matchId": "tt43720139",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Lo Chudail Chali Sasural",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-25",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/338656",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "episode",
-      "detail": null,
-      "matchId": "tt43636966",
-      "matchState": "published",
-      "matchReason": "https://v3-cinemeta.strem.io/",
-      "metadataComplete": true,
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Mr & Mrs Office",
-      "language": "tamil",
-      "type": "series",
-      "releaseDate": "2026-11-25",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://www.themoviedb.org/tv/338502"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": null,
-      "matchId": "tt50135636",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_ta_series"
-    },
     {
       "title": "Dhai Chaal",
       "language": "hindi",
@@ -226,8 +63,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
         "https://www.dailyott.in/",
@@ -555,8 +392,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -1096,7 +933,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 20
+      "records": 18
     },
     {
       "source": "Vi weekly OTT calendar",
@@ -1179,8 +1016,9 @@
     {
       "source": "DailyOTT upcoming dates",
       "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-      "state": "live",
-      "records": 1
+      "state": "no_confirmed_upcoming",
+      "records": 0,
+      "note": "DailyOTT is live; no verified future dates were present in the returned API pages."
     },
     {
       "source": "Cinebuds recent OTT dates",
@@ -1199,7 +1037,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 114,
+      "records": 112,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1341,7 +1179,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "live",
+              "state": "no_confirmed_upcoming",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -1490,7 +1328,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "live",
+              "state": "no_confirmed_upcoming",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -1639,7 +1477,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "live",
+              "state": "no_confirmed_upcoming",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -1706,7 +1544,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 43,
+          "detectedRecords": 41,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1723,8 +1561,8 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 17,
-              "movieRecords": 11,
+              "records": 15,
+              "movieRecords": 9,
               "seriesRecords": 6
             },
             {
@@ -1793,7 +1631,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "live",
+              "state": "no_confirmed_upcoming",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -1915,16 +1753,16 @@
       "source": "TMDB theatrical and physical releases",
       "language": "telugu",
       "state": "live",
-      "records": 182,
-      "theatricalCandidates": 182,
+      "records": 181,
+      "theatricalCandidates": 181,
       "physicalCandidates": 0
     },
     {
       "source": "TMDB theatrical and physical releases",
       "language": "hindi",
       "state": "live",
-      "records": 208,
-      "theatricalCandidates": 193,
+      "records": 209,
+      "theatricalCandidates": 194,
       "physicalCandidates": 16
     },
     {
@@ -2076,7 +1914,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "live",
+          "state": "no_confirmed_upcoming",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,
@@ -2225,7 +2063,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "live",
+          "state": "no_confirmed_upcoming",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,
@@ -2374,7 +2212,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "live",
+          "state": "no_confirmed_upcoming",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,
@@ -2441,7 +2279,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 43,
+      "detectedRecords": 41,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2458,8 +2296,8 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 17,
-          "movieRecords": 11,
+          "records": 15,
+          "movieRecords": 9,
           "seriesRecords": 6
         },
         {
@@ -2528,7 +2366,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "live",
+          "state": "no_confirmed_upcoming",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,
