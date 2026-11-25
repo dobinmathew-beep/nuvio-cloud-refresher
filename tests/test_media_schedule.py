@@ -8,7 +8,7 @@ import cloud
 class MediaScheduleTests(unittest.TestCase):
     def test_refresh_rechecks_catalog_head_without_rerendering_unchanged_media(self):
         now=datetime(2026,11,2,14,0,tzinfo=ZoneInfo('Asia/Muscat'))
-        heroes={'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}
+        heroes={'opening_version':1,'selection_policy':'catalog-order-v2'}
         with tempfile.TemporaryDirectory() as folder:
             state=Path(folder)
             (state/'success.json').write_text(json.dumps({'cycle':'2026-11-02','featuredVersion':2,'backdrops':{'ok':True},'heroes':heroes}))
