@@ -204,23 +204,9 @@ def featured_movies():
     if subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT).returncode:
         subprocess.run(['git','commit','-m','Update IndianRegional catalog-head centre movies'],cwd=ROOT,check=True)
         push_state()
-    # Allow the HTTP service to observe the new pointer before full verification.
-    def probe(lang):
-        try:
-            url=('https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site/status/'+lang+
-                 '/movies/gallery.json?check=1&refresh='+str(time.time_ns()))
-            p=subprocess.run(['curl','-fsSL','--connect-timeout','5','--max-time','10',
-                              '-H','Cache-Control: no-cache',url],
-                             capture_output=True,text=True,timeout=12)
-            if p.returncode:return False
-            d=json.loads(p.stdout)
-            return d.get('centerMovie',{}).get('id')==result['languages'][lang]['id'] and d.get('renderVersion')=='catalog-head-v2'
-        except Exception:return False
-    for attempt in range(20):
-        with ThreadPoolExecutor(max_workers=4) as pool:ready=all(pool.map(probe,LANGS))
-        if ready:break
-        if attempt==19:raise RuntimeError('New confirmed centre selections are not yet visible; retained last-good images')
-        time.sleep(5)
+    # Backdrop deployment is an independent publisher. Do not block reel
+    # generation while its public cache/deployment catches up; the dedicated
+    # backdrop verifier records that component's result separately.
     return result
 
 def build_hero_index(dist):
@@ -305,7 +291,7 @@ def heroes():
         'checked_at':datetime.now(ZoneInfo('Asia/Muscat')).isoformat(),
         'films_per_language':20,
         'opening_version':1,
-        'selection_policy':'imdb-catalog-order-v1',
+        'selection_policy':'catalog-order-v2',
         'language_fingerprints':language_fingerprints,
         'published_asset_sha256':{path:updated[path]['sha256'] for path in needed}
     }
@@ -335,7 +321,7 @@ def main():
         and progress.get('featured_cycle')==refresh_cycle and set(progress.get('featured_ids',{}))==set(LANGS)):
         print('Current Muscat refresh cycle and live catalog heads already verified; nothing to refresh.');return 0
     bootstrap();failed=[]
-    for key,fn in [('backdrops',backdrop),('heroes',heroes)]:
+    for key,fn in [('heroes',heroes),('backdrops',backdrop)]:
         if progress.get(key):continue
         try:progress[key]=fn();print(key,'verified',flush=True)
         except Exception as e:failed.append(key+': '+str(e));print('FAILED',failed[-1],flush=True)
