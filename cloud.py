@@ -77,36 +77,51 @@ def release(tag):
     return api('/releases','POST',{'tag_name':tag,'name':'Nuvio generated website artifacts','body':'Generated media and rendering assets for this personal website. No AI is used.','draft':False,'prerelease':False})
 
 def upload(rel,name,path,known):
-    """Upload content-addressed assets safely, including concurrent 422 races."""
+    """Upload content-addressed assets with bounded retries and safe 422 race recovery."""
     raw=path.read_bytes();digest=sha(raw)
     if name in known:
         return known[name]['browser_download_url']
     url=rel['upload_url'].split('{')[0]+'?name='+urllib.parse.quote(name)
-    try:
-        result=api(url,'POST',raw=raw,mime=mimetypes.guess_type(path.name)[0] or 'application/octet-stream')
-        known[name]=result
-        return result['browser_download_url']
-    except urllib.error.HTTPError as exc:
-        detail=exc.read().decode(errors='replace')[-2000:]
-        if exc.code!=422:
-            raise RuntimeError(f'GitHub release upload failed ({exc.code}) for {name}: {detail}') from exc
-        # Another publisher may have uploaded this same content-addressed name
-        # after our asset listing. Refresh the release index before deciding.
-        refreshed=entries(rel)
-        existing=refreshed.get(name)
-        if existing is None:
-            raise RuntimeError(f'GitHub rejected {name} with HTTP 422, but no matching release asset exists: {detail}') from exc
-        remote_url=existing['browser_download_url']
-        remote_digest=existing.get('digest','')
-        if remote_digest.startswith('sha256:'):
-            matches=remote_digest.split(':',1)[1].lower()==digest
-        else:
-            matches=sha(get(remote_url))==digest
-        if not matches:
-            raise RuntimeError(f'HTTP 422 asset-name collision for {name}: existing release asset does not match local SHA-256 {digest}; refusing to replace it. API response: {detail}') from exc
-        known.update(refreshed)
-        print('Reused concurrently published identical release asset:',name,flush=True)
-        return remote_url
+    for attempt in range(5):
+        try:
+            result=api(url,'POST',raw=raw,mime=mimetypes.guess_type(path.name)[0] or 'application/octet-stream')
+            known[name]=result
+            return result['browser_download_url']
+        except urllib.error.HTTPError as exc:
+            detail=exc.read().decode(errors='replace')[-2000:]
+            if exc.code in (429,500,502,503,504) and attempt<4:
+                retry_after=exc.headers.get('Retry-After') if exc.headers else None
+                try: delay=max(1,min(30,int(retry_after))) if retry_after else min(2**attempt,16)
+                except (TypeError,ValueError): delay=min(2**attempt,16)
+                print(f'GitHub release upload transient HTTP {exc.code} for {name}; retrying in {delay}s ({attempt+1}/4)',flush=True)
+                time.sleep(delay)
+                continue
+            if exc.code!=422:
+                raise RuntimeError(f'GitHub release upload failed ({exc.code}) for {name}: {detail}') from exc
+            # Another publisher may have uploaded this same content-addressed name
+            # after our asset listing. Refresh the release index before deciding.
+            refreshed=entries(rel)
+            existing=refreshed.get(name)
+            if existing is None:
+                raise RuntimeError(f'GitHub rejected {name} with HTTP 422, but no matching release asset exists: {detail}') from exc
+            remote_url=existing['browser_download_url']
+            remote_digest=existing.get('digest','')
+            if remote_digest.startswith('sha256:'):
+                matches=remote_digest.split(':',1)[1].lower()==digest
+            else:
+                matches=sha(get(remote_url))==digest
+            if not matches:
+                raise RuntimeError(f'HTTP 422 asset-name collision for {name}: existing release asset does not match local SHA-256 {digest}; refusing to replace it. API response: {detail}') from exc
+            known.update(refreshed)
+            print('Reused concurrently published identical release asset:',name,flush=True)
+            return remote_url
+        except (urllib.error.URLError,TimeoutError) as exc:
+            if attempt>=4:
+                raise RuntimeError(f'GitHub release upload connection failed for {name} after five attempts: {exc}') from exc
+            delay=min(2**attempt,16)
+            print(f'GitHub release upload connection error for {name}; retrying in {delay}s ({attempt+1}/4): {exc}',flush=True)
+            time.sleep(delay)
+    raise RuntimeError(f'GitHub release upload exhausted retries for {name}')
 
 def entries(rel):
     assets=[];page=1
