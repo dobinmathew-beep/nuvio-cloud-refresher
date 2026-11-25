@@ -1,13 +1,13 @@
 # Independent Nuvio output verification
 
-**Checked:** 2026-11-25T19:20:34.622866+04:00 (Oman time)
-**Overall:** 3/4 outputs passed
+**Checked:** 2026-11-25T19:36:11.733718+04:00 (Oman time)
+**Overall:** 4/4 outputs passed
 
 | Output | Result |
 |---|---|
 | Addon | PASS |
 | Epg | PASS |
-| Backdrops | FAIL |
+| Backdrops | PASS |
 | Reels | PASS |
 
 ## Addon — PASS
@@ -24,8 +24,23 @@
 - **PASS** Validation_Summary.json: {"keys": ["checked_utc", "playlist_url", "playlist_sha256", "playlist_channel_ids", "matched_ids", "unresolved_ids", "programmes", "sources_with_parsed_guides", "selected_source_counts", "unresolved_reason_counts"]}
 - **PASS** Source_Health_Report.json: {"keys": ["airtel.xml", "ca.xml", "dishtv.xml", "free-epg.xml", "guide.xml", "jiotv.xml", "open-india.xml", "pw.xml", "samsung-in.xml", "sundirectgo.xml"]}
 
-## Backdrops — FAIL
-"[{\"status\": \"tamil/movies/wall\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/filmstrip\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/ribbon\", \"error\": \"incorrect current catalog-head centre movie\"}]"
+## Backdrops — PASS
+{
+  "day": "2026-11-25",
+  "statuses": 160,
+  "images": 16,
+  "states": {
+    "live": 160,
+    "cached": 0
+  },
+  "errors": [],
+  "catalogHeads": {
+    "hindi": "tt37200939",
+    "tamil": "tt18933846",
+    "malayalam": "tt41944351",
+    "telugu": "tt36915004"
+  }
+}
 
 ## Reels — PASS
 - **PASS** hindi: 50.0
