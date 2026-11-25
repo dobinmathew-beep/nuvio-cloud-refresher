@@ -119,7 +119,7 @@ def write_report(report,states,runs,log_errors=None,root=Path('.')):
     (root/'logs'/'README.md').write_text('# Daily refresh history\n\n[← Current status](../DAILY_UPDATES.md)\n\n'+ '\n'.join(f'- [{p.parent.name}]({p.parent.name}/README.md) · [Machine-readable records]({p.parent.name}/checks.jsonl)' for p in days)+'\n')
     lines=['# Daily updates','', '**Backdrops · Reels · Addon · India EPG**', '',
       f"Last checked: **{when(stamp)} Oman time**. [This check’s logs]({REPO}/actions/runs/{entry['watchdog_run_id']})" if entry['watchdog_run_id'] else f'Last checked: **{when(stamp)} Oman time**.',
-      '', '**Refresh checks:** every 30 minutes. Outputs refresh when their two-hour cycle is due. **Watchdog and retry checks:** every 30 minutes; no per-workflow or external 10-minute trigger.',
+      '', '**Refresh checks:** every 30 minutes. Outputs refresh when their two-hour cycle is due. **Dashboard:** refreshed immediately when a media, addon, or EPG workflow completes, plus the 30-minute watchdog check.',
       '', '> This is the last saved check, not a live clock. If it is more than 45 minutes old, open Actions to investigate. GitHub and network delays remain possible.',
       '', '| Output | Status at last check | Last verified cycle / check (Oman) | Details | Latest attempt |','|---|---|---|---|---|']
     lines+=['| '+' | '.join([safe(n),s,v,safe(d),link])+' |' for n,s,v,d,link in rows_for(entry)]

@@ -16,6 +16,7 @@ class DashboardTests(unittest.TestCase):
    self.assertIn('2026-11-03',(root/'logs/README.md').read_text())
    page=(root/'DAILY_UPDATES.md').read_text()
    self.assertIn('Retry requested',page)
+   self.assertIn('refreshed immediately when a media, addon, or EPG workflow completes',page)
    self.assertNotIn('✅ Updated |',page)
  def test_public_fields_only_and_unresolved_epg_is_visible(self):
   with tempfile.TemporaryDirectory() as folder:
