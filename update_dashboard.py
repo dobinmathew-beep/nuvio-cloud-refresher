@@ -45,7 +45,7 @@ def redact(value):
     return value
 
 def run_summary(run):
-    return {k:run.get(k) for k in ('id','status','conclusion','event','created_at','updated_at','run_number')}
+    return {k:run.get(k) for k in ('id','status','conclusion','event','created_at','updated_at','completed_at','run_number')}
 
 def run_link(run):
     ident=run.get('id')
@@ -76,8 +76,11 @@ def rows_for(entry):
                 if isinstance(unmatched,(list,dict)):unmatched=len(unmatched)
                 detail=f"{matched} / {data.get('playlist_channel_ids','?')} channel IDs with listings; {unmatched} unresolved; {data.get('programmes','?')} programmes."
             run=entry.get('runs',{}).get(kind,{})
+            success=entry.get('last_successful_runs',{}).get(kind,{})
+            success_time=when(success.get('completed_at') or success.get('updated_at')) if success else 'Not recorded'
+            success_display=(success_time+' · '+run_link(success)) if success else 'Not recorded'
             latest=safe(run.get('conclusion') or run.get('status') or 'unknown')+' · '+run_link(run)
-            output.append((name,status,verified,detail,latest))
+            output.append((name,status,success_display,verified,detail,latest))
     return output
 
 def render_day(entries):
@@ -91,8 +94,8 @@ def render_day(entries):
         lines.append('| '+' | '.join([when(e['checked_at']),status.get('media','Unknown'),status.get('addon','Unknown'),status.get('epg','Unknown'),link])+' |')
     lines+=['','## Details for each check','']
     for e in reversed(entries):
-        lines+=['### '+when(e['checked_at']), '', f"Trigger: {safe(e.get('trigger','unknown'))}. Due cycle: {when(e['results'][0].get('due')) if e['results'] else 'unknown'}.", '', '| Output | Result | Last verified cycle / check | Details | Logs |','|---|---|---|---|---|']
-        lines+=['| '+' | '.join([safe(n),s,v,safe(d),link])+' |' for n,s,v,d,link in rows_for(e)]
+        lines+=['### '+when(e['checked_at']), '', f"Trigger: {safe(e.get('trigger','unknown'))}. Due cycle: {when(e['results'][0].get('due')) if e['results'] else 'unknown'}.", '', '| Output | Result | Last successful refresh run (Oman) | Last verified cycle / check | Details | Logs |','|---|---|---|---|---|---|']
+        lines+=['| '+' | '.join([safe(n),s,success,v,safe(d),link])+' |' for n,s,success,v,d,link in rows_for(e)]
         for error in e.get('errors',[])+e.get('log_errors',[]):lines+=['', '**Issue:** '+safe(error)]
         for kind,run in e.get('runs',{}).items():
             lines+=['', f"{kind.capitalize()} attempt: **{safe(run.get('conclusion') or run.get('status') or 'unknown')}**; started {when(run.get('created_at'))}. {run_link(run)}."]
@@ -100,7 +103,13 @@ def render_day(entries):
 
 def write_report(report,states,runs,log_errors=None,root=Path('.')):
     root=Path(root); stamp=report['checked_at']; day=stamp[:10]
-    entry={**report,'details':summaries(states),'runs':{k:run_summary(v[0]) for k,v in runs.items() if v},
+    latest_runs={k:run_summary(v[0]) for k,v in runs.items() if v}
+    successful_runs={}
+    for kind,items in runs.items():
+        successful=next((item for item in items if item.get('status')=='completed' and item.get('conclusion')=='success'),None)
+        if successful:
+            successful_runs[kind]=run_summary(successful)
+    entry={**report,'details':summaries(states),'runs':latest_runs,'last_successful_runs':successful_runs,
       'watchdog_run_id':int(os.environ.get('GITHUB_RUN_ID','0')) or None,
       'trigger':os.environ.get('GITHUB_EVENT_NAME','local'), 'log_errors':log_errors or []}
     # Sanitize errors before persistent storage, too.
@@ -121,8 +130,8 @@ def write_report(report,states,runs,log_errors=None,root=Path('.')):
       f"Last checked: **{when(stamp)} Oman time**. [This check’s logs]({REPO}/actions/runs/{entry['watchdog_run_id']})" if entry['watchdog_run_id'] else f'Last checked: **{when(stamp)} Oman time**.',
       '', '**Refresh checks:** every 30 minutes. Outputs refresh when their two-hour cycle is due. **Dashboard:** refreshed immediately when a media, addon, or EPG workflow completes, plus the 30-minute watchdog check.',
       '', '> This is the last saved check, not a live clock. If it is more than 45 minutes old, open Actions to investigate. GitHub and network delays remain possible.',
-      '', '| Output | Status at last check | Last verified cycle / check (Oman) | Details | Latest attempt |','|---|---|---|---|---|']
-    lines+=['| '+' | '.join([safe(n),s,v,safe(d),link])+' |' for n,s,v,d,link in rows_for(entry)]
+      '', '| Output | Status at last check | Last successful refresh run (Oman) | Last verified cycle / check (Oman) | Details | Latest attempt |','|---|---|---|---|---|---|']
+    lines+=['| '+' | '.join([safe(n),s,success,v,safe(d),link])+' |' for n,s,success,v,d,link in rows_for(entry)]
     lines+=['', '✅ Updated = verified for the current two-hour cycle. 🔄 Running / retry requested = work is pending. ⚠️ / ❌ = attention or retry needed. The two media outputs share one workflow and both must pass before the combined cycle is complete.',
       '', 'A successful check can keep the same movies or listings when the source has not changed. EPG unresolved channels remain explicit; schedules are never invented.',
       '', '## Today and past days', '', f'- [Today’s detailed timeline](logs/{day}/README.md)', '- [Daily history — all saved dates](logs/README.md)',
