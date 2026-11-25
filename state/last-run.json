@@ -1,7 +1,7 @@
 {
-  "attempted_at": "2026-11-25T19:42:26.985419+04:00",
+  "attempted_at": "2026-11-25T19:47:46.988219+04:00",
   "cycle": "2026-11-25",
   "errors": [
-    "heroes: Hero updater failed; last-good public manifest retained"
+    "heroes: GitHub release upload failed (500) for b9a9ab55c4a9ac1571568d2b-index.html: {\"message\":\"\",\"request_id\":\"81F3:565B4:2B49D:C4006:6B07048D\"}"
   ]
 }
