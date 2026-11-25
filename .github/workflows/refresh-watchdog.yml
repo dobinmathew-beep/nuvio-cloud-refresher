@@ -6,8 +6,12 @@ on:
     paths: [hero_prepare.py, hero_render.py, refresh_watchdog.py, update_dashboard.py, tests/test_refresh_watchdog.py, tests/test_update_dashboard.py, tests/test_media_schedule.py, tests/test_featured.py, tests/test_verify_backdrops.py, state/success.json, .github/workflows/refresh-watchdog.yml]
   schedule:
     - cron: '3,33 * * * *'
+  # Rebuild the public dashboard as soon as the shared media workflow ends.
+  # This covers both successful and failed refreshes so the page never remains
+  # stuck on the previous "running" snapshot until the next half-hour check.
   workflow_run:
     workflows:
+      - Nuvio cloud refresh
       - Dobins Indian Catalog
       - India EPG daily refresh
     types: [completed]
