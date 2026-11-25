@@ -95,7 +95,7 @@ def render_day(entries):
     lines+=['','## Details for each check','']
     for e in reversed(entries):
         lines+=['### '+when(e['checked_at']), '', f"Trigger: {safe(e.get('trigger','unknown'))}. Due cycle: {when(e['results'][0].get('due')) if e['results'] else 'unknown'}.", '', '| Output | Result | Last successful refresh run (Oman) | Last verified cycle / check | Details | Logs |','|---|---|---|---|---|---|']
-        lines+=['| '+' | '.join([safe(n),s,safe(success),v,safe(d),link])+' |' for n,s,success,v,d,link in rows_for(e)]
+        lines+=['| '+' | '.join([safe(n),s,success,v,safe(d),link])+' |' for n,s,success,v,d,link in rows_for(e)]
         for error in e.get('errors',[])+e.get('log_errors',[]):lines+=['', '**Issue:** '+safe(error)]
         for kind,run in e.get('runs',{}).items():
             lines+=['', f"{kind.capitalize()} attempt: **{safe(run.get('conclusion') or run.get('status') or 'unknown')}**; started {when(run.get('created_at'))}. {run_link(run)}."]
