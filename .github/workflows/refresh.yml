@@ -7,9 +7,12 @@ on:
       - featured.py
       - verify_backdrops.py
       - cloud.py
+      - hero_prepare.py
+      - hero_render.py
+      - refresh_watchdog.py
       - .github/workflows/refresh.yml
   schedule:
-    - cron: '0,30 * * * *'
+    - cron: '0 */2 * * *'
 
 permissions:
   contents: write
@@ -186,17 +189,3 @@ jobs:
           echo 'Refresh incomplete. Last-good media retained. The next scheduled check retries pending work.'
           exit 1
 
-
-      # repository_dispatch resets GitHub's workflow_run chain after catch-up dispatches.
-      - name: Notify watchdog and independent verifier after media output
-        if: always() && (steps.refresh.outcome == 'success' || steps.refresh.outcome == 'failure')
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          curl --fail --silent --show-error --retry 2 --retry-delay 2 \
-            -X POST \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${GH_TOKEN}" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            https://api.github.com/repos/dobinmathew-beep/nuvio-cloud-refresher/dispatches \
-            --data-raw "{\"event_type\":\"nuvio-output-updated\",\"client_payload\":{\"component\":\"media\",\"verify_only\":\"backdrops,reels\",\"run_id\":\"${GITHUB_RUN_ID}\"}}"
