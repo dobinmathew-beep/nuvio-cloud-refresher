@@ -82,18 +82,18 @@ def upload(rel,name,path,known):
     if name in known:
         return known[name]['browser_download_url']
     url=rel['upload_url'].split('{')[0]+'?name='+urllib.parse.quote(name)
-    for attempt in range(5):
+    for attempt in range(9):
         try:
             result=api(url,'POST',raw=raw,mime=mimetypes.guess_type(path.name)[0] or 'application/octet-stream')
             known[name]=result
             return result['browser_download_url']
         except urllib.error.HTTPError as exc:
             detail=exc.read().decode(errors='replace')[-2000:]
-            if exc.code in (429,500,502,503,504) and attempt<4:
+            if exc.code in (429,500,502,503,504) and attempt<8:
                 retry_after=exc.headers.get('Retry-After') if exc.headers else None
-                try: delay=max(1,min(30,int(retry_after))) if retry_after else min(2**attempt,16)
+                try: delay=max(1,min(30,int(retry_after))) if retry_after else min(2**attempt,60)
                 except (TypeError,ValueError): delay=min(2**attempt,16)
-                print(f'GitHub release upload transient HTTP {exc.code} for {name}; retrying in {delay}s ({attempt+1}/4)',flush=True)
+                print(f'GitHub release upload transient HTTP {exc.code} for {name}; retrying in {delay}s ({attempt+1}/8)',flush=True)
                 time.sleep(delay)
                 continue
             if exc.code!=422:
@@ -116,7 +116,7 @@ def upload(rel,name,path,known):
             print('Reused concurrently published identical release asset:',name,flush=True)
             return remote_url
         except (urllib.error.URLError,TimeoutError) as exc:
-            if attempt>=4:
+            if attempt>=8:
                 raise RuntimeError(f'GitHub release upload connection failed for {name} after five attempts: {exc}') from exc
             delay=min(2**attempt,16)
             print(f'GitHub release upload connection error for {name}; retrying in {delay}s ({attempt+1}/4): {exc}',flush=True)
