@@ -300,7 +300,7 @@ def main():
     now=datetime.now(ZoneInfo('Asia/Muscat'));target=due(now,'media');cycle=target.date().isoformat();refresh_cycle=target.isoformat()
     progress_path=STATE/'success.json';progress=json.loads(progress_path.read_text()) if progress_path.exists() else {}
     if progress.get('refresh_cycle',progress.get('cycle','')+'T06:00:00+04:00')!=refresh_cycle:progress={'cycle':cycle,'refresh_cycle':refresh_cycle}
-    if progress.get('heroes',{}).get('opening_version')!=1 or progress.get('heroes',{}).get('selection_policy')!='imdb-catalog-order-v1':progress.pop('heroes',None)
+    if progress.get('heroes',{}).get('opening_version')!=1 or progress.get('heroes',{}).get('selection_policy')!='catalog-order-v2':progress.pop('heroes',None)
     # Re-check the live source head even inside a completed two-hour cycle.
     # IndianRegional can reorder its catalog between scheduled refresh boundaries.
     try:
