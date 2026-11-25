@@ -2,7 +2,7 @@ import unittest
 from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from featured import first_valid, valid, valid_id
+from featured import first_valid, valid, valid_id, valid_center_id
 
 class FeaturedSelectionTests(unittest.TestCase):
     # General IDs accept IMDb and TMDB; backdrop centres are IMDb-only to match reels.
@@ -11,6 +11,10 @@ class FeaturedSelectionTests(unittest.TestCase):
         self.assertTrue(valid_id('tmdb:1822586'))
         self.assertFalse(valid_id('ir:promo-unlock'))
         self.assertFalse(valid_id('tmdb:'))
+
+    def test_reel_and_backdrop_opening_share_imdb_only_eligibility(self):
+        self.assertTrue(valid_center_id('tt18933846'))
+        self.assertFalse(valid_center_id('tmdb:1822586'))
 
     def test_first_eligible_movie_keeps_catalog_order(self):
         metas=[
