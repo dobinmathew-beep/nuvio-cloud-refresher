@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-25T18:54:54.082065+04:00",
+  "checked_at": "2026-11-25T19:20:34.622866+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -135,20 +135,20 @@
     },
     "backdrops": {
       "status": "fail",
-      "checked_at": "2026-11-25T18:47:22.835502+04:00",
+      "checked_at": "2026-11-25T19:20:34.622866+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
-      "error": "[{\"status\": \"tamil/movies/wall\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/filmstrip\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/gallery\", \"error\": \"incorrect current catalog-head centre movie\"}]"
+      "error": "[{\"status\": \"tamil/movies/wall\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/filmstrip\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/ribbon\", \"error\": \"incorrect current catalog-head centre movie\"}]"
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-25T18:47:22.835502+04:00",
+      "checked_at": "2026-11-25T19:20:34.622866+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
           "language": "hindi",
           "status": "pass",
-          "bytes": 6903718,
-          "sha256": "ba483f68c73a871926a634cb41880247e1ff93113efb4e9568edbf339364391f",
+          "bytes": 6903477,
+          "sha256": "52181195072ead03de5025703cfc63d34717610caee1a8c2c89e508d2fc5fb22",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -168,8 +168,8 @@
         {
           "language": "tamil",
           "status": "pass",
-          "bytes": 6909518,
-          "sha256": "8ad98fe3be0b4543a8cafa9af390c52b27b4e575cdb3a2eeb18641f344f76a83",
+          "bytes": 6909343,
+          "sha256": "b7dfb470ba76f27dc710ab3828aa314d7f2773c990f4f754d0255f5cbac17f7a",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -189,8 +189,8 @@
         {
           "language": "malayalam",
           "status": "pass",
-          "bytes": 6903279,
-          "sha256": "19c70b9ecb08322eb6b24c586f7a8eb7137705587644fe3be2f059b1f05600e2",
+          "bytes": 6901552,
+          "sha256": "895ce3dcad6b954939de7ebd57e96a251d0e5656f591bee5bafc15c49877a763",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -210,8 +210,8 @@
         {
           "language": "telugu",
           "status": "pass",
-          "bytes": 6894028,
-          "sha256": "dc2345e1c55dc328ca1c5a9403ec991c7652d07545ed9a6de9b1058e9ecfebc0",
+          "bytes": 6893716,
+          "sha256": "a5992250968cff02addda1eb35240a42b36d6da513c4c11a57435aa850abdcb3",
           "duration_seconds": 50.0,
           "streams": [
             {
