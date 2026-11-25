@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-25T20:08:25.606134+04:00",
+  "checked_at": "2026-11-25T20:20:51.819401+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -135,7 +135,7 @@
     },
     "backdrops": {
       "status": "pass",
-      "checked_at": "2026-11-25T20:08:25.606134+04:00",
+      "checked_at": "2026-11-25T20:20:51.819401+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
       "details": {
         "day": "2026-11-25",
@@ -148,8 +148,8 @@
         "errors": [],
         "catalogHeads": {
           "tamil": "tt18933846",
-          "malayalam": "tt41944351",
           "hindi": "tt37200939",
+          "malayalam": "tt41944351",
           "telugu": "tt36915004"
         }
       },
@@ -157,14 +157,14 @@
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-25T20:08:25.606134+04:00",
+      "checked_at": "2026-11-25T20:20:51.819401+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
           "language": "hindi",
           "status": "pass",
-          "bytes": 6903477,
-          "sha256": "52181195072ead03de5025703cfc63d34717610caee1a8c2c89e508d2fc5fb22",
+          "bytes": 6903524,
+          "sha256": "86c3f541276de3fc603f29899706afef4124cf42e6cdfcd7e4cda9810fde4954",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -184,8 +184,8 @@
         {
           "language": "tamil",
           "status": "pass",
-          "bytes": 6909050,
-          "sha256": "279a7f742eb8481966163acd010266c08d7e66a57f1249c03856b4d443f2f12c",
+          "bytes": 6908978,
+          "sha256": "1b4f797f62ab57e4303026239dc21809ce59aff32511eeb4967a225c46c0abee",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -205,8 +205,8 @@
         {
           "language": "malayalam",
           "status": "pass",
-          "bytes": 6901552,
-          "sha256": "895ce3dcad6b954939de7ebd57e96a251d0e5656f591bee5bafc15c49877a763",
+          "bytes": 6901938,
+          "sha256": "e933e79c22f4da22b693251e0c1318ff88c19cf8793fea8cb2bb9fe05da1afc6",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -226,8 +226,8 @@
         {
           "language": "telugu",
           "status": "pass",
-          "bytes": 6893994,
-          "sha256": "28c26833f9ca9d1610cb5b2b14c3f347d42cd3c05bc2d414d83edc0cadbd7b0a",
+          "bytes": 6894021,
+          "sha256": "070e2c6cb424a69ae88171bf36f8e91dbf9445a1b27c844e5e85fd88a3512095",
           "duration_seconds": 50.0,
           "streams": [
             {
