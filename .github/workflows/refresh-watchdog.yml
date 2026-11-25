@@ -9,6 +9,8 @@ on:
   # Rebuild the public dashboard as soon as the shared media workflow ends.
   # This covers both successful and failed refreshes so the page never remains
   # stuck on the previous "running" snapshot until the next half-hour check.
+  repository_dispatch:
+    types: [nuvio-output-updated]
   workflow_run:
     workflows:
       - Nuvio cloud refresh
