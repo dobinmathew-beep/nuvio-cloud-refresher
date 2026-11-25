@@ -41,7 +41,7 @@ class FeaturedSelectionTests(unittest.TestCase):
         },'tamil'))
 
     def test_tmdb_only_catalog_cannot_supply_backdrop_centre(self):
-        self.assertEqual(first_valid([
+        self.assertIsNone(first_valid([
             {'id':'tmdb:1822586','type':'movie','poster':'mazhalai.jpg','name':'Mazhalai'},
             {'id':'tmdb:1806311','type':'movie','poster':'thedal.jpg','name':'THEDAL'},
         ],'tamil'))
