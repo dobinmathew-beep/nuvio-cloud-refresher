@@ -28,7 +28,7 @@ def fresh(state, kind, target):
             and bool(state.get('heroes')) and state.get('featuredVersion')==2
             and state.get('featured_cycle')==target.isoformat() and valid_ids
             and state.get('heroes',{}).get('opening_version')==1
-            and state.get('heroes',{}).get('selection_policy')=='catalog-order-v2')
+            and state.get('heroes',{}).get('selection_policy')=='catalog-order-v3')
     field='lastSuccessCycle' if kind=='addon' else 'checked_utc'
     try: checked=datetime.fromisoformat(state.get(field,''))
     except (TypeError,ValueError): return False
