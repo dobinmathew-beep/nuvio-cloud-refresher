@@ -1,4 +1,4 @@
-import json, tempfile, unittest
+import io, json, tempfile, unittest, urllib.error
 from pathlib import Path
 from datetime import datetime
 from unittest.mock import patch
@@ -43,6 +43,18 @@ class MediaScheduleTests(unittest.TestCase):
                 last=json.loads((state/'last-run.json').read_text())
                 self.assertTrue(any('backdrops:' in item for item in last['errors']))
 
+
+    def test_release_upload_retries_transient_github_500(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path=Path(folder)/'index.html'
+            path.write_bytes(b'new reel index')
+            transient=urllib.error.HTTPError('https://api.github.com/upload',500,'Internal Server Error',{},io.BytesIO(b'temporary'))
+            response={'browser_download_url':'https://github.com/example/release/download/index.html'}
+            with patch.object(cloud,'api',side_effect=[transient,response]) as api, patch.object(cloud.time,'sleep') as sleep:
+                url=cloud.upload({'upload_url':'https://uploads.github.com/assets{?name,label}'},'abc-index.html',path,{})
+            self.assertEqual(url,response['browser_download_url'])
+            self.assertEqual(api.call_count,2)
+            sleep.assert_called_once_with(1)
 
     def test_uploaded_asset_readback_retries_transient_404(self):
         payload=b'hero asset'
