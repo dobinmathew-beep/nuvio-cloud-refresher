@@ -1,8 +1,26 @@
 {
-  "generatedAt": "2026-11-25T08:01:46.355267+04:00",
+  "generatedAt": "2026-11-25T16:01:44.327282+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 15,
+  "count": 14,
   "items": [
+    {
+      "id": "tt50063835",
+      "aliases": [
+        "tt50063835"
+      ],
+      "name": "Apsara",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-26",
+      "kind": "episode",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/338390"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.themoviedb.org/tv/338390"
+    },
     {
       "id": "tt1281973",
       "aliases": [
@@ -63,28 +81,6 @@
       "catalog": "dobins_hi_series",
       "region": "IN",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    },
-    {
-      "id": "tt39632118",
-      "aliases": [
-        "tt39632118"
-      ],
-      "name": "Family Kirana Store",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "episode",
-      "platforms": [
-        "YouTube (TVF)"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tmdb:342403",
@@ -240,7 +236,7 @@
       "language": "hindi",
       "type": "series",
       "releaseDate": "2026-12-04",
-      "kind": "episode",
+      "kind": "premiere",
       "platforms": [
         "Netflix",
         "ZEE5"
@@ -261,7 +257,7 @@
       "language": "hindi",
       "type": "series",
       "releaseDate": "2026-12-04",
-      "kind": "episode",
+      "kind": "premiere",
       "platforms": [
         "Netflix"
       ],
@@ -289,29 +285,6 @@
       "catalog": "dobins_hi_series",
       "region": "IN",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    },
-    {
-      "id": "tt16997004",
-      "aliases": [
-        "tt16997004"
-      ],
-      "name": "Matka King",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2027-01-01",
-      "kind": "episode",
-      "platforms": [
-        "Prime Video"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/",
-        "https://www.themoviedb.org/tv/249765"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
     }
   ]
 }

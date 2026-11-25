@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-25T08:01:46.355267+04:00",
+    "checkedAt": "2026-11-25T16:01:44.327282+04:00",
     "records": [
       {
         "_id": "6b06458d699a8884e1604806",
@@ -55,6 +55,59 @@
         "updatedAt": "2026-11-25T02:19:49.981Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/lSZs3yqsBqNacZaXVbv5CE6KVov.jpg",
         "instagramPostedAt": "2026-11-25T02:20:19Z",
+        "votes": 1,
+        "tmdbDetails": {
+          "tmdbId": 1755816,
+          "director": "Abhishek Acharya",
+          "cast": [
+            {
+              "name": "Richa Chadha",
+              "character": ""
+            },
+            {
+              "name": "Gulshan Grover",
+              "character": ""
+            },
+            {
+              "name": "Rajendra Gupta",
+              "character": ""
+            },
+            {
+              "name": "Sumeet Vyas",
+              "character": ""
+            },
+            {
+              "name": "Sayani Dutta",
+              "character": ""
+            },
+            {
+              "name": "Sonali Kulkarni",
+              "character": ""
+            },
+            {
+              "name": "Sushmita Mukherjee",
+              "character": ""
+            },
+            {
+              "name": "Rudransh Bundela",
+              "character": ""
+            }
+          ],
+          "overview": "The second wave of the deadly coronavirus pandemic is raging in the Delhi NCR region. In the midst of this horror, the lives of disparate individuals intertwine, revealing the intricate web of humanity's struggle and strength.",
+          "runtime": 117,
+          "genres": [
+            "Drama"
+          ],
+          "originalLanguage": "hi",
+          "spokenLanguages": [
+            "Hindi"
+          ],
+          "releaseDate": "2026-11-25",
+          "voteAverage": null,
+          "trailerKey": "snDGyTHGXY4",
+          "fetchedAt": "2026-11-25T11:08:59.386Z"
+        },
+        "tmdbId": 1755816,
         "verified": true
       },
       {
@@ -4947,12 +5000,12 @@
               "character": "Maya"
             },
             {
-              "name": "Aaron Pierre",
-              "character": "Felix"
-            },
-            {
               "name": "Gabriel Basso",
               "character": "Charlie"
+            },
+            {
+              "name": "Aaron Pierre",
+              "character": "Felix"
             },
             {
               "name": "Patrick Schwarzenegger",
@@ -4960,35 +5013,38 @@
             },
             {
               "name": "Catherine Keener",
-              "character": ""
+              "character": "Ruth"
             },
             {
               "name": "Tamara Lawrance",
-              "character": ""
+              "character": "Kali"
             },
             {
               "name": "Corey Johnson",
-              "character": ""
+              "character": "Kerry"
             },
             {
-              "name": "Filipa Saavedra",
-              "character": ""
+              "name": "Michael Shelford",
+              "character": "Colin"
             }
           ],
           "overview": "After a chance encounter sparks a sweeping romance, Maya's future is suddenly upended, sending her on an unexpected journey to love and live again.",
-          "runtime": 106,
+          "runtime": 109,
           "genres": [
-            "Drama",
-            "Romance"
+            "Romance",
+            "Drama"
           ],
           "originalLanguage": "en",
           "spokenLanguages": [
-            "English"
+            "English",
+            "Portuguese",
+            "Spanish",
+            "French"
           ],
           "releaseDate": "2026-10-07",
-          "voteAverage": 7,
+          "voteAverage": 6.714,
           "trailerKey": "HzGx48E64Xg",
-          "fetchedAt": "2026-10-13T08:21:29.319Z"
+          "fetchedAt": "2026-11-25T05:25:34.350Z"
         },
         "tmdbId": 1381078,
         "tmdbRating": 66,
@@ -31774,7 +31830,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-25T08:01:46.355267+04:00",
+    "checkedAt": "2026-11-25T16:01:44.327282+04:00",
     "records": [
       {
         "name": "Anbil Avan",

@@ -1,25 +1,26 @@
 {
-  "generatedAt": "2026-11-25T08:01:46.355267+04:00",
+  "generatedAt": "2026-11-25T16:01:44.327282+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 29,
+    "total": 30,
     "byLanguage": {
-      "hindi": 20,
+      "hindi": 21,
       "tamil": 3,
       "malayalam": 2,
       "telugu": 4
     },
     "byType": {
       "movie": 16,
-      "series": 13
+      "series": 14
     },
     "byMatchState": {
       "unmatched": 8,
-      "published": 21
+      "published": 22
     },
     "bySource": {
       "https://ottasia.com/ott-releases-this-week?country=IN": 17,
       "https://www.dailyott.in/": 5,
+      "https://www.themoviedb.org/tv/338390": 1,
       "https://www.themoviedb.org/tv/338656": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
       "https://v3-cinemeta.strem.io/": 2,
@@ -83,6 +84,31 @@
         "releaseInfo": true
       },
       "catalog": "dobins_hi_movie"
+    },
+    {
+      "title": "Apsara",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-25",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/338390"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "premiere",
+      "detail": null,
+      "matchId": "tt50063835",
+      "matchState": "published",
+      "matchReason": "https://www.themoviedb.org/tv/338390",
+      "metadataComplete": true,
+      "metadataSource": "https://www.themoviedb.org/tv/338390",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
     },
     {
       "title": "Bigg Boss Season 20",
@@ -200,8 +226,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
         "https://cinebuds.com/ott-releases-this-week/",
@@ -300,7 +326,7 @@
       "metadataFields": {
         "poster": true,
         "description": true,
-        "genres": true,
+        "genres": false,
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
@@ -654,7 +680,7 @@
         "poster": true,
         "description": true,
         "genres": true,
-        "releaseInfo": true
+        "releaseInfo": false
       },
       "catalog": "dobins_hi_series"
     },
