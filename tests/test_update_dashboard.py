@@ -23,14 +23,17 @@ class DashboardTests(unittest.TestCase):
    root=Path(folder)
    report={'checked_at':'2026-11-02T18:50:00+04:00','results':[{'component':k,'due':'2026-11-02T18:00:00+04:00','state':'fresh'} for k in ('media','addon','epg')],'errors':['Bad Bearer secretvalue']}
    states={'epg':{'checked_utc':'2026-11-02T14:49:00+00:00','matched_ids':642,'unmatched_ids':['one','two'],'Authorization':'Bearer dont-store'},'addon':{'counts':{'x':3},'sources':[{'source':'Public source','state':'live','headers':{'Authorization':'secret'}}]}}
-   write_report(report,states,{'epg':[{'id':123,'status':'completed','conclusion':'success','secret':'not-public'}]},root=root)
+   write_report(report,states,{'epg':[{'id':123,'status':'completed','conclusion':'success','created_at':'2026-11-02T14:40:00Z','updated_at':'2026-11-02T14:49:00Z','completed_at':'2026-11-02T14:49:00Z','secret':'not-public'}]},root=root)
    page=(root/'DAILY_UPDATES.md').read_text();log=(root/'logs/2026-11-02/checks.jsonl').read_text()
    self.assertIn('642 / ? channel IDs with listings; 2 unresolved',page)
    self.assertIn('actions/runs/123',page)
+   self.assertIn('02 Nov 2026, 18:49',page)
    for secret in ('secretvalue','dont-store','not-public','Authorization'):
     self.assertNotIn(secret,log)
    self.assertIn('[redacted]',log)
    self.assertIn('Backdrops',page);self.assertIn('Reels',page)
+   self.assertIn('Last successful refresh run (Oman)',page)
+   self.assertIn('Not recorded',page)
  def test_missing_source_never_claims_a_success_time(self):
   with tempfile.TemporaryDirectory() as folder:
    root=Path(folder);report={'checked_at':'2026-11-02T18:50:00+04:00','results':[{'component':'epg','due':'2026-11-02T18:00:00+04:00','state':'check-failed'}],'errors':['EPG source unavailable']}
