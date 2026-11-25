@@ -254,7 +254,7 @@ def heroes():
     for lang,cat in LANGS.items():
         m=json.loads((dist/'hero'/(lang+'-daily.json')).read_text());b=(dist/'hero'/(lang+'.mp4')).read_bytes()
         assert m.get('opening_version')==1 and m.get('opening_movie_id')==m['movies'][0]['id'] and m.get('opening_selection')=='catalog-order'
-        assert m.get('selection_policy')=='catalog-order-v2' and all(valid_id(x['id']) for x in m['movies'] if not x.get('pinned'))
+        assert m.get('selection_policy')=='catalog-order-v3' and all(valid_id(x['id']) for x in m['movies'] if not x.get('pinned'))
         assert m['catalog']==cat and m['pinned_count']==8 and m['recent_count']==12 and len(m['movies'])==20
         assert {x['id'] for x in pinned if x['language']==lang}<={x['id'] for x in m['movies']}
         assert m['audio']==music[lang] and m['duration_seconds']==50 and m['checked_at'].startswith(day)
@@ -291,7 +291,7 @@ def heroes():
         'checked_at':datetime.now(ZoneInfo('Asia/Muscat')).isoformat(),
         'films_per_language':20,
         'opening_version':1,
-        'selection_policy':'catalog-order-v2',
+        'selection_policy':'catalog-order-v3',
         'language_fingerprints':language_fingerprints,
         'published_asset_sha256':{path:updated[path]['sha256'] for path in needed}
     }
@@ -300,7 +300,7 @@ def main():
     now=datetime.now(ZoneInfo('Asia/Muscat'));target=due(now,'media');cycle=target.date().isoformat();refresh_cycle=target.isoformat()
     progress_path=STATE/'success.json';progress=json.loads(progress_path.read_text()) if progress_path.exists() else {}
     if progress.get('refresh_cycle',progress.get('cycle','')+'T06:00:00+04:00')!=refresh_cycle:progress={'cycle':cycle,'refresh_cycle':refresh_cycle}
-    if progress.get('heroes',{}).get('opening_version')!=1 or progress.get('heroes',{}).get('selection_policy')!='catalog-order-v2':progress.pop('heroes',None)
+    if progress.get('heroes',{}).get('opening_version')!=1 or progress.get('heroes',{}).get('selection_policy')!='catalog-order-v3':progress.pop('heroes',None)
     # Re-check the live source head even inside a completed two-hour cycle.
     # IndianRegional can reorder its catalog between scheduled refresh boundaries.
     try:
