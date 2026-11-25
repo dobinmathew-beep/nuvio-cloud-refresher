@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-25T02:48:35.755264+00:00",
+  "checkedAt": "2026-11-25T04:07:24.036595+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,7 +14,7 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1201,
+      "metadataRecords": 1203,
       "warning": null,
       "error": null
     },
@@ -115,31 +115,31 @@
       "language": "ta",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ta_movie.json",
-      "localPublishedCount": 92,
-      "localUniqueIdCount": 92,
+      "localPublishedCount": 93,
+      "localUniqueIdCount": 93,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 92,
-      "endpointUniqueIdCount": 92,
+      "endpointRawCount": 93,
+      "endpointUniqueIdCount": 93,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        42
+        43
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tmdb:1728763",
-        "name": "Drones1",
-        "releaseDate": "2026-11-20"
+        "id": "tt43681681",
+        "name": "Enemy Of The Smuggler",
+        "releaseDate": "2026-11-27"
       },
       "localLatestEntry": {
-        "id": "tmdb:1728763",
-        "name": "Drones1",
-        "releaseDate": "2026-11-20"
+        "id": "tt43681681",
+        "name": "Enemy Of The Smuggler",
+        "releaseDate": "2026-11-27"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -258,19 +258,19 @@
       "language": "hi",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
-      "localPublishedCount": 123,
-      "localUniqueIdCount": 123,
+      "localPublishedCount": 124,
+      "localUniqueIdCount": 124,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 123,
-      "endpointUniqueIdCount": 123,
+      "endpointRawCount": 124,
+      "endpointUniqueIdCount": 124,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
-        23
+        24
       ],
       "endpointPageSize": 50,
       "missingIds": [],
