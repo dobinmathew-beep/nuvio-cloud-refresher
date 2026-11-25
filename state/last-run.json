@@ -1,5 +1,7 @@
 {
-  "attempted_at": "2026-11-25T19:28:30.713576+04:00",
+  "attempted_at": "2026-11-25T19:42:26.985419+04:00",
   "cycle": "2026-11-25",
-  "errors": []
+  "errors": [
+    "heroes: Hero updater failed; last-good public manifest retained"
+  ]
 }
