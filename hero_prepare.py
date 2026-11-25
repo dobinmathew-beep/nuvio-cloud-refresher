@@ -42,7 +42,7 @@ def prepare(lang):
  # Recent entries come first, then all eight original films in their existing order.
  movies=recent+original;signature=hashlib.sha256(('catalog-head-v2'+json.dumps(movies,sort_keys=True)).encode())
  for m in movies:signature.update((HERO/'posters'/(m['id']+'.jpg')).read_bytes())
- config={'language':lang,'catalog':CATS[lang],'source_url':url,'checked_at':datetime.now(ZoneInfo('Asia/Muscat')).isoformat(),'signature':signature.hexdigest(),'pinned_count':len(original),'recent_count':len(recent),'selection_policy':'imdb-catalog-order-v1','movies':movies}
+ config={'language':lang,'catalog':CATS[lang],'source_url':url,'checked_at':datetime.now(ZoneInfo('Asia/Muscat')).isoformat(),'signature':signature.hexdigest(),'pinned_count':len(original),'recent_count':len(recent),'selection_policy':'catalog-order-v2','movies':movies}
  path=HERE/(lang+'.json');tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(config,indent=2));tmp.replace(path)
  print(lang,':',len(recent),'catalog movies +',len(original),'originals',flush=True)
  return config
