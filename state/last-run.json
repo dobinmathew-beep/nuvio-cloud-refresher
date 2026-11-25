@@ -1,7 +1,5 @@
 {
-  "attempted_at": "2026-11-25T19:57:52.428883+04:00",
+  "attempted_at": "2026-11-25T20:10:16.590948+04:00",
   "cycle": "2026-11-25",
-  "errors": [
-    "heroes: GitHub release upload failed (502) for b81e3c1c69437e160e6888b6-hindi-daily.json: {\"message\":\"Error updating policy\",\"request_id\":\"DC40:3AD057:40EE65:5B09B0:6B0707D6\"}"
-  ]
+  "errors": []
 }
