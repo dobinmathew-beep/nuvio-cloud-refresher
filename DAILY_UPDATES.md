@@ -2,7 +2,7 @@
 
 **Backdrops · Reels · Addon · India EPG**
 
-Last checked: **25 Nov 2026, 16:09 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45611054749)
+Last checked: **25 Nov 2026, 16:11 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45611287244)
 
 **Refresh checks:** every 30 minutes. Outputs refresh when their two-hour cycle is due. **Watchdog and retry checks:** every 30 minutes; no per-workflow or external 10-minute trigger.
 
@@ -13,7 +13,7 @@ Last checked: **25 Nov 2026, 16:09 Oman time**. [This check’s logs](https://gi
 | Backdrops | 🔄 Refresh running / queued | 24 Nov 2026, 18:00 | 160 layouts; 16 image checks; this part verified, combined media cycle still pending | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45611066212) |
 | Reels | 🔄 Refresh running / queued | 24 Nov 2026, 18:00 | 4 languages; 20 films per reel; this part verified, combined media cycle still pending | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45611066212) |
 | Addon | ✅ Updated | 25 Nov 2026, 16:00 | 1082 catalog entries; 65 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45609823122) |
-| EPG | 🔄 Refresh running / queued | 25 Nov 2026, 08:00 | 536 / 826 channel IDs with listings; 290 unresolved; 58967 programmes. | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45611076071) |
+| EPG | ✅ Updated | 25 Nov 2026, 16:09 | 536 / 826 channel IDs with listings; 290 unresolved; 61535 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45611076071) |
 
 ✅ Updated = verified for the current two-hour cycle. 🔄 Running / retry requested = work is pending. ⚠️ / ❌ = attention or retry needed. The two media outputs share one workflow and both must pass before the combined cycle is complete.
 
