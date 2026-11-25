@@ -4,6 +4,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 from concurrent.futures import ThreadPoolExecutor
 import json,re,subprocess,hashlib,io
+from featured import valid_center_id
 from PIL import Image,ImageOps
 ROOT=Path(__file__).resolve().parents[3];HERE=Path(__file__).parent;HERO=HERE.parent
 SOURCE='https://83e20802dcf1-indian-streams.baby-beamup.club'
@@ -17,7 +18,7 @@ def prepare(lang):
  url=f'{SOURCE}/catalog/movie/{CATS[lang]}.json';feed=json.loads(get(url));original=[dict(m,pinned=True) for m in json.loads((HERO/'credits.json').read_text()) if m['language']==lang];pinned={m['id'] for m in original};cache_path=HERE/(lang+'.json');cached_sources={m['id']:m.get('poster_source') for m in json.loads(cache_path.read_text()).get('movies',[])} if cache_path.exists() else {};all_pinned={m['id'] for m in json.loads((HERO/'credits.json').read_text())};recent=[]
  for m in feed.get('metas',[]):
   mid=m.get('id','').split('||',1)[0];name=m.get('name','').strip()
-  if not re.fullmatch(r'tt\d+|tmdb:\d+',mid) or mid in pinned or m.get('type')!='movie' or not m.get('poster'):continue
+  if not valid_center_id(mid) or mid in pinned or m.get('type')!='movie' or not m.get('poster'):continue
   if re.search(r'OTT\s*Releases|Hindi\s*Dubbed|promo|unlock',name,re.I):continue
   if any(x['id']==mid for x in recent):continue
   poster=HERO/'posters'/(mid+'.jpg')
