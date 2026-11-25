@@ -24,7 +24,7 @@ class WatchdogTests(unittest.TestCase):
             'featured_ids':{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'},
             'current_featured_ids':{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'},
             'current_featured_checked_at':'2026-11-02T12:00:00+04:00',
-            'backdrops':{'ok':True},'heroes':{'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}}
+            'backdrops':{'ok':True},'heroes':{'opening_version':1,'selection_policy':'catalog-order-v2'}}
         self.assertTrue(fresh(state,'media',due(before,'media')))
         self.assertTrue(fresh(state,'media',due(near_boundary,'media')))
         self.assertFalse(fresh(state,'media',due(at,'media')))
@@ -58,7 +58,7 @@ class WatchdogTests(unittest.TestCase):
             'featured_ids':{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'},
             'current_featured_ids':{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'},
             'current_featured_checked_at':target.isoformat(),
-            'backdrops':{'ok':True},'heroes':{'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}}
+            'backdrops':{'ok':True},'heroes':{'opening_version':1,'selection_policy':'catalog-order-v2'}}
         self.assertTrue(fresh(state,'media',target))
         stale=dict(state);stale.pop('featured_cycle')
         self.assertFalse(fresh(stale,'media',target))

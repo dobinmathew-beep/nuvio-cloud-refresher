@@ -8,7 +8,7 @@ import cloud
 class MediaScheduleTests(unittest.TestCase):
     def test_refresh_rechecks_catalog_head_without_rerendering_unchanged_media(self):
         now=datetime(2026,11,2,14,0,tzinfo=ZoneInfo('Asia/Muscat'))
-        heroes={'opening_version':1,'selection_policy':'imdb-catalog-order-v1'}
+        heroes={'opening_version':1,'selection_policy':'catalog-order-v2'}
         with tempfile.TemporaryDirectory() as folder:
             state=Path(folder)
             (state/'success.json').write_text(json.dumps({'cycle':'2026-11-02','featuredVersion':2,'backdrops':{'ok':True},'heroes':heroes}))
@@ -24,6 +24,24 @@ class MediaScheduleTests(unittest.TestCase):
                 self.assertEqual(saved['featured_ids'],{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'})
                 self.assertEqual(cloud.main(),0)
                 self.assertEqual(featured.call_count,2);backdrop.assert_called_once();hero.assert_called_once()
+
+
+    def test_backdrop_failure_does_not_prevent_reel_refresh(self):
+        now=datetime(2026,11,2,14,0,tzinfo=ZoneInfo('Asia/Muscat'))
+        with tempfile.TemporaryDirectory() as folder:
+            state=Path(folder)
+            (state/'success.json').write_text(json.dumps({'cycle':'2026-11-02'}))
+            with patch.object(cloud,'STATE',state), patch.object(cloud,'datetime') as clock, patch.object(cloud,'bootstrap'), patch.object(cloud,'featured_movies',return_value={'languages':{
+                    'hindi':{'id':'tt100'},'tamil':{'id':'tmdb:1822586'},
+                    'malayalam':{'id':'tt102'},'telugu':{'id':'tt103'}}}), patch.object(cloud,'heroes',return_value={'opening_version':1,'selection_policy':'catalog-order-v2'}) as hero, patch.object(cloud,'backdrop',side_effect=RuntimeError('external backdrop service is stale')):
+                clock.now.return_value=now
+                self.assertEqual(cloud.main(),1)
+                hero.assert_called_once()
+                saved=json.loads((state/'success.json').read_text())
+                self.assertIn('heroes',saved)
+                self.assertNotIn('backdrops',saved)
+                last=json.loads((state/'last-run.json').read_text())
+                self.assertTrue(any('backdrops:' in item for item in last['errors']))
 
 
     def test_uploaded_asset_readback_retries_transient_404(self):
