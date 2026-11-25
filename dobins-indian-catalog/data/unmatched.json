@@ -1,20 +1,5 @@
 [
   {
-    "name": "Drones",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-11-20",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://cinebuds.com/ott-release-dates/"
-    ],
-    "platforms": [
-      "Prime Video"
-    ],
-    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
-    "sourceRecord": {}
-  },
-  {
     "name": "Narayan Pustika 2 - Endless",
     "language": "hindi",
     "type": "movie",
@@ -52,27 +37,19 @@
     }
   },
   {
-    "name": "Drones1",
+    "name": "Drones",
     "language": "tamil",
     "type": "movie",
     "ottDate": "2026-11-20",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
-      "https://www.ottchecker.com/ott-releases/tamil"
+      "https://cinebuds.com/ott-release-dates/"
     ],
     "platforms": [
-      "Amazon Prime Video"
+      "Prime Video"
     ],
-    "detail": "https://www.ottchecker.com/movie/drones1-2026",
-    "sourceRecord": {
-      "title": "Drones1",
-      "releaseDate": "2026-11-20",
-      "language": "tamil",
-      "platforms": [
-        "Amazon Prime Video"
-      ],
-      "source": "https://www.ottchecker.com/ott-releases/tamil"
-    }
+    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+    "sourceRecord": {}
   },
   {
     "name": "Pendulum",
@@ -100,23 +77,26 @@
     }
   },
   {
-    "name": "New",
+    "name": "Drones1",
     "language": "tamil",
     "type": "movie",
     "ottDate": "2026-11-20",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
-      "https://www.keralatv.in/channel/ott/"
+      "https://www.ottchecker.com/ott-releases/tamil"
     ],
     "platforms": [
-      "Prime Video"
+      "Amazon Prime Video"
     ],
-    "detail": "https://www.keralatv.in/drones-tamil-movie-ott-release-date-prime-video/",
+    "detail": "https://www.ottchecker.com/movie/drones1-2026",
     "sourceRecord": {
-      "title": "New",
+      "title": "Drones1",
       "releaseDate": "2026-11-20",
-      "source": "https://www.keralatv.in/channel/ott/",
-      "headline": "New Tamil Movie OTT Releases This Week – Drones Streaming on Prime Video From 20 November 2026"
+      "language": "tamil",
+      "platforms": [
+        "Amazon Prime Video"
+      ],
+      "source": "https://www.ottchecker.com/ott-releases/tamil"
     }
   },
   {
@@ -141,23 +121,6 @@
     }
   },
   {
-    "name": "The Conjunction",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-12-03",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
-    ],
-    "platforms": [],
-    "detail": "https://ottasia.com/title/movie/1789518/the-conjunction?country=IN",
-    "sourceRecord": {
-      "title": "The Conjunction",
-      "releaseDate": "2026-12-03",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    }
-  },
-  {
     "name": "Dalimp",
     "language": "hindi",
     "type": "series",
@@ -174,6 +137,26 @@
       "title": "Dalimp",
       "releaseDate": "2026-12-04",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
+    "name": "New",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-11-20",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.keralatv.in/channel/ott/"
+    ],
+    "platforms": [
+      "Prime Video"
+    ],
+    "detail": "https://www.keralatv.in/drones-tamil-movie-ott-release-date-prime-video/",
+    "sourceRecord": {
+      "title": "New",
+      "releaseDate": "2026-11-20",
+      "source": "https://www.keralatv.in/channel/ott/",
+      "headline": "New Tamil Movie OTT Releases This Week – Drones Streaming on Prime Video From 20 November 2026"
     }
   },
   {
@@ -194,6 +177,23 @@
       "releaseDate": "2026-11-27",
       "source": "https://www.keralatv.in/channel/ott/",
       "headline": "Adarsha Kutumbam OTT Release Date : Venkatesh’s Telugu Film Expected on Netflix From November 27"
+    }
+  },
+  {
+    "name": "The Conjunction",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-12-03",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://ottasia.com/ott-releases-this-week?country=IN"
+    ],
+    "platforms": [],
+    "detail": "https://ottasia.com/title/movie/1789518/the-conjunction?country=IN",
+    "sourceRecord": {
+      "title": "The Conjunction",
+      "releaseDate": "2026-12-03",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     }
   },
   {
@@ -598,6 +598,36 @@
     }
   },
   {
+    "name": "Auto Vijayashanthi (Episode 221)",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-05-12",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a02a2999dcddba08328d0f0",
+      "title": "Auto Vijayashanthi (Episode 221)",
+      "platform": "ZEE5",
+      "createdAt": "2026-05-12T03:46:33.489Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-12",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-05-12T03:46:33.489Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Avalaga Irunthal",
     "language": "tamil",
     "type": "movie",
@@ -626,36 +656,6 @@
       "type": "Movie",
       "updatedAt": "2026-10-14T02:18:51.600Z",
       "votes": 0,
-      "verified": true
-    }
-  },
-  {
-    "name": "Auto Vijayashanthi (Episode 221)",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-05-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a02a2999dcddba08328d0f0",
-      "title": "Auto Vijayashanthi (Episode 221)",
-      "platform": "ZEE5",
-      "createdAt": "2026-05-12T03:46:33.489Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-12",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-05-12T03:46:33.489Z",
       "verified": true
     }
   },
@@ -1149,6 +1149,37 @@
     }
   },
   {
+    "name": "Nijame Rujuvainadhi",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-08-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a7e75993fab9691478b3be2",
+      "platform": "ETV Win",
+      "title": "Nijame Rujuvainadhi",
+      "createdAt": "2026-08-14T01:55:36.933Z",
+      "genre": "Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "original_language": "Telugu",
+      "releaseDate": "2026-08-14",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-08-14T01:55:36.933Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Jungle Tales With Mowgli",
     "language": "hindi",
     "type": "movie",
@@ -1210,37 +1241,6 @@
     }
   },
   {
-    "name": "Nijame Rujuvainadhi",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-08-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a7e75993fab9691478b3be2",
-      "platform": "ETV Win",
-      "title": "Nijame Rujuvainadhi",
-      "createdAt": "2026-08-14T01:55:36.933Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "original_language": "Telugu",
-      "releaseDate": "2026-08-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-08-14T01:55:36.933Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Clean Up Company",
     "language": "hindi",
     "type": "movie",
@@ -1270,6 +1270,36 @@
       "updatedAt": "2026-08-21T02:09:08.752Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/sVMcco0EdfDvFpyPlHU9n6RPrQj.jpg",
       "instagramPostedAt": "2026-08-21T02:09:49Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Kakkippada-2",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-05-29",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a190c98135bb8f4954fffcc",
+      "platform": "ZEE5",
+      "title": "Kakkippada-2",
+      "createdAt": "2026-05-29T03:48:40.285Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Malayalam"
+      ],
+      "releaseDate": "2026-05-29",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-05-29T03:48:40.285Z",
       "verified": true
     }
   },
@@ -1307,32 +1337,32 @@
     }
   },
   {
-    "name": "Kakkippada-2",
-    "language": "malayalam",
+    "name": "Uthutha Herolu",
+    "language": "telugu",
     "type": "movie",
-    "ottDate": "2026-05-29",
+    "ottDate": "2026-05-21",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ZEE5"
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6a190c98135bb8f4954fffcc",
-      "platform": "ZEE5",
-      "title": "Kakkippada-2",
-      "createdAt": "2026-05-29T03:48:40.285Z",
-      "genre": "Drama",
+      "_id": "6a0e807fffe2674e7ae98250",
+      "title": "Uthutha Herolu",
+      "platform": "ETV Win",
+      "createdAt": "2026-05-21T03:48:15.770Z",
+      "genre": "Crime Comedy",
       "imdbRating": null,
       "languages": [
-        "Malayalam"
+        "Telugu"
       ],
-      "releaseDate": "2026-05-29",
+      "releaseDate": "2026-05-21",
       "source_verified": true,
       "type": "Movie",
-      "updatedAt": "2026-05-29T03:48:40.285Z",
+      "updatedAt": "2026-05-21T03:48:15.770Z",
       "verified": true
     }
   },
@@ -1396,36 +1426,6 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-05-03T03:46:51.209Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Uthutha Herolu",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-21",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a0e807fffe2674e7ae98250",
-      "title": "Uthutha Herolu",
-      "platform": "ETV Win",
-      "createdAt": "2026-05-21T03:48:15.770Z",
-      "genre": "Crime Comedy",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-21",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-21T03:48:15.770Z",
       "verified": true
     }
   },
@@ -1596,37 +1596,6 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-03-27T03:36:48.165Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "The Eternal Love",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-04-24",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69eae74130958fd1b959e169",
-      "platform": "ETV Win",
-      "title": "The Eternal Love",
-      "createdAt": "2026-04-24T03:45:05.325Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-04-24",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-04-24T03:45:23.137Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/yZBBcP8QZFALkfkbW8Yjp6ylJ0v.jpg",
       "verified": true
     }
   },

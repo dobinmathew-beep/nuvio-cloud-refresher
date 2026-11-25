@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-25T06:41:48.993069+04:00",
+    "checkedAt": "2026-11-25T08:01:46.355267+04:00",
     "records": [
       {
         "_id": "6b06458d699a8884e1604806",
@@ -31774,7 +31774,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-25T06:41:48.993069+04:00",
+    "checkedAt": "2026-11-25T08:01:46.355267+04:00",
     "records": [
       {
         "name": "Anbil Avan",
@@ -32223,62 +32223,6 @@
         "year": null,
         "source": "https://cinebuds.com/ott-release-dates/",
         "detail": "https://cinebuds.com/movies/thella-kaagitham/",
-        "confirmed": true
-      },
-      {
-        "name": "Dhoomakethu",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-10-23",
-        "platforms": [
-          "Netflix"
-        ],
-        "poster": "https://cinebuds.com/wp-content/uploads/2026/10/Dhoomakethu-OTT-Release-Date-300x169.webp",
-        "year": null,
-        "source": "https://cinebuds.com/ott-release-dates/",
-        "detail": "https://cinebuds.com/dhoomakethu-ott-release-date/",
-        "confirmed": true
-      },
-      {
-        "name": "Dorothy",
-        "language": "tamil",
-        "type": "movie",
-        "ottDate": "2026-10-23",
-        "platforms": [
-          "Netflix"
-        ],
-        "poster": "https://cinebuds.com/wp-content/uploads/2026/10/Dorothy-200x300.webp",
-        "year": null,
-        "source": "https://cinebuds.com/ott-release-dates/",
-        "detail": "https://cinebuds.com/movies/dorothy/",
-        "confirmed": true
-      },
-      {
-        "name": "Naa Wife Missing",
-        "language": "telugu",
-        "type": "movie",
-        "ottDate": "2026-10-22",
-        "platforms": [
-          "Aha"
-        ],
-        "poster": "https://cinebuds.com/wp-content/uploads/2026/10/naa-wife-missing-poster-200x300.jpg",
-        "year": null,
-        "source": "https://cinebuds.com/ott-release-dates/",
-        "detail": "https://cinebuds.com/movies/naa-wife-missing/",
-        "confirmed": true
-      },
-      {
-        "name": "The Paradise",
-        "language": "telugu",
-        "type": "movie",
-        "ottDate": "2026-10-22",
-        "platforms": [
-          "Netflix"
-        ],
-        "poster": "https://cinebuds.com/wp-content/uploads/2026/10/The-Paradise-OTT-200x300.webp",
-        "year": null,
-        "source": "https://cinebuds.com/ott-release-dates/",
-        "detail": "https://cinebuds.com/movies/the-paradise/",
         "confirmed": true
       }
     ]
