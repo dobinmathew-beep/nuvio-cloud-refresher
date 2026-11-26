@@ -2,19 +2,21 @@ import unittest
 from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from featured import first_valid, valid, valid_id, valid_center_id
+from featured import first_valid, valid, valid_id, valid_center_id, valid_backdrop_center_id
 
 class FeaturedSelectionTests(unittest.TestCase):
-    # General IDs accept IMDb and TMDB; backdrop centres are IMDb-only to match reels.
     def test_featured_id_validation_accepts_imdb_and_tmdb_ids(self):
         self.assertTrue(valid_id('tt1234567'))
         self.assertTrue(valid_id('tmdb:1822586'))
         self.assertFalse(valid_id('ir:promo-unlock'))
         self.assertFalse(valid_id('tmdb:'))
 
-    def test_reel_and_backdrop_opening_share_imdb_only_eligibility(self):
+    def test_reels_remain_imdb_only_while_backdrop_centres_accept_tmdb(self):
         self.assertTrue(valid_center_id('tt18933846'))
         self.assertFalse(valid_center_id('tmdb:1822586'))
+        self.assertTrue(valid_backdrop_center_id('tt18933846'))
+        self.assertTrue(valid_backdrop_center_id('tmdb:1822586'))
+        self.assertFalse(valid_backdrop_center_id('ir:promo-unlock'))
 
     def test_first_eligible_movie_keeps_catalog_order(self):
         metas=[
@@ -26,7 +28,7 @@ class FeaturedSelectionTests(unittest.TestCase):
         ]
         self.assertEqual(first_valid(metas,'tamil')['id'],'tt123')
 
-    def test_first_tmdb_only_movie_is_skipped_for_backdrop_centre(self):
+    def test_first_tmdb_only_movie_is_selected_ahead_of_later_imdb_movie(self):
         metas=[
             {'id':'ir:promo-unlock','type':'movie','poster':'promo.jpg','name':'New Hindi Dubbed Catalog!'},
             {'id':'tmdb:1822586||Mazhalai||2026||movie','type':'movie','poster':'https://image.tmdb.org/t/p/original/mazhalai.jpg','name':'Mazhalai'},
@@ -34,21 +36,22 @@ class FeaturedSelectionTests(unittest.TestCase):
             {'id':'tmdb:1806311||THEDAL||2026||movie','type':'movie','poster':'thedal.jpg','name':'THEDAL'},
             {'id':'tt39239818','type':'movie','poster':'haiku.jpg','name':'Haiku'},
         ]
-        self.assertEqual(first_valid(metas,'tamil')['id'].split('||',1)[0],'tt18933846')
+        self.assertEqual(first_valid(metas,'tamil')['id'].split('||',1)[0],'tmdb:1822586')
 
-    def test_tmdb_composite_movie_is_not_eligible_for_backdrop_centre(self):
-        self.assertFalse(valid({
+    def test_tmdb_composite_movie_is_eligible_for_backdrop_centre(self):
+        self.assertTrue(valid({
             'id':'tmdb:1822586||Mazhalai||2026||movie',
             'type':'movie',
             'poster':'https://image.tmdb.org/t/p/original/mazhalai.jpg',
             'name':'Mazhalai'
         },'tamil'))
 
-    def test_tmdb_only_catalog_cannot_supply_backdrop_centre(self):
-        self.assertIsNone(first_valid([
+    def test_tmdb_only_catalog_can_supply_backdrop_centre(self):
+        selected=first_valid([
             {'id':'tmdb:1822586','type':'movie','poster':'mazhalai.jpg','name':'Mazhalai'},
             {'id':'tmdb:1806311','type':'movie','poster':'thedal.jpg','name':'THEDAL'},
-        ],'tamil'))
+        ],'tamil')
+        self.assertEqual(selected['id'],'tmdb:1822586')
 
     def test_promotional_and_non_movie_entries_are_skipped(self):
         self.assertIsNone(first_valid([
