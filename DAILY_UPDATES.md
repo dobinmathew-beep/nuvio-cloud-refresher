@@ -2,7 +2,7 @@
 
 **Backdrops · Reels · Addon · India EPG**
 
-Last checked: **26 Nov 2026, 19:21 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45848256838)
+Last checked: **26 Nov 2026, 19:25 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45848983357)
 
 **Refresh checks:** every 30 minutes. Outputs refresh when their two-hour cycle is due. **Dashboard:** refreshed immediately when a media, addon, or EPG workflow completes, plus the 30-minute watchdog check.
 
@@ -10,8 +10,8 @@ Last checked: **26 Nov 2026, 19:21 Oman time**. [This check’s logs](https://gi
 
 | Output | Status at last check | Last successful refresh run (Oman) | Last verified cycle / check (Oman) | Details | Latest attempt |
 |---|---|---|---|---|---|
-| Backdrops | ❌ Public verification failed | 26 Nov 2026, 17:49 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45831166681) | 26 Nov 2026, 19:01 | ? layouts; ? image checks; \[{"status": "tamil/movies/wall", "error": "incorrect current catalog-head centre movie"}, {"status": "tamil/movies/cascade", "error": "incorrect current catalog-head centre movie"}, {"status": "tamil/movies/spotlight", "error": "incorrect current catalog-head centre movie"}, {"status": "tamil/movies/gallery", "error": "incorrect current catalog-head centre movie"}, {"status": "tamil/movies/filmstrip", "error": "incorrect current catalog-head centre movie"}\] | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45843539922) |
-| Reels | ✅ Updated | 26 Nov 2026, 17:49 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45831166681) | 26 Nov 2026, 19:01 | 4 languages; 20 films per reel; this part verified, combined media cycle still pending | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45843539922) |
+| Backdrops | ❌ Public verification failed | 26 Nov 2026, 17:49 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45831166681) | 26 Nov 2026, 19:21 | ? layouts; ? image checks; \[{"status": "tamil/movies/wall", "error": "incorrect current catalog-head centre movie"}, {"status": "tamil/movies/cascade", "error": "incorrect current catalog-head centre movie"}, {"status": "tamil/movies/spotlight", "error": "incorrect current catalog-head centre movie"}, {"status": "tamil/movies/filmstrip", "error": "incorrect current catalog-head centre movie"}, {"status": "tamil/movies/gallery", "error": "incorrect current catalog-head centre movie"}\] | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45843539922) |
+| Reels | ✅ Updated | 26 Nov 2026, 17:49 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45831166681) | 26 Nov 2026, 19:21 | 4 languages; 20 films per reel; this part verified, combined media cycle still pending | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45843539922) |
 | Addon | ✅ Updated | 26 Nov 2026, 18:42 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840611708) | 26 Nov 2026, 18:00 | 1087 catalog entries; 64 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840611708) |
 | EPG | ✅ Updated | 26 Nov 2026, 18:37 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840631764) | 26 Nov 2026, 18:36 | 603 / 839 channel IDs with listings; 236 unresolved; 65798 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840631764) |
 
@@ -27,7 +27,7 @@ A successful check can keep the same movies or listings when the source has not 
 
 ## Issues at this check
 
-- media: independent public verification failed: backdrops: \[{"status": "tamil/movies/wall", "error": "incorrect current catalog-head centre movie"}, {"status": "tamil/movies/cascade", "error": "incorrect current catalog-head centre movie"}, {"status": "tamil/movies/spotlight", "error": "incorrect current catalog-head centre movie"}, {"status": "tamil/movies/gallery", "error": "incorrect current catalog-hea
+- media: independent public verification failed: backdrops: \[{"status": "tamil/movies/wall", "error": "incorrect current catalog-head centre movie"}, {"status": "tamil/movies/cascade", "error": "incorrect current catalog-head centre movie"}, {"status": "tamil/movies/spotlight", "error": "incorrect current catalog-head centre movie"}, {"status": "tamil/movies/filmstrip", "error": "incorrect current catalog-h
 
 ## Useful links
 
