@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-26T04:06:26.683927+00:00",
+  "checkedAt": "2026-11-26T08:58:02.722553+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,7 +14,7 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1205,
+      "metadataRecords": 1206,
       "warning": null,
       "error": null
     },
@@ -150,19 +150,19 @@
       "language": "ta",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_ta_series.json",
-      "localPublishedCount": 115,
-      "localUniqueIdCount": 115,
+      "localPublishedCount": 116,
+      "localUniqueIdCount": 116,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 115,
-      "endpointUniqueIdCount": 115,
+      "endpointRawCount": 116,
+      "endpointUniqueIdCount": 116,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
-        15
+        16
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -222,32 +222,32 @@
       "language": "te",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_te_series.json",
-      "localPublishedCount": 115,
-      "localUniqueIdCount": 115,
+      "localPublishedCount": 116,
+      "localUniqueIdCount": 116,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 115,
-      "endpointUniqueIdCount": 115,
+      "endpointRawCount": 116,
+      "endpointUniqueIdCount": 116,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
-        15
+        16
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt7805494",
-        "name": "Bigg Boss Telugu",
-        "releaseDate": "2026-11-24T21:30:00+00:00"
+        "id": "tt52075732",
+        "name": "Corporate Love Story",
+        "releaseDate": "2026-11-27"
       },
       "localLatestEntry": {
-        "id": "tt7805494",
-        "name": "Bigg Boss Telugu",
-        "releaseDate": "2026-11-24T21:30:00+00:00"
+        "id": "tt52075732",
+        "name": "Corporate Love Story",
+        "releaseDate": "2026-11-27"
       },
       "latestEntryMatches": true,
       "state": "ok",
