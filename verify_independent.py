@@ -76,9 +76,9 @@ def first_catalog_movie(metas):
  for movie in metas:
   mid=str(movie.get("id","")).split("||",1)[0]
   name=str(movie.get("name",""))
-  if (re.fullmatch(r"tt\\d+|tmdb:\\d+",mid)
+  if (re.fullmatch(r"tt\d+|tmdb:\d+",mid)
       and movie.get("type")=="movie" and bool(movie.get("poster"))
-      and not re.search(r"OTT\\s*Releases|Hindi\\s*Dubbed|promo|unlock|promotional",name,re.I)):
+      and not re.search(r"OTT\s*Releases|Hindi\s*Dubbed|promo|unlock|promotional",name,re.I)):
    return {"id":mid,"name":name}
  raise AssertionError("No poster-backed real movie in the current catalog")
 
