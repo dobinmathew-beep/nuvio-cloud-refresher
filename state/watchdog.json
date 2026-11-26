@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-11-26T21:04:28.860258+04:00",
+  "checked_at": "2026-11-26T21:08:43.281449+04:00",
   "results": [
     {
       "component": "media",
       "due": "2026-11-26T20:00:00+04:00",
       "state": "public-verification-failed",
-      "error": "backdrops: [{\"status\": \"tamil/movies/cascade\", \"error\": \"incorrect current catalog-head centre movie: {\\\"expected_id\\\": \\\"tmdb:1822586\\\", \\\"actual_center\\\": {\\\"id\\\": \\\"tt18933846\\\", \\\"name\\\": \\\"Nooru Kodi Vaanavil\\\", \\\"selection\\\": \\\"catalog-order\\\", \\\"catalogRank\\\": 0}, \\\"renderVersion\\\": \\\"catalog-head-v2\\\"}\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": "
+      "error": "reels: independent public verification failed"
     },
     {
       "component": "addon",
@@ -19,7 +19,7 @@
     }
   ],
   "errors": [
-    "media: independent public verification failed: backdrops: [{\"status\": \"tamil/movies/cascade\", \"error\": \"incorrect current catalog-head centre movie: {\\\"expected_id\\\": \\\"tmdb:1822586\\\", \\\"actual_center\\\": {\\\"id\\\": \\\"tt18933846\\\", \\\"name\\\": \\\"Nooru Kodi Vaanavil\\\", \\\"selection\\\": \\\"catalog-order\\\", \\\"catalogRank\\\": 0}, \\\"renderVersion\\\": \\\"catalog-head-v2\\\"}\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": "
+    "media: independent public verification failed: reels: independent public verification failed"
   ],
   "warnings": []
 }
