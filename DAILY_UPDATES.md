@@ -2,7 +2,7 @@
 
 **Backdrops · Reels · Addon · India EPG**
 
-Last checked: **26 Nov 2026, 18:54 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45843602098)
+Last checked: **26 Nov 2026, 18:58 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45844307085)
 
 **Refresh checks:** every 30 minutes. Outputs refresh when their two-hour cycle is due. **Dashboard:** refreshed immediately when a media, addon, or EPG workflow completes, plus the 30-minute watchdog check.
 
@@ -10,8 +10,8 @@ Last checked: **26 Nov 2026, 18:54 Oman time**. [This check’s logs](https://gi
 
 | Output | Status at last check | Last successful refresh run (Oman) | Last verified cycle / check (Oman) | Details | Latest attempt |
 |---|---|---|---|---|---|
-| Backdrops | ❌ Public verification failed | 26 Nov 2026, 17:49 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45831166681) | 26 Nov 2026, 18:45 | 160 layouts; 16 image checks; {"layout": "tamil/movies/wall", "expected": {"id": "tmdb:1822586", "name": "Mazhalai"}, "actual": "tt18933846", "selection": "catalog-order", "catalogRank": 0, "renderVersion": "catalog-head-v2"} | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45843539922) |
-| Reels | ✅ Updated | 26 Nov 2026, 17:49 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45831166681) | 26 Nov 2026, 18:45 | 0 languages; ? films per reel | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45843539922) |
+| Backdrops | ❌ Public verification failed | 26 Nov 2026, 17:49 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45831166681) | 26 Nov 2026, 18:54 | 160 layouts; 16 image checks; \[{"status": "tamil/movies/wall", "error": "saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586"}, {"status": "tamil/movies/cascade", "error": "saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586"}, {"status": "tamil/movies/spotlight", "error": "saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586"}, {"status": "tamil/movies/filmstrip", "error": "saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586"}, {"status": "tamil/movies/gallery", "error": "saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586"}\] | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45843539922) |
+| Reels | ✅ Updated | 26 Nov 2026, 17:49 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45831166681) | 26 Nov 2026, 18:54 | 0 languages; ? films per reel | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45843539922) |
 | Addon | ✅ Updated | 26 Nov 2026, 18:42 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840611708) | 26 Nov 2026, 18:00 | 1087 catalog entries; 64 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840611708) |
 | EPG | ✅ Updated | 26 Nov 2026, 18:37 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840631764) | 26 Nov 2026, 18:36 | 603 / 839 channel IDs with listings; 236 unresolved; 65798 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840631764) |
 
@@ -27,7 +27,7 @@ A successful check can keep the same movies or listings when the source has not 
 
 ## Issues at this check
 
-- media: independent public verification failed: backdrops: {"layout": "tamil/movies/wall", "expected": {"id": "tmdb:1822586", "name": "Mazhalai"}, "actual": "tt18933846", "selection": "catalog-order", "catalogRank": 0, "renderVersion": "catalog-head-v2"}
+- media: independent public verification failed: backdrops: \[{"status": "tamil/movies/wall", "error": "saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586"}, {"status": "tamil/movies/cascade", "error": "saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586"}, {"status": "tamil/movies/spotlight", "error": "saved featured selection is stale: tt189338
 
 ## Useful links
 

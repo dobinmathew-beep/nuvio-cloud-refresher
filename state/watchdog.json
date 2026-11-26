@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-11-26T18:54:01.278960+04:00",
+  "checked_at": "2026-11-26T18:58:18.027432+04:00",
   "results": [
     {
       "component": "media",
       "due": "2026-11-26T18:00:00+04:00",
       "state": "public-verification-failed",
-      "error": "backdrops: {\"layout\": \"tamil/movies/wall\", \"expected\": {\"id\": \"tmdb:1822586\", \"name\": \"Mazhalai\"}, \"actual\": \"tt18933846\", \"selection\": \"catalog-order\", \"catalogRank\": 0, \"renderVersion\": \"catalog-head-v2\"}"
+      "error": "backdrops: [{\"status\": \"tamil/movies/wall\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": \"saved featured selection is stale: tt189338"
     },
     {
       "component": "addon",
@@ -19,7 +19,7 @@
     }
   ],
   "errors": [
-    "media: independent public verification failed: backdrops: {\"layout\": \"tamil/movies/wall\", \"expected\": {\"id\": \"tmdb:1822586\", \"name\": \"Mazhalai\"}, \"actual\": \"tt18933846\", \"selection\": \"catalog-order\", \"catalogRank\": 0, \"renderVersion\": \"catalog-head-v2\"}"
+    "media: independent public verification failed: backdrops: [{\"status\": \"tamil/movies/wall\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": \"saved featured selection is stale: tt189338"
   ],
   "warnings": []
 }
