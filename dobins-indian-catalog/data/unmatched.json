@@ -1033,6 +1033,37 @@
     }
   },
   {
+    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-09-13",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6aa608021ead141338245394",
+      "platform": "JioHotStar",
+      "title": "Chikoo Vs Bunty: Kushti Ki Jung",
+      "createdAt": "2026-09-13T02:18:42.361Z",
+      "genre": "Animation",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-09-13",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-09-13T02:18:42.361Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Chumbak Part 2",
     "language": "hindi",
     "type": "series",
@@ -1122,37 +1153,6 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-08-14T01:55:36.933Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-09-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6aa608021ead141338245394",
-      "platform": "JioHotStar",
-      "title": "Chikoo Vs Bunty: Kushti Ki Jung",
-      "createdAt": "2026-09-13T02:18:42.361Z",
-      "genre": "Animation",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-09-13",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-09-13T02:18:42.361Z",
       "verified": true
     }
   },
@@ -1407,36 +1407,6 @@
     }
   },
   {
-    "name": "Vani Na Rani",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a07e9279dcddba08328ec63",
-      "platform": "ETV Win",
-      "title": "Vani Na Rani",
-      "createdAt": "2026-05-16T03:48:55.554Z",
-      "genre": "Family Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-16",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-16T03:48:55.554Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Musafir Café",
     "language": "hindi",
     "type": "movie",
@@ -1465,6 +1435,36 @@
       "type": "Movie",
       "updatedAt": "2026-07-24T06:03:23.967Z",
       "votes": 3,
+      "verified": true
+    }
+  },
+  {
+    "name": "Vani Na Rani",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-05-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a07e9279dcddba08328ec63",
+      "platform": "ETV Win",
+      "title": "Vani Na Rani",
+      "createdAt": "2026-05-16T03:48:55.554Z",
+      "genre": "Family Drama",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-16",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-05-16T03:48:55.554Z",
       "verified": true
     }
   },
@@ -1677,8 +1677,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win",
-      "Netflix"
+      "Netflix",
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {
