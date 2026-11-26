@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-26T08:01:54.512672+04:00",
+  "generatedAt": "2026-11-26T12:50:57.634490+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 15,
+  "count": 17,
   "items": [
     {
       "id": "tt50063835",
@@ -63,22 +63,26 @@
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },
     {
-      "id": "tt43720139",
+      "id": "tt39632118",
       "aliases": [
-        "tt43720139"
+        "tt39632118"
       ],
-      "name": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
+      "name": "Family Kirana Store",
       "language": "hindi",
       "type": "series",
       "releaseDate": "2026-11-27",
       "kind": "episode",
-      "platforms": [],
+      "platforms": [
+        "YouTube (TVF)"
+      ],
       "sources": [
-        "https://www.themoviedb.org/tv/319143"
+        "https://www.dailyott.in/",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/"
       ],
       "catalog": "dobins_hi_series",
       "region": "IN",
-      "source": "https://www.themoviedb.org/tv/319143"
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tt43636966",
@@ -121,6 +125,26 @@
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },
     {
+      "id": "tt35984846",
+      "aliases": [
+        "tt35984846"
+      ],
+      "name": "Octopus!",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "kind": "premiere",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-releases-this-week/"
+      ],
+      "catalog": "dobins_ta_series",
+      "region": "IN",
+      "source": "https://cinebuds.com/ott-releases-this-week/"
+    },
+    {
       "id": "tt44914967",
       "aliases": [
         "tt44914967"
@@ -142,6 +166,28 @@
       "catalog": "dobins_ta_series",
       "region": "IN",
       "source": "https://www.dailyott.in/"
+    },
+    {
+      "id": "tt52075732",
+      "aliases": [
+        "tt52075732"
+      ],
+      "name": "Corporate Love Story",
+      "language": "telugu",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "kind": "premiere",
+      "platforms": [
+        "JioHotstar",
+        "Hotstar",
+        "ZEE5"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "catalog": "dobins_te_series",
+      "region": "IN",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },
     {
       "id": "tmdb:337904",
@@ -254,7 +300,7 @@
       "language": "hindi",
       "type": "series",
       "releaseDate": "2026-12-04",
-      "kind": "premiere",
+      "kind": "episode",
       "platforms": [
         "Netflix",
         "ZEE5"

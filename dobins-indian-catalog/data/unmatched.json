@@ -1,5 +1,24 @@
 [
   {
+    "name": "Sathyameva (Series)",
+    "language": "malayalam",
+    "type": "series",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://cinebuds.com/ott-releases-this-week/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": "https://cinebuds.com/malayalam-movies-ott-release-dates/",
+    "sourceRecord": {
+      "title": "Sathyameva (Series)",
+      "releaseDate": "2026-11-27",
+      "source": "https://cinebuds.com/ott-releases-this-week/"
+    }
+  },
+  {
     "name": "Narayan Pustika 2 - Endless",
     "language": "hindi",
     "type": "movie",
@@ -15,6 +34,21 @@
       "releaseDate": "2026-12-08",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     }
+  },
+  {
+    "name": "Drones",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-11-20",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://cinebuds.com/ott-release-dates/"
+    ],
+    "platforms": [
+      "Prime Video"
+    ],
+    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+    "sourceRecord": {}
   },
   {
     "name": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
@@ -37,21 +71,6 @@
     }
   },
   {
-    "name": "Drones",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-11-20",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://cinebuds.com/ott-release-dates/"
-    ],
-    "platforms": [
-      "Prime Video"
-    ],
-    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
-    "sourceRecord": {}
-  },
-  {
     "name": "Drones1",
     "language": "tamil",
     "type": "movie",
@@ -72,6 +91,26 @@
         "Amazon Prime Video"
       ],
       "source": "https://www.ottchecker.com/ott-releases/tamil"
+    }
+  },
+  {
+    "name": "Raathiri (Series)",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://cinebuds.com/ott-releases-this-week/"
+    ],
+    "platforms": [
+      "Aha",
+      "aha"
+    ],
+    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+    "sourceRecord": {
+      "title": "Raathiri (Series)",
+      "releaseDate": "2026-11-27",
+      "source": "https://cinebuds.com/ott-releases-this-week/"
     }
   },
   {
@@ -495,37 +534,6 @@
     }
   },
   {
-    "name": "Southern Shadows",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-05-23",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Prime Video"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a112342135bb8f4954fec65",
-      "title": "Southern Shadows",
-      "platform": "Prime Video",
-      "createdAt": "2026-05-23T03:47:14.634Z",
-      "genre": "Crime, Drama",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-05-23",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-05-23T03:47:25.416Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/kf0utrFWZfi1Is821zUMZnio2aF.jpg",
-      "verified": true
-    }
-  },
-  {
     "name": "Nindu Noorella Saavasam (Episode 885)",
     "language": "telugu",
     "type": "series",
@@ -552,36 +560,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-05-12T03:46:33.291Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Auto Vijayashanthi (Episode 221)",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-05-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a02a2999dcddba08328d0f0",
-      "title": "Auto Vijayashanthi (Episode 221)",
-      "platform": "ZEE5",
-      "createdAt": "2026-05-12T03:46:33.489Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-12",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-05-12T03:46:33.489Z",
       "verified": true
     }
   },
@@ -618,33 +596,63 @@
     }
   },
   {
-    "name": "Soul Trip",
-    "language": "telugu",
+    "name": "Southern Shadows",
+    "language": "tamil",
     "type": "series",
-    "ottDate": "2026-04-30",
+    "ottDate": "2026-05-23",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win"
+      "Prime Video"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "69e9955d30958fd1b959de4a",
-      "platform": "ETV Win",
-      "title": "Soul Trip",
-      "createdAt": "2026-04-23T03:43:25.627Z",
-      "genre": "Talk-Show, Reality-TV",
+      "_id": "6a112342135bb8f4954fec65",
+      "title": "Southern Shadows",
+      "platform": "Prime Video",
+      "createdAt": "2026-05-23T03:47:14.634Z",
+      "genre": "Crime, Drama",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-05-23",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-05-23T03:47:25.416Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/kf0utrFWZfi1Is821zUMZnio2aF.jpg",
+      "verified": true
+    }
+  },
+  {
+    "name": "Auto Vijayashanthi (Episode 221)",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-05-12",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a02a2999dcddba08328d0f0",
+      "title": "Auto Vijayashanthi (Episode 221)",
+      "platform": "ZEE5",
+      "createdAt": "2026-05-12T03:46:33.489Z",
+      "genre": "Drama",
       "imdbRating": null,
       "languages": [
         "Telugu"
       ],
-      "releaseDate": "2026-04-30",
+      "releaseDate": "2026-05-12",
       "source_verified": true,
       "type": "Series",
-      "updatedAt": "2026-04-30T03:47:03.617Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/lMmVs6FC8pkc0n1BW3gemZRFhqb.jpg",
+      "updatedAt": "2026-05-12T03:46:33.489Z",
       "verified": true
     }
   },
@@ -676,6 +684,37 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-10-14T02:18:51.826Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Soul Trip",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-04-30",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69e9955d30958fd1b959de4a",
+      "platform": "ETV Win",
+      "title": "Soul Trip",
+      "createdAt": "2026-04-23T03:43:25.627Z",
+      "genre": "Talk-Show, Reality-TV",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-04-30",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-30T03:47:03.617Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/lMmVs6FC8pkc0n1BW3gemZRFhqb.jpg",
       "verified": true
     }
   },
@@ -772,36 +811,6 @@
     }
   },
   {
-    "name": "Jodi Are U Ready Season 3 (Grand Finale)",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-05-03",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f6c52b36465ddb3f139825",
-      "platform": "JioHotStar",
-      "title": "Jodi Are U Ready Season 3 (Grand Finale)",
-      "createdAt": "2026-05-03T03:46:51.832Z",
-      "genre": "Reality, Dance",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-05-03",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-05-03T03:46:51.832Z",
-      "verified": true
-    }
-  },
-  {
     "name": "The Eternal Love - Prologue",
     "language": "telugu",
     "type": "series",
@@ -828,37 +837,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-04-23T03:43:25.822Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Thai Maaman",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-04-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f02de630958fd1b959e7b7",
-      "title": "Thai Maaman",
-      "platform": "JioHotStar",
-      "createdAt": "2026-04-28T03:47:50.537Z",
-      "genre": "Family Drama",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-04-28",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-28T03:48:08.007Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/8GGzM0vq3xttbYA0GNOHDI6iVlT.jpg",
       "verified": true
     }
   },
@@ -894,6 +872,67 @@
     }
   },
   {
+    "name": "Jodi Are U Ready Season 3 (Grand Finale)",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-05-03",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69f6c52b36465ddb3f139825",
+      "platform": "JioHotStar",
+      "title": "Jodi Are U Ready Season 3 (Grand Finale)",
+      "createdAt": "2026-05-03T03:46:51.832Z",
+      "genre": "Reality, Dance",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-05-03",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-05-03T03:46:51.832Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Thai Maaman",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-04-28",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69f02de630958fd1b959e7b7",
+      "title": "Thai Maaman",
+      "platform": "JioHotStar",
+      "createdAt": "2026-04-28T03:47:50.537Z",
+      "genre": "Family Drama",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-04-28",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-28T03:48:08.007Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/8GGzM0vq3xttbYA0GNOHDI6iVlT.jpg",
+      "verified": true
+    }
+  },
+  {
     "name": "Aa Gang Repu 3",
     "language": "telugu",
     "type": "series",
@@ -920,36 +959,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-04-16T03:44:31.038Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "WWE (Tamil Dub)",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-04-18",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Netflix"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69e2fc0930958fd1b908a124",
-      "title": "WWE (Tamil Dub)",
-      "platform": "Netflix",
-      "createdAt": "2026-04-18T03:35:37.425Z",
-      "genre": "Sports Entertainment, Action",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-04-18",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-18T03:35:37.425Z",
       "verified": true
     }
   },
@@ -984,6 +993,36 @@
     }
   },
   {
+    "name": "WWE (Tamil Dub)",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-04-18",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69e2fc0930958fd1b908a124",
+      "title": "WWE (Tamil Dub)",
+      "platform": "Netflix",
+      "createdAt": "2026-04-18T03:35:37.425Z",
+      "genre": "Sports Entertainment, Action",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-04-18",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-18T03:35:37.425Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Kaakkee Circus",
     "language": "tamil",
     "type": "series",
@@ -1010,37 +1049,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-04-10T03:41:59.603Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Love Beyond Wicket",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-04-09",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69d71ed1eb1fc7a84cb42f98",
-      "platform": "JioHotStar",
-      "title": "Love Beyond Wicket",
-      "createdAt": "2026-04-09T03:36:49.253Z",
-      "genre": "Sports, Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-04-09",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-09T03:37:09.017Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/tC5K8MkLipwV9bIdJV9SQcCzgUF.jpg",
       "verified": true
     }
   },
@@ -1072,6 +1080,37 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-10-02T02:18:50.680Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Love Beyond Wicket",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-04-09",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69d71ed1eb1fc7a84cb42f98",
+      "platform": "JioHotStar",
+      "title": "Love Beyond Wicket",
+      "createdAt": "2026-04-09T03:36:49.253Z",
+      "genre": "Sports, Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-04-09",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-09T03:37:09.017Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/tC5K8MkLipwV9bIdJV9SQcCzgUF.jpg",
       "verified": true
     }
   },
@@ -1658,8 +1697,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win",
-      "Netflix"
+      "Netflix",
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {
