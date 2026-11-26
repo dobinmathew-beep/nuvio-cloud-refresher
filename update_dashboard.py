@@ -9,7 +9,7 @@ REPO='https://github.com/dobinmathew-beep/nuvio-cloud-refresher'
 WORKFLOWS={'media':'refresh.yml','addon':'dobins-indian-catalog.yml','epg':'india-epg.yml'}
 LABELS={'fresh':'✅ Updated','refresh-in-progress':'🔄 Refresh running / queued',
  'catch-up-dispatched':'🔄 Retry requested','stale-retry-cooldown':'⚠️ Waiting for retry',
- 'check-failed':'❌ Could not verify'}
+ 'check-failed':'❌ Could not verify','public-verification-failed':'❌ Public verification failed'}
 
 def clean(value):
     text=str(value).replace('\n',' ').replace('\r',' ')
@@ -34,6 +34,10 @@ def summaries(states):
     result={}
     for kind,data in [('media',media),('addon',addon),('epg',epg)]:
         result[kind]={k:data[k] for k in allow[kind] if k in data}
+    public=media.get('public_verification',{})
+    result['media']['public_verification']={
+        name:{k:item[k] for k in ('status','checked_at','error') if k in item}
+        for name,item in public.items() if name in ('backdrops','reels') and isinstance(item,dict)}
     # Exclude upstream URLs and arbitrary fields in nested source reports.
     result['addon']['sources']=[{k:s[k] for k in ('source','language','state','records','error') if k in s} for s in addon.get('sources',[])]
     return result
@@ -59,14 +63,28 @@ def rows_for(entry):
             status=LABELS.get(row['state'],row['state'])
             if kind=='media':
                 key='backdrops' if name=='Backdrops' else 'heroes'
+                public_key='backdrops' if name=='Backdrops' else 'reels'
+                verification=data.get('public_verification',{}).get(public_key,{})
+                if verification.get('status')=='fail':
+                    status=LABELS['public-verification-failed']
+                elif verification.get('status')=='pass':
+                    try: verified_at=datetime.fromisoformat(verification.get('checked_at','').replace('Z','+00:00'))
+                    except (TypeError,ValueError): verified_at=None
+                    try: due_at=datetime.fromisoformat(row.get('due','').replace('Z','+00:00'))
+                    except (TypeError,ValueError): due_at=None
+                    if verified_at is not None and due_at is not None and verified_at>=due_at:
+                        status=LABELS['fresh']
+                    else:
+                        status='⚠️ Public verification is stale'
                 complete=bool(data.get(key))
                 cycle=data.get('refresh_cycle') or (data.get('cycle','')+'T06:00:00+04:00' if data.get('cycle') else '')
-                verified=when(cycle) if complete else 'Not recorded'
+                verified=when(verification.get('checked_at') or cycle) if (verification or complete) else 'Not recorded'
                 if key=='backdrops':
                     detail=f"{data.get(key,{}).get('statuses','?')} layouts; {data.get(key,{}).get('images','?')} image checks"
                 else:
                     detail=f"{len(data.get(key,{}).get('languages',[]))} languages; {data.get(key,{}).get('films_per_language','?')} films per reel"
-                if row['state']!='fresh' and complete:detail+='; this part verified, combined media cycle still pending'
+                if verification.get('error'):detail+='; '+verification['error']
+                if row['state']!='fresh' and complete and verification.get('status')!='fail':detail+='; this part verified, combined media cycle still pending'
             elif kind=='addon':
                 verified=when(data.get('lastSuccessCycle'))
                 detail=f"{sum(v for v in data.get('counts',{}).values() if isinstance(v,int))} catalog entries; {data.get('pendingMatches','?')} pending matches"
