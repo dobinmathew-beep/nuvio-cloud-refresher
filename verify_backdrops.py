@@ -56,7 +56,7 @@ def status(k):
    assert head,'live IndianRegional catalog head was not independently checked'
    assert lead.get('id')==head,f'saved featured selection is stale: {lead.get("id")} != current catalog head {head}'
    assert d.get('renderVersion')=='catalog-head-v2','old centre selection version'
-   assert center.get('id')==head and center.get('selection')=='catalog-order' and center.get('catalogRank')==0,'incorrect current catalog-head centre movie'
+   assert center.get('id')==head and center.get('selection')=='catalog-order' and center.get('catalogRank')==0, 'incorrect current catalog-head centre movie: '+json.dumps({'expected_id':head,'actual_center':center,'renderVersion':d.get('renderVersion')},ensure_ascii=False)
    assert isinstance(d.get('centerSlot'),int),'missing centre panel metadata'
   ms=d.get('movies',[]);assert ms,'empty titles';types=[]
   for m in ms:
