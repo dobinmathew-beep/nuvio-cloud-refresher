@@ -2,7 +2,7 @@
 
 **Backdrops · Reels · Addon · India EPG**
 
-Last checked: **26 Nov 2026, 18:42 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45841681602)
+Last checked: **26 Nov 2026, 18:45 Oman time**. [This check’s logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45842174073)
 
 **Refresh checks:** every 30 minutes. Outputs refresh when their two-hour cycle is due. **Dashboard:** refreshed immediately when a media, addon, or EPG workflow completes, plus the 30-minute watchdog check.
 
@@ -10,8 +10,8 @@ Last checked: **26 Nov 2026, 18:42 Oman time**. [This check’s logs](https://gi
 
 | Output | Status at last check | Last successful refresh run (Oman) | Last verified cycle / check (Oman) | Details | Latest attempt |
 |---|---|---|---|---|---|
-| Backdrops | ❌ Public verification failed | 26 Nov 2026, 17:49 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45831166681) | 26 Nov 2026, 18:27 | 160 layouts; 16 image checks; {"layout": "tamil/movies/wall", "expected": {"id": "tmdb:1822586", "name": "Mazhalai"}, "actual": "tt18933846", "selection": "catalog-order", "catalogRank": 0, "renderVersion": "catalog-head-v2"} | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840580298) |
-| Reels | ✅ Updated | 26 Nov 2026, 17:49 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45831166681) | 26 Nov 2026, 18:27 | 4 languages; 20 films per reel; this part verified, combined media cycle still pending | in_progress · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840580298) |
+| Backdrops | ❌ Public verification failed | 26 Nov 2026, 17:49 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45831166681) | 26 Nov 2026, 18:27 | 160 layouts; 16 image checks; {"layout": "tamil/movies/wall", "expected": {"id": "tmdb:1822586", "name": "Mazhalai"}, "actual": "tt18933846", "selection": "catalog-order", "catalogRank": 0, "renderVersion": "catalog-head-v2"} | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840580298) |
+| Reels | ✅ Updated | 26 Nov 2026, 17:49 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45831166681) | 26 Nov 2026, 18:27 | 0 languages; ? films per reel | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840580298) |
 | Addon | ✅ Updated | 26 Nov 2026, 18:42 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840611708) | 26 Nov 2026, 18:00 | 1087 catalog entries; 64 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840611708) |
 | EPG | ✅ Updated | 26 Nov 2026, 18:37 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840631764) | 26 Nov 2026, 18:36 | 603 / 839 channel IDs with listings; 236 unresolved; 65798 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840631764) |
 
