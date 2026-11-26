@@ -1,11 +1,10 @@
 {
-  "checked_at": "2026-11-26T21:08:43.281449+04:00",
+  "checked_at": "2026-11-26T21:13:33.129845+04:00",
   "results": [
     {
       "component": "media",
       "due": "2026-11-26T20:00:00+04:00",
-      "state": "public-verification-failed",
-      "error": "reels: independent public verification failed"
+      "state": "fresh"
     },
     {
       "component": "addon",
@@ -18,8 +17,6 @@
       "state": "fresh"
     }
   ],
-  "errors": [
-    "media: independent public verification failed: reels: independent public verification failed"
-  ],
+  "errors": [],
   "warnings": []
 }
