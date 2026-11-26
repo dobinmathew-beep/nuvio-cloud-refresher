@@ -1,32 +1,31 @@
 {
-  "generatedAt": "2026-11-26T04:13:02.978657+04:00",
+  "generatedAt": "2026-11-26T07:54:52.467739+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 28,
+    "total": 29,
     "byLanguage": {
-      "hindi": 20,
+      "hindi": 21,
       "malayalam": 2,
       "tamil": 2,
       "telugu": 4
     },
     "byType": {
       "series": 14,
-      "movie": 14
+      "movie": 15
     },
     "byMatchState": {
-      "published": 21,
+      "published": 22,
       "unmatched": 7
     },
     "bySource": {
       "https://www.themoviedb.org/tv/338390": 1,
-      "https://www.dailyott.in/": 3,
-      "https://www.themoviedb.org/tv/319143": 1,
+      "https://www.dailyott.in/": 4,
       "https://www.themoviedb.org/tv/338656": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
       "https://v3-cinemeta.strem.io/": 2,
       "https://www.myvi.in/blog/ott-releases-this-week": 1,
       "https://cinebuds.com/ott-releases-this-week/": 5,
-      "https://ottasia.com/ott-releases-this-week?country=IN": 15,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 16,
       "https://www.keralatv.in/channel/ott/": 2,
       "https://api.tvmaze.com/schedule/web": 1
     }
@@ -85,31 +84,6 @@
       "catalog": "dobins_hi_series"
     },
     {
-      "title": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-26",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/319143"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "premiere",
-      "detail": null,
-      "matchId": "tt43720139",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
       "title": "Lo Chudail Chali Sasural",
       "language": "hindi",
       "type": "series",
@@ -128,6 +102,33 @@
       "matchReason": "https://v3-cinemeta.strem.io/",
       "metadataComplete": true,
       "metadataSource": "https://v3-cinemeta.strem.io/",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "The Hunting Wives: Season 2",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-26",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": null,
+      "detail": null,
+      "matchId": "tt31038430",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
       "metadataFields": {
         "poster": true,
         "description": true,
@@ -170,8 +171,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Netflix",
-        "Prime Video"
+        "Prime Video",
+        "Netflix"
       ],
       "sources": [
         "https://www.dailyott.in/",
@@ -270,7 +271,7 @@
       "metadataFields": {
         "poster": true,
         "description": true,
-        "genres": true,
+        "genres": false,
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
@@ -499,8 +500,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -573,6 +574,31 @@
       "catalog": "dobins_ta_series"
     },
     {
+      "title": "Dalimb",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-12-04",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/movie/1645554/dalimb?country=IN",
+      "matchId": "tt40415766",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": false
+      },
+      "catalog": "dobins_hi_movie"
+    },
+    {
       "title": "DeSu7",
       "language": "hindi",
       "type": "movie",
@@ -624,7 +650,7 @@
         "poster": true,
         "description": true,
         "genres": true,
-        "releaseInfo": true
+        "releaseInfo": false
       },
       "catalog": "dobins_hi_series"
     },
@@ -1022,7 +1048,7 @@
       "source": "DailyOTT",
       "url": "https://www.dailyott.in/",
       "state": "live",
-      "records": 970
+      "records": 974
     },
     {
       "source": "Cinebuds",
@@ -1040,7 +1066,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 18
+      "records": 19
     },
     {
       "source": "Vi weekly OTT calendar",
@@ -1123,9 +1149,8 @@
     {
       "source": "DailyOTT upcoming dates",
       "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-      "state": "no_confirmed_upcoming",
-      "records": 0,
-      "note": "DailyOTT is live; no verified future dates were present in the returned API pages."
+      "state": "live",
+      "records": 2
     },
     {
       "source": "Cinebuds recent OTT dates",
@@ -1144,7 +1169,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 112,
+      "records": 113,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1286,7 +1311,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "no_confirmed_upcoming",
+              "state": "live",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -1435,7 +1460,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "no_confirmed_upcoming",
+              "state": "live",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -1584,7 +1609,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "no_confirmed_upcoming",
+              "state": "live",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -1651,7 +1676,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 41,
+          "detectedRecords": 42,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1668,8 +1693,8 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 15,
-              "movieRecords": 9,
+              "records": 16,
+              "movieRecords": 10,
               "seriesRecords": 6
             },
             {
@@ -1738,7 +1763,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "no_confirmed_upcoming",
+              "state": "live",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -2021,7 +2046,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "no_confirmed_upcoming",
+          "state": "live",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,
@@ -2170,7 +2195,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "no_confirmed_upcoming",
+          "state": "live",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,
@@ -2319,7 +2344,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "no_confirmed_upcoming",
+          "state": "live",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,
@@ -2386,7 +2411,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 41,
+      "detectedRecords": 42,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2403,8 +2428,8 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 15,
-          "movieRecords": 9,
+          "records": 16,
+          "movieRecords": 10,
           "seriesRecords": 6
         },
         {
@@ -2473,7 +2498,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "no_confirmed_upcoming",
+          "state": "live",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,

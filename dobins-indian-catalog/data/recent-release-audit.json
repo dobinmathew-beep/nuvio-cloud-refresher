@@ -1,14 +1,50 @@
 {
-  "generatedAt": "2026-11-26T04:13:02.978657+04:00",
+  "generatedAt": "2026-11-26T07:54:52.467739+04:00",
   "badgePolicy": "first-verified-digital-arrival-v1",
   "windowDays": 35,
   "source": "all active discovery sources (rolling 35-day window)",
-  "detected": 122,
+  "detected": 121,
   "byMatchState": {
-    "published": 117,
+    "published": 116,
     "unmatched": 5
   },
   "items": [
+    {
+      "title": "The Hunting Wives: Season 2",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-26",
+      "releaseDateBasis": "series-release-event",
+      "id": "tt31038430",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "detail": null
+    },
+    {
+      "title": "Garividi Lakshmi",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-21",
+      "releaseDateBasis": "first-verified-digital-arrival",
+      "id": "tt37645628",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [
+        "Prime Video",
+        "YouTube"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/telugu"
+      ],
+      "detail": null
+    },
     {
       "title": "Delhi 2021",
       "language": "hindi",
@@ -92,8 +128,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://www.keralatv.in/channel/ott/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.keralatv.in/channel/ott/"
       ],
       "detail": null
     },
@@ -237,8 +273,8 @@
         "JioHotstar"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://www.ottchecker.com/ott-releases/hindi",
+        "https://www.dailyott.in/",
         "https://www.themoviedb.org/tv/334412",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
@@ -258,8 +294,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/hindi"
+        "https://www.ottchecker.com/ott-releases/hindi",
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -345,8 +381,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Amazon Prime Video",
-        "Prime Video"
+        "Prime Video",
+        "Amazon Prime Video"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
@@ -368,8 +404,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/hindi"
+        "https://www.ottchecker.com/ott-releases/hindi",
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -441,8 +477,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "SunNXT",
-        "Prime Video"
+        "Prime Video",
+        "SunNXT"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -462,9 +498,9 @@
         "Netflix"
       ],
       "sources": [
+        "https://www.ottchecker.com/ott-releases/hindi",
         "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/hindi"
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -551,10 +587,10 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Amazon Prime Video",
         "Prime Video",
-        "Aha",
-        "SimplySouth"
+        "Amazon Prime Video",
+        "SimplySouth",
+        "Aha"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
@@ -632,8 +668,8 @@
         "YouTube"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://www.ottchecker.com/ott-releases/hindi",
+        "https://www.dailyott.in/",
         "https://www.tvmaze.com/shows/70529/dhindora"
       ],
       "detail": null
@@ -849,7 +885,7 @@
       "title": "Family Full House with Rohit Sharma",
       "language": "hindi",
       "type": "series",
-      "releaseDate": "2026-11-22",
+      "releaseDate": "2026-11-15",
       "releaseDateBasis": "series-release-event",
       "id": "tt46182660",
       "matchState": "published",
@@ -1040,8 +1076,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Sun NXT",
-        "ManoramaMAX"
+        "ManoramaMAX",
+        "Sun NXT"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
@@ -1094,8 +1130,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "SimplySouth",
-        "Manorama Max"
+        "Manorama Max",
+        "SimplySouth"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
@@ -1201,8 +1237,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Amazon Prime Video",
-        "Prime Video"
+        "Prime Video",
+        "Amazon Prime Video"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
@@ -1239,8 +1275,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Amazon Prime Video",
-        "Prime Video"
+        "Prime Video",
+        "Amazon Prime Video"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
@@ -1582,23 +1618,6 @@
       "detail": "https://www.ottchecker.com/movie/mookuthi-amman-2-2026"
     },
     {
-      "title": "Garividi Lakshmi",
-      "language": "telugu",
-      "type": "movie",
-      "releaseDate": "2026-11-21",
-      "releaseDateBasis": "first-verified-digital-arrival",
-      "id": "tt37645628",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "platforms": [
-        "YouTube"
-      ],
-      "sources": [
-        "https://www.ottchecker.com/ott-releases/telugu"
-      ],
-      "detail": "https://www.ottchecker.com/movie/garividi-lakshmi-2026"
-    },
-    {
       "title": "418",
       "language": "telugu",
       "type": "movie",
@@ -1689,11 +1708,11 @@
       "title": "Pushpaka Vimanam",
       "language": "telugu",
       "type": "series",
-      "releaseDate": "2026-11-12",
+      "releaseDate": "2026-11-19",
       "releaseDateBasis": "series-release-event",
       "id": "tt50089775",
       "matchState": "published",
-      "matchReason": "Verified IMDb title/year match",
+      "matchReason": "IMDb-matched metadata",
       "platforms": [
         "JioHotstar"
       ],
@@ -1950,7 +1969,7 @@
       "title": "Prince of Mollywood",
       "language": "malayalam",
       "type": "series",
-      "releaseDate": "2026-11-20",
+      "releaseDate": "2026-11-13",
       "releaseDateBasis": "series-release-event",
       "id": "tt44686897",
       "matchState": "published",
@@ -2065,21 +2084,6 @@
       "detail": null
     },
     {
-      "title": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-26",
-      "releaseDateBasis": "series-release-event",
-      "id": "tt43720139",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/319143"
-      ],
-      "detail": null
-    },
-    {
       "title": "Mannat: Harr Khushi Paane Ki",
       "language": "hindi",
       "type": "series",
@@ -2126,21 +2130,6 @@
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
-      ],
-      "detail": null
-    },
-    {
-      "title": "Rise and Fall",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-06",
-      "releaseDateBasis": "series-release-event",
-      "id": "tt35674433",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/300081"
       ],
       "detail": null
     },

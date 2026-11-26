@@ -832,37 +832,6 @@
     }
   },
   {
-    "name": "Roadies Rebirth",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6ad1898c3249ff69efda9cee",
-      "platform": "JioHotStar",
-      "title": "Roadies Rebirth",
-      "createdAt": "2026-10-16T02:18:52.613Z",
-      "genre": "Reality, Adventure",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-10-16",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-10-16T02:18:52.613Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Thai Maaman",
     "language": "tamil",
     "type": "series",
@@ -890,6 +859,37 @@
       "type": "Series",
       "updatedAt": "2026-04-28T03:48:08.007Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/8GGzM0vq3xttbYA0GNOHDI6iVlT.jpg",
+      "verified": true
+    }
+  },
+  {
+    "name": "Roadies Rebirth",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6ad1898c3249ff69efda9cee",
+      "platform": "JioHotStar",
+      "title": "Roadies Rebirth",
+      "createdAt": "2026-10-16T02:18:52.613Z",
+      "genre": "Reality, Adventure",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-10-16",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-10-16T02:18:52.613Z",
       "verified": true
     }
   },
@@ -1107,37 +1107,6 @@
     }
   },
   {
-    "name": "Jungle Tales With Mowgli",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-09-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6aa4b6881ead1413382425a4",
-      "title": "Jungle Tales With Mowgli",
-      "platform": "JioHotStar",
-      "createdAt": "2026-09-12T02:18:48.886Z",
-      "genre": "Animation, Adventure",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-09-12",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-09-12T02:18:48.886Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Nijame Rujuvainadhi",
     "language": "telugu",
     "type": "movie",
@@ -1165,6 +1134,37 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-08-14T01:55:36.933Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Jungle Tales With Mowgli",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-09-12",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6aa4b6881ead1413382425a4",
+      "title": "Jungle Tales With Mowgli",
+      "platform": "JioHotStar",
+      "createdAt": "2026-09-12T02:18:48.886Z",
+      "genre": "Animation, Adventure",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-09-12",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-09-12T02:18:48.886Z",
       "verified": true
     }
   },

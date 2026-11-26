@@ -1,7 +1,139 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-26T04:13:02.978657+04:00",
+    "checkedAt": "2026-11-26T07:54:52.467739+04:00",
     "records": [
+      {
+        "_id": "6b07970f699a8884e16076f0",
+        "platform": "Netflix",
+        "title": "Spider-Man: Brand New Day",
+        "createdAt": "2026-11-26T02:18:55.581Z",
+        "genre": "Action, Adventure, Science Fiction",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-26",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-26T02:19:46.008Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg",
+        "tmdbRating": 85,
+        "tmdbVotes": 7116,
+        "instagramPostedAt": "2026-11-26T02:20:31Z",
+        "verified": true
+      },
+      {
+        "_id": "6b07970f699a8884e16076f2",
+        "platform": "Netflix",
+        "title": "The Hunting Wives: Season 2",
+        "createdAt": "2026-11-26T02:18:55.788Z",
+        "genre": "Thriller",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-26",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-26T02:18:55.788Z",
+        "verified": true
+      },
+      {
+        "_id": "6b079710699a8884e16076f3",
+        "platform": "JioHotStar",
+        "title": "Supergirl",
+        "createdAt": "2026-11-26T02:18:55.993Z",
+        "genre": "Action, Adventure, Science Fiction",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-26",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-26T02:19:45.375Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/90mSQajf4STPROA6H7Hh8OvyWdK.jpg",
+        "tmdbRating": 73,
+        "tmdbVotes": 4509,
+        "instagramPostedAt": "2026-11-26T02:20:32Z",
+        "tmdbDetails": {
+          "tmdbId": 1081003,
+          "director": "Craig Gillespie",
+          "cast": [
+            {
+              "name": "Milly Alcock",
+              "character": "Supergirl"
+            },
+            {
+              "name": "Eve Ridley",
+              "character": "Ruthye"
+            },
+            {
+              "name": "Matthias Schoenaerts",
+              "character": "Krem"
+            },
+            {
+              "name": "Jason Momoa",
+              "character": "Lobo"
+            },
+            {
+              "name": "David Krumholtz",
+              "character": "Zor-El"
+            },
+            {
+              "name": "Emily Beecham",
+              "character": "Alura In-Ze"
+            },
+            {
+              "name": "David Corenswet",
+              "character": "Superman"
+            },
+            {
+              "name": "Kadiff Kirwan",
+              "character": "Bomar Vran"
+            }
+          ],
+          "overview": "When an unexpected and ruthless adversary strikes too close to home, Kara Zor-El, aka Supergirl, reluctantly joins forces with an unlikely companion on an epic, interstellar journey of vengeance and justice.",
+          "runtime": 108,
+          "genres": [
+            "Action",
+            "Adventure",
+            "Science Fiction"
+          ],
+          "originalLanguage": "en",
+          "spokenLanguages": [
+            "English"
+          ],
+          "releaseDate": "2026-06-24",
+          "voteAverage": 6.625,
+          "trailerKey": "rbLyjarG_bU",
+          "fetchedAt": "2026-11-26T03:21:43.499Z"
+        },
+        "tmdbId": 1081003,
+        "verified": true
+      },
+      {
+        "_id": "6b079710699a8884e16076f4",
+        "platform": "Prime Video",
+        "title": "Garividi Lakshmi",
+        "createdAt": "2026-11-26T02:18:56.197Z",
+        "genre": "Drama, Family, Biopic",
+        "imdbRating": null,
+        "languages": [
+          "Telugu"
+        ],
+        "original_language": "Telugu",
+        "releaseDate": "2026-11-26",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-26T02:19:47.206Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/qhZ01fVnKZ39zSboOgHWZ648wxa.jpg",
+        "instagramPostedAt": "2026-11-26T02:20:18Z",
+        "verified": true
+      },
       {
         "_id": "6b06458d699a8884e1604806",
         "platform": "Prime Video",
@@ -16,8 +148,10 @@
         "releaseDate": "2026-11-25",
         "source_verified": true,
         "type": "Series",
-        "updatedAt": "2026-11-25T02:19:48.746Z",
+        "updatedAt": "2026-11-26T02:19:46.591Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/qAcXaAoJiYry9nGEyxTirnJ82Jj.jpg",
+        "tmdbRating": 51,
+        "tmdbVotes": 24,
         "verified": true
       },
       {
@@ -108,6 +242,9 @@
           "fetchedAt": "2026-11-25T11:08:59.386Z"
         },
         "tmdbId": 1755816,
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-26T02:19:28.097Z",
+        "trendingRankedDateIST": "2026-11-26",
         "verified": true
       },
       {
@@ -202,9 +339,6 @@
           "fetchedAt": "2026-11-24T05:27:34.336Z"
         },
         "tmdbId": 1281331,
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-25T02:19:26.598Z",
-        "trendingRankedDateIST": "2026-11-25",
         "verified": true
       },
       {
@@ -311,8 +445,8 @@
         },
         "tmdbId": 1431738,
         "trendingRank": 4,
-        "trendingRankedAt": "2026-11-25T02:19:26.598Z",
-        "trendingRankedDateIST": "2026-11-25",
+        "trendingRankedAt": "2026-11-26T02:19:28.097Z",
+        "trendingRankedDateIST": "2026-11-26",
         "verified": true
       },
       {
@@ -412,8 +546,8 @@
         "tmdbId": 1595124,
         "votes": 0,
         "trendingRank": 2,
-        "trendingRankedAt": "2026-11-25T02:19:26.598Z",
-        "trendingRankedDateIST": "2026-11-25",
+        "trendingRankedAt": "2026-11-26T02:19:28.097Z",
+        "trendingRankedDateIST": "2026-11-26",
         "verified": true
       },
       {
@@ -525,8 +659,8 @@
         "tmdbVotes": 25,
         "votes": 1,
         "trendingRank": 3,
-        "trendingRankedAt": "2026-11-25T02:19:26.598Z",
-        "trendingRankedDateIST": "2026-11-25",
+        "trendingRankedAt": "2026-11-26T02:19:28.097Z",
+        "trendingRankedDateIST": "2026-11-26",
         "verified": true
       },
       {
@@ -601,8 +735,8 @@
         },
         "tmdbId": 1593350,
         "trendingRank": 5,
-        "trendingRankedAt": "2026-11-25T02:19:26.598Z",
-        "trendingRankedDateIST": "2026-11-25",
+        "trendingRankedAt": "2026-11-26T02:19:28.097Z",
+        "trendingRankedDateIST": "2026-11-26",
         "verified": true
       },
       {
@@ -675,9 +809,9 @@
           "fetchedAt": "2026-11-20T16:49:23.234Z"
         },
         "tmdbId": 1542674,
-        "trendingRank": 7,
-        "trendingRankedAt": "2026-11-25T02:19:26.598Z",
-        "trendingRankedDateIST": "2026-11-25",
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-11-26T02:19:28.097Z",
+        "trendingRankedDateIST": "2026-11-26",
         "verified": true
       },
       {
@@ -738,9 +872,9 @@
           "fetchedAt": "2026-11-20T10:30:47.065Z"
         },
         "tmdbId": 1610188,
-        "trendingRank": 6,
-        "trendingRankedAt": "2026-11-25T02:19:26.598Z",
-        "trendingRankedDateIST": "2026-11-25",
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-11-26T02:19:28.097Z",
+        "trendingRankedDateIST": "2026-11-26",
         "verified": true
       },
       {
@@ -31830,7 +31964,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-26T04:13:02.978657+04:00",
+    "checkedAt": "2026-11-26T07:54:52.467739+04:00",
     "records": [
       {
         "name": "Anbil Avan",

@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-26T04:13:02.978657+04:00",
+  "generatedAt": "2026-11-26T07:54:52.467739+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 17,
+  "count": 15,
   "items": [
     {
       "id": "tt50063835",
@@ -63,46 +63,6 @@
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     },
     {
-      "id": "tt39632118",
-      "aliases": [
-        "tt39632118"
-      ],
-      "name": "Family Kirana Store",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "episode",
-      "platforms": [
-        "YouTube (TVF)"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
-    },
-    {
-      "id": "tt43720139",
-      "aliases": [
-        "tt43720139"
-      ],
-      "name": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "episode",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/319143"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.themoviedb.org/tv/319143"
-    },
-    {
       "id": "tt43636966",
       "aliases": [
         "tt43636966"
@@ -121,26 +81,6 @@
       "catalog": "dobins_hi_series",
       "region": "IN",
       "source": "https://www.themoviedb.org/tv/338656"
-    },
-    {
-      "id": "tt44686897",
-      "aliases": [
-        "tt44686897"
-      ],
-      "name": "Prince of Mollywood",
-      "language": "malayalam",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "episode",
-      "platforms": [],
-      "sources": [
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json",
-        "https://v3-cinemeta.strem.io/",
-        "https://www.themoviedb.org/tv/332061"
-      ],
-      "catalog": "dobins_ml_series",
-      "region": "IN",
-      "source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ml_series.json"
     },
     {
       "id": "tmdb:342403",
@@ -217,14 +157,14 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
       "catalog": "dobins_hi_series",
       "region": "IN",
-      "source": "https://api.tvmaze.com/schedule/web"
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tt38195069",
@@ -345,6 +285,29 @@
       "catalog": "dobins_hi_series",
       "region": "IN",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    },
+    {
+      "id": "tt16997004",
+      "aliases": [
+        "tt16997004"
+      ],
+      "name": "Matka King",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2027-01-01",
+      "kind": "episode",
+      "platforms": [
+        "Prime Video"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/",
+        "https://www.themoviedb.org/tv/249765"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.dailyott.in/"
     }
   ]
 }
