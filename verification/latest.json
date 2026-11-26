@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-26T19:59:24.615508+04:00",
+  "checked_at": "2026-11-26T21:03:35.827960+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
     "addon": {
       "status": "pass",
-      "checked_at": "2026-11-26T18:27:58.699027+04:00",
+      "checked_at": "2026-11-26T21:03:35.827960+04:00",
       "public_url": "https://the-great-indian-addon.vercel.app",
       "checks": [
         {
@@ -50,28 +50,28 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-26T19:38:38.920782+04:00",
+      "checked_at": "2026-11-26T21:03:35.827960+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
           "name": "public status and freshness",
           "status": "pass",
           "details": {
-            "revision": "c316e648-d418-42d5-b93c-b4d18a553a6e",
-            "checked_utc": "2026-11-26T14:36:17.991050+00:00",
+            "revision": "5db0a523-e829-4c71-8361-d11f64047bb7",
+            "checked_utc": "2026-11-26T16:03:45.703021+00:00",
             "matched_ids": 603,
             "playlist_channel_ids": 839,
             "unresolved_ids": 236,
-            "programmes": 65798
+            "programmes": 64415
           }
         },
         {
           "name": "published XMLTV",
           "status": "pass",
           "details": {
-            "bytes": 2042188,
+            "bytes": 2011876,
             "channels": 603,
-            "programmes": 65798
+            "programmes": 64415
           }
         },
         {
@@ -92,7 +92,7 @@
           "name": "Source_Crosscheck_Report.csv",
           "status": "pass",
           "details": {
-            "rows": 2686
+            "rows": 2666
           }
         },
         {
@@ -134,14 +134,49 @@
       ]
     },
     "backdrops": {
-      "status": "fail",
-      "checked_at": "2026-11-26T19:59:24.615508+04:00",
+      "status": "pass",
+      "checked_at": "2026-11-26T21:03:35.827960+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
-      "error": "[{\"status\": \"tamil/movies/cascade\", \"error\": \"incorrect current catalog-head centre movie: {\\\"expected_id\\\": \\\"tmdb:1822586\\\", \\\"actual_center\\\": {\\\"id\\\": \\\"tt18933846\\\", \\\"name\\\": \\\"Nooru Kodi Vaanavil\\\", \\\"selection\\\": \\\"catalog-order\\\", \\\"catalogRank\\\": 0}, \\\"renderVersion\\\": \\\"catalog-head-v2\\\"}\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": \"incorrect current catalog-head centre movie: {\\\"expected_id\\\": \\\"tmdb:1822586\\\", \\\"actual_center\\\": {\\\"id\\\": \\\"tt18933846\\\", \\\"name\\\": \\\"Nooru Kodi Vaanavil\\\", \\\"selection\\\": \\\"catalog-order\\\", \\\"catalogRank\\\": 0}, \\\"renderVersion\\\": \\\"catalog-head-v2\\\"}\"}, {\"status\": \"tamil/movies/wall\", \"error\": \"incorrect current catalog-head centre movie: {\\\"expected_id\\\": \\\"tmdb:1822586\\\", \\\"actual_center\\\": {\\\"id\\\": \\\"tt18933846\\\", \\\"name\\\": \\\"Nooru Kodi Vaanavil\\\", \\\"selection\\\": \\\"catalog-order\\\", \\\"catalogRank\\\": 0}, \\\"renderVersion\\\": \\\"catalog-head-v2\\\"}\"}, {\"status\": \"tamil/movies/filmstrip\", \"error\": \"incorrect current catalog-head centre movie: {\\\"expected_id\\\": \\\"tmdb:1822586\\\", \\\"actual_center\\\": {\\\"id\\\": \\\"tt18933846\\\", \\\"name\\\": \\\"Nooru Kodi Vaanavil\\\", \\\"selection\\\": \\\"catalog-order\\\", \\\"catalogRank\\\": 0}, \\\"renderVersion\\\": \\\"catalog-head-v2\\\"}\"}, {\"status\": \"tamil/movies/duo\", \"error\": \"incorrect current catalog-head centre movie: {\\\"expected_id\\\": \\\"tmdb:1822586\\\", \\\"actual_center\\\": {\\\"id\\\": \\\"tt18933846\\\", \\\"name\\\": \\\"Nooru Kodi Vaanavil\\\", \\\"selection\\\": \\\"catalog-order\\\", \\\"catalogRank\\\": 0}, \\\"renderVersion\\\": \\\"catalog-head-v2\\\"}\"}]"
+      "details": {
+        "day": "2026-11-26",
+        "statuses": 160,
+        "images": 16,
+        "states": {
+          "live": 160,
+          "cached": 0
+        },
+        "errors": [],
+        "catalogHeads": {
+          "tamil": "tt18933846",
+          "hindi": "tt37200939",
+          "malayalam": "tt41944351",
+          "telugu": "tt36915004"
+        }
+      },
+      "raw_catalog_heads": {
+        "hindi": {
+          "id": "tt37200939",
+          "name": "Parivarik ManuRanjan"
+        },
+        "tamil": {
+          "id": "tt18933846",
+          "name": "Nooru Kodi Vaanavil"
+        },
+        "malayalam": {
+          "id": "tt41944351",
+          "name": "Madhuramee Jeevitham"
+        },
+        "telugu": {
+          "id": "tt36915004",
+          "name": "#Cult"
+        }
+      },
+      "centre_layouts_checked": 120,
+      "method": "160 public layout/status checks, 16 JPEG checks, plus independent raw-catalog first-movie comparison across all movie and combined centre layouts"
     },
     "reels": {
-      "status": "pass",
-      "checked_at": "2026-11-26T19:59:24.615508+04:00",
+      "status": "fail",
+      "checked_at": "2026-11-26T21:03:35.827960+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
@@ -188,24 +223,8 @@
         },
         {
           "language": "malayalam",
-          "status": "pass",
-          "bytes": 6901937,
-          "sha256": "7935588607f70b4a19fc6e72dd8adcb71a83968e7de8bba377d4da04770aed71",
-          "duration_seconds": 50.0,
-          "streams": [
-            {
-              "codec_name": "h264",
-              "codec_type": "video",
-              "width": 1280,
-              "height": 720
-            },
-            {
-              "codec_name": "aac",
-              "codec_type": "audio",
-              "sample_rate": "44100",
-              "channels": 2
-            }
-          ]
+          "status": "fail",
+          "error": "public bytes/hash differ from media manifest"
         },
         {
           "language": "telugu",
