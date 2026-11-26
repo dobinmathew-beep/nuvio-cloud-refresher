@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-26T00:17:46.350185+00:00",
+  "checkedAt": "2026-11-26T04:01:14.677390+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,7 +14,7 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1203,
+      "metadataRecords": 1205,
       "warning": null,
       "error": null
     },
@@ -258,19 +258,19 @@
       "language": "hi",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
-      "localPublishedCount": 124,
-      "localUniqueIdCount": 124,
+      "localPublishedCount": 125,
+      "localUniqueIdCount": 125,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 124,
-      "endpointUniqueIdCount": 124,
+      "endpointRawCount": 125,
+      "endpointUniqueIdCount": 125,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
-        24
+        25
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -294,13 +294,13 @@
       "language": "hi",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
-      "localPublishedCount": 357,
-      "localUniqueIdCount": 357,
+      "localPublishedCount": 358,
+      "localUniqueIdCount": 358,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 357,
-      "endpointUniqueIdCount": 357,
+      "endpointRawCount": 358,
+      "endpointUniqueIdCount": 358,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
@@ -311,7 +311,7 @@
         50,
         50,
         50,
-        7
+        8
       ],
       "endpointPageSize": 50,
       "missingIds": [],
