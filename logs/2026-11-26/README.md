@@ -6,6 +6,7 @@ All times are Asia/Muscat (Oman). Records begin when this dashboard was installe
 
 | Check time | Backdrops + reels | Addon | EPG | Check run |
 |---|---|---|---|---|
+| 26 Nov 2026, 21:04 | ❌ Public verification failed | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45864507516) |
 | 26 Nov 2026, 21:03 | ❌ Public verification failed | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45864334639) |
 | 26 Nov 2026, 20:58 | ❌ Public verification failed | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45863662147) |
 | 26 Nov 2026, 20:08 | ❌ Public verification failed | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45855893290) |
@@ -54,6 +55,24 @@ All times are Asia/Muscat (Oman). Records begin when this dashboard was installe
 
 ## Details for each check
 
+### 26 Nov 2026, 21:04
+
+Trigger: workflow_run. Due cycle: 26 Nov 2026, 20:00.
+
+| Output | Result | Last successful refresh run (Oman) | Last verified cycle / check | Details | Logs |
+|---|---|---|---|---|---|
+| Backdrops | ❌ Public verification failed | 26 Nov 2026, 21:04 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45863645794) | 26 Nov 2026, 19:59 | 160 layouts; 16 image checks; \[{"status": "tamil/movies/cascade", "error": "incorrect current catalog-head centre movie: {\"expected_id\": \"tmdb:1822586\", \"actual_center\": {\"id\": \"tt18933846\", \"name\": \"Nooru Kodi Vaanavil\", \"selection\": \"catalog-order\", \"catalogRank\": 0}, \"renderVersion\": \"catalog-head-v2\"}"}, {"status": "tamil/movies/spotlight", "error": "incorrect current catalog-head centre movie: {\"expected_id\": \"tmdb:1822586\", \"actual_center\": {\"id\": \"tt18933846\", \"name\": \"Nooru Kodi Vaanavil\", \"selection\": \"catalog-order\", \"catalogRank\": 0}, \"renderVersion\": \"catalog-head-v2\"}"}, {"status": "tamil/movies/wall", "error": "incorrect current catalog-head centre movie: {\"expected_id\": \"tmdb:1822586\", \"actual_center\": {\"id\": \"tt18933846\", \"name\": \"Nooru Kodi Vaanavil\", \"selection\": \"catalog-order\", \"catalogRank\": 0}, \"renderVersion\": \"catalog-head-v2\"}"}, {"status": "tamil/movies/filmstrip", "error": "incorrect current catalog-head centre movie: {\"expected_id\": \"tmdb:1822586\", \"actual_center\": {\"id\": \"tt18933846\", \"name\": \"Nooru Kodi Vaanavil\", \"selection\": \"catalog-order\", \"catalogRank\": 0}, \"renderVersion\": \"catalog-head-v2\"}"}, {"status": "tamil/movies/duo", "error": "incorrect current catalog-head centre movie: {\"expected_id\": \"tmdb:1822586\", \"actual_center\": {\"id\": \"tt18933846\", \"name\": \"Nooru Kodi Vaanavil\", \"selection\": \"catalog-order\", \"catalogRank\": 0},  | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45863645794) |
+| Reels | ⚠️ Public verification is stale | 26 Nov 2026, 21:04 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45863645794) | 26 Nov 2026, 19:59 | 4 languages; 20 films per reel; this part verified, combined media cycle still pending | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45863645794) |
+| Addon | ✅ Updated | 26 Nov 2026, 20:08 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45855082870) | 26 Nov 2026, 20:00 | 1087 catalog entries; 64 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45855082870) |
+| EPG | ✅ Updated | 26 Nov 2026, 20:04 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45855101601) | 26 Nov 2026, 20:03 | 603 / 839 channel IDs with listings; 236 unresolved; 64415 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45855101601) |
+
+**Issue:** media: independent public verification failed: backdrops: \[{"status": "tamil/movies/cascade", "error": "incorrect current catalog-head centre movie: {\"expected_id\": \"tmdb:1822586\", \"actual_center\": {\"id\": \"tt18933846\", \"name\": \"Nooru Kodi Vaanavil\", \"selection\": \"catalog-order\", \"catalogRank\": 0}, \"renderVersion\": \"catalog-head-v2\"}"}, {"status": "tamil/movies/spotlight", "error": 
+
+Media attempt: **success**; started 26 Nov 2026, 20:58. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45863645794).
+
+Addon attempt: **success**; started 26 Nov 2026, 20:03. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45855082870).
+
+Epg attempt: **success**; started 26 Nov 2026, 20:03. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45855101601).
 ### 26 Nov 2026, 21:03
 
 Trigger: push. Due cycle: 26 Nov 2026, 20:00.
