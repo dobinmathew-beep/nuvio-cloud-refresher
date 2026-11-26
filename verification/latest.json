@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-26T18:45:44.030416+04:00",
+  "checked_at": "2026-11-26T18:54:20.723138+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -135,13 +135,13 @@
     },
     "backdrops": {
       "status": "fail",
-      "checked_at": "2026-11-26T18:45:44.030416+04:00",
+      "checked_at": "2026-11-26T18:54:20.723138+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
-      "error": "{\"layout\": \"tamil/movies/wall\", \"expected\": {\"id\": \"tmdb:1822586\", \"name\": \"Mazhalai\"}, \"actual\": \"tt18933846\", \"selection\": \"catalog-order\", \"catalogRank\": 0, \"renderVersion\": \"catalog-head-v2\"}"
+      "error": "[{\"status\": \"tamil/movies/wall\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/filmstrip\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/gallery\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}]"
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-26T18:45:44.030416+04:00",
+      "checked_at": "2026-11-26T18:54:20.723138+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {

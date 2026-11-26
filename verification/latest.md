@@ -1,6 +1,6 @@
 # Independent Nuvio output verification
 
-**Checked:** 2026-11-26T18:45:44.030416+04:00 (Oman time)
+**Checked:** 2026-11-26T18:54:20.723138+04:00 (Oman time)
 **Overall:** 3/4 outputs passed
 
 | Output | Result |
@@ -25,7 +25,7 @@
 - **PASS** Source_Health_Report.json: {"keys": ["airtel.xml", "ca.xml", "dishtv.xml", "free-epg.xml", "guide.xml", "jiotv.xml", "open-india.xml", "pw.xml", "samsung-in.xml", "sundirectgo.xml"]}
 
 ## Backdrops — FAIL
-"{\"layout\": \"tamil/movies/wall\", \"expected\": {\"id\": \"tmdb:1822586\", \"name\": \"Mazhalai\"}, \"actual\": \"tt18933846\", \"selection\": \"catalog-order\", \"catalogRank\": 0, \"renderVersion\": \"catalog-head-v2\"}"
+"[{\"status\": \"tamil/movies/wall\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/filmstrip\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}, {\"status\": \"tamil/movies/gallery\", \"error\": \"saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586\"}]"
 
 ## Reels — PASS
 - **PASS** hindi: 50.0
