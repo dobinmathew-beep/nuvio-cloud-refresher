@@ -3,13 +3,8 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '17 */6 * * *'
-  # Producer changes are verified after their refresh workflow completes.
-  # Avoid racing a media publish by running the full check on the producer's
-  # workflow_run completion rather than immediately on its source-code push.
-  push:
-    branches: [main]
-    paths:
-      - verify_independent.py
+  # This workflow verifies published outputs, not source commits. Run after
+  # the producer completes so it cannot race an in-flight media publication.
   workflow_run:
     workflows:
       - Nuvio cloud refresh
