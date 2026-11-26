@@ -1,194 +1,8 @@
 {
-  "generatedAt": "2026-11-26T22:57:18.356649+04:00",
+  "generatedAt": "2026-11-27T01:43:04.635693+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 17,
+  "count": 8,
   "items": [
-    {
-      "id": "tt50063835",
-      "aliases": [
-        "tt50063835"
-      ],
-      "name": "Apsara",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "episode",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/338390"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.themoviedb.org/tv/338390"
-    },
-    {
-      "id": "tt1281973",
-      "aliases": [
-        "tt1281973"
-      ],
-      "name": "Bigg Boss",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "episode",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
-    },
-    {
-      "id": "tt41496092",
-      "aliases": [
-        "tt41496092"
-      ],
-      "name": "Dhai Chaal",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "episode",
-      "platforms": [
-        "JioHotstar",
-        "Hotstar"
-      ],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    },
-    {
-      "id": "tt39632118",
-      "aliases": [
-        "tt39632118"
-      ],
-      "name": "Family Kirana Store",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "episode",
-      "platforms": [
-        "YouTube (TVF)"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
-    },
-    {
-      "id": "tt43636966",
-      "aliases": [
-        "tt43636966"
-      ],
-      "name": "Lo Chudail Chali Sasural",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "episode",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/338656",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.themoviedb.org/tv/338656"
-    },
-    {
-      "id": "tmdb:342403",
-      "aliases": [
-        "tmdb:342403"
-      ],
-      "name": "Satyameva",
-      "language": "malayalam",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "premiere",
-      "platforms": [
-        "ZEE5"
-      ],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "catalog": "dobins_ml_series",
-      "region": "IN",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    },
-    {
-      "id": "tt35984846",
-      "aliases": [
-        "tt35984846"
-      ],
-      "name": "Octopus!",
-      "language": "tamil",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "premiere",
-      "platforms": [
-        "ZEE5"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-releases-this-week/"
-      ],
-      "catalog": "dobins_ta_series",
-      "region": "IN",
-      "source": "https://cinebuds.com/ott-releases-this-week/"
-    },
-    {
-      "id": "tt44914967",
-      "aliases": [
-        "tt44914967"
-      ],
-      "name": "The Court",
-      "language": "tamil",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "episode",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/",
-        "https://www.themoviedb.org/tv/331750"
-      ],
-      "catalog": "dobins_ta_series",
-      "region": "IN",
-      "source": "https://www.dailyott.in/"
-    },
-    {
-      "id": "tt52075732",
-      "aliases": [
-        "tt52075732"
-      ],
-      "name": "Corporate Love Story",
-      "language": "telugu",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "kind": "premiere",
-      "platforms": [
-        "JioHotstar",
-        "Hotstar",
-        "ZEE5"
-      ],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "catalog": "dobins_te_series",
-      "region": "IN",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    },
     {
       "id": "tmdb:337904",
       "aliases": [
@@ -221,14 +35,14 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
       "catalog": "dobins_hi_series",
       "region": "IN",
-      "source": "https://www.dailyott.in/"
+      "source": "https://api.tvmaze.com/schedule/web"
     },
     {
       "id": "tt38195069",

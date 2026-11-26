@@ -36,21 +36,6 @@
     }
   },
   {
-    "name": "Drones",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-11-20",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://cinebuds.com/ott-release-dates/"
-    ],
-    "platforms": [
-      "Prime Video"
-    ],
-    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
-    "sourceRecord": {}
-  },
-  {
     "name": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
     "language": "malayalam",
     "type": "series",
@@ -68,6 +53,42 @@
       "releaseDate": "2026-11-27",
       "source": "https://www.keralatv.in/channel/ott/",
       "headline": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram, Streaming from 27 November"
+    }
+  },
+  {
+    "name": "Drones",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-11-20",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://cinebuds.com/ott-release-dates/"
+    ],
+    "platforms": [
+      "Prime Video"
+    ],
+    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+    "sourceRecord": {}
+  },
+  {
+    "name": "Jindey",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://ottasia.com/ott-releases-this-week?country=IN"
+    ],
+    "platforms": [
+      "JioHotstar",
+      "Hotstar",
+      "ZEE5"
+    ],
+    "detail": "https://ottasia.com/title/movie/1765369/jindey?country=IN",
+    "sourceRecord": {
+      "title": "Jindey",
+      "releaseDate": "2026-11-27",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     }
   },
   {
@@ -111,27 +132,6 @@
       "title": "Raathiri (Series)",
       "releaseDate": "2026-11-27",
       "source": "https://cinebuds.com/ott-releases-this-week/"
-    }
-  },
-  {
-    "name": "Jindey",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-11-27",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
-    ],
-    "platforms": [
-      "JioHotstar",
-      "Hotstar",
-      "ZEE5"
-    ],
-    "detail": "https://ottasia.com/title/movie/1765369/jindey?country=IN",
-    "sourceRecord": {
-      "title": "Jindey",
-      "releaseDate": "2026-11-27",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     }
   },
   {
@@ -205,37 +205,6 @@
       "title": "Hatela Gang",
       "releaseDate": "2026-11-28",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    }
-  },
-  {
-    "name": "Chef Mantra Project USA",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-08-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Aha"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a7d25953fab9691478ae9ca",
-      "platform": "Aha",
-      "title": "Chef Mantra Project USA",
-      "createdAt": "2026-08-13T02:01:57.122Z",
-      "genre": "Reality Show",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "original_language": "Telugu",
-      "releaseDate": "2026-08-13",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-08-13T02:01:57.122Z",
-      "verified": true
     }
   },
   {
@@ -323,6 +292,37 @@
         "fetchedAt": "2026-11-14T18:26:15.691Z"
       },
       "tmdbId": 590401,
+      "verified": true
+    }
+  },
+  {
+    "name": "Chef Mantra Project USA",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-08-13",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Aha"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a7d25953fab9691478ae9ca",
+      "platform": "Aha",
+      "title": "Chef Mantra Project USA",
+      "createdAt": "2026-08-13T02:01:57.122Z",
+      "genre": "Reality Show",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "original_language": "Telugu",
+      "releaseDate": "2026-08-13",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-08-13T02:01:57.122Z",
       "verified": true
     }
   },
@@ -1677,8 +1677,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix",
-      "ETV Win"
+      "ETV Win",
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {

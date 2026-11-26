@@ -15687,12 +15687,127 @@
       "editions": [],
       "theatrical": [],
       "events": []
+    },
+    "malayalam|1842602": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "tamil|1844991": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "telugu|1847783": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "hindi|1510775": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "malayalam|1555984": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "tamil|1830763": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "telugu|1842641": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "hindi|1209723": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "malayalam|1179380": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "tamil|1827989": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "telugu|1631306": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "hindi|1199439": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "tamil|1824669": {
+      "lastAttemptAt": "2026-11-27T01:43:04.635693+04:00",
+      "lastError": "Theatrical/physical title identity could not be verified"
+    },
+    "telugu|1450342": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "tamil|1776653": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "telugu|1417808": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "tamil|1728047": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "tamil|1634545": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "tamil|1553480": {
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
     }
   },
   "discovery": {
     "malayalam": {
-      "checkedAt": "2026-11-26T22:57:18.356649+04:00",
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
       "titles": {
+        "1842602": "Sidhu",
+        "1555984": "Prempaatta",
+        "1179380": "Cosmic Samson",
         "1704200": "Hail Mary",
         "1825350": "A Lone Jamun Tree",
         "1841290": "Thankachante Sherikal",
@@ -15790,9 +15905,6 @@
         "1719662": "Normal",
         "1712008": "Served Cold",
         "1248251": "Mollywood Times",
-        "1654500": "Makaran",
-        "1673203": "അവിചാരിതം",
-        "1740844": "Paithallattam",
         "1065834": "Kattalan",
         "847742": "Drishyam 3",
         "1300501": "Patriot",
@@ -15835,6 +15947,15 @@
         "32841": "Naadodikal"
       },
       "kinds": {
+        "1842602": [
+          "theatrical"
+        ],
+        "1555984": [
+          "theatrical"
+        ],
+        "1179380": [
+          "theatrical"
+        ],
         "1704200": [
           "theatrical"
         ],
@@ -16126,15 +16247,6 @@
         "1248251": [
           "theatrical"
         ],
-        "1654500": [
-          "theatrical"
-        ],
-        "1673203": [
-          "theatrical"
-        ],
-        "1740844": [
-          "theatrical"
-        ],
         "1065834": [
           "theatrical"
         ],
@@ -16258,8 +16370,16 @@
       }
     },
     "tamil": {
-      "checkedAt": "2026-11-26T22:57:18.356649+04:00",
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
       "titles": {
+        "1844991": "Mouna Mozhigal",
+        "1830763": "Minnum Oar Iravu",
+        "1827989": "Pei Pidichirukku",
+        "1824669": "606",
+        "1776653": "Jedusi",
+        "1728047": "Delivery Boy",
+        "1634545": "Signal at 11:30",
+        "1553480": "Niram",
         "1680033": "Appa Kutty",
         "1618539": "Pulse",
         "1540824": "Sathyavan Savithiri",
@@ -16352,14 +16472,7 @@
         "1786636": "One Man",
         "1754196": "Mother",
         "1685882": "Modha Rathri",
-        "1590380": "Ram and Leela",
-        "1538273": "Pyaar Prema Kalyanam",
-        "1581313": "Ananya's Call",
-        "1779939": "Wings",
-        "1571138": "Equal",
-        "1506833": "Magudam",
         "1408162": "Vishwanath & Sons",
-        "1740942": "Photographer",
         "1479832": "DC",
         "1235877": "Jana Nayagan",
         "1367220": "Karuppu",
@@ -16423,6 +16536,30 @@
         "319780": "Panchavarna Kili"
       },
       "kinds": {
+        "1844991": [
+          "theatrical"
+        ],
+        "1830763": [
+          "theatrical"
+        ],
+        "1827989": [
+          "theatrical"
+        ],
+        "1824669": [
+          "theatrical"
+        ],
+        "1776653": [
+          "theatrical"
+        ],
+        "1728047": [
+          "theatrical"
+        ],
+        "1634545": [
+          "theatrical"
+        ],
+        "1553480": [
+          "theatrical"
+        ],
         "1680033": [
           "theatrical"
         ],
@@ -16699,28 +16836,7 @@
         "1685882": [
           "theatrical"
         ],
-        "1590380": [
-          "theatrical"
-        ],
-        "1538273": [
-          "theatrical"
-        ],
-        "1581313": [
-          "theatrical"
-        ],
-        "1779939": [
-          "theatrical"
-        ],
-        "1571138": [
-          "theatrical"
-        ],
-        "1506833": [
-          "theatrical"
-        ],
         "1408162": [
-          "theatrical"
-        ],
-        "1740942": [
           "theatrical"
         ],
         "1479832": [
@@ -16909,8 +17025,13 @@
       }
     },
     "telugu": {
-      "checkedAt": "2026-11-26T22:57:18.356649+04:00",
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
       "titles": {
+        "1847783": "Dad's Little Friend",
+        "1842641": "Bala 369 (Atajani Kaanche)",
+        "1631306": "High",
+        "1450342": "Bhogi",
+        "1417808": "Haindava",
         "1837783": "Why, Vani?",
         "1322273": "Aakasamlo Oka Tara",
         "1505644": "ENE Repeat",
@@ -17006,13 +17127,9 @@
         "1718416": "Swechha Teeram",
         "1666240": "Sitting",
         "1750391": "LGBT - A Legal Battle",
-        "1649874": "Deewana",
-        "1528499": "Transfer Trimurthulu",
-        "1725479": "Jayamundhi Bhayamela Manasaa",
-        "1716652": "Thank You Subbarao",
-        "1227241": "Maa Inti Bangaram",
         "1649866": "G.O.A.T",
         "80880": "Aarya",
+        "1227241": "Maa Inti Bangaram",
         "1626170": "Sing Geetham",
         "1057265": "Peddi",
         "1679791": "M4M: Motive for Murder",
@@ -17094,6 +17211,21 @@
         "307614": "Rabhasa"
       },
       "kinds": {
+        "1847783": [
+          "theatrical"
+        ],
+        "1842641": [
+          "theatrical"
+        ],
+        "1631306": [
+          "theatrical"
+        ],
+        "1450342": [
+          "theatrical"
+        ],
+        "1417808": [
+          "theatrical"
+        ],
         "1837783": [
           "theatrical"
         ],
@@ -17379,25 +17511,13 @@
         "1750391": [
           "theatrical"
         ],
-        "1649874": [
-          "theatrical"
-        ],
-        "1528499": [
-          "theatrical"
-        ],
-        "1725479": [
-          "theatrical"
-        ],
-        "1716652": [
-          "theatrical"
-        ],
-        "1227241": [
-          "theatrical"
-        ],
         "1649866": [
           "theatrical"
         ],
         "80880": [
+          "theatrical"
+        ],
+        "1227241": [
           "theatrical"
         ],
         "1626170": [
@@ -17640,8 +17760,11 @@
       }
     },
     "hindi": {
-      "checkedAt": "2026-11-26T22:57:18.356649+04:00",
+      "checkedAt": "2026-11-27T01:43:04.635693+04:00",
       "titles": {
+        "1510775": "Gunmaaster G9",
+        "1209723": "Yeh Prem Mol Liya",
+        "1199439": "Diler",
         "1755816": "Delhi 2021",
         "1847371": "Two sun",
         "1813874": "Revenge of Her : Evil Prevails",
@@ -17739,9 +17862,6 @@
         "1777209": "Maheep Singh: FIR",
         "1736689": "Phoolan",
         "1785746": "Lamhaat",
-        "1699532": "Lovers in the Blue Night",
-        "1574560": "Last Man in Tower",
-        "1475799": "Haiwaan",
         "1709391": "Hanuman Ansh",
         "1378537": "Mirzapur: The Movie",
         "1444466": "Awarapan 2",
@@ -17853,6 +17973,15 @@
         "12259": "Sholay"
       },
       "kinds": {
+        "1510775": [
+          "theatrical"
+        ],
+        "1209723": [
+          "theatrical"
+        ],
+        "1199439": [
+          "theatrical"
+        ],
         "1755816": [
           "theatrical"
         ],
@@ -18142,15 +18271,6 @@
           "theatrical"
         ],
         "1785746": [
-          "theatrical"
-        ],
-        "1699532": [
-          "theatrical"
-        ],
-        "1574560": [
-          "theatrical"
-        ],
-        "1475799": [
           "theatrical"
         ],
         "1709391": [
