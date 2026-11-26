@@ -6,6 +6,7 @@ All times are Asia/Muscat (Oman). Records begin when this dashboard was installe
 
 | Check time | Backdrops + reels | Addon | EPG | Check run |
 |---|---|---|---|---|
+| 26 Nov 2026, 19:01 | ❌ Public verification failed | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45844807865) |
 | 26 Nov 2026, 18:58 | ❌ Public verification failed | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45844307085) |
 | 26 Nov 2026, 18:54 | ❌ Public verification failed | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45843602098) |
 | 26 Nov 2026, 18:49 | ❌ Public verification failed | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45842921457) |
@@ -40,6 +41,24 @@ All times are Asia/Muscat (Oman). Records begin when this dashboard was installe
 
 ## Details for each check
 
+### 26 Nov 2026, 19:01
+
+Trigger: workflow_run. Due cycle: 26 Nov 2026, 18:00.
+
+| Output | Result | Last successful refresh run (Oman) | Last verified cycle / check | Details | Logs |
+|---|---|---|---|---|---|
+| Backdrops | ❌ Public verification failed | 26 Nov 2026, 17:49 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45831166681) | 26 Nov 2026, 18:54 | ? layouts; ? image checks; \[{"status": "tamil/movies/wall", "error": "saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586"}, {"status": "tamil/movies/cascade", "error": "saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586"}, {"status": "tamil/movies/spotlight", "error": "saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586"}, {"status": "tamil/movies/filmstrip", "error": "saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586"}, {"status": "tamil/movies/gallery", "error": "saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586"}\] | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45843539922) |
+| Reels | ✅ Updated | 26 Nov 2026, 17:49 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45831166681) | 26 Nov 2026, 18:54 | 4 languages; 20 films per reel; this part verified, combined media cycle still pending | failure · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45843539922) |
+| Addon | ✅ Updated | 26 Nov 2026, 18:42 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840611708) | 26 Nov 2026, 18:00 | 1087 catalog entries; 64 pending matches | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840611708) |
+| EPG | ✅ Updated | 26 Nov 2026, 18:37 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840631764) | 26 Nov 2026, 18:36 | 603 / 839 channel IDs with listings; 236 unresolved; 65798 programmes. | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840631764) |
+
+**Issue:** media: independent public verification failed: backdrops: \[{"status": "tamil/movies/wall", "error": "saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586"}, {"status": "tamil/movies/cascade", "error": "saved featured selection is stale: tt18933846 != current catalog head tmdb:1822586"}, {"status": "tamil/movies/spotlight", "error": "saved featured selection is stale: tt189338
+
+Media attempt: **failure**; started 26 Nov 2026, 18:53. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45843539922).
+
+Addon attempt: **success**; started 26 Nov 2026, 18:35. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840611708).
+
+Epg attempt: **success**; started 26 Nov 2026, 18:35. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/45840631764).
 ### 26 Nov 2026, 18:58
 
 Trigger: workflow_run. Due cycle: 26 Nov 2026, 18:00.
