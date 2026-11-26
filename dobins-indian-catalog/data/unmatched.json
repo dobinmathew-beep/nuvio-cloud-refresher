@@ -115,26 +115,6 @@
     }
   },
   {
-    "name": "Raathiri (Series)",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-11-27",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://cinebuds.com/ott-releases-this-week/"
-    ],
-    "platforms": [
-      "Aha",
-      "aha"
-    ],
-    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
-    "sourceRecord": {
-      "title": "Raathiri (Series)",
-      "releaseDate": "2026-11-27",
-      "source": "https://cinebuds.com/ott-releases-this-week/"
-    }
-  },
-  {
     "name": "Dalimp",
     "language": "hindi",
     "type": "series",
@@ -171,6 +151,26 @@
       "releaseDate": "2026-11-20",
       "source": "https://www.keralatv.in/channel/ott/",
       "headline": "New Tamil Movie OTT Releases This Week – Drones Streaming on Prime Video From 20 November 2026"
+    }
+  },
+  {
+    "name": "Raathiri (Series)",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://cinebuds.com/ott-releases-this-week/"
+    ],
+    "platforms": [
+      "Aha",
+      "aha"
+    ],
+    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+    "sourceRecord": {
+      "title": "Raathiri (Series)",
+      "releaseDate": "2026-11-27",
+      "source": "https://cinebuds.com/ott-releases-this-week/"
     }
   },
   {
