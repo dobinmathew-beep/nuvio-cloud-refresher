@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T12:50:57.634490+04:00",
+  "generatedAt": "2026-11-26T17:29:24.465645+04:00",
   "policy": "confirmed-source-matched-id-v2",
   "count": 17,
   "items": [
@@ -221,14 +221,14 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
       "catalog": "dobins_hi_series",
       "region": "IN",
-      "source": "https://api.tvmaze.com/schedule/web"
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tt38195069",
@@ -300,7 +300,7 @@
       "language": "hindi",
       "type": "series",
       "releaseDate": "2026-12-04",
-      "kind": "episode",
+      "kind": "premiere",
       "platforms": [
         "Netflix",
         "ZEE5"

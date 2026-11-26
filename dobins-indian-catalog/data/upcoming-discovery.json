@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-11-26T12:50:57.634490+04:00",
+  "generatedAt": "2026-11-26T17:29:24.465645+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 33,
+    "total": 32,
     "byLanguage": {
       "hindi": 21,
       "malayalam": 3,
       "tamil": 4,
-      "telugu": 5
+      "telugu": 4
     },
     "byType": {
       "series": 18,
-      "movie": 15
+      "movie": 14
     },
     "byMatchState": {
       "published": 24,
-      "unmatched": 9
+      "unmatched": 8
     },
     "bySource": {
       "https://www.themoviedb.org/tv/338390": 1,
@@ -26,7 +26,7 @@
       "https://www.myvi.in/blog/ott-releases-this-week": 1,
       "https://cinebuds.com/ott-releases-this-week/": 8,
       "https://ottasia.com/ott-releases-this-week?country=IN": 17,
-      "https://www.keralatv.in/channel/ott/": 2,
+      "https://www.keralatv.in/channel/ott/": 1,
       "https://api.tvmaze.com/schedule/web": 1
     }
   },
@@ -468,33 +468,6 @@
       "catalog": "dobins_te_movie"
     },
     {
-      "title": "Adarsha Kutumbam",
-      "language": "telugu",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "Netflix"
-      ],
-      "sources": [
-        "https://www.keralatv.in/channel/ott/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "Kerala TV dated OTT announcement",
-      "detail": "https://www.keralatv.in/adarsha-kutumbam-netflix-ott-release-date/",
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
-    {
       "title": "Jindey",
       "language": "telugu",
       "type": "movie",
@@ -611,8 +584,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -1274,7 +1247,7 @@
       "source": "Kerala TV multi-language OTT releases",
       "url": "https://www.keralatv.in/channel/ott/",
       "state": "live",
-      "records": 11
+      "records": 9
     },
     {
       "source": "DailyOTT upcoming dates",
@@ -1299,7 +1272,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "live",
-      "records": 117,
+      "records": 114,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1656,7 +1629,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 28,
+          "detectedRecords": 25,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1736,8 +1709,8 @@
               "url": "https://www.keralatv.in/channel/ott/",
               "state": "live",
               "languageState": "records_found",
-              "records": 5,
-              "movieRecords": 5,
+              "records": 2,
+              "movieRecords": 2,
               "seriesRecords": 0
             },
             {
@@ -1990,12 +1963,12 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 624,
+      "records": 625,
       "counts": {
         "malayalam": 60,
         "tamil": 121,
         "telugu": 108,
-        "hindi": 335
+        "hindi": 336
       },
       "state": "live"
     },
@@ -2388,7 +2361,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 28,
+      "detectedRecords": 25,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2468,8 +2441,8 @@
           "url": "https://www.keralatv.in/channel/ott/",
           "state": "live",
           "languageState": "records_found",
-          "records": 5,
-          "movieRecords": 5,
+          "records": 2,
+          "movieRecords": 2,
           "seriesRecords": 0
         },
         {

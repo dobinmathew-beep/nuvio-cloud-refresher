@@ -174,26 +174,6 @@
     }
   },
   {
-    "name": "Adarsha Kutumbam",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-11-27",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.keralatv.in/channel/ott/"
-    ],
-    "platforms": [
-      "Netflix"
-    ],
-    "detail": "https://www.keralatv.in/adarsha-kutumbam-netflix-ott-release-date/",
-    "sourceRecord": {
-      "title": "Adarsha Kutumbam",
-      "releaseDate": "2026-11-27",
-      "source": "https://www.keralatv.in/channel/ott/",
-      "headline": "Adarsha Kutumbam OTT Release Date : Venkatesh’s Telugu Film Expected on Netflix From November 27"
-    }
-  },
-  {
     "name": "The Conjunction",
     "language": "hindi",
     "type": "movie",
@@ -627,36 +607,6 @@
     }
   },
   {
-    "name": "Auto Vijayashanthi (Episode 221)",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-05-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a02a2999dcddba08328d0f0",
-      "title": "Auto Vijayashanthi (Episode 221)",
-      "platform": "ZEE5",
-      "createdAt": "2026-05-12T03:46:33.489Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-12",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-05-12T03:46:33.489Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Marpu - Not For You, But For The Future",
     "language": "telugu",
     "type": "movie",
@@ -684,6 +634,36 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-10-14T02:18:51.826Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Auto Vijayashanthi (Episode 221)",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-05-12",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a02a2999dcddba08328d0f0",
+      "title": "Auto Vijayashanthi (Episode 221)",
+      "platform": "ZEE5",
+      "createdAt": "2026-05-12T03:46:33.489Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-12",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-05-12T03:46:33.489Z",
       "verified": true
     }
   },
@@ -1115,37 +1095,6 @@
     }
   },
   {
-    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
-    "language": "hindi",
-    "type": "movie",
-    "ottDate": "2026-09-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6aa608021ead141338245394",
-      "platform": "JioHotStar",
-      "title": "Chikoo Vs Bunty: Kushti Ki Jung",
-      "createdAt": "2026-09-13T02:18:42.361Z",
-      "genre": "Animation",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-09-13",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-09-13T02:18:42.361Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Nijame Rujuvainadhi",
     "language": "telugu",
     "type": "movie",
@@ -1173,6 +1122,37 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-08-14T01:55:36.933Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Chikoo Vs Bunty: Kushti Ki Jung",
+    "language": "hindi",
+    "type": "movie",
+    "ottDate": "2026-09-13",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6aa608021ead141338245394",
+      "platform": "JioHotStar",
+      "title": "Chikoo Vs Bunty: Kushti Ki Jung",
+      "createdAt": "2026-09-13T02:18:42.361Z",
+      "genre": "Animation",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-09-13",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-09-13T02:18:42.361Z",
       "verified": true
     }
   },
@@ -1427,6 +1407,36 @@
     }
   },
   {
+    "name": "Vani Na Rani",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-05-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a07e9279dcddba08328ec63",
+      "platform": "ETV Win",
+      "title": "Vani Na Rani",
+      "createdAt": "2026-05-16T03:48:55.554Z",
+      "genre": "Family Drama",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-16",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-05-16T03:48:55.554Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Musafir Café",
     "language": "hindi",
     "type": "movie",
@@ -1455,36 +1465,6 @@
       "type": "Movie",
       "updatedAt": "2026-07-24T06:03:23.967Z",
       "votes": 3,
-      "verified": true
-    }
-  },
-  {
-    "name": "Vani Na Rani",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a07e9279dcddba08328ec63",
-      "platform": "ETV Win",
-      "title": "Vani Na Rani",
-      "createdAt": "2026-05-16T03:48:55.554Z",
-      "genre": "Family Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-16",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-16T03:48:55.554Z",
       "verified": true
     }
   },
