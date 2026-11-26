@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-26T18:27:58.699027+04:00",
+  "checked_at": "2026-11-26T18:45:44.030416+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -135,20 +135,20 @@
     },
     "backdrops": {
       "status": "fail",
-      "checked_at": "2026-11-26T18:27:58.699027+04:00",
+      "checked_at": "2026-11-26T18:45:44.030416+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
       "error": "{\"layout\": \"tamil/movies/wall\", \"expected\": {\"id\": \"tmdb:1822586\", \"name\": \"Mazhalai\"}, \"actual\": \"tt18933846\", \"selection\": \"catalog-order\", \"catalogRank\": 0, \"renderVersion\": \"catalog-head-v2\"}"
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-26T18:27:58.699027+04:00",
+      "checked_at": "2026-11-26T18:45:44.030416+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
           "language": "hindi",
           "status": "pass",
-          "bytes": 6903531,
-          "sha256": "d626f597dc051a83bdc6e7d8f9b62f715db1d17c2bd256a490e730b9f38073ae",
+          "bytes": 6903427,
+          "sha256": "423befd86e986ff12aba5f5d0d55bb82ee36faba4b6c9986d4eb314def6779bc",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -168,8 +168,8 @@
         {
           "language": "tamil",
           "status": "pass",
-          "bytes": 6909248,
-          "sha256": "91cafe7f4138f6a87f4e4990d5d97411e119a965bb05b78676c11a57f5325428",
+          "bytes": 6909216,
+          "sha256": "e266f7d6a10d28e64f699867ae139b7d052eb87468115d1fa7e3dd5c7803c946",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -210,8 +210,8 @@
         {
           "language": "telugu",
           "status": "pass",
-          "bytes": 6893686,
-          "sha256": "c0e190147fbac0ad09dcd20e859294810917b5181e98f3121f34544bd04f8062",
+          "bytes": 6894131,
+          "sha256": "eb13cec9a6cc5db1c650e085d1c977dbef54b00ac6ac0b1e2324fb4fa66c2686",
           "duration_seconds": 50.0,
           "streams": [
             {
