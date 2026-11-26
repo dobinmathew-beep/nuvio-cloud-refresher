@@ -34,6 +34,23 @@ class DashboardTests(unittest.TestCase):
    self.assertIn('Backdrops',page);self.assertIn('Reels',page)
    self.assertIn('Last successful refresh run (Oman)',page)
    self.assertIn('Not recorded',page)
+ def test_media_dashboard_separates_backdrop_failure_from_verified_reels(self):
+  with tempfile.TemporaryDirectory() as folder:
+   root=Path(folder)
+   stamp='2026-11-26T18:37:00+04:00'
+   report={'checked_at':stamp,'results':[{'component':'media','due':'2026-11-26T18:00:00+04:00','state':'public-verification-failed'}],'errors':['media: Tamil centre mismatch']}
+   states={'media':{'refresh_cycle':'2026-11-26T16:00:00+04:00',
+    'backdrops':{'statuses':160,'images':16},
+    'heroes':{'languages':['hindi','tamil','malayalam','telugu'],'films_per_language':20},
+    'public_verification':{
+      'backdrops':{'status':'fail','checked_at':stamp,'error':'Mazhalai expected, Nooru Kodi Vaanavil actual'},
+      'reels':{'status':'pass','checked_at':stamp}}}}
+   write_report(report,states,{},root=root)
+   page=(root/'DAILY_UPDATES.md').read_text()
+   self.assertIn('Backdrops | ❌ Public verification failed',page)
+   self.assertIn('Reels | ✅ Updated',page)
+   self.assertIn('Mazhalai expected',page)
+
  def test_missing_source_never_claims_a_success_time(self):
   with tempfile.TemporaryDirectory() as folder:
    root=Path(folder);report={'checked_at':'2026-11-02T18:50:00+04:00','results':[{'component':'epg','due':'2026-11-02T18:00:00+04:00','state':'check-failed'}],'errors':['EPG source unavailable']}
