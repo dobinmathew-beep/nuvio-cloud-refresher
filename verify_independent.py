@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # Backdrop verification independently compares every centre panel with the live IndianRegional catalog head.
 # Full mode checks all four outputs together; producer workflow_run checks are scoped to the completed publisher.
-import csv,datetime as dt,gzip,hashlib,io,json,os,subprocess,sys,tempfile,time,urllib.parse,urllib.request,xml.etree.ElementTree as ET
+import csv,datetime as dt,gzip,hashlib,io,json,os,re,subprocess,sys,tempfile,time,urllib.parse,urllib.request,xml.etree.ElementTree as ET
 from pathlib import Path
 from zoneinfo import ZoneInfo
 R=Path(__file__).resolve().parent; O=R/"verification"; O.mkdir(exist_ok=True)
 T=dt.datetime.now(ZoneInfo("Asia/Muscat")).isoformat(); U="NuvioIndependentVerifier/1.0"
 A=os.getenv("ADDON_BASE_URL","https://the-great-indian-addon.vercel.app").rstrip("/")
-E="https://dobin-india-epg-feed.quickfield138.chatgpt.site"; B="https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site"; H="https://dobin-nuvio-star-cards.quickfield138.chatgpt.site"
+E="https://dobin-india-epg-feed.quickfield138.chatgpt.site"; B="https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site"; H="https://dobin-nuvio-star-cards.quickfield138.chatgpt.site"; S="https://83e20802dcf1-indian-streams.baby-beamup.club"
 def get(url,timeout=120):
  q=urllib.request.Request(url+("&" if "?" in url else "?")+"verify="+str(time.time_ns()),headers={"User-Agent":U,"Cache-Control":"no-cache"})
  with urllib.request.urlopen(q,timeout=timeout) as x:return x.status,dict(x.headers.items()),x.read()
@@ -66,14 +66,58 @@ def epg():
    c.append({"name":n,"status":"pass","details":d})
   except Exception as e:c.append({"name":n,"status":"fail","error":str(e)[:500]})
  return {"status":"pass" if all(x["status"]=="pass" for x in c) else "fail","checked_at":T,"public_url":E,"checks":c}
+CATALOGS={"hindi":"hi","tamil":"ta","malayalam":"ml","telugu":"te"}
+MOVIE_CENTRE_STYLES="wall cascade spotlight filmstrip gallery ribbon duo polaroid neon towers".split()
+COMBINED_CENTRE_STYLES=MOVIE_CENTRE_STYLES+"mosaic fan orbit triptych cinema steps cross shelf widescreen diamond".split()
+
+def first_catalog_movie(metas):
+ # This check deliberately does not import featured.py: the production selector
+ # and public verifier must not share the same IMDb-only filtering bug.
+ for movie in metas:
+  mid=str(movie.get("id","")).split("||",1)[0]
+  name=str(movie.get("name",""))
+  if (re.fullmatch(r"tt\\d+|tmdb:\\d+",mid)
+      and movie.get("type")=="movie" and bool(movie.get("poster"))
+      and not re.search(r"OTT\\s*Releases|Hindi\\s*Dubbed|promo|unlock|promotional",name,re.I)):
+   return {"id":mid,"name":name}
+ raise AssertionError("No poster-backed real movie in the current catalog")
+
 def backdrops():
  try:
   p=subprocess.run([sys.executable,str(R/"verify_backdrops.py")],cwd=R,capture_output=True,text=True,timeout=1200)
   z=[x[8:] for x in p.stdout.splitlines() if x.startswith("SUMMARY ")]
   assert p.returncode==0 and z,(p.stderr or p.stdout)[-1200:]
   s=json.loads(z[-1]);assert s.get("statuses")==160 and s.get("images")==16 and not s.get("errors"),json.dumps(s.get("errors",[])[:5])
-  return {"status":"pass","checked_at":T,"public_url":B,"details":s,"method":"160 public layout/status checks and 16 JPEG checks"}
- except Exception as e:return {"status":"fail","checked_at":T,"public_url":B,"error":str(e)[:1600]}
+
+  # Independently compare public centre panels with the first real poster-backed
+  # movie in the raw source order. This accepts both IMDb and TMDB IDs and skips
+  # only promotional/non-movie/unusable entries. The legacy verifier above uses
+  # featured.py; this second pass prevents a shared selector from certifying itself.
+  heads={}
+  for lang,cat in CATALOGS.items():
+   catalog=js(f"{S}/catalog/movie/{cat}.json")
+   heads[lang]=first_catalog_movie(catalog.get("metas",[]))
+  tasks=[]
+  for lang,head in heads.items():
+   for kind,styles in (("movies",MOVIE_CENTRE_STYLES),("combined",COMBINED_CENTRE_STYLES)):
+    for style in styles:tasks.append((lang,kind,style,head))
+  def check_centre(task):
+   lang,kind,style,head=task
+   d=js(f"{B}/status/{lang}/{kind}/{style}.json?check=1")
+   centre=d.get("centerMovie",{})
+   actual=str(centre.get("id","")).split("||",1)[0]
+   assert (actual==head["id"] and centre.get("selection")=="catalog-order"
+           and centre.get("catalogRank")==0 and d.get("renderVersion")=="catalog-head-v2"), json.dumps({
+            "layout":f"{lang}/{kind}/{style}","expected":head,"actual":actual,
+            "selection":centre.get("selection"),"catalogRank":centre.get("catalogRank"),
+            "renderVersion":d.get("renderVersion")},ensure_ascii=False)
+   return f"{lang}/{kind}/{style}"
+  with __import__("concurrent.futures").futures.ThreadPoolExecutor(max_workers=4) as pool:
+   checked=list(pool.map(check_centre,tasks))
+  return {"status":"pass","checked_at":T,"public_url":B,"details":s,
+          "raw_catalog_heads":heads,"centre_layouts_checked":len(checked),
+          "method":"160 public layout/status checks, 16 JPEG checks, plus independent raw-catalog first-movie comparison across all movie and combined centre layouts"}
+ except Exception as e:return {"status":"fail","checked_at":T,"public_url":B,"error":str(e)[:2200]}
 def reels():
  m=json.loads((R/"state/media.json").read_text());out=[]
  for lang in ("hindi","tamil","malayalam","telugu"):
