@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-11-26T19:29:19.280796+04:00",
+  "checked_at": "2026-11-26T19:32:25.307481+04:00",
   "results": [
     {
       "component": "media",
       "due": "2026-11-26T18:00:00+04:00",
       "state": "public-verification-failed",
-      "error": "backdrops: [{\"status\": \"tamil/movies/wall\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/filmstrip\", \"error\": \"incorrect current catalog-h"
+      "error": "backdrops: [{\"status\": \"tamil/movies/wall\", \"error\": \"incorrect current catalog-head centre movie: {\\\"expected_id\\\": \\\"tmdb:1822586\\\", \\\"actual_center\\\": {\\\"id\\\": \\\"tt18933846\\\", \\\"name\\\": \\\"Nooru Kodi Vaanavil\\\", \\\"selection\\\": \\\"catalog-order\\\", \\\"catalogRank\\\": 0}, \\\"renderVersion\\\": \\\"catalog-head-v2\\\"}\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"inco"
     },
     {
       "component": "addon",
@@ -19,7 +19,7 @@
     }
   ],
   "errors": [
-    "media: independent public verification failed: backdrops: [{\"status\": \"tamil/movies/wall\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/filmstrip\", \"error\": \"incorrect current catalog-h"
+    "media: independent public verification failed: backdrops: [{\"status\": \"tamil/movies/wall\", \"error\": \"incorrect current catalog-head centre movie: {\\\"expected_id\\\": \\\"tmdb:1822586\\\", \\\"actual_center\\\": {\\\"id\\\": \\\"tt18933846\\\", \\\"name\\\": \\\"Nooru Kodi Vaanavil\\\", \\\"selection\\\": \\\"catalog-order\\\", \\\"catalogRank\\\": 0}, \\\"renderVersion\\\": \\\"catalog-head-v2\\\"}\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"inco"
   ],
   "warnings": []
 }
