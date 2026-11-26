@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-26T19:21:48.433402+04:00",
+  "checked_at": "2026-11-26T19:29:33.285244+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -135,13 +135,13 @@
     },
     "backdrops": {
       "status": "fail",
-      "checked_at": "2026-11-26T19:21:48.433402+04:00",
+      "checked_at": "2026-11-26T19:29:33.285244+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
-      "error": "[{\"status\": \"tamil/movies/wall\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/filmstrip\", \"error\": \"incorrect current catalog-head centre movie\"}, {\"status\": \"tamil/movies/gallery\", \"error\": \"incorrect current catalog-head centre movie\"}]"
+      "error": "[{\"status\": \"tamil/movies/wall\", \"error\": \"incorrect current catalog-head centre movie: {\\\"expected_id\\\": \\\"tmdb:1822586\\\", \\\"actual_center\\\": {\\\"id\\\": \\\"tt18933846\\\", \\\"name\\\": \\\"Nooru Kodi Vaanavil\\\", \\\"selection\\\": \\\"catalog-order\\\", \\\"catalogRank\\\": 0}, \\\"renderVersion\\\": \\\"catalog-head-v2\\\"}\"}, {\"status\": \"tamil/movies/cascade\", \"error\": \"incorrect current catalog-head centre movie: {\\\"expected_id\\\": \\\"tmdb:1822586\\\", \\\"actual_center\\\": {\\\"id\\\": \\\"tt18933846\\\", \\\"name\\\": \\\"Nooru Kodi Vaanavil\\\", \\\"selection\\\": \\\"catalog-order\\\", \\\"catalogRank\\\": 0}, \\\"renderVersion\\\": \\\"catalog-head-v2\\\"}\"}, {\"status\": \"tamil/movies/filmstrip\", \"error\": \"incorrect current catalog-head centre movie: {\\\"expected_id\\\": \\\"tmdb:1822586\\\", \\\"actual_center\\\": {\\\"id\\\": \\\"tt18933846\\\", \\\"name\\\": \\\"Nooru Kodi Vaanavil\\\", \\\"selection\\\": \\\"catalog-order\\\", \\\"catalogRank\\\": 0}, \\\"renderVersion\\\": \\\"catalog-head-v2\\\"}\"}, {\"status\": \"tamil/movies/spotlight\", \"error\": \"incorrect current catalog-head centre movie: {\\\"expected_id\\\": \\\"tmdb:1822586\\\", \\\"actual_center\\\": {\\\"id\\\": \\\"tt18933846\\\", \\\"name\\\": \\\"Nooru Kodi Vaanavil\\\", \\\"selection\\\": \\\"catalog-order\\\", \\\"catalogRank\\\": 0}, \\\"renderVersion\\\": \\\"catalog-head-v2\\\"}\"}, {\"status\": \"tamil/movies/gallery\", \"error\": \"incorrect current catalog-head centre movie: {\\\"expected_id\\\": \\\"tmdb:1822586\\\", \\\"actual_center\\\": {\\\"id\\\": \\\"tt18933846\\\", \\\"name\\\": \\\"Nooru Kodi Vaanavil\\\", \\\"selection\\\": \\\"catalog-order\\\", \\\"catalogRank\\\": 0}, \\\"renderVersion\\\": \\\"catalog-head-v2\\\"}\"}]"
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-26T19:21:48.433402+04:00",
+      "checked_at": "2026-11-26T19:29:33.285244+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
