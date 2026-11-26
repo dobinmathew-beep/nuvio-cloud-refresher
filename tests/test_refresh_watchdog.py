@@ -73,6 +73,24 @@ class WatchdogTests(unittest.TestCase):
         invalid=dict(state,featured_ids=invalid_ids,current_featured_ids=invalid_ids)
         self.assertFalse(fresh(invalid,'media',target))
 
+    def test_media_requires_public_backdrop_and_reel_verification(self):
+        target=datetime(2026,11,2,14,tzinfo=ZONE)
+        state={'refresh_cycle':target.isoformat(),'featured_cycle':target.isoformat(),'featuredVersion':2,
+            'featured_ids':{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'},
+            'current_featured_ids':{'hindi':'tt100','tamil':'tt101','malayalam':'tt102','telugu':'tt103'},
+            'current_featured_checked_at':target.isoformat(),
+            'backdrops':{'ok':True},'heroes':{'opening_version':1,'selection_policy':'catalog-order-v3'},
+            'public_verification':{
+                'backdrops':{'status':'pass','checked_at':target.isoformat()},
+                'reels':{'status':'pass','checked_at':target.isoformat()}}}
+        self.assertTrue(fresh(state,'media',target))
+        failed={**state,'public_verification':{**state['public_verification'],
+            'backdrops':{'status':'fail','checked_at':target.isoformat(),'error':'Tamil centre mismatch'}}}
+        self.assertFalse(fresh(failed,'media',target))
+        stale={**state,'public_verification':{**state['public_verification'],
+            'backdrops':{'status':'pass','checked_at':(target-timedelta(minutes=1)).isoformat()}}}
+        self.assertFalse(fresh(stale,'media',target))
+
     def test_media_partial_success_is_not_fresh(self):
         self.assertFalse(fresh({'cycle':'2026-11-02','backdrops':{'ok':True}},'media',datetime(2026,11,2,6,tzinfo=ZONE)))
     def test_successful_previous_cycle_run_allows_immediate_catchup(self):
