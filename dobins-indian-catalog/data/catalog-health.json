@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-26T08:58:02.722553+00:00",
+  "checkedAt": "2026-11-26T13:38:17.910524+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,7 +14,7 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1206,
+      "metadataRecords": 1207,
       "warning": null,
       "error": null
     },
@@ -294,13 +294,13 @@
       "language": "hi",
       "type": "series",
       "path": "/install/ff/catalog/series/dobins_hi_series.json",
-      "localPublishedCount": 358,
-      "localUniqueIdCount": 358,
+      "localPublishedCount": 359,
+      "localUniqueIdCount": 359,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 358,
-      "endpointUniqueIdCount": 358,
+      "endpointRawCount": 359,
+      "endpointUniqueIdCount": 359,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
@@ -311,7 +311,7 @@
         50,
         50,
         50,
-        8
+        9
       ],
       "endpointPageSize": 50,
       "missingIds": [],
