@@ -1,8 +1,26 @@
 {
-  "generatedAt": "2026-11-26T18:36:07.891106+04:00",
+  "generatedAt": "2026-11-26T20:03:36.414655+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 17,
+  "count": 19,
   "items": [
+    {
+      "id": "tt50063835",
+      "aliases": [
+        "tt50063835"
+      ],
+      "name": "Apsara",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "kind": "episode",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/338390"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.themoviedb.org/tv/338390"
+    },
     {
       "id": "tt1281973",
       "aliases": [
@@ -65,6 +83,24 @@
       "catalog": "dobins_hi_series",
       "region": "IN",
       "source": "https://www.dailyott.in/"
+    },
+    {
+      "id": "tt43720139",
+      "aliases": [
+        "tt43720139"
+      ],
+      "name": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "kind": "episode",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/319143"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.themoviedb.org/tv/319143"
     },
     {
       "id": "tt43636966",
@@ -203,14 +239,14 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
       "catalog": "dobins_hi_series",
       "region": "IN",
-      "source": "https://api.tvmaze.com/schedule/web"
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tt38195069",

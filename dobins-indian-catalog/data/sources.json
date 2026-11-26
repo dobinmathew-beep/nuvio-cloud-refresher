@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-26T18:36:07.891106+04:00",
+    "checkedAt": "2026-11-26T20:03:36.414655+04:00",
     "records": [
       {
         "_id": "6b07970f699a8884e16076f0",
@@ -132,6 +132,59 @@
         "updatedAt": "2026-11-26T02:19:47.206Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/qhZ01fVnKZ39zSboOgHWZ648wxa.jpg",
         "instagramPostedAt": "2026-11-26T02:20:18Z",
+        "tmdbDetails": {
+          "tmdbId": 1555847,
+          "director": "Gowri Naidu Jammu",
+          "cast": [
+            {
+              "name": "Anandhi",
+              "character": ""
+            },
+            {
+              "name": "Naresh",
+              "character": ""
+            },
+            {
+              "name": "Raasi",
+              "character": ""
+            },
+            {
+              "name": "Rag Mayur",
+              "character": ""
+            },
+            {
+              "name": "Saranya Pradeep",
+              "character": ""
+            },
+            {
+              "name": "Ankith Koyya",
+              "character": ""
+            },
+            {
+              "name": "Laxman Meesala",
+              "character": ""
+            },
+            {
+              "name": "Kishore Kumar Polimera",
+              "character": ""
+            }
+          ],
+          "overview": "A gifted folk singer from North Andhra rises to fame through her captivating voice and Burra Katha performances, only to mysteriously disappear at the height of her popularity. Years later, a man sets out to unravel the mystery. What happened to Garividi Lakshmi?",
+          "runtime": 141,
+          "genres": [
+            "Drama",
+            "Family"
+          ],
+          "originalLanguage": "te",
+          "spokenLanguages": [
+            "Telugu"
+          ],
+          "releaseDate": "2026-10-16",
+          "voteAverage": 5,
+          "trailerKey": "GiSqnQhWI80",
+          "fetchedAt": "2026-11-26T14:55:27.637Z"
+        },
+        "tmdbId": 1555847,
         "verified": true
       },
       {
@@ -1287,6 +1340,7 @@
           "fetchedAt": "2026-11-13T05:09:16.275Z"
         },
         "tmdbId": 1493572,
+        "votes": 0,
         "verified": true
       },
       {
@@ -31964,7 +32018,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-26T18:36:07.891106+04:00",
+    "checkedAt": "2026-11-26T20:03:36.414655+04:00",
     "records": [
       {
         "name": "Anbil Avan",
