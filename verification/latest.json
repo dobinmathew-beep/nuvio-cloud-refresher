@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-26T21:03:35.827960+04:00",
+  "checked_at": "2026-11-26T21:08:51.926273+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
@@ -135,7 +135,7 @@
     },
     "backdrops": {
       "status": "pass",
-      "checked_at": "2026-11-26T21:03:35.827960+04:00",
+      "checked_at": "2026-11-26T21:08:51.926273+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
       "details": {
         "day": "2026-11-26",
@@ -149,8 +149,8 @@
         "catalogHeads": {
           "tamil": "tt18933846",
           "hindi": "tt37200939",
-          "malayalam": "tt41944351",
-          "telugu": "tt36915004"
+          "telugu": "tt36915004",
+          "malayalam": "tt41944351"
         }
       },
       "raw_catalog_heads": {
@@ -164,7 +164,7 @@
         },
         "malayalam": {
           "id": "tt41944351",
-          "name": "Madhuramee Jeevitham"
+          "name": "Madhurame Jeevitham"
         },
         "telugu": {
           "id": "tt36915004",
@@ -175,8 +175,8 @@
       "method": "160 public layout/status checks, 16 JPEG checks, plus independent raw-catalog first-movie comparison across all movie and combined centre layouts"
     },
     "reels": {
-      "status": "fail",
-      "checked_at": "2026-11-26T21:03:35.827960+04:00",
+      "status": "pass",
+      "checked_at": "2026-11-26T21:08:51.926273+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
@@ -223,8 +223,24 @@
         },
         {
           "language": "malayalam",
-          "status": "fail",
-          "error": "public bytes/hash differ from media manifest"
+          "status": "pass",
+          "bytes": 6902690,
+          "sha256": "914dbf3f39959be2471d5e8f33df00693c9aa102ee7175a9fa103d0c43ec653a",
+          "duration_seconds": 50.0,
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1280,
+              "height": 720
+            },
+            {
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "44100",
+              "channels": 2
+            }
+          ]
         },
         {
           "language": "telugu",
@@ -252,8 +268,8 @@
     }
   },
   "summary": {
-    "passed": 3,
+    "passed": 4,
     "total": 4,
-    "status": "fail"
+    "status": "pass"
   }
 }
