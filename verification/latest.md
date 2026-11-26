@@ -1,6 +1,6 @@
 # Independent Nuvio output verification
 
-**Checked:** 2026-11-26T18:24:28.561142+04:00 (Oman time)
+**Checked:** 2026-11-26T18:27:58.699027+04:00 (Oman time)
 **Overall:** 3/4 outputs passed
 
 | Output | Result |
@@ -25,7 +25,7 @@
 - **PASS** Source_Health_Report.json: {"keys": ["airtel.xml", "ca.xml", "dishtv.xml", "free-epg.xml", "guide.xml", "jiotv.xml", "open-india.xml", "pw.xml", "samsung-in.xml", "sundirectgo.xml"]}
 
 ## Backdrops — FAIL
-"No poster-backed real movie in the current catalog"
+"{\"layout\": \"tamil/movies/wall\", \"expected\": {\"id\": \"tmdb:1822586\", \"name\": \"Mazhalai\"}, \"actual\": \"tt18933846\", \"selection\": \"catalog-order\", \"catalogRank\": 0, \"renderVersion\": \"catalog-head-v2\"}"
 
 ## Reels — PASS
 - **PASS** hindi: 50.0
