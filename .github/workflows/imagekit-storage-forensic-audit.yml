@@ -8,6 +8,11 @@ on:
         required: true
         default: imagekit-retention-cleanup
         type: string
+  push:
+    branches: [imagekit-retention-cleanup]
+    paths:
+      - "poster-date-service/scripts/imagekit-storage-forensic-audit.mjs"
+      - ".github/workflows/imagekit-storage-forensic-audit.yml"
   pull_request:
     branches: [poster-date-service]
     paths:
@@ -33,7 +38,7 @@ jobs:
         working-directory: poster-date-service
         run: npm install --no-audit --no-fund
       - name: Run full read-only forensic audit
-        if: github.event_name == 'workflow_dispatch'
+        if: github.event_name != 'pull_request'
         working-directory: poster-date-service
         env:
           IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
