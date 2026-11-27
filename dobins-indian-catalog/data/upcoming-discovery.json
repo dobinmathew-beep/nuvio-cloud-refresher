@@ -1,28 +1,31 @@
 {
-  "generatedAt": "2026-11-27T02:31:49.042631+04:00",
+  "generatedAt": "2026-11-27T04:16:41.650830+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 26,
+    "total": 30,
     "byLanguage": {
-      "hindi": 16,
+      "hindi": 20,
       "malayalam": 2,
       "tamil": 5,
       "telugu": 3
     },
     "byType": {
       "movie": 11,
-      "series": 15
+      "series": 19
     },
     "byMatchState": {
-      "published": 18,
+      "published": 22,
       "unmatched": 8
     },
     "bySource": {
       "https://cinebuds.com/ott-releases-this-week/": 6,
+      "https://www.themoviedb.org/tv/338390": 1,
+      "https://www.dailyott.in/": 4,
       "https://ottasia.com/ott-releases-this-week?country=IN": 16,
-      "https://www.dailyott.in/": 3,
-      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
-      "https://v3-cinemeta.strem.io/": 3,
+      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 3,
+      "https://v3-cinemeta.strem.io/": 4,
+      "https://www.themoviedb.org/tv/319143": 1,
+      "https://www.themoviedb.org/tv/338656": 1,
       "https://www.keralatv.in/channel/ott/": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json": 1,
       "https://www.themoviedb.org/tv/331750": 1,
@@ -85,6 +88,58 @@
       "catalog": "dobins_hi_movie"
     },
     {
+      "title": "Apsara",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/338390"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "premiere",
+      "detail": null,
+      "matchId": "tt50063835",
+      "matchState": "published",
+      "matchReason": "https://www.themoviedb.org/tv/338390",
+      "metadataComplete": true,
+      "metadataSource": "https://www.themoviedb.org/tv/338390",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "Bigg Boss Season 20",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "platforms": [
+        "JioHotStar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": null,
+      "detail": null,
+      "matchId": "tt1281973",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
       "title": "Dhai Chaal",
       "language": "hindi",
       "type": "series",
@@ -129,6 +184,58 @@
       "releaseDateBasis": "episode",
       "detail": null,
       "matchId": "tt39632118",
+      "matchState": "published",
+      "matchReason": "https://v3-cinemeta.strem.io/",
+      "metadataComplete": true,
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/319143"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "premiere",
+      "detail": null,
+      "matchId": "tt43720139",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "metadataComplete": true,
+      "metadataSource": "IMDb-matched metadata",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
+      "title": "Lo Chudail Chali Sasural",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/338656",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "episode",
+      "detail": null,
+      "matchId": "tt43636966",
       "matchState": "published",
       "matchReason": "https://v3-cinemeta.strem.io/",
       "metadataComplete": true,
@@ -425,8 +532,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -1065,7 +1172,7 @@
       "source": "OTTChecker Malayalam recent releases",
       "url": "https://www.ottchecker.com/ott-releases/malayalam",
       "state": "live",
-      "records": 15
+      "records": 14
     },
     {
       "source": "OTTChecker Tamil recent releases",
@@ -1115,7 +1222,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 115,
+      "records": 114,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1156,7 +1263,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 23,
+          "detectedRecords": 22,
           "coverageStatus": "partial",
           "sources": [
             {
@@ -1245,8 +1352,8 @@
               "url": "https://www.ottchecker.com/ott-releases/malayalam",
               "state": "live",
               "languageState": "records_found",
-              "records": 16,
-              "movieRecords": 14,
+              "records": 15,
+              "movieRecords": 13,
               "seriesRecords": 2
             },
             {
@@ -1891,7 +1998,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 23,
+      "detectedRecords": 22,
       "coverageStatus": "partial",
       "sources": [
         {
@@ -1980,8 +2087,8 @@
           "url": "https://www.ottchecker.com/ott-releases/malayalam",
           "state": "live",
           "languageState": "records_found",
-          "records": 16,
-          "movieRecords": 14,
+          "records": 15,
+          "movieRecords": 13,
           "seriesRecords": 2
         },
         {
