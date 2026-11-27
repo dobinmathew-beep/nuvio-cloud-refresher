@@ -12,10 +12,12 @@ const digest = value => createHash('sha256').update(JSON.stringify(value)).diges
 
 function mockImageKit(t) {
   const files = new Map();
+  files.uploadCount = 0;
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async (input, init = {}) => {
     const url = new URL(typeof input === 'string' || input instanceof URL ? input : input.url);
     if (url.hostname === 'upload.imagekit.io') {
+      files.uploadCount++;
       const form = init.body;
       const path = form.get('folder') + '/' + form.get('fileName');
       const file = form.get('file');
@@ -73,6 +75,9 @@ test('claims are exclusive, acknowledged jobs stay completed, and expired claims
   assert.deepEqual(first, ['tt1234567']);
   assert.deepEqual(await claimDurableQueueBatch(generation, ['tt1234567'], 'worker-b', { config }), []);
   await settleDurableQueueBatch(generation, ['tt1234567'], 'worker-a', 'recorded', { config });
+  const writesAfterFirstSettle = files.uploadCount;
+  await settleDurableQueueBatch(generation, ['tt1234567'], 'worker-a', 'recorded', { config });
+  assert.equal(files.uploadCount, writesAfterFirstSettle, 're-settling an already recorded item must not create a new ImageKit version');
   assert.deepEqual(await claimDurableQueueBatch(generation, ['tt1234567', 'tt7654321'], 'worker-b', { config }), ['tt7654321']);
 
   const statePath = [...files.keys()].find(path => path.endsWith('/queue-state.json'));
