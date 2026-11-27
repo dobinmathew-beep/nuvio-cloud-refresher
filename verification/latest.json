@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-27T08:54:13.514810+04:00",
+  "checked_at": "2026-11-27T12:40:34.984959+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
     "addon": {
       "status": "pass",
-      "checked_at": "2026-11-27T08:54:13.514810+04:00",
+      "checked_at": "2026-11-27T12:40:34.984959+04:00",
       "public_url": "https://the-great-indian-addon.vercel.app",
       "checks": [
         {
@@ -50,28 +50,28 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-27T04:26:15.227509+04:00",
+      "checked_at": "2026-11-27T12:40:34.984959+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
           "name": "public status and freshness",
           "status": "pass",
           "details": {
-            "revision": "0d7bd843-f9d4-4584-8089-ff69492350c8",
-            "checked_utc": "2026-11-27T00:16:49.898887+00:00",
-            "matched_ids": 614,
+            "revision": "7c11ae2e-9355-4ba2-9302-5d6d5c4c1202",
+            "checked_utc": "2026-11-27T04:54:17.252248+00:00",
+            "matched_ids": 613,
             "playlist_channel_ids": 855,
-            "unresolved_ids": 241,
-            "programmes": 67576
+            "unresolved_ids": 242,
+            "programmes": 65496
           }
         },
         {
           "name": "published XMLTV",
           "status": "pass",
           "details": {
-            "bytes": 2093124,
-            "channels": 614,
-            "programmes": 67576
+            "bytes": 2059767,
+            "channels": 613,
+            "programmes": 65496
           }
         },
         {
@@ -85,14 +85,14 @@
           "name": "Unresolved_Channels.csv",
           "status": "pass",
           "details": {
-            "rows": 241
+            "rows": 242
           }
         },
         {
           "name": "Source_Crosscheck_Report.csv",
           "status": "pass",
           "details": {
-            "rows": 2661
+            "rows": 2722
           }
         },
         {
@@ -135,7 +135,7 @@
     },
     "backdrops": {
       "status": "pass",
-      "checked_at": "2026-11-27T04:16:34.850157+04:00",
+      "checked_at": "2026-11-27T12:40:34.984959+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
       "details": {
         "day": "2026-11-27",
@@ -147,9 +147,9 @@
         },
         "errors": [],
         "catalogHeads": {
-          "malayalam": "tt41944351",
           "hindi": "tt37200939",
           "tamil": "tt18933846",
+          "malayalam": "tt41944351",
           "telugu": "tt36915004"
         }
       },
@@ -176,14 +176,14 @@
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-27T04:16:34.850157+04:00",
+      "checked_at": "2026-11-27T12:40:34.984959+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
           "language": "hindi",
           "status": "pass",
-          "bytes": 6903660,
-          "sha256": "d10d62b3880f6d841ff9fbd92b62ebd7eb0622ffecf2600f2e68a4c740eee5c4",
+          "bytes": 6903386,
+          "sha256": "3d12ce50f77d631829c0b60cd5dc8ba25e3f250b1b113cf30c3918310fa58f83",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -203,8 +203,8 @@
         {
           "language": "tamil",
           "status": "pass",
-          "bytes": 6909303,
-          "sha256": "d55494a6142d31c63d9f9d3adf11dd4a105b71f262190178ebd3b702b7d7bf8d",
+          "bytes": 6909328,
+          "sha256": "4a73081c38df233b78d777fbae77b4a82c94bb3cd6d9924ee9331ff7dcb8eca4",
           "duration_seconds": 50.0,
           "streams": [
             {
@@ -245,8 +245,8 @@
         {
           "language": "telugu",
           "status": "pass",
-          "bytes": 6894377,
-          "sha256": "701cd7e15721ad5d7d0fb3e23023ee04eb943bf7170388bbbdc38ec40e062252",
+          "bytes": 6897296,
+          "sha256": "ade28ade09034b5a06c961dd624743f91e624636b93104dde7c7099360247f31",
           "duration_seconds": 50.0,
           "streams": [
             {
