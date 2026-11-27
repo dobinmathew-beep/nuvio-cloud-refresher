@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import {
   planCurrentPlusOneHistorical,
   planTitlePosterAssetRetention,
-  planCanonicalAndOneBackup
+  planCanonicalAndOneBackup,
+  isCatalogStateJsonPath
 } from '../lib/imagekit-retention-cleanup-utils.mjs';
 
 const version = (id, date, size = 100) => ({
@@ -66,4 +67,13 @@ test('keeps canonical public poster plus one newest backup file', () => {
 test('does not prune title poster files without a unique canonical public asset', () => {
   const files=[asset('a','/posters/tt1234567_alt.jpg','2026-11-23')];
   assert.equal(planCanonicalAndOneBackup(files,'tt1234567').safe,false);
+});
+
+test('catalogue-state retention is limited to JSON state files, never poster assets', () => {
+  assert.equal(isCatalogStateJsonPath('/catalog-state/poster-processing/a.json'), true);
+  assert.equal(isCatalogStateJsonPath('/catalog-state/catalogues/catalog-1.json'), true);
+  assert.equal(isCatalogStateJsonPath('/catalog-state/metadata-index/deltas/change.json'), true);
+  assert.equal(isCatalogStateJsonPath('/posters/tt1234567.jpg'), false);
+  assert.equal(isCatalogStateJsonPath('/poster-versions/tt1234567/hash.jpg'), false);
+  assert.equal(isCatalogStateJsonPath('/catalog-state/readme.txt'), false);
 });
