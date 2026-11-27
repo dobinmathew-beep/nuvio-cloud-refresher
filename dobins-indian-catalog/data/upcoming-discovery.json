@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-28T00:15:44.517565+04:00",
+  "generatedAt": "2026-11-28T03:10:44.299025+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 15,
@@ -19,8 +19,8 @@
     },
     "bySource": {
       "https://ottasia.com/ott-releases-this-week?country=IN": 14,
-      "https://api.tvmaze.com/schedule/web": 1,
       "https://www.dailyott.in/": 1,
+      "https://api.tvmaze.com/schedule/web": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
       "https://v3-cinemeta.strem.io/": 1
     }
@@ -205,7 +205,7 @@
         "poster": true,
         "description": true,
         "genres": true,
-        "releaseInfo": false
+        "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
     },
@@ -299,8 +299,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],

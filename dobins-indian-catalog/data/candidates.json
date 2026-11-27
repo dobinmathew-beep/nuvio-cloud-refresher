@@ -8450,6 +8450,13 @@
       "type": "movie"
     },
     {
+      "id": "tmdb:1505705||A Box of Shocks||2022||movie||https://image.tmdb.org/t/p/original/AbdcioQ7gzBPQu1eIijJScwDu37.jpg||Insu%2C%20a%20frivolous%20young%20man%2C%20is%20compelled%20to%20change%20his%20worldview%20when%20he%20wakes%20up%20one%20day%20to%20find%20his%20idea%20of%20utopia%20come%20true.",
+      "name": "A Box of Shocks",
+      "poster": "https://image.tmdb.org/t/p/original/AbdcioQ7gzBPQu1eIijJScwDu37.jpg",
+      "releaseInfo": "2022",
+      "type": "movie"
+    },
+    {
       "id": "tt23182928",
       "name": "Andaru Bagundali Andulo Nenundali",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt23182928.jpg",
@@ -8579,13 +8586,6 @@
       "id": "tt18377936",
       "name": "Bloody Mary",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt18377936.jpg",
-      "releaseInfo": "2022",
-      "type": "movie"
-    },
-    {
-      "id": "tmdb:961765||WET||2022||movie||https://image.tmdb.org/t/p/original/jWuizjmFyeNO0VrYKriPqa4s3nS.jpg||Water%20flows%20out%20of%20a%20person%2C%20mysteriously.",
-      "name": "WET",
-      "poster": "https://image.tmdb.org/t/p/original/jWuizjmFyeNO0VrYKriPqa4s3nS.jpg",
       "releaseInfo": "2022",
       "type": "movie"
     },
@@ -12589,5 +12589,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-27T22:51:35.480648+04:00"
+  "_updatedAt": "2026-11-28T03:10:44.299025+04:00"
 }
