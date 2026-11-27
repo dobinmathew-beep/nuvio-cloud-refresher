@@ -332,7 +332,8 @@ try {
       if (item.kind === 'version') await deleteVersion(item.fileId, item.versionId);
       else await deleteFile(item.fileId);
       report.deletedBytesEstimate += bytes(item.bytes);
-      if (item.kind === 'version') report.stateVersionsDeleted.push(item);
+      if (item.kind === 'version' && STATE_PATHS.has(item.path)) report.stateVersionsDeleted.push(item);
+      else if (item.kind === 'version') report.posterFileVersionsDeleted.push(item);
       else if (item.path.startsWith('/poster-versions/')) report.immutablePosterFilesDeleted.push(item);
       else report.posterFilesDeleted.push(item);
       if ((i + 1) % 25 === 0 || i === deletes.length - 1) {
