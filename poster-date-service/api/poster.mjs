@@ -5,6 +5,9 @@ import { inspectExistingPosterBadges, terminateOcrWorker } from '../lib/coming-t
 import { isCatalogRecentlyAdded, resolveJustAddedDecision } from '../lib/catalog-just-added.mjs';
 import { upcomingReleaseFromCatalog } from '../lib/catalog-upcoming.mjs';
 import { imageKitConfig, uploadPosterToImageKit, canStoreImageKitPoster, canStoreImmutableImageKitPoster, recordImageKitUpload, getImageKitStorageSnapshot, initializeImageKitStorageSnapshot, readPosterValidationMetadata, savePosterValidationMetadata } from '../lib/imagekit-storage.mjs';
+import { createBackgroundBuildGate } from '../lib/background-build-gate.mjs';
+import { imageKitUploadQuotaCircuit } from '../lib/imagekit-quota-circuit.mjs';
+import { createBoundedTaskQueue } from '../lib/bounded-task-queue.mjs';
 import { publishImageKitVersionedPoster, resolveImageKitPoster } from '../lib/imagekit-versioned-storage.mjs';
 
 const BETTERPOSTERS = 'https://btttr.cc/poster/imdb/poster-default/';
@@ -14,6 +17,9 @@ const METAHUB = 'https://live.metahub.space/poster/small/';
 const MAX_BYTES = 15 * 1024 * 1024;
 
 const RESULT_CACHE_MS = 2 * 60 * 1000;
+// A failed or quota-blocked ImageKit upload must not cause every client hit to
+// download and rebuild the same source poster again. Keep one per-title cooldown.
+const allowBackgroundBuild = createBackgroundBuildGate({ ttlMs: 30 * 60 * 1000, maxEntries: 8192 });
 const resultCache = new Map();
 const pendingResults = new Map();
 const tmdbPosterLookupCache = new Map();
@@ -58,10 +64,14 @@ export function sourceUrl(imdbId) {
 
 const IMAGEKIT_REFRESH_MS = 6 * 60 * 60 * 1000;
 const pendingImageKitUploads = new Map();
-const pendingBackgroundPosterBuilds = new Map();
+const backgroundPosterQueue = createBoundedTaskQueue({
+  concurrency: 2,
+  maxQueued: 8192,
+  onError: (error, imdbId) => console.warn('[background-poster-build-failed]', JSON.stringify({ imdbId, error: error?.message || 'unknown error' }))
+});
 const imageKitAvailabilityCache = new Map();
-const IMAGEKIT_AVAILABILITY_TTL_MS = 2 * 60 * 1000;
-const IMAGEKIT_MISS_TTL_MS = 15 * 1000;
+const IMAGEKIT_AVAILABILITY_TTL_MS = 10 * 60 * 1000;
+const IMAGEKIT_MISS_TTL_MS = 2 * 60 * 1000;
 
 function imageKitAssetUrl(config, imdbId) {
   return config.endpoint + '/posters/' + encodeURIComponent(imdbId) + '.jpg';
@@ -147,7 +157,7 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded, op
     // The sidecar is tied to this exact ImageKit asset by its upload timestamp
     // and current badge state. This is what prevents every daily refresh from
     // re-downloading and OCR-scanning thousands of already-correct posters.
-    const metadata = await readPosterValidationMetadata(imdbId);
+    const metadata = options.metadata !== undefined ? options.metadata : await readPosterValidationMetadata(imdbId);
     const metadataTime = Date.parse(metadata?.uploadedAt || '');
     const metadataBelongsToAsset = metadata?.version === 2 &&
       metadata?.imdbId === imdbId &&
@@ -217,8 +227,8 @@ async function findFreshImageKitAsset(imdbId, releaseInfo, expectedJustAdded, op
 }
 
 function scheduleImageKitUpload(imdbId, poster) {
-  if (!imageKitConfig()) return;
-  if (pendingImageKitUploads.has(imdbId)) return;
+  if (!imageKitConfig() || imageKitUploadQuotaCircuit.isOpen()) return null;
+  if (pendingImageKitUploads.has(imdbId)) return pendingImageKitUploads.get(imdbId);
   const job = publishImageKitVersionedPoster(imdbId, poster, {
     config: imageKitConfig(), recordUpload: recordImageKitUpload,
     canStore: canStoreImmutableImageKitPoster
@@ -231,13 +241,27 @@ function scheduleImageKitUpload(imdbId, poster) {
     });
     return pointer;
   }).catch(async error => {
+    if (imageKitUploadQuotaCircuit.recordFailure(error)) {
+      console.warn('[imagekit-upload-quota-circuit-open]', JSON.stringify({
+        imdbId, cooldownMs: imageKitUploadQuotaCircuit.cooldownMs, stage: 'versioned-upload', error: error?.message || 'unknown error'
+      }));
+      return null;
+    }
     console.warn('[imagekit-versioned-poster-failed-legacy-fallback]', JSON.stringify({
       imdbId, error: error?.message || 'unknown error'
     }));
     return uploadPosterToImageKit(imdbId, poster);
-  }).catch(error => console.warn('ImageKit poster upload skipped for', imdbId, error.message))
+  }).catch(error => {
+    if (imageKitUploadQuotaCircuit.recordFailure(error)) {
+      console.warn('[imagekit-upload-quota-circuit-open]', JSON.stringify({
+        imdbId, cooldownMs: imageKitUploadQuotaCircuit.cooldownMs, stage: 'legacy-upload', error: error?.message || 'unknown error'
+      }));
+    }
+    console.warn('ImageKit poster upload skipped for', imdbId, error.message);
+  })
     .finally(() => pendingImageKitUploads.delete(imdbId));
   pendingImageKitUploads.set(imdbId, job);
+  return job;
 }
 
 function redirectToImageKit(res, assetUrl, releaseInfo, justAdded) {
@@ -473,22 +497,29 @@ async function getBuiltPoster(id, knownRelease = undefined, badge = '', version 
 }
 
 function scheduleBackgroundPosterBuild(id, badge, version, fallbackUrl) {
-  if (pendingBackgroundPosterBuilds.has(id)) return;
-  const job = (async () => {
-    // This work is deliberately detached from the Nuvio request. The client
-    // receives BetterPosters immediately; badge metadata, OCR and ImageKit
-    // upload happen only in the background.
+  if (imageKitUploadQuotaCircuit.isOpen()) return;
+  const accepted = backgroundPosterQueue.enqueue(id, async () => {
+    // Start the cooldown only after the queue accepts and actually starts this
+    // title. A full queue must not suppress a later retry for work never run.
+    if (imageKitUploadQuotaCircuit.isOpen() || !allowBackgroundBuild(id)) return;
+    // Keep the user-facing request fast: BetterPosters is returned immediately,
+    // while at most two background jobs download, OCR and publish at once.
     if (!getImageKitStorageSnapshot().known) {
       await initializeImageKitStorageSnapshot().catch(error =>
         console.warn('[imagekit-background-snapshot-unavailable]', error?.message || 'unknown error')
       );
     }
+    if (imageKitUploadQuotaCircuit.isOpen()) return;
     const poster = await getBuiltPoster(id, undefined, badge, version, fallbackUrl);
-    if (canStoreImageKitPoster(id, poster.bytes.length)) scheduleImageKitUpload(id, poster);
-  })().catch(error => {
-    console.warn('[background-poster-build-failed]', JSON.stringify({ imdbId: id, error: error?.message || 'unknown error' }));
-  }).finally(() => pendingBackgroundPosterBuilds.delete(id));
-  pendingBackgroundPosterBuilds.set(id, job);
+    if (canStoreImageKitPoster(id, poster.bytes.length)) {
+      // Hold the queue slot through the upload result so a quota rejection
+      // opens the circuit before another batch of titles can start.
+      await scheduleImageKitUpload(id, poster);
+    }
+  });
+  if (!accepted) {
+    console.warn('[background-poster-build-queue-full]', JSON.stringify({ imdbId: id, ...backgroundPosterQueue.stats() }));
+  }
 }
 
 function setImageHeaders(res, type, status, releaseDate, releaseKind = 'none') {
@@ -530,10 +561,21 @@ export default async function handler(req, res) {
     if (req.probe || req.method === 'HEAD') {
       const existingAsset = await findExistingImageKitAsset(id);
       if (existingAsset) return redirectToExistingImageKit(res, existingAsset, 'head-probe-imagekit-hit');
+      // A HEAD request must never download an entire upstream poster just to
+      // answer an availability check. Redirect the caller to the source URL.
+      if (req.method === 'HEAD') {
+        res.statusCode = 302;
+        res.setHeader('Location', sourceUrl(id));
+        res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('X-Poster-Source', 'BetterPosters');
+        res.setHeader('X-Poster-Date-Status', 'head-source-fallback');
+        return res.end();
+      }
       const original = await getOriginal(id);
       setImageHeaders(res, original.type, req.probe ? 'template-probe' : 'head-check', 'none');
       res.setHeader('X-Poster-Source', original.source || 'BetterPosters');
-      res.setHeader('Cache-Control', 'public, max-age=3600');
+      res.setHeader('Cache-Control', 'public, max-age=300');
       return res.end(req.method === 'HEAD' ? undefined : original.bytes);
     }
 
@@ -559,7 +601,7 @@ export default async function handler(req, res) {
       const cachedReleaseInfo = cachedValidation?.releaseDate
         ? { date: cachedValidation.releaseDate, kind: cachedValidation.releaseKind || 'premiere' }
         : null;
-      const validatedCachedAsset = await findFreshImageKitAsset(id, cachedReleaseInfo, expectedCachedJustAdded, { validateDate: false });
+      const validatedCachedAsset = await findFreshImageKitAsset(id, cachedReleaseInfo, expectedCachedJustAdded, { validateDate: false, metadata: cachedValidation });
       if (validatedCachedAsset) {
         return redirectToImageKit(res, validatedCachedAsset, cachedReleaseInfo, expectedCachedJustAdded);
       }
