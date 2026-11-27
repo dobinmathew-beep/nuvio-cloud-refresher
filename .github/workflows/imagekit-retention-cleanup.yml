@@ -1,22 +1,8 @@
 name: ImageKit verified retention cleanup
 
 on:
-  push:
-    branches:
-      - imagekit-retention-cleanup
-    paths:
-      - "poster-date-service/lib/imagekit-retention-cleanup-utils.mjs"
-      - "poster-date-service/tests/imagekit-retention-cleanup-utils.test.mjs"
-      - "poster-date-service/scripts/imagekit-retention-cleanup.mjs"
-      - ".github/workflows/imagekit-retention-cleanup.yml"
-  pull_request:
-    branches:
-      - poster-date-service
-    paths:
-      - "poster-date-service/lib/imagekit-retention-cleanup-utils.mjs"
-      - "poster-date-service/tests/imagekit-retention-cleanup-utils.test.mjs"
-      - "poster-date-service/scripts/imagekit-retention-cleanup.mjs"
-      - ".github/workflows/imagekit-retention-cleanup.yml"
+  # Deliberately manual-only: merging workflow/reporting fixes must never
+  # start another destructive ImageKit cleanup automatically.
   workflow_dispatch:
 
 permissions:
