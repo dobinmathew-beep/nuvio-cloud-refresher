@@ -125,7 +125,9 @@
     "sources": [
       "https://ottasia.com/ott-releases-this-week?country=IN"
     ],
-    "platforms": [],
+    "platforms": [
+      "Manorama Max"
+    ],
     "detail": "https://ottasia.com/title/movie/1570366/pantham?country=IN",
     "sourceRecord": {
       "title": "Pantham",
@@ -1900,8 +1902,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win",
-      "Netflix"
+      "Netflix",
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {

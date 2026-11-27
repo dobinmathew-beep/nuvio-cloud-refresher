@@ -2483,6 +2483,13 @@
       "type": "movie"
     },
     {
+      "id": "tt11444602",
+      "name": "Vaazhl",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11444602.jpg",
+      "releaseInfo": "2021",
+      "type": "movie"
+    },
+    {
       "id": "tt11444820",
       "name": "Vellai Yaanai",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11444820.jpg",
@@ -2752,6 +2759,13 @@
       "id": "tt13087958",
       "name": "Putham Pudhu Kaalai",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13087958.jpg",
+      "releaseInfo": "2020",
+      "type": "movie"
+    },
+    {
+      "id": "tt13218562",
+      "name": "Varmaa",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13218562.jpg",
       "releaseInfo": "2020",
       "type": "movie"
     },
@@ -7043,6 +7057,13 @@
       "description": "🇮🇳 Get Updates on New Movies, Series & Features in the Addon! Supported Languages: Telugu • Hindi • Tamil • Bengali • Malayalam • Kannada • Marathi • Gujarati • Punjabi. Your small tip will help for server maintenance. Whats New : OTT Releases - This Week Catalog & Latest Hindi Dubbed Movies Catalog Available Now!"
     },
     {
+      "id": "tt33044571",
+      "name": "Aakasamlo Oka Tara",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33044571.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tt36915004",
       "name": "#Cult",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36915004.jpg",
@@ -7835,7 +7856,7 @@
     },
     {
       "id": "tt32327574",
-      "name": "(MAD)²",
+      "name": "MAD 2",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32327574.jpg",
       "releaseInfo": "2025",
       "type": "movie"
@@ -8156,13 +8177,6 @@
       "type": "movie"
     },
     {
-      "id": "tt15433956",
-      "name": "Hanu-Man",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15433956.jpg",
-      "releaseInfo": "2024",
-      "type": "movie"
-    },
-    {
       "id": "tt14564000",
       "name": "Guntur Kaaram",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14564000.jpg",
@@ -8432,13 +8446,6 @@
       "id": "tt14279982",
       "name": "HIT: The 2nd Case",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14279982.jpg",
-      "releaseInfo": "2022",
-      "type": "movie"
-    },
-    {
-      "id": "tmdb:1505705||A Box of Shocks||2022||movie||https://image.tmdb.org/t/p/original/AbdcioQ7gzBPQu1eIijJScwDu37.jpg||Insu%2C%20a%20frivolous%20young%20man%2C%20is%20compelled%20to%20change%20his%20worldview%20when%20he%20wakes%20up%20one%20day%20to%20find%20his%20idea%20of%20utopia%20come%20true.",
-      "name": "A Box of Shocks",
-      "poster": "https://image.tmdb.org/t/p/original/AbdcioQ7gzBPQu1eIijJScwDu37.jpg",
       "releaseInfo": "2022",
       "type": "movie"
     },
@@ -12582,5 +12589,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-27T18:38:35.098982+04:00"
+  "_updatedAt": "2026-11-27T22:51:35.480648+04:00"
 }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-27T18:38:35.098982+04:00",
+  "generatedAt": "2026-11-27T22:51:35.480648+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 34,
@@ -23,12 +23,11 @@
       "https://www.ottchecker.com/ott-releases/hindi": 1,
       "https://www.themoviedb.org/tv/338390": 1,
       "https://www.dailyott.in/": 8,
-      "https://ottasia.com/ott-releases-this-week?country=IN": 16,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 17,
       "https://www.themoviedb.org/tv/338656": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
       "https://v3-cinemeta.strem.io/": 3,
       "https://www.keralatv.in/channel/ott/": 4,
-      "https://www.ottchecker.com/ott-releases/tamil": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json": 1,
       "https://www.themoviedb.org/tv/331750": 1,
       "https://api.tvmaze.com/schedule/web": 1
@@ -68,8 +67,8 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Amazon Prime Video",
-        "Prime Video"
+        "Prime Video",
+        "Amazon Prime Video"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
@@ -259,7 +258,9 @@
       "language": "malayalam",
       "type": "movie",
       "releaseDate": "2026-11-27",
-      "platforms": [],
+      "platforms": [
+        "Manorama Max"
+      ],
       "sources": [
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
@@ -370,8 +371,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.keralatv.in/channel/ott/"
+        "https://www.keralatv.in/channel/ott/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -425,8 +426,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.ottchecker.com/ott-releases/tamil"
+        "https://ottasia.com/ott-releases-this-week?country=IN",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -1073,7 +1074,9 @@
         "sources": [
           "https://ottasia.com/ott-releases-this-week?country=IN"
         ],
-        "platforms": [],
+        "platforms": [
+          "Manorama Max"
+        ],
         "detail": "https://ottasia.com/title/movie/1570366/pantham?country=IN",
         "sourceRecord": {
           "title": "Pantham",
@@ -1370,7 +1373,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 20
+      "records": 21
     },
     {
       "source": "Vi weekly OTT calendar",
@@ -1425,7 +1428,7 @@
       "source": "OTTChecker Malayalam recent releases",
       "url": "https://www.ottchecker.com/ott-releases/malayalam",
       "state": "live",
-      "records": 14
+      "records": 15
     },
     {
       "source": "OTTChecker Tamil recent releases",
@@ -1474,7 +1477,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 104,
+      "records": 108,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1513,7 +1516,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 19,
+          "detectedRecords": 21,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1602,8 +1605,8 @@
               "url": "https://www.ottchecker.com/ott-releases/malayalam",
               "state": "live",
               "languageState": "records_found",
-              "records": 15,
-              "movieRecords": 13,
+              "records": 17,
+              "movieRecords": 15,
               "seriesRecords": 2
             },
             {
@@ -1678,7 +1681,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 21,
+          "detectedRecords": 23,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1695,9 +1698,9 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 1,
+              "records": 2,
               "movieRecords": 0,
-              "seriesRecords": 1
+              "seriesRecords": 2
             },
             {
               "source": "Vi weekly OTT calendar",
@@ -1749,9 +1752,9 @@
               "url": "https://www.ottchecker.com/ott-releases/tamil",
               "state": "live",
               "languageState": "records_found",
-              "records": 18,
+              "records": 19,
               "movieRecords": 15,
-              "seriesRecords": 3
+              "seriesRecords": 4
             },
             {
               "source": "Kerala TV multi-language OTT releases",
@@ -2240,7 +2243,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 19,
+      "detectedRecords": 21,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2329,8 +2332,8 @@
           "url": "https://www.ottchecker.com/ott-releases/malayalam",
           "state": "live",
           "languageState": "records_found",
-          "records": 15,
-          "movieRecords": 13,
+          "records": 17,
+          "movieRecords": 15,
           "seriesRecords": 2
         },
         {
@@ -2405,7 +2408,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 21,
+      "detectedRecords": 23,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2422,9 +2425,9 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 1,
+          "records": 2,
           "movieRecords": 0,
-          "seriesRecords": 1
+          "seriesRecords": 2
         },
         {
           "source": "Vi weekly OTT calendar",
@@ -2476,9 +2479,9 @@
           "url": "https://www.ottchecker.com/ott-releases/tamil",
           "state": "live",
           "languageState": "records_found",
-          "records": 18,
+          "records": 19,
           "movieRecords": 15,
-          "seriesRecords": 3
+          "seriesRecords": 4
         },
         {
           "source": "Kerala TV multi-language OTT releases",
