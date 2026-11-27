@@ -168,6 +168,7 @@ async function main() {
 
   const versionRows = [];
   const versionFailures = [];
+  const versionIntegrity = { currentVersionMissing: [], currentVersionSizeMismatch: [], duplicateVersionIds: [] };
   let processed = 0;
   await mapLimit(files, VERSION_CONCURRENCY, async file => {
     try {
@@ -187,6 +188,11 @@ async function main() {
           unknownDate: timestamp === null
         };
       });
+      const currentVersion = versions.find(v => v.isCurrent);
+      if (currentId && !currentVersion) versionIntegrity.currentVersionMissing.push({ fileId: file.fileId, path: file.filePath || null, currentVersionId: currentId });
+      if (currentVersion && currentVersion.bytes !== bytes(file.size)) versionIntegrity.currentVersionSizeMismatch.push({ fileId: file.fileId, path: file.filePath || null, listedFileBytes: bytes(file.size), currentVersionBytes: currentVersion.bytes });
+      const ids = versions.map(v => v.versionId).filter(Boolean);
+      if (new Set(ids).size !== ids.length) versionIntegrity.duplicateVersionIds.push({ fileId: file.fileId, path: file.filePath || null });
       const history = versions.filter(v => !v.isCurrent);
       const newestFirst = [...history].sort((a,b) => (dateMs(b.createdAt) || 0) - (dateMs(a.createdAt) || 0));
       const posterKeepOnePotential = categoryFor(file.filePath) === 'posters' ? newestFirst.slice(1) : [];
@@ -230,13 +236,14 @@ async function main() {
   const posterExcessCount = versionRows.reduce((s,r)=>s+r.posterHistoricalBeyondNewestOneCount,0);
   const posterExcessBytes = versionRows.reduce((s,r)=>s+r.posterHistoricalBeyondNewestOneBytes,0);
   const complete = audit.folderListingFailures.length === 0 && audit.fileListingFailures.length === 0 &&
-    audit.truncatedFolders.length === 0 && versionFailures.length === 0 && files.length > 0;
+    audit.truncatedFolders.length === 0 && versionFailures.length === 0 && files.length > 0 &&
+    versionIntegrity.currentVersionMissing.length === 0 && versionIntegrity.currentVersionSizeMismatch.length === 0 && versionIntegrity.duplicateVersionIds.length === 0;
   const report = {
     generatedAt: new Date(now).toISOString(),
     mode: 'imagekit-forensic-read-only-v1',
     destructiveRequestsIssued: 0,
     mutationMethodsUsed: [],
-    completeness: { complete, fileCount: files.length, foldersVisited: audit.folderCount, versionFilesChecked: versionRows.length, versionFailures: versionFailures.length, ...audit },
+    completeness: { complete, fileCount: files.length, foldersVisited: audit.folderCount, versionFilesChecked: versionRows.length, versionFailures: versionFailures.length, versionIntegrity, ...audit },
     accountUsage: usage,
     inventory: {
       currentFileBytes: currentBytes, historicalVersionBytes: historicalBytes,
@@ -244,7 +251,7 @@ async function main() {
       accountMediaLibraryStorageBytes: usage.metrics?.mediaLibraryStorageBytes ?? null,
       accountMinusListedBytes: usage.metrics?.mediaLibraryStorageBytes == null ? null : Number(usage.metrics.mediaLibraryStorageBytes) - reconciledBytes,
       fileCount: files.length, versionFilesChecked: versionRows.length,
-      versionFailures, categoryCurrentAndHistory: categoryStats, historyByCategory,
+      versionFailures, versionIntegrity, categoryCurrentAndHistory: categoryStats, historyByCategory,
       folderCurrent: folderStats, historyByFolder,
       largestCurrentFiles: [...files].sort((a,b)=>bytes(b.size)-bytes(a.size)).slice(0,200).map(f=>({fileId:f.fileId,path:f.filePath,name:f.name,bytes:bytes(f.size),category:categoryFor(f.filePath),createdAt:f.createdAt,updatedAt:f.updatedAt})),
       largestHistoricalFiles: [...versionRows].sort((a,b)=>b.historyBytes-a.historyBytes).slice(0,300),
