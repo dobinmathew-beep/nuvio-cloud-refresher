@@ -1,0 +1,33 @@
+name: ImageKit state write guard tests
+
+on:
+  push:
+    branches:
+      - imagekit-retention-cleanup
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: imagekit-state-write-guard-tests
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: poster-date-service
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: imagekit-retention-cleanup
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Run regression suite
+        run: npm test
