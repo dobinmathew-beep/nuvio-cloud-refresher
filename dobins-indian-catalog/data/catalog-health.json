@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-27T18:59:10.256991+00:00",
+  "checkedAt": "2026-11-27T20:20:28.907611+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,17 +14,17 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1211,
+      "metadataRecords": 1212,
       "warning": null,
       "error": null
     },
     {
       "path": "/meta/* (Malayalam catalog audit)",
       "state": "ok",
-      "checked": 165,
-      "passed": 165,
+      "checked": 166,
+      "passed": 166,
       "failed": 0,
-      "missingOriginalLanguageField": 119
+      "missingOriginalLanguageField": 120
     },
     {
       "path": "/manifest.json",
@@ -45,31 +45,31 @@
       "language": "ml",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
-      "localPublishedCount": 98,
-      "localUniqueIdCount": 98,
+      "localPublishedCount": 99,
+      "localUniqueIdCount": 99,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 98,
-      "endpointUniqueIdCount": 98,
+      "endpointRawCount": 99,
+      "endpointUniqueIdCount": 99,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        48
+        49
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt44878818",
-        "name": "Bouma",
-        "releaseDate": "2026-11-22"
+        "id": "tt32729408",
+        "name": "Pantham",
+        "releaseDate": "2026-11-27"
       },
       "localLatestEntry": {
-        "id": "tt44878818",
-        "name": "Bouma",
-        "releaseDate": "2026-11-22"
+        "id": "tt32729408",
+        "name": "Pantham",
+        "releaseDate": "2026-11-27"
       },
       "latestEntryMatches": true,
       "state": "ok",
@@ -333,10 +333,10 @@
   ],
   "malayalamMetadataAudit": {
     "state": "ok",
-    "checked": 165,
-    "passed": 165,
+    "checked": 166,
+    "passed": 166,
     "failed": 0,
-    "missingOriginalLanguageField": 119,
+    "missingOriginalLanguageField": 120,
     "failures": []
   },
   "catalogSummary": {
