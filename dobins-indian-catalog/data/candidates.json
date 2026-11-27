@@ -1902,13 +1902,6 @@
       "type": "movie"
     },
     {
-      "id": "tt27683630",
-      "name": "Ninaivo Oru Paravai",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27683630.jpg",
-      "releaseInfo": "2023",
-      "type": "movie"
-    },
-    {
       "id": "tt15722480",
       "name": "Burqa",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15722480.jpg",
@@ -2490,13 +2483,6 @@
       "type": "movie"
     },
     {
-      "id": "tt11444602",
-      "name": "Vaazhl",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11444602.jpg",
-      "releaseInfo": "2021",
-      "type": "movie"
-    },
-    {
       "id": "tt11444820",
       "name": "Vellai Yaanai",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11444820.jpg",
@@ -2766,13 +2752,6 @@
       "id": "tt13087958",
       "name": "Putham Pudhu Kaalai",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13087958.jpg",
-      "releaseInfo": "2020",
-      "type": "movie"
-    },
-    {
-      "id": "tt13218562",
-      "name": "Varmaa",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13218562.jpg",
       "releaseInfo": "2020",
       "type": "movie"
     },
@@ -3883,6 +3862,20 @@
       "id": "tt35433415",
       "name": "Sweet Dreams",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35433415.jpg",
+      "releaseInfo": "2025",
+      "type": "movie"
+    },
+    {
+      "id": "tt27056066",
+      "name": "Sky Force",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27056066.jpg",
+      "releaseInfo": "2025",
+      "type": "movie"
+    },
+    {
+      "id": "tt26439870",
+      "name": "Azaad",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26439870.jpg",
       "releaseInfo": "2025",
       "type": "movie"
     },
@@ -8170,6 +8163,13 @@
       "type": "movie"
     },
     {
+      "id": "tt14564000",
+      "name": "Guntur Kaaram",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14564000.jpg",
+      "releaseInfo": "2024",
+      "type": "movie"
+    },
+    {
       "id": "tt28266209",
       "name": "Sarkaaru Noukari",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28266209.jpg",
@@ -8439,6 +8439,13 @@
       "id": "tmdb:1505705||A Box of Shocks||2022||movie||https://image.tmdb.org/t/p/original/AbdcioQ7gzBPQu1eIijJScwDu37.jpg||Insu%2C%20a%20frivolous%20young%20man%2C%20is%20compelled%20to%20change%20his%20worldview%20when%20he%20wakes%20up%20one%20day%20to%20find%20his%20idea%20of%20utopia%20come%20true.",
       "name": "A Box of Shocks",
       "poster": "https://image.tmdb.org/t/p/original/AbdcioQ7gzBPQu1eIijJScwDu37.jpg",
+      "releaseInfo": "2022",
+      "type": "movie"
+    },
+    {
+      "id": "tt23182928",
+      "name": "Andaru Bagundali Andulo Nenundali",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt23182928.jpg",
       "releaseInfo": "2022",
       "type": "movie"
     },
@@ -12575,5 +12582,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-27T12:45:57.606564+04:00"
+  "_updatedAt": "2026-11-27T18:38:35.098982+04:00"
 }

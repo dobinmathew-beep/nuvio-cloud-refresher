@@ -100,41 +100,6 @@
     "sourceRecord": {}
   },
   {
-    "name": "Octopus",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-11-27",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6b08e882699a8884e160a536",
-      "platform": "ZEE5",
-      "title": "Octopus",
-      "createdAt": "2026-11-27T02:18:42.286Z",
-      "genre": "Mystery Thriller",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "original_language": "Tamil",
-      "releaseDate": "2026-11-27",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-11-27T02:19:28.726Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/2gLLftWX1ecorSXq2jBMosQAcKx.jpg",
-      "tmdbRating": 78,
-      "tmdbVotes": 70,
-      "instagramPostedAt": "2026-11-27T02:20:23Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Narayan Pustika 2 - Endless",
     "language": "hindi",
     "type": "movie",
@@ -152,23 +117,20 @@
     }
   },
   {
-    "name": "Hail Mary",
+    "name": "Pantham",
     "language": "malayalam",
     "type": "movie",
     "ottDate": "2026-11-27",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
-      "https://www.keralatv.in/channel/ott/"
+      "https://ottasia.com/ott-releases-this-week?country=IN"
     ],
-    "platforms": [
-      "Netflix"
-    ],
-    "detail": "https://www.keralatv.in/hail-mary-malayalam-movie-ott-release/",
+    "platforms": [],
+    "detail": "https://ottasia.com/title/movie/1570366/pantham?country=IN",
     "sourceRecord": {
-      "title": "Hail Mary",
+      "title": "Pantham",
       "releaseDate": "2026-11-27",
-      "source": "https://www.keralatv.in/channel/ott/",
-      "headline": "Hail Mary Malayalam Movie OTT Rights Secured by Netflix, The film Now Running in cinemas with Excellent Review all Over"
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     }
   },
   {
@@ -221,7 +183,81 @@
       "updatedAt": "2026-11-27T02:19:29.245Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/uOo2T5pZmW4APO6o95yLycvTonU.jpg",
       "instagramPostedAt": "2026-11-27T02:20:32Z",
+      "tmdbDetails": {
+        "tmdbId": 1496785,
+        "director": "Trivikram Srinivas",
+        "cast": [
+          {
+            "name": "Venkatesh",
+            "character": "Thotti Chittibabu"
+          },
+          {
+            "name": "Srinidhi Shetty",
+            "character": "Swarna"
+          },
+          {
+            "name": "Nara Rohith",
+            "character": "Damodar \"Daamu\" Naidu"
+          },
+          {
+            "name": "Nivetha Pethuraj",
+            "character": "Malathi \"Maala\""
+          },
+          {
+            "name": "Yuvina Parthavi",
+            "character": "Sampoorna"
+          },
+          {
+            "name": "Raja Prajwal",
+            "character": "Sarwa"
+          },
+          {
+            "name": "Rao Ramesh",
+            "character": "DSP Bruhaspati IPS"
+          },
+          {
+            "name": "Satya",
+            "character": "Chittaranjan"
+          }
+        ],
+        "overview": "A tight-knit family faces an unexpected crisis that threatens their bond, forcing them to re-evaluate their values and fight to stay united.",
+        "runtime": 149,
+        "genres": [
+          "Family",
+          "Comedy",
+          "Action"
+        ],
+        "originalLanguage": "te",
+        "spokenLanguages": [
+          "Telugu"
+        ],
+        "releaseDate": "2026-10-30",
+        "voteAverage": 5.5,
+        "trailerKey": "Eih78UP3dag",
+        "fetchedAt": "2026-11-27T11:50:19.663Z"
+      },
+      "tmdbId": 1496785,
       "verified": true
+    }
+  },
+  {
+    "name": "Hail Mary",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.keralatv.in/channel/ott/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": "https://www.keralatv.in/hail-mary-malayalam-movie-ott-release/",
+    "sourceRecord": {
+      "title": "Hail Mary",
+      "releaseDate": "2026-11-27",
+      "source": "https://www.keralatv.in/channel/ott/",
+      "headline": "Hail Mary Malayalam Movie OTT Rights Secured by Netflix, The film Now Running in cinemas with Excellent Review all Over"
     }
   },
   {
@@ -263,24 +299,24 @@
     "sourceRecord": {}
   },
   {
-    "name": "Jindey",
+    "name": "Summer Holidays",
     "language": "telugu",
     "type": "movie",
     "ottDate": "2026-11-27",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
+      "https://www.keralatv.in/channel/ott/"
     ],
     "platforms": [
-      "JioHotstar",
-      "Hotstar",
-      "ZEE5"
+      "Prime Video",
+      "ManoramaMAX"
     ],
-    "detail": "https://ottasia.com/title/movie/1765369/jindey?country=IN",
+    "detail": "https://www.keralatv.in/summer-holidays-telugu-movie-ott-release-date-sonyliv/",
     "sourceRecord": {
-      "title": "Jindey",
+      "title": "Summer Holidays",
       "releaseDate": "2026-11-27",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+      "source": "https://www.keralatv.in/channel/ott/",
+      "headline": "Summer Holidays OTT Release Date: Sony LIV to Premiere Telugu Children’s Film on December 4"
     }
   },
   {
@@ -670,6 +706,36 @@
     }
   },
   {
+    "name": "Nindu Noorella Saavasam (Episode 885)",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-05-12",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a02a2999dcddba08328d0ef",
+      "platform": "ZEE5",
+      "title": "Nindu Noorella Saavasam (Episode 885)",
+      "createdAt": "2026-05-12T03:46:33.291Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-12",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-05-12T03:46:33.291Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Mammaatiyaan Stars",
     "language": "tamil",
     "type": "series",
@@ -701,7 +767,7 @@
     }
   },
   {
-    "name": "Nindu Noorella Saavasam (Episode 885)",
+    "name": "Auto Vijayashanthi (Episode 221)",
     "language": "telugu",
     "type": "series",
     "ottDate": "2026-05-12",
@@ -714,10 +780,10 @@
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6a02a2999dcddba08328d0ef",
+      "_id": "6a02a2999dcddba08328d0f0",
+      "title": "Auto Vijayashanthi (Episode 221)",
       "platform": "ZEE5",
-      "title": "Nindu Noorella Saavasam (Episode 885)",
-      "createdAt": "2026-05-12T03:46:33.291Z",
+      "createdAt": "2026-05-12T03:46:33.489Z",
       "genre": "Drama",
       "imdbRating": null,
       "languages": [
@@ -726,7 +792,7 @@
       "releaseDate": "2026-05-12",
       "source_verified": true,
       "type": "Series",
-      "updatedAt": "2026-05-12T03:46:33.291Z",
+      "updatedAt": "2026-05-12T03:46:33.489Z",
       "verified": true
     }
   },
@@ -762,32 +828,33 @@
     }
   },
   {
-    "name": "Auto Vijayashanthi (Episode 221)",
+    "name": "Soul Trip",
     "language": "telugu",
     "type": "series",
-    "ottDate": "2026-05-12",
+    "ottDate": "2026-04-30",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ZEE5"
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "6a02a2999dcddba08328d0f0",
-      "title": "Auto Vijayashanthi (Episode 221)",
-      "platform": "ZEE5",
-      "createdAt": "2026-05-12T03:46:33.489Z",
-      "genre": "Drama",
+      "_id": "69e9955d30958fd1b959de4a",
+      "platform": "ETV Win",
+      "title": "Soul Trip",
+      "createdAt": "2026-04-23T03:43:25.627Z",
+      "genre": "Talk-Show, Reality-TV",
       "imdbRating": null,
       "languages": [
         "Telugu"
       ],
-      "releaseDate": "2026-05-12",
+      "releaseDate": "2026-04-30",
       "source_verified": true,
       "type": "Series",
-      "updatedAt": "2026-05-12T03:46:33.489Z",
+      "updatedAt": "2026-04-30T03:47:03.617Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/lMmVs6FC8pkc0n1BW3gemZRFhqb.jpg",
       "verified": true
     }
   },
@@ -855,33 +922,32 @@
     }
   },
   {
-    "name": "Soul Trip",
+    "name": "Chamanthi",
     "language": "telugu",
     "type": "series",
-    "ottDate": "2026-04-30",
+    "ottDate": "2026-04-28",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win"
+      "ZEE5"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "69e9955d30958fd1b959de4a",
-      "platform": "ETV Win",
-      "title": "Soul Trip",
-      "createdAt": "2026-04-23T03:43:25.627Z",
-      "genre": "Talk-Show, Reality-TV",
+      "_id": "69f02de830958fd1b959e7c1",
+      "title": "Chamanthi",
+      "platform": "ZEE5",
+      "createdAt": "2026-04-28T03:47:52.447Z",
+      "genre": "Drama",
       "imdbRating": null,
       "languages": [
         "Telugu"
       ],
-      "releaseDate": "2026-04-30",
+      "releaseDate": "2026-04-28",
       "source_verified": true,
       "type": "Series",
-      "updatedAt": "2026-04-30T03:47:03.617Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/lMmVs6FC8pkc0n1BW3gemZRFhqb.jpg",
+      "updatedAt": "2026-04-28T03:47:52.447Z",
       "verified": true
     }
   },
@@ -913,36 +979,6 @@
       "type": "Series",
       "updatedAt": "2026-04-05T03:40:53.735Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/Aj8xNoAiDC2It0UVQFuv1ABhhgq.jpg",
-      "verified": true
-    }
-  },
-  {
-    "name": "Chamanthi",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-04-28",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f02de830958fd1b959e7c1",
-      "title": "Chamanthi",
-      "platform": "ZEE5",
-      "createdAt": "2026-04-28T03:47:52.447Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-04-28",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-28T03:47:52.447Z",
       "verified": true
     }
   },
@@ -1038,6 +1074,36 @@
     }
   },
   {
+    "name": "Aa Gang Repu 3",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-04-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Aha"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69e05b1feb1fc7a84c30a5ca",
+      "title": "Aa Gang Repu 3",
+      "platform": "Aha",
+      "createdAt": "2026-04-16T03:44:31.038Z",
+      "genre": "Crime, Drama, Thriller",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-04-16",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-16T03:44:31.038Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Roadies Rebirth",
     "language": "hindi",
     "type": "series",
@@ -1096,36 +1162,6 @@
       "type": "Series",
       "updatedAt": "2026-04-28T03:48:08.007Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/8GGzM0vq3xttbYA0GNOHDI6iVlT.jpg",
-      "verified": true
-    }
-  },
-  {
-    "name": "Aa Gang Repu 3",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-04-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Aha"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69e05b1feb1fc7a84c30a5ca",
-      "title": "Aa Gang Repu 3",
-      "platform": "Aha",
-      "createdAt": "2026-04-16T03:44:31.038Z",
-      "genre": "Crime, Drama, Thriller",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-04-16",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-16T03:44:31.038Z",
       "verified": true
     }
   },
@@ -1438,36 +1474,6 @@
     }
   },
   {
-    "name": "Kakkippada-2",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-05-29",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a190c98135bb8f4954fffcc",
-      "platform": "ZEE5",
-      "title": "Kakkippada-2",
-      "createdAt": "2026-05-29T03:48:40.285Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Malayalam"
-      ],
-      "releaseDate": "2026-05-29",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-29T03:48:40.285Z",
-      "verified": true
-    }
-  },
-  {
     "name": "108 Base Hospital Uri",
     "language": "hindi",
     "type": "movie",
@@ -1497,6 +1503,36 @@
       "updatedAt": "2026-08-17T01:43:50.495Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/s2zF4NDPU0xTPKb5wrOhsFdYARR.jpg",
       "instagramPostedAt": "2026-08-17T01:44:13Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Kakkippada-2",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-05-29",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a190c98135bb8f4954fffcc",
+      "platform": "ZEE5",
+      "title": "Kakkippada-2",
+      "createdAt": "2026-05-29T03:48:40.285Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Malayalam"
+      ],
+      "releaseDate": "2026-05-29",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-05-29T03:48:40.285Z",
       "verified": true
     }
   },

@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-27T14:22:29.311445+04:00",
+    "checkedAt": "2026-11-27T18:38:35.098982+04:00",
     "records": [
       {
         "_id": "6b079710699a8884e16076f4",
@@ -92,6 +92,26 @@
         "source_verified": true,
         "type": "Movie",
         "updatedAt": "2026-11-27T02:18:41.069Z",
+        "tmdbDetails": {
+          "tmdbId": 1824693,
+          "director": null,
+          "cast": [
+            {
+              "name": "Bobby Lee",
+              "character": "Himself"
+            }
+          ],
+          "overview": "Comedian Bobby Lee is releasing his first-ever hour-long stand-up comedy special, Bobby Lee: Finally, after more than 30 years in comedy.",
+          "runtime": null,
+          "genres": [],
+          "originalLanguage": "en",
+          "spokenLanguages": [],
+          "releaseDate": "2026-11-27",
+          "voteAverage": null,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-27T10:25:11.305Z"
+        },
+        "tmdbId": 1824693,
         "verified": true
       },
       {
@@ -371,6 +391,61 @@
         "tmdbRating": 78,
         "tmdbVotes": 70,
         "instagramPostedAt": "2026-11-27T02:20:23Z",
+        "tmdbDetails": {
+          "tmdbId": 41656,
+          "director": "John Eyres",
+          "cast": [
+            {
+              "name": "Jay Harrington",
+              "character": "Roy Turner"
+            },
+            {
+              "name": "David Beecroft",
+              "character": "Captain Jack Shaw"
+            },
+            {
+              "name": "Carolyn Lowery",
+              "character": "Dr. Lisa Finch"
+            },
+            {
+              "name": "Ricco Ross",
+              "character": "Brickman"
+            },
+            {
+              "name": "Ravil Isyanov",
+              "character": "Casper"
+            },
+            {
+              "name": "Jeff Nuttall",
+              "character": "Henry Campbell"
+            },
+            {
+              "name": "George Stanchev",
+              "character": "Salvanto"
+            },
+            {
+              "name": "Martin McDougall",
+              "character": "Taylor"
+            }
+          ],
+          "overview": "During the Cuban missile crisis in 1962, a Russian submarine strays into American waters. On board is a nuclear cargo destined for Castro. The Americans attack and destroy the sub. 38 years later US submarine Roosevelt is in the same waters. An unknown object attacks and disables the sub with devastating force and drags the vessel to the bottom of the ocean. What lies on the ocean bed beggars belief: dozens of wrecks, among them the sub destroyed 38 years ago. Whatever was on board has fed a creature of unbelievable size and strength! The only way out is the emergency submersible and a passing cruise ship. Above or below the water, there is no escape from the monster mutant octopus with a nuclear diet...",
+          "runtime": 100,
+          "genres": [
+            "Action",
+            "Horror",
+            "Thriller",
+            "Science Fiction"
+          ],
+          "originalLanguage": "en",
+          "spokenLanguages": [
+            "English"
+          ],
+          "releaseDate": "2000-09-21",
+          "voteAverage": 4.424,
+          "trailerKey": "bX6Ss0mbxng",
+          "fetchedAt": "2026-11-27T13:10:24.524Z"
+        },
+        "tmdbId": 41656,
         "verified": true
       },
       {
@@ -390,6 +465,60 @@
         "updatedAt": "2026-11-27T02:19:29.245Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/uOo2T5pZmW4APO6o95yLycvTonU.jpg",
         "instagramPostedAt": "2026-11-27T02:20:32Z",
+        "tmdbDetails": {
+          "tmdbId": 1496785,
+          "director": "Trivikram Srinivas",
+          "cast": [
+            {
+              "name": "Venkatesh",
+              "character": "Thotti Chittibabu"
+            },
+            {
+              "name": "Srinidhi Shetty",
+              "character": "Swarna"
+            },
+            {
+              "name": "Nara Rohith",
+              "character": "Damodar \"Daamu\" Naidu"
+            },
+            {
+              "name": "Nivetha Pethuraj",
+              "character": "Malathi \"Maala\""
+            },
+            {
+              "name": "Yuvina Parthavi",
+              "character": "Sampoorna"
+            },
+            {
+              "name": "Raja Prajwal",
+              "character": "Sarwa"
+            },
+            {
+              "name": "Rao Ramesh",
+              "character": "DSP Bruhaspati IPS"
+            },
+            {
+              "name": "Satya",
+              "character": "Chittaranjan"
+            }
+          ],
+          "overview": "A tight-knit family faces an unexpected crisis that threatens their bond, forcing them to re-evaluate their values and fight to stay united.",
+          "runtime": 149,
+          "genres": [
+            "Family",
+            "Comedy",
+            "Action"
+          ],
+          "originalLanguage": "te",
+          "spokenLanguages": [
+            "Telugu"
+          ],
+          "releaseDate": "2026-10-30",
+          "voteAverage": 5.5,
+          "trailerKey": "Eih78UP3dag",
+          "fetchedAt": "2026-11-27T11:50:19.663Z"
+        },
+        "tmdbId": 1496785,
         "verified": true
       },
       {
@@ -32400,7 +32529,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-27T14:22:29.311445+04:00",
+    "checkedAt": "2026-11-27T18:38:35.098982+04:00",
     "records": [
       {
         "name": "Aadarsha Kutumbam House No: 47 – AK47",
