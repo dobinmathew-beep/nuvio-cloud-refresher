@@ -1,0 +1,56 @@
+name: ImageKit forensic full storage audit (read-only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_branch:
+        description: Branch to audit
+        required: true
+        default: imagekit-retention-cleanup
+        type: string
+  push:
+    branches: [imagekit-retention-cleanup]
+    paths:
+      - "poster-date-service/scripts/imagekit-storage-forensic-audit.mjs"
+      - ".github/workflows/imagekit-storage-forensic-audit.yml"
+  pull_request:
+    branches: [poster-date-service]
+    paths:
+      - "poster-date-service/scripts/imagekit-storage-forensic-audit.mjs"
+      - ".github/workflows/imagekit-storage-forensic-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  forensic-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout selected branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.source_branch || github.event.pull_request.head.ref || github.ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        working-directory: poster-date-service
+        run: npm install --no-audit --no-fund
+      - name: Run full read-only forensic audit
+        if: github.event_name != 'pull_request'
+        working-directory: poster-date-service
+        env:
+          IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
+          IMAGEKIT_PRIVATE_KEY: ${{ secrets.IMAGEKIT_PRIVATE_KEY }}
+          IMAGEKIT_FORENSIC_REPORT_PATH: ../reports/imagekit-storage-forensic-audit-live.json
+          IMAGEKIT_AUDIT_VERSION_CONCURRENCY: "2"
+        run: node scripts/imagekit-storage-forensic-audit.mjs
+      - name: Upload forensic report
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: imagekit-storage-forensic-audit
+          path: reports/imagekit-storage-forensic-audit-live.json
+          if-no-files-found: error
+          retention-days: 14

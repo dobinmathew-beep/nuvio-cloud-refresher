@@ -1,0 +1,33 @@
+name: ImageKit storage audit regression tests
+
+on:
+  pull_request:
+    branches:
+      - poster-date-service
+    paths:
+      - "poster-date-service/**"
+      - ".github/workflows/imagekit-storage-audit-tests.yml"
+  push:
+    branches:
+      - imagekit-storage-audit-dedup
+    paths:
+      - "poster-date-service/**"
+      - ".github/workflows/imagekit-storage-audit-tests.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        working-directory: poster-date-service
+        run: npm install --no-audit --no-fund
+      - name: Run regression suite
+        working-directory: poster-date-service
+        run: npm test

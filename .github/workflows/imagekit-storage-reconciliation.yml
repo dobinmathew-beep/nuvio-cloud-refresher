@@ -1,0 +1,74 @@
+name: ImageKit read-only storage reconciliation
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - imagekit-storage-audit-dedup
+    paths:
+      - "poster-date-service/scripts/imagekit-storage-reconciliation.mjs"
+      - "poster-date-service/lib/imagekit-storage-reconciliation-utils.mjs"
+      - "poster-date-service/tests/imagekit-storage-reconciliation.test.mjs"
+      - "poster-date-service/scripts/imagekit-targeted-state-deep-audit.mjs"
+      - "poster-date-service/lib/imagekit-targeted-state-audit-utils.mjs"
+      - "poster-date-service/tests/imagekit-targeted-state-deep-audit.test.mjs"
+      - ".github/workflows/imagekit-storage-reconciliation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        working-directory: poster-date-service
+        run: npm install --no-audit --no-fund
+      - name: Run regression suite
+        working-directory: poster-date-service
+        run: npm test
+      - name: Run read-only ImageKit reconciliation
+        if: github.event_name == 'workflow_dispatch'
+        working-directory: poster-date-service
+        env:
+          IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
+          IMAGEKIT_PRIVATE_KEY: ${{ secrets.IMAGEKIT_PRIVATE_KEY }}
+          IMAGEKIT_RECONCILIATION_REPORT_PATH: ../reports/imagekit-storage-reconciliation-live.json
+          IMAGEKIT_RECONCILIATION_CONCURRENCY: "2"
+          IMAGEKIT_RECONCILIATION_DETAIL_LIMIT: "100"
+        run: node scripts/imagekit-storage-reconciliation.mjs
+      - name: Run targeted read-only state investigation and proposal
+        if: github.event_name == 'workflow_dispatch'
+        working-directory: poster-date-service
+        env:
+          IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
+          IMAGEKIT_PRIVATE_KEY: ${{ secrets.IMAGEKIT_PRIVATE_KEY }}
+          IMAGEKIT_RECONCILIATION_INPUT: ../reports/imagekit-storage-reconciliation-live.json
+          IMAGEKIT_TARGETED_AUDIT_REPORT_PATH: ../reports/imagekit-targeted-state-deep-audit.json
+          IMAGEKIT_TARGETED_PROPOSAL_PATH: ../reports/imagekit-targeted-storage-recovery-proposal.json
+        run: node scripts/imagekit-targeted-state-deep-audit.mjs
+      - name: Upload reconciliation report
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: imagekit-storage-reconciliation
+          path: reports/imagekit-storage-reconciliation-live.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload targeted investigation and separate recovery proposal
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: imagekit-targeted-state-deep-audit
+          path: |
+            reports/imagekit-targeted-state-deep-audit.json
+            reports/imagekit-targeted-storage-recovery-proposal.json
+          if-no-files-found: error
+          retention-days: 14
