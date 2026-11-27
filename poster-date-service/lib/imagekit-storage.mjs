@@ -1,5 +1,7 @@
 import { Buffer } from 'node:buffer';
+import { createHash } from 'node:crypto';
 import { isValidPosterPointer } from './poster-versioning.mjs';
+import { posterIdentityFromName, classifyDuplicatePosterCandidates, classifyUnpointedVersionCandidates } from './imagekit-storage-audit.mjs';
 
 const API = 'https://api.imagekit.io/v1';
 const UPLOAD_API = 'https://upload.imagekit.io/api/v1/files/upload';
@@ -213,8 +215,9 @@ async function buildStorageSnapshotFromInventory() {
         accountBytes += Math.max(0, Number(file.size) || 0);
         if (path === '/posters' && isPosterFolderFile(file)) {
           const id = imdbIdFromName(file.name);
-          if (id && file.fileId) {
-            filesByPath['/posters/' + id + '.jpg'] = { fileId: file.fileId, size: Math.max(0, Number(file.size) || 0) };
+          if (id && file.fileId && String(file.name).toLowerCase() === id + '.jpg' &&
+              file.filePath === '/posters/' + id + '.jpg') {
+            filesByPath[file.filePath] = { fileId: file.fileId, size: Math.max(0, Number(file.size) || 0) };
             posterFiles++;
           }
         } else if (file.filePath && (file.filePath.startsWith('/poster-versions/') || file.filePath.startsWith('/catalog-state/poster-pointers/')) && file.fileId) {
@@ -370,6 +373,30 @@ export function isRetryableImageKitUploadStatus(status) {
 export async function uploadPosterToImageKit(imdbId, poster) {
   const config = imageKitConfig();
   if (!config) return { stored: false, reason: 'imagekit-not-configured' };
+
+  // Reuse an existing canonical poster if its original bytes match exactly.
+  // If readback fails, fail closed rather than blindly creating another version.
+  const existingEntries = await listFolderEntries('/posters', 'file');
+  const existing = existingEntries.find(file =>
+    file.filePath === '/posters/' + imdbId + '.jpg' && file.fileId
+  );
+  if (existing) {
+    const existingUrl = config.endpoint + existing.filePath + '?tr=orig-true&dedup=' + Date.now();
+    const existingResponse = await fetch(existingUrl, {
+      cache: 'no-store', signal: AbortSignal.timeout(10000)
+    });
+    if (!existingResponse.ok) {
+      throw new Error('Existing ImageKit poster could not be verified; refusing overwrite (' + existingResponse.status + ')');
+    }
+    const existingBytes = Buffer.from(await existingResponse.arrayBuffer());
+    const existingHash = createHash('sha256').update(existingBytes).digest('hex');
+    const incomingHash = createHash('sha256').update(poster.bytes).digest('hex');
+    if (existingHash === incomingHash) {
+      recordImageKitUpload(existing.filePath, existing.fileId, existingBytes.length);
+      return { stored: true, reused: true, url: existingUrl.split('?')[0], fileId: existing.fileId };
+    }
+  }
+
   if (!canStoreImageKitPoster(imdbId, poster.bytes.length)) {
     return { stored: false, reason: 'storage-safety-ceiling-reached' };
   }
@@ -491,8 +518,7 @@ function isPosterFolderFile(file) {
 }
 
 function imdbIdFromName(name) {
-  const match = String(name || '').match(/^(tt\d{7,10})(?:_[^.]+)?\.jpg$/i);
-  return match?.[1] || null;
+  return posterIdentityFromName(name);
 }
 
 export function shouldDeleteUnpointedVersion(file, {
@@ -506,211 +532,197 @@ export function shouldDeleteUnpointedVersion(file, {
   return Number.isFinite(createdAt) && now - createdAt >= retentionMs;
 }
 
-export async function runImageKitMaintenance({ force = false } = {}) {
-  if (maintenancePromise) return maintenancePromise;
-  if (!force && lastMaintenanceReport && Date.now() - lastMaintenanceAt < MAINTENANCE_COOLDOWN_MS) {
-    return { ...lastMaintenanceReport, skipped: 'maintenance-cooldown' };
+
+export async function buildImageKitDeletionReport({
+  now = Date.now(),
+  retentionMs = VERSIONED_POSTER_RETENTION_MS
+} = {}) {
+  const files = await listImageKitFiles();
+  const currentFileBytes = files.reduce((sum, file) => sum + Math.max(0, Number(file.size) || 0), 0);
+  let accountBytes = currentFileBytes;
+  let accountBytesSource = 'current-file-inventory-lower-bound';
+  let accountUsageUnavailableReason = null;
+  const config = imageKitConfig();
+  // ImageKit's account-usage API is the authoritative media-library storage
+  // meter. File inventory is retained as a transparent fallback only.
+  try {
+    const startDate = new Date(now - 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    const endDate = new Date(now + 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    const usageUrl = new URL(API + '/accounts/usage');
+    usageUrl.searchParams.set('startDate', startDate);
+    usageUrl.searchParams.set('endDate', endDate);
+    const usageResponse = await apiRequest(usageUrl);
+    const usagePayload = await usageResponse.json();
+    const usage = Array.isArray(usagePayload) ? usagePayload[0] : (usagePayload?.data?.[0] || usagePayload);
+    const reportedBytes = Number(usage?.mediaLibraryStorageBytes);
+    if (Number.isFinite(reportedBytes) && reportedBytes >= 0) {
+      accountBytes = reportedBytes;
+      accountBytesSource = 'imagekit-account-usage-api';
+    } else {
+      accountUsageUnavailableReason = 'mediaLibraryStorageBytes missing from usage response';
+    }
+  } catch (error) {
+    accountUsageUnavailableReason = error?.message || 'account usage API unavailable';
+  }
+  const versionedById = new Map();
+  const pointerFilesById = new Map();
+  for (const file of files) {
+    const versionMatch = String(file.filePath || '').match(/^\/poster-versions\/(tt\d{7,10})\/[a-f0-9]{64}\.jpg$/i);
+    if (versionMatch) {
+      const id = versionMatch[1].toLowerCase();
+      if (!versionedById.has(id)) versionedById.set(id, []);
+      versionedById.get(id).push(file);
+    }
+    const pointerMatch = String(file.filePath || '').match(/^\/catalog-state\/poster-pointers\/(tt\d{7,10})\.json$/i);
+    if (pointerMatch) pointerFilesById.set(pointerMatch[1].toLowerCase(), file);
   }
 
-  maintenancePromise = (async () => {
-    const files = await listImageKitFiles();
-    let accountBytes = files.reduce((sum, file) => sum + Math.max(0, Number(file.size) || 0), 0);
-    const posterFiles = files.filter(isPosterFolderFile);
-    const byId = new Map();
-    for (const file of posterFiles) {
-      const id = imdbIdFromName(file.name);
-      if (!id) continue;
-      if (!byId.has(id)) byId.set(id, []);
-      byId.get(id).push(file);
+  const activePaths = new Set();
+  const unknownPointerIds = new Set();
+  for (const id of versionedById.keys()) {
+    const pointerFile = pointerFilesById.get(id);
+    if (!pointerFile || !config) {
+      unknownPointerIds.add(id);
+      continue;
     }
-
-    const deletedFileIds = new Set();
-    let duplicatesDeleted = 0;
-    let expiredDeleted = 0;
-    let unknownRetained = 0;
-    let versionsDeleted = 0;
-    let versionChecksFailed = 0;
-    const active = [];
-    const today = new Date().toISOString().slice(0, 10);
-
-    // Versioned assets are never pruned unless a valid pointer has been read
-    // back for that IMDb ID. A missing/unreadable pointer makes the whole ID
-    // ineligible for cleanup, preventing accidental deletion of a live target.
-    const versionedById = new Map();
-    const pointerFilesById = new Map();
-    for (const file of files) {
-      const versionMatch = String(file.filePath || '').match(/^\/poster-versions\/(tt\d{7,10})\/[a-f0-9]{64}\.jpg$/);
-      if (versionMatch) {
-        if (!versionedById.has(versionMatch[1])) versionedById.set(versionMatch[1], []);
-        versionedById.get(versionMatch[1]).push(file);
-      }
-      const pointerMatch = String(file.filePath || '').match(/^\/catalog-state\/poster-pointers\/(tt\d{7,10})\.json$/);
-      if (pointerMatch) pointerFilesById.set(pointerMatch[1], file);
-    }
-    const activeVersionPaths = new Set();
-    const unknownPointerIds = new Set();
-    const config = imageKitConfig();
-    for (const id of versionedById.keys()) {
-      const pointerFile = pointerFilesById.get(id);
-      if (!pointerFile || !config) {
+    try {
+      const pointerUrl = config.endpoint + pointerFile.filePath + '?audit=' + now;
+      const response = await fetch(pointerUrl, { cache: 'no-store', signal: AbortSignal.timeout(5000) });
+      if (!response.ok) {
         unknownPointerIds.add(id);
         continue;
       }
+      const pointer = await response.json();
+      const expectedUrl = new URL(config.endpoint + pointer?.assetPath);
+      const actualUrl = new URL(pointer?.assetUrl || 'https://invalid.invalid');
+      const urlMatches = actualUrl.protocol === 'https:' &&
+        actualUrl.origin === expectedUrl.origin && actualUrl.pathname === expectedUrl.pathname;
+      const targetExists = versionedById.get(id).some(file => file.filePath === pointer.assetPath);
+      if (!isValidPosterPointer(pointer, id) || !urlMatches || !targetExists) {
+        unknownPointerIds.add(id);
+        continue;
+      }
+      activePaths.add(pointer.assetPath);
+    } catch {
+      unknownPointerIds.add(id);
+    }
+  }
+
+  // Duplicate candidates require byte-for-byte CDN readback, never name/size similarity.
+  const posterFiles = files.filter(isPosterFolderFile);
+  const byId = new Map();
+  for (const file of posterFiles) {
+    const id = posterIdentityFromName(file.name);
+    if (!id) continue;
+    if (!byId.has(id)) byId.set(id, []);
+    byId.get(id).push(file);
+  }
+  const checksums = {};
+  for (const copies of byId.values()) {
+    if (copies.length < 2 || !config) continue;
+    for (const file of copies) {
+      if (!file.fileId || checksums[file.fileId]) continue;
       try {
-        const pointerUrl = config.endpoint + pointerFile.filePath + '?maintenance=' + Date.now();
-        const response = await fetch(pointerUrl, { cache: 'no-store', signal: AbortSignal.timeout(5000) });
-        if (!response.ok) {
-          unknownPointerIds.add(id);
-          continue;
-        }
-        const pointer = await response.json();
-        const expectedUrl = new URL(config.endpoint + pointer?.assetPath);
-        const actualUrl = new URL(pointer?.assetUrl || 'https://invalid.invalid');
-        const urlMatches = actualUrl.protocol === 'https:' &&
-          actualUrl.origin === expectedUrl.origin && actualUrl.pathname === expectedUrl.pathname;
-        if (!isValidPosterPointer(pointer, id) || !urlMatches) {
-          unknownPointerIds.add(id);
-          continue;
-        }
-        const targetExists = versionedById.get(id).some(file => file.filePath === pointer.assetPath);
-        if (!targetExists) {
-          unknownPointerIds.add(id);
-          continue;
-        }
-        activeVersionPaths.add(pointer.assetPath);
+        const response = await fetch(config.endpoint + file.filePath + '?tr=orig-true&audit=' + now, {
+          cache: 'no-store', signal: AbortSignal.timeout(10000)
+        });
+        if (!response.ok) continue;
+        const bytes = Buffer.from(await response.arrayBuffer());
+        if (bytes.length) checksums[file.fileId] = createHash('sha256').update(bytes).digest('hex');
       } catch {
-        unknownPointerIds.add(id);
+        // Unknown checksum means retain; never guess that a file is duplicate.
       }
     }
+  }
+  const duplicateResult = classifyDuplicatePosterCandidates(posterFiles, { checksums });
+  const versionedResult = classifyUnpointedVersionCandidates(files, {
+    activePaths, unknownPointerIds, now, retentionMs
+  });
+  const candidates = [...duplicateResult.candidates, ...versionedResult.candidates];
 
-    let versionedFilesDeleted = 0;
-    let pointedVersionAssetsRetained = activeVersionPaths.size;
-    for (const [id, versions] of versionedById) {
-      if (unknownPointerIds.has(id)) continue;
-      for (const file of versions) {
-        if (!shouldDeleteUnpointedVersion(file, { activePaths: activeVersionPaths, unknownPointerIds })) continue;
-        if (!file.fileId) continue;
-        await deleteImageKitFile(file.fileId);
-        deletedFileIds.add(file.fileId);
-        accountBytes = Math.max(0, accountBytes - Math.max(0, Number(file.size) || 0));
-        versionedFilesDeleted++;
-      }
-    }
-
-    // Remove only duplicate copies inside our dedicated /posters folder.
-    for (const [id, copies] of byId) {
-      if (copies.length < 2) continue;
-      const canonical = copies.filter(file => file.name.toLowerCase() === (id + '.jpg').toLowerCase());
-      if (!canonical.length) {
-        // Non-canonical variants are not used by the public URL scheme.
-        // Remove them; an active title will be re-created at the stable ID path.
-        for (const file of copies) {
-          if (!file.fileId) continue;
-          await deleteImageKitFile(file.fileId);
-          deletedFileIds.add(file.fileId);
-          accountBytes = Math.max(0, accountBytes - (Number(file.size) || 0));
-          duplicatesDeleted++;
-        }
-        byId.set(id, []);
-        continue;
-      }
-      const keep = canonical.sort((a, b) => Date.parse(b.updatedAt || b.createdAt || 0) - Date.parse(a.updatedAt || a.createdAt || 0))[0];
-      for (const file of copies) {
-        if (file.fileId === keep.fileId) continue;
-        await deleteImageKitFile(file.fileId);
-        deletedFileIds.add(file.fileId);
-        accountBytes = Math.max(0, accountBytes - (Number(file.size) || 0));
-        duplicatesDeleted++;
-      }
-      byId.set(id, [keep]);
-    }
-
-    for (const [id, copies] of byId) {
-      const current = copies.find(file => file.name.toLowerCase() === (id + '.jpg').toLowerCase());
-      if (!current && copies.length) {
-        for (const file of copies) {
-          if (!file.fileId) continue;
-          await deleteImageKitFile(file.fileId);
-          accountBytes = Math.max(0, accountBytes - (Number(file.size) || 0));
-          duplicatesDeleted++;
-        }
-        byId.set(id, []);
-        continue;
-      }
-      if (!current || !current.fileId) continue;
-      try {
-        try {
-          const versionResult = await pruneOldFileVersions(current);
-          versionsDeleted += versionResult.deleted;
-          accountBytes = Math.max(0, accountBytes + versionResult.extraBytes);
-        } catch (versionError) {
-          versionChecksFailed++;
-          console.warn('ImageKit old versions retained; version audit failed:', id, versionError.message);
-        }
-        const status = await getReleaseStatus(id, today);
-        if (status.status === 'expired' || status.status === 'ineligible') {
-          // The folder now stores the complete Nuvio poster cache, not only
-          // upcoming-release assets. Keep the artwork; the request pipeline
-          // refreshes badge state before it is served.
-          unknownRetained++;
-          console.log('ImageKit general poster cache retained:', id, status.date || status.reason);
-        } else if (status.status === 'upcoming') {
-          active.push({ id, date: status.date, file: current });
+  // Previous ImageKit file versions are report-only; current versions are protected.
+  // When an entire byte-identical duplicate file is nominated, include its old
+  // versions in that same candidate's reclaimable-byte estimate.
+  let versionChecksFailed = 0;
+  const duplicateCandidateByFileId = new Map(
+    duplicateResult.candidates.map(candidate => [candidate.fileId, candidate])
+  );
+  for (const file of posterFiles) {
+    if (!file.fileId || !file.versionInfo?.id) continue;
+    const id = posterIdentityFromName(file.name);
+    const isCanonical = Boolean(id && file.name.toLowerCase() === id + '.jpg');
+    const duplicateCandidate = duplicateCandidateByFileId.get(file.fileId);
+    if (!isCanonical && !duplicateCandidate) continue;
+    try {
+      const response = await apiRequest(API + '/files/' + encodeURIComponent(file.fileId) + '/versions');
+      const versions = await response.json();
+      if (!Array.isArray(versions)) throw new Error('Unexpected ImageKit version-list response');
+      for (const version of versions) {
+        const versionId = version.versionInfo?.id;
+        if (!versionId || versionId === file.versionInfo.id) continue;
+        const createdAt = Date.parse(version.createdAt || version.updatedAt || '');
+        if (!Number.isFinite(createdAt) || now - createdAt < retentionMs) continue;
+        const versionBytes = Math.max(0, Number(version.size) || 0);
+        if (duplicateCandidate) {
+          duplicateCandidate.bytes += versionBytes;
+          duplicateCandidate.historicalVersions = [
+            ...(duplicateCandidate.historicalVersions || []),
+            { versionId, bytes: versionBytes, createdAt: version.createdAt || version.updatedAt || null }
+          ];
         } else {
-          unknownRetained++;
-          console.warn('ImageKit poster retained; release status unknown:', id, status.reason);
+          candidates.push({
+            kind: 'historical-file-version',
+            id,
+            parentFileId: file.fileId,
+            versionId,
+            bytes: versionBytes,
+            createdAt: version.createdAt || version.updatedAt || null,
+            reason: 'non-current-ImageKit-file-version-older-than-retention'
+          });
         }
-      } catch (error) {
-        unknownRetained++;
-        console.warn('ImageKit poster retained; TMDB check failed:', id, error.message);
       }
+    } catch {
+      versionChecksFailed++;
     }
+  }
 
-    // Keep at least 25% of a 3 GB allowance free. If unrelated account
-    // assets already consume the reserve, stop adding posters; never delete
-    // anything outside our own /posters directory.
-    const removedForBudget = [];
-    if (accountBytes > IMAGEKIT_STORAGE_LIMIT_BYTES) {
-      const farthestFirst = active.sort((a, b) => b.date.localeCompare(a.date));
-      for (const item of farthestFirst) {
-        if (accountBytes <= IMAGEKIT_STORAGE_LIMIT_BYTES) break;
-        await deleteImageKitFile(item.file.fileId);
-        deletedFileIds.add(item.file.fileId);
-        accountBytes = Math.max(0, accountBytes - (Number(item.file.size) || 0));
-        removedForBudget.push({ id: item.id, date: item.date });
-        console.warn('ImageKit poster removed to preserve storage reserve:', item.id, item.date);
-      }
-    }
+  const candidateBytes = candidates.reduce((sum, item) => sum + Math.max(0, Number(item.bytes) || 0), 0);
+  const report = {
+    generatedAt: new Date(now).toISOString(),
+    mode: 'read-only-dry-run',
+    deletionEnabled: false,
+    accountFileCount: files.length,
+    accountBytes,
+    accountGiB: Number((accountBytes / (1024 ** 3)).toFixed(3)),
+    accountBytesSource,
+    currentFileBytes,
+    accountUsageUnavailableReason,
+    posterFileCount: posterFiles.length,
+    candidateCount: candidates.length,
+    candidateBytes,
+    candidateGiB: Number((candidateBytes / (1024 ** 3)).toFixed(4)),
+    candidates,
+    retained: [
+      ...duplicateResult.retained,
+      ...versionedResult.retained,
+      ...[...unknownPointerIds].map(id => ({ id, reason: 'pointer-missing-or-unverifiable-all-versions-protected' }))
+    ],
+    versionChecksFailed,
+    protectedActiveVersionCount: activePaths.size,
+    protectedUnknownPointerIdCount: unknownPointerIds.size,
+    note: 'No files or versions were deleted. Duplicate file candidates require identical SHA-256 readback; approve exact candidate IDs before any deletion.'
+  };
+  console.info('[imagekit-storage-deletion-report]', JSON.stringify({
+    accountFileCount: report.accountFileCount,
+    accountBytes: report.accountBytes,
+    candidateCount: report.candidateCount,
+    candidateBytes: report.candidateBytes,
+    protectedActiveVersionCount: report.protectedActiveVersionCount,
+    protectedUnknownPointerIdCount: report.protectedUnknownPointerIdCount
+  }));
+  return report;
+}
 
-    const filesByPath = {};
-    for (const file of files) {
-      if (file.filePath && file.fileId && !deletedFileIds.has(file.fileId)) filesByPath[file.filePath] = { fileId: file.fileId, size: Number(file.size) || 0 };
-    }
-    storageSnapshot = { known: true, bytes: accountBytes, checkedAt: Date.now(), filesByPath };
-    await persistStorageSnapshot().catch(error => console.warn('[imagekit-storage-snapshot-persist-failed]', error?.message || 'unknown error'));
-    const report = {
-      checkedAt: new Date().toISOString(),
-      accountFiles: files.length,
-      accountBytes,
-      accountGiB: Number((accountBytes / (1024 ** 3)).toFixed(3)),
-      safetyCeilingBytes: IMAGEKIT_STORAGE_LIMIT_BYTES,
-      posterFilesScanned: posterFiles.length,
-      duplicatesDeleted,
-      expiredDeleted,
-      unknownRetained,
-      versionsDeleted,
-      versionChecksFailed,
-      versionedFilesDeleted,
-      pointedVersionAssetsRetained,
-      versionedIdsRetainedForPointerSafety: unknownPointerIds.size,
-      removedForBudget,
-      uploadsAllowed: accountBytes < IMAGEKIT_STORAGE_LIMIT_BYTES
-    };
-    lastMaintenanceAt = Date.now();
-    lastMaintenanceReport = report;
-    console.log('ImageKit storage maintenance:', JSON.stringify(report));
-    return report;
-  })().finally(() => { maintenancePromise = null; });
-
-  return maintenancePromise;
+export async function runImageKitMaintenance() {
+  return buildImageKitDeletionReport();
 }
