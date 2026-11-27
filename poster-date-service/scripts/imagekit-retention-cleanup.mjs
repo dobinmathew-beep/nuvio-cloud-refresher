@@ -9,14 +9,12 @@ import { posterIdentityFromName } from '../lib/imagekit-storage-audit.mjs';
 import {
   planCurrentPlusOneHistorical,
   planTitlePosterAssetRetention,
-  planCanonicalAndOneBackup
+  planCanonicalAndOneBackup,
+  isCatalogStateJsonPath
 } from '../lib/imagekit-retention-cleanup-utils.mjs';
 
 const API = 'https://api.imagekit.io/v1';
 const CONFIRMATION = 'KEEP_CURRENT_PLUS_ONE_HISTORIC';
-function isCatalogStateJsonPath(path) {
-  return /^\/catalog-state\/.+\.json$/i.test(String(path || ''));
-}
 const CONCURRENCY = 4;
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const bytes = value => Math.max(0, Number(value) || 0);
