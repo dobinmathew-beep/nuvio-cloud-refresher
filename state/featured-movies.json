@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "checkedAt": "2026-11-27T14:46:10.078241+00:00",
+  "checkedAt": "2026-11-27T18:51:45.210147+00:00",
   "selection": "first eligible IMDb-linked movie in matching IndianRegional catalog order; no external release-date filtering",
   "languages": {
     "hindi": {
@@ -13,7 +13,7 @@
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-11-27T14:46:10.078241+00:00"
+      "verifiedAt": "2026-11-27T18:51:45.210147+00:00"
     },
     "tamil": {
       "id": "tt18933846",
@@ -25,7 +25,7 @@
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-11-27T14:46:10.078241+00:00"
+      "verifiedAt": "2026-11-27T18:51:45.210147+00:00"
     },
     "malayalam": {
       "id": "tt41944351",
@@ -37,19 +37,19 @@
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-11-27T14:46:10.078241+00:00"
+      "verifiedAt": "2026-11-27T18:51:45.210147+00:00"
     },
     "telugu": {
-      "id": "tt36915004",
-      "name": "#Cult",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36915004.jpg",
+      "id": "tt33044571",
+      "name": "Aakasamlo Oka Tara",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33044571.jpg",
       "catalog": "te",
       "type": "movie",
       "catalog_source": "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/movie/te.json",
       "selection": "catalog-order",
       "catalogRank": 0,
       "eligibility": "IMDb-linked movie",
-      "verifiedAt": "2026-11-27T14:46:10.078241+00:00"
+      "verifiedAt": "2026-11-27T18:51:45.210147+00:00"
     }
   },
   "warnings": []
