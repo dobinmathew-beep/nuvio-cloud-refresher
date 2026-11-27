@@ -251,6 +251,8 @@ async function main() {
       accountMediaLibraryStorageBytes: usage.metrics?.mediaLibraryStorageBytes ?? null,
       accountMinusListedBytes: usage.metrics?.mediaLibraryStorageBytes == null ? null : Number(usage.metrics.mediaLibraryStorageBytes) - reconciledBytes,
       fileCount: files.length, versionFilesChecked: versionRows.length,
+      allFiles: files.map(f => ({ fileId: f.fileId, path: f.filePath || null, name: f.name || null, sizeBytes: bytes(f.size), fileType: f.fileType || null, mime: f.mime || null, createdAt: f.createdAt || null, updatedAt: f.updatedAt || null, category: categoryFor(f.filePath) })),
+      allFileVersionInventory: versionRows,
       versionFailures, versionIntegrity, categoryCurrentAndHistory: categoryStats, historyByCategory,
       folderCurrent: folderStats, historyByFolder,
       largestCurrentFiles: [...files].sort((a,b)=>bytes(b.size)-bytes(a.size)).slice(0,200).map(f=>({fileId:f.fileId,path:f.filePath,name:f.name,bytes:bytes(f.size),category:categoryFor(f.filePath),createdAt:f.createdAt,updatedAt:f.updatedAt})),
