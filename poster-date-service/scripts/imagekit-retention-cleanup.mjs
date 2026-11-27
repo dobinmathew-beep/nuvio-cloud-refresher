@@ -97,7 +97,12 @@ async function readVersion(file, versionId, expectedKind) {
   }
   const url = typeof detail.url === 'string' && detail.url.startsWith('https://') ? detail.url : null;
   if (!url) throw new Error('Version detail did not provide a verifiable HTTPS URL');
-  const response = await request(url, {}, 20000);
+  // Historical version URLs can also carry delivery transformations.
+  // Force the original stored rendition before comparing Admin API byte size.
+  const originalVersionUrl = new URL(url);
+  originalVersionUrl.searchParams.set('tr', 'orig-true');
+  originalVersionUrl.searchParams.set('cleanup-readback', String(Date.now()));
+  const response = await request(originalVersionUrl.toString(), {}, 20000);
   const contentType = String(response.headers.get('content-type') || '').toLowerCase();
   const body = Buffer.from(await response.arrayBuffer());
   const expectedSize = Number(detail.size);
