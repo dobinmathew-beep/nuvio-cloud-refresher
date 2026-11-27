@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-27T04:16:21.055456+04:00",
+  "checked_at": "2026-11-27T04:17:53.304356+04:00",
   "results": [
     {
       "component": "media",
@@ -9,12 +9,12 @@
     {
       "component": "addon",
       "due": "2026-11-27T04:00:00+04:00",
-      "state": "catch-up-dispatched"
+      "state": "refresh-in-progress"
     },
     {
       "component": "epg",
       "due": "2026-11-27T04:00:00+04:00",
-      "state": "catch-up-dispatched"
+      "state": "fresh"
     }
   ],
   "errors": [],
