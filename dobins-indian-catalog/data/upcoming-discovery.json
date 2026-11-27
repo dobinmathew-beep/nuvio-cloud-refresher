@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-27T12:45:57.606564+04:00",
+  "generatedAt": "2026-11-27T14:22:29.311445+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 34,
@@ -71,8 +71,8 @@
         "Prime Video"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
@@ -148,9 +148,9 @@
       "type": "series",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Hotstar",
         "JioHotstar",
-        "JioHotStar"
+        "JioHotStar",
+        "Hotstar"
       ],
       "sources": [
         "https://www.dailyott.in/",
@@ -340,12 +340,12 @@
       "type": "movie",
       "releaseDate": "2026-11-27",
       "platforms": [
-        "Sun NXT",
-        "ZEE5"
+        "ZEE5",
+        "Sun NXT"
       ],
       "sources": [
-        "https://www.keralatv.in/channel/ott/",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.keralatv.in/channel/ott/"
       ],
       "confirmed": true,
       "releaseDateBasis": null,
