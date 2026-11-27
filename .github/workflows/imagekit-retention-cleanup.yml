@@ -36,7 +36,6 @@ jobs:
           IMAGEKIT_PRIVATE_KEY: ${{ secrets.IMAGEKIT_PRIVATE_KEY }}
           IMAGEKIT_CLEANUP_CONFIRMATION: KEEP_CURRENT_PLUS_ONE_HISTORIC
           IMAGEKIT_CLEANUP_REPORT_PATH: ../reports/imagekit-retention-cleanup-report.json
-          GITHUB_REF_NAME: imagekit-retention-cleanup
         run: node scripts/imagekit-retention-cleanup.mjs
       - name: Upload cleanup report
         if: always()
