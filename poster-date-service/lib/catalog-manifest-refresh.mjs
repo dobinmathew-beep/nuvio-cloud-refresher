@@ -66,7 +66,17 @@ async function loadLedgerShard(config, shard, cache) {
 async function persistLedgerShards(config, cache, shards) {
   for (const shard of [...new Set(shards)].sort()) {
     const records = cache.get(shard) || {};
-    await writeJson(config, ledgerPath(shard), {
+    const path = ledgerPath(shard);
+    // Ledger timestamps are informational. If the per-title records are
+    // unchanged, do not create another ImageKit version just to refresh a
+    // shard-level updatedAt value.
+    const existing = await readState(config, path).catch(() => null);
+    if (existing?.version === LEDGER_VERSION &&
+        JSON.stringify(existing.records || {}) === JSON.stringify(records)) {
+      console.info('[poster-processing-ledger-unchanged]', JSON.stringify({ shard }));
+      continue;
+    }
+    await writeJson(config, path, {
       version: LEDGER_VERSION,
       updatedAt: new Date().toISOString(),
       records
