@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-27T08:44:32.901009+04:00",
+  "generatedAt": "2026-11-27T12:45:57.606564+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 12,
+  "count": 11,
   "items": [
     {
       "id": "tmdb:337904",
@@ -58,24 +58,6 @@
       "catalog": "dobins_hi_series",
       "region": "IN",
       "source": "https://www.dailyott.in/"
-    },
-    {
-      "id": "tt43720139",
-      "aliases": [
-        "tt43720139"
-      ],
-      "name": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-28",
-      "kind": "episode",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/319143"
-      ],
-      "catalog": "dobins_hi_series",
-      "region": "IN",
-      "source": "https://www.themoviedb.org/tv/319143"
     },
     {
       "id": "tt43636966",

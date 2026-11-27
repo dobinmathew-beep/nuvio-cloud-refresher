@@ -3082,6 +3082,13 @@
       "type": "movie"
     },
     {
+      "id": "tt27050858",
+      "name": "Drishyam: The Conclusion",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27050858.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
       "id": "tt43679244",
       "name": "Zakir Khan: Papa Yaar",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt43679244.jpg",
@@ -3148,6 +3155,13 @@
       "id": "tt36626888",
       "name": "Ohh My Dog",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36626888.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
+      "id": "tt39390582",
+      "name": "Hanuman Ansh",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39390582.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     },
@@ -3449,6 +3463,20 @@
       "id": "tt35665487",
       "name": "Dining with the Kapoors",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35665487.jpg",
+      "releaseInfo": "2025",
+      "type": "movie"
+    },
+    {
+      "id": "tt15911108",
+      "name": "120 Bahadur",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15911108.jpg",
+      "releaseInfo": "2025",
+      "type": "movie"
+    },
+    {
+      "id": "tt38948631",
+      "name": "Nishaanchi 2",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt38948631.jpg",
       "releaseInfo": "2025",
       "type": "movie"
     },
@@ -3855,20 +3883,6 @@
       "id": "tt35433415",
       "name": "Sweet Dreams",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35433415.jpg",
-      "releaseInfo": "2025",
-      "type": "movie"
-    },
-    {
-      "id": "tt27056066",
-      "name": "Sky Force",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27056066.jpg",
-      "releaseInfo": "2025",
-      "type": "movie"
-    },
-    {
-      "id": "tt26439870",
-      "name": "Azaad",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26439870.jpg",
       "releaseInfo": "2025",
       "type": "movie"
     },
@@ -4555,6 +4569,20 @@
       "id": "tt6950476",
       "name": "Tejas",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6950476.jpg",
+      "releaseInfo": "2023",
+      "type": "movie"
+    },
+    {
+      "id": "tt22480126",
+      "name": "Berlin",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt22480126.jpg",
+      "releaseInfo": "2023",
+      "type": "movie"
+    },
+    {
+      "id": "tt21262240",
+      "name": "Mission Raniganj",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt21262240.jpg",
       "releaseInfo": "2023",
       "type": "movie"
     },
@@ -7298,6 +7326,13 @@
       "id": "tt34545743",
       "name": "Godari Gattupaina",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt34545743.jpg",
+      "releaseInfo": "2026",
+      "type": "movie"
+    },
+    {
+      "id": "tt35027300",
+      "name": "Sathi Leelavathi",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35027300.jpg",
       "releaseInfo": "2026",
       "type": "movie"
     },
@@ -12540,5 +12575,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-27T08:44:32.901009+04:00"
+  "_updatedAt": "2026-11-27T12:45:57.606564+04:00"
 }
