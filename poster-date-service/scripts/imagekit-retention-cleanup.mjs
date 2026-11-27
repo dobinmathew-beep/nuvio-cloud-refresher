@@ -384,4 +384,7 @@ try {
     stoppedOnFirstDeleteError: report.stoppedOnFirstDeleteError
   }));
 }
-if (report.failures.length) process.exitCode = 1;
+// A skipped group means the requested retention policy was not fully
+// verified. Keep the report artifact, but make the workflow visibly fail so
+// a green Actions run can never imply that cleanup succeeded when it did not.
+if (report.failures.length || report.skipped.length > 0) process.exitCode = 1;
