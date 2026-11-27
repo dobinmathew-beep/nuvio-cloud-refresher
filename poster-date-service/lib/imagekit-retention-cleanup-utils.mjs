@@ -1,3 +1,7 @@
+export function isCatalogStateJsonPath(path) {
+  return /^\/catalog-state\/.+\.json$/i.test(String(path || ''));
+}
+
 export function planCurrentPlusOneHistorical(versions, currentVersionId) {
   if (!Array.isArray(versions) || !currentVersionId) {
     return { safe: false, reason: 'missing-version-list-or-current-id', keep: [], remove: [] };
