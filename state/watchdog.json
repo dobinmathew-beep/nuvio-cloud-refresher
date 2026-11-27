@@ -1,22 +1,24 @@
 {
-  "checked_at": "2026-11-27T02:44:03.624284+04:00",
+  "checked_at": "2026-11-27T04:16:21.055456+04:00",
   "results": [
     {
       "component": "media",
-      "due": "2026-11-27T02:00:00+04:00",
-      "state": "refresh-in-progress"
+      "due": "2026-11-27T04:00:00+04:00",
+      "state": "stale-retry-cooldown"
     },
     {
       "component": "addon",
-      "due": "2026-11-27T02:00:00+04:00",
-      "state": "fresh"
+      "due": "2026-11-27T04:00:00+04:00",
+      "state": "catch-up-dispatched"
     },
     {
       "component": "epg",
-      "due": "2026-11-27T02:00:00+04:00",
-      "state": "fresh"
+      "due": "2026-11-27T04:00:00+04:00",
+      "state": "catch-up-dispatched"
     }
   ],
   "errors": [],
-  "warnings": []
+  "warnings": [
+    "media: overdue; recent attempt has not produced a valid current cycle"
+  ]
 }
