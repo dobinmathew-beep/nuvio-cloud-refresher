@@ -70,10 +70,15 @@ async function mapLimit(items, limit, fn) {
   }));
 }
 async function readUsage() {
-  const today = new Date().toISOString().slice(0, 10);
+  // ImageKit's usage endpoint can return an empty/zero daily bucket for
+  // the current UTC date. Query a window spanning yesterday through tomorrow,
+  // matching the broader window used by the read-only storage audit.
+  const now = Date.now();
+  const startDate = new Date(now - 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  const endDate = new Date(now + 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
   const url = new URL(API + '/accounts/usage');
-  url.searchParams.set('startDate', today);
-  url.searchParams.set('endDate', today);
+  url.searchParams.set('startDate', startDate);
+  url.searchParams.set('endDate', endDate);
   const payload = await getJson(url);
   const usage = Array.isArray(payload) ? payload[0] : (payload?.data?.[0] || payload);
   const value = Number(usage?.mediaLibraryStorageBytes);
@@ -108,9 +113,13 @@ async function readVersion(file, versionId, expectedKind) {
   return { bytes: body.length, contentType };
 }
 async function readCurrent(file, expectedKind) {
-  const url = typeof file.url === 'string' && file.url.startsWith('https://')
-    ? file.url : config.endpoint + file.filePath;
-  const response = await request(url, {}, 20000);
+  // The file-list "url" may be a transformed delivery URL. Cleanup must
+  // verify the stored original bytes against the Admin API's file.size, so
+  // always bypass delivery transformations and cache variants explicitly.
+  const originalUrl = new URL(config.endpoint + file.filePath);
+  originalUrl.searchParams.set('tr', 'orig-true');
+  originalUrl.searchParams.set('cleanup-readback', String(Date.now()));
+  const response = await request(originalUrl.toString(), {}, 20000);
   const contentType = String(response.headers.get('content-type') || '').toLowerCase();
   const body = Buffer.from(await response.arrayBuffer());
   if (file.size !== undefined && body.length !== bytes(file.size)) {
