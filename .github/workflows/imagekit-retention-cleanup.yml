@@ -1,0 +1,47 @@
+name: ImageKit verified retention cleanup
+
+on:
+  # Deliberately manual-only: merging workflow/reporting fixes must never
+  # start another destructive ImageKit cleanup automatically.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: imagekit-retention-cleanup
+  cancel-in-progress: false
+
+jobs:
+  validate-and-clean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    defaults:
+      run:
+        working-directory: poster-date-service
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: imagekit-retention-cleanup
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Run full poster-service regression suite
+        run: npm test
+      - name: Execute verified ImageKit retention cleanup
+        env:
+          IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
+          IMAGEKIT_PRIVATE_KEY: ${{ secrets.IMAGEKIT_PRIVATE_KEY }}
+          IMAGEKIT_CLEANUP_CONFIRMATION: KEEP_CURRENT_PLUS_ONE_HISTORIC
+          IMAGEKIT_CLEANUP_REPORT_PATH: ../reports/imagekit-retention-cleanup-report.json
+        run: node scripts/imagekit-retention-cleanup.mjs
+      - name: Upload cleanup report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: imagekit-retention-cleanup-report
+          path: reports/imagekit-retention-cleanup-report.json
+          if-no-files-found: error
+          retention-days: 30
