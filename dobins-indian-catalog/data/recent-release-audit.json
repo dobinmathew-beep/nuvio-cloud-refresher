@@ -1,14 +1,123 @@
 {
-  "generatedAt": "2026-11-27T06:08:26.989300+04:00",
+  "generatedAt": "2026-11-27T08:44:32.901009+04:00",
   "badgePolicy": "first-verified-digital-arrival-v1",
   "windowDays": 35,
   "source": "all active discovery sources (rolling 35-day window)",
-  "detected": 132,
+  "detected": 138,
   "byMatchState": {
-    "published": 123,
-    "unmatched": 9
+    "published": 124,
+    "unmatched": 14
   },
   "items": [
+    {
+      "title": "Garividi Lakshmi",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-21",
+      "releaseDateBasis": "first-verified-digital-arrival",
+      "id": "tt37645628",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [
+        "Prime Video",
+        "YouTube"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/telugu"
+      ],
+      "detail": null
+    },
+    {
+      "title": "Hanuman Ansh",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "releaseDateBasis": "first-verified-digital-arrival",
+      "id": "tt39390582",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [
+        "SonyLIV"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/",
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "detail": null
+    },
+    {
+      "title": "Dhai Chaal",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "releaseDateBasis": "series-release-event",
+      "id": "tt41496092",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [
+        "JioHotstar",
+        "JioHotStar",
+        "Hotstar"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "detail": null
+    },
+    {
+      "title": "Sathyameva",
+      "language": "malayalam",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "releaseDateBasis": "first-verified-digital-arrival",
+      "id": null,
+      "matchState": "unmatched",
+      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "detail": null
+    },
+    {
+      "title": "Octopus",
+      "language": "tamil",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "releaseDateBasis": "first-verified-digital-arrival",
+      "id": null,
+      "matchState": "unmatched",
+      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "detail": null
+    },
+    {
+      "title": "Aadarsha Kutumbam House No: 47",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "releaseDateBasis": "first-verified-digital-arrival",
+      "id": null,
+      "matchState": "unmatched",
+      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://www.dailyott.in/"
+      ],
+      "detail": null
+    },
     {
       "title": "The Hunting Wives: Season 2",
       "language": "hindi",
@@ -23,25 +132,6 @@
       ],
       "sources": [
         "https://www.dailyott.in/"
-      ],
-      "detail": null
-    },
-    {
-      "title": "Garividi Lakshmi",
-      "language": "telugu",
-      "type": "movie",
-      "releaseDate": "2026-11-21",
-      "releaseDateBasis": "first-verified-digital-arrival",
-      "id": "tt37645628",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "platforms": [
-        "YouTube",
-        "Prime Video"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/telugu"
       ],
       "detail": null
     },
@@ -92,9 +182,9 @@
         "SonyLIV"
       ],
       "sources": [
+        "https://www.dailyott.in/",
         "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": null
     },
@@ -128,8 +218,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://www.keralatv.in/channel/ott/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.keralatv.in/channel/ott/"
       ],
       "detail": null
     },
@@ -163,9 +253,9 @@
         "Netflix"
       ],
       "sources": [
+        "https://www.dailyott.in/",
         "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": null
     },
@@ -199,9 +289,9 @@
         "Aha"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/telugu"
+        "https://www.ottchecker.com/ott-releases/telugu",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": null
     },
@@ -269,12 +359,12 @@
       "matchState": "published",
       "matchReason": "https://v3-cinemeta.strem.io/",
       "platforms": [
-        "JioHotStar",
-        "JioHotstar"
+        "JioHotstar",
+        "JioHotStar"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.themoviedb.org/tv/334412",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
@@ -294,8 +384,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "detail": null
     },
@@ -312,9 +402,9 @@
         "ZEE5"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/malayalam",
+        "https://www.dailyott.in/",
         "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.ottchecker.com/ott-releases/malayalam"
       ],
       "detail": null
     },
@@ -331,9 +421,9 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/telugu"
+        "https://www.ottchecker.com/ott-releases/telugu",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": null
     },
@@ -381,13 +471,13 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Prime Video",
-        "Amazon Prime Video"
+        "Amazon Prime Video",
+        "Prime Video"
       ],
       "sources": [
+        "https://www.dailyott.in/",
         "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": null
     },
@@ -404,8 +494,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi"
       ],
       "detail": null
     },
@@ -438,13 +528,13 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "JioHotStar",
-        "JioHotstar"
+        "JioHotstar",
+        "JioHotStar"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/malayalam",
+        "https://www.dailyott.in/",
         "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.ottchecker.com/ott-releases/malayalam"
       ],
       "detail": null
     },
@@ -461,9 +551,9 @@
         "SonyLIV"
       ],
       "sources": [
+        "https://www.dailyott.in/",
         "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": null
     },
@@ -477,8 +567,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Prime Video",
-        "SunNXT"
+        "SunNXT",
+        "Prime Video"
       ],
       "sources": [
         "https://www.dailyott.in/"
@@ -498,9 +588,9 @@
         "Netflix"
       ],
       "sources": [
+        "https://www.dailyott.in/",
         "https://www.ottchecker.com/ott-releases/hindi",
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": null
     },
@@ -552,8 +642,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": null
     },
@@ -570,9 +660,9 @@
         "Netflix"
       ],
       "sources": [
+        "https://www.dailyott.in/",
         "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": null
     },
@@ -586,15 +676,15 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Prime Video",
-        "SimplySouth",
         "Amazon Prime Video",
-        "Aha"
+        "Aha",
+        "SimplySouth",
+        "Prime Video"
       ],
       "sources": [
+        "https://www.dailyott.in/",
         "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": null
     },
@@ -628,9 +718,9 @@
         "Netflix"
       ],
       "sources": [
+        "https://www.dailyott.in/",
         "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.dailyott.in/"
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": null
     },
@@ -647,9 +737,9 @@
         "ETV Win"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
         "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/telugu"
+        "https://www.ottchecker.com/ott-releases/telugu",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": null
     },
@@ -667,8 +757,8 @@
         "YouTube"
       ],
       "sources": [
-        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.dailyott.in/",
+        "https://www.ottchecker.com/ott-releases/hindi",
         "https://www.tvmaze.com/shows/70529/dhindora"
       ],
       "detail": null
@@ -1049,6 +1139,128 @@
       "detail": null
     },
     {
+      "title": "Aadarsha Kutumbam House No: 47 – AK47",
+      "language": "telugu",
+      "type": "movie",
+      "releaseDate": "2026-11-26",
+      "releaseDateBasis": "first-verified-digital-arrival",
+      "id": "tt30768979",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN",
+        "https://cinebuds.com/ott-release-dates/"
+      ],
+      "detail": "https://cinebuds.com/movies/aadarsha-kutumbam-house-no-47-ak47/"
+    },
+    {
+      "title": "Enemy Of The Smuggler",
+      "language": "tamil",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "releaseDateBasis": "first-verified-digital-arrival",
+      "id": "tt43681681",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [
+        "Sun NXT",
+        "ZEE5"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.keralatv.in/channel/ott/"
+      ],
+      "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/"
+    },
+    {
+      "title": "Nayyi Navelli",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "releaseDateBasis": "first-verified-digital-arrival",
+      "id": "tt40855841",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [
+        "Prime Video"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-release-dates/"
+      ],
+      "detail": "https://cinebuds.com/movies/nayyi-navelli/"
+    },
+    {
+      "title": "Octopus (Series)",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "releaseDateBasis": "series-release-event",
+      "id": "tt35984846",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-release-dates/"
+      ],
+      "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/"
+    },
+    {
+      "title": "Prem Keetanu",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "releaseDateBasis": "first-verified-digital-arrival",
+      "id": "tt44090550",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [
+        "Prime Video"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-release-dates/"
+      ],
+      "detail": "https://cinebuds.com/bollywood-movies-digital-release-dates/"
+    },
+    {
+      "title": "Raathiri (Series)",
+      "language": "tamil",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "releaseDateBasis": "series-release-event",
+      "id": null,
+      "matchState": "unmatched",
+      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
+      "platforms": [
+        "Aha"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-release-dates/"
+      ],
+      "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/"
+    },
+    {
+      "title": "Sathyameva (Series)",
+      "language": "malayalam",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "releaseDateBasis": "series-release-event",
+      "id": null,
+      "matchState": "unmatched",
+      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
+      "platforms": [
+        "ZEE5"
+      ],
+      "sources": [
+        "https://cinebuds.com/ott-release-dates/"
+      ],
+      "detail": "https://cinebuds.com/malayalam-movies-ott-release-dates/"
+    },
+    {
       "title": "Chiram",
       "language": "malayalam",
       "type": "movie",
@@ -1111,8 +1323,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "SimplySouth",
-        "Manorama Max"
+        "Manorama Max",
+        "SimplySouth"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
@@ -1218,8 +1430,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Prime Video",
-        "Amazon Prime Video"
+        "Amazon Prime Video",
+        "Prime Video"
       ],
       "sources": [
         "https://www.ottchecker.com/ott-releases/hindi",
@@ -1256,12 +1468,12 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Prime Video",
-        "Amazon Prime Video"
+        "Amazon Prime Video",
+        "Prime Video"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.ottchecker.com/ott-releases/telugu"
+        "https://www.ottchecker.com/ott-releases/telugu",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": "https://cinebuds.com/movies/comrade-kalyan/"
     },
@@ -1278,8 +1490,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.ottchecker.com/ott-releases/telugu"
+        "https://www.ottchecker.com/ott-releases/telugu",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": "https://cinebuds.com/movies/dont-trouble-the-trouble/"
     },
@@ -1367,131 +1579,10 @@
         "Netflix"
       ],
       "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.ottchecker.com/ott-releases/telugu"
+        "https://www.ottchecker.com/ott-releases/telugu",
+        "https://cinebuds.com/ott-release-dates/"
       ],
       "detail": "https://cinebuds.com/movies/sub-inspector-yugandhar/"
-    },
-    {
-      "title": "Aadarsha Kutumbam House No: 47 - AK47",
-      "language": "telugu",
-      "type": "movie",
-      "releaseDate": "2026-11-26",
-      "releaseDateBasis": "first-verified-digital-arrival",
-      "id": "tt30768979",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "platforms": [
-        "Netflix"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-releases-this-week/"
-      ],
-      "detail": "https://cinebuds.com/movies/aadarsha-kutumbam-house-no-47-ak47/"
-    },
-    {
-      "title": "Enemy Of The Smuggler",
-      "language": "tamil",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "releaseDateBasis": "first-verified-digital-arrival",
-      "id": "tt43681681",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "platforms": [
-        "Sun NXT",
-        "ZEE5"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-releases-this-week/"
-      ],
-      "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/"
-    },
-    {
-      "title": "Hanuman Ansh",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "releaseDateBasis": "first-verified-digital-arrival",
-      "id": "tt39390582",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "platforms": [
-        "SonyLIV"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-releases-this-week/"
-      ],
-      "detail": "https://cinebuds.com/movies/hanuman-ansh/"
-    },
-    {
-      "title": "Nayyi Navelli",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "releaseDateBasis": "first-verified-digital-arrival",
-      "id": "tt40855841",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "platforms": [
-        "Prime Video"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-releases-this-week/"
-      ],
-      "detail": "https://cinebuds.com/movies/nayyi-navelli/"
-    },
-    {
-      "title": "Octopus (Series)",
-      "language": "tamil",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "releaseDateBasis": "series-release-event",
-      "id": "tt35984846",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "platforms": [
-        "ZEE5"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-releases-this-week/"
-      ],
-      "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/"
-    },
-    {
-      "title": "Raathiri (Series)",
-      "language": "tamil",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "releaseDateBasis": "series-release-event",
-      "id": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "platforms": [
-        "Aha",
-        "aha"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-releases-this-week/"
-      ],
-      "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/"
-    },
-    {
-      "title": "Sathyameva (Series)",
-      "language": "malayalam",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "releaseDateBasis": "series-release-event",
-      "id": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "platforms": [
-        "ZEE5"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-releases-this-week/"
-      ],
-      "detail": "https://cinebuds.com/malayalam-movies-ott-release-dates/"
     },
     {
       "title": "Corporate Love Story",
@@ -1511,24 +1602,6 @@
         "https://ottasia.com/ott-releases-this-week?country=IN"
       ],
       "detail": "https://ottasia.com/title/tv/343707/corporate-love-story?country=IN"
-    },
-    {
-      "title": "Dhai Chaal",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "releaseDateBasis": "series-release-event",
-      "id": "tt41496092",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "platforms": [
-        "JioHotstar",
-        "Hotstar"
-      ],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "detail": "https://ottasia.com/title/tv/342384/dhai-chaal?country=IN"
     },
     {
       "title": "Jindey",
@@ -2090,6 +2163,23 @@
       "detail": "https://www.ottchecker.com/movie/meethe-mein-kya-hai-2026"
     },
     {
+      "title": "Hail Mary",
+      "language": "malayalam",
+      "type": "movie",
+      "releaseDate": "2026-11-27",
+      "releaseDateBasis": "first-verified-digital-arrival",
+      "id": null,
+      "matchState": "unmatched",
+      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://www.keralatv.in/channel/ott/"
+      ],
+      "detail": "https://www.keralatv.in/hail-mary-malayalam-movie-ott-release/"
+    },
+    {
       "title": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
       "language": "malayalam",
       "type": "series",
@@ -2124,38 +2214,21 @@
       "detail": "https://www.keralatv.in/drones-tamil-movie-ott-release-date-prime-video/"
     },
     {
-      "title": "Iniyum",
+      "title": "Law and Order",
       "language": "malayalam",
       "type": "movie",
-      "releaseDate": "2026-11-22",
+      "releaseDate": "2026-11-27",
       "releaseDateBasis": "first-verified-digital-arrival",
-      "id": "tmdb:1628781",
-      "matchState": "published",
-      "matchReason": "TMDB exact-title search + verified detail page",
+      "id": null,
+      "matchState": "unmatched",
+      "matchReason": "Title identity is not yet resolved",
       "platforms": [
         "ManoramaMAX"
       ],
       "sources": [
-        "https://www.keralatv.in/channel/ott/"
+        "https://www.dailyott.in/"
       ],
-      "detail": "https://www.keralatv.in/iniyum-movie-ott-release-date-manoramamax/"
-    },
-    {
-      "title": "Sameer",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-21",
-      "releaseDateBasis": "first-verified-digital-arrival",
-      "id": "tt11541498",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "platforms": [
-        "ManoramaMAX"
-      ],
-      "sources": [
-        "https://www.keralatv.in/channel/ott/"
-      ],
-      "detail": "https://www.keralatv.in/sameer-malayalam-movie-ott-release-date-manoramamax/"
+      "detail": null
     },
     {
       "title": "Prince of Mollywood",
@@ -2276,6 +2349,21 @@
       "detail": null
     },
     {
+      "title": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-27",
+      "releaseDateBasis": "series-release-event",
+      "id": "tt43720139",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/319143"
+      ],
+      "detail": null
+    },
+    {
       "title": "Mannat: Harr Khushi Paane Ki",
       "language": "hindi",
       "type": "series",
@@ -2322,6 +2410,21 @@
       "sources": [
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
+      ],
+      "detail": null
+    },
+    {
+      "title": "Rise and Fall",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-06",
+      "releaseDateBasis": "series-release-event",
+      "id": "tt35674433",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/300081"
       ],
       "detail": null
     },

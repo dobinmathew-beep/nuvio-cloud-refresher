@@ -1,21 +1,137 @@
 [
   {
+    "name": "Sathyameva",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6b08e881699a8884e160a534",
+      "title": "Sathyameva",
+      "platform": "ZEE5",
+      "createdAt": "2026-11-27T02:18:41.880Z",
+      "genre": "Crime Drama",
+      "imdbRating": null,
+      "languages": [
+        "Malayalam"
+      ],
+      "original_language": "Malayalam",
+      "releaseDate": "2026-11-27",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-11-27T02:18:41.880Z",
+      "tmdbDetails": {
+        "tmdbId": 354942,
+        "director": "Viji Thampi",
+        "cast": [
+          {
+            "name": "Suresh Gopi",
+            "character": "Chandrachoodan"
+          },
+          {
+            "name": "Aishwarya Bhaskaran",
+            "character": ""
+          },
+          {
+            "name": "Balachandra Menon",
+            "character": ""
+          },
+          {
+            "name": "Siddique",
+            "character": "Balubhai"
+          },
+          {
+            "name": "Rajan P Dev",
+            "character": ""
+          },
+          {
+            "name": "Devan",
+            "character": ""
+          },
+          {
+            "name": "Salim Kumar",
+            "character": ""
+          },
+          {
+            "name": "N F Varghese",
+            "character": ""
+          }
+        ],
+        "overview": "Sathyameva Jayathe is a 2001 Indian Malayalamaction thriller film, directed by Viji Thampi. The film stars Suresh Gopi, Aishwarya, Balachandramenon and Mini Nair in lead roles",
+        "runtime": null,
+        "genres": [
+          "Thriller",
+          "Action",
+          "Crime"
+        ],
+        "originalLanguage": "ml",
+        "spokenLanguages": [
+          "Malayalam"
+        ],
+        "releaseDate": "2001-06-14",
+        "voteAverage": 6,
+        "trailerKey": null,
+        "fetchedAt": "2026-11-27T04:31:45.018Z"
+      },
+      "tmdbId": 354942,
+      "verified": true
+    }
+  },
+  {
     "name": "Sathyameva (Series)",
     "language": "malayalam",
     "type": "series",
     "ottDate": "2026-11-27",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
-      "https://cinebuds.com/ott-releases-this-week/"
+      "https://cinebuds.com/ott-release-dates/"
     ],
     "platforms": [
       "ZEE5"
     ],
     "detail": "https://cinebuds.com/malayalam-movies-ott-release-dates/",
+    "sourceRecord": {}
+  },
+  {
+    "name": "Octopus",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
     "sourceRecord": {
-      "title": "Sathyameva (Series)",
+      "_id": "6b08e882699a8884e160a536",
+      "platform": "ZEE5",
+      "title": "Octopus",
+      "createdAt": "2026-11-27T02:18:42.286Z",
+      "genre": "Mystery Thriller",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "original_language": "Tamil",
       "releaseDate": "2026-11-27",
-      "source": "https://cinebuds.com/ott-releases-this-week/"
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-11-27T02:19:28.726Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/2gLLftWX1ecorSXq2jBMosQAcKx.jpg",
+      "tmdbRating": 78,
+      "tmdbVotes": 70,
+      "instagramPostedAt": "2026-11-27T02:20:23Z",
+      "verified": true
     }
   },
   {
@@ -36,6 +152,26 @@
     }
   },
   {
+    "name": "Hail Mary",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.keralatv.in/channel/ott/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": "https://www.keralatv.in/hail-mary-malayalam-movie-ott-release/",
+    "sourceRecord": {
+      "title": "Hail Mary",
+      "releaseDate": "2026-11-27",
+      "source": "https://www.keralatv.in/channel/ott/",
+      "headline": "Hail Mary Malayalam Movie OTT Rights Secured by Netflix, The film Now Running in cinemas with Excellent Review all Over"
+    }
+  },
+  {
     "name": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
     "language": "malayalam",
     "type": "series",
@@ -53,6 +189,39 @@
       "releaseDate": "2026-11-27",
       "source": "https://www.keralatv.in/channel/ott/",
       "headline": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram, Streaming from 27 November"
+    }
+  },
+  {
+    "name": "Aadarsha Kutumbam House No: 47",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Netflix"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6b08e882699a8884e160a537",
+      "platform": "Netflix",
+      "title": "Aadarsha Kutumbam House No: 47",
+      "createdAt": "2026-11-27T02:18:42.488Z",
+      "genre": "Action Comedy",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "original_language": "Telugu",
+      "releaseDate": "2026-11-27",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-11-27T02:19:29.245Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/uOo2T5pZmW4APO6o95yLycvTonU.jpg",
+      "instagramPostedAt": "2026-11-27T02:20:32Z",
+      "verified": true
     }
   },
   {
@@ -115,6 +284,21 @@
     }
   },
   {
+    "name": "Raathiri (Series)",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://cinebuds.com/ott-release-dates/"
+    ],
+    "platforms": [
+      "Aha"
+    ],
+    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+    "sourceRecord": {}
+  },
+  {
     "name": "Dalimp",
     "language": "hindi",
     "type": "series",
@@ -154,26 +338,6 @@
     }
   },
   {
-    "name": "Raathiri (Series)",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-11-27",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://cinebuds.com/ott-releases-this-week/"
-    ],
-    "platforms": [
-      "Aha",
-      "aha"
-    ],
-    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
-    "sourceRecord": {
-      "title": "Raathiri (Series)",
-      "releaseDate": "2026-11-27",
-      "source": "https://cinebuds.com/ott-releases-this-week/"
-    }
-  },
-  {
     "name": "The Conjunction",
     "language": "hindi",
     "type": "movie",
@@ -205,6 +369,37 @@
       "title": "Hatela Gang",
       "releaseDate": "2026-11-28",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
+    "name": "Chef Mantra Project USA",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-08-13",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Aha"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a7d25953fab9691478ae9ca",
+      "platform": "Aha",
+      "title": "Chef Mantra Project USA",
+      "createdAt": "2026-08-13T02:01:57.122Z",
+      "genre": "Reality Show",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "original_language": "Telugu",
+      "releaseDate": "2026-08-13",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-08-13T02:01:57.122Z",
+      "verified": true
     }
   },
   {
@@ -292,37 +487,6 @@
         "fetchedAt": "2026-11-14T18:26:15.691Z"
       },
       "tmdbId": 590401,
-      "verified": true
-    }
-  },
-  {
-    "name": "Chef Mantra Project USA",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-08-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Aha"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a7d25953fab9691478ae9ca",
-      "platform": "Aha",
-      "title": "Chef Mantra Project USA",
-      "createdAt": "2026-08-13T02:01:57.122Z",
-      "genre": "Reality Show",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "original_language": "Telugu",
-      "releaseDate": "2026-08-13",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-08-13T02:01:57.122Z",
       "verified": true
     }
   },
@@ -544,6 +708,67 @@
     }
   },
   {
+    "name": "Southern Shadows",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-05-23",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Prime Video"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a112342135bb8f4954fec65",
+      "title": "Southern Shadows",
+      "platform": "Prime Video",
+      "createdAt": "2026-05-23T03:47:14.634Z",
+      "genre": "Crime, Drama",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-05-23",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-05-23T03:47:25.416Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/kf0utrFWZfi1Is821zUMZnio2aF.jpg",
+      "verified": true
+    }
+  },
+  {
+    "name": "Auto Vijayashanthi (Episode 221)",
+    "language": "telugu",
+    "type": "series",
+    "ottDate": "2026-05-12",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a02a2999dcddba08328d0f0",
+      "title": "Auto Vijayashanthi (Episode 221)",
+      "platform": "ZEE5",
+      "createdAt": "2026-05-12T03:46:33.489Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-05-12",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-05-12T03:46:33.489Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Avalaga Irunthal",
     "language": "tamil",
     "type": "movie",
@@ -576,37 +801,6 @@
     }
   },
   {
-    "name": "Southern Shadows",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-05-23",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "Prime Video"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a112342135bb8f4954fec65",
-      "title": "Southern Shadows",
-      "platform": "Prime Video",
-      "createdAt": "2026-05-23T03:47:14.634Z",
-      "genre": "Crime, Drama",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-05-23",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-05-23T03:47:25.416Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/kf0utrFWZfi1Is821zUMZnio2aF.jpg",
-      "verified": true
-    }
-  },
-  {
     "name": "Marpu - Not For You, But For The Future",
     "language": "telugu",
     "type": "movie",
@@ -634,36 +828,6 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-10-14T02:18:51.826Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Auto Vijayashanthi (Episode 221)",
-    "language": "telugu",
-    "type": "series",
-    "ottDate": "2026-05-12",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a02a2999dcddba08328d0f0",
-      "title": "Auto Vijayashanthi (Episode 221)",
-      "platform": "ZEE5",
-      "createdAt": "2026-05-12T03:46:33.489Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-12",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-05-12T03:46:33.489Z",
       "verified": true
     }
   },
@@ -821,6 +985,36 @@
     }
   },
   {
+    "name": "Jodi Are U Ready Season 3 (Grand Finale)",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-05-03",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69f6c52b36465ddb3f139825",
+      "platform": "JioHotStar",
+      "title": "Jodi Are U Ready Season 3 (Grand Finale)",
+      "createdAt": "2026-05-03T03:46:51.832Z",
+      "genre": "Reality, Dance",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-05-03",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-05-03T03:46:51.832Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Roadies Rebirth",
     "language": "hindi",
     "type": "series",
@@ -848,36 +1042,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-10-16T02:18:52.613Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Jodi Are U Ready Season 3 (Grand Finale)",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-05-03",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69f6c52b36465ddb3f139825",
-      "platform": "JioHotStar",
-      "title": "Jodi Are U Ready Season 3 (Grand Finale)",
-      "createdAt": "2026-05-03T03:46:51.832Z",
-      "genre": "Reality, Dance",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-05-03",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-05-03T03:46:51.832Z",
       "verified": true
     }
   },
@@ -1033,6 +1197,37 @@
     }
   },
   {
+    "name": "Love Beyond Wicket",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-04-09",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69d71ed1eb1fc7a84cb42f98",
+      "platform": "JioHotStar",
+      "title": "Love Beyond Wicket",
+      "createdAt": "2026-04-09T03:36:49.253Z",
+      "genre": "Sports, Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-04-09",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-04-09T03:37:09.017Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/tC5K8MkLipwV9bIdJV9SQcCzgUF.jpg",
+      "verified": true
+    }
+  },
+  {
     "name": "Chikoo Vs Bunty: Kushti Ki Jung",
     "language": "hindi",
     "type": "movie",
@@ -1091,37 +1286,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-10-02T02:18:50.680Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Love Beyond Wicket",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-04-09",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69d71ed1eb1fc7a84cb42f98",
-      "platform": "JioHotStar",
-      "title": "Love Beyond Wicket",
-      "createdAt": "2026-04-09T03:36:49.253Z",
-      "genre": "Sports, Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "releaseDate": "2026-04-09",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-04-09T03:37:09.017Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/tC5K8MkLipwV9bIdJV9SQcCzgUF.jpg",
       "verified": true
     }
   },
@@ -1677,8 +1841,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win",
-      "Netflix"
+      "Netflix",
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {

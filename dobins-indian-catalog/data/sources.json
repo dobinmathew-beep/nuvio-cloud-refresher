@@ -1,7 +1,416 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-27T06:08:26.989300+04:00",
+    "checkedAt": "2026-11-27T08:44:32.901009+04:00",
     "records": [
+      {
+        "_id": "6b079710699a8884e16076f4",
+        "platform": "Prime Video",
+        "title": "Garividi Lakshmi",
+        "createdAt": "2026-11-26T02:18:56.197Z",
+        "genre": "Musical Biographical Drama",
+        "imdbRating": null,
+        "languages": [
+          "Telugu"
+        ],
+        "original_language": "Telugu",
+        "releaseDate": "2026-11-27",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-27T02:18:42.690Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/qhZ01fVnKZ39zSboOgHWZ648wxa.jpg",
+        "instagramPostedAt": "2026-11-26T02:20:18Z",
+        "tmdbDetails": {
+          "tmdbId": 1555847,
+          "director": "Gowri Naidu Jammu",
+          "cast": [
+            {
+              "name": "Anandhi",
+              "character": ""
+            },
+            {
+              "name": "Naresh",
+              "character": ""
+            },
+            {
+              "name": "Raasi",
+              "character": ""
+            },
+            {
+              "name": "Rag Mayur",
+              "character": ""
+            },
+            {
+              "name": "Saranya Pradeep",
+              "character": ""
+            },
+            {
+              "name": "Ankith Koyya",
+              "character": ""
+            },
+            {
+              "name": "Laxman Meesala",
+              "character": ""
+            },
+            {
+              "name": "Kishore Kumar Polimera",
+              "character": ""
+            }
+          ],
+          "overview": "A gifted folk singer from North Andhra rises to fame through her captivating voice and Burra Katha performances, only to mysteriously disappear at the height of her popularity. Years later, a man sets out to unravel the mystery. What happened to Garividi Lakshmi?",
+          "runtime": 141,
+          "genres": [
+            "Drama",
+            "Family"
+          ],
+          "originalLanguage": "te",
+          "spokenLanguages": [
+            "Telugu"
+          ],
+          "releaseDate": "2026-10-16",
+          "voteAverage": 5,
+          "trailerKey": "GiSqnQhWI80",
+          "fetchedAt": "2026-11-26T14:55:27.637Z"
+        },
+        "tmdbId": 1555847,
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-27T02:19:09.137Z",
+        "trendingRankedDateIST": "2026-11-27",
+        "verified": true
+      },
+      {
+        "_id": "6b08e881699a8884e160a530",
+        "platform": "JioHotStar",
+        "title": "Bobby Lee: Finally",
+        "createdAt": "2026-11-27T02:18:41.069Z",
+        "genre": "Comedy, Stand-Up Comedy",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-27",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-27T02:18:41.069Z",
+        "verified": true
+      },
+      {
+        "_id": "6b08e881699a8884e160a531",
+        "platform": "Netflix",
+        "title": "Drishyam: The Conclusion",
+        "createdAt": "2026-11-27T02:18:41.273Z",
+        "genre": "Crime Thriller",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-27",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-27T02:19:31.585Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/67FsF2kpgEZ1T5Qos4adgqm9dLf.jpg",
+        "tmdbRating": 77,
+        "tmdbVotes": 15,
+        "instagramPostedAt": "2026-11-27T02:20:00Z",
+        "tmdbDetails": {
+          "tmdbId": 1269325,
+          "director": "Abhishek Pathak",
+          "cast": [
+            {
+              "name": "Ajay Devgn",
+              "character": "Vijay Salgaonkar"
+            },
+            {
+              "name": "Jaideep Ahlawat",
+              "character": "SP Rajveer Singh Tomar"
+            },
+            {
+              "name": "Tabu",
+              "character": "Meera Deshmukh"
+            },
+            {
+              "name": "Shriya Saran",
+              "character": "Nandini Salgaonkar"
+            },
+            {
+              "name": "Rajat Kapoor",
+              "character": "Mahesh Deshmukh"
+            },
+            {
+              "name": "Prakash Raj",
+              "character": "Public Prosecutor Indrajith Shetty"
+            },
+            {
+              "name": "Ishita Dutta",
+              "character": "Anju Salgaonkar"
+            },
+            {
+              "name": "Mrunal Jadhav",
+              "character": "Anu Salgaonkar"
+            }
+          ],
+          "overview": "Years after outsmarting the police, Vijay Salgaonkar's past resurfaces when a new evidence threatens to expose his secret. As the investigation reopens, he must outwit the system once again to save his family.",
+          "runtime": 148,
+          "genres": [
+            "Thriller",
+            "Drama",
+            "Mystery",
+            "Crime"
+          ],
+          "originalLanguage": "hi",
+          "spokenLanguages": [
+            "Hindi"
+          ],
+          "releaseDate": "2026-10-02",
+          "voteAverage": 7.7,
+          "trailerKey": "MFQFxsDWbA8",
+          "fetchedAt": "2026-11-27T04:32:14.294Z"
+        },
+        "tmdbId": 1269325,
+        "verified": true
+      },
+      {
+        "_id": "6b08e881699a8884e160a532",
+        "platform": "SonyLIV",
+        "title": "Hanuman Ansh",
+        "createdAt": "2026-11-27T02:18:41.475Z",
+        "genre": "Biographical Drama, Devotional",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-27",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-27T02:19:31.073Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/as2Y3zGUa2IUS3uAx2sh6Ano3es.jpg",
+        "tmdbRating": 77,
+        "tmdbVotes": 17,
+        "instagramPostedAt": "2026-11-27T02:20:01Z",
+        "verified": true
+      },
+      {
+        "_id": "6b08e881699a8884e160a533",
+        "platform": "JioHotStar",
+        "title": "Dhai Chaal",
+        "createdAt": "2026-11-27T02:18:41.677Z",
+        "genre": "Political Drama",
+        "imdbRating": null,
+        "languages": [
+          "Hindi"
+        ],
+        "original_language": "Hindi",
+        "releaseDate": "2026-11-27",
+        "source_verified": true,
+        "type": "Series",
+        "updatedAt": "2026-11-27T02:19:30.556Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/5qYjU9VXOv5rPJi4qS7Ehas5iWB.jpg",
+        "verified": true
+      },
+      {
+        "_id": "6b08e881699a8884e160a534",
+        "title": "Sathyameva",
+        "platform": "ZEE5",
+        "createdAt": "2026-11-27T02:18:41.880Z",
+        "genre": "Crime Drama",
+        "imdbRating": null,
+        "languages": [
+          "Malayalam"
+        ],
+        "original_language": "Malayalam",
+        "releaseDate": "2026-11-27",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-27T02:18:41.880Z",
+        "tmdbDetails": {
+          "tmdbId": 354942,
+          "director": "Viji Thampi",
+          "cast": [
+            {
+              "name": "Suresh Gopi",
+              "character": "Chandrachoodan"
+            },
+            {
+              "name": "Aishwarya Bhaskaran",
+              "character": ""
+            },
+            {
+              "name": "Balachandra Menon",
+              "character": ""
+            },
+            {
+              "name": "Siddique",
+              "character": "Balubhai"
+            },
+            {
+              "name": "Rajan P Dev",
+              "character": ""
+            },
+            {
+              "name": "Devan",
+              "character": ""
+            },
+            {
+              "name": "Salim Kumar",
+              "character": ""
+            },
+            {
+              "name": "N F Varghese",
+              "character": ""
+            }
+          ],
+          "overview": "Sathyameva Jayathe is a 2001 Indian Malayalamaction thriller film, directed by Viji Thampi. The film stars Suresh Gopi, Aishwarya, Balachandramenon and Mini Nair in lead roles",
+          "runtime": null,
+          "genres": [
+            "Thriller",
+            "Action",
+            "Crime"
+          ],
+          "originalLanguage": "ml",
+          "spokenLanguages": [
+            "Malayalam"
+          ],
+          "releaseDate": "2001-06-14",
+          "voteAverage": 6,
+          "trailerKey": null,
+          "fetchedAt": "2026-11-27T04:31:45.018Z"
+        },
+        "tmdbId": 354942,
+        "verified": true
+      },
+      {
+        "_id": "6b08e882699a8884e160a535",
+        "platform": "ManoramaMAX",
+        "title": "Law and Order",
+        "createdAt": "2026-11-27T02:18:42.083Z",
+        "genre": "Action Drama",
+        "imdbRating": null,
+        "languages": [
+          "Malayalam"
+        ],
+        "original_language": "Malayalam",
+        "releaseDate": "2026-11-27",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-27T02:19:27.919Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/oG3Gf8Olc4NgKRVqB09yuwHNEOn.jpg",
+        "tmdbRating": 57,
+        "tmdbVotes": 19,
+        "tmdbDetails": {
+          "tmdbId": 93562,
+          "director": "Nathan Juran",
+          "cast": [
+            {
+              "name": "Ronald Reagan",
+              "character": "Frame Johnson"
+            },
+            {
+              "name": "Dorothy Malone",
+              "character": "Jeannie"
+            },
+            {
+              "name": "Preston Foster",
+              "character": "Kurt Durling"
+            },
+            {
+              "name": "Alex Nicol",
+              "character": "Lute Johnson"
+            },
+            {
+              "name": "Ruth Hampton",
+              "character": "Maria"
+            },
+            {
+              "name": "Russell Johnson",
+              "character": "Jimmy Johnson"
+            },
+            {
+              "name": "Barry Kelley",
+              "character": "Fin Elder"
+            },
+            {
+              "name": "Chubby Johnson",
+              "character": "Denver Cahoon"
+            }
+          ],
+          "overview": "Wild West lawman Frame Johnson arrests a notorious outlaw, but, after the locals threaten to break into the prison and hang the crook without a trial, Johnson gets fed up with injustice. He decides to put his days of gunslinging behind him in favor of a simple domestic life with his lover, Jeannie. The couple move to the supposedly idyllic Cottonwood — only to find that their new home has been overrun by a rogue rancher who has unfinished business with Frame.",
+          "runtime": 80,
+          "genres": [
+            "Western"
+          ],
+          "originalLanguage": "en",
+          "spokenLanguages": [
+            "English"
+          ],
+          "releaseDate": "1953-05-13",
+          "voteAverage": 5.7,
+          "trailerKey": "UorrdneElLc",
+          "fetchedAt": "2026-11-27T04:31:49.906Z"
+        },
+        "tmdbId": 93562,
+        "verified": true
+      },
+      {
+        "_id": "6b08e882699a8884e160a536",
+        "platform": "ZEE5",
+        "title": "Octopus",
+        "createdAt": "2026-11-27T02:18:42.286Z",
+        "genre": "Mystery Thriller",
+        "imdbRating": null,
+        "languages": [
+          "Tamil"
+        ],
+        "original_language": "Tamil",
+        "releaseDate": "2026-11-27",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-27T02:19:28.726Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/2gLLftWX1ecorSXq2jBMosQAcKx.jpg",
+        "tmdbRating": 78,
+        "tmdbVotes": 70,
+        "instagramPostedAt": "2026-11-27T02:20:23Z",
+        "verified": true
+      },
+      {
+        "_id": "6b08e882699a8884e160a537",
+        "platform": "Netflix",
+        "title": "Aadarsha Kutumbam House No: 47",
+        "createdAt": "2026-11-27T02:18:42.488Z",
+        "genre": "Action Comedy",
+        "imdbRating": null,
+        "languages": [
+          "Telugu"
+        ],
+        "original_language": "Telugu",
+        "releaseDate": "2026-11-27",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-27T02:19:29.245Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/uOo2T5pZmW4APO6o95yLycvTonU.jpg",
+        "instagramPostedAt": "2026-11-27T02:20:32Z",
+        "verified": true
+      },
+      {
+        "_id": "6b08e882699a8884e160a538",
+        "platform": "ZEE5",
+        "title": "Corporate Love Story",
+        "createdAt": "2026-11-27T02:18:42.893Z",
+        "genre": "Romantic Drama",
+        "imdbRating": null,
+        "languages": [
+          "Kannada"
+        ],
+        "original_language": "Kannada",
+        "releaseDate": "2026-11-27",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-27T02:19:30.036Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/wYbU8IZk9Le08dueKtul19Ap3td.jpg",
+        "instagramPostedAt": "2026-11-27T02:20:46Z",
+        "verified": true
+      },
       {
         "_id": "6b07970f699a8884e16076f0",
         "platform": "Netflix",
@@ -75,6 +484,9 @@
           "fetchedAt": "2026-11-26T17:39:28.071Z"
         },
         "tmdbId": 969681,
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-27T02:19:09.137Z",
+        "trendingRankedDateIST": "2026-11-27",
         "verified": true
       },
       {
@@ -167,78 +579,9 @@
           "fetchedAt": "2026-11-26T03:21:43.499Z"
         },
         "tmdbId": 1081003,
-        "verified": true
-      },
-      {
-        "_id": "6b079710699a8884e16076f4",
-        "platform": "Prime Video",
-        "title": "Garividi Lakshmi",
-        "createdAt": "2026-11-26T02:18:56.197Z",
-        "genre": "Drama, Family, Biopic",
-        "imdbRating": null,
-        "languages": [
-          "Telugu"
-        ],
-        "original_language": "Telugu",
-        "releaseDate": "2026-11-26",
-        "source_verified": true,
-        "type": "Movie",
-        "updatedAt": "2026-11-26T02:19:47.206Z",
-        "posterUrl": "https://image.tmdb.org/t/p/w300/qhZ01fVnKZ39zSboOgHWZ648wxa.jpg",
-        "instagramPostedAt": "2026-11-26T02:20:18Z",
-        "tmdbDetails": {
-          "tmdbId": 1555847,
-          "director": "Gowri Naidu Jammu",
-          "cast": [
-            {
-              "name": "Anandhi",
-              "character": ""
-            },
-            {
-              "name": "Naresh",
-              "character": ""
-            },
-            {
-              "name": "Raasi",
-              "character": ""
-            },
-            {
-              "name": "Rag Mayur",
-              "character": ""
-            },
-            {
-              "name": "Saranya Pradeep",
-              "character": ""
-            },
-            {
-              "name": "Ankith Koyya",
-              "character": ""
-            },
-            {
-              "name": "Laxman Meesala",
-              "character": ""
-            },
-            {
-              "name": "Kishore Kumar Polimera",
-              "character": ""
-            }
-          ],
-          "overview": "A gifted folk singer from North Andhra rises to fame through her captivating voice and Burra Katha performances, only to mysteriously disappear at the height of her popularity. Years later, a man sets out to unravel the mystery. What happened to Garividi Lakshmi?",
-          "runtime": 141,
-          "genres": [
-            "Drama",
-            "Family"
-          ],
-          "originalLanguage": "te",
-          "spokenLanguages": [
-            "Telugu"
-          ],
-          "releaseDate": "2026-10-16",
-          "voteAverage": 5,
-          "trailerKey": "GiSqnQhWI80",
-          "fetchedAt": "2026-11-26T14:55:27.637Z"
-        },
-        "tmdbId": 1555847,
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-11-27T02:19:09.137Z",
+        "trendingRankedDateIST": "2026-11-27",
         "verified": true
       },
       {
@@ -349,9 +692,9 @@
           "fetchedAt": "2026-11-25T11:08:59.386Z"
         },
         "tmdbId": 1755816,
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-26T02:19:28.097Z",
-        "trendingRankedDateIST": "2026-11-26",
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-27T02:19:09.137Z",
+        "trendingRankedDateIST": "2026-11-27",
         "verified": true
       },
       {
@@ -446,6 +789,9 @@
           "fetchedAt": "2026-11-24T05:27:34.336Z"
         },
         "tmdbId": 1281331,
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-27T02:19:09.137Z",
+        "trendingRankedDateIST": "2026-11-27",
         "verified": true
       },
       {
@@ -551,9 +897,6 @@
           "fetchedAt": "2026-11-13T12:41:01.465Z"
         },
         "tmdbId": 1431738,
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-26T02:19:28.097Z",
-        "trendingRankedDateIST": "2026-11-26",
         "verified": true
       },
       {
@@ -652,9 +995,6 @@
         },
         "tmdbId": 1595124,
         "votes": 0,
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-11-26T02:19:28.097Z",
-        "trendingRankedDateIST": "2026-11-26",
         "verified": true
       },
       {
@@ -765,9 +1105,6 @@
         "tmdbRating": 75,
         "tmdbVotes": 25,
         "votes": 1,
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-26T02:19:28.097Z",
-        "trendingRankedDateIST": "2026-11-26",
         "verified": true
       },
       {
@@ -841,9 +1178,6 @@
           "fetchedAt": "2026-11-20T11:53:08.767Z"
         },
         "tmdbId": 1593350,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-26T02:19:28.097Z",
-        "trendingRankedDateIST": "2026-11-26",
         "verified": true
       },
       {
@@ -916,9 +1250,6 @@
           "fetchedAt": "2026-11-20T16:49:23.234Z"
         },
         "tmdbId": 1542674,
-        "trendingRank": 6,
-        "trendingRankedAt": "2026-11-26T02:19:28.097Z",
-        "trendingRankedDateIST": "2026-11-26",
         "verified": true
       },
       {
@@ -979,9 +1310,6 @@
           "fetchedAt": "2026-11-20T10:30:47.065Z"
         },
         "tmdbId": 1610188,
-        "trendingRank": 7,
-        "trendingRankedAt": "2026-11-26T02:19:28.097Z",
-        "trendingRankedDateIST": "2026-11-26",
         "verified": true
       },
       {
@@ -32072,8 +32400,134 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-27T06:08:26.989300+04:00",
+    "checkedAt": "2026-11-27T08:44:32.901009+04:00",
     "records": [
+      {
+        "name": "Aadarsha Kutumbam House No: 47 – AK47",
+        "language": "telugu",
+        "type": "movie",
+        "ottDate": "2026-11-27",
+        "platforms": [
+          "Netflix"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/10/aadarsha-kutumbam-house-no-47-ak47-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/aadarsha-kutumbam-house-no-47-ak47/",
+        "confirmed": true
+      },
+      {
+        "name": "Drishyam: The Conclusion",
+        "language": "hindi",
+        "type": "movie",
+        "ottDate": "2026-11-27",
+        "platforms": [
+          "Netflix"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/11/drishyam-the-conclusion-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/drishyam-the-conclusion/",
+        "confirmed": true
+      },
+      {
+        "name": "Enemy Of The Smuggler",
+        "language": "tamil",
+        "type": "movie",
+        "ottDate": "2026-11-27",
+        "platforms": [
+          "Sun NXT"
+        ],
+        "poster": null,
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+        "confirmed": true
+      },
+      {
+        "name": "Hanuman Ansh",
+        "language": "hindi",
+        "type": "movie",
+        "ottDate": "2026-11-27",
+        "platforms": [
+          "SonyLIV"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/11/hanuman-ansh-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/hanuman-ansh/",
+        "confirmed": true
+      },
+      {
+        "name": "Nayyi Navelli",
+        "language": "hindi",
+        "type": "movie",
+        "ottDate": "2026-11-27",
+        "platforms": [
+          "Prime Video"
+        ],
+        "poster": "https://cinebuds.com/wp-content/uploads/2026/11/nayyi-navelli-poster-200x300.jpg",
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/movies/nayyi-navelli/",
+        "confirmed": true
+      },
+      {
+        "name": "Octopus (Series)",
+        "language": "tamil",
+        "type": "series",
+        "ottDate": "2026-11-27",
+        "platforms": [
+          "ZEE5"
+        ],
+        "poster": null,
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+        "confirmed": true
+      },
+      {
+        "name": "Prem Keetanu",
+        "language": "hindi",
+        "type": "movie",
+        "ottDate": "2026-11-27",
+        "platforms": [
+          "Prime Video"
+        ],
+        "poster": null,
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/bollywood-movies-digital-release-dates/",
+        "confirmed": true
+      },
+      {
+        "name": "Raathiri (Series)",
+        "language": "tamil",
+        "type": "series",
+        "ottDate": "2026-11-27",
+        "platforms": [
+          "Aha"
+        ],
+        "poster": null,
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+        "confirmed": true
+      },
+      {
+        "name": "Sathyameva (Series)",
+        "language": "malayalam",
+        "type": "series",
+        "ottDate": "2026-11-27",
+        "platforms": [
+          "ZEE5"
+        ],
+        "poster": null,
+        "year": null,
+        "source": "https://cinebuds.com/ott-release-dates/",
+        "detail": "https://cinebuds.com/malayalam-movies-ott-release-dates/",
+        "confirmed": true
+      },
       {
         "name": "Anbil Avan",
         "language": "tamil",

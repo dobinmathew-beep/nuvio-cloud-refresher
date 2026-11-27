@@ -15799,11 +15799,17 @@
       "editions": [],
       "theatrical": [],
       "events": []
+    },
+    "malayalam|1848324": {
+      "checkedAt": "2026-11-27T08:44:32.901009+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
     }
   },
   "discovery": {
     "malayalam": {
-      "checkedAt": "2026-11-27T06:08:26.989300+04:00",
+      "checkedAt": "2026-11-27T08:44:32.901009+04:00",
       "titles": {
         "1842602": "Sidhu",
         "1555984": "Prempaatta",
@@ -15813,6 +15819,7 @@
         "1841290": "Thankachante Sherikal",
         "1837744": "Kaadhangal Dhoore - Miles Apart",
         "1533928": "Bachelor Party D'eux",
+        "1848324": "Madhumozhi",
         "1828678": "Grahanam",
         "1825658": "Khushi - The Princess of the Jungle",
         "1434462": "Melcow Pondicherry",
@@ -15904,7 +15911,6 @@
         "1677340": "Secret of Kalinga",
         "1719662": "Normal",
         "1712008": "Served Cold",
-        "1248251": "Mollywood Times",
         "1065834": "Kattalan",
         "847742": "Drishyam 3",
         "1300501": "Patriot",
@@ -15969,6 +15975,9 @@
           "theatrical"
         ],
         "1533928": [
+          "theatrical"
+        ],
+        "1848324": [
           "theatrical"
         ],
         "1828678": [
@@ -16244,9 +16253,6 @@
         "1712008": [
           "theatrical"
         ],
-        "1248251": [
-          "theatrical"
-        ],
         "1065834": [
           "theatrical"
         ],
@@ -16370,7 +16376,7 @@
       }
     },
     "tamil": {
-      "checkedAt": "2026-11-27T06:08:26.989300+04:00",
+      "checkedAt": "2026-11-27T08:44:32.901009+04:00",
       "titles": {
         "1844991": "Mouna Mozhigal",
         "1830763": "Minnum Oar Iravu",
@@ -17025,7 +17031,7 @@
       }
     },
     "telugu": {
-      "checkedAt": "2026-11-27T06:08:26.989300+04:00",
+      "checkedAt": "2026-11-27T08:44:32.901009+04:00",
       "titles": {
         "1847783": "Dad's Little Friend",
         "1842641": "Bala 369 (Atajani Kaanche)",
@@ -17760,7 +17766,7 @@
       }
     },
     "hindi": {
-      "checkedAt": "2026-11-27T06:08:26.989300+04:00",
+      "checkedAt": "2026-11-27T08:44:32.901009+04:00",
       "titles": {
         "1510775": "Gunmaaster G9",
         "1209723": "Yeh Prem Mol Liya",
