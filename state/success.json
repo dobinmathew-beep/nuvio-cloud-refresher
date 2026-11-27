@@ -1,8 +1,8 @@
 {
   "cycle": "2026-11-27",
-  "refresh_cycle": "2026-11-27T04:00:00+04:00",
+  "refresh_cycle": "2026-11-27T06:00:00+04:00",
   "featuredVersion": 2,
-  "featured_cycle": "2026-11-27T04:00:00+04:00",
+  "featured_cycle": "2026-11-27T06:00:00+04:00",
   "featured_ids": {
     "hindi": "tt37200939",
     "tamil": "tt18933846",
@@ -16,15 +16,15 @@
       "malayalam",
       "telugu"
     ],
-    "checked_at": "2026-11-27T04:13:38.024307+04:00",
+    "checked_at": "2026-11-27T06:14:11.196503+04:00",
     "films_per_language": 20,
     "opening_version": 1,
     "selection_policy": "catalog-order-v3",
     "language_fingerprints": {
       "hindi": {
-        "video_sha256": "d10d62b3880f6d841ff9fbd92b62ebd7eb0622ffecf2600f2e68a4c740eee5c4",
-        "metadata_sha256": "911e56072270914bfdd2c8e6497bac15809bb6129d63d0a7396d13e6db962b88",
-        "checked_at": "2026-11-27T04:09:59.927546+04:00",
+        "video_sha256": "de723be6f2e60e0ef3ee85a4817ddaf3d5c26bc29a21813e116ce5dffa5b40f5",
+        "metadata_sha256": "e48d636f15060dd9e4aeeeb144d2f87e408fee7ff4a78b05f50f24a621492d6f",
+        "checked_at": "2026-11-27T06:08:45.284719+04:00",
         "movie_ids": [
           "tt37200939",
           "tt50107649",
@@ -51,9 +51,9 @@
         "film_count": 20
       },
       "tamil": {
-        "video_sha256": "d55494a6142d31c63d9f9d3adf11dd4a105b71f262190178ebd3b702b7d7bf8d",
-        "metadata_sha256": "22903c1733da75ce68db118700db43f3edd66c88a38175d6472eecc4d6af39b4",
-        "checked_at": "2026-11-27T04:09:59.916434+04:00",
+        "video_sha256": "71b984ed74c1843d252a7908b63cc116a9afdf5747d4acaac9c6db40ddac021a",
+        "metadata_sha256": "87bdc2fa7df44b1b700f5ccaee9d7ff9c1a5513283b6c9e7b76da0c03c6ec420",
+        "checked_at": "2026-11-27T06:08:45.457854+04:00",
         "movie_ids": [
           "tt18933846",
           "tt39239818",
@@ -81,8 +81,8 @@
       },
       "malayalam": {
         "video_sha256": "4f6fb070f3f3a5ed9cbf83fa8e318ea709bfc0fa952a9610a0ee6c8543dd0b30",
-        "metadata_sha256": "edb53bd2a0b3d639f71f8f5104d57e948a0e4e584dcd380f5e2731c52f93877e",
-        "checked_at": "2026-11-27T04:09:59.361410+04:00",
+        "metadata_sha256": "4b1019a80644b717a70d535e879c5e2f7d9bab0a41b7d8e994ce75d794f633fb",
+        "checked_at": "2026-11-27T06:08:44.842563+04:00",
         "movie_ids": [
           "tt41944351",
           "tt34284946",
@@ -109,9 +109,9 @@
         "film_count": 20
       },
       "telugu": {
-        "video_sha256": "701cd7e15721ad5d7d0fb3e23023ee04eb943bf7170388bbbdc38ec40e062252",
-        "metadata_sha256": "2bf86809b20e9716091cb4f48ffae8904e6e958afa81ab1582b8b93eebb8d449",
-        "checked_at": "2026-11-27T04:10:00.199066+04:00",
+        "video_sha256": "df17a1cabb969773b90cd02b4e73f45f7827a87f42c791be4e58853f3fba0481",
+        "metadata_sha256": "590aabbccd0b240117469a3e61f8edd4841cf8fd910d6711247e684ace3e5d46",
+        "checked_at": "2026-11-27T06:08:45.572648+04:00",
         "movie_ids": [
           "tt36915004",
           "tt38984184",
@@ -139,21 +139,21 @@
       }
     },
     "published_asset_sha256": {
-      "/hero/index.html": "81572c86a3b7030fcc02315abe0199f23763a74fb280a53ff3099d6e16941f6b",
-      "/hero/daily-manifest.json": "60233a7a7d4e02e0dbb287ea10cfc02482124477c0fda5e8767cecc2becdfe20",
+      "/hero/index.html": "9920a4f43865ed70a881723a5b139e2107fe5309b64a2ccfcd5a99554fb1e5b9",
+      "/hero/daily-manifest.json": "d117abf77b63939f28a773dafe293fe3486b68ba24b969632775b48531541b42",
       "/hero/music-credits.json": "56a7b2a17be699210795b4bc4f4744028aed614989ebf76199923b1c9957c09d",
-      "/hero/hindi.mp4": "d10d62b3880f6d841ff9fbd92b62ebd7eb0622ffecf2600f2e68a4c740eee5c4",
-      "/hero/hindi-daily.jpg": "e5ff1e6fadeceec2f292369f197d975a3e26f420064a9e38ef9baa09273fabc4",
-      "/hero/hindi-daily.json": "911e56072270914bfdd2c8e6497bac15809bb6129d63d0a7396d13e6db962b88",
-      "/hero/tamil.mp4": "d55494a6142d31c63d9f9d3adf11dd4a105b71f262190178ebd3b702b7d7bf8d",
-      "/hero/tamil-daily.jpg": "5c89e3eaa181f0138e05b7b60e55e3fbdceea367e84622fad1952fc363ce46a7",
-      "/hero/tamil-daily.json": "22903c1733da75ce68db118700db43f3edd66c88a38175d6472eecc4d6af39b4",
+      "/hero/hindi.mp4": "de723be6f2e60e0ef3ee85a4817ddaf3d5c26bc29a21813e116ce5dffa5b40f5",
+      "/hero/hindi-daily.jpg": "10ceda98b5814dc7cebe57880ffa6e97184e4b0c1d97958849078ef5d8417a91",
+      "/hero/hindi-daily.json": "e48d636f15060dd9e4aeeeb144d2f87e408fee7ff4a78b05f50f24a621492d6f",
+      "/hero/tamil.mp4": "71b984ed74c1843d252a7908b63cc116a9afdf5747d4acaac9c6db40ddac021a",
+      "/hero/tamil-daily.jpg": "562a3751407ba35d696e047e747708694cb605ff379d571bd998775e027bf045",
+      "/hero/tamil-daily.json": "87bdc2fa7df44b1b700f5ccaee9d7ff9c1a5513283b6c9e7b76da0c03c6ec420",
       "/hero/malayalam.mp4": "4f6fb070f3f3a5ed9cbf83fa8e318ea709bfc0fa952a9610a0ee6c8543dd0b30",
       "/hero/malayalam-daily.jpg": "ae5c9f3dd6e8689082f3ef3d9f5653c2a1fa5b2e3618eba21552e5f3d4a4b9e3",
-      "/hero/malayalam-daily.json": "edb53bd2a0b3d639f71f8f5104d57e948a0e4e584dcd380f5e2731c52f93877e",
-      "/hero/telugu.mp4": "701cd7e15721ad5d7d0fb3e23023ee04eb943bf7170388bbbdc38ec40e062252",
-      "/hero/telugu-daily.jpg": "80330b1fe175ebcfb1c578a8ccb7addebdb8cf5d14fdddf4b5e9dbad6c91ebca",
-      "/hero/telugu-daily.json": "2bf86809b20e9716091cb4f48ffae8904e6e958afa81ab1582b8b93eebb8d449"
+      "/hero/malayalam-daily.json": "4b1019a80644b717a70d535e879c5e2f7d9bab0a41b7d8e994ce75d794f633fb",
+      "/hero/telugu.mp4": "df17a1cabb969773b90cd02b4e73f45f7827a87f42c791be4e58853f3fba0481",
+      "/hero/telugu-daily.jpg": "1739620e5996df121613f9c912db400d2e2ee9cfc5d270b72c7a83a3aac1ce96",
+      "/hero/telugu-daily.json": "590aabbccd0b240117469a3e61f8edd4841cf8fd910d6711247e684ace3e5d46"
     }
   },
   "backdrops": {
