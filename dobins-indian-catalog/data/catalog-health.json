@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-27T02:17:11.543081+00:00",
+  "checkedAt": "2026-11-27T04:53:38.181769+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,15 +14,15 @@
       "statusTimestampMatches": true,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1208,
+      "metadataRecords": 1210,
       "warning": null,
       "error": null
     },
     {
       "path": "/meta/* (Malayalam catalog audit)",
       "state": "ok",
-      "checked": 167,
-      "passed": 167,
+      "checked": 166,
+      "passed": 166,
       "failed": 0,
       "missingOriginalLanguageField": 119
     },
@@ -45,30 +45,30 @@
       "language": "ml",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ml_movie.json",
-      "localPublishedCount": 99,
-      "localUniqueIdCount": 99,
+      "localPublishedCount": 98,
+      "localUniqueIdCount": 98,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 99,
-      "endpointUniqueIdCount": 99,
+      "endpointRawCount": 98,
+      "endpointUniqueIdCount": 98,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        49
+        48
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tmdb:1628781",
-        "name": "Iniyum",
+        "id": "tt44878818",
+        "name": "Bouma",
         "releaseDate": "2026-11-22"
       },
       "localLatestEntry": {
-        "id": "tmdb:1628781",
-        "name": "Iniyum",
+        "id": "tt44878818",
+        "name": "Bouma",
         "releaseDate": "2026-11-22"
       },
       "latestEntryMatches": true,
@@ -258,19 +258,19 @@
       "language": "hi",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
-      "localPublishedCount": 124,
-      "localUniqueIdCount": 124,
+      "localPublishedCount": 125,
+      "localUniqueIdCount": 125,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 124,
-      "endpointUniqueIdCount": 124,
+      "endpointRawCount": 125,
+      "endpointUniqueIdCount": 125,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
-        24
+        25
       ],
       "endpointPageSize": 50,
       "missingIds": [],
@@ -333,8 +333,8 @@
   ],
   "malayalamMetadataAudit": {
     "state": "ok",
-    "checked": 167,
-    "passed": 167,
+    "checked": 166,
+    "passed": 166,
     "failed": 0,
     "missingOriginalLanguageField": 119,
     "failures": []
