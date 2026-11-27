@@ -9,6 +9,14 @@ on:
       - "poster-date-service/tests/imagekit-retention-cleanup-utils.test.mjs"
       - "poster-date-service/scripts/imagekit-retention-cleanup.mjs"
       - ".github/workflows/imagekit-retention-cleanup.yml"
+  pull_request:
+    branches:
+      - poster-date-service
+    paths:
+      - "poster-date-service/lib/imagekit-retention-cleanup-utils.mjs"
+      - "poster-date-service/tests/imagekit-retention-cleanup-utils.test.mjs"
+      - "poster-date-service/scripts/imagekit-retention-cleanup.mjs"
+      - ".github/workflows/imagekit-retention-cleanup.yml"
   workflow_dispatch:
 
 permissions:
