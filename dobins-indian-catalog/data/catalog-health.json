@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-27T10:29:03.137767+00:00",
+  "checkedAt": "2026-11-27T14:45:12.439781+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -14,7 +14,7 @@
       "statusTimestampMatches": false,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1210,
+      "metadataRecords": 1211,
       "warning": "Public status.json timestamp is behind the latest GitHub status; catalog data itself is current.",
       "error": null
     },
@@ -115,30 +115,30 @@
       "language": "ta",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_ta_movie.json",
-      "localPublishedCount": 93,
-      "localUniqueIdCount": 93,
+      "localPublishedCount": 94,
+      "localUniqueIdCount": 94,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 93,
-      "endpointUniqueIdCount": 93,
+      "endpointRawCount": 94,
+      "endpointUniqueIdCount": 94,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
-        43
+        44
       ],
       "endpointPageSize": 50,
       "missingIds": [],
       "extraIds": [],
       "endpointLatestEntry": {
-        "id": "tt43681681",
-        "name": "Enemy Of The Smuggler",
+        "id": "tt0221905",
+        "name": "Octopus",
         "releaseDate": "2026-11-27"
       },
       "localLatestEntry": {
-        "id": "tt43681681",
-        "name": "Enemy Of The Smuggler",
+        "id": "tt0221905",
+        "name": "Octopus",
         "releaseDate": "2026-11-27"
       },
       "latestEntryMatches": true,
