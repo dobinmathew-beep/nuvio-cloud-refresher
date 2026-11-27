@@ -15817,11 +15817,23 @@
       "editions": [],
       "theatrical": [],
       "events": []
+    },
+    "hindi|1793000": {
+      "checkedAt": "2026-11-28T00:15:44.517565+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
+    },
+    "hindi|1845628": {
+      "checkedAt": "2026-11-28T00:15:44.517565+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
     }
   },
   "discovery": {
     "malayalam": {
-      "checkedAt": "2026-11-27T22:51:35.480648+04:00",
+      "checkedAt": "2026-11-28T00:15:44.517565+04:00",
       "titles": {
         "1842602": "Sidhu",
         "1570366": "Pantham",
@@ -16388,7 +16400,7 @@
       }
     },
     "tamil": {
-      "checkedAt": "2026-11-27T22:51:35.480648+04:00",
+      "checkedAt": "2026-11-28T00:15:44.517565+04:00",
       "titles": {
         "1844991": "Mouna Mozhigal",
         "1830763": "Minnum Oar Iravu",
@@ -17043,7 +17055,7 @@
       }
     },
     "telugu": {
-      "checkedAt": "2026-11-27T22:51:35.480648+04:00",
+      "checkedAt": "2026-11-28T00:15:44.517565+04:00",
       "titles": {
         "1847783": "Dad's Little Friend",
         "1842641": "Bala 369 (Atajani Kaanche)",
@@ -17778,8 +17790,9 @@
       }
     },
     "hindi": {
-      "checkedAt": "2026-11-27T22:51:35.480648+04:00",
+      "checkedAt": "2026-11-28T00:15:44.517565+04:00",
       "titles": {
+        "1793000": "The Hangover Cure",
         "1848397": "Ishaara - A Campus Beats Movie",
         "1510775": "Gunmaaster G9",
         "1209723": "Yeh Prem Mol Liya",
@@ -17788,6 +17801,7 @@
         "1847371": "Two sun",
         "1813874": "Revenge of Her : Evil Prevails",
         "1842226": "Banaras",
+        "1845628": "Urum",
         "1836066": "Nanhey Dil",
         "1808244": "Pratap",
         "1783280": "Party Animals",
@@ -17878,8 +17892,6 @@
         "1215889": "Daayra",
         "1654566": "Vibe",
         "1777209": "Maheep Singh: FIR",
-        "1736689": "Phoolan",
-        "1785746": "Lamhaat",
         "1709391": "Hanuman Ansh",
         "1378537": "Mirzapur: The Movie",
         "1444466": "Awarapan 2",
@@ -17991,6 +18003,9 @@
         "12259": "Sholay"
       },
       "kinds": {
+        "1793000": [
+          "theatrical"
+        ],
         "1848397": [
           "theatrical"
         ],
@@ -18013,6 +18028,9 @@
           "theatrical"
         ],
         "1842226": [
+          "theatrical"
+        ],
+        "1845628": [
           "theatrical"
         ],
         "1836066": [
@@ -18283,12 +18301,6 @@
           "theatrical"
         ],
         "1777209": [
-          "theatrical"
-        ],
-        "1736689": [
-          "theatrical"
-        ],
-        "1785746": [
           "theatrical"
         ],
         "1709391": [

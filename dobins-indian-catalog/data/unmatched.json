@@ -117,25 +117,6 @@
     }
   },
   {
-    "name": "Pantham",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-11-27",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
-    ],
-    "platforms": [
-      "Manorama Max"
-    ],
-    "detail": "https://ottasia.com/title/movie/1570366/pantham?country=IN",
-    "sourceRecord": {
-      "title": "Pantham",
-      "releaseDate": "2026-11-27",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-    }
-  },
-  {
     "name": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
     "language": "malayalam",
     "type": "series",
@@ -154,6 +135,21 @@
       "source": "https://www.keralatv.in/channel/ott/",
       "headline": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram, Streaming from 27 November"
     }
+  },
+  {
+    "name": "Drones",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-11-20",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://cinebuds.com/ott-release-dates/"
+    ],
+    "platforms": [
+      "Prime Video"
+    ],
+    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+    "sourceRecord": {}
   },
   {
     "name": "Aadarsha Kutumbam House No: 47",
@@ -269,12 +265,12 @@
     "ottDate": "2026-11-26",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
+      "https://www.ottchecker.com/ott-releases/malayalam"
     ],
     "platforms": [
       "ZEE5"
     ],
-    "detail": "https://ottasia.com/title/tv/342403/satyameva?country=IN",
+    "detail": "https://www.ottchecker.com/movie/satyameva-2026",
     "sourceRecord": {
       "title": "Satyameva",
       "releaseDate": "2026-11-26",
@@ -283,42 +279,6 @@
         "ZEE5"
       ],
       "source": "https://www.ottchecker.com/ott-releases/malayalam"
-    }
-  },
-  {
-    "name": "Drones",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-11-20",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://cinebuds.com/ott-release-dates/"
-    ],
-    "platforms": [
-      "Prime Video"
-    ],
-    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
-    "sourceRecord": {}
-  },
-  {
-    "name": "Summer Holidays",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-11-27",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.keralatv.in/channel/ott/"
-    ],
-    "platforms": [
-      "Prime Video",
-      "ManoramaMAX"
-    ],
-    "detail": "https://www.keralatv.in/summer-holidays-telugu-movie-ott-release-date-sonyliv/",
-    "sourceRecord": {
-      "title": "Summer Holidays",
-      "releaseDate": "2026-11-27",
-      "source": "https://www.keralatv.in/channel/ott/",
-      "headline": "Summer Holidays OTT Release Date: Sony LIV to Premiere Telugu Children’s Film on December 4"
     }
   },
   {
@@ -345,37 +305,24 @@
     }
   },
   {
-    "name": "Raathiri (Series)",
-    "language": "tamil",
-    "type": "series",
+    "name": "Summer Holidays",
+    "language": "telugu",
+    "type": "movie",
     "ottDate": "2026-11-27",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
-      "https://cinebuds.com/ott-release-dates/"
+      "https://www.keralatv.in/channel/ott/"
     ],
     "platforms": [
-      "Aha"
+      "Prime Video",
+      "ManoramaMAX"
     ],
-    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
-    "sourceRecord": {}
-  },
-  {
-    "name": "Dalimp",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-12-04",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://ottasia.com/ott-releases-this-week?country=IN"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": "https://ottasia.com/title/tv/343304/dalimp?country=IN",
+    "detail": "https://www.keralatv.in/summer-holidays-telugu-movie-ott-release-date-sonyliv/",
     "sourceRecord": {
-      "title": "Dalimp",
-      "releaseDate": "2026-12-04",
-      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+      "title": "Summer Holidays",
+      "releaseDate": "2026-11-27",
+      "source": "https://www.keralatv.in/channel/ott/",
+      "headline": "Summer Holidays OTT Release Date: Sony LIV to Premiere Telugu Children’s Film on December 4"
     }
   },
   {
@@ -399,6 +346,21 @@
     }
   },
   {
+    "name": "Raathiri (Series)",
+    "language": "tamil",
+    "type": "series",
+    "ottDate": "2026-11-27",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://cinebuds.com/ott-release-dates/"
+    ],
+    "platforms": [
+      "Aha"
+    ],
+    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
+    "sourceRecord": {}
+  },
+  {
     "name": "The Conjunction",
     "language": "hindi",
     "type": "movie",
@@ -412,6 +374,25 @@
     "sourceRecord": {
       "title": "The Conjunction",
       "releaseDate": "2026-12-03",
+      "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    }
+  },
+  {
+    "name": "Dalimp",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-12-04",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://ottasia.com/ott-releases-this-week?country=IN"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": "https://ottasia.com/title/tv/343304/dalimp?country=IN",
+    "sourceRecord": {
+      "title": "Dalimp",
+      "releaseDate": "2026-12-04",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
     }
   },
@@ -799,6 +780,38 @@
     }
   },
   {
+    "name": "Avalaga Irunthal",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-10-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6acee68b3249ff69efda4163",
+      "platform": "ZEE5",
+      "title": "Avalaga Irunthal",
+      "createdAt": "2026-10-14T02:18:51.600Z",
+      "genre": "Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "original_language": "Tamil",
+      "releaseDate": "2026-10-14",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-10-14T02:18:51.600Z",
+      "votes": 0,
+      "verified": true
+    }
+  },
+  {
     "name": "Southern Shadows",
     "language": "tamil",
     "type": "series",
@@ -857,38 +870,6 @@
       "type": "Series",
       "updatedAt": "2026-04-30T03:47:03.617Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/lMmVs6FC8pkc0n1BW3gemZRFhqb.jpg",
-      "verified": true
-    }
-  },
-  {
-    "name": "Avalaga Irunthal",
-    "language": "tamil",
-    "type": "movie",
-    "ottDate": "2026-10-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6acee68b3249ff69efda4163",
-      "platform": "ZEE5",
-      "title": "Avalaga Irunthal",
-      "createdAt": "2026-10-14T02:18:51.600Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "original_language": "Tamil",
-      "releaseDate": "2026-10-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-10-14T02:18:51.600Z",
-      "votes": 0,
       "verified": true
     }
   },
@@ -1476,6 +1457,36 @@
     }
   },
   {
+    "name": "Kakkippada-2",
+    "language": "malayalam",
+    "type": "movie",
+    "ottDate": "2026-05-29",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a190c98135bb8f4954fffcc",
+      "platform": "ZEE5",
+      "title": "Kakkippada-2",
+      "createdAt": "2026-05-29T03:48:40.285Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Malayalam"
+      ],
+      "releaseDate": "2026-05-29",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-05-29T03:48:40.285Z",
+      "verified": true
+    }
+  },
+  {
     "name": "108 Base Hospital Uri",
     "language": "hindi",
     "type": "movie",
@@ -1505,36 +1516,6 @@
       "updatedAt": "2026-08-17T01:43:50.495Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/s2zF4NDPU0xTPKb5wrOhsFdYARR.jpg",
       "instagramPostedAt": "2026-08-17T01:44:13Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Kakkippada-2",
-    "language": "malayalam",
-    "type": "movie",
-    "ottDate": "2026-05-29",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a190c98135bb8f4954fffcc",
-      "platform": "ZEE5",
-      "title": "Kakkippada-2",
-      "createdAt": "2026-05-29T03:48:40.285Z",
-      "genre": "Drama",
-      "imdbRating": null,
-      "languages": [
-        "Malayalam"
-      ],
-      "releaseDate": "2026-05-29",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-29T03:48:40.285Z",
       "verified": true
     }
   },
@@ -1798,37 +1779,6 @@
       "source_verified": true,
       "type": "Movie",
       "updatedAt": "2026-03-27T03:36:48.165Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "The Eternal Love",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-04-24",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "69eae74130958fd1b959e169",
-      "platform": "ETV Win",
-      "title": "The Eternal Love",
-      "createdAt": "2026-04-24T03:45:05.325Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-04-24",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-04-24T03:45:23.137Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/yZBBcP8QZFALkfkbW8Yjp6ylJ0v.jpg",
       "verified": true
     }
   },

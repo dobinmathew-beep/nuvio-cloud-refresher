@@ -1,562 +1,31 @@
 {
-  "generatedAt": "2026-11-27T22:51:35.480648+04:00",
+  "generatedAt": "2026-11-28T00:15:44.517565+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 34,
+    "total": 15,
     "byLanguage": {
-      "hindi": 19,
-      "malayalam": 6,
-      "tamil": 6,
-      "telugu": 3
+      "hindi": 13,
+      "tamil": 1,
+      "telugu": 1
     },
     "byType": {
-      "movie": 17,
-      "series": 17
+      "movie": 7,
+      "series": 8
     },
     "byMatchState": {
-      "published": 20,
-      "unmatched": 13,
+      "unmatched": 4,
+      "published": 10,
       "metadata_incomplete": 1
     },
     "bySource": {
-      "https://cinebuds.com/ott-release-dates/": 6,
-      "https://www.ottchecker.com/ott-releases/hindi": 1,
-      "https://www.themoviedb.org/tv/338390": 1,
-      "https://www.dailyott.in/": 8,
-      "https://ottasia.com/ott-releases-this-week?country=IN": 17,
-      "https://www.themoviedb.org/tv/338656": 1,
-      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
-      "https://v3-cinemeta.strem.io/": 3,
-      "https://www.keralatv.in/channel/ott/": 4,
-      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json": 1,
-      "https://www.themoviedb.org/tv/331750": 1,
-      "https://api.tvmaze.com/schedule/web": 1
+      "https://ottasia.com/ott-releases-this-week?country=IN": 14,
+      "https://api.tvmaze.com/schedule/web": 1,
+      "https://www.dailyott.in/": 1,
+      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 1,
+      "https://v3-cinemeta.strem.io/": 1
     }
   },
   "items": [
-    {
-      "title": "Nayyi Navelli",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "Prime Video"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-release-dates/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": "https://cinebuds.com/movies/nayyi-navelli/",
-      "matchId": "tt40855841",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_movie"
-    },
-    {
-      "title": "Prem Keetanu",
-      "language": "hindi",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "Prime Video",
-        "Amazon Prime Video"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-release-dates/",
-        "https://www.ottchecker.com/ott-releases/hindi"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": "https://cinebuds.com/bollywood-movies-digital-release-dates/",
-      "matchId": "tt44090550",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_movie"
-    },
-    {
-      "title": "Apsara",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/338390"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "premiere",
-      "detail": null,
-      "matchId": "tt50063835",
-      "matchState": "published",
-      "matchReason": "https://www.themoviedb.org/tv/338390",
-      "metadataComplete": true,
-      "metadataSource": "https://www.themoviedb.org/tv/338390",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Bigg Boss Season 20",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": null,
-      "matchId": "tt1281973",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Dhai Chaal",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "Hotstar",
-        "JioHotstar",
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": null,
-      "matchId": "tt41496092",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": false,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Lo Chudail Chali Sasural",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/338656",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "episode",
-      "detail": null,
-      "matchId": "tt43636966",
-      "matchState": "published",
-      "matchReason": "https://v3-cinemeta.strem.io/",
-      "metadataComplete": true,
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Hail Mary",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "Netflix"
-      ],
-      "sources": [
-        "https://www.keralatv.in/channel/ott/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "Kerala TV dated OTT announcement",
-      "detail": "https://www.keralatv.in/hail-mary-malayalam-movie-ott-release/",
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
-    {
-      "title": "Law and Order",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "ManoramaMAX"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "verified DailyOTT date",
-      "detail": null,
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "Title identity is not yet resolved",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
-    {
-      "title": "Pantham",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "Manorama Max"
-      ],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
-      "detail": "https://ottasia.com/title/movie/1570366/pantham?country=IN",
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
-    {
-      "title": "Sathyameva",
-      "language": "malayalam",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "ZEE5"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": null,
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
-    {
-      "title": "Sathyameva (Series)",
-      "language": "malayalam",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "ZEE5"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-release-dates/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": "https://cinebuds.com/malayalam-movies-ott-release-dates/",
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
-    {
-      "title": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
-      "language": "malayalam",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "ZEE5"
-      ],
-      "sources": [
-        "https://www.keralatv.in/channel/ott/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "Kerala TV dated OTT announcement",
-      "detail": "https://www.keralatv.in/sathyameva-zee5-malayalam-series-cast-characters/",
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
-    {
-      "title": "Enemy Of The Smuggler",
-      "language": "tamil",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "Sun NXT",
-        "ZEE5"
-      ],
-      "sources": [
-        "https://www.keralatv.in/channel/ott/",
-        "https://cinebuds.com/ott-release-dates/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
-      "matchId": "tt43681681",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_ta_movie"
-    },
-    {
-      "title": "Octopus",
-      "language": "tamil",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "ZEE5"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "verified DailyOTT date",
-      "detail": null,
-      "matchId": "tt0221905",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_ta_movie"
-    },
-    {
-      "title": "Octopus (Series)",
-      "language": "tamil",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "ZEE5"
-      ],
-      "sources": [
-        "https://ottasia.com/ott-releases-this-week?country=IN",
-        "https://cinebuds.com/ott-release-dates/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
-      "matchId": "tt35984846",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_ta_series"
-    },
-    {
-      "title": "Raathiri (Series)",
-      "language": "tamil",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "Aha"
-      ],
-      "sources": [
-        "https://cinebuds.com/ott-release-dates/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
-    {
-      "title": "The Court",
-      "language": "tamil",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "JioHotStar"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json",
-        "https://v3-cinemeta.strem.io/",
-        "https://www.themoviedb.org/tv/331750"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "episode",
-      "detail": null,
-      "matchId": "tt44914967",
-      "matchState": "published",
-      "matchReason": "https://v3-cinemeta.strem.io/",
-      "metadataComplete": true,
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_ta_series"
-    },
-    {
-      "title": "Aadarsha Kutumbam House No: 47",
-      "language": "telugu",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "Netflix"
-      ],
-      "sources": [
-        "https://www.dailyott.in/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": null,
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
-    {
-      "title": "Summer Holidays",
-      "language": "telugu",
-      "type": "movie",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "Prime Video",
-        "ManoramaMAX"
-      ],
-      "sources": [
-        "https://www.keralatv.in/channel/ott/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "Kerala TV dated OTT announcement",
-      "detail": "https://www.keralatv.in/summer-holidays-telugu-movie-ott-release-date-sonyliv/",
-      "matchId": null,
-      "matchState": "unmatched",
-      "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
-      "metadataComplete": false,
-      "metadataSource": null,
-      "metadataFields": {
-        "poster": false,
-        "description": false,
-        "genres": false,
-        "releaseInfo": false
-      },
-      "catalog": null
-    },
     {
       "title": "Hatela Gang",
       "language": "hindi",
@@ -599,36 +68,6 @@
       "matchReason": "TMDB exact-title search + verified detail page",
       "metadataComplete": true,
       "metadataSource": "TMDB exact-title search + verified detail page",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "The Great Indian Kapil Show Season 5",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-28",
-      "platforms": [
-        "Netflix"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://api.tvmaze.com/schedule/web",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": null,
-      "detail": null,
-      "matchId": "tt30003786",
-      "matchState": "published",
-      "matchReason": "https://v3-cinemeta.strem.io/",
-      "metadataComplete": true,
-      "metadataSource": "https://v3-cinemeta.strem.io/",
       "metadataFields": {
         "poster": true,
         "description": true,
@@ -852,6 +291,36 @@
       "catalog": "dobins_te_movie"
     },
     {
+      "title": "The Great Indian Kapil Show Season 5",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-12-05",
+      "platforms": [
+        "Netflix"
+      ],
+      "sources": [
+        "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": null,
+      "detail": null,
+      "matchId": "tt30003786",
+      "matchState": "published",
+      "matchReason": "https://v3-cinemeta.strem.io/",
+      "metadataComplete": true,
+      "metadataSource": "https://v3-cinemeta.strem.io/",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_series"
+    },
+    {
       "title": "Itihasa: Ramayana Beyond Borders with Shashi Tharoor",
       "language": "hindi",
       "type": "series",
@@ -958,9 +427,9 @@
   "malayalamReview": {
     "policy": "Unmatched Malayalam source detections are held out until an unambiguous IMDb or TMDB identity and complete metadata are verified.",
     "counts": {
-      "total": 12,
+      "total": 11,
       "byType": {
-        "movie": 5,
+        "movie": 4,
         "series": 7
       }
     },
@@ -1066,25 +535,6 @@
         "sourceRecord": {}
       },
       {
-        "name": "Pantham",
-        "language": "malayalam",
-        "type": "movie",
-        "ottDate": "2026-11-27",
-        "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-        "sources": [
-          "https://ottasia.com/ott-releases-this-week?country=IN"
-        ],
-        "platforms": [
-          "Manorama Max"
-        ],
-        "detail": "https://ottasia.com/title/movie/1570366/pantham?country=IN",
-        "sourceRecord": {
-          "title": "Pantham",
-          "releaseDate": "2026-11-27",
-          "source": "https://ottasia.com/ott-releases-this-week?country=IN"
-        }
-      },
-      {
         "name": "Sathyameva ZEE5 Malayalam Series Cast and Characters –  Rony David Raj Leads as Adv. Rajaram,",
         "language": "malayalam",
         "type": "series",
@@ -1131,12 +581,12 @@
         "ottDate": "2026-11-26",
         "reason": "No unambiguous IMDb, TMDB or TVmaze match",
         "sources": [
-          "https://ottasia.com/ott-releases-this-week?country=IN"
+          "https://www.ottchecker.com/ott-releases/malayalam"
         ],
         "platforms": [
           "ZEE5"
         ],
-        "detail": "https://ottasia.com/title/tv/342403/satyameva?country=IN",
+        "detail": "https://www.ottchecker.com/movie/satyameva-2026",
         "sourceRecord": {
           "title": "Satyameva",
           "releaseDate": "2026-11-26",
@@ -1373,7 +823,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 21
+      "records": 14
     },
     {
       "source": "Vi weekly OTT calendar",
@@ -1457,8 +907,9 @@
     {
       "source": "DailyOTT upcoming dates",
       "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-      "state": "live",
-      "records": 8
+      "state": "no_confirmed_upcoming",
+      "records": 0,
+      "note": "DailyOTT is live; no verified future dates were present in the returned API pages."
     },
     {
       "source": "Cinebuds recent OTT dates",
@@ -1477,7 +928,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 108,
+      "records": 95,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1498,25 +949,22 @@
             "simplymollywood.com"
           ],
           "failedSourceDomains": [],
-          "sourcesWithRecords": 3,
+          "sourcesWithRecords": 2,
           "sourceDomainsWithRecords": [
             "keralatv.in",
-            "ottasia.com",
             "ottchecker.com"
           ],
-          "sourcesWithMovieRecords": 3,
+          "sourcesWithMovieRecords": 2,
           "sourceDomainsWithMovieRecords": [
             "keralatv.in",
-            "ottasia.com",
             "ottchecker.com"
           ],
-          "sourcesWithSeriesRecords": 3,
+          "sourcesWithSeriesRecords": 2,
           "sourceDomainsWithSeriesRecords": [
             "keralatv.in",
-            "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 21,
+          "detectedRecords": 17,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1532,10 +980,10 @@
               "source": "OTTASIA confirmed calendar",
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
-              "languageState": "records_found",
-              "records": 2,
-              "movieRecords": 1,
-              "seriesRecords": 1
+              "languageState": "checked_no_records",
+              "records": 0,
+              "movieRecords": 0,
+              "seriesRecords": 0
             },
             {
               "source": "Vi weekly OTT calendar",
@@ -1605,9 +1053,9 @@
               "url": "https://www.ottchecker.com/ott-releases/malayalam",
               "state": "live",
               "languageState": "records_found",
-              "records": 17,
-              "movieRecords": 15,
-              "seriesRecords": 2
+              "records": 15,
+              "movieRecords": 14,
+              "seriesRecords": 1
             },
             {
               "source": "Kerala TV multi-language OTT releases",
@@ -1621,7 +1069,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "live",
+              "state": "no_confirmed_upcoming",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -1681,7 +1129,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 23,
+          "detectedRecords": 21,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1698,9 +1146,9 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 2,
+              "records": 1,
               "movieRecords": 0,
-              "seriesRecords": 2
+              "seriesRecords": 1
             },
             {
               "source": "Vi weekly OTT calendar",
@@ -1752,9 +1200,9 @@
               "url": "https://www.ottchecker.com/ott-releases/tamil",
               "state": "live",
               "languageState": "records_found",
-              "records": 19,
+              "records": 18,
               "movieRecords": 15,
-              "seriesRecords": 4
+              "seriesRecords": 3
             },
             {
               "source": "Kerala TV multi-language OTT releases",
@@ -1768,7 +1216,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "live",
+              "state": "no_confirmed_upcoming",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -1828,7 +1276,7 @@
           "sourceDomainsWithSeriesRecords": [
             "ottchecker.com"
           ],
-          "detectedRecords": 24,
+          "detectedRecords": 22,
           "coverageStatus": "partial",
           "sources": [
             {
@@ -1845,8 +1293,8 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 2,
-              "movieRecords": 2,
+              "records": 1,
+              "movieRecords": 1,
               "seriesRecords": 0
             },
             {
@@ -1899,8 +1347,8 @@
               "url": "https://www.ottchecker.com/ott-releases/telugu",
               "state": "live",
               "languageState": "records_found",
-              "records": 19,
-              "movieRecords": 17,
+              "records": 18,
+              "movieRecords": 16,
               "seriesRecords": 2
             },
             {
@@ -1915,7 +1363,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "live",
+              "state": "no_confirmed_upcoming",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -1976,7 +1424,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 40,
+          "detectedRecords": 35,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1993,9 +1441,9 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 15,
-              "movieRecords": 8,
-              "seriesRecords": 7
+              "records": 12,
+              "movieRecords": 6,
+              "seriesRecords": 6
             },
             {
               "source": "Vi weekly OTT calendar",
@@ -2047,8 +1495,8 @@
               "url": "https://www.ottchecker.com/ott-releases/hindi",
               "state": "live",
               "languageState": "records_found",
-              "records": 23,
-              "movieRecords": 20,
+              "records": 21,
+              "movieRecords": 18,
               "seriesRecords": 3
             },
             {
@@ -2063,7 +1511,7 @@
             {
               "source": "DailyOTT upcoming dates",
               "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-              "state": "live",
+              "state": "no_confirmed_upcoming",
               "languageState": "checked_no_records",
               "records": 0,
               "movieRecords": 0,
@@ -2225,25 +1673,22 @@
         "simplymollywood.com"
       ],
       "failedSourceDomains": [],
-      "sourcesWithRecords": 3,
+      "sourcesWithRecords": 2,
       "sourceDomainsWithRecords": [
         "keralatv.in",
-        "ottasia.com",
         "ottchecker.com"
       ],
-      "sourcesWithMovieRecords": 3,
+      "sourcesWithMovieRecords": 2,
       "sourceDomainsWithMovieRecords": [
         "keralatv.in",
-        "ottasia.com",
         "ottchecker.com"
       ],
-      "sourcesWithSeriesRecords": 3,
+      "sourcesWithSeriesRecords": 2,
       "sourceDomainsWithSeriesRecords": [
         "keralatv.in",
-        "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 21,
+      "detectedRecords": 17,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2259,10 +1704,10 @@
           "source": "OTTASIA confirmed calendar",
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
-          "languageState": "records_found",
-          "records": 2,
-          "movieRecords": 1,
-          "seriesRecords": 1
+          "languageState": "checked_no_records",
+          "records": 0,
+          "movieRecords": 0,
+          "seriesRecords": 0
         },
         {
           "source": "Vi weekly OTT calendar",
@@ -2332,9 +1777,9 @@
           "url": "https://www.ottchecker.com/ott-releases/malayalam",
           "state": "live",
           "languageState": "records_found",
-          "records": 17,
-          "movieRecords": 15,
-          "seriesRecords": 2
+          "records": 15,
+          "movieRecords": 14,
+          "seriesRecords": 1
         },
         {
           "source": "Kerala TV multi-language OTT releases",
@@ -2348,7 +1793,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "live",
+          "state": "no_confirmed_upcoming",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,
@@ -2408,7 +1853,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 23,
+      "detectedRecords": 21,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2425,9 +1870,9 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 2,
+          "records": 1,
           "movieRecords": 0,
-          "seriesRecords": 2
+          "seriesRecords": 1
         },
         {
           "source": "Vi weekly OTT calendar",
@@ -2479,9 +1924,9 @@
           "url": "https://www.ottchecker.com/ott-releases/tamil",
           "state": "live",
           "languageState": "records_found",
-          "records": 19,
+          "records": 18,
           "movieRecords": 15,
-          "seriesRecords": 4
+          "seriesRecords": 3
         },
         {
           "source": "Kerala TV multi-language OTT releases",
@@ -2495,7 +1940,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "live",
+          "state": "no_confirmed_upcoming",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,
@@ -2555,7 +2000,7 @@
       "sourceDomainsWithSeriesRecords": [
         "ottchecker.com"
       ],
-      "detectedRecords": 24,
+      "detectedRecords": 22,
       "coverageStatus": "partial",
       "sources": [
         {
@@ -2572,8 +2017,8 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 2,
-          "movieRecords": 2,
+          "records": 1,
+          "movieRecords": 1,
           "seriesRecords": 0
         },
         {
@@ -2626,8 +2071,8 @@
           "url": "https://www.ottchecker.com/ott-releases/telugu",
           "state": "live",
           "languageState": "records_found",
-          "records": 19,
-          "movieRecords": 17,
+          "records": 18,
+          "movieRecords": 16,
           "seriesRecords": 2
         },
         {
@@ -2642,7 +2087,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "live",
+          "state": "no_confirmed_upcoming",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,
@@ -2703,7 +2148,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 40,
+      "detectedRecords": 35,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2720,9 +2165,9 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 15,
-          "movieRecords": 8,
-          "seriesRecords": 7
+          "records": 12,
+          "movieRecords": 6,
+          "seriesRecords": 6
         },
         {
           "source": "Vi weekly OTT calendar",
@@ -2774,8 +2219,8 @@
           "url": "https://www.ottchecker.com/ott-releases/hindi",
           "state": "live",
           "languageState": "records_found",
-          "records": 23,
-          "movieRecords": 20,
+          "records": 21,
+          "movieRecords": 18,
           "seriesRecords": 3
         },
         {
@@ -2790,7 +2235,7 @@
         {
           "source": "DailyOTT upcoming dates",
           "url": "https://www.dailyott.in/api/movies?limit=200&page=1",
-          "state": "live",
+          "state": "no_confirmed_upcoming",
           "languageState": "checked_no_records",
           "records": 0,
           "movieRecords": 0,
