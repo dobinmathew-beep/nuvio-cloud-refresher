@@ -14,10 +14,9 @@ import {
 
 const API = 'https://api.imagekit.io/v1';
 const CONFIRMATION = 'KEEP_CURRENT_PLUS_ONE_HISTORIC';
-const STATE_PATHS = new Set([
-  '/catalog-state/durable-queue/741382b785709edc43efd65a4ce0b14b/queue-state.json',
-  '/catalog-state/manifest-scan-checkpoint.json'
-]);
+function isCatalogStateJsonPath(path) {
+  return /^\/catalog-state\/.+\.json$/i.test(String(path || ''));
+}
 const CONCURRENCY = 4;
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const bytes = value => Math.max(0, Number(value) || 0);
@@ -299,10 +298,13 @@ try {
     }
   }
 
-  // C. Queue and manifest checkpoint: these are the two large state files
-  // identified in the prior audit. Keep current plus one verified JSON backup.
-  for (const path of STATE_PATHS) {
-    const file = byPath.get(path);
+  // C. Catalogue state: retain each current JSON object plus its newest
+  // verified historical JSON version. The audit found the bulk of version
+  // churn in poster-processing shards, catalogue snapshots, and checkpoints.
+  // Poster image paths are deliberately excluded by this path predicate.
+  const stateFiles = files.filter(file => isCatalogStateJsonPath(file.filePath));
+  for (const file of stateFiles) {
+    const path = file.filePath;
     if (!file?.fileId || !file.versionInfo?.id) {
       report.skipped.push({ scope: 'durable-state', path, reason: 'current-file-or-version-identity-missing' });
       continue;
@@ -334,7 +336,7 @@ try {
     posterFileVersions: deletes.filter(x => x.kind === 'version' && x.path.startsWith('/posters/')).length,
     immutablePosterFiles: deletes.filter(x => x.kind === 'file' && x.path.startsWith('/poster-versions/')).length,
     duplicatePosterFiles: deletes.filter(x => x.kind === 'file' && x.path.startsWith('/posters/')).length,
-    durableStateVersions: deletes.filter(x => x.kind === 'version' && STATE_PATHS.has(x.path)).length,
+    durableStateVersions: deletes.filter(x => x.kind === 'version' && isCatalogStateJsonPath(x.path)).length,
     skippedGroups: report.skipped.length
   }));
 
@@ -346,7 +348,7 @@ try {
       if (item.kind === 'version') await deleteVersion(item.fileId, item.versionId);
       else await deleteFile(item.fileId);
       report.deletedBytesEstimate += bytes(item.bytes);
-      if (item.kind === 'version' && STATE_PATHS.has(item.path)) report.stateVersionsDeleted.push(item);
+      if (item.kind === 'version' && isCatalogStateJsonPath(item.path)) report.stateVersionsDeleted.push(item);
       else if (item.kind === 'version') report.posterFileVersionsDeleted.push(item);
       else if (item.path.startsWith('/poster-versions/')) report.immutablePosterFilesDeleted.push(item);
       else report.posterFilesDeleted.push(item);
