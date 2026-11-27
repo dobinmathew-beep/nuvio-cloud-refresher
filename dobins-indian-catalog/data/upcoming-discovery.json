@@ -1,31 +1,30 @@
 {
-  "generatedAt": "2026-11-27T04:16:41.650830+04:00",
+  "generatedAt": "2026-11-27T06:08:26.989300+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 30,
+    "total": 28,
     "byLanguage": {
-      "hindi": 20,
+      "hindi": 18,
       "malayalam": 2,
       "tamil": 5,
       "telugu": 3
     },
     "byType": {
       "movie": 11,
-      "series": 19
+      "series": 17
     },
     "byMatchState": {
-      "published": 22,
+      "published": 20,
       "unmatched": 8
     },
     "bySource": {
       "https://cinebuds.com/ott-releases-this-week/": 6,
       "https://www.themoviedb.org/tv/338390": 1,
-      "https://www.dailyott.in/": 4,
+      "https://www.dailyott.in/": 3,
       "https://ottasia.com/ott-releases-this-week?country=IN": 16,
-      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 3,
-      "https://v3-cinemeta.strem.io/": 4,
-      "https://www.themoviedb.org/tv/319143": 1,
       "https://www.themoviedb.org/tv/338656": 1,
+      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
+      "https://v3-cinemeta.strem.io/": 3,
       "https://www.keralatv.in/channel/ott/": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json": 1,
       "https://www.themoviedb.org/tv/331750": 1,
@@ -162,61 +161,7 @@
       "metadataFields": {
         "poster": true,
         "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Family Kirana Store",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "platforms": [
-        "YouTube (TVF)"
-      ],
-      "sources": [
-        "https://www.dailyott.in/",
-        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
-        "https://v3-cinemeta.strem.io/"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "episode",
-      "detail": null,
-      "matchId": "tt39632118",
-      "matchState": "published",
-      "matchReason": "https://v3-cinemeta.strem.io/",
-      "metadataComplete": true,
-      "metadataSource": "https://v3-cinemeta.strem.io/",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-27",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/319143"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "premiere",
-      "detail": null,
-      "matchId": "tt43720139",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
+        "genres": false,
         "releaseInfo": true
       },
       "catalog": "dobins_hi_series"
@@ -532,8 +477,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -626,7 +571,7 @@
         "poster": true,
         "description": true,
         "genres": true,
-        "releaseInfo": true
+        "releaseInfo": false
       },
       "catalog": "dobins_hi_movie"
     },
@@ -682,7 +627,7 @@
         "poster": true,
         "description": true,
         "genres": true,
-        "releaseInfo": true
+        "releaseInfo": false
       },
       "catalog": "dobins_hi_series"
     },
