@@ -26,6 +26,7 @@ let snapshotInitializationPromise = null;
 let snapshotRetryAfter = 0;
 let snapshotPersistPromise = null;
 let snapshotDirtyUploads = 0;
+let snapshotPersistedContentHash = null;
 
 export function imageKitConfig() {
   let endpoint = String(process.env.IMAGEKIT_URL_ENDPOINT || '').trim();
@@ -143,6 +144,19 @@ async function persistStorageSnapshot() {
   if (!config) return false;
   let persisted = false;
   snapshotPersistPromise = (async () => {
+    const contentHash = createHash('sha256').update(JSON.stringify({
+      bytes: storageSnapshot.bytes,
+      filesByPath: storageSnapshot.filesByPath
+    })).digest('hex');
+    if (contentHash === snapshotPersistedContentHash) {
+      snapshotDirtyUploads = 0;
+      persisted = true;
+      console.info('[imagekit-storage-snapshot-unchanged]', JSON.stringify({
+        accountBytes: storageSnapshot.bytes,
+        indexedFiles: Object.keys(storageSnapshot.filesByPath).length
+      }));
+      return true;
+    }
     const value = {
       version: 1,
       updatedAt: new Date().toISOString(),
@@ -169,6 +183,7 @@ async function persistStorageSnapshot() {
       bytes: Buffer.byteLength(JSON.stringify(value))
     }));
     snapshotDirtyUploads = Math.max(0, snapshotDirtyUploads - dirtyAtStart);
+    snapshotPersistedContentHash = contentHash;
     persisted = true;
     return true;
   })().finally(() => {
@@ -261,6 +276,10 @@ export async function initializeImageKitStorageSnapshot() {
             checkedAt: savedAt,
             filesByPath: saved.filesByPath
           };
+          snapshotPersistedContentHash = createHash('sha256').update(JSON.stringify({
+            bytes: storageSnapshot.bytes,
+            filesByPath: storageSnapshot.filesByPath
+          })).digest('hex');
           console.log('[imagekit-storage-snapshot-restored]', JSON.stringify({
             accountBytes: storageSnapshot.bytes,
             indexedFiles: Object.keys(storageSnapshot.filesByPath).length,
