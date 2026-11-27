@@ -47,7 +47,7 @@ jobs:
           IMAGEKIT_AUDIT_VERSION_CONCURRENCY: "2"
         run: node scripts/imagekit-storage-forensic-audit.mjs
       - name: Upload forensic report
-        if: github.event_name == 'workflow_dispatch'
+        if: github.event_name != 'pull_request'
         uses: actions/upload-artifact@v4
         with:
           name: imagekit-storage-forensic-audit
