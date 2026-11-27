@@ -116,8 +116,21 @@ async function readState(config, path = STATE_PATH) {
   }
 }
 async function writeJson(config, path, value) {
-  const form = new FormData();
   const bytes = Buffer.from(JSON.stringify(value));
+  // ImageKit creates a billable historical version for every overwrite.
+  // Read the current CDN object with a cache-buster and skip byte-identical JSON.
+  try {
+    const existing = await readState(config, path);
+    if (existing && JSON.stringify(existing) === bytes.toString('utf8')) {
+      console.info('[catalog-state-write-skipped-unchanged]', JSON.stringify({ path, bytes: bytes.length }));
+      return { skipped: true, unchanged: true };
+    }
+  } catch (error) {
+    console.warn('[catalog-state-noop-check-unavailable]', JSON.stringify({
+      path, error: error?.message || 'unknown error'
+    }));
+  }
+  const form = new FormData();
   form.set('file', new Blob([bytes], { type: 'application/json' }), path.split('/').pop());
   form.set('fileName', path.split('/').pop());
   form.set('folder', path.slice(0, path.lastIndexOf('/')));
