@@ -59,6 +59,11 @@ async function readJson(config, path) {
 }
 
 async function writeJson(config, path, value) {
+  const existing = await readJson(config, path);
+  if (existing && JSON.stringify(existing) === JSON.stringify(value)) {
+    console.info('[durable-queue-write-skipped-unchanged]', JSON.stringify({ path }));
+    return { skipped: true, unchanged: true };
+  }
   const fileName = path.split('/').pop();
   const form = new FormData();
   form.set('file', new Blob([JSON.stringify(value)], { type: 'application/json' }), fileName);
@@ -250,6 +255,7 @@ export async function settleDurableQueueBatch(scanGeneration, itemIds, owner, ou
   const config = options.config || imageKitConfig();
   const state = await readQueueState(config, scanGeneration);
   const now = new Date().toISOString();
+  let changed = false;
   for (const rawId of itemIds) {
     const id = String(rawId);
     const entry = state.items[id];
@@ -258,6 +264,7 @@ export async function settleDurableQueueBatch(scanGeneration, itemIds, owner, ou
     if (entry.status !== 'claimed' || entry.owner !== String(owner)) {
       throw new Error('Queue claim ownership lost for ' + id + '; refusing acknowledgement');
     }
+    changed = true;
     entry.status = outcome === 'recorded' ? 'recorded' : 'queued';
     entry.lastOutcome = String(outcome);
     entry.recordedAt = outcome === 'recorded' ? now : null;
@@ -266,6 +273,7 @@ export async function settleDurableQueueBatch(scanGeneration, itemIds, owner, ou
     entry.claimExpiresAt = null;
     entry.updatedAt = now;
   }
+  if (!changed) return state;
   state.updatedAt = now;
   await options.assertOwned?.();
   await writeJson(config, queueStatePath(scanGeneration), state);
