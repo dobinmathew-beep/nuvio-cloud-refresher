@@ -613,39 +613,6 @@
     }
   },
   {
-    "name": "Second Love",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-07-13",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a547c90cf19d56322acc4d2",
-      "platform": "JioHotStar",
-      "title": "Second Love",
-      "createdAt": "2026-07-13T05:50:08.799Z",
-      "genre": "Dating Reality Show",
-      "imdbRating": null,
-      "languages": [
-        "Tamil"
-      ],
-      "original_language": "Tamil",
-      "releaseDate": "2026-07-13",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-07-13T05:50:20.074Z",
-      "posterUrl": "https://image.tmdb.org/t/p/w300/uyPIZNfoBndX1Dltaaql4v5TXwC.jpg",
-      "votes": 1,
-      "verified": true
-    }
-  },
-  {
     "name": "Nindu Noorella Saavasam (Episode 885)",
     "language": "telugu",
     "type": "series",
@@ -1809,8 +1776,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix",
-      "ETV Win"
+      "ETV Win",
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {
