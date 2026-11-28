@@ -290,6 +290,13 @@
   ],
   "tamil-series": [
     {
+      "id": "tt50986623",
+      "name": "Octopus",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt50986623.jpg",
+      "releaseInfo": "2026",
+      "type": "series"
+    },
+    {
       "id": "tt29625288",
       "name": "Akka",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt29625288.jpg",
@@ -419,13 +426,6 @@
       "id": "tt33983792",
       "name": "Aindham Vedham",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33983792.jpg",
-      "releaseInfo": "2024",
-      "type": "series"
-    },
-    {
-      "id": "tt31914166",
-      "name": "Thalaivettiyaan Paalayam",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31914166.jpg",
       "releaseInfo": "2024",
       "type": "series"
     },
@@ -8177,6 +8177,13 @@
       "type": "movie"
     },
     {
+      "id": "tt15433956",
+      "name": "Hanu-Man",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15433956.jpg",
+      "releaseInfo": "2024",
+      "type": "movie"
+    },
+    {
       "id": "tt14564000",
       "name": "Guntur Kaaram",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14564000.jpg",
@@ -8586,6 +8593,13 @@
       "id": "tt18377936",
       "name": "Bloody Mary",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt18377936.jpg",
+      "releaseInfo": "2022",
+      "type": "movie"
+    },
+    {
+      "id": "tmdb:961765||WET||2022||movie||https://image.tmdb.org/t/p/original/jWuizjmFyeNO0VrYKriPqa4s3nS.jpg||Water%20flows%20out%20of%20a%20person%2C%20mysteriously.",
+      "name": "WET",
+      "poster": "https://image.tmdb.org/t/p/original/jWuizjmFyeNO0VrYKriPqa4s3nS.jpg",
       "releaseInfo": "2022",
       "type": "movie"
     },
@@ -12589,5 +12603,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-28T03:10:44.299025+04:00"
+  "_updatedAt": "2026-11-28T05:51:16.187004+04:00"
 }

@@ -1783,6 +1783,37 @@
     }
   },
   {
+    "name": "The Eternal Love",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-04-24",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69eae74130958fd1b959e169",
+      "platform": "ETV Win",
+      "title": "The Eternal Love",
+      "createdAt": "2026-04-24T03:45:05.325Z",
+      "genre": "Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "releaseDate": "2026-04-24",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-04-24T03:45:23.137Z",
+      "posterUrl": "https://image.tmdb.org/t/p/w300/yZBBcP8QZFALkfkbW8Yjp6ylJ0v.jpg",
+      "verified": true
+    }
+  },
+  {
     "name": "Naya Saal",
     "language": "hindi",
     "type": "movie",
@@ -1852,8 +1883,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Netflix",
-      "ETV Win"
+      "ETV Win",
+      "Netflix"
     ],
     "detail": null,
     "sourceRecord": {

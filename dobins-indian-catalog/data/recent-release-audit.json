@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-28T03:10:44.299025+04:00",
+  "generatedAt": "2026-11-28T05:51:16.187004+04:00",
   "badgePolicy": "first-verified-digital-arrival-v1",
   "windowDays": 35,
   "source": "all active discovery sources (rolling 35-day window)",
-  "detected": 129,
+  "detected": 131,
   "byMatchState": {
-    "published": 115,
+    "published": 117,
     "unmatched": 14
   },
   "items": [
@@ -23,8 +23,8 @@
         "Amazon Prime Video"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/telugu"
+        "https://www.ottchecker.com/ott-releases/telugu",
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -41,9 +41,9 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.ottchecker.com/ott-releases/hindi",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -128,8 +128,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/hindi"
+        "https://www.ottchecker.com/ott-releases/hindi",
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -163,9 +163,9 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -233,9 +233,9 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -269,9 +269,9 @@
         "Aha"
       ],
       "sources": [
-        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.ottchecker.com/ott-releases/telugu",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -339,12 +339,12 @@
       "matchState": "published",
       "matchReason": "https://v3-cinemeta.strem.io/",
       "platforms": [
-        "JioHotStar",
-        "JioHotstar"
+        "JioHotstar",
+        "JioHotStar"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://www.ottchecker.com/ott-releases/hindi",
+        "https://www.dailyott.in/",
         "https://www.themoviedb.org/tv/334412",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
@@ -364,8 +364,8 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/hindi"
+        "https://www.ottchecker.com/ott-releases/hindi",
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -382,9 +382,9 @@
         "ZEE5"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://cinebuds.com/ott-release-dates/",
-        "https://www.ottchecker.com/ott-releases/malayalam"
+        "https://www.ottchecker.com/ott-releases/malayalam",
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -401,9 +401,9 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.ottchecker.com/ott-releases/telugu",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -455,9 +455,9 @@
         "Amazon Prime Video"
       ],
       "sources": [
-        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -474,8 +474,8 @@
         "ZEE5"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://www.ottchecker.com/ott-releases/hindi"
+        "https://www.ottchecker.com/ott-releases/hindi",
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -508,13 +508,13 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "JioHotStar",
-        "JioHotstar"
+        "JioHotstar",
+        "JioHotStar"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://cinebuds.com/ott-release-dates/",
-        "https://www.ottchecker.com/ott-releases/malayalam"
+        "https://www.ottchecker.com/ott-releases/malayalam",
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -531,9 +531,9 @@
         "SonyLIV"
       ],
       "sources": [
-        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -568,9 +568,9 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.ottchecker.com/ott-releases/hindi",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -622,8 +622,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://cinebuds.com/ott-release-dates/",
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -640,9 +640,9 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -657,14 +657,14 @@
       "matchReason": "IMDb-matched metadata",
       "platforms": [
         "Prime Video",
-        "SimplySouth",
         "Amazon Prime Video",
-        "Aha"
+        "Aha",
+        "SimplySouth"
       ],
       "sources": [
-        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -698,9 +698,9 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.ottchecker.com/ott-releases/tamil",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -717,9 +717,9 @@
         "ETV Win"
       ],
       "sources": [
-        "https://www.dailyott.in/",
+        "https://cinebuds.com/ott-release-dates/",
         "https://www.ottchecker.com/ott-releases/telugu",
-        "https://cinebuds.com/ott-release-dates/"
+        "https://www.dailyott.in/"
       ],
       "detail": null
     },
@@ -737,8 +737,8 @@
         "YouTube"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://www.ottchecker.com/ott-releases/hindi",
+        "https://www.dailyott.in/",
         "https://www.tvmaze.com/shows/70529/dhindora"
       ],
       "detail": null
@@ -799,7 +799,7 @@
       "title": "Bigg Boss Season 20",
       "language": "hindi",
       "type": "series",
-      "releaseDate": "2026-11-27",
+      "releaseDate": "2026-11-28",
       "releaseDateBasis": "series-release-event",
       "id": "tt1281973",
       "matchState": "published",
@@ -1045,8 +1045,8 @@
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "platforms": [
-        "Sun NXT",
-        "ZEE5"
+        "ZEE5",
+        "Sun NXT"
       ],
       "sources": [
         "https://cinebuds.com/ott-release-dates/",
@@ -2189,7 +2189,7 @@
       "title": "Apsara",
       "language": "hindi",
       "type": "series",
-      "releaseDate": "2026-11-22",
+      "releaseDate": "2026-11-28",
       "releaseDateBasis": "series-release-event",
       "id": "tt50063835",
       "matchState": "published",
@@ -2216,6 +2216,21 @@
         "https://www.themoviedb.org/tv/331932",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
+      ],
+      "detail": null
+    },
+    {
+      "title": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-28",
+      "releaseDateBasis": "series-release-event",
+      "id": "tt43720139",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/319143"
       ],
       "detail": null
     },
@@ -2270,10 +2285,25 @@
       "detail": null
     },
     {
+      "title": "Rise and Fall",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-11-06",
+      "releaseDateBasis": "series-release-event",
+      "id": "tt35674433",
+      "matchState": "published",
+      "matchReason": "IMDb-matched metadata",
+      "platforms": [],
+      "sources": [
+        "https://www.themoviedb.org/tv/300081"
+      ],
+      "detail": null
+    },
+    {
       "title": "Lo Chudail Chali Sasural",
       "language": "hindi",
       "type": "series",
-      "releaseDate": "2026-11-27",
+      "releaseDate": "2026-11-28",
       "releaseDateBasis": "series-release-event",
       "id": "tt43636966",
       "matchState": "published",
