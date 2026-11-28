@@ -1,22 +1,25 @@
 {
-  "checked_at": "2026-11-28T17:54:59.182165+04:00",
+  "checked_at": "2026-11-28T18:14:16.572768+04:00",
   "results": [
     {
       "component": "media",
-      "due": "2026-11-28T16:00:00+04:00",
-      "state": "fresh"
+      "due": "2026-11-28T18:00:00+04:00",
+      "state": "public-verification-failed",
+      "error": "backdrops: {\"layout\": \"tamil/movies/wall\", \"expected\": {\"id\": \"tmdb:1822586\", \"name\": \"Mazhalai\"}, \"actual\": \"tt18933846\", \"selection\": \"catalog-order\", \"catalogRank\": 0, \"renderVersion\": \"catalog-head-v2\"}"
     },
     {
       "component": "addon",
-      "due": "2026-11-28T16:00:00+04:00",
-      "state": "fresh"
+      "due": "2026-11-28T18:00:00+04:00",
+      "state": "catch-up-dispatched"
     },
     {
       "component": "epg",
-      "due": "2026-11-28T16:00:00+04:00",
-      "state": "fresh"
+      "due": "2026-11-28T18:00:00+04:00",
+      "state": "catch-up-dispatched"
     }
   ],
-  "errors": [],
+  "errors": [
+    "media: independent public verification failed: backdrops: {\"layout\": \"tamil/movies/wall\", \"expected\": {\"id\": \"tmdb:1822586\", \"name\": \"Mazhalai\"}, \"actual\": \"tt18933846\", \"selection\": \"catalog-order\", \"catalogRank\": 0, \"renderVersion\": \"catalog-head-v2\"}"
+  ],
   "warnings": []
 }

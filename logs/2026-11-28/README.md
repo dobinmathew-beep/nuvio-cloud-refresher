@@ -6,6 +6,7 @@ All times are Asia/Muscat (Oman). Records begin when this dashboard was installe
 
 | Check time | Backdrops + reels | Addon | EPG | Check run |
 |---|---|---|---|---|
+| 28 Nov 2026, 18:14 | ❌ Public verification failed | 🔄 Retry requested | 🔄 Retry requested | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/46153608279) |
 | 28 Nov 2026, 17:54 | ✅ Updated | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/46151965333) |
 | 28 Nov 2026, 17:54 | ✅ Updated | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/46151926758) |
 | 28 Nov 2026, 17:54 | ✅ Updated | ✅ Updated | ✅ Updated | [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/46151922401) |
@@ -47,6 +48,24 @@ All times are Asia/Muscat (Oman). Records begin when this dashboard was installe
 
 ## Details for each check
 
+### 28 Nov 2026, 18:14
+
+Trigger: workflow_run. Due cycle: 28 Nov 2026, 18:00.
+
+| Output | Result | Last successful refresh run (Oman) | Last verified cycle / check | Details | Logs |
+|---|---|---|---|---|---|
+| Backdrops | ❌ Public verification failed | 28 Nov 2026, 16:38 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/46145106506) | 28 Nov 2026, 18:11 | 160 layouts; 16 image checks; {"layout": "tamil/movies/wall", "expected": {"id": "tmdb:1822586", "name": "Mazhalai"}, "actual": "tt18933846", "selection": "catalog-order", "catalogRank": 0, "renderVersion": "catalog-head-v2"} | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/46145106506) |
+| Reels | ✅ Updated | 28 Nov 2026, 16:38 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/46145106506) | 28 Nov 2026, 18:11 | 4 languages; 20 films per reel; this part verified, combined media cycle still pending | success · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/46145106506) |
+| Addon | 🔄 Retry requested | 28 Nov 2026, 17:54 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/46151536321) | 28 Nov 2026, 16:00 | 1092 catalog entries; 64 pending matches | queued · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/46153621788) |
+| EPG | 🔄 Retry requested | 28 Nov 2026, 16:40 · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/46145720151) | 28 Nov 2026, 16:39 | 612 / 856 channel IDs with listings; 244 unresolved; 66501 programmes. | queued · [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/46153629082) |
+
+**Issue:** media: independent public verification failed: backdrops: {"layout": "tamil/movies/wall", "expected": {"id": "tmdb:1822586", "name": "Mazhalai"}, "actual": "tt18933846", "selection": "catalog-order", "catalogRank": 0, "renderVersion": "catalog-head-v2"}
+
+Addon attempt: **queued**; started 28 Nov 2026, 18:14. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/46153621788).
+
+Epg attempt: **queued**; started 28 Nov 2026, 18:14. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/46153629082).
+
+Media attempt: **success**; started 28 Nov 2026, 16:31. [Open run and full logs](https://github.com/dobinmathew-beep/nuvio-cloud-refresher/actions/runs/46145106506).
 ### 28 Nov 2026, 17:54
 
 Trigger: workflow_run. Due cycle: 28 Nov 2026, 16:00.
