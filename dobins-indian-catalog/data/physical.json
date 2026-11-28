@@ -15984,11 +15984,17 @@
           }
         }
       ]
+    },
+    "hindi|1851570": {
+      "checkedAt": "2026-11-28T17:49:49.948936+04:00",
+      "editions": [],
+      "theatrical": [],
+      "events": []
     }
   },
   "discovery": {
     "malayalam": {
-      "checkedAt": "2026-11-28T16:39:14.106456+04:00",
+      "checkedAt": "2026-11-28T17:49:49.948936+04:00",
       "titles": {
         "1842602": "Sidhu",
         "1570366": "Pantham",
@@ -16555,7 +16561,7 @@
       }
     },
     "tamil": {
-      "checkedAt": "2026-11-28T16:39:14.106456+04:00",
+      "checkedAt": "2026-11-28T17:49:49.948936+04:00",
       "titles": {
         "1844991": "Mouna Mozhigal",
         "1830763": "Minnum Oar Iravu",
@@ -17210,7 +17216,7 @@
       }
     },
     "telugu": {
-      "checkedAt": "2026-11-28T16:39:14.106456+04:00",
+      "checkedAt": "2026-11-28T17:49:49.948936+04:00",
       "titles": {
         "1847783": "Dad's Little Friend",
         "1842641": "Bala 369 (Atajani Kaanche)",
@@ -17945,8 +17951,9 @@
       }
     },
     "hindi": {
-      "checkedAt": "2026-11-28T16:39:14.106456+04:00",
+      "checkedAt": "2026-11-28T17:49:49.948936+04:00",
       "titles": {
+        "1851570": "Samsara",
         "1846968": "Kya Thhe?",
         "1793000": "The Hangover Cure",
         "1848397": "Ishaara - A Campus Beats Movie",
@@ -18046,7 +18053,6 @@
         "1453317": "Hari Ka Om",
         "1451944": "Lust Stories 3",
         "1215889": "Daayra",
-        "1654566": "Vibe",
         "1709391": "Hanuman Ansh",
         "1378537": "Mirzapur: The Movie",
         "1444466": "Awarapan 2",
@@ -18159,6 +18165,9 @@
         "12259": "Sholay"
       },
       "kinds": {
+        "1851570": [
+          "theatrical"
+        ],
         "1846968": [
           "theatrical"
         ],
@@ -18454,9 +18463,6 @@
           "theatrical"
         ],
         "1215889": [
-          "theatrical"
-        ],
-        "1654566": [
           "theatrical"
         ],
         "1709391": [
