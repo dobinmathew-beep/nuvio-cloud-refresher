@@ -1,27 +1,26 @@
 {
-  "generatedAt": "2026-11-28T17:49:49.948936+04:00",
+  "generatedAt": "2026-11-28T18:14:31.477204+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 20,
+    "total": 19,
     "byLanguage": {
-      "hindi": 18,
+      "hindi": 17,
       "tamil": 1,
       "telugu": 1
     },
     "byType": {
       "movie": 8,
-      "series": 12
+      "series": 11
     },
     "byMatchState": {
       "unmatched": 4,
-      "published": 15,
+      "published": 14,
       "metadata_incomplete": 1
     },
     "bySource": {
       "https://ottasia.com/ott-releases-this-week?country=IN": 15,
       "https://www.themoviedb.org/tv/338390": 1,
       "https://www.dailyott.in/": 2,
-      "https://www.themoviedb.org/tv/319143": 1,
       "https://www.themoviedb.org/tv/338656": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
       "https://v3-cinemeta.strem.io/": 2,
@@ -144,31 +143,6 @@
       "releaseDateBasis": null,
       "detail": null,
       "matchId": "tt1281973",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-28",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/319143"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "premiere",
-      "detail": null,
-      "matchId": "tt43720139",
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "metadataComplete": true,
@@ -431,8 +405,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://www.dailyott.in/",
         "https://api.tvmaze.com/schedule/web",
+        "https://www.dailyott.in/",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
