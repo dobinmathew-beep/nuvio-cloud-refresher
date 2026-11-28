@@ -71,17 +71,17 @@ MOVIE_CENTRE_STYLES="wall cascade spotlight filmstrip gallery ribbon duo polaroi
 COMBINED_CENTRE_STYLES=MOVIE_CENTRE_STYLES+"mosaic fan orbit triptych cinema steps cross shelf widescreen diamond".split()
 
 def first_catalog_movie(metas):
- # Deliberately independent from featured.py, but enforce the same owner-approved
- # backdrop-centre rule: the first eligible IMDb-linked movie in source order.
- # TMDB-only entries remain valid surrounding artwork, never the centre lead.
+ # Deliberately independent from featured.py: use the first real, poster-backed
+ # IMDb- or TMDB-linked movie in the raw source order. The hero-reel opening
+ # policy is separate and remains IMDb-only.
  for movie in metas:
   mid=str(movie.get("id","")).split("||",1)[0]
   name=str(movie.get("name",""))
-  if (re.fullmatch(r"tt\d+",mid)
+  if (re.fullmatch(r"tt\d+|tmdb:\d+",mid)
       and movie.get("type")=="movie" and bool(movie.get("poster"))
       and not re.search(r"OTT\s*Releases|Hindi\s*Dubbed|promo|unlock|promotional",name,re.I)):
    return {"id":mid,"name":name}
- raise AssertionError("No poster-backed IMDb-linked movie in the current catalog")
+ raise AssertionError("No poster-backed IMDb- or TMDB-linked movie in the current catalog")
 
 def backdrops():
  try:
