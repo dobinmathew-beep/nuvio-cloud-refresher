@@ -1,7 +1,45 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-28T05:51:16.187004+04:00",
+    "checkedAt": "2026-11-28T06:55:59.239066+04:00",
     "records": [
+      {
+        "_id": "6b0a3a0d699a8884e160d36e",
+        "platform": "JioHotStar",
+        "title": "Holiday Ever After: A Disney World Wish Come True",
+        "createdAt": "2026-11-28T02:18:53.029Z",
+        "genre": "Family/Holiday",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-28",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-28T02:19:45.756Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/vqcyrYS72RVy4AVATbaiOvwR8G1.jpg",
+        "instagramPostedAt": "2026-11-28T02:20:36Z",
+        "verified": true
+      },
+      {
+        "_id": "6b0a3a0d699a8884e160d36f",
+        "platform": "Netflix",
+        "title": "The Ghost and The Gun",
+        "createdAt": "2026-11-28T02:18:53.259Z",
+        "genre": "Thriller",
+        "imdbRating": null,
+        "languages": [
+          "English"
+        ],
+        "original_language": "English",
+        "releaseDate": "2026-11-28",
+        "source_verified": true,
+        "type": "Movie",
+        "updatedAt": "2026-11-28T02:19:45.111Z",
+        "posterUrl": "https://image.tmdb.org/t/p/w300/z8ibQURkeHIO0KZN8GeKvxN7d0v.jpg",
+        "instagramPostedAt": "2026-11-28T02:20:36Z",
+        "verified": true
+      },
       {
         "_id": "6b079710699a8884e16076f4",
         "platform": "Prime Video",
@@ -72,9 +110,9 @@
           "fetchedAt": "2026-11-26T14:55:27.637Z"
         },
         "tmdbId": 1555847,
-        "trendingRank": 3,
-        "trendingRankedAt": "2026-11-27T02:19:09.137Z",
-        "trendingRankedDateIST": "2026-11-27",
+        "trendingRank": 7,
+        "trendingRankedAt": "2026-11-28T02:19:25.901Z",
+        "trendingRankedDateIST": "2026-11-28",
         "verified": true
       },
       {
@@ -91,7 +129,7 @@
         "releaseDate": "2026-11-27",
         "source_verified": true,
         "type": "Movie",
-        "updatedAt": "2026-11-27T02:18:41.069Z",
+        "updatedAt": "2026-11-28T02:19:46.399Z",
         "tmdbDetails": {
           "tmdbId": 1824693,
           "director": null,
@@ -112,6 +150,8 @@
           "fetchedAt": "2026-11-27T10:25:11.305Z"
         },
         "tmdbId": 1824693,
+        "posterUrl": "https://image.tmdb.org/t/p/w300/ahQKkfWgg4mJv9hIZIdC4cXObSA.jpg",
+        "instagramPostedAt": "2026-11-28T02:20:36Z",
         "verified": true
       },
       {
@@ -188,6 +228,9 @@
           "fetchedAt": "2026-11-27T04:32:14.294Z"
         },
         "tmdbId": 1269325,
+        "trendingRank": 1,
+        "trendingRankedAt": "2026-11-28T02:19:25.901Z",
+        "trendingRankedDateIST": "2026-11-28",
         "verified": true
       },
       {
@@ -209,6 +252,9 @@
         "tmdbRating": 77,
         "tmdbVotes": 17,
         "instagramPostedAt": "2026-11-27T02:20:01Z",
+        "trendingRank": 4,
+        "trendingRankedAt": "2026-11-28T02:19:25.901Z",
+        "trendingRankedDateIST": "2026-11-28",
         "verified": true
       },
       {
@@ -370,6 +416,10 @@
           "fetchedAt": "2026-11-27T04:31:49.906Z"
         },
         "tmdbId": 93562,
+        "trendingRank": 10,
+        "trendingRankedAt": "2026-11-28T02:19:25.901Z",
+        "trendingRankedDateIST": "2026-11-28",
+        "instagramPostedAt": "2026-11-28T02:20:19Z",
         "verified": true
       },
       {
@@ -446,6 +496,9 @@
           "fetchedAt": "2026-11-27T13:10:24.524Z"
         },
         "tmdbId": 41656,
+        "trendingRank": 3,
+        "trendingRankedAt": "2026-11-28T02:19:25.901Z",
+        "trendingRankedDateIST": "2026-11-28",
         "verified": true
       },
       {
@@ -519,6 +572,9 @@
           "fetchedAt": "2026-11-27T11:50:19.663Z"
         },
         "tmdbId": 1496785,
+        "trendingRank": 5,
+        "trendingRankedAt": "2026-11-28T02:19:25.901Z",
+        "trendingRankedDateIST": "2026-11-28",
         "verified": true
       },
       {
@@ -538,6 +594,9 @@
         "updatedAt": "2026-11-27T02:19:30.036Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/wYbU8IZk9Le08dueKtul19Ap3td.jpg",
         "instagramPostedAt": "2026-11-27T02:20:46Z",
+        "trendingRank": 9,
+        "trendingRankedAt": "2026-11-28T02:19:25.901Z",
+        "trendingRankedDateIST": "2026-11-28",
         "verified": true
       },
       {
@@ -613,9 +672,9 @@
           "fetchedAt": "2026-11-26T17:39:28.071Z"
         },
         "tmdbId": 969681,
-        "trendingRank": 1,
-        "trendingRankedAt": "2026-11-27T02:19:09.137Z",
-        "trendingRankedDateIST": "2026-11-27",
+        "trendingRank": 2,
+        "trendingRankedAt": "2026-11-28T02:19:25.901Z",
+        "trendingRankedDateIST": "2026-11-28",
         "verified": true
       },
       {
@@ -708,9 +767,9 @@
           "fetchedAt": "2026-11-26T03:21:43.499Z"
         },
         "tmdbId": 1081003,
-        "trendingRank": 2,
-        "trendingRankedAt": "2026-11-27T02:19:09.137Z",
-        "trendingRankedDateIST": "2026-11-27",
+        "trendingRank": 6,
+        "trendingRankedAt": "2026-11-28T02:19:25.901Z",
+        "trendingRankedDateIST": "2026-11-28",
         "verified": true
       },
       {
@@ -821,9 +880,9 @@
           "fetchedAt": "2026-11-25T11:08:59.386Z"
         },
         "tmdbId": 1755816,
-        "trendingRank": 4,
-        "trendingRankedAt": "2026-11-27T02:19:09.137Z",
-        "trendingRankedDateIST": "2026-11-27",
+        "trendingRank": 8,
+        "trendingRankedAt": "2026-11-28T02:19:25.901Z",
+        "trendingRankedDateIST": "2026-11-28",
         "verified": true
       },
       {
@@ -918,9 +977,6 @@
           "fetchedAt": "2026-11-24T05:27:34.336Z"
         },
         "tmdbId": 1281331,
-        "trendingRank": 5,
-        "trendingRankedAt": "2026-11-27T02:19:09.137Z",
-        "trendingRankedDateIST": "2026-11-27",
         "verified": true
       },
       {
@@ -32529,7 +32585,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-28T05:51:16.187004+04:00",
+    "checkedAt": "2026-11-28T06:55:59.239066+04:00",
     "records": [
       {
         "name": "Aadarsha Kutumbam House No: 47 – AK47",

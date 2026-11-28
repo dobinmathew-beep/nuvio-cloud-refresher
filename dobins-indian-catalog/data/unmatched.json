@@ -235,6 +235,9 @@
         "fetchedAt": "2026-11-27T11:50:19.663Z"
       },
       "tmdbId": 1496785,
+      "trendingRank": 5,
+      "trendingRankedAt": "2026-11-28T02:19:25.901Z",
+      "trendingRankedDateIST": "2026-11-28",
       "verified": true
     }
   },
@@ -344,21 +347,6 @@
       "source": "https://www.keralatv.in/channel/ott/",
       "headline": "New Tamil Movie OTT Releases This Week – Drones Streaming on Prime Video From 20 November 2026"
     }
-  },
-  {
-    "name": "Raathiri (Series)",
-    "language": "tamil",
-    "type": "series",
-    "ottDate": "2026-11-27",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://cinebuds.com/ott-release-dates/"
-    ],
-    "platforms": [
-      "Aha"
-    ],
-    "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/",
-    "sourceRecord": {}
   },
   {
     "name": "The Conjunction",
@@ -1883,8 +1871,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win",
-      "Netflix"
+      "Netflix",
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {

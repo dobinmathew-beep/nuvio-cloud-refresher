@@ -4,9 +4,9 @@
   "releasePolicy": "theatrical-first-multipage-v3",
   "metadataPolicy": "tmdb-tvmaze-v2",
   "seriesPolicy": "multi-source-series-v1",
-  "updatedAt": "2026-11-28T05:51:16.187004+04:00",
-  "lastMatchRetryAt": "2026-11-28T05:51:16.187004+04:00",
-  "lastSuccessCycle": "2026-11-28T04:00:00+04:00",
+  "updatedAt": "2026-11-28T06:55:59.239066+04:00",
+  "lastMatchRetryAt": "2026-11-28T06:55:59.239066+04:00",
+  "lastSuccessCycle": "2026-11-28T06:00:00+04:00",
   "timezone": "Asia/Muscat",
   "schedule": "Every two hours daily, including 00:00 (Asia/Muscat); checked every 30 minutes with retries",
   "sources": [
@@ -14,7 +14,7 @@
       "source": "DailyOTT",
       "url": "https://www.dailyott.in/",
       "state": "live",
-      "records": 983
+      "records": 985
     },
     {
       "source": "Cinebuds",
@@ -814,10 +814,10 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 626,
+      "records": 627,
       "counts": {
         "malayalam": 60,
-        "tamil": 122,
+        "tamil": 123,
         "telugu": 108,
         "hindi": 336
       },
@@ -867,7 +867,7 @@
     "dobins_ml_movie": 99,
     "dobins_ml_series": 67,
     "dobins_ta_movie": 94,
-    "dobins_ta_series": 116,
+    "dobins_ta_series": 117,
     "dobins_te_movie": 111,
     "dobins_te_series": 116,
     "dobins_hi_movie": 125,
@@ -876,7 +876,7 @@
   "catalogFreshness": {
     "dobins_ml_movie": {
       "count": 99,
-      "generatedAt": "2026-11-28T05:51:16.187004+04:00",
+      "generatedAt": "2026-11-28T06:55:59.239066+04:00",
       "latestEntry": {
         "id": "tt32729408",
         "name": "Pantham",
@@ -886,7 +886,7 @@
     },
     "dobins_ml_series": {
       "count": 67,
-      "generatedAt": "2026-11-28T05:51:16.187004+04:00",
+      "generatedAt": "2026-11-28T06:55:59.239066+04:00",
       "latestEntry": {
         "id": "tt8537520",
         "name": "Bigg Boss Malayalam",
@@ -896,7 +896,7 @@
     },
     "dobins_ta_movie": {
       "count": 94,
-      "generatedAt": "2026-11-28T05:51:16.187004+04:00",
+      "generatedAt": "2026-11-28T06:55:59.239066+04:00",
       "latestEntry": {
         "id": "tt0221905",
         "name": "Octopus",
@@ -905,8 +905,8 @@
       }
     },
     "dobins_ta_series": {
-      "count": 116,
-      "generatedAt": "2026-11-28T05:51:16.187004+04:00",
+      "count": 117,
+      "generatedAt": "2026-11-28T06:55:59.239066+04:00",
       "latestEntry": {
         "id": "tmdb:339001",
         "name": "Madam Police",
@@ -916,7 +916,7 @@
     },
     "dobins_te_movie": {
       "count": 111,
-      "generatedAt": "2026-11-28T05:51:16.187004+04:00",
+      "generatedAt": "2026-11-28T06:55:59.239066+04:00",
       "latestEntry": {
         "id": "tt51297349",
         "name": "Srimathi",
@@ -926,7 +926,7 @@
     },
     "dobins_te_series": {
       "count": 116,
-      "generatedAt": "2026-11-28T05:51:16.187004+04:00",
+      "generatedAt": "2026-11-28T06:55:59.239066+04:00",
       "latestEntry": {
         "id": "tt52075732",
         "name": "Corporate Love Story",
@@ -936,7 +936,7 @@
     },
     "dobins_hi_movie": {
       "count": 125,
-      "generatedAt": "2026-11-28T05:51:16.187004+04:00",
+      "generatedAt": "2026-11-28T06:55:59.239066+04:00",
       "latestEntry": {
         "id": "tt44175143",
         "name": "Siddha",
@@ -946,7 +946,7 @@
     },
     "dobins_hi_series": {
       "count": 359,
-      "generatedAt": "2026-11-28T05:51:16.187004+04:00",
+      "generatedAt": "2026-11-28T06:55:59.239066+04:00",
       "latestEntry": {
         "id": "tt51588232",
         "name": "Itihasa: Ramayana Beyond Borders with Shashi Tharoor",
@@ -959,7 +959,7 @@
     "dobins_ml_movie": 4,
     "dobins_ml_series": 7,
     "dobins_ta_movie": 6,
-    "dobins_ta_series": 10,
+    "dobins_ta_series": 9,
     "dobins_te_movie": 10,
     "dobins_te_series": 9,
     "dobins_hi_movie": 13,
@@ -1011,13 +1011,13 @@
       }
     },
     "dobins_ta_series": {
-      "count": 116,
+      "count": 117,
       "sortedNewestToOldest": true,
       "newestDate": "2026-12-03",
       "oldestDate": "2016-08-14",
       "missingReleaseDates": 0,
       "releaseKinds": {
-        "digital": 116
+        "digital": 117
       }
     },
     "dobins_te_movie": {
@@ -1057,7 +1057,7 @@
       "count": 359,
       "sortedNewestToOldest": true,
       "newestDate": "2026-12-07",
-      "oldestDate": "1970-01-01",
+      "oldestDate": "2016-10-09",
       "missingReleaseDates": 0,
       "releaseKinds": {
         "digital": 359
@@ -1065,7 +1065,7 @@
     }
   },
   "movieSortPolicy": "Earliest verified release date wins: theatrical, then digital/OTT, then physical; catalog arrays newest-to-oldest.",
-  "pendingMatches": 68,
+  "pendingMatches": 67,
   "checkedCandidates": 1142,
   "malayalamMetadataAudit": {
     "checked": 166,
@@ -1075,7 +1075,7 @@
     "policy": "IMDb-or-TMDB identity; exact ID/type; title and metadata integrity"
   },
   "upcoming": {
-    "matchedTitles": 12,
+    "matchedTitles": 9,
     "bySource": {
       "https://www.themoviedb.org/tv/338390": {
         "matchedTitles": 1,
@@ -1084,20 +1084,12 @@
         ]
       },
       "https://www.dailyott.in/": {
-        "matchedTitles": 6,
+        "matchedTitles": 4,
         "imdbIds": [
           "tt1281973",
           "tt38195069",
           "tt50135636",
-          "tt44914967",
-          "tt30003786",
-          "tt16997004"
-        ]
-      },
-      "https://www.themoviedb.org/tv/319143": {
-        "matchedTitles": 1,
-        "imdbIds": [
-          "tt43720139"
+          "tt30003786"
         ]
       },
       "https://www.themoviedb.org/tv/338502": {
@@ -1115,26 +1107,6 @@
           "tt51588232"
         ]
       },
-      "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/ta_series.json": {
-        "matchedTitles": 1,
-        "imdbIds": [
-          "tt44914967"
-        ]
-      },
-      "https://v3-cinemeta.strem.io/": {
-        "matchedTitles": 3,
-        "imdbIds": [
-          "tt44914967",
-          "tt30003786",
-          "tt16997004"
-        ]
-      },
-      "https://www.themoviedb.org/tv/331750": {
-        "matchedTitles": 1,
-        "imdbIds": [
-          "tt44914967"
-        ]
-      },
       "https://api.tvmaze.com/schedule/web": {
         "matchedTitles": 1,
         "imdbIds": [
@@ -1142,42 +1114,40 @@
         ]
       },
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": {
-        "matchedTitles": 2,
-        "imdbIds": [
-          "tt30003786",
-          "tt16997004"
-        ]
-      },
-      "https://www.themoviedb.org/tv/249765": {
         "matchedTitles": 1,
         "imdbIds": [
-          "tt16997004"
+          "tt30003786"
+        ]
+      },
+      "https://v3-cinemeta.strem.io/": {
+        "matchedTitles": 1,
+        "imdbIds": [
+          "tt30003786"
         ]
       }
     },
     "policy": "Only confirmed future dates with validated IMDb, TMDB or TVmaze catalog IDs are published; IMDb aliases are included when verified."
   },
   "upcomingDiscovery": {
-    "total": 19,
+    "total": 18,
     "byLanguage": {
-      "hindi": 17,
+      "hindi": 16,
       "tamil": 1,
       "telugu": 1
     },
     "byType": {
       "movie": 7,
-      "series": 12
+      "series": 11
     },
     "byMatchState": {
       "unmatched": 4,
-      "published": 14,
+      "published": 13,
       "metadata_incomplete": 1
     },
     "bySource": {
       "https://ottasia.com/ott-releases-this-week?country=IN": 14,
       "https://www.themoviedb.org/tv/338390": 1,
       "https://www.dailyott.in/": 2,
-      "https://www.themoviedb.org/tv/319143": 1,
       "https://www.themoviedb.org/tv/338656": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
       "https://v3-cinemeta.strem.io/": 2,
@@ -1186,14 +1156,14 @@
     "malayalamReviewCount": 11
   },
   "recentReleaseAudit": {
-    "generatedAt": "2026-11-28T05:51:16.187004+04:00",
+    "generatedAt": "2026-11-28T06:55:59.239066+04:00",
     "badgePolicy": "first-verified-digital-arrival-v1",
     "windowDays": 35,
     "source": "all active discovery sources (rolling 35-day window)",
-    "detected": 131,
+    "detected": 129,
     "byMatchState": {
-      "published": 117,
-      "unmatched": 14
+      "published": 116,
+      "unmatched": 13
     },
     "items": [
       {
@@ -1210,8 +1180,8 @@
           "Amazon Prime Video"
         ],
         "sources": [
-          "https://www.ottchecker.com/ott-releases/telugu",
-          "https://www.dailyott.in/"
+          "https://www.dailyott.in/",
+          "https://www.ottchecker.com/ott-releases/telugu"
         ],
         "detail": null
       },
@@ -1228,9 +1198,9 @@
           "SonyLIV"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
+          "https://www.dailyott.in/",
           "https://www.ottchecker.com/ott-releases/hindi",
-          "https://www.dailyott.in/"
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": null
       },
@@ -1315,8 +1285,8 @@
           "ZEE5"
         ],
         "sources": [
-          "https://www.ottchecker.com/ott-releases/hindi",
-          "https://www.dailyott.in/"
+          "https://www.dailyott.in/",
+          "https://www.ottchecker.com/ott-releases/hindi"
         ],
         "detail": null
       },
@@ -1350,9 +1320,9 @@
           "SonyLIV"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
+          "https://www.dailyott.in/",
           "https://www.ottchecker.com/ott-releases/tamil",
-          "https://www.dailyott.in/"
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": null
       },
@@ -1420,9 +1390,9 @@
           "Netflix"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
+          "https://www.dailyott.in/",
           "https://www.ottchecker.com/ott-releases/tamil",
-          "https://www.dailyott.in/"
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": null
       },
@@ -1456,9 +1426,9 @@
           "Aha"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
+          "https://www.dailyott.in/",
           "https://www.ottchecker.com/ott-releases/telugu",
-          "https://www.dailyott.in/"
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": null
       },
@@ -1526,12 +1496,12 @@
         "matchState": "published",
         "matchReason": "https://v3-cinemeta.strem.io/",
         "platforms": [
-          "JioHotstar",
-          "JioHotStar"
+          "JioHotStar",
+          "JioHotstar"
         ],
         "sources": [
-          "https://www.ottchecker.com/ott-releases/hindi",
           "https://www.dailyott.in/",
+          "https://www.ottchecker.com/ott-releases/hindi",
           "https://www.themoviedb.org/tv/334412",
           "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
           "https://v3-cinemeta.strem.io/"
@@ -1551,8 +1521,8 @@
           "SonyLIV"
         ],
         "sources": [
-          "https://www.ottchecker.com/ott-releases/hindi",
-          "https://www.dailyott.in/"
+          "https://www.dailyott.in/",
+          "https://www.ottchecker.com/ott-releases/hindi"
         ],
         "detail": null
       },
@@ -1569,9 +1539,9 @@
           "ZEE5"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
+          "https://www.dailyott.in/",
           "https://www.ottchecker.com/ott-releases/malayalam",
-          "https://www.dailyott.in/"
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": null
       },
@@ -1588,9 +1558,9 @@
           "Netflix"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
+          "https://www.dailyott.in/",
           "https://www.ottchecker.com/ott-releases/telugu",
-          "https://www.dailyott.in/"
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": null
       },
@@ -1642,9 +1612,9 @@
           "Amazon Prime Video"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
+          "https://www.dailyott.in/",
           "https://www.ottchecker.com/ott-releases/tamil",
-          "https://www.dailyott.in/"
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": null
       },
@@ -1661,8 +1631,8 @@
           "ZEE5"
         ],
         "sources": [
-          "https://www.ottchecker.com/ott-releases/hindi",
-          "https://www.dailyott.in/"
+          "https://www.dailyott.in/",
+          "https://www.ottchecker.com/ott-releases/hindi"
         ],
         "detail": null
       },
@@ -1695,13 +1665,13 @@
         "matchState": "published",
         "matchReason": "IMDb-matched metadata",
         "platforms": [
-          "JioHotstar",
-          "JioHotStar"
+          "JioHotStar",
+          "JioHotstar"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
+          "https://www.dailyott.in/",
           "https://www.ottchecker.com/ott-releases/malayalam",
-          "https://www.dailyott.in/"
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": null
       },
@@ -1718,9 +1688,9 @@
           "SonyLIV"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
+          "https://www.dailyott.in/",
           "https://www.ottchecker.com/ott-releases/tamil",
-          "https://www.dailyott.in/"
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": null
       },
@@ -1755,9 +1725,9 @@
           "Netflix"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
+          "https://www.dailyott.in/",
           "https://www.ottchecker.com/ott-releases/hindi",
-          "https://www.dailyott.in/"
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": null
       },
@@ -1809,8 +1779,8 @@
           "Netflix"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.dailyott.in/"
+          "https://www.dailyott.in/",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": null
       },
@@ -1827,9 +1797,9 @@
           "Netflix"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
+          "https://www.dailyott.in/",
           "https://www.ottchecker.com/ott-releases/tamil",
-          "https://www.dailyott.in/"
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": null
       },
@@ -1845,13 +1815,13 @@
         "platforms": [
           "Prime Video",
           "Amazon Prime Video",
-          "Aha",
-          "SimplySouth"
+          "SimplySouth",
+          "Aha"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
+          "https://www.dailyott.in/",
           "https://www.ottchecker.com/ott-releases/tamil",
-          "https://www.dailyott.in/"
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": null
       },
@@ -1885,9 +1855,9 @@
           "Netflix"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
+          "https://www.dailyott.in/",
           "https://www.ottchecker.com/ott-releases/tamil",
-          "https://www.dailyott.in/"
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": null
       },
@@ -1904,9 +1874,9 @@
           "ETV Win"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
+          "https://www.dailyott.in/",
           "https://www.ottchecker.com/ott-releases/telugu",
-          "https://www.dailyott.in/"
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": null
       },
@@ -1924,8 +1894,8 @@
           "YouTube"
         ],
         "sources": [
-          "https://www.ottchecker.com/ott-releases/hindi",
           "https://www.dailyott.in/",
+          "https://www.ottchecker.com/ott-releases/hindi",
           "https://www.tvmaze.com/shows/70529/dhindora"
         ],
         "detail": null
@@ -2113,7 +2083,7 @@
         "title": "Family Kirana Store",
         "language": "hindi",
         "type": "series",
-        "releaseDate": "2026-11-20",
+        "releaseDate": "2026-11-27",
         "releaseDateBasis": "series-release-event",
         "id": "tt39632118",
         "matchState": "published",
@@ -2217,8 +2187,8 @@
           "Netflix"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/telugu"
+          "https://www.ottchecker.com/ott-releases/telugu",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/movies/aadarsha-kutumbam-house-no-47-ak47/"
       },
@@ -2232,12 +2202,12 @@
         "matchState": "published",
         "matchReason": "IMDb-matched metadata",
         "platforms": [
-          "ZEE5",
-          "Sun NXT"
+          "Sun NXT",
+          "ZEE5"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.keralatv.in/channel/ott/"
+          "https://www.keralatv.in/channel/ott/",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/"
       },
@@ -2271,8 +2241,8 @@
           "ZEE5"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/tamil"
+          "https://www.ottchecker.com/ott-releases/tamil",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/"
       },
@@ -2290,8 +2260,8 @@
           "Amazon Prime Video"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/hindi"
+          "https://www.ottchecker.com/ott-releases/hindi",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/bollywood-movies-digital-release-dates/"
       },
@@ -2301,9 +2271,9 @@
         "type": "series",
         "releaseDate": "2026-11-27",
         "releaseDateBasis": "series-release-event",
-        "id": null,
-        "matchState": "unmatched",
-        "matchReason": "No unambiguous IMDb, TMDB or TVmaze match",
+        "id": "tmdb:343170",
+        "matchState": "published",
+        "matchReason": "TMDB exact-title search + verified detail page",
         "platforms": [
           "Aha"
         ],
@@ -2342,8 +2312,8 @@
           "Sun NXT"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/malayalam"
+          "https://www.ottchecker.com/ott-releases/malayalam",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/malayalam-movies-ott-release-dates/"
       },
@@ -2377,8 +2347,8 @@
           "Netflix"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/hindi"
+          "https://www.ottchecker.com/ott-releases/hindi",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/movies/daayra/"
       },
@@ -2396,8 +2366,8 @@
           "SimplySouth"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/malayalam"
+          "https://www.ottchecker.com/ott-releases/malayalam",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/movies/the-third-murder/"
       },
@@ -2414,8 +2384,8 @@
           "Aha"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/tamil"
+          "https://www.ottchecker.com/ott-releases/tamil",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/movies/saayavanam/"
       },
@@ -2466,8 +2436,8 @@
           "ZEE5"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/tamil"
+          "https://www.ottchecker.com/ott-releases/tamil",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/movies/nooru-kodi-vaanavil/"
       },
@@ -2484,8 +2454,8 @@
           "Sun NXT"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/tamil"
+          "https://www.ottchecker.com/ott-releases/tamil",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/"
       },
@@ -2503,8 +2473,8 @@
           "Amazon Prime Video"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/hindi"
+          "https://www.ottchecker.com/ott-releases/hindi",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/movies/the-vvaan/"
       },
@@ -2521,8 +2491,8 @@
           "Netflix"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
           "https://www.ottchecker.com/ott-releases/hindi",
+          "https://cinebuds.com/ott-release-dates/",
           "https://www.tvmaze.com/shows/95295/akka"
         ],
         "detail": "https://cinebuds.com/movies/akka/"
@@ -2541,8 +2511,8 @@
           "Amazon Prime Video"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/telugu"
+          "https://www.ottchecker.com/ott-releases/telugu",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/movies/comrade-kalyan/"
       },
@@ -2559,8 +2529,8 @@
           "Netflix"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/telugu"
+          "https://www.ottchecker.com/ott-releases/telugu",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/movies/dont-trouble-the-trouble/"
       },
@@ -2577,8 +2547,8 @@
           "SonyLIV"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/tamil"
+          "https://www.ottchecker.com/ott-releases/tamil",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/movies/immortal/"
       },
@@ -2595,8 +2565,8 @@
           "Manorama Max"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/malayalam"
+          "https://www.ottchecker.com/ott-releases/malayalam",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/malayalam-movies-ott-release-dates/"
       },
@@ -2613,8 +2583,8 @@
           "JioHotstar"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/tamil"
+          "https://www.ottchecker.com/ott-releases/tamil",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/tamil-movies-digital-release-dates/"
       },
@@ -2648,8 +2618,8 @@
           "Netflix"
         ],
         "sources": [
-          "https://cinebuds.com/ott-release-dates/",
-          "https://www.ottchecker.com/ott-releases/telugu"
+          "https://www.ottchecker.com/ott-releases/telugu",
+          "https://cinebuds.com/ott-release-dates/"
         ],
         "detail": "https://cinebuds.com/movies/sub-inspector-yugandhar/"
       },
@@ -3407,21 +3377,6 @@
         "detail": null
       },
       {
-        "title": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
-        "language": "hindi",
-        "type": "series",
-        "releaseDate": "2026-11-28",
-        "releaseDateBasis": "series-release-event",
-        "id": "tt43720139",
-        "matchState": "published",
-        "matchReason": "IMDb-matched metadata",
-        "platforms": [],
-        "sources": [
-          "https://www.themoviedb.org/tv/319143"
-        ],
-        "detail": null
-      },
-      {
         "title": "Mannat: Harr Khushi Paane Ki",
         "language": "hindi",
         "type": "series",
@@ -3468,21 +3423,6 @@
         "sources": [
           "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
           "https://v3-cinemeta.strem.io/"
-        ],
-        "detail": null
-      },
-      {
-        "title": "Rise and Fall",
-        "language": "hindi",
-        "type": "series",
-        "releaseDate": "2026-11-06",
-        "releaseDateBasis": "series-release-event",
-        "id": "tt35674433",
-        "matchState": "published",
-        "matchReason": "IMDb-matched metadata",
-        "platforms": [],
-        "sources": [
-          "https://www.themoviedb.org/tv/300081"
         ],
         "detail": null
       },

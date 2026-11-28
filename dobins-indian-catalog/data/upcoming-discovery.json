@@ -1,27 +1,26 @@
 {
-  "generatedAt": "2026-11-28T05:51:16.187004+04:00",
+  "generatedAt": "2026-11-28T06:55:59.239066+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 19,
+    "total": 18,
     "byLanguage": {
-      "hindi": 17,
+      "hindi": 16,
       "tamil": 1,
       "telugu": 1
     },
     "byType": {
       "movie": 7,
-      "series": 12
+      "series": 11
     },
     "byMatchState": {
       "unmatched": 4,
-      "published": 14,
+      "published": 13,
       "metadata_incomplete": 1
     },
     "bySource": {
       "https://ottasia.com/ott-releases-this-week?country=IN": 14,
       "https://www.themoviedb.org/tv/338390": 1,
       "https://www.dailyott.in/": 2,
-      "https://www.themoviedb.org/tv/319143": 1,
       "https://www.themoviedb.org/tv/338656": 1,
       "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json": 2,
       "https://v3-cinemeta.strem.io/": 2,
@@ -119,31 +118,6 @@
       "releaseDateBasis": null,
       "detail": null,
       "matchId": "tt1281973",
-      "matchState": "published",
-      "matchReason": "IMDb-matched metadata",
-      "metadataComplete": true,
-      "metadataSource": "IMDb-matched metadata",
-      "metadataFields": {
-        "poster": true,
-        "description": true,
-        "genres": true,
-        "releaseInfo": true
-      },
-      "catalog": "dobins_hi_series"
-    },
-    {
-      "title": "Kyunki Rishton Ke Bhi Roop Badalte Hain",
-      "language": "hindi",
-      "type": "series",
-      "releaseDate": "2026-11-28",
-      "platforms": [],
-      "sources": [
-        "https://www.themoviedb.org/tv/319143"
-      ],
-      "confirmed": true,
-      "releaseDateBasis": "premiere",
-      "detail": null,
-      "matchId": "tt43720139",
       "matchState": "published",
       "matchReason": "IMDb-matched metadata",
       "metadataComplete": true,
@@ -256,7 +230,7 @@
         "poster": true,
         "description": true,
         "genres": true,
-        "releaseInfo": false
+        "releaseInfo": true
       },
       "catalog": "dobins_hi_movie"
     },
@@ -406,8 +380,8 @@
         "Netflix"
       ],
       "sources": [
-        "https://api.tvmaze.com/schedule/web",
         "https://www.dailyott.in/",
+        "https://api.tvmaze.com/schedule/web",
         "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
         "https://v3-cinemeta.strem.io/"
       ],
@@ -911,7 +885,7 @@
       "source": "DailyOTT",
       "url": "https://www.dailyott.in/",
       "state": "live",
-      "records": 983
+      "records": 985
     },
     {
       "source": "Cinebuds",
@@ -1711,10 +1685,10 @@
     {
       "source": "Verified multi-source series backfill",
       "policy": "multi-source-series-v1",
-      "records": 626,
+      "records": 627,
       "counts": {
         "malayalam": 60,
-        "tamil": 122,
+        "tamil": 123,
         "telugu": 108,
         "hindi": 336
       },
