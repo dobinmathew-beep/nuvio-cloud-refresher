@@ -1,24 +1,24 @@
 {
-  "generatedAt": "2026-11-28T08:50:30.149868+04:00",
+  "generatedAt": "2026-11-28T11:59:05.461168+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
-    "total": 18,
+    "total": 19,
     "byLanguage": {
-      "hindi": 16,
+      "hindi": 17,
       "tamil": 1,
       "telugu": 1
     },
     "byType": {
-      "movie": 7,
+      "movie": 8,
       "series": 11
     },
     "byMatchState": {
       "unmatched": 4,
-      "published": 13,
+      "published": 14,
       "metadata_incomplete": 1
     },
     "bySource": {
-      "https://ottasia.com/ott-releases-this-week?country=IN": 14,
+      "https://ottasia.com/ott-releases-this-week?country=IN": 15,
       "https://www.themoviedb.org/tv/338390": 1,
       "https://www.dailyott.in/": 2,
       "https://www.themoviedb.org/tv/338656": 1,
@@ -52,6 +52,31 @@
         "releaseInfo": false
       },
       "catalog": null
+    },
+    {
+      "title": "Kya Thhe?",
+      "language": "hindi",
+      "type": "movie",
+      "releaseDate": "2026-11-28",
+      "platforms": [],
+      "sources": [
+        "https://ottasia.com/ott-releases-this-week?country=IN"
+      ],
+      "confirmed": true,
+      "releaseDateBasis": "OTTASIA confirmed upcoming calendar",
+      "detail": "https://ottasia.com/title/movie/1846968/kya-thhe?country=IN",
+      "matchId": "tmdb:1846968",
+      "matchState": "published",
+      "matchReason": "TMDB exact-title search + verified detail page",
+      "metadataComplete": true,
+      "metadataSource": "TMDB exact-title search + verified detail page",
+      "metadataFields": {
+        "poster": true,
+        "description": true,
+        "genres": true,
+        "releaseInfo": true
+      },
+      "catalog": "dobins_hi_movie"
     },
     {
       "title": "AndherPura Curse",
@@ -904,7 +929,7 @@
       "source": "OTTASIA confirmed calendar",
       "url": "https://ottasia.com/ott-releases-this-week?country=IN",
       "state": "live",
-      "records": 14
+      "records": 15
     },
     {
       "source": "Vi weekly OTT calendar",
@@ -965,7 +990,7 @@
       "source": "OTTChecker Tamil recent releases",
       "url": "https://www.ottchecker.com/ott-releases/tamil",
       "state": "live",
-      "records": 18
+      "records": 20
     },
     {
       "source": "OTTChecker Telugu recent releases",
@@ -977,7 +1002,7 @@
       "source": "OTTChecker Hindi recent releases",
       "url": "https://www.ottchecker.com/ott-releases/hindi",
       "state": "live",
-      "records": 21
+      "records": 22
     },
     {
       "source": "Kerala TV multi-language OTT releases",
@@ -1009,7 +1034,7 @@
       "source": "Per-language source coverage",
       "url": "internal://source-coverage",
       "state": "partial",
-      "records": 95,
+      "records": 100,
       "languageCoverage": {
         "malayalam": {
           "checkedFeeds": 14,
@@ -1210,7 +1235,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 21,
+          "detectedRecords": 24,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1281,17 +1306,17 @@
               "url": "https://www.ottchecker.com/ott-releases/tamil",
               "state": "live",
               "languageState": "records_found",
-              "records": 18,
-              "movieRecords": 15,
-              "seriesRecords": 3
+              "records": 20,
+              "movieRecords": 16,
+              "seriesRecords": 4
             },
             {
               "source": "Kerala TV multi-language OTT releases",
               "url": "https://www.keralatv.in/channel/ott/",
               "state": "live",
               "languageState": "records_found",
-              "records": 2,
-              "movieRecords": 2,
+              "records": 3,
+              "movieRecords": 3,
               "seriesRecords": 0
             },
             {
@@ -1505,7 +1530,7 @@
             "ottasia.com",
             "ottchecker.com"
           ],
-          "detectedRecords": 35,
+          "detectedRecords": 37,
           "coverageStatus": "ok",
           "sources": [
             {
@@ -1522,8 +1547,8 @@
               "url": "https://ottasia.com/ott-releases-this-week?country=IN",
               "state": "live",
               "languageState": "records_found",
-              "records": 12,
-              "movieRecords": 6,
+              "records": 13,
+              "movieRecords": 7,
               "seriesRecords": 6
             },
             {
@@ -1576,9 +1601,9 @@
               "url": "https://www.ottchecker.com/ott-releases/hindi",
               "state": "live",
               "languageState": "records_found",
-              "records": 21,
+              "records": 22,
               "movieRecords": 18,
-              "seriesRecords": 3
+              "seriesRecords": 4
             },
             {
               "source": "Kerala TV multi-language OTT releases",
@@ -1639,7 +1664,7 @@
       "language": "tamil",
       "url": "https://83e20802dcf1-indian-streams.baby-beamup.club",
       "state": "live",
-      "records": 74
+      "records": 75
     },
     {
       "source": "TMDB streaming-series discovery",
@@ -1934,7 +1959,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 21,
+      "detectedRecords": 24,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2005,17 +2030,17 @@
           "url": "https://www.ottchecker.com/ott-releases/tamil",
           "state": "live",
           "languageState": "records_found",
-          "records": 18,
-          "movieRecords": 15,
-          "seriesRecords": 3
+          "records": 20,
+          "movieRecords": 16,
+          "seriesRecords": 4
         },
         {
           "source": "Kerala TV multi-language OTT releases",
           "url": "https://www.keralatv.in/channel/ott/",
           "state": "live",
           "languageState": "records_found",
-          "records": 2,
-          "movieRecords": 2,
+          "records": 3,
+          "movieRecords": 3,
           "seriesRecords": 0
         },
         {
@@ -2229,7 +2254,7 @@
         "ottasia.com",
         "ottchecker.com"
       ],
-      "detectedRecords": 35,
+      "detectedRecords": 37,
       "coverageStatus": "ok",
       "sources": [
         {
@@ -2246,8 +2271,8 @@
           "url": "https://ottasia.com/ott-releases-this-week?country=IN",
           "state": "live",
           "languageState": "records_found",
-          "records": 12,
-          "movieRecords": 6,
+          "records": 13,
+          "movieRecords": 7,
           "seriesRecords": 6
         },
         {
@@ -2300,9 +2325,9 @@
           "url": "https://www.ottchecker.com/ott-releases/hindi",
           "state": "live",
           "languageState": "records_found",
-          "records": 21,
+          "records": 22,
           "movieRecords": 18,
-          "seriesRecords": 3
+          "seriesRecords": 4
         },
         {
           "source": "Kerala TV multi-language OTT releases",

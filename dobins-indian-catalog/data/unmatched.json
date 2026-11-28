@@ -262,29 +262,6 @@
     }
   },
   {
-    "name": "Satyameva",
-    "language": "malayalam",
-    "type": "series",
-    "ottDate": "2026-11-26",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.ottchecker.com/ott-releases/malayalam"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": "https://www.ottchecker.com/movie/satyameva-2026",
-    "sourceRecord": {
-      "title": "Satyameva",
-      "releaseDate": "2026-11-26",
-      "language": "malayalam",
-      "platforms": [
-        "ZEE5"
-      ],
-      "source": "https://www.ottchecker.com/ott-releases/malayalam"
-    }
-  },
-  {
     "name": "Drones1",
     "language": "tamil",
     "type": "movie",
@@ -326,6 +303,29 @@
       "releaseDate": "2026-11-27",
       "source": "https://www.keralatv.in/channel/ott/",
       "headline": "Summer Holidays OTT Release Date: Sony LIV to Premiere Telugu Children’s Film on December 4"
+    }
+  },
+  {
+    "name": "Satyameva",
+    "language": "malayalam",
+    "type": "series",
+    "ottDate": "2026-11-26",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.ottchecker.com/ott-releases/malayalam"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": "https://www.ottchecker.com/movie/satyameva-2026",
+    "sourceRecord": {
+      "title": "Satyameva",
+      "releaseDate": "2026-11-26",
+      "language": "malayalam",
+      "platforms": [
+        "ZEE5"
+      ],
+      "source": "https://www.ottchecker.com/ott-releases/malayalam"
     }
   },
   {
@@ -521,37 +521,6 @@
     }
   },
   {
-    "name": "Bal Barbarik",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-11-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ZEE5"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6af7c50adea24088f2622fb9",
-      "platform": "ZEE5",
-      "title": "Bal Barbarik",
-      "createdAt": "2026-11-14T02:18:50.337Z",
-      "genre": "Animation",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-11-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-11-14T02:18:50.337Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Cyber",
     "language": "malayalam",
     "type": "series",
@@ -579,6 +548,37 @@
       "type": "Series",
       "updatedAt": "2026-05-13T03:46:44.534Z",
       "posterUrl": "https://image.tmdb.org/t/p/w300/p56xB5YJDeYaGGOaYFtsjWycTYl.jpg",
+      "verified": true
+    }
+  },
+  {
+    "name": "Bal Barbarik",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-11-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ZEE5"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6af7c50adea24088f2622fb9",
+      "platform": "ZEE5",
+      "title": "Bal Barbarik",
+      "createdAt": "2026-11-14T02:18:50.337Z",
+      "genre": "Animation",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-11-14",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-11-14T02:18:50.337Z",
       "verified": true
     }
   },
@@ -1075,37 +1075,6 @@
     }
   },
   {
-    "name": "Roadies Rebirth",
-    "language": "hindi",
-    "type": "series",
-    "ottDate": "2026-10-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "JioHotStar"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6ad1898c3249ff69efda9cee",
-      "platform": "JioHotStar",
-      "title": "Roadies Rebirth",
-      "createdAt": "2026-10-16T02:18:52.613Z",
-      "genre": "Reality, Adventure",
-      "imdbRating": null,
-      "languages": [
-        "Hindi"
-      ],
-      "original_language": "Hindi",
-      "releaseDate": "2026-10-16",
-      "source_verified": true,
-      "type": "Series",
-      "updatedAt": "2026-10-16T02:18:52.613Z",
-      "verified": true
-    }
-  },
-  {
     "name": "Thai Maaman",
     "language": "tamil",
     "type": "series",
@@ -1163,6 +1132,37 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-03-22T03:30:38.016Z",
+      "verified": true
+    }
+  },
+  {
+    "name": "Roadies Rebirth",
+    "language": "hindi",
+    "type": "series",
+    "ottDate": "2026-10-16",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "JioHotStar"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6ad1898c3249ff69efda9cee",
+      "platform": "JioHotStar",
+      "title": "Roadies Rebirth",
+      "createdAt": "2026-10-16T02:18:52.613Z",
+      "genre": "Reality, Adventure",
+      "imdbRating": null,
+      "languages": [
+        "Hindi"
+      ],
+      "original_language": "Hindi",
+      "releaseDate": "2026-10-16",
+      "source_verified": true,
+      "type": "Series",
+      "updatedAt": "2026-10-16T02:18:52.613Z",
       "verified": true
     }
   },
@@ -1258,6 +1258,37 @@
     }
   },
   {
+    "name": "Nijame Rujuvainadhi",
+    "language": "telugu",
+    "type": "movie",
+    "ottDate": "2026-08-14",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "ETV Win"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "6a7e75993fab9691478b3be2",
+      "platform": "ETV Win",
+      "title": "Nijame Rujuvainadhi",
+      "createdAt": "2026-08-14T01:55:36.933Z",
+      "genre": "Drama, Romance",
+      "imdbRating": null,
+      "languages": [
+        "Telugu"
+      ],
+      "original_language": "Telugu",
+      "releaseDate": "2026-08-14",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-08-14T01:55:36.933Z",
+      "verified": true
+    }
+  },
+  {
     "name": "Chikoo Vs Bunty: Kushti Ki Jung",
     "language": "hindi",
     "type": "movie",
@@ -1316,37 +1347,6 @@
       "source_verified": true,
       "type": "Series",
       "updatedAt": "2026-10-02T02:18:50.680Z",
-      "verified": true
-    }
-  },
-  {
-    "name": "Nijame Rujuvainadhi",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-08-14",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a7e75993fab9691478b3be2",
-      "platform": "ETV Win",
-      "title": "Nijame Rujuvainadhi",
-      "createdAt": "2026-08-14T01:55:36.933Z",
-      "genre": "Drama, Romance",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "original_language": "Telugu",
-      "releaseDate": "2026-08-14",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-08-14T01:55:36.933Z",
       "verified": true
     }
   },
@@ -1538,6 +1538,36 @@
     }
   },
   {
+    "name": "Varumaiyil Thaal",
+    "language": "tamil",
+    "type": "movie",
+    "ottDate": "2026-05-03",
+    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
+    "sources": [
+      "https://www.dailyott.in/"
+    ],
+    "platforms": [
+      "Shortfundly"
+    ],
+    "detail": null,
+    "sourceRecord": {
+      "_id": "69f6c52b36465ddb3f139822",
+      "title": "Varumaiyil Thaal",
+      "platform": "Shortfundly",
+      "createdAt": "2026-05-03T03:46:51.209Z",
+      "genre": "Drama",
+      "imdbRating": null,
+      "languages": [
+        "Tamil"
+      ],
+      "releaseDate": "2026-05-03",
+      "source_verified": true,
+      "type": "Movie",
+      "updatedAt": "2026-05-03T03:46:51.209Z",
+      "verified": true
+    }
+  },
+  {
     "name": "The Legend of Karna",
     "language": "hindi",
     "type": "movie",
@@ -1571,32 +1601,32 @@
     }
   },
   {
-    "name": "Varumaiyil Thaal",
-    "language": "tamil",
+    "name": "Vani Na Rani",
+    "language": "telugu",
     "type": "movie",
-    "ottDate": "2026-05-03",
+    "ottDate": "2026-05-16",
     "reason": "No unambiguous IMDb, TMDB or TVmaze match",
     "sources": [
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "Shortfundly"
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {
-      "_id": "69f6c52b36465ddb3f139822",
-      "title": "Varumaiyil Thaal",
-      "platform": "Shortfundly",
-      "createdAt": "2026-05-03T03:46:51.209Z",
-      "genre": "Drama",
+      "_id": "6a07e9279dcddba08328ec63",
+      "platform": "ETV Win",
+      "title": "Vani Na Rani",
+      "createdAt": "2026-05-16T03:48:55.554Z",
+      "genre": "Family Drama",
       "imdbRating": null,
       "languages": [
-        "Tamil"
+        "Telugu"
       ],
-      "releaseDate": "2026-05-03",
+      "releaseDate": "2026-05-16",
       "source_verified": true,
       "type": "Movie",
-      "updatedAt": "2026-05-03T03:46:51.209Z",
+      "updatedAt": "2026-05-16T03:48:55.554Z",
       "verified": true
     }
   },
@@ -1629,36 +1659,6 @@
       "type": "Movie",
       "updatedAt": "2026-07-24T06:03:23.967Z",
       "votes": 3,
-      "verified": true
-    }
-  },
-  {
-    "name": "Vani Na Rani",
-    "language": "telugu",
-    "type": "movie",
-    "ottDate": "2026-05-16",
-    "reason": "No unambiguous IMDb, TMDB or TVmaze match",
-    "sources": [
-      "https://www.dailyott.in/"
-    ],
-    "platforms": [
-      "ETV Win"
-    ],
-    "detail": null,
-    "sourceRecord": {
-      "_id": "6a07e9279dcddba08328ec63",
-      "platform": "ETV Win",
-      "title": "Vani Na Rani",
-      "createdAt": "2026-05-16T03:48:55.554Z",
-      "genre": "Family Drama",
-      "imdbRating": null,
-      "languages": [
-        "Telugu"
-      ],
-      "releaseDate": "2026-05-16",
-      "source_verified": true,
-      "type": "Movie",
-      "updatedAt": "2026-05-16T03:48:55.554Z",
       "verified": true
     }
   },
@@ -1871,8 +1871,8 @@
       "https://www.dailyott.in/"
     ],
     "platforms": [
-      "ETV Win",
-      "Netflix"
+      "Netflix",
+      "ETV Win"
     ],
     "detail": null,
     "sourceRecord": {

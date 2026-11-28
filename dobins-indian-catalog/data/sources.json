@@ -1,6 +1,6 @@
 {
   "dailyott": {
-    "checkedAt": "2026-11-28T08:50:30.149868+04:00",
+    "checkedAt": "2026-11-28T11:59:05.461168+04:00",
     "records": [
       {
         "_id": "6b0a3a0d699a8884e160d36e",
@@ -38,6 +38,62 @@
         "updatedAt": "2026-11-28T02:19:45.111Z",
         "posterUrl": "https://image.tmdb.org/t/p/w300/z8ibQURkeHIO0KZN8GeKvxN7d0v.jpg",
         "instagramPostedAt": "2026-11-28T02:20:36Z",
+        "tmdbDetails": {
+          "tmdbId": 1478484,
+          "director": "Anshul Tiwari",
+          "cast": [
+            {
+              "name": "Hazman Al-Idrus",
+              "character": "Ishraq \"Iz\" Wan"
+            },
+            {
+              "name": "Asmara Abigail",
+              "character": "Siti"
+            },
+            {
+              "name": "Fabian Loo",
+              "character": "Chin Liu"
+            },
+            {
+              "name": "Brett Tutor",
+              "character": "Abraham \"Abe\" Bennett"
+            },
+            {
+              "name": "Zidan El Hafiz",
+              "character": "Muda"
+            },
+            {
+              "name": "Lupeng Rasyid",
+              "character": "Zul"
+            },
+            {
+              "name": "Indra Pacique",
+              "character": "Faisal"
+            },
+            {
+              "name": "Ben Gardner Gray",
+              "character": "Simon Davies"
+            }
+          ],
+          "overview": "In 1948 Malaya, WWII vets Iz and Abe face vengeful ex-ally Chin Liu, who betrayed them during the war and now leads terrorists to their village. Haunted by past trauma, Iz must confront both his demons and Chin Liu's deadly advance.",
+          "runtime": 110,
+          "genres": [
+            "Action",
+            "Drama",
+            "History",
+            "War"
+          ],
+          "originalLanguage": "en",
+          "spokenLanguages": [
+            "English",
+            "Malay"
+          ],
+          "releaseDate": "2026-08-28",
+          "voteAverage": null,
+          "trailerKey": "gcztsU9RRb0",
+          "fetchedAt": "2026-11-28T05:41:56.821Z"
+        },
+        "tmdbId": 1478484,
         "verified": true
       },
       {
@@ -231,6 +287,7 @@
         "trendingRank": 1,
         "trendingRankedAt": "2026-11-28T02:19:25.901Z",
         "trendingRankedDateIST": "2026-11-28",
+        "votes": 1,
         "verified": true
       },
       {
@@ -11347,9 +11404,9 @@
             "English"
           ],
           "releaseDate": "2026-04-22",
-          "voteAverage": 8.7,
+          "voteAverage": 8.563,
           "trailerKey": "k-YAcjaLuSI",
-          "fetchedAt": "2026-08-29T08:31:12.085Z"
+          "fetchedAt": "2026-11-28T05:44:59.231Z"
         },
         "tmdbId": 936075,
         "instagramPostedAt": "2026-08-30T01:38:25Z",
@@ -12345,9 +12402,9 @@
             "Malayalam"
           ],
           "releaseDate": "2026-07-30",
-          "voteAverage": 2,
+          "voteAverage": 3,
           "trailerKey": "CLyFnH-Lu90",
-          "fetchedAt": "2026-09-26T09:16:14.976Z"
+          "fetchedAt": "2026-11-28T05:42:54.942Z"
         },
         "tmdbId": 1444088,
         "votes": 1,
@@ -32585,7 +32642,7 @@
     ]
   },
   "cinebuds": {
-    "checkedAt": "2026-11-28T08:50:30.149868+04:00",
+    "checkedAt": "2026-11-28T11:59:05.461168+04:00",
     "records": [
       {
         "name": "Aadarsha Kutumbam House No: 47 – AK47",

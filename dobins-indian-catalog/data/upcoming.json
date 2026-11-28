@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-28T08:50:30.149868+04:00",
+  "generatedAt": "2026-11-28T11:59:05.461168+04:00",
   "policy": "confirmed-source-matched-id-v2",
-  "count": 9,
+  "count": 10,
   "items": [
     {
       "id": "tt50063835",
@@ -122,6 +122,28 @@
       "catalog": "dobins_hi_series",
       "region": "IN",
       "source": "https://ottasia.com/ott-releases-this-week?country=IN"
+    },
+    {
+      "id": "tt39632118",
+      "aliases": [
+        "tt39632118"
+      ],
+      "name": "Family Kirana Store",
+      "language": "hindi",
+      "type": "series",
+      "releaseDate": "2026-12-04",
+      "kind": "episode",
+      "platforms": [
+        "YouTube (TVF)"
+      ],
+      "sources": [
+        "https://www.dailyott.in/",
+        "https://83e20802dcf1-indian-streams.baby-beamup.club/catalog/series/hi_series.json",
+        "https://v3-cinemeta.strem.io/"
+      ],
+      "catalog": "dobins_hi_series",
+      "region": "IN",
+      "source": "https://www.dailyott.in/"
     },
     {
       "id": "tt35933285",
