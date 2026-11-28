@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-28T03:02:19.057439+00:00",
+  "checkedAt": "2026-11-28T04:55:27.841971+00:00",
   "url": "https://the-great-indian-addon.vercel.app",
   "state": "ok",
   "checks": [
@@ -11,11 +11,11 @@
         "status.json": "github_raw",
         "metadata.json": "github_raw"
       },
-      "statusTimestampMatches": true,
+      "statusTimestampMatches": false,
       "catalogCountsMatch": true,
       "catalogIdsMatch": true,
-      "metadataRecords": 1214,
-      "warning": null,
+      "metadataRecords": 1215,
+      "warning": "Public status.json timestamp is behind the latest GitHub status; catalog data itself is current.",
       "error": null
     },
     {
@@ -258,19 +258,19 @@
       "language": "hi",
       "type": "movie",
       "path": "/install/ff/catalog/movie/dobins_hi_movie.json",
-      "localPublishedCount": 125,
-      "localUniqueIdCount": 125,
+      "localPublishedCount": 126,
+      "localUniqueIdCount": 126,
       "localDuplicateIdCount": 0,
       "localInvalidIdCount": 0,
       "localDuplicateIds": [],
-      "endpointRawCount": 125,
-      "endpointUniqueIdCount": 125,
+      "endpointRawCount": 126,
+      "endpointUniqueIdCount": 126,
       "endpointDuplicateIdCount": 0,
       "endpointInvalidIdCount": 0,
       "endpointPageCounts": [
         50,
         50,
-        25
+        26
       ],
       "endpointPageSize": 50,
       "missingIds": [],
