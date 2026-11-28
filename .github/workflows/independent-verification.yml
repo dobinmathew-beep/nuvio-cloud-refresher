@@ -1,6 +1,12 @@
 name: Nuvio independent output verification
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - verify_independent.py
+      - tests/test_independent_backdrop_policy.py
+      - .github/workflows/independent-verification.yml
   schedule:
     - cron: '17 */6 * * *'
   # This workflow verifies published outputs, not source commits. Run after
