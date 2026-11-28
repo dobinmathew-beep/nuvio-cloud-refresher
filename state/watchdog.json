@@ -1,20 +1,20 @@
 {
-  "checked_at": "2026-11-28T13:59:02.945479+04:00",
+  "checked_at": "2026-11-28T15:37:01.881014+04:00",
   "results": [
     {
       "component": "media",
-      "due": "2026-11-28T12:00:00+04:00",
-      "state": "refresh-in-progress"
+      "due": "2026-11-28T14:00:00+04:00",
+      "state": "catch-up-dispatched"
     },
     {
       "component": "addon",
-      "due": "2026-11-28T12:00:00+04:00",
-      "state": "fresh"
+      "due": "2026-11-28T14:00:00+04:00",
+      "state": "catch-up-dispatched"
     },
     {
       "component": "epg",
-      "due": "2026-11-28T12:00:00+04:00",
-      "state": "fresh"
+      "due": "2026-11-28T14:00:00+04:00",
+      "state": "catch-up-dispatched"
     }
   ],
   "errors": [],
