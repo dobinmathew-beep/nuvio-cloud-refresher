@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-28T12:00:14.849031+04:00",
+  "checked_at": "2026-11-28T12:01:40.193673+04:00",
   "results": [
     {
       "component": "media",
@@ -14,7 +14,7 @@
     {
       "component": "epg",
       "due": "2026-11-28T12:00:00+04:00",
-      "state": "catch-up-dispatched"
+      "state": "fresh"
     }
   ],
   "errors": [],
