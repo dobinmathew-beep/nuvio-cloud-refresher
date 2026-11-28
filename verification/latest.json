@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-28T17:54:40.385480+04:00",
+  "checked_at": "2026-11-28T18:11:19.710593+04:00",
   "timezone": "Asia/Muscat",
   "verification_mode": "independent-public-output",
   "outputs": {
     "addon": {
       "status": "pass",
-      "checked_at": "2026-11-28T17:54:40.385480+04:00",
+      "checked_at": "2026-11-28T18:11:19.710593+04:00",
       "public_url": "https://the-great-indian-addon.vercel.app",
       "checks": [
         {
@@ -50,28 +50,28 @@
     },
     "epg": {
       "status": "pass",
-      "checked_at": "2026-11-28T13:58:45.160650+04:00",
+      "checked_at": "2026-11-28T18:11:19.710593+04:00",
       "public_url": "https://dobin-india-epg-feed.quickfield138.chatgpt.site",
       "checks": [
         {
           "name": "public status and freshness",
           "status": "pass",
           "details": {
-            "revision": "952e9c4e-3608-4f1b-ae84-787a11460385",
-            "checked_utc": "2026-11-28T08:00:41.529576+00:00",
-            "matched_ids": 608,
+            "revision": "0e5c2668-b5be-4fb2-8804-a1648a2c4d31",
+            "checked_utc": "2026-11-28T12:39:23.035822+00:00",
+            "matched_ids": 612,
             "playlist_channel_ids": 856,
-            "unresolved_ids": 248,
-            "programmes": 67667
+            "unresolved_ids": 244,
+            "programmes": 66501
           }
         },
         {
           "name": "published XMLTV",
           "status": "pass",
           "details": {
-            "bytes": 1883328,
-            "channels": 608,
-            "programmes": 67667
+            "bytes": 1914709,
+            "channels": 612,
+            "programmes": 66501
           }
         },
         {
@@ -85,14 +85,14 @@
           "name": "Unresolved_Channels.csv",
           "status": "pass",
           "details": {
-            "rows": 248
+            "rows": 244
           }
         },
         {
           "name": "Source_Crosscheck_Report.csv",
           "status": "pass",
           "details": {
-            "rows": 2498
+            "rows": 2714
           }
         },
         {
@@ -134,49 +134,14 @@
       ]
     },
     "backdrops": {
-      "status": "pass",
-      "checked_at": "2026-11-28T16:39:12.053437+04:00",
+      "status": "fail",
+      "checked_at": "2026-11-28T18:11:19.710593+04:00",
       "public_url": "https://dobin-nuvio-live-backdrops.quickfield138.chatgpt.site",
-      "details": {
-        "day": "2026-11-28",
-        "statuses": 160,
-        "images": 16,
-        "states": {
-          "live": 160,
-          "cached": 0
-        },
-        "errors": [],
-        "catalogHeads": {
-          "hindi": "tt37200939",
-          "tamil": "tt18933846",
-          "telugu": "tt33044571",
-          "malayalam": "tt41944351"
-        }
-      },
-      "raw_catalog_heads": {
-        "hindi": {
-          "id": "tt37200939",
-          "name": "Parivarik ManuRanjan"
-        },
-        "tamil": {
-          "id": "tt18933846",
-          "name": "Nooru Kodi Vaanavil"
-        },
-        "malayalam": {
-          "id": "tt41944351",
-          "name": "Madhurame Jeevitham"
-        },
-        "telugu": {
-          "id": "tt33044571",
-          "name": "Aakasamlo Oka Tara"
-        }
-      },
-      "centre_layouts_checked": 120,
-      "method": "160 public layout/status checks, 16 JPEG checks, plus independent raw-catalog first-movie comparison across all movie and combined centre layouts"
+      "error": "{\"layout\": \"tamil/movies/wall\", \"expected\": {\"id\": \"tmdb:1822586\", \"name\": \"Mazhalai\"}, \"actual\": \"tt18933846\", \"selection\": \"catalog-order\", \"catalogRank\": 0, \"renderVersion\": \"catalog-head-v2\"}"
     },
     "reels": {
       "status": "pass",
-      "checked_at": "2026-11-28T16:39:12.053437+04:00",
+      "checked_at": "2026-11-28T18:11:19.710593+04:00",
       "public_url": "https://dobin-nuvio-star-cards.quickfield138.chatgpt.site",
       "reels": [
         {
@@ -268,8 +233,8 @@
     }
   },
   "summary": {
-    "passed": 4,
+    "passed": 3,
     "total": 4,
-    "status": "pass"
+    "status": "fail"
   }
 }
