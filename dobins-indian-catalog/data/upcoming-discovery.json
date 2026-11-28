@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-28T06:55:59.239066+04:00",
+  "generatedAt": "2026-11-28T08:50:30.149868+04:00",
   "policy": "source-ledger-v1; unverified candidates are diagnostic only and are never published to upcoming.json",
   "counts": {
     "total": 18,
@@ -1722,9 +1722,9 @@
       "source": "TMDB theatrical and physical releases",
       "language": "hindi",
       "state": "live",
-      "records": 209,
+      "records": 210,
       "theatricalCandidates": 194,
-      "physicalCandidates": 16
+      "physicalCandidates": 17
     },
     {
       "source": "Minimum independent source coverage",

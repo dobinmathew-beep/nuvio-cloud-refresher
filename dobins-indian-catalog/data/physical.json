@@ -15835,11 +15835,160 @@
       "editions": [],
       "theatrical": [],
       "events": []
+    },
+    "hindi|10757": {
+      "checkedAt": "2026-11-28T08:50:30.149868+04:00",
+      "editions": [
+        {
+          "date": "2004-07-12",
+          "format": "DVD",
+          "country": "France",
+          "region": "FR",
+          "note": "DVD"
+        },
+        {
+          "date": "2010-07-12",
+          "format": "Blu-ray",
+          "country": "United States",
+          "region": "US",
+          "note": "Blu-ray"
+        },
+        {
+          "date": "2011-01-01",
+          "format": "Blu-ray",
+          "country": "United States",
+          "region": "US",
+          "note": "Blu-ray"
+        }
+      ],
+      "theatrical": [
+        {
+          "date": "2003-10-04",
+          "country": "Germany",
+          "region": "DE",
+          "note": ""
+        }
+      ],
+      "events": [
+        {
+          "name": "Kabhi Khushi Kabhie Gham",
+          "type": "movie",
+          "language": "hindi",
+          "ottDate": "2003-10-04",
+          "sourceRecord": {
+            "tmdbId": 10757
+          },
+          "poster": "https://image.tmdb.org/t/p/w780/eJrD94E1msYEa0DygvkvdEKpChm.jpg",
+          "year": "2001",
+          "platforms": [
+            "Theatrical · Germany"
+          ],
+          "source": "https://www.themoviedb.org/movie/10757/releases",
+          "sources": [
+            "https://www.themoviedb.org/movie/10757/releases"
+          ],
+          "confirmed": true,
+          "releaseKind": "theatrical",
+          "releaseDateBasis": "TMDB first theatrical release date",
+          "theatricalReleases": [
+            {
+              "date": "2003-10-04",
+              "country": "Germany",
+              "region": "DE",
+              "note": ""
+            }
+          ],
+          "_verifiedMetadata": {
+            "id": "tmdb:10757",
+            "type": "movie",
+            "name": "Kabhi Khushi Kabhie Gham",
+            "poster": "https://image.tmdb.org/t/p/w780/eJrD94E1msYEa0DygvkvdEKpChm.jpg",
+            "background": "https://image.tmdb.org/t/p/w780/9u2sNT5m7I9vrR4y6HI1MulXRJ2.jpg",
+            "description": "Years after his father disowns his adopted brother for marrying a woman of lower social standing, a young man goes on a mission to reunite his family.",
+            "genres": [
+              "Comedy",
+              "Drama"
+            ],
+            "releaseInfo": "2001",
+            "cast": [],
+            "director": [],
+            "runtime": null,
+            "tmdb_id": 10757,
+            "imdb_id": null,
+            "original_language": "hi",
+            "metadataSource": "https://www.themoviedb.org/movie/10757"
+          }
+        },
+        {
+          "name": "Kabhi Khushi Kabhie Gham",
+          "type": "movie",
+          "language": "hindi",
+          "ottDate": "2004-07-12",
+          "sourceRecord": {
+            "tmdbId": 10757
+          },
+          "poster": "https://image.tmdb.org/t/p/w780/eJrD94E1msYEa0DygvkvdEKpChm.jpg",
+          "year": "2001",
+          "platforms": [
+            "DVD · France"
+          ],
+          "source": "https://www.themoviedb.org/movie/10757/releases",
+          "sources": [
+            "https://www.themoviedb.org/movie/10757/releases"
+          ],
+          "confirmed": true,
+          "releaseKind": "physical",
+          "releaseDateBasis": "TMDB physical release date",
+          "physicalReleases": [
+            {
+              "date": "2004-07-12",
+              "format": "DVD",
+              "country": "France",
+              "region": "FR",
+              "note": "DVD"
+            },
+            {
+              "date": "2010-07-12",
+              "format": "Blu-ray",
+              "country": "United States",
+              "region": "US",
+              "note": "Blu-ray"
+            },
+            {
+              "date": "2011-01-01",
+              "format": "Blu-ray",
+              "country": "United States",
+              "region": "US",
+              "note": "Blu-ray"
+            }
+          ],
+          "_verifiedMetadata": {
+            "id": "tmdb:10757",
+            "type": "movie",
+            "name": "Kabhi Khushi Kabhie Gham",
+            "poster": "https://image.tmdb.org/t/p/w780/eJrD94E1msYEa0DygvkvdEKpChm.jpg",
+            "background": "https://image.tmdb.org/t/p/w780/9u2sNT5m7I9vrR4y6HI1MulXRJ2.jpg",
+            "description": "Years after his father disowns his adopted brother for marrying a woman of lower social standing, a young man goes on a mission to reunite his family.",
+            "genres": [
+              "Comedy",
+              "Drama"
+            ],
+            "releaseInfo": "2001",
+            "cast": [],
+            "director": [],
+            "runtime": null,
+            "tmdb_id": 10757,
+            "imdb_id": null,
+            "original_language": "hi",
+            "metadataSource": "https://www.themoviedb.org/movie/10757"
+          }
+        }
+      ]
     }
   },
   "discovery": {
     "malayalam": {
-      "checkedAt": "2026-11-28T06:55:59.239066+04:00",
+      "checkedAt": "2026-11-28T08:50:30.149868+04:00",
       "titles": {
         "1842602": "Sidhu",
         "1570366": "Pantham",
@@ -16406,7 +16555,7 @@
       }
     },
     "tamil": {
-      "checkedAt": "2026-11-28T06:55:59.239066+04:00",
+      "checkedAt": "2026-11-28T08:50:30.149868+04:00",
       "titles": {
         "1844991": "Mouna Mozhigal",
         "1830763": "Minnum Oar Iravu",
@@ -17061,7 +17210,7 @@
       }
     },
     "telugu": {
-      "checkedAt": "2026-11-28T06:55:59.239066+04:00",
+      "checkedAt": "2026-11-28T08:50:30.149868+04:00",
       "titles": {
         "1847783": "Dad's Little Friend",
         "1842641": "Bala 369 (Atajani Kaanche)",
@@ -17796,7 +17945,7 @@
       }
     },
     "hindi": {
-      "checkedAt": "2026-11-28T06:55:59.239066+04:00",
+      "checkedAt": "2026-11-28T08:50:30.149868+04:00",
       "titles": {
         "1846968": "Kya Thhe?",
         "1793000": "The Hangover Cure",
@@ -17999,6 +18148,7 @@
         "20453": "3 Idiots",
         "85985": "Ek Tha Tiger",
         "84858": "Agneepath",
+        "10757": "Kabhi Khushi Kabhie Gham",
         "26022": "My Name Is Khan",
         "7508": "Like Stars on Earth",
         "404401": "The Game of Love",
@@ -18611,6 +18761,9 @@
           "physical"
         ],
         "84858": [
+          "physical"
+        ],
+        "10757": [
           "physical"
         ],
         "26022": [

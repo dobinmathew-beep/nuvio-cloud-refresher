@@ -430,6 +430,13 @@
       "type": "series"
     },
     {
+      "id": "tt31914166",
+      "name": "Thalaivettiyaan Paalayam",
+      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31914166.jpg",
+      "releaseInfo": "2024",
+      "type": "series"
+    },
+    {
       "id": "tt33509351",
       "name": "Company",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33509351.jpg",
@@ -559,13 +566,6 @@
       "id": "tt27510191",
       "name": "Oru Kodai Murder Mystery",
       "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27510191.jpg",
-      "releaseInfo": "2023",
-      "type": "series"
-    },
-    {
-      "id": "tt27139477",
-      "name": "Sengalam",
-      "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27139477.jpg",
       "releaseInfo": "2023",
       "type": "series"
     },
@@ -12603,5 +12603,5 @@
       "type": "series"
     }
   ],
-  "_updatedAt": "2026-11-28T05:51:16.187004+04:00"
+  "_updatedAt": "2026-11-28T08:50:30.149868+04:00"
 }
